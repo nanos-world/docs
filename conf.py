@@ -60,11 +60,10 @@ html_theme_options = {
 }
 
 html_context = {
-    "gitlab_host": "gitlab2.nanos.io",
-    "display_gitlab": True,
-    "gitlab_user": "nanos.world",
-    "gitlab_repo": "docs",
-    "gitlab_version": "master",
+    "display_github": True,
+    "github_user": "nanos-world",
+    "github_repo": "docs",
+    "github_version": "master",
     "conf_py_path": "/",
 }
 
