@@ -35,8 +35,10 @@ The main documentation for the site is organized into the following sections:
 
    
 .. toctree::
-   :maxdepth: 1
-   :caption: Class reference
-   :name: sec-class-ref
+   :maxdepth: 2
+   :caption: Scripting
+   :name: sec-scripting
 
-   server/classes/Weapon
+   scripting/Glossary
+   scripting/shared/index
+   scripting/server/index

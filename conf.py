@@ -32,6 +32,7 @@ templates_path = ['_templates']
 
 extensions = [
     "sphinx_rtd_theme",
+	"sphinx_tabs.tabs",
 ]
 
 master_doc = 'index'
