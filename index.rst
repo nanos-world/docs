@@ -1,20 +1,42 @@
-.. nanos.world Documentation documentation master file, created by
-   sphinx-quickstart on Wed Feb 19 17:29:36 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome2 to nanos.world Documentation's documentation!
+nanos.world Official Documentation - *master*
 =====================================================
+
+Welcome to the official documentation of nanos.world! da best game ever made.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
 
+The main documentation for the site is organized into the following sections:
 
-Indices and tables
-==================
+.. toctree::
+   :maxdepth: 1
+   :caption: General
+   :name: sec-general
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   about/index
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Getting Started
+   :name: sec-learn
+
+   getting_started/index
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Tutorials
+   :name: sec-tutorials
+
+   tutorials/index
+
+   
+.. toctree::
+   :maxdepth: 1
+   :caption: Class reference
+   :name: sec-class-ref
+
+   server/classes/Weapon
