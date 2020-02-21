@@ -9,43 +9,48 @@ A container for rotation information. All rotation values are stored in degrees.
 .. attention:: This page is under construction.
 
 
+Usage
+-----
+
+.. tabs::
+ .. code-tab:: lua Lua
+
+    local NewRotator = Rotator(45, 90, 180)
+
+
 Properties
 ----------
 
 .. list-table::
-  :widths: 1 1 8
-  :header-rows: 1
+  :widths: 1 5 4
    
-  * - Name
-    - Type
-    - Description
+  * - **Type**
+    - **Name**
+    - **Description**
 
-  * - Pitch
-    - :term:`number`
+  * - :term:`number`
+    - Pitch
     - 
 
-  * - Yaw
-    - :term:`number`
+  * - :term:`number`
+    - Yaw
     - 
 
-  * - Roll
-    - :term:`number`
+  * - :term:`number`
+    - Roll
     - 
 
 
 Functions
 ---------
 
-.. list-table:: 
-  :widths: 1 9
-  :header-rows: 1
+.. list-table::
+  :widths: 1 5 4
    
-  * - Return Type
-    - Name
+  * - **Returns**
+    - **Name**
+    - **Description**
 
   * - TODO
     - TODO
-
-
-Function Descriptions
----------------------
+    - TODO

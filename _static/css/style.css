@@ -15,12 +15,12 @@
     --navbar-level-1-color: #c3e3ff;
     --navbar-level-2-color: #b8d6f0;
     --navbar-level-3-color: #a3c4e1;
-    --navbar-heading-color: #ff7381;
+    --navbar-heading-color: #51c453;
 
-    --link-color: #2980b9;
-    --link-color-hover: #3091d1;
-    --link-color-active: #105078;
-    --link-color-visited: #9b59b6;
+    --link-color: #1989c8;
+    --link-color-hover: #1989c8;
+    --link-color-active: #1989c8;
+    --link-color-visited: #1989c8;
 
     --hr-color: #e1e4e5;
     --table-row-odd-background-color: #f3f6f6;
@@ -70,19 +70,19 @@
         --logo-opacity: 0.85;
         --navbar-background-color: #25282b;
         --navbar-background-color-hover: #333639;
-        --navbar-background-color-active: #111417;
+        --navbar-background-color-active: #212325;
         --navbar-current-background-color: #333639;
         --navbar-current-background-color-hover: #44474a;
-        --navbar-current-background-color-active: #222528;
+        --navbar-current-background-color-active: #212325;
         --navbar-level-1-color: #ddd;
         --navbar-level-2-color: #ccc;
         --navbar-level-3-color: #bbb;
-        --navbar-heading-color: #ee7381;
+        --navbar-heading-color: #51c453;
 
-        --link-color: #8cf;
-        --link-color-hover: #9df;
-        --link-color-active: #6ad;
-        --link-color-visited: #cb99f6;
+        --link-color: #1989c8;
+        --link-color-hover: #1989c8;
+        --link-color-active: #1989c8;
+        --link-color-visited: #1989c8;
 
         --hr-color: #555;
         --table-row-odd-background-color: #3b3e41;
@@ -142,6 +142,10 @@ legend,
 .rst-versions {
     /* Use a system font stack for better performance (no Web fonts required) */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+td p {
+	white-space: normal;
 }
 
 h1,

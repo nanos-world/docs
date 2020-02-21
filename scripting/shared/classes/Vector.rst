@@ -9,60 +9,52 @@ A vector composed of components (X, Y, Z) with floating point precision.
 .. attention:: This page is under construction.
 
 
+Usage
+-----
+
+.. tabs::
+ .. code-tab:: lua Lua
+
+    local NewVector = Vector(1452.5, 512, 943.1)
+
+
 Properties
 ----------
 
 .. list-table::
-  :widths: 1 1 8
-  :header-rows: 1
+  :widths: 1 5 4
    
-  * - Name
-    - Type
-    - Description
+  * - **Type**
+    - **Name**
+    - **Description**
 
-  * - X
-    - :term:`number`
+  * - :term:`number`
+    - X
     - X Coordinate
 
-  * - Y
-    - :term:`number`
+  * - :term:`number`
+    - Y
     - Y Coordinate
 
-  * - Z
-    - :term:`number`
+  * - :term:`number`
+    - Z
     - Z Coordinate
 
 
 Functions
 ---------
 
-.. list-table:: 
-  :widths: 1 9
-  :header-rows: 1
+.. list-table::
+  :widths: 1 5 4
    
-  * - Return Type
-    - Name
+  * - **Returns**
+    - **Name**
+    - **Description**
 
   * - :term:`number`
-    - :ref:`Distance<Vector_Function_Distance>`\(:ref:`Vector` OtherVector)
+    - Distance(:ref:`Vector` OtherVector)
+    - Euclidean distance between two vectors.
 
   * - :term:`number`
-    - :ref:`Size<Vector_Function_Size>`\()
-
-
-Function Descriptions
----------------------
-
-.. _Vector_Function_Distance:
-
-- :term:`number` Distance(:ref:`Vector` OtherVector)
-
-Euclidean distance between two vectors.
-
-----
-
-.. _Vector_Function_Size:
-
-- :term:`number` Size()
-
-Get the length (magnitude) of this vector.
+    - Size()
+    - Get the length (magnitude) of this vector.
