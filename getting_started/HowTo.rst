@@ -106,21 +106,19 @@ If you find a bug:
 
 #. Click on a New issue on the right side and use the template to make your report(don't forget to add pictures and video with good explanation)
 
-How to contribute to the wiki
+How to contribute to the docs
 *****************************
 
-#. Clone this repo here:  `Documentation repository <https://github.com/nanos-world/docs>`_
+This docs is made with `Sphinx (reStructuredText - RST) <https://en.wikipedia.org/wiki/ReStructuredText>`_. To be able to contribute and suggest changes, you need to clone the repository locally and have the following dependencies installed:
 
-#. Download Python here:  `Python <https://www.python.org/downloads/>`_
+#. `nanos.world Documentation repository <https://github.com/nanos-world/docs>`_.
 
-#. Install Sphynx by doing:  ``pip install -U Sphinx``
+#. `Python <https://www.python.org/downloads/>`_.
 
-#. Install Sphynx extension sphinx-tabs by doing: ``pip install sphinx-tabs``
+#. Sphynx: ``pip install -U Sphinx``.
 
-#. Edit the .rst file
+#. Sphynx extension sphinx-tabs: ``pip install sphinx-tabs``.
 
-#. To visualize what you just edit do in cmd: ``make html``
+Once you have it all installed, you can edit .rst files and create pull requests for your changes be accepted and included in the main docs ;).
 
-#. A folder call _build will appear go inside and then go in the html folder
-
-#. If you think all is good, do a merge request
+#. To compile and visualize what you have edited, run on cmd: ``make html``, the output files will be located at a _build folder.
