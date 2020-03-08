@@ -26,6 +26,7 @@ The main documentation for the site is organized into the following sections:
    getting_started/index
 
 
+
 .. toctree::
    :maxdepth: 1
    :caption: Tutorials
@@ -33,7 +34,7 @@ The main documentation for the site is organized into the following sections:
 
    tutorials/index
 
-   
+
 .. toctree::
    :maxdepth: 2
    :caption: Scripting
