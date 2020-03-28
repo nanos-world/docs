@@ -79,9 +79,38 @@ Download or make gamemode and put it into the package folder on your server
 How to make my own package
 **************************
 
-First, you will have to learn LUA to make server-side and client-side or use the visual scripting tool
-You will also need to learn html, css to make the interface you want
-here the freeroam package you can use as a template:
+Some prerequisite knowledge is required:
+
+* Knowledge of Lua for scripting, or alternatively use our visual scripting tool
+
+* Basic web design skills (HTML, CSS) as GUIs are HTML pages displayed by the Chromium Embedded Framework
+
+.. tip:: For information on learning these prerequisite skills, see our page <to be created>
+
+The first step is to create the necessary directory structure:
+
+#. Create a folder that will house the gamemode, with a name of your choice.
+
+#. Inside the gamemode folder, create ``client`` and ``server`` folders.
+
+Your directory structure should now look like this:
+
+.. image:: ../images/GamemodeFolders.png
+   :width: 600
+   :alt: Overview of the gamemode folders
+
+The next step is to create the necessary files inside of those folders:
+
+#. Create an ``index.lua`` inside both the ``client`` and ``server`` folders.
+#. <placeholder for any metadata files>
+
+Now you're ready to start writing code for your package! If you wish to include any other Lua file, you may use the following statement: ::
+
+> Package.Require("another_folder/example.lua")
+
+Lua functions from server-side packages can be called not only from scripts in the package itself, but also from the server console. ::
+
+> package run package_name function_name
 
 How to report a bug
 *******************
