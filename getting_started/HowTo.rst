@@ -17,7 +17,7 @@ To be able to download the game you have to be in the testing groups or have bou
 #. Select the client you want(Be careful ! There are multiple client available during the testing phase)
 
 
-.. image:: ../images/HowToDownload.png
+.. image:: ./images/HowToDownload.png
    :width: 600
    :alt: Overview of the launcher
 
@@ -31,7 +31,7 @@ How to launch the game
 
 #. Click on NanosWorld.exe
 
-.. image:: ../images/HowToLaunchTheGame.png
+.. image:: ./images/HowToLaunchTheGame.png
    :width: 600
    :alt: Overview of the game folder
 
@@ -54,7 +54,7 @@ How to make a server
 
 #. Go into the server folder, it will look like this:
 
-.. image:: ../images/HowToLaunchTheServer.png
+.. image:: ./images/HowToLaunchTheServer.png
    :width: 400
    :alt: Overview of the Server folder
 
@@ -64,7 +64,7 @@ How to make a server
 How to modify a config server file
 **********************************
 
-.. image:: ../images/HowToModifyServerConfig.png
+.. image:: ./images/HowToModifyServerConfig.png
    :width: 600
    :alt: Overview of the Config file
 
@@ -95,7 +95,7 @@ The first step is to create the necessary directory structure:
 
 Your directory structure should now look like this:
 
-.. image:: ../images/GamemodeFolders.png
+.. image:: ./images/GamemodeFolders.png
    :width: 600
    :alt: Overview of the gamemode folders
 
@@ -123,13 +123,13 @@ If you find a bug:
 
 #. Find the repo call NanosWorld/Issues or use this link: `Issue Tracker <https://gitlab2.nanos.io/nanos.world/issues>`_
 
-.. image:: ../images/issue.png
+.. image:: ./images/issue.png
    :width: 200
    :alt: Repo for Issues
 
 #. Click on it and then check the left UI and click on Issues
 
-.. image:: ../images/issue2.png
+.. image:: ./images/issue2.png
    :width: 200
    :alt: Tab for issue
 
