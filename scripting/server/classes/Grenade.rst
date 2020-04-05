@@ -1,10 +1,10 @@
-.. _Weapon:
+.. _Grenade:
 
-******
-Weapon
-******
+********
+Grenade
+********
 
-Chad Weapon
+Chad Grenade
 
 .. attention:: This page is under construction.
 
@@ -15,10 +15,10 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local NewWeapon = Weapon(
+    local NewGrenade = Grenade(
       Vector(-900, 185, 215), 
       Rotator(0, 90, 90), 
-      "Blueprint'/Game/NanosWorld/Core/Weapons/Rifles/BP_Weapon_AK47.BP_Weapon_AK47_C'"
+      "Blueprint'/Game/NanosWorld/Core/Grenades/Frag_Grenade'"
     )
 
 
@@ -31,7 +31,7 @@ Constructors
    * - **Name**
      - **Description**
 
-   * - Weapon(:ref:`Vector` Location, :ref:`Rotator` Rotation, :term:`string` ModelName)
+   * - Item(:ref:`Vector` Location, :ref:`Rotator` Rotation, :term:`string` ModelName)
      - Default Constructor
 
 
@@ -69,7 +69,7 @@ Functions
   * - :term:`string`
     - GetModelName()
     -
-    - Get the actor's model name
+    - Get the grenade's model name
 
 Events
 ======
@@ -81,10 +81,18 @@ Events
     - **Parameters**
     - **Description**
 
+  * - Explode
+    - ``Grenade``
+    - ``Grenade`` has exploded
+
+  * - Throw
+    - ``Grenade``
+    - ``Grenade`` has been thrown
+
   * - OnPickedUp
-    - ``Weapon``
-    - ``Weapon`` has been picked up
+    - ``Grenade``
+    - ``Grenade`` has been picked up
 
   * - OnDrop
-    - ``Weapon``
-    - ``Weapon`` has been dropped
+    - ``Grenade``
+    - ``Grenade`` has been dropped
