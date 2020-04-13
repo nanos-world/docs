@@ -6,6 +6,7 @@ Classes
    :name: toc-scripting-server-classes
    :glob:
 
+   Character.rst
    Item.rst
    Grenade.rst
    Server.rst

@@ -36,7 +36,7 @@ Constructors
 
 
 Functions
-----------
+---------
 
 .. list-table:: 
   :widths: 1 4 4 4
