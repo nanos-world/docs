@@ -230,7 +230,8 @@ footer,
 }
 
 .wy-nav-content {
-    background-color: var(--content-background-color);
+	background-color: var(--content-background-color);
+	max-width: 950px;
 }
 
 .wy-body-for-nav {
@@ -240,7 +241,7 @@ footer,
 @media only screen and (min-width: 768px) {
     .wy-body-for-nav {
         /* Center the page on wide displays for better readability */
-        max-width: 1100px;
+        max-width: 1250px;
         margin: 0 auto;
     }
 }
@@ -254,6 +255,10 @@ footer,
 .rst-content table.docutils thead th,
 .rst-content table.field-list thead th {
     border-color: var(--code-border-color);
+}
+
+.rst-content table.docutils {
+	width: 100%;
 }
 
 .wy-table-odd td,

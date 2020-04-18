@@ -1,10 +1,12 @@
-.. _Item:
+.. _Weapon:
 
-****
-Item
-****
+.. include:: ../common/common.rst
 
-Chad Item
+******
+Weapon
+******
+
+Chad Weapon
 
 .. attention:: This page is under construction.
 
@@ -15,10 +17,10 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local NewItem = Item(
+    local NewWeapon = Weapon(
       Vector(-900, 185, 215), 
       Rotator(0, 90, 90), 
-      "Blueprint'/Game/NanosWorld/Core/Items/Pug_Statue'"
+      "Blueprint'/Game/NanosWorld/Core/Weapons/Rifles/BP_Weapon_AK47.BP_Weapon_AK47_C'"
     )
 
 
@@ -31,7 +33,7 @@ Constructors
    * - **Name**
      - **Description**
 
-   * - Item(:ref:`Vector` Location, :ref:`Rotator` Rotation, :term:`string` ModelName)
+   * - Weapon(:ref:`Vector` Location, :ref:`Rotator` Rotation, :term:`string` ModelName)
      - Default Constructor
 
 
@@ -82,9 +84,9 @@ Events
     - **Description**
 
   * - OnPickedUp
-    - ``Item``
-    - ``Item`` has been picked up
+    - ``Weapon``
+    - ``Weapon`` has been picked up
 
   * - OnDrop
-    - ``Item``
-    - ``Item`` has been dropped
+    - ``Weapon``
+    - ``Weapon`` has been dropped

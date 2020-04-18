@@ -1,5 +1,7 @@
 .. _Grenade:
 
+.. include:: ../common/common.rst
+
 ********
 Grenade
 ********
