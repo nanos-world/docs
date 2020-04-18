@@ -1,9 +1,9 @@
-Classes
+Utility
 =======
 
 .. toctree::
    :maxdepth: 1
-   :name: toc-scripting-shared-classes
+   :name: toc-scripting-utility-classes
    :glob:
 
    Vector.rst

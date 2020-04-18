@@ -1,5 +1,7 @@
 .. _Vector:
 
+.. include:: ../common/common.rst
+
 ******
 Vector
 ******

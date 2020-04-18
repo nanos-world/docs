@@ -36,10 +36,10 @@ The main documentation for the site is organized into the following sections:
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Scripting
    :name: sec-scripting
 
    scripting/Glossary
-   scripting/shared/index
-   scripting/server/index
+   scripting/classes/index
+   scripting/utility/index

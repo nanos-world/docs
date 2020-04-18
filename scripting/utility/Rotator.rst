@@ -1,5 +1,7 @@
 .. _Rotator:
 
+.. include:: ../common/common.rst
+
 *******
 Rotator
 *******

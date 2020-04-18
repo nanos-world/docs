@@ -1,5 +1,7 @@
 .. _Server:
 
+.. include:: ../common/common.rst
+
 ******
 Server
 ******
