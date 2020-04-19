@@ -36,57 +36,80 @@ Constructors
    * - Weapon(:ref:`Vector` Location, :ref:`Rotator` Rotation, :term:`string` ModelName)
      - Default Constructor
 
-
-Functions
+Properties
 ----------
 
 .. list-table:: 
-  :widths: 1 4 4 4
-   
-  * - **Returns**
+  :widths: 5 10 35 50
+
+  * - 
+    - **Type**
     - **Name**
-    - **Parameters**
     - **Description**
 
-  * - :ref:`Vector`
-    - GetLocation()
-    - 
-    - Get the actor's position in the game world
+  * - |client-ready-only-label|
+    - :term:`number`
+    - BaseDamage 
+    - Weapon's Base Damage
 
-  * - :ref:`Rotator`
-    - GetRotation()
-    - 
-    - Gets the actor's rotation in the game world
+  * - |client-ready-only-label|
+    - :term:`number`
+    - ClipCapacity 
+    - Weapon's Clip Capacity
+	
 
-  * - 
-    - SetRotation
-    - :ref:`Rotator` NewRotation
-    - Sets the actor's rotation in the game world
+Functions
+---------
 
-  * - 
-    - SetLocation
-    - :ref:`Vector` NewLocation
-    - Sets the actor's location in the game world
+.. include:: ../common/functions/Actor.rst
 
-  * - :term:`string`
-    - GetModelName()
-    -
-    - Get the actor's model name
-
-Events
-======
+.. include:: ../common/functions/Pickable.rst
 
 .. list-table:: 
-  :widths: 1 4 4
-   
-  * - **Name**
-    - **Parameters**
+  :widths: 5 10 35 50
+
+  * - 
+    - **Returns**
+    - **Name**
     - **Description**
 
-  * - OnPickedUp
-    - ``Weapon``
-    - ``Weapon`` has been picked up
+  * - |server-only-label|
+    - 
+    - SetAmmoClip(:term:`number` NewAmmo)
+    - Sets this Weapon's Ammo Clip
 
-  * - OnDrop
-    - ``Weapon``
-    - ``Weapon`` has been dropped
+  * - |server-only-label|
+    - 
+    - SetAmmoBag(:term:`number` NewAmmo)
+    - Sets this Weapon's Ammo Bag
+
+  * - 
+    - :term:`number`
+    - GetAmmoClip()
+    - Gets this Weapon's Ammo Clip
+
+  * - 
+    - :term:`number`
+    - GetAmmoBag()
+    - Gets this Weapon's Ammo Bag
+
+
+Events
+------
+
+.. include:: ../common/events/Actor.rst
+
+.. include:: ../common/events/Pickable.rst
+
+.. list-table::
+  :widths: 5 15 30 50
+   
+  * -
+    - **Name**
+    - **Arguments**
+    - **Description**
+
+  * -
+    - Fire
+    - :ref:`Weapon` self, :ref:`Character` shooter
+    - When this weapon is fired
