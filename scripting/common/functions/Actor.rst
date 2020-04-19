@@ -38,3 +38,13 @@ Functions (Inherited from Actor)
     - 
     - SetCollision(:term:`number` CollisionType)
     - Sets the actor's collision (0 - Normal, 1 - Static Only, 2 - No Collision)
+
+  * - |server-only-label|
+    - 
+    - SetInitialLocation(:ref:`Vector` NewInitialLocation)
+    - Sets the initial location
+
+  * - |server-only-label|
+    - :ref:`Vector`
+    - GetInitialLocation()
+    - Gets the initial location
