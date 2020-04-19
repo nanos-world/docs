@@ -11,3 +11,4 @@ Classes
    Grenade.rst
    Server.rst
    Weapon.rst
+   Vehicle.rst
