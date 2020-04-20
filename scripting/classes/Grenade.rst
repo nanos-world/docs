@@ -36,9 +36,49 @@ Constructors
    * - Item(:ref:`Vector` Location, :ref:`Rotator` Rotation, :term:`string` ModelName)
      - Default Constructor
 
+Properties
+----------
+
+.. list-table:: 
+  :widths: 5 10 35 50
+
+  * - 
+    - **Type**
+    - **Name**
+    - **Description**
+
+  * - |client-ready-only-label|
+    - :term:`number`
+    - BaseDamage 
+    - Grenade's Base Damage
+
+  * - |client-ready-only-label|
+    - :term:`number`
+    - MinimumDamage  
+    - Grenade's Base Damage
+
+  * - |client-ready-only-label|
+    - :term:`number`
+    - DamageInnerRadius  
+    - Grenade's 
+
+  * - |client-ready-only-label|
+    - :term:`number`
+    - DamageFalloff   
+    - Grenade's
+
+  * - |client-ready-only-label|
+    - :term:`number`
+    - TimeToExplode   
+    - Grenade's 
+
 
 Functions
 ---------
+
+.. include:: ../common/functions/Actor.rst
+
+.. include:: ../common/functions/Pickable.rst
 
 .. list-table:: 
   :widths: 1 4 4 4
@@ -48,53 +88,28 @@ Functions
     - **Parameters**
     - **Description**
 
-  * - :ref:`Vector`
-    - GetLocation()
-    - 
-    - Get the actor's position in the game world
-
-  * - :ref:`Rotator`
-    - GetRotation()
-    - 
-    - Gets the actor's rotation in the game world
-
-  * - 
-    - SetRotation
-    - :ref:`Rotator` NewRotation
-    - Sets the actor's rotation in the game world
-
-  * - 
-    - SetLocation
-    - :ref:`Vector` NewLocation
-    - Sets the actor's location in the game world
-
-  * - :term:`string`
-    - GetModelName()
-    -
-    - Get the grenade's model name
 
 Events
-======
+------
 
-.. list-table:: 
-  :widths: 1 4 4
+.. include:: ../common/events/Actor.rst
+
+.. include:: ../common/events/Pickable.rst
+
+.. list-table::
+  :widths: 5 15 30 50
    
-  * - **Name**
-    - **Parameters**
+  * -
+    - **Name**
+    - **Arguments**
     - **Description**
 
-  * - Explode
-    - ``Grenade``
+  * -
+    - Explode
+    - :ref:`Grenade`
     - ``Grenade`` has exploded
 
-  * - Throw
-    - ``Grenade``
+  * -
+    - Throw
+    - :ref:`Grenade`
     - ``Grenade`` has been thrown
-
-  * - OnPickedUp
-    - ``Grenade``
-    - ``Grenade`` has been picked up
-
-  * - OnDrop
-    - ``Grenade``
-    - ``Grenade`` has been dropped

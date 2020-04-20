@@ -8,3 +8,4 @@ Utility
 
    Vector.rst
    Rotator.rst
+   Color.rst
