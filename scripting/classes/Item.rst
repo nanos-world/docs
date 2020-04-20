@@ -20,7 +20,7 @@ Usage
     local NewItem = Item(
       Vector(-900, 185, 215), 
       Rotator(0, 90, 90), 
-      "Blueprint'/Game/NanosWorld/Core/Items/Pug_Statue'"
+      "/Game/NanosWorld/Core/Items/BP_Grabable_Torch.BP_Grabable_Torch_C"
     )
 
 
@@ -40,53 +40,14 @@ Constructors
 Functions
 ----------
 
-.. list-table:: 
-  :widths: 1 4 4 4
-   
-  * - **Returns**
-    - **Name**
-    - **Parameters**
-    - **Description**
+.. include:: ../common/functions/Actor.rst
 
-  * - :ref:`Vector`
-    - GetLocation()
-    - 
-    - Get the actor's position in the game world
+.. include:: ../common/functions/Pickable.rst
 
-  * - :ref:`Rotator`
-    - GetRotation()
-    - 
-    - Gets the actor's rotation in the game world
-
-  * - 
-    - SetRotation
-    - :ref:`Rotator` NewRotation
-    - Sets the actor's rotation in the game world
-
-  * - 
-    - SetLocation
-    - :ref:`Vector` NewLocation
-    - Sets the actor's location in the game world
-
-  * - :term:`string`
-    - GetModelName()
-    -
-    - Get the actor's model name
 
 Events
-======
+------
 
-.. list-table:: 
-  :widths: 1 4 4
-   
-  * - **Name**
-    - **Parameters**
-    - **Description**
+.. include:: ../common/events/Actor.rst
 
-  * - OnPickedUp
-    - ``Item``
-    - ``Item`` has been picked up
-
-  * - OnDrop
-    - ``Item``
-    - ``Item`` has been dropped
+.. include:: ../common/events/Pickable.rst

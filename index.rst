@@ -42,4 +42,5 @@ The main documentation for the site is organized into the following sections:
 
    scripting/Glossary
    scripting/classes/index
+   scripting/global-variables/index
    scripting/utility/index
