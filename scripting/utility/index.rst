@@ -6,6 +6,6 @@ Utility
    :name: toc-scripting-utility-classes
    :glob:
 
-   Vector.rst
-   Rotator.rst
    Color.rst
+   Rotator.rst
+   Vector.rst

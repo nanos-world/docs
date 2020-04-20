@@ -41,6 +41,8 @@ Functions
 
 .. include:: ../common/functions/Actor.rst
 
+.. include:: ../common/functions/Pickable.rst
+
 .. list-table:: 
   :widths: 5 10 35 50
 
@@ -48,12 +50,6 @@ Functions
     - **Returns**
     - **Name**
     - **Description**
-
-
-  * - 
-    - :term:`string`
-    - GetAssetName()
-    - Returns the asset name
 
   * -
     - :ref:`Color`

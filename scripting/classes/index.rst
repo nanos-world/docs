@@ -7,8 +7,9 @@ Classes
    :glob:
 
    Character.rst
-   Item.rst
    Grenade.rst
+   Item.rst
+   Player.rst
    Server.rst
-   Weapon.rst
    Vehicle.rst
+   Weapon.rst
