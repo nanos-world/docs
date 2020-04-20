@@ -7,3 +7,5 @@ Tutorials
    :glob:
 
    Events.rst
+   Spawn-Player.rst
+   Spawn-Player-Random-Locations.rst
