@@ -193,6 +193,16 @@ Events
     - When Character drops anything
 
   * -
+    - GrabProp
+    - :ref:`Character` self, :ref:`Prop` prop
+    - When Character grabs up a Prop
+
+  * -
+    - UnGrabProp
+    - :ref:`Character` self, :ref:`Prop` prop
+    - When Character drops a Prop
+
+  * -
     - EnterVehicle
     - :ref:`Character` self, :ref:`Vehicle` vehicle
     - When Character enters a vehicle
