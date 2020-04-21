@@ -24,6 +24,11 @@ Functions (Inherited from Actor)
     - GetCollision()
     - Gets the current actor's collision
 
+  * - 
+    - :term:`boolean`
+    - IsGravityEnabled()
+    - Gets the actor's gravity enabled
+
   * - |server-only-label|
     - 
     - SetRotation(:ref:`Rotator` NewRotation)
@@ -38,6 +43,11 @@ Functions (Inherited from Actor)
     - 
     - SetCollision(:term:`number` CollisionType)
     - Sets the actor's collision (0 - Normal, 1 - Static Only, 2 - No Collision)
+
+  * - |server-only-label|
+    - 
+    - SetGravityEnabled(:term:`boolean` NewGravity)
+    - Sets the actor's gravity enabled
 
   * - |server-only-label|
     - 

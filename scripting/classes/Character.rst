@@ -81,7 +81,22 @@ Functions
   * - |server-only-label|
     - 
     - Drop()
-    - Drops whatever the Character is holding
+    - Drops any Pickable the Character is holding
+
+  * - |server-only-label|
+    - 
+    - GrabProp(:ref:`Prop`)
+    - Gives a Prop to the Character
+
+  * - |server-only-label|
+    - 
+    - UnGrabProp()
+    - UnGrabs/Drops the Prop the Character is holding
+
+  * - 
+    - :ref:`Prop`
+    - GetGrabbedProp()
+    - Gets the Grabbing Prop
 
   * - 
     - :ref:`Vehicle`
