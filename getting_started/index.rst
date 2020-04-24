@@ -6,4 +6,7 @@ Getting Started
    :name: doc_getting_started
    :glob:
 
-   HowTo.rst
+   ConfigurationFile.rst
+   Console.rst
+   ContributingToDocs.rst
+   Packages.rst

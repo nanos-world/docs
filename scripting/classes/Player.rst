@@ -6,27 +6,19 @@
 Player
 ******
 
-Chad Player
+Players are Entities that represents the individual behind the mouse and keyboard. Players are spawned automatically when connected to the server.
 
 .. attention:: This page is under construction.
-
-
-Usage
------
-
-
 
 
 Constructors
 ------------
 
-An instance of the ``Player`` class cannot be manually created - it is automatically generated when a client establishes a connection.
+You cannot Spawn or Destroy Players.
 
 
 Functions
 ---------
-
-.. include:: ../common/functions/Actor.rst
 
 .. list-table:: 
   :widths: 5 10 35 50
@@ -60,9 +52,6 @@ Functions
 Events
 ------
 
-.. include:: ../common/events/Actor.rst
-
-
 .. list-table::
   :widths: 5 15 30 50
    
@@ -85,6 +74,6 @@ Events
 Examples
 --------
 
-* Spawn player: :ref:`Tutorial-Spawn-Player`
+* Spawn player: :ref:`TutorialSpawnPlayer`
 
-* Spawn player at random locations :ref:`Tutorial-Spawn-Player-Random-Locations`
+* Spawn player at random locations :ref:`TutorialSpawnPlayerRandomLocations`

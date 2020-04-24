@@ -6,7 +6,7 @@
 Item
 ****
 
-Chad Item
+An Item represents an Entity which can be Pickable by a Character, doesn't have any special action unless holding it with hands.
 
 .. attention:: This page is under construction.
 

@@ -6,6 +6,7 @@
 Vehicle
 *******
 
+Char Vehicle
 
 .. attention:: This page is under construction.
 

@@ -81,7 +81,7 @@ Functions
 .. include:: ../common/functions/Pickable.rst
 
 .. list-table:: 
-  :widths: 1 4 4 4
+  :widths: 5 10 35 50
    
   * - **Returns**
     - **Name**

@@ -10,6 +10,6 @@ Classes
    Grenade.rst
    Item.rst
    Player.rst
-   Server.rst
+   Prop.rst
    Vehicle.rst
    Weapon.rst
