@@ -6,7 +6,7 @@
 Character
 *********
 
-Chad Character
+Characters represents a Skeletal Mesh in the game, which means an Actor which can be possessed, can move and interact with world.
 
 .. attention:: This page is under construction.
 

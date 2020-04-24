@@ -6,19 +6,9 @@
 Server
 ******
 
+.. tip:: This is a global variable named ``Server``. It is not possible to initialize or create a new instance. It's just a global variable.
+
 .. attention:: This page is under construction.
-
-
-Usage
------
-
-
-
-
-Constructors
-------------
-
-An instance of the ``Server`` class cannot be manually created - it only exists by default.
 
 
 Events

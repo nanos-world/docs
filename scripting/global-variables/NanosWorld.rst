@@ -6,9 +6,7 @@
 NanosWorld
 **********
 
-
 .. tip:: This is a global variable named ``NanosWorld``. It is not possible to initialize or create a new instance. It's just a global variable.
-
 
 .. attention:: This page is under construction.
 

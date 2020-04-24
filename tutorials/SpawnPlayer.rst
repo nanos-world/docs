@@ -1,11 +1,11 @@
-.. _Tutorial-Spawn-Player:
+.. _TutorialSpawnPlayer:
 
 ************
 Spawn player
 ************
 
 
-.. tip:: Spawn player at random location see: :ref:`Tutorial-Spawn-Player-Random-Locations`
+.. tip:: Spawn player at random location see: :ref:`TutorialSpawnPlayerRandomLocations`
 
 
 About

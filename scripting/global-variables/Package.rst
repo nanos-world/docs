@@ -6,9 +6,7 @@
 Package
 *******
 
-
 .. tip:: This is a global variable named ``Package``. It is not possible to initialize or create a new instance. It's just a global variable.
-
 
 .. attention:: This page is under construction.
 
@@ -35,7 +33,6 @@ Functions
     - Includes new .lua files
 
   
-
 Events
 ------
 
