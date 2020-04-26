@@ -27,7 +27,7 @@ All Packages must go under ``Packages`` folder, each Package is a folder under t
 Example
 -------
 
-.. code-block::
+.. code-block:: javascript
 
    NanosWorldServer.exe
    Packages/
