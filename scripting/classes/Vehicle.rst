@@ -71,16 +71,6 @@ Functions
     - **Description**
 
   * -
-    - :ref:`Color`
-    - GetBodyColor()
-    - Gets the vehicle body color
-
-  * - |server-only-label|
-    - 
-    - SetBodyColor(:ref:`Color` NewBodyColor)
-    - Sets the vehicle body color
-
-  * -
     - :term:`number`
     - GetBodyRoughness()
     - Gets the vehicle body roughness
@@ -140,3 +130,25 @@ Events
 ------
 
 .. include:: ../common/events/Actor.rst
+
+
+Customization
+-------------
+
++--------------------------------------+----------------------+
+| Scalar Parameters                    | Vector Parameters    |
++====+=================================+====+=================+
+| ID | NAME                            | ID | NAME            |
++----+---------------------------------+----+-----------------+
+| 00 | TranslucentOpacityMultiplier    | 00 | TranslucentTint |
++----+---------------------------------+----+-----------------+
+| 01 | RoughnessMultiplier             | 01 | EmissiveTint    |
++----+---------------------------------+----+-----------------+
+|    |                                 | 02 | BlushTint       |
++----+---------------------------------+----+-----------------+
+|    |                                 | 03 | EyeShadowTint   |
++----+---------------------------------+----+-----------------+
+|    |                                 | 04 | UnderwearTint   |
++----+---------------------------------+----+-----------------+
+|    |                                 | 05 | HairTint        |
++----+---------------------------------+----+-----------------+
