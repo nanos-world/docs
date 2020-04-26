@@ -60,6 +60,8 @@ html_theme_options = {
     'collapse_navigation': False,
 }
 
+pygments_style = 'sphinx'
+
 html_context = {
     "display_github": True,
     "github_user": "nanos-world",
