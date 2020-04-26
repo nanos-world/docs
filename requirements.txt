@@ -1,2 +1,2 @@
 sphinx-tabs
-Pygments 2.6.1
+Pygments>=2.6.1
