@@ -58,3 +58,13 @@ Functions (Inherited from Actor)
     - :ref:`Vector`
     - GetInitialLocation()
     - Gets the initial location
+
+  * - |server-only-label|
+    - 
+    - SetTintColor(:ref:`Color` NewTintColor)
+    - Sets the tint color, for completely paint an object, multiply the color by 10 or 100
+
+  * - 
+    - :ref:`Color`
+    - GetTintColor()
+    - Gets the Tint Color

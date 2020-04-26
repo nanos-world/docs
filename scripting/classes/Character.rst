@@ -20,18 +20,32 @@ Usage
     local char = Character(Vector(123, 456, 789), Rotator(0, 0, 90))
 
 
-Constructors
-------------
+Constructor Parameters
+----------------------
 
-.. list-table::
-   :widths: 3 1
+.. list-table:: 
+  :widths: 20 45 35
 
-   * - **Name**
-     - **Description**
+  * - **Type**
+    - **Name**
+    - **Default**
 
-   * - Character(:ref:`Vector` Location, :ref:`Rotator` Rotation)
-     - Default Constructor
+  * - :ref:`Vector`
+    - Location
+    - Vector(0, 0, 0)
 
+  * - :ref:`Rotator`
+    - Rotation
+    - Rotation(0, 0, 0)
+
+  * - :term:`number`
+    - CollisionType
+    - 0 (Normal)
+
+  * - :term:`boolean`
+    - GravityEnabled
+    - true
+ 
 
 Properties
 ----------

@@ -24,17 +24,52 @@ Usage
     )
 
 
-Constructors
-------------
+Constructor Parameters
+----------------------
 
-.. list-table::
-   :widths: 3 1
+.. list-table:: 
+  :widths: 20 45 35
 
-   * - **Name**
-     - **Description**
+  * - **Type**
+    - **Name**
+    - **Default**
 
-   * - Weapon(:ref:`Vector` Location, :ref:`Rotator` Rotation, :term:`string` ModelName)
-     - Default Constructor
+  * - :ref:`Vector`
+    - Location
+    - Vector(0, 0, 0)
+
+  * - :ref:`Rotator`
+    - Rotation
+    - Rotation(0, 0, 0)
+
+  * - :term:`string`
+    - ModelName
+    - 
+
+  * - :term:`number`
+    - CollisionType
+    - 0 (Normal)
+
+  * - :term:`boolean`
+    - GravityEnabled
+    - true
+
+  * - :term:`number`
+    - AmmoClip
+    - 32
+
+  * - :term:`number`
+    - AmmoBag
+    - 1024
+
+  * - :term:`number`
+    - ClipCapacity
+    - 32
+
+  * - :term:`number`
+    - BaseDamage
+    - 30
+
 
 Properties
 ----------
