@@ -30,5 +30,6 @@ jobs:
       uses: crazy-max/ghaction-github-pages@v1.4.1
       with:
         build_dir: ./_build/html
+        fqdn: docs.nanos.world
       env:
         GITHUB_PAT: ${{ secrets.PAT }}
