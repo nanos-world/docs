@@ -15,7 +15,7 @@ jobs:
 
     - uses: ammaraskar/sphinx-action@0.4
       with:
-        pre-build-command: "pip install recommonmark"
+        pre-build-command: "pip install sphinx_rtd_theme"
         docs-folder: "."
 
     - uses: actions/upload-artifact@v1
