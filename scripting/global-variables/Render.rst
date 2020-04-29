@@ -78,7 +78,7 @@ This uses a Global Event, this will be changed soon.
 	bCenterY = false -- If true, then interpret the screen space position Y coordinate as the center of the rendered text.
 	bOutlined = false -- If true, then the text should be rendered with an outline.
 	outlineColor = Color(1, 1, 1, 1) -- Color to render the outline for the text.
-
+    
     on("DrawHUD", function()
        Render.DrawText(text, location, scale, textColor, kerning, shadowColor, shadowOffset, bCenterX, bCenterY, bOutlined, outlineColor)
-	end)
+    end)
