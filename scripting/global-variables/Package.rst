@@ -32,6 +32,11 @@ Functions
     - Require(:term:`string` ScriptFile)
     - Includes new .lua files
 
+  * -
+    -
+    - Log(:term:`string` Message)
+    - Logs a message in the console (the proper and Nanos way)
+
   
 Events
 ------
