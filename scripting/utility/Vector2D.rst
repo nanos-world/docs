@@ -1,12 +1,12 @@
-.. _Vector:
+.. _Vector2D:
 
 .. include:: ../common/common.rst
 
-******
-Vector
-******
+********
+Vector2D
+********
 
-A vector composed of components (X, Y, Z) with floating point precision.
+A Vector2D composed of components (X, Y) with floating point precision. Used mainly for HUD and Drawing on screen.
 
 .. attention:: This page is under construction.
 
@@ -17,7 +17,7 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local NewVector = Vector(1452.5, 512, 943.1)
+    local NewVector2D = Vector2D(1452.5, 512)
 
 
 Properties
@@ -37,7 +37,3 @@ Properties
   * - :term:`number`
     - Y
     - Y Coordinate
-
-  * - :term:`number`
-    - Z
-    - Z Coordinate

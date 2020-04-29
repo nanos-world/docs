@@ -8,4 +8,6 @@ Global Variables
 
    Package.rst
    NanosWorld.rst
+   Render.rst
    Server.rst
+   World.rst

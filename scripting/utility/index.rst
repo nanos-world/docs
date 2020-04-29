@@ -9,3 +9,4 @@ Utility
    Color.rst
    Rotator.rst
    Vector.rst
+   Vector2D.rst
