@@ -130,3 +130,16 @@ Events
 ------
 
 .. include:: ../common/events/Actor.rst
+
+.. list-table::
+  :widths: 5 15 30 50
+   
+  * -
+    - **Name**
+    - **Arguments**
+    - **Description**
+
+  * -
+    - Horn
+    - :ref:`Vehicle` self, :term:`boolean` IsHonking
+    - When Vehicle honks
