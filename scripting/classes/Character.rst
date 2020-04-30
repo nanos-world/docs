@@ -45,7 +45,11 @@ Constructor Parameters
   * - :term:`boolean`
     - GravityEnabled
     - true
- 
+
+  * - :term:`number`
+    - Health/MaxHealth
+    - 100
+
 
 Properties
 ----------
