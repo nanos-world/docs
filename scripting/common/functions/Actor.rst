@@ -68,3 +68,13 @@ Functions (Inherited from Actor)
     - :ref:`Color`
     - GetTintColor()
     - Gets the Tint Color
+
+  * - |server-only-label|
+    - 
+    - Destroy()
+    - Destroys this Actor
+
+  * - |server-only-label|
+    - :term:`boolean`
+    - IsValid()
+    - Returns if this is Valid
