@@ -117,6 +117,21 @@ Functions
     - Gets the Grabbing Prop
 
   * - 
+    - :ref:`Item`
+    - GetItem()
+    - Gets the holding Item
+
+  * - 
+    - :ref:`Weapon`
+    - GetWeapon()
+    - Gets the holding Weapon
+
+  * - 
+    - :ref:`Grenade`
+    - GetGrenade()
+    - Gets the holding Grenade
+
+  * - 
     - :ref:`Vehicle`
     - GetVehicle()
     - Gets the Vehicle the Character is on
@@ -274,6 +289,46 @@ Events
     - Unpossessed
     - :ref:`Character` self, :ref:`Player` old_possesser
     - When Character is unpossessed
+
+  * -
+    - Punch
+    - :ref:`Character` self
+    - When Character punches
+
+  * -
+    - WeaponAimModeChanged
+    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - 0 - None, 1 - ADS (FPS), 2 - ZoomedZoom (TPS), 3 - Zoomed, 4 - ZoomedFar
+
+  * -
+    - ViewModeChanged
+    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - 0 - FPS, 1 - TPS1, 2 - TPS2, 3 - TPS3
+
+  * -
+    - SwimmingModeChanged
+    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - 0 - None, 1 - Superficie, 2 - Underwater
+
+  * -
+    - StanceModeChanged
+    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - 0 - None, 1 - Standing, 2 - Crouching, 3 - Proning
+
+  * -
+    - RagdollModeChanged
+    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - 
+
+  * -
+    - FallingModeChanged
+    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - 0 - None, 1 - Jumping, 2 - Climbing, 3 - Vaulting, 4 - Falling, 5 - HighFalling, 6 - Parachuting, 7 - SkyDiving
+
+  * -
+    - GaitModeChanged
+    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - 0 - None, 1 - Walking, 2 - Sprinting
 
 	
 Customization

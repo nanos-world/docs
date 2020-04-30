@@ -54,6 +54,10 @@ Constructor Parameters
     - GravityEnabled
     - true
  
+  * - :term:`boolean`
+    - IsGrabbable
+    - true
+
 
 Functions
 ----------
@@ -72,6 +76,16 @@ Functions
     - :term:`string`
     - GetAssetName()
     - Gets the Asset name
+
+  * - |server-only-label|
+    - 
+    - SetGrabbable(:term:`boolean`)
+    - Sets ability to Grab this Prop
+
+  * - 
+    - :term:`boolean`
+    - IsGrabbable()
+    - Gets ability to Grab this Prop
 
 
 Events
