@@ -39,6 +39,11 @@ Functions
     - SetMouseEnabled(:term:`boolean`)
     - Sets mouse enabled and toggles game input
 
+  * -
+    - 
+    - SetDiscordActivity(:term:`string` State, :term:`string` Details, :term:`string` LargeImage, :term:`string` LargeText)
+    - Comunicates with Discord and sets a custom user status
+
 
 Events
 ------
@@ -90,3 +95,35 @@ Examples
             Package:Log("Left Click pressed at X: " .. MouseX .. ", Y: " .. MouseY)
         end
     end)
+
+
+Available Discord Images
+------------------------
+
+Yeah naming is trash
+
+.. list-table:: 
+  :widths: 100
+   
+  * - **Name**
+
+  * - screenshot_137
+  * - screenshot_140
+  * - screenshot_141
+  * - screenshot_146
+  * - screenshot_148
+  * - screenshot_152
+  * - screenshot_152
+  * - screenshot_156
+  * - screenshot_157
+  * - screenshot_157
+  * - screenshot_159
+  * - screenshot_159
+  * - screenshot_164
+  * - screenshot_168
+  * - screenshot_173
+  * - screenshot_173
+  * - screenshot_175
+  * - screenshot_191
+  * - screenshot_191
+  * - screenshot_195
