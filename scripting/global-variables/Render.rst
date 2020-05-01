@@ -14,6 +14,8 @@ Render
 
 .. attention:: The usage of this feature is very unstable and will probably cause crashes and memory leaks. This will soon receive a update adding more functions and optimizing this ones.
 
+.. tip:: The following functions have an ID parameter, which you can group related Canvas Items with an ID to facilitate the cleanup of them, or can give them Unique IDs.
+
 
 Functions
 ---------
@@ -26,42 +28,40 @@ Functions
     - **Name**
     - **Description**
 
-  * - |client-only-label|
+  * - 
     - 
-    - DrawLine(:ref:`Vector2D` ScreenPosition, :ref:`Vector2D` ScreenSize, :term:`number` Thick, :ref:`Color` Color)
+    - AddLine(:term:`number` ID, :ref:`Vector2D` StartPosition, :ref:`Vector2D` EndPosition, :term:`number` Thickness, :ref:`Color` Color)
     - Draws a Line
 
-  * - |client-only-label|
+  * - 
     -
-    - DrawBox(:ref:`Vector2D` ScreenPosition, :ref:`Vector2D` ScreenSize, :term:`number` Thick, :ref:`Color` Color)
+    - AddBox(:term:`number` ID, :ref:`Vector2D` StartPosition, :ref:`Vector2D` EndPosition, :term:`number` Thickness, :ref:`Color` Color)
     - Draws a Box
 
-  * - |client-only-label|
+  * - 
     -
-    - DrawText(:term:`string` Text, :ref:`Vector2D` Position, :ref:`Vector2D` Scale, :ref:`Color` TextColor, :term:`number` Kerning, :ref:`Color` ShadowColor, :ref:`Vector2D` ShadowOffset, :term:`boolean` bCenterX, :term:`boolean` bCenterY, :term:`boolean` bOutlined, :ref:`Color` OutlineColor)
-    - Draws a Text. Please store Vector2D and Color outside DrawHUD and do not instantiate it inside the DrawHUD, as it will cause 60 new instantiations per second which will cause performance problems.
+    - AddPolygon(:term:`number` ID, :ref:`Vector2D` StartPosition, :ref:`Vector2D` EndPosition, :term:`number` Thickness, :ref:`Color` Color)
+    - Draws a Box
 
-  * - |client-only-label|
+  * - 
+    -
+    - AddText(:term:`number` ID, :term:`string` Text, :ref:`Vector2D` Position, :term:`number` FontType, :term:`number` FontSize, :ref:`Color` TextColor, :term:`number` Kerning, :term:`boolean` bCenterX, :term:`boolean` bCenterY, :term:`boolean` EnableShadow, :ref:`Vector2D` ShadowOffset, :ref:`Color` ShadowColor, :term:`boolean` EnableOutline, :ref:`Color` OutlineColor)
+    - Draws a Text with optionals Shadow and Outline
+
+  * - 
     - :ref:`Vector2D`
-    - StrLen(:term:`string` Text)
+    - StrLen(:term:`string` Text, :term:`number` FontType, :term:`number`, FontSize)
     - Returns the Length of Text in Pixels
 
-
-Events
-------
-
-.. list-table:: 
-  :widths: 5 15 30 50
-   
   * - 
-    - **Name**
-    - **Parameters**
-    - **Description**
+    - :ref:`Vector`
+    - Project(:ref:`Vector` Location3D)
+    - Transforms a 3D world-space vector into 2D screen coordinates.
 
-  * - |client-only-label|
-    - .on("DrawHUD")
+  * - 
     - 
-    - All Draw functions must be called inside this event. This is a Global Event, check Examples to see how it works. Calls every frame, currently we may have performance problems which will be fixed soon, use wisely. Avoid too much calculations and instantiation of Vectors inside. Very unstable.
+    - ClearItems(:term:`number` ID)
+    - Remove all drawing of using that specific ID
 
 
 Examples
@@ -74,7 +74,8 @@ This uses a Global Event, this will be changed soon.
     
     text = "Hello" -- Text to render on the Canvas.
     location = Vector2D(123, 321) -- Screen space position to render the text.
-    scale = Vector2D(1, 1) -- Scale of the text.
+    fontType = 0 -- Roboto
+    fontSize = 32 -- Size of the font
     textColor = Color(1, 0, 0, 1) -- Color to render the text.
     kerning = 0 -- Horizontal spacing adjustment to modify the spacing between each letter.
     shadowColor = Color(1, 1, 1, 1) -- Color to render the shadow of the text.
@@ -84,6 +85,17 @@ This uses a Global Event, this will be changed soon.
     bOutlined = false -- If true, then the text should be rendered with an outline.
     outlineColor = Color(1, 1, 1, 1) -- Color to render the outline for the text.
     
-    on("DrawHUD", function()
-       Render.DrawText(text, location, scale, textColor, kerning, shadowColor, shadowOffset, bCenterX, bCenterY, bOutlined, outlineColor)
-    end)
+    Render.AddText(0, text, location, fontType, fontSize, textColor, kerning, bCenterX, bCenterY, bEnableShadow, shadowOffset, shadowColor, bOutlined, outlineColor)
+
+
+Available Fonts
+---------------
+
+.. list-table:: 
+  :widths: 5 95
+   
+  * - **ID**
+    - **Name**
+
+  * - 0
+    - Roboto

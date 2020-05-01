@@ -54,6 +54,11 @@ Events
     - **Description**
 
   * -
+    - Tick
+    - :term:`number` DeltaTime
+    - Called Every Frame. Do not abuse.
+
+  * -
     - KeyUp
     - :term:`string` KeyName
     - A keyboard key has been released
