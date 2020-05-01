@@ -13,6 +13,33 @@ Client
 .. attention:: This page is under construction.
 
 
+Functions
+---------
+
+.. list-table:: 
+  :widths: 5 10 35 50
+
+  * - 
+    - **Returns**
+    - **Name**
+    - **Description**
+
+  * -
+    - :ref:`Vector2D`
+    - GetMousePosition()
+    - Gives the current mouse location
+
+  * -
+    - :term:`boolean`
+    - IsMouseEnabled()
+    - 
+
+  * -
+    - 
+    - SetMouseEnabled(:term:`boolean`)
+    - Sets mouse enabled and toggles game input
+
+
 Events
 ------
 
