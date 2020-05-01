@@ -6,6 +6,7 @@ Global Variables
    :name: toc-scripting-global-variables
    :glob:
 
+   Client.rst
    Package.rst
    NanosWorld.rst
    Render.rst

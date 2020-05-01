@@ -8,6 +8,8 @@ Server
 
 .. tip:: This is a global variable named ``Server``. It is not possible to initialize or create a new instance. It's just a global variable.
 
+.. note:: This is a Server only Namespace.
+
 .. attention:: This page is under construction.
 
 
