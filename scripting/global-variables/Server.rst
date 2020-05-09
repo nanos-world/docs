@@ -25,6 +25,11 @@ Events
     - **Description**
 
   * -
+    - Console
+    - :term:`string` Text
+    - Called when a console command is submitted
+
+  * -
     - Start
     - 
     - Server has been started.

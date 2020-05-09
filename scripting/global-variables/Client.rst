@@ -64,6 +64,11 @@ Events
     - Called Every Frame. Do not abuse.
 
   * -
+    - Console
+    - :term:`string` Text
+    - Called when a console command is submitted
+
+  * -
     - KeyUp
     - :term:`string` KeyName
     - A keyboard key has been released
