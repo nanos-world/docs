@@ -44,6 +44,11 @@ Functions
     - SetDiscordActivity(:term:`string` State, :term:`string` Details, :term:`string` LargeImage, :term:`string` LargeText)
     - Comunicates with Discord and sets a custom user status
 
+  * -
+    - 
+    - SetOutlineColor(:ref:`Color` OutlineColor)
+    - Changes the Outline Color for interactable stuff. Multiply it by 5 (or more) for having a glowing effect.
+
 
 Events
 ------
