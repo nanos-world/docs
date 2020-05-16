@@ -53,10 +53,10 @@ Examples
     end)
 
     -- calls a local Event in all Local Packages
-    Event:Call("MyEvent", {"hello nanos world!"})
+    Events:Call("MyEvent", {"hello nanos world!"})
 
     -- calls a remote Event in all Remote Packages
-    Event:CallRemote("MyEvent", {"hello nanos world!"})
+    Events:CallRemote("MyEvent", {"hello nanos world!"})
 
 .. tabs::
  .. code-tab:: lua Lua
@@ -71,7 +71,7 @@ Examples
     local my_temp_character = Character()
 
     -- calls a local Event in all Local Packages
-    Event:Call("MyEvent", {"hello nanos world!", Vector(123, 123, 123), my_temp_character, 456})
+    Events:Call("MyEvent", {"hello nanos world!", Vector(123, 123, 123), my_temp_character, 456})
 
     -- calls a remote Event in all Remote Packages
-    Event:CallRemote("MyEvent", {"hello nanos world!", Vector(123, 123, 123), my_temp_character, 456})
+    Events:CallRemote("MyEvent", {"hello nanos world!", Vector(123, 123, 123), my_temp_character, 456})
