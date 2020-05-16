@@ -78,3 +78,8 @@ Functions (Inherited from Actor)
     - :term:`boolean`
     - IsValid()
     - Returns if this is Valid
+
+  * - |server-only-label|
+    - 
+    - AttachTo(Actor Other, :ref:`Vector` RelativeLocation)
+    - Attaches this Actor to any other Actor with a Relative Offset
