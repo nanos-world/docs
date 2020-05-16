@@ -383,3 +383,126 @@ Customization
 +----+-----------------+----+-----------------+----+-----------------+
 | 31 | bodyfat         |    |                 |    |                 |
 +----+-----------------+----+-----------------+----+-----------------+
+
+
+Character's Skeleton Bone Names
+-------------------------------
+
+Ugly list I know
+
+- Root
+
+  - Pelvis
+
+    - spine_01
+
+      - spine_02
+
+          - spine_03
+
+            - clavicle_l
+
+              - UpperArm_L
+
+                - lowerarm_l 
+
+                  - Hand_L
+
+                    - index_01_l
+
+                      - index_02_l
+
+                        - index_03_l
+
+                    - middle_01_l
+
+                      - middle_02_l
+
+                        - middle_03_l
+
+                    - pinky_01_l
+
+                      - pinky_02_l
+
+                        - pinky_03_l
+
+                    - ring_01_l
+
+                      - ring_02_l
+
+                        - ring_03_l
+
+                    - thumb_01_l
+
+                      - thumb_02_l
+
+                        - thumb_03_l
+
+                    - weapon_l
+
+            - clavicle_r
+
+              - UpperArm_R
+                
+                - lowerarm_r
+                  
+                  - Hand_R
+                    
+                    - index_01_r
+                      
+                      - index_02_r
+                        
+                        - index_03_r
+                    
+                    - middle_01_r
+                      
+                      - middle_02_r
+                        
+                        - middle_03_r
+                    
+                    - pinky_01_r
+                      
+                      - pinky_02_r
+                        
+                        - pinky_03_r
+                    
+                    - ring_01_r
+                      
+                      - ring_02_r
+                        
+                        - ring_03_r
+                    
+                    - thumb_01_r
+                      
+                      - thumb_02_r
+                        
+                        - thumb_03_r
+                    
+                    - weapon_r
+            
+            - neck_01
+              
+              - Head
+                
+                - LeftEye
+                - RightEye
+                - LeftLidUp
+                - LeftLidLow
+                - RightLidUp
+                - RightLitLow
+
+    - Thigh_L
+    
+      - calf_l
+    
+        - Foot_L
+    
+          - ball_l
+    
+    - Thigh_R
+      
+      - calf_r
+        
+        - Foot_R
+          
+          - ball_r
