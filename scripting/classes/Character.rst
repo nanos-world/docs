@@ -83,18 +83,8 @@ Functions
 
   * - |server-only-label|
     - 
-    - PickUpWeapon(:ref:`Weapon`)
-    - Gives a Weapon to the Character :term:`number`
-
-  * - |server-only-label|
-    - 
-    - PickUpGrenade(:ref:`Grenade`)
-    - Gives a Grenade to the Character
-
-  * - |server-only-label|
-    - 
-    - PickUpGrenade(:ref:`Item`)
-    - Gives an Item to the Character
+    - PickUp(:ref:`Item`/:ref:`Grenade`/:ref:`Weapon`)
+    - Gives a Item/Grenade/Weapon (Pickable) to the Character
 
   * - |server-only-label|
     - 
@@ -117,19 +107,9 @@ Functions
     - Gets the Grabbing Prop
 
   * - 
-    - :ref:`Item`
-    - GetItem()
-    - Gets the holding Item
-
-  * - 
-    - :ref:`Weapon`
-    - GetWeapon()
-    - Gets the holding Weapon
-
-  * - 
-    - :ref:`Grenade`
-    - GetGrenade()
-    - Gets the holding Grenade
+    - Actor
+    - GetPicked()
+    - Gets the holding Picked Item/Grenade/Weapon
 
   * - 
     - :ref:`Vehicle`
@@ -231,12 +211,12 @@ Events
     - **Description**
 
   * -
-    - PickUpItem
+    - PickUp
     - :ref:`Character` self, :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object
     - When Character picks up anything
 
   * -
-    - DropItem
+    - Drop
     - :ref:`Character` self, :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object
     - When Character drops anything
 
