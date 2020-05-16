@@ -81,5 +81,5 @@ Functions (Inherited from Actor)
 
   * - |server-only-label|
     - 
-    - AttachTo(Actor Other, :ref:`Vector` RelativeLocation)
+    - AttachTo(Actor Other, :term:`string` BoneName, :ref:`Vector` RelativeLocation)
     - Attaches this Actor to any other Actor with a Relative Offset
