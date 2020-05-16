@@ -7,6 +7,7 @@ Global Variables
    :glob:
 
    Client.rst
+   Events.rst
    Package.rst
    NanosWorld.rst
    Render.rst
