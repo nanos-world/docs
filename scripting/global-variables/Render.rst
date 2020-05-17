@@ -40,8 +40,8 @@ Functions
 
   * - 
     -
-    - AddPolygon(:term:`number` ID, :ref:`Vector2D` StartPosition, :ref:`Vector2D` EndPosition, :term:`number` Thickness, :ref:`Color` Color)
-    - Draws a Box
+    - AddPolygon(:term:`number` ID, :ref:`Vector2D` ScreenPosition, :ref:`Vector2D` Radius, :term:`number` NumberOfSides, :ref:`Color` Color)
+    - Draws a Polygon
 
   * - 
     -
