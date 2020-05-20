@@ -56,7 +56,7 @@ Code
         Prop(Vector(-1135.000, 5555.000, 141.000), Rotator(0.000000, -70.312706, 0.000000),  "NanosWorld/Art/Rural/InteriorDecoration/SM_WoodenChair.SM_WoodenChair"),
         Prop(Vector(-5780.000, 8380.000, 126.000), Rotator(0.000000, 0.000000, 0.000000),  "NanosWorld/Art/Rural/InteriorDecoration/SM_Stool.SM_Stool"),
         Prop(Vector(-5305.000, 7920.000, 126.000), Rotator(0.000000, 0.000000, 0.000000),  "NanosWorld/Art/Rural/InteriorDecoration/SM_WoodenChair.SM_WoodenChair"),
-        Prop(Vector(-5455.000, 8440.000, 391.000), Rotator(0.000000, 0.000000, 81.562393),  "NanosWorld/Art/Rural/Extra/SM_Bamboo_Woodplank_01.SM_Bamboo_Woodplank_01")        
+        Prop(Vector(-5455.000, 8440.000, 391.000), Rotator(0.000000, 0.000000, 81.562393),  "NanosWorld/Art/Rural/Extra/SM_Bamboo_Woodplank_01.SM_Bamboo_Woodplank_01"),
         NanosWorldWeapons.AK47(Vector(-1850, 9153, 192), Rotator(0, 90, 90)),
         NanosWorldWeapons.AK74U(Vector(-1900, 9153, 192), Rotator(0, 90, 90)),
         NanosWorldWeapons.GE36(Vector(-1950, 9153, 192), Rotator(0, 90, 90)),
@@ -67,7 +67,7 @@ Code
         NanosWorldWeapons.DesertEagle(Vector(-2200, 9153, 192), Rotator(0, 90, 90)),
         NanosWorldWeapons.AR4(Vector(-2250, 9153, 192), Rotator(0, 90, 90)),
         
-        Grenade(Vector(-2300, 9153, 192), Rotator(0, 90, 90), "NanosWorld/Core/Weapons/Grenades/BP_Grenade_G67.BP_Grenade_G67_C")        
+        Grenade(Vector(-2300, 9153, 192), Rotator(0, 90, 90), "NanosWorld/Core/Weapons/Grenades/BP_Grenade_G67.BP_Grenade_G67_C"),
         NanosWorldWeapons.AK47(Vector(-1850, 9234, 192), Rotator(0, 90, 90)),
         NanosWorldWeapons.AK74U(Vector(-1900, 9234, 192), Rotator(0, 90, 90)),
         NanosWorldWeapons.GE36(Vector(-1950, 9234, 192), Rotator(0, 90, 90)),
@@ -76,31 +76,31 @@ Code
         NanosWorldWeapons.Moss500(Vector(-2100, 9234, 192), Rotator(0, 90, 90)),
         NanosWorldWeapons.Glock(Vector(-2150, 9234, 192), Rotator(0, 90, 90)),
         NanosWorldWeapons.DesertEagle(Vector(-2200, 9234, 192), Rotator(0, 90, 90)),
-        NanosWorldWeapons.AR4(Vector(-2250, 9234, 192), Rotator(0, 90, 90))        
-        Grenade(Vector(-2300, 9234, 192), Rotator(0, 90, 90), "NanosWorld/Core/Weapons/Grenades/BP_Grenade_G67.BP_Grenade_G67_C")        
+        NanosWorldWeapons.AR4(Vector(-2250, 9234, 192), Rotator(0, 90, 90)),
+        Grenade(Vector(-2300, 9234, 192), Rotator(0, 90, 90), "NanosWorld/Core/Weapons/Grenades/BP_Grenade_G67.BP_Grenade_G67_C"),
         NanosWorldWeapons.Glock(Vector(-5120, 6977, 195), Rotator(0, -45, -90)),
         NanosWorldWeapons.Glock(Vector(-5067, 6948, 195), Rotator(0, 0, -90)),
-        NanosWorldWeapons.Glock(Vector(-5008, 6912, 195), Rotator(0, -22, -90))        
-        NanosWorldWeapons.SMG11(Vector(-973, 4995, 235), Rotator(0, 0, -90))        
-        NanosWorldWeapons.GE36(Vector(3660, 11025, 57), Rotator(0, 0, 90))        
+        NanosWorldWeapons.Glock(Vector(-5008, 6912, 195), Rotator(0, -22, -90)),
+        NanosWorldWeapons.SMG11(Vector(-973, 4995, 235), Rotator(0, 0, -90)),
+        NanosWorldWeapons.GE36(Vector(3660, 11025, 57), Rotator(0, 0, 90)),
         NanosWorldWeapons.AK47(Vector(7543, 5589, 210), Rotator(0, 90, 90)),
         NanosWorldWeapons.AK74U(Vector(7466, 5589, 210), Rotator(0, 90, 90)),
-        NanosWorldWeapons.AR4(Vector(7368, 5589, 210), Rotator(0, 90, 90))        
+        NanosWorldWeapons.AR4(Vector(7368, 5589, 210), Rotator(0, 90, 90)),
         NanosWorldWeapons.Moss500(Vector(7343, 5572, 156), Rotator(0, 0, 90)),
-        NanosWorldWeapons.Moss500(Vector(7481, 5572, 156), Rotator(0, 0, 90))        
+        NanosWorldWeapons.Moss500(Vector(7481, 5572, 156), Rotator(0, 0, 90)),
         NanosWorldWeapons.AP5(Vector(-4054, 8095, 145), Rotator(0, 0, -90)),
         
         NanosWorldWeapons.AK74U(Vector(9137, 1304, 113), Rotator(-5, 0, -90)),
         NanosWorldWeapons.AK47(Vector(9137, 1243, 113), Rotator(-5, 0, -90)),
-        NanosWorldWeapons.GE36(Vector(9137, 1155, 113), Rotator(-5, 0, -90))        
+        NanosWorldWeapons.GE36(Vector(9137, 1155, 113), Rotator(-5, 0, -90)),
         Vehicle(Vector(-40, 7262, 130), Rotator(0, -80, 0), "NanosWorld/Core/Vehicles/BP_Vehicle_SUV.BP_Vehicle_SUV_C"),
         Vehicle(Vector(530, 7344, 130), Rotator(0, -80, 0), "NanosWorld/Core/Vehicles/BP_Vehicle_Pickup.BP_Vehicle_Pickup_C"),
         Vehicle(Vector(480, 5080, 100), Rotator(0, -10, 0), "NanosWorld/Core/Vehicles/BP_Vehicle_Truck.BP_Vehicle_Truck_C"),
         Vehicle(Vector(1720, 1660, 118), Rotator(0, 0, 0), "NanosWorld/Core/Vehicles/BP_Vehicle_Truck_Chassis.BP_Vehicle_Truck_Chassis_C"),
         Vehicle(Vector(9650, -2840, 80), Rotator(0, -137, 0), "NanosWorld/Core/Vehicles/BP_Vehicle_Hatchback.BP_Vehicle_Hatchback_C"),
-        Vehicle(Vector(-10630.0, 6870.0, 80), Rotator(0, -137, 0), "NanosWorld/Core/Vehicles/BP_Vehicle_SportCar.BP_Vehicle_SportCar_C")        
+        Vehicle(Vector(-10630.0, 6870.0, 80), Rotator(0, -137, 0), "NanosWorld/Core/Vehicles/BP_Vehicle_SportCar.BP_Vehicle_SportCar_C"),
         Item(Vector(-1786.000, 7273.000, 120.000), Rotator(0, 0, 0), "NanosWorld/Core/Items/BP_Grabable_Torch.BP_Grabable_Torch_C"),
-        Item(Vector(7575.000, 5287.000, 133.000), Rotator(0, 0, 15), "NanosWorld/Core/Items/BP_Grabable_Torch.BP_Grabable_Torch_C")        
+        Item(Vector(7575.000, 5287.000, 133.000), Rotator(0, 0, 15), "NanosWorld/Core/Items/BP_Grabable_Torch.BP_Grabable_Torch_C"),
         NanosWorldWeapons.AK47(Vector(-10928, 4225, 118), Rotator(0, 0, -90)),
         NanosWorldWeapons.AK47(Vector(-10940, 4150, 118), Rotator(0, 0, -90)),
         NanosWorldWeapons.AK47(Vector(-10950, 4066, 118), Rotator(0, 0, -90)),
@@ -114,7 +114,7 @@ Code
         NanosWorldWeapons.AK74U(Vector(-9129, -3137, 112), Rotator(0, 0, 90)),
         NanosWorldWeapons.AR4(Vector(-9208, -3137, 112), Rotator(0, 0, 90)),
         NanosWorldWeapons.AR4(Vector(-9208, -3237, 112), Rotator(0, 0, 90)),
-        NanosWorldWeapons.AR4(Vector(-9208, -3325, 112), Rotator(0, 0, 90))        
+        NanosWorldWeapons.AR4(Vector(-9208, -3325, 112), Rotator(0, 0, 90)),
         NanosWorldWeapons.Moss500(Vector(2001, -10769, 123), Rotator(0, 0, 90)),
         NanosWorldWeapons.Moss500(Vector(2001, -10669, 123), Rotator(0, 0, 90)),
         Grenade(Vector(2001, -10380, 123), Rotator(0, 0, 0), "NanosWorld/Core/Weapons/Grenades/BP_Grenade_G67.BP_Grenade_G67_C"),
