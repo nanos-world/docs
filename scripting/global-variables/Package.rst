@@ -34,6 +34,11 @@ Functions
 
   * -
     -
+    - RequirePackage(:term:`string` PackageName)
+    - Includes other Package in this Package
+
+  * -
+    -
     - Log(:term:`string` Message)
     - Logs a message in the console (the proper and Nanos way)
 
