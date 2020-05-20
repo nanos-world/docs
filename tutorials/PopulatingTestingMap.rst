@@ -24,7 +24,7 @@ Code
 
     NanosTestingMap = {}
 
-    Server:on("Load", function()
+    Server:on("Start", function()
       NanosTestingMap = {
         Prop(Vector(-1676.000, 6963.000, 132.000), Rotator(0.000000, 0.000000, 0.000000),  "NanosWorld/Art/Rural/InteriorDecoration/SM_WoodenTable.SM_WoodenTable"),
         Prop(Vector(-1711.000, 7008.000, 132.000), Rotator(0.000000, -149.999969, 0.000000),  "NanosWorld/Art/Rural/InteriorDecoration/SM_WoodenChair.SM_WoodenChair"),
