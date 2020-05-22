@@ -31,20 +31,25 @@ Functions
   * - 
     - 
     - AddLine(:term:`number` ID, :ref:`Vector2D` StartPosition, :ref:`Vector2D` EndPosition, :term:`number` Thickness, :ref:`Color` Color)
-    - Draws a Line
+    - Draws a Line (doesn't support opacity)
 
   * - 
-    -
+    - 
     - AddBox(:term:`number` ID, :ref:`Vector2D` StartPosition, :ref:`Vector2D` EndPosition, :term:`number` Thickness, :ref:`Color` Color)
     - Draws a Box
 
   * - 
-    -
+    - 
+    - AddTile(:term:`number` ID, :ref:`Vector2D` Position, :ref:`Vector2D` Size, :ref:`Color` Color)
+    - Draws a Tile (filled)
+
+  * - 
+    - 
     - AddPolygon(:term:`number` ID, :ref:`Vector2D` ScreenPosition, :ref:`Vector2D` Radius, :term:`number` NumberOfSides, :ref:`Color` Color)
     - Draws a Polygon
 
   * - 
-    -
+    - 
     - AddText(:term:`number` ID, :term:`string` Text, :ref:`Vector2D` Position, :term:`number` FontType, :term:`number` FontSize, :ref:`Color` TextColor, :term:`number` Kerning, :term:`boolean` bCenterX, :term:`boolean` bCenterY, :term:`boolean` EnableShadow, :ref:`Vector2D` ShadowOffset, :ref:`Color` ShadowColor, :term:`boolean` EnableOutline, :ref:`Color` OutlineColor)
     - Draws a Text with optionals Shadow and Outline
 

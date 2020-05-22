@@ -117,7 +117,7 @@ Constructor Parameters
 
   * - :term:`string`
     - ModelName
-    - 
+    - Skeletal Mesh Path
 
   * - :term:`number`
     - CollisionType
@@ -253,7 +253,7 @@ Constructor Parameters
 
   * - :term:`string`
     - MagazineMesh *(mesh used when reloading)*
-    - 
+    - Static Mesh Path
 
 
 Properties
