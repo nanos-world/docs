@@ -83,3 +83,8 @@ Functions (Inherited from Actor)
     - 
     - AttachTo(Actor Other, :term:`string` BoneName, :ref:`Vector` RelativeLocation)
     - Attaches this Actor to any other Actor with a Relative Offset
+
+  * - |server-only-label|
+    - 
+    - AddImpulse(:ref:`Vector` Force)
+    - Applies a Force in world coordinate on this Actor (the force is applied on Client side, by the (in most of cases) the closest player of this object)
