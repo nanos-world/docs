@@ -6,7 +6,7 @@
 Timer
 *****
 
-.. tip:: This is a global variable named ``Timer``. It is not possible to initialize or create a new instance. It's just a global variable.
+.. tip:: This is a namespace named ``Timer``. It is not possible to initialize or create Instances. It's just a name with Functions which are accessed with ``.`` instead of ``:``. This is going to be changed soon ;).
 
 .. attention:: This page is under construction.
 
