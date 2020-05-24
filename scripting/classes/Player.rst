@@ -48,6 +48,16 @@ Functions
     - UnPossess()
     - Release the ``Player`` from the :ref:`Character` 
 
+  * - 
+    - 
+    - SetValue(:term:`string` Key, any Value)
+    - Sets a value in this entity, which can be accessed by any package (local only)
+
+  * - 
+    - any
+    - GetValue(:term:`string` Key)
+    - Gets a value given a key
+
 
 Events
 ------

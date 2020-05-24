@@ -88,3 +88,13 @@ Functions (Inherited from Actor)
     - 
     - AddImpulse(:ref:`Vector` Force)
     - Applies a Force in world coordinate on this Actor (the force is applied on Client side, by the (in most of cases) the closest player of this object)
+
+  * - 
+    - 
+    - SetValue(:term:`string` Key, any Value)
+    - Sets a value in this entity, which can be accessed by any package (local only)
+
+  * - 
+    - any
+    - GetValue(:term:`string` Key)
+    - Gets a value given a key
