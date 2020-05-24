@@ -12,4 +12,5 @@ Global Variables
    NanosWorld.rst
    Render.rst
    Server.rst
+   Timer.rst
    World.rst
