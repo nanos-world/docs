@@ -35,6 +35,11 @@ Functions
     - 
 
   * -
+    - :term:`boolean`
+    - IsKeyDown(:term:`string` KeyName)
+    - Returns if a key is being pressed
+
+  * -
     - 
     - SetMouseEnabled(:term:`boolean`)
     - Sets mouse enabled and toggles game input
