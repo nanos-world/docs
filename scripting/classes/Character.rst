@@ -252,7 +252,7 @@ Events
 
   * -
     - TakeDamage
-    - :ref:`Character` self, :term:`number` damage, :term:`string` bone
+    - :ref:`Character` self, :term:`number` damage, :term:`number` type (1 - Shot, 2 - Explosion), :term:`string` bone, :ref:`Vector` FromDirection
     - When Character takes Damage
 
   * -
