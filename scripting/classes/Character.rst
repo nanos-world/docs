@@ -6,9 +6,11 @@
 Character
 *********
 
-Characters represents a Skeletal Mesh in the game, which means an Actor which can be possessed, can move and interact with world.
+Characters represents Actors which can be possessed, can move and interact with world. They are the default Skeletal Mesh Character built for nanos world.
 
 .. attention:: This page is under construction.
+
+.. note:: Characters are Skeletal Meshes using Unreal's Mannequin Skeletal, with animations and interactivity already natively integrated into nanos world. It is possible to import any Skeletal Mesh (which uses Unreal's Mannequin Skeletal) to this Character.
 
 
 Usage
@@ -38,6 +40,10 @@ Constructor Parameters
     - Rotation
     - Rotation(0, 0, 0)
 
+  * - :term:`string`
+    - Model
+    - NanosWorld/Characters/Male/SK_Male
+
   * - :term:`number`
     - CollisionType
     - 0 (Normal)
@@ -49,6 +55,46 @@ Constructor Parameters
   * - :term:`number`
     - Health/MaxHealth
     - 100
+
+
+Usage
+-----
+
+.. tabs::
+ .. code-tab:: lua Lua
+    
+    -- The following examples are using all Skeletal Meshes which we currently have for examples, including the officials Woman, Man and Mannequin:
+    local Woman = Character(Vector(100, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/Female/SK_Female")
+    local Man = Character(Vector(200, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/Male/SK_Male")
+    local Mannequin = Character(Vector(300, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/Mannequin/SK_Mannequin")
+
+    local PostApocalyptic = Character(Vector(400, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/PostApocalyptic/SK_PostApocalyptic")
+    local ClassicMale = Character(Vector(500, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/ClassicMale/SK_ClassicMale")
+
+    -- Adds Clothes to Man. Note: some Meshes only supports a specific Mesh (Men/Woman)
+    Man:AddSkeletalMeshAttached("shirt", "NanosWorld/Characters/Common/BodyParts/Clothes/Shirt/SK_Shirt") -- Men only
+    Man:AddSkeletalMeshAttached("shirt", "NanosWorld/Characters/Common/BodyParts/Clothes/Underwear/SK_Underwear") -- Men only
+    Man:AddSkeletalMeshAttached("pants", "NanosWorld/Characters/Common/BodyParts/Clothes/Pants/SK_Pants") -- Men only
+    Man:AddSkeletalMeshAttached("shoes", "NanosWorld/Characters/Common/BodyParts/Clothes/Shoes/SK_Shoes_01")
+    Man:AddSkeletalMeshAttached("shoes", "NanosWorld/Characters/Common/BodyParts/Clothes/Tie/SK_Tie")
+
+    -- Adds Clothes to Woman
+    Woman:AddSkeletalMeshAttached("full", "NanosWorld/Characters/Common/BodyParts/Clothes/CasualSet/SK_CasualSet") -- Woman only
+    Woman:AddSkeletalMeshAttached("shoes", "NanosWorld/Characters/Common/BodyParts/Clothes/Shoes/SK_Sneakers")
+
+    -- Adds Beard to Man
+    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Extra", "beard", Vector(), Rotator())
+    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Middle", "beard", Vector(), Rotator())
+    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Mustache_01", "beard", Vector(), Rotator())
+    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Mustache_02", "beard", Vector(), Rotator())
+    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Side", "beard", Vector(), Rotator())
+
+    -- Adds Hair to Man
+    Man:AddStaticMeshAttached("hair", "NanosWorld/Characters/Common/BodyParts/Hair/Male/SM_Hair_Long", "hair_male", Vector(), Rotator())
+    Man:AddStaticMeshAttached("hair", "NanosWorld/Characters/Common/BodyParts/Hair/Male/SM_Hair_Short", "hair_male", Vector(), Rotator())
+
+    -- Adds Hair to Woman
+    Woman:AddStaticMeshAttached("hair", "NanosWorld/Characters/Common/BodyParts/Hair/Kwang/SM_Hair_Kwang", "hair_female", Vector(), Rotator())
 
 
 Properties
@@ -165,7 +211,7 @@ Functions
     - :term:`boolean`
     - IsMovementEnabled()
     - Gets Character Movement Enabled
-  
+
   * - |server-only-label|
     - 
     - SetMorphTarget(:term:`number` ID, :term:`number` Value)
@@ -195,7 +241,27 @@ Functions
     - :ref:`Vector`
     - GetVectorParameter(:term:`number` ID)
     - 
-  
+
+  * - |server-only-label|
+    - 
+    - AddStaticMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath, :term:`string` Socket, :ref:`Vector` RelativeLocation, :ref:`Rotator` RelativeRotation)
+    - Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
+
+  * - |server-only-label|
+    - 
+    - AddSkeletalMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath)
+    - Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
+
+  * - |server-only-label|
+    - 
+    - RemoveStaticMeshAttached(:term:`number` ID)
+    - Removes, if existing, a StaticMesh from this Character given it's custom ID
+
+  * - |server-only-label|
+    - 
+    - RemoveSkeletalMeshAttached(:term:`number` ID)
+    - Removes, if existing, a SkeletalMesh from this Character given it's custom ID
+
 
 Events
 ------
@@ -310,7 +376,7 @@ Events
     - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
     - 0 - None, 1 - Walking, 2 - Sprinting
 
-	
+
 Customization
 -------------
 
