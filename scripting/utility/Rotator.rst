@@ -53,11 +53,11 @@ Functions
     - **Name**
     - **Description**
 
-  * - `ref`:`Vector`
+  * - :ref:`Vector`
     - GetForwardVector()
     - Get the forward (X) unit direction vector from this component, in world space.
 
-  * - `ref`:`Vector`
+  * - :ref:`Vector`
     - RotateVector()
     - Rotates a Vector by this Rotator.
 
