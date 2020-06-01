@@ -6,7 +6,7 @@ Tutorials
    :name: toc-tutorials
    :glob:
 
-   Events.rst
+   ComunicationBetweenPackages.rst
    PopulatingTestingMap.rst
    SpawnPlayer.rst
    SpawnPlayerRandomLocations.rst
