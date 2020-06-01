@@ -8,7 +8,7 @@ Vector
 
 A vector composed of components (X, Y, Z) with floating point precision.
 
-.. tip:: This structures is Open Sourced at https://github.com/nanos-world/nanos-world-lua-lib. Feel free to push merge requests and suggest changes!
+.. tip:: This structure is Open Sourced at https://github.com/nanos-world/nanos-world-lua-lib. Feel free to push merge requests and suggest changes!
 
 .. tip:: This structure supports `+`, `==`, `*` and `^` operations.
 

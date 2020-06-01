@@ -8,7 +8,7 @@ Color
 
 A color composed of components (R, G, B, A) with floating point precision. The values are between 0 and 1.
 
-.. tip:: This structures is Open Sourced at https://github.com/nanos-world/nanos-world-lua-lib. Feel free to push merge requests and suggest changes!
+.. tip:: This structure is Open Sourced at https://github.com/nanos-world/nanos-world-lua-lib. Feel free to push merge requests and suggest changes!
 
 
 Usage

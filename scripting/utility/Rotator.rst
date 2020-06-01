@@ -8,7 +8,7 @@ Rotator
 
 A container for rotation information. All rotation values are stored in degrees.
 
-.. tip:: This structures is Open Sourced at https://github.com/nanos-world/nanos-world-lua-lib. Feel free to push merge requests and suggest changes!
+.. tip:: This structure is Open Sourced at https://github.com/nanos-world/nanos-world-lua-lib. Feel free to push merge requests and suggest changes!
 
 
 Usage
