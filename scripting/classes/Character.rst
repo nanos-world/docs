@@ -148,6 +148,11 @@ Functions
     - UnGrabs/Drops the Prop the Character is holding
 
   * - 
+    - :ref:`Rotator`
+    - GetControlRotation()
+    - Gets the rotation this character is looking at
+
+  * - 
     - :ref:`Prop`
     - GetGrabbedProp()
     - Gets the Grabbing Prop
