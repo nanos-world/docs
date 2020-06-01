@@ -296,10 +296,6 @@ Properties
 Functions
 ---------
 
-.. include:: ../common/functions/Actor.rst
-
-.. include:: ../common/functions/Pickable.rst
-
 .. list-table:: 
   :widths: 5 10 35 50
 
@@ -358,13 +354,13 @@ Functions
     - GetBulletColor()
     - 
 
+.. include:: ../common/functions/Pickable.rst
+
+.. include:: ../common/functions/Actor.rst
+
 
 Events
 ------
-
-.. include:: ../common/events/Actor.rst
-
-.. include:: ../common/events/Pickable.rst
 
 .. list-table::
   :widths: 5 15 30 50
@@ -378,3 +374,7 @@ Events
     - Fire
     - :ref:`Weapon` self, :ref:`Character` shooter
     - When this weapon is fired
+
+.. include:: ../common/events/Pickable.rst
+
+.. include:: ../common/events/Actor.rst

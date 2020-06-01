@@ -58,14 +58,14 @@ Constructor Parameters
 Functions
 ----------
 
-.. include:: ../common/functions/Actor.rst
-
 .. include:: ../common/functions/Pickable.rst
+
+.. include:: ../common/functions/Actor.rst
 
 
 Events
 ------
 
-.. include:: ../common/events/Actor.rst
-
 .. include:: ../common/events/Pickable.rst
+
+.. include:: ../common/events/Actor.rst

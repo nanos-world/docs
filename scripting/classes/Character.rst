@@ -117,8 +117,6 @@ Properties
 Functions
 ---------
 
-.. include:: ../common/functions/Actor.rst
-
 .. list-table:: 
   :widths: 5 10 35 50
 
@@ -267,11 +265,11 @@ Functions
     - RemoveSkeletalMeshAttached(:term:`number` ID)
     - Removes, if existing, a SkeletalMesh from this Character given it's custom ID
 
+.. include:: ../common/functions/Actor.rst
+
 
 Events
 ------
-
-.. include:: ../common/events/Actor.rst
 
 .. list-table::
   :widths: 5 15 30 50
@@ -380,6 +378,8 @@ Events
     - GaitModeChanged
     - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
     - 0 - None, 1 - Walking, 2 - Sprinting
+
+.. include:: ../common/events/Actor.rst
 
 
 Customization

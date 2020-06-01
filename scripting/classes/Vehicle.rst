@@ -58,10 +58,6 @@ Constructor Parameters
 Functions
 ---------
 
-.. include:: ../common/functions/Actor.rst
-
-.. include:: ../common/functions/Pickable.rst
-
 .. list-table:: 
   :widths: 5 10 35 50
 
@@ -125,11 +121,13 @@ Functions
     - Horn(:term:`boolean` Bool)
     - Starts or stops the vehicles horn
 
+.. include:: ../common/functions/Pickable.rst
+
+.. include:: ../common/functions/Actor.rst
+
 
 Events
 ------
-
-.. include:: ../common/events/Actor.rst
 
 .. list-table::
   :widths: 5 15 30 50
@@ -143,3 +141,5 @@ Events
     - Horn
     - :ref:`Vehicle` self, :term:`boolean` IsHonking
     - When Vehicle honks
+
+.. include:: ../common/events/Actor.rst

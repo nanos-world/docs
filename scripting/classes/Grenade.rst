@@ -95,10 +95,6 @@ Properties
 Functions
 ---------
 
-.. include:: ../common/functions/Actor.rst
-
-.. include:: ../common/functions/Pickable.rst
-
 .. list-table:: 
   :widths: 5 10 35 50
    
@@ -107,13 +103,14 @@ Functions
     - **Parameters**
     - **Description**
 
+.. include:: ../common/functions/Pickable.rst
+
+.. include:: ../common/functions/Actor.rst
+
+
 
 Events
 ------
-
-.. include:: ../common/events/Actor.rst
-
-.. include:: ../common/events/Pickable.rst
 
 .. list-table::
   :widths: 5 15 30 50
@@ -132,3 +129,7 @@ Events
     - Throw
     - :ref:`Grenade`
     - ``Grenade`` has been thrown
+
+.. include:: ../common/events/Pickable.rst
+
+.. include:: ../common/events/Actor.rst

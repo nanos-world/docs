@@ -62,8 +62,6 @@ Constructor Parameters
 Functions
 ----------
 
-.. include:: ../common/functions/Actor.rst
-
 .. list-table:: 
   :widths: 5 10 35 50
 
@@ -87,11 +85,11 @@ Functions
     - IsGrabbable()
     - Gets ability to Grab this Prop
 
+.. include:: ../common/functions/Actor.rst
+
 
 Events
 ------
-
-.. include:: ../common/events/Actor.rst
 
 .. list-table::
   :widths: 5 15 30 50
@@ -110,3 +108,5 @@ Events
     - UnGrab
     - :ref:`Prop` self, :ref:`Character` handler
     - When Character ungrabs a Prop
+
+.. include:: ../common/events/Actor.rst

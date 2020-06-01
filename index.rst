@@ -31,10 +31,9 @@ The main documentation for the site is organized into the following sections:
    getting_started/index
 
 
-
 .. toctree::
    :maxdepth: 1
-   :caption: Tutorials
+   :caption: Tutorials & Examples
    :name: sec-tutorials
 
    tutorials/index
