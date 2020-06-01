@@ -8,7 +8,7 @@ Vector2D
 
 A Vector2D composed of components (X, Y) with floating point precision. Used mainly for HUD and Drawing on screen.
 
-.. attention:: This page is under construction.
+.. tip:: This structures is Open Sourced at https://github.com/nanos-world/nanos-world-lua-lib. Feel free to push merge requests and suggest changes!
 
 
 Usage
@@ -24,7 +24,7 @@ Properties
 ----------
 
 .. list-table::
-  :widths: 1 5 4
+  :widths: 10 40 50
    
   * - **Type**
     - **Name**

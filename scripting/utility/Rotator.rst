@@ -8,7 +8,7 @@ Rotator
 
 A container for rotation information. All rotation values are stored in degrees.
 
-.. attention:: This page is under construction.
+.. tip:: This structures is Open Sourced at https://github.com/nanos-world/nanos-world-lua-lib. Feel free to push merge requests and suggest changes!
 
 
 Usage
@@ -24,7 +24,7 @@ Properties
 ----------
 
 .. list-table::
-  :widths: 1 5 4
+  :widths: 10 40 50
    
   * - **Type**
     - **Name**
@@ -47,12 +47,20 @@ Functions
 ---------
 
 .. list-table::
-  :widths: 1 5 4
+  :widths: 10 40 50
    
   * - **Returns**
     - **Name**
     - **Description**
 
-  * - TODO
-    - TODO
-    - TODO
+  * - `ref`:`Vector`
+    - GetForwardVector()
+    - Get the forward (X) unit direction vector from this component, in world space.
+
+  * - `ref`:`Vector`
+    - RotateVector()
+    - Rotates a Vector by this Rotator.
+
+  * - 
+    - Normalize()
+    - In-place normalize, removes all winding and creates the "shortest route" rotation.
