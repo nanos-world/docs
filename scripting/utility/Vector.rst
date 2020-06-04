@@ -10,7 +10,7 @@ A vector composed of components (X, Y, Z) with floating point precision.
 
 .. tip:: This structure is Open Sourced at https://github.com/nanos-world/nanos-world-lua-lib. Feel free to push merge requests and suggest changes!
 
-.. tip:: This structure supports `+`, `==`, `*` and `^` operations.
+.. tip:: This structure supports `+`, `-`, `*`, `/`, `^`, `==`, and `tostring` operations.
 
 
 Usage
@@ -43,3 +43,42 @@ Properties
   * - :term:`number`
     - Z
     - Z Coordinate
+
+
+Functions
+---------
+
+.. list-table::
+  :widths: 10 40 50
+   
+  * - **Returns**
+    - **Name**
+    - **Description**
+
+  * - :term:`bool`
+    - Equals(:ref:`Vector` Other, :term:`number` Tolerance)
+    - 
+
+  * - :term:`number`
+    - SizeSquared()
+    - 
+
+  * - :term:`number`
+    - Size()
+    - 
+
+  * - :ref:`Rotator`
+    - IsNearlyZero(:term:`number` Tolerance)
+    - 
+
+  * - :term:`bool`
+    - IsZero()
+    - 
+
+  * - :term:`number`
+    - DistanceSquared(:ref:`Vector` Other)
+    - 
+
+  * - :term:`number`
+    - Distance(:ref:`Vector` Other)
+    - 

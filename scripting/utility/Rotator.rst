@@ -10,6 +10,8 @@ A container for rotation information. All rotation values are stored in degrees.
 
 .. tip:: This structure is Open Sourced at https://github.com/nanos-world/nanos-world-lua-lib. Feel free to push merge requests and suggest changes!
 
+.. tip:: This structure supports `+`, `-`, `*` and `tostring` operations.
+
 
 Usage
 -----
@@ -64,3 +66,15 @@ Functions
   * - 
     - Normalize()
     - In-place normalize, removes all winding and creates the "shortest route" rotation.
+
+  * - :ref:`Rotator`
+    - GetNormalized()
+    - Returns a new Rotator normalized.
+
+  * - :term:`bool`
+    - IsNearlyZero(:term:`number` Tolerance)
+    - 
+
+  * - :term:`bool`
+    - IsZero()
+    - 
