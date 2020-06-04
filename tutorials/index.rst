@@ -8,5 +8,4 @@ Tutorials
 
    ComunicationBetweenPackages.rst
    PopulatingTestingMap.rst
-   SpawnPlayer.rst
    SpawnPlayerRandomLocations.rst

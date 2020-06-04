@@ -1,7 +1,50 @@
-nanos.world Official Documentation - *master*
-=============================================
+nanos.world Official Documentation
+==================================
+
+.. toctree::
+   :hidden:
+   :titlesonly:
+   :caption: General
+   :name: sec-general
+
+   about/index
+
+
+.. toctree::
+   :hidden:
+   :titlesonly:
+   :caption: Getting Started
+   :name: sec-learn
+
+   getting_started/index
+
+
+.. toctree::
+   :hidden:
+   :titlesonly:
+   :caption: Tutorials & Examples
+   :name: sec-tutorials
+
+   tutorials/index
+
+
+.. toctree::
+   :hidden:
+   :titlesonly:
+   :caption: Scripting
+   :name: sec-scripting
+
+   scripting/Glossary
+   scripting/classes/index
+   scripting/global-variables/index
+   scripting/utility/index
+
 
 Welcome to the official documentation of nanos.world! da best game ever made.
+
+nanos world is the next generation multiplayer sandbox game created by you and nanos. We do this by allowing players, developers and modders themselves to build their own game upon and to integrate their work in nanos world. Built upon Unreal Engine 4 (UE4), nanos framework and our experience, especially from Just Cause 3: Multiplayer and other modifications we created, you can turn your world into whatever you’d like. Bringing all participants to the table, players can join thousands of different worlds and thousands of different game modes with only one game and everybody can contribute to our common project. 
+
+With nanos world you can realize your own game ideas and visions. Therefore, scripters can create their own game modes in Lua. There are a lot of gamers who have a game idea, but cannot realize it due to their limited knowledge and the high complexity of game development. With nanos world we create an environment in which these gamers can express themselves together with other gamers from around the world. For experienced modders, developers and scripters on a semi-professional or professional level we are going to create a complex and powerful scripting API and other systems which can be used to create very complex and advanced games, too. We give you direct access to the whole power of Unreal Engine 4.
 
 .. toctree::
    :maxdepth: 2
@@ -12,39 +55,7 @@ Welcome to the official documentation of nanos.world! da best game ever made.
 .. note:: We have a centralized space for reporting BUGs and Suggest new Ideas in https://issues.nanos.world. We encourage everyone to give suggestions and report BUGs because we are going to mainly focus our development in the suggestions and bugs reported in there.
 
 
-The main documentation for the site is organized into the following sections:
-*****************************************************************************
+Getting Started
+---------------
 
-.. toctree::
-   :maxdepth: 1
-   :caption: General
-   :name: sec-general
-
-   about/index
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Getting Started
-   :name: sec-learn
-
-   getting_started/index
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Tutorials & Examples
-   :name: sec-tutorials
-
-   tutorials/index
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Scripting
-   :name: sec-scripting
-
-   scripting/Glossary
-   scripting/classes/index
-   scripting/global-variables/index
-   scripting/utility/index
+:ref:`GettingStarted`

@@ -55,7 +55,7 @@ Functions
     - **Name**
     - **Description**
 
-  * - :term:`bool`
+  * - :term:`boolean`
     - Equals(:ref:`Vector` Other, :term:`number` Tolerance)
     - 
 
@@ -71,7 +71,7 @@ Functions
     - IsNearlyZero(:term:`number` Tolerance)
     - 
 
-  * - :term:`bool`
+  * - :term:`boolean`
     - IsZero()
     - 
 

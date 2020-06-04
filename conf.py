@@ -60,6 +60,8 @@ html_theme_options = {
     'collapse_navigation': False,
 }
 
+html_favicon = 'favicon.ico'
+
 pygments_style = 'sphinx'
 
 html_context = {

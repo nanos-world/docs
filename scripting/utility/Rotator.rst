@@ -71,10 +71,10 @@ Functions
     - GetNormalized()
     - Returns a new Rotator normalized.
 
-  * - :term:`bool`
+  * - :term:`boolean`
     - IsNearlyZero(:term:`number` Tolerance)
     - 
 
-  * - :term:`bool`
+  * - :term:`boolean`
     - IsZero()
     - 

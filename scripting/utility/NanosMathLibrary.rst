@@ -39,21 +39,21 @@ Functions
     - Clamps an angle to the range of [-180, 180].
 
   * - :term:`number`
-    - FInterpTo(:term:`number` Current, :term:`number` Target, :term:`number` DeltaTime, :term:`number`InterpSpeed)
+    - FInterpTo(:term:`number` Current, :term:`number` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
     - 
 
   * - :ref:`Rotator`
-    - RInterpTo(:ref:`Rotator` Current, :ref:`Rotator` Target, :term:`number` DeltaTime, :term:`number`InterpSpeed)
+    - RInterpTo(:ref:`Rotator` Current, :ref:`Rotator` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
     - 
 
   * - :ref:`Rotator`
-    - RInterpConstantTo(:ref:`Rotator` Current, :ref:`Rotator` Target, :term:`number` DeltaTime, :term:`number`InterpSpeed)
+    - RInterpConstantTo(:ref:`Rotator` Current, :ref:`Rotator` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
     - 
 
   * - :ref:`Vector`
-    - VInterpTo(:ref:`Vector` Current, :ref:`Vector` Target, :term:`number` DeltaTime, :term:`number`InterpSpeed)
+    - VInterpTo(:ref:`Vector` Current, :ref:`Vector` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
     - 
 
   * - :ref:`Vector`
-    - VInterpConstantTo(:ref:`Vector` Current, :ref:`Vector` Target, :term:`number` DeltaTime, :term:`number`InterpSpeed)
+    - VInterpConstantTo(:ref:`Vector` Current, :ref:`Vector` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
     - 

@@ -84,6 +84,4 @@ Events
 Examples
 --------
 
-* Spawn player: :ref:`TutorialSpawnPlayer`
-
 * Spawn player at random locations :ref:`TutorialSpawnPlayerRandomLocations`
