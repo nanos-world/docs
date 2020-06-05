@@ -80,10 +80,20 @@ After finishing, you will get a folder like that:
 
 .. image:: https://i.imgur.com/FnUex4P.png
 
-Now we will manually copy the files we want from it, they will be located at ``NanosWorldAssets/Content/`` (or whatever is the name of your project). As we created a folder called ``MyPack``, our exported assets will be at ``NanosWorldAssets/Content/MyPack/``: 
+
+Importing and Using Assets in your Server
+-----------------------------------------
+
+After packaging your project, we will manually copy the files we want from it, they will be located at ``NanosWorldAssets/Content/`` (or whatever is the name of your project). As we created a folder called ``MyPack``, our exported assets will be at ``NanosWorldAssets/Content/MyPack/``: 
 
 .. image:: https://i.imgur.com/BIzXctE.png
 
 And thats it! You can now just copy ``MyPack/`` folder inside your Server's ``Assets/`` folder and reference your Cube like ``Prop(Vector(0, 0, 0), Rotator(0, 0, 0), "MyPack/SM_Cube")`` when loading a Prop for example.
 
 .. image:: https://i.imgur.com/H0B7WWp.png
+
+
+Going Further
+-------------
+
+If you want to know more, please move to ref:`Modding`.

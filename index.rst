@@ -40,6 +40,15 @@ nanos.world Official Documentation
    scripting/utility/index
 
 
+.. toctree::
+   :hidden:
+   :titlesonly:
+   :caption: Modding
+   :name: sec-modding
+
+   modding/index
+
+
 Welcome to the official documentation of nanos.world! da best game ever made.
 
 nanos world is the next generation multiplayer sandbox game created by you and nanos. We do this by allowing players, developers and modders themselves to build their own game upon and to integrate their work in nanos world. Built upon Unreal Engine 4 (UE4), nanos framework and our experience, especially from Just Cause 3: Multiplayer and other modifications we created, you can turn your world into whatever you’d like. Bringing all participants to the table, players can join thousands of different worlds and thousands of different game modes with only one game and everybody can contribute to our common project. 
@@ -59,3 +68,12 @@ Getting Started
 ---------------
 
 :ref:`GettingStarted`
+
+
+Special Thanks
+--------------
+
+DasPascal - Tester, Suggester, Bug Reporter and Documentation helper
+Falaxir - Tester and Suggester and Bug Reporter
+Nogitsu - Tester and Suggester and Bug Reporter
+Daranix - Tester and Bug Reporter
