@@ -13,3 +13,8 @@ Functions (Inherited from Pickable)
     - :term:`string`
     - GetAssetName()
     - Gets the Asset name
+
+  * - 
+    - :ref:`Character`
+    - GetHandler()
+    - Gets the Character (if existing) which is holding this

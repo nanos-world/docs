@@ -85,6 +85,11 @@ Functions
     - IsGrabbable()
     - Gets ability to Grab this Prop
 
+  * - 
+    - :ref:`Character`
+    - GetHandler()
+    - Gets the Character (if existing) which is holding this
+
 .. include:: ../common/functions/Actor.rst
 
 

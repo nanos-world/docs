@@ -375,6 +375,11 @@ Events
     - :ref:`Weapon` self, :ref:`Character` shooter
     - When this weapon is fired
 
+  * -
+    - Reload
+    - :ref:`Weapon` self, :ref:`Character` character, :term:`number` AmmoToReload
+    - When this weapon is reloaded, optionally by a Character
+
 .. include:: ../common/events/Pickable.rst
 
 .. include:: ../common/events/Actor.rst

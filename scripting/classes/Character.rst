@@ -321,7 +321,7 @@ Events
 
   * -
     - TakeDamage
-    - :ref:`Character` self, :term:`number` damage, :term:`number` type (1 - Shot, 2 - Explosion), :term:`string` bone, :ref:`Vector` FromDirection
+    - :ref:`Character` self, :term:`number` damage, :term:`number` type (1 - Shot, 2 - Explosion), :term:`string` bone, :ref:`Vector` FromDirection, :ref:`Player` Instigator
     - When Character takes Damage
 
   * -
@@ -343,6 +343,11 @@ Events
     - Punch
     - :ref:`Character` self
     - When Character punches
+
+  * -
+    - Reload
+    - :ref:`Character` self, :ref:`Weapon` weapon, :term:`number` AmmoToReload
+    - When Character reloads a weapon
 
   * -
     - WeaponAimModeChanged

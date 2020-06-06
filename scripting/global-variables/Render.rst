@@ -68,6 +68,11 @@ Functions
     - ClearItems(:term:`number` ID)
     - Remove all drawing of using that specific ID
 
+  * - 
+    - :ref:`Vector2D:
+    - GetViewportSize()
+    - Returns the size of viewport (how much screen space the game window occupies)
+
 
 Examples
 --------
