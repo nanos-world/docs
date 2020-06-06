@@ -10,7 +10,7 @@ nanos.world provides fully capabilities of modifying, including and customizing 
 Structure
 ---------
 
-Assets can be included in a folder called ``Assets/`` in the root server folder. All files in there will be sent to the clients and will be able to be referenced in your scripting code (client side).
+Assets can be included in a folder called ``Assets/`` in the root server folder. All files in there will be sent to the clients and will be able to be referenced in your scripting code.
 
 .. attention:: Assets folders named ``NanosWorld/`` are forbidden as this name is used for Paths for built-in assets already included in the game.
 
@@ -96,4 +96,4 @@ And thats it! You can now just copy ``MyPack/`` folder inside your Server's ``As
 Going Further
 -------------
 
-If you want to know more, please move to ref:`Modding`.
+If you want to know more, please move to :ref:`Modding`.

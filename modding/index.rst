@@ -10,6 +10,7 @@ Modding
    :glob:
 
    MapsAndLevels.rst
+   StaticMeshes.rst
 
 Nanos World allows several ways of customizations: from programmable scripts to completely modding meshes and assets. Modding allows you to import and create custom meshes, maps, textures and so on to your server!
 
@@ -22,6 +23,7 @@ Exporting and Creating Assets
 -----------------------------
 
 *  :ref:`MapsAndLevels` Creating and Exporting Maps & Levels
+*  :ref:`StaticMeshes` Creating and Exporting Static Meshes (e.g. used for Props)
 
 
 Rules for exporting/creating assets in Unreal Engine 4 for nanos.world
