@@ -20,7 +20,7 @@ Usage
     local veh = Vehicle(
       Vector(0, 0, 0),
       Rotator(0, 0, 0),
-      "/Game/NanosWorld/Core/Vehicles/BP_Vehicle_SUV.BP_Vehicle_SUV_C"
+      "NanosWorld/Core/Vehicles/BP_Vehicle_SUV.BP_Vehicle_SUV_C"
     )
 
 

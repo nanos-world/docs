@@ -20,7 +20,7 @@ Usage
     local MyProp = Prop(
       Vector(-900, 185, 215), 
       Rotator(0, 90, 90), 
-      "/Game/NanosWorld/Art/Rural/Extra/SM_Crate_07"
+      "NanosWorld/Art/Rural/Extra/SM_Crate_07"
     )
 
 
