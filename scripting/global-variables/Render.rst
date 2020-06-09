@@ -93,6 +93,7 @@ This uses a Global Event, this will be changed soon.
     bCenterX = false -- If true, then interpret the screen space position X coordinate as the center of the rendered text.
     bCenterY = false -- If true, then interpret the screen space position Y coordinate as the center of the rendered text.
     bOutlined = false -- If true, then the text should be rendered with an outline.
+    bEnableShadow = true -- If true, then shadow will be enabled
     outlineColor = Color(1, 1, 1, 1) -- Color to render the outline for the text.
     
     Render.AddText(0, text, location, fontType, fontSize, textColor, kerning, bCenterX, bCenterY, bEnableShadow, shadowOffset, shadowColor, bOutlined, outlineColor)
