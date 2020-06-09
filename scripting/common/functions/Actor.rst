@@ -41,6 +41,11 @@ Functions (Inherited from Actor)
 
   * - |server-only-label|
     - 
+    - SetScale(:ref:`Vector` Scale)
+    - Sets the actor's scale
+
+  * - |server-only-label|
+    - 
     - SetCollision(:term:`number` CollisionType)
     - Sets the actor's collision (0 - Normal, 1 - Static Only, 2 - No Collision)
 
