@@ -73,7 +73,7 @@ Getting Started
 Special Thanks
 --------------
 
-DasPascal - Tester, Suggester, Bug Reporter and Documentation helper
-Falaxir - Tester and Suggester and Bug Reporter
-Nogitsu - Tester and Suggester and Bug Reporter
-Daranix - Tester and Bug Reporter
+*  DasPascal - Tester, Suggester, Bug Reporter and Documentation helper
+*  Falaxir - Tester, Suggester, Bug Reporter and Documentation helper
+*  Nogitsu - Tester, Suggester and Bug Reporter
+*  Daranix - Tester and Bug Reporter

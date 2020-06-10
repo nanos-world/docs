@@ -32,5 +32,6 @@ Under the hood, our Classes follow an `Inheritance Pattern <https://en.wikipedia
    Item.rst
    Player.rst
    Prop.rst
+   Trigger.rst
    Vehicle.rst
    Weapon.rst
