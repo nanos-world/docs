@@ -64,6 +64,10 @@ Functions
     - SetRadius(:term:`number` Radius)
     - Sets the radius of this trigger
 
+.. attention:: :ref:`Trigger` inherits from Actor, but some of the following functions doesn't have any effect. E.g. ``SetCollision``, ``SetGravityEnabled``, ``AddImpulse``, ``SetScale``.
+
+.. include:: ../common/functions/Actor.rst
+
 
 Events
 ------
