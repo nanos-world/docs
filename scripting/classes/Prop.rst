@@ -11,6 +11,9 @@ A Prop represents a Static Mesh which can be spawned in the world, can be grabbe
 .. attention:: This page is under construction.
 
 
+.. tip:: You can see all the default static meshes in `<NanosWorldFolder>\NanosWorld\Content\NanosWorld\`
+
+
 Usage
 -----
 
