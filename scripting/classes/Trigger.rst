@@ -42,6 +42,14 @@ Constructor Parameters
     - Radius
     - 100
 
+  * - :term:`boolean`
+    - Is Visible
+    - true
+
+  * - :ref:`Color`
+    - Color of the Trigger Sphere (if Visible)
+    - Color(1, 0, 0, 1)
+
 
 Functions
 ----------
@@ -56,13 +64,13 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetLocation(:ref:`Vector` NewLocation)
-    - Sets the trigger's location in the game world
+    - SetRadius(:term:`number` Radius)
+    - Sets the radius of this trigger
 
   * - |server-only-label|
     - 
-    - SetRadius(:term:`number` Radius)
-    - Sets the radius of this trigger
+    - SetVisibility(:term:`boolean` Visible)
+    - Sets if this Trigger is visible as a Sphere
 
 .. attention:: :ref:`Trigger` inherits from Actor, but some of the following functions doesn't have any effect. E.g. ``SetCollision``, ``SetGravityEnabled``, ``AddImpulse``, ``SetScale``.
 
