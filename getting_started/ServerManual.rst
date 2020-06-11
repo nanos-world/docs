@@ -74,6 +74,16 @@ The server Configuration file ``Config.toml`` is generated automatically when th
 		map =				"NanosWorld/Maps/Development/Network/NanosNetworkDebug"
 
 
+Command Line Parameters
+~~~~~~~~~~~~~~~~~~~~~~~
+
+It is possible to override the Server Configuration with Command Line Parameters. Note: this will not write to the Config file.
+
+Available parameters: ``--name``, ``--description``, ``--password``, ``--ip``, ``--map``, ``--port``, ``--http_port``, ``--announce`` and ``--max_players``.
+
+Usage: ``./NanosWorldServer --port 6666 --map "/MyPack/MyAwesomeMap" --announce 0 --max_players 1024``
+
+
 Map and Level
 -------------
 
