@@ -64,37 +64,37 @@ Usage
  .. code-tab:: lua Lua
     
     -- The following examples are using all Skeletal Meshes which we currently have for examples, including the officials Woman, Man and Mannequin:
-    local Woman = Character(Vector(100, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/Female/SK_Female")
-    local Man = Character(Vector(200, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/Male/SK_Male")
-    local Mannequin = Character(Vector(300, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/Mannequin/SK_Mannequin")
+    local Woman = Character(Vector(100, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Female")
+    local Man = Character(Vector(200, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Male")
+    local Mannequin = Character(Vector(300, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Mannequin")
 
-    local PostApocalyptic = Character(Vector(400, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/PostApocalyptic/SK_PostApocalyptic")
-    local ClassicMale = Character(Vector(500, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/ClassicMale/SK_ClassicMale")
+    local PostApocalyptic = Character(Vector(400, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_PostApocalyptic")
+    local ClassicMale = Character(Vector(500, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_ClassicMale")
 
     -- Adds Clothes to Man. Note: some Meshes only supports a specific Mesh (Men/Woman)
-    Man:AddSkeletalMeshAttached("shirt", "NanosWorld/Characters/Common/BodyParts/Clothes/Shirt/SK_Shirt") -- Men only
-    Man:AddSkeletalMeshAttached("shirt", "NanosWorld/Characters/Common/BodyParts/Clothes/Underwear/SK_Underwear") -- Men only
-    Man:AddSkeletalMeshAttached("pants", "NanosWorld/Characters/Common/BodyParts/Clothes/Pants/SK_Pants") -- Men only
-    Man:AddSkeletalMeshAttached("shoes", "NanosWorld/Characters/Common/BodyParts/Clothes/Shoes/SK_Shoes_01")
-    Man:AddSkeletalMeshAttached("shoes", "NanosWorld/Characters/Common/BodyParts/Clothes/Tie/SK_Tie")
+    Man:AddSkeletalMeshAttached("shirt", "NanosWorld::SK_Shirt") -- Men only
+    Man:AddSkeletalMeshAttached("shirt", "NanosWorld::SK_Underwear") -- Men only
+    Man:AddSkeletalMeshAttached("pants", "NanosWorld::SK_Pants") -- Men only
+    Man:AddSkeletalMeshAttached("shoes", "NanosWorld::SK_Shoes_01")
+    Man:AddSkeletalMeshAttached("shoes", "NanosWorld::SK_Tie")
 
     -- Adds Clothes to Woman
-    Woman:AddSkeletalMeshAttached("full", "NanosWorld/Characters/Common/BodyParts/Clothes/CasualSet/SK_CasualSet") -- Woman only
-    Woman:AddSkeletalMeshAttached("shoes", "NanosWorld/Characters/Common/BodyParts/Clothes/Shoes/SK_Sneakers")
+    Woman:AddSkeletalMeshAttached("full", "NanosWorld::SK_CasualSet") -- Woman only
+    Woman:AddSkeletalMeshAttached("shoes", "NanosWorld::SK_Sneakers")
 
     -- Adds Beard to Man
-    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Extra", "beard", Vector(), Rotator())
-    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Middle", "beard", Vector(), Rotator())
-    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Mustache_01", "beard", Vector(), Rotator())
-    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Mustache_02", "beard", Vector(), Rotator())
-    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Side", "beard", Vector(), Rotator())
+    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Extra", "beard", Vector(), Rotator())
+    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Middle", "beard", Vector(), Rotator())
+    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Mustache_01", "beard", Vector(), Rotator())
+    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Mustache_02", "beard", Vector(), Rotator())
+    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Side", "beard", Vector(), Rotator())
 
     -- Adds Hair to Man
-    Man:AddStaticMeshAttached("hair", "NanosWorld/Characters/Common/BodyParts/Hair/Male/SM_Hair_Long", "hair_male", Vector(), Rotator())
-    Man:AddStaticMeshAttached("hair", "NanosWorld/Characters/Common/BodyParts/Hair/Male/SM_Hair_Short", "hair_male", Vector(), Rotator())
+    Man:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Long", "hair_male", Vector(), Rotator())
+    Man:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Short", "hair_male", Vector(), Rotator())
 
     -- Adds Hair to Woman
-    Woman:AddStaticMeshAttached("hair", "NanosWorld/Characters/Common/BodyParts/Hair/Kwang/SM_Hair_Kwang", "hair_female", Vector(), Rotator())
+    Woman:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Kwang", "hair_female", Vector(), Rotator())
 
 
 Properties

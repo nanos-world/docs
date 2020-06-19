@@ -26,10 +26,10 @@ The server is as simple as one executable file ``NanosWorldServer.exe``. After d
 .. image:: https://i.imgur.com/qFjyYlf.png
 
 
-Configuration File
-------------------
+Server Configuration File
+-------------------------
 
-.. tip:: nanos.world Server Config file uses **TOML** (Tom's Obvious, Minimal Language), please refer to https://github.com/toml-lang/toml for more information and syntax.
+.. tip:: nanos.world Config files use **TOML** (Tom's Obvious, Minimal Language), please refer to https://github.com/toml-lang/toml for more information and syntax.
 
 The server Configuration file ``Config.toml`` is generated automatically when the server is launched for the first time. This file will always be overriden with the proper pattern after the server is loaded.
 
@@ -64,12 +64,11 @@ The server Configuration file ``Config.toml`` is generated automatically when th
 
 	# nanos.world Configurations
 	[world]
-		# Assets List (not used yet)
-		assets = [
+		# Package List (leave it blank to load all packages, this is usually useful when you have
+		# tons of packages downloaded and only want to load one or some)
+		packages = [
 
 		]
-		# nanos.world Server Authentication Token (not used yet)
-		token =				""
 		# Default startup map
 		map =				"NanosWorld/Maps/Development/Network/NanosNetworkDebug"
 
@@ -79,15 +78,21 @@ Command Line Parameters
 
 It is possible to override the Server Configuration with Command Line Parameters. Note: this will not write to the Config file.
 
-Available parameters: ``--name``, ``--description``, ``--password``, ``--ip``, ``--map``, ``--port``, ``--http_port``, ``--announce`` and ``--max_players``.
+Available parameters: ``--name``, ``--description``, ``--password``, ``--ip``, ``--map``, ``--port``, ``--http_port``, ``--announce`` , ``--packages`` and ``--max_players``.
 
-Usage: ``./NanosWorldServer --port 6666 --map "/MyPack/MyAwesomeMap" --announce 0 --max_players 1024``
+Usage:
+
+.. code:: 
+
+  ./NanosWorldServer --port 6666 --map "NanosWorld::BlankMap" --announce 0 --max_players 1024 --packages "MyAwesomePackage, AnotherGoodPackage"
 
 
 Map and Level
 -------------
 
 The Map (or Level) is defined in the Server's config file, this level will be loaded when the player joins the server and the Path is supposed for be or a built-in asset or an asset which is located at ``Assets/`` folder.
+
+NanosWorld counts on (for now) 2 built-in maps: ``NanosWorld::BlankMap`` and ``NanosWorld::TestingMap`` which can be used in your server without needing to download any Asset Pack.
 
 .. image:: https://i.imgur.com/T1RERRa.jpg
 
@@ -129,7 +134,7 @@ All (not pre-defined) commands will be sent into an event to the scripting/serve
 Packages & Scripting
 --------------------
 
-nanos.world provides a way of customizating and creating custom gamemodes for your server with scripting language (Lua). You can create and add several Lua scripts files and run them on the server and/or on the client side. You can also separate your gamemodes and functionalities in different Packages (or you can call it Modules).
+nanos.world provides a way of customizating and creating custom gamemodes for your server with scripting language (Lua). You can create and add several Lua scripts files and run them on the server and/or on the client side. You can also separate your gamemodes and functionalities in different Packages (or you can call it Modules or GameModes).
 
 .. note:: Each Package will have its own memory space and are not interconnected with other Packages.
 
@@ -143,7 +148,9 @@ Packages Structure
 
 All Packages must go under ``Packages`` folder, each Package is a folder under that. Each Package must contain the following folder: ``Server``, ``Client`` and ``Shared``. Client and Shared will be sent to the Clients when they connect. Server and Shared will run only on Server and won't be sent to Clients.
 
-Each Package must have an ``Index.lua`` file witch will be triggered only, this file must include other files and do other operations as you wish.
+Each Package must have an ``Index.lua`` file which will be triggered only, this file must include other files and do other operations as you wish.
+
+Each Package must have an ``Package.toml`` file which is the Configuration File for this Package.
 
 .. note:: Shared packages are always loaded before.
 
@@ -159,17 +166,41 @@ Each Package must have an ``Index.lua`` file witch will be triggered only, this 
    |   |   |   *.lua
    |   |   Shared/
    |   |   |   *.lua
+   |   |   Package.toml
    |   My_Package_02/
    |   |   ...
+   |   |   Package.toml
    Assets/
+
+
+Package Configuration File
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. tip:: nanos.world Config files use **TOML** (Tom's Obvious, Minimal Language), please refer to https://github.com/toml-lang/toml for more information and syntax.
+
+The Package Configuration file ``Package.toml`` is generated automatically when a package is initialized for the first time. This file will always be overriden with the proper pattern after it's loaded.
+
+.. code-block:: toml
+
+	# Package Configurations
+	[package]
+		# Package Name
+		name = "My Awesome Package"
+		# Package Type: 'executable' (normal package) | 'library' (doesn't run - useful for code library)
+		type = "executable"
+		# Asset Packs Requirements (Assets folder names to be loaded)
+		assets_requirements = [
+		       "MyPack_01",
+		       "GodWeaponPack"
+		]
+
+.. tip:: Package Type marked as ``library`` won't be loaded as a Package, this is useful if you are creating modular scripting which can be Required/Included in other Packages but isn't supposed to have an own Package loaded for it.
 
 
 Assets
 ------
 
 Assets can be included in a folder called ``Assets/`` in the root server folder. All files in there will be sent to the clients and will be able to be referenced in your scripting code (client side).
-
-.. attention:: Assets folders named ``NanosWorld/`` are forbidden as this name is used for Paths for built-in assets already included in the game.
 
 .. tip:: Please refer to :ref:`Assets` for more information and which kind of asset is allowed.
 
@@ -183,6 +214,8 @@ Assets can be included in a folder called ``Assets/`` in the root server folder.
    |   |   My_Asset_02.uasset
    |   |   My_Big_Map.umap
    |   |   ...
+   |   Assets.toml
    |   Awesome_Weapons/
    |   |   Big_Fucking_Gun.uasset
    |   |   ...
+   |   Assets.toml

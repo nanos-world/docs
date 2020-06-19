@@ -17,4 +17,4 @@ Rules for creating a Map/Level for nanos.world
 
 .. attention:: Most of :ref:`World` functions rely on our own assets and code, so it is not (yet) possible to change the lighting or weather in your custom Map with :ref:`World` scripting functions.
 
-After exporting your project (refer to :ref:`Assets`), you can just reference your map in your server config like ``MyPack/MyLevel``.
+After exporting your project (refer to :ref:`Assets`), you can just reference your map in your server config like ``MyPack::MyLevel``.

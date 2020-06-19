@@ -12,22 +12,22 @@ Structure
 
 Assets can be included in a folder called ``Assets/`` in the root server folder. All files in there will be sent to the clients and will be able to be referenced in your scripting code.
 
-.. attention:: Assets folders named ``NanosWorld/`` are forbidden as this name is used for Paths for built-in assets already included in the game.
-
 .. code-block:: javascript
 
-   NanosWorldServer.exe
-   Packages/
-   Assets/
-   |   My_Asset_Pack_01/
-   |   |   My_Asset_01.uasset
-   |   |   My_Asset_02.uasset
-   |   |   My_Big_Map.umap
-   |   |   ...
-   |   Awesome_Weapons/
-   |   |   Big_Fucking_Gun.uasset
-   |   |   AwesomeWeaponBundle.pak
-   |   |   ...
+	NanosWorldServer.exe
+	Packages/
+	Assets/
+	|   My_Asset_Pack_01/
+	|   |   My_Asset_01.uasset
+	|   |   My_Asset_02.uasset
+	|   |   My_Big_Map.umap
+	|   |   ...
+	|   |   Assets.toml
+	|   Awesome_Weapons/
+	|   |   Big_Fucking_Gun.uasset
+	|   |   AwesomeWeaponBundle.pak
+	|   |   ...
+	|   |   Assets.toml
 
 
 Creating your own Assets
@@ -84,13 +84,67 @@ After finishing, you will get a folder like that:
 Importing and Using Assets in your Server
 -----------------------------------------
 
-After packaging your project, we will manually copy the files we want from it, they will be located at ``NanosWorldAssets/Content/`` (or whatever is the name of your project). As we created a folder called ``MyPack``, our exported assets will be at ``NanosWorldAssets/Content/MyPack/``: 
+After packaging your project, we will manually copy the exported folder from it, the one we are looking for will be located at ``NanosWorldAssets/Content/`` (or whatever is the name of your project). As we created a folder called ``MyPack``, our exported assets will be at ``NanosWorldAssets/Content/MyPack/``:
 
 .. image:: https://i.imgur.com/BIzXctE.png
 
-And thats it! You can now just copy ``MyPack/`` folder inside your Server's ``Assets/`` folder and reference your Cube like ``Prop(Vector(0, 0, 0), Rotator(0, 0, 0), "MyPack/SM_Cube")`` when loading a Prop for example.
+And thats it! You must now just copy ``MyPack/`` folder inside your Server's ``Assets/`` folder and reference your Cube like ``Prop(Vector(0, 0, 0), Rotator(0, 0, 0), "MyPack/SM_Cube")`` when loading a Prop for example.
 
 .. image:: https://i.imgur.com/H0B7WWp.png
+
+.. note:: Please do NOT rename or change any file or folder in your exported folder after you Packaged it, it will break all internal references used by your assets.
+
+
+Assets Configuration File
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. tip:: nanos.world Config files use **TOML** (Tom's Obvious, Minimal Language), please refer to https://github.com/toml-lang/toml for more information and syntax.
+
+The Assets Configuration file ``Assets.toml`` is generated automatically when an Asset Pack is loaded for the first time. This file will always be overriden with the proper pattern after it's loaded.
+
+It is extremely important to setup your ``Assets.toml`` file, in there you will need to list every asset contained in your Pack, as well the type of them, besides that, this is where Scripters can look into to find the assets they want to use.
+
+.. code-block:: toml
+
+	# Asset Pack Configurations
+	[asset_pack]
+		# Asset Pack Name
+		name =				"My Pack"
+		# Author
+		author =			"Incridible Scripter"
+		# Version
+		version =			"1.1.0"
+
+	# Assets Files
+	[assets]
+		# Maps
+		[assets.maps]
+			AwesomeAndBigMap = "Maps/BigMap_01"
+
+		# Static Meshes
+		[assets.static_meshes]
+			# SM_Flower_01 = "MyFolder/SM_Awesome_Flower_01"
+			# ...
+
+		# Skeletal Meshes
+		[assets.skeletal_meshes]
+			# SK_Better_Man = "Characters/SK_BetterMan_3"
+			# ...
+
+		# Other Assets (for not yet categorized ones)
+		[assets.others]
+			# A_Audio_Rifle_Fire = "Audios/A_Audio_Rifle_Fire_03"
+			# ...
+
+As seen above, Assets can be set in a ``key = value`` pattern, the **key** being how Scripters reference it in their code, and the **value** being the path where the game will look for it. Note: all paths are relative to the Asset Pack folder.
+
+
+Referencing Assets in Code
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The correct way of referencing assets in code is using the pattern: ``ASSET_PACK_NAME::ASSET_FILE_NAME``. So for example, if I want to reference to AwesomeAndBigMap as the above example, I would use: ``MyPack::AwesomeAndBigMap``
+
+.. note:: The key ``ASSET_PACK_NAME`` is the Asset Pack's folder name.
 
 
 Going Further

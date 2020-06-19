@@ -25,7 +25,7 @@ Usage
     local NewWeapon = Weapon(
         Vector(-900, 185, 215), -- Spawn Location
         Rotator(0, 90, 90),     -- Spawn Rotation
-        "NanosWorld/Weapons/Rifles/AK47/SK_AK47", -- Model
+        "NanosWorld::SK_AK47", -- Model
         0,                    -- Collision (Normal)
         true,                 -- Gravity Enabled
         30,                   -- Default Ammo in the Clip
@@ -48,18 +48,18 @@ Usage
         0.15,                 -- Cadence (1 shot at each 0.15seconds)
         true,                 -- Can Hold Use (keep pressing to keep firing, common to automatic weapons)
         false,                -- Need to release to Fire (common to Bows)
-        "NanosWorld/Weapons/Common/Effects/ParticlesSystems/Weapons/P_Bullet_Trail_System", -- Bullet Trail Particle
-        "NanosWorld/Weapons/Rifles/AK47/PS_AK47_Barrel_Smoke",                              -- Barrel Particle
-        "NanosWorld/Weapons/Rifles/AK47/PS_AK47_Shells",                                    -- Shells Particle
-        "NanosWorld/Weapons/Common/Audios/A_Rifle_Dry_Cue",                                 -- Weapon's Dry Sound
-        "NanosWorld/Weapons/Common/Audios/A_Rifle_Load_Cue",                                -- Weapon's Load Sound
-        "NanosWorld/Weapons/Common/Audios/A_Rifle_Unload_Cue",                              -- Weapon's Unload Sound
-        "NanosWorld/Weapons/Common/Audios/Rattle/A_AimZoom_Cue",                            -- Weapon's Zooming Sound
-        "NanosWorld/Weapons/Common/Audios/Rattle/A_Rattle_Cue",                             -- Weapon's Aiming Sound
-        "NanosWorld/Weapons/Common/Audios/A_AK47_Shot_Cue",                                 -- Weapon's Shot Sound
-        "NanosWorld/Characters/Common/Animations/Weapons/AM_Mannequin_Reload_Rifle",        -- Character's Reloading Animation
-        "NanosWorld/Characters/Common/Animations/Weapons/AM_Mannequin_Sight_Fire",          -- Character's Aiming Animation
-        "NanosWorld/Weapons/Rifles/AK47/SM_AK47_Mag_Empty"                                  -- Magazine Mesh
+        "NanosWorld::P_Bullet_Trail_System",                       -- Bullet Trail Particle
+        "NanosWorld::P_Weapon_BarrelSmoke",                        -- Barrel Particle
+        "NanosWorld::P_Weapon_Shells_762x39",                      -- Shells Particle
+        "NanosWorld::A_Rifle_Dry",                                 -- Weapon's Dry Sound
+        "NanosWorld::A_Rifle_Load",                                -- Weapon's Load Sound
+        "NanosWorld::A_Rifle_Unload",                              -- Weapon's Unload Sound
+        "NanosWorld::A_AimZoom",                                   -- Weapon's Zooming Sound
+        "NanosWorld::A_Rattle",                                    -- Weapon's Aiming Sound
+        "NanosWorld::A_AK47_Shot",                                 -- Weapon's Shot Sound
+        "NanosWorld::AM_Mannequin_Reload_Rifle",                   -- Character's Reloading Animation
+        "NanosWorld::AM_Mannequin_Sight_Fire",                     -- Character's Aiming Animation
+        "NanosWorld::SM_AK47_Mag_Empty"                            -- Magazine Mesh
     )
 
 
