@@ -32,7 +32,9 @@ Each Package must have an ``Index.lua``, this is the only file which will be tri
    |   |   |   *.lua
    |   |   Shared/
    |   |   |   *.lua
+   |   |   Package.toml
    |   My_Package_02/
+   |   |   Package.toml
    |   |   ...
    Assets/
 
@@ -53,6 +55,7 @@ First of all, create a new folder inside ``Packages/`` called ``MyAwesomePackage
    |   MyAwesomePackage/
    |   |   Server/
    |   |   |   Index.lua
+   |   |   Package.toml
    Assets/
 
 Open your ``Index.lua`` file in any editor you want (if you don't have one, we'd recommend you try `Visual Studio Code <https://code.visualstudio.com/>`_).

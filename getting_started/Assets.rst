@@ -136,7 +136,7 @@ It is extremely important to setup your ``Assets.toml`` file, in there you will 
 			# A_Audio_Rifle_Fire = "Audios/A_Audio_Rifle_Fire_03"
 			# ...
 
-As seen above, Assets can be set in a ``key = value`` pattern, the **key** being how Scripters reference it in their code, and the **value** being the path where the game will look for it. Note: all paths are relative to the Asset Pack folder.
+As seen above, Assets can be set in a ``key = "value"`` pattern, the **key** being how Scripters reference it in their code, and the **value** being the path where the game will look for it. Note: all paths are relative to the Asset Pack folder.
 
 
 Referencing Assets in Code
@@ -151,3 +151,111 @@ Going Further
 -------------
 
 If you want to know more, please move to :ref:`Modding`.
+
+
+NanosWorld's Default Asset Pack
+-------------------------------
+
+nanos world provides a default Asset Pack already included in the base game, feel free to use the assets the way you want:
+
+.. tip:: The following list is constantly updated and it's presentation will be improved soon™.
+
+
+.. code-block:: toml
+
+    # Assets Files
+    [assets]
+       # Maps
+       [assets.maps]
+          BlankMap = "Maps/Development/Network/NanosNetworkDebug"
+          TestingMap = "Maps/Testing/NanosTestingMap"
+
+       # Static Meshes
+       [assets.static_meshes]
+          SM_Beard_Extra = "Characters/Common/BodyParts/Beard/SM_Beard_Extra"
+          SM_Beard_Middle = "Characters/Common/BodyParts/Beard/SM_Beard_Middle"
+          SM_Beard_Mustache_01 = "Characters/Common/BodyParts/Beard/SM_Beard_Mustache_01"
+          SM_Beard_Mustache_02 = "Characters/Common/BodyParts/Beard/SM_Beard_Mustache_02"
+          SM_Beard_Side = "Characters/Common/BodyParts/Beard/SM_Beard_Side"
+          SM_Hair_Long = "Characters/Common/BodyParts/Hair/Male/SM_Hair_Long"
+          SM_Hair_Short = "Characters/Common/BodyParts/Hair/Male/SM_Hair_Short"
+          SM_Hair_Kwang = "Characters/Common/BodyParts/Hair/Kwang/SM_Hair_Kwang"
+
+          SM_Cube_01 = "Maps/Development/Network/SM_Cube_01"
+          SM_Cube_02 = "Maps/Development/Network/SM_Cube_02"
+          SM_Cube_03 = "Maps/Development/Network/SM_Cube_03"
+
+          SM_Error = "Art/Utils/SM_Error"
+
+          SM_AK47_Mag_Empty = "Weapons/Rifles/AK47/SM_AK47_Mag_Empty"
+          SM_AK74U_Mag_Empty = "Weapons/Rifles/AK74U/SM_AK74U_Mag_Empty"
+          SM_GE36_Mag_Empty = "Weapons/Rifles/GE36/SM_GE36_Mag_Empty"
+          SM_Glock_Mag_Empty = "Weapons/Pistols/Glock/SM_Glock_Mag_Empty"
+          SM_DesertEagle_Mag_Empty = "Weapons/Pistols/DesertEagle/SM_DesertEagle_Mag_Empty"
+          SM_AP5_Mag_Empty = "Weapons/Rifles/AP5/SM_AP5_Mag_Empty"
+          SM_AR4_Mag_Empty = "Weapons/Rifles/AR4/SM_AR4_Mag_Empty"
+
+          SM_T4_Sight = "Weapons/Common/Accessories/SM_T4_Sight"
+
+       # Skeletal Meshes
+       [assets.skeletal_meshes]
+          SK_Female = "Characters/Female/SK_Female"
+          SK_Male = "Characters/Male/SK_Male"
+          SK_PostApocalyptic = "Characters/PostApocalyptic/SK_PostApocalyptic"
+          SK_ClassicMale = "Characters/ClassicMale/SK_ClassicMale"
+
+          SK_Shirt = "Characters/Common/BodyParts/Clothes/Shirt/SK_Shirt"
+          SK_Underwear = "Characters/Common/BodyParts/Clothes/Underwear/SK_Underwear"
+          SK_Pants = "Characters/Common/BodyParts/Clothes/Pants/SK_Pants"
+          SK_Shoes_01 = "Characters/Common/BodyParts/Clothes/Shoes/SK_Shoes_01"
+          SK_Tie = "Characters/Common/BodyParts/Clothes/Tie/SK_Tie"
+          SK_CasualSet = "Characters/Common/BodyParts/Clothes/CasualSet/SK_CasualSet"
+          SK_Sneakers = "Characters/Common/BodyParts/Clothes/Shoes/SK_Sneakers"
+
+          SK_Error = "Art/Utils/SK_Error"
+
+          SK_AK47 = "Weapons/Rifles/AK47/SK_AK47"
+          SK_AK74U = "Weapons/Rifles/AK74U/SK_AK74U"
+          SK_GE36 = "Weapons/Rifles/GE36/SK_GE36"
+          SK_Glock = "Weapons/Pistols/Glock/SK_Glock"
+          SK_DesertEagle = "Weapons/Pistols/DesertEagle/SK_DesertEagle"
+          SK_AR4 = "Weapons/Rifles/AR4/SK_AR4"
+          SK_Moss500 = "Weapons/Shotguns/Moss500/SK_Moss500"
+          SK_AP5 = "Weapons/Rifles/AP5/SK_AP5"
+          SK_SMG11 = "Weapons/SMGs/SMG11/SK_SMG11"
+
+       # Other Assets (for not yet categorized ones)
+       [assets.others]
+          P_Bullet_Trail = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Bullet_Trail_System"
+          P_Weapon_BarrelSmoke = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_BarrelSmoke_System"
+          P_Weapon_Shells_12Gauge = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_12Gauge_System"
+          P_Weapon_Shells_762x39 = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_762x39_System"
+          P_Weapon_Shells_9x18 = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_9x18_System"
+          P_Weapon_Shells_556x45 = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_556x45_System"
+          P_Weapon_Shells_545x39 = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_545x39_System"
+          P_Weapon_Shells_45ap = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_45ap_System"
+          P_Weapon_Shells_9mm = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_9mm_System"
+          A_SMG_Dry = "Weapons/Common/Audios/A_SMG_Dry_Cue"
+          A_Rifle_Dry = "Weapons/Common/Audios/A_Rifle_Dry_Cue"
+          A_Pistol_Dry = "Weapons/Common/Audios/A_Pistol_Dry_Cue"
+          A_Shotgun_Dry = "Weapons/Common/Audios/A_Shotgun_Dry_Cue"
+          A_SMG_Load = "Weapons/Common/Audios/A_SMG_Load_Cue"
+          A_Rifle_Load = "Weapons/Common/Audios/A_Rifle_Load_Cue"
+          A_Pistol_Load = "Weapons/Common/Audios/A_Pistol_Load_Cue"
+          A_Shotgun_Load_Bullet = "Weapons/Common/Audios/A_Shotgun_Load_Bullet_Cue"
+          A_SMG_Unload = "Weapons/Common/Audios/A_SMG_Unload_Cue"
+          A_Rifle_Unload = "Weapons/Common/Audios/A_Rifle_Unload_Cue"
+          A_Pistol_Unload = "Weapons/Common/Audios/A_Pistol_Unload_Cue"
+          A_AimZoom = "Weapons/Common/Audios/Rattle/A_AimZoom_Cue"
+          A_Rattle = "Weapons/Common/Audios/Rattle/A_Rattle_Cue"
+          A_AK47_Shot = "Weapons/Common/Audios/A_AK47_Shot_Cue"
+          A_Glock_Shot = "Weapons/Common/Audios/A_Glock_Shot_Cue"
+          A_Rifle_Shot = "Weapons/Common/Audios/A_Rifle_Shot_Cue"
+          A_DesertEagle_Shot = "Weapons/Common/Audios/A_DesertEagle_Shot_Cue"
+          A_Shotgun_Shot = "Weapons/Common/Audios/A_Shotgun_Shot_Cue"
+          A_LightMachine_Shot = "Weapons/Common/Audios/A_LightMachine_Shot_Cue"
+          A_SMG_Shot = "Weapons/Common/Audios/A_SMG_Shot_Cue"
+          AM_Mannequin_Reload_Rifle = "Characters/Common/Animations/Weapons/AM_Mannequin_Reload_Rifle"
+          AM_Mannequin_Reload_Shotgun = "Characters/Common/Animations/Weapons/AM_Mannequin_Reload_Shotgun"
+          AM_Mannequin_Sight_Fire = "Characters/Common/Animations/Weapons/AM_Mannequin_Sight_Fire"
+          AM_Mannequin_Sight_Fire_Shotgun = "Characters/Common/Animations/Weapons/AM_Mannequin_Sight_Fire_Shotgun"
