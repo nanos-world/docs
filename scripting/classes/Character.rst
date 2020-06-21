@@ -265,6 +265,16 @@ Functions
     - RemoveSkeletalMeshAttached(:term:`number` ID)
     - Removes, if existing, a SkeletalMesh from this Character given it's custom ID
 
+  * - |server-only-label|
+    - 
+    - MoveTo(:ref:`Vector` Location, :term:`number` AcceptanceRadius)
+    - AI: Makes this Character to walk to the Location
+
+  * - |server-only-label|
+    - 
+    - LookAt(:ref:`Vector` Location)
+    - AI: Tries to make this Character to look at Location
+
 .. include:: ../common/functions/Actor.rst
 
 
@@ -383,6 +393,11 @@ Events
     - GaitModeChanged
     - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
     - 0 - None, 1 - Walking, 2 - Sprinting
+
+  * -
+    - MoveCompleted
+    - :ref:`Character` self, :term:`boolean` Success
+    - Called when AI reaches it's destination, or when it fails
 
 .. include:: ../common/events/Actor.rst
 
