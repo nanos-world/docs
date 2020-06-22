@@ -275,6 +275,11 @@ Functions
     - LookAt(:ref:`Vector` Location)
     - AI: Tries to make this Character to look at Location
 
+  * - |server-only-label|
+    - 
+    - SetWeaponAimMode(:term:`number` State)
+    - 0 - None, 1 - ADS (FPS), 2 - ZoomedZoom (TPS), 3 - Zoomed, 4 - ZoomedFar
+
 .. include:: ../common/functions/Actor.rst
 
 
