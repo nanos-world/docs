@@ -111,7 +111,7 @@ It is extremely important to setup your ``Assets.toml`` file, in there you will 
 		# Asset Pack Name
 		name =				"My Pack"
 		# Author
-		author =			"Incridible Scripter"
+		author =			"Incredible Scripter"
 		# Version
 		version =			"1.1.0"
 
