@@ -201,6 +201,7 @@ nanos world provides a default Asset Pack already included in the base game, fee
        [assets.skeletal_meshes]
           SK_Female = "Characters/Female/SK_Female"
           SK_Male = "Characters/Male/SK_Male"
+          SK_Mannequin = "Characters/Mannequin/SK_Mannequin"
           SK_PostApocalyptic = "Characters/PostApocalyptic/SK_PostApocalyptic"
           SK_ClassicMale = "Characters/ClassicMale/SK_ClassicMale"
 
@@ -257,6 +258,8 @@ nanos world provides a default Asset Pack already included in the base game, fee
           A_Shotgun_Shot = "Weapons/Common/Audios/A_Shotgun_Shot_Cue"
           A_LightMachine_Shot = "Weapons/Common/Audios/A_LightMachine_Shot_Cue"
           A_SMG_Shot = "Weapons/Common/Audios/A_SMG_Shot_Cue"
+          A_Male_Death_Cue = "Characters/Common/Audios/Death/A_Male_Death_Cue"
+          A_Character_Damage_Taken = "Characters/Common/Audios/Pain/A_Character_Damage_Taken"
           AM_Mannequin_Reload_Rifle = "Characters/Common/Animations/Weapons/AM_Mannequin_Reload_Rifle"
           AM_Mannequin_Reload_Shotgun = "Characters/Common/Animations/Weapons/AM_Mannequin_Reload_Shotgun"
           AM_Mannequin_Sight_Fire = "Characters/Common/Animations/Weapons/AM_Mannequin_Sight_Fire"
