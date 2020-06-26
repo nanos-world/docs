@@ -52,7 +52,9 @@ Exporting Assets from Unreal Engine
 
 .. note:: For the sake of this tutorial, we are not covering further details on Unreal's peculiarities. The following guide is using a default's blueprint's blank Unreal Project, without any Starting Content.
 
-.. attention:: Do not use Engine's Content in your assets (e.g. Engine's Materials or Assets). If you wants to use them, always copy them to the Content folder.
+.. attention:: All your Asset Pack content must be in a folder with the name of your Asset Pack inside the ``Content/`` Folder.
+
+.. attention:: Do not use Engine's Content in your assets (e.g. Engine's Materials or Assets). If you wants to use them, always copy them to your Content/Your_Pack folder.
 
 For this tutorial, we are going to use a simple Cube (Static Mesh) and a Material (applied to the cube) for our Assets. We've also created and placed them in a folder called MyPack which will help us afterwards.
 
@@ -62,11 +64,11 @@ For this tutorial, we are going to use a simple Cube (Static Mesh) and a Materia
 
 For exporting them in a recognizable way by nanos.world, you need to "Package the Project" (i.e. cooking and packaging it).
 
-Before moving on, we just need to change two settings, for that open the Packaging Settings:
+Before moving on, we just need to change three settings, for that open the Packaging Settings:
 
 .. image:: https://i.imgur.com/CKWmKwl.png
 
-And deselect ``Use Pak File`` and ``Share Material Shader Code`` settings:
+And deselect ``Use Pak File``, ``Share Material Shader Code`` and ``Allow Static Lighting`` options:
 
 .. image:: https://i.imgur.com/0dqzFh9.png
 
@@ -85,6 +87,8 @@ Importing and Using Assets in your Server
 -----------------------------------------
 
 After packaging your project, we will manually copy the exported folder from it, the one we are looking for will be located at ``NanosWorldAssets/Content/`` (or whatever is the name of your project). As we created a folder called ``MyPack``, our exported assets will be at ``NanosWorldAssets/Content/MyPack/``:
+
+.. attention:: It is important to keep your main Asset Folder (in this case ``MyPack``) with the same name when copying to, otherwise internal references will not work.
 
 .. image:: https://i.imgur.com/BIzXctE.png
 
