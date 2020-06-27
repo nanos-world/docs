@@ -30,6 +30,7 @@ Under the hood, our Classes follow an `Inheritance Pattern <https://en.wikipedia
    Character.rst
    Grenade.rst
    Item.rst
+   Light.rst
    Player.rst
    Prop.rst
    Trigger.rst
