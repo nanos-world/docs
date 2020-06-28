@@ -185,16 +185,20 @@ The Package Configuration file ``Package.toml`` is generated automatically when 
 	# Package Configurations
 	[package]
 		# Package Name
-		name = "My Awesome Package"
-		# Package Type: 'executable' (normal package) | 'library' (doesn't run - useful for code library)
-		type = "executable"
+		name =			"My Awesome Package"
+		# Package Type: "executable" (normal package) | "library" (doesn't run - useful for code library)
+		type =			"executable"
+		# Whether to force the Custom Map Script to do NOT load
+		force_no_map_script =	false
 		# Asset Packs Requirements (Assets folder names to be loaded)
 		assets_requirements = [
-		       "MyPack_01",
-		       "GodWeaponPack"
+			"MyPack_01",
+			"GodWeaponPack"
 		]
 
 .. tip:: Package Type marked as ``library`` won't be loaded as a Package, this is useful if you are creating modular scripting which can be Required/Included in other Packages but isn't supposed to have an own Package loaded for it.
+
+.. tip:: If any loaded Package has ``force_no_map_script`` enabled, it will force the server to do not run any (if existing) **Map Custom Script**. Usually these scripts have map specific spawn props/weapons points and pertinent stuff. This options is useful when your Package is going to handle all spawning stuff and doesn't want any external thing spawning or happening on the map/game.
 
 
 Assets

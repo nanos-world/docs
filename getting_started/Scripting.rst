@@ -20,6 +20,8 @@ Each Package must have an ``Index.lua``, this is the only file which will be tri
 
 .. note:: Shared packages are always loaded before Client and Server package.
 
+.. tip:: Maps can also have a **Custom Script** (server-only) attached to it. These are files named ``[MAP_NAME].lua`` in the same folder as the map in the ``Assets/`` folder. If no one of your Packages disallow it, this script file will be loaded as well. Usually these scripts should have map specific spawn props/weapons points and pertinent stuff. Please refer to :ref:`MapsAndLevels` for more information.
+
 .. code-block:: javascript
 
    NanosWorldServer.exe
