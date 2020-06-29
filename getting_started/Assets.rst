@@ -176,6 +176,27 @@ nanos world provides a default Asset Pack already included in the base game, fee
 
 		# Static Meshes
 		[assets.static_meshes]
+		SM_PlasticBarrel_01 = "Art/City/Construction_Props/Mesh/SM_PlasticBarrel_01"
+		SM_RockingChair = "Art/City/House_Props/Meshes/SM_RockingChair"
+		SM_RoundStand = "Art/City/House_Props/Meshes/SM_RoundStand"
+		SM_Bottle_01 = "Art/Rural/InteriorDecoration/SM_Bottle_01"
+		SM_Bottle_02 = "Art/Rural/InteriorDecoration/SM_Bottle_02"
+		SM_Bottle = "Art/Rural/Extra/SM_Bottle"
+		SM_Bunny = "Art/City/House_Props/Meshes/SM_Bunny"
+		SM_CupC = "Art/City/House_Props/Meshes/KitchenWare/SM_CupC"
+		SM_OilLamp = "Art/Rural/InteriorDecoration/SM_OilLamp"
+		SM_PlierSet_01 = "Art/City/Construction_Props/Mesh/SM_PlierSet_01"
+		SM_PliersSet_07 = "Art/City/Construction_Props/Mesh/SM_PliersSet_07"
+		SM_Saw_01 = "Art/City/Construction_Props/Mesh/SM_Saw_01"
+		SM_BarrelTub = "Art/Rural/Extra/SM_BarrelTub"
+		SM_CoffeeTable = "Art/City/House_Props/Meshes/SM_CoffeeTable"
+		SM_Crate_Base_01 = "Art/City/Construction_Props/Mesh/SM_Crate_Base_01"
+		SM_Crate_Lid_01 = "Art/City/Construction_Props/Mesh/SM_Crate_Lid_01"
+		SM_Toolbox_01 = "Art/City/Construction_Props/Mesh/SM_Toolbox_01"
+		SM_Toolbox_06 = "Art/City/Construction_Props/Mesh/SM_Toolbox_06"
+		SM_VaseA = "Art/City/House_Props/Meshes/Vases/SM_VaseA"
+		SM_CupD = "Art/City/House_Props/Meshes/KitchenWare/SM_CupD"
+
 		SM_Beard_Extra = "Characters/Common/BodyParts/Beard/SM_Beard_Extra"
 		SM_Beard_Middle = "Characters/Common/BodyParts/Beard/SM_Beard_Middle"
 		SM_Beard_Mustache_01 = "Characters/Common/BodyParts/Beard/SM_Beard_Mustache_01"
