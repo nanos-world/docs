@@ -6,6 +6,8 @@
 Character
 *********
 
+.. image:: https://i.imgur.com/yPtYbR6.jpg
+
 Characters represents Actors which can be possessed, can move and interact with world. They are the default Skeletal Mesh Character built for nanos world.
 
 .. attention:: This page is under construction.

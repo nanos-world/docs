@@ -196,6 +196,7 @@ nanos world provides a default Asset Pack already included in the base game, fee
 		SM_Toolbox_06 = "Art/City/Construction_Props/Mesh/SM_Toolbox_06"
 		SM_VaseA = "Art/City/House_Props/Meshes/Vases/SM_VaseA"
 		SM_CupD = "Art/City/House_Props/Meshes/KitchenWare/SM_CupD"
+		SM_Crate_01 = "Art/City/Construction_Props/Mesh/SM_Crate_01"
 
 		SM_Beard_Extra = "Characters/Common/BodyParts/Beard/SM_Beard_Extra"
 		SM_Beard_Middle = "Characters/Common/BodyParts/Beard/SM_Beard_Middle"

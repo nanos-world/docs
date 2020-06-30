@@ -6,7 +6,9 @@
 Vehicle
 *******
 
-Char Vehicle
+.. image:: https://i.imgur.com/CHBy45q.png
+
+Chad Vehicle
 
 .. attention:: This page is under construction.
 

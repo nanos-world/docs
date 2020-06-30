@@ -5,9 +5,6 @@ Spawn player at random locations
 ********************************
 
 
-.. tip:: Spawn player at specific location see: :ref:`TutorialSpawnPlayer`
-
-
 About
 -----
 
@@ -15,6 +12,8 @@ When a player enters the server, the player must be assigned to a character.
 The player can be spawned at random predefined locations.
 Each time the player dies or spawns again, a random location should be determined.
 As soon as the player leaves the server, the character must be removed as well.
+
+.. tip:: The following code is partially used in our Official Sandbox Package. Which you can read the full code at https://github.com/nanos-world/nanos-world-sandbox.
 
 
 Code

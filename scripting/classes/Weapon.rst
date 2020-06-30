@@ -6,6 +6,8 @@
 Weapon
 ******
 
+.. image:: https://i.imgur.com/GqB7p3Z.png
+
 Weapons are fully customizable, all pieces of the weapon can be changed with immense possibility of creation
 
 .. attention:: This page is under construction.
