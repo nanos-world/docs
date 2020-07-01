@@ -58,7 +58,7 @@ Functions
 Events
 ------
 
-.. note:: The following events are Global Event. This gonna be changed soon.
+.. note:: The following events are Global Events. This gonna be changed soon.
 
 .. list-table:: 
   :widths: 5 15 30 50

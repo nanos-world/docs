@@ -14,64 +14,81 @@ Render
 
 .. attention:: The usage of this feature is very unstable and will probably cause crashes and memory leaks. This will soon receive a update adding more functions and optimizing this ones.
 
-.. tip:: The following functions have an ID parameter, which you can group related Canvas Items with an ID to facilitate the cleanup of them, or can give them Unique IDs.
+.. tip:: The following functions have an GroupID parameter, which you can group related Canvas Items with an ID to facilitate the cleanup of them, or can give them Unique IDs. These return an ItemID value, which can be used for updating specific Canvas Items afterwards.
 
 
 Functions
 ---------
 
 .. list-table:: 
-  :widths: 5 10 35 50
+  :widths: 17 43 40
 
-  * - 
-    - **Returns**
+  * - **Returns**
     - **Name**
     - **Description**
 
-  * - 
-    - 
-    - AddLine(:term:`number` ID, :ref:`Vector2D` StartPosition, :ref:`Vector2D` EndPosition, :term:`number` Thickness, :ref:`Color` Color)
+  * - :term:`number` ItemID
+    - AddLine(:term:`number` GroupID, :ref:`Vector2D` StartPosition, :ref:`Vector2D` EndPosition, :term:`number` Thickness, :ref:`Color` Color)
     - Draws a Line (doesn't support opacity)
 
-  * - 
-    - 
-    - AddBox(:term:`number` ID, :ref:`Vector2D` StartPosition, :ref:`Vector2D` EndPosition, :term:`number` Thickness, :ref:`Color` Color)
+  * - :term:`number` ItemID
+    - AddBox(:term:`number` GroupID, :ref:`Vector2D` StartPosition, :ref:`Vector2D` EndPosition, :term:`number` Thickness, :ref:`Color` Color)
     - Draws a Box
 
-  * - 
-    - 
-    - AddTile(:term:`number` ID, :ref:`Vector2D` Position, :ref:`Vector2D` Size, :ref:`Color` Color)
+  * - :term:`number` ItemID
+    - AddTile(:term:`number` GroupID, :ref:`Vector2D` Position, :ref:`Vector2D` Size, :ref:`Color` Color)
     - Draws a Tile (filled)
 
-  * - 
-    - 
-    - AddPolygon(:term:`number` ID, :ref:`Vector2D` ScreenPosition, :ref:`Vector2D` Radius, :term:`number` NumberOfSides, :ref:`Color` Color)
+  * - :term:`number` ItemID
+    - AddPolygon(:term:`number` GroupID, :ref:`Vector2D` ScreenPosition, :ref:`Vector2D` Radius, :term:`number` NumberOfSides, :ref:`Color` Color)
     - Draws a Polygon
 
-  * - 
-    - 
-    - AddText(:term:`number` ID, :term:`string` Text, :ref:`Vector2D` Position, :term:`number` FontType, :term:`number` FontSize, :ref:`Color` TextColor, :term:`number` Kerning, :term:`boolean` bCenterX, :term:`boolean` bCenterY, :term:`boolean` EnableShadow, :ref:`Vector2D` ShadowOffset, :ref:`Color` ShadowColor, :term:`boolean` EnableOutline, :ref:`Color` OutlineColor)
+  * - :term:`number` ItemID
+    - AddText(:term:`number` GroupID, :term:`string` Text, :ref:`Vector2D` Position, :term:`number` FontType, :term:`number` FontSize, :ref:`Color` TextColor, :term:`number` Kerning, :term:`boolean` bCenterX, :term:`boolean` bCenterY, :term:`boolean` EnableShadow, :ref:`Vector2D` ShadowOffset, :ref:`Color` ShadowColor, :term:`boolean` EnableOutline, :ref:`Color` OutlineColor)
     - Draws a Text with optionals Shadow and Outline
 
-  * - 
-    - :ref:`Vector2D`
+  * - :ref:`Vector2D`
     - StrLen(:term:`string` Text, :term:`number` FontType, :term:`number`, FontSize)
     - Returns the Length of Text in Pixels
 
-  * - 
-    - :ref:`Vector`
+  * - :ref:`Vector`
     - Project(:ref:`Vector` Location3D)
     - Transforms a 3D world-space vector into 2D screen coordinates.
 
   * - 
-    - 
-    - ClearItems(:term:`number` ID)
-    - Remove all drawing of using that specific ID
+    - ClearItems(:term:`number` GroupID)
+    - Remove all drawing of using that specific GroupID
 
   * - 
-    - :ref:`Vector2D`:
+    - UpdateItemText(:term:`number` GroupID, :term:`number` ItemID, :term:`string` NewText)
+    - Updates a specific Canvas Text giving it's GroupID and ItemID
+
+  * - 
+    - UpdateItemPosition(:term:`number` GroupID, :term:`number` ItemID, :ref:`Vector2D` NewPosition)
+    - Updates a specific Canvas's position giving it's GroupID and ItemID
+
+  * - :ref:`Vector2D`
     - GetViewportSize()
     - Returns the size of viewport (how much screen space the game window occupies)
+
+
+Events
+------
+
+.. note:: The following events are Global Events. This gonna be changed soon.
+
+.. list-table:: 
+  :widths: 5 15 30 50
+   
+  * - 
+    - **Name**
+    - **Parameters**
+    - **Description**
+
+  * -
+    - ViewportResized
+    - :ref:`Vector2D` NewSize
+    - Called when the screen is resized
 
 
 Examples
