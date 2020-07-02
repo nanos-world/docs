@@ -48,6 +48,11 @@ Functions
     - UnPossess()
     - Release the ``Player`` from the :ref:`Character` 
 
+  * - |client-only-label|
+    - :term:`boolean`
+    - IsLocalPlayer()
+    - Returns if this is the LocalPlayer
+
   * - 
     - 
     - SetValue(:term:`string` Key, any Value)

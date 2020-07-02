@@ -20,16 +20,27 @@ Functions
 ---------
 
 .. list-table:: 
-  :widths: 45 55
+  :widths: 5 55 40
 
-  * - **Name**
+  * - 
+    - **Name**
     - **Description**
 
-  * - Call(:term:`string` EventName, :term:`table` {Args...})
+  * - 
+    - Call(:term:`string` EventName, :term:`table` {Args...})
     - Calls an Event which will be triggered in all Local Packages
 
-  * - CallRemote(:term:`string` EventName, :term:`table` {Args...})
-    - Calls an Event which will be triggered in all Remote Packages
+  * - |client-only-label|
+    - CallRemote(:term:`string` EventName, :term:`table` {Args...})
+    - Calls an Event on Client which will be triggered in all Server Packages
+
+  * - |server-only-label|
+    - CallRemote(:term:`string` EventName, :ref:`Player` Remote, :term:`table` {Args...})
+    - Calls an Event on Server which will be triggered in all Client's Packages of ``Player``
+
+  * - |server-only-label|
+    - BroadcastRemote(:term:`string` EventName, :term:`table` {Args...})
+    - Calls an Event on Server which will be triggered in all Client's Packages
 
 
 Examples
@@ -47,7 +58,7 @@ Examples
     -- calls a local Event in all Local Packages
     Events:Call("MyEvent", {"hello nanos world!"})
 
-    -- calls a remote Event in all Remote Packages
+    -- calls a remote Event in all Server Packages
     Events:CallRemote("MyEvent", {"hello nanos world!"})
 
 
@@ -66,5 +77,5 @@ Examples
     -- calls a local Event in all Local Packages
     Events:Call("MyEvent", {"hello nanos world!", Vector(123, 123, 123), my_temp_character, 456})
 
-    -- calls a remote Event in all Remote Packages
+    -- calls a remote Event in all Server Packages
     Events:CallRemote("MyEvent", {"hello nanos world!", Vector(123, 123, 123), my_temp_character, 456})
