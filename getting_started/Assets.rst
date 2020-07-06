@@ -314,7 +314,7 @@ nanos world provides a default Asset Pack already included in the base game, fee
 		AM_Mannequin_Reload_Rifle = "Characters/Common/Animations/Weapons/AM_Mannequin_Reload_Rifle"
 		AM_Mannequin_Reload_Shotgun = "Characters/Common/Animations/Weapons/AM_Mannequin_Reload_Shotgun"
 		AM_Mannequin_Sight_Fire = "Characters/Common/Animations/Weapons/AM_Mannequin_Sight_Fire"
-		AM_Mannequin_Sight_Fire_Shotgun = "Characters/Common/Animations/Weapons/AM_Mannequin_Sight_Fire_Shotgun"
+		AM_Mannequin_Sight_Fire_Heavy = "Characters/Common/Animations/Weapons/AM_Mannequin_Sight_Fire_Heavy"
 		
 		# Blueprints
 		BP_Grenade_G67 = "Core/Weapons/Grenades/BP_Grenade_G67.BP_Grenade_G67_C"
