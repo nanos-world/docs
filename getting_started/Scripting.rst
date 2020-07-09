@@ -71,9 +71,9 @@ Let's start spawning some Props in your server, for that, use this code:
    Package:Log("Loading some Props =D")
 
    -- Spawning Props...
-   prop_table = Prop(Vector(200, 0, 0), Rotator(0, 0, 0), "NanosWorld/Art/Rural/InteriorDecoration/SM_WoodenTable")
-   prop_chair = Prop(Vector(400, 200, 0), Rotator(0, 0, 0), "NanosWorld/Art/Rural/InteriorDecoration/SM_WoodenChair")
-   prop_tire = Prop(Vector(600, 0, 0), Rotator(0, 0, 0), "NanosWorld/Art/Rural/Extra/SM_TireLarge")
+   prop_table = Prop(Vector(200, 0, 0), Rotator(0, 0, 0), "NanosWorld::SM_WoodenTable")
+   prop_chair = Prop(Vector(400, 200, 0), Rotator(0, 0, 0), "NanosWorld::SM_WoodenChair")
+   prop_tire = Prop(Vector(600, 0, 0), Rotator(0, 0, 0), "NanosWorld::SM_TireLarge")
 
 This will spawn 3 Props (a Table, a chair and a Tire) close to each other. After that, you can start the server and you will see the output:
 

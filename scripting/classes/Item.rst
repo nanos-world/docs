@@ -20,7 +20,7 @@ Usage
     local NewItem = Item(
       Vector(-900, 185, 215), 
       Rotator(0, 90, 90), 
-      "NanosWorld/Core/Items/BP_Grabable_Torch.BP_Grabable_Torch_C"
+      "NanosWorld::BP_Grabable_Torch"
     )
 
 

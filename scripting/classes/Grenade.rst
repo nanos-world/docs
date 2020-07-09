@@ -20,7 +20,7 @@ Usage
     local NewGrenade = Grenade(
       Vector(-900, 185, 215), 
       Rotator(0, 90, 90), 
-      "Blueprint'/Game/NanosWorld/Core/Grenades/Frag_Grenade'"
+      "NanosWorld::BP_Grenade_G67"
     )
 
 

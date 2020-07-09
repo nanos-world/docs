@@ -70,7 +70,7 @@ The server Configuration file ``Config.toml`` is generated automatically when th
 
 		]
 		# Default startup map
-		map =				"NanosWorld/Maps/Development/Network/NanosNetworkDebug"
+		map =				"NanosWorld::BlankMap"
 
 
 Command Line Parameters

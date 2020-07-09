@@ -44,7 +44,7 @@ Constructor Parameters
 
   * - :term:`string`
     - Model
-    - NanosWorld/Characters/Male/SK_Male
+    - NanosWorld::SK_Male
 
   * - :term:`number`
     - CollisionType

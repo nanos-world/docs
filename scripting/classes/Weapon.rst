@@ -65,13 +65,13 @@ Usage
     )
 
 
-Using our Default Weapons Package `<https://github.com/nanos-world/nanos-world-weapons>`_ and spawning and attaching a Red Dot:
+Using our Default Weapons Package `<https://github.com/nanos-world/nanos-world-weapons>`_ (already built-in included) for spawning and attaching a Red Dot:
 
 .. tabs::
  .. code-tab:: lua Lua
 
     -- Includes this Package in your Package
-    Package:RequirePackage("nanos-world-weapons")
+    Package:RequirePackage("NanosWorldWeapons")
     
     -- Spawning the AK47
     local my_ak47 = NanosWorldWeapons.AK47(Vector(1035, 154, 300), Rotator())
@@ -80,7 +80,7 @@ Using our Default Weapons Package `<https://github.com/nanos-world/nanos-world-w
     local my_reddot = Prop(
         Vector(),
         Rotator(), 
-        "NanosWorld/Weapons/Common/Accessories/SM_T4_Sight.SM_T4_Sight", -- Red Dot Static Mesh Path
+        "NanosWorld::SM_T4_Sight", -- Red Dot Static Mesh Path
         2, -- No Collision
         false, -- No Gravity
         false -- No Grabbing
