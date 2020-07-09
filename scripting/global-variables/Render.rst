@@ -98,7 +98,7 @@ This uses a Global Event, this will be changed soon.
 
 .. tabs::
  .. code-tab:: lua Lua
-    
+    bEnableShadow = true
     text = "Hello" -- Text to render on the Canvas.
     location = Vector2D(123, 321) -- Screen space position to render the text.
     fontType = 0 -- Roboto
