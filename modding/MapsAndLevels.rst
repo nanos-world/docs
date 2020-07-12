@@ -19,7 +19,14 @@ Rules for creating a Map/Level for nanos.world
 
 After exporting your project (refer to :ref:`Assets`), you can just reference your map in your server config like ``MyPack::MyLevel``.
 
+
 Custom Map Script
 -----------------
 
 Maps can also have a **Custom Script** (server-only) attached to it. These are files named ``[MAP_NAME].lua`` in the same folder as the map in the ``Assets/`` folder. If no one of your Packages disallow it, this script file will be loaded as well. Usually these scripts should have map specific spawn props/weapons points and pertinent stuff.
+
+
+Tutorial for Creating your own Map
+----------------------------------
+
+Please refer to our Official Tutorial :ref:`CreatingMaps`.

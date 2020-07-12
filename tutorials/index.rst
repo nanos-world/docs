@@ -7,5 +7,6 @@ Tutorials
    :glob:
 
    ComunicationBetweenPackages.rst
+   CreatingMaps.rst
    PopulatingTestingMap.rst
    SpawnPlayerRandomLocations.rst
