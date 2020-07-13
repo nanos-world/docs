@@ -55,6 +55,16 @@ Functions
 
   * - 
     - 
+    - SetCameraRotation(:ref:`Rotator`)
+    - Sets the Player's Camera Rotation
+
+  * - 
+    - 
+    - SetCameraLocation(:ref:`Vector`)
+    - Sets the Player's Camera Location (only works if not possessing any Character)
+
+  * - 
+    - 
     - SetValue(:term:`string` Key, any Value)
     - Sets a value in this entity, which can be accessed by any package (local only)
 
