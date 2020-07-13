@@ -117,6 +117,10 @@ Now let's drag'n drop other Meshes into our Level, like so:
 
 .. image:: https://i.imgur.com/dydOKb3.png
 
+Also, Unreal provides a built-in SkyBox (to fill up the sky with color and clouds), to add it, just search for ``BP_Sky_Sphere`` on Place Actors and drag it in the viewport:
+
+.. image:: https://i.imgur.com/UjntYl6.png
+
 You can create a new Material and use it to paint these meshes as well:
 
 .. image:: https://i.imgur.com/9McdsLZ.png
