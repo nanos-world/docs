@@ -14,6 +14,7 @@ Rules for creating a Map/Level for nanos.world
 
 1. Do not spawn/place Dynamic Meshes (with Physics), as they will not be synced in-game. You need to spawn them as a :ref:`Prop` on the scripting.
 
+2. Add a "Sun" actor-tag to all Lighting/Sky/Sun related actors (DirectionalLight, SkyLight, DomeMesh, SkyAtmosphere or SunSky), this will allow, if wanted, to your light to be overridden by scripters to use instead the Official NanosWorld Sun through `World.SpawnDefaultSun()`, which allows light/sun customization.
 
 .. attention:: Most of :ref:`World` functions rely on our own assets and code, so it is not (yet) possible to change the lighting or weather in your custom Map with :ref:`World` scripting functions.
 

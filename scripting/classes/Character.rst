@@ -247,6 +247,11 @@ Functions
     - GetVectorParameter(:term:`number` ID)
     - 
 
+  * - 
+    - :term:`number`
+    - GetTeam()
+    - 
+
   * - |server-only-label|
     - 
     - AddStaticMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath, :term:`string` Socket, :ref:`Vector` RelativeLocation, :ref:`Rotator` RelativeRotation)
@@ -281,6 +286,16 @@ Functions
     - 
     - SetWeaponAimMode(:term:`number` State)
     - 0 - None, 1 - ADS (FPS), 2 - ZoomedZoom (TPS), 3 - Zoomed, 4 - ZoomedFar
+
+  * - |server-only-label|
+    - 
+    - SetSpeedMultiplier(:term:`number` Multiplier)
+    - 1 = normal
+
+  * - |server-only-label|
+    - 
+    - SetTeam(:term:`number` Team)
+    - Sets a Team which will disable damaging same Team Members. 0 for Neutral
 
 .. include:: ../common/functions/Actor.rst
 

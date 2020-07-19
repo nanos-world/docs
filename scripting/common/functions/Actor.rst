@@ -79,10 +79,15 @@ Functions (Inherited from Actor)
     - Destroy()
     - Destroys this Actor
 
-  * - |server-only-label|
+  * - 
     - :term:`boolean`
     - IsValid()
     - Returns if this is Valid
+
+  * - 
+    - :term:`string`
+    - GetType()
+    - Returns the type of this Actor
 
   * - |server-only-label|
     - 

@@ -46,6 +46,11 @@ Functions
 
   * - |client-only-label|
     - 
+    - SpawnDefaultSun()
+    - Overrides all Light/Sun Actors with the NanosWorld's Official one, to be able to use the functions from this page
+
+  * - |client-only-label|
+    - 
     - SetTime(:term:`number` Hours, :term:`number` Minutes)
     - Sets the global's time of the day
 

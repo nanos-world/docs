@@ -171,11 +171,25 @@ nanos world provides a default Asset Pack already included in the base game, fee
 	[assets]
 		# Maps
 		[assets.maps]
-		BlankMap = "Maps/Development/Network/NanosNetworkDebug"
+		BlankMap = "Maps/BlankMap/BlankMap"
 		TestingMap = "Maps/Testing/NanosTestingMap"
 
 		# Static Meshes
 		[assets.static_meshes]
+		SM_Cone = "Props/BasicShapes/SM_Cone"
+		SM_Cube = "Props/BasicShapes/SM_Cube"
+		SM_Cylinder = "Props/BasicShapes/SM_Cylinder"
+		SM_Plane = "Props/BasicShapes/SM_Plane"
+		SM_Sphere = "Props/BasicShapes/SM_Sphere"
+
+		SM_Ball_VR = "Props/VRShapes/SM_Ball"
+		SM_Cube_VR_01 = "Props/VRShapes/SM_Cube_01"
+		SM_Cube_VR_02 = "Props/VRShapes/SM_Cube_02"
+		SM_Cube_VR_03 = "Props/VRShapes/SM_Cube_03"
+		SM_Pyramid_VR = "Props/VRShapes/SM_Pyramid"
+
+		SM_Error = "Props/Utils/SM_Error"
+
 		SM_PlasticBarrel_01 = "Art/City/Construction_Props/Mesh/SM_PlasticBarrel_01"
 		SM_RockingChair = "Art/City/House_Props/Meshes/SM_RockingChair"
 		SM_RoundStand = "Art/City/House_Props/Meshes/SM_RoundStand"
@@ -207,12 +221,6 @@ nanos world provides a default Asset Pack already included in the base game, fee
 		SM_Hair_Short = "Characters/Common/BodyParts/Hair/Male/SM_Hair_Short"
 		SM_Hair_Kwang = "Characters/Common/BodyParts/Hair/Kwang/SM_Hair_Kwang"
 
-		SM_Cube_01 = "Maps/Development/Network/SM_Cube_01"
-		SM_Cube_02 = "Maps/Development/Network/SM_Cube_02"
-		SM_Cube_03 = "Maps/Development/Network/SM_Cube_03"
-
-		SM_Error = "Art/Utils/SM_Error"
-
 		SM_AK47_Mag_Empty = "Weapons/Rifles/AK47/SM_AK47_Mag_Empty"
 		SM_AK74U_Mag_Empty = "Weapons/Rifles/AK74U/SM_AK74U_Mag_Empty"
 		SM_GE36_Mag_Empty = "Weapons/Rifles/GE36/SM_GE36_Mag_Empty"
@@ -241,7 +249,9 @@ nanos world provides a default Asset Pack already included in the base game, fee
 		SM_MetalBucket_Interior_02 = "Art/Rural/InteriorDecoration/SM_MetalBucket_Interior_02"
 		SM_Basket_01 = "Art/Rural/InteriorDecoration/SM_Basket_01"
 		SM_Bamboo_Woodplank_01 = "Art/Rural/Extra/SM_Bamboo_Woodplank_01"
-		
+
+		SM_Grenade_G67 = "Weapons/Grenades/G67/SM_G67"
+
 		# Skeletal Meshes
 		[assets.skeletal_meshes]
 		SK_Female = "Characters/Female/SK_Female"
@@ -259,7 +269,7 @@ nanos world provides a default Asset Pack already included in the base game, fee
 		SK_CasualSet = "Characters/Common/BodyParts/Clothes/CasualSet/SK_CasualSet"
 		SK_Sneakers = "Characters/Common/BodyParts/Clothes/Shoes/SK_Sneakers"
 
-		SK_Error = "Art/Utils/SK_Error"
+		SK_Error = "Props/Utils/SK_Error"
 
 		SK_AK47 = "Weapons/Rifles/AK47/SK_AK47"
 		SK_AK74U = "Weapons/Rifles/AK74U/SK_AK74U"
@@ -317,7 +327,6 @@ nanos world provides a default Asset Pack already included in the base game, fee
 		AM_Mannequin_Sight_Fire_Heavy = "Characters/Common/Animations/Weapons/AM_Mannequin_Sight_Fire_Heavy"
 		
 		# Blueprints
-		BP_Grenade_G67 = "Core/Weapons/Grenades/BP_Grenade_G67.BP_Grenade_G67_C"
 		BP_Grabable_Torch = "Core/Items/BP_Grabable_Torch.BP_Grabable_Torch_C"
 		BP_Vehicle_SUV = "Core/Vehicles/BP_Vehicle_SUV.BP_Vehicle_SUV_C"
 		BP_Vehicle_Pickup = "Core/Vehicles/BP_Vehicle_Pickup.BP_Vehicle_Pickup_C"

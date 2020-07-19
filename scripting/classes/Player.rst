@@ -63,6 +63,26 @@ Functions
     - SetCameraLocation(:ref:`Vector`)
     - Sets the Player's Camera Location (only works if not possessing any Character)
 
+  * - |server-only-label|
+    - 
+    - Kick(:term:`string` Reason)
+    - Kicks the player from the server
+
+  * - |server-only-label|
+    - 
+    - Ban(:term:`string` Reason)
+    - Bans the player from the server
+
+  * - 
+    - :term:`boolean`
+    - IsValid()
+    - Returns if this is Valid
+
+  * - 
+    - :term:`string`
+    - GetType()
+    - Returns the type of this Actor
+
   * - 
     - 
     - SetValue(:term:`string` Key, any Value)
