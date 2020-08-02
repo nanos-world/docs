@@ -281,20 +281,8 @@ nanos world provides a default Asset Pack already included in the base game, fee
 		SK_AP5 = "Weapons/Rifles/AP5/SK_AP5"
 		SK_SMG11 = "Weapons/SMGs/SMG11/SK_SMG11"
 
-		# Other Assets (for not yet categorized ones)
-		[assets.others]
-		# Particles
-		P_Bullet_Trail = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Bullet_Trail_System"
-		P_Weapon_BarrelSmoke = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_BarrelSmoke_System"
-		P_Weapon_Shells_12Gauge = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_12Gauge_System"
-		P_Weapon_Shells_762x39 = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_762x39_System"
-		P_Weapon_Shells_9x18 = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_9x18_System"
-		P_Weapon_Shells_556x45 = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_556x45_System"
-		P_Weapon_Shells_545x39 = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_545x39_System"
-		P_Weapon_Shells_45ap = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_45ap_System"
-		P_Weapon_Shells_9mm = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_9mm_System"
-
-		# Audios
+		# Sound Assets
+		[assets.sounds]
 		A_SMG_Dry = "Weapons/Common/Audios/A_SMG_Dry_Cue"
 		A_Rifle_Dry = "Weapons/Common/Audios/A_Rifle_Dry_Cue"
 		A_Pistol_Dry = "Weapons/Common/Audios/A_Pistol_Dry_Cue"
@@ -317,6 +305,29 @@ nanos world provides a default Asset Pack already included in the base game, fee
 		A_LightMachine_Shot = "Weapons/Common/Audios/A_LightMachine_Shot_Cue"
 		A_SMG_Shot = "Weapons/Common/Audios/A_SMG_Shot_Cue"
 		A_Male_Death = "Characters/Common/Audios/Death/A_Male_Death_Cue"
+		A_VR_Click_01 = "Effects/VR/A_VR_Click_01"
+		A_VR_Click_02 = "Effects/VR/A_VR_Click_02"
+		A_VR_Click_03 = "Effects/VR/A_VR_Click_03"
+		A_VR_Close = "Effects/VR/A_VR_Close"
+		A_VR_Confirm = "Effects/VR/A_VR_Confirm"
+		A_VR_Grab = "Effects/VR/A_VR_Grab"
+		A_VR_Ungrab = "Effects/VR/A_VR_Ungrab"
+		A_VR_Negative = "Effects/VR/A_VR_Negative"
+		A_VR_Open = "Effects/VR/A_VR_Open"
+		A_VR_Teleport = "Effects/VR/A_VR_Teleport"
+
+		# Other Assets (for not yet categorized ones)
+		[assets.others]
+		# Particles
+		P_Bullet_Trail = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Bullet_Trail_System"
+		P_Weapon_BarrelSmoke = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_BarrelSmoke_System"
+		P_Weapon_Shells_12Gauge = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_12Gauge_System"
+		P_Weapon_Shells_762x39 = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_762x39_System"
+		P_Weapon_Shells_9x18 = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_9x18_System"
+		P_Weapon_Shells_556x45 = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_556x45_System"
+		P_Weapon_Shells_545x39 = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_545x39_System"
+		P_Weapon_Shells_45ap = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_45ap_System"
+		P_Weapon_Shells_9mm = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_9mm_System"
 
 		# Animations
 		AM_Mannequin_Reload_Pistol = "Characters/Common/Animations/Weapons/AM_Mannequin_Reload_Pistol"

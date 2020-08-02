@@ -127,3 +127,9 @@ Available Fonts
 
   * - 0
     - Roboto
+
+  * - 1
+    - Gothic A1
+
+  * - 2
+    - Poiret One

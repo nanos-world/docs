@@ -42,7 +42,7 @@ Functions
   * - |client-only-label|
     - 
     - SetSunSpeed(:term:`number`)
-    - Sets the sun's time speed
+    - Sets the sun's time speed (default: '60', which means 60 seconds in game = 1 second in real world)
 
   * - |client-only-label|
     - 

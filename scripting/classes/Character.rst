@@ -99,23 +99,6 @@ Usage
     Woman:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Kwang", "hair_female", Vector(), Rotator())
 
 
-Properties
-----------
-
-.. list-table:: 
-  :widths: 5 10 35 50
-
-  * - 
-    - **Type**
-    - **Name**
-    - **Description**
-
-  * - |client-ready-only-label|
-    - :term:`number`
-    - Health 
-    - Character's Health. Sets under 0 will kill. Sets above 0 will Respawn.
-
-
 Functions
 ---------
 
@@ -131,6 +114,31 @@ Functions
     - 
     - PickUp(:ref:`Item`/:ref:`Grenade`/:ref:`Weapon`)
     - Gives a Item/Grenade/Weapon (Pickable) to the Character
+
+  * - |server-only-label|
+    - 
+    - SetHealth(:term:`number` NewHealth)
+    - Sets the Health of this Character. If the character is dead, respawns it with full health.
+
+  * - 
+    - :term:`number`
+    - GetHealth()
+    - Gets the Character's Health.
+
+  * - |server-only-label|
+    - 
+    - SetMaxHealth(:term:`number` NewMaxHealth)
+    - Sets the MaxHealth of this Character.
+
+  * - 
+    - :term:`number`
+    - GetMaxHealth()
+    - Gets the Character's MaxHealth.
+
+  * - |server-only-label|
+    - 
+    - Respawn()
+    - Respawns the Character, fullying it's Health and moving it to it's Initial Location.
 
   * - |server-only-label|
     - 
@@ -250,6 +258,11 @@ Functions
   * - 
     - :term:`number`
     - GetTeam()
+    - 
+
+  * - 
+    - :term:`number`
+    - GetSpeedMultiplier()
     - 
 
   * - |server-only-label|
