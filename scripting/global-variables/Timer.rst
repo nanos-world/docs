@@ -6,7 +6,7 @@
 Timer
 *****
 
-.. tip:: This is a namespace named ``Timer``. It is not possible to initialize or create Instances. It's just a name with Functions which are accessed with ``.`` instead of ``:``. This is going to be changed soon ;).
+.. tip:: This is a global variable named ``Timer``. It is not possible to initialize or create a new instance. It's just a global variable.
 
 .. attention:: This page is under construction.
 
@@ -37,12 +37,12 @@ Examples
  .. code-tab:: lua Lua
 
     -- creates a Timeout to call a function at every 1 second
-    local my_id = Timer.SetTimeout(1000, {}, function()
+    local my_id = Timer:SetTimeout(1000, {}, function()
         Package:Log("Tick 1 second!")
     end)
 
     -- cancels the timeout
-    Timer.ClearTimeout(my_id)
+    Timer:ClearTimeout(my_id)
 
     my_function = function(my_param)
         Package:Log("nanos " .. my_param)
@@ -50,4 +50,4 @@ Examples
     end
 
     -- creates a Timeout to call my_function in 5 seconds, once
-    local my_id = Timer.SetTimeout(5000, {"world"}, my_function)
+    local my_id = Timer:SetTimeout(5000, {"world"}, my_function)
