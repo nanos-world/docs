@@ -20,7 +20,7 @@ Usage
     local NewGrenade = Grenade(
       Vector(-900, 185, 215), 
       Rotator(0, 90, 90), 
-      "NanosWorld::BP_Grenade_G67"
+      "NanosWorld::SM_Grenade_G67"
     )
 
 
