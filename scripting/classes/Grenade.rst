@@ -66,27 +66,27 @@ Properties
     - **Name**
     - **Description**
 
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
     - :term:`number`
     - BaseDamage 
     - Grenade's Base Damage
 
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
     - :term:`number`
     - MinimumDamage  
     - Grenade's Base Damage
 
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
     - :term:`number`
     - DamageInnerRadius  
     - Grenade's 
 
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
     - :term:`number`
     - DamageFalloff   
     - Grenade's
 
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
     - :term:`number`
     - TimeToExplode   
     - Grenade's 

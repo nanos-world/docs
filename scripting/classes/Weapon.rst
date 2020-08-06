@@ -269,22 +269,22 @@ Properties
     - **Name**
     - **Description**
 
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
     - :term:`number`
     - BaseDamage 
     - Weapon's Base Damage
 
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
     - :term:`number`
     - ClipCapacity 
     - Weapon's Clip Capacity
 
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
     - :term:`number`
     - SightFOVMultiplier 
     - Amount of FOV reduced when Aiming Down Sights (ADS)
 
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
     - :term:`number`
     - Cadence 
     - Speed of shots (1 shot at each ``Cadence`` seconds)

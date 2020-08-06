@@ -4,5 +4,5 @@
 .. |client-only-label| image:: /images/server_only.png
    :class: client-only-label
 
-.. |client-ready-only-label| image:: /images/server_only.png
-   :class: client-ready-only-label
+.. |client-read-only-label| image:: /images/server_only.png
+   :class: client-read-only-label
