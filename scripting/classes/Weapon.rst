@@ -289,7 +289,7 @@ Properties
     - Cadence 
     - Speed of shots (1 shot at each ``Cadence`` seconds)
 
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
     - :term:`number`
     - Spread 
     - The higher the less precision

@@ -6,13 +6,9 @@
 Render
 ******
 
-.. tip:: This is a namespace named ``Render``. It is not possible to initialize or create Instances. It's just a name with Functions and Events which are accessed with ``.`` instead of ``:``. This is going to be changed soon ;).
+.. tip:: This is a Static Class named ``Render``. You can access it's methods directly with ``:``. It is not possible to initialize or create new instances.
 
-.. note:: This is a Client only Namespace.
-
-.. attention:: This page is under construction.
-
-.. attention:: The usage of this feature is very unstable and will probably cause crashes and memory leaks. This will soon receive a update adding more functions and optimizing this ones.
+.. note:: This is a Client only Class.
 
 .. tip:: The following functions have an GroupID parameter, which you can group related Canvas Items with an ID to facilitate the cleanup of them, or can give them Unique IDs. These return an ItemID value, which can be used for updating specific Canvas Items afterwards.
 
@@ -75,8 +71,6 @@ Functions
 Events
 ------
 
-.. note:: The following events are Global Events. This gonna be changed soon.
-
 .. list-table:: 
   :widths: 5 15 30 50
    
@@ -93,8 +87,6 @@ Events
 
 Examples
 --------
-
-This uses a Global Event, this will be changed soon.
 
 .. tabs::
  .. code-tab:: lua Lua
@@ -113,7 +105,7 @@ This uses a Global Event, this will be changed soon.
     bEnableShadow = true -- If true, then shadow will be enabled
     outlineColor = Color(1, 1, 1, 1) -- Color to render the outline for the text.
     
-    Render.AddText(0, text, location, fontType, fontSize, textColor, kerning, bCenterX, bCenterY, bEnableShadow, shadowOffset, shadowColor, bOutlined, outlineColor)
+    Render:AddText(0, text, location, fontType, fontSize, textColor, kerning, bCenterX, bCenterY, bEnableShadow, shadowOffset, shadowColor, bOutlined, outlineColor)
 
 
 Available Fonts

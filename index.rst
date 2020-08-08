@@ -36,7 +36,7 @@ nanos.world Official Documentation
 
    scripting/Glossary
    scripting/classes/index
-   scripting/global-variables/index
+   scripting/static-classes/index
    scripting/utility/index
 
 

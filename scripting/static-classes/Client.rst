@@ -6,11 +6,9 @@
 Client
 ******
 
-.. tip:: This is a global variable named ``Client``. It is not possible to initialize or create a new instance. It's just a global variable.
+.. tip:: This is a Static Class named ``Client``. You can access it's methods directly with ``:``. It is not possible to initialize or create new instances.
 
-.. note:: This is a Client only Namespace.
-
-.. attention:: This page is under construction.
+.. note:: This is a Client only Class.
 
 
 Functions
@@ -58,8 +56,6 @@ Functions
 Events
 ------
 
-.. note:: The following events are Global Events. This gonna be changed soon.
-
 .. list-table:: 
   :widths: 5 15 30 50
    
@@ -105,7 +101,7 @@ Examples
 .. tabs::
  .. code-tab:: lua Lua
 
-    on("MouseUp", function(KeyName, MouseX, MouseY)
+    Client:on("MouseUp", function(KeyName, MouseX, MouseY)
         if (KeyName == "LeftMouseButton")
             Package:Log("Left Click pressed at X: " .. MouseX .. ", Y: " .. MouseY)
         end

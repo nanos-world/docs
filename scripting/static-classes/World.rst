@@ -6,11 +6,9 @@
 World
 *****
 
-.. tip:: This is a namespace named ``World``. It is not possible to initialize or create Instances. It's just a name with Functions and Events which are accessed with ``.`` instead of ``:``. This is going to be changed soon ;).
+.. tip:: This is a Static Class named ``World``. You can access it's methods directly with ``:``. It is not possible to initialize or create new instances.
 
-.. note:: This is a Client only Namespace.
-
-.. attention:: This page is under construction.
+.. note:: This is a Client only Class.
 
 
 Functions
@@ -86,8 +84,8 @@ Examples
 .. tabs::
  .. code-tab:: lua Lua
 
-   -- makes rain
-   World.SetWeather(1)
+   -- make it rain
+   World:SetWeather(1)
 
-   -- makes 11:30 AM
-   World.SetTime(11, 30)
+   -- make it 11:30 AM
+   World:SetTime(11, 30)

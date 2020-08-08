@@ -6,11 +6,9 @@
 Server
 ******
 
-.. tip:: This is a global variable named ``Server``. It is not possible to initialize or create a new instance. It's just a global variable.
+.. tip:: This is a Static Class named ``Server``. You can access it's methods directly with ``:``. It is not possible to initialize or create new instances.
 
-.. note:: This is a Server only Namespace.
-
-.. attention:: This page is under construction.
+.. note:: This is a Server only Class.
 
 
 Events

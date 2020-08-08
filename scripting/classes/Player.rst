@@ -34,6 +34,16 @@ Functions
     - Returns the ping of a player
 
   * - 
+    - :term:`string`
+    - GetName()
+    - Returns the player's name
+
+  * - |server-only-label|
+    - 
+    - SetName(:term:`string`)
+    - Sets the player's name
+
+  * - 
     - :ref:`Character`
     - GetControlledCharacter()
     - Returns the character of the player. If the player has not yet been assigned a character, :term:`nil` is returned.

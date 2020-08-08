@@ -6,9 +6,7 @@
 Package
 *******
 
-.. tip:: This is a global variable named ``Package``. It is not possible to initialize or create a new instance. It's just a global variable.
-
-.. attention:: This page is under construction.
+.. tip:: This is a Static Class named ``Package``. You can access it's methods directly with ``:``. It is not possible to initialize or create new instances.
 
 
 Functions

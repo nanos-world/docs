@@ -6,9 +6,7 @@
 NanosWorld
 **********
 
-.. tip:: This is a global variable named ``NanosWorld``. It is not possible to initialize or create a new instance. It's just a global variable.
-
-.. attention:: This page is under construction.
+.. tip:: This is a Static Class named ``NanosWorld``. You can access it's methods directly with ``:``. It is not possible to initialize or create new instances.
 
 
 Functions
@@ -70,6 +68,6 @@ Examples
  .. code-tab:: lua Lua
 
     -- change all vehicles on the server to black body colors
-    for k,v in pair(NanosWorld:GetVehicles()) do
-      v:GetBodyColor(Color(0, 0, 0, 0))
+    for key, veh in pair(NanosWorld:GetVehicles()) do
+      veh:GetBodyColor(Color(0, 0, 0, 0))
     end
