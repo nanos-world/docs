@@ -24,7 +24,7 @@ Usage
 	  "NanosWorld::A_VR_Confirm", -- Asset Path
 	  false, -- Is 2D Sound
 	  true, -- Auto Destroy (if to destroy after finished playing)
-	  0, -- Sound Type (Normal)
+	  0, -- Sound Type (SFX)
 	  1, -- Volume
 	  1 -- Pitch
     )
@@ -61,7 +61,7 @@ Constructor Parameters
     - 1
 
   * - :term:`number`
-    - Sound Type (0 - Normal, 1 - Music) - Used to apply user's volume settings
+    - Sound Type (0 - SFX, 1 - Music) - Used to apply user's volume settings
     - 0
 
   * - :term:`number`
