@@ -32,6 +32,14 @@ Scripting
 			"Since update <strong>0.30.0</strong>, Maps can have it's own attached code. Check out the Testing Map Official Scripting.",
 			true
 		);
+
+		DrawCard(
+			"https://github.com/nanos-world/nanos-world-lua-lib",
+			"https://nanos.world/media/logo.png",
+			"Nanos World Official Lua Library ↗",
+			"Official repository of all Lua utility methods, tables and functions.",
+			true
+		);
 	</script>
 
 
@@ -47,6 +55,14 @@ Packages / Gamemodes
 			"https://nanos.world/media/logo.png",
 			"Sandbox ↗",
 			"Official Sandbox package, with basic functionalities and how to spawn Players at random locations!",
+			true
+		);
+
+		DrawCard(
+			"https://github.com/nanos-world/nanos-world-weapons",
+			"https://nanos.world/media/logo.png",
+			"Nanos World Official Weapon Package ↗",
+			"Official repository of NanosWorldWeapons Package.",
 			true
 		);
 	</script>
