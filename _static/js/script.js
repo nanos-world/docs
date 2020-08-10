@@ -4,9 +4,9 @@ $(document).ready(function() {
 	$(".client-read-only-label").attr("title", "client-read-only");
 });
 
-function DrawCard(url, image_url, header, body) {
+function DrawCard(url, image_url, header, body, new_tab) {
 	document.write(`
-		<a class="nanos-card" href="${url}">
+		<a class="nanos-card" href="${url}" ${new_tab ? "target='_blank'" : ""}>
 			<img src="${image_url}"/>
 			<h4>${header}</h4>
 			<p>${body}</p>

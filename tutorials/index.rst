@@ -28,8 +28,9 @@ Scripting
 		DrawCard(
 			"https://github.com/nanos-world/nanos-world-testing-map-script",
 			"https://nanos.world/media/logo.png",
-			"Populating Testing Map",
-			"Since update <strong>0.30.0</strong>, Maps can have it's own attached code. Check out the Testing Map Official Scripting."
+			"Populating Testing Map ↗",
+			"Since update <strong>0.30.0</strong>, Maps can have it's own attached code. Check out the Testing Map Official Scripting.",
+			true
 		);
 	</script>
 
@@ -44,7 +45,8 @@ Packages / Gamemodes
 		DrawCard(
 			"https://github.com/nanos-world/nanos-world-sandbox",
 			"https://nanos.world/media/logo.png",
-			"Sandbox",
-			"Official Sandbox package, with basic functionalities and how to spawn Players at random locations!"
+			"Sandbox ↗",
+			"Official Sandbox package, with basic functionalities and how to spawn Players at random locations!",
+			true
 		);
 	</script>
