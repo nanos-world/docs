@@ -7,6 +7,8 @@ Tutorials
 	:hidden:
 	:glob:
 
+	PropShooter.rst
+
 
 .. attention:: This page is under construction.
 
@@ -64,5 +66,21 @@ Packages / Gamemodes
 			"Nanos World Official Weapon Package ↗",
 			"Official repository of NanosWorldWeapons Package.",
 			true
+		);
+	</script>
+
+
+******************
+Samples / Snippets
+******************
+
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"PropShooter.html",
+			"https://i.imgur.com/Mq3FBv4.png",
+			"Prop Shooter",
+			"A small example of how to shoot Props from a weapon!"
 		);
 	</script>
