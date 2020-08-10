@@ -64,3 +64,7 @@
 	position: absolute;
 	top: 100px;
 }
+
+.nanos-small-td-padding {
+	padding: 0.5rem !important;
+}
