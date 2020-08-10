@@ -76,7 +76,7 @@ With nanos world you can realize your own game ideas and visions. Therefore, scr
 		);
 
 		DrawCard(
-			"general/ContributingToDocs.html",
+			"ContributingToDocs.html",
 			"https://img.freepik.com/free-vector/illustration-document-icon_53876-28510.jpg?size=626&ext=jpg",
 			"Contributing to the Docs",
 			"Know how to fix bugs and help us on improving this docs."

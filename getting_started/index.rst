@@ -59,28 +59,28 @@ Programming
 		);
 
 		DrawCard(
-			"scripting/classes/index.html",
+			"../scripting/classes/index.html",
 			"https://vectorsart.com/vectors-images/vectorsart_18001.jpg",
 			"Classes",
 			"Information of all spawnable objects/entities of nanos world."
 		);
 
 		DrawCard(
-			"scripting/static_classes/index.html",
+			"../scripting/static_classes/index.html",
 			"https://vectorsart.com/vectors-images/vectorsart_18001.jpg",
 			"Static Classes",
 			"Information of all Global/Static Classes of nanos world."
 		);
 
 		DrawCard(
-			"scripting/utility/index.html",
+			"../scripting/utility/index.html",
 			"https://cdn.datafloq.com/cache/blog_pictures/878x531/artificial-intelligence-future-of-programming.jpg",
 			"Utility Classes",
 			"Utility classes (Vector, Rotator, Color, etc) information."
 		);
 
 		DrawCard(
-			"scripting/Glossary.html",
+			"../scripting/Glossary.html",
 			"https://cdn.pixabay.com/photo/2016/09/10/17/18/book-1659717__340.jpg",
 			"Glossary",
 			"Common used terms and programming types."
