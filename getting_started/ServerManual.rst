@@ -140,7 +140,7 @@ nanos.world provides a way of customizating and creating custom gamemodes for yo
 
 .. note:: Under linux the CamelCase is necessary for folder and ``Index.lua`` names.
 
-.. tip:: Refer to :ref:`Scripting` for more information.
+.. tip:: Refer to :ref:`ScriptingQuickStart` for more information.
 
 
 Packages Structure
@@ -206,7 +206,7 @@ Assets
 
 Assets can be included in a folder called ``Assets/`` in the root server folder. All files in there will be sent to the clients and will be able to be referenced in your scripting code (client side).
 
-.. tip:: Please refer to :ref:`Assets` for more information and which kind of asset is allowed.
+.. tip:: Please refer to :ref:`AssetsQuickStart` for more information and which kind of asset is allowed.
 
 .. code-block:: javascript
 

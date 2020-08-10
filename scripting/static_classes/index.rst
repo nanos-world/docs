@@ -17,6 +17,9 @@ For example, if you want to interact with World (move the sun, set it rain, etc)
 .. note:: ``World`` is a Static Class and exists by default, i.e. you do not need (or can) spawn World entities. P.S.: the code above is client-only.
 
 
+Static Class List
+-----------------
+
 .. toctree::
    :maxdepth: 1
    :name: toc-scripting-global-variables

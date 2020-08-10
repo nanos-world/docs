@@ -124,9 +124,3 @@ Events
     - UnPossess
     - :ref:`Player` player, :ref:`Character` character, :term:`boolean` bIsPlayerDisconnecting
     - A :ref:`Character` was released from the ``Player``
-
-
-Examples
---------
-
-* Spawn player at random locations :ref:`TutorialSpawnPlayerRandomLocations`

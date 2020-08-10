@@ -7,7 +7,8 @@ nanos.world Official Documentation
    :caption: General
    :name: sec-general
 
-   about/index
+   About
+   ContributingToDocs
 
 
 .. toctree::
@@ -36,7 +37,7 @@ nanos.world Official Documentation
 
    scripting/Glossary
    scripting/classes/index
-   scripting/static-classes/index
+   scripting/static_classes/index
    scripting/utility/index
 
 
@@ -64,10 +65,30 @@ With nanos world you can realize your own game ideas and visions. Therefore, scr
 .. note:: We have a centralized space for reporting BUGs and Suggest new Ideas in https://issues.nanos.world. We encourage everyone to give suggestions and report BUGs because we are going to mainly focus our development in the suggestions and bugs reported in there.
 
 
-Getting Started
----------------
+.. raw:: html
 
-:ref:`GettingStarted`
+	<script>
+		DrawCard(
+			"getting_started/index.html",
+			"https://i.imgur.com/to0sRzC.png",
+			"Getting Started",
+			"Introductory information for scripters and modders starting out creating gamemodes with nanos world."
+		);
+
+		DrawCard(
+			"general/ContributingToDocs.html",
+			"https://img.freepik.com/free-vector/illustration-document-icon_53876-28510.jpg?size=626&ext=jpg",
+			"Contributing to the Docs",
+			"Know how to fix bugs and help us on improving this docs."
+		);
+
+		DrawCard(
+			"tutorials/index.html",
+			"https://edsurge.imgix.net/uploads/post/image/13321/digitalpromise_banner-1588203848.jpg?auto=compress%2Cformat&w=640&h=259&fit=crop",
+			"Samples and Tutorials",
+			"Links to various example scriptings, sample gamemodes, and tutorials..."
+		);
+	</script>
 
 
 Special Thanks

@@ -16,7 +16,7 @@ Nanos World allows several ways of customizations: from programmable scripts to 
 
 This section aims to guide you on how to create your own Assets and how to include them in your server.
 
-.. note:: Before moving on, please read :ref:`Assets` for a quick guide on how Assets work and how to import your first Asset.
+.. note:: Before moving on, please read :ref:`AssetsQuickStart` for a quick guide on how Assets work and how to import your first Asset.
 
 
 Exporting and Creating Assets
@@ -24,6 +24,7 @@ Exporting and Creating Assets
 
 *  :ref:`MapsAndLevels` Creating and Exporting Maps & Levels
 *  :ref:`StaticMeshes` Creating and Exporting Static Meshes (e.g. used for Props)
+*  :ref:`CharactersModding` Creating and Exporting Static Meshes (e.g. used for Props)
 
 
 Rules for exporting/creating assets in Unreal Engine 4 for nanos.world
@@ -73,3 +74,25 @@ We hardly recommend and encourage you to follow `Allar's Asset Naming Convention
   * - Texture
     - \T_
     - _? (see `Textures <https://github.com/Allar/ue4-style-guide#anc-textures>`_)
+
+
+Moving Further
+--------------
+
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"MapsAndLevels.html",
+			"https://docs.unrealengine.com/Images/Engine/Rendering/VirtualTexturing/Runtime/QuickStart/5_0_RVTActors_1.jpg",
+			"Creating Maps",
+			"Learn how to create maps from scratch and import them in nanos world."
+		);
+
+		DrawCard(
+			"StaticMeshes.html",
+			"https://cdn.lynda.com/course/681091/681091-637286238509169718-16x9.jpg",
+			"Creating custom Static Meshes",
+			"Learn how to import and use custom Static Meshes in nanos world."
+		);
+	</script>

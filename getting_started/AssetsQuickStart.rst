@@ -1,8 +1,8 @@
-.. _Assets:
+.. _AssetsQuickStart:
 
-******
-Assets
-******
+******************
+Assets Quick Start
+******************
 
 nanos.world provides fully capabilities of modifying, including and customizing the game. In this section we will explain how to include custom Assets in your server.
 
