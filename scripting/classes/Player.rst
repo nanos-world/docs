@@ -127,10 +127,10 @@ Events
 
   * -
     - Spawn
-    - Entity actor
-    - Triggered when an Entity is Spawned/Created
+    - :ref:`Player` player
+    - Triggered when Player connects to the server
 
   * -
     - Destroy
-    - Entity actor
-    - Triggered when an Entity is Destroyed
+    - :ref:`Player` player
+    - Triggered when Player disconnects from the server
