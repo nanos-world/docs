@@ -8,6 +8,7 @@ Tutorials
 	:glob:
 
 	PropShooter.rst
+	WeaponScope.rst
 
 
 .. attention:: This page is under construction.
@@ -82,5 +83,12 @@ Samples / Snippets
 			"https://i.imgur.com/Mq3FBv4.png",
 			"Prop Shooter",
 			"A small example of how to shoot Props from a weapon!"
+		);
+
+		DrawCard(
+			"WeaponScope.html",
+			"https://i.imgur.com/K5eVATY.png",
+			"Weapon Scope",
+			"See how to attach a scope (ex: Red Dot) to any weapon!"
 		);
 	</script>
