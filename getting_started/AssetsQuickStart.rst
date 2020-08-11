@@ -230,9 +230,9 @@ nanos world provides a default Asset Pack already included in the base game, fee
 		SM_AR4_Mag_Empty = "Weapons/Rifles/AR4/SM_AR4_Mag_Empty"
 
 		SM_T4_Sight = "Weapons/Common/Accessories/SM_T4_Sight"
-		SM_Vertgrip = Weapons/Common/Accessories/SM_Vertgrip"
-		SM_Suppressor = Weapons/Common/Accessories/SM_Suppressor5"
-		SM_Scope_25x56_X = Weapons/Common/Accessories/SM_Scope_25x56_X"
+		SM_Vertgrip = "Weapons/Common/Accessories/SM_Vertgrip"
+		SM_Suppressor = "Weapons/Common/Accessories/SM_Suppressor5"
+		SM_Scope_25x56_X = "Weapons/Common/Accessories/SM_Scope_25x56_X"
 
 		SM_WoodenTable = "Art/Rural/InteriorDecoration/SM_WoodenTable"
 		SM_WoodenChair = "Art/Rural/InteriorDecoration/SM_WoodenChair"
