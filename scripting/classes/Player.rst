@@ -124,3 +124,13 @@ Events
     - UnPossess
     - :ref:`Player` player, :ref:`Character` character, :term:`boolean` bIsPlayerDisconnecting
     - A :ref:`Character` was released from the ``Player``
+
+  * -
+    - Spawn
+    - Entity actor
+    - Triggered when an Entity is Spawned/Created
+
+  * -
+    - Destroy
+    - Entity actor
+    - Triggered when an Entity is Destroyed
