@@ -35,19 +35,20 @@ nanos.world Official Documentation
    :caption: Scripting
    :name: sec-scripting
 
-   scripting/Glossary
    scripting/classes/index
    scripting/static_classes/index
    scripting/utility/index
+   scripting/Glossary
 
 
 .. toctree::
    :hidden:
    :titlesonly:
-   :caption: Modding
+   :caption: Assets & Modding
    :name: sec-modding
 
    modding/index
+   modding/NanosWorldDefaultPack
 
 
 Welcome to the official documentation of nanos.world! da best game ever made.
