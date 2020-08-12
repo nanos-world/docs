@@ -17,11 +17,11 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-	local MyTrigger = Trigger(Vector(-200, 100, 500), 100)
+    local MyTrigger = Trigger(Vector(-200, 100, 500), 100)
     
-	MyTrigger:on("BeginOverlap", function(actorTriggering)
-		Package:Log("Someone entered my Trigger")
-	end)
+    MyTrigger:on("BeginOverlap", function(actorTriggering)
+        Package:Log("Someone entered my Trigger")
+    end)
 
 
 Constructor Parameters

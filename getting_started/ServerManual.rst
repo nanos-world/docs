@@ -35,42 +35,42 @@ The server Configuration file ``Config.toml`` is generated automatically when th
 
 .. code-block:: toml
 
-	# Server Configurations
-	[server]
-		# Server Name
-		name =				"nanos.world Server"
-		# Server Description
-		description =			""
-		# Server Logo URL (Recommended Size: 150x75)
-		logo =			
-		# Max Players
-		max_players =			64
-		# Leave it blank for no password
-		password =			""
-		# Server IP. Leave it 0.0.0.0 for default
-		ip =				"0.0.0.0"
-		# Server Port (UDP forwarding needed)
-		port =				7777
-		# HTTP Port (TCP forwarding needed)
-		http_port =			7777
-		# Announce Server in the Server List
-		announce =			true
-		# Server Tick Rate in milliseconds (Dangerous! Server will tick at each [tick_rate] ms,
-		# affecting both Server and Client performance. 33 ms means 30 ticks per Second and is
-		# the default and recommended value)
-		tick_rate =			33
-		# Log Level. (1) Normal - (2) Debug - (3) Verbose
-		log_level =			1
+    # Server Configurations
+    [server]
+        # Server Name
+        name =                "nanos.world Server"
+        # Server Description
+        description =            ""
+        # Server Logo URL (Recommended Size: 150x75)
+        logo =            
+        # Max Players
+        max_players =            64
+        # Leave it blank for no password
+        password =            ""
+        # Server IP. Leave it 0.0.0.0 for default
+        ip =                "0.0.0.0"
+        # Server Port (UDP forwarding needed)
+        port =                7777
+        # HTTP Port (TCP forwarding needed)
+        http_port =            7777
+        # Announce Server in the Server List
+        announce =            true
+        # Server Tick Rate in milliseconds (Dangerous! Server will tick at each [tick_rate] ms,
+        # affecting both Server and Client performance. 33 ms means 30 ticks per Second and is
+        # the default and recommended value)
+        tick_rate =            33
+        # Log Level. (1) Normal - (2) Debug - (3) Verbose
+        log_level =            1
 
-	# nanos.world Configurations
-	[world]
-		# Package List (leave it blank to load all packages, this is usually useful when you have
-		# tons of packages downloaded and only want to load one or some)
-		packages = [
+    # nanos.world Configurations
+    [world]
+        # Package List (leave it blank to load all packages, this is usually useful when you have
+        # tons of packages downloaded and only want to load one or some)
+        packages = [
 
-		]
-		# Default startup map
-		map =				"NanosWorld::BlankMap"
+        ]
+        # Default startup map
+        map =                "NanosWorld::BlankMap"
 
 
 Command Line Parameters
@@ -126,9 +126,9 @@ All (not pre-defined) commands will be sent into an event to the scripting/serve
 .. tabs::
  .. code-tab:: lua Lua
 
-	Server:on("Console", function(my_input)
-		Package:Log("Console command received: " .. my_input)
-	end)
+    Server:on("Console", function(my_input)
+        Package:Log("Console command received: " .. my_input)
+    end)
 
 
 Packages & Scripting
@@ -182,19 +182,19 @@ The Package Configuration file ``Package.toml`` is generated automatically when 
 
 .. code-block:: toml
 
-	# Package Configurations
-	[package]
-		# Package Name
-		name =			"My Awesome Package"
-		# Package Type: "executable" (normal package) | "library" (doesn't run - useful for code library)
-		type =			"executable"
-		# Whether to force the Custom Map Script to do NOT load
-		force_no_map_script =	false
-		# Asset Packs Requirements (Assets folder names to be loaded)
-		assets_requirements = [
-			"MyPack_01",
-			"GodWeaponPack"
-		]
+    # Package Configurations
+    [package]
+        # Package Name
+        name =            "My Awesome Package"
+        # Package Type: "executable" (normal package) | "library" (doesn't run - useful for code library)
+        type =            "executable"
+        # Whether to force the Custom Map Script to do NOT load
+        force_no_map_script =    false
+        # Asset Packs Requirements (Assets folder names to be loaded)
+        assets_requirements = [
+            "MyPack_01",
+            "GodWeaponPack"
+        ]
 
 .. tip:: Package Type marked as ``library`` won't be loaded as a Package, this is useful if you are creating modular scripting which can be Required/Included in other Packages but isn't supposed to have an own Package loaded for it.
 

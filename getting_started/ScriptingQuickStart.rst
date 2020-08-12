@@ -92,44 +92,44 @@ When a :ref:`Player` connects to your server, a new Player class is automaticall
 .. tabs::
  .. code-tab:: lua Lua
 
-	-- Called when Players join the server (i.e. spawn)
-	Player:on("Spawn", function(new_player)
+    -- Called when Players join the server (i.e. spawn)
+    Player:on("Spawn", function(new_player)
 
-	end)
+    end)
 
 For spawning and assigning this new player to a new Character, we can just make that:
 
 .. tabs::
  .. code-tab:: lua Lua
 
-	-- Called when Players join the server (i.e. spawn)
-	Player:on("Spawn", function(new_player)
-		-- Spawns a Character at position X = 0, Y = 0, Z = 0 with default's constructor parameters
-		local new_character = Character(Vector(0, 0, 0))
-		-- Possess the new Character
-		new_player:Possess(new_character)
-	end)
+    -- Called when Players join the server (i.e. spawn)
+    Player:on("Spawn", function(new_player)
+        -- Spawns a Character at position X = 0, Y = 0, Z = 0 with default's constructor parameters
+        local new_character = Character(Vector(0, 0, 0))
+        -- Possess the new Character
+        new_player:Possess(new_character)
+    end)
 
 And that it! Ah, just remember to destroy the Characters when players disconnect, otherwise there will be a lot of souless Characters remaining on the map:
 
 .. tabs::
  .. code-tab:: lua Lua
 
-	-- Called when Players join the server (i.e. spawn)
-	Player:on("Spawn", function(new_player)
-		-- Spawns a Character at position X = 0, Y = 0, Z = 0 with default's constructor parameters
-		local new_character = Character(Vector(0, 0, 0))
-		-- Possess the new Character
-		new_player:Possess(new_character)
-	end)
+    -- Called when Players join the server (i.e. spawn)
+    Player:on("Spawn", function(new_player)
+        -- Spawns a Character at position X = 0, Y = 0, Z = 0 with default's constructor parameters
+        local new_character = Character(Vector(0, 0, 0))
+        -- Possess the new Character
+        new_player:Possess(new_character)
+    end)
 
-	-- Called when Player unpossess a Character (when Players disconnect, they will trigger UnPossess event)
-	Player:on("UnPossess", function(player, character, isPlayerDisconnecting)
-		-- If Player is disconnecting from the server, destroys it's Character
-		if (isPlayerDisconnecting) then
-			character:Destroy()
-		end
-	end)
+    -- Called when Player unpossess a Character (when Players disconnect, they will trigger UnPossess event)
+    Player:on("UnPossess", function(player, character, isPlayerDisconnecting)
+        -- If Player is disconnecting from the server, destroys it's Character
+        if (isPlayerDisconnecting) then
+            character:Destroy()
+        end
+    end)
 
 .. image:: https://i.imgur.com/mz4sy2Q.png
 

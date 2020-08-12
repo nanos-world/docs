@@ -110,35 +110,35 @@ It is extremely important to setup your ``Assets.toml`` file, in there you will 
 
 .. code-block:: toml
 
-	# Asset Pack Configurations
-	[asset_pack]
-		# Asset Pack Name
-		name =				"My Pack"
-		# Author
-		author =			"Incredible Scripter"
-		# Version
-		version =			"1.1.0"
+    # Asset Pack Configurations
+    [asset_pack]
+        # Asset Pack Name
+        name =                "My Pack"
+        # Author
+        author =            "Incredible Scripter"
+        # Version
+        version =            "1.1.0"
 
-	# Assets Files
-	[assets]
-		# Maps
-		[assets.maps]
-			AwesomeAndBigMap = "Maps/BigMap_01"
+    # Assets Files
+    [assets]
+        # Maps
+        [assets.maps]
+            AwesomeAndBigMap = "Maps/BigMap_01"
 
-		# Static Meshes
-		[assets.static_meshes]
-			# SM_Flower_01 = "MyFolder/SM_Awesome_Flower_01"
-			# ...
+        # Static Meshes
+        [assets.static_meshes]
+            # SM_Flower_01 = "MyFolder/SM_Awesome_Flower_01"
+            # ...
 
-		# Skeletal Meshes
-		[assets.skeletal_meshes]
-			# SK_Better_Man = "Characters/SK_BetterMan_3"
-			# ...
+        # Skeletal Meshes
+        [assets.skeletal_meshes]
+            # SK_Better_Man = "Characters/SK_BetterMan_3"
+            # ...
 
-		# Other Assets (for not yet categorized ones)
-		[assets.others]
-			# A_Audio_Rifle_Fire = "Audios/A_Audio_Rifle_Fire_03"
-			# ...
+        # Other Assets (for not yet categorized ones)
+        [assets.others]
+            # A_Audio_Rifle_Fire = "Audios/A_Audio_Rifle_Fire_03"
+            # ...
 
 As seen above, Assets can be set in a ``key = "value"`` pattern, the **key** being how Scripters reference it in their code, and the **value** being the path where the game will look for it. Note: all paths are relative to the Asset Pack folder.
 

@@ -89,6 +89,6 @@ Examples
       veh:GetBodyColor(Color(0, 0, 0, 0))
     end
 
-	NanosWorld:on("SpawnLocalPlayer", function(local_player)
-		Package:Log("LocalPlayer is ready!")
-	end)
+    NanosWorld:on("SpawnLocalPlayer", function(local_player)
+        Package:Log("LocalPlayer is ready!")
+    end)

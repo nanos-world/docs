@@ -13,8 +13,8 @@ As already stated, spawning Entities is easy as:
 .. tabs::
  .. code-tab:: lua Lua
 
-	-- Spawning a Character in the world
-	local my_character = Character()
+    -- Spawning a Character in the world
+    local my_character = Character()
 
 Each Class have it's own **Constructor**, **Properties**, **Functions** and **Events**. At the bottom of this page you'll be able to see a list of Classes which can be spawned in nanos.world.
 

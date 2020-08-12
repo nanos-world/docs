@@ -20,13 +20,13 @@ Usage
  .. code-tab:: lua Lua
 
     local MySound = Sound(
-	  Vector(-510, 145, 63), -- Location (if a 3D sound)
-	  "NanosWorld::A_VR_Confirm", -- Asset Path
-	  false, -- Is 2D Sound
-	  true, -- Auto Destroy (if to destroy after finished playing)
-	  0, -- Sound Type (SFX)
-	  1, -- Volume
-	  1 -- Pitch
+        Vector(-510, 145, 63), -- Location (if a 3D sound)
+        "NanosWorld::A_VR_Confirm", -- Asset Path
+        false, -- Is 2D Sound
+        true, -- Auto Destroy (if to destroy after finished playing)
+        0, -- Sound Type (SFX)
+        1, -- Volume
+        1 -- Pitch
     )
 
 

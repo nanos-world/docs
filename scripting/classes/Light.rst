@@ -18,16 +18,16 @@ Usage
  .. code-tab:: lua Lua
 
     local MyLight = Light(
-	  Vector(-152, 245, 115), 
-	  Rotator(0, 90, 90), -- Relevant only for Rect and Spot light types
-	  Color(1, 0, 0), -- Red Tint
-	  0, -- Point Light type
-	  100, -- Intensity
-	  250, -- Attenuation Radius
-	  0, -- Source Radius (Relevant only for Spot and Point light types)
-	  0, -- Source Soft Radius (Relevant only for Spot and Point light types)
-	  true, -- Cast Shadows?
-	  true -- Enabled?
+        Vector(-152, 245, 115), 
+        Rotator(0, 90, 90), -- Relevant only for Rect and Spot light types
+        Color(1, 0, 0), -- Red Tint
+        0, -- Point Light type
+        100, -- Intensity
+        250, -- Attenuation Radius
+        0, -- Source Radius (Relevant only for Spot and Point light types)
+        0, -- Source Soft Radius (Relevant only for Spot and Point light types)
+        true, -- Cast Shadows?
+        true -- Enabled?
     )
 
 
