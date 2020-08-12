@@ -7,6 +7,7 @@ Tutorials & Examples
 	:hidden:
 	:glob:
 
+	BasicHUD.rst
 	PropShooter.rst
 	PropRain.rst
 	WeaponScope.rst
@@ -95,5 +96,12 @@ Samples / Snippets
 			"https://i.imgur.com/K5eVATY.png",
 			"Weapon Scope",
 			"See how to attach a scope (ex: Red Dot) to any weapon!"
+		);
+
+		DrawCard(
+			"BasicHUD.html",
+			"https://i.imgur.com/45n8635.png",
+			"Basic HUD",
+			"See how to display Health and Ammo on the screen!"
 		);
 	</script>

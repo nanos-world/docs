@@ -1,8 +1,19 @@
 .. _PropRain:
 
+
 *********
 Prop Rain
 *********
+
+This sample code creates a rain effect with :ref:`Prop`\s (boxes) falling from sky once a :ref:`Character` enters a :ref:`Trigger`.
+
+.. raw:: html
+
+	<video controls src="https://i.imgur.com/ykdMbGN.mp4" width="100%"></video><br><br>
+
+
+.. note:: The following code runs on Server.
+
 
 .. tabs::
  .. code-tab:: lua Lua
@@ -43,9 +54,3 @@ Prop Rain
 			Timer:ClearTimeout(MyTimer)
 		end
 	end)
-
-
-
-.. raw:: html
-
-	<video controls src="https://i.imgur.com/ykdMbGN.mp4" width="100%" />

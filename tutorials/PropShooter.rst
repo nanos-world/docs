@@ -5,6 +5,16 @@
 Prop Shooter
 ************
 
+This sample code modifies a :ref:`Weapon` to make it shoot :ref:`Prop`\s instead of normal bullets.
+
+.. raw:: html
+
+	<video controls src="https://i.imgur.com/mCIPkOw.mp4" width="100%"></video><br><br>
+
+
+.. note:: The following code runs on Server.
+
+
 .. tabs::
  .. code-tab:: lua Lua
 
@@ -21,7 +31,3 @@ Prop Shooter
 		local prop = Prop(spawn_location, control_rotation, "NanosWorld::SM_TeaPot_Interior", 1)
 		prop:AddImpulse(forward_vector * Vector(10000))
 	end)
-
-.. raw:: html
-
-	<video controls src="https://i.imgur.com/mCIPkOw.mp4" width="100%" />

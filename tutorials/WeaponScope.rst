@@ -5,6 +5,13 @@
 Weapon Scope
 ************
 
+This sample code shows how to attach custom sights meshes into a :ref:`Weapon` and work as real scopes.
+
+.. image:: https://i.imgur.com/FLtVBMb.png
+
+.. note:: The following code runs on Server.
+
+
 .. tabs::
  .. code-tab:: lua Lua
 
@@ -34,15 +41,10 @@ Weapon Scope
 	Weapon:SetSightTransform(Vector(0, 0, -15.9), Rotator(0, 0, 0))
 
 
-Other Assets which can be used as scope:
-----------------------------------------
+Other Static Mesh assets which can be used as scope:
+----------------------------------------------------
 
 - ``NanosWorld::SM_T4_Sight``
 - ``NanosWorld::SM_Vertgrip``
 - ``NanosWorld::SM_Suppressor``
 - ``NanosWorld::SM_Scope_25x56_X``
-
-
-.. image:: https://i.imgur.com/LBaTnu4.png
-
-.. image:: https://i.imgur.com/K5eVATY.png

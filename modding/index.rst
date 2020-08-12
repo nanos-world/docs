@@ -24,7 +24,6 @@ Exporting and Creating Assets
 
 *  :ref:`MapsAndLevels` Creating and Exporting Maps & Levels
 *  :ref:`StaticMeshes` Creating and Exporting Static Meshes (e.g. used for Props)
-*  :ref:`CharactersModding` Creating and Exporting Static Meshes (e.g. used for Props)
 
 
 Rules for exporting/creating assets in Unreal Engine 4 for nanos.world
