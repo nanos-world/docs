@@ -61,6 +61,23 @@ Functions
     - Returns the Local Player (Client Side)
 
 
+Events
+------
+
+.. list-table:: 
+  :widths: 5 15 30 50
+   
+  * - 
+    - **Name**
+    - **Parameters**
+    - **Description**
+
+  * - |client-only-label|
+    - SpawnLocalPlayer
+    - :ref:`Player` LocalPlayer
+    - Called once LocalPlayer is created.
+
+
 Examples
 --------
 
@@ -71,3 +88,7 @@ Examples
     for key, veh in pair(NanosWorld:GetVehicles()) do
       veh:GetBodyColor(Color(0, 0, 0, 0))
     end
+
+	NanosWorld:on("SpawnLocalPlayer", function(local_player)
+		Package:Log("LocalPlayer is ready!")
+	end)

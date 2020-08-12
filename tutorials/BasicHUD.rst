@@ -25,7 +25,7 @@ This sample code shows how to add a basic HUD showing up the character's Health 
 	ammo_bag_item_id = nil
 
 	-- When LocalPlayer spawns, sets an event on it to trigger when we possesses a new character, to store the local controlled character locally. This event is only called once, see Package:on("Load") to load it when reloading a package
-	on("InitLocalPlayer", function(local_player)
+	NanosWorld:on("SpawnLocalPlayer", function(local_player)
 		local_player:on("Possess", function(character)
 			UpdateLocalCharacter(character)
 		end)
