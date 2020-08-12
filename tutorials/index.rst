@@ -1,22 +1,22 @@
-Tutorials
-=========
+********************
+Tutorials & Examples
+********************
 
 .. toctree::
-	:maxdepth: 1
 	:name: toc-tutorials
 	:hidden:
 	:glob:
 
 	PropShooter.rst
+	PropRain.rst
 	WeaponScope.rst
 
 
 .. attention:: This page is under construction.
 
 
-*********
 Scripting
-*********
+---------
 
 .. raw:: html
 
@@ -46,9 +46,8 @@ Scripting
 	</script>
 
 
-********************
 Packages / Gamemodes
-********************
+--------------------
 
 .. raw:: html
 
@@ -71,9 +70,8 @@ Packages / Gamemodes
 	</script>
 
 
-******************
 Samples / Snippets
-******************
+------------------
 
 .. raw:: html
 
@@ -83,6 +81,13 @@ Samples / Snippets
 			"https://i.imgur.com/Mq3FBv4.png",
 			"Prop Shooter",
 			"A small example of how to shoot Props from a weapon!"
+		);
+
+		DrawCard(
+			"PropRain.html",
+			"https://i.imgur.com/0VVlryj.png",
+			"Prop Rain",
+			"A little fun making it rain props when entering a trigger!"
 		);
 
 		DrawCard(

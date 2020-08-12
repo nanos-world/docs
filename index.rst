@@ -18,14 +18,6 @@ nanos.world Official Documentation
    :name: sec-learn
 
    getting_started/index
-
-
-.. toctree::
-   :hidden:
-   :titlesonly:
-   :caption: Tutorials & Examples
-   :name: sec-tutorials
-
    tutorials/index
 
 
