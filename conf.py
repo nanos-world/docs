@@ -77,12 +77,12 @@ html_logo = 'images/logo.png'
 html_static_path = ['_static']
 
 html_css_files = [
-    'css/style.css',
-    'css/custom.css',
+    'css/style.css?v1',
+    'css/custom.css?v1',
 ]
 
 html_js_files = [
-    'js/script.js',
+    'js/script.js?v1',
 ]
 
 # Add any paths that contain custom static files (such as style sheets) here,
