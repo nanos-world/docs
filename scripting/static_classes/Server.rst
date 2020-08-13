@@ -15,30 +15,25 @@ Events
 ------
 
 .. list-table:: 
-  :widths: 5 15 30 50
+  :widths: 10 20 70
    
-  * - 
-    - **Name**
+  * - **Name**
     - **Parameters**
     - **Description**
 
-  * -
-    - Console
+  * - Console
     - :term:`string` Text
     - Called when a console command is submitted
 
-  * -
-    - Start
+  * - Start
     - 
     - Server has been started.
 
-  * -
-    - Stop
+  * - Stop
     - 
     - Server has been stopped.
 
-  * -
-    - Tick
+  * - Tick
     - :term:`number` DeltaTime
     - Is called every 30 ms by default. Only small operations should be performed here, otherwise this can lead the server to delays.
 

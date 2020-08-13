@@ -72,15 +72,13 @@ Events
 ------
 
 .. list-table:: 
-  :widths: 5 15 30 50
+  :widths: 15 35 50
    
-  * - 
-    - **Name**
+  * - **Name**
     - **Parameters**
     - **Description**
 
-  * -
-    - ViewportResized
+  * - ViewportResized
     - :ref:`Vector2D` NewSize
     - Called when the screen is resized
 

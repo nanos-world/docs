@@ -15,40 +15,33 @@ Functions
 ---------
 
 .. list-table:: 
-  :widths: 5 10 35 50
+  :widths: 10 40 50
 
-  * - 
-    - **Returns**
+  * - **Returns**
     - **Name**
     - **Description**
 
-  * - |client-only-label|
-    - :ref:`Vector2D`
+  * - :ref:`Vector2D`
     - GetMousePosition()
     - Gives the current mouse location
 
-  * - |client-only-label|
-    - :term:`boolean`
+  * - :term:`boolean`
     - IsMouseEnabled()
     - 
 
-  * - |client-only-label|
-    - :term:`boolean`
+  * - :term:`boolean`
     - IsKeyDown(:term:`string` KeyName)
     - Returns if a key is being pressed
 
-  * - |client-only-label|
-    - 
+  * - 
     - SetMouseEnabled(:term:`boolean`)
     - Sets mouse enabled and toggles game input
 
-  * - |client-only-label|
-    - 
+  * - 
     - SetDiscordActivity(:term:`string` State, :term:`string` Details, :term:`string` LargeImage, :term:`string` LargeText)
     - Comunicates with Discord and sets a custom user status
 
-  * - |client-only-label|
-    - 
+  * - 
     - SetOutlineColor(:ref:`Color` OutlineColor)
     - Changes the Outline Color for interactable stuff. Multiply it by 5 (or more) for having a glowing effect.
 
@@ -57,40 +50,37 @@ Events
 ------
 
 .. list-table:: 
-  :widths: 5 15 30 50
+  :widths: 15 35 50
    
-  * - |client-only-label|
-    - **Name**
+  * - **Name**
     - **Parameters**
     - **Description**
 
-  * - |client-only-label|
-    - Tick
+  * - Tick
     - :term:`number` DeltaTime
     - Called Every Frame. Do not abuse.
 
-  * - |client-only-label|
-    - Console
+  * - Console
     - :term:`string` Text
     - Called when a console command is submitted
 
-  * - |client-only-label|
-    - KeyUp
+  * - Chat
+    - :term:`string` Text
+    - Called when a chat text is submitted (by LocalPlayer)
+
+  * - KeyUp
     - :term:`string` KeyName
     - A keyboard key has been released
 
-  * - |client-only-label|
-    - KeyDown
+  * - KeyDown
     - :term:`string` KeyName
     - A keyboard key has been pressed / is being pressed
 
-  * - |client-only-label|
-    - MouseUp
+  * - MouseUp
     - :term:`string` KeyName, :term:`number` MouseX, :term:`number` MouseY
     - A mouse button has been released
 
-  * - |client-only-label|
-    - MouseDown
+  * - MouseDown
     - :term:`string` KeyName, :term:`number` MouseX, :term:`number` MouseY
     - A mouse button has been pressed / is being pressed
 
