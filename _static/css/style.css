@@ -1,6 +1,7 @@
 /* Credits to https://github.com/godotengine/godot-docs/blob/3.2/_static/css/custom.css */
 
 /* Default (light) theme colors */
+/*
  :root {
     --body-color: #404040;
     --content-wrap-background-color: #efefef;
@@ -59,70 +60,70 @@
     --btn-neutral-hover-background-color: #e5ebeb;
     --footer-color: #808080;
 }
-
+*/
 /* Dark theme colors */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --body-color: rgba(255, 255, 255, 0.85);
-        --content-wrap-background-color: #202326;
-        --content-background-color: #2e3236;
-        /* Decrease the logo opacity when using the dark theme to be less distracting */
-        --logo-opacity: 0.85;
-        --navbar-background-color: #25282b;
-        --navbar-background-color-hover: #333639;
-        --navbar-background-color-active: #212325;
-        --navbar-current-background-color: #333639;
-        --navbar-current-background-color-hover: #44474a;
-        --navbar-current-background-color-active: #212325;
-        --navbar-level-1-color: #ddd;
-        --navbar-level-2-color: #ccc;
-        --navbar-level-3-color: #bbb;
-        --navbar-heading-color: #51c453;
+/* @media (prefers-color-scheme: dark) { */
+:root {
+    --body-color: rgba(255, 255, 255, 0.85);
+    --content-wrap-background-color: #202326;
+    --content-background-color: #2e3236;
+    /* Decrease the logo opacity when using the dark theme to be less distracting */
+    --logo-opacity: 0.85;
+    --navbar-background-color: #25282b;
+    --navbar-background-color-hover: #333639;
+    --navbar-background-color-active: #212325;
+    --navbar-current-background-color: #333639;
+    --navbar-current-background-color-hover: #44474a;
+    --navbar-current-background-color-active: #212325;
+    --navbar-level-1-color: #ddd;
+    --navbar-level-2-color: #ccc;
+    --navbar-level-3-color: #bbb;
+    --navbar-heading-color: #51c453;
 
-        --link-color: #1989c8;
-        --link-color-hover: #1989c8;
-        --link-color-active: #1989c8;
-        --link-color-visited: #1989c8;
+    --link-color: #1989c8;
+    --link-color-hover: #1989c8;
+    --link-color-active: #1989c8;
+    --link-color-visited: #1989c8;
 
-        --hr-color: #555;
-        --table-row-odd-background-color: #3b3e41;
-        --code-background-color: #434649;
-        --code-border-color: #505356;
-        --code-literal-color: #faa;
-        --input-background-color: #333537;
-        --input-focus-border-color: #5f8cff;
+    --hr-color: #555;
+    --table-row-odd-background-color: #3b3e41;
+    --code-background-color: #434649;
+    --code-border-color: #505356;
+    --code-literal-color: #faa;
+    --input-background-color: #333537;
+    --input-focus-border-color: #5f8cff;
 
-        /* Colors taken from the Godot script editor with the Adaptive theme */
-        --highlight-background-color: #202531;
-        --highlight-comment-color: rgba(204, 206, 211, 0.5);
-        --highlight-keyword-color: #ff7085;
-        --highlight-keyword2-color: #42ffc2;
-        --highlight-number-color: #a1ffe0;
-        --highlight-decorator-color: #abc8ff;
-        --highlight-type-color: #8effda;
-        --highlight-type2-color: #c6ffed;
-        --highlight-function-color: #57b3ff;
-        --highlight-operator-color: #abc8ff;
-        --highlight-string-color: #ffeca1;
+    /* Colors taken from the Godot script editor with the Adaptive theme */
+    --highlight-background-color: #202531;
+    --highlight-comment-color: rgba(204, 206, 211, 0.5);
+    --highlight-keyword-color: #ff7085;
+    --highlight-keyword2-color: #42ffc2;
+    --highlight-number-color: #a1ffe0;
+    --highlight-decorator-color: #abc8ff;
+    --highlight-type-color: #8effda;
+    --highlight-type2-color: #c6ffed;
+    --highlight-function-color: #57b3ff;
+    --highlight-operator-color: #abc8ff;
+    --highlight-string-color: #ffeca1;
 
-        --admonition-note-background-color: #303d4f;
-        --admonition-note-color: #bfeeff;
-        --admonition-note-title-background-color: #305070;
-        --admonition-note-title-color: #bfefff;
-        --admonition-attention-background-color: #444033;
-        --admonition-attention-color: #ffeeaf;
-        --admonition-attention-title-background-color: #665022;
-        --admonition-attention-title-color: #ffeeaf;
-        --admonition-tip-background-color: #28382d;
-        --admonition-tip-color: #dfd;
-        --admonition-tip-title-background-color: #336648;
-        --admonition-tip-title-color: #dfd;
+    --admonition-note-background-color: #303d4f;
+    --admonition-note-color: #bfeeff;
+    --admonition-note-title-background-color: #305070;
+    --admonition-note-title-color: #bfefff;
+    --admonition-attention-background-color: #444033;
+    --admonition-attention-color: #ffeeaf;
+    --admonition-attention-title-background-color: #665022;
+    --admonition-attention-title-color: #ffeeaf;
+    --admonition-tip-background-color: #28382d;
+    --admonition-tip-color: #dfd;
+    --admonition-tip-title-background-color: #336648;
+    --admonition-tip-title-color: #dfd;
 
-        --btn-neutral-background-color: #404040;
-        --btn-neutral-hover-background-color: #505050;
-        --footer-color: #aaa;
-    }
+    --btn-neutral-background-color: #404040;
+    --btn-neutral-hover-background-color: #505050;
+    --footer-color: #aaa;
 }
+/* } */
 
 body,
 h1,

@@ -77,7 +77,7 @@ html_logo = 'images/logo.png'
 html_static_path = ['_static']
 
 html_css_files = [
-    'css/style.css?v1',
+    'css/style.css?v2',
     'css/custom.css?v1',
 ]
 
