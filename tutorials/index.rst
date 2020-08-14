@@ -11,6 +11,7 @@ Tutorials & Examples
 	ChatColors.rst
 	PropShooter.rst
 	PropRain.rst
+	WeaponFlashlight.rst
 	WeaponScope.rst
 
 
@@ -97,6 +98,13 @@ Samples / Snippets
 			"https://i.imgur.com/K5eVATY.png",
 			"Weapon Scope",
 			"See how to attach a scope (ex: Red Dot) to any weapon!"
+		);
+
+		DrawCard(
+			"WeaponFlashlight.html",
+			"https://i.imgur.com/JUtyW9s.png",
+			"Weapon Flashlight",
+			"See how to create and attach a flashlight to any weapon!"
 		);
 
 		DrawCard(
