@@ -8,6 +8,7 @@ Tutorials & Examples
 	:glob:
 
 	BasicHUD.rst
+	ChatColors.rst
 	PropShooter.rst
 	PropRain.rst
 	WeaponScope.rst
@@ -103,5 +104,12 @@ Samples / Snippets
 			"https://i.imgur.com/45n8635.png",
 			"Basic HUD",
 			"See how to display Health and Ammo on the screen!"
+		);
+
+		DrawCard(
+			"ChatColors.html",
+			"https://i.imgur.com/J97aZZy.png",
+			"Chat Colors",
+			"See how to display colored texts in the chat!"
 		);
 	</script>

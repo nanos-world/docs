@@ -83,8 +83,39 @@ Events
     - Called when the screen is resized
 
 
+Available Fonts
+---------------
+
+.. list-table:: 
+  :widths: 5 95
+   
+  * - **ID**
+    - **Name**
+
+  * - 0
+    - Roboto
+
+  * - 1
+    - Gothic A1
+
+  * - 2
+    - Poiret One
+
+
 Examples
 --------
+
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"../../tutorials/BasicHUD.html",
+			"https://i.imgur.com/45n8635.png",
+			"Basic HUD",
+			"See how to display Health and Ammo on the screen!"
+		);
+	</script>
+
 
 .. tabs::
  .. code-tab:: lua Lua
@@ -104,22 +135,3 @@ Examples
     outlineColor = Color(1, 1, 1, 1) -- Color to render the outline for the text.
     
     Render:AddText(0, text, location, fontType, fontSize, textColor, kerning, bCenterX, bCenterY, bEnableShadow, shadowOffset, shadowColor, bOutlined, outlineColor)
-
-
-Available Fonts
----------------
-
-.. list-table:: 
-  :widths: 5 95
-   
-  * - **ID**
-    - **Name**
-
-  * - 0
-    - Roboto
-
-  * - 1
-    - Gothic A1
-
-  * - 2
-    - Poiret One

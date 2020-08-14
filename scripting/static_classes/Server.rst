@@ -11,6 +11,22 @@ Server
 .. note:: This is a Server only Class.
 
 
+Functions
+---------
+
+.. list-table:: 
+  :widths: 50 50
+
+  * - **Name**
+    - **Description**
+
+  * - SendChatMessage(:ref:`Player` Player, :term:`string` Message)
+    - Sends a chat message to Player only
+
+  * - BroadcastChatMessage(:term:`string` Message)
+    - Sends a chat message to everyone
+
+
 Events
 ------
 
@@ -41,6 +57,18 @@ Events
 Examples
 --------
 
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"../../tutorials/ChatColors.html",
+			"https://i.imgur.com/J97aZZy.png",
+			"Chat Colors",
+			"See how to display colored texts in the chat!"
+		);
+	</script>
+
+
 .. tabs::
  .. code-tab:: lua Lua
 
@@ -58,3 +86,6 @@ Examples
     Server:on("Tick", function(ticktime)
         print("Tick: " .. ticktime)
     end)
+
+    -- sends a chat message to everyone
+    Server:BroadcastChatMessage("Welcome to the server!")
