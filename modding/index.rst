@@ -26,7 +26,7 @@ Exporting and Creating Assets
 *  :ref:`StaticMeshes` Creating and Exporting Static Meshes (e.g. used for Props)
 
 
-Rules for exporting/creating assets in Unreal Engine 4 for nanos.world
+Rules for exporting/creating assets in Unreal Engine 4 for nanos world
 ----------------------------------------------------------------------
 
 1. Always create a Root folder with the name of your pack (e.g. ``/Content/My_Weapon_Pack/``) and put all content you use inside that (you can create sub-folders as well).

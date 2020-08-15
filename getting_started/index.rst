@@ -4,7 +4,7 @@
 Getting Started
 ***************
 
-Fundamental information for scripters and modders to start our creating servers and mods for nanos.world.
+Fundamental information for scripters and modders to start our creating servers and mods for nanos world.
 
 .. toctree::
    :hidden:

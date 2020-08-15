@@ -7,7 +7,7 @@ Contributing to the Docs
 
 This docs is made with `Sphinx (reStructuredText - RST) <https://en.wikipedia.org/wiki/ReStructuredText>`_. To be able to contribute and suggest changes, you need to clone the repository locally and have the following dependencies installed:
 
-#. `nanos.world Documentation repository <https://github.com/nanos-world/docs>`_.
+#. `nanos world Documentation repository <https://github.com/nanos-world/docs>`_.
 
 #. `Python <https://www.python.org/downloads/>`_.
 

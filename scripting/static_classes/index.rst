@@ -4,7 +4,7 @@
 Static Classes
 **************
 
-In nanos.world, all interactions are made through a **Class** or a **Static Class**. That means 99% of things you would do needs an Object/Table reference to be done. With that in mind, this page will list all nanos.world Objects which already exists and/or is spawned by default and can be accessed from anywhere.
+In nanos world, all interactions are made through a **Class** or a **Static Class**. That means 99% of things you would do needs an Object/Table reference to be done. With that in mind, this page will list all nanos world Objects which already exists and/or is spawned by default and can be accessed from anywhere.
 
 For example, if you want to interact with World (move the sun, set it rain, etc), you will need the ``World`` Static Class:
 

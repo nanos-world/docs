@@ -8,7 +8,7 @@ Scripting Quick Start
 Introduction
 ------------
 
-Adding functionalities and gamemode features into nanos.world is simpler than it looks! In this Quick Start Guide, you will learn how to setup a Package in nanos.world and program your first Lua scripting functionality.
+Adding functionalities and gamemode features into nanos world is simpler than it looks! In this Quick Start Guide, you will learn how to setup a Package in nanos world and program your first Lua scripting functionality.
 
 
 Packages
@@ -85,7 +85,7 @@ You can also join your server to see the results =D
 
 Very nice! But you may have noticed you are just a wandering soul flying around, let's give you some flesh! For that, we will need to interact with some :ref:`Events`.
 
-In nanos.world we have a Class called :ref:`Player`. Player's are just a representation of a physical person behind the mouse and keyboard. Inside the game Player's don't have physical presence, because of that we must assign a :ref:`Character` to them, so with that they can incarnate and personify something =D.
+In nanos world we have a Class called :ref:`Player`. Player's are just a representation of a physical person behind the mouse and keyboard. Inside the game Player's don't have physical presence, because of that we must assign a :ref:`Character` to them, so with that they can incarnate and personify something =D.
 
 When a :ref:`Player` connects to your server, a new Player class is automatically spawned and you can get them with the following event:
 

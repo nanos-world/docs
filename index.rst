@@ -1,4 +1,4 @@
-nanos.world Official Documentation
+nanos world Official Documentation
 ==================================
 
 .. toctree::
@@ -43,7 +43,7 @@ nanos.world Official Documentation
    modding/NanosWorldDefaultPack
 
 
-Welcome to the official documentation of nanos.world! da best game ever made.
+Welcome to the official documentation of nanos world! da best game ever made.
 
 nanos world is the next generation multiplayer sandbox game created by you and nanos. We do this by allowing players, developers and modders themselves to build their own game upon and to integrate their work in nanos world. Built upon Unreal Engine 4 (UE4), nanos framework and our experience, especially from Just Cause 3: Multiplayer and other modifications we created, you can turn your world into whatever you’d like. Bringing all participants to the table, players can join thousands of different worlds and thousands of different game modes with only one game and everybody can contribute to our common project. 
 

@@ -4,7 +4,7 @@
 Assets Quick Start
 ******************
 
-nanos.world provides fully capabilities of modifying, including and customizing the game. In this section we will explain how to include custom Assets in your server.
+nanos world provides fully capabilities of modifying, including and customizing the game. In this section we will explain how to include custom Assets in your server.
 
 
 Structure
@@ -62,7 +62,7 @@ For this tutorial, we are going to use a simple Cube (Static Mesh) and a Materia
 
 .. image:: https://i.imgur.com/jcwWd0L.png
 
-For exporting them in a recognizable way by nanos.world, you need to "Package the Project" (i.e. cooking and packaging it).
+For exporting them in a recognizable way by nanos world, you need to "Package the Project" (i.e. cooking and packaging it).
 
 Before moving on, we just need to change three settings, for that open the Packaging Settings:
 
@@ -102,7 +102,7 @@ And thats it! You must now just copy ``MyPack/`` folder inside your Server's ``A
 Assets Configuration File
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. tip:: nanos.world Config files use **TOML** (Tom's Obvious, Minimal Language), please refer to https://github.com/toml-lang/toml for more information and syntax.
+.. tip:: nanos world Config files use **TOML** (Tom's Obvious, Minimal Language), please refer to https://github.com/toml-lang/toml for more information and syntax.
 
 The Assets Configuration file ``Assets.toml`` is generated automatically when an Asset Pack is loaded for the first time. This file will always be overriden with the proper pattern after it's loaded.
 

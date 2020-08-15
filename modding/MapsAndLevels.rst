@@ -9,12 +9,12 @@ Maps and Levels are quite the most straightforward asset that you can create and
 .. tip:: Please refer to `Unreal's Official tutorial - Working with Levels <https://docs.unrealengine.com/en-US/Engine/Levels/HowTo/WorkWithLevelAssets/index.html>`_.
 
 
-Rules for creating a Map/Level for nanos.world
+Rules for creating a Map/Level for nanos world
 ----------------------------------------------
 
 1. Do not spawn/place Dynamic Meshes (with Physics), as they will not be synced in-game. You need to spawn them as a :ref:`Prop` on the scripting.
 
-2. Add a "Sun" actor-tag to all Lighting/Sky/Sun related actors (DirectionalLight, SkyLight, DomeMesh, SkyAtmosphere or SunSky), this will allow, if wanted, to your light to be overridden by scripters to use instead the Official NanosWorld Sun through `World.SpawnDefaultSun()`, which allows light/sun customization.
+2. Add a "Sun" actor-tag to all Lighting/Sky/Sun related actors (DirectionalLight, SkyLight, DomeMesh, SkyAtmosphere or SunSky), this will allow, if wanted, to your light to be overridden by scripters to use instead the Official nanos world Sun through `World.SpawnDefaultSun()`, which allows light/sun customization.
 
 .. attention:: Most of :ref:`World` functions rely on our own assets and code, so it is not (yet) possible to change the lighting or weather in your custom Map with :ref:`World` scripting functions.
 
@@ -30,7 +30,7 @@ Maps can also have a **Custom Script** (server-only) attached to it. These are f
 Creating a Map in Unreal Engine 4 from Scratch
 ----------------------------------------------
 
-In this tutorial we are going to cover all steps to create a Map for nanos.world from scratch and use it in your server.
+In this tutorial we are going to cover all steps to create a Map for nanos world from scratch and use it in your server.
 
 After you've downloaded `Unreal Engine 4.25 <https://www.unrealengine.com/en-US/download/ue_non_games>`_. Launch it and create a Blank Project:
 

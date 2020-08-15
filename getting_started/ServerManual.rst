@@ -4,7 +4,7 @@
 Server Manual
 *************
 
-Creating servers in nanos.world is very simple and straightforward, just a few steps and you have your server up and ready!
+Creating servers in nanos world is very simple and straightforward, just a few steps and you have your server up and ready!
 
 
 System Requirements
@@ -29,7 +29,7 @@ The server is as simple as one executable file ``NanosWorldServer.exe``. After d
 Server Configuration File
 -------------------------
 
-.. tip:: nanos.world Config files use **TOML** (Tom's Obvious, Minimal Language), please refer to https://github.com/toml-lang/toml for more information and syntax.
+.. tip:: nanos world Config files use **TOML** (Tom's Obvious, Minimal Language), please refer to https://github.com/toml-lang/toml for more information and syntax.
 
 The server Configuration file ``Config.toml`` is generated automatically when the server is launched for the first time. This file will always be overriden with the proper pattern after the server is loaded.
 
@@ -38,31 +38,31 @@ The server Configuration file ``Config.toml`` is generated automatically when th
     # Server Configurations
     [server]
         # Server Name
-        name =                "nanos.world Server"
+        name =                "nanos world Server"
         # Server Description
-        description =            ""
+        description =         ""
         # Server Logo URL (Recommended Size: 150x75)
         logo =            
         # Max Players
-        max_players =            64
+        max_players =         64
         # Leave it blank for no password
         password =            ""
         # Server IP. Leave it 0.0.0.0 for default
-        ip =                "0.0.0.0"
+        ip =                  "0.0.0.0"
         # Server Port (UDP forwarding needed)
         port =                7777
         # HTTP Port (TCP forwarding needed)
-        http_port =            7777
+        http_port =           7777
         # Announce Server in the Server List
         announce =            true
         # Server Tick Rate in milliseconds (Dangerous! Server will tick at each [tick_rate] ms,
         # affecting both Server and Client performance. 33 ms means 30 ticks per Second and is
         # the default and recommended value)
-        tick_rate =            33
+        tick_rate =           33
         # Log Level. (1) Normal - (2) Debug - (3) Verbose
-        log_level =            1
+        log_level =           1
 
-    # nanos.world Configurations
+    # nanos world Configurations
     [world]
         # Package List (leave it blank to load all packages, this is usually useful when you have
         # tons of packages downloaded and only want to load one or some)
@@ -70,7 +70,13 @@ The server Configuration file ``Config.toml`` is generated automatically when th
 
         ]
         # Default startup map
-        map =                "NanosWorld::BlankMap"
+        map =                 "NanosWorld::BlankMap"
+        # VOIP Setting ('Local', 'Global' or 'Disabled')
+        voip_setting =        "Local"
+        # Banned IPs
+        banned_ips = [
+            
+        ]
 
 
 Command Line Parameters
@@ -134,7 +140,7 @@ All (not pre-defined) commands will be sent into an event to the scripting/serve
 Packages & Scripting
 --------------------
 
-nanos.world provides a way of customizating and creating custom gamemodes for your server with scripting language (Lua). You can create and add several Lua scripts files and run them on the server and/or on the client side. You can also separate your gamemodes and functionalities in different Packages (or you can call it Modules or GameModes).
+nanos world provides a way of customizating and creating custom gamemodes for your server with scripting language (Lua). You can create and add several Lua scripts files and run them on the server and/or on the client side. You can also separate your gamemodes and functionalities in different Packages (or you can call it Modules or GameModes).
 
 .. note:: Each Package will have its own memory space and are not interconnected with other Packages.
 
@@ -176,7 +182,7 @@ Each Package must have an ``Package.toml`` file which is the Configuration File 
 Package Configuration File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. tip:: nanos.world Config files use **TOML** (Tom's Obvious, Minimal Language), please refer to https://github.com/toml-lang/toml for more information and syntax.
+.. tip:: nanos world Config files use **TOML** (Tom's Obvious, Minimal Language), please refer to https://github.com/toml-lang/toml for more information and syntax.
 
 The Package Configuration file ``Package.toml`` is generated automatically when a package is initialized for the first time. This file will always be overriden with the proper pattern after it's loaded.
 
