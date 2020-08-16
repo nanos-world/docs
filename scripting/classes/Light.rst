@@ -31,6 +31,21 @@ Usage
     )
 
 
+Related Tutorials
+-----------------
+
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"WeaponFlashlight.html",
+			"https://i.imgur.com/JUtyW9s.png",
+			"Weapon Flashlight",
+			"See how to create and attach a flashlight to any weapon!"
+		);
+	</script>
+
+
 Constructor Parameters
 ----------------------
 

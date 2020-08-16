@@ -96,6 +96,13 @@ Related Tutorials
 			"Weapon Scope",
 			"See how to attach a scope (ex: Red Dot) to any weapon!"
 		);
+
+		DrawCard(
+			"WeaponFlashlight.html",
+			"https://i.imgur.com/JUtyW9s.png",
+			"Weapon Flashlight",
+			"See how to create and attach a flashlight to any weapon!"
+		);
 	</script>
 
 
