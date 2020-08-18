@@ -32,7 +32,7 @@ This sample code creates a rain effect with :ref:`Prop`\s (boxes) falling from s
         end
 
         -- Sets a Timer at each 100ms to spawn a Prop
-        MyTimer = Timer:SetTimeout(100, {}, function()
+        MyTimer = Timer:SetTimeout(100, function()
             -- Gets random Location and Rotation
             local PropSpawnLocation = Vector(math.random(100, 300), math.random(100, 300), math.random(800, 1200))
             local PropSpawnRotation = Rotator(math.random(0, 360), math.random(0, 360), math.random(0, 360))
