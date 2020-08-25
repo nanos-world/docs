@@ -8,8 +8,6 @@ Light
 
 A Light represents a Lighting source. Nanos World provides 3 types of lights: **Spot**, **Point** and **Rect**. All lights are Dynamic and because of that, very expensive! Keep that in mind before spawning 1000 lights ;).
 
-.. attention:: This page is under construction.
-
 
 Usage
 -----
@@ -38,7 +36,7 @@ Related Tutorials
 
 	<script>
 		DrawCard(
-			"WeaponFlashlight.html",
+			"../../tutorials/WeaponFlashlight.html",
 			"https://i.imgur.com/JUtyW9s.png",
 			"Weapon Flashlight",
 			"See how to create and attach a flashlight to any weapon!"

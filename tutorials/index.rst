@@ -7,7 +7,8 @@ Tutorials & Examples
 	:hidden:
 	:glob:
 
-	BasicHUD.rst
+	BasicHUDCanvas.rst
+	BasicHUDHTML.rst
 	ChatColors.rst
 	PropShooter.rst
 	PropRain.rst
@@ -108,10 +109,17 @@ Samples / Snippets
 		);
 
 		DrawCard(
-			"BasicHUD.html",
+			"BasicHUDCanvas.html",
 			"https://i.imgur.com/45n8635.png",
-			"Basic HUD",
-			"See how to display Health and Ammo on the screen!"
+			"Basic HUD (Canvas)",
+			"See how to display Health and Ammo on the screen using Render's Canvas!"
+		);
+
+		DrawCard(
+			"BasicHUDHTML.html",
+			"https://i.imgur.com/ReuYOH1.jpg",
+			"Basic HUD (HTML)",
+			"See how to display a basic HUD using HTML and JavaScript!"
 		);
 
 		DrawCard(

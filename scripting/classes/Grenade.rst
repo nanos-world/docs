@@ -8,8 +8,6 @@ Grenade
 
 Chad Grenade
 
-.. attention:: This page is under construction.
-
 
 Usage
 -----

@@ -8,8 +8,6 @@ Player
 
 Players are Entities that represents the individual behind the mouse and keyboard. Players are spawned automatically when connected to the server.
 
-.. attention:: This page is under construction.
-
 
 Constructors
 ------------

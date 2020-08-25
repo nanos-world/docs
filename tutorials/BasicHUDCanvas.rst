@@ -1,11 +1,11 @@
-.. _BasicHUD:
+.. _BasicHUDCanvas:
 
 
-*********
-Basic HUD
-*********
+******************
+Basic HUD (Canvas)
+******************
 
-This sample code shows how to add a basic HUD showing up the character's Health and Ammo.
+This sample code shows how to add a basic HUD using :ref:`Render`'s Canvas features, to display the character's Health and Ammo.
 
 .. image:: https://i.imgur.com/WE3rqAL.png
 

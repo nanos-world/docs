@@ -41,3 +41,4 @@ Class List
    Sound.rst
    Vehicle.rst
    Weapon.rst
+   WebUI.rst

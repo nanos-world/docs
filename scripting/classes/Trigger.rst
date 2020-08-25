@@ -8,8 +8,6 @@ Trigger
 
 A Trigger class is a utility class to trigger events when some Actor enters an Area.
 
-.. attention:: This page is under construction.
-
 
 Usage
 -----
@@ -99,3 +97,18 @@ Events
     - When an Actor leaves this trigger
 
 .. include:: ../common/events/Actor.rst
+
+
+Related Tutorials
+-----------------
+
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"../../tutorials/PropRain.html",
+			"https://i.imgur.com/0VVlryj.png",
+			"Prop Rain",
+			"A little fun making it rain props when entering a trigger!"
+		);
+	</script>

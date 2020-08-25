@@ -8,8 +8,6 @@ Prop
 
 A Prop represents a Static Mesh which can be spawned in the world, can be grabbed around and have physics.
 
-.. attention:: This page is under construction.
-
 
 Usage
 -----
@@ -115,3 +113,18 @@ Events
     - When Character ungrabs a Prop
 
 .. include:: ../common/events/Actor.rst
+
+
+Related Tutorials
+-----------------
+
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"../../tutorials/PropRain.html",
+			"https://i.imgur.com/0VVlryj.png",
+			"Prop Rain",
+			"A little fun making it rain props when entering a trigger!"
+		);
+	</script>

@@ -10,8 +10,6 @@ Weapon
 
 Weapons are fully customizable, all pieces of the weapon can be changed with immense possibility of creation
 
-.. attention:: This page is under construction.
-
 .. tip:: Since update 0.16 it is possible to create any kind of weapon with any kind of mesh
 
 .. tip:: Please take a look at our Default's Weapon package with all of them already properly configured and ready to use: `<https://github.com/nanos-world/nanos-world-weapons>`_.
@@ -84,7 +82,7 @@ Related Tutorials
 
 	<script>
 		DrawCard(
-			"PropShooter.html",
+			"../../tutorials/PropShooter.html",
 			"https://i.imgur.com/Mq3FBv4.png",
 			"Prop Shooter",
 			"A small example of how to shoot Props from a weapon!"
@@ -98,7 +96,7 @@ Related Tutorials
 		);
 
 		DrawCard(
-			"WeaponFlashlight.html",
+			"../../tutorials/WeaponFlashlight.html",
 			"https://i.imgur.com/JUtyW9s.png",
 			"Weapon Flashlight",
 			"See how to create and attach a flashlight to any weapon!"

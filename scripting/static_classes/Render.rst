@@ -109,7 +109,7 @@ Examples
 
 	<script>
 		DrawCard(
-			"../../tutorials/BasicHUD.html",
+			"../../tutorials/BasicHUDCanvas.html",
 			"https://i.imgur.com/45n8635.png",
 			"Basic HUD",
 			"See how to display Health and Ammo on the screen!"
