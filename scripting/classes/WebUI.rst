@@ -81,6 +81,18 @@ Functions
     - SetFocus()
     - Enables the focus on this browser. Note: only one browser can have focus per time.
 
+  * - 
+    - Destroy()
+    - Destroys this Browser
+
+  * - :term:`boolean`
+    - IsValid()
+    - Returns if this entity is Valid
+
+  * - :term:`string`
+    - GetType()
+    - Returns the type of this Actor
+
 
 Events
 ------
