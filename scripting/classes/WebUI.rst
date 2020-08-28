@@ -8,11 +8,13 @@ WebUI
 
 .. image:: https://i.imgur.com/Sh88Q32.png
 
-Class for spawning a web browser.
-
-.. note:: This is a Client only Class.
+Class for spawning a web browser in the screen. The browser will fill up the whole screen and is automatically resized. 
 
 .. attention:: This page is under construction.
+
+.. tip:: This HTML implementation is built upon same core as WebKit/Safari. And currently does not support HTML5 videos.
+
+.. note:: This is a Client only Class.
 
 
 Usage
@@ -80,6 +82,10 @@ Functions
   * - 
     - SetFocus()
     - Enables the focus on this browser. Note: only one browser can have focus per time.
+
+  * - 
+    - LoadURL(:term:`string` URL)
+    - Loads a new File/URL in this Browser
 
   * - 
     - Destroy()
