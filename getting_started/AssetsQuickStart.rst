@@ -140,7 +140,7 @@ It is extremely important to setup your ``Assets.toml`` file, in there you will 
 			# A_Audio_Rifle_Fire = "Audios/A_Audio_Rifle_Fire_03"
 			# ...
 
-As seen above, Assets can be set in a ``key = "value"`` pattern, the **key** being how Scripters reference it in their code, and the **value** being the path where the game will look for it. Note: all paths are relative to the Asset Pack folder.
+As seen above, Assets can be set in a ``key = "value"`` pattern, the **key** being how Scripters reference it in their code, and the **value** being the path where the game will look for it. Note: all paths are relative to the Asset Pack folder. So for example, if **Characters** is a **folder** inside MyPack Asset Pack folder then the relative path would be: "Characters/Your_Asset_Name".
 
 
 Referencing Assets in Code
