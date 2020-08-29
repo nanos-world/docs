@@ -10,11 +10,11 @@ Events (Inherited from Actor)
     - **Description**
 
   * -
-    - Spawn
-    - Entity actor
-    - Triggered when an Entity is Spawned/Created
-
-  * -
     - Destroy
     - Entity actor
     - Triggered when an Entity is Destroyed
+
+  * -
+    - Spawn
+    - Entity actor
+    - Triggered when an Entity is Spawned/Created

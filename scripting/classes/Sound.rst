@@ -82,8 +82,33 @@ Functions
 
   * - |client-only-label|
     - 
-    - SetVolume(:term:`number` NewVolume)
-    - Sets the Sound's volume (0 - 1)
+    - FadeIn(:term:`number` FadeInDuration, :term:`number` FadeVolumeLevel, :term:`number` StartTime)
+    - Plays the sound with a fade effect
+
+  * - |client-only-label|
+    - 
+    - FadeOut(:term:`number` FadeOutDuration, :term:`number` FadeVolumeLevel)
+    - Stops the sound with a fade effect
+
+  * - |client-only-label|
+    - 
+    - Play()
+    - Starts the sound
+
+  * - |client-only-label|
+    - 
+    - SetFalloffDistance(:term:`number` FalloffDistance)
+    - If a 3D Sound, sets the distance which the sound is inaudible
+
+  * - |client-only-label|
+    - 
+    - SetLowPassFilter(:term:`number` Frequency)
+    - Sets lowpass filter frequency. Sets 0 to disable it.
+
+  * - |client-only-label|
+    - 
+    - SetPaused(:term:`boolean` Pause)
+    - Pauses the sound
 
   * - |client-only-label|
     - 
@@ -92,8 +117,8 @@ Functions
 
   * - |client-only-label|
     - 
-    - Play()
-    - Starts the sound
+    - SetVolume(:term:`number` NewVolume)
+    - Sets the Sound's volume (0 - 1)
 
   * - |client-only-label|
     - 
@@ -106,34 +131,9 @@ Functions
     - Stops the sound after the provided delay
 
   * - |client-only-label|
-    - 
-    - SetPaused(:term:`boolean` Pause)
-    - Pauses the sound
-
-  * - |client-only-label|
     - :term:`boolean`
     - IsPlaying()
     - Returns if the sound is playing
-
-  * - |client-only-label|
-    - 
-    - FadeIn(:term:`number` FadeInDuration, :term:`number` FadeVolumeLevel, :term:`number` StartTime)
-    - Plays the sound with a fade effect
-
-  * - |client-only-label|
-    - 
-    - FadeOut(:term:`number` FadeOutDuration, :term:`number` FadeVolumeLevel)
-    - Stops the sound with a fade effect
-
-  * - |client-only-label|
-    - 
-    - SetFalloffDistance(:term:`number` FalloffDistance)
-    - If a 3D Sound, sets the distance which the sound is inaudible
-
-  * - |client-only-label|
-    - 
-    - SetLowPassFilter(:term:`number` Frequency)
-    - Sets lowpass filter frequency. Sets 0 to disable it.
 
 .. include:: ../common/functions/Actor.rst
 

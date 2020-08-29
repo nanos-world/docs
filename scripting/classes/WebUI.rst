@@ -76,20 +76,20 @@ Functions
     - Calls an Event on the Browser's JavaScript
 
   * - 
-    - SetVisible(:term:`boolean` IsVisible)
-    - Toggles the visibiliy
-
-  * - 
-    - SetFocus()
-    - Enables the focus on this browser. Note: only one browser can have focus per time.
+    - Destroy()
+    - Destroys this Browser
 
   * - 
     - LoadURL(:term:`string` URL)
     - Loads a new File/URL in this Browser
 
   * - 
-    - Destroy()
-    - Destroys this Browser
+    - SetFocus()
+    - Enables the focus on this browser. Note: only one browser can have focus per time.
+
+  * - 
+    - SetVisible(:term:`boolean` IsVisible)
+    - Toggles the visibiliy
 
   * - :term:`boolean`
     - IsValid()
@@ -110,13 +110,13 @@ Events
     - **Arguments**
     - **Description**
 
-  * - Ready
-    - 
-    - When this page is fully loaded
-
   * - Failed
     - :term:`number` ErrorCode, :term:`string` Message
     - When this page fails to load
+
+  * - Ready
+    - 
+    - When this page is fully loaded
 
 
 .. note:: It is only allowed to pass :term:`number`, :term:`string` and :term:`boolean` between WebUI and your Package.

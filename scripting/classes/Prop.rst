@@ -68,25 +68,25 @@ Functions
     - **Name**
     - **Description**
 
-  * - 
-    - :term:`string`
-    - GetAssetName()
-    - Gets the Asset name
-
   * - |server-only-label|
     - 
     - SetGrabbable(:term:`boolean`)
     - Sets ability to Grab this Prop
 
   * - 
-    - :term:`boolean`
-    - IsGrabbable()
-    - Gets ability to Grab this Prop
+    - :term:`string`
+    - GetAssetName()
+    - Gets the Asset name
 
   * - 
     - :ref:`Character`
     - GetHandler()
     - Gets the Character (if existing) which is holding this
+
+  * - 
+    - :term:`boolean`
+    - IsGrabbable()
+    - Gets ability to Grab this Prop
 
 .. include:: ../common/functions/Actor.rst
 

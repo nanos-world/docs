@@ -22,14 +22,6 @@ Functions
     - **Description**
 
   * - 
-    - SetWind(:term:`number`)
-    - Sets the global Wind intensity
-
-  * - 
-    - SetWeather(:term:`number`)
-    - Sets the global Weather (0 - Clear, 1 - Rain, 2 - Cloudy, 3 - Thunderstorm)
-
-  * - 
     - SetSunAngle(:term:`number`)
     - Sets the sun's angle (0-360)
 
@@ -38,20 +30,20 @@ Functions
     - Sets the sun's time speed (default: '60', which means 60 seconds in game = 1 second in real world)
 
   * - 
+    - SetTime(:term:`number` Hours, :term:`number` Minutes)
+    - Sets the global's time of the day
+
+  * - 
+    - SetWeather(:term:`number`)
+    - Sets the global Weather (0 - Clear, 1 - Rain, 2 - Cloudy, 3 - Thunderstorm)
+
+  * - 
     - SpawnDefaultSun()
     - Overrides all Light/Sun Actors with the NanosWorld's Official one, to be able to use the functions from this page
 
   * - 
-    - SetTime(:term:`number` Hours, :term:`number` Minutes)
-    - Sets the global's time of the day
-
-  * - :term:`number`
-    - GetWeather()
-    - 
-
-  * - :term:`number`
-    - GetWind()
-    - 
+    - SetWind(:term:`number`)
+    - Sets the global Wind intensity
 
   * - :term:`number`
     - GetSunAngle()
@@ -64,6 +56,14 @@ Functions
   * - :term:`number`
     - GetTime()
     - (Hours * 60 + Minutes) - Goes from 0 to 1440
+
+  * - :term:`number`
+    - GetWeather()
+    - 
+
+  * - :term:`number`
+    - GetWind()
+    - 
 
 
 Examples

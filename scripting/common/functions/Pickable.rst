@@ -9,16 +9,6 @@ Functions (Inherited from Pickable)
     - **Name**
     - **Description**
 
-  * - 
-    - :term:`string`
-    - GetAssetName()
-    - Gets the Asset name
-
-  * - 
-    - :ref:`Character`
-    - GetHandler()
-    - Gets the Character (if existing) which is holding this
-
   * - |server-only-label|
     - 
     - PullUse()
@@ -28,3 +18,13 @@ Functions (Inherited from Pickable)
     - 
     - ReleaseUse()
     - Force this Pickable to be released the usage
+
+  * - 
+    - :term:`string`
+    - GetAssetName()
+    - Gets the Asset name
+
+  * - 
+    - :ref:`Character`
+    - GetHandler()
+    - Gets the Character (if existing) which is holding this

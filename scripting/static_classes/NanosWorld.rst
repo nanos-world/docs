@@ -35,6 +35,11 @@ Functions
     - GetItems()
     - Returns an array of all items on the server.
 
+  * - |client-only-label|
+    - :ref:`Player`
+    - GetLocalPlayer()
+    - Returns the Local Player (Client Side)
+
   * -
     - :ref:`Player`\[]
     - GetPlayers()
@@ -54,11 +59,6 @@ Functions
     - :ref:`Weapon`\[]
     - GetWeapons()
     - Returns an array of all weapons on the server.
-
-  * - |client-only-label|
-    - :ref:`Player`
-    - GetLocalPlayer()
-    - Returns the Local Player (Client Side)
 
 
 Events

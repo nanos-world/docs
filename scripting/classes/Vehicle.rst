@@ -66,40 +66,25 @@ Functions
     - **Name**
     - **Description**
 
-  * -
-    - :term:`number`
-    - GetBodyRoughness()
-    - Gets the vehicle body roughness
+  * - |server-only-label|
+    - 
+    - Horn(:term:`boolean` Bool)
+    - Starts or stops the vehicles horn
 
   * - |server-only-label|
     - 
     - SetBodyRoughness(:term:`number` NewBodyRoughness)
     - Sets the vehicle body roughness. Values between 0 and 1.
 
-  * -
-    - :ref:`Color`
-    - GetGlassColor()
-    - Gets the vehicle glass color
-
   * - |server-only-label|
     - 
     - SetGlassColor(:ref:`Color` NewGlassColor)
     - Sets the vehicle glass color
 
-  * -
-    - :term:`number`
-    - GetGlassOpacity()
-    - Gets the vehicle glass opacity
-
   * - |server-only-label|
     - 
     - SetGlassOpacity(:term:`number` NewGlassOpacity)
     - Sets the vehicle glass opacity. Values between 0 and 1.
-
-  * -
-    - :ref:`Color`
-    - GetLightColor()
-    - Gets the vehicle light color
 
   * - |server-only-label|
     - 
@@ -107,19 +92,34 @@ Functions
     - Sets the vehicle light color
 
   * -
-    - :ref:`Character`\[]
-    - GetPassengers()
-    - Gets all passengers
+    - :term:`number`
+    - GetBodyRoughness()
+    - Gets the vehicle body roughness
+
+  * -
+    - :ref:`Color`
+    - GetGlassColor()
+    - Gets the vehicle glass color
+
+  * -
+    - :term:`number`
+    - GetGlassOpacity()
+    - Gets the vehicle glass opacity
+
+  * -
+    - :ref:`Color`
+    - GetLightColor()
+    - Gets the vehicle light color
 
   * -
     - :ref:`Character`
     - GetPassenger(:term:`number` Seat)
     - Gets all passengers. Returns :term:`nil` if Seat is invalid or empty.
 
-  * - |server-only-label|
-    - 
-    - Horn(:term:`boolean` Bool)
-    - Starts or stops the vehicles horn
+  * -
+    - :ref:`Character`\[]
+    - GetPassengers()
+    - Gets all passengers
 
 .. include:: ../common/functions/Pickable.rst
 

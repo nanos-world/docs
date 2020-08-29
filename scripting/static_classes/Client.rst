@@ -21,29 +21,29 @@ Functions
     - **Name**
     - **Description**
 
-  * - :ref:`Vector2D`
-    - GetMousePosition()
-    - Gives the current mouse location
-
-  * - :term:`boolean`
-    - IsMouseEnabled()
-    - 
-
-  * - :term:`boolean`
-    - IsKeyDown(:term:`string` KeyName)
-    - Returns if a key is being pressed
+  * - 
+    - SetDiscordActivity(:term:`string` State, :term:`string` Details, :term:`string` LargeImage, :term:`string` LargeText)
+    - Comunicates with Discord and sets a custom user status
 
   * - 
     - SetMouseEnabled(:term:`boolean`)
     - Sets mouse enabled and toggles game input
 
   * - 
-    - SetDiscordActivity(:term:`string` State, :term:`string` Details, :term:`string` LargeImage, :term:`string` LargeText)
-    - Comunicates with Discord and sets a custom user status
-
-  * - 
     - SetOutlineColor(:ref:`Color` OutlineColor)
     - Changes the Outline Color for interactable stuff. Multiply it by 5 (or more) for having a glowing effect.
+
+  * - :ref:`Vector2D`
+    - GetMousePosition()
+    - Gives the current mouse location
+
+  * - :term:`boolean`
+    - IsKeyDown(:term:`string` KeyName)
+    - Returns if a key is being pressed
+
+  * - :term:`boolean`
+    - IsMouseEnabled()
+    - 
 
 
 Events
@@ -56,33 +56,33 @@ Events
     - **Parameters**
     - **Description**
 
-  * - Tick
-    - :term:`number` DeltaTime
-    - Called Every Frame. Do not abuse.
+  * - Chat
+    - :term:`string` Text
+    - Called when a chat text is submitted (by LocalPlayer)
 
   * - Console
     - :term:`string` Text
     - Called when a console command is submitted
 
-  * - Chat
-    - :term:`string` Text
-    - Called when a chat text is submitted (by LocalPlayer)
+  * - KeyDown
+    - :term:`string` KeyName
+    - A keyboard key has been pressed / is being pressed
 
   * - KeyUp
     - :term:`string` KeyName
     - A keyboard key has been released
 
-  * - KeyDown
-    - :term:`string` KeyName
-    - A keyboard key has been pressed / is being pressed
+  * - MouseDown
+    - :term:`string` KeyName, :term:`number` MouseX, :term:`number` MouseY
+    - A mouse button has been pressed / is being pressed
 
   * - MouseUp
     - :term:`string` KeyName, :term:`number` MouseX, :term:`number` MouseY
     - A mouse button has been released
 
-  * - MouseDown
-    - :term:`string` KeyName, :term:`number` MouseX, :term:`number` MouseY
-    - A mouse button has been pressed / is being pressed
+  * - Tick
+    - :term:`number` DeltaTime
+    - Called Every Frame. Do not abuse.
 
 
 Examples

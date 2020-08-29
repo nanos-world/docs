@@ -71,8 +71,8 @@ Properties
 
   * - |client-read-only-label|
     - :term:`number`
-    - MinimumDamage  
-    - Grenade's Base Damage
+    - DamageFalloff   
+    - Grenade's
 
   * - |client-read-only-label|
     - :term:`number`
@@ -81,8 +81,8 @@ Properties
 
   * - |client-read-only-label|
     - :term:`number`
-    - DamageFalloff   
-    - Grenade's
+    - MinimumDamage  
+    - Grenade's Base Damage
 
   * - |client-read-only-label|
     - :term:`number`

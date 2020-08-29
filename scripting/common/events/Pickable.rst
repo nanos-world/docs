@@ -10,11 +10,11 @@ Events (Inherited from Pickable)
     - **Description**
 
   * -
-    - PickUp
-    - Entity pickable, :ref:`Character` character
-    - When a Character picks up this
-
-  * -
     - Drop
     - Entity pickable, :ref:`Character` character
     - When a Character drops this
+
+  * -
+    - PickUp
+    - Entity pickable, :ref:`Character` character
+    - When a Character picks up this

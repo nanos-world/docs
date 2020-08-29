@@ -21,9 +21,9 @@ Functions
     - **Description**
 
   * -
-    - :term:`string`
-    - GetName()
-    - Gives the package name
+    -
+    - Log(:term:`string` Message)
+    - Logs a message in the console (the proper and Nanos way)
 
   * -
     -
@@ -36,9 +36,9 @@ Functions
     - Includes other Package in this Package
 
   * -
-    -
-    - Log(:term:`string` Message)
-    - Logs a message in the console (the proper and Nanos way)
+    - :term:`string`
+    - GetName()
+    - Gives the package name
 
   
 Events

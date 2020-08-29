@@ -281,6 +281,11 @@ Properties
 
   * - |client-read-only-label|
     - :term:`number`
+    - Cadence 
+    - Speed of shots (1 shot at each ``Cadence`` seconds)
+
+  * - |client-read-only-label|
+    - :term:`number`
     - ClipCapacity 
     - Weapon's Clip Capacity
 
@@ -288,11 +293,6 @@ Properties
     - :term:`number`
     - SightFOVMultiplier 
     - Amount of FOV reduced when Aiming Down Sights (ADS)
-
-  * - |client-read-only-label|
-    - :term:`number`
-    - Cadence 
-    - Speed of shots (1 shot at each ``Cadence`` seconds)
 
   * - |client-read-only-label|
     - :term:`number`
@@ -313,18 +313,18 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetAmmoClip(:term:`number` NewAmmo)
-    - Sets this Weapon's Ammo Clip
-
-  * - |server-only-label|
-    - 
     - SetAmmoBag(:term:`number` NewAmmo)
     - Sets this Weapon's Ammo Bag
 
   * - |server-only-label|
     - 
-    - SetSightTransform(:ref:`Vector` Location, :ref:`Rotator` Rotation)
-    - Offset applied to align player's head to weapon's sight and rotation applied on the weapon when ADS
+    - SetAmmoClip(:term:`number` NewAmmo)
+    - Sets this Weapon's Ammo Clip
+
+  * - |server-only-label|
+    - 
+    - SetBulletColor(:ref:`Color` Color)
+    - Bullet Color
 
   * - |server-only-label|
     - 
@@ -338,13 +338,8 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetBulletColor(:ref:`Color` Color)
-    - Bullet Color
-
-  * - 
-    - :term:`number`
-    - GetAmmoClip()
-    - Gets this Weapon's Ammo Clip
+    - SetSightTransform(:ref:`Vector` Location, :ref:`Rotator` Rotation)
+    - Offset applied to align player's head to weapon's sight and rotation applied on the weapon when ADS
 
   * - 
     - :term:`number`
@@ -352,13 +347,18 @@ Functions
     - Gets this Weapon's Ammo Bag
 
   * - 
-    - :ref:`Vector`
-    - GetRightHandOffset()
-    - 
+    - :term:`number`
+    - GetAmmoClip()
+    - Gets this Weapon's Ammo Clip
 
   * - 
     - :ref:`Color`
     - GetBulletColor()
+    - 
+
+  * - 
+    - :ref:`Vector`
+    - GetRightHandOffset()
     - 
 
 .. include:: ../common/functions/Pickable.rst

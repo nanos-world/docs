@@ -26,50 +26,10 @@ Functions
     - **Name**
     - **Description**
 
-  * - 
-    - :term:`number`
-    - GetPing()
-    - Returns the ping of a player
-
-  * - 
-    - :term:`string`
-    - GetName()
-    - Returns the player's name
-
   * - |server-only-label|
     - 
-    - SetName(:term:`string`)
-    - Sets the player's name
-
-  * - 
-    - :ref:`Character`
-    - GetControlledCharacter()
-    - Returns the character of the player. If the player has not yet been assigned a character, :term:`nil` is returned.
-
-  * - |server-only-label|
-    - 
-    - Possess(:ref:`Character` NewCharacter)
-    - Bind the ``Player`` to a :ref:`Character` 
-
-  * - |server-only-label|
-    - 
-    - UnPossess()
-    - Release the ``Player`` from the :ref:`Character` 
-
-  * - |client-only-label|
-    - :term:`boolean`
-    - IsLocalPlayer()
-    - Returns if this is the LocalPlayer
-
-  * - 
-    - 
-    - SetCameraRotation(:ref:`Rotator`)
-    - Sets the Player's Camera Rotation
-
-  * - 
-    - 
-    - SetCameraLocation(:ref:`Vector`)
-    - Sets the Player's Camera Location (only works if not possessing any Character)
+    - Ban(:term:`string` Reason)
+    - Bans the player from the server
 
   * - |server-only-label|
     - 
@@ -78,13 +38,48 @@ Functions
 
   * - |server-only-label|
     - 
-    - Ban(:term:`string` Reason)
-    - Bans the player from the server
+    - Possess(:ref:`Character` NewCharacter)
+    - Bind the ``Player`` to a :ref:`Character` 
 
   * - 
-    - :term:`boolean`
-    - IsValid()
-    - Returns if this is Valid
+    - 
+    - SetCameraLocation(:ref:`Vector`)
+    - Sets the Player's Camera Location (only works if not possessing any Character)
+
+  * - 
+    - 
+    - SetCameraRotation(:ref:`Rotator`)
+    - Sets the Player's Camera Rotation
+
+  * - |server-only-label|
+    - 
+    - SetName(:term:`string`)
+    - Sets the player's name
+
+  * - 
+    - 
+    - SetValue(:term:`string` Key, any Value)
+    - Sets a value in this entity, which can be accessed by any package (local only)
+
+  * - |server-only-label|
+    - 
+    - UnPossess()
+    - Release the ``Player`` from the :ref:`Character` 
+
+  * - 
+    - :ref:`Character`
+    - GetControlledCharacter()
+    - Returns the character of the player. If the player has not yet been assigned a character, :term:`nil` is returned.
+
+  * - 
+    - :term:`string`
+    - GetName()
+    - Returns the player's name
+
+  * - 
+    - :term:`number`
+    - GetPing()
+    - Returns the ping of a player
 
   * - 
     - :term:`string`
@@ -92,14 +87,19 @@ Functions
     - Returns the type of this Actor
 
   * - 
-    - 
-    - SetValue(:term:`string` Key, any Value)
-    - Sets a value in this entity, which can be accessed by any package (local only)
-
-  * - 
     - any
     - GetValue(:term:`string` Key)
     - Gets a value given a key
+
+  * - |client-only-label|
+    - :term:`boolean`
+    - IsLocalPlayer()
+    - Returns if this is the LocalPlayer
+
+  * - 
+    - :term:`boolean`
+    - IsValid()
+    - Returns if this is Valid
 
 
 Events
@@ -114,14 +114,14 @@ Events
     - **Description**
 
   * -
+    - Destroy
+    - :ref:`Player` player
+    - Triggered when Player disconnects from the server
+
+  * -
     - Possess
     - :ref:`Player` player, :ref:`Character` character
     - A ``Player`` was bound to a :ref:`Character`
-
-  * -
-    - UnPossess
-    - :ref:`Player` player, :ref:`Character` character, :term:`boolean` bIsPlayerDisconnecting
-    - A :ref:`Character` was released from the ``Player``
 
   * -
     - Spawn
@@ -129,6 +129,6 @@ Events
     - Triggered when Player connects to the server
 
   * -
-    - Destroy
-    - :ref:`Player` player
-    - Triggered when Player disconnects from the server
+    - UnPossess
+    - :ref:`Player` player, :ref:`Character` character, :term:`boolean` bIsPlayerDisconnecting
+    - A :ref:`Character` was released from the ``Player``

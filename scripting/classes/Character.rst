@@ -112,33 +112,13 @@ Functions
 
   * - |server-only-label|
     - 
-    - PickUp(:ref:`Item`/:ref:`Grenade`/:ref:`Weapon`)
-    - Gives a Item/Grenade/Weapon (Pickable) to the Character
+    - AddSkeletalMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath)
+    - Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
 
   * - |server-only-label|
     - 
-    - SetHealth(:term:`number` NewHealth)
-    - Sets the Health of this Character. If the character is dead, respawns it with full health.
-
-  * - 
-    - :term:`number`
-    - GetHealth()
-    - Gets the Character's Health.
-
-  * - |server-only-label|
-    - 
-    - SetMaxHealth(:term:`number` NewMaxHealth)
-    - Sets the MaxHealth of this Character.
-
-  * - 
-    - :term:`number`
-    - GetMaxHealth()
-    - Gets the Character's MaxHealth.
-
-  * - |server-only-label|
-    - 
-    - Respawn()
-    - Respawns the Character, fullying it's Health and moving it to it's Initial Location.
+    - AddStaticMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath, :term:`string` Socket, :ref:`Vector` RelativeLocation, :ref:`Rotator` RelativeRotation)
+    - Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
   * - |server-only-label|
     - 
@@ -147,13 +127,123 @@ Functions
 
   * - |server-only-label|
     - 
+    - EnterVehicle(:ref:`Vehicle`, :term:`number` Seat)
+    - Enters the Vehicle at Seat (0 - Driver)
+
+  * - |server-only-label|
+    - 
     - GrabProp(:ref:`Prop`)
     - Gives a Prop to the Character
 
   * - |server-only-label|
     - 
+    - LeaveVehicle()
+    - Leaves the current Vehicle
+
+  * - |server-only-label|
+    - 
+    - LookAt(:ref:`Vector` Location)
+    - AI: Tries to make this Character to look at Location
+
+  * - |server-only-label|
+    - 
+    - MoveTo(:ref:`Vector` Location, :term:`number` AcceptanceRadius)
+    - AI: Makes this Character to walk to the Location
+
+  * - |server-only-label|
+    - 
+    - PickUp(:ref:`Item`/:ref:`Grenade`/:ref:`Weapon`)
+    - Gives a Item/Grenade/Weapon (Pickable) to the Character
+
+  * - |server-only-label|
+    - 
+    - RandomizeCustomization()
+    - Randomize all character customizations
+
+  * - |server-only-label|
+    - 
+    - RemoveSkeletalMeshAttached(:term:`number` ID)
+    - Removes, if existing, a SkeletalMesh from this Character given it's custom ID
+
+  * - |server-only-label|
+    - 
+    - RemoveStaticMeshAttached(:term:`number` ID)
+    - Removes, if existing, a StaticMesh from this Character given it's custom ID
+
+  * - |server-only-label|
+    - 
+    - Respawn()
+    - Respawns the Character, fullying it's Health and moving it to it's Initial Location.
+
+  * - |server-only-label|
+    - 
+    - SetHealth(:term:`number` NewHealth)
+    - Sets the Health of this Character. If the character is dead, respawns it with full health.
+
+  * - |server-only-label|
+    - 
+    - SetMaxHealth(:term:`number` NewMaxHealth)
+    - Sets the MaxHealth of this Character.
+
+  * - |server-only-label|
+    - 
+    - SetMorphTarget(:term:`number` ID, :term:`number` Value)
+    - 
+
+  * - |server-only-label|
+    - 
+    - SetMovementEnabled(:term:`boolean`)
+    - Enables/Disables Character's Movement
+
+  * - |server-only-label|
+    - 
+    - SetRagdollMode(:term:`boolean`)
+    - Sets Character Ragdoll Mode
+
+  * - |server-only-label|
+    - 
+    - SetScalarParameter(:term:`number` ID, :term:`number` Value)
+    - 
+
+  * - |server-only-label|
+    - 
+    - SetSpeedMultiplier(:term:`number` Multiplier)
+    - 1 = normal
+
+  * - |server-only-label|
+    - 
+    - SetTeam(:term:`number` Team)
+    - Sets a Team which will disable damaging same Team Members. 0 for Neutral
+
+  * - |server-only-label|
+    - 
+    - SetVectorParameter(:term:`number` ID, :ref:`Vector` Value)
+    - 
+
+  * - |server-only-label|
+    - 
+    - SetViewMode(:term:`number`)
+    - Sets Character View Mode (0 - FPS, 1 TPS1, 2 - TPS2, 3 - TPS3)
+
+  * - |server-only-label|
+    - 
+    - SetWeaponAimMode(:term:`number` State)
+    - 0 - None, 1 - ADS (FPS), 2 - ZoomedZoom (TPS), 3 - Zoomed, 4 - ZoomedFar
+
+  * - |server-only-label|
+    - 
     - UnGrabProp()
     - UnGrabs/Drops the Prop the Character is holding
+
+  * - 
+    - :term:`boolean`
+    - IsInRagdollMode()
+    - Gets Character Ragdoll Mode
+
+  * - 
+    - :term:`boolean`
+    - IsMovementEnabled()
+    - Gets Character Movement Enabled
 
   * - 
     - :ref:`Rotator`
@@ -166,79 +256,14 @@ Functions
     - Gets the Grabbing Prop
 
   * - 
-    - Actor
-    - GetPicked()
-    - Gets the holding Picked Item/Grenade/Weapon
-
-  * - 
-    - :ref:`Vehicle`
-    - GetVehicle()
-    - Gets the Vehicle the Character is on
-
-  * - 
-    - :ref:`Player`
-    - GetPlayer()
-    - Gets the Player controlling this Character
-
-  * - |server-only-label|
-    - 
-    - SetRagdollMode(:term:`boolean`)
-    - Sets Character Ragdoll Mode
-
-  * - 
-    - :term:`boolean`
-    - IsInRagdollMode()
-    - Gets Character Ragdoll Mode
-
-  * - |server-only-label|
-    - 
-    - SetViewMode(:term:`number`)
-    - Sets Character View Mode (0 - FPS, 1 TPS1, 2 - TPS2, 3 - TPS3)
+    - :term:`number`
+    - GetHealth()
+    - Gets the Character's Health.
 
   * - 
     - :term:`number`
-    - GetViewMode()
-    - Gets Character View Mode
-
-  * - |server-only-label|
-    - 
-    - RandomizeCustomization()
-    - Randomize all character customizations
-
-  * - |server-only-label|
-    - 
-    - LeaveVehicle()
-    - Leaves the current Vehicle
-
-  * - |server-only-label|
-    - 
-    - EnterVehicle(:ref:`Vehicle`, :term:`number` Seat)
-    - Enters the Vehicle at Seat (0 - Driver)
-
-  * - |server-only-label|
-    - 
-    - SetMovementEnabled(:term:`boolean`)
-    - Enables/Disables Character's Movement
-
-  * - 
-    - :term:`boolean`
-    - IsMovementEnabled()
-    - Gets Character Movement Enabled
-
-  * - |server-only-label|
-    - 
-    - SetMorphTarget(:term:`number` ID, :term:`number` Value)
-    - 
-
-  * - |server-only-label|
-    - 
-    - SetScalarParameter(:term:`number` ID, :term:`number` Value)
-    - 
-
-  * - |server-only-label|
-    - 
-    - SetVectorParameter(:term:`number` ID, :ref:`Vector` Value)
-    - 
+    - GetMaxHealth()
+    - Gets the Character's MaxHealth.
 
   * - 
     - :term:`number`
@@ -246,13 +271,23 @@ Functions
     - 
 
   * - 
+    - Actor
+    - GetPicked()
+    - Gets the holding Picked Item/Grenade/Weapon
+
+  * - 
+    - :ref:`Player`
+    - GetPlayer()
+    - Gets the Player controlling this Character
+
+  * - 
     - :term:`number`
     - GetScalarParameter(:term:`number` ID)
     - 
 
   * - 
-    - :ref:`Vector`
-    - GetVectorParameter(:term:`number` ID)
+    - :term:`number`
+    - GetSpeedMultiplier()
     - 
 
   * - 
@@ -261,54 +296,19 @@ Functions
     - 
 
   * - 
+    - :ref:`Vector`
+    - GetVectorParameter(:term:`number` ID)
+    - 
+
+  * - 
+    - :ref:`Vehicle`
+    - GetVehicle()
+    - Gets the Vehicle the Character is on
+
+  * - 
     - :term:`number`
-    - GetSpeedMultiplier()
-    - 
-
-  * - |server-only-label|
-    - 
-    - AddStaticMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath, :term:`string` Socket, :ref:`Vector` RelativeLocation, :ref:`Rotator` RelativeRotation)
-    - Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
-
-  * - |server-only-label|
-    - 
-    - AddSkeletalMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath)
-    - Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
-
-  * - |server-only-label|
-    - 
-    - RemoveStaticMeshAttached(:term:`number` ID)
-    - Removes, if existing, a StaticMesh from this Character given it's custom ID
-
-  * - |server-only-label|
-    - 
-    - RemoveSkeletalMeshAttached(:term:`number` ID)
-    - Removes, if existing, a SkeletalMesh from this Character given it's custom ID
-
-  * - |server-only-label|
-    - 
-    - MoveTo(:ref:`Vector` Location, :term:`number` AcceptanceRadius)
-    - AI: Makes this Character to walk to the Location
-
-  * - |server-only-label|
-    - 
-    - LookAt(:ref:`Vector` Location)
-    - AI: Tries to make this Character to look at Location
-
-  * - |server-only-label|
-    - 
-    - SetWeaponAimMode(:term:`number` State)
-    - 0 - None, 1 - ADS (FPS), 2 - ZoomedZoom (TPS), 3 - Zoomed, 4 - ZoomedFar
-
-  * - |server-only-label|
-    - 
-    - SetSpeedMultiplier(:term:`number` Multiplier)
-    - 1 = normal
-
-  * - |server-only-label|
-    - 
-    - SetTeam(:term:`number` Team)
-    - Sets a Team which will disable damaging same Team Members. 0 for Neutral
+    - GetViewMode()
+    - Gets Character View Mode
 
 .. include:: ../common/functions/Actor.rst
 
@@ -325,9 +325,9 @@ Events
     - **Description**
 
   * -
-    - PickUp
-    - :ref:`Character` self, :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object
-    - When Character picks up anything
+    - Death
+    - :ref:`Character` self
+    - When Character Dies
 
   * -
     - Drop
@@ -335,89 +335,9 @@ Events
     - When Character drops anything
 
   * -
-    - GrabProp
-    - :ref:`Character` self, :ref:`Prop` prop
-    - When Character grabs up a Prop
-
-  * -
-    - UnGrabProp
-    - :ref:`Character` self, :ref:`Prop` prop
-    - When Character drops a Prop
-
-  * -
     - EnterVehicle
     - :ref:`Character` self, :ref:`Vehicle` vehicle
     - When Character enters a vehicle
-
-  * -
-    - LeaveVehicle
-    - :ref:`Character` self, :ref:`Vehicle` vehicle
-    - When Character leaves a vehicle
-
-  * -
-    - Respawn
-    - :ref:`Character` self
-    - When Character Respawns
-
-  * -
-    - Death
-    - :ref:`Character` self
-    - When Character Dies
-
-  * -
-    - TakeDamage
-    - :ref:`Character` self, :term:`number` damage, :term:`number` type (1 - Shot, 2 - Explosion), :term:`string` bone, :ref:`Vector` FromDirection, :ref:`Player` Instigator
-    - When Character takes Damage
-
-  * -
-    - Fire
-    - :ref:`Character` self, :ref:`Weapon` weapon
-    - When Character fires a Weapon
-
-  * -
-    - Possessed
-    - :ref:`Character` self, :ref:`Player` possesser
-    - When Character is possessed
-
-  * -
-    - Unpossessed
-    - :ref:`Character` self, :ref:`Player` old_possesser
-    - When Character is unpossessed
-
-  * -
-    - Punch
-    - :ref:`Character` self
-    - When Character punches
-
-  * -
-    - Reload
-    - :ref:`Character` self, :ref:`Weapon` weapon, :term:`number` AmmoToReload
-    - When Character reloads a weapon
-
-  * -
-    - WeaponAimModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
-    - 0 - None, 1 - ADS (FPS), 2 - ZoomedZoom (TPS), 3 - Zoomed, 4 - ZoomedFar
-
-  * -
-    - ViewModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
-    - 0 - FPS, 1 - TPS1, 2 - TPS2, 3 - TPS3
-
-  * -
-    - SwimmingModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
-    - 0 - None, 1 - Superficie, 2 - Underwater
-
-  * -
-    - StanceModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
-    - 0 - None, 1 - Standing, 2 - Crouching, 3 - Proning
-
-  * -
-    - RagdollModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
-    - 
 
   * -
     - FallingModeChanged
@@ -425,14 +345,94 @@ Events
     - 0 - None, 1 - Jumping, 2 - Climbing, 3 - Vaulting, 4 - Falling, 5 - HighFalling, 6 - Parachuting, 7 - SkyDiving
 
   * -
+    - Fire
+    - :ref:`Character` self, :ref:`Weapon` weapon
+    - When Character fires a Weapon
+
+  * -
     - GaitModeChanged
     - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
     - 0 - None, 1 - Walking, 2 - Sprinting
 
   * -
+    - GrabProp
+    - :ref:`Character` self, :ref:`Prop` prop
+    - When Character grabs up a Prop
+
+  * -
+    - LeaveVehicle
+    - :ref:`Character` self, :ref:`Vehicle` vehicle
+    - When Character leaves a vehicle
+
+  * -
     - MoveCompleted
     - :ref:`Character` self, :term:`boolean` Success
     - Called when AI reaches it's destination, or when it fails
+
+  * -
+    - PickUp
+    - :ref:`Character` self, :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object
+    - When Character picks up anything
+
+  * -
+    - Possessed
+    - :ref:`Character` self, :ref:`Player` possesser
+    - When Character is possessed
+
+  * -
+    - Punch
+    - :ref:`Character` self
+    - When Character punches
+
+  * -
+    - RagdollModeChanged
+    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - 
+
+  * -
+    - Reload
+    - :ref:`Character` self, :ref:`Weapon` weapon, :term:`number` AmmoToReload
+    - When Character reloads a weapon
+
+  * -
+    - Respawn
+    - :ref:`Character` self
+    - When Character Respawns
+
+  * -
+    - StanceModeChanged
+    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - 0 - None, 1 - Standing, 2 - Crouching, 3 - Proning
+
+  * -
+    - SwimmingModeChanged
+    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - 0 - None, 1 - Superficie, 2 - Underwater
+
+  * -
+    - TakeDamage
+    - :ref:`Character` self, :term:`number` damage, :term:`number` type (1 - Shot, 2 - Explosion), :term:`string` bone, :ref:`Vector` FromDirection, :ref:`Player` Instigator
+    - When Character takes Damage
+
+  * -
+    - UnGrabProp
+    - :ref:`Character` self, :ref:`Prop` prop
+    - When Character drops a Prop
+
+  * -
+    - Unpossessed
+    - :ref:`Character` self, :ref:`Player` old_possesser
+    - When Character is unpossessed
+
+  * -
+    - ViewModeChanged
+    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - 0 - FPS, 1 - TPS1, 2 - TPS2, 3 - TPS3
+
+  * -
+    - WeaponAimModeChanged
+    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - 0 - None, 1 - ADS (FPS), 2 - ZoomedZoom (TPS), 3 - Zoomed, 4 - ZoomedFar
 
 .. include:: ../common/events/Actor.rst
 
