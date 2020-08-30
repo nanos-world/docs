@@ -92,7 +92,7 @@ Examples
  .. code-tab:: lua Lua
 
     Client:on("MouseUp", function(KeyName, MouseX, MouseY)
-        if (KeyName == "LeftMouseButton")
+        if (KeyName == "LeftMouseButton") then
             Package:Log("Left Click pressed at X: " .. MouseX .. ", Y: " .. MouseY)
         end
     end)
