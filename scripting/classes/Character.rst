@@ -157,6 +157,11 @@ Functions
 
   * - |server-only-label|
     - 
+    - PlayAnimation(:term:`string` AnimationPath, :term:`number` SlotType = 0, :term:`number` LoopIndefinitely = false)
+    - Plays an Animation Montage on this character
+
+  * - |server-only-label|
+    - 
     - RandomizeCustomization()
     - Randomize all character customizations
 
@@ -229,6 +234,11 @@ Functions
     - 
     - SetWeaponAimMode(:term:`number` State)
     - 0 - None, 1 - ADS (FPS), 2 - ZoomedZoom (TPS), 3 - Zoomed, 4 - ZoomedFar
+
+  * - |server-only-label|
+    - 
+    - StopAnimation(:term:`string` AnimationPath = "")
+    - Stops an Animation Montage on this character
 
   * - |server-only-label|
     - 
