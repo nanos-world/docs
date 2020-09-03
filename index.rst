@@ -31,6 +31,7 @@ nanos world Official Documentation
    scripting/static_classes/index
    scripting/utility/index
    scripting/Glossary
+   scripting/Modules
 
 
 .. toctree::
