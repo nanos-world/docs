@@ -63,6 +63,16 @@ Functions
 
   * - |server-only-label|
     - 
+    - SetVOIPChannel(:term:`number` Channel)
+    - Sets the VOIP Channel of this Player (will only communicate with other players in the same channel)
+
+  * - |server-only-label|
+    - 
+    - SetVOIPMuted(:term:`boolean` IsMuted)
+    - Mutes/Unmutes this Player
+
+  * - |server-only-label|
+    - 
     - UnPossess()
     - Release the ``Player`` from the :ref:`Character` 
 
@@ -87,6 +97,11 @@ Functions
     - Returns the type of this Actor
 
   * - 
+    - :term:`int`
+    - GetVOIPChannel()
+    - Returns the VOIP Channel of this Player
+
+  * - 
     - any
     - GetValue(:term:`string` Key)
     - Gets a value given a key
@@ -100,6 +115,11 @@ Functions
     - :term:`boolean`
     - IsValid()
     - Returns if this is Valid
+
+  * - 
+    - :term:`boolean`
+    - IsVOIPMuted()
+    - Returns if this Player is muted (VOIP)
 
 
 Events
