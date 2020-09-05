@@ -15,7 +15,7 @@ LuaSQL-MySQL is a simple interface to communicate with a MySQL or MariaDB server
 
 Documentation of LuaSQL: http://keplerproject.github.io/luasql/
 
-* MySQL-Windows_ - SHA256 of `mysql.dll`: :code:`49C2B0964FB54C6822C9133873E6D08A3675F4E677F5DE3E6CD37899E8102074`
+* MySQL-Windows_ - SHA256 of `mysql.dll`: :code:`FB7ABB5B0F57FD1A299FE6F09D035457F42F2406B4AE3C3C410115E60FDCD697`
 * MySQL-Linux_ - SHA256 of `mysql.so`: :code:`92771288D430F56FDC4FA1247408F6CF287220643A3B638C6401E7840D404F5A`
 
 .. warning:: Always escape every paramater of your queries with the :escape function!
