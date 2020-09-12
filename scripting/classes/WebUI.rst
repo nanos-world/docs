@@ -72,6 +72,10 @@ Functions
     - **Description**
 
   * - 
+    - BringToFront()
+    - Puts this WebUI in the front of all WebUIs
+
+  * - 
     - CallEvent(:term:`string` EventName, any... Arguments)
     - Calls an Event on the Browser's JavaScript
 
@@ -85,7 +89,7 @@ Functions
 
   * - 
     - SetFocus()
-    - Enables the focus on this browser. Note: only one browser can have focus per time.
+    - Enables the focus on this browser (i.e. can receives keyboard and mouse input). Note: only one browser can have focus per time. When you click at the screen/WebUI the focus is got automatically as well
 
   * - 
     - SetVisible(:term:`boolean` IsVisible)

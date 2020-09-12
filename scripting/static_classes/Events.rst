@@ -46,21 +46,60 @@ Functions
 Examples
 --------
 
+.. tip:: `Remote` means the other side, e.g.: if I'm the client, the remote is the server. If I'm the server, the remote is the client.
+
+
 .. tabs::
  .. code-tab:: lua Lua
 
-    -- register for an Event (remote or local)
-    Events:on("MyEvent", function(my_text)
-        Package:Log("Event received! " .. my_text)
-        -- outputs "Event received! hello nanos world!"
+    -- [[CLIENT]]
+
+    -- register for a local Event (local = client only)
+    Events:on("MyLocalEvent", function(my_text)
+        Package:Log("Event received locally! " .. my_text)
+        -- outputs "Event received locally! hello nanos world!"
     end)
 
     -- calls a local Event in all Local Packages
-    Events:Call("MyEvent", {"hello nanos world!"})
+    Events:Call("MyLocalEvent", {"hello nanos world!"})
+
+    -- register for a server Event (remote = server)
+    Events:on("MyClientEvent", function(my_text)
+        Package:Log("Event received from server! " .. my_text)
+        -- outputs "Event received from server! hello nanos world!"
+    end)
 
     -- calls a remote Event in all Server Packages
-    Events:CallRemote("MyEvent", {"hello nanos world!"})
+    Events:CallRemote("MyServerEvent", {"hello nanos world!"})
 
+
+.. note:: On Server, registering for remote events has an addition parameter: :ref:`Player`, which is the client who sent the event.
+
+.. tabs::
+ .. code-tab:: lua Lua
+    
+    -- [[SERVER]]
+
+    -- register for a local Event (local = server only)
+    Events:on("MyLocalEvent", function(my_text)
+        Package:Log("Event received locally! " .. my_text)
+        -- outputs "Event received locally! hello nanos world!"
+    end)
+
+    -- calls a local Event in all Local Packages
+    Events:Call("MyLocalEvent", {"hello nanos world!"})
+
+    -- register for a client Event (remote = client)
+    Events:on("MyServerEvent", function(player, my_text)
+        Package:Log(player:GetName() .. " sent an event from client! " .. my_text)
+        -- outputs "Syed sent an event from client! hello nanos world!"
+    end)
+
+    -- calls a remote Event in all Client Packages
+    Events:CallRemote("MyClientEvent", {"hello nanos world!"})
+
+
+Passing entities through events:
 
 .. tabs::
  .. code-tab:: lua Lua
