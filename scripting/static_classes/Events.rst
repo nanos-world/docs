@@ -93,10 +93,13 @@ Examples
     Events:on("MyServerEvent", function(player, my_text)
         Package:Log(player:GetName() .. " sent an event from client! " .. my_text)
         -- outputs "Syed sent an event from client! hello nanos world!"
+        
+		-- sends an "answer" to the player which sent this event
+    	Events:CallRemote("MyClientEvent", player, {"hello nanos world! message only for you!"})
     end)
 
-    -- calls a remote Event in all Client Packages
-    Events:CallRemote("MyClientEvent", {"hello nanos world!"})
+    -- sends a remote Event to all Players in all Client Packages
+    Events:BroadcastRemote("MyClientEvent", {"hello nanos world!"})
 
 
 Passing entities through events:
