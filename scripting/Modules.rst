@@ -20,6 +20,8 @@ Documentation of LuaSQL: http://keplerproject.github.io/luasql/
 Download and Installation
 =========================
 
+Download your platform library:
+
 * `mysql_windows.zip <https://github.com/nanos-world-modules/luasql-mysql/releases/latest/download/mysql_windows.zip>`_
 * `mysql_linux.zip <https://github.com/nanos-world-modules/luasql-mysql/releases/latest/download/mysql_linux.zip>`_
 
@@ -51,9 +53,12 @@ Example
 
         connection:execute([[
             INSERT INTO hello_world VALUES ('%s');
-        ]], connection:escape("Hello nanos.world")) -- You should always use escape for user input to prevent sql injection!
+        ]], connection:escape("Hello nanos.world")) 
+        -- (You should always use escape for user input to prevent sql injection!)
 
         local cursor = connection:execute("SELECT * FROM hello_world")
         local row = cursor:fetch({}, "a")
-        Package:Log("Message: " .. tostring(row.message)) -- This will output "[Script]   Message: Hello nanos.world" to the console
+
+        Package:Log("Message: " .. tostring(row.message))
+        -- Outputs: "[Script]   Message: Hello nanos.world" to the console
     end

@@ -27,8 +27,8 @@ Static Class List
 
    Client.rst
    Events.rst
-   Package.rst
    NanosWorld.rst
+   Package.rst
    Render.rst
    Server.rst
    Timer.rst

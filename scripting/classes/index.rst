@@ -37,8 +37,8 @@ Class List
    Light.rst
    Player.rst
    Prop.rst
-   Trigger.rst
    Sound.rst
+   Trigger.rst
    Vehicle.rst
    Weapon.rst
    WebUI.rst
