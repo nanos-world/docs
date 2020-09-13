@@ -97,7 +97,7 @@ Functions
     - Returns the type of this Actor
 
   * - 
-    - :term:`int`
+    - :term:`number`
     - GetVOIPChannel()
     - Returns the VOIP Channel of this Player
 
