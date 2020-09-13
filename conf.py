@@ -83,6 +83,8 @@ html_css_files = [
 
 html_js_files = [
     'js/script.js?v1',
+    'https://www.googletagmanager.com/gtag/js?id=UA-177859410-1',
+    'js/gtag.js'
 ]
 
 # Add any paths that contain custom static files (such as style sheets) here,
