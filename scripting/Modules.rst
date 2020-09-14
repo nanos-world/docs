@@ -25,7 +25,7 @@ Download your platform library:
 * `mysql_windows.zip <https://github.com/nanos-world-modules/luasql-mysql/releases/latest/download/mysql_windows.zip>`_
 * `mysql_linux.zip <https://github.com/nanos-world-modules/luasql-mysql/releases/latest/download/mysql_linux.zip>`_
 
-Extract it into your ``Server/Modules/`` folder:
+Extract it into your ``ServerRoot/Modules/`` folder:
 
 .. image:: https://i.imgur.com/lhJ5Za8.png
 

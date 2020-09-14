@@ -6,13 +6,13 @@
 Render
 ******
 
+.. warning:: If you are looking for how to make UIs, we recommend taking a look at :ref:`WebUI` for a more robust and optimal system.
+
 .. tip:: This is a Static Class named ``Render``. You can access it's methods directly with ``:``. It is not possible to initialize or create new instances.
 
 .. note:: This is a Client only Class.
 
 .. tip:: The following functions have an GroupID parameter, which you can group related Canvas Items with an ID to facilitate the cleanup of them, or can give them Unique IDs. These return an ItemID value, which can be used for updating specific Canvas Items afterwards.
-
-.. tip:: If you are looking for how to make UIs, we recommend taking a look at :ref:`WebUI` for a more robust and optimal system.
 
 
 Functions

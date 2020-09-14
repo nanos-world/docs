@@ -11,9 +11,10 @@ Fundamental information for scripters and modders to start our creating servers 
    :name: toc-getting-started
    :glob:
 
-   ServerManual.rst
-   ScriptingQuickStart.rst
    AssetsQuickStart.rst
+   ScriptingQuickStart.rst
+   ServerManual.rst
+   WebUIQuickStart.rst
 
 
 Starting Out
@@ -59,6 +60,20 @@ Programming
 		);
 
 		DrawCard(
+			"WebUIQuickStart.html",
+			"https://i.imgur.com/ReuYOH1.jpg",
+			"WebUI Quick Start",
+			"See how to create a basic UI using HTML, CSS and JavaScript!"
+		);
+
+		DrawCard(
+			"../scripting/Glossary.html",
+			"https://cdn.pixabay.com/photo/2016/09/10/17/18/book-1659717__340.jpg",
+			"Glossary",
+			"Common used terms and programming types."
+		);
+
+		DrawCard(
 			"../scripting/classes/index.html",
 			"https://vectorsart.com/vectors-images/vectorsart_18001.jpg",
 			"Classes",
@@ -77,13 +92,6 @@ Programming
 			"https://cdn.datafloq.com/cache/blog_pictures/878x531/artificial-intelligence-future-of-programming.jpg",
 			"Utility Classes",
 			"Utility classes (Vector, Rotator, Color, etc) information."
-		);
-
-		DrawCard(
-			"../scripting/Glossary.html",
-			"https://cdn.pixabay.com/photo/2016/09/10/17/18/book-1659717__340.jpg",
-			"Glossary",
-			"Common used terms and programming types."
 		);
 	</script>
 

@@ -5,6 +5,8 @@
 Basic HUD (Canvas)
 ******************
 
+.. warning:: There is a new and modern way of making UIs, please check it out: :ref:`WebUIQuickStart`!
+
 This sample code shows how to add a basic HUD using :ref:`Render`'s Canvas features, to display the character's Health and Ammo.
 
 .. image:: https://i.imgur.com/WE3rqAL.png

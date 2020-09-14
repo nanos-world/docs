@@ -156,17 +156,23 @@ Examples
     Events.Call("MyEventFromJS", "hello nanos world from JavaScript!");
 
 
-Related Tutorials
------------------
+Related Tutorials and Guides
+----------------------------
 
 .. raw:: html
 
 	<script>
 		DrawCard(
-			"../../tutorials/BasicHUDHTML.html",
+			"../../getting_started/WebUIQuickStart.html",
 			"https://i.imgur.com/ReuYOH1.jpg",
+			"WebUI Quick Start",
+			"See how to create a basic UI using HTML, CSS and JavaScript!"
+		);
+
+		DrawCard(
+			"../../tutorials/BasicHUDHTML.html",
+			"https://i.imgur.com/lrYCway.png",
 			"Basic HUD (HTML)",
 			"See how to display a basic HUD using HTML and JavaScript!"
 		);
-
 	</script>

@@ -117,7 +117,7 @@ Samples / Snippets
 
 		DrawCard(
 			"BasicHUDHTML.html",
-			"https://i.imgur.com/ReuYOH1.jpg",
+			"https://i.imgur.com/lrYCway.png",
 			"Basic HUD (HTML)",
 			"See how to display a basic HUD using HTML and JavaScript!"
 		);
