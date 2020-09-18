@@ -31,7 +31,7 @@ In your Package's Index.lua, create the WebUI:
 .. tabs::
  .. code-tab:: lua Lua
 
-	-- Spawns a WebUI with the HTML file you just created
+    -- Spawns a WebUI with the HTML file you just created
     MyUI = WebUI("My UI", "file:///UI/index.html")
 
 

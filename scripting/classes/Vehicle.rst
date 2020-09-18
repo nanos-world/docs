@@ -91,6 +91,11 @@ Functions
     - SetLightColor(:ref:`Color` NewLightColor)
     - Sets the vehicle light color
 
+  * - 
+    - :term:`string`
+    - GetAssetName()
+    - Gets the Asset name
+
   * -
     - :term:`number`
     - GetBodyRoughness()

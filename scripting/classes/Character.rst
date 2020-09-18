@@ -256,6 +256,11 @@ Functions
     - Gets Character Movement Enabled
 
   * - 
+    - :term:`string`
+    - GetAssetName()
+    - Gets the Asset name
+
+  * - 
     - :ref:`Rotator`
     - GetControlRotation()
     - Gets the rotation this character is looking at
@@ -341,7 +346,7 @@ Events
 
   * -
     - Drop
-    - :ref:`Character` self, :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object
+    - :ref:`Character` self, :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object, :term:`boolean` WasTriggeredByPlayer
     - When Character drops anything
 
   * -
@@ -368,6 +373,11 @@ Events
     - GrabProp
     - :ref:`Character` self, :ref:`Prop` prop
     - When Character grabs up a Prop
+
+  * - |server-only-label|
+    - Interact
+    - :ref:`Character` self, :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object
+    - When a Character interacts with an object (i.e. try to pick it up) - return false to prevent it
 
   * -
     - LeaveVehicle

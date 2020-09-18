@@ -11,7 +11,7 @@ Events (Inherited from Pickable)
 
   * -
     - Drop
-    - Entity pickable, :ref:`Character` character
+    - Entity pickable, :ref:`Character` character, :term:`boolean` WasTriggeredByPlayer
     - When a Character drops this
 
   * -
