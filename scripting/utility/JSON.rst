@@ -17,9 +17,14 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local encoded_value = JSON.Encode({ 1, 2, 3, { x = 10 } }) -- Returns '[1,2,3,{"x":10}]'
+    local encoded_value = JSON.stringify({ 1, 2, 3, { x = 10 } }) -- Returns '[1,2,3,{"x":10}]'
 
-    local decoded_value = JSON.Decode('[1,2,3,{"x":10}]') -- Returns { 1, 2, 3, { x = 10 } }
+    local decoded_value = JSON.parse('[1,2,3,{"x":10}]') -- Returns { 1, 2, 3, { x = 10 } }
+
+
+.. tip:: You can use stringified data to send tables through Events (including remote ones) as well!
+
+.. note: Just note that custom classes (e.g. Vehicle, Vector, Character... etc) aren't stringified with this functions and stringifying them will cause unknown behavior.
 
 
 Functions
@@ -33,9 +38,9 @@ Functions
     - **Description**
 
   * - :term:`string`
-    - Encode(any value)
+    - stringify(any value)
     - Returns a string representing value encoded in JSON
 
   * - any value
-    - Decode(:term:`string` Str)
+    - Parse(:term:`string` Str)
     - Returns a value representing the decoded JSON string
