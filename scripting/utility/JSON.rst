@@ -42,5 +42,5 @@ Functions
     - Returns a string representing value encoded in JSON
 
   * - any value
-    - Parse(:term:`string` Str)
+    - parse(:term:`string` str)
     - Returns a value representing the decoded JSON string
