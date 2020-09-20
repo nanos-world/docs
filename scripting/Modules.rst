@@ -51,9 +51,9 @@ Example
             );
         ]])
 
-        connection:execute([[
+        connection:execute(string.format([[
             INSERT INTO hello_world VALUES ('%s');
-        ]], connection:escape("Hello nanos.world")) 
+        ]], connection:escape("Hello nanos.world"))) 
         -- (You should always use escape for user input to prevent sql injection!)
 
         local cursor = connection:execute("SELECT * FROM hello_world")
