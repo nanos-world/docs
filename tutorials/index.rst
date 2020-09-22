@@ -71,6 +71,14 @@ Packages / Gamemodes
 			"Official repository of NanosWorldWeapons Package.",
 			true
 		);
+
+		DrawCard(
+			"https://github.com/gtnardy/nanos-world-inventory-system",
+			"https://nanos.world/media/logo.png",
+			"Inventory System ↗",
+			"Custom Inventory System inspired by CS:GO for nanos world.",
+			true
+		);
 	</script>
 
 

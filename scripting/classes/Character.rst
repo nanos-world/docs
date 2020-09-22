@@ -431,7 +431,7 @@ Events
 
   * -
     - TakeDamage
-    - :ref:`Character` self, :term:`number` damage, :term:`number` type (1 - Shot, 2 - Explosion), :term:`string` bone, :ref:`Vector` FromDirection, :ref:`Player` Instigator
+    - :ref:`Character` self, :term:`number` damage, :term:`string` bone, :term:`number` type (0 - Shot, 1 - Explosion), :ref:`Vector` FromDirection, :ref:`Player` Instigator
     - When Character takes Damage
 
   * -
