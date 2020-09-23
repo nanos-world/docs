@@ -26,6 +26,8 @@ Functions
   * - BroadcastChatMessage(:term:`string` Message)
     - Sends a chat message to everyone
 
+  * - ChangeMap(:term:`string` MapPath)
+    - Restarts the server in a new Map, restarts all packages and reconnects all players
 
 Events
 ------
