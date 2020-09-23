@@ -12,6 +12,7 @@ Tutorials & Examples
 	ChatColors.rst
 	PropShooter.rst
 	PropRain.rst
+	ScoreHitLog.rst
 	WeaponFlashlight.rst
 	WeaponScope.rst
 
@@ -135,5 +136,12 @@ Samples / Snippets
 			"https://i.imgur.com/J97aZZy.png",
 			"Chat Colors",
 			"See how to display colored texts in the chat!"
+		);
+
+		DrawCard(
+			"ScoreHitLog.html",
+			"https://i.imgur.com/CgbPj62.png",
+			"Score & Hit Log",
+			"Battlefield-like Hit, Kill & Score log!"
 		);
 	</script>
