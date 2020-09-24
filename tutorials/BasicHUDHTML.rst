@@ -237,12 +237,12 @@ Now that our UI is done, let's finish our Lua code to handle that whole thing!
 
     -- Function to update the Ammo's UI
     function UpdateAmmo(enable_ui, ammo, ammo_bag)
-        WeaponHUD:CallEvent("UpdateWeaponAmmo", {enable_ui, ammo, ammo_bag})
+        MainHUD:CallEvent("UpdateWeaponAmmo", {enable_ui, ammo, ammo_bag})
     end
 
     -- Function to update the Health's UI
     function UpdateHealth(health)
-        WeaponHUD:CallEvent("UpdateHealth", {health})
+        MainHUD:CallEvent("UpdateHealth", {health})
     end
 
 
