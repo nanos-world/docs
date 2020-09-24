@@ -200,7 +200,6 @@ The following script mimics Battlefield V Score, Kill & Hit Log on the screen.
         font-family: Roboto, sans-serif;
         margin: 0px;
         padding: 0px;
-        background-image: url("https://i.imgur.com/D9B3RIG.png");
         background-size: 100%;
     }
 
