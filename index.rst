@@ -94,3 +94,5 @@ Special Thanks
 *  Daranix - Tester and Bug Reporter
 *  NightOwl - Tester, vscode Snippet
 *  Resmurf - Tester and Bug Reporter
+*  chesiren - Tester and Bug Reporter
+*  FelixHtm - Tester and Bug Reporter

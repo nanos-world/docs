@@ -87,7 +87,7 @@ Let's modify our Lua code to add some handles for JS events:
 
     -- When the HTML is ready, triggers an Event in there
     MyUI:on("Ready", function()
-        MyUI:CallEvent("MyAwesomeEvent", "Hello! You are ready!")
+        MyUI:CallEvent("MyAwesomeEvent", {"Hello! You are ready!"})
     end)
 
     MyUI:on("MyAwesomeAnswer", function(param1)
