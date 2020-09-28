@@ -38,6 +38,7 @@ Class List
    Player.rst
    Prop.rst
    Sound.rst
+   TextRender.rst
    Trigger.rst
    Vehicle.rst
    Weapon.rst
