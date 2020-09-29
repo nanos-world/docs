@@ -4,6 +4,8 @@
 Maps & Levels
 *************
 
+.. attention:: This page is under construction.
+
 Maps and Levels are quite the most straightforward asset that you can create and import. In Unreal, Maps are called ``Levels``, usually these levels are filled with a Landscape component to make the terrain, some Lights and some Static Meshes (Trees, Houses, etc).
 
 .. tip:: Please refer to `Unreal's Official tutorial - Working with Levels <https://docs.unrealengine.com/en-US/Engine/Levels/HowTo/WorkWithLevelAssets/index.html>`_.
@@ -14,7 +16,7 @@ Rules for creating a Map/Level for nanos world
 
 1. Do not spawn/place Dynamic Meshes (with Physics), as they will not be synced in-game. You need to spawn them as a :ref:`Prop` on the scripting.
 
-2. Add a "Sun" actor-tag to all Lighting/Sky/Sun related actors (DirectionalLight, SkyLight, DomeMesh, SkyAtmosphere or SunSky), this will allow, if wanted, to your light to be overridden by scripters to use instead the Official nanos world Sun through `World.SpawnDefaultSun()`, which allows light/sun customization.
+2. Add a "Sun" actor-tag to all Lighting/Sky/Sun related actors (DirectionalLight, SkyLight, DomeMesh, SkyAtmosphere or SunSky), this will allow, if wanted, to your light to be overridden by scripters to use, instead, the Official nanos world Sun through `World.SpawnDefaultSun()`, which allows in-game light/sun customization.
 
 .. attention:: Most of :ref:`World` functions rely on our own assets and code, so it is not (yet) possible to change the lighting or weather in your custom Map with :ref:`World` scripting functions.
 
@@ -30,31 +32,7 @@ Maps can also have a **Custom Script** (server-only) attached to it. These are f
 Creating a Map in Unreal Engine 4 from Scratch
 ----------------------------------------------
 
-In this tutorial we are going to cover all steps to create a Map for nanos world from scratch and use it in your server.
-
-After you've downloaded `Unreal Engine 4.25 <https://www.unrealengine.com/en-US/download/ue_non_games>`_. Launch it and create a Blank Project:
-
-.. image:: https://i.imgur.com/Bl5wwIP.png
-
-Select the following options and give a name to your Project:
-
-.. image:: https://i.imgur.com/9epIBOY.png
-
-Once it opens, open the Project Settings window and toggle off the following options: ``Use Pak File``, ``Share Material Shader Code`` and ``Allow Static Lighting``:
-
-.. image:: https://i.imgur.com/bQK3bIV.png
-
-.. image:: https://i.imgur.com/1mlQKhj.png
-
-.. image:: https://i.imgur.com/eM7HS5O.png
-
-.. image:: https://i.imgur.com/5L3IzhE.png
-
-After that, restart the Editor as it asks:
-
-.. image:: https://i.imgur.com/TrmPGLQ.png
-
-The next step is to create a folder inside the ``Content/`` folder, *this step is very important*. Rename this folder with the Asset Pack name you desire `(1. Expand the tab; 2. Right click on Content; 3. Create a New Folder)`:
+The first step is to create a folder inside the ``Content/`` folder, *this step is very important*. Rename this folder with the Asset Pack name you desire `(1. Expand the tab; 2. Right click on Content; 3. Create a New Folder)`, (you can also rename the Blue folder to the AssetPack name you want):
 
 .. image:: https://i.imgur.com/YBCNjn6.png
 
@@ -139,9 +117,7 @@ Now let's drag'n drop other Meshes into our Level, like so:
 
 .. image:: https://i.imgur.com/dydOKb3.png
 
-Also, Unreal provides a built-in SkyBox (to fill up the sky with color and clouds), to add it, just search for ``BP_Sky_Sphere`` on Place Actors and drag it in the viewport:
-
-.. image:: https://i.imgur.com/UjntYl6.png
+Also, the ADK project provides a built-in Sun & SkyBox Actor (to fill up the sky with color and clouds), to add it, just look into ``NanosWorld/Blueprints/World/`` for ``BP_SunSky`` and drag it to the viewport.
 
 You can create a new Material and use it to paint these meshes as well:
 

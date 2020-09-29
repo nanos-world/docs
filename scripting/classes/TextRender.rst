@@ -8,6 +8,8 @@ Text Render
 
 A Text Render class is useful for spawning Texts in 3D world, you can even attach to other entities.
 
+.. image:: https://i.imgur.com/Rr1mzO8.png
+
 
 Usage
 -----

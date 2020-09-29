@@ -10,7 +10,7 @@ WebUI
 
 Class for spawning a web browser in the screen. The browser will fill up the whole screen and is automatically resized. 
 
-.. attention:: There is a known bug causing WebUI files not being reloaded when modified. Restarting the game seems to solve the problem for now.
+.. attention:: There is a known bug causing WebUI files (.js and .css at least) not being reloaded when modified. Restarting the game seems to solve the problem for now. The developer of this Library already knows and is working on a solution.
 
 .. tip:: This HTML implementation is built upon same core as WebKit/Safari. And currently does not support HTML5 videos and audios.
 

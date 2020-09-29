@@ -96,3 +96,4 @@ Special Thanks
 *  Resmurf - Tester and Bug Reporter
 *  chesiren - Tester and Bug Reporter
 *  FelixHtm - Tester and Bug Reporter
+*  TheToor - Tester and Bug Reporter

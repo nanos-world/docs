@@ -9,6 +9,7 @@ Modding
    :name: toc-modding
    :glob:
 
+   AssetsDevelopmentKit.rst
    Characters.rst
    MapsAndLevels.rst
    StaticMeshes.rst
@@ -25,6 +26,7 @@ Exporting and Creating Assets
 
 *  :ref:`MapsAndLevels` Creating and Exporting Maps & Levels
 *  :ref:`StaticMeshes` Creating and Exporting Static Meshes (e.g. used for Props)
+*  :ref:`CharactersModding` Creating and Exporting Character's Skeletal Meshes
 
 
 Rules for exporting/creating assets in Unreal Engine 4 for nanos world
@@ -32,7 +34,12 @@ Rules for exporting/creating assets in Unreal Engine 4 for nanos world
 
 1. Always create a Root folder with the name of your pack (e.g. ``/Content/My_Weapon_Pack/``) and put all content you use inside that (you can create sub-folders as well).
 
-2. Do not use Engine Content (i.e. Engine's default materials or default meshes), always make a copy them inside your Content folder and use that instead. Engine content are not exported correctly.
+2. Do not use Engine Content (i.e. Engine's Materials or Meshes). If you want to use them, we recommend copying them to your Content/Your_Pack folder, otherwise they may not be exported correctly. There is only some Engine Content which is allowed to use, from the following folders (these are already included by the base game and are safe to use):
+
+   1. ``/Engine/Functions``
+   2. ``/Engine/BasicShapes``
+   3. ``/Engine/ArtTools``
+   4. ``/Engine/EngineMaterials``
 
 
 Additional Tips
@@ -46,7 +53,7 @@ Additional Tips
 Recommended Asset Naming Conventions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We hardly recommend and encourage you to follow `Allar's Asset Naming Conventions <https://github.com/Allar/ue4-style-guide#1-asset-naming-conventions->`_. We've summarized the most common ones here?
+We hardly recommend and encourage you to follow `Allar's Asset Naming Conventions <https://github.com/Allar/ue4-style-guide#1-asset-naming-conventions->`_. We've summarized the most common ones here:
 
 .. list-table::
   :widths: 35 20 45
@@ -63,6 +70,10 @@ We hardly recommend and encourage you to follow `Allar's Asset Naming Convention
     - \SM_
     - 
 
+  * - Physical Asset
+    - \PHYS_
+    - 
+
   * - Material
     - \M_
     - 
@@ -70,6 +81,26 @@ We hardly recommend and encourage you to follow `Allar's Asset Naming Convention
   * - Material Instance
     - \MI_
     - 
+
+  * - Animation
+    - \A_
+    - 
+
+  * - Animation Montage
+    - \A_
+    - 
+
+  * - Particle
+    - \P_
+    - 
+
+  * - Sound Wave
+    - \A_
+    - 
+
+  * - Sound Cue
+    - \A_
+    - _Cue
 
   * - Texture
     - \T_

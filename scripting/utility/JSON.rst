@@ -10,6 +10,8 @@ JSON library, useful for sending data from Client's Package to :ref:`WebUI` envi
 
 .. note:: nanos world implements a lightweight JSON library from https://github.com/rxi/json.lua.
 
+.. tip:: This structure is Open Sourced at https://github.com/nanos-world/nanos-world-lua-lib/blob/master/json.lua. Feel free to push merge requests and suggest changes!
+
 
 Usage
 -----
