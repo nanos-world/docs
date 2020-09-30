@@ -10,6 +10,7 @@ Tutorials & Examples
 	BasicHUDCanvas.rst
 	BasicHUDHTML.rst
 	ChatColors.rst
+	NameTags.rst
 	PropShooter.rst
 	PropRain.rst
 	ScoreHitLog.rst
@@ -143,5 +144,12 @@ Samples / Snippets
 			"https://i.imgur.com/CgbPj62.png",
 			"Score & Hit Log",
 			"Battlefield-like Hit, Kill & Score log!"
+		);
+
+		DrawCard(
+			"NameTags.html",
+			"https://i.imgur.com/AyHKrG1.png",
+			"NameTags",
+			"How to add Player's name above Character's head."
 		);
 	</script>

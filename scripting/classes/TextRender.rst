@@ -106,3 +106,18 @@ Events
 ------
 
 .. include:: ../common/events/Actor.rst
+
+
+Related Tutorials
+-----------------
+
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"../../tutorials/NameTags.html",
+			"https://i.imgur.com/AyHKrG1.png",
+			"NameTags",
+			"How to add Player's name above Character's head."
+		);
+	</script>
