@@ -57,12 +57,12 @@ Constructor Parameters
     - true
 
   * - :term:`number`
-    - Volume (0 - 1)
-    - 1
-
-  * - :term:`number`
     - Sound Type (0 - SFX, 1 - Music) - Used to apply user's volume settings
     - 0
+
+  * - :term:`number`
+    - Volume (0 - 1)
+    - 1
 
   * - :term:`number`
     - Pitch
