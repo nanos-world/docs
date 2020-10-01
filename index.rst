@@ -88,12 +88,15 @@ With nanos world you can realize your own game ideas and visions. Therefore, scr
 Special Thanks
 --------------
 
-*  DasPascal - Tester, Suggester, Bug Reporter and Documentation helper
-*  Falaxir - Tester, Suggester, Bug Reporter and Documentation helper
-*  Nogitsu - Tester, Suggester and Bug Reporter
+*  DasPascal - Tester, Bug Reporter and Documentation helper
+*  Falaxir - Tester, Bug Reporter and Documentation helper
+*  Nogitsu - Tester and Bug Reporter
 *  Daranix - Tester and Bug Reporter
-*  NightOwl - Tester, vscode Snippet
+*  NightOwl - Tester and VSCode Snippet
 *  Resmurf - Tester and Bug Reporter
 *  chesiren - Tester and Bug Reporter
 *  FelixHtm - Tester and Bug Reporter
 *  TheToor - Tester and Bug Reporter
+*  EinfachMaxYT - Tester and Bug Reporter
+*  ZarosLive - Tester and Bug Reporter
+*  Alex0130359 - Tester and Bug Reporter

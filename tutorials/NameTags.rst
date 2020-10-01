@@ -18,6 +18,7 @@ This sample shows how to add Name Tags to Characters
     Character:on("Possessed", function(character, player)
         local nametag = TextRender(Vector(), Rotator(), player:GetName(), Color(1, 1, 1), 1, 0, 24, false, true)
         nametag:AttachTo(character, "", Vector(0, 0, 250), Rotator())
+        player:SetValue("Nametag", nametag)
     end)
     
     Character:on("Unpossessed", function(character, player)
