@@ -440,7 +440,7 @@ Events
     - When Character drops a Prop
 
   * -
-    - Unpossessed
+    - UnPossessed
     - :ref:`Character` self, :ref:`Player` old_possesser
     - When Character is unpossessed
 
