@@ -152,3 +152,8 @@ Events
     - UnPossess
     - :ref:`Player` player, :ref:`Character` character, :term:`boolean` bIsPlayerDisconnecting
     - A :ref:`Character` was released from the ``Player``
+
+  * -
+    - VOIP
+    - :ref:`Player` player, :term:`boolean` IsTalking
+    - When a Player starts/ends using VOIP
