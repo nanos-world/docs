@@ -22,6 +22,14 @@ Functions
     - **Description**
 
   * - 
+    - SendChatMessage(:term:`string` Message)
+    - Sends a chat message which will display local only
+
+  * - 
+    - SetCrosshairEnabled(:term:`boolean`)
+    - Enables/Disables the default Crosshair
+
+  * - 
     - SetDiscordActivity(:term:`string` State, :term:`string` Details, :term:`string` LargeImage, :term:`string` LargeText)
     - Comunicates with Discord and sets a custom user status
 

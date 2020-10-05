@@ -39,6 +39,10 @@ Events
     - **Parameters**
     - **Description**
 
+  * - Chat
+    - :ref:`Player`, :term:`string` Text
+    - Called when a player types something in the chat
+
   * - Console
     - :term:`string` Text
     - Called when a console command is submitted

@@ -34,7 +34,7 @@ Constructor Parameters
 ----------------------
 
 .. list-table:: 
-  :widths: 20 45 35
+  :widths: 10 70 20
 
   * - **Type**
     - **Name**
@@ -68,70 +68,74 @@ Constructor Parameters
     - Pitch
     - 1
 
+  * - :term:`number`
+    - InnerRadius (3D only)
+    - 400
+
+  * - :term:`number`
+    - FalloffDistance (3D only)
+    - 3600
+
+  * - :term:`number`
+    - AttenuationFunction (3D only) (0 - Linear, 1 - Logarithmic, 2 - Inverse, 3 - Log Reverse, 4 - Natural Sound)
+    - 0
+
+  * - :term:`boolean`
+    - KeepPlayingWhenSilent (3D only) - Whether to keep playing this sound when it's not audible - Use with caution, it may cause performance issues!
+    - false
+
 
 Functions
 ----------
 
 .. list-table:: 
-  :widths: 5 10 35 50
+  :widths: 10 35 55
 
-  * - 
-    - **Returns**
+  * - **Returns**
     - **Name**
     - **Description**
 
-  * - |client-only-label|
-    - 
+  * - 
     - FadeIn(:term:`number` FadeInDuration, :term:`number` FadeVolumeLevel, :term:`number` StartTime)
     - Plays the sound with a fade effect
 
-  * - |client-only-label|
-    - 
+  * - 
     - FadeOut(:term:`number` FadeOutDuration, :term:`number` FadeVolumeLevel)
     - Stops the sound with a fade effect
 
-  * - |client-only-label|
-    - 
-    - Play()
+  * - 
+    - Play(:term:`number` StartTime = 0)
     - Starts the sound
 
-  * - |client-only-label|
-    - 
+  * - 
     - SetFalloffDistance(:term:`number` FalloffDistance)
     - If a 3D Sound, sets the distance which the sound is inaudible
 
-  * - |client-only-label|
-    - 
+  * - 
     - SetLowPassFilter(:term:`number` Frequency)
     - Sets lowpass filter frequency. Sets 0 to disable it.
 
-  * - |client-only-label|
-    - 
-    - SetPaused(:term:`boolean` Pause)
+  * - 
+    - SetPaused(:term:`boolean` Pause = true)
     - Pauses the sound
 
-  * - |client-only-label|
-    - 
+  * - 
     - SetPitch(:term:`number` NewPitch)
     - Sets the Sound's pitch
 
-  * - |client-only-label|
-    - 
+  * - 
     - SetVolume(:term:`number` NewVolume)
     - Sets the Sound's volume (0 - 1)
 
-  * - |client-only-label|
-    - 
+  * - 
     - Stop()
     - Stops the sound
 
-  * - |client-only-label|
-    - 
+  * - 
     - StopDelayed(:term:`number` Delay)
     - Stops the sound after the provided delay
 
-  * - |client-only-label|
-    - :term:`boolean`
+  * - :term:`boolean`
     - IsPlaying()
     - Returns if the sound is playing
 
