@@ -112,6 +112,10 @@ Functions
     - If a 3D Sound, sets the distance which the sound is inaudible
 
   * - 
+    - SetInnerRadius(:term:`number` InnerRadius)
+    - If a 3D Sound, sets the distance within the volume is 100%
+
+  * - 
     - SetLowPassFilter(:term:`number` Frequency)
     - Sets lowpass filter frequency. Sets 0 to disable it.
 
