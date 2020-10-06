@@ -11,6 +11,13 @@ Maps and Levels are quite the most straightforward asset that you can create and
 .. tip:: Please refer to `Unreal's Official tutorial - Working with Levels <https://docs.unrealengine.com/en-US/Engine/Levels/HowTo/WorkWithLevelAssets/index.html>`_.
 
 
+Tutorial by EinfachMax:
+
+.. raw:: html
+
+	<iframe width="100%" height="485" src="https://www.youtube.com/embed/2FGkWdn9JP4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br>
+
+
 Rules for creating a Map/Level for nanos world
 ----------------------------------------------
 
