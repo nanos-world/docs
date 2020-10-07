@@ -45,8 +45,8 @@ Starting Out
 		);
 
 		DrawCard(
-			"https://i.imgur.com/7jNTwZl.jpg",
-			"https://i.imgur.com/7jNTwZl.jpg",
+			"https://i.imgur.com/q5BlFDX.jpg",
+			"https://i.imgur.com/q5BlFDX.jpg",
 			"Server & Client Lifecycle ↗",
 			"Learn how nanos world framework works!"
 		);
