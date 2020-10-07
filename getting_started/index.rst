@@ -43,6 +43,13 @@ Starting Out
 			"Assets Quick Start",
 			"Know how to import and add custom Assets to your server."
 		);
+
+		DrawCard(
+			"https://i.imgur.com/7jNTwZl.jpg",
+			"https://i.imgur.com/7jNTwZl.jpg",
+			"Server & Client Lifecycle ↗",
+			"Learn how nanos world framework works!"
+		);
 	</script>
 
 
