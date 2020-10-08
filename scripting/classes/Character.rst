@@ -85,18 +85,18 @@ Usage
     Woman:AddSkeletalMeshAttached("shoes", "NanosWorld::SK_Sneakers")
 
     -- Adds Beard to Man
-    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Extra", "beard", Vector(), Rotator())
-    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Middle", "beard", Vector(), Rotator())
-    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Mustache_01", "beard", Vector(), Rotator())
-    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Mustache_02", "beard", Vector(), Rotator())
-    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Side", "beard", Vector(), Rotator())
+    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Extra", "beard")
+    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Middle", "beard")
+    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Mustache_01", "beard")
+    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Mustache_02", "beard")
+    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Side", "beard")
 
     -- Adds Hair to Man
-    Man:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Long", "hair_male", Vector(), Rotator())
-    Man:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Short", "hair_male", Vector(), Rotator())
+    Man:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Long", "hair_male")
+    Man:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Short", "hair_male")
 
     -- Adds Hair to Woman
-    Woman:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Kwang", "hair_female", Vector(), Rotator())
+    Woman:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Kwang", "hair_female")
 
 
 Functions
@@ -117,7 +117,7 @@ Functions
 
   * - |server-only-label|
     - 
-    - AddStaticMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath, :term:`string` Socket, :ref:`Vector` RelativeLocation, :ref:`Rotator` RelativeRotation)
+    - AddStaticMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath, :term:`string` Socket = "", :ref:`Vector` RelativeLocation = Vector(), :ref:`Rotator` RelativeRotation = Rotator())
     - Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
   * - |server-only-label|
@@ -147,7 +147,7 @@ Functions
 
   * - |server-only-label|
     - 
-    - MoveTo(:ref:`Vector` Location, :term:`number` AcceptanceRadius)
+    - MoveTo(:ref:`Vector` Location, :term:`number` AcceptanceRadius = 50)
     - AI: Makes this Character to walk to the Location
 
   * - |server-only-label|
@@ -208,7 +208,7 @@ Functions
   * - |server-only-label|
     - 
     - SetScalarParameter(:term:`number` ID, :term:`number` Value)
-    - 
+    - Sets a Scalar Material parameter to this Character
 
   * - |server-only-label|
     - 
@@ -223,7 +223,7 @@ Functions
   * - |server-only-label|
     - 
     - SetVectorParameter(:term:`number` ID, :ref:`Vector` Value)
-    - 
+    - Sets a Vector Material parameter to this Character's Material
 
   * - |server-only-label|
     - 

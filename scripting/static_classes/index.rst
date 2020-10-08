@@ -25,6 +25,7 @@ Static Class List
    :name: toc-scripting-global-variables
    :glob:
 
+   Assets.rst
    Client.rst
    Events.rst
    NanosWorld.rst

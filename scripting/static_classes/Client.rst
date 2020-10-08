@@ -26,6 +26,10 @@ Functions
     - Sends a chat message which will display local only
 
   * - 
+    - SetChatConfiguration(:ref:`Vector2D` Location = (-25, 0), :ref:`Vector2D` Size = (600, 250), :ref:`Vector2D` AchorsMin = (1, 0.5), :ref:`Vector2D` AchorsMax = (1, 0.5), :ref:`Vector2D` Alignment = (1, 0.5), :term:`boolean` bJustify = false (false = Left, true = Right))
+    - Configure the Chat. Anchors = (1, 1) means the location will be relative to bottom right and (0, 0) to top left.
+
+  * - 
     - SetCrosshairEnabled(:term:`boolean`)
     - Enables/Disables the default Crosshair
 
@@ -66,7 +70,7 @@ Events
 
   * - Chat
     - :term:`string` Text
-    - Called when a chat text is submitted (by LocalPlayer)
+    - Called when a chat text is submitted (by LocalPlayer) - return false to do not send the message
 
   * - Console
     - :term:`string` Text

@@ -148,6 +148,11 @@ Events
     - :ref:`Player` player
     - Triggered when Player connects to the server
 
+  * - |server-only-label|
+    - Ready
+    - :ref:`Player` player
+    - Triggered when Player is ready (i.e. fully loaded and ready to play)
+
   * -
     - UnPossess
     - :ref:`Player` player, :ref:`Character` character, :term:`boolean` bIsPlayerDisconnecting

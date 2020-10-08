@@ -64,7 +64,7 @@ Physical Materials ``NanosWorld/MaterialLibrary/PhysicalMaterials/``
 
 .. image:: https://i.imgur.com/SkBteAq.png
 
-If you are creating a Material, you can use these Physical Materials do integrate better with nanos world. Using these Physical Materials will allow nanos world recognize which type of surfice your Prop/Object is, giving it the proper auto-generated Hit Sound. DO NOT modify or rename them, only use them in your Materials.
+If you are creating a Material, you can use these Physical Materials do integrate better with nanos world. Using these Physical Materials will allow nanos world recognize which type of surface your Prop/Object is, giving it the proper auto-generated Hit Sound. DO NOT modify or rename them, only use them in your Materials.
 
 
 Mannequin Skeleton ``NanosWorld/Characters/Common/SKEL_Mannequin``

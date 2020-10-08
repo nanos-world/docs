@@ -41,7 +41,7 @@ Events
 
   * - Chat
     - :ref:`Player`, :term:`string` Text
-    - Called when a player types something in the chat
+    - Called when a player types something in the chat - return false to do not send the message
 
   * - Console
     - :term:`string` Text
