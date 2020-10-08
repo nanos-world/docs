@@ -82,6 +82,16 @@ Functions
     - Returns the character of the player. If the player has not yet been assigned a character, :term:`nil` is returned.
 
   * - 
+    - :term:`number`
+    - GetID()
+    - Gets the network ID of this entity (same in both client and server)
+
+  * - 
+    - :term:`string`
+    - GetIP()
+    - Gets the IP of this Player
+
+  * - 
     - :term:`string`
     - GetName()
     - Returns the player's name

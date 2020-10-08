@@ -80,6 +80,11 @@ Functions (Inherited from Actor)
     - Gets the current actor's collision
 
   * - 
+    - :term:`number`
+    - GetID()
+    - Gets the network ID of this entity (same in both client and server)
+
+  * - 
     - :ref:`Vector`
     - GetLocation()
     - Get the actor's position in the game world

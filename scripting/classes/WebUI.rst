@@ -99,6 +99,11 @@ Functions
     - IsValid()
     - Returns if this entity is Valid
 
+  * - 
+    - :term:`number`
+    - GetID()
+    - Gets the network ID of this entity
+
   * - :term:`string`
     - GetType()
     - Returns the type of this Actor
