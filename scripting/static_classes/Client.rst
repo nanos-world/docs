@@ -22,6 +22,18 @@ Functions
     - **Description**
 
   * - 
+    - DrawDebugLine(:ref:`Vector` Start, :ref:`Vector` End, :ref:`Color` Color = (1, 0, 0), :term:`number` Duration = 5, :term:`number` Thickness = 0)
+    - Draws a Debug Line in the World
+
+  * - 
+    - DrawDebugPoint(:ref:`Vector` Start, :ref:`Color` Color = (1, 0, 0), :term:`number` Duration = 5, :term:`number` Thickness = 0)
+    - Draws a Debug Point in the World
+
+  * - 
+    - DrawDebugSphere(:ref:`Vector` Start, :term:`number` Radius, :term:`number` Segments, :ref:`Color` Color = (1, 0, 0), :term:`number` Duration = 5, :term:`number` Thickness = 0)
+    - Draws a Debug Line in the World
+
+  * - 
     - SendChatMessage(:term:`string` Message)
     - Sends a chat message which will display local only
 
@@ -44,6 +56,10 @@ Functions
   * - 
     - SetOutlineColor(:ref:`Color` OutlineColor)
     - Changes the Outline Color for interactable stuff. Multiply it by 5 (or more) for having a glowing effect.
+
+  * - :term:`table`
+    - Trace(:ref:`Vector` Start, :ref:`Vector` End, :term:`boolean` DrawDebug = false)
+    - Trace a ray against the world and returns a table with the first blocking hit information ``{"Success", "Location", "Normal", "Actor"}``. Currently only supports trace for :ref:`Character`, :ref:`Vehicle` and :ref:`Prop`, more can be requested.
 
   * - :ref:`Vector2D`
     - GetMousePosition()

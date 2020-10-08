@@ -72,3 +72,7 @@
 .server-only-label, .client-only-label, .client-read-only-label {
 	width: 20px;
 }
+
+table p {
+	font-size: 15px !important;
+}
