@@ -117,7 +117,7 @@ Functions
 
   * - |server-only-label|
     -string
-    - AddStaticMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath, :term:`string` Socket = "", :ref:`Vector` RelativeLocation = Vector(), :ref:`Rotator` RelativeRotation = Rotator())
+    - AddStaticMeshAttached(:term:`string` ID, :term:`string` StaticMeshPath, :term:`string` Socket = "", :ref:`Vector` RelativeLocation = Vector(), :ref:`Rotator` RelativeRotation = Rotator())
     - Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
   * - |server-only-label|
