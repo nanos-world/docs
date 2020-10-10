@@ -11,12 +11,12 @@ Functions (Inherited from Pickable)
 
   * - |server-only-label|
     - 
-    - AddSkeletalMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath)
+    - AddSkeletalMeshAttached(:term:`string` ID, :term:`string` StaticMeshPath)
     - Spawns and Attaches a SkeletalMesh into this Actor, the SkeletalMesh must have the same Skeletal used by this Actor Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
 
   * - |server-only-label|
     - 
-    - AddStaticMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath, :term:`string` Socket = "", :ref:`Vector` RelativeLocation = Vector(), :ref:`Rotator` RelativeRotation = Rotator())
+    - AddStaticMeshAttached(:term:`string` ID, :term:`string` StaticMeshPath, :term:`string` Socket = "", :ref:`Vector` RelativeLocation = Vector(), :ref:`Rotator` RelativeRotation = Rotator())
     - Spawns and Attaches a StaticMesh into this Actor in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
   * - |server-only-label|
@@ -31,12 +31,12 @@ Functions (Inherited from Pickable)
 
   * - |server-only-label|
     - 
-    - RemoveSkeletalMeshAttached(:term:`number` ID)
+    - RemoveSkeletalMeshAttached(:term:`string` ID)
     - Removes, if existing, a SkeletalMesh from this Actor given it's custom ID
 
   * - |server-only-label|
     - 
-    - RemoveStaticMeshAttached(:term:`number` ID)
+    - RemoveStaticMeshAttached(:term:`string` ID)
     - Removes, if existing, a StaticMesh from this Actor given it's custom ID
 
   * - 

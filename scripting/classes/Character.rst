@@ -112,11 +112,11 @@ Functions
 
   * - |server-only-label|
     - 
-    - AddSkeletalMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath)
+    - AddSkeletalMeshAttached(:term:`string` ID, :term:`string` StaticMeshPath)
     - Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
 
   * - |server-only-label|
-    - 
+    -string
     - AddStaticMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath, :term:`string` Socket = "", :ref:`Vector` RelativeLocation = Vector(), :ref:`Rotator` RelativeRotation = Rotator())
     - Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
@@ -167,12 +167,12 @@ Functions
 
   * - |server-only-label|
     - 
-    - RemoveSkeletalMeshAttached(:term:`number` ID)
+    - RemoveSkeletalMeshAttached(:term:`string` ID)
     - Removes, if existing, a SkeletalMesh from this Character given it's custom ID
 
   * - |server-only-label|
     - 
-    - RemoveStaticMeshAttached(:term:`number` ID)
+    - RemoveStaticMeshAttached(:term:`string` ID)
     - Removes, if existing, a StaticMesh from this Character given it's custom ID
 
   * - |server-only-label|
