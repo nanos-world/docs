@@ -100,6 +100,11 @@ Functions (Inherited from Actor)
     - Gets the actor's rotation in the game world
 
   * - 
+    - :ref:`Vector`
+    - GetScale()
+    - Gets the actor's scale
+
+  * - 
     - :ref:`Color`
     - GetTintColor()
     - Gets the Tint Color
