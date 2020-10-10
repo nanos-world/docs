@@ -34,6 +34,7 @@ nanos world provides a default Asset Pack already included in the base game, fee
         SM_Pyramid_VR = "Props/VRShapes/SM_Pyramid"
 
         SM_Error = "Props/Utils/SM_Error"
+        SM_None = "Props/Utils/SM_None"
 
         SM_PlasticBarrel_01 = "Art/City/Construction_Props/Mesh/SM_PlasticBarrel_01"
         SM_RockingChair = "Art/City/House_Props/Meshes/SM_RockingChair"
@@ -119,6 +120,7 @@ nanos world provides a default Asset Pack already included in the base game, fee
         SK_Sneakers = "Characters/Common/BodyParts/Clothes/Shoes/SK_Sneakers"
 
         SK_Error = "Props/Utils/SK_Error"
+        SK_None = "Props/Utils/SK_None"
 
         SK_AK47 = "Weapons/Rifles/AK47/SK_AK47"
         SK_AK74U = "Weapons/Rifles/AK74U/SK_AK74U"

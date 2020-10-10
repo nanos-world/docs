@@ -67,7 +67,7 @@ Functions
     - Size()
     - 
 
-  * - :ref:`Rotator`
+  * - :ref:`boolean`
     - IsNearlyZero(:term:`number` Tolerance)
     - 
 

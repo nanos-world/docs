@@ -46,12 +46,12 @@ Functions
     - Draws a Text with optionals Shadow and Outline
 
   * - :ref:`Vector2D`
-    - StrLen(:term:`string` Text, :term:`number` FontType, :term:`number`, FontSize)
-    - Returns the Length of Text in Pixels
+    - Project(:ref:`Vector` WorldPosition)
+    - Transforms a 3D world-space vector into 2D screen coordinates.
 
   * - :ref:`Vector`
-    - Project(:ref:`Vector` Location3D)
-    - Transforms a 3D world-space vector into 2D screen coordinates.
+    - Deproject(:ref:`Vector2D` ScreenPosition)
+    - Transforms a 2D screen coordinates into 3D world-space location.
 
   * - 
     - ClearItems(:term:`number` GroupID)

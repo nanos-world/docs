@@ -38,7 +38,7 @@ This sample code shows how to attach custom sights meshes into a :ref:`Weapon` a
 
     -- Sets the ADS transform offset to fit the RedDot center position,
     -- each weapon will need a different offset to fit it's sight. AK47 + RedDot best fit is Z = -15.9 
-    Weapon:SetSightTransform(Vector(0, 0, -15.9), Rotator(0, 0, 0))
+    my_ak47:SetSightTransform(Vector(0, 0, -15.9), Rotator(0, 0, 0))
 
 
 Other Static Mesh assets which can be used as scope:
