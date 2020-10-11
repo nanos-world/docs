@@ -62,7 +62,7 @@ Constructor Parameters
 
 
 Functions
-----------
+---------
 
 .. list-table:: 
   :widths: 5 45 50
@@ -99,8 +99,7 @@ Functions
     - IsValid()
     - Returns if this entity is Valid
 
-  * - 
-    - :term:`number`
+  * - :term:`number`
     - GetID()
     - Gets the network ID of this entity
 
