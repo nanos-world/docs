@@ -10,6 +10,8 @@ A Vector2D composed of components (X, Y) with floating point precision. Used mai
 
 .. tip:: This structure is Open Sourced at https://github.com/nanos-world/nanos-world-lua-lib. Feel free to push merge requests and suggest changes!
 
+.. tip:: This structure supports `+`, `-`, `*`, `/`, `==`, and `tostring` operations.
+
 
 Usage
 -----

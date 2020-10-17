@@ -61,6 +61,14 @@ Functions
     - SetHighlightColor(:ref:`Color` HighlightColor)
     - Changes the Highlight Color for highlighted actors. Multiply it by 5 (or more) for having a glowing effect.
 
+  * - 
+    - Spectate(:ref:`Player` Player)
+    - Spectates a Player. The local camera will follow the Player's camera.
+
+  * - 
+    - Unspectate()
+    - Leaves the Spectator's State.
+
   * - :term:`table`
     - Trace(:ref:`Vector` Start, :ref:`Vector` End, :term:`boolean` DrawDebug = false)
     - Trace a ray against the world and returns a table with the first blocking hit information ``{"Success", "Location", "Normal", "Actor"}``. Currently only supports trace for :ref:`Character`, :ref:`Vehicle` and :ref:`Prop`, more can be requested.

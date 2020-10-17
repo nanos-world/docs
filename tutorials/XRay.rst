@@ -9,7 +9,7 @@ This sample code shows how to set Actors to be highlighted when behind walls, or
 
 .. note:: Currently it's only possible to have one color for all Highlighted objects.
 
-.. image:: ../images/Highlight_example.jpg
+.. image:: ../images/highlight_example.jpg
 
 
 .. note:: The following code runs on Client.
