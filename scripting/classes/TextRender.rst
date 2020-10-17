@@ -70,9 +70,9 @@ Constructor Parameters
     - Size
     - 26
 
-  * - :term:`boolean`
-    - Is Emissive (appears in the dark)
-    - false
+  * - :term:`number`
+    - Type (0 - Lit, 1 - Unlit, 2 - Unlit & Always Visible)
+    - 0
 
   * - :term:`boolean`
     - Align To Camera (ajudsts the rotation automatically to always looks at the camera)

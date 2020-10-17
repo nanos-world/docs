@@ -182,6 +182,36 @@ Functions
 
   * - |server-only-label|
     - 
+    - SetCameraMode(:term:`number` CameraMode)
+    - Sets the Camera Mode (0 - FPS and TPS, 1 = FPS only, 2 = TPS only)
+
+  * - |server-only-label|
+    - 
+    - SetCanCrouch(:term:`boolean`)
+    - Sets if this Character is allowed to Crouch and to Prone
+
+  * - |server-only-label|
+    - 
+    - SetCanSprint(:term:`boolean`)
+    - Sets if this Character is allowed to Sprint
+
+  * - |server-only-label|
+    - 
+    - SetCanGrabProps(:term:`boolean`)
+    - Sets if this Character is allowed to Grab any Prop
+
+  * - |server-only-label|
+    - 
+    - SetCanPickupPickables(:term:`boolean`)
+    - Sets if this Character is allowed to Pick up any Pickable (Weapon, Grenade, Item...)
+
+  * - |server-only-label|
+    - 
+    - SetCapsuleSize(:term:`number` Radius, :term:`number` HalfHeight)
+    - Sets this Character's Capsule size (will affect Camera location and Character's collision) - default is (42, 96)
+
+  * - |server-only-label|
+    - 
     - SetHealth(:term:`number` NewHealth)
     - Sets the Health of this Character. If the character is dead, respawns it with full health.
 

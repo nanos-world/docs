@@ -34,6 +34,11 @@ Functions (Inherited from Actor)
     - SetGravityEnabled(:term:`boolean` NewGravity)
     - Sets the actor's gravity enabled
 
+  * - |client-only-label|
+    - 
+    - SetHighlightEnabled(:term:`boolean` Enabled)
+    - Sets if this Actors is Highlighting
+
   * - |server-only-label|
     - 
     - SetInitialLocation(:ref:`Vector` NewInitialLocation)

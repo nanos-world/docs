@@ -11,11 +11,14 @@ Tutorials & Examples
 	BasicHUDHTML.rst
 	ChatColors.rst
 	NameTags.rst
+	PlayAsProp.rst
 	PropShooter.rst
 	PropRain.rst
 	ScoreHitLog.rst
+	Trace.rst
 	WeaponFlashlight.rst
 	WeaponScope.rst
+	XRay.rst
 
 
 .. attention:: This page is under construction.
@@ -105,6 +108,13 @@ Samples / Snippets
 		);
 
 		DrawCard(
+			"PlayAsProp.html",
+			"https://i.imgur.com/mO9tCdo.jpg",
+			"Play as Prop",
+			"How to simulate a Prop possessing."
+		);
+
+		DrawCard(
 			"WeaponScope.html",
 			"https://i.imgur.com/K5eVATY.png",
 			"Weapon Scope",
@@ -116,6 +126,34 @@ Samples / Snippets
 			"https://i.imgur.com/JUtyW9s.png",
 			"Weapon Flashlight",
 			"See how to create and attach a flashlight to any weapon!"
+		);
+
+		DrawCard(
+			"Trace.html",
+			"https://i.imgur.com/4LeSR2G.png",
+			"Trace / Raycasting",
+			"Check out how to get World information with Traces!"
+		);
+
+		DrawCard(
+			"ScoreHitLog.html",
+			"https://i.imgur.com/CgbPj62.png",
+			"Score & Hit Log",
+			"Battlefield-like Hit, Kill & Score log!"
+		);
+
+		DrawCard(
+			"NameTags.html",
+			"https://i.imgur.com/AyHKrG1.png",
+			"NameTags",
+			"How to add Player's name above Character's head."
+		);
+
+		DrawCard(
+			"XRay.html",
+			"https://i.imgur.com/OuQHLIJ.jpeg",
+			"X-Ray",
+			"Check how to Highlight objects through walls."
 		);
 
 		DrawCard(
@@ -137,19 +175,5 @@ Samples / Snippets
 			"https://i.imgur.com/J97aZZy.png",
 			"Chat Colors",
 			"See how to display colored texts in the chat!"
-		);
-
-		DrawCard(
-			"ScoreHitLog.html",
-			"https://i.imgur.com/CgbPj62.png",
-			"Score & Hit Log",
-			"Battlefield-like Hit, Kill & Score log!"
-		);
-
-		DrawCard(
-			"NameTags.html",
-			"https://i.imgur.com/AyHKrG1.png",
-			"NameTags",
-			"How to add Player's name above Character's head."
 		);
 	</script>

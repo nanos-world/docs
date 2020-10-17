@@ -57,6 +57,10 @@ Functions
     - SetOutlineColor(:ref:`Color` OutlineColor)
     - Changes the Outline Color for interactable stuff. Multiply it by 5 (or more) for having a glowing effect.
 
+  * - 
+    - SetHighlightColor(:ref:`Color` HighlightColor)
+    - Changes the Highlight Color for highlighted actors. Multiply it by 5 (or more) for having a glowing effect.
+
   * - :term:`table`
     - Trace(:ref:`Vector` Start, :ref:`Vector` End, :term:`boolean` DrawDebug = false)
     - Trace a ray against the world and returns a table with the first blocking hit information ``{"Success", "Location", "Normal", "Actor"}``. Currently only supports trace for :ref:`Character`, :ref:`Vehicle` and :ref:`Prop`, more can be requested.

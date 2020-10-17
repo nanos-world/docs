@@ -20,14 +20,24 @@ Functions
   * - **Name**
     - **Description**
 
-  * - SendChatMessage(:ref:`Player` Player, :term:`string` Message)
-    - Sends a chat message to Player only
-
   * - BroadcastChatMessage(:term:`string` Message)
     - Sends a chat message to everyone
 
   * - ChangeMap(:term:`string` MapPath)
     - Restarts the server in a new Map, restarts all packages and reconnects all players
+
+  * - SendChatMessage(:ref:`Player` Player, :term:`string` Message)
+    - Sends a chat message to Player only
+
+  * - UnloadPackage(:term:`string` PackageFolderName)
+    - Unloads a Package
+
+  * - ReloadPackage(:term:`string` PackageFolderName)
+    - Reloads a Package
+
+  * - LoadPackage(:term:`string` PackageFolderName)
+    - Loads a Package
+
 
 Events
 ------

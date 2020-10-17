@@ -8,6 +8,8 @@ Timer
 
 .. tip:: This is a Static Class named ``Timer``. You can access it's methods directly with ``:``. It is not possible to initialize or create new instances.
 
+.. note:: The shortest interval possible is equal to the local Tick Rate - usually at 33ms or the configured value at the Server settings (server only).
+
 
 Functions
 ---------
