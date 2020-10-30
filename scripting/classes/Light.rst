@@ -22,8 +22,9 @@ Usage
         0, -- Point Light type
         100, -- Intensity
         250, -- Attenuation Radius
-        0, -- Source Radius (Relevant only for Spot and Point light types)
-        0, -- Source Soft Radius (Relevant only for Spot and Point light types)
+        0, -- Cone Angle (Relevant only for Spot light type)
+		0, -- Max Draw Distance (Good for performance - 0 for infinite)
+		true, -- Whether to use physically based inverse squared distance falloff, where Attenuation Radius is only clamping the light's contribution. (Spot and Point types only)
         true, -- Cast Shadows?
         true -- Enabled?
     )
@@ -79,15 +80,19 @@ Constructor Parameters
     - 250
 
   * - :term:`number`
-    - SouceRadius
+    - Cone Angle
     - 0
 
   * - :term:`number`
-    - SoftSouceRadius
-    - 250
+    - Max Daw Distance
+    - 0
 
   * - :term:`boolean`
     - CastShadows
+    - true
+
+  * - :term:`boolean`
+    - UseInverseSquaredFalloff
     - true
 
   * - :term:`boolean`
