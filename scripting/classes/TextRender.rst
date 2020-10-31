@@ -27,7 +27,7 @@ Usage
         1, -- Horizontal Alignment
         0, -- Vertical Alignment
         32, -- Size
-        false, -- Emissive
+        0, -- Lit
         false -- Align to Camera
     )
 

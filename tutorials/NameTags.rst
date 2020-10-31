@@ -24,7 +24,7 @@ This sample shows how to add Name Tags to Characters
         end
     
         -- Spawns the Nametag (TextRender), attaches it to the character and saves it to the player's values
-        local nametag = TextRender(Vector(), Rotator(), player:GetName(), Color(1, 1, 1), 1, 0, 24, true, true)
+        local nametag = TextRender(Vector(), Rotator(), player:GetName(), Color(1, 1, 1), 1, 0, 24, 0, true)
         nametag:AttachTo(character, "", Vector(0, 0, 250), Rotator())
         player:SetValue("Nametag", nametag)
     end

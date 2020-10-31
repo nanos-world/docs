@@ -91,7 +91,7 @@ Functions
     - GetID()
     - Gets the network ID of this entity (same in both client and server)
 
-  * - 
+  * - |server-only-label|
     - :term:`string`
     - GetIP()
     - Gets the IP of this Player

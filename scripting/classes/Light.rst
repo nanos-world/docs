@@ -23,6 +23,7 @@ Usage
         100, -- Intensity
         250, -- Attenuation Radius
         0, -- Cone Angle (Relevant only for Spot light type)
+        0, -- Inner Cone Angle Percent (Relevant only for Spot light type)
 		0, -- Max Draw Distance (Good for performance - 0 for infinite)
 		true, -- Whether to use physically based inverse squared distance falloff, where Attenuation Radius is only clamping the light's contribution. (Spot and Point types only)
         true, -- Cast Shadows?
@@ -81,6 +82,10 @@ Constructor Parameters
 
   * - :term:`number`
     - Cone Angle
+    - 0
+
+  * - :term:`number`
+    - Inner Cone Angle Percent (0-1)
     - 0
 
   * - :term:`number`

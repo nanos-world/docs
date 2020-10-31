@@ -21,12 +21,12 @@ This sample code shows how to simulate a Prop possessing using a :ref:`Character
 	-- Spawns a Character using SK_None mesh (an invisible mesh)
 	local new_char = Character(Vector(0, 0, 0), Rotator(), "NanosWorld::SK_None")
 
-	-- Adjusts the Capsule of this charcter, for smaller props, it's recommended to use small capsule size
-	-- (A Capsule is used to handle Character's collision, this will also adjust camera height location)
+	-- Adjusts the Capsule of this character. For small props it's recommended to use small capsule size
+	-- (A capsule is used to handle Character's collision, this will also adjust camera height location)
 	-- It's important to adjust the Capsule Size before adding a StaticMesh, as it will be adjusted based on Capsule Size
 	new_char:SetCapsuleSize(32, 64)
 
-	-- Attaches on the character, a Static Mesh - which will be the Prop it will possess
+	-- Attaches a Static Mesh on the character - which will be the Prop it will possess
 	new_char:AddStaticMeshAttached("prop", "NanosWorld::SM_WoodenChair")
 
 	-- Disables some functionalities from the Character (picking up stuff, ability to crouch/prone, FPS camera...)
