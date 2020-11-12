@@ -35,6 +35,7 @@ Class List
    Grenade.rst
    Item.rst
    Light.rst
+   Particle.rst
    Player.rst
    Prop.rst
    Sound.rst

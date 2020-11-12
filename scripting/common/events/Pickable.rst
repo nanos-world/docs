@@ -15,6 +15,11 @@ Events (Inherited from Pickable)
     - When a Character drops this
 
   * -
+    - Hit
+    - Entity pickable, :term:`number` Intensity
+    - When this Entity hits something
+
+  * -
     - PickUp
     - Entity pickable, :ref:`Character` character
     - When a Character picks up this

@@ -10,9 +10,7 @@ Weapon
 
 Weapons are fully customizable, all pieces of the weapon can be changed with immense possibility of creation
 
-.. tip:: Since update 0.16 it is possible to create any kind of weapon with any kind of mesh
-
-.. tip:: Please take a look at our Default's Weapon package with all of them already properly configured and ready to use: `<https://github.com/nanos-world/nanos-world-weapons>`_.
+.. tip:: Please take a look at our Default's Weapon package with all built-in Weapons already properly configured and ready to use: `<https://github.com/nanos-world/nanos-world-weapons>`_.
 
 
 Usage

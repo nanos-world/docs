@@ -43,7 +43,7 @@ Constructor Parameters
     - Rotation(0, 0, 0)
 
   * - :term:`string`
-    - Model
+    - SkeletalMesh
     - NanosWorld::SK_Male
 
   * - :term:`number`
@@ -178,7 +178,12 @@ Functions
   * - |server-only-label|
     - 
     - Respawn()
-    - Respawns the Character, fullying it's Health and moving it to it's Initial Location.
+    - Respawns the Character, fullying it's Health and moving it to it's Initial Location
+
+  * - |server-only-label|
+    - 
+    - SetMesh(:term:`string` SkeletalMeshAsset)
+    - Changes the Character Mesh on the fly
 
   * - |server-only-label|
     - 
@@ -213,12 +218,12 @@ Functions
   * - |server-only-label|
     - 
     - SetHealth(:term:`number` NewHealth)
-    - Sets the Health of this Character. If the character is dead, respawns it with full health.
+    - Sets the Health of this Character. If the character is dead, respawns it with full health
 
   * - |server-only-label|
     - 
     - SetMaxHealth(:term:`number` NewMaxHealth)
-    - Sets the MaxHealth of this Character.
+    - Sets the MaxHealth of this Character
 
   * - |server-only-label|
     - 
@@ -287,8 +292,8 @@ Functions
 
   * - 
     - :term:`string`
-    - GetAssetName()
-    - Gets the Asset name
+    - GetMesh()
+    - Gets the Mesh Asset name
 
   * - 
     - :ref:`Rotator`

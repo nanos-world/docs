@@ -10,6 +10,7 @@ Tutorials & Examples
 	BasicHUDCanvas.rst
 	BasicHUDHTML.rst
 	ChatColors.rst
+	MonsterTruck.rst
 	NameTags.rst
 	PlayAsProp.rst
 	PropShooter.rst
@@ -154,6 +155,13 @@ Samples / Snippets
 			"https://i.imgur.com/OuQHLIJ.jpeg",
 			"X-Ray",
 			"Check how to Highlight objects through walls."
+		);
+
+		DrawCard(
+			"MonsterTruck.html",
+			"https://i.imgur.com/pBoXKZe.jpg",
+			"Monster Truck",
+			"Check how to configure a vehicle to transform it in a Monster Truck."
 		);
 
 		DrawCard(

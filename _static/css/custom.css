@@ -76,3 +76,7 @@
 table p {
 	font-size: 15px !important;
 }
+
+table .std-term, table .std-ref {
+	font-size: 13px !important;
+}

@@ -102,6 +102,8 @@ nanos world provides a default Asset Pack already included in the base game, fee
 
         SM_Grenade_G67 = "Weapons/Grenades/G67/SM_G67"
 
+        SM_Tire_01 = "Vehicles/Common/Meshes/SM_Tire_01"
+
         # Skeletal Meshes
         [assets.skeletal_meshes]
         SK_Female = "Characters/Female/SK_Female"
@@ -132,6 +134,13 @@ nanos world provides a default Asset Pack already included in the base game, fee
         SK_AP5 = "Weapons/Rifles/AP5/SK_AP5"
         SK_SMG11 = "Weapons/SMGs/SMG11/SK_SMG11"
 
+        SK_Pickup = "Vehicles/Variety/Pickup/SK_Pickup"
+        SK_SUV = "Vehicles/Variety/SUV/SK_SUV"
+        SK_Truck_Box = "Vehicles/Variety/Truck/SK_Truck_Box"
+        SK_Truck_Chassis = "Vehicles/Variety/Truck/SK_Truck_Chassis"
+        SK_SportsCar = "Vehicles/Variety/SportsCar/SK_SportsCar"
+        SK_Hatchback = "Vehicles/Variety/Hatchback/SK_Hatchback"
+
         # Sound Assets
         [assets.sounds]
         A_SMG_Dry = "Weapons/Common/Audios/A_SMG_Dry_Cue"
@@ -155,7 +164,11 @@ nanos world provides a default Asset Pack already included in the base game, fee
         A_Shotgun_Shot = "Weapons/Common/Audios/A_Shotgun_Shot_Cue"
         A_LightMachine_Shot = "Weapons/Common/Audios/A_LightMachine_Shot_Cue"
         A_SMG_Shot = "Weapons/Common/Audios/A_SMG_Shot_Cue"
+        A_Explosion_Large = "Weapons/Common/Audios/A_Explosion_Large_Cue"
+
         A_Male_Death = "Characters/Common/Audios/Death/A_Male_Death_Cue"
+        A_Character_Damage_Taken = "Characters/Common/Audios/Pain/A_Character_Damage_Taken"
+
         A_VR_Click_01 = "Effects/VR/A_VR_Click_01"
         A_VR_Click_02 = "Effects/VR/A_VR_Click_02"
         A_VR_Click_03 = "Effects/VR/A_VR_Click_03"
@@ -167,6 +180,30 @@ nanos world provides a default Asset Pack already included in the base game, fee
         A_VR_Open = "Effects/VR/A_VR_Open"
         A_VR_Teleport = "Effects/VR/A_VR_Teleport"
 
+        A_Vehicle_Brake = "Vehicles/Common/Sounds/A_Vehicle_Brake_Cue"
+        A_Vehicle_Horn_Bike_01 = "Vehicles/Common/Sounds/Horns/A_Vehicle_Horn_Bike_01"
+        A_Vehicle_Horn_Bike_02 = "Vehicles/Common/Sounds/Horns/A_Vehicle_Horn_Bike_02"
+        A_Vehicle_Horn_Bike_03 = "Vehicles/Common/Sounds/Horns/A_Vehicle_Horn_Bike_03"
+        A_Vehicle_Horn_Dixie = "Vehicles/Common/Sounds/Horns/A_Vehicle_Horn_Dixie"
+        A_Vehicle_Horn_Toyota = "Vehicles/Common/Sounds/Horns/A_Vehicle_Horn_Toyota"
+        A_Vehicle_Door = "Vehicles/Common/Sounds/A_Vehicle_Door_Cue"
+        A_Car_Engine_Start = "Vehicles/Common/Sounds/A_Car_Engine_Start_Cue"
+        A_Vehicle_Engine_01 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_01"
+        A_Vehicle_Engine_02 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_02"
+        A_Vehicle_Engine_03 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_03"
+        A_Vehicle_Engine_04 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_04"
+        A_Vehicle_Engine_05 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_05"
+        A_Vehicle_Engine_06 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_06"
+        A_Vehicle_Engine_07 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_07"
+        A_Vehicle_Engine_08 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_08"
+        A_Vehicle_Engine_09 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_09"
+        A_Vehicle_Engine_10 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_10"
+        A_Vehicle_Engine_11 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_11"
+        A_Vehicle_Engine_12 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_12"
+        A_Vehicle_Engine_13 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_13"
+        A_Vehicle_Engine_14 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_14"
+        A_Vehicle_Engine_15 = "Vehicles/Common/Sounds/Engine/A_Vehicle_Engine_15"
+
         # Animation Assets
         [assets.animations]
         AM_Mannequin_Reload_Pistol = "Characters/Common/Animations/Weapons/AM_Mannequin_Reload_Pistol"
@@ -174,6 +211,7 @@ nanos world provides a default Asset Pack already included in the base game, fee
         AM_Mannequin_Reload_Shotgun = "Characters/Common/Animations/Weapons/AM_Mannequin_Reload_Shotgun"
         AM_Mannequin_Sight_Fire = "Characters/Common/Animations/Weapons/AM_Mannequin_Sight_Fire"
         AM_Mannequin_Sight_Fire_Heavy = "Characters/Common/Animations/Weapons/AM_Mannequin_Sight_Fire_Heavy"
+
         AM_Mannequin_Taunt_YouHere = "Characters/Common/Animations/Taunts/AM_Mannequin_Taunt_YouHere"
         AM_Mannequin_Taunt_Bow = "Characters/Common/Animations/Taunts/AM_Mannequin_Taunt_Bow"
         AM_Mannequin_Taunt_ButtSlap_01 = "Characters/Common/Animations/Taunts/AM_Mannequin_Taunt_ButtSlap_01"
@@ -246,12 +284,12 @@ nanos world provides a default Asset Pack already included in the base game, fee
         P_Weapon_Shells_545x39 = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_545x39_System"
         P_Weapon_Shells_45ap = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_45ap_System"
         P_Weapon_Shells_9mm = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_9mm_System"
+        P_Explosion = "Effects/Particles/P_Explosion"
+        P_Smoke = "Effects/Particles/P_Smoke"
+        P_Sparks = "Effects/Particles/P_Sparks"
+        P_Fire = "Effects/Particles/P_Fire"
+        P_Explosion_Dirt = "Weapons/Common/Effects/ParticlesSystems/Explosions/PS_Explosion_Dirt"
+        P_Explosion_Water = "Weapons/Common/Effects/ParticlesSystems/Explosions/PS_Explosion_Water"
 
         # Blueprints
         BP_Grabable_Torch = "Core/Items/BP_Grabable_Torch.BP_Grabable_Torch_C"
-        BP_Vehicle_SUV = "Core/Vehicles/BP_Vehicle_SUV.BP_Vehicle_SUV_C"
-        BP_Vehicle_Pickup = "Core/Vehicles/BP_Vehicle_Pickup.BP_Vehicle_Pickup_C"
-        BP_Vehicle_Truck = "Core/Vehicles/BP_Vehicle_Truck.BP_Vehicle_Truck_C"
-        BP_Vehicle_Truck_Chassis = "Core/Vehicles/BP_Vehicle_Truck_Chassis.BP_Vehicle_Truck_Chassis_C"
-        BP_Vehicle_Hatchback = "Core/Vehicles/BP_Vehicle_Hatchback.BP_Vehicle_Hatchback_C"
-        BP_Vehicle_SportCar = "Core/Vehicles/BP_Vehicle_SportCar.BP_Vehicle_SportCar_C"

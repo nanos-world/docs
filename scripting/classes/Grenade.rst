@@ -18,7 +18,9 @@ Usage
     local NewGrenade = Grenade(
       Vector(-900, 185, 215), 
       Rotator(0, 90, 90), 
-      "NanosWorld::SM_Grenade_G67"
+      "NanosWorld::SM_Grenade_G67",
+      "NanosWorld::P_Explosion_Dirt",
+      "NanosWorld::A_Explosion_Large"
     )
 
 
@@ -41,8 +43,16 @@ Constructor Parameters
     - Rotation(0, 0, 0)
 
   * - :term:`string`
-    - ModelName
-    - 
+    - StaticMeshAsset
+    - "NanosWorld::SM_Grenade_G67"
+
+  * - :term:`string`
+    - Explosion Particles
+    - "NanosWorld::P_Explosion_Dirt"
+
+  * - :term:`string`
+    - Explosion Sound
+    - "NanosWorld::A_Explosion_Large
 
   * - :term:`number`
     - CollisionType

@@ -108,6 +108,11 @@ Events
     - When Character grabs a Prop
 
   * -
+    - Hit
+    - :ref:`Prop` self, :term:`number` Intensity
+    - When this Prop hits something
+
+  * -
     - UnGrab
     - :ref:`Prop` self, :ref:`Character` handler
     - When Character ungrabs a Prop

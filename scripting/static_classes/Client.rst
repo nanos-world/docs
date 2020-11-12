@@ -50,8 +50,12 @@ Functions
     - Comunicates with Discord and sets a custom user status
 
   * - 
+    - SetInputEnabled(:term:`boolean` EnableInput)
+    - Toggles Local Player input
+
+  * - 
     - SetMouseEnabled(:term:`boolean`)
-    - Sets mouse enabled and toggles game input
+    - Displays/Hides Mouse Cursor
 
   * - 
     - SetOutlineColor(:ref:`Color` OutlineColor)
@@ -75,7 +79,7 @@ Functions
 
   * - :ref:`Vector2D`
     - GetMousePosition()
-    - Gives the current mouse location
+    - Gets the current mouse screen location
 
   * - :term:`boolean`
     - IsKeyDown(:term:`string` KeyName)
@@ -106,18 +110,18 @@ Events
 
   * - KeyDown
     - :term:`string` KeyName
-    - A keyboard key has been pressed / is being pressed
+    - A keyboard key has been pressed / is being pressed. Return false to block it
 
   * - KeyUp
     - :term:`string` KeyName
-    - A keyboard key has been released
+    - A keyboard key has been released. Return false to block it
 
   * - MouseDown
-    - :term:`string` KeyName, :term:`number` MouseX, :term:`number` MouseY
+    - :term:`string` KeyName, :term:`number` MouseX, :term:`number` MouseY. Return false to block it
     - A mouse button has been pressed / is being pressed
 
   * - MouseUp
-    - :term:`string` KeyName, :term:`number` MouseX, :term:`number` MouseY
+    - :term:`string` KeyName, :term:`number` MouseX, :term:`number` MouseY. Return false to block it
     - A mouse button has been released
 
   * - Tick
