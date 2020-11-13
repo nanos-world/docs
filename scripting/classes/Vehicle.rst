@@ -22,7 +22,7 @@ Related Tutorials
 
 	<script>
 		DrawCard(
-			"MonsterTruck.html",
+			"../../tutorials/MonsterTruck.html",
 			"https://i.imgur.com/pBoXKZe.jpg",
 			"Monster Truck",
 			"Check how to configure a vehicle to transform it in a Monster Truck."
