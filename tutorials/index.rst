@@ -71,6 +71,22 @@ Packages / Gamemodes
 		);
 
 		DrawCard(
+			"https://github.com/gtnardy/nanos-world-inventory-system",
+			"https://nanos.world/media/logo.png",
+			"Inventory System ↗",
+			"Custom Inventory System inspired by CS:GO for nanos world.",
+			true
+		);
+
+		DrawCard(
+			"https://github.com/gtnardy/nanos-world-halloween",
+			"https://i.imgur.com/B7zL0I9.png",
+			"Halloween Special Game Mode ↗",
+			"Special Game Mode inspired by Dead by Daylight.",
+			true
+		);
+
+		DrawCard(
 			"https://github.com/nanos-world/nanos-world-weapons",
 			"https://nanos.world/media/logo.png",
 			"Nanos World Official Weapon Package ↗",
@@ -79,10 +95,10 @@ Packages / Gamemodes
 		);
 
 		DrawCard(
-			"https://github.com/gtnardy/nanos-world-inventory-system",
+			"https://github.com/nanos-world/nanos-world-vehicles",
 			"https://nanos.world/media/logo.png",
-			"Inventory System ↗",
-			"Custom Inventory System inspired by CS:GO for nanos world.",
+			"Nanos World Official Vehicle Package ↗",
+			"Official repository of NanosWorldVehicles Package.",
 			true
 		);
 	</script>
