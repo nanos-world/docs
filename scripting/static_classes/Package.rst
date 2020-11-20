@@ -36,9 +36,19 @@ Functions
     - Includes other Package in this Package
 
   * -
+    - :term:`table`<:term:`string`>
+    - GetFiles(:term:`string` PathFilter = "", :term:`string` ExtensionFilter = "")
+    - Gets a list of all files in this package, optionally with filters
+
+  * -
     - :term:`string`
     - GetName()
     - Gives the package name
+
+  * -
+    - :term:`string`
+    - GetPath()
+    - Gives the package path
 
   
 Events

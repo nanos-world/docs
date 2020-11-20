@@ -101,6 +101,7 @@ nanos world provides a default Asset Pack already included in the base game, fee
         SM_Bamboo_Woodplank_01 = "Art/Rural/Extra/SM_Bamboo_Woodplank_01"
 
         SM_Grenade_G67 = "Weapons/Grenades/G67/SM_G67"
+        SM_Torch = "Weapons/Torch/SM_Torch"
 
         SM_Tire_01 = "Vehicles/Common/Meshes/SM_Tire_01"
 
@@ -290,6 +291,3 @@ nanos world provides a default Asset Pack already included in the base game, fee
         P_Fire = "Effects/Particles/P_Fire"
         P_Explosion_Dirt = "Weapons/Common/Effects/ParticlesSystems/Explosions/PS_Explosion_Dirt"
         P_Explosion_Water = "Weapons/Common/Effects/ParticlesSystems/Explosions/PS_Explosion_Water"
-
-        # Blueprints
-        BP_Grabable_Torch = "Core/Items/BP_Grabable_Torch.BP_Grabable_Torch_C"

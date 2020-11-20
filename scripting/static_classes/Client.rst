@@ -22,6 +22,10 @@ Functions
     - **Description**
 
   * - 
+    - CallLevelBlueprintEvent(:term:`string` EventName)
+    - Calls a Level Blueprint custom event (which can be added when creating levels through Unreal Engine). Parameters can be concatened to EventName
+
+  * - 
     - DrawDebugLine(:ref:`Vector` Start, :ref:`Vector` End, :ref:`Color` Color = (1, 0, 0), :term:`number` Duration = 5, :term:`number` Thickness = 0)
     - Draws a Debug Line in the World
 
