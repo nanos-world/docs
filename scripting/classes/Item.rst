@@ -6,7 +6,7 @@
 Item
 ****
 
-An Item represents an Entity which can be Pickable by a Character, doesn't have any special action unless holding it with hands.
+An Item represents an Entity which can be Pickable by a Character, doesn't have any special action unless holding it with hands with pre-defined handling modes.
 
 
 Usage
@@ -18,7 +18,9 @@ Usage
     local NewItem = Item(
       Vector(-900, 185, 215), 
       Rotator(0, 90, 90), 
-      "NanosWorld::BP_Grabable_Torch"
+      "NanosWorld::SM_Torch",
+      true,
+      5
     )
 
 
@@ -41,7 +43,7 @@ Constructor Parameters
     - Rotation(0, 0, 0)
 
   * - :term:`string`
-    - ModelName
+    - ModelName (StaticMesh)
     - 
 
   * - :term:`number`
@@ -51,7 +53,11 @@ Constructor Parameters
   * - :term:`boolean`
     - GravityEnabled
     - true
- 
+
+  * - :term:`number`
+    - HandlingMode
+    - 5 (0. SingleHandedWeapon, 1. DoubleHandedWeapon, 2. SingleHandedMelee, 3. DoubleHandedMelee, 4. Throwable, 5. Torch, 6. Barrel, 7. Box)
+
 
 Functions
 ----------

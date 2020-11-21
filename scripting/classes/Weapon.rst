@@ -42,7 +42,7 @@ Usage
         Vector(26, 0, 8.5),   -- Left Hand Location
         Rotator(0, 60, 90),   -- Left Hand Rotation
         Vector(-10, 0, 0),    -- Right Hand Offset
-        1,                    -- Handling Mode (0. SingleHandedWeapon, 1. DoubleHandedWeapon, 2. SingleHandedMelee, 3. DoubleHandedMelee, 4. Throwable, 5. Torch)
+        1,                    -- Handling Mode (0. SingleHandedWeapon, 1. DoubleHandedWeapon, 2. SingleHandedMelee, 3. DoubleHandedMelee, 4. Throwable, 5. Torch, 6. Barrel, 7. Box)
         0.15,                 -- Cadence (1 shot at each 0.15seconds)
         true,                 -- Can Hold Use (keep pressing to keep firing, common to automatic weapons)
         false,                -- Need to release to Fire (common to Bows)
