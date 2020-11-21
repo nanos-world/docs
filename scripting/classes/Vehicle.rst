@@ -228,7 +228,7 @@ Events
 
   * -
     - Hit
-    - :term:`Vehicle` self, :term:`number` Intensity
+    - :ref:`Vehicle` self, :term:`number` Intensity
     - When Vehicle hits something
 
 .. include:: ../common/events/Actor.rst

@@ -36,7 +36,7 @@ Functions
     - Includes other Package in this Package
 
   * -
-    - :term:`table`<:term:`string`>
+    - :term:`table`\<:term:`string`\>
     - GetFiles(:term:`string` PathFilter = "", :term:`string` ExtensionFilter = "")
     - Gets a list of all files in this package, optionally with filters
 

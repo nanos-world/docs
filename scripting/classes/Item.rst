@@ -55,8 +55,8 @@ Constructor Parameters
     - true
 
   * - :term:`number`
-    - HandlingMode
-    - 5 (0. SingleHandedWeapon, 1. DoubleHandedWeapon, 2. SingleHandedMelee, 3. DoubleHandedMelee, 4. Throwable, 5. Torch, 6. Barrel, 7. Box)
+    - HandlingMode (0. SingleHandedWeapon, 1. DoubleHandedWeapon, 2. SingleHandedMelee, 3. DoubleHandedMelee, 4. Throwable, 5. Torch, 6. Barrel, 7. Box)
+    - 5
 
 
 Functions
