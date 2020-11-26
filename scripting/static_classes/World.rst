@@ -22,6 +22,26 @@ Functions
     - **Description**
 
   * - 
+    - SetPPBloom(:term:`number` Intensity = 0.675, :term:`number` Threshold = -1)
+    - Set Post Process Bloom Settings
+
+  * - 
+    - SetPPChromaticAberration(:term:`number` Intensity = 0, :term:`number` StartOffset = 0)
+    - Set Post Process Chromatic Aberration Settings
+
+  * - 
+    - SetPPImageEffects(:term:`number` VignetteIntensity = 0.6, :term:`number` GrainJitter = 0 , :term:`number` GrainIntensity = 0)
+    - Set Post Process Image Effect Settings
+
+  * - 
+    - SetPPFilm(:term:`number` Slope = 0.8, :term:`number` Toe = 0.55, :term:`number` Shoulder = 0.26, :term:`number` BlackClip = 0, :term:`number` WhiteClip = 0.3)
+    - Set Post Process Film Settings
+
+  * - 
+    - SetPPGlobalSaturation(const Color& _Color)
+    - Set Post Process Saturation Colors. Use Alpha for overall Saturation intensity
+
+  * - 
     - SetSunAngle(:term:`number`)
     - Sets the sun's angle (0-360)
 
