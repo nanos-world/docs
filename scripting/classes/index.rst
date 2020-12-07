@@ -32,6 +32,7 @@ Class List
    :glob:
 
    Character.rst
+   File.rst
    Grenade.rst
    Item.rst
    Light.rst

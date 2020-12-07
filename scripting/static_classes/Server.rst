@@ -26,17 +26,17 @@ Functions
   * - ChangeMap(:term:`string` MapPath)
     - Restarts the server in a new Map, restarts all packages and reconnects all players
 
+  * - HTTPRequest(:term:`string` URI, :term:`string` Endpoint = "", :term:`string` Method = "GET", :term:`string` Data = "", :term:`table`\[:term:`string`\] Headers = {}, :term:`function` Callback = nil)
+    - Makes a HTTP Request, the result will be returned in the provided Callback function in the format (Status, Response)
+
+  * - ReloadPackage(:term:`string` PackageFolderName)
+    - Reloads a Package
+
   * - SendChatMessage(:ref:`Player` Player, :term:`string` Message)
     - Sends a chat message to Player only
 
   * - UnloadPackage(:term:`string` PackageFolderName)
     - Unloads a Package
-
-  * - ReloadPackage(:term:`string` PackageFolderName)
-    - Reloads a Package
-
-  * - LoadPackage(:term:`string` PackageFolderName)
-    - Loads a Package
 
 
 Events
@@ -90,18 +90,26 @@ Examples
 
     -- prints "Server started" when the server is starting
     Server:on("Start", function()
-        print("Server started")
+        Package:Log("Server started")
     end)
 
     -- prints "Server stopped" when the server stops / shutdown
     Server:on("Stop", function()
-        print("Server stopped")
+        Package:Log("Server stopped")
     end)
 
     -- prints the tick-delta time about every 30 ms
     Server:on("Tick", function(ticktime)
-        print("Tick: " .. ticktime)
+        Package:Log("Tick: " .. ticktime)
     end)
 
     -- sends a chat message to everyone
     Server:BroadcastChatMessage("Welcome to the server!")
+
+    -- makes a HTTP Request
+    Server:HTTPRequest("localhost:7777", "/fetch", "GET", "", {}, function(status, data)
+        Package:Log(status) -- 200
+        Package:Log(data)
+        local json_ret = JSON.parse(data)
+		-- ...
+    end)
