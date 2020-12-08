@@ -70,6 +70,16 @@ Functions (Inherited from Actor)
     - Sets a value in this entity, which can be accessed by any package (local only)
 
   * - 
+    - 
+    - TranslateTo(:ref:`Vector` Location, :term:`number` Speed)
+    - Smoothly moves this actor to a Location with a certain Speed
+
+  * - 
+    - 
+    - RotateTo(:ref:`Rotator` Rotation, :term:`number` Speed)
+    - Smoothly rotates this actor to a Rotation with a certain Speed
+
+  * - 
     - :term:`boolean`
     - IsGravityEnabled()
     - Gets the actor's gravity enabled
