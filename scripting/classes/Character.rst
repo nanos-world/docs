@@ -111,6 +111,11 @@ Functions
     - **Description**
 
   * - |server-only-label|
+    - :term:`number` DamageTaken
+    - ApplyDamage(:term:`number` Damage, :term:`string` BoneName = "", :term:`number` DamageType = 0, , :ref:`Vector` FromDirection = (), :ref:`Player` Instigator = nil)
+    - Do damage in a character, will trigger all related events and apply modified damage based on bone. Also will apply impulse if it's a heavy explosion.
+
+  * - |server-only-label|
     - 
     - AddSkeletalMeshAttached(:term:`string` ID, :term:`string` StaticMeshPath)
     - Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
@@ -222,6 +227,11 @@ Functions
 
   * - |server-only-label|
     - 
+    - SetInvulnerable(:term:`boolean`)
+    - Sets if the Character can receive any damage
+
+  * - |server-only-label|
+    - 
     - SetMaxHealth(:term:`number` NewMaxHealth)
     - Sets the MaxHealth of this Character
 
@@ -284,6 +294,11 @@ Functions
     - :term:`boolean`
     - IsInRagdollMode()
     - Gets Character Ragdoll Mode
+
+  * - 
+    - :term:`boolean`
+    - IsInvulnerable()
+    - Gets if the Character can receive damage
 
   * - 
     - :term:`boolean`
@@ -376,7 +391,7 @@ Events
 
   * -
     - Death
-    - :ref:`Character` self
+    - :ref:`Character` self, :term:`number` LastDamageTaken, :term:`string` LastBoneDamaged, :term:`number` DamageTypeReason, :ref:`Vector` HitFromDirection, :ref:`Player` Instigator
     - When Character Dies
 
   * -

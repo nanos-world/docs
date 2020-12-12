@@ -77,27 +77,32 @@ Properties
   * - |client-read-only-label|
     - :term:`number`
     - BaseDamage 
-    - Grenade's Base Damage
+    - Damage at Inner Radius
 
   * - |client-read-only-label|
     - :term:`number`
     - DamageFalloff   
-    - Grenade's
+    - Radius which BaseDamage will apply proportionally 
 
   * - |client-read-only-label|
     - :term:`number`
     - DamageInnerRadius  
-    - Grenade's 
+    - Radius which MinimumDamage will apply
 
   * - |client-read-only-label|
     - :term:`number`
     - MinimumDamage  
-    - Grenade's Base Damage
+    - Damage at Faloff Radius
 
   * - |client-read-only-label|
     - :term:`number`
     - TimeToExplode   
-    - Grenade's 
+    - Time until Explosion
+
+  * - |client-read-only-label|
+    - :term:`number`
+    - ThrowForce   
+    - Impulse applied when throwing
 
 
 Functions
@@ -105,11 +110,17 @@ Functions
 
 .. list-table:: 
   :widths: 5 10 35 50
-   
-  * - **Returns**
+
+  * - 
+    - **Returns**
     - **Name**
-    - **Parameters**
     - **Description**
+
+  * - |server-only-label|
+    - 
+    - Explode()
+    - Forces this grenade to Explode
+
 
 .. include:: ../common/functions/Pickable.rst
 
