@@ -21,6 +21,16 @@ Functions
     - **Description**
 
   * -
+    - any
+    - Call(:term:`string` package_name, :term:`string` function_name, :term:`table` {args...})
+    - Calls an exported function from an other Package
+
+  * -
+    - 
+    - Export(:term:`string` function_name, :term:`function` function)
+    - 'Exports' a function to be called from any other Package
+
+  * -
     -
     - Log(:term:`string` Message)
     - Logs a message in the console (the proper and Nanos way)
