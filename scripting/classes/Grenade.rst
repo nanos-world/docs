@@ -91,8 +91,13 @@ Properties
 
   * - |client-read-only-label|
     - :term:`number`
+    - DamageOuterRadius  
+    - Radius which BaseDamage will apply
+
+  * - |client-read-only-label|
+    - :term:`number`
     - MinimumDamage  
-    - Damage at Faloff Radius
+    - Damage at Outer Radius
 
   * - |client-read-only-label|
     - :term:`number`
