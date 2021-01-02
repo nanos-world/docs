@@ -12,9 +12,9 @@ System Requirements
 
 *  OS: Windows or Linux
 *  Processor: 1.0 GHz
-*  Memory: 50 MB (grows if having too many Players and Actors)
+*  Memory: 50 MB (grows if having too many Players or spawned Entities)
 *  Storage: 10 MB (+ Assets size)
-*  Network: Recommended at least 1 MB/s (grows if having too many Players and Actors)
+*  Network: Recommended at least 1 MB/s (grows if having too many Players or spawned Entities)
 *  Network Forwarded Ports: 7777 TCP and UDP (you can change that on the config)
 
 
@@ -135,6 +135,29 @@ All (not pre-defined) commands will be sent into an event to the scripting/serve
     Server:on("Console", function(my_input)
         Package:Log("Console command received: " .. my_input)
     end)
+
+
+Loading Screen
+--------------
+
+In nanos world it is possible to add a customized and dynamic Loading Screen to your Server using WebUI. For that, just add your HTML/CSS/JS files into ``./LoadingScreen`` folder. Your primary HTML file should be called ``index.html``.
+
+To be able to display dynamic information in the screen, you can listen to the Event ``UpdateScreen`` (which will trigger every few ms):
+
+.. tabs::
+ .. code-tab:: javascript JavaScript
+
+    // During downloading phase, 'progress' and 'progress_total' will represent the amount of files being 
+    // downloaded and 'progress_secondary' will represent the % of the current file being downloaded
+
+    // During loading phase, 'progress' and 'progress_total' will represent the total loading progress 
+    // and 'progress_secondary' will represent the progress of the current stuff being loaded
+
+    function UpdateScreen(message, message_secondary, progress, progress_total, progress_secondary) {
+        // Update your HTML here
+    }
+
+    Events.on("UpdateScreen", UpdateScreen);
 
 
 Packages & Scripting

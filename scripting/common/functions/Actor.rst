@@ -133,3 +133,8 @@ Functions (Inherited from Actor)
     - any
     - GetValue(:term:`string` Key)
     - Gets a value given a key
+
+  * - |client-only-label|
+    - :ref:`Vector`
+    - GetVelocity()
+    - Returns the current actor Velocity
