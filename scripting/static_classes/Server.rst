@@ -35,6 +35,21 @@ Functions
   * - SendChatMessage(:ref:`Player` Player, :term:`string` Message)
     - Sends a chat message to Player only
 
+  * - SetDescription(:term:`string` description, :term:`boolean` persist_to_config_file = false)
+    - Sets the description of the server, optionally overrides Config.toml
+
+  * - SetLogo(:term:`string` logo_url, :term:`boolean` persist_to_config_file = false)
+    - Sets the logo of the server, optionally overrides Config.toml
+
+  * - SetMaxPlayers(:term:`number` max_players, :term:`boolean` persist_to_config_file = false)
+    - Sets the maximum player slots of the server, optionally overrides Config.toml
+
+  * - SetName(:term:`string` name, :term:`boolean` persist_to_config_file = false)
+    - Sets the name of the server, optionally overrides Config.toml
+
+  * - SetPassword(:term:`string` password, :term:`boolean` persist_to_config_file = false)
+    - Sets the password of the server, optionally overrides Config.toml
+
   * - SetValue(:term:`string` Key, any Value)
     - Sets a global value in the Server, which can be accessed from anywhere (server side)
 
