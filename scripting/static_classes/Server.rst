@@ -35,8 +35,14 @@ Functions
   * - SendChatMessage(:ref:`Player` Player, :term:`string` Message)
     - Sends a chat message to Player only
 
+  * - SetValue(:term:`string` Key, any Value)
+    - Sets a global value in the Server, which can be accessed from anywhere (server side)
+
   * - UnloadPackage(:term:`string` PackageFolderName)
     - Unloads a Package
+
+  * - any GetValue(:term:`string` Key)
+    - Gets a value given a key
 
 
 Events

@@ -40,6 +40,7 @@ Class List
    Player.rst
    Prop.rst
    Sound.rst
+   StaticMesh.rst
    TextRender.rst
    Trigger.rst
    Vehicle.rst

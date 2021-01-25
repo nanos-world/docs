@@ -6,7 +6,7 @@
 Prop
 ****
 
-A Prop represents a Static Mesh which can be spawned in the world, can be grabbed around and have physics.
+A Prop represents a Dynamic Mesh which can be spawned in the world, can be grabbed around by characters and have physics.
 
 
 Usage

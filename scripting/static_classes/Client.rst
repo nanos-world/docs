@@ -70,6 +70,10 @@ Functions
     - Changes the Highlight Color for highlighted actors. Multiply it by 5 (or more) for having a glowing effect.
 
   * - 
+    - SetValue(:term:`string` Key, any Value)
+    - Sets a global value in the Client, which can be accessed from anywhere (client side)
+
+  * - 
     - Spectate(:ref:`Player` Player)
     - Spectates a Player. The local camera will follow the Player's camera.
 
@@ -84,6 +88,10 @@ Functions
   * - :ref:`Vector2D`
     - GetMousePosition()
     - Gets the current mouse screen location
+
+  * - any
+    - GetValue(:term:`string` Key)
+    - Gets a value given a key
 
   * - :term:`boolean`
     - IsKeyDown(:term:`string` KeyName)

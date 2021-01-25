@@ -131,7 +131,7 @@ Functions
     - **Name**
     - **Description**
 
-  * - |server-only-label|
+  * - 
     - 
     - AddStaticMeshAttached(:term:`string` ID, :term:`string` StaticMeshPath, :term:`string` Socket = "", :ref:`Vector` RelativeLocation = Vector(), :ref:`Rotator` RelativeRotation = Rotator())
     - Spawns and Attaches a StaticMesh into this Vehicle in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
@@ -146,7 +146,7 @@ Functions
     - RecreatePhysics()
     - Recreate the Vehicle Physics (call this after configuring the vehicle if using AutoCreatePhysics = false)
 
-  * - |server-only-label|
+  * - 
     - 
     - RemoveStaticMeshAttached(:term:`string` ID)
     - Removes, if existing, a StaticMesh from this Vehicle given it's custom ID

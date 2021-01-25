@@ -10,6 +10,8 @@ Particle
 
 .. tip:: Both **Cascade** and **Niagara** Particle Systems are supported!
 
+.. tip:: You can spawn this entity is both Client or Server (if you spawn it on client, it won't be synchronized with other players).
+
 
 Usage
 -----

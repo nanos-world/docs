@@ -115,12 +115,12 @@ Functions
     - ApplyDamage(:term:`number` Damage, :term:`string` BoneName = "", :term:`number` DamageType = 0, , :ref:`Vector` FromDirection = (), :ref:`Player` Instigator = nil)
     - Do damage in a character, will trigger all related events and apply modified damage based on bone. Also will apply impulse if it's a heavy explosion.
 
-  * - |server-only-label|
+  * - 
     - 
     - AddSkeletalMeshAttached(:term:`string` ID, :term:`string` StaticMeshPath)
     - Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
 
-  * - |server-only-label|
+  * - 
     - 
     - AddStaticMeshAttached(:term:`string` ID, :term:`string` StaticMeshPath, :term:`string` Socket = "", :ref:`Vector` RelativeLocation = Vector(), :ref:`Rotator` RelativeRotation = Rotator())
     - Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
@@ -170,12 +170,12 @@ Functions
     - RandomizeCustomization()
     - Randomize all character customizations
 
-  * - |server-only-label|
+  * - 
     - 
     - RemoveSkeletalMeshAttached(:term:`string` ID)
     - Removes, if existing, a SkeletalMesh from this Character given it's custom ID
 
-  * - |server-only-label|
+  * - 
     - 
     - RemoveStaticMeshAttached(:term:`string` ID)
     - Removes, if existing, a StaticMesh from this Character given it's custom ID
