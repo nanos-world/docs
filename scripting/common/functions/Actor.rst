@@ -86,6 +86,11 @@ Functions (Inherited from Actor)
 
   * - 
     - :term:`boolean`
+    - IsInWater()
+    - Gets if the actor is in Water
+
+  * - 
+    - :term:`boolean`
     - IsValid()
     - Returns if this is Valid
 
