@@ -80,3 +80,7 @@ table p {
 table .std-term, table .std-ref {
 	font-size: 13px !important;
 }
+
+.rst-content .toc-backref {
+	color: #fff;
+}
