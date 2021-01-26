@@ -22,6 +22,8 @@ When you open the project, you can start this Tutorial which will give you a bri
 Tools avaliable inside the ADK project:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. contents::
+   :local:
 
 Placeholder Blueprints ``NanosWorld/Blueprints/Placeholders/``
 --------------------------------------------------------------
@@ -75,3 +77,11 @@ To be able to create Skeletal (Character) Meshes which work with our :ref:`Chara
 To change a Skeletal Mesh's Skeleton: right click on it >> Skeleton >> Assign Skeleton and change it to our ``SKEL_Mannequin``.
 
 .. image:: https://i.imgur.com/uGnNCTM.png
+
+
+Thumbnail Generator ``NanosWorld/Blueprints/Utility/ThumbnailGenerator``
+------------------------------------------------------------------------
+
+We've shipped a **Thumbnail Generator** tool to help you generating ``.jpg`` images of your assets. To use that, just open ThumbnailGenerator level and hit Play. Then you will be able to define a folder for search the assets (currently only Static and Skeletal Meshes are supported) and a folder to save the images (.jpg). You can optionally keep the directory hierarchy in the output folder or save all images in the same folder. Once you hit **Generate**, it will start loading all assets and taking a photo from them. Note: this may be a slow process depending if your assets were already compiled previously.
+
+.. image:: https://i.imgur.com/AuWcMTE.png
