@@ -100,3 +100,9 @@ Special Thanks
 *  EinfachMaxYT - Tester and Bug Reporter
 *  ZarosLive - Tester and Bug Reporter
 *  Alex0130359 - Tester and Bug Reporter
+*  InfernooYT - Tester and Bug Reporter
+*  MarkusSR1984 - Tester and Bug Reporter
+*  Maks - Tester and Bug Reporter
+*  Wargardan - Tester and Bug Reporter
+*  Sebihunter - Tester and Bug Reporter
+*  MoskalykA - Tester and Bug Reporter

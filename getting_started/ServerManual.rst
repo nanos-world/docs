@@ -126,6 +126,14 @@ To reload all packages:
 
 ``package reload all``
 
+To unload a package:
+
+``package unload [package_name]``
+
+To load a package:
+
+``package load [package_name]``
+
 
 All (not pre-defined) commands will be sent into an event to the scripting/server-side:
 
@@ -165,6 +173,18 @@ To be able to display dynamic information in the screen, you can listen to the E
     }
 
     Events.on("UpdateScreen", UpdateScreen);
+
+
+Also, it is possible to fetch Player's information by acessing a global variable called `LoadingScreen`:
+
+.. tabs::
+ .. code-tab:: javascript JavaScript
+ 
+    LoadingScreen = {
+      player_local_name,
+      player_nanos_id,
+      player_nanos_username
+    };
 
 
 Packages & Scripting

@@ -22,39 +22,71 @@ Functions
     - **Description**
 
   * - 
-    - SetPPBloom(:term:`number` Intensity = 0.675, :term:`number` Threshold = -1)
+    - SetFogDensity(:term:`number` color, :term:`number` second_density = 0)
+    - 
+
+  * - 
+    - SetFogHeightFalloff(:term:`number` falloff)
+    - 
+
+  * - 
+    - SetFogHeightOffset(:term:`number` offset)
+    - 
+
+  * - 
+    - SetSunLightColor(:ref:`Color` color)
+    - 
+
+  * - 
+    - SetSkyLightIntensity(:term:`number` intensity)
+    - 
+
+  * - 
+    - SetSkyRayleighScattering(:ref:`Color` color)
+    - 
+
+  * - 
+    - SetSunLightIntensity(:term:`number` intensity)
+    - 
+
+  * - 
+    - SetSunTemperatureMultiplier(:term:`number` multiplier)
+    - 
+
+  * - 
+    - SetPPBloom(:term:`number` intensity = 0.675, :term:`number` threshold = -1)
     - Set Post Process Bloom Settings
 
   * - 
-    - SetPPChromaticAberration(:term:`number` Intensity = 0, :term:`number` StartOffset = 0)
+    - SetPPChromaticAberration(:term:`number` intensity = 0, :term:`number` start_offset = 0)
     - Set Post Process Chromatic Aberration Settings
 
   * - 
-    - SetPPImageEffects(:term:`number` VignetteIntensity = 0.6, :term:`number` GrainJitter = 0 , :term:`number` GrainIntensity = 0)
+    - SetPPImageEffects(:term:`number` vignette_intensity = 0.6, :term:`number` grain_jitter = 0 , :term:`number` grain_intensity = 0)
     - Set Post Process Image Effect Settings
 
   * - 
-    - SetPPFilm(:term:`number` Slope = 0.8, :term:`number` Toe = 0.55, :term:`number` Shoulder = 0.26, :term:`number` BlackClip = 0, :term:`number` WhiteClip = 0.3)
+    - SetPPFilm(:term:`number` slope = 0.8, :term:`number` toe = 0.55, :term:`number` shoulder = 0.26, :term:`number` black_clip = 0, :term:`number` white_clip = 0.3)
     - Set Post Process Film Settings
 
   * - 
-    - SetPPGlobalSaturation(const Color& _Color)
+    - SetPPGlobalSaturation(const Color& color)
     - Set Post Process Saturation Colors. Use Alpha for overall Saturation intensity
 
   * - 
-    - SetSunAngle(:term:`number`)
+    - SetSunAngle(:term:`number` angle)
     - Sets the sun's angle (0-360)
 
   * - 
-    - SetSunSpeed(:term:`number`)
+    - SetSunSpeed(:term:`number` speed)
     - Sets the sun's time speed (default: '60', which means 60 seconds in game = 1 second in real world)
 
   * - 
-    - SetTime(:term:`number` Hours, :term:`number` Minutes)
+    - SetTime(:term:`number` hours, :term:`number` minutes)
     - Sets the global's time of the day
 
   * - 
-    - SetWeather(:term:`number`)
+    - SetWeather(:term:`number` weather)
     - Sets the global Weather (0 - Clear, 1 - Rain, 2 - Cloudy, 3 - Thunderstorm)
 
   * - 
@@ -62,7 +94,7 @@ Functions
     - Overrides all Light/Sun Actors with the NanosWorld's Official one, to be able to use the functions from this page
 
   * - 
-    - SetWind(:term:`number`)
+    - SetWind(:term:`number` intensity)
     - Sets the global Wind intensity
 
   * - :term:`number`
@@ -73,9 +105,9 @@ Functions
     - GetSunSpeed()
     - 
 
-  * - :term:`number`
+  * - {hours, minutes}
     - GetTime()
-    - (Hours * 60 + Minutes) - Goes from 0 to 1440
+    - Returns a table containing current Sun hours and minutes
 
   * - :term:`number`
     - GetWeather()
