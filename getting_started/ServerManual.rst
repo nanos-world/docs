@@ -175,12 +175,12 @@ To be able to display dynamic information in the screen, you can listen to the E
     Events.on("UpdateScreen", UpdateScreen);
 
 
-Also, it is possible to fetch Player's information by acessing a global variable called `LoadingScreen`:
+Also, it is possible to fetch Player's information by accessing a global variable called `LoadingScreen`:
 
 .. tabs::
  .. code-tab:: javascript JavaScript
  
-    LoadingScreen = {
+    var LoadingScreen = {
       player_local_name,
       player_nanos_id,
       player_nanos_username

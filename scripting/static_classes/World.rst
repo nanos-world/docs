@@ -22,7 +22,7 @@ Functions
     - **Description**
 
   * - 
-    - SetFogDensity(:term:`number` color, :term:`number` second_density = 0)
+    - SetFogDensity(:term:`number` density, :term:`number` second_density = 0)
     - 
 
   * - 

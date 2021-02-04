@@ -15,7 +15,7 @@ This docs is made with `Sphinx (reStructuredText - RST) <https://en.wikipedia.or
 
 #. Sphynx RTD Theme: ``pip install sphinx-rtd-theme``.
 
-#. Sphynx extension sphinx-tabs: ``pip install sphinx-tabs``.
+#. Sphynx extension sphinx-tabs: ``pip install 'sphinx-tabs==1.1.13'``.
 
 Once you have it all installed, you can edit .rst files and create pull requests for your changes to be accepted and included in the main docs ;).
 
