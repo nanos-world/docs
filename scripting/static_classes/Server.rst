@@ -20,19 +20,19 @@ Functions
   * - **Name**
     - **Description**
 
-  * - BroadcastChatMessage(:term:`string` Message)
+  * - BroadcastChatMessage(:term:`string` message)
     - Sends a chat message to everyone
 
-  * - ChangeMap(:term:`string` MapPath)
+  * - ChangeMap(:term:`string` map_path)
     - Restarts the server in a new Map, restarts all packages and reconnects all players
 
-  * - HTTPRequest(:term:`string` URI, :term:`string` Endpoint = "", :term:`string` Method = "GET", :term:`string` Data = "", :term:`table`\[:term:`string`\] Headers = {}, :term:`function` Callback = nil)
+  * - HTTPRequest(:term:`string` uri, :term:`string` endpoint = "", :term:`string` method = "GET", :term:`string` data = "", :term:`table`\[:term:`string`\] headers = {}, :term:`function` callback = nil)
     - Makes a HTTP Request, the result will be returned in the provided Callback function in the format (Status, Response)
 
-  * - ReloadPackage(:term:`string` PackageFolderName)
+  * - ReloadPackage(:term:`string` package_folder_name)
     - Reloads a Package
 
-  * - SendChatMessage(:ref:`Player` Player, :term:`string` Message)
+  * - SendChatMessage(:ref:`Player` player, :term:`string` message)
     - Sends a chat message to Player only
 
   * - SetDescription(:term:`string` description, :term:`boolean` persist_to_config_file = false)
@@ -50,13 +50,13 @@ Functions
   * - SetPassword(:term:`string` password, :term:`boolean` persist_to_config_file = false)
     - Sets the password of the server, optionally overrides Config.toml
 
-  * - SetValue(:term:`string` Key, any Value)
+  * - SetValue(:term:`string` key, any value)
     - Sets a global value in the Server, which can be accessed from anywhere (server side)
 
-  * - UnloadPackage(:term:`string` PackageFolderName)
+  * - UnloadPackage(:term:`string` package_folder_name)
     - Unloads a Package
 
-  * - any GetValue(:term:`string` Key)
+  * - any GetValue(:term:`string` key)
     - Gets a value given a key
 
 
@@ -71,11 +71,11 @@ Events
     - **Description**
 
   * - Chat
-    - :ref:`Player`, :term:`string` Text
+    - :ref:`Player`, :term:`string` text
     - Called when a player types something in the chat - return false to do not send the message
 
   * - Console
-    - :term:`string` Text
+    - :term:`string` text
     - Called when a console command is submitted
 
   * - Start
@@ -87,7 +87,7 @@ Events
     - Server has been stopped.
 
   * - Tick
-    - :term:`number` DeltaTime
+    - :term:`number` delta_time
     - Is called every 30 ms by default. Only small operations should be performed here, otherwise this can lead the server to delays.
 
 
@@ -119,9 +119,9 @@ Examples
         Package:Log("Server stopped")
     end)
 
-    -- prints the tick-delta time about every 30 ms
-    Server:on("Tick", function(ticktime)
-        Package:Log("Tick: " .. ticktime)
+    -- prints the delta time about every 30 ms
+    Server:on("Tick", function(delta_time)
+        Package:Log("Tick: " .. delta_time)
     end)
 
     -- sends a chat message to everyone

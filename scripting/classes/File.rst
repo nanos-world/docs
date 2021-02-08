@@ -35,11 +35,11 @@ Constructor Parameters
     - **Default**
 
   * - :term:`string`
-    - FilePath
+    - file_path
     - 
 
   * - :term:`boolean`
-    - Truncate
+    - truncate
     - false
 
 
@@ -78,7 +78,7 @@ Functions
     - Checks if the last operation has Failed
 
   * - :term:`string`
-    - Read(:term:`number` Length = 0)
+    - Read(:term:`number` length = 0)
     - Reads n (Length) characters from the File and returns it. Also moves the file pointer to the latest read position. Pass 0 to read the whole file
 
   * - :term:`string`
@@ -86,7 +86,7 @@ Functions
     - Reads and returns the next file line
 
   * - 
-    - Seek(:term:`number` Position)
+    - Seek(:term:`number` position)
     - Sets the file pointer to a specific position
 
   * - :term:`number`
@@ -98,7 +98,7 @@ Functions
     - Returns the size of the file
 
   * - 
-    - Skip(:term:`number` Amount)
+    - Skip(:term:`number` amount)
     - Skips n (Amount) positions from the current file pointer position
 
   * - :term:`number`
@@ -106,5 +106,5 @@ Functions
     - Returns the current file pointer position
 
   * - 
-    - Write(:term:`string` Data)
+    - Write(:term:`string` data)
     - Writes the Data at the current position of the file

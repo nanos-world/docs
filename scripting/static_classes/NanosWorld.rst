@@ -74,7 +74,7 @@ Events
 
   * - |client-only-label|
     - SpawnLocalPlayer
-    - :ref:`Player` LocalPlayer
+    - :ref:`Player` local_player
     - Called once LocalPlayer is created.
 
 

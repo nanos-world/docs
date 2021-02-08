@@ -121,7 +121,7 @@ Finally, in your Package's Index.lua, let's spawn the WebUI:
  .. code-tab:: lua Lua
 
     -- Spawns a WebUI with the HTML file you just created
-    MainHUD = WebUI("Main HUD", "file:///UI/index.html")
+    main_hud = WebUI("Main HUD", "file:///UI/index.html")
 
 
 Result:

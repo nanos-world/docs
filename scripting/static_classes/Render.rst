@@ -12,7 +12,7 @@ Render
 
 .. note:: This is a Client only Class.
 
-.. tip:: The following functions have an GroupID parameter, which you can group related Canvas Items with an ID to facilitate the cleanup of them, or can give them Unique IDs. These return an ItemID value, which can be used for updating specific Canvas Items afterwards.
+.. tip:: The following functions have an group_id parameter, which you can group related Canvas Items with an ID to facilitate the cleanup of them, or can give them Unique IDs. These return an item_id value, which can be used for updating specific Canvas Items afterwards.
 
 
 Functions
@@ -25,45 +25,45 @@ Functions
     - **Name**
     - **Description**
 
-  * - :term:`number` ItemID
-    - AddLine(:term:`number` GroupID, :ref:`Vector2D` StartPosition, :ref:`Vector2D` EndPosition, :term:`number` Thickness, :ref:`Color` Color)
+  * - :term:`number` item_id
+    - AddLine(:term:`number` group_id, :ref:`Vector2D` start_position, :ref:`Vector2D` end_position, :term:`number` thickness, :ref:`Color` color)
     - Draws a Line (doesn't support opacity)
 
-  * - :term:`number` ItemID
-    - AddBox(:term:`number` GroupID, :ref:`Vector2D` StartPosition, :ref:`Vector2D` EndPosition, :term:`number` Thickness, :ref:`Color` Color)
+  * - :term:`number` item_id
+    - AddBox(:term:`number` group_id, :ref:`Vector2D` start_position, :ref:`Vector2D` end_position, :term:`number` thickness, :ref:`Color` color)
     - Draws a Box
 
-  * - :term:`number` ItemID
-    - AddTile(:term:`number` GroupID, :ref:`Vector2D` Position, :ref:`Vector2D` Size, :ref:`Color` Color)
+  * - :term:`number` item_id
+    - AddTile(:term:`number` group_id, :ref:`Vector2D` position, :ref:`Vector2D` size, :ref:`Color` color)
     - Draws a Tile (filled)
 
-  * - :term:`number` ItemID
-    - AddPolygon(:term:`number` GroupID, :ref:`Vector2D` ScreenPosition, :ref:`Vector2D` Radius, :term:`number` NumberOfSides, :ref:`Color` Color)
+  * - :term:`number` item_id
+    - AddPolygon(:term:`number` group_id, :ref:`Vector2D` screen_position, :ref:`Vector2D` radius, :term:`number` number_of_sides, :ref:`Color` color)
     - Draws a Polygon
 
-  * - :term:`number` ItemID
-    - AddText(:term:`number` GroupID, :term:`string` Text, :ref:`Vector2D` Position, :term:`number` FontType, :term:`number` FontSize, :ref:`Color` TextColor, :term:`number` Kerning, :term:`boolean` bCenterX, :term:`boolean` bCenterY, :term:`boolean` EnableShadow, :ref:`Vector2D` ShadowOffset, :ref:`Color` ShadowColor, :term:`boolean` EnableOutline, :ref:`Color` OutlineColor)
+  * - :term:`number` item_id
+    - AddText(:term:`number` group_id, :term:`string` text, :ref:`Vector2D` position, :term:`number` font_type, :term:`number` font_size, :ref:`Color` text_color, :term:`number` kerning, :term:`boolean` is_centered_x, :term:`boolean` is_centered_y, :term:`boolean` enable_shadow, :ref:`Vector2D` shadow_offset, :ref:`Color` shadow_color, :term:`boolean` enable_outline, :ref:`Color` outline_color)
     - Draws a Text with optionals Shadow and Outline
 
   * - :ref:`Vector2D`
-    - Project(:ref:`Vector` WorldPosition)
+    - Project(:ref:`Vector` world_position)
     - Transforms a 3D world-space vector into 2D screen coordinates.
 
   * - :ref:`Vector`
-    - Deproject(:ref:`Vector2D` ScreenPosition)
+    - Deproject(:ref:`Vector2D` screen_position)
     - Transforms a 2D screen coordinates into 3D world-space location.
 
   * - 
-    - ClearItems(:term:`number` GroupID)
-    - Remove all drawing of using that specific GroupID
+    - ClearItems(:term:`number` group_id)
+    - Remove all drawing of using that specific group_id
 
   * - 
-    - UpdateItemText(:term:`number` GroupID, :term:`number` ItemID, :term:`string` NewText)
-    - Updates a specific Canvas Text giving it's GroupID and ItemID
+    - UpdateItemText(:term:`number` group_id, :term:`number` item_id, :term:`string` new_text)
+    - Updates a specific Canvas Text giving it's group_id and item_id
 
   * - 
-    - UpdateItemPosition(:term:`number` GroupID, :term:`number` ItemID, :ref:`Vector2D` NewPosition)
-    - Updates a specific Canvas's position giving it's GroupID and ItemID
+    - UpdateItemPosition(:term:`number` group_id, :term:`number` item_id, :ref:`Vector2D` new_position)
+    - Updates a specific Canvas's position giving it's group_id and item_id
 
   * - :ref:`Vector2D`
     - GetViewportSize()
@@ -81,7 +81,7 @@ Events
     - **Description**
 
   * - ViewportResized
-    - :ref:`Vector2D` NewSize
+    - :ref:`Vector2D` new_size
     - Called when the screen is resized
 
 
@@ -121,19 +121,19 @@ Examples
 
 .. tabs::
  .. code-tab:: lua Lua
-    bEnableShadow = true
-    text = "Hello" -- Text to render on the Canvas.
-    location = Vector2D(123, 321) -- Screen space position to render the text.
-    fontType = 0 -- Roboto
-    fontSize = 32 -- Size of the font
-    textColor = Color(1, 0, 0, 1) -- Color to render the text.
-    kerning = 0 -- Horizontal spacing adjustment to modify the spacing between each letter.
-    shadowColor = Color(1, 1, 1, 1) -- Color to render the shadow of the text.
-    shadowOffset = Vector2D(1, 1) -- Pixel offset relative to the screen space position to render the shadow of the text.
-    bCenterX = false -- If true, then interpret the screen space position X coordinate as the center of the rendered text.
-    bCenterY = false -- If true, then interpret the screen space position Y coordinate as the center of the rendered text.
-    bOutlined = false -- If true, then the text should be rendered with an outline.
-    bEnableShadow = true -- If true, then shadow will be enabled
-    outlineColor = Color(1, 1, 1, 1) -- Color to render the outline for the text.
-    
-    Render:AddText(0, text, location, fontType, fontSize, textColor, kerning, bCenterX, bCenterY, bEnableShadow, shadowOffset, shadowColor, bOutlined, outlineColor)
+
+    local text = "Hello" -- Text to render on the Canvas.
+    local location = Vector2D(123, 321) -- Screen space position to render the text.
+    local font_type = 0 -- Roboto
+    local font_size = 32 -- Size of the font
+    local text_color = Color(1, 0, 0, 1) -- Color to render the text.
+    local kerning = 0 -- Horizontal spacing adjustment to modify the spacing between each letter.
+    local shadow_color = Color(1, 1, 1, 1) -- Color to render the shadow of the text.
+    local shadow_offset = Vector2D(1, 1) -- Pixel offset relative to the screen space position to render the shadow of the text.
+    local is_centered_x = false -- If true, then interpret the screen space position X coordinate as the center of the rendered text.
+    local is_centered_y = false -- If true, then interpret the screen space position Y coordinate as the center of the rendered text.
+    local is_outlined = false -- If true, then the text should be rendered with an outline.
+    local enable_shadow = true -- If true, then shadow will be enabled
+    local outline_color = Color(1, 1, 1, 1) -- Color to render the outline for the text.
+
+    Render:AddText(0, text, location, font_type, font_size, text_color, kerning, is_centered_x, is_centered_y, enable_shadow, shadow_offset, shadow_color, is_outlined, outline_color)

@@ -32,22 +32,22 @@ Functions
 
   * -
     -
-    - Log(:term:`string` Message)
+    - Log(:term:`string` message)
     - Logs a message in the console (the proper and Nanos way)
 
   * -
     -
-    - Require(:term:`string` ScriptFile)
+    - Require(:term:`string` script_file)
     - Includes new .lua files
 
   * -
     -
-    - RequirePackage(:term:`string` PackageName)
+    - RequirePackage(:term:`string` package_name)
     - Includes other Package in this Package
 
   * -
     - :term:`table`\<:term:`string`\>
-    - GetFiles(:term:`string` PathFilter = "", :term:`string` ExtensionFilter = "")
+    - GetFiles(:term:`string` path_filter = "", :term:`string` extension_filter = "")
     - Gets a list of all files in this package, optionally with filters
 
   * -

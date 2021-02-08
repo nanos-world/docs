@@ -17,7 +17,7 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local MyLight = Light(
+    local my_light = Light(
         Vector(-152, 245, 115), 
         Rotator(0, 90, 90), -- Relevant only for Rect and Spot light types
         Color(1, 0, 0), -- Red Tint
@@ -26,8 +26,8 @@ Usage
         250, -- Attenuation Radius
         0, -- Cone Angle (Relevant only for Spot light type)
         0, -- Inner Cone Angle Percent (Relevant only for Spot light type)
-		0, -- Max Draw Distance (Good for performance - 0 for infinite)
-		true, -- Whether to use physically based inverse squared distance falloff, where Attenuation Radius is only clamping the light's contribution. (Spot and Point types only)
+        0, -- Max Draw Distance (Good for performance - 0 for infinite)
+        true, -- Whether to use physically based inverse squared distance falloff, where Attenuation Radius is only clamping the light's contribution. (Spot and Point types only)
         true, -- Cast Shadows?
         true -- Enabled?
     )
@@ -59,51 +59,51 @@ Constructor Parameters
     - **Default**
 
   * - :ref:`Vector`
-    - Location
+    - location
     - Vector(0, 0, 0)
 
   * - :ref:`Rotator`
-    - Rotation
-    - Rotation(0, 0, 0)
+    - rotation
+    - Rotator(0, 0, 0)
 
   * - :ref:`Color`
-    - Color
+    - color
     - Color(1, 1, 1, 1)
 
   * - :term:`number`
-    - LightType (0 - Point, 1 - Spot, 3 - Rect)
+    - light_type (0 - Point, 1 - Spot, 3 - Rect)
     - 0 (Point)
 
   * - :term:`number`
-    - Intensity
+    - intensity
     - 30
 
   * - :term:`number`
-    - AttenuationRadius
+    - attenuation_radius
     - 250
 
   * - :term:`number`
-    - Cone Angle
+    - cone_angle
     - 0
 
   * - :term:`number`
-    - Inner Cone Angle Percent (0-1)
+    - inner_cone_angle_percent (0-1)
     - 0
 
   * - :term:`number`
-    - Max Daw Distance
+    - max_daw_distance
     - 0
 
   * - :term:`boolean`
-    - CastShadows
+    - cast_shadows
     - true
 
   * - :term:`boolean`
-    - UseInverseSquaredFalloff
+    - use_inverse_squared_falloff
     - true
 
   * - :term:`boolean`
-    - Enabled
+    - enabled
     - true
 
 

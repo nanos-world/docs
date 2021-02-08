@@ -20,7 +20,7 @@ Usage
  .. code-tab:: lua Lua
 
     -- spawning a AK47
-    local NewWeapon = Weapon(
+    local new_weapon = Weapon(
         Vector(-900, 185, 215), -- Spawn Location
         Rotator(0, 90, 90),     -- Spawn Rotation
         "NanosWorld::SK_AK47", -- Model
@@ -113,151 +113,151 @@ Constructor Parameters
     - **Default**
 
   * - :ref:`Vector`
-    - Location
+    - location
     - Vector(0, 0, 0)
 
   * - :ref:`Rotator`
-    - Rotation
-    - Rotation(0, 0, 0)
+    - rotation
+    - Rotator(0, 0, 0)
 
   * - :term:`string`
-    - ModelName
+    - model_name
     - Skeletal Mesh Path
 
   * - :term:`number`
-    - CollisionType
+    - collision_type
     - 0 *(Normal)*
 
   * - :term:`boolean`
-    - GravityEnabled
+    - gravity_enabled
     - true
 
   * - :term:`number`
-    - AmmoClip
+    - ammo_clip
     - 32
 
   * - :term:`number`
-    - AmmoBag
+    - ammo_bag
     - 1024
 
   * - :term:`number`
-    - ClipCapacity
+    - clip_capacity
     - 32
 
   * - :term:`number`
-    - BaseDamage
+    - base_damage
     - 30
 
   * - :term:`number`
-    - Spread *(the higher the less precision)*
+    - spread *(the higher the less precision)*
     - 20
 
   * - :term:`number`
-    - BulletCount *(how many bullets are fired at once - 1 for common weapons and >1 for shotguns)*
+    - bullet_count *(how many bullets are fired at once - 1 for common weapons and >1 for shotguns)*
     - 1
 
   * - :term:`number`
-    - AmmoToReload *(AmmoClip for common weapons, 1 for shotguns)*
+    - ammo_to_reload *(AmmoClip for common weapons, 1 for shotguns)*
     - 32
 
   * - :term:`number`
-    - BulletMaxDistance
+    - bullet_max_distance
     - 20000
 
   * - :term:`number`
-    - BulletVelocity *(visuals only)*
+    - bullet_velocity *(visuals only)*
     - 7500
 
   * - :ref:`Color`
-    - BulletColor
+    - bullet_color
     - Color(10000, 20, 0)
 
   * - :term:`number`
-    - SightFOVMultiplier *(amount of FOV reduced when Aiming Down Sights (ADS))*
+    - sight_fov_multiplier *(amount of FOV reduced when Aiming Down Sights (ADS))*
     - 0.5
 
   * - :ref:`Vector`
-    - SightLocation *(offset applied to align player's head to weapon's sight when ADS)*
+    - sight_location *(offset applied to align player's head to weapon's sight when ADS)*
     - 
 
   * - :ref:`Rotator`
-    - SightRotation *(rotation applied on the weapon when ADS)*
+    - sight_rotation *(rotation applied on the weapon when ADS)*
     - 
 
   * - :ref:`Vector`
-    - LeftHandLocation *(location relative to weapon's root to put the left hand)*
+    - left_hand_location *(location relative to weapon's root to put the left hand)*
     - 
 
   * - :ref:`Rotator`
-    - LeftHandRotation *(rotation relative to weapon's root to put the left hand)*
+    - left_hand_rotation *(rotation relative to weapon's root to put the left hand)*
     - 
 
   * - :ref:`Vector`
-    - RightHandOffset *(offset of right hand - to offset the weapon as well)*
+    - right_hand_offset *(offset of right hand - to offset the weapon as well)*
     - 
 
   * - :term:`number`
-    - HandlingMode *(0. SingleHandedWeapon, 1. DoubleHandedWeapon, 2. SingleHandedMelee, 3. DoubleHandedMelee, 4. Throwable, 5. Torch)*
+    - handling_mode *(0. SingleHandedWeapon, 1. DoubleHandedWeapon, 2. SingleHandedMelee, 3. DoubleHandedMelee, 4. Throwable, 5. Torch)*
     - 0
 
   * - :term:`number`
-    - Cadence *(frequency of shots in seconds)*
+    - cadence *(frequency of shots in seconds)*
     - 0.15
 
   * - :term:`boolean`
-    - CanHoldUse *(enables keep holding to keep firing)*
+    - can_hold_use *(enables keep holding to keep firing)*
     - true
 
   * - :term:`boolean`
-    - ReleaseToShot *(needs to release the fire button to shot)*
+    - release_to_shot *(needs to release the fire button to shot)*
     - false
 
   * - :term:`string`
-    - BulletTrailParticle *(particle of bullet trail)*
+    - bullet_trail_particle *(particle of bullet trail)*
     - 
 
   * - :term:`string`
-    - BarrelParticle *(particle of muzzle fire effect)*
+    - barrel_particle *(particle of muzzle fire effect)*
     - 
 
   * - :term:`string`
-    - ShellsParticle *(particle of shells being spit out)*
+    - shells_particle *(particle of shells being spit out)*
     - 
 
   * - :term:`string`
-    - DrySound *(sound when weapon is dry)*
+    - dry_sound *(sound when weapon is dry)*
     - 
 
   * - :term:`string`
-    - LoadSound
+    - load_sound
     - 
 
   * - :term:`string`
-    - UnloadSound
+    - unload_sound
     - 
 
   * - :term:`string`
-    - ZoomingSound *(sound when switching aimings (wheel mouse))*
+    - zooming_sound *(sound when switching aimings (wheel mouse))*
     - 
 
   * - :term:`string`
-    - AimingSound *(sound when going from no aim to aiming)*
+    - aiming_sound *(sound when going from no aim to aiming)*
     - 
 
   * - :term:`string`
-    - ShotSound
+    - shot_sound
     - 
 
   * - :term:`string`
-    - CharacterReloadingAnimation
+    - character_reloading_animation
     - 
 
   * - :term:`string`
-    - CharacterAimingAnimation
+    - character_aiming_animation
     - 
 
   * - :term:`string`
-    - MagazineMesh *(mesh used when reloading)*
+    - magazine_mesh *(mesh used when reloading)*
     - Static Mesh Path
 
 
@@ -311,32 +311,32 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetAmmoBag(:term:`number` NewAmmo)
+    - SetAmmoBag(:term:`number` new_ammo)
     - Sets this Weapon's Ammo Bag
 
   * - |server-only-label|
     - 
-    - SetAmmoClip(:term:`number` NewAmmo)
+    - SetAmmoClip(:term:`number` new_ammo)
     - Sets this Weapon's Ammo Clip
 
   * - |server-only-label|
     - 
-    - SetBulletColor(:ref:`Color` Color)
+    - SetBulletColor(:ref:`Color` color)
     - Bullet Color
 
   * - |server-only-label|
     - 
-    - SetLeftHandTransform(:ref:`Vector` Location, :ref:`Rotator` Rotation)
+    - SetLeftHandTransform(:ref:`Vector` location, :ref:`Rotator` rotation)
     - Left Hand Offset
 
   * - |server-only-label|
     - 
-    - SetRightHandOffset(:ref:`Vector` Offset)
+    - SetRightHandOffset(:ref:`Vector` offset)
     - Offset of Right Hand
 
   * - |server-only-label|
     - 
-    - SetSightTransform(:ref:`Vector` Location, :ref:`Rotator` Rotation)
+    - SetSightTransform(:ref:`Vector` location, :ref:`Rotator` rotation)
     - Offset applied to align player's head to weapon's sight and rotation applied on the weapon when ADS
 
   * - 
@@ -382,7 +382,7 @@ Events
 
   * -
     - Reload
-    - :ref:`Weapon` self, :ref:`Character` character, :term:`number` AmmoToReload
+    - :ref:`Weapon` self, :ref:`Character` character, :term:`number` ammo_to_reload
     - When this weapon is reloaded, optionally by a Character
 
 .. include:: ../common/events/Pickable.rst

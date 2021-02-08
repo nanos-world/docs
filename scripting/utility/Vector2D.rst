@@ -19,7 +19,7 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local NewVector2D = Vector2D(1452.5, 512)
+    local new_vector2D = Vector2D(1452.5, 512)
 
 
 Properties

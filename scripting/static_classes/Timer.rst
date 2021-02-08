@@ -21,12 +21,12 @@ Functions
     - **Name**
     - **Description**
 
-  * - :term:`number` ID
-    - SetTimeout(:term:`number` Cooldown, :term:`function` Function, [:term:`table` {Args...}])
+  * - :term:`number` id
+    - SetTimeout(:term:`number` cooldown, :term:`function` function, [:term:`table` {args...}])
     - Sets a Timeout which will call Function at every Cooldown milliseconds, returns false inside the function to stops it 
 
   * -
-    - ClearTimeout(:term:`number` ID)
+    - ClearTimeout(:term:`number` id)
     - Clears/Cancel a Timeout given it's ID
 
 

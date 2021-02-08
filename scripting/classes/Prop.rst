@@ -15,7 +15,7 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local MyProp = Prop(
+    local my_prop = Prop(
       Vector(-900, 185, 215), 
       Rotator(0, 90, 90), 
       "NanosWorld::SM_Crate_07"
@@ -33,27 +33,27 @@ Constructor Parameters
     - **Default**
 
   * - :ref:`Vector`
-    - Location
+    - location
     - Vector(0, 0, 0)
 
   * - :ref:`Rotator`
-    - Rotation
-    - Rotation(0, 0, 0)
+    - rotation
+    - Rotator(0, 0, 0)
 
   * - :term:`string`
-    - ModelName
+    - model_name
     - 
 
   * - :term:`number`
-    - CollisionType
+    - collision_type
     - 0 (Normal)
 
   * - :term:`boolean`
-    - GravityEnabled
+    - gravity_enabled
     - true
  
   * - :term:`boolean`
-    - IsGrabbable
+    - is_grabbable
     - true
 
 
@@ -109,7 +109,7 @@ Events
 
   * -
     - Hit
-    - :ref:`Prop` self, :term:`number` Intensity
+    - :ref:`Prop` self, :term:`number` intensity
     - When this Prop hits something
 
   * -

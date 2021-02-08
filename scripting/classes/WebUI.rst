@@ -49,15 +49,15 @@ Constructor Parameters
     - **Default**
 
   * - :term:`string`
-    - Name
+    - name
     - 
 
   * - :term:`string`
-    - Path (URL or ``file:///relative/to/client/folder.html``)
+    - path (URL or ``file:///relative/to/client/folder.html``)
     - 
 
   * - :term:`boolean`
-    - IsVisible
+    - is_visible
     - true
 
 
@@ -76,7 +76,7 @@ Functions
     - Puts this WebUI in the front of all WebUIs
 
   * - 
-    - CallEvent(:term:`string` EventName, any... Arguments)
+    - CallEvent(:term:`string` event_name, any... arguments)
     - Calls an Event on the Browser's JavaScript
 
   * - 
@@ -84,7 +84,7 @@ Functions
     - Destroys this Browser
 
   * - 
-    - LoadURL(:term:`string` URL)
+    - LoadURL(:term:`string` url)
     - Loads a new File/URL in this Browser
 
   * - 
@@ -92,7 +92,7 @@ Functions
     - Enables the focus on this browser (i.e. can receives keyboard and mouse input). Note: only one browser can have focus per time. When you click at the screen/WebUI the focus is got automatically as well
 
   * - 
-    - SetVisible(:term:`boolean` IsVisible)
+    - SetVisible(:term:`boolean` is_visible)
     - Toggles the visibiliy
 
   * - :term:`boolean`
@@ -119,7 +119,7 @@ Events
     - **Description**
 
   * - Failed
-    - :term:`number` ErrorCode, :term:`string` Message
+    - :term:`number` error_code, :term:`string` message
     - When this page fails to load
 
   * - Ready

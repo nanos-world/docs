@@ -35,27 +35,27 @@ Constructor Parameters
     - **Default**
 
   * - :ref:`Vector`
-    - Location
+    - location
     - Vector(0, 0, 0)
 
   * - :ref:`Rotator`
-    - Rotation
-    - Rotation(0, 0, 0)
+    - rotation
+    - Rotator(0, 0, 0)
 
   * - :term:`string`
-    - SkeletalMesh
+    - skeletal_mesh
     - NanosWorld::SK_Male
 
   * - :term:`number`
-    - CollisionType
+    - collision_type
     - 0 (Normal)
 
   * - :term:`boolean`
-    - GravityEnabled
+    - gravity_enabled
     - true
 
   * - :term:`number`
-    - Health/MaxHealth
+    - health/max_health
     - 100
 
 
@@ -66,37 +66,37 @@ Usage
  .. code-tab:: lua Lua
     
     -- The following examples are using all Skeletal Meshes which we currently have for examples, including the officials Woman, Man and Mannequin:
-    local Woman = Character(Vector(100, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Female")
-    local Man = Character(Vector(200, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Male")
-    local Mannequin = Character(Vector(300, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Mannequin")
+    local woman = Character(Vector(100, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Female")
+    local man = Character(Vector(200, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Male")
+    local mannequin = Character(Vector(300, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Mannequin")
 
-    local PostApocalyptic = Character(Vector(400, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_PostApocalyptic")
-    local ClassicMale = Character(Vector(500, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_ClassicMale")
+    local post_apocalyptic = Character(Vector(400, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_PostApocalyptic")
+    local classic_male = Character(Vector(500, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_ClassicMale")
 
     -- Adds Clothes to Man. Note: some Meshes only supports a specific Mesh (Men/Woman)
-    Man:AddSkeletalMeshAttached("shirt", "NanosWorld::SK_Shirt") -- Men only
-    Man:AddSkeletalMeshAttached("shirt", "NanosWorld::SK_Underwear") -- Men only
-    Man:AddSkeletalMeshAttached("pants", "NanosWorld::SK_Pants") -- Men only
-    Man:AddSkeletalMeshAttached("shoes", "NanosWorld::SK_Shoes_01")
-    Man:AddSkeletalMeshAttached("shoes", "NanosWorld::SK_Tie")
+    man:AddSkeletalMeshAttached("shirt", "NanosWorld::SK_Shirt") -- Men only
+    man:AddSkeletalMeshAttached("shirt", "NanosWorld::SK_Underwear") -- Men only
+    man:AddSkeletalMeshAttached("pants", "NanosWorld::SK_Pants") -- Men only
+    man:AddSkeletalMeshAttached("shoes", "NanosWorld::SK_Shoes_01")
+    man:AddSkeletalMeshAttached("shoes", "NanosWorld::SK_Tie")
 
     -- Adds Clothes to Woman
-    Woman:AddSkeletalMeshAttached("full", "NanosWorld::SK_CasualSet") -- Woman only
-    Woman:AddSkeletalMeshAttached("shoes", "NanosWorld::SK_Sneakers")
+    woman:AddSkeletalMeshAttached("full", "NanosWorld::SK_CasualSet") -- Woman only
+    woman:AddSkeletalMeshAttached("shoes", "NanosWorld::SK_Sneakers")
 
     -- Adds Beard to Man
-    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Extra", "beard")
-    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Middle", "beard")
-    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Mustache_01", "beard")
-    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Mustache_02", "beard")
-    Man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Side", "beard")
+    man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Extra", "beard")
+    man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Middle", "beard")
+    man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Mustache_01", "beard")
+    man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Mustache_02", "beard")
+    man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Side", "beard")
 
     -- Adds Hair to Man
-    Man:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Long", "hair_male")
-    Man:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Short", "hair_male")
+    man:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Long", "hair_male")
+    man:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Short", "hair_male")
 
     -- Adds Hair to Woman
-    Woman:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Kwang", "hair_female")
+    woman:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Kwang", "hair_female")
 
 
 Functions
@@ -112,17 +112,17 @@ Functions
 
   * - |server-only-label|
     - :term:`number` DamageTaken
-    - ApplyDamage(:term:`number` Damage, :term:`string` BoneName = "", :term:`number` DamageType = 0, , :ref:`Vector` FromDirection = (), :ref:`Player` Instigator = nil)
+    - ApplyDamage(:term:`number` damage, :term:`string` bone_name = "", :term:`number` damage_type = 0, , :ref:`Vector` from_direction = (), :ref:`Player` instigator = nil)
     - Do damage in a character, will trigger all related events and apply modified damage based on bone. Also will apply impulse if it's a heavy explosion.
 
   * - 
     - 
-    - AddSkeletalMeshAttached(:term:`string` ID, :term:`string` StaticMeshPath)
+    - AddSkeletalMeshAttached(:term:`string` id, :term:`string` static_mesh_path)
     - Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
 
   * - 
     - 
-    - AddStaticMeshAttached(:term:`string` ID, :term:`string` StaticMeshPath, :term:`string` Socket = "", :ref:`Vector` RelativeLocation = Vector(), :ref:`Rotator` RelativeRotation = Rotator())
+    - AddStaticMeshAttached(:term:`string` id, :term:`string` static_mesh_path, :term:`string` docket = "", :ref:`Vector` relative_location = Vector(), :ref:`Rotator` relative_rotation = Rotator())
     - Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
   * - |server-only-label|
@@ -132,12 +132,12 @@ Functions
 
   * - |server-only-label|
     - 
-    - EnterVehicle(:ref:`Vehicle`, :term:`number` Seat)
+    - EnterVehicle(:ref:`Vehicle` vehicle, :term:`number` seat)
     - Enters the Vehicle at Seat (0 - Driver)
 
   * - |server-only-label|
     - 
-    - GrabProp(:ref:`Prop`)
+    - GrabProp(:ref:`Prop` prop)
     - Gives a Prop to the Character
 
   * - |server-only-label|
@@ -147,12 +147,12 @@ Functions
 
   * - |server-only-label|
     - 
-    - LookAt(:ref:`Vector` Location)
+    - LookAt(:ref:`Vector` location)
     - AI: Tries to make this Character to look at Location
 
   * - |server-only-label|
     - 
-    - MoveTo(:ref:`Vector` Location, :term:`number` AcceptanceRadius = 50)
+    - MoveTo(:ref:`Vector` location, :term:`number` acceptance_radius = 50)
     - AI: Makes this Character to walk to the Location
 
   * - |server-only-label|
@@ -162,7 +162,7 @@ Functions
 
   * - |server-only-label|
     - 
-    - PlayAnimation(:term:`string` AnimationPath, :term:`number` SlotType = 0, :term:`number` LoopIndefinitely = false)
+    - PlayAnimation(:term:`string` animation_path, :term:`number` slot_type = 0, :term:`number` loop_indefinitely = false)
     - Plays an Animation Montage on this character
 
   * - |server-only-label|
@@ -172,12 +172,12 @@ Functions
 
   * - 
     - 
-    - RemoveSkeletalMeshAttached(:term:`string` ID)
+    - RemoveSkeletalMeshAttached(:term:`string` id)
     - Removes, if existing, a SkeletalMesh from this Character given it's custom ID
 
   * - 
     - 
-    - RemoveStaticMeshAttached(:term:`string` ID)
+    - RemoveStaticMeshAttached(:term:`string` id)
     - Removes, if existing, a StaticMesh from this Character given it's custom ID
 
   * - |server-only-label|
@@ -187,12 +187,12 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetMesh(:term:`string` SkeletalMeshAsset)
+    - SetMesh(:term:`string` skeletal_mesh_asset)
     - Changes the Character Mesh on the fly
 
   * - |server-only-label|
     - 
-    - SetCameraMode(:term:`number` CameraMode)
+    - SetCameraMode(:term:`number` camera_mode)
     - Sets the Camera Mode (0 - FPS and TPS, 1 = FPS only, 2 = TPS only)
 
   * - |server-only-label|
@@ -217,12 +217,12 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetCapsuleSize(:term:`number` Radius, :term:`number` HalfHeight)
+    - SetCapsuleSize(:term:`number` radius, :term:`number` half_height)
     - Sets this Character's Capsule size (will affect Camera location and Character's collision) - default is (42, 96)
 
   * - |server-only-label|
     - 
-    - SetHealth(:term:`number` NewHealth)
+    - SetHealth(:term:`number` new_health)
     - Sets the Health of this Character. If the character is dead, respawns it with full health
 
   * - |server-only-label|
@@ -232,12 +232,12 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetMaxHealth(:term:`number` NewMaxHealth)
+    - SetMaxHealth(:term:`number` new_max_health)
     - Sets the MaxHealth of this Character
 
   * - |server-only-label|
     - 
-    - SetMorphTarget(:term:`number` ID, :term:`number` Value)
+    - SetMorphTarget(:term:`number` id, :term:`number` value)
     - 
 
   * - |server-only-label|
@@ -252,22 +252,22 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetScalarParameter(:term:`number` ID, :term:`number` Value)
+    - SetScalarParameter(:term:`number` id, :term:`number` value)
     - Sets a Scalar Material parameter to this Character
 
   * - |server-only-label|
     - 
-    - SetSpeedMultiplier(:term:`number` Multiplier)
+    - SetSpeedMultiplier(:term:`number` multiplier)
     - 1 = normal
 
   * - |server-only-label|
     - 
-    - SetTeam(:term:`number` Team)
+    - SetTeam(:term:`number` team)
     - Sets a Team which will disable damaging same Team Members. 0 for Neutral
 
   * - |server-only-label|
     - 
-    - SetVectorParameter(:term:`number` ID, :ref:`Vector` Value)
+    - SetVectorParameter(:term:`number` id, :ref:`Vector` value)
     - Sets a Vector Material parameter to this Character's Material
 
   * - |server-only-label|
@@ -277,12 +277,12 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetWeaponAimMode(:term:`number` State)
+    - SetWeaponAimMode(:term:`number` state)
     - 0 - None, 1 - ADS (FPS), 2 - ZoomedZoom (TPS), 3 - Zoomed, 4 - ZoomedFar
 
   * - |server-only-label|
     - 
-    - StopAnimation(:term:`string` AnimationPath = "")
+    - StopAnimation(:term:`string` animation_path = "")
     - Stops an Animation Montage on this character
 
   * - |server-only-label|
@@ -391,12 +391,12 @@ Events
 
   * -
     - Death
-    - :ref:`Character` self, :term:`number` LastDamageTaken, :term:`string` LastBoneDamaged, :term:`number` DamageTypeReason, :ref:`Vector` HitFromDirection, :ref:`Player` Instigator
+    - :ref:`Character` self, :term:`number` last_damage_taken, :term:`string` last_bone_damaged, :term:`number` damage_type_reason, :ref:`Vector` hit_from_direction, :ref:`Player` instigator
     - When Character Dies
 
   * -
     - Drop
-    - :ref:`Character` self, :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object, :term:`boolean` WasTriggeredByPlayer
+    - :ref:`Character` self, :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object, :term:`boolean` was_triggered_by_player
     - When Character drops anything
 
   * -
@@ -406,7 +406,7 @@ Events
 
   * -
     - FallingModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - :ref:`Character` self, :term:`number` old_state, :term:`number` new_state
     - 0 - None, 1 - Jumping, 2 - Climbing, 3 - Vaulting, 4 - Falling, 5 - HighFalling, 6 - Parachuting, 7 - SkyDiving
 
   * -
@@ -416,7 +416,7 @@ Events
 
   * -
     - GaitModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - :ref:`Character` self, :term:`number` old_state, :term:`number` new_state
     - 0 - None, 1 - Walking, 2 - Sprinting
 
   * -
@@ -436,7 +436,7 @@ Events
 
   * -
     - MoveCompleted
-    - :ref:`Character` self, :term:`boolean` Success
+    - :ref:`Character` self, :term:`boolean` succeeded
     - Called when AI reaches it's destination, or when it fails
 
   * -
@@ -456,12 +456,12 @@ Events
 
   * -
     - RagdollModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - :ref:`Character` self, :term:`number` old_state, :term:`number` new_state
     - 
 
   * -
     - Reload
-    - :ref:`Character` self, :ref:`Weapon` weapon, :term:`number` AmmoToReload
+    - :ref:`Character` self, :ref:`Weapon` weapon, :term:`number` ammo_to_reload
     - When Character reloads a weapon
 
   * -
@@ -471,17 +471,17 @@ Events
 
   * -
     - StanceModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - :ref:`Character` self, :term:`number` old_state, :term:`number` new_state
     - 0 - None, 1 - Standing, 2 - Crouching, 3 - Proning
 
   * -
     - SwimmingModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - :ref:`Character` self, :term:`number` old_state, :term:`number` new_state
     - 0 - None, 1 - Superficie, 2 - Underwater
 
   * -
     - TakeDamage
-    - :ref:`Character` self, :term:`number` damage, :term:`string` bone, :term:`number` type (0 - Shot, 1 - Explosion), :ref:`Vector` FromDirection, :ref:`Player` Instigator
+    - :ref:`Character` self, :term:`number` damage, :term:`string` bone, :term:`number` type (0 - Shot, 1 - Explosion), :ref:`Vector` from_direction, :ref:`Player` instigator
     - When Character takes Damage
 
   * -
@@ -496,12 +496,12 @@ Events
 
   * -
     - ViewModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - :ref:`Character` self, :term:`number` old_state, :term:`number` new_state
     - 0 - FPS, 1 - TPS1, 2 - TPS2, 3 - TPS3
 
   * -
     - WeaponAimModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - :ref:`Character` self, :term:`number` old_state, :term:`number` new_state
     - 0 - None, 1 - ADS (FPS), 2 - ZoomedZoom (TPS), 3 - Zoomed, 4 - ZoomedFar
 
 .. include:: ../common/events/Actor.rst

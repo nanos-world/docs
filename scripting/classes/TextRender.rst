@@ -19,7 +19,7 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local MyTextRender = TextRender(
+    local my_text_render = TextRender(
         Vector(-100, 200, 300), 
         Rotator(), 
         "My Awesome Text", 
@@ -43,39 +43,39 @@ Constructor Parameters
     - **Default**
 
   * - :ref:`Vector`
-    - Location
+    - location
     - Vector(0, 0, 0)
 
   * - :ref:`Rotator`
-    - Rotation
+    - rotation
     - Rotator(0, 0, 0)
 
   * - :term:`string`
-    - Text
+    - text
     - 
 
   * - :ref:`Color`
-    - Color
+    - color
     - Color(1, 1, 1, 1)
 
   * - :term:`number`
-    - Horizontal Alignment (0 - Left, 1 - Center, 2 - Right)
+    - horizontal_alignment (0 - Left, 1 - Center, 2 - Right)
     - 0
 
   * - :term:`number`
-    - Vertical Alignment (0 - Top, 1 - Center, 2 - Bottom, 3 - Quad Top)
+    - vertical_alignment (0 - Top, 1 - Center, 2 - Bottom, 3 - Quad Top)
     - 0
 
   * - :term:`number`
-    - Size
+    - size
     - 26
 
   * - :term:`number`
-    - Type (0 - Lit, 1 - Unlit, 2 - Unlit & Always Visible)
+    - type (0 - Lit, 1 - Unlit, 2 - Unlit & Always Visible)
     - 0
 
   * - :term:`boolean`
-    - Align To Camera (ajudsts the rotation automatically to always looks at the camera)
+    - align_to_camera (ajudsts the rotation automatically to always looks at the camera)
     - false
 
 
@@ -90,15 +90,15 @@ Functions
     - **Description**
 
   * - 
-    - SetText(:term:`string` Text)
+    - SetText(:term:`string` text)
     - Sets the Text
 
   * - 
-    - SetColor(:ref:`Color` Color)
+    - SetColor(:ref:`Color` color)
     - Sets the Color
 
   * - 
-    - SetSize(:term:`number` Size)
+    - SetSize(:term:`number` size)
     - Sets the Size
 
 .. include:: ../common/functions/Actor.rst

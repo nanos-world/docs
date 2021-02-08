@@ -15,7 +15,7 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local NewGrenade = Grenade(
+    local new_grenade = Grenade(
       Vector(-900, 185, 215), 
       Rotator(0, 90, 90), 
       "NanosWorld::SM_Grenade_G67",
@@ -35,31 +35,31 @@ Constructor Parameters
     - **Default**
 
   * - :ref:`Vector`
-    - Location
+    - location
     - Vector(0, 0, 0)
 
   * - :ref:`Rotator`
-    - Rotation
-    - Rotation(0, 0, 0)
+    - rotation
+    - Rotator(0, 0, 0)
 
   * - :term:`string`
-    - StaticMeshAsset
+    - static_mesh_asset
     - "NanosWorld::SM_Grenade_G67"
 
   * - :term:`string`
-    - Explosion Particles
+    - explosion_particles
     - "NanosWorld::P_Explosion_Dirt"
 
   * - :term:`string`
-    - Explosion Sound
+    - explosion_sound
     - "NanosWorld::A_Explosion_Large
 
   * - :term:`number`
-    - CollisionType
+    - collision_type
     - 0 (Normal)
 
   * - :term:`boolean`
-    - GravityEnabled
+    - gravity_enabled
     - true
  
 

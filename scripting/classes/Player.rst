@@ -28,47 +28,47 @@ Functions
 
   * - |server-only-label|
     - 
-    - Ban(:term:`string` Reason)
+    - Ban(:term:`string` reason)
     - Bans the player from the server
 
   * - |server-only-label|
     - 
-    - Kick(:term:`string` Reason)
+    - Kick(:term:`string` reason)
     - Kicks the player from the server
 
   * - |server-only-label|
     - 
-    - Possess(:ref:`Character` NewCharacter)
+    - Possess(:ref:`Character` new_character)
     - Bind the ``Player`` to a :ref:`Character` 
 
   * - 
     - 
-    - SetCameraLocation(:ref:`Vector`)
+    - SetCameraLocation(:ref:`Vector` location)
     - Sets the Player's Camera Location (only works if not possessing any Character)
 
   * - 
     - 
-    - SetCameraRotation(:ref:`Rotator`)
+    - SetCameraRotation(:ref:`Rotator` rotation)
     - Sets the Player's Camera Rotation
 
   * - |server-only-label|
     - 
-    - SetName(:term:`string`)
+    - SetName(:term:`string` new_name)
     - Sets the player's name
 
   * - 
     - 
-    - SetValue(:term:`string` Key, any Value)
+    - SetValue(:term:`string` key, any value)
     - Sets a value in this entity, which can be accessed by any package (local only)
 
   * - |server-only-label|
     - 
-    - SetVOIPChannel(:term:`number` Channel)
+    - SetVOIPChannel(:term:`number` channel)
     - Sets the VOIP Channel of this Player (will only communicate with other players in the same channel)
 
   * - |server-only-label|
     - 
-    - SetVOIPMuted(:term:`boolean` IsMuted)
+    - SetVOIPMuted(:term:`boolean` is_muted)
     - Mutes/Unmutes this Player
 
   * - |server-only-label|
@@ -170,10 +170,10 @@ Events
 
   * -
     - UnPossess
-    - :ref:`Player` player, :ref:`Character` character, :term:`boolean` bIsPlayerDisconnecting
+    - :ref:`Player` player, :ref:`Character` character, :term:`boolean` is_player_disconnecting
     - A :ref:`Character` was released from the ``Player``
 
   * -
     - VOIP
-    - :ref:`Player` player, :term:`boolean` IsTalking
+    - :ref:`Player` player, :term:`boolean` is_talking
     - When a Player starts/ends using VOIP

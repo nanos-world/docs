@@ -22,19 +22,19 @@ Functions
     - **Description**
 
   * - 
-    - CallLevelBlueprintEvent(:term:`string` EventName)
-    - Calls a Level Blueprint custom event (which can be added when creating levels through Unreal Engine). Parameters can be concatened to EventName
+    - CallLevelBlueprintEvent(:term:`string` event_name)
+    - Calls a Level Blueprint custom event (which can be added when creating levels through Unreal Engine). Parameters can be concatened to event_name
 
   * - 
-    - DrawDebugLine(:ref:`Vector` Start, :ref:`Vector` End, :ref:`Color` Color = (1, 0, 0), :term:`number` Duration = 5, :term:`number` Thickness = 0)
+    - DrawDebugLine(:ref:`Vector` start, :ref:`Vector` end, :ref:`Color` color = (1, 0, 0), :term:`number` duration = 5, :term:`number` thickness = 0)
     - Draws a Debug Line in the World
 
   * - 
-    - DrawDebugPoint(:ref:`Vector` Start, :ref:`Color` Color = (1, 0, 0), :term:`number` Duration = 5, :term:`number` Thickness = 0)
+    - DrawDebugPoint(:ref:`Vector` start, :ref:`Color` color = (1, 0, 0), :term:`number` duration = 5, :term:`number` thickness = 0)
     - Draws a Debug Point in the World
 
   * - 
-    - DrawDebugSphere(:ref:`Vector` Start, :term:`number` Radius, :term:`number` Segments, :ref:`Color` Color = (1, 0, 0), :term:`number` Duration = 5, :term:`number` Thickness = 0)
+    - DrawDebugSphere(:ref:`Vector` start, :term:`number` radius, :term:`number` segments, :ref:`Color` color = (1, 0, 0), :term:`number` duration = 5, :term:`number` thickness = 0)
     - Draws a Debug Line in the World
 
   * - 
@@ -42,7 +42,7 @@ Functions
     - Sends a chat message which will display local only
 
   * - 
-    - SetChatConfiguration(:ref:`Vector2D` Location = (-25, 0), :ref:`Vector2D` Size = (600, 250), :ref:`Vector2D` AchorsMin = (1, 0.5), :ref:`Vector2D` AchorsMax = (1, 0.5), :ref:`Vector2D` Alignment = (1, 0.5), :term:`boolean` bJustify = false (false = Left, true = Right))
+    - SetChatConfiguration(:ref:`Vector2D` location = (-25, 0), :ref:`Vector2D` size = (600, 250), :ref:`Vector2D` anchors_min = (1, 0.5), :ref:`Vector2D` anchors_max = (1, 0.5), :ref:`Vector2D` alignment = (1, 0.5), :term:`boolean` justify = false (false = Left, true = Right))
     - Configure the Chat. Anchors = (1, 1) means the location will be relative to bottom right and (0, 0) to top left.
 
   * - 
@@ -50,11 +50,11 @@ Functions
     - Enables/Disables the default Crosshair
 
   * - 
-    - SetDiscordActivity(:term:`string` State, :term:`string` Details, :term:`string` LargeImage, :term:`string` LargeText)
+    - SetDiscordActivity(:term:`string` state, :term:`string` details, :term:`string` large_image, :term:`string` large_text)
     - Comunicates with Discord and sets a custom user status
 
   * - 
-    - SetInputEnabled(:term:`boolean` EnableInput)
+    - SetInputEnabled(:term:`boolean` enable_input)
     - Toggles Local Player input
 
   * - 
@@ -62,19 +62,19 @@ Functions
     - Displays/Hides Mouse Cursor
 
   * - 
-    - SetOutlineColor(:ref:`Color` OutlineColor)
+    - SetOutlineColor(:ref:`Color` outline_color)
     - Changes the Outline Color for interactable stuff. Multiply it by 5 (or more) for having a glowing effect.
 
   * - 
-    - SetHighlightColor(:ref:`Color` HighlightColor)
+    - SetHighlightColor(:ref:`Color` highlight_color)
     - Changes the Highlight Color for highlighted actors. Multiply it by 5 (or more) for having a glowing effect.
 
   * - 
-    - SetValue(:term:`string` Key, any Value)
+    - SetValue(:term:`string` key, any value)
     - Sets a global value in the Client, which can be accessed from anywhere (client side)
 
   * - 
-    - Spectate(:ref:`Player` Player)
+    - Spectate(:ref:`Player` player)
     - Spectates a Player. The local camera will follow the Player's camera.
 
   * - 
@@ -82,7 +82,7 @@ Functions
     - Leaves the Spectator's State.
 
   * - :term:`table`
-    - Trace(:ref:`Vector` Start, :ref:`Vector` End, :term:`boolean` DrawDebug = false)
+    - Trace(:ref:`Vector` start, :ref:`Vector` end, :term:`boolean` draw_debug = false)
     - Trace a ray against the world and returns a table with the first blocking hit information ``{"Success", "Location", "Normal", "Actor"}``. Currently only supports trace for :ref:`Character`, :ref:`Vehicle` and :ref:`Prop`, more can be requested.
 
   * - :ref:`Vector2D`
@@ -90,11 +90,11 @@ Functions
     - Gets the current mouse screen location
 
   * - any
-    - GetValue(:term:`string` Key)
+    - GetValue(:term:`string` key)
     - Gets a value given a key
 
   * - :term:`boolean`
-    - IsKeyDown(:term:`string` KeyName)
+    - IsKeyDown(:term:`string` key_name)
     - Returns if a key is being pressed
 
   * - :term:`boolean`
@@ -113,31 +113,31 @@ Events
     - **Description**
 
   * - Chat
-    - :term:`string` Text
+    - :term:`string` text
     - Called when a chat text is submitted (by LocalPlayer) - return false to do not send the message
 
   * - Console
-    - :term:`string` Text
+    - :term:`string` text
     - Called when a console command is submitted
 
   * - KeyDown
-    - :term:`string` KeyName
+    - :term:`string` key_name
     - A keyboard key has been pressed / is being pressed. Return false to block it
 
   * - KeyUp
-    - :term:`string` KeyName
+    - :term:`string` key_name
     - A keyboard key has been released. Return false to block it
 
   * - MouseDown
-    - :term:`string` KeyName, :term:`number` MouseX, :term:`number` MouseY. Return false to block it
+    - :term:`string` key_name, :term:`number` mouse_x, :term:`number` mouse_y. Return false to block it
     - A mouse button has been pressed / is being pressed
 
   * - MouseUp
-    - :term:`string` KeyName, :term:`number` MouseX, :term:`number` MouseY. Return false to block it
+    - :term:`string` key_name, :term:`number` mouse_x, :term:`number` mouse_y. Return false to block it
     - A mouse button has been released
 
   * - Tick
-    - :term:`number` DeltaTime
+    - :term:`number` delta_time
     - Called Every Frame. Do not abuse.
 
 
@@ -147,9 +147,9 @@ Examples
 .. tabs::
  .. code-tab:: lua Lua
 
-    Client:on("MouseUp", function(KeyName, MouseX, MouseY)
-        if (KeyName == "LeftMouseButton") then
-            Package:Log("Left Click pressed at X: " .. MouseX .. ", Y: " .. MouseY)
+    Client:on("MouseUp", function(key_name, mouse_x, mouse_y)
+        if (key_name == "LeftMouseButton") then
+            Package:Log("Left Click pressed at X: " .. mouse_x .. ", Y: " .. mouse_y)
         end
     end)
 

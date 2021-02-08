@@ -19,7 +19,7 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local MySound = Sound(
+    local my_sound = Sound(
         Vector(-510, 145, 63), -- Location (if a 3D sound)
         "NanosWorld::A_VR_Confirm", -- Asset Path
         false, -- Is 2D Sound
@@ -41,47 +41,47 @@ Constructor Parameters
     - **Default**
 
   * - :ref:`Vector`
-    - Location (Used only if 3D sound)
+    - location (Used only if 3D sound)
     - Vector(0, 0, 0)
 
   * - :term:`string`
-    - Asset (Sound)
+    - asset (Sound)
     - 
 
   * - :term:`boolean`
-    - Is2DSound
+    - is_2D_sound
     - false
 
   * - :term:`boolean`
-    - AutoDestroy (if to destroy after finished playing)
+    - auto_destroy (if to destroy after finished playing)
     - true
 
   * - :term:`number`
-    - Sound Type (0 - SFX, 1 - Music) - Used to apply user's volume settings
+    - sound_type (0 - SFX, 1 - Music) - Used to apply user's volume settings
     - 0
 
   * - :term:`number`
-    - Volume (0 - 1)
+    - volume (0 - 1)
     - 1
 
   * - :term:`number`
-    - Pitch
+    - pitch
     - 1
 
   * - :term:`number`
-    - InnerRadius (3D only)
+    - inner_radius (3D only)
     - 400
 
   * - :term:`number`
-    - FalloffDistance (3D only)
+    - falloff_distance (3D only)
     - 3600
 
   * - :term:`number`
-    - AttenuationFunction (3D only) (0 - Linear, 1 - Logarithmic, 2 - Inverse, 3 - Log Reverse, 4 - Natural Sound)
+    - attenuation_function (3D only) (0 - Linear, 1 - Logarithmic, 2 - Inverse, 3 - Log Reverse, 4 - Natural Sound)
     - 0
 
   * - :term:`boolean`
-    - KeepPlayingWhenSilent (3D only) - Whether to keep playing this sound when it's not audible - Use with caution, it may cause performance issues!
+    - keep_playing_when_silent (3D only) - Whether to keep playing this sound when it's not audible - Use with caution, it may cause performance issues!
     - false
 
 
@@ -96,11 +96,11 @@ Functions
     - **Description**
 
   * - 
-    - FadeIn(:term:`number` FadeInDuration, :term:`number` FadeVolumeLevel, :term:`number` StartTime)
+    - FadeIn(:term:`number` fade_in_duration, :term:`number` fade_volume_level, :term:`number` start_time)
     - Plays the sound with a fade effect
 
   * - 
-    - FadeOut(:term:`number` FadeOutDuration, :term:`number` FadeVolumeLevel)
+    - FadeOut(:term:`number` fade_out_duration, :term:`number` fade_volume_level)
     - Stops the sound with a fade effect
 
   * - 
@@ -108,27 +108,27 @@ Functions
     - Starts the sound
 
   * - 
-    - SetFalloffDistance(:term:`number` FalloffDistance)
+    - SetFalloffDistance(:term:`number` falloff_distance)
     - If a 3D Sound, sets the distance which the sound is inaudible
 
   * - 
-    - SetInnerRadius(:term:`number` InnerRadius)
+    - SetInnerRadius(:term:`number` inner_radius)
     - If a 3D Sound, sets the distance within the volume is 100%
 
   * - 
-    - SetLowPassFilter(:term:`number` Frequency)
+    - SetLowPassFilter(:term:`number` frequency)
     - Sets lowpass filter frequency. Sets 0 to disable it.
 
   * - 
-    - SetPaused(:term:`boolean` Pause = true)
+    - SetPaused(:term:`boolean` pause = true)
     - Pauses the sound
 
   * - 
-    - SetPitch(:term:`number` NewPitch)
+    - SetPitch(:term:`number` new_pitch)
     - Sets the Sound's pitch
 
   * - 
-    - SetVolume(:term:`number` NewVolume)
+    - SetVolume(:term:`number` new_volume)
     - Sets the Sound's volume (0 - 1)
 
   * - 
@@ -136,7 +136,7 @@ Functions
     - Stops the sound
 
   * - 
-    - StopDelayed(:term:`number` Delay)
+    - StopDelayed(:term:`number` delay)
     - Stops the sound after the provided delay
 
   * - :term:`boolean`

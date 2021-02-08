@@ -11,12 +11,12 @@ Functions (Inherited from Actor)
 
   * - |server-only-label|
     - 
-    - AddImpulse(:ref:`Vector` Force)
+    - AddImpulse(:ref:`Vector` force)
     - Applies a Force in world coordinate on this Actor (the force is applied on Client side, by the (in most of cases) the closest player of this object)
 
   * - |server-only-label|
     - 
-    - AttachTo(Actor Other, :term:`string` BoneName, :ref:`Vector` RelativeLocation, :ref:`Rotator` RelativeRotation)
+    - AttachTo(Actor other, :term:`string` bone_name, :ref:`Vector` relative_location, :ref:`Rotator` relative_rotation)
     - Attaches this Actor to any other Actor with a Relative Offset/Rotation
 
   * - |server-only-label|
@@ -26,32 +26,32 @@ Functions (Inherited from Actor)
 
   * - |server-only-label|
     - 
-    - SetCollision(:term:`number` CollisionType)
+    - SetCollision(:term:`number` collision_type)
     - Sets the actor's collision (0 - Normal, 1 - Static Only, 2 - No Collision)
 
   * - |server-only-label|
     - 
-    - SetGravityEnabled(:term:`boolean` NewGravity)
+    - SetGravityEnabled(:term:`boolean` new_gravity)
     - Sets the actor's gravity enabled
 
   * - |client-only-label|
     - 
-    - SetHighlightEnabled(:term:`boolean` Enabled)
+    - SetHighlightEnabled(:term:`boolean` enabled)
     - Sets if this Actors is Highlighting
 
   * - |server-only-label|
     - 
-    - SetInitialLocation(:ref:`Vector` NewInitialLocation)
+    - SetInitialLocation(:ref:`Vector` new_initial_location)
     - Sets the initial location
 
   * - |server-only-label|
     - 
-    - SetLocation(:ref:`Vector` NewLocation)
+    - SetLocation(:ref:`Vector` new_location)
     - Sets the actor's location in the game world
 
   * - |server-only-label|
     - 
-    - SetRotation(:ref:`Rotator` NewRotation)
+    - SetRotation(:ref:`Rotator` new_rotation)
     - Sets the actor's rotation in the game world
 
   * - |server-only-label|
@@ -61,22 +61,22 @@ Functions (Inherited from Actor)
 
   * - |server-only-label|
     - 
-    - SetTintColor(:ref:`Color` NewTintColor)
+    - SetTintColor(:ref:`Color` new_tint_color)
     - Sets the tint color, for completely paint an object, multiply the color by 10 or 100
 
   * - 
     - 
-    - SetValue(:term:`string` Key, any Value)
+    - SetValue(:term:`string` key, any value)
     - Sets a value in this entity, which can be accessed by any package (local only)
 
   * - 
     - 
-    - TranslateTo(:ref:`Vector` Location, :term:`number` Speed)
+    - TranslateTo(:ref:`Vector` location, :term:`number` speed)
     - Smoothly moves this actor to a Location with a certain Speed
 
   * - 
     - 
-    - RotateTo(:ref:`Rotator` Rotation, :term:`number` Speed)
+    - RotateTo(:ref:`Rotator` rotation, :term:`number` speed)
     - Smoothly rotates this actor to a Rotation with a certain Speed
 
   * - 
@@ -136,7 +136,7 @@ Functions (Inherited from Actor)
 
   * - 
     - any
-    - GetValue(:term:`string` Key)
+    - GetValue(:term:`string` key)
     - Gets a value given a key
 
   * - |client-only-label|

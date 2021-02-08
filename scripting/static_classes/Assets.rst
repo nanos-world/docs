@@ -26,29 +26,29 @@ Functions
     - Returns an array of tables containing information about all loaded Asset Packs ``[{Name, Path, Author, Version}, ...]``
 
   * - :term:`table`
-    - GetAnimations(:term:`string` AssetPackPath)
+    - GetAnimations(:term:`string` asset_pack_path)
     - Returns an array of strings containing all Animation Assets Keys from an AssetPack
 
   * - :term:`table`
-    - GetMaps(:term:`string` AssetPackPath)
+    - GetMaps(:term:`string` asset_pack_path)
     - Returns an array of strings containing all Map Asset Keys from an AssetPack
 
   * - :term:`table`
-    - GetParticles(:term:`string` AssetPackPath)
+    - GetParticles(:term:`string` asset_pack_path)
     - Returns an array of strings containing all Particle Assets Keys from an AssetPack
 
   * - :term:`table`
-    - GetSounds(:term:`string` AssetPackPath)
+    - GetSounds(:term:`string` asset_pack_path)
     - Returns an array of strings containing all Sound Assets Keys from an AssetPack
 
   * - :term:`table`
-    - GetSkeletalMeshes(:term:`string` AssetPackPath)
+    - GetSkeletalMeshes(:term:`string` asset_pack_path)
     - Returns an array of strings containing all Skeletal Mesh Asset Keys from an AssetPack
 
   * - :term:`table`
-    - GetStaticMeshes(:term:`string` AssetPackPath)
+    - GetStaticMeshes(:term:`string` asset_pack_path)
     - Returns an array of strings containing all Static Mesh Assets Keys from an AssetPack
 
   * - :term:`table`
-    - GetOthers(:term:`string` AssetPackPath)
+    - GetOthers(:term:`string` asset_pack_path)
     - Returns an array of strings containing all Other Assets Keys from an AssetPack

@@ -19,7 +19,7 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local NewRotator = Rotator(45, 90, 180)
+    local new_rotator = Rotator(45, 90, 180)
 
 
 Properties
@@ -72,7 +72,7 @@ Functions
     - Returns a new Rotator normalized.
 
   * - :term:`boolean`
-    - IsNearlyZero(:term:`number` Tolerance)
+    - IsNearlyZero(:term:`number` tolerance)
     - 
 
   * - :term:`boolean`

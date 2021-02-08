@@ -17,7 +17,7 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local Axis = NanosMathLibrary.ClampAxis(720)
+    local axis = NanosMathLibrary.ClampAxis(720)
 
 
 Functions
@@ -39,21 +39,21 @@ Functions
     - Clamps an angle to the range of [-180, 180].
 
   * - :term:`number`
-    - FInterpTo(:term:`number` Current, :term:`number` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
+    - FInterpTo(:term:`number` current, :term:`number` target, :term:`number` delta_time, :term:`number` InterpSpeed)
     - 
 
   * - :ref:`Rotator`
-    - RInterpTo(:ref:`Rotator` Current, :ref:`Rotator` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
+    - RInterpTo(:ref:`Rotator` current, :ref:`Rotator` target, :term:`number` delta_time, :term:`number` interp_speed)
     - 
 
   * - :ref:`Rotator`
-    - RInterpConstantTo(:ref:`Rotator` Current, :ref:`Rotator` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
+    - RInterpConstantTo(:ref:`Rotator` current, :ref:`Rotator` target, :term:`number` delta_time, :term:`number` interp_speed)
     - 
 
   * - :ref:`Vector`
-    - VInterpTo(:ref:`Vector` Current, :ref:`Vector` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
+    - VInterpTo(:ref:`Vector` current, :ref:`Vector` target, :term:`number` delta_time, :term:`number` interp_speed)
     - 
 
   * - :ref:`Vector`
-    - VInterpConstantTo(:ref:`Vector` Current, :ref:`Vector` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
+    - VInterpConstantTo(:ref:`Vector` current, :ref:`Vector` target, :term:`number` delta_time, :term:`number` interp_speed)
     - 

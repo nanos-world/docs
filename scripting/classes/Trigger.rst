@@ -15,8 +15,8 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local MyTrigger = Trigger(Vector(-200, 100, 500), 100)
-    
+    local my_trigger = Trigger(Vector(-200, 100, 500), 100)
+
     MyTrigger:on("BeginOverlap", function(actorTriggering)
         Package:Log("Someone entered my Trigger")
     end)
@@ -33,19 +33,19 @@ Constructor Parameters
     - **Default**
 
   * - :ref:`Vector`
-    - Location
+    - location
     - Vector(0, 0, 0)
 
   * - :term:`number`
-    - Radius
+    - radius
     - 100
 
   * - :term:`boolean`
-    - Is Visible
+    - is_visible
     - true
 
   * - :ref:`Color`
-    - Color of the Trigger Sphere (if Visible)
+    - color (of the Trigger Sphere - if Visible)
     - Color(1, 0, 0, 1)
 
 
@@ -62,12 +62,12 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetRadius(:term:`number` Radius)
+    - SetRadius(:term:`number` radius)
     - Sets the radius of this trigger
 
   * - |server-only-label|
     - 
-    - SetVisibility(:term:`boolean` Visible)
+    - SetVisibility(:term:`boolean` is_visible)
     - Sets if this Trigger is visible as a Sphere
 
 .. attention:: :ref:`Trigger` inherits from Actor, but some of the following functions doesn't have any effect. E.g. ``SetCollision``, ``SetGravityEnabled``, ``AddImpulse``, ``SetScale``.

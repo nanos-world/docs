@@ -19,7 +19,7 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local GreyColor = Color(0.5, 0.5, 0.5, 1)
+    local grey_color = Color(0.5, 0.5, 0.5, 1)
 
 
 Properties

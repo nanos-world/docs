@@ -27,19 +27,19 @@ Functions
     - **Description**
 
   * - 
-    - Call(:term:`string` EventName, :term:`table` {Args...})
+    - Call(:term:`string` event_name, :term:`table` {args...})
     - Calls an Event which will be triggered in all Local Packages
 
   * - |client-only-label|
-    - CallRemote(:term:`string` EventName, :term:`table` {Args...})
+    - CallRemote(:term:`string` event_name, :term:`table` {args...})
     - Calls an Event on Client which will be triggered in all Server Packages
 
   * - |server-only-label|
-    - CallRemote(:term:`string` EventName, :ref:`Player` Remote, :term:`table` {Args...})
+    - CallRemote(:term:`string` event_name, :ref:`Player` remote, :term:`table` {args...})
     - Calls an Event on Server which will be triggered in all Client's Packages of ``Player``
 
   * - |server-only-label|
-    - BroadcastRemote(:term:`string` EventName, :term:`table` {Args...})
+    - BroadcastRemote(:term:`string` event_name, :term:`table` {args...})
     - Calls an Event on Server which will be triggered in all Client's Packages
 
 

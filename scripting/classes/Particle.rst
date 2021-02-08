@@ -41,23 +41,23 @@ Constructor Parameters
     - **Default**
 
   * - :ref:`Vector`
-    - Location
+    - location
     - Vector(0, 0, 0)
 
   * - :ref:`Rotator`
-    - Rotation
-    - Rotation(0, 0, 0)
+    - rotation
+    - Rotator(0, 0, 0)
 
   * - :term:`string`
-    - ModelName
+    - model_name
     - 
 
   * - :term:`boolean`
-    - AutoDestroy
+    - auto_destroy
     - true
 
   * - :term:`boolean`
-    - AutoActivate
+    - auto_activate
     - true
 
 
