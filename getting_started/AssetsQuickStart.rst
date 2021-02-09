@@ -10,7 +10,7 @@ nanos world provides fully capabilities of modifying, including and customizing 
 Structure
 ---------
 
-Assets can be included in a folder called ``Assets/`` in the root server folder. All files in there will be sent to the clients and will be able to be referenced in your scripting code.
+Assets can be included in a folder called ``Assets/`` in the root server folder. Files in there will be sent to the clients and will be able to be referenced in your scripting code upon being imported by your Packages.
 
 .. code-block:: javascript
 
@@ -155,6 +155,28 @@ As seen above, Assets can be set in a ``key = "value"`` pattern, the **key** bei
 
 Referencing Assets in Code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The first step to be able to reference your assets in your packages is requiring your Asset Pack in your Package.toml like that:
+
+.. code-block:: toml
+
+    # Package Configurations
+    [package]
+        # Package Name
+        name =                "My Awesome Package"
+        # Package Type: "executable" (normal package) | "library" (doesn't run - useful for code library)
+        type =                "executable"
+        # Whether to force the Custom Map Script to do NOT load
+        force_no_map_script = false
+        # Auto Destroy all entities spawned by this package when it unloads
+        auto_cleanup =        true
+        # Asset Packs Requirements (Assets folder names to be loaded)
+        assets_requirements = [
+            "MyPack", # <<< Add your Asset Pack folder name here
+        ]
+
+.. tip:: The Asset Pack which contains the maps you are loading is automatically loaded when you start the server!
+
 
 The correct way of referencing assets in code is using the pattern: ``ASSET_PACK_NAME::ASSET_FILE_NAME``. So for example, if I want to reference to AwesomeAndBigMap as the above example, I would use: ``MyPack::AwesomeAndBigMap``
 
