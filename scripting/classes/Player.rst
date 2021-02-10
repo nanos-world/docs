@@ -82,6 +82,11 @@ Functions
     - *Currently this is not the real Account ID. This ID is generated based on Player's IP which can be used for now to identify Players during a short period (until his IP changes). This is a temporary solution while our Account System isn't fully integrated.*
 
   * - 
+    - :term:`string`
+    - GetAccountName()
+    - Gets the nanos account name
+
+  * - 
     - :ref:`Character`
     - GetControlledCharacter()
     - Returns the character of the player. If the player has not yet been assigned a character, :term:`nil` is returned.

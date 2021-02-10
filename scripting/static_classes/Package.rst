@@ -46,6 +46,11 @@ Functions
     - Includes other Package in this Package
 
   * -
+    -
+    - SetPersistentData(:term:`string` key, any Value)
+    - Sets a Persistent Value which will be saved to Disk
+
+  * -
     - :term:`table`\<:term:`string`\>
     - GetFiles(:term:`string` path_filter = "", :term:`string` extension_filter = "")
     - Gets a list of all files in this package, optionally with filters
@@ -59,6 +64,11 @@ Functions
     - :term:`string`
     - GetPath()
     - Gives the package path
+
+  * -
+    - :term:`table`\<any\>
+    - GetPersistentData()
+    - Gets all Persistent Values from the Disk
 
   
 Events

@@ -29,6 +29,11 @@ Functions (Inherited from Actor)
     - SetCollision(:term:`number` collision_type)
     - Sets the actor's collision (0 - Normal, 1 - Static Only, 2 - No Collision)
 
+  * - |client-only-label|
+    - 
+    - SetDefaultMaterial(:term:`number` material_index = -1)
+    - Replaces this actor materials with a default material which contains base parameters for customizing it, optionally replaces a specific material index or -1 for all materials
+
   * - |server-only-label|
     - 
     - SetGravityEnabled(:term:`boolean` new_gravity)
@@ -48,6 +53,26 @@ Functions (Inherited from Actor)
     - 
     - SetLocation(:ref:`Vector` new_location)
     - Sets the actor's location in the game world
+
+  * - |server-only-label|
+    - 
+    - SetMaterialColorParameter(:term:`string` parameter_name, :ref:`Color` color, :term:`number` material_index = -1)
+    - Sets a Color parameter on a material of this actor, optionally on a specific material index or -1 for all materials
+
+  * - |server-only-label|
+    - 
+    - SetMaterialScalarParameter(:term:`string` parameter_name, :term:`number` scalar, :term:`number` material_index = -1)
+    - Sets a Scalar parameter on a material of this actor, optionally on a specific material index or -1 for all materials
+
+  * - |server-only-label|
+    - 
+    - SetMaterialTextureParameter(:term:`string` parameter_name, :term:`string` texture_path, :term:`number` material_index = -1)
+    - Loads and sets a Texture parameter on a material of this actor, optionally on a specific material index or -1 for all materials
+
+  * - |server-only-label|
+    - 
+    - SetMaterialVectorParameter(:term:`string` parameter_name, :ref:`Vector` vector, :term:`number` material_index = -1)
+    - Sets a Vector parameter on a material of this actor, optionally on a specific material index or -1 for all materials
 
   * - |server-only-label|
     - 

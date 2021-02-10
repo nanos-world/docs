@@ -181,7 +181,9 @@ Also, it is possible to fetch Player's information by accessing a global variabl
  .. code-tab:: javascript JavaScript
  
     var LoadingScreen = {
-      player_local_name,
+      server_ip,
+      server_port,
+      server_http_port,
       player_nanos_id,
       player_nanos_username
     };
@@ -225,8 +227,11 @@ Each Package must have an ``Package.toml`` file which is the Configuration File 
    |   |   Package.toml
    |   My_Package_02/
    |   |   ...
+   |   |   PersistentData.toml
    |   |   Package.toml
    Assets/
+
+.. tip:: It is possible to store data in disk with the method ``Package:SetPersistentData(key, value)``, it is possible to store any kind of value (except functions and userdatas) and retrieve with ``Package:GetPersistentData``.
 
 
 Package Configuration File
@@ -241,11 +246,13 @@ The Package Configuration file ``Package.toml`` is generated automatically when 
     # Package Configurations
     [package]
         # Package Name
-        name =            "My Awesome Package"
+        name =                "My Awesome Package"
         # Package Type: "executable" (normal package) | "library" (doesn't run - useful for code library)
-        type =            "executable"
+        type =                "executable"
         # Whether to force the Custom Map Script to do NOT load
-        force_no_map_script =    false
+        force_no_map_script = false
+        # Auto Destroy all entities spawned by this package when it unloads
+        auto_cleanup =        true
         # Asset Packs Requirements (Assets folder names to be loaded)
         assets_requirements = [
             "MyPack_01",

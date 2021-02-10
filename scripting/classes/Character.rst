@@ -165,11 +165,6 @@ Functions
     - PlayAnimation(:term:`string` animation_path, :term:`number` slot_type = 0, :term:`number` loop_indefinitely = false)
     - Plays an Animation Montage on this character
 
-  * - |server-only-label|
-    - 
-    - RandomizeCustomization()
-    - Randomize all character customizations
-
   * - 
     - 
     - RemoveSkeletalMeshAttached(:term:`string` id)
