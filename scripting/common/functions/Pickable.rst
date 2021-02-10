@@ -19,6 +19,31 @@ Functions (Inherited from Pickable)
     - AddStaticMeshAttached(:term:`string` id, :term:`string` static_mesh_path, :term:`string` socket = "", :ref:`Vector` relative_location = Vector(), :ref:`Rotator` relative_rotation = Rotator())
     - Spawns and Attaches a StaticMesh into this Actor in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
+  * - 
+    - 
+    - SetDefaultMaterial()
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available
+
+  * - 
+    - 
+    - SetMaterialColorParameter(:term:`string` parameter_name, :ref:`Color` color)
+    - Sets a Color parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialScalarParameter(:term:`string` parameter_name, :term:`number` scalar)
+    - Sets a scalar parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialTextureParameter(:term:`string` parameter_name, :term:`string` texture_path)
+    - Loads a image from computer (relative to `Assets/` folder) and sets as parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialVectorParameter(:term:`string` parameter_name, :ref:`Vector` vector)
+    - Sets a Vector parameter in this actor's material
+
   * - |server-only-label|
     - 
     - PullUse()

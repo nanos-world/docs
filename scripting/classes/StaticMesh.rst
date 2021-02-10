@@ -65,6 +65,31 @@ Functions
     - **Description**
 
   * - 
+    - 
+    - SetDefaultMaterial()
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available
+
+  * - 
+    - 
+    - SetMaterialColorParameter(:term:`string` parameter_name, :ref:`Color` color)
+    - Sets a Color parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialScalarParameter(:term:`string` parameter_name, :term:`number` scalar)
+    - Sets a scalar parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialTextureParameter(:term:`string` parameter_name, :term:`string` texture_path)
+    - Loads a image from computer (relative to `Assets/` folder) and sets as parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialVectorParameter(:term:`string` parameter_name, :ref:`Vector` vector)
+    - Sets a Vector parameter in this actor's material
+
+  * - 
     - :term:`string`
     - GetAssetName()
     - Gets the Asset name

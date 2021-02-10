@@ -182,11 +182,6 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetMesh(:term:`string` skeletal_mesh_asset)
-    - Changes the Character Mesh on the fly
-
-  * - |server-only-label|
-    - 
     - SetCameraMode(:term:`number` camera_mode)
     - Sets the Camera Mode (0 - FPS and TPS, 1 = FPS only, 2 = TPS only)
 
@@ -215,6 +210,11 @@ Functions
     - SetCapsuleSize(:term:`number` radius, :term:`number` half_height)
     - Sets this Character's Capsule size (will affect Camera location and Character's collision) - default is (42, 96)
 
+  * - 
+    - 
+    - SetDefaultMaterial()
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available
+
   * - |server-only-label|
     - 
     - SetHealth(:term:`number` new_health)
@@ -229,6 +229,31 @@ Functions
     - 
     - SetMaxHealth(:term:`number` new_max_health)
     - Sets the MaxHealth of this Character
+
+  * - 
+    - 
+    - SetMaterialColorParameter(:term:`string` parameter_name, :ref:`Color` color)
+    - Sets a Color parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialScalarParameter(:term:`string` parameter_name, :term:`number` scalar)
+    - Sets a scalar parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialTextureParameter(:term:`string` parameter_name, :term:`string` texture_path)
+    - Loads a image from computer (relative to `Assets/` folder) and sets as parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialVectorParameter(:term:`string` parameter_name, :ref:`Vector` vector)
+    - Sets a Vector parameter in this actor's material
+
+  * - |server-only-label|
+    - 
+    - SetMesh(:term:`string` skeletal_mesh_asset)
+    - Changes the Character Mesh on the fly
 
   * - |server-only-label|
     - 
@@ -247,11 +272,6 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetScalarParameter(:term:`number` id, :term:`number` value)
-    - Sets a Scalar Material parameter to this Character
-
-  * - |server-only-label|
-    - 
     - SetSpeedMultiplier(:term:`number` multiplier)
     - 1 = normal
 
@@ -259,11 +279,6 @@ Functions
     - 
     - SetTeam(:term:`number` team)
     - Sets a Team which will disable damaging same Team Members. 0 for Neutral
-
-  * - |server-only-label|
-    - 
-    - SetVectorParameter(:term:`number` id, :ref:`Vector` value)
-    - Sets a Vector Material parameter to this Character's Material
 
   * - |server-only-label|
     - 
@@ -342,22 +357,12 @@ Functions
 
   * - 
     - :term:`number`
-    - GetScalarParameter(:term:`number` ID)
-    - 
-
-  * - 
-    - :term:`number`
     - GetSpeedMultiplier()
     - 
 
   * - 
     - :term:`number`
     - GetTeam()
-    - 
-
-  * - 
-    - :ref:`Vector`
-    - GetVectorParameter(:term:`number` ID)
     - 
 
   * - 

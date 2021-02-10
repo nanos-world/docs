@@ -151,6 +151,11 @@ Functions
     - RemoveStaticMeshAttached(:term:`string` id)
     - Removes, if existing, a StaticMesh from this Vehicle given it's custom ID
 
+  * - 
+    - 
+    - SetDefaultMaterial()
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available
+
   * - |server-only-label|
     - 
     - SetDifferentialSetup(:term:`number` differential_type = 0, :term:`number` front_rear_split = 0.45, :term:`number` front_left_right_split = 0.5, :term:`number` rear_left_right_split = 0.5, :term:`number` center_bias = 1.3, :term:`number` front_bias = 1.3, :term:`number` rear_bias = 1.3)
@@ -160,6 +165,26 @@ Functions
     - 
     - SetEngineSetup(:term:`number` max_rpm = 4500, :term:`number` moi = 1, :term:`number` damping_rate_full_throttle = 0.15, :term:`number` damping_rate_zero_throttle_clutch_engaged = 2, :term:`number` damping_rate_zero_throttle_clutch_disengaged = 0.35)
     - Configures the Vehicle Engine. Check the page bottom to see each property explanation
+
+  * - 
+    - 
+    - SetMaterialColorParameter(:term:`string` parameter_name, :ref:`Color` color)
+    - Sets a Color parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialScalarParameter(:term:`string` parameter_name, :term:`number` scalar)
+    - Sets a scalar parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialTextureParameter(:term:`string` parameter_name, :term:`string` texture_path)
+    - Loads a image from computer (relative to `Assets/` folder) and sets as parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialVectorParameter(:term:`string` parameter_name, :ref:`Vector` vector)
+    - Sets a Vector parameter in this actor's material
 
   * - |server-only-label|
     - 
