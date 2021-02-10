@@ -14,11 +14,11 @@ Adding functionalities and gamemode features into nanos world is simpler than it
 Packages
 --------
 
-Packages (or Modules) are pieces/components of your gamemode which are isolated from other packages you created. All Packages must go under ``Packages/`` folder, each Package is a folder under that. Each Package must contain the following folders: ``Server``, ``Client`` and ``Shared``. Client and Shared will be sent to the Clients when they connect. Server will run only on the Server and won't be sent to Clients.
+Packages are pieces/components of your gamemode which are isolated from other packages you created. All Packages must go under ``Packages/`` folder, each Package is a folder under that. Each Package can contain the following folders: ``Server``, ``Client`` and ``Shared``. Client and Shared folders will be sent to the clients when they connect. The scripts from Server folder will run only on the server side and won't be sent to clients.
 
-Each Package must have an ``Index.lua``, this is the only file which will be triggered when the Package is loaded, this way this file is responsible for including other files and starting up your functionalities.
+Each Package must have a file called ``Index.lua``, this is the only file which will be triggered when the Package is loaded, this way this file is responsible for including other files and starting up your functionalities.
 
-.. note:: Shared packages are always loaded before Client and Server package.
+.. note:: Scripts in Shared folder are always loaded before Client and Server folders.
 
 .. tip:: Maps can also have a **Custom Script** (server-only) attached to it. These are files named ``[MAP_NAME].lua`` in the same folder as the map in the ``Assets/`` folder. If no one of your Packages disallow it, this script file will be loaded as well. Usually these scripts should have map specific spawn props/weapons points and pertinent stuff. Please refer to :ref:`MapsAndLevels` for more information.
 
@@ -48,7 +48,7 @@ Creating your first Script
 
 In this example we will show you how to spawn a few :ref:`Prop`\s, spawn a :ref:`Character` for :ref:`Player`\s and interact with some :ref:`Events`.
 
-First of all, create a new folder inside ``Packages/`` called ``MyAwesomePackage`` (or whatever name you want ;)), and inside that create a ``Server`` folder with a ``Index.lua`` file. All scripting files inside of Server folder will remain and run only on server side. You will be like that:
+First of all, let's create a new folder inside ``Packages/`` called ``MyAwesomePackage`` (or whatever name you want), and inside that create a ``Server`` folder with a ``Index.lua`` file (all scripting files inside of Server folder will remain and run only on server side). After that, you will be like that:
 
 .. code-block:: javascript
 
@@ -60,9 +60,7 @@ First of all, create a new folder inside ``Packages/`` called ``MyAwesomePackage
    |   |   Package.toml
    Assets/
 
-Open your ``Index.lua`` file in any editor you want (if you don't have one, we'd recommend you try `Visual Studio Code <https://code.visualstudio.com/>`_).
-
-Let's start spawning some Props in your server, for that, use this code:
+Open your ``Index.lua`` file in any editor you want (if you don't have one, we'd recommend you try `Visual Studio Code <https://code.visualstudio.com/>`_) and let's start spawning some Props in your server! You can use the following code for that:
 
 .. tabs::
  .. code-tab:: lua Lua
@@ -75,7 +73,7 @@ Let's start spawning some Props in your server, for that, use this code:
    prop_chair = Prop(Vector(400, 200, 0), Rotator(0, 0, 0), "NanosWorld::SM_WoodenChair")
    prop_tire = Prop(Vector(600, 0, 0), Rotator(0, 0, 0), "NanosWorld::SM_TireLarge")
 
-This will spawn 3 Props (a Table, a chair and a Tire) close to each other. After that, you can start the server and you will see the output:
+This will spawn 3 Props (a Table, a Chair and a Tire) close to each other. After that, you can start the server and you will see the output on server console:
 
 .. image:: https://i.imgur.com/JGp6QhZ.png
 
@@ -110,7 +108,9 @@ For spawning and assigning this new player to a new Character, we can just make 
         new_player:Possess(new_character)
     end)
 
-And that it! Ah, just remember to destroy the Characters when players disconnect, otherwise there will be a lot of souless Characters remaining on the map:
+.. image:: https://i.imgur.com/mz4sy2Q.png
+
+And that's it! Ah, just remember to destroy the Characters when players disconnect, otherwise there will be a lot of souless Characters remaining on the map:
 
 .. tabs::
  .. code-tab:: lua Lua
@@ -131,7 +131,26 @@ And that it! Ah, just remember to destroy the Characters when players disconnect
         end
     end)
 
-.. image:: https://i.imgur.com/mz4sy2Q.png
+
+.. tip:: You can register for events for all entities or for specific entities only! Example:
+
+.. tabs::
+ .. code-tab:: lua Lua
+
+    -- Registering for events for all characters
+    Character:on("EnterVehicle", function(character, vehicle)
+
+    end)
+
+    -- Registering for events for a specific character
+    local my_character = Character()
+
+    my_character:on("EnterVehicle", function(vehicle)
+    
+    end)
+    -- Note: you don't have the first parameter which references the character which triggered the event,
+    -- as you only registered that callback on that specific character
+
 
 Congratulations! You have finished your fist basic Script and Learned:
 
