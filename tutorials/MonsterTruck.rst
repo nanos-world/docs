@@ -16,8 +16,6 @@ This sample code shows how to create a Monster Truck using the Vehicle system:
 .. tabs::
  .. code-tab:: lua Lua
 
-	Package:RequirePackage("NanosWorldVehicles")
-
 	-- Spawns a Pickup
 	local vehicle = Vehicle(Vector(0, 0, 100), Rotator(), "NanosWorld::SK_Pickup", 0, true, false, true, "NanosWorld::A_Vehicle_Engine_10")
 
