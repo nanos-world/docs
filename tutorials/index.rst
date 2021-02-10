@@ -12,6 +12,7 @@ Tutorials & Examples
 	ChatColors.rst
 	MonsterTruck.rst
 	NameTags.rst
+	PaintingMeshes.rst
 	PlayAsProp.rst
 	PropShooter.rst
 	PropRain.rst
@@ -199,5 +200,12 @@ Samples / Snippets
 			"https://i.imgur.com/J97aZZy.png",
 			"Chat Colors",
 			"See how to display colored texts in the chat!"
+		);
+
+		DrawCard(
+			"PaintingMeshes.html",
+			"https://i.imgur.com/9yyOU5F.png",
+			"Painting Meshes",
+			"Check how to customize, paint and import custom textures to your meshes with scripting!"
 		);
 	</script>

@@ -273,9 +273,8 @@ nanos world provides a default Asset Pack already included in the base game, fee
         AM_Mannequin_DoorOpen_03 = "Characters/Common/Animations/Actions/AM_Mannequin_DoorOpen_03"
         AM_Mannequin_DoorOpen_04 = "Characters/Common/Animations/Actions/AM_Mannequin_DoorOpen_04"
 
-        # Other Assets (for not yet categorized ones)
-        [assets.others]
-        # Particles
+        # Particles Assets
+        [assets.particles]
         P_Bullet_Trail = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Bullet_Trail_System"
         P_Weapon_BarrelSmoke = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_BarrelSmoke_System"
         P_Weapon_Shells_12Gauge = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_12Gauge_System"

@@ -136,4 +136,11 @@ Modding
 			"Nanos World Assets Pack",
 			"Check it out all assets already included in the base game."
 		);
+
+		DrawCard(
+			"../tutorials/PaintingMeshes.html",
+			"https://i.imgur.com/9yyOU5F.png",
+			"Painting Meshes",
+			"Check how to customize, paint and import custom textures to your meshes with scripting!"
+		);
 	</script>
