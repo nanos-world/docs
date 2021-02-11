@@ -85,8 +85,8 @@ Examples
  .. code-tab:: lua Lua
 
     -- change all vehicles on the server to black body colors
-    for key, veh in pair(NanosWorld:GetVehicles()) do
-      veh:GetBodyColor(Color(0, 0, 0, 0))
+    for key, vehicle in pairs(NanosWorld:GetVehicles()) do
+      vehicle:SetBodyColor(Color(0, 0, 0))
     end
 
     NanosWorld:on("SpawnLocalPlayer", function(local_player)
