@@ -93,10 +93,6 @@ Functions
     - Size()
     - Returns the size of the file
 
-  * - :term:`number`
-    - Size()
-    - Returns the size of the file
-
   * - 
     - Skip(:term:`number` amount)
     - Skips n (Amount) positions from the current file pointer position
