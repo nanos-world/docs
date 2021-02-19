@@ -29,11 +29,6 @@ Functions (Inherited from Actor)
     - SetCollision(:term:`number` collision_type)
     - Sets the actor's collision (0 - Normal, 1 - Static Only, 2 - No Collision)
 
-  * - |client-only-label|
-    - 
-    - SetDefaultMaterial(:term:`number` material_index = -1)
-    - Replaces this actor materials with a default material which contains base parameters for customizing it, optionally replaces a specific material index or -1 for all materials
-
   * - |server-only-label|
     - 
     - SetGravityEnabled(:term:`boolean` new_gravity)

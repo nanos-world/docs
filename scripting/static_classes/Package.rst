@@ -52,6 +52,11 @@ Functions
 
   * -
     - :term:`table`\<:term:`string`\>
+    - GetDirectories(:term:`string` path_filter = "")
+    - Gets a list of all directories in this package, optionally with filters
+
+  * -
+    - :term:`table`\<:term:`string`\>
     - GetFiles(:term:`string` path_filter = "", :term:`string` extension_filter = "")
     - Gets a list of all files in this package, optionally with filters
 

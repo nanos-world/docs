@@ -66,8 +66,8 @@ Functions
 
   * - 
     - 
-    - SetDefaultMaterial()
-    - Replaces all materials of this actor with a nanos basic material with comon parameters available
+    - SetDefaultMaterial(:term:`number` material_type = 1)
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available (1 - Masked, 2 - Translucent)
 
   * - 
     - 

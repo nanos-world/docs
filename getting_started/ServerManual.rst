@@ -114,6 +114,10 @@ It is possible to input commands to the Server Console.
 Built-in Commands
 ~~~~~~~~~~~~~~~~~
 
+To stop the server
+
+``stop``
+
 To run a code in a package:
 
 ``package run [package_name] [lua_code]``

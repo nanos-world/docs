@@ -18,3 +18,8 @@ Events (Inherited from Actor)
     - Spawn
     - Entity actor
     - Triggered when an Entity is Spawned/Created
+
+  * -
+    - ValueChange
+    - Entity actor, :term:`string`, any value
+    - Triggered when an Entity has it's value changed
