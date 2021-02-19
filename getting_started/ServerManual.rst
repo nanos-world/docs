@@ -144,7 +144,7 @@ All (not pre-defined) commands will be sent into an event to the scripting/serve
 .. tabs::
  .. code-tab:: lua Lua
 
-    Server:on("Console", function(my_input)
+    Server:Subscribe("Console", function(my_input)
         Package:Log("Console command received: " .. my_input)
     end)
 

@@ -26,17 +26,17 @@ The following script mimics Battlefield V Score, Kill & Hit Log on the screen.
     KillHUDUI = nil
 
     -- Creates a WebUI for the Inventory when the package loads
-    Package:on("Load", function()
+    Package:Subscribe("Load", function()
         KillHUDUI = WebUI("KillHUD", "file:///UI/index.html")
     end)
 
     -- Destroys the WebUI when the package unloads
-    Package:on("Unload", function()
+    Package:Subscribe("Unload", function()
         KillHUDUI:Destroy()
     end)
 
     -- When a character takes damage, checks if I was the causer and displays it on the screen
-    Character:on("TakeDamage", function(charact, damage, bone, type, from, instigator)
+    Character:Subscribe("TakeDamage", function(charact, damage, bone, type, from, instigator)
         -- If I was not the causer, just ignore it
         if (instigator ~= NanosWorld:GetLocalPlayer()) then return end
 
@@ -53,7 +53,7 @@ The following script mimics Battlefield V Score, Kill & Hit Log on the screen.
     end)
 
     -- When a character dies, check if I was the last one to do damage on him and displays on the screen as a kill
-    Character:on("Death", function(charact)
+    Character:Subscribe("Death", function(charact)
         if (charact:GetValue("LastDamager") ~= NanosWorld:GetLocalPlayer()) then return end
 
         local player = charact:GetPlayer()

@@ -110,17 +110,17 @@ Examples
  .. code-tab:: lua Lua
 
     -- prints "Server started" when the server is starting
-    Server:on("Start", function()
+    Server:Subscribe("Start", function()
         Package:Log("Server started")
     end)
 
     -- prints "Server stopped" when the server stops / shutdown
-    Server:on("Stop", function()
+    Server:Subscribe("Stop", function()
         Package:Log("Server stopped")
     end)
 
     -- prints the delta time about every 30 ms
-    Server:on("Tick", function(delta_time)
+    Server:Subscribe("Tick", function(delta_time)
         Package:Log("Tick: " .. delta_time)
     end)
 

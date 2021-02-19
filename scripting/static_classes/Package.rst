@@ -105,11 +105,11 @@ Examples
  .. code-tab:: lua Lua
 
     -- prints the package name at the "Load" event
-    Package:on("Load", function()
+    Package:Subscribe("Load", function()
       print("Load package: " .. Package:GetName())
     end)
 
     -- prints the package name at the "Unload" event
-    Package:on("Unload", function()
+    Package:Subscribe("Unload", function()
       print("Unload package: " .. Package:GetName())
     end)

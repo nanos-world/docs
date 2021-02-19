@@ -25,6 +25,6 @@ This sample code shows how to set Actors to be highlighted when behind walls, or
     Client:SetHighlightColor(highlight_color)
 
     -- Setting all Characters to highlight
-    Character:on("Spawn", function(character)
+    Character:Subscribe("Spawn", function(character)
         character:SetHighlightEnabled(true)
     end)

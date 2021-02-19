@@ -30,7 +30,7 @@ This sample code attaches a :ref:`Light` to a :ref:`Weapon` to make a Flashlight
     my_weapon:SetValue("Light", my_light)
 
     -- Only when someone picks up this weapon, turns on the Flashlight (set it's color)
-    my_weapon:on("PickUp", function(character)
+    my_weapon:Subscribe("PickUp", function(weapon, character)
         local light = my_weapon:GetValue("Light")
         if (light ~= nil) then
             light:SetTintColor(Color(0.73, 0.67, 0.42))
@@ -38,7 +38,7 @@ This sample code attaches a :ref:`Light` to a :ref:`Weapon` to make a Flashlight
     end)
 
     -- When the weapon is dropped, turns off the Flashlight (set it's color to black)
-    my_weapon:on("Drop", function(character)
+    my_weapon:Subscribe("Drop", function(weapon, character)
         local light = my_weapon:GetValue("Light")
         if (light ~= nil) then
             light:SetTintColor(Color(0, 0, 0))

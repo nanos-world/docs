@@ -55,7 +55,7 @@ Examples
     -- [[CLIENT]]
 
     -- register for a local Event (local = client only)
-    Events:on("MyLocalEvent", function(my_text)
+    Events:Subscribe("MyLocalEvent", function(my_text)
         Package:Log("Event received locally! " .. my_text)
         -- outputs "Event received locally! hello nanos world!"
     end)
@@ -64,7 +64,7 @@ Examples
     Events:Call("MyLocalEvent", {"hello nanos world!"})
 
     -- register for a server Event (remote = server)
-    Events:on("MyClientEvent", function(my_text)
+    Events:Subscribe("MyClientEvent", function(my_text)
         Package:Log("Event received from server! " .. my_text)
         -- outputs "Event received from server! hello nanos world!"
     end)
@@ -81,7 +81,7 @@ Examples
     -- [[SERVER]]
 
     -- register for a local Event (local = server only)
-    Events:on("MyLocalEvent", function(my_text)
+    Events:Subscribe("MyLocalEvent", function(my_text)
         Package:Log("Event received locally! " .. my_text)
         -- outputs "Event received locally! hello nanos world!"
     end)
@@ -90,7 +90,7 @@ Examples
     Events:Call("MyLocalEvent", {"hello nanos world!"})
 
     -- register for a client Event (remote = client)
-    Events:on("MyServerEvent", function(player, my_text)
+    Events:Subscribe("MyServerEvent", function(player, my_text)
         Package:Log(player:GetName() .. " sent an event from client! " .. my_text)
         -- outputs "Syed sent an event from client! hello nanos world!"
         
@@ -108,7 +108,7 @@ Passing entities through events:
  .. code-tab:: lua Lua
 
     -- register for an Event (remote or local)
-    Events:on("MyAnotherEvent", function(my_text, my_vector, my_character, my_number)
+    Events:Subscribe("MyAnotherEvent", function(my_text, my_vector, my_character, my_number)
         Package:Log("Event received! " .. my_text .. " " .. my_vector.X .. " " .. my_character:GetViewMode() .. " " .. my_number)
         -- outputs "Event received! hello nanos world! 123 1 456"
     end)

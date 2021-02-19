@@ -25,7 +25,7 @@ This sample code creates a rain effect with :ref:`Prop`\s (boxes) falling from s
     my_timer = nil
 
     -- Sets BeginOverlap event
-    my_trigger:on("BeginOverlap", function(actor_triggering)
+    my_trigger:Subscribe("BeginOverlap", function(trigger, actor_triggering)
         -- Only activates if a Character enters it
         if (actor_triggering:GetType() ~= "Character") then
             return
@@ -43,7 +43,7 @@ This sample code creates a rain effect with :ref:`Prop`\s (boxes) falling from s
     end)
 
     -- Sets EndOverlap event
-    my_trigger:on("EndOverlap", function(actor_triggering)
+    my_trigger:Subscribe("EndOverlap", function(trigger, actor_triggering)
         -- Only deactivates if a Character leaves it
         if (actor_triggering:GetType() ~= "Character") then
             return

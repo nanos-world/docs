@@ -17,7 +17,7 @@ Usage
 
     local my_trigger = Trigger(Vector(-200, 100, 500), 100)
 
-    MyTrigger:on("BeginOverlap", function(actorTriggering)
+    my_trigger:Subscribe("BeginOverlap", function(trigger, actor_triggering)
         Package:Log("Someone entered my Trigger")
     end)
 

@@ -91,7 +91,7 @@ When a :ref:`Player` connects to your server, a new Player class is automaticall
  .. code-tab:: lua Lua
 
     -- Called when Players join the server (i.e. spawn)
-    Player:on("Spawn", function(new_player)
+    Player:Subscribe("Spawn", function(new_player)
 
     end)
 
@@ -101,7 +101,7 @@ For spawning and assigning this new player to a new Character, we can just make 
  .. code-tab:: lua Lua
 
     -- Called when Players join the server (i.e. spawn)
-    Player:on("Spawn", function(new_player)
+    Player:Subscribe("Spawn", function(new_player)
         -- Spawns a Character at position X = 0, Y = 0, Z = 0 with default's constructor parameters
         local new_character = Character(Vector(0, 0, 0))
         -- Possess the new Character
@@ -116,7 +116,7 @@ And that's it! Ah, just remember to destroy the Characters when players disconne
  .. code-tab:: lua Lua
 
     -- Called when Players join the server (i.e. spawn)
-    Player:on("Spawn", function(new_player)
+    Player:Subscribe("Spawn", function(new_player)
         -- Spawns a Character at position X = 0, Y = 0, Z = 0 with default's constructor parameters
         local new_character = Character(Vector(0, 0, 0))
         -- Possess the new Character
@@ -124,7 +124,7 @@ And that's it! Ah, just remember to destroy the Characters when players disconne
     end)
 
     -- Called when Player unpossess a Character (when Players disconnect, they will trigger UnPossess event)
-    Player:on("UnPossess", function(player, character, isPlayerDisconnecting)
+    Player:Subscribe("UnPossess", function(player, character, isPlayerDisconnecting)
         -- If Player is disconnecting from the server, destroys it's Character
         if (isPlayerDisconnecting) then
             character:Destroy()
@@ -138,18 +138,17 @@ And that's it! Ah, just remember to destroy the Characters when players disconne
  .. code-tab:: lua Lua
 
     -- Registering for events for all characters
-    Character:on("EnterVehicle", function(character, vehicle)
+    Character:Subscribe("EnterVehicle", function(character, vehicle)
 
     end)
 
     -- Registering for events for a specific character
+    -- it will trigger only when that character enters a vehicle!
     local my_character = Character()
 
-    my_character:on("EnterVehicle", function(vehicle)
+    my_character:Subscribe("EnterVehicle", function(character, vehicle)
     
     end)
-    -- Note: you don't have the first parameter which references the character which triggered the event,
-    -- as you only registered that callback on that specific character
 
 
 Congratulations! You have finished your fist basic Script and Learned:

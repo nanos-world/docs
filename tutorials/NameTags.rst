@@ -45,18 +45,18 @@ This sample shows how to add Name Tags to Characters
     end
     
     -- Adds a new Nametag to a character which was possessed
-    Character:on("Possessed", function(character, player)
+    Character:Subscribe("Possessed", function(character, player)
         AddNametag(player, character)
     end)
     
     -- Removes the Nametag from a character which was unpossessed
-    Character:on("UnPossessed", function(character, player)
+    Character:Subscribe("UnPossessed", function(character, player)
         Package:Log("UnPossessed")
         RemoveNametag(player, character)
     end)
     
     -- When a Player is spawned - for when you connect and there is already Player's connected
-    Player:on("Spawn", function(player)
+    Player:Subscribe("Spawn", function(player)
         RemoveNametag(player)
         AddNametag(player)
     end)

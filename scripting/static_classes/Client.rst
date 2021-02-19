@@ -147,7 +147,7 @@ Examples
 .. tabs::
  .. code-tab:: lua Lua
 
-    Client:on("MouseUp", function(key_name, mouse_x, mouse_y)
+    Client:Subscribe("MouseUp", function(key_name, mouse_x, mouse_y)
         if (key_name == "LeftMouseButton") then
             Package:Log("Left Click pressed at X: " .. mouse_x .. ", Y: " .. mouse_y)
         end

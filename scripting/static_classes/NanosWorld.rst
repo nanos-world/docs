@@ -89,6 +89,6 @@ Examples
       vehicle:SetBodyColor(Color(0, 0, 0))
     end
 
-    NanosWorld:on("SpawnLocalPlayer", function(local_player)
+    NanosWorld:Subscribe("SpawnLocalPlayer", function(local_player)
         Package:Log("LocalPlayer is ready!")
     end)

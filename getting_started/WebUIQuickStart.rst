@@ -86,11 +86,11 @@ Let's modify our Lua code to add some handles for JS events:
     MyUI = WebUI("My UI", "file:///UI/index.html")
 
     -- When the HTML is ready, triggers an Event in there
-    MyUI:on("Ready", function()
+    MyUI:Subscribe("Ready", function()
         MyUI:CallEvent("MyAwesomeEvent", {"Hello! You are ready!"})
     end)
 
-    MyUI:on("MyAwesomeAnswer", function(param1)
+    MyUI:Subscribe("MyAwesomeAnswer", function(param1)
         Package:Log("Received an answer! Message: " .. param1)
     end)
 
