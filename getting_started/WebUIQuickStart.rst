@@ -69,7 +69,7 @@ Let's add some JavaScript code (into ``index.js``) to communicate with your Pack
  .. code-tab:: javascript JavaScript
     
     // Register for "MyAwesomeEvent" from Lua
-    Events.on("MyAwesomeEvent", function(param1) {
+    Events.Subscribe("MyAwesomeEvent", function(param1) {
         console.log("Triggered! " + param1);
 
         // Triggers "MyAwesomeAnswer" on Lua

@@ -106,7 +106,7 @@ The following script mimics Battlefield V Score, Kill & Hit Log on the screen.
     var total_score = 0;
     var total_score_current = 0;
 
-    Events.on("AddScore", function(score, type_id, label, use_current) {
+    Events.Subscribe("AddScore", function(score, type_id, label, use_current) {
         total_score += score;
 
         // Displays all DOM elements
@@ -131,7 +131,7 @@ The following script mimics Battlefield V Score, Kill & Hit Log on the screen.
         $("#score_feed").prepend(score_feed_item);
     });
 
-    Events.on("AddKill", function(name, is_headshot) {
+    Events.Subscribe("AddKill", function(name, is_headshot) {
         // Adds 20 score for killing
         total_score += 20;
 

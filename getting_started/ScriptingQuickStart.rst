@@ -137,18 +137,61 @@ And that's it! Ah, just remember to destroy the Characters when players disconne
 .. tabs::
  .. code-tab:: lua Lua
 
-    -- Registering for events for all characters
+    -- Registering for "EnterVehicle" event for all characters
     Character:Subscribe("EnterVehicle", function(character, vehicle)
-
+        Package:Log("My Callback for all characters!")
     end)
 
-    -- Registering for events for a specific character
+    -- Registering for "EnterVehicle" event for a specific character
     -- it will trigger only when that character enters a vehicle!
     local my_character = Character()
 
     my_character:Subscribe("EnterVehicle", function(character, vehicle)
-    
+        Package:Log("My Callback for my_character only!")
     end)
+
+
+.. tip:: You can also unregister for events you registered! This way they won't get triggered anymore. Example:
+
+.. tabs::
+ .. code-tab:: lua Lua
+
+    -- Registering for "EnterVehicle" event for all characters
+    Character:Subscribe("EnterVehicle", function(character, vehicle)
+        Package:Log("My Callback for all characters!")
+    end)
+
+    -- Unregistering "EnterVehicle" event for all character (in this Package)
+    Character:Unsubscribe("EnterVehicle")
+
+    -- Registering for "EnterVehicle" event for a specific character
+    -- it will trigger only when that character enters a vehicle!
+    local my_character = Character()
+
+    my_character:Subscribe("EnterVehicle", function(character, vehicle)
+        Package:Log("My Callback for my_character only!")
+    end)
+
+    -- Unregistering "EnterVehicle" event registered for this character
+    my_character:Unsubscribe("EnterVehicle")
+
+    -- It is also possible to unregister a specific function,
+    -- for that you will need to declare that function separately
+    function EnterVehicleCallback(character, vehicle)
+        Package:Log("My Callback for all characters (declared separately)")
+    end
+
+    -- Registering for "EnterVehicle" event for all characters with a separated function
+    Character:Subscribe("EnterVehicle", EnterVehicleCallback)
+
+    -- Registering for "EnterVehicle" event for all characters
+    Character:Subscribe("EnterVehicle", function(character, vehicle)
+        Package:Log("My Callback for all characters!")
+    end)
+
+    -- Unregistering "EnterVehicle" event for a specific callback
+    -- i.e. "My Callback for all characters!" will keep triggering
+    Character:Unsubscribe("EnterVehicle", EnterVehicleCallback)
 
 
 Congratulations! You have finished your fist basic Script and Learned:

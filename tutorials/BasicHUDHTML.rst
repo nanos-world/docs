@@ -141,7 +141,7 @@ In your ``index.js``, add the following JavaScript code:
  .. code-tab:: javascript JavaScript
 
     // Register for UpdateWeaponAmmo custom event (from Lua)
-    Events.on("UpdateWeaponAmmo", function(enable, clip, bag) {
+    Events.Subscribe("UpdateWeaponAmmo", function(enable, clip, bag) {
         if (enable)
             $("#weapon_ammo_container").show();
         else
@@ -153,7 +153,7 @@ In your ``index.js``, add the following JavaScript code:
     });
 
     // Register for UpdateHealth custom event (from Lua)
-    Events.on("UpdateHealth", function(health) {
+    Events.Subscribe("UpdateHealth", function(health) {
         // Using JQuery, overrides the HTML content of the SPAN with the new health value
         $("#health_current").html(health);
 

@@ -151,7 +151,7 @@ Examples
  .. code-tab:: javascript JavaScript / (HTML - UI)
 
     // registers for events from Lua
-    Events.on("MyEventFromLua", function(param1) {
+    Events.Subscribe("MyEventFromLua", function(param1) {
         console.log("Event received from Lua!" + param1);
         // outputs "Event received from Lua! hello nanos world from lua!"
     })

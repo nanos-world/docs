@@ -176,7 +176,7 @@ To be able to display dynamic information in the screen, you can listen to the E
         // Update your HTML here
     }
 
-    Events.on("UpdateScreen", UpdateScreen);
+    Events.Subscribe("UpdateScreen", UpdateScreen);
 
 
 Also, it is possible to fetch Player's information by accessing a global variable called `LoadingScreen`:
