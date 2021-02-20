@@ -197,12 +197,12 @@ Now that our UI is done, let's finish our Lua code to handle that whole thing!
         UpdateHealth(character:GetHealth())
 
         -- Sets on character an event to update the health's UI after it takes damage
-        character:Subscribe("TakeDamage", function(character, damage, type, bone, from_direction, instigator)
-            UpdateHealth(character:GetHealth())
+        character:Subscribe("TakeDamage", function(charac, damage, type, bone, from_direction, instigator)
+            UpdateHealth(charac:GetHealth())
         end)
 
         -- Sets on character an event to update the health's UI after it dies
-        character:Subscribe("Death", function(character)
+        character:Subscribe("Death", function(charac)
             UpdateHealth(0)
         end)
 
@@ -215,24 +215,24 @@ Now that our UI is done, let's finish our Lua code to handle that whole thing!
         end
 
         -- Sets on character an event to update his grabbing weapon (to show ammo on UI)
-        character:Subscribe("PickUp", function(character, object)
+        character:Subscribe("PickUp", function(charac, object)
             if (object:GetType() == "Weapon") then
                 UpdateAmmo(true, object:GetAmmoClip(), object:GetAmmoBag())
             end
         end)
 
         -- Sets on character an event to remove the ammo ui when he drops it's weapon
-        character:Subscribe("Drop", function(character, object)
+        character:Subscribe("Drop", function(charac, object)
             UpdateAmmo(false)
         end)
 
         -- Sets on character an event to update the UI when he fires
-        character:Subscribe("Fire", function(character, weapon)
+        character:Subscribe("Fire", function(charac, weapon)
             UpdateAmmo(true, weapon:GetAmmoClip(), weapon:GetAmmoBag())
         end)
 
         -- Sets on character an event to update the UI when he reloads the weapon
-        character:Subscribe("Reload", function(character, weapon, ammo_to_reload)
+        character:Subscribe("Reload", function(charac, weapon, ammo_to_reload)
             UpdateAmmo(true, weapon:GetAmmoClip(), weapon:GetAmmoBag())
         end)
     end
