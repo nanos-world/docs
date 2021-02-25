@@ -70,7 +70,7 @@ Functions
     - Changes the Highlight Color for highlighted actors. Multiply it by 5 (or more) for having a glowing effect.
 
   * - 
-    - SetValue(:term:`string` key, any value)
+    - SetValue(:term:`string` key, :term:`any` value)
     - Sets a global value in the Client, which can be accessed from anywhere (client side)
 
   * - 

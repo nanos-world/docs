@@ -6,3 +6,11 @@
 
 .. |client-read-only-label| image:: /images/client-read-only.svg
    :class: client-read-only-label
+
+.. |br| raw:: html
+
+   <br/>
+
+.. |br-p| raw:: html
+
+   <br/><span style="margin-left: 10px;"></span>
