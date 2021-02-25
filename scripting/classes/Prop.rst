@@ -129,17 +129,17 @@ Events
 
   * -
     - Grab
-    - :ref:`Prop` self, :ref:`Character` handler
+    - :ref:`Prop` self, |br| :ref:`Character` handler
     - When Character grabs a Prop
 
   * -
     - Hit
-    - :ref:`Prop` self, :term:`number` intensity
+    - :ref:`Prop` self, |br| :term:`number` intensity
     - When this Prop hits something
 
   * -
     - UnGrab
-    - :ref:`Prop` self, :ref:`Character` handler
+    - :ref:`Prop` self, |br| :ref:`Character` handler
     - When Character ungrabs a Prop
 
 .. include:: ../common/events/Actor.rst

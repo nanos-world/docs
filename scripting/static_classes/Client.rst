@@ -114,7 +114,7 @@ Events
 
   * - Chat
     - :term:`string` text
-    - Called when a chat text is submitted (by LocalPlayer) - return false to do not send the message
+    - Called when a chat text is submitted (by LocalPlayer) - Return false to do not send the message
 
   * - Console
     - :term:`string` text
@@ -122,19 +122,19 @@ Events
 
   * - KeyDown
     - :term:`string` key_name
-    - A keyboard key has been pressed / is being pressed. Return false to block it
+    - A keyboard key has been pressed / is being pressed - Return false to block it
 
   * - KeyUp
     - :term:`string` key_name
-    - A keyboard key has been released. Return false to block it
+    - A keyboard key has been released - Return false to block it
 
   * - MouseDown
-    - :term:`string` key_name, :term:`number` mouse_x, :term:`number` mouse_y. Return false to block it
-    - A mouse button has been pressed / is being pressed
+    - :term:`string` key_name, |br| :term:`number` mouse_x, |br| :term:`number` mouse_y
+    - A mouse button has been pressed / is being pressed - Return false to block it
 
   * - MouseUp
-    - :term:`string` key_name, :term:`number` mouse_x, :term:`number` mouse_y. Return false to block it
-    - A mouse button has been released
+    - :term:`string` key_name, |br| :term:`number` mouse_x, |br| :term:`number` mouse_y
+    - A mouse button has been released - Return false to block it
 
   * - Tick
     - :term:`number` delta_time

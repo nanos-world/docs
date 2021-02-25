@@ -58,7 +58,7 @@ Functions
 
   * - 
     - 
-    - SetValue(:term:`string` key, any value)
+    - SetValue(:term:`string` key, :term:`any` value)
     - Sets a value in this entity, which can be accessed by any package (local only)
 
   * - |server-only-label|
@@ -122,7 +122,7 @@ Functions
     - Returns the VOIP Channel of this Player
 
   * - 
-    - any
+    - :term:`any`
     - GetValue(:term:`string` Key)
     - Gets a value given a key
 
@@ -160,7 +160,7 @@ Events
 
   * -
     - Possess
-    - :ref:`Player` player, :ref:`Character` character
+    - :ref:`Player` player, |br| :ref:`Character` character
     - A ``Player`` was bound to a :ref:`Character`
 
   * -
@@ -175,10 +175,10 @@ Events
 
   * -
     - UnPossess
-    - :ref:`Player` player, :ref:`Character` character, :term:`boolean` is_player_disconnecting
+    - :ref:`Player` player, |br| :ref:`Character` character, |br| :term:`boolean` is_player_disconnecting
     - A :ref:`Character` was released from the ``Player``
 
   * -
     - VOIP
-    - :ref:`Player` player, :term:`boolean` is_talking
+    - :ref:`Player` player, |br| :term:`boolean` is_talking
     - When a Player starts/ends using VOIP

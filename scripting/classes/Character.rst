@@ -212,8 +212,8 @@ Functions
 
   * - 
     - 
-    - SetDefaultMaterial(:term:`number` material_type = 1)
-    - Replaces all materials of this actor with a nanos basic material with comon parameters available (1 - Masked, 2 - Translucent)
+    - SetDefaultMaterial(:term:`MaterialType` material_type = MaterialType.Masked)
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available (*Masked, Translucent*)
 
   * - |server-only-label|
     - 
@@ -282,13 +282,13 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetViewMode(:term:`number`)
-    - Sets Character View Mode (0 - FPS, 1 TPS1, 2 - TPS2, 3 - TPS3)
+    - SetViewMode(:term:`ViewMode`)
+    - **View Modes**: *FPS, TPS1, TPS2, TPS3*
 
   * - |server-only-label|
     - 
-    - SetWeaponAimMode(:term:`number` state)
-    - 0 - None, 1 - ADS (FPS), 2 - ZoomedZoom (TPS), 3 - Zoomed, 4 - ZoomedFar
+    - SetWeaponAimMode(:term:`AimMode` state)
+    - **Aim Modes**: *None, ADS, ZoomedZoom, Zoomed, ZoomedFar*
 
   * - |server-only-label|
     - 
@@ -341,7 +341,7 @@ Functions
     - Gets the Character's MaxHealth.
 
   * - 
-    - Actor
+    - Entity
     - GetPicked()
     - Gets the holding Picked Item/Grenade/Weapon
 
@@ -386,62 +386,62 @@ Events
 
   * -
     - Death
-    - :ref:`Character` self, :term:`number` last_damage_taken, :term:`string` last_bone_damaged, :term:`number` damage_type_reason, :ref:`Vector` hit_from_direction, :ref:`Player` instigator
+    - :ref:`Character` self, |br| :term:`number` last_damage_taken, |br| :term:`string` last_bone_damaged, |br| :term:`number` damage_type_reason, |br| :ref:`Vector` hit_from_direction, |br| :ref:`Player` instigator
     - When Character Dies
 
   * -
     - Drop
-    - :ref:`Character` self, :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object, :term:`boolean` was_triggered_by_player
+    - :ref:`Character` self, |br| :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object, |br| :term:`boolean` triggered_by_player
     - When Character drops anything
 
   * -
     - EnterVehicle
-    - :ref:`Character` self, :ref:`Vehicle` vehicle
+    - :ref:`Character` self, |br| :ref:`Vehicle` vehicle
     - When Character enters a vehicle
 
   * -
     - FallingModeChanged
-    - :ref:`Character` self, :term:`number` old_state, :term:`number` new_state
-    - 0 - None, 1 - Jumping, 2 - Climbing, 3 - Vaulting, 4 - Falling, 5 - HighFalling, 6 - Parachuting, 7 - SkyDiving
+    - :ref:`Character` self, |br| :term:`FallingMode` old_state, |br| :term:`FallingMode` new_state
+    - **Falling Modes**: *None, Jumping, Climbing, Vaulting, Falling, HighFalling, Parachuting, SkyDiving*
 
   * -
     - Fire
-    - :ref:`Character` self, :ref:`Weapon` weapon
+    - :ref:`Character` self, |br| :ref:`Weapon` weapon
     - When Character fires a Weapon
 
   * -
     - GaitModeChanged
-    - :ref:`Character` self, :term:`number` old_state, :term:`number` new_state
-    - 0 - None, 1 - Walking, 2 - Sprinting
+    - :ref:`Character` self, |br| :term:`GaitMode` old_state, |br| :term:`GaitMode` new_state
+    - **Gait Modes**: *None, Walking, Sprinting*
 
   * -
     - GrabProp
-    - :ref:`Character` self, :ref:`Prop` prop
+    - :ref:`Character` self, |br| :ref:`Prop` prop
     - When Character grabs up a Prop
 
   * - |server-only-label|
     - Interact
-    - :ref:`Character` self, :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object
+    - :ref:`Character` self, |br| :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object
     - When a Character interacts with an object (i.e. try to pick it up) - return false to prevent it
 
   * -
     - LeaveVehicle
-    - :ref:`Character` self, :ref:`Vehicle` vehicle
+    - :ref:`Character` self, |br| :ref:`Vehicle` vehicle
     - When Character leaves a vehicle
 
   * -
     - MoveCompleted
-    - :ref:`Character` self, :term:`boolean` succeeded
+    - :ref:`Character` self, |br| :term:`boolean` succeeded
     - Called when AI reaches it's destination, or when it fails
 
   * -
     - PickUp
-    - :ref:`Character` self, :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object
+    - :ref:`Character` self, |br| :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object
     - When Character picks up anything
 
   * -
     - Possessed
-    - :ref:`Character` self, :ref:`Player` possesser
+    - :ref:`Character` self, |br| :ref:`Player` possesser
     - When Character is possessed
 
   * -
@@ -451,12 +451,12 @@ Events
 
   * -
     - RagdollModeChanged
-    - :ref:`Character` self, :term:`number` old_state, :term:`number` new_state
+    - :ref:`Character` self, |br| :term:`boolean` old_state, |br| :term:`boolean` new_state
     - 
 
   * -
     - Reload
-    - :ref:`Character` self, :ref:`Weapon` weapon, :term:`number` ammo_to_reload
+    - :ref:`Character` self, |br| :ref:`Weapon` weapon, |br| :term:`number` ammo_to_reload
     - When Character reloads a weapon
 
   * -
@@ -466,38 +466,38 @@ Events
 
   * -
     - StanceModeChanged
-    - :ref:`Character` self, :term:`number` old_state, :term:`number` new_state
-    - 0 - None, 1 - Standing, 2 - Crouching, 3 - Proning
+    - :ref:`Character` self, |br| :term:`StanceMode` old_state, |br| :term:`StanceMode` new_state
+    - **Stance Modes**: *None, Standing, Crouching, Proning*
 
   * -
     - SwimmingModeChanged
-    - :ref:`Character` self, :term:`number` old_state, :term:`number` new_state
-    - 0 - None, 1 - Superficie, 2 - Underwater
+    - :ref:`Character` self, |br| :term:`SwimmingMode` old_state, |br| :term:`SwimmingMode` new_state
+    - **Swimming Modes**: *None, Superficie, Underwater*
 
   * -
     - TakeDamage
-    - :ref:`Character` self, :term:`number` damage, :term:`string` bone, :term:`number` type (0 - Shot, 1 - Explosion), :ref:`Vector` from_direction, :ref:`Player` instigator
+    - :ref:`Character` self, |br| :term:`number` damage, |br| :term:`string` bone, |br| :term:`DamageType` type, |br| :ref:`Vector` from_direction, |br| :ref:`Player` instigator
     - When Character takes Damage
 
   * -
     - UnGrabProp
-    - :ref:`Character` self, :ref:`Prop` prop
+    - :ref:`Character` self, |br| :ref:`Prop` prop
     - When Character drops a Prop
 
   * -
     - UnPossessed
-    - :ref:`Character` self, :ref:`Player` old_possesser
+    - :ref:`Character` self, |br| :ref:`Player` old_possesser
     - When Character is unpossessed
 
   * -
     - ViewModeChanged
-    - :ref:`Character` self, :term:`number` old_state, :term:`number` new_state
-    - 0 - FPS, 1 - TPS1, 2 - TPS2, 3 - TPS3
+    - :ref:`Character` self, |br| :term:`ViewMode` old_state, |br| :term:`ViewMode` new_state
+    - **View Modes**: *FPS, TPS1, TPS2, TPS3*
 
   * -
     - WeaponAimModeChanged
-    - :ref:`Character` self, :term:`number` old_state, :term:`number` new_state
-    - 0 - None, 1 - ADS (FPS), 2 - ZoomedZoom (TPS), 3 - Zoomed, 4 - ZoomedFar
+    - :ref:`Character` self, |br| :term:`AimMode` old_state, |br| :term:`AimMode` new_state
+    - **Aim Modes**: *None, ADS, ZoomedZoom, Zoomed, ZoomedFar*
 
 .. include:: ../common/events/Actor.rst
 
@@ -505,7 +505,7 @@ Events
 Male & Female Customization
 ---------------------------
 
-The following items can be used to customize Male & Female default meshes from nanos world
+The following items can be used to customize Male & Female (``NanosWorld::SK_Male`` & ``NanosWorld::SK_Female``) default meshes from nanos world
 
 +----------------------+----------------------+----------------------+
 | Morph Targets        | Mat. Scalar Params   | Mat. Color Params    |

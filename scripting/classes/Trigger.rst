@@ -6,7 +6,7 @@
 Trigger
 *******
 
-A Trigger class is a utility class to trigger events when some Actor enters an Area.
+A Trigger class is a utility class to trigger events when any Entity enters an Area.
 
 
 Usage
@@ -88,13 +88,13 @@ Events
 
   * -
     - BeginOverlap
-    - :ref:`Trigger` self, any Actor
-    - When an Actor enters this trigger
+    - :ref:`Trigger` self, |br| :term:`any` entity
+    - When an entity enters this trigger
 
   * -
     - EndOverlap
-    - :ref:`Trigger` self, any Actor
-    - When an Actor leaves this trigger
+    - :ref:`Trigger` self, |br| :term:`any` entity
+    - When an entity leaves this trigger
 
 .. include:: ../common/events/Actor.rst
 

@@ -105,7 +105,7 @@ Functions
 
   * - :term:`string`
     - GetType()
-    - Returns the type of this Actor
+    - Returns the type of this Entity
 
 
 Events
@@ -119,7 +119,7 @@ Events
     - **Description**
 
   * - Failed
-    - :term:`number` error_code, :term:`string` message
+    - :term:`number` error_code, |br| :term:`string` message
     - When this page fails to load
 
   * - Ready

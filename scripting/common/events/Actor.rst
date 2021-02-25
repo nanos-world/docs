@@ -21,5 +21,5 @@ Events (Inherited from Actor)
 
   * -
     - ValueChange
-    - Entity actor, :term:`string`, any value
+    - Entity actor, |br| :term:`string` key, |br| :term:`any` value
     - Triggered when an Entity has it's value changed

@@ -50,13 +50,13 @@ Functions
   * - SetPassword(:term:`string` password, :term:`boolean` persist_to_config_file = false)
     - Sets the password of the server, optionally overrides Config.toml
 
-  * - SetValue(:term:`string` key, any value)
+  * - SetValue(:term:`string` key, :term:`any` value)
     - Sets a global value in the Server, which can be accessed from anywhere (server side)
 
   * - UnloadPackage(:term:`string` package_folder_name)
     - Unloads a Package
 
-  * - any GetValue(:term:`string` key)
+  * - :term:`any` GetValue(:term:`string` key)
     - Gets a value given a key
 
 
@@ -71,7 +71,7 @@ Events
     - **Description**
 
   * - Chat
-    - :ref:`Player`, :term:`string` text
+    - :ref:`Player`, |br| :term:`string` text
     - Called when a player types something in the chat - return false to do not send the message
 
   * - Console

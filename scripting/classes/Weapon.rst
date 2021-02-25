@@ -377,12 +377,12 @@ Events
 
   * -
     - Fire
-    - :ref:`Weapon` self, :ref:`Character` shooter
+    - :ref:`Weapon` self, |br| :ref:`Character` shooter
     - When this weapon is fired
 
   * -
     - Reload
-    - :ref:`Weapon` self, :ref:`Character` character, :term:`number` ammo_to_reload
+    - :ref:`Weapon` self, |br| :ref:`Character` character, |br| :term:`number` ammo_to_reload
     - When this weapon is reloaded, optionally by a Character
 
 .. include:: ../common/events/Pickable.rst

@@ -44,6 +44,10 @@
 	transform: scale(1.015);
 }
 
+h2 {
+	margin-top: 25px;
+}
+
 .nanos-card img {
 	margin: 0px !important;
 	filter: brightness(0.5);
@@ -54,9 +58,8 @@
 
 .nanos-card h4 {
 	position: absolute;
-	top: 25px;
-	left: 25px;
 	font-weight: bold;
+	margin: 25px;
 }
 
 .nanos-card p {

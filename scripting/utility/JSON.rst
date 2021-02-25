@@ -40,9 +40,9 @@ Functions
     - **Description**
 
   * - :term:`string`
-    - stringify(any value)
+    - stringify(:term:`any` value)
     - Returns a string representing value encoded in JSON
 
-  * - any value
+  * - :term:`any` value
     - parse(:term:`string` str)
     - Returns a value representing the decoded JSON string

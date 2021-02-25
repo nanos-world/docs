@@ -248,12 +248,12 @@ Events
 
   * -
     - Horn
-    - :ref:`Vehicle` self, :term:`boolean` is_honking
+    - :ref:`Vehicle` self, |br| :term:`boolean` is_honking
     - When Vehicle honks
 
   * -
     - Hit
-    - :ref:`Vehicle` self, :term:`number` intensity
+    - :ref:`Vehicle` self, |br| :term:`number` intensity
     - When Vehicle hits something
 
 .. include:: ../common/events/Actor.rst
