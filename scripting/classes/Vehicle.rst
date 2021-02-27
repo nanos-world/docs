@@ -81,9 +81,9 @@ Constructor Parameters
     - model_name (Skeletal Mesh)
     - 
 
-  * - :term:`number`
+  * - :term:`CollisionType`
     - collision_type
-    - 0 (Normal)
+    - CollisionType.Normal
 
   * - :term:`boolean`
     - gravity_enabled
@@ -133,7 +133,7 @@ Functions
 
   * - 
     - 
-    - AddStaticMeshAttached(:term:`string` id, :term:`string` static_mesh_path, :term:`string` socket = "", :ref:`Vector` relative_location = Vector(), :ref:`Rotator` relative_rotation = Rotator())
+    - AddStaticMeshAttached( |br-p| :term:`string` id, |br-p| :term:`string` static_mesh_path, |br-p| :term:`string` socket = "", |br-p| :ref:`Vector` relative_location = Vector(), |br-p| :ref:`Rotator` relative_rotation = Rotator() |br| )
     - Spawns and Attaches a StaticMesh into this Vehicle in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
   * - |server-only-label|
@@ -153,67 +153,67 @@ Functions
 
   * - 
     - 
-    - SetDefaultMaterial(:term:`number` material_type = 1)
-    - Replaces all materials of this actor with a nanos basic material with comon parameters available (1 - Masked, 2 - Translucent)
+    - SetDefaultMaterial(:term:`MaterialType` material_type = MaterialType.Masked)
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available (*Masked, Translucent*)
 
   * - |server-only-label|
     - 
-    - SetDifferentialSetup(:term:`number` differential_type = 0, :term:`number` front_rear_split = 0.45, :term:`number` front_left_right_split = 0.5, :term:`number` rear_left_right_split = 0.5, :term:`number` center_bias = 1.3, :term:`number` front_bias = 1.3, :term:`number` rear_bias = 1.3)
+    - SetDifferentialSetup( |br-p| :term:`DifferentialType` differential_type = LimitedSlip_4W, |br-p| :term:`number` front_rear_split = 0.45, |br-p| :term:`number` front_left_right_split = 0.5, |br-p| :term:`number` rear_left_right_split = 0.5, |br-p| :term:`number` center_bias = 1.3, |br-p| :term:`number` front_bias = 1.3, |br-p| :term:`number` rear_bias = 1.3 |br| )
     - Configures the Vehicle Differential. Check the page bottom to see each property explanation
 
   * - |server-only-label|
     - 
-    - SetEngineSetup(:term:`number` max_rpm = 4500, :term:`number` moi = 1, :term:`number` damping_rate_full_throttle = 0.15, :term:`number` damping_rate_zero_throttle_clutch_engaged = 2, :term:`number` damping_rate_zero_throttle_clutch_disengaged = 0.35)
+    - SetEngineSetup( |br-p| :term:`number` max_rpm = 4500, |br-p| :term:`number` moi = 1, |br-p| :term:`number` damping_rate_full_throttle = 0.15, |br-p| :term:`number` d_r_zero_trt_clutch_engaged = 2, |br-p| :term:`number` d_r_zero_trt_clutch_disengaged = 0.35 |br| )
     - Configures the Vehicle Engine. Check the page bottom to see each property explanation
 
   * - 
     - 
-    - SetMaterialColorParameter(:term:`string` parameter_name, :ref:`Color` color)
+    - SetMaterialColorParameter( |br-p| :term:`string` parameter_name, |br-p| :ref:`Color` color |br| )
     - Sets a Color parameter in this actor's material
 
   * - 
     - 
-    - SetMaterialScalarParameter(:term:`string` parameter_name, :term:`number` scalar)
+    - SetMaterialScalarParameter( |br-p| :term:`string` parameter_name, |br-p| :term:`number` scalar |br| )
     - Sets a scalar parameter in this actor's material
 
   * - 
     - 
-    - SetMaterialTextureParameter(:term:`string` parameter_name, :term:`string` texture_path)
+    - SetMaterialTextureParameter( |br-p| :term:`string` parameter_name, |br-p| :term:`string` texture_path |br| )
     - Loads a image from computer (relative to `Assets/` folder) and sets as parameter in this actor's material
 
   * - 
     - 
-    - SetMaterialVectorParameter(:term:`string` parameter_name, :ref:`Vector` vector)
+    - SetMaterialVectorParameter( |br-p| :term:`string` parameter_name, |br-p| :ref:`Vector` vector |br| )
     - Sets a Vector parameter in this actor's material
 
   * - |server-only-label|
     - 
-    - SetVehicleSetup(:term:`number` drag_coefficient = 0.3, :term:`number` throttle_input_rise_rate = 6, :term:`number` throttle_input_fall_rate = 10, :term:`number` brake_input_rise_rate = 6, :term:`number` brake_input_fall_rate = 10, :term:`number` handbrake_input_rise_rate = 12, :term:`number` handbrake_input_fall_rate = 12, :term:`number` steering_input_rise_rate = 2.5, :term:`number` steering_input_fall_rate = 5)
+    - SetVehicleSetup( |br-p| :term:`number` drag_coefficient = 0.3, |br-p| :term:`number` throttle_input_rise_rate = 6, |br-p| :term:`number` throttle_input_fall_rate = 10, |br-p| :term:`number` brake_input_rise_rate = 6, |br-p| :term:`number` brake_input_fall_rate = 10, |br-p| :term:`number` handbrake_input_rise_rate = 12, |br-p| :term:`number` handbrake_input_fall_rate = 12, |br-p| :term:`number` steering_input_rise_rate = 2.5, |br-p| :term:`number` steering_input_fall_rate = 5 |br| )
     - Configures the Vehicle General Settings. Check the page bottom to see each property explanation
 
   * - |server-only-label|
     - 
-    - SetTransmissionSetup(:term:`boolean` has_automatic_transmission = true, :term:`number` gear_switch_time = 0.5, :term:`number` gear_auto_box_latency = 2, :term:`number` final_ratio = 4, :term:`number` clutch_strength = 10)
+    - SetTransmissionSetup( |br-p| :term:`boolean` has_automatic_transmission = true, |br-p| :term:`number` gear_switch_time = 0.5, |br-p| :term:`number` gear_auto_box_latency = 2, |br-p| :term:`number` final_ratio = 4, |br-p| :term:`number` clutch_strength = 10 |br| )
     - Configures the Vehicle Transmission. Check the page bottom to see each property explanation
 
   * - |server-only-label|
     - 
-    - SetWheel(:term:`number` Index (0-3), :term:`string` bone_name, :term:`number` shape_radius = 30, :term:`number` shape_width = 10, :term:`number` steer_angle = 70, :term:`number` mass = 20, :term:`number` damping_rate = 0.25, :term:`number` lat_stiff_max_load = 2, :term:`number` lat_stiff_value = 17, :term:`number` long_stiff_value = 1000, :term:`number` suspension_force_offset = 0, :term:`number` suspension_max_raise = 10, :term:`number` suspension_max_drop = 10, :term:`number` suspension_natural_frequency = 7, :term:`number` suspension_damping_ratio = 1, :term:`number` max_brake_torque = 1500, :term:`number` max_handbrake_torque = 3000, :term:`boolean` is_affected_by_handbrake = true, :ref:`Vector` offset = Vector(0, 0, 0))
+    - SetWheel( |br-p| :term:`number` index (0-3), |br-p|:term:`string` bone_name, |br-p| :term:`number` shape_radius = 30, |br-p| :term:`number` shape_width = 10, |br-p| :term:`number` steer_angle = 70, |br-p| :term:`number` mass = 20, |br-p| :term:`number` damping_rate = 0.25, |br-p| :term:`number` lat_stiff_max_load = 2, |br-p| :term:`number` lat_stiff_value = 17, |br-p| :term:`number` long_stiff_value = 1000, |br-p| :term:`number` suspension_force_offset = 0, |br-p| :term:`number` suspension_max_raise = 10, |br-p| :term:`number` suspension_max_drop = 10, |br-p| :term:`number` suspension_natural_frequency = 7, |br-p| :term:`number` suspension_damping_ratio = 1, |br-p| :term:`number` max_brake_torque = 1500, |br-p| :term:`number` max_handbrake_torque = 3000, |br-p| :term:`boolean` is_affected_by_handbrake = true, |br-p| :ref:`Vector` offset = Vector(0, 0, 0) |br| )
     - Configures a Vehicle Wheel. Check the page bottom to see each property explanation
 
   * - |server-only-label|
     - 
-    - SetDoor(:term:`number` seat_index, :ref:`Vector` offset_location, :ref:`Vector` seat_location, :ref:`Rotator` seat_rotation, :term:`number` trigger_radius, :term:`number` leave_lateral_offset)
+    - SetDoor( |br-p| :term:`number` seat_index, |br-p| :ref:`Vector` offset_location, |br-p| :ref:`Vector` seat_location, |br-p| :ref:`Rotator` seat_rotation, |br-p| :term:`number` trigger_radius, |br-p| :term:`number` leave_lateral_offset |br| )
     - Adds a Door at OffsetLocation from root which will pose the Character at SeatLocation with SeatRotation rotation. LeaveLateralOffset is where the Character will be ejected when leaving it (e.g. -150 for left door or 150 for right door)
 
   * - |server-only-label|
     - 
-    - SetSteeringWheelSetup(:ref:`Vector` location, :term:`number` radius)
+    - SetSteeringWheelSetup( |br-p| :ref:`Vector` location, |br-p| :term:`number` radius |br| )
     - Configures where the Steering Wheel is located, so Characters can grab it procedurally properly
 
   * - |server-only-label|
     - 
-    - SetHeadlightsSetup(:ref:`Vector` location, :ref:`Color` color = Color(1, 0.86, 0.5))
+    - SetHeadlightsSetup( |br-p| :ref:`Vector` location, |br-p| :ref:`Color` color = Color(1, 0.86, 0.5) |br| )
     - Configures the Headlights Offset and Color.
 
   * - 
@@ -263,13 +263,13 @@ Parameters Detailed
 -------------------
 
 .. list-table:: 
-  :widths: 20 80
+  :widths: 35 65
 
   * - **Parameter Name**
     - **Description**
 
-  * - :term:`number` differential_type
-    - 0 - LimitedSlip_4W, 1 - LimitedSlip_FrontDrive, 2 - LimitedSlip_RearDrive, 3 - Open_4W, 4 - Open_FrontDrive, 5 - Open_RearDrive
+  * - :term:`DifferentialType` differential_type
+    - (*LimitedSlip_4W, LimitedSlip_FrontDrive, LimitedSlip_RearDrive, Open_4W, Open_FrontDrive, Open_RearDrive*)
 
 
   * - :term:`number` front_rear_split 
@@ -299,10 +299,10 @@ Parameters Detailed
   * - :term:`number` damping_rate_full_throttle
     - Damping rate of engine when full throttle is applied (Kgm^2/s) 
 
-  * - :term:`number` clutch_engaged
+  * - :term:`number` d_r_zero_trt_clutch_engaged
     - Damping rate of engine in at zero throttle when the clutch is engaged (Kgm^2/s)
 
-  * - :term:`number` clutch_disengaged
+  * - :term:`number` d_r_zero_trt_clutch_disengaged
     - Damping rate of engine in at zero throttle when the clutch is disengaged (in neutral gear) (Kgm^2/s)
 
   * - :term:`number` drag_coefficient

@@ -42,7 +42,7 @@ Functions
     - Draws a Polygon
 
   * - :term:`number` item_id
-    - AddText(:term:`number` group_id, :term:`string` text, :ref:`Vector2D` position, :term:`number` font_type, :term:`number` font_size, :ref:`Color` text_color, :term:`number` kerning, :term:`boolean` is_centered_x, :term:`boolean` is_centered_y, :term:`boolean` enable_shadow, :ref:`Vector2D` shadow_offset, :ref:`Color` shadow_color, :term:`boolean` enable_outline, :ref:`Color` outline_color)
+    - AddText(:term:`number` group_id, :term:`string` text, :ref:`Vector2D` position, :term:`FontType` font_type, :term:`number` font_size, :ref:`Color` text_color, :term:`number` kerning, :term:`boolean` is_centered_x, :term:`boolean` is_centered_y, :term:`boolean` enable_shadow, :ref:`Vector2D` shadow_offset, :ref:`Color` shadow_color, :term:`boolean` enable_outline, :ref:`Color` outline_color)
     - Draws a Text with optionals Shadow and Outline
 
   * - :ref:`Vector2D`
@@ -84,24 +84,6 @@ Events
     - :ref:`Vector2D` new_size
     - Called when the screen is resized
 
-
-Available Fonts
----------------
-
-.. list-table:: 
-  :widths: 5 95
-   
-  * - **ID**
-    - **Name**
-
-  * - 0
-    - Roboto
-
-  * - 1
-    - Gothic A1
-
-  * - 2
-    - Poiret One
 
 
 Examples

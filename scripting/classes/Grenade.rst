@@ -54,9 +54,9 @@ Constructor Parameters
     - explosion_sound
     - "NanosWorld::A_Explosion_Large
 
-  * - :term:`number`
+  * - :term:`CollisionType`
     - collision_type
-    - 0 (Normal)
+    - CollisionType.Normal
 
   * - :term:`boolean`
     - gravity_enabled

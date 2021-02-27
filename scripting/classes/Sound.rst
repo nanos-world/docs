@@ -24,7 +24,7 @@ Usage
         "NanosWorld::A_VR_Confirm", -- Asset Path
         false, -- Is 2D Sound
         true, -- Auto Destroy (if to destroy after finished playing)
-        0, -- Sound Type (SFX)
+        SoundType.SFX,
         1, -- Volume
         1 -- Pitch
     )
@@ -56,9 +56,9 @@ Constructor Parameters
     - auto_destroy (if to destroy after finished playing)
     - true
 
-  * - :term:`number`
-    - sound_type (0 - SFX, 1 - Music) - Used to apply user's volume settings
-    - 0
+  * - :term:`SoundType`
+    - sound_type (*SFX, Music*) - Used to apply user's volume settings
+    - SoundType.SFX
 
   * - :term:`number`
     - volume (0 - 1)
@@ -76,9 +76,9 @@ Constructor Parameters
     - falloff_distance (3D only)
     - 3600
 
-  * - :term:`number`
-    - attenuation_function (3D only) (0 - Linear, 1 - Logarithmic, 2 - Inverse, 3 - Log Reverse, 4 - Natural Sound)
-    - 0
+  * - :term:`AttenuationFunction`
+    - attenuation_function (3D only) (*Linear, Logarithmic, Inverse, LogReverse, NaturalSound**)
+    - AttenuationFunction.Linear
 
   * - :term:`boolean`
     - keep_playing_when_silent (3D only) - Whether to keep playing this sound when it's not audible - Use with caution, it may cause performance issues!

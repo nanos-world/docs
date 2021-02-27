@@ -33,7 +33,7 @@ This sample code attaches a :ref:`Light` to a :ref:`Weapon` to make a Flashlight
     my_weapon:Subscribe("PickUp", function(weapon, character)
         local light = my_weapon:GetValue("Light")
         if (light ~= nil) then
-            light:SetTintColor(Color(0.73, 0.67, 0.42))
+            light:SetColor(Color(0.73, 0.67, 0.42))
         end
     end)
 
@@ -41,6 +41,6 @@ This sample code attaches a :ref:`Light` to a :ref:`Weapon` to make a Flashlight
     my_weapon:Subscribe("Drop", function(weapon, character)
         local light = my_weapon:GetValue("Light")
         if (light ~= nil) then
-            light:SetTintColor(Color(0, 0, 0))
+            light:SetColor(Color(0, 0, 0))
         end
     end)

@@ -10,7 +10,7 @@ nanos world provides a fully configurable and ready Unreal Project to help you i
 Downloading nanos world Assets Development Kit - ADK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please refer to the official GitHub repository and download the latest `Assets Development Kit - ADK <https://github.com/nanos-world/assets-development-kit/releases/latest>`_ and extract it anywhere. You will find a ``NanosWorldADK.uproject`` file in there, just open it with Unreal Engine 4.25 and you are done!
+Please refer to the official GitHub repository and download the latest `Assets Development Kit - ADK <https://github.com/nanos-world/assets-development-kit/releases/latest>`_ and extract it anywhere. You will find a ``NanosWorldADK.uproject`` file in there, just open it with Unreal Engine 4.26.1 and you are done!
 
 When you open the project, you can start this Tutorial which will give you a brief information about the assets in there.
 

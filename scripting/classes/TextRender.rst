@@ -24,10 +24,10 @@ Usage
         Rotator(), 
         "My Awesome Text", 
         Color(1, 0, 0), 
-        1, -- Horizontal Alignment
-        0, -- Vertical Alignment
+        TextRenderHorizontalAlignment.Center, -- Horizontal Alignment
+        TextRenderVerticalAlignment.Top, -- Vertical Alignment
         32, -- Size
-        0, -- Lit
+        TextRenderType.Lit, -- Lit
         false -- Align to Camera
     )
 
@@ -58,21 +58,21 @@ Constructor Parameters
     - color
     - Color(1, 1, 1, 1)
 
-  * - :term:`number`
-    - horizontal_alignment (0 - Left, 1 - Center, 2 - Right)
-    - 0
+  * - :term:`TextRenderHorizontalAlignment`
+    - horizontal_alignment
+    - TextRenderHorizontalAlignment.Left
 
-  * - :term:`number`
-    - vertical_alignment (0 - Top, 1 - Center, 2 - Bottom, 3 - Quad Top)
-    - 0
+  * - :term:`TextRenderVerticalAlignment`
+    - vertical_alignment
+    - TextRenderVerticalAlignment.Top
 
   * - :term:`number`
     - size
     - 26
 
-  * - :term:`number`
-    - type (0 - Lit, 1 - Unlit, 2 - Unlit & Always Visible)
-    - 0
+  * - :term:`TextRenderType`
+    - type
+    - TextRenderType.Lit
 
   * - :term:`boolean`
     - align_to_camera (ajudsts the rotation automatically to always looks at the camera)

@@ -7,6 +7,9 @@
 .. |client-read-only-label| image:: /images/client-read-only.svg
    :class: client-read-only-label
 
+.. |authority-only-label| image:: /images/authority-only.svg
+   :class: authority-only-label
+
 .. |br| raw:: html
 
    <br/>

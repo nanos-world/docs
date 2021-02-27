@@ -46,17 +46,17 @@ Constructor Parameters
     - ModelName (StaticMesh)
     - 
 
-  * - :term:`number`
+  * - :term:`CollisionType`
     - collision_type
-    - 0 (Normal)
+    - CollisionType.Normal
 
   * - :term:`boolean`
-    - GravityEnabled
+    - gravity_enabled
     - true
 
-  * - :term:`number`
-    - HandlingMode (0. SingleHandedWeapon, 1. DoubleHandedWeapon, 2. SingleHandedMelee, 3. DoubleHandedMelee, 4. Throwable, 5. Torch, 6. Barrel, 7. Box)
-    - 5
+  * - :term:`HandlingMode`
+    - handling_mode *(SingleHandedWeapon, DoubleHandedWeapon, SingleHandedMelee, DoubleHandedMelee, Throwable, Torch)*
+    - HandlingMode.Torch
 
 
 Functions

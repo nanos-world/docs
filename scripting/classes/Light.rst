@@ -21,7 +21,7 @@ Usage
         Vector(-152, 245, 115), 
         Rotator(0, 90, 90), -- Relevant only for Rect and Spot light types
         Color(1, 0, 0), -- Red Tint
-        0, -- Point Light type
+        LightType.Point, -- Point Light type
         100, -- Intensity
         250, -- Attenuation Radius
         0, -- Cone Angle (Relevant only for Spot light type)
@@ -70,9 +70,9 @@ Constructor Parameters
     - color
     - Color(1, 1, 1, 1)
 
-  * - :term:`number`
-    - light_type (0 - Point, 1 - Spot, 3 - Rect)
-    - 0 (Point)
+  * - :term:`LightType`
+    - light_type
+    - LightType.Point
 
   * - :term:`number`
     - intensity

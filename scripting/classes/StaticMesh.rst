@@ -48,9 +48,9 @@ Constructor Parameters
     - model_name (StaticMesh)
     - 
 
-  * - :term:`number`
+  * - :term:`CollisionType`
     - collision_type
-    - 0 (Normal)
+    - CollisionType.Normal
 
 
 Functions
@@ -66,8 +66,8 @@ Functions
 
   * - 
     - 
-    - SetDefaultMaterial(:term:`number` material_type = 1)
-    - Replaces all materials of this actor with a nanos basic material with comon parameters available (1 - Masked, 2 - Translucent)
+    - SetDefaultMaterial(:term:`MaterialType` material_type = MaterialType.Masked)
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available (*Masked, Translucent*)
 
   * - 
     - 

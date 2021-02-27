@@ -9,94 +9,69 @@ Functions (Inherited from Actor)
     - **Name**
     - **Description**
 
-  * - |server-only-label|
+  * - |authority-only-label|
     - 
     - AddImpulse(:ref:`Vector` force)
     - Applies a Force in world coordinate on this Actor (the force is applied on Client side, by the (in most of cases) the closest player of this object)
 
-  * - |server-only-label|
+  * - |authority-only-label|
     - 
-    - AttachTo(Actor other, :term:`string` bone_name, :ref:`Vector` relative_location, :ref:`Rotator` relative_rotation)
+    - AttachTo( |br-p| Actor other, |br-p| :term:`string` bone_name = "", |br-p| :ref:`Vector` relative_location = {}, |br-p| :ref:`Rotator` relative_rotation = {} |br| )
     - Attaches this Actor to any other Actor with a Relative Offset/Rotation
 
-  * - |server-only-label|
+  * - |authority-only-label|
     - 
     - Destroy()
     - Destroys this Actor
 
-  * - |server-only-label|
+  * - |authority-only-label|
     - 
-    - SetCollision(:term:`number` collision_type)
-    - Sets the actor's collision (0 - Normal, 1 - Static Only, 2 - No Collision)
+    - SetCollision(:term:`CollisionType`)
+    - Sets the actor's collision **Collision Types**: *Normal, Static Only, NoCollision*
 
-  * - |server-only-label|
+  * - |authority-only-label|
     - 
-    - SetGravityEnabled(:term:`boolean` new_gravity)
+    - SetGravityEnabled(:term:`boolean`)
     - Sets the actor's gravity enabled
 
-  * - |client-only-label|
+  * - |authority-only-label|
     - 
-    - SetHighlightEnabled(:term:`boolean` enabled)
+    - SetHighlightEnabled(:term:`boolean`)
     - Sets if this Actors is Highlighting
 
-  * - |server-only-label|
+  * - |authority-only-label|
     - 
-    - SetInitialLocation(:ref:`Vector` new_initial_location)
+    - SetInitialLocation(:ref:`Vector`)
     - Sets the initial location
 
-  * - |server-only-label|
+  * - |authority-only-label|
     - 
-    - SetLocation(:ref:`Vector` new_location)
+    - SetLocation(:ref:`Vector`)
     - Sets the actor's location in the game world
 
-  * - |server-only-label|
+  * - |authority-only-label|
     - 
-    - SetMaterialColorParameter(:term:`string` parameter_name, :ref:`Color` color, :term:`number` material_index = -1)
-    - Sets a Color parameter on a material of this actor, optionally on a specific material index or -1 for all materials
-
-  * - |server-only-label|
-    - 
-    - SetMaterialScalarParameter(:term:`string` parameter_name, :term:`number` scalar, :term:`number` material_index = -1)
-    - Sets a Scalar parameter on a material of this actor, optionally on a specific material index or -1 for all materials
-
-  * - |server-only-label|
-    - 
-    - SetMaterialTextureParameter(:term:`string` parameter_name, :term:`string` texture_path, :term:`number` material_index = -1)
-    - Loads and sets a Texture parameter on a material of this actor, optionally on a specific material index or -1 for all materials
-
-  * - |server-only-label|
-    - 
-    - SetMaterialVectorParameter(:term:`string` parameter_name, :ref:`Vector` vector, :term:`number` material_index = -1)
-    - Sets a Vector parameter on a material of this actor, optionally on a specific material index or -1 for all materials
-
-  * - |server-only-label|
-    - 
-    - SetRotation(:ref:`Rotator` new_rotation)
+    - SetRotation(:ref:`Rotator`)
     - Sets the actor's rotation in the game world
 
-  * - |server-only-label|
+  * - |authority-only-label|
     - 
-    - SetScale(:ref:`Vector` Scale)
+    - SetScale(:ref:`Vector`)
     - Sets the actor's scale
-
-  * - |server-only-label|
-    - 
-    - SetTintColor(:ref:`Color` new_tint_color)
-    - Sets the tint color, for completely paint an object, multiply the color by 10 or 100
 
   * - 
     - 
-    - SetValue(:term:`string` key, any value)
+    - SetValue(:term:`string` key, :term:`any` value)
     - Sets a value in this entity, which can be accessed by any package (local only)
 
   * - 
     - 
-    - TranslateTo(:ref:`Vector` location, :term:`number` speed)
+    - TranslateTo( |br-p| :ref:`Vector` location, |br-p| :term:`number` speed |br| )
     - Smoothly moves this actor to a Location with a certain Speed
 
   * - 
     - 
-    - RotateTo(:ref:`Rotator` rotation, :term:`number` speed)
+    - RotateTo( |br-p| :ref:`Rotator` rotation, |br-p| :term:`number` speed |br| )
     - Smoothly rotates this actor to a Rotation with a certain Speed
 
   * - 
@@ -143,11 +118,6 @@ Functions (Inherited from Actor)
     - :ref:`Vector`
     - GetScale()
     - Gets the actor's scale
-
-  * - 
-    - :ref:`Color`
-    - GetTintColor()
-    - Gets the Tint Color
 
   * - 
     - :term:`string`

@@ -21,8 +21,8 @@ Functions (Inherited from Pickable)
 
   * - 
     - 
-    - SetDefaultMaterial(:term:`number` material_type = 1)
-    - Replaces all materials of this actor with a nanos basic material with comon parameters available (1 - Masked, 2 - Translucent)
+    - SetDefaultMaterial(:term:`MaterialType` material_type = MaterialType.Masked)
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available **Material Types**: (*Masked, Translucent*)
 
   * - 
     - 

@@ -46,9 +46,9 @@ Constructor Parameters
     - skeletal_mesh
     - NanosWorld::SK_Male
 
-  * - :term:`number`
+  * - :term:`CollisionType`
     - collision_type
-    - 0 (Normal)
+    - CollisionType.Normal
 
   * - :term:`boolean`
     - gravity_enabled
@@ -112,17 +112,17 @@ Functions
 
   * - |server-only-label|
     - :term:`number` damage_taken
-    - ApplyDamage(:term:`number` damage, :term:`string` bone_name = "", :term:`number` damage_type = 0, , :ref:`Vector` from_direction = (), :ref:`Player` instigator = nil)
+    - ApplyDamage( |br-p| :term:`number` damage, |br-p| :term:`string` bone_name = "", |br-p| :term:`number` damage_type = 0, |br-p| :ref:`Vector` from_direction = (), |br-p| :ref:`Player` instigator = nil |br| )
     - Do damage in a character, will trigger all related events and apply modified damage based on bone. Also will apply impulse if it's a heavy explosion.
 
   * - 
     - 
-    - AddSkeletalMeshAttached(:term:`string` id, :term:`string` static_mesh_path)
+    - AddSkeletalMeshAttached( |br-p| :term:`string` id, |br-p| :term:`string` static_mesh_path |br| )
     - Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
 
   * - 
     - 
-    - AddStaticMeshAttached(:term:`string` id, :term:`string` static_mesh_path, :term:`string` docket = "", :ref:`Vector` relative_location = Vector(), :ref:`Rotator` relative_rotation = Rotator())
+    - AddStaticMeshAttached |br-p| :term:`string` id, |br-p| :term:`string` static_mesh_path, |br-p| :term:`string` docket = "", |br-p| :ref:`Vector` relative_location = Vector(), |br-p| :ref:`Rotator` relative_rotation = Rotator() |br| )
     - Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
   * - |server-only-label|
@@ -132,7 +132,7 @@ Functions
 
   * - |server-only-label|
     - 
-    - EnterVehicle(:ref:`Vehicle` vehicle, :term:`number` seat)
+    - EnterVehicle( |br-p| :ref:`Vehicle` vehicle, |br-p| :term:`number` seat |br| )
     - Enters the Vehicle at Seat (0 - Driver)
 
   * - |server-only-label|
@@ -152,7 +152,7 @@ Functions
 
   * - |server-only-label|
     - 
-    - MoveTo(:ref:`Vector` location, :term:`number` acceptance_radius = 50)
+    - MoveTo( |br-p| :ref:`Vector` location, |br-p| :term:`number` acceptance_radius = 50 |br| )
     - AI: Makes this Character to walk to the Location
 
   * - |server-only-label|
@@ -162,7 +162,7 @@ Functions
 
   * - |server-only-label|
     - 
-    - PlayAnimation(:term:`string` animation_path, :term:`number` slot_type = 0, :term:`number` loop_indefinitely = false)
+    - PlayAnimation( |br-p| :term:`string` animation_path, |br-p| :term:`AnimationSlotType` slot_type = FullBody, |br-p| :term:`number` loop_indefinitely = false |br| )
     - Plays an Animation Montage on this character
 
   * - 
@@ -207,13 +207,23 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetCapsuleSize(:term:`number` radius, :term:`number` half_height)
+    - SetCapsuleSize( |br-p| :term:`number` radius, |br-p|:term:`number` half_height |br| )
     - Sets this Character's Capsule size (will affect Camera location and Character's collision) - default is (42, 96)
 
   * - 
     - 
     - SetDefaultMaterial(:term:`MaterialType` material_type = MaterialType.Masked)
     - Replaces all materials of this actor with a nanos basic material with comon parameters available (*Masked, Translucent*)
+
+  * - |server-only-label|
+    - 
+    - SetGaitMode(:term:`GaitMode` mode)
+    - **Gait Modes**: *None, Walking, Sprinting*
+
+  * - |server-only-label|
+    - 
+    - SetStanceMode(:term:`StanceMode` mode)
+    - **Stance Modes**: *None, Standing, Crouching, Proning*
 
   * - |server-only-label|
     - 
@@ -366,7 +376,7 @@ Functions
     - Gets the Vehicle the Character is on
 
   * - 
-    - :term:`number`
+    - :term:`ViewMode`
     - GetViewMode()
     - Gets Character View Mode
 

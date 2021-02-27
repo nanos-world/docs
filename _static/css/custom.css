@@ -72,7 +72,7 @@ h2 {
 	padding: 0.2rem !important;
 }
 
-.server-only-label, .client-only-label, .client-read-only-label {
+.server-only-label, .client-only-label, .client-read-only-label, .authority-only-label {
 	width: 20px;
 }
 

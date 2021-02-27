@@ -82,6 +82,10 @@ Events
     - 
     - Server has been started.
 
+  * - PlayerConnected
+    - :term:`string` ip
+    - Called when a player is attempting to connect to the server - return false to do not allow it
+
   * - Stop
     - 
     - Server has been stopped.

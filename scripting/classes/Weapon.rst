@@ -24,7 +24,7 @@ Usage
         Vector(-900, 185, 215), -- Spawn Location
         Rotator(0, 90, 90),     -- Spawn Rotation
         "NanosWorld::SK_AK47", -- Model
-        0,                    -- Collision (Normal)
+        CollisionType.Normal, -- Collision (Normal)
         true,                 -- Gravity Enabled
         30,                   -- Default Ammo in the Clip
         1000,                 -- Default Ammo in the Bag
@@ -42,7 +42,7 @@ Usage
         Vector(26, 0, 8.5),   -- Left Hand Location
         Rotator(0, 60, 90),   -- Left Hand Rotation
         Vector(-10, 0, 0),    -- Right Hand Offset
-        1,                    -- Handling Mode (0. SingleHandedWeapon, 1. DoubleHandedWeapon, 2. SingleHandedMelee, 3. DoubleHandedMelee, 4. Throwable, 5. Torch, 6. Barrel, 7. Box)
+        HandlingMode.DoubleHandedWeapon, -- Handling Mode (SingleHandedWeapon, DoubleHandedWeapon, SingleHandedMelee, DoubleHandedMelee, Throwable, Torch, Barrel, Box)
         0.15,                 -- Cadence (1 shot at each 0.15seconds)
         true,                 -- Can Hold Use (keep pressing to keep firing, common to automatic weapons)
         false,                -- Need to release to Fire (common to Bows)
@@ -124,9 +124,9 @@ Constructor Parameters
     - model_name
     - Skeletal Mesh Path
 
-  * - :term:`number`
+  * - :term:`CollisionType`
     - collision_type
-    - 0 *(Normal)*
+    - CollisionType.Normal
 
   * - :term:`boolean`
     - gravity_enabled
@@ -196,9 +196,9 @@ Constructor Parameters
     - right_hand_offset *(offset of right hand - to offset the weapon as well)*
     - 
 
-  * - :term:`number`
-    - handling_mode *(0. SingleHandedWeapon, 1. DoubleHandedWeapon, 2. SingleHandedMelee, 3. DoubleHandedMelee, 4. Throwable, 5. Torch)*
-    - 0
+  * - :term:`HandlingMode`
+    - handling_mode *(SingleHandedWeapon, DoubleHandedWeapon, SingleHandedMelee, DoubleHandedMelee, Throwable, Torch)*
+    - HandlingMode.SingleHandedWeapon
 
   * - :term:`number`
     - cadence *(frequency of shots in seconds)*
