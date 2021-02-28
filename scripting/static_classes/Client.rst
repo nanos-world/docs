@@ -26,15 +26,15 @@ Functions
     - Calls a Level Blueprint custom event (which can be added when creating levels through Unreal Engine). Parameters can be concatened to event_name
 
   * - 
-    - DrawDebugLine(:ref:`Vector` start, :ref:`Vector` end, :ref:`Color` color = (1, 0, 0), :term:`number` duration = 5, :term:`number` thickness = 0)
+    - DrawDebugLine( |br-p| :ref:`Vector` start, |br-p| :ref:`Vector` end, |br-p| :ref:`Color` color = (1, 0, 0), |br-p| :term:`number` duration = 5, |br-p| :term:`number` thickness = 0 |br| )
     - Draws a Debug Line in the World
 
   * - 
-    - DrawDebugPoint(:ref:`Vector` start, :ref:`Color` color = (1, 0, 0), :term:`number` duration = 5, :term:`number` thickness = 0)
+    - DrawDebugPoint( |br-p| :ref:`Vector` start, |br-p| :ref:`Color` color = (1, 0, 0), |br-p| :term:`number` duration = 5, |br-p| :term:`number` thickness = 0 |br| )
     - Draws a Debug Point in the World
 
   * - 
-    - DrawDebugSphere(:ref:`Vector` start, :term:`number` radius, :term:`number` segments, :ref:`Color` color = (1, 0, 0), :term:`number` duration = 5, :term:`number` thickness = 0)
+    - DrawDebugSphere( |br-p| :ref:`Vector` start, |br-p| :term:`number` radius, |br-p| :term:`number` segments, |br-p| :ref:`Color` color = (1, 0, 0), |br-p| :term:`number` duration = 5, |br-p| :term:`number` thickness = 0 |br| )
     - Draws a Debug Line in the World
 
   * - 
@@ -42,7 +42,7 @@ Functions
     - Sends a chat message which will display local only
 
   * - 
-    - SetChatConfiguration(:ref:`Vector2D` location = (-25, 0), :ref:`Vector2D` size = (600, 250), :ref:`Vector2D` anchors_min = (1, 0.5), :ref:`Vector2D` anchors_max = (1, 0.5), :ref:`Vector2D` alignment = (1, 0.5), :term:`boolean` justify = false (false = Left, true = Right))
+    - SetChatConfiguration( |br-p| :ref:`Vector2D` location = (-25, 0), |br-p|  :ref:`Vector2D` size = (600, 250), |br-p| :ref:`Vector2D` anchors_min = (1, 0.5), |br-p| :ref:`Vector2D` anchors_max = (1, 0.5), |br-p| :ref:`Vector2D` alignment = (1, 0.5), |br-p| :term:`boolean` justify = false (false = Left, true = Right) |br| )
     - Configure the Chat. Anchors = (1, 1) means the location will be relative to bottom right and (0, 0) to top left.
 
   * - 
@@ -50,7 +50,7 @@ Functions
     - Enables/Disables the default Crosshair
 
   * - 
-    - SetDiscordActivity(:term:`string` state, :term:`string` details, :term:`string` large_image, :term:`string` large_text)
+    - SetDiscordActivity( |br-p| :term:`string` state, |br-p| :term:`string` details, |br-p| :term:`string` large_image, |br-p| :term:`string` large_text |br| )
     - Comunicates with Discord and sets a custom user status
 
   * - 
@@ -82,7 +82,7 @@ Functions
     - Leaves the Spectator's State.
 
   * - :term:`table`
-    - Trace(:ref:`Vector` start, :ref:`Vector` end, :term:`boolean` draw_debug = false)
+    - Trace( |br-p| :ref:`Vector` start, |br-p| :ref:`Vector` end, |br-p| :term:`boolean` draw_debug = false |br| )
     - Trace a ray against the world and returns a table with the first blocking hit information ``{"Success", "Location", "Normal", "Actor"}``. Currently only supports trace for :ref:`Character`, :ref:`Vehicle` and :ref:`Prop`, more can be requested.
 
   * - :ref:`Vector2D`

@@ -24,7 +24,7 @@ Functions
 ---------
 
 .. list-table::
-  :widths: 10 40 50
+  :widths: 10 30 60
    
   * - **Returns**
     - **Name**
@@ -39,21 +39,21 @@ Functions
     - Clamps an angle to the range of [-180, 180].
 
   * - :term:`number`
-    - FInterpTo(:term:`number` current, :term:`number` target, :term:`number` delta_time, :term:`number` InterpSpeed)
+    - FInterpTo( |br-p| :term:`number` current, |br-p| :term:`number` target, |br-p| :term:`number` delta_time, |br-p| :term:`number` InterpSpeed |br| )
     - 
 
   * - :ref:`Rotator`
-    - RInterpTo(:ref:`Rotator` current, :ref:`Rotator` target, :term:`number` delta_time, :term:`number` interp_speed)
+    - RInterpTo( |br-p| :ref:`Rotator` current, |br-p| :ref:`Rotator` target, |br-p| :term:`number` delta_time, |br-p| :term:`number` interp_speed |br| )
     - 
 
   * - :ref:`Rotator`
-    - RInterpConstantTo(:ref:`Rotator` current, :ref:`Rotator` target, :term:`number` delta_time, :term:`number` interp_speed)
+    - RInterpConstantTo( |br-p| :ref:`Rotator` current, |br-p| :ref:`Rotator` target, |br-p| :term:`number` delta_time, |br-p| :term:`number` interp_speed |br| )
     - 
 
   * - :ref:`Vector`
-    - VInterpTo(:ref:`Vector` current, :ref:`Vector` target, :term:`number` delta_time, :term:`number` interp_speed)
+    - VInterpTo( |br-p| :ref:`Vector` current, |br-p| :ref:`Vector` target, |br-p| :term:`number` delta_time, |br-p| :term:`number` interp_speed |br| )
     - 
 
   * - :ref:`Vector`
-    - VInterpConstantTo(:ref:`Vector` current, :ref:`Vector` target, :term:`number` delta_time, :term:`number` interp_speed)
+    - VInterpConstantTo( |br-p| :ref:`Vector` current, |br-p| :ref:`Vector` target, |br-p| :term:`number` delta_time, |br-p| :term:`number` interp_speed |br| )
     - 

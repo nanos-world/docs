@@ -11,37 +11,37 @@ Functions (Inherited from Pickable)
 
   * - 
     - 
-    - AddSkeletalMeshAttached(:term:`string` id, :term:`string` static_mesh_path)
+    - AddSkeletalMeshAttached( |br-p| :term:`string` id, |br-p| :term:`string` static_mesh_path |br| )
     - Spawns and Attaches a SkeletalMesh into this Actor, the SkeletalMesh must have the same Skeletal used by this Actor Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
 
   * - 
     - 
-    - AddStaticMeshAttached(:term:`string` id, :term:`string` static_mesh_path, :term:`string` socket = "", :ref:`Vector` relative_location = Vector(), :ref:`Rotator` relative_rotation = Rotator())
+    - AddStaticMeshAttached( |br-p| :term:`string` id, |br-p| :term:`string` static_mesh_path, |br-p| :term:`string` docket = "", |br-p| :ref:`Vector` relative_location = Vector(), |br-p| :ref:`Rotator` relative_rotation = Rotator() |br| )
     - Spawns and Attaches a StaticMesh into this Actor in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
   * - 
     - 
-    - SetDefaultMaterial(:term:`MaterialType` material_type = MaterialType.Masked)
+    - SetDefaultMaterial( |br-p| :term:`MaterialType` material_type = MaterialType.Masked |br| )
     - Replaces all materials of this actor with a nanos basic material with comon parameters available **Material Types**: (*Masked, Translucent*)
 
   * - 
     - 
-    - SetMaterialColorParameter(:term:`string` parameter_name, :ref:`Color` color)
+    - SetMaterialColorParameter( |br-p| :term:`string` parameter_name, |br-p| :ref:`Color` color |br| )
     - Sets a Color parameter in this actor's material
 
   * - 
     - 
-    - SetMaterialScalarParameter(:term:`string` parameter_name, :term:`number` scalar)
+    - SetMaterialScalarParameter( |br-p| :term:`string` parameter_name, |br-p| :term:`number` scalar |br| )
     - Sets a scalar parameter in this actor's material
 
   * - 
     - 
-    - SetMaterialTextureParameter(:term:`string` parameter_name, :term:`string` texture_path)
+    - SetMaterialTextureParameter( |br-p| :term:`string` parameter_name, |br-p| :term:`string` texture_path |br| )
     - Loads a image from computer (relative to `Assets/` folder) and sets as parameter in this actor's material
 
   * - 
     - 
-    - SetMaterialVectorParameter(:term:`string` parameter_name, :ref:`Vector` vector)
+    - SetMaterialVectorParameter( |br-p| :term:`string` parameter_name, |br-p| :ref:`Vector` vector |br| )
     - Sets a Vector parameter in this actor's material
 
   * - |server-only-label|

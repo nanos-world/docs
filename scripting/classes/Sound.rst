@@ -96,11 +96,11 @@ Functions
     - **Description**
 
   * - 
-    - FadeIn(:term:`number` fade_in_duration, :term:`number` fade_volume_level, :term:`number` start_time)
+    - FadeIn( |br-p| :term:`number` fade_in_duration, |br-p| :term:`number` fade_volume_level, |br-p| :term:`number` start_time |br| )
     - Plays the sound with a fade effect
 
   * - 
-    - FadeOut(:term:`number` fade_out_duration, :term:`number` fade_volume_level)
+    - FadeOut( |br-p| :term:`number` fade_out_duration, |br-p| :term:`number` fade_volume_level |br| )
     - Stops the sound with a fade effect
 
   * - 

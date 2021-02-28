@@ -26,7 +26,7 @@ Properties
 ----------
 
 .. list-table::
-  :widths: 1 5 4
+  :widths: 10 30 60
    
   * - **Type**
     - **Name**

@@ -26,23 +26,23 @@ Functions
     - **Description**
 
   * - :term:`number` item_id
-    - AddLine(:term:`number` group_id, :ref:`Vector2D` start_position, :ref:`Vector2D` end_position, :term:`number` thickness, :ref:`Color` color)
+    - AddLine( |br-p| :term:`number` group_id, |br-p| :ref:`Vector2D` start_position, |br-p| :ref:`Vector2D` end_position, |br-p| :term:`number` thickness, |br-p| :ref:`Color` color |br| )
     - Draws a Line (doesn't support opacity)
 
   * - :term:`number` item_id
-    - AddBox(:term:`number` group_id, :ref:`Vector2D` start_position, :ref:`Vector2D` end_position, :term:`number` thickness, :ref:`Color` color)
+    - AddBox( |br-p| :term:`number` group_id, |br-p| :ref:`Vector2D` start_position, |br-p| :ref:`Vector2D` end_position, |br-p| :term:`number` thickness, |br-p| :ref:`Color` color |br| )
     - Draws a Box
 
   * - :term:`number` item_id
-    - AddTile(:term:`number` group_id, :ref:`Vector2D` position, :ref:`Vector2D` size, :ref:`Color` color)
+    - AddTile( |br-p| :term:`number` group_id, |br-p| :ref:`Vector2D` position, |br-p| :ref:`Vector2D` size, |br-p| :ref:`Color` color |br| )
     - Draws a Tile (filled)
 
   * - :term:`number` item_id
-    - AddPolygon(:term:`number` group_id, :ref:`Vector2D` screen_position, :ref:`Vector2D` radius, :term:`number` number_of_sides, :ref:`Color` color)
+    - AddPolygon( |br-p| :term:`number` group_id, |br-p| :ref:`Vector2D` screen_position, |br-p| :ref:`Vector2D` radius, |br-p| :term:`number` number_of_sides, |br-p| :ref:`Color` color |br| )
     - Draws a Polygon
 
   * - :term:`number` item_id
-    - AddText(:term:`number` group_id, :term:`string` text, :ref:`Vector2D` position, :term:`FontType` font_type, :term:`number` font_size, :ref:`Color` text_color, :term:`number` kerning, :term:`boolean` is_centered_x, :term:`boolean` is_centered_y, :term:`boolean` enable_shadow, :ref:`Vector2D` shadow_offset, :ref:`Color` shadow_color, :term:`boolean` enable_outline, :ref:`Color` outline_color)
+    - AddText( |br-p| :term:`number` group_id, |br-p| :term:`string` text, |br-p| :ref:`Vector2D` position, |br-p| :term:`FontType` font_type, |br-p| :term:`number` font_size, |br-p| :ref:`Color` text_color, |br-p| :term:`number` kerning, |br-p| :term:`boolean` is_centered_x, |br-p| :term:`boolean` is_centered_y, |br-p| :term:`boolean` enable_shadow, |br-p| :ref:`Vector2D` shadow_offset, |br-p| :ref:`Color` shadow_color, |br-p| :term:`boolean` enable_outline, |br-p| :ref:`Color` outline_color |br| )
     - Draws a Text with optionals Shadow and Outline
 
   * - :ref:`Vector2D`
@@ -58,11 +58,11 @@ Functions
     - Remove all drawing of using that specific group_id
 
   * - 
-    - UpdateItemText(:term:`number` group_id, :term:`number` item_id, :term:`string` new_text)
+    - UpdateItemText( |br-p| :term:`number` group_id, |br-p| :term:`number` item_id, |br-p| :term:`string` new_text |br| )
     - Updates a specific Canvas Text giving it's group_id and item_id
 
   * - 
-    - UpdateItemPosition(:term:`number` group_id, :term:`number` item_id, :ref:`Vector2D` new_position)
+    - UpdateItemPosition( |br-p| :term:`number` group_id, |br-p| :term:`number` item_id, |br-p| :ref:`Vector2D` new_position |br| )
     - Updates a specific Canvas's position giving it's group_id and item_id
 
   * - :ref:`Vector2D`

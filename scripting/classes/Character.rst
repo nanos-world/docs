@@ -122,7 +122,7 @@ Functions
 
   * - 
     - 
-    - AddStaticMeshAttached |br-p| :term:`string` id, |br-p| :term:`string` static_mesh_path, |br-p| :term:`string` docket = "", |br-p| :ref:`Vector` relative_location = Vector(), |br-p| :ref:`Rotator` relative_rotation = Rotator() |br| )
+    - AddStaticMeshAttached( |br-p| :term:`string` id, |br-p| :term:`string` static_mesh_path, |br-p| :term:`string` docket = "", |br-p| :ref:`Vector` relative_location = Vector(), |br-p| :ref:`Rotator` relative_rotation = Rotator() |br| )
     - Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
   * - |server-only-label|
@@ -212,7 +212,7 @@ Functions
 
   * - 
     - 
-    - SetDefaultMaterial(:term:`MaterialType` material_type = MaterialType.Masked)
+    - SetDefaultMaterial( |br-p| :term:`MaterialType` material_type = MaterialType.Masked |br| )
     - Replaces all materials of this actor with a nanos basic material with comon parameters available (*Masked, Translucent*)
 
   * - |server-only-label|
@@ -242,7 +242,7 @@ Functions
 
   * - 
     - 
-    - SetMaterialColorParameter(:term:`string` parameter_name, :ref:`Color` color)
+    - SetMaterialColorParameter( |br-p| :term:`string` parameter_name, |br-p| :ref:`Color` color |br| )
     - Sets a Color parameter in this actor's material
 
   * - 

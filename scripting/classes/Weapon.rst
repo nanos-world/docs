@@ -326,7 +326,7 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetLeftHandTransform(:ref:`Vector` location, :ref:`Rotator` rotation)
+    - SetLeftHandTransform( |br-p| :ref:`Vector` location, |br-p| :ref:`Rotator` rotation |br| )
     - Left Hand Offset
 
   * - |server-only-label|
@@ -336,7 +336,7 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetSightTransform(:ref:`Vector` location, :ref:`Rotator` rotation)
+    - SetSightTransform( |br-p| :ref:`Vector` location, |br-p| :ref:`Rotator` rotation |br| )
     - Offset applied to align player's head to weapon's sight and rotation applied on the weapon when ADS
 
   * - 

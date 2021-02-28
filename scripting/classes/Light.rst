@@ -110,6 +110,18 @@ Constructor Parameters
 Functions
 ----------
 
+.. list-table:: 
+  :widths: 10 35 55
+
+  * - **Returns**
+    - **Name**
+    - **Description**
+
+  * - 
+    - SetColor(:term:`Color` color)
+    - Sets the light color
+
+
 .. include:: ../common/functions/Actor.rst
 
 

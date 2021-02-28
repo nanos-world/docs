@@ -15,7 +15,7 @@ Functions
 ---------
 
 .. list-table:: 
-  :widths: 10 40 50
+  :widths: 10 50 40
 
   * - **Returns**
     - **Name**
@@ -54,19 +54,19 @@ Functions
     - 
 
   * - 
-    - SetPPBloom(:term:`number` intensity = 0.675, :term:`number` threshold = -1)
+    - SetPPBloom( |br-p| :term:`number` intensity = 0.675, |br-p| :term:`number` threshold = -1 |br| )
     - Set Post Process Bloom Settings
 
   * - 
-    - SetPPChromaticAberration(:term:`number` intensity = 0, :term:`number` start_offset = 0)
+    - SetPPChromaticAberration( |br-p| :term:`number` intensity = 0, |br-p| :term:`number` start_offset = 0 |br| )
     - Set Post Process Chromatic Aberration Settings
 
   * - 
-    - SetPPImageEffects(:term:`number` vignette_intensity = 0.6, :term:`number` grain_jitter = 0 , :term:`number` grain_intensity = 0)
+    - SetPPImageEffects( |br-p| :term:`number` vignette_intensity = 0.6, |br-p| :term:`number` grain_jitter = 0 , |br-p| :term:`number` grain_intensity = 0 |br| )
     - Set Post Process Image Effect Settings
 
   * - 
-    - SetPPFilm(:term:`number` slope = 0.8, :term:`number` toe = 0.55, :term:`number` shoulder = 0.26, :term:`number` black_clip = 0, :term:`number` white_clip = 0.3)
+    - SetPPFilm( |br-p| :term:`number` slope = 0.8, |br-p| :term:`number` toe = 0.55, |br-p| :term:`number` shoulder = 0.26, |br-p| :term:`number` black_clip = 0, |br-p| :term:`number` white_clip = 0.3 |br| )
     - Set Post Process Film Settings
 
   * - 

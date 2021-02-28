@@ -26,7 +26,7 @@ Functions
   * - ChangeMap(:term:`string` map_path)
     - Restarts the server in a new Map, restarts all packages and reconnects all players
 
-  * - HTTPRequest(:term:`string` uri, :term:`string` endpoint = "", :term:`string` method = "GET", :term:`string` data = "", :term:`table`\[:term:`string`\] headers = {}, :term:`function` callback = nil)
+  * - HTTPRequest( |br-p| :term:`string` uri, |br-p| :term:`string` endpoint = "", |br-p| :term:`string` method = "GET", |br-p| :term:`string` data = "", |br-p| :term:`table`\[:term:`string`\] headers = {}, |br-p| :term:`function` callback = nil |br| )
     - Makes a HTTP Request, the result will be returned in the provided Callback function in the format (Status, Response)
 
   * - ReloadPackage(:term:`string` package_folder_name)
@@ -41,7 +41,7 @@ Functions
   * - SetLogo(:term:`string` logo_url, :term:`boolean` persist_to_config_file = false)
     - Sets the logo of the server, optionally overrides Config.toml
 
-  * - SetMaxPlayers(:term:`number` max_players, :term:`boolean` persist_to_config_file = false)
+  * - SetMaxPlayers( |br-p| :term:`number` max_players, |br-p| :term:`boolean` persist_to_config_file = false |br| )
     - Sets the maximum player slots of the server, optionally overrides Config.toml
 
   * - SetName(:term:`string` name, :term:`boolean` persist_to_config_file = false)

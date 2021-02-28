@@ -66,12 +66,12 @@ Functions
 
   * - 
     - 
-    - SetDefaultMaterial(:term:`MaterialType` material_type = MaterialType.Masked)
+    - SetDefaultMaterial( |br-p| :term:`MaterialType` material_type = MaterialType.Masked |br| )
     - Replaces all materials of this actor with a nanos basic material with comon parameters available (*Masked, Translucent*)
 
   * - 
     - 
-    - SetMaterialColorParameter(:term:`string` parameter_name, :ref:`Color` color)
+    - SetMaterialColorParameter( |br-p| :term:`string` parameter_name, |br-p| :ref:`Color` color |br| )
     - Sets a Color parameter in this actor's material
 
   * - 
