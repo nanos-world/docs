@@ -126,7 +126,7 @@ nanos world Enumerators
 	SoundType
 		.. code-block:: lua
 
-			{ Linear = 0, Logarithmic = 1, Inverse = 2, LogReverse = 3, NaturalSound = 4 }
+			{ SFX = 0, Music = 1 }
 
 	StanceMode
 		.. code-block:: lua
