@@ -142,6 +142,11 @@ Functions
 
   * - |server-only-label|
     - 
+    - Jump()
+    - Triggers this Character to jump
+
+  * - |server-only-label|
+    - 
     - LeaveVehicle()
     - Leaves the current Vehicle
 
@@ -336,6 +341,16 @@ Functions
     - Gets the rotation this character is looking at
 
   * - 
+    - :term:`FallingMode`
+    - GetFallingMode()
+    - Gets the Falling Mode
+
+  * - 
+    - :term:`GaitMode`
+    - GetGaitMode()
+    - Gets the Gait Mode
+
+  * - 
     - :ref:`Prop`
     - GetGrabbedProp()
     - Gets the Grabbing Prop
@@ -366,6 +381,16 @@ Functions
     - 
 
   * - 
+    - :term:`StanceMode`
+    - GetStanceMode()
+    - 
+
+  * - 
+    - :term:`SwimmingMode`
+    - GetSwimmingMode()
+    - 
+
+  * - 
     - :term:`number`
     - GetTeam()
     - 
@@ -379,6 +404,11 @@ Functions
     - :term:`ViewMode`
     - GetViewMode()
     - Gets Character View Mode
+
+  * - 
+    - :term:`AimMode`
+    - GetWeaponAimMode()
+    - Gets Character Aim Mode
 
 .. include:: ../common/functions/Actor.rst
 
