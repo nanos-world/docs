@@ -57,3 +57,18 @@ Functions
   * - :ref:`Vector`
     - VInterpConstantTo( |br-p| :ref:`Vector` current, |br-p| :ref:`Vector` target, |br-p| :term:`number` delta_time, |br-p| :term:`number` interp_speed |br| )
     - 
+
+
+Besides having the NanosMathLibrary table, we've added some new methods to the built-in lua `math` library:
+
+
+Functions
+---------
+
+  * - :term:`number`
+    - math.clamp(:term:`number` value, :term:`number` min, :term:`number` max)
+    - Clamps a value between min and max values 
+
+  * - :term:`number`
+    - math.round(:term:`number` value)
+    - Rounds a value to the nearest integer
