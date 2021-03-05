@@ -167,8 +167,51 @@ nanos world provides a default Asset Pack already included in the base game, fee
         A_SMG_Shot = "Weapons/Common/Audios/A_SMG_Shot_Cue"
         A_Explosion_Large = "Weapons/Common/Audios/A_Explosion_Large_Cue"
 
-        A_Male_Death = "Characters/Common/Audios/Death/A_Male_Death_Cue"
-        A_Character_Damage_Taken = "Characters/Common/Audios/Pain/A_Character_Damage_Taken"
+		A_Male_01_Death = "Characters/Common/Audios/Death/A_Male_01_Death_Cue"
+		A_Male_02_Death = "Characters/Common/Audios/Death/A_Male_02_Death_Cue"
+		A_Male_03_Death = "Characters/Common/Audios/Death/A_Male_03_Death_Cue"
+		A_Male_04_Death = "Characters/Common/Audios/Death/A_Male_04_Death_Cue"
+		A_Male_05_Death = "Characters/Common/Audios/Death/A_Male_05_Death_Cue"
+		A_Male_06_Death = "Characters/Common/Audios/Death/A_Male_06_Death_Cue"
+
+		A_Male_01_Pain = "Characters/Common/Audios/Pain/A_Male_01_Pain_Cue"
+		A_Male_02_Pain = "Characters/Common/Audios/Pain/A_Male_02_Pain_Cue"
+		A_Male_03_Pain = "Characters/Common/Audios/Pain/A_Male_03_Pain_Cue"
+		A_Male_04_Pain = "Characters/Common/Audios/Pain/A_Male_04_Pain_Cue"
+		A_Male_05_Pain = "Characters/Common/Audios/Pain/A_Male_05_Pain_Cue"
+		A_Male_06_Pain = "Characters/Common/Audios/Pain/A_Male_06_Pain_Cue"
+		A_Male_07_Pain = "Characters/Common/Audios/Pain/A_Male_07_Pain_Cue"
+		A_Male_08_Pain = "Characters/Common/Audios/Pain/A_Male_08_Pain_Cue"
+
+		A_Female_01_Death = "Characters/Common/Audios/Pain/A_Female_01_Death_Cue"
+		A_Female_02_Death = "Characters/Common/Audios/Pain/A_Female_02_Death_Cue"
+		A_Female_03_Death = "Characters/Common/Audios/Pain/A_Female_03_Death_Cue"
+		A_Female_04_Death = "Characters/Common/Audios/Pain/A_Female_04_Death_Cue"
+		A_Female_05_Death = "Characters/Common/Audios/Pain/A_Female_05_Death_Cue"
+		A_Female_06_Death = "Characters/Common/Audios/Pain/A_Female_06_Death_Cue"
+
+		A_Female_01_Pain = "Characters/Common/Audios/Pain/A_Female_01_Pain_Cue"
+		A_Female_02_Pain = "Characters/Common/Audios/Pain/A_Female_02_Pain_Cue"
+		A_Female_03_Pain = "Characters/Common/Audios/Pain/A_Female_03_Pain_Cue"
+		A_Female_04_Pain = "Characters/Common/Audios/Pain/A_Female_04_Pain_Cue"
+		A_Female_05_Pain = "Characters/Common/Audios/Pain/A_Female_05_Pain_Cue"
+		A_Female_06_Pain = "Characters/Common/Audios/Pain/A_Female_06_Pain_Cue"
+		A_Female_07_Pain = "Characters/Common/Audios/Pain/A_Female_07_Pain_Cue"
+		A_Female_08_Pain = "Characters/Common/Audios/Pain/A_Female_08_Pain_Cue"
+
+		A_Female_01_BattleShout = "Characters/Common/Audios/BattleShout/A_Female_01_BattleShout_Cue"
+		A_Female_02_BattleShout = "Characters/Common/Audios/BattleShout/A_Female_02_BattleShout_Cue"
+		A_Female_03_BattleShout = "Characters/Common/Audios/BattleShout/A_Female_03_BattleShout_Cue"
+
+		A_Male_01_BattleShout = "Characters/Common/Audios/BattleShout/A_Male_01_BattleShout_Cue"
+		A_Male_02_BattleShout = "Characters/Common/Audios/BattleShout/A_Male_02_BattleShout_Cue"
+		A_Male_03_BattleShout = "Characters/Common/Audios/BattleShout/A_Male_03_BattleShout_Cue"
+		A_Male_04_BattleShout = "Characters/Common/Audios/BattleShout/A_Male_04_BattleShout_Cue"
+
+		A_Female_Groan = "Characters/Common/Audios/Groan/A_Female_Groan_Cue"
+
+		A_Male_01_Groan = "Characters/Common/Audios/Groan/A_Male_01_Groan_Cue"
+		A_Male_02_Groan = "Characters/Common/Audios/Groan/A_Male_02_Groan_Cue"
 
         A_VR_Click_01 = "Effects/VR/A_VR_Click_01"
         A_VR_Click_02 = "Effects/VR/A_VR_Click_02"

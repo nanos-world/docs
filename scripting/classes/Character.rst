@@ -44,7 +44,7 @@ Constructor Parameters
 
   * - :term:`string`
     - skeletal_mesh
-    - NanosWorld::SK_Male
+    - NanosWorld::SK_Mannequin
 
   * - :term:`CollisionType`
     - collision_type
@@ -57,6 +57,14 @@ Constructor Parameters
   * - :term:`number`
     - health/max_health
     - 100
+
+  * - :term:`string`
+    - death_sounds
+    - NanosWorld::A_Male_01_Death
+
+  * - :term:`string`
+    - pain_sounds
+    - NanosWorld::A_Male_01_Pain
 
 
 Usage
@@ -215,6 +223,11 @@ Functions
     - SetCapsuleSize( |br-p| :term:`number` radius, |br-p|:term:`number` half_height |br| )
     - Sets this Character's Capsule size (will affect Camera location and Character's collision) - default is (42, 96)
 
+  * - |server-only-label|
+    - 
+    - SetDeathSound(:term:`string` sound_asset)
+    - Changes the Death sound when Character dies
+
   * - 
     - 
     - SetDefaultMaterial( |br-p| :term:`MaterialType` material_type = MaterialType.Masked |br| )
@@ -279,6 +292,11 @@ Functions
     - 
     - SetMovementEnabled(:term:`boolean`)
     - Enables/Disables Character's Movement
+
+  * - |server-only-label|
+    - 
+    - SetPainSound(:term:`string` sound_asset)
+    - Changes the Pain sound when Character takes damage
 
   * - |server-only-label|
     - 
