@@ -21,7 +21,7 @@ Functions
     - **Description**
 
   * -
-    - any
+    - :term:`any`
     - Call(:term:`string` package_name, :term:`string` function_name, :term:`table` {args...})
     - Calls an exported function from an other Package
 
@@ -47,7 +47,7 @@ Functions
 
   * -
     -
-    - SetPersistentData(:term:`string` key, any Value)
+    - SetPersistentData(:term:`string` key, :term:`any` Value)
     - Sets a Persistent Value which will be saved to Disk
 
   * -
@@ -71,7 +71,7 @@ Functions
     - Gives the package path
 
   * -
-    - :term:`table`\<any\>
+    - :term:`table`\<:term:`any`\>
     - GetPersistentData()
     - Gets all Persistent Values from the Disk
 

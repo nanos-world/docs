@@ -38,6 +38,10 @@ Functions
     - Draws a Debug Line in the World
 
   * - 
+    - InitializeDiscord(:term:`number` client_id)
+    - Initializes the Discord Integration with your custom client_id
+
+  * - 
     - SendChatMessage(:term:`string` Message)
     - Sends a chat message which will display local only
 
@@ -84,6 +88,10 @@ Functions
   * - :term:`table`
     - Trace( |br-p| :ref:`Vector` start, |br-p| :ref:`Vector` end, |br-p| :term:`boolean` draw_debug = false |br| )
     - Trace a ray against the world and returns a table with the first blocking hit information ``{"Success", "Location", "Normal", "Actor"}``. Currently only supports trace for :ref:`Character`, :ref:`Vehicle` and :ref:`Prop`, more can be requested.
+
+  * - :ref:`Vector`
+    - GetRandomReachablePointInRadius(:ref:`Vector` origin, :term:`number` radius)
+    - Finds random, reachable point in navigable space restricted to radius around origin (only if map has a NavMesh)
 
   * - :ref:`Vector2D`
     - GetMousePosition()
