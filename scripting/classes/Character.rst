@@ -120,7 +120,7 @@ Functions
 
   * - |server-only-label|
     - :term:`number` damage_taken
-    - ApplyDamage( |br-p| :term:`number` damage, |br-p| :term:`string` bone_name = "", |br-p| :term:`number` damage_type = 0, |br-p| :ref:`Vector` from_direction = (), |br-p| :ref:`Player` instigator = nil |br| )
+    - ApplyDamage( |br-p| :term:`number` damage, |br-p| :term:`string` bone_name = "", |br-p| :term:`DamageType` damage_type = Shot, |br-p| :ref:`Vector` from_direction = (), |br-p| :ref:`Player` instigator = nil |br| )
     - Do damage in a character, will trigger all related events and apply modified damage based on bone. Also will apply impulse if it's a heavy explosion.
 
   * - 
@@ -444,7 +444,7 @@ Events
 
   * -
     - Death
-    - :ref:`Character` self, |br| :term:`number` last_damage_taken, |br| :term:`string` last_bone_damaged, |br| :term:`number` damage_type_reason, |br| :ref:`Vector` hit_from_direction, |br| :ref:`Player` instigator
+    - :ref:`Character` self, |br| :term:`number` last_damage_taken, |br| :term:`string` last_bone_damaged, |br| :term:`DamageType` damage_type_reason, |br| :ref:`Vector` hit_from_direction, |br| :ref:`Player` instigator
     - When Character Dies
 
   * -

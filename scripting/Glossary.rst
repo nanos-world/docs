@@ -83,10 +83,15 @@ nanos world Enumerators
 
 			{ Normal = 0, StaticOnly = 1, NoCollision = 2 }
 
+	ConstraintMotion
+		.. code-block:: lua
+
+			{ Free = 0, Limited = 1, Locked = 2 }
+
 	DamageType
 		.. code-block:: lua
 
-			{ Shot = 0, Explosion = 1 }
+			{ Shot = 0, Explosion = 1, Punch = 2, Fall = 3, RunOver = 4, Unknown = 5 }
 
 	DifferentialType
 		.. code-block:: lua

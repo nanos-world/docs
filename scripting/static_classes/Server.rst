@@ -53,6 +53,9 @@ Functions
   * - SetValue(:term:`string` key, :term:`any` value)
     - Sets a global value in the Server, which can be accessed from anywhere (server side)
 
+  * - Stop()
+    - Stops the server
+
   * - UnloadPackage(:term:`string` package_folder_name)
     - Unloads a Package
 
