@@ -31,6 +31,7 @@ Class List
    :name: toc-scripting-classes
    :glob:
 
+   Cable.rst
    Character.rst
    File.rst
    Grenade.rst
