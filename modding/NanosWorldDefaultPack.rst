@@ -179,7 +179,6 @@ nanos world provides a default Asset Pack already included in the base game, fee
         A_Female_03_Death = "Characters/Common/Audios/Death/A_Female_03_Death_Cue"
         A_Female_04_Death = "Characters/Common/Audios/Death/A_Female_04_Death_Cue"
         A_Female_05_Death = "Characters/Common/Audios/Death/A_Female_05_Death_Cue"
-        A_Female_06_Death = "Characters/Common/Audios/Death/A_Female_06_Death_Cue"
 
         A_Male_01_Pain = "Characters/Common/Audios/Pain/A_Male_01_Pain_Cue"
         A_Male_02_Pain = "Characters/Common/Audios/Pain/A_Male_02_Pain_Cue"
