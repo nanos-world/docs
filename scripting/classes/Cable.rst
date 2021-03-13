@@ -45,9 +45,10 @@ Functions
 ----------
 
 .. list-table:: 
-  :widths: 10 35 55
+  :widths: 5 10 35 50
 
-  * - **Returns**
+  * -
+    - **Returns**
     - **Name**
     - **Description**
 
