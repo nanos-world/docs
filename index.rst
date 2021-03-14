@@ -101,7 +101,7 @@ Special Thanks
 *  TheToor - Tester and Bug Reporter
 *  EinfachMaxYT - Tester and Bug Reporter
 *  ZarosLive - Tester and Bug Reporter
-*  Alex0130359 - Tester and Bug Reporter
+*  Lexa - Tester and Bug Reporter
 *  InfernooYT - Tester and Bug Reporter
 *  MarkusSR1984 - Tester and Bug Reporter
 *  Maks - Tester and Bug Reporter
