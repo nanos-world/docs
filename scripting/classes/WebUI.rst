@@ -140,7 +140,7 @@ Examples
     my_ui = WebUI("Awesome UI", "file:///UI/Index.html")
 
     -- register for an Event from the Browser created
-    my_ui:Subscribe("MyEventFromJS", function(web_ui, my_text)
+    my_ui:Subscribe("MyEventFromJS", function(my_text)
         Package:Log("Event received from Browser! " .. my_text)
         -- outputs "Event received from Browser! hello nanos world from JavaScript!"
     end)
