@@ -46,7 +46,7 @@ Functions
     - Sends a chat message which will display local only
 
   * - 
-    - SetChatConfiguration( |br-p| :ref:`Vector2D` location = (-25, 0), |br-p|  :ref:`Vector2D` size = (600, 250), |br-p| :ref:`Vector2D` anchors_min = (1, 0.5), |br-p| :ref:`Vector2D` anchors_max = (1, 0.5), |br-p| :ref:`Vector2D` alignment = (1, 0.5), |br-p| :term:`boolean` justify = false (false = Left, true = Right) |br| )
+    - SetChatConfiguration( |br-p| :ref:`Vector2D` location = (-25, 0), |br-p|  :ref:`Vector2D` size = (600, 250), |br-p| :ref:`Vector2D` anchors_min = (1, 0.5), |br-p| :ref:`Vector2D` anchors_max = (1, 0.5), |br-p| :ref:`Vector2D` alignment = (1, 0.5), |br-p| :term:`boolean` justify = false (false = Left, true = Right), |br-p| :term:`boolean` show_scrollbar = true |br| )
     - Configure the Chat. Anchors = (1, 1) means the location will be relative to bottom right and (0, 0) to top left.
 
   * - 
