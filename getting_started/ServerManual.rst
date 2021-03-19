@@ -160,19 +160,13 @@ To be able to display dynamic information in the screen, you can listen to the E
  .. code-tab:: javascript JavaScript
 
     /*
-    During downloading phase: 'progress' and 'progress_total' will represent the amount of files being 
-      downloaded and 'progress_secondary' will represent the % of the current file being downloaded
-
-    During loading phase: 'progress' and 'progress_total' will represent the total loading progress (%) 
-      and 'progress_secondary' will represent the progress of the current stuff being loaded
-
     TIP: You can use 'progress' and 'progress_total' for filling up the main loading bar, and
-      'progress_secondary' for a small / sub loading bar.  Also 'message' will display the current state
-      (Loading, Validating, Downloading) while 'message_secondary' will display the current asset / stuff
-      being loaded or downloaded.
+      'progress_small' for a small / sub loading bar.  Also 'message' will display the current state
+      (loading, validating, downloading) while 'message_secondary' will display the current asset / stuff
+      being loaded or downloaded. You can also get the current stage from 'current_stage' parameter.
     */
 
-    function UpdateScreen(message, message_secondary, progress, progress_total, progress_secondary) {
+    function UpdateScreen(message, message_secondary, progress_small, progress_small_total, progress, progress_total, current_stage) {
         // Update your HTML here
     }
 

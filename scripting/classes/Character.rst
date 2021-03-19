@@ -77,6 +77,7 @@ Usage
     local woman = Character(Vector(100, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Female")
     local man = Character(Vector(200, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Male")
     local mannequin = Character(Vector(300, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Mannequin")
+    local mannequin_female = Character(Vector(400, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Mannequin_Female")
 
     local post_apocalyptic = Character(Vector(400, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_PostApocalyptic")
     local classic_male = Character(Vector(500, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_ClassicMale")
@@ -140,7 +141,7 @@ Functions
 
   * - |server-only-label|
     - 
-    - EnterVehicle( |br-p| :ref:`Vehicle` vehicle, |br-p| :term:`number` seat |br| )
+    - EnterVehicle( |br-p| :ref:`Vehicle` vehicle, |br-p| :term:`number` seat = 0 |br| )
     - Enters the Vehicle at Seat (0 - Driver)
 
   * - |server-only-label|

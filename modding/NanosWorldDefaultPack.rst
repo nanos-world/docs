@@ -110,6 +110,7 @@ nanos world provides a default Asset Pack already included in the base game, fee
         SK_Female = "Characters/Female/SK_Female"
         SK_Male = "Characters/Male/SK_Male"
         SK_Mannequin = "Characters/Mannequin/SK_Mannequin"
+        SK_Mannequin_Female = "Characters/Mannequin/SK_Mannequin_Female"
         SK_PostApocalyptic = "Characters/PostApocalyptic/SK_PostApocalyptic"
         SK_ClassicMale = "Characters/ClassicMale/SK_ClassicMale"
 
