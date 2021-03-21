@@ -71,8 +71,6 @@ The server Configuration file ``Config.toml`` is generated automatically when th
         ]
         # Default startup map
         map =                 "NanosWorld::BlankMap"
-        # VOIP Setting ('Local', 'Global' or 'Disabled')
-        voip_setting =        "Local"
         # Banned IPs
         banned_ips = [
             

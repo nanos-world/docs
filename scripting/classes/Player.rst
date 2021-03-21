@@ -68,8 +68,8 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetVOIPMuted(:term:`boolean` is_muted)
-    - Mutes/Unmutes this Player
+    - SetVOIPSetting(:term:`VOIPSetting` setting)
+    - Sets the VOIP Settings of this Player (*Local, Global, Muted*)
 
   * - |server-only-label|
     - 
@@ -137,9 +137,9 @@ Functions
     - Returns if this is Valid
 
   * - 
-    - :term:`boolean`
-    - IsVOIPMuted()
-    - Returns if this Player is muted (VOIP)
+    - :term:`VOIPSetting`
+    - GetVOIPSetting()
+    - Returns this Player VOIP Setting
 
 
 Events

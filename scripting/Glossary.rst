@@ -162,3 +162,8 @@ nanos world Enumerators
 		.. code-block:: lua
 
 			{ FPS = 0, TPS1 = 1, TPS2 = 2, TPS3 = 3 }
+
+	VOIPSetting
+		.. code-block:: lua
+
+			{ Local = 0, Global = 1, Muted = 2 }
