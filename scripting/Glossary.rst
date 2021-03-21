@@ -118,6 +118,11 @@ nanos world Enumerators
 
 			{ SingleHandedWeapon = 0, DoubleHandedWeapon = 1, SingleHandedMelee = 2, DoubleHandedMelee = 3, Throwable = 4, Torch = 5, Barrel = 6, Box = 7 }
 
+	LogType
+		.. code-block:: lua
+
+			{ Display = 0, Warning = 1,	Error = 2, Debug = 3, Verbose = 4, Scripting = 5, Chat = 6, WebUI = 7 }
+
 	LightType
 		.. code-block:: lua
 

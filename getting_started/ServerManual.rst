@@ -112,6 +112,10 @@ It is possible to input commands to the Server Console.
 Built-in Commands
 ~~~~~~~~~~~~~~~~~
 
+To send a chat message
+
+``chat [message]``
+
 To stop the server
 
 ``stop``

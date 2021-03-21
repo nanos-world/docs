@@ -66,7 +66,7 @@ Functions
     - SetVOIPChannel(:term:`number` channel)
     - Sets the VOIP Channel of this Player (will only communicate with other players in the same channel)
 
-  * - |server-only-label|
+  * - 
     - 
     - SetVOIPSetting(:term:`VOIPSetting` setting)
     - Sets the VOIP Settings of this Player (*Local, Global, Muted*)

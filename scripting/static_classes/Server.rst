@@ -77,9 +77,17 @@ Events
     - :ref:`Player`, |br| :term:`string` text
     - Called when a player types something in the chat - return false to do not send the message
 
+  * - ChatEntry
+    - :ref:`Player` = nil, |br| :term:`string` text
+    - Called when a Chat Entry is received, this is also triggered when ``SendChatMessage`` is called
+
   * - Console
     - :term:`string` text
     - Called when a console command is submitted
+
+  * - LogEntry
+    - :term:`string` text, :term:`LogType` type
+    - Called when a Server log is received
 
   * - Start
     - 
