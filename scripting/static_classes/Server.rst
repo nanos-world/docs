@@ -74,11 +74,11 @@ Events
     - **Description**
 
   * - Chat
-    - :ref:`Player`, |br| :term:`string` text
+    - :term:`string` text, |br| :ref:`Player` sender
     - Called when a player types something in the chat - return false to do not send the message
 
   * - ChatEntry
-    - :ref:`Player` = nil, |br| :term:`string` text
+    - :term:`string` text |br|, :ref:`Player` sender
     - Called when a Chat Entry is received, this is also triggered when ``SendChatMessage`` is called
 
   * - Console

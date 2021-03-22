@@ -41,6 +41,10 @@ Functions
     - InitializeDiscord(:term:`number` client_id)
     - Initializes the Discord Integration with your custom client_id
 
+  * - LogEntry
+    - :term:`string` text, :term:`LogType` type
+    - Called when a Client log is received
+
   * - 
     - SendChatMessage(:term:`string` Message)
     - Sends a chat message which will display local only
