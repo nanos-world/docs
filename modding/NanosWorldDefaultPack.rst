@@ -293,6 +293,10 @@ nanos world provides a default Asset Pack already included in the base game, fee
         A_Female_07_Effort = "Characters/Common/Audios/Effort/A_Female_07_Effort_Cue"
         A_Female_08_Effort = "Characters/Common/Audios/Effort/A_Female_08_Effort_Cue"
 
+        A_Male_Breath_Pant_Cue = "Characters/Common/Audios/Breath/A_Male_Breath_Pant_Cue"
+        A_Male_Breath_Quick_Cue = "Characters/Common/Audios/Breath/A_Male_Breath_Quick_Cue"
+        A_Male_Breath_Fast_Cue = "Characters/Common/Audios/Breath/A_Male_Breath_Fast_Cue"
+
         A_VR_Click_01 = "Effects/VR/A_VR_Click_01"
         A_VR_Click_02 = "Effects/VR/A_VR_Click_02"
         A_VR_Click_03 = "Effects/VR/A_VR_Click_03"

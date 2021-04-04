@@ -59,6 +59,9 @@ Functions
   * - UnloadPackage(:term:`string` package_folder_name)
     - Unloads a Package
 
+  * - :term:`table` GetPackages(:term:`boolean` only_loaded = true)
+    - Returns a list of Packages folder names available in the server, optionally returns only loaded and running packages
+
   * - :term:`any` GetValue(:term:`string` key)
     - Gets a value given a key
 
@@ -78,7 +81,7 @@ Events
     - Called when a player types something in the chat - return false to do not send the message
 
   * - ChatEntry
-    - :term:`string` text |br|, :ref:`Player` sender
+    - :term:`string` text, |br| :ref:`Player` sender
     - Called when a Chat Entry is received, this is also triggered when ``SendChatMessage`` is called
 
   * - Console

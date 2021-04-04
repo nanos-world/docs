@@ -113,11 +113,15 @@ It is extremely important to setup your ``Assets.toml`` file, in there you will 
     # Asset Pack Configurations
     [asset_pack]
         # Asset Pack Name
-        name =              "My Pack"
-        # Author
-        author =            "Incredible Asset Creator"
+        name =              "MyPack"
+        # Contributors
+        author =            "SyedMuhammad"
+        # Unreal Folder - the root folder which the assets will have references to each other
+        unreal_folder =     "CityPark"
         # Version
-        version =           "1.1.0"
+        version =           "1.0.0"
+        # Image URL
+        image =             "https://i.imgur.com/AjtVZBQ.jpg"
 
     # Assets Files
     [assets]
@@ -163,16 +167,22 @@ The first step to be able to reference your assets in your packages is requiring
     # Package Configurations
     [package]
         # Package Name
-        name =                "My Awesome Package"
-        # Package Type: "executable" (normal package) | "library" (doesn't run - useful for code library)
-        type =                "executable"
+        name =                  "My Awesome Package"
+        # Contributors
+        author =                "SyedMuhammad"
+        # Version
+        version =               "1.0.0"
+        # Image URL
+        image =                 "https://i.imgur.com/AjtVZBQ.jpg"
+        # Package Type: 'executable' (normal package) | 'library' (doesn't run - useful for code library)
+        type =                   "executable"
         # Whether to force the Custom Map Script to do NOT load
-        force_no_map_script = false
+        force_no_map_script =    false
         # Auto Destroy all entities spawned by this package when it unloads
-        auto_cleanup =        true
-        # Asset Packs Requirements (Assets folder names to be loaded)
+        auto_cleanup =           true
+        # Asset Packs Requirements
         assets_requirements = [
-            "MyPack", # <<< Add your Asset Pack folder name here
+            "MyAwesomeAssetPACK",
         ]
 
 .. tip:: The Asset Pack which contains the maps you are loading is automatically loaded when you start the server!

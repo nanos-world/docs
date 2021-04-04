@@ -101,6 +101,9 @@ Functions
     - GetMousePosition()
     - Gets the current mouse screen location
 
+  * - :term:`table` GetPackages()
+    - Returns a list of Packages folder names loaded and running in the client
+
   * - any
     - GetValue(:term:`string` key)
     - Gets a value given a key

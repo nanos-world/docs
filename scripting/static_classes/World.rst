@@ -22,6 +22,10 @@ Functions
     - **Description**
 
   * - 
+    - LoadStreamLevel(:term:`string` level_name, :term:`boolean` should_block = false)
+    - Loads a Level in runtime
+
+  * - 
     - SetFogDensity(:term:`number` density, :term:`number` second_density = 0)
     - 
 
@@ -96,6 +100,10 @@ Functions
   * - 
     - SetWind(:term:`number` intensity)
     - Sets the global Wind intensity
+
+  * - 
+    - UnloadStreamLevel(:term:`string` level_name, :term:`boolean` should_block = false)
+    - Unloads a Level in runtime
 
   * - :term:`number`
     - GetSunAngle()
