@@ -22,7 +22,7 @@ Functions
     - **Description**
 
   * - 
-    - LoadStreamLevel(:term:`string` level_name, :term:`boolean` should_block = false)
+    - LoadStreamLevel(:term:`string` level_name)
     - Loads a Level in runtime
 
   * - 
@@ -102,7 +102,7 @@ Functions
     - Sets the global Wind intensity
 
   * - 
-    - UnloadStreamLevel(:term:`string` level_name, :term:`boolean` should_block = false)
+    - UnloadStreamLevel(:term:`string` level_name)
     - Unloads a Level in runtime
 
   * - :term:`number`

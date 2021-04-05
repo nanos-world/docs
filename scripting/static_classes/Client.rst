@@ -103,6 +103,7 @@ Functions
 
   * - :term:`table` GetPackages()
     - Returns a list of Packages folder names loaded and running in the client
+    - 
 
   * - any
     - GetValue(:term:`string` key)
