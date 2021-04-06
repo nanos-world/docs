@@ -50,14 +50,14 @@ Scripting
 		DrawCard(
 			"https://github.com/nanos-world/nanos-world-lua-lib",
 			"https://nanos.world/media/logo.png",
-			"Nanos World Official Lua Library ↗",
+			"nanos world Official Lua Library ↗",
 			"Official repository of all Lua utility methods, tables and functions.",
 			true
 		);
 	</script>
 
 
-Packages / Gamemodes
+Packages / Game-Modes
 --------------------
 
 .. raw:: html
@@ -90,7 +90,7 @@ Packages / Gamemodes
 		DrawCard(
 			"https://github.com/nanos-world/nanos-world-weapons",
 			"https://nanos.world/media/logo.png",
-			"Nanos World Official Weapon Package ↗",
+			"nanos world Official Weapon Package ↗",
 			"Official repository of NanosWorldWeapons Package.",
 			true
 		);
@@ -98,7 +98,7 @@ Packages / Gamemodes
 		DrawCard(
 			"https://github.com/nanos-world/nanos-world-vehicles",
 			"https://nanos.world/media/logo.png",
-			"Nanos World Official Vehicle Package ↗",
+			"nanos world Official Vehicle Package ↗",
 			"Official repository of NanosWorldVehicles Package.",
 			true
 		);

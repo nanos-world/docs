@@ -19,7 +19,7 @@ In Unreal Engine, when you create a Material, you can define custom `Parameters 
 
 .. figure:: https://i.imgur.com/JlxMDYU.png
    
-   Default Nanos Material and it's Parameters
+   Default nanos Material and it's Parameters
 
 
 Example

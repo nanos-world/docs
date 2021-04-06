@@ -5,7 +5,7 @@
 Play as Prop
 ************
 
-This sample code shows how to simulate a Prop possessing using a :ref:`Character`. This can be used for Prop Hunt gamemodes!
+This sample code shows how to simulate a Prop possessing using a :ref:`Character`. This can be used for Prop Hunt game-modes!
 
 .. raw:: html
 

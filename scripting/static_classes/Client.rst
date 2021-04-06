@@ -101,9 +101,9 @@ Functions
     - GetMousePosition()
     - Gets the current mouse screen location
 
-  * - :term:`table` GetPackages()
+  * - :term:`table`
+    - GetPackages()
     - Returns a list of Packages folder names loaded and running in the client
-    - 
 
   * - any
     - GetValue(:term:`string` key)
@@ -131,6 +131,10 @@ Events
   * - Chat
     - :term:`string` text
     - Called when a chat text is submitted (by LocalPlayer) - Return false to do not send the message
+
+  * - ChatEntry
+    - :term:`string` text, |br| :ref:`Player` sender
+    - Called when a Chat Entry is received, this is also triggered when ``SendChatMessage`` is called
 
   * - Console
     - :term:`string` text

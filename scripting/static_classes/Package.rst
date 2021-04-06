@@ -33,7 +33,7 @@ Functions
   * -
     -
     - Log(:term:`string` message)
-    - Logs a message in the console (the proper and Nanos way)
+    - Logs a message in the console (the proper and nanos way)
 
   * -
     -

@@ -8,13 +8,13 @@ Scripting Quick Start
 Introduction
 ------------
 
-Adding functionalities and gamemode features into nanos world is simpler than it looks! In this Quick Start Guide, you will learn how to setup a Package in nanos world and program your first Lua scripting functionality.
+Adding functionalities and game-mode features into nanos world is simpler than it looks! In this Quick Start Guide, you will learn how to setup a Package in nanos world and program your first Lua scripting functionality.
 
 
 Packages
 --------
 
-Packages are pieces/components of your gamemode which are isolated from other packages you created. All Packages must go under ``Packages/`` folder, each Package is a folder under that. Each Package can contain the following folders: ``Server``, ``Client`` and ``Shared``. Client and Shared folders will be sent to the clients when they connect. The scripts from Server folder will run only on the server side and won't be sent to clients.
+Packages are pieces/components of your game-mode which are isolated from other packages you created. All Packages must go under ``Packages/`` folder, each Package is a folder under that. Each Package can contain the following folders: ``Server``, ``Client`` and ``Shared``. Client and Shared folders will be sent to the clients when they connect. The scripts from Server folder will run only on the server side and won't be sent to clients.
 
 Each Package must have a file called ``Index.lua``, this is the only file which will be triggered when the Package is loaded, this way this file is responsible for including other files and starting up your functionalities.
 

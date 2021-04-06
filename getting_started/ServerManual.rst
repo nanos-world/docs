@@ -192,7 +192,7 @@ Also, it is possible to fetch Player's information by accessing a global variabl
 Packages & Scripting
 --------------------
 
-nanos world provides a way of customizating and creating custom gamemodes for your server with scripting language (Lua). You can create and add several Lua scripts files and run them on the server and/or on the client side. You can also separate your gamemodes and functionalities in different Packages (or you can call it Modules or GameModes).
+nanos world provides a way of customizating and creating custom game-modes for your server with scripting language (Lua). You can create and add several Lua scripts files and run them on the server and/or on the client side. You can also separate your game-modes and functionalities in different **Packages** (or you can call it **game-modes**).
 
 .. note:: Each Package will have its own memory space and are not interconnected with other Packages.
 

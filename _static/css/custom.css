@@ -56,6 +56,12 @@ h2 {
 	object-fit: cover;
 }
 
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .nanos-card h4 {
 	position: absolute;
 	font-weight: bold;

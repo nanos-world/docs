@@ -44,6 +44,16 @@ nanos world Official Documentation
    modding/NanosWorldDefaultPack
 
 
+.. toctree::
+   :hidden:
+   :titlesonly:
+   :caption: Vault & Marketplace
+   :name: sec-vault-marketplace
+
+   vault/Marketplace
+   vault/Vault
+
+
 .. image:: https://i.imgur.com/KRkqwWs.jpg
 
 Welcome to the official documentation of nanos world! da best game ever made.
@@ -68,7 +78,7 @@ With nanos world you can realize your own game ideas and visions. Therefore, scr
 			"getting_started/index.html",
 			"https://i.imgur.com/to0sRzC.png",
 			"Getting Started",
-			"Introductory information for scripters and modders starting out creating gamemodes with nanos world."
+			"Introductory information for scripters and modders starting out creating game-modes with nanos world."
 		);
 
 		DrawCard(
@@ -82,7 +92,7 @@ With nanos world you can realize your own game ideas and visions. Therefore, scr
 			"tutorials/index.html",
 			"https://edsurge.imgix.net/uploads/post/image/13321/digitalpromise_banner-1588203848.jpg?auto=compress%2Cformat&w=640&h=259&fit=crop",
 			"Samples and Tutorials",
-			"Links to various example scriptings, sample gamemodes, and tutorials..."
+			"Links to various example scriptings, sample game-modes, and tutorials..."
 		);
 	</script>
 

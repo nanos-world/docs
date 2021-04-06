@@ -1,9 +1,10 @@
 .. _NanosWorldDefaultPack:
 
 *******************************
-Nanos World Default Assets Pack
+nanos world Default Assets Pack
 *******************************
 
+.. image:: https://i.imgur.com/wSzjj5a.jpg
 
 nanos world provides a default Asset Pack already included in the base game, feel free to use the assets the way you want:
 

@@ -6,7 +6,7 @@
 Light
 *****
 
-A Light represents a Lighting source. Nanos World provides 3 types of lights: **Spot**, **Point** and **Rect**. All lights are Dynamic and because of that, very expensive! Keep that in mind before spawning 1000 lights ;).
+A Light represents a Lighting source. nanos world provides 3 types of lights: **Spot**, **Point** and **Rect**. All lights are Dynamic and because of that, very expensive! Keep that in mind before spawning 1000 lights ;).
 
 .. tip:: You can spawn this entity is both Client or Server (if you spawn it on client, it won't be synchronized with other players).
 

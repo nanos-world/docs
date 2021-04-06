@@ -209,7 +209,7 @@ Going Further
 		DrawCard(
 			"../modding/NanosWorldDefaultPack.html",
 			"https://cdn.arstechnica.net/wp-content/uploads/2015/09/IBC-facebook-1200x630-398254359.png",
-			"Nanos World Assets Pack",
+			"nanos world Assets Pack",
 			"Check it out all assets already included in the base game."
 		);
 	</script>
