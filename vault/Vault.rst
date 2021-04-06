@@ -33,6 +33,8 @@ We are advising everyone to **.zip** and upload their **Packages** and **Assets*
 
 .. warning:: **For now**, we recommend leaving the version in **1.0.0**, and do not change it! If you want to update your content, just upload it again with the same version.
 
+.. tip:: You can add an image which will appear in the Vault screen, please use the format 2:1 (e.g. 300px x 150px)!
+
 
 Prepare your Package!
 *********************
@@ -61,7 +63,7 @@ Your Package must contain the file ``Package.toml`` in the root of your .zip, wi
 		# Asset Packs Requirements
 		assets_requirements = [
 			"MyAwesomeAssetPack",
-	    ]
+        ]
 
 
 Your .zip would end up like:
