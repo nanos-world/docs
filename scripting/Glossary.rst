@@ -88,6 +88,10 @@ nanos world Enumerators
 
 			{ Free = 0, Limited = 1, Locked = 2 }
 
+	CrosshairType
+		.. code-block:: lua
+			{ None = 0, Regular = 1, Circle = 2, Crossbow = 3, Dot = 4, Holo = 5, Launcher = 6, RegularX = 7, Rocket = 8, SeparatedTriangle = 9, Shotgun = 10, Square = 11, Submachine = 12, Tee = 13, ThreeDots = 14, Triangle = 15, Vee = 16 }
+
 	DamageType
 		.. code-block:: lua
 

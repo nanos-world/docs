@@ -63,7 +63,7 @@ Your Package must contain the file ``Package.toml`` in the root of your .zip, wi
 		# Asset Packs Requirements
 		assets_requirements = [
 			"MyAwesomeAssetPack",
-        ]
+		]
 
 
 Your .zip would end up like:

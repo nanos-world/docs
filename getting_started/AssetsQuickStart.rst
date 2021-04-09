@@ -116,12 +116,12 @@ It is extremely important to setup your ``Assets.toml`` file, in there you will 
         name =              "MyPack"
         # Contributors
         author =            "SyedMuhammad"
-        # Unreal Folder - the root folder which the assets will have references to each other
-        unreal_folder =     "CityPark"
         # Version
         version =           "1.0.0"
         # Image URL
         image =             "https://i.imgur.com/AjtVZBQ.jpg"
+        # Unreal Folder - the root folder which the assets will have references to each other
+        unreal_folder =     "CityPark"
 
     # Assets Files
     [assets]
