@@ -76,6 +76,7 @@ nanos world provides a default Asset Pack already included in the base game, fee
         SM_DesertEagle_Mag_Empty = "Weapons/Pistols/DesertEagle/SM_DesertEagle_Mag_Empty"
         SM_AP5_Mag_Empty = "Weapons/Rifles/AP5/SM_AP5_Mag_Empty"
         SM_AR4_Mag_Empty = "Weapons/Rifles/AR4/SM_AR4_Mag_Empty"
+		SM_ASVal_Mag_Empty = "Weapons/Rifles/ASVal/SM_ASVal_Mag_Empty"
 
         SM_T4_Sight = "Weapons/Common/Accessories/SM_T4_Sight"
         SM_Vertgrip = "Weapons/Common/Accessories/SM_Vertgrip"
@@ -136,6 +137,7 @@ nanos world provides a default Asset Pack already included in the base game, fee
         SK_Moss500 = "Weapons/Shotguns/Moss500/SK_Moss500"
         SK_AP5 = "Weapons/Rifles/AP5/SK_AP5"
         SK_SMG11 = "Weapons/SMGs/SMG11/SK_SMG11"
+		SK_ASVal = "Weapons/Rifles/ASVal/SK_ASVal"
 
         SK_Pickup = "Vehicles/Variety/Pickup/SK_Pickup"
         SK_SUV = "Vehicles/Variety/SUV/SK_SUV"
@@ -161,6 +163,8 @@ nanos world provides a default Asset Pack already included in the base game, fee
         A_Rattle = "Weapons/Common/Audios/Rattle/A_Rattle_Cue"
         A_M4A1_Shot = "Weapons/Common/Audios/A_M4A1_Shot_Cue"
         A_AK47_Shot = "Weapons/Common/Audios/A_AK47_Shot_Cue"
+        A_AK74U_Shot = "Weapons/Common/Audios/A_AK74U_Shot_Cue"
+		A_ASVal_Shot = "Weapons/Common/Audios/A_ASVal_Shot_Cue"
         A_Glock_Shot = "Weapons/Common/Audios/A_Glock_Shot_Cue"
         A_Rifle_Shot = "Weapons/Common/Audios/A_Rifle_Shot_Cue"
         A_DesertEagle_Shot = "Weapons/Common/Audios/A_DesertEagle_Shot_Cue"
