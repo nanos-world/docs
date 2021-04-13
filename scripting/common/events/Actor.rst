@@ -10,11 +10,16 @@ Events (Inherited from Actor)
     - **Description**
 
   * -
+    - Destroy
+    - Entity self
+    - Triggered when an Entity is Destroyed
+
+  * -
     - Spawn
-    - Entity actor
+    - Entity self
     - Triggered when an Entity is Spawned/Created
 
   * -
-    - Destroy
-    - Entity actor
-    - Triggered when an Entity is Destroyed
+    - ValueChange
+    - Entity self, |br| :term:`string` key, |br| :term:`any` value
+    - Triggered when an Entity has it's value changed

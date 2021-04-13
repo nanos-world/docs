@@ -19,14 +19,14 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local NewVector = Vector(1452.5, 512, 943.1)
+    local new_vector = Vector(1452.5, 512, 943.1)
 
 
 Properties
 ----------
 
 .. list-table::
-  :widths: 10 40 50
+  :widths: 10 30 60
    
   * - **Type**
     - **Name**
@@ -56,7 +56,7 @@ Functions
     - **Description**
 
   * - :term:`boolean`
-    - Equals(:ref:`Vector` Other, :term:`number` Tolerance)
+    - Equals(:ref:`Vector` other, :term:`number` tolerance)
     - 
 
   * - :term:`number`
@@ -67,8 +67,8 @@ Functions
     - Size()
     - 
 
-  * - :ref:`Rotator`
-    - IsNearlyZero(:term:`number` Tolerance)
+  * - :ref:`boolean`
+    - IsNearlyZero(:term:`number` tolerance)
     - 
 
   * - :term:`boolean`
@@ -76,9 +76,9 @@ Functions
     - 
 
   * - :term:`number`
-    - DistanceSquared(:ref:`Vector` Other)
+    - DistanceSquared(:ref:`Vector` other)
     - 
 
   * - :term:`number`
-    - Distance(:ref:`Vector` Other)
+    - Distance(:ref:`Vector` other)
     - 

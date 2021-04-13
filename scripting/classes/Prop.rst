@@ -6,9 +6,7 @@
 Prop
 ****
 
-A Prop represents a Static Mesh which can be spawned in the world, can be grabbed around and have physics.
-
-.. attention:: This page is under construction.
+A Prop represents a Dynamic Mesh which can be spawned in the world, can be grabbed around by characters and have physics.
 
 
 Usage
@@ -17,10 +15,10 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local MyProp = Prop(
+    local my_prop = Prop(
       Vector(-900, 185, 215), 
       Rotator(0, 90, 90), 
-      "NanosWorld/Art/Rural/Extra/SM_Crate_07"
+      "NanosWorld::SM_Crate_07"
     )
 
 
@@ -35,27 +33,27 @@ Constructor Parameters
     - **Default**
 
   * - :ref:`Vector`
-    - Location
+    - location
     - Vector(0, 0, 0)
 
   * - :ref:`Rotator`
-    - Rotation
-    - Rotation(0, 0, 0)
+    - rotation
+    - Rotator(0, 0, 0)
 
   * - :term:`string`
-    - ModelName
+    - model_name
     - 
 
-  * - :term:`number`
-    - CollisionType
-    - 0 (Normal)
+  * - :term:`CollisionType`
+    - collision_type
+    - CollisionType.Normal
 
   * - :term:`boolean`
-    - GravityEnabled
+    - gravity_enabled
     - true
  
   * - :term:`boolean`
-    - IsGrabbable
+    - is_grabbable
     - true
 
 
@@ -71,9 +69,9 @@ Functions
     - **Description**
 
   * - 
-    - :term:`string`
-    - GetAssetName()
-    - Gets the Asset name
+    - 
+    - SetDefaultMaterial( |br-p| :term:`MaterialType` material_type = MaterialType.Masked |br| )
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available (*Masked, Translucent*)
 
   * - |server-only-label|
     - 
@@ -81,14 +79,39 @@ Functions
     - Sets ability to Grab this Prop
 
   * - 
-    - :term:`boolean`
-    - IsGrabbable()
-    - Gets ability to Grab this Prop
+    - 
+    - SetMaterialColorParameter( |br-p| :term:`string` parameter_name, |br-p| :ref:`Color` color |br| )
+    - Sets a Color parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialScalarParameter(:term:`string` parameter_name, :term:`number` scalar)
+    - Sets a scalar parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialTextureParameter(:term:`string` parameter_name, :term:`string` texture_path)
+    - Loads a image from computer (relative to `Assets/` folder) and sets as parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialVectorParameter(:term:`string` parameter_name, :ref:`Vector` vector)
+    - Sets a Vector parameter in this actor's material
+
+  * - 
+    - :term:`string`
+    - GetAssetName()
+    - Gets the Asset name
 
   * - 
     - :ref:`Character`
     - GetHandler()
     - Gets the Character (if existing) which is holding this
+
+  * - 
+    - :term:`boolean`
+    - IsGrabbable()
+    - Gets ability to Grab this Prop
 
 .. include:: ../common/functions/Actor.rst
 
@@ -106,12 +129,32 @@ Events
 
   * -
     - Grab
-    - :ref:`Prop` self, :ref:`Character` handler
+    - :ref:`Prop` self, |br| :ref:`Character` handler
     - When Character grabs a Prop
 
   * -
+    - Hit
+    - :ref:`Prop` self, |br| :term:`number` intensity
+    - When this Prop hits something
+
+  * -
     - UnGrab
-    - :ref:`Prop` self, :ref:`Character` handler
+    - :ref:`Prop` self, |br| :ref:`Character` handler
     - When Character ungrabs a Prop
 
 .. include:: ../common/events/Actor.rst
+
+
+Related Tutorials
+-----------------
+
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"../../tutorials/PropRain.html",
+			"https://i.imgur.com/0VVlryj.png",
+			"Prop Rain",
+			"A little fun making it rain props when entering a trigger!"
+		);
+	</script>

@@ -9,15 +9,85 @@ Functions (Inherited from Actor)
     - **Name**
     - **Description**
 
-  * - 
-    - :ref:`Vector`
-    - GetLocation()
-    - Get the actor's position in the game world
+  * - |authority-only-label|
+    - 
+    - AddImpulse(:ref:`Vector` force)
+    - Applies a Force in world coordinate on this Actor (the force is applied on Client side, by the (in most of cases) the closest player of this object)
+
+  * - |authority-only-label|
+    - 
+    - AttachTo( |br-p| Actor other, |br-p| :term:`string` bone_name = "", |br-p| :ref:`Vector` relative_location = {}, |br-p| :ref:`Rotator` relative_rotation = {} |br| )
+    - Attaches this Actor to any other Actor with a Relative Offset/Rotation
+
+  * - |authority-only-label|
+    - 
+    - Destroy()
+    - Destroys this Actor
+
+  * - |authority-only-label|
+    - 
+    - SetCollision(:term:`CollisionType`)
+    - Sets the actor's collision **Collision Types**: *Normal, Static Only, NoCollision*
+
+  * - |authority-only-label|
+    - 
+    - SetGravityEnabled(:term:`boolean`)
+    - Sets the actor's gravity enabled
+
+  * - |authority-only-label|
+    - 
+    - SetHighlightEnabled(:term:`boolean`)
+    - Sets if this Actors is Highlighting
+
+  * - |authority-only-label|
+    - 
+    - SetInitialLocation(:ref:`Vector`)
+    - Sets the initial location
+
+  * - |authority-only-label|
+    - 
+    - SetLocation(:ref:`Vector`)
+    - Sets the actor's location in the game world
+
+  * - |authority-only-label|
+    - 
+    - SetRotation(:ref:`Rotator`)
+    - Sets the actor's rotation in the game world
+
+  * - |authority-only-label|
+    - 
+    - SetScale(:ref:`Vector`)
+    - Sets the actor's scale
 
   * - 
-    - :ref:`Rotator`
-    - GetRotation()
-    - Gets the actor's rotation in the game world
+    - 
+    - SetValue(:term:`string` key, :term:`any` value)
+    - Sets a value in this entity, which can be accessed by any package (local only)
+
+  * - 
+    - 
+    - TranslateTo( |br-p| :ref:`Vector` location, |br-p| :term:`number` speed |br| )
+    - Smoothly moves this actor to a Location with a certain Speed
+
+  * - 
+    - 
+    - RotateTo( |br-p| :ref:`Rotator` rotation, |br-p| :term:`number` speed |br| )
+    - Smoothly rotates this actor to a Rotation with a certain Speed
+
+  * - 
+    - :term:`boolean`
+    - IsGravityEnabled()
+    - Gets the actor's gravity enabled
+
+  * - 
+    - :term:`boolean`
+    - IsInWater()
+    - Gets if the actor is in Water
+
+  * - 
+    - :term:`boolean`
+    - IsValid()
+    - Returns if this is Valid
 
   * - 
     - :term:`number`
@@ -25,81 +95,41 @@ Functions (Inherited from Actor)
     - Gets the current actor's collision
 
   * - 
-    - :term:`boolean`
-    - IsGravityEnabled()
-    - Gets the actor's gravity enabled
+    - :term:`number`
+    - GetID()
+    - Gets the network ID of this entity (same in both client and server)
 
-  * - |server-only-label|
-    - 
-    - SetRotation(:ref:`Rotator` NewRotation)
-    - Sets the actor's rotation in the game world
-
-  * - |server-only-label|
-    - 
-    - SetLocation(:ref:`Vector` NewLocation)
-    - Sets the actor's location in the game world
-
-  * - |server-only-label|
-    - 
-    - SetScale(:ref:`Vector` Scale)
-    - Sets the actor's scale
-
-  * - |server-only-label|
-    - 
-    - SetCollision(:term:`number` CollisionType)
-    - Sets the actor's collision (0 - Normal, 1 - Static Only, 2 - No Collision)
-
-  * - |server-only-label|
-    - 
-    - SetGravityEnabled(:term:`boolean` NewGravity)
-    - Sets the actor's gravity enabled
-
-  * - |server-only-label|
-    - 
-    - SetInitialLocation(:ref:`Vector` NewInitialLocation)
-    - Sets the initial location
+  * - 
+    - :ref:`Vector`
+    - GetLocation()
+    - Get the actor's position in the game world
 
   * - |server-only-label|
     - :ref:`Vector`
     - GetInitialLocation()
     - Gets the initial location
 
-  * - |server-only-label|
-    - 
-    - SetTintColor(:ref:`Color` NewTintColor)
-    - Sets the tint color, for completely paint an object, multiply the color by 10 or 100
+  * - 
+    - :ref:`Rotator`
+    - GetRotation()
+    - Gets the actor's rotation in the game world
 
   * - 
-    - :ref:`Color`
-    - GetTintColor()
-    - Gets the Tint Color
-
-  * - |server-only-label|
-    - 
-    - Destroy()
-    - Destroys this Actor
-
-  * - |server-only-label|
-    - :term:`boolean`
-    - IsValid()
-    - Returns if this is Valid
-
-  * - |server-only-label|
-    - 
-    - AttachTo(Actor Other, :term:`string` BoneName, :ref:`Vector` RelativeLocation)
-    - Attaches this Actor to any other Actor with a Relative Offset
-
-  * - |server-only-label|
-    - 
-    - AddImpulse(:ref:`Vector` Force)
-    - Applies a Force in world coordinate on this Actor (the force is applied on Client side, by the (in most of cases) the closest player of this object)
+    - :ref:`Vector`
+    - GetScale()
+    - Gets the actor's scale
 
   * - 
-    - 
-    - SetValue(:term:`string` Key, any Value)
-    - Sets a value in this entity, which can be accessed by any package (local only)
+    - :term:`string`
+    - GetType()
+    - Returns the type of this Actor
 
   * - 
     - any
-    - GetValue(:term:`string` Key)
+    - GetValue(:term:`string` key)
     - Gets a value given a key
+
+  * - |client-only-label|
+    - :ref:`Vector`
+    - GetVelocity()
+    - Returns the current actor Velocity

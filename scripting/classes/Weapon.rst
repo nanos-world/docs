@@ -6,13 +6,11 @@
 Weapon
 ******
 
+.. image:: https://i.imgur.com/GqB7p3Z.png
+
 Weapons are fully customizable, all pieces of the weapon can be changed with immense possibility of creation
 
-.. attention:: This page is under construction.
-
-.. tip:: Since update 0.16 it is possible to create any kind of weapon with any kind of mesh
-
-.. tip:: Please take a look at our Default's Weapon package with all of them already properly configured and ready to use: `<https://github.com/nanos-world/nanos-world-weapons>`_.
+.. tip:: Please take a look at our Default's Weapon package with all built-in Weapons already properly configured and ready to use: `<https://github.com/nanos-world/nanos-world-weapons>`_.
 
 
 Usage
@@ -22,11 +20,11 @@ Usage
  .. code-tab:: lua Lua
 
     -- spawning a AK47
-    local NewWeapon = Weapon(
+    local new_weapon = Weapon(
         Vector(-900, 185, 215), -- Spawn Location
         Rotator(0, 90, 90),     -- Spawn Rotation
-        "NanosWorld/Weapons/Rifles/AK47/SK_AK47", -- Model
-        0,                    -- Collision (Normal)
+        "NanosWorld::SK_AK47", -- Model
+        CollisionType.Normal, -- Collision (Normal)
         true,                 -- Gravity Enabled
         30,                   -- Default Ammo in the Clip
         1000,                 -- Default Ammo in the Bag
@@ -44,57 +42,64 @@ Usage
         Vector(26, 0, 8.5),   -- Left Hand Location
         Rotator(0, 60, 90),   -- Left Hand Rotation
         Vector(-10, 0, 0),    -- Right Hand Offset
-        1,                    -- Handling Mode (0. SingleHandedWeapon, 1. DoubleHandedWeapon, 2. SingleHandedMelee, 3. DoubleHandedMelee, 4. Throwable, 5. Torch)
+        HandlingMode.DoubleHandedWeapon, -- Handling Mode (SingleHandedWeapon, DoubleHandedWeapon, SingleHandedMelee, DoubleHandedMelee, Throwable, Torch, Barrel, Box)
         0.15,                 -- Cadence (1 shot at each 0.15seconds)
         true,                 -- Can Hold Use (keep pressing to keep firing, common to automatic weapons)
         false,                -- Need to release to Fire (common to Bows)
-        "NanosWorld/Weapons/Common/Effects/ParticlesSystems/Weapons/P_Bullet_Trail_System", -- Bullet Trail Particle
-        "NanosWorld/Weapons/Rifles/AK47/PS_AK47_Barrel_Smoke",                              -- Barrel Particle
-        "NanosWorld/Weapons/Rifles/AK47/PS_AK47_Shells",                                    -- Shells Particle
-        "NanosWorld/Weapons/Common/Audios/A_Rifle_Dry_Cue",                                 -- Weapon's Dry Sound
-        "NanosWorld/Weapons/Common/Audios/A_Rifle_Load_Cue",                                -- Weapon's Load Sound
-        "NanosWorld/Weapons/Common/Audios/A_Rifle_Unload_Cue",                              -- Weapon's Unload Sound
-        "NanosWorld/Weapons/Common/Audios/Rattle/A_AimZoom_Cue",                            -- Weapon's Zooming Sound
-        "NanosWorld/Weapons/Common/Audios/Rattle/A_Rattle_Cue",                             -- Weapon's Aiming Sound
-        "NanosWorld/Weapons/Common/Audios/A_AK47_Shot_Cue",                                 -- Weapon's Shot Sound
-        "NanosWorld/Characters/Common/Animations/Weapons/AM_Mannequin_Reload_Rifle",        -- Character's Reloading Animation
-        "NanosWorld/Characters/Common/Animations/Weapons/AM_Mannequin_Sight_Fire",          -- Character's Aiming Animation
-        "NanosWorld/Weapons/Rifles/AK47/SM_AK47_Mag_Empty"                                  -- Magazine Mesh
+        "NanosWorld::P_Bullet_Trail_System",                       -- Bullet Trail Particle
+        "NanosWorld::P_Weapon_BarrelSmoke",                        -- Barrel Particle
+        "NanosWorld::P_Weapon_Shells_762x39",                      -- Shells Particle
+        "NanosWorld::A_Rifle_Dry",                                 -- Weapon's Dry Sound
+        "NanosWorld::A_Rifle_Load",                                -- Weapon's Load Sound
+        "NanosWorld::A_Rifle_Unload",                              -- Weapon's Unload Sound
+        "NanosWorld::A_AimZoom",                                   -- Weapon's Zooming Sound
+        "NanosWorld::A_Rattle",                                    -- Weapon's Aiming Sound
+        "NanosWorld::A_AK47_Shot",                                 -- Weapon's Shot Sound
+        "NanosWorld::AM_Mannequin_Reload_Rifle",                   -- Character's Reloading Animation
+        "NanosWorld::AM_Mannequin_Sight_Fire",                     -- Character's Aiming Animation
+        "NanosWorld::SM_AK47_Mag_Empty"                            -- Magazine Mesh
     )
 
 
-Using our Default Weapons Package `<https://github.com/nanos-world/nanos-world-weapons>`_ and spawning and attaching a Red Dot:
+Using our Default Weapons Package `<https://github.com/nanos-world/nanos-world-weapons>`_ (already built-in included) for spawning an AK47:
 
 .. tabs::
  .. code-tab:: lua Lua
 
     -- Includes this Package in your Package
-    Package:RequirePackage("nanos-world-weapons")
+    Package:RequirePackage("NanosWorldWeapons")
     
     -- Spawning the AK47
     local my_ak47 = NanosWorldWeapons.AK47(Vector(1035, 154, 300), Rotator())
-    
-    -- Spawning a Red Dot Sight Prop anywhere
-    local my_reddot = Prop(
-        Vector(),
-        Rotator(), 
-        "NanosWorld/Weapons/Common/Accessories/SM_T4_Sight.SM_T4_Sight", -- Red Dot Static Mesh Path
-        2, -- No Collision
-        false, -- No Gravity
-        false -- No Grabbing
-    )
-    
-    -- Attaches the RedDot Prop into AK47 on sight_socket bone from AK47 model. As our AK47 model already
-    -- have a bone named sight_socket at the right location, we can just attach to it, otherwise we would 
-    -- need to set it's Attach Location to where the RedDot fits and using bone name empty ""
-    my_reddot:AttachTo(my_ak47, "sight_socket", Vector(), Rotator())
-    
-    -- Makes the FOV multiplier reduces by 0.35x when ADS (aiming)
-    my_ak47.SightFOVMultiplier = 0.35
-    
-    -- Sets the ADS transform offset to fit the RedDot center position,
-    -- each weapon will need a different offset to fit it's sight. AK47 + RedDot best fit is -15.9 
-    Weapon:SetSightTransform(Vector(0, 0, -15.9), Rotator(0, 0, 0))
+
+
+Related Tutorials
+-----------------
+
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"../../tutorials/PropShooter.html",
+			"https://i.imgur.com/Mq3FBv4.png",
+			"Prop Shooter",
+			"A small example of how to shoot Props from a weapon!"
+		);
+
+		DrawCard(
+			"../../tutorials/WeaponScope.html",
+			"https://i.imgur.com/K5eVATY.png",
+			"Weapon Scope",
+			"See how to attach a scope (ex: Red Dot) to any weapon!"
+		);
+
+		DrawCard(
+			"../../tutorials/WeaponFlashlight.html",
+			"https://i.imgur.com/JUtyW9s.png",
+			"Weapon Flashlight",
+			"See how to create and attach a flashlight to any weapon!"
+		);
+	</script>
 
 
 Constructor Parameters
@@ -108,151 +113,151 @@ Constructor Parameters
     - **Default**
 
   * - :ref:`Vector`
-    - Location
+    - location
     - Vector(0, 0, 0)
 
   * - :ref:`Rotator`
-    - Rotation
-    - Rotation(0, 0, 0)
+    - rotation
+    - Rotator(0, 0, 0)
 
   * - :term:`string`
-    - ModelName
+    - model_name
     - Skeletal Mesh Path
 
-  * - :term:`number`
-    - CollisionType
-    - 0 *(Normal)*
+  * - :term:`CollisionType`
+    - collision_type
+    - CollisionType.Normal
 
   * - :term:`boolean`
-    - GravityEnabled
+    - gravity_enabled
     - true
 
   * - :term:`number`
-    - AmmoClip
+    - ammo_clip
     - 32
 
   * - :term:`number`
-    - AmmoBag
+    - ammo_bag
     - 1024
 
   * - :term:`number`
-    - ClipCapacity
+    - clip_capacity
     - 32
 
   * - :term:`number`
-    - BaseDamage
+    - base_damage
     - 30
 
   * - :term:`number`
-    - Spread *(the higher the less precision)*
+    - spread *(the higher the less precision)*
     - 20
 
   * - :term:`number`
-    - BulletCount *(how many bullets are fired at once - 1 for common weapons and >1 for shotguns)*
+    - bullet_count *(how many bullets are fired at once - 1 for common weapons and >1 for shotguns)*
     - 1
 
   * - :term:`number`
-    - AmmoToReload *(AmmoClip for common weapons, 1 for shotguns)*
+    - ammo_to_reload *(AmmoClip for common weapons, 1 for shotguns)*
     - 32
 
   * - :term:`number`
-    - BulletMaxDistance
+    - bullet_max_distance
     - 20000
 
   * - :term:`number`
-    - BulletVelocity *(visuals only)*
+    - bullet_velocity *(visuals only)*
     - 7500
 
   * - :ref:`Color`
-    - BulletColor
+    - bullet_color
     - Color(10000, 20, 0)
 
   * - :term:`number`
-    - SightFOVMultiplier *(amount of FOV reduced when Aiming Down Sights (ADS))*
+    - sight_fov_multiplier *(amount of FOV reduced when Aiming Down Sights (ADS))*
     - 0.5
 
   * - :ref:`Vector`
-    - SightLocation *(offset applied to align player's head to weapon's sight when ADS)*
+    - sight_location *(offset applied to align player's head to weapon's sight when ADS)*
     - 
 
   * - :ref:`Rotator`
-    - SightRotation *(rotation applied on the weapon when ADS)*
+    - sight_rotation *(rotation applied on the weapon when ADS)*
     - 
 
   * - :ref:`Vector`
-    - LeftHandLocation *(location relative to weapon's root to put the left hand)*
+    - left_hand_location *(location relative to weapon's root to put the left hand)*
     - 
 
   * - :ref:`Rotator`
-    - LeftHandRotation *(rotation relative to weapon's root to put the left hand)*
+    - left_hand_rotation *(rotation relative to weapon's root to put the left hand)*
     - 
 
   * - :ref:`Vector`
-    - RightHandOffset *(offset of right hand - to offset the weapon as well)*
+    - right_hand_offset *(offset of right hand - to offset the weapon as well)*
     - 
 
-  * - :term:`number`
-    - HandlingMode *(0. SingleHandedWeapon, 1. DoubleHandedWeapon, 2. SingleHandedMelee, 3. DoubleHandedMelee, 4. Throwable, 5. Torch)*
-    - 0
+  * - :term:`HandlingMode`
+    - handling_mode *(SingleHandedWeapon, DoubleHandedWeapon, SingleHandedMelee, DoubleHandedMelee, Throwable, Torch)*
+    - HandlingMode.SingleHandedWeapon
 
   * - :term:`number`
-    - Cadence *(frequency of shots in seconds)*
+    - cadence *(frequency of shots in seconds)*
     - 0.15
 
   * - :term:`boolean`
-    - CanHoldUse *(enables keep holding to keep firing)*
+    - can_hold_use *(enables keep holding to keep firing)*
     - true
 
   * - :term:`boolean`
-    - ReleaseToShot *(needs to release the fire button to shot)*
+    - release_to_shot *(needs to release the fire button to shot)*
     - false
 
   * - :term:`string`
-    - BulletTrailParticle *(particle of bullet trail)*
+    - bullet_trail_particle *(particle of bullet trail)*
     - 
 
   * - :term:`string`
-    - BarrelParticle *(particle of muzzle fire effect)*
+    - barrel_particle *(particle of muzzle fire effect)*
     - 
 
   * - :term:`string`
-    - ShellsParticle *(particle of shells being spit out)*
+    - shells_particle *(particle of shells being spit out)*
     - 
 
   * - :term:`string`
-    - DrySound *(sound when weapon is dry)*
+    - dry_sound *(sound when weapon is dry)*
     - 
 
   * - :term:`string`
-    - LoadSound
+    - load_sound
     - 
 
   * - :term:`string`
-    - UnloadSound
+    - unload_sound
     - 
 
   * - :term:`string`
-    - ZoomingSound *(sound when switching aimings (wheel mouse))*
+    - zooming_sound *(sound when switching aimings (wheel mouse))*
     - 
 
   * - :term:`string`
-    - AimingSound *(sound when going from no aim to aiming)*
+    - aiming_sound *(sound when going from no aim to aiming)*
     - 
 
   * - :term:`string`
-    - ShotSound
+    - shot_sound
     - 
 
   * - :term:`string`
-    - CharacterReloadingAnimation
+    - character_reloading_animation
     - 
 
   * - :term:`string`
-    - CharacterAimingAnimation
+    - character_aiming_animation
     - 
 
   * - :term:`string`
-    - MagazineMesh *(mesh used when reloading)*
+    - magazine_mesh *(mesh used when reloading)*
     - Static Mesh Path
 
 
@@ -267,27 +272,27 @@ Properties
     - **Name**
     - **Description**
 
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
     - :term:`number`
     - BaseDamage 
     - Weapon's Base Damage
 
-  * - |client-ready-only-label|
-    - :term:`number`
-    - ClipCapacity 
-    - Weapon's Clip Capacity
-
-  * - |client-ready-only-label|
-    - :term:`number`
-    - SightFOVMultiplier 
-    - Amount of FOV reduced when Aiming Down Sights (ADS)
-
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
     - :term:`number`
     - Cadence 
     - Speed of shots (1 shot at each ``Cadence`` seconds)
 
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
+    - :term:`number`
+    - ClipCapacity 
+    - Weapon's Clip Capacity
+
+  * - |client-read-only-label|
+    - :term:`number`
+    - SightFOVMultiplier 
+    - Amount of FOV reduced when Aiming Down Sights (ADS)
+
+  * - |client-read-only-label|
     - :term:`number`
     - Spread 
     - The higher the less precision
@@ -306,38 +311,33 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetAmmoClip(:term:`number` NewAmmo)
-    - Sets this Weapon's Ammo Clip
-
-  * - |server-only-label|
-    - 
-    - SetAmmoBag(:term:`number` NewAmmo)
+    - SetAmmoBag(:term:`number` new_ammo)
     - Sets this Weapon's Ammo Bag
 
   * - |server-only-label|
     - 
-    - SetSightTransform(:ref:`Vector` Location, :ref:`Rotator` Rotation)
-    - Offset applied to align player's head to weapon's sight and rotation applied on the weapon when ADS
+    - SetAmmoClip(:term:`number` new_ammo)
+    - Sets this Weapon's Ammo Clip
 
   * - |server-only-label|
     - 
-    - SetLeftHandTransform(:ref:`Vector` Location, :ref:`Rotator` Rotation)
+    - SetBulletColor(:ref:`Color` color)
+    - Bullet Color
+
+  * - |server-only-label|
+    - 
+    - SetLeftHandTransform( |br-p| :ref:`Vector` location, |br-p| :ref:`Rotator` rotation |br| )
     - Left Hand Offset
 
   * - |server-only-label|
     - 
-    - SetRightHandOffset(:ref:`Vector` Offset)
+    - SetRightHandOffset(:ref:`Vector` offset)
     - Offset of Right Hand
 
   * - |server-only-label|
     - 
-    - SetBulletColor(:ref:`Color` Color)
-    - Bullet Color
-
-  * - 
-    - :term:`number`
-    - GetAmmoClip()
-    - Gets this Weapon's Ammo Clip
+    - SetSightTransform( |br-p| :ref:`Vector` location, |br-p| :ref:`Rotator` rotation |br| )
+    - Offset applied to align player's head to weapon's sight and rotation applied on the weapon when ADS
 
   * - 
     - :term:`number`
@@ -345,13 +345,18 @@ Functions
     - Gets this Weapon's Ammo Bag
 
   * - 
-    - :ref:`Vector`
-    - GetRightHandOffset()
-    - 
+    - :term:`number`
+    - GetAmmoClip()
+    - Gets this Weapon's Ammo Clip
 
   * - 
     - :ref:`Color`
     - GetBulletColor()
+    - 
+
+  * - 
+    - :ref:`Vector`
+    - GetRightHandOffset()
     - 
 
 .. include:: ../common/functions/Pickable.rst
@@ -372,12 +377,12 @@ Events
 
   * -
     - Fire
-    - :ref:`Weapon` self, :ref:`Character` shooter
+    - :ref:`Weapon` self, |br| :ref:`Character` shooter
     - When this weapon is fired
 
   * -
     - Reload
-    - :ref:`Weapon` self, :ref:`Character` character, :term:`number` AmmoToReload
+    - :ref:`Weapon` self, |br| :ref:`Character` character, |br| :term:`number` ammo_to_reload
     - When this weapon is reloaded, optionally by a Character
 
 .. include:: ../common/events/Pickable.rst

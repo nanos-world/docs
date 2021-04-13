@@ -8,8 +8,6 @@ Grenade
 
 Chad Grenade
 
-.. attention:: This page is under construction.
-
 
 Usage
 -----
@@ -17,10 +15,12 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local NewGrenade = Grenade(
+    local new_grenade = Grenade(
       Vector(-900, 185, 215), 
       Rotator(0, 90, 90), 
-      "Blueprint'/Game/NanosWorld/Core/Grenades/Frag_Grenade'"
+      "NanosWorld::SM_Grenade_G67",
+      "NanosWorld::P_Explosion_Dirt",
+      "NanosWorld::A_Explosion_Large"
     )
 
 
@@ -35,23 +35,31 @@ Constructor Parameters
     - **Default**
 
   * - :ref:`Vector`
-    - Location
+    - location
     - Vector(0, 0, 0)
 
   * - :ref:`Rotator`
-    - Rotation
-    - Rotation(0, 0, 0)
+    - rotation
+    - Rotator(0, 0, 0)
 
   * - :term:`string`
-    - ModelName
-    - 
+    - static_mesh_asset
+    - "NanosWorld::SM_Grenade_G67"
 
-  * - :term:`number`
-    - CollisionType
-    - 0 (Normal)
+  * - :term:`string`
+    - explosion_particles
+    - "NanosWorld::P_Explosion_Dirt"
+
+  * - :term:`string`
+    - explosion_sound
+    - "NanosWorld::A_Explosion_Large
+
+  * - :term:`CollisionType`
+    - collision_type
+    - CollisionType.Normal
 
   * - :term:`boolean`
-    - GravityEnabled
+    - gravity_enabled
     - true
  
 
@@ -66,30 +74,40 @@ Properties
     - **Name**
     - **Description**
 
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
     - :term:`number`
     - BaseDamage 
-    - Grenade's Base Damage
+    - Damage at Inner Radius
 
-  * - |client-ready-only-label|
-    - :term:`number`
-    - MinimumDamage  
-    - Grenade's Base Damage
-
-  * - |client-ready-only-label|
-    - :term:`number`
-    - DamageInnerRadius  
-    - Grenade's 
-
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
     - :term:`number`
     - DamageFalloff   
-    - Grenade's
+    - Radius which BaseDamage will apply proportionally 
 
-  * - |client-ready-only-label|
+  * - |client-read-only-label|
+    - :term:`number`
+    - DamageInnerRadius  
+    - Radius which MinimumDamage will apply
+
+  * - |client-read-only-label|
+    - :term:`number`
+    - DamageOuterRadius  
+    - Radius which BaseDamage will apply
+
+  * - |client-read-only-label|
+    - :term:`number`
+    - MinimumDamage  
+    - Damage at Outer Radius
+
+  * - |client-read-only-label|
     - :term:`number`
     - TimeToExplode   
-    - Grenade's 
+    - Time until Explosion
+
+  * - |client-read-only-label|
+    - :term:`number`
+    - ThrowForce   
+    - Impulse applied when throwing
 
 
 Functions
@@ -97,11 +115,17 @@ Functions
 
 .. list-table:: 
   :widths: 5 10 35 50
-   
-  * - **Returns**
+
+  * - 
+    - **Returns**
     - **Name**
-    - **Parameters**
     - **Description**
+
+  * - |server-only-label|
+    - 
+    - Explode()
+    - Forces this grenade to Explode
+
 
 .. include:: ../common/functions/Pickable.rst
 

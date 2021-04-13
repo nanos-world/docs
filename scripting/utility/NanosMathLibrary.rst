@@ -17,14 +17,14 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local Axis = NanosMathLibrary.ClampAxis(720)
+    local axis = NanosMathLibrary.ClampAxis(720)
 
 
 Functions
 ---------
 
 .. list-table::
-  :widths: 10 40 50
+  :widths: 10 30 60
    
   * - **Returns**
     - **Name**
@@ -39,21 +39,36 @@ Functions
     - Clamps an angle to the range of [-180, 180].
 
   * - :term:`number`
-    - FInterpTo(:term:`number` Current, :term:`number` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
+    - FInterpTo( |br-p| :term:`number` current, |br-p| :term:`number` target, |br-p| :term:`number` delta_time, |br-p| :term:`number` InterpSpeed |br| )
     - 
 
   * - :ref:`Rotator`
-    - RInterpTo(:ref:`Rotator` Current, :ref:`Rotator` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
+    - RInterpTo( |br-p| :ref:`Rotator` current, |br-p| :ref:`Rotator` target, |br-p| :term:`number` delta_time, |br-p| :term:`number` interp_speed |br| )
     - 
 
   * - :ref:`Rotator`
-    - RInterpConstantTo(:ref:`Rotator` Current, :ref:`Rotator` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
+    - RInterpConstantTo( |br-p| :ref:`Rotator` current, |br-p| :ref:`Rotator` target, |br-p| :term:`number` delta_time, |br-p| :term:`number` interp_speed |br| )
     - 
 
   * - :ref:`Vector`
-    - VInterpTo(:ref:`Vector` Current, :ref:`Vector` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
+    - VInterpTo( |br-p| :ref:`Vector` current, |br-p| :ref:`Vector` target, |br-p| :term:`number` delta_time, |br-p| :term:`number` interp_speed |br| )
     - 
 
   * - :ref:`Vector`
-    - VInterpConstantTo(:ref:`Vector` Current, :ref:`Vector` Target, :term:`number` DeltaTime, :term:`number` InterpSpeed)
+    - VInterpConstantTo( |br-p| :ref:`Vector` current, |br-p| :ref:`Vector` target, |br-p| :term:`number` delta_time, |br-p| :term:`number` interp_speed |br| )
     - 
+
+
+Besides having the NanosMathLibrary table, we've added some new methods to the built-in lua `math` library:
+
+
+Functions
+---------
+
+  * - :term:`number`
+    - math.clamp(:term:`number` value, :term:`number` min, :term:`number` max)
+    - Clamps a value between min and max values 
+
+  * - :term:`number`
+    - math.round(:term:`number` value)
+    - Rounds a value to the nearest integer

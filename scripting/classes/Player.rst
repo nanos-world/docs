@@ -8,8 +8,6 @@ Player
 
 Players are Entities that represents the individual behind the mouse and keyboard. Players are spawned automatically when connected to the server.
 
-.. attention:: This page is under construction.
-
 
 Constructors
 ------------
@@ -28,20 +26,50 @@ Functions
     - **Name**
     - **Description**
 
-  * - 
-    - :term:`number`
-    - GetPing()
-    - Returns the ping of a player
-
-  * - 
-    - :ref:`Character`
-    - GetControlledCharacter()
-    - Returns the character of the player. If the player has not yet been assigned a character, :term:`nil` is returned.
+  * - |server-only-label|
+    - 
+    - Ban(:term:`string` reason)
+    - Bans the player from the server
 
   * - |server-only-label|
     - 
-    - Possess(:ref:`Character` NewCharacter)
+    - Kick(:term:`string` reason)
+    - Kicks the player from the server
+
+  * - |server-only-label|
+    - 
+    - Possess(:ref:`Character` new_character)
     - Bind the ``Player`` to a :ref:`Character` 
+
+  * - 
+    - 
+    - SetCameraLocation(:ref:`Vector` location)
+    - Sets the Player's Camera Location (only works if not possessing any Character)
+
+  * - 
+    - 
+    - SetCameraRotation(:ref:`Rotator` rotation)
+    - Sets the Player's Camera Rotation
+
+  * - |server-only-label|
+    - 
+    - SetName(:term:`string` new_name)
+    - Sets the player's name
+
+  * - 
+    - 
+    - SetValue(:term:`string` key, :term:`any` value)
+    - Sets a value in this entity, which can be accessed by any package (local only)
+
+  * - |server-only-label|
+    - 
+    - SetVOIPChannel(:term:`number` channel)
+    - Sets the VOIP Channel of this Player (will only communicate with other players in the same channel)
+
+  * - 
+    - 
+    - SetVOIPSetting(:term:`VOIPSetting` setting)
+    - Sets the VOIP Settings of this Player (*Local, Global, Muted*)
 
   * - |server-only-label|
     - 
@@ -49,14 +77,69 @@ Functions
     - Release the ``Player`` from the :ref:`Character` 
 
   * - 
-    - 
-    - SetValue(:term:`string` Key, any Value)
-    - Sets a value in this entity, which can be accessed by any package (local only)
+    - :term:`string`
+    - GetAccountID()
+    - *Currently this is not the real Account ID. This ID is generated based on Player's IP which can be used for now to identify Players during a short period (until his IP changes). This is a temporary solution while our Account System isn't fully integrated.*
 
   * - 
-    - any
+    - :term:`string`
+    - GetAccountName()
+    - Gets the nanos account name
+
+  * - 
+    - :ref:`Character`
+    - GetControlledCharacter()
+    - Returns the character of the player. If the player has not yet been assigned a character, :term:`nil` is returned.
+
+  * - 
+    - :term:`number`
+    - GetID()
+    - Gets the network ID of this entity (same in both client and server)
+
+  * - |server-only-label|
+    - :term:`string`
+    - GetIP()
+    - Gets the IP of this Player
+
+  * - 
+    - :term:`string`
+    - GetName()
+    - Returns the player's name
+
+  * - 
+    - :term:`number`
+    - GetPing()
+    - Returns the ping of a player
+
+  * - 
+    - :term:`string`
+    - GetType()
+    - Returns the type of this Actor
+
+  * - 
+    - :term:`number`
+    - GetVOIPChannel()
+    - Returns the VOIP Channel of this Player
+
+  * - 
+    - :term:`any`
     - GetValue(:term:`string` Key)
     - Gets a value given a key
+
+  * - |client-only-label|
+    - :term:`boolean`
+    - IsLocalPlayer()
+    - Returns if this is the LocalPlayer
+
+  * - 
+    - :term:`boolean`
+    - IsValid()
+    - Returns if this is Valid
+
+  * - 
+    - :term:`VOIPSetting`
+    - GetVOIPSetting()
+    - Returns this Player VOIP Setting
 
 
 Events
@@ -71,17 +154,31 @@ Events
     - **Description**
 
   * -
+    - Destroy
+    - :ref:`Player` player
+    - Triggered when Player disconnects from the server
+
+  * -
     - Possess
-    - :ref:`Player` player, :ref:`Character` character
+    - :ref:`Player` player, |br| :ref:`Character` character
     - A ``Player`` was bound to a :ref:`Character`
 
   * -
+    - Spawn
+    - :ref:`Player` player
+    - Triggered when Player connects to the server
+
+  * - |server-only-label|
+    - Ready
+    - :ref:`Player` player
+    - Triggered when Player is ready (i.e. fully loaded and ready to play)
+
+  * -
     - UnPossess
-    - :ref:`Player` player, :ref:`Character` character, :term:`boolean` bIsPlayerDisconnecting
+    - :ref:`Player` player, |br| :ref:`Character` character, |br| :term:`boolean` is_player_disconnecting
     - A :ref:`Character` was released from the ``Player``
 
-
-Examples
---------
-
-* Spawn player at random locations :ref:`TutorialSpawnPlayerRandomLocations`
+  * -
+    - VOIP
+    - :ref:`Player` player, |br| :term:`boolean` is_talking
+    - When a Player starts/ends using VOIP

@@ -26,4 +26,153 @@ Lua Types
 		Nil is a type with a single value, nil, whose main property is to be different from any other value. As we have seen, a global variable has a nil value by default, before a first assignment, and you can assign nil to a global variable to delete it. Lua uses nil as a kind of non-value, to represent the absence of a useful value.
 
 	table
-		The table type implements associative arrays. An associative array is an array that can be indexed not only with numbers, but also with strings or any other value of the language, except nil. Moreover, tables have no fixed size; you can add as many elements as you want to a table dynamically. Tables are the main (in fact, the only) data structuring mechanism in Lua, and a powerful one. We use tables to represent ordinary arrays, symbol tables, sets, records, queues, and other data structures, in a simple, uniform, and efficient way. Lua uses tables to represent packages as well. When we write io.read, we mean "the read entry from the io package". For Lua, that means "index the table io using the string "read" as the key". 
+		The table type implements associative arrays. An associative array is an array that can be indexed not only with numbers, but also with strings or any other value of the language, except nil. Moreover, tables have no fixed size; you can add as many elements as you want to a table dynamically. Tables are the main (in fact, the only) data structuring mechanism in Lua, and a powerful one. We use tables to represent ordinary arrays, symbol tables, sets, records, queues, and other data structures, in a simple, uniform, and efficient way. Lua uses tables to represent packages as well. When we write io.read, we mean "the read entry from the io package". For Lua, that means "index the table io using the string "read" as the key".
+
+	any
+		We use :term:`any` here in the Docs to represent that any Type can be used.
+
+
+nanos world Enumerators
+=======================
+
+.. tip:: Instead of passing numbers to methods or comparing numbers in Events callbacks, you can use the following Enums to do so. Examples:
+
+.. tabs::
+ .. code-tab:: lua Lua
+
+   Character:Subscribe("StanceModeChanged", function(character, old_stance, new_stance)
+      if (new_stance == StanceMode.Standing) then
+         Package:Log("I'm Standing!")
+      else if (new_stance == StanceMode.Crouching) then
+         Package:Log("I'm Crouching!")
+      end
+   end)
+
+   local my_light = Light(Vector(-152, 245, 115), Rotator(), Color(1, 0, 0), LightType.Point)
+
+   character:SetViewMode(ViewMode.FPS)
+
+
+.. note:: The functions which use the Enums are still receiving numbers as parameters (as always), using Enums is just a facilitator.
+
+
+.. glossary::
+
+	AimMode
+		.. code-block:: lua
+
+			{ None = 0, ADS = 1, ZoomedZoom = 2, Zoomed = 3, ZoomedFar = 4 }
+
+	AnimationSlotType
+		.. code-block:: lua
+
+			{ FullBody = 0, UpperBody = 1 }
+
+	AttenuationFunction
+		.. code-block:: lua
+
+			{ Linear = 0, Logarithmic = 1, Inverse = 2, LogReverse = 3, NaturalSound = 4 }
+
+	CameraMode
+		.. code-block:: lua
+
+			{ FPSTPS = 0, FPSOnly = 1, TPSOnly = 2 }
+
+	CollisionType
+		.. code-block:: lua
+
+			{ Normal = 0, StaticOnly = 1, NoCollision = 2 }
+
+	ConstraintMotion
+		.. code-block:: lua
+
+			{ Free = 0, Limited = 1, Locked = 2 }
+
+	CrosshairType
+		.. code-block:: lua
+			{ None = 0, Regular = 1, Circle = 2, Crossbow = 3, Dot = 4, Holo = 5, Launcher = 6, RegularX = 7, Rocket = 8, SeparatedTriangle = 9, Shotgun = 10, Square = 11, Submachine = 12, Tee = 13, ThreeDots = 14, Triangle = 15, Vee = 16 }
+
+	DamageType
+		.. code-block:: lua
+
+			{ Shot = 0, Explosion = 1, Punch = 2, Fall = 3, RunOver = 4, Unknown = 5 }
+
+	DifferentialType
+		.. code-block:: lua
+
+			{ LimitedSlip_4W = 0, LimitedSlip_FrontDrive = 1, LimitedSlip_RearDrive = 2, Open_4W = 3, Open_FrontDrive = 4, Open_RearDrive = 5 }
+
+	FallingMode
+		.. code-block:: lua
+
+			{ None = 0, Jumping = 1, Climbing = 2, Vaulting = 3, Falling = 4, HighFalling = 5, Parachuting = 6, SkyDiving = 7 }
+
+	FontType
+		.. code-block:: lua
+
+			{ Roboto = 0, GothicA1 = 1, PoiretOne = 2 }
+
+	GaitMode
+		.. code-block:: lua
+
+			{ None = 0, Walking = 1, Sprinting = 2 }
+
+	HandlingMode
+		.. code-block:: lua
+
+			{ SingleHandedWeapon = 0, DoubleHandedWeapon = 1, SingleHandedMelee = 2, DoubleHandedMelee = 3, Throwable = 4, Torch = 5, Barrel = 6, Box = 7 }
+
+	LogType
+		.. code-block:: lua
+
+			{ Display = 0, Warning = 1,	Error = 2, Debug = 3, Verbose = 4, Scripting = 5, Chat = 6, WebUI = 7 }
+
+	LightType
+		.. code-block:: lua
+
+			{ Point = 0, Spot = 1, React = 2 }
+
+	MaterialType
+		.. code-block:: lua
+
+			{ Masked = 1, Translucent = 2 }
+
+	SoundType
+		.. code-block:: lua
+
+			{ SFX = 0, Music = 1 }
+
+	StanceMode
+		.. code-block:: lua
+
+			{ None = 0, Standing = 1, Crouching = 2, Proning = 3 }
+
+	SwimmingMode
+		.. code-block:: lua
+
+			{ None = 0, Superficie = 1, Underwater = 2 }
+
+	TextRenderHorizontalAlignment
+		.. code-block:: lua
+
+			{ Left = 0, Center = 1, Right = 2 }
+
+	TextRenderType
+		.. code-block:: lua
+
+			{ Lit = 0, Unlit = 1, UnlitAlwaysVisible = 2 }
+
+	TextRenderVerticalAlignment
+		.. code-block:: lua
+
+			{ Top = 0, Center = 1, Bottom = 2, QuadTop = 3 }
+
+	ViewMode
+		.. code-block:: lua
+
+			{ FPS = 0, TPS1 = 1, TPS2 = 2, TPS3 = 3 }
+
+	VOIPSetting
+		.. code-block:: lua
+
+			{ Local = 0, Global = 1, Muted = 2 }

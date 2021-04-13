@@ -10,6 +10,8 @@ A color composed of components (R, G, B, A) with floating point precision. The v
 
 .. tip:: This structure is Open Sourced at https://github.com/nanos-world/nanos-world-lua-lib. Feel free to push merge requests and suggest changes!
 
+.. tip:: This structure supports `+`, `-`, `*`, `/`, `==`, and `tostring` operations.
+
 
 Usage
 -----
@@ -17,14 +19,14 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local GreyColor = Color(0.5, 0.5, 0.5, 1)
+    local grey_color = Color(0.5, 0.5, 0.5, 1)
 
 
 Properties
 ----------
 
 .. list-table::
-  :widths: 1 5 4
+  :widths: 10 30 60
    
   * - **Type**
     - **Name**

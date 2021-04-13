@@ -6,6 +6,8 @@
 Character
 *********
 
+.. image:: https://i.imgur.com/yPtYbR6.jpg
+
 Characters represents Actors which can be possessed, can move and interact with world. They are the default Skeletal Mesh Character built for nanos world.
 
 .. attention:: This page is under construction.
@@ -33,28 +35,36 @@ Constructor Parameters
     - **Default**
 
   * - :ref:`Vector`
-    - Location
+    - location
     - Vector(0, 0, 0)
 
   * - :ref:`Rotator`
-    - Rotation
-    - Rotation(0, 0, 0)
+    - rotation
+    - Rotator(0, 0, 0)
 
   * - :term:`string`
-    - Model
-    - NanosWorld/Characters/Male/SK_Male
+    - skeletal_mesh
+    - NanosWorld::SK_Mannequin
 
-  * - :term:`number`
-    - CollisionType
-    - 0 (Normal)
+  * - :term:`CollisionType`
+    - collision_type
+    - CollisionType.Normal
 
   * - :term:`boolean`
-    - GravityEnabled
+    - gravity_enabled
     - true
 
   * - :term:`number`
-    - Health/MaxHealth
+    - health/max_health
     - 100
+
+  * - :term:`string`
+    - death_sounds
+    - NanosWorld::A_Male_01_Death
+
+  * - :term:`string`
+    - pain_sounds
+    - NanosWorld::A_Male_01_Pain
 
 
 Usage
@@ -64,54 +74,38 @@ Usage
  .. code-tab:: lua Lua
     
     -- The following examples are using all Skeletal Meshes which we currently have for examples, including the officials Woman, Man and Mannequin:
-    local Woman = Character(Vector(100, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/Female/SK_Female")
-    local Man = Character(Vector(200, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/Male/SK_Male")
-    local Mannequin = Character(Vector(300, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/Mannequin/SK_Mannequin")
+    local woman = Character(Vector(100, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Female")
+    local man = Character(Vector(200, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Male")
+    local mannequin = Character(Vector(300, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Mannequin")
+    local mannequin_female = Character(Vector(400, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_Mannequin_Female")
 
-    local PostApocalyptic = Character(Vector(400, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/PostApocalyptic/SK_PostApocalyptic")
-    local ClassicMale = Character(Vector(500, 0, 100), Rotator(0, 0, 0), "NanosWorld/Characters/ClassicMale/SK_ClassicMale")
+    local post_apocalyptic = Character(Vector(400, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_PostApocalyptic")
+    local classic_male = Character(Vector(500, 0, 100), Rotator(0, 0, 0), "NanosWorld::SK_ClassicMale")
 
     -- Adds Clothes to Man. Note: some Meshes only supports a specific Mesh (Men/Woman)
-    Man:AddSkeletalMeshAttached("shirt", "NanosWorld/Characters/Common/BodyParts/Clothes/Shirt/SK_Shirt") -- Men only
-    Man:AddSkeletalMeshAttached("shirt", "NanosWorld/Characters/Common/BodyParts/Clothes/Underwear/SK_Underwear") -- Men only
-    Man:AddSkeletalMeshAttached("pants", "NanosWorld/Characters/Common/BodyParts/Clothes/Pants/SK_Pants") -- Men only
-    Man:AddSkeletalMeshAttached("shoes", "NanosWorld/Characters/Common/BodyParts/Clothes/Shoes/SK_Shoes_01")
-    Man:AddSkeletalMeshAttached("shoes", "NanosWorld/Characters/Common/BodyParts/Clothes/Tie/SK_Tie")
+    man:AddSkeletalMeshAttached("shirt", "NanosWorld::SK_Shirt") -- Men only
+    man:AddSkeletalMeshAttached("shirt", "NanosWorld::SK_Underwear") -- Men only
+    man:AddSkeletalMeshAttached("pants", "NanosWorld::SK_Pants") -- Men only
+    man:AddSkeletalMeshAttached("shoes", "NanosWorld::SK_Shoes_01")
+    man:AddSkeletalMeshAttached("shoes", "NanosWorld::SK_Tie")
 
     -- Adds Clothes to Woman
-    Woman:AddSkeletalMeshAttached("full", "NanosWorld/Characters/Common/BodyParts/Clothes/CasualSet/SK_CasualSet") -- Woman only
-    Woman:AddSkeletalMeshAttached("shoes", "NanosWorld/Characters/Common/BodyParts/Clothes/Shoes/SK_Sneakers")
+    woman:AddSkeletalMeshAttached("full", "NanosWorld::SK_CasualSet") -- Woman only
+    woman:AddSkeletalMeshAttached("shoes", "NanosWorld::SK_Sneakers")
 
     -- Adds Beard to Man
-    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Extra", "beard", Vector(), Rotator())
-    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Middle", "beard", Vector(), Rotator())
-    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Mustache_01", "beard", Vector(), Rotator())
-    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Mustache_02", "beard", Vector(), Rotator())
-    Man:AddStaticMeshAttached("beard", "NanosWorld/Characters/Common/BodyParts/Beard/SM_Beard_Side", "beard", Vector(), Rotator())
+    man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Extra", "beard")
+    man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Middle", "beard")
+    man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Mustache_01", "beard")
+    man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Mustache_02", "beard")
+    man:AddStaticMeshAttached("beard", "NanosWorld::SM_Beard_Side", "beard")
 
     -- Adds Hair to Man
-    Man:AddStaticMeshAttached("hair", "NanosWorld/Characters/Common/BodyParts/Hair/Male/SM_Hair_Long", "hair_male", Vector(), Rotator())
-    Man:AddStaticMeshAttached("hair", "NanosWorld/Characters/Common/BodyParts/Hair/Male/SM_Hair_Short", "hair_male", Vector(), Rotator())
+    man:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Long", "hair_male")
+    man:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Short", "hair_male")
 
     -- Adds Hair to Woman
-    Woman:AddStaticMeshAttached("hair", "NanosWorld/Characters/Common/BodyParts/Hair/Kwang/SM_Hair_Kwang", "hair_female", Vector(), Rotator())
-
-
-Properties
-----------
-
-.. list-table:: 
-  :widths: 5 10 35 50
-
-  * - 
-    - **Type**
-    - **Name**
-    - **Description**
-
-  * - |client-ready-only-label|
-    - :term:`number`
-    - Health 
-    - Character's Health. Sets under 0 will kill. Sets above 0 will Respawn.
+    woman:AddStaticMeshAttached("hair", "NanosWorld::SM_Hair_Kwang", "hair_female")
 
 
 Functions
@@ -126,9 +120,19 @@ Functions
     - **Description**
 
   * - |server-only-label|
+    - :term:`number` damage_taken
+    - ApplyDamage( |br-p| :term:`number` damage, |br-p| :term:`string` bone_name = "", |br-p| :term:`DamageType` damage_type = Shot, |br-p| :ref:`Vector` from_direction = (), |br-p| :ref:`Player` instigator = nil |br| )
+    - Do damage in a character, will trigger all related events and apply modified damage based on bone. Also will apply impulse if it's a heavy explosion.
+
+  * - 
     - 
-    - PickUp(:ref:`Item`/:ref:`Grenade`/:ref:`Weapon`)
-    - Gives a Item/Grenade/Weapon (Pickable) to the Character
+    - AddSkeletalMeshAttached( |br-p| :term:`string` id, |br-p| :term:`string` static_mesh_path |br| )
+    - Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
+
+  * - 
+    - 
+    - AddStaticMeshAttached( |br-p| :term:`string` id, |br-p| :term:`string` static_mesh_path, |br-p| :term:`string` socket = "", |br-p| :ref:`Vector` relative_location = Vector(), |br-p| :ref:`Rotator` relative_rotation = Rotator() |br| )
+    - Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
   * - |server-only-label|
     - 
@@ -137,63 +141,18 @@ Functions
 
   * - |server-only-label|
     - 
-    - GrabProp(:ref:`Prop`)
+    - EnterVehicle( |br-p| :ref:`Vehicle` vehicle, |br-p| :term:`number` seat = 0 |br| )
+    - Enters the Vehicle at Seat (0 - Driver)
+
+  * - |server-only-label|
+    - 
+    - GrabProp(:ref:`Prop` prop)
     - Gives a Prop to the Character
 
   * - |server-only-label|
     - 
-    - UnGrabProp()
-    - UnGrabs/Drops the Prop the Character is holding
-
-  * - 
-    - :ref:`Rotator`
-    - GetControlRotation()
-    - Gets the rotation this character is looking at
-
-  * - 
-    - :ref:`Prop`
-    - GetGrabbedProp()
-    - Gets the Grabbing Prop
-
-  * - 
-    - Actor
-    - GetPicked()
-    - Gets the holding Picked Item/Grenade/Weapon
-
-  * - 
-    - :ref:`Vehicle`
-    - GetVehicle()
-    - Gets the Vehicle the Character is on
-
-  * - 
-    - :ref:`Player`
-    - GetPlayer()
-    - Gets the Player controlling this Character
-
-  * - |server-only-label|
-    - 
-    - SetRagdollMode(:term:`boolean`)
-    - Sets Character Ragdoll Mode
-
-  * - 
-    - :term:`boolean`
-    - IsInRagdollMode()
-    - Gets Character Ragdoll Mode
-
-  * - |server-only-label|
-    - 
-    - SetViewMode(:term:`number`)
-    - Sets Character View Mode (0 - FPS, 1 TPS1, 2 - TPS2, 3 - TPS3)
-
-  * - 
-    - :term:`number`
-    - GetViewMode()
-    - Gets Character View Mode
-
-  * - |server-only-label|
-    - 
-    - RandomizeCustomization()
-    - Randomize all character customizations
+    - Jump()
+    - Triggers this Character to jump
 
   * - |server-only-label|
     - 
@@ -202,68 +161,273 @@ Functions
 
   * - |server-only-label|
     - 
-    - EnterVehicle(:ref:`Vehicle`, :term:`number` Seat)
-    - Enters the Vehicle at Seat (0 - Driver)
+    - LookAt(:ref:`Vector` location)
+    - AI: Tries to make this Character to look at Location
+
+  * - |server-only-label|
+    - 
+    - MoveTo( |br-p| :ref:`Vector` location, |br-p| :term:`number` acceptance_radius = 50 |br| )
+    - AI: Makes this Character to walk to the Location
+
+  * - |server-only-label|
+    - 
+    - PickUp(:ref:`Item`/:ref:`Grenade`/:ref:`Weapon`)
+    - Gives a Item/Grenade/Weapon (Pickable) to the Character
+
+  * - |server-only-label|
+    - 
+    - PlayAnimation( |br-p| :term:`string` animation_path, |br-p| :term:`AnimationSlotType` slot_type = FullBody, |br-p| :term:`number` loop_indefinitely = false |br| )
+    - Plays an Animation Montage on this character
+
+  * - 
+    - 
+    - RemoveSkeletalMeshAttached(:term:`string` id)
+    - Removes, if existing, a SkeletalMesh from this Character given it's custom ID
+
+  * - 
+    - 
+    - RemoveStaticMeshAttached(:term:`string` id)
+    - Removes, if existing, a StaticMesh from this Character given it's custom ID
+
+  * - |server-only-label|
+    - 
+    - Respawn()
+    - Respawns the Character, fullying it's Health and moving it to it's Initial Location
+
+  * - |server-only-label|
+    - 
+    - SetCameraMode(:term:`number` camera_mode)
+    - Sets the Camera Mode (0 - FPS and TPS, 1 = FPS only, 2 = TPS only)
+
+  * - |server-only-label|
+    - 
+    - SetCanCrouch(:term:`boolean`)
+    - Sets if this Character is allowed to Crouch and to Prone
+
+  * - |server-only-label|
+    - 
+    - SetCanSprint(:term:`boolean`)
+    - Sets if this Character is allowed to Sprint
+
+  * - |server-only-label|
+    - 
+    - SetCanGrabProps(:term:`boolean`)
+    - Sets if this Character is allowed to Grab any Prop
+
+  * - |server-only-label|
+    - 
+    - SetCanPickupPickables(:term:`boolean`)
+    - Sets if this Character is allowed to Pick up any Pickable (Weapon, Grenade, Item...)
+
+  * - |server-only-label|
+    - 
+    - SetCapsuleSize( |br-p| :term:`number` radius, |br-p|:term:`number` half_height |br| )
+    - Sets this Character's Capsule size (will affect Camera location and Character's collision) - default is (42, 96)
+
+  * - |server-only-label|
+    - 
+    - SetDeathSound(:term:`string` sound_asset)
+    - Changes the Death sound when Character dies
+
+  * - 
+    - 
+    - SetDefaultMaterial( |br-p| :term:`MaterialType` material_type = MaterialType.Masked |br| )
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available (*Masked, Translucent*)
+
+  * - |server-only-label|
+    - 
+    - SetGaitMode(:term:`GaitMode` mode)
+    - **Gait Modes**: *None, Walking, Sprinting*
+
+  * - |server-only-label|
+    - 
+    - SetStanceMode(:term:`StanceMode` mode)
+    - **Stance Modes**: *None, Standing, Crouching, Proning*
+
+  * - |server-only-label|
+    - 
+    - SetHealth(:term:`number` new_health)
+    - Sets the Health of this Character. If the character is dead, respawns it with full health
+
+  * - |server-only-label|
+    - 
+    - SetInvulnerable(:term:`boolean`)
+    - Sets if the Character can receive any damage
+
+  * - |server-only-label|
+    - 
+    - SetMaxHealth(:term:`number` new_max_health)
+    - Sets the MaxHealth of this Character
+
+  * - 
+    - 
+    - SetMaterialColorParameter( |br-p| :term:`string` parameter_name, |br-p| :ref:`Color` color |br| )
+    - Sets a Color parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialScalarParameter(:term:`string` parameter_name, :term:`number` scalar)
+    - Sets a scalar parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialTextureParameter(:term:`string` parameter_name, :term:`string` texture_path)
+    - Loads a image from computer (relative to `Assets/` folder) and sets as parameter in this actor's material
+
+  * - 
+    - 
+    - SetMaterialVectorParameter(:term:`string` parameter_name, :ref:`Vector` vector)
+    - Sets a Vector parameter in this actor's material
+
+  * - |server-only-label|
+    - 
+    - SetMesh(:term:`string` skeletal_mesh_asset)
+    - Changes the Character Mesh on the fly
+
+  * - 
+    - 
+    - SetMorphTarget(:term:`string` key, :term:`number` value)
+    - 
 
   * - |server-only-label|
     - 
     - SetMovementEnabled(:term:`boolean`)
     - Enables/Disables Character's Movement
 
+  * - |server-only-label|
+    - 
+    - SetPainSound(:term:`string` sound_asset)
+    - Changes the Pain sound when Character takes damage
+
+  * - |server-only-label|
+    - 
+    - SetRagdollMode(:term:`boolean`)
+    - Sets Character Ragdoll Mode
+
+  * - |server-only-label|
+    - 
+    - SetSpeedMultiplier(:term:`number` multiplier)
+    - 1 = normal
+
+  * - |server-only-label|
+    - 
+    - SetTeam(:term:`number` team)
+    - Sets a Team which will disable damaging same Team Members. 0 for Neutral
+
+  * - |server-only-label|
+    - 
+    - SetViewMode(:term:`ViewMode`)
+    - **View Modes**: *FPS, TPS1, TPS2, TPS3*
+
+  * - |server-only-label|
+    - 
+    - SetWeaponAimMode(:term:`AimMode` state)
+    - **Aim Modes**: *None, ADS, ZoomedZoom, Zoomed, ZoomedFar*
+
+  * - |server-only-label|
+    - 
+    - StopAnimation(:term:`string` animation_path = "")
+    - Stops an Animation Montage on this character
+
+  * - |server-only-label|
+    - 
+    - UnGrabProp()
+    - UnGrabs/Drops the Prop the Character is holding
+
+  * - 
+    - :term:`boolean`
+    - IsInRagdollMode()
+    - Gets Character Ragdoll Mode
+
+  * - 
+    - :term:`boolean`
+    - IsInvulnerable()
+    - Gets if the Character can receive damage
+
   * - 
     - :term:`boolean`
     - IsMovementEnabled()
     - Gets Character Movement Enabled
 
-  * - |server-only-label|
-    - 
-    - SetMorphTarget(:term:`number` ID, :term:`number` Value)
+  * - 
+    - :term:`string`
+    - GetMesh()
+    - Gets the Mesh Asset name
+
+  * - 
+    - :ref:`Rotator`
+    - GetControlRotation()
+    - Gets the rotation this character is looking at
+
+  * - 
+    - :term:`FallingMode`
+    - GetFallingMode()
+    - Gets the Falling Mode
+
+  * - 
+    - :term:`GaitMode`
+    - GetGaitMode()
+    - Gets the Gait Mode
+
+  * - 
+    - :ref:`Prop`
+    - GetGrabbedProp()
+    - Gets the Grabbing Prop
+
+  * - 
+    - :term:`number`
+    - GetHealth()
+    - Gets the Character's Health.
+
+  * - 
+    - :term:`number`
+    - GetMaxHealth()
+    - Gets the Character's MaxHealth.
+
+  * - 
+    - Entity
+    - GetPicked()
+    - Gets the holding Picked Item/Grenade/Weapon
+
+  * - 
+    - :ref:`Player`
+    - GetPlayer()
+    - Gets the Player controlling this Character
+
+  * - 
+    - :term:`number`
+    - GetSpeedMultiplier()
     - 
 
-  * - |server-only-label|
-    - 
-    - SetScalarParameter(:term:`number` ID, :term:`number` Value)
+  * - 
+    - :term:`StanceMode`
+    - GetStanceMode()
     - 
 
-  * - |server-only-label|
-    - 
-    - SetVectorParameter(:term:`number` ID, :ref:`Vector` Value)
+  * - 
+    - :term:`SwimmingMode`
+    - GetSwimmingMode()
     - 
 
   * - 
     - :term:`number`
-    - GetMorphTarget(:term:`number` ID)
+    - GetTeam()
     - 
 
   * - 
-    - :term:`number`
-    - GetScalarParameter(:term:`number` ID)
-    - 
+    - :ref:`Vehicle`
+    - GetVehicle()
+    - Gets the Vehicle the Character is on
 
   * - 
-    - :ref:`Vector`
-    - GetVectorParameter(:term:`number` ID)
-    - 
+    - :term:`ViewMode`
+    - GetViewMode()
+    - Gets Character View Mode
 
-  * - |server-only-label|
-    - 
-    - AddStaticMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath, :term:`string` Socket, :ref:`Vector` RelativeLocation, :ref:`Rotator` RelativeRotation)
-    - Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
-
-  * - |server-only-label|
-    - 
-    - AddSkeletalMeshAttached(:term:`number` ID, :term:`string` StaticMeshPath)
-    - Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
-
-  * - |server-only-label|
-    - 
-    - RemoveStaticMeshAttached(:term:`number` ID)
-    - Removes, if existing, a StaticMesh from this Character given it's custom ID
-
-  * - |server-only-label|
-    - 
-    - RemoveSkeletalMeshAttached(:term:`number` ID)
-    - Removes, if existing, a SkeletalMesh from this Character given it's custom ID
+  * - 
+    - :term:`AimMode`
+    - GetWeaponAimMode()
+    - Gets Character Aim Mode
 
 .. include:: ../common/functions/Actor.rst
 
@@ -280,64 +444,64 @@ Events
     - **Description**
 
   * -
-    - PickUp
-    - :ref:`Character` self, :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object
-    - When Character picks up anything
-
-  * -
-    - Drop
-    - :ref:`Character` self, :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object
-    - When Character drops anything
-
-  * -
-    - GrabProp
-    - :ref:`Character` self, :ref:`Prop` prop
-    - When Character grabs up a Prop
-
-  * -
-    - UnGrabProp
-    - :ref:`Character` self, :ref:`Prop` prop
-    - When Character drops a Prop
-
-  * -
-    - EnterVehicle
-    - :ref:`Character` self, :ref:`Vehicle` vehicle
-    - When Character enters a vehicle
-
-  * -
-    - LeaveVehicle
-    - :ref:`Character` self, :ref:`Vehicle` vehicle
-    - When Character leaves a vehicle
-
-  * -
-    - Respawn
-    - :ref:`Character` self
-    - When Character Respawns
-
-  * -
     - Death
-    - :ref:`Character` self
+    - :ref:`Character` self, |br| :term:`number` last_damage_taken, |br| :term:`string` last_bone_damaged, |br| :term:`DamageType` damage_type_reason, |br| :ref:`Vector` hit_from_direction, |br| :ref:`Player` instigator
     - When Character Dies
 
   * -
-    - TakeDamage
-    - :ref:`Character` self, :term:`number` damage, :term:`number` type (1 - Shot, 2 - Explosion), :term:`string` bone, :ref:`Vector` FromDirection, :ref:`Player` Instigator
-    - When Character takes Damage
+    - Drop
+    - :ref:`Character` self, |br| :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object, |br| :term:`boolean` triggered_by_player
+    - When Character drops anything
+
+  * -
+    - EnterVehicle
+    - :ref:`Character` self, |br| :ref:`Vehicle` vehicle
+    - When Character enters a vehicle
+
+  * -
+    - FallingModeChanged
+    - :ref:`Character` self, |br| :term:`FallingMode` old_state, |br| :term:`FallingMode` new_state
+    - **Falling Modes**: *None, Jumping, Climbing, Vaulting, Falling, HighFalling, Parachuting, SkyDiving*
 
   * -
     - Fire
-    - :ref:`Character` self, :ref:`Weapon` weapon
+    - :ref:`Character` self, |br| :ref:`Weapon` weapon
     - When Character fires a Weapon
 
   * -
-    - Possessed
-    - :ref:`Character` self, :ref:`Player` possesser
-    - When Character is possessed
+    - GaitModeChanged
+    - :ref:`Character` self, |br| :term:`GaitMode` old_state, |br| :term:`GaitMode` new_state
+    - **Gait Modes**: *None, Walking, Sprinting*
 
   * -
-    - Unpossessed
-    - :ref:`Character` self, :ref:`Player` old_possesser
-    - When Character is unpossessed
+    - GrabProp
+    - :ref:`Character` self, |br| :ref:`Prop` prop
+    - When Character grabs up a Prop
+
+  * - |server-only-label|
+    - Interact
+    - :ref:`Character` self, |br| :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object
+    - When a Character interacts with an object (i.e. try to pick it up) - return false to prevent it
+
+  * -
+    - LeaveVehicle
+    - :ref:`Character` self, |br| :ref:`Vehicle` vehicle
+    - When Character leaves a vehicle
+
+  * -
+    - MoveCompleted
+    - :ref:`Character` self, |br| :term:`boolean` succeeded
+    - Called when AI reaches it's destination, or when it fails
+
+  * -
+    - PickUp
+    - :ref:`Character` self, |br| :ref:`Item`/:ref:`Grenade`/:ref:`Weapon` object
+    - When Character picks up anything
+
+  * -
+    - Possessed
+    - :ref:`Character` self, |br| :ref:`Player` possesser
+    - When Character is possessed
 
   * -
     - Punch
@@ -345,120 +509,131 @@ Events
     - When Character punches
 
   * -
-    - Reload
-    - :ref:`Character` self, :ref:`Weapon` weapon, :term:`number` AmmoToReload
-    - When Character reloads a weapon
-
-  * -
-    - WeaponAimModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
-    - 0 - None, 1 - ADS (FPS), 2 - ZoomedZoom (TPS), 3 - Zoomed, 4 - ZoomedFar
-
-  * -
-    - ViewModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
-    - 0 - FPS, 1 - TPS1, 2 - TPS2, 3 - TPS3
-
-  * -
-    - SwimmingModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
-    - 0 - None, 1 - Superficie, 2 - Underwater
-
-  * -
-    - StanceModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
-    - 0 - None, 1 - Standing, 2 - Crouching, 3 - Proning
-
-  * -
     - RagdollModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
+    - :ref:`Character` self, |br| :term:`boolean` old_state, |br| :term:`boolean` new_state
     - 
 
   * -
-    - FallingModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
-    - 0 - None, 1 - Jumping, 2 - Climbing, 3 - Vaulting, 4 - Falling, 5 - HighFalling, 6 - Parachuting, 7 - SkyDiving
+    - Reload
+    - :ref:`Character` self, |br| :ref:`Weapon` weapon, |br| :term:`number` ammo_to_reload
+    - When Character reloads a weapon
 
   * -
-    - GaitModeChanged
-    - :ref:`Character` self, :term:`number` OldState, :term:`number` NewState
-    - 0 - None, 1 - Walking, 2 - Sprinting
+    - Respawn
+    - :ref:`Character` self
+    - When Character Respawns
+
+  * -
+    - StanceModeChanged
+    - :ref:`Character` self, |br| :term:`StanceMode` old_state, |br| :term:`StanceMode` new_state
+    - **Stance Modes**: *None, Standing, Crouching, Proning*
+
+  * -
+    - SwimmingModeChanged
+    - :ref:`Character` self, |br| :term:`SwimmingMode` old_state, |br| :term:`SwimmingMode` new_state
+    - **Swimming Modes**: *None, Superficie, Underwater*
+
+  * -
+    - TakeDamage
+    - :ref:`Character` self, |br| :term:`number` damage, |br| :term:`string` bone, |br| :term:`DamageType` type, |br| :ref:`Vector` from_direction, |br| :ref:`Player` instigator
+    - When Character takes Damage
+
+  * -
+    - UnGrabProp
+    - :ref:`Character` self, |br| :ref:`Prop` prop
+    - When Character drops a Prop
+
+  * -
+    - UnPossessed
+    - :ref:`Character` self, |br| :ref:`Player` old_possesser
+    - When Character is unpossessed
+
+  * -
+    - ViewModeChanged
+    - :ref:`Character` self, |br| :term:`ViewMode` old_state, |br| :term:`ViewMode` new_state
+    - **View Modes**: *FPS, TPS1, TPS2, TPS3*
+
+  * -
+    - WeaponAimModeChanged
+    - :ref:`Character` self, |br| :term:`AimMode` old_state, |br| :term:`AimMode` new_state
+    - **Aim Modes**: *None, ADS, ZoomedZoom, Zoomed, ZoomedFar*
 
 .. include:: ../common/events/Actor.rst
 
 
-Customization
--------------
+Male & Female Customization
+---------------------------
 
-+----------------------+----------------------+----------------------+
-| Morph Targets        | Scalar Parameters    | Vector Parameters    |
-+====+=================+====+=================+====+=================+
-| ID | NAME            | ID | NAME            | ID | NAME            |
-+----+-----------------+----+-----------------+----+-----------------+
-| 00 | nose1           | 00 | BaseColorPower  | 00 | LipstickTint    |
-+----+-----------------+----+-----------------+----+-----------------+
-| 01 | nose2           | 01 | Muscular        | 01 | BrowsTint       |
-+----+-----------------+----+-----------------+----+-----------------+
-| 02 | brows           |    |                 | 02 | BlushTint       |
-+----+-----------------+----+-----------------+----+-----------------+
-| 03 | mouth           |    |                 | 03 | EyeShadowTint   |
-+----+-----------------+----+-----------------+----+-----------------+
-| 04 | fat             |    |                 | 04 | UnderwearTint   |
-+----+-----------------+----+-----------------+----+-----------------+
-| 05 | nose3           |    |                 | 05 | HairTint        |
-+----+-----------------+----+-----------------+----+-----------------+
-| 06 | chin            |    |                 |    |                 | 
-+----+-----------------+----+-----------------+----+-----------------+
-| 07 | face            |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 08 | nose4           |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 09 | skinny          |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 10 | jaw             |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 11 | brows2          |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 12 | angry           |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 13 | smirk           |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 14 | smirk2          |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 15 | smirk3          |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 16 | smile           |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 17 | nose6           |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 18 | jaw_forward     |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 19 | lips            |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 20 | lips2           |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 21 | mouth_wide      |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 22 | eyes1           |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 23 | eyes2           |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 24 | eyes3           |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 25 | eyes4           |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 26 | eyes_retraction |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 27 | lips3           |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 28 | eyes5           |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 29 | nose7           |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 30 | forehead        |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
-| 31 | bodyfat         |    |                 |    |                 |
-+----+-----------------+----+-----------------+----+-----------------+
+The following items can be used to customize Male & Female (``NanosWorld::SK_Male`` & ``NanosWorld::SK_Female``) default meshes from nanos world
+
+
++----------------------+-------------------------+----------------------+----------------------+
+| Morph Targets        | Mat. Scalar Params      | Mat. Color Params    | Mat. Texture Params  |
++======================+=========================+======================+======================+
+| nose1                | BaseColorPower          | LipstickTint         | Texture              |
++----------------------+-------------------------+----------------------+----------------------+
+| nose2                | Muscular                | BrowsTint            | LipstickMask         |
++----------------------+-------------------------+----------------------+----------------------+
+| brows                | Specular                | BlushTint            | BrowsMask            |
++----------------------+-------------------------+----------------------+----------------------+
+| mouth                | Roughness               | EyeShadowTint        | BlushMask            |
++----------------------+-------------------------+----------------------+----------------------+
+| fat                  | Scatter                 | UnderwearTint        | EyeShadowMask        |
++----------------------+-------------------------+----------------------+----------------------+
+| nose3                | DetailAmount            | HairTint             | Normal               |
++----------------------+-------------------------+----------------------+----------------------+
+| chin                 | DetailScale             | Tint                 | NormalMuscular       |
++----------------------+-------------------------+----------------------+----------------------+
+| face                 | UnderwearRoughness      |                      | UnderwearMask        |
++----------------------+-------------------------+----------------------+----------------------+
+| nose4                | UnderwearSpecular       |                      | SR                   |
++----------------------+-------------------------+----------------------+----------------------+
+| skinny               | HairScatter             |                      | HairTexture          |
++----------------------+-------------------------+----------------------+----------------------+
+| jaw                  | HairAlphaPower          |                      | HairSpecular         |
++----------------------+-------------------------+----------------------+----------------------+
+| brows2               | HairSpecularMultiplier  |                      | HairRoughness        |
++----------------------+-------------------------+----------------------+----------------------+
+| angry                | HairRoughnessMultiplier |                      | HairTangent          |
++----------------------+-------------------------+----------------------+----------------------+
+| smirk                | HairPixelDepth          |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| smirk2               |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| smirk3               |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| smile                |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| nose6                |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| jaw_forward          |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| lips                 |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| lips2                |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| mouth_wide           |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| eyes1                |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| eyes2                |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| eyes3                |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| eyes4                |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| eyes_retracti     on |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| lips3                |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| eyes5                |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| nose7                |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| forehead             |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
+| bodyfat              |                         |                      |                      |
++----------------------+-------------------------+----------------------+----------------------+
 
 
 Character's Skeleton Bone Names

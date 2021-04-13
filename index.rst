@@ -1,4 +1,4 @@
-nanos.world Official Documentation
+nanos world Official Documentation
 ==================================
 
 .. toctree::
@@ -7,7 +7,8 @@ nanos.world Official Documentation
    :caption: General
    :name: sec-general
 
-   about/index
+   About
+   ContributingToDocs
 
 
 .. toctree::
@@ -17,14 +18,6 @@ nanos.world Official Documentation
    :name: sec-learn
 
    getting_started/index
-
-
-.. toctree::
-   :hidden:
-   :titlesonly:
-   :caption: Tutorials & Examples
-   :name: sec-tutorials
-
    tutorials/index
 
 
@@ -34,22 +27,36 @@ nanos.world Official Documentation
    :caption: Scripting
    :name: sec-scripting
 
-   scripting/Glossary
    scripting/classes/index
-   scripting/global-variables/index
+   scripting/static_classes/index
    scripting/utility/index
+   scripting/Glossary
+   scripting/Modules
 
 
 .. toctree::
    :hidden:
    :titlesonly:
-   :caption: Modding
+   :caption: Assets & Modding
    :name: sec-modding
 
    modding/index
+   modding/NanosWorldDefaultPack
 
 
-Welcome to the official documentation of nanos.world! da best game ever made.
+.. toctree::
+   :hidden:
+   :titlesonly:
+   :caption: Vault & Marketplace
+   :name: sec-vault-marketplace
+
+   vault/Marketplace
+   vault/Vault
+
+
+.. image:: https://i.imgur.com/KRkqwWs.jpg
+
+Welcome to the official documentation of nanos world! da best game ever made.
 
 nanos world is the next generation multiplayer sandbox game created by you and nanos. We do this by allowing players, developers and modders themselves to build their own game upon and to integrate their work in nanos world. Built upon Unreal Engine 4 (UE4), nanos framework and our experience, especially from Just Cause 3: Multiplayer and other modifications we created, you can turn your world into whatever you’d like. Bringing all participants to the table, players can join thousands of different worlds and thousands of different game modes with only one game and everybody can contribute to our common project. 
 
@@ -64,16 +71,50 @@ With nanos world you can realize your own game ideas and visions. Therefore, scr
 .. note:: We have a centralized space for reporting BUGs and Suggest new Ideas in https://issues.nanos.world. We encourage everyone to give suggestions and report BUGs because we are going to mainly focus our development in the suggestions and bugs reported in there.
 
 
-Getting Started
----------------
+.. raw:: html
 
-:ref:`GettingStarted`
+	<script>
+		DrawCard(
+			"getting_started/index.html",
+			"https://i.imgur.com/to0sRzC.png",
+			"Getting Started",
+			"Introductory information for scripters and modders starting out creating game-modes with nanos world."
+		);
+
+		DrawCard(
+			"ContributingToDocs.html",
+			"https://img.freepik.com/free-vector/illustration-document-icon_53876-28510.jpg?size=626&ext=jpg",
+			"Contributing to the Docs",
+			"Know how to fix bugs and help us on improving this docs."
+		);
+
+		DrawCard(
+			"tutorials/index.html",
+			"https://edsurge.imgix.net/uploads/post/image/13321/digitalpromise_banner-1588203848.jpg?auto=compress%2Cformat&w=640&h=259&fit=crop",
+			"Samples and Tutorials",
+			"Links to various example scriptings, sample game-modes, and tutorials..."
+		);
+	</script>
 
 
 Special Thanks
 --------------
 
-DasPascal - Tester, Suggester, Bug Reporter and Documentation helper
-Falaxir - Tester and Suggester and Bug Reporter
-Nogitsu - Tester and Suggester and Bug Reporter
-Daranix - Tester and Bug Reporter
+*  DasPascal - Tester, Bug Reporter and Documentation helper
+*  Falaxir - Tester, Bug Reporter and Documentation helper
+*  Nogitsu - Tester and Bug Reporter
+*  Daranix - Tester and Bug Reporter
+*  NightOwl - Tester and VSCode Snippet
+*  Resmurf - Tester and Bug Reporter
+*  chesiren - Tester and Bug Reporter
+*  FelixHtm - Tester and Bug Reporter
+*  TheToor - Tester and Bug Reporter
+*  EinfachMaxYT - Tester and Bug Reporter
+*  ZarosLive - Tester and Bug Reporter
+*  Lexa - Tester and Bug Reporter
+*  InfernooYT - Tester and Bug Reporter
+*  MarkusSR1984 - Tester and Bug Reporter
+*  Maks - Tester and Bug Reporter
+*  Wargardan - Tester and Bug Reporter
+*  Sebihunter - Tester and Bug Reporter
+*  MoskalykA - Tester and Bug Reporter

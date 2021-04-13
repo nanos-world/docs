@@ -9,6 +9,7 @@ Utility
    :glob:
 
    Color.rst
+   JSON.rst
    Rotator.rst
    Vector.rst
    Vector2D.rst

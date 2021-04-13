@@ -10,11 +10,16 @@ Events (Inherited from Pickable)
     - **Description**
 
   * -
-    - PickUp
-    - Entity pickable, :ref:`Character` character
-    - When a Character picks up this
+    - Drop
+    - Entity pickable, |br| :ref:`Character` character, |br| :term:`boolean` was_triggered_by_player
+    - When a Character drops this
 
   * -
-    - Drop
-    - Entity pickable, :ref:`Character` character
-    - When a Character drops this
+    - Hit
+    - Entity pickable, |br| :term:`number` intensity
+    - When this Entity hits something
+
+  * -
+    - PickUp
+    - Entity pickable, |br| :ref:`Character` character
+    - When a Character picks up this
