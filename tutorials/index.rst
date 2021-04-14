@@ -10,6 +10,7 @@ Tutorials & Examples
 	BasicHUDCanvas.rst
 	BasicHUDHTML.rst
 	ChatColors.rst
+	Hosting4Free.rst
 	MonsterTruck.rst
 	NameTags.rst
 	PaintingMeshes.rst
@@ -23,7 +24,19 @@ Tutorials & Examples
 	XRay.rst
 
 
-.. attention:: This page is under construction.
+Hosting
+-------
+
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"Hosting4Free.html",
+			"https://i.imgur.com/3eVNk0r.png",
+			"Hosting nanos world server for free",
+			"How to host nanos world server for free 24/7 on Google Cloud."
+		);
+	</script>
 
 
 Scripting
@@ -58,7 +71,7 @@ Scripting
 
 
 Packages / Game-Modes
---------------------
+---------------------
 
 .. raw:: html
 
