@@ -42,7 +42,7 @@ The server Configuration file ``Config.toml`` is generated automatically when th
         # Server Description
         description =         ""
         # Server Logo URL (Recommended Size: 150x75)
-        logo =            
+        logo =                ""
         # Max Players
         max_players =         64
         # Leave it blank for no password
