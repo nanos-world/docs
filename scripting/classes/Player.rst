@@ -79,7 +79,7 @@ Functions
   * - 
     - :term:`string`
     - GetAccountID()
-    - *Currently this is not the real Account ID. This ID is generated based on Player's IP which can be used for now to identify Players during a short period (until his IP changes). This is a temporary solution while our Account System isn't fully integrated.*
+    - Gets the nanos account ID
 
   * - 
     - :term:`string`
