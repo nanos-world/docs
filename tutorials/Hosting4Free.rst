@@ -84,9 +84,9 @@ Step 3: Use your Google Cloud Server
 
 The next step is to connect into your Virtual Machine, for that launch your prompt (shell or cmd) and type:
 
-.. code-block:: shell
+.. code-block:: console
 
-   ssh [YOUR_VM_EXTERNAL_IP]
+   $ ssh [YOUR_VM_EXTERNAL_IP]
 
 .. image:: https://i.imgur.com/jgWm847.png
 
@@ -102,16 +102,16 @@ Now you must download nanos world server in your VM.
 
 For that, you can use our public repository in the GitHub to download it with the following two commands:
 
-.. code-block:: shell
+.. code-block:: console
 
-   curl -L https://github.com/nanos-world/nanos-world-server/releases/download/latest/NanosWorldServer -o NanosWorldServer
-   chmod +x NanosWorldServer
+   $ curl -L https://github.com/nanos-world/nanos-world-server/releases/download/latest/NanosWorldServer -o NanosWorldServer
+   $ chmod +x NanosWorldServer
 
 This will download NanosWorldServer executable and set it to be an executable itself. After downloading, you can start your server like:
 
-.. code-block:: shell
+.. code-block:: console
 
-   ./NanosWorldServer
+   $ ./NanosWorldServer
 
 .. image:: https://i.imgur.com/mrh6Nk9.png
 

@@ -86,9 +86,9 @@ Available parameters: ``--name``, ``--description``, ``--password``, ``--ip``, `
 
 Usage:
 
-.. code:: 
+.. code-block:: console
 
-  ./NanosWorldServer --port 6666 --map "NanosWorld::BlankMap" --announce 0 --max_players 1024 --packages "MyAwesomePackage, AnotherGoodPackage"
+  ./NanosWorldServer --port 7777 --map "NanosWorld::BlankMap" --announce 0 --max_players 1024 --packages "MyAwesomePackage, AnotherGoodPackage"
 
 
 Map and Level

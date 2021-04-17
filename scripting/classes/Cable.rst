@@ -89,8 +89,8 @@ Functions
 
   * - 
     - 
-    - SetValue(:term:`string` key, :term:`any` value)
-    - Sets a value in this entity, which can be accessed by any package (local only)
+    - SetValue(:term:`string` key, :term:`any` value, :term:`boolean` sync_on_clients)
+    - Sets a value in this entity, which can be accessed by any package (optionally sync on clients if called from server)
 
   * - 
     - :term:`boolean`
