@@ -94,7 +94,7 @@ Functions
     - Trace a ray against the world and returns a table with the first blocking hit information ``{"Success", "Location", "Normal", "Actor"}``. Currently only supports trace for :ref:`Character`, :ref:`Vehicle` and :ref:`Prop`, more can be requested.
 
   * - :ref:`Vector`
-    - GetRandomReachablePointInRadius(:ref:`Vector` origin, :term:`number` radius)
+    - GetRandomReachablePointInRadius( |br-p| :ref:`Vector` origin, |br-p| :term:`number` radius |br| )
     - Finds random, reachable point in navigable space restricted to radius around origin (only if map has a NavMesh)
 
   * - :ref:`Vector2D`

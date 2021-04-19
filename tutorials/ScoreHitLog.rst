@@ -49,6 +49,11 @@ The following script mimics Battlefield V Score, Kill & Hit Log on the screen.
         -- Stores which bone was the last damaged (to check if he dies from headshop)
         charact:SetValue("LastDamagerBone", bone)
 
+        -- Play Headshot ping sound
+        if (bone == "head") then
+            Sound(Vector(0, 0, 0), "NanosWorld::A_Headshot_Feedback", true)
+        end
+
         KillHUDUI:CallEvent("AddScore", {damage, "enemy_hit", "ENEMY HIT", true})
     end)
 
@@ -68,6 +73,14 @@ The following script mimics Battlefield V Score, Kill & Hit Log on the screen.
         -- Gets the lat hit bone and check if it was a Headshot
         local last_bone = charact:GetValue("LastDamagerBone")
         local is_headshot = last_bone == "head" or last_bone == "neck_01"
+
+        -- Play Kill feedback sound
+        Sound(Vector(0, 0, 0), "NanosWorld::A_Kill_Feedback", true)
+
+        -- Play Headshot Ping sound
+        if (is_headshot) then
+            Sound(Vector(0, 0, 0), "NanosWorld::A_Headshot_Feedback", true)
+        end
 
         KillHUDUI:CallEvent("AddKill", {name, is_headshot})
     end)

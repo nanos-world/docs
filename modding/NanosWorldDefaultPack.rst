@@ -148,6 +148,10 @@ nanos world provides a default Asset Pack already included in the base game, fee
 
         # Sound Assets
         [assets.sounds]
+		A_Kill_Feedback = "Weapons/Common/Audios/A_Kill_Feedback_Cue"
+		A_Hit_Feedback = "Weapons/Common/Audios/A_Hit_Feedback_Cue"
+		A_Headshot_Feedback = "Weapons/Common/Audios/A_Headshot_Feedback_Cue"
+
         A_SMG_Dry = "Weapons/Common/Audios/A_SMG_Dry_Cue"
         A_Rifle_Dry = "Weapons/Common/Audios/A_Rifle_Dry_Cue"
         A_Pistol_Dry = "Weapons/Common/Audios/A_Pistol_Dry_Cue"

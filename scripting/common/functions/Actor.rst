@@ -61,7 +61,7 @@ Functions (Inherited from Actor)
 
   * - 
     - 
-    - SetValue(:term:`string` key, :term:`any` value, :term:`boolean` sync_on_clients)
+    - SetValue( |br-p| :term:`string` key, |br-p| :term:`any` value, |br-p| :term:`boolean` sync_on_clients |br| )
     - Sets a value in this entity, which can be accessed by any package (optionally sync on clients if called from server)
 
   * - 
