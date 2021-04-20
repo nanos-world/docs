@@ -41,7 +41,7 @@ The following example will show you how to get what and where the player is look
         local end_location = viewport_3D.Position + viewport_3D.Direction * trace_max_distance
 
         -- Last parameter as true means it will draw a Debug Line in the traced segment
-        local trace_result = Client:Trace(start_location, end_location, true)
+        local trace_result = Client:Trace(start_location, end_location, CollisionChannel.WorldStatic, false, true, false, true)
 
         -- If hit something draws a Debug Point at the location
         if (trace_result.Success) then
