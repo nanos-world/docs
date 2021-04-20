@@ -11,7 +11,7 @@ Functions (Inherited from Actor)
 
   * - |authority-only-label|
     - 
-    - AddImpulse(:ref:`Vector` force)
+    - AddImpulse( |br-p| :ref:`Vector` force, |br-p| :term:`boolean` velocity_change = false |br| )
     - Applies a Force in world coordinate on this Actor (the force is applied on Client side, by the (in most of cases) the closest player of this object)
 
   * - |authority-only-label|
