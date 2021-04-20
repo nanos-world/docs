@@ -78,6 +78,11 @@ nanos world Enumerators
 
 			{ FPSTPS = 0, FPSOnly = 1, TPSOnly = 2 }
 
+	CollisionChannel
+		.. code-block:: lua
+
+	 		{ WorldStatic = 0, WorldDynamic = 1, Pawn = 2, PhysicsBody = 5, Vehicle = 6, Destructible = 7, TracePrimitive = 16, Mesh = 17, Foliage = 20 }
+
 	CollisionType
 		.. code-block:: lua
 
@@ -147,6 +152,11 @@ nanos world Enumerators
 		.. code-block:: lua
 
 			{ None = 0, Standing = 1, Crouching = 2, Proning = 3 }
+
+	SurfaceType
+		.. code-block:: lua
+
+			{ Default = 0, Carpet = 1, Concrete = 2, Grass = 3, Gravel = 4, Ground = 5, MetalLight = 6, Plastic = 7, Sand = 8, Snow = 9, Water = 10, WoodLight = 11, Flesh = 12, MetalHeavy = 13, WoodHeavy = 14, Ice = 15, Mud = 16, Rock = 17, Thump = 18, Glass = 19 }
 
 	SwimmingMode
 		.. code-block:: lua

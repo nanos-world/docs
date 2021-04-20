@@ -40,17 +40,11 @@ The following script mimics Battlefield V Score, Kill & Hit Log on the screen.
         -- If I was not the causer, just ignore it
         if (instigator ~= NanosWorld:GetLocalPlayer()) then return end
 
-        -- If he's dead, just ignore it
-        if (charact:GetHealth() == 0) then return end
-
-        -- Stores who was the last damager (me)
-        charact:SetValue("LastDamager", instigator)
-
-        -- Stores which bone was the last damaged (to check if he dies from headshop)
-        charact:SetValue("LastDamagerBone", bone)
+        -- Play Hit feedback sound
+        Sound(Vector(0, 0, 0), "NanosWorld::A_Hit_Feedback", true)
 
         -- Play Headshot ping sound
-        if (bone == "head") then
+        if (bone == "head" or bone == "neck_01") then
             Sound(Vector(0, 0, 0), "NanosWorld::A_Headshot_Feedback", true)
         end
 
@@ -58,8 +52,8 @@ The following script mimics Battlefield V Score, Kill & Hit Log on the screen.
     end)
 
     -- When a character dies, check if I was the last one to do damage on him and displays on the screen as a kill
-    Character:Subscribe("Death", function(charact)
-        if (charact:GetValue("LastDamager") ~= NanosWorld:GetLocalPlayer()) then return end
+    Character:Subscribe("Death", function(character, last_damage_taken, last_bone_damaged, damage_type_reason, hit_from_direction, instigator)
+        if (instigator ~= NanosWorld:GetLocalPlayer()) then return end
 
         local player = charact:GetPlayer()
 
@@ -71,8 +65,7 @@ The following script mimics Battlefield V Score, Kill & Hit Log on the screen.
         end
 
         -- Gets the lat hit bone and check if it was a Headshot
-        local last_bone = charact:GetValue("LastDamagerBone")
-        local is_headshot = last_bone == "head" or last_bone == "neck_01"
+        local is_headshot = last_bone_damaged == "head" or last_bone_damaged == "neck_01"
 
         -- Play Kill feedback sound
         Sound(Vector(0, 0, 0), "NanosWorld::A_Kill_Feedback", true)
