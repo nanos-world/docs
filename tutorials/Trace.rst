@@ -49,11 +49,11 @@ The following example will show you how to get what and where the player is look
             -- Makes the point Red or Green if hit an Actor
             local color = Color(1, 0, 0) -- Red
 
-            if (trace_result.Actor) then
+            if (trace_result.Entity) then
                 color = Color(0, 1, 0) -- Green
 
                 -- Here you can check which actor you hit like
-                -- if (trace_result.Actor:GetType() == "Character") then ...
+                -- if (trace_result.Entity:GetType() == "Character") then ...
                 -- Currently only Character, Vehicles and Props are returned, if you want more you can request and we will add
             end
 
