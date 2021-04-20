@@ -90,7 +90,7 @@ Functions
     - Leaves the Spectator's State.
 
   * - :term:`table`
-    - Trace( |br-p| :ref:`Vector` start, |br-p| :ref:`Vector` end, |br-p| :term:`CollisionChannel` collision_channel = WorldStatic, |br-p| :term:`boolean` trace_complex = false, |br-p| :term:`boolean` return_entity = false, |br-p| :term:`boolean` trace_complex = false, |br-p| :term:`boolean`return_physical_material = false, |br-p| :term:`boolean` draw_debug = false |br| )
+    - Trace( |br-p| :ref:`Vector` start, |br-p| :ref:`Vector` end, |br-p| :term:`CollisionChannel` collision_channel = WorldStatic, |br-p| :term:`boolean` trace_complex = false, |br-p| :term:`boolean` return_entity = false, |br-p| :term:`boolean` trace_complex = false, |br-p| :term:`boolean` return_physical_material = false, |br-p| :term:`boolean` draw_debug = false |br| )
     - Trace a ray against the world and returns a table with the first blocking hit information ``{"Success", "Location", "Normal", "Entity", "ActorName", "ComponentName", "SurfaceType"}``. Currently only supports trace for :ref:`Character`, :ref:`Vehicle`, :ref:`StaticMesh` and :ref:`Prop`, more can be requested.
 
   * - :ref:`Vector`
