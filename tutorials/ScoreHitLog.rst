@@ -14,9 +14,7 @@ The following script mimics Battlefield V Score, Kill & Hit Log on the screen.
 
 .. note:: The following code runs on Client.
 
-.. note:: In this Sample we will be using `JQuery <https://jquery.com/>`_, please download `the latest version <https://code.jquery.com/jquery-3.5.1.min.js>`_ and place it inside ``UI/`` folder.
-
-.. note:: Scull images can be downloaded `here <https://imgur.com/a/jmW3Ss3>`_ and placed inside `UI/images/` folder.
+.. note:: You can download the full script from the ``Vault`` or from the official repository at https://github.com/gtnardy/nanos-world-battlefield-kill-ui.
 
 
 .. tabs::

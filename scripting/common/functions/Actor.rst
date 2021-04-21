@@ -26,6 +26,11 @@ Functions (Inherited from Actor)
 
   * - |authority-only-label|
     - 
+    - Detach()
+    - Detaches this Actor from AttachedTo Actor
+
+  * - |authority-only-label|
+    - 
     - SetCollision(:term:`CollisionType`)
     - Sets the actor's collision **Collision Types**: *Normal, Static Only, NoCollision*
 

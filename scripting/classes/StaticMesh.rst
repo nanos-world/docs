@@ -91,7 +91,7 @@ Functions
 
   * - 
     - :term:`string`
-    - GetAssetName()
+    - GetMesh()
     - Gets the Asset name
 
 

@@ -59,6 +59,16 @@ Functions
 
   * - |authority-only-label|
     - 
+    - DetachEnd()
+    - Detaches the End of this Cable
+
+  * - |authority-only-label|
+    - 
+    - DetachStart()
+    - Detaches the Start of this Cable
+
+  * - |authority-only-label|
+    - 
     - SetAngularLimits( |br-p| :term:`ConstraintMotion` swing_1_motion, |br-p| :term:`ConstraintMotion` swing_2_motion, |br-p| :term:`ConstraintMotion` twist_motion, |br-p| :term:`number` swing_1_limit, |br-p| :term:`number` swing_2_limit, |br-p| :term:`number` twist_limit |br| )
     - Sets the Physics Angular Limits of this cable
 
