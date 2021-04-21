@@ -57,15 +57,18 @@ Functions
 
   * - :term:`boolean`
     - Equals(:ref:`Vector` other, :term:`number` tolerance)
+
+  * - :term:`number`
+    - DistanceSquared(:ref:`Vector` other)
     - 
 
   * - :term:`number`
-    - SizeSquared()
+    - Distance(:ref:`Vector` other)
     - 
 
-  * - :term:`number`
-    - Size()
-    - 
+  * - :ref:`Vector`
+    - GetSafeNormal()
+    - Gets a normalized copy of the vector, checking it is safe to do so based on the length.
 
   * - :ref:`boolean`
     - IsNearlyZero(:term:`number` tolerance)
@@ -75,10 +78,14 @@ Functions
     - IsZero()
     - 
 
+  * - 
+    - Normalize()
+    - Normalize this vector in-place if it is larger than a given tolerance. Leaves it unchanged if not.
+
   * - :term:`number`
-    - DistanceSquared(:ref:`Vector` other)
+    - SizeSquared()
     - 
 
   * - :term:`number`
-    - Distance(:ref:`Vector` other)
+    - Size()
     - 
