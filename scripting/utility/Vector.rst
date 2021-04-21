@@ -27,7 +27,7 @@ Properties
 
 .. list-table::
   :widths: 10 30 60
-   
+
   * - **Type**
     - **Name**
     - **Description**
@@ -50,13 +50,14 @@ Functions
 
 .. list-table::
   :widths: 10 40 50
-   
+
   * - **Returns**
     - **Name**
     - **Description**
 
   * - :term:`boolean`
     - Equals(:ref:`Vector` other, :term:`number` tolerance)
+    - 
 
   * - :term:`number`
     - DistanceSquared(:ref:`Vector` other)
