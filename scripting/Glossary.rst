@@ -81,7 +81,7 @@ nanos world Enumerators
 	CollisionChannel
 		.. code-block:: lua
 
-	 		{ WorldStatic = 0, WorldDynamic = 1, Pawn = 2, PhysicsBody = 5, Vehicle = 6, Destructible = 7, TracePrimitive = 16, Mesh = 17, Foliage = 20 }
+	 		{ WorldStatic = 1 << 0, WorldDynamic = 1 << 1, Pawn = 1 << 2, PhysicsBody = 1 << 5, Vehicle = 1 << 6, Destructible = 1 << 7, TracePrimitive = 1 << 16, Mesh = 1 << 17, Foliage = 1 << 20 }
 
 	CollisionType
 		.. code-block:: lua

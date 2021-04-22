@@ -74,8 +74,8 @@ Functions
     - Changes the Outline Color for interactable stuff. Multiply it by 5 (or more) for having a glowing effect.
 
   * - 
-    - SetHighlightColor(:ref:`Color` highlight_color)
-    - Changes the Highlight Color for highlighted actors. Multiply it by 5 (or more) for having a glowing effect.
+    - SetHighlightColor( |br-p| :ref:`Color` highlight_color, |br-p| :term:`number` Index |br| )
+    - Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 (or more) for having a glowing effect.
 
   * - 
     - SetValue(:term:`string` key, :term:`any` value)

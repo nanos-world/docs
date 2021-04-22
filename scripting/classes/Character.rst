@@ -241,6 +241,11 @@ Functions
 
   * - |server-only-label|
     - 
+    - SetGravityScale(:term:`number` Scale)
+    - Changes the Gravity Scale of this Character (can be negative)
+
+  * - |server-only-label|
+    - 
     - SetStanceMode(:term:`StanceMode` mode)
     - **Stance Modes**: *None, Standing, Crouching, Proning*
 
@@ -373,6 +378,11 @@ Functions
     - :ref:`Prop`
     - GetGrabbedProp()
     - Gets the Grabbing Prop
+
+  * - 
+    - :term:`number`
+    - GetGravityScale()
+    - Gets the Gravity Scale of this Character
 
   * - 
     - :term:`number`
