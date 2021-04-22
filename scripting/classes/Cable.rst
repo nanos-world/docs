@@ -54,6 +54,16 @@ Functions
 
   * - |authority-only-label|
     - 
+    - AttachStartTo( |br-p| Actor other, |br-p| :term:`string` bone_name = "", |br-p| :ref:`Vector` relative_location = Vector() |br| )
+    - Attached the beggining of this cable to another Actor at a specific bone or relative location
+
+  * - |authority-only-label|
+    - 
+    - AttachEndTo( |br-p| Actor other, |br-p| :term:`string` bone_name = "", |br-p| :ref:`Vector` relative_location = Vector() |br| )
+    - Attached the end of this cable to another Actor at a specific bone or relative location
+
+  * - |authority-only-label|
+    - 
     - Destroy()
     - Destroys this Actor
 
