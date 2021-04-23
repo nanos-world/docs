@@ -22,7 +22,7 @@ Functions
 
   * -
     - :term:`any`
-    - Call(:term:`string` package_name, :term:`string` function_name, :term:`table` {args...})
+    - Call( |br-p| :term:`string` package_name, |br-p| :term:`string` function_name, |br-p| :term:`table` {args...} |br| )
     - Calls an exported function from an other Package
 
   * -
@@ -57,7 +57,7 @@ Functions
 
   * -
     - :term:`table`\<:term:`string`\>
-    - GetFiles(:term:`string` path_filter = "", :term:`string` extension_filter = "")
+    - GetFiles( |br-p| :term:`string` path_filter = "", |br-p| :term:`string` extension_filter = "" |br| )
     - Gets a list of all files in this package, optionally with filters
 
   * -
@@ -90,12 +90,12 @@ Events
   * -
     - Load
     - 
-    - Is called as soon as a package is loaded.
+    - Called as soon as a package is loaded.
 
   * -
     - Unload
     - 
-    - Is called as soon as a package is unloaded.
+    - Called as soon as a package is unloaded.
 
 
 Examples

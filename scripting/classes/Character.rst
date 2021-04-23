@@ -196,6 +196,16 @@ Functions
 
   * - |server-only-label|
     - 
+    - SetAccelerationSettings( |br-p| :term:`number` walking = 768, |br-p| :term:`number` parachuting = 512, |br-p| :term:`number` skydiving = 768, |br-p| :term:`number` falling = 128, |br-p| :term:`number` swimming = 256, |br-p| :term:`number` swimming_superficie = 256 |br| );
+    - Sets the Movement Max Acceleration of this Character.
+
+  * - |server-only-label|
+    - 
+    - SetBrakingSettings( |br-p| :term:`number` ground_friction = 2, |br-p| :term:`number` braking_friction_factor = 2, |br-p| :term:`number` braking_walking = 96, |br-p| :term:`number` braking_flying = 3000, |br-p| :term:`number` braking_swimming = 10, |br-p| :term:`number` braking_falling = 0 |br| );
+    - Sets the Movement Braking Settings of this Character.
+
+  * - |server-only-label|
+    - 
     - SetCameraMode(:term:`number` camera_mode)
     - Sets the Camera Mode (0 - FPS and TPS, 1 = FPS only, 2 = TPS only)
 
