@@ -23,41 +23,42 @@ Usage
     local new_weapon = Weapon(
         Vector(-900, 185, 215), -- Spawn Location
         Rotator(0, 90, 90),     -- Spawn Rotation
-        "NanosWorld::SK_AK47", -- Model
-        CollisionType.Normal, -- Collision (Normal)
-        true,                 -- Gravity Enabled
-        30,                   -- Default Ammo in the Clip
-        1000,                 -- Default Ammo in the Bag
-        30,                   -- Clip Capacity
-        30,                   -- Base Damage
-        20,                   -- Spread
-        1,                    -- Bullet Count (1 for common weapons, > 1 for shotguns)
-        30,                   -- Ammo to Reload (Ammo Clip for common weapons, 1 for shotguns)
-        20000,                -- Max Bullet Distance
-        7500,                 -- Bullet Speed (visual only)
-        Color(20, 10000, 0),  -- Bullet Color
-        0.5,                  -- Sight's FOV multiplier
-        Vector(0, 0, -14.85), -- Sight Location
-        Rotator(-1, 0, 0),    -- Sight Rotation
-        Vector(26, 0, 8.5),   -- Left Hand Location
-        Rotator(0, 60, 90),   -- Left Hand Rotation
-        Vector(-10, 0, 0),    -- Right Hand Offset
+        "NanosWorld::SK_AK47",  -- Model
+        CollisionType.Normal,   -- Collision (Normal)
+        true,                   -- Gravity Enabled
+        30,                     -- Default Ammo in the Clip
+        1000,                   -- Default Ammo in the Bag
+        30,                     -- Clip Capacity
+        30,                     -- Base Damage
+        20,                     -- Spread
+        1,                      -- Bullet Count (1 for common weapons, > 1 for shotguns)
+        30,                     -- Ammo to Reload (Ammo Clip for common weapons, 1 for shotguns)
+        20000,                  -- Max Bullet Distance
+        7500,                   -- Bullet Speed (visual only)
+        Color(20, 10000, 0),    -- Bullet Color
+        0.5,                    -- Sight's FOV multiplier
+        Vector(0, 0, -14.85),   -- Sight Location
+        Rotator(-1, 0, 0),      -- Sight Rotation
+        Vector(26, 0, 8.5),     -- Left Hand Location
+        Rotator(0, 60, 90),     -- Left Hand Rotation
+        Vector(-10, 0, 0),      -- Right Hand Offset
         HandlingMode.DoubleHandedWeapon, -- Handling Mode (SingleHandedWeapon, DoubleHandedWeapon, SingleHandedMelee, DoubleHandedMelee, Throwable, Torch, Barrel, Box)
-        0.15,                 -- Cadence (1 shot at each 0.15seconds)
-        true,                 -- Can Hold Use (keep pressing to keep firing, common to automatic weapons)
-        false,                -- Need to release to Fire (common to Bows)
-        "NanosWorld::P_Bullet_Trail_System",                       -- Bullet Trail Particle
-        "NanosWorld::P_Weapon_BarrelSmoke",                        -- Barrel Particle
-        "NanosWorld::P_Weapon_Shells_762x39",                      -- Shells Particle
-        "NanosWorld::A_Rifle_Dry",                                 -- Weapon's Dry Sound
-        "NanosWorld::A_Rifle_Load",                                -- Weapon's Load Sound
-        "NanosWorld::A_Rifle_Unload",                              -- Weapon's Unload Sound
-        "NanosWorld::A_AimZoom",                                   -- Weapon's Zooming Sound
-        "NanosWorld::A_Rattle",                                    -- Weapon's Aiming Sound
-        "NanosWorld::A_AK47_Shot",                                 -- Weapon's Shot Sound
-        "NanosWorld::AM_Mannequin_Reload_Rifle",                   -- Character's Reloading Animation
-        "NanosWorld::AM_Mannequin_Sight_Fire",                     -- Character's Aiming Animation
-        "NanosWorld::SM_AK47_Mag_Empty"                            -- Magazine Mesh
+        0.15,                                    -- Cadence (1 shot at each 0.15seconds)
+        true,                                    -- Can Hold Use (keep pressing to keep firing, common to automatic weapons)
+        false,                                   -- Need to release to Fire (common to Bows)
+        "NanosWorld::P_Bullet_Trail_System",     -- Bullet Trail Particle
+        "NanosWorld::P_Weapon_BarrelSmoke",      -- Barrel Particle
+        "NanosWorld::P_Weapon_Shells_762x39",    -- Shells Particle
+        "NanosWorld::A_Rifle_Dry",               -- Weapon's Dry Sound
+        "NanosWorld::A_Rifle_Load",              -- Weapon's Load Sound
+        "NanosWorld::A_Rifle_Unload",            -- Weapon's Unload Sound
+        "NanosWorld::A_AimZoom",                 -- Weapon's Zooming Sound
+        "NanosWorld::A_Rattle",                  -- Weapon's Aiming Sound
+        "NanosWorld::A_AK47_Shot",               -- Weapon's Shot Sound
+        "NanosWorld::AM_Mannequin_Reload_Rifle", -- Character's Reloading Animation
+        "NanosWorld::AM_Mannequin_Sight_Fire",   -- Character's Aiming Animation
+        "NanosWorld::SM_AK47_Mag_Empty",         -- Magazine Mesh
+        CrosshairType.Regular
     )
 
 
@@ -259,6 +260,16 @@ Constructor Parameters
   * - :term:`string`
     - magazine_mesh *(mesh used when reloading)*
     - Static Mesh Path
+
+  * - :term:`CrosshairType`
+    - crosshair
+    - CrosshairType.Regular
+
+
+Available Crosshairs
+--------------------
+
+.. image:: https://i.imgur.com/foF0F0d.jpg
 
 
 Properties

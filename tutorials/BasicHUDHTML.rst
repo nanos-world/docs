@@ -7,7 +7,7 @@ Basic HUD (HTML)
 
 This sample code shows how to add a basic HUD using HTML+JavaScript+CSS to display the character's Health and Ammo. That was based on CS:GO HUD ;).
 
-.. tip:: Download the full example code here: `BasicHUDHTML.zip <https://docs.nanos.world/_static/examples/BasicHUDHTML.zip>`_.
+.. warning:: The following example is deprecated and you can find an updated HTML UI in our `Sandbox Official Repository <https://github.com/nanos-world/nanos-world-sandbox>`_.
 
 .. image:: https://i.imgur.com/lrYCway.png
 
