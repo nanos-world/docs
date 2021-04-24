@@ -69,7 +69,7 @@ Events
    
   * - 
     - **Name**
-    - **Parameters**
+    - **Arguments**
     - **Description**
 
   * - |client-only-label|

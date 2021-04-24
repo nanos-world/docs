@@ -77,7 +77,7 @@ Events
   :widths: 15 35 50
    
   * - **Name**
-    - **Parameters**
+    - **Arguments**
     - **Description**
 
   * - ViewportResized

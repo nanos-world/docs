@@ -41,7 +41,7 @@ Functions (Inherited from Actor)
 
   * - |authority-only-label|
     - 
-    - SetHighlightEnabled( |br-p| :term:`boolean`, |br-p| :term:`number` Index |br-| )
+    - SetHighlightEnabled( |br-p| :term:`boolean`, |br-p| :term:`number` Index |br| )
     - Sets if this Actors is Highlighting at a specific Index color
 
   * - |authority-only-label|
