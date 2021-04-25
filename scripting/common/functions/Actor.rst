@@ -92,7 +92,7 @@ Functions (Inherited from Actor)
   * - 
     - :term:`boolean`
     - IsValid()
-    - Returns if this is Valid
+    - Returns if this entity is valid (i.e. wasn't destroyed and points to a valid entity)
 
   * - 
     - :term:`number`
