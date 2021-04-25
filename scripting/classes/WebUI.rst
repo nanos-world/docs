@@ -29,7 +29,7 @@ Usage
         "file:///UI/Index.html", -- Path relative to this package (Client/)
         true, -- Is Visible
     )
-    
+
     -- Using a Web URL
     my_browser = WebUI(
         "Awesome Site", -- Name
@@ -93,7 +93,7 @@ Functions
 
   * - 
     - SetVisible(:term:`boolean` is_visible)
-    - Toggles the visibiliy
+    - Toggles the visibility
 
   * - :term:`boolean`
     - IsValid()
@@ -107,13 +107,17 @@ Functions
     - GetType()
     - Returns the type of this Entity
 
+  * - :term:`boolean`
+    - IsVisible()
+    - Returns if this WebUI is currently visible
+
 
 Events
 ------
 
 .. list-table::
   :widths: 15 35 50
-   
+
   * - **Name**
     - **Arguments**
     - **Description**
@@ -135,7 +139,7 @@ Examples
 
 .. tabs::
  .. code-tab:: lua Lua / Package
-    
+
     -- creates a browser
     my_ui = WebUI("Awesome UI", "file:///UI/Index.html")
 
