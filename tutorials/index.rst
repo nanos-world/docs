@@ -10,6 +10,7 @@ Tutorials & Examples
 	BasicHUDCanvas.rst
 	BasicHUDHTML.rst
 	ChatColors.rst
+	GravityGun.rst
 	Hosting4Free.rst
 	MonsterTruck.rst
 	NameTags.rst
@@ -17,7 +18,6 @@ Tutorials & Examples
 	PlayAsProp.rst
 	PropShooter.rst
 	PropRain.rst
-	ScoreHitLog.rst
 	Trace.rst
 	WeaponFlashlight.rst
 	WeaponScope.rst
@@ -47,24 +47,16 @@ Scripting
 	<script>
 		DrawCard(
 			"../scripting/static_classes/Events.html",
-			"https://nanos.world/media/logo.png",
+			"https://i.imgur.com/lMRBdQn.jpg",
 			"Comunication Between Packages",
 			"How to send data between different Packages using Events."
 		);
 
 		DrawCard(
 			"https://github.com/nanos-world/nanos-world-testing-map-script",
-			"https://nanos.world/media/logo.png",
+			"https://i.imgur.com/lMRBdQn.jpg",
 			"Populating Testing Map ↗",
 			"Since update <strong>0.30.0</strong>, Maps can have it's own attached code. Check out the Testing Map Official Scripting.",
-			true
-		);
-
-		DrawCard(
-			"https://github.com/nanos-world/nanos-world-lua-lib",
-			"https://nanos.world/media/logo.png",
-			"nanos world Official Lua Library ↗",
-			"Official repository of all Lua utility methods, tables and functions.",
 			true
 		);
 	</script>
@@ -78,7 +70,7 @@ Packages / Game-Modes
 	<script>
 		DrawCard(
 			"https://github.com/nanos-world/nanos-world-sandbox",
-			"https://nanos.world/media/logo.png",
+			"https://i.imgur.com/kXKtrJT.jpg",
 			"Sandbox ↗",
 			"Official Sandbox package, with basic functionalities and how to spawn Players at random locations!",
 			true
@@ -86,7 +78,7 @@ Packages / Game-Modes
 
 		DrawCard(
 			"https://github.com/gtnardy/nanos-world-inventory-system",
-			"https://nanos.world/media/logo.png",
+			"https://i.imgur.com/tgmzssd.png",
 			"Inventory System ↗",
 			"Custom Inventory System inspired by CS:GO for nanos world.",
 			true
@@ -101,18 +93,41 @@ Packages / Game-Modes
 		);
 
 		DrawCard(
+			"https://github.com/gtnardy/nanos-world-battlefield-kill-ui",
+			"https://i.imgur.com/CgbPj62.png",
+			"Battlefield Kill UI & Effects",
+			"Battlefield-like Hit, Kill & Score log and Sound effects!"
+		);
+	</script>
+
+
+Packages / Libraries
+--------------------
+
+.. raw:: html
+
+	<script>
+		DrawCard(
 			"https://github.com/nanos-world/nanos-world-weapons",
-			"https://nanos.world/media/logo.png",
-			"nanos world Official Weapon Package ↗",
+			"https://i.imgur.com/lMRBdQn.jpg",
+			"Official Weapon Package ↗",
 			"Official repository of NanosWorldWeapons Package.",
 			true
 		);
 
 		DrawCard(
 			"https://github.com/nanos-world/nanos-world-vehicles",
-			"https://nanos.world/media/logo.png",
-			"nanos world Official Vehicle Package ↗",
+			"https://i.imgur.com/lMRBdQn.jpg",
+			"Official Vehicle Package ↗",
 			"Official repository of NanosWorldVehicles Package.",
+			true
+		);
+
+		DrawCard(
+			"https://github.com/nanos-world/nanos-world-lua-lib",
+			"https://i.imgur.com/lMRBdQn.jpg",
+			"Official Lua Library ↗",
+			"Official repository of all Lua utility methods, tables and functions.",
 			true
 		);
 	</script>
@@ -146,6 +161,13 @@ Samples / Snippets
 		);
 
 		DrawCard(
+			"GravityGun.html",
+			"https://i.imgur.com/dUV5FsF.png",
+			"Simple Gravity Gun",
+			"Making a simple version of Garry's Mod Gravity Gun."
+		);
+
+		DrawCard(
 			"WeaponScope.html",
 			"https://i.imgur.com/K5eVATY.png",
 			"Weapon Scope",
@@ -164,13 +186,6 @@ Samples / Snippets
 			"https://i.imgur.com/4LeSR2G.png",
 			"Trace / Raycasting",
 			"Check out how to get World information with Traces!"
-		);
-
-		DrawCard(
-			"ScoreHitLog.html",
-			"https://i.imgur.com/CgbPj62.png",
-			"Score & Hit Log",
-			"Battlefield-like Hit, Kill & Score log!"
 		);
 
 		DrawCard(

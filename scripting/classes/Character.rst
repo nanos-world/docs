@@ -67,8 +67,35 @@ Constructor Parameters
     - NanosWorld::A_Male_01_Pain
 
 
-Usage
------
+Examples
+--------
+
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"PlayAsProp.html",
+			"https://i.imgur.com/mO9tCdo.jpg",
+			"Play as Prop",
+			"How to simulate a Prop possessing."
+		);
+
+		DrawCard(
+			"NameTags.html",
+			"https://i.imgur.com/AyHKrG1.png",
+			"NameTags",
+			"How to add Player's name above Character's head."
+		);
+
+		DrawCard(
+			"https://github.com/nanos-world/nanos-world-sandbox",
+			"https://i.imgur.com/kXKtrJT.jpg",
+			"Sandbox ↗",
+			"Official Sandbox package, with basic functionalities and how to spawn Players at random locations!",
+			true
+		);
+	</script>
+
 
 .. tabs::
  .. code-tab:: lua Lua

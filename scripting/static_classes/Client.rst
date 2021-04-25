@@ -164,6 +164,25 @@ Events
 Examples
 --------
 
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"Trace.html",
+			"https://i.imgur.com/4LeSR2G.png",
+			"Trace / Raycasting",
+			"Check out how to get World information with Traces!"
+		);
+
+		DrawCard(
+			"XRay.html",
+			"https://i.imgur.com/OuQHLIJ.jpeg",
+			"X-Ray",
+			"Check how to Highlight objects through walls."
+		);
+	</script>
+
+
 .. tabs::
  .. code-tab:: lua Lua
 
