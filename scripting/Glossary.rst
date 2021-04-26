@@ -178,6 +178,11 @@ nanos world Enumerators
 
 			{ Top = 0, Center = 1, Bottom = 2, QuadTop = 3 }
 
+	TriggerType
+		.. code-block:: lua
+
+			{ Sphere = 0, Box = 1 }
+
 	ViewMode
 		.. code-block:: lua
 
