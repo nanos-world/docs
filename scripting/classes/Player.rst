@@ -33,6 +33,11 @@ Functions
 
   * - |server-only-label|
     - 
+    - Connect(:term:`string` IP, :term:`string` password = "")
+    - Redirects the player to another server
+
+  * - |server-only-label|
+    - 
     - Kick(:term:`string` reason)
     - Kicks the player from the server
 
@@ -85,6 +90,16 @@ Functions
     - :term:`string`
     - GetAccountName()
     - Gets the nanos account name
+
+  * - |client-only-label|
+    - :ref:`Vector` location
+    - GetCameraLocation()
+    - Gets the Player's Camera Location 
+
+  * - |client-only-label|
+    - :ref:`Vector` location
+    - GetCameraRotation()
+    - Gets the Player's Camera Rotation 
 
   * - 
     - :ref:`Character`

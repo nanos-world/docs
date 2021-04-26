@@ -73,6 +73,9 @@ Using our Default Weapons Package `<https://github.com/nanos-world/nanos-world-w
     -- Spawning the AK47
     local my_ak47 = NanosWorldWeapons.AK47(Vector(1035, 154, 300), Rotator())
 
+    -- Giving the Weapon to a Character
+    my_character:PickUp(my_ak47)
+
 
 Related Tutorials
 -----------------

@@ -192,3 +192,8 @@ nanos world Enumerators
 		.. code-block:: lua
 
 			{ Local = 0, Global = 1, Muted = 2 }
+
+	WeatherType
+		.. code-block:: lua
+
+			{ Clear = 0, Rain = 1, Cloudy = 2, Thunderstorm = 3 }
