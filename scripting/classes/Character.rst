@@ -74,17 +74,19 @@ Examples
 
 	<script>
 		DrawCard(
-			"PlayAsProp.html",
+			"https://docs.nanos.world/tutorials/PlayAsProp.html",
 			"https://i.imgur.com/mO9tCdo.jpg",
-			"Play as Prop",
-			"How to simulate a Prop possessing."
+			"Play as Prop ↗",
+			"How to simulate a Prop possessing.",
+			true
 		);
 
 		DrawCard(
-			"NameTags.html",
+			"https://docs.nanos.world/tutorials/NameTags.html",
 			"https://i.imgur.com/AyHKrG1.png",
-			"NameTags",
-			"How to add Player's name above Character's head."
+			"NameTags ↗",
+			"How to add Player's name above Character's head.",
+			true
 		);
 
 		DrawCard(
