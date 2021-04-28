@@ -131,7 +131,7 @@ nanos world Enumerators
 	LogType
 		.. code-block:: lua
 
-			{ Display = 0, Warning = 1,	Error = 2, Debug = 3, Verbose = 4, Scripting = 5, Chat = 6, WebUI = 7 }
+			{ Display = 0, Warning = 1, Error = 2, Debug = 3, Verbose = 4, Scripting = 5, Chat = 6, WebUI = 7 }
 
 	LightType
 		.. code-block:: lua

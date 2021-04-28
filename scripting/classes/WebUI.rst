@@ -10,8 +10,6 @@ WebUI
 
 Class for spawning a web browser in the screen. The browser will fill up the whole screen and is automatically resized. 
 
-.. attention:: There is a known bug causing WebUI files (.js and .css at least) not being reloaded when modified. Restarting the game seems to solve the problem for now. The developer of this Library already knows and is working on a solution.
-
 .. tip:: This HTML implementation is built upon same core as WebKit/Safari. And currently does not support HTML5 videos and audios.
 
 .. note:: This is a Client only Class.
@@ -25,16 +23,24 @@ Usage
 
     -- Using a local file
     my_ui = WebUI(
-        "Awesome UI", -- Name
-        "file:///UI/Index.html", -- Path relative to this package (Client/)
-        true, -- Is Visible
+        "Awesome UI",            -- Name
+        "file:///UI/index.html", -- Path relative to this package (Client/)
+        true,                    -- Is Visible
     )
 
     -- Using a Web URL
     my_browser = WebUI(
-        "Awesome Site", -- Name
+        "Awesome Site",       -- Name
         "http://nanos.world", -- Web's URL
-        true, -- Is Visible
+        true,                 -- Is Visible
+    )
+
+    -- Using a local file from another package folder
+    my_ui = WebUI(
+        "Awesome UI from Another Package", -- Name
+        "file:///UI/index.html",           -- Path relative to this package (Client/)
+        true,                              -- Is Visible
+        "my_ui_library_package"            -- Package where this HTML is located
     )
 
 
@@ -60,6 +66,10 @@ Constructor Parameters
     - is_visible
     - true
 
+  * - :term:`string`
+    - package name
+    - defaults to this package
+
 
 Functions
 ---------
@@ -76,7 +86,7 @@ Functions
     - Puts this WebUI in the front of all WebUIs
 
   * - 
-    - CallEvent(:term:`string` event_name, any... arguments)
+    - CallEvent(:term:`string` event_name, :term:`any`\... arguments)
     - Calls an Event on the Browser's JavaScript
 
   * - 
@@ -131,7 +141,7 @@ Events
     - When this page is fully loaded
 
 
-.. note:: It is only allowed to pass :term:`number`, :term:`string` and :term:`boolean` between WebUI and your Package.
+.. note:: It is only allowed to pass :term:`number`, :term:`string` and :term:`boolean` in Events between WebUI and your Package.
 
 
 Examples
@@ -145,7 +155,7 @@ Examples
 
     -- register for an Event from the Browser created
     my_ui:Subscribe("MyEventFromJS", function(my_text)
-        Package:Log("Event received from Browser! " .. my_text)
+        Package:Log("Event received from Browser! %s", my_text)
         -- outputs "Event received from Browser! hello nanos world from JavaScript!"
     end)
 
@@ -156,7 +166,7 @@ Examples
 
     // registers for events from Lua
     Events.Subscribe("MyEventFromLua", function(param1) {
-        console.log("Event received from Lua!" + param1);
+        console.log("Event received from Lua! " + param1);
         // outputs "Event received from Lua! hello nanos world from lua!"
     })
 
