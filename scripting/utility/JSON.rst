@@ -24,9 +24,7 @@ Usage
     local decoded_value = JSON.parse('[1,2,3,{"x":10}]') -- Returns { 1, 2, 3, { x = 10 } }
 
 
-.. tip:: You can use stringified data to send tables through Events (including remote ones) as well!
-
-.. note: Just note that custom classes (e.g. Vehicle, Vector, Character... etc) aren't stringified with this functions and stringifying them will cause unknown behavior.
+.. note:: Note that custom classes (e.g. Vehicle, Vector, Character... etc) aren't stringified with this functions and stringifying them will cause unknown behavior.
 
 
 Functions

@@ -186,7 +186,7 @@ Events
   * - |server-only-label|
     - Ready
     - :ref:`Player` player
-    - Triggered when Player is ready (i.e. fully loaded and ready to play)
+    - Triggered when Player is ready (the client fully joined, loaded the map and all entities and is ready to play)
 
   * -
     - UnPossess

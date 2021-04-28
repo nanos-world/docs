@@ -26,14 +26,19 @@ Functions
     - Calls an exported function from an other Package
 
   * -
+    -
+    - Error(:term:`string` message, ...)
+    - Logs and formats an error message in the console in Red (the proper and nanos way)
+
+  * -
     - 
     - Export(:term:`string` function_name, :term:`function` function)
     - 'Exports' a function to be called from any other Package
 
   * -
     -
-    - Log(:term:`string` message)
-    - Logs a message in the console (the proper and nanos way)
+    - Log(:term:`string` message, ...)
+    - Logs and formats a message in the console (the proper and nanos way)
 
   * -
     -
@@ -44,6 +49,11 @@ Functions
     -
     - RequirePackage(:term:`string` package_name)
     - Includes other Package in this Package
+
+  * -
+    -
+    - Warn(:term:`string` message, ...)
+    - Logs and formats a warning message in the console in Orange (the proper and nanos way)
 
   * -
     -

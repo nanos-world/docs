@@ -116,7 +116,7 @@ nanos world Enumerators
 	FontType
 		.. code-block:: lua
 
-			{ Roboto = 0, GothicA1 = 1, PoiretOne = 2 }
+			{ Roboto = 0, GothicA1 = 1, PoiretOne = 2, Oswald = 3, RobotoMono = 4, OpenSans = 5 }
 
 	GaitMode
 		.. code-block:: lua
@@ -141,7 +141,7 @@ nanos world Enumerators
 	MaterialType
 		.. code-block:: lua
 
-			{ Masked = 1, Translucent = 2 }
+			{ None = 0, Masked = 1, Translucent = 2, TranslucentDepth = 3 }
 
 	SoundType
 		.. code-block:: lua
@@ -163,15 +163,20 @@ nanos world Enumerators
 
 			{ None = 0, Superficie = 1, Underwater = 2 }
 
+	TextRenderAlignCamera
+		.. code-block:: lua
+
+			{ Unaligned = 0, AlignCameraRotation = 1, FaceCamera = 2 }
+
+	TextRenderBevelType
+		.. code-block:: lua
+
+			{ Linear = 0, HalfCircle = 1, Convex = 2, Concave = 3, OneStep = 4, TwoSteps = 5, Engraved = 6 }
+
 	TextRenderHorizontalAlignment
 		.. code-block:: lua
 
 			{ Left = 0, Center = 1, Right = 2 }
-
-	TextRenderType
-		.. code-block:: lua
-
-			{ Lit = 0, Unlit = 1, UnlitAlwaysVisible = 2 }
 
 	TextRenderVerticalAlignment
 		.. code-block:: lua

@@ -15,7 +15,7 @@ In Unreal Engine, when you create a Material, you can define custom `Parameters 
 
 **nanos world** provides a bunch of methods to allow you to interact with the parameters you created for your materials using our scripting: ``SetMaterialVectorParameter``, ``SetMaterialScalarParameter``, ``SetMaterialColorParameter`` and ``SetMaterialTextureParameter``.
 
-.. tip:: We provide a blank material with basic parameters already defined for you to customize it in a very basic way. To use that, call ``SetDefaultMaterial()`` in the entity!
+.. tip:: We provide a blank material with basic parameters already defined for you to customize it in a very basic way. To use that, call ``SetDefaultMaterial()`` in the entity! You can spawn three tipes of default materials: *Masked*, *Translucent* and *TranslucentDepth*, the last one is always visible through walls.
 
 .. figure:: https://i.imgur.com/JlxMDYU.png
    
@@ -32,8 +32,8 @@ To illustrate, let's spawn a Cube and change it's Material using Lua:
 
    -- spawns a static mesh cube
    local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "NanosWorld::SM_Cube")
-   -- replaces it's materials with the nanos defalt one
-   my_cube:SetDefaultMaterial()
+   -- replaces it's materials with the nanos default Masked one
+   my_cube:SetDefaultMaterial(MaterialType.Masked)
 
 .. image:: https://i.imgur.com/69gsJpU.png
 
@@ -45,8 +45,8 @@ Now let's set it's material to red! To be able to do that, we must set the Color
 
    -- spawns a static mesh cube
    local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "NanosWorld::SM_Cube")
-   -- replaces it's materials with the nanos defalt one
-   my_cube:SetDefaultMaterial()
+   -- replaces it's materials with the nanos default Masked one
+   my_cube:SetDefaultMaterial(MaterialType.Masked)
 
    -- paints it red
    my_cube:SetMaterialColorParameter("Tint", Color(1, 0, 0))
@@ -63,8 +63,8 @@ Now let's give it a metallic style! You can learn more about `Physically Based M
 
    -- spawns a static mesh cube
    local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "NanosWorld::SM_Cube")
-   -- replaces it's materials with the nanos defalt one
-   my_cube:SetDefaultMaterial()
+   -- replaces it's materials with the nanos default one
+   my_cube:SetDefaultMaterial(MaterialType.Masked)
 
    -- paints it red
    my_cube:SetMaterialColorParameter("Tint", Color(1, 0, 0))
@@ -84,8 +84,8 @@ A fun thing to do is to make a material fully reflective, like a mirror:
 
    -- spawns a static mesh cube
    local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "NanosWorld::SM_Cube")
-   -- replaces it's materials with the nanos defalt one
-   my_cube:SetDefaultMaterial()
+   -- replaces it's materials with the nanos default one
+   my_cube:SetDefaultMaterial(MaterialType.Masked)
 
    -- makes it fully metallic and glossy
    my_cube:SetMaterialScalarParameter("Metallic", 1)
@@ -112,8 +112,8 @@ And now you can set it like that:
 
    -- spawns a static mesh cube
    local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "NanosWorld::SM_Cube")
-   -- replaces it's materials with the nanos defalt one
-   my_cube:SetDefaultMaterial()
+   -- replaces it's materials with the nanos default one
+   my_cube:SetDefaultMaterial(MaterialType.Masked)
 
    -- applies a custom texture to a parameter called "Texture"
    my_cube:SetMaterialTextureParameter("Texture", "MyAwesomePhotos/Syed.jpg")

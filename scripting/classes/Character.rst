@@ -74,19 +74,17 @@ Examples
 
 	<script>
 		DrawCard(
-			"https://docs.nanos.world/tutorials/PlayAsProp.html",
+			"../tutorials/PlayAsProp.html",
 			"https://i.imgur.com/mO9tCdo.jpg",
-			"Play as Prop ↗",
-			"How to simulate a Prop possessing.",
-			true
+			"Play as Prop",
+			"How to simulate a Prop possessing."
 		);
 
 		DrawCard(
-			"https://docs.nanos.world/tutorials/NameTags.html",
+			"../tutorials/NameTags.html",
 			"https://i.imgur.com/AyHKrG1.png",
-			"NameTags ↗",
-			"How to add Player's name above Character's head.",
-			true
+			"NameTags",
+			"How to add Player's name above Character's head."
 		);
 
 		DrawCard(
@@ -271,7 +269,7 @@ Functions
   * - 
     - 
     - SetDefaultMaterial( |br-p| :term:`MaterialType` material_type = MaterialType.Masked |br| )
-    - Replaces all materials of this actor with a nanos basic material with comon parameters available (*Masked, Translucent*)
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available (*Masked, Translucent, TranslucentDepth*)
 
   * - |server-only-label|
     - 

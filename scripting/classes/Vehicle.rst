@@ -154,7 +154,7 @@ Functions
   * - 
     - 
     - SetDefaultMaterial( |br-p| :term:`MaterialType` material_type = MaterialType.Masked |br| )
-    - Replaces all materials of this actor with a nanos basic material with comon parameters available (*Masked, Translucent*)
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available (*Masked, Translucent, TranslucentDepth*)
 
   * - |server-only-label|
     - 

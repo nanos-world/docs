@@ -16,7 +16,7 @@ Functions (Inherited from Actor)
 
   * - |authority-only-label|
     - 
-    - AttachTo( |br-p| Actor other, |br-p| :term:`string` bone_name = "", |br-p| :ref:`Vector` relative_location = {}, |br-p| :ref:`Rotator` relative_rotation = {} |br| )
+    - AttachTo( |br-p| Actor other, |br-p| :term:`string` bone_name = "", |br-p| :ref:`Vector` relative_location = Vector(), |br-p| :ref:`Rotator` relative_rotation = Rotator() |br| )
     - Attaches this Actor to any other Actor with a Relative Offset/Rotation
 
   * - |authority-only-label|
