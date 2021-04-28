@@ -54,6 +54,11 @@ Functions (Inherited from Actor)
     - SetLocation(:ref:`Vector`)
     - Sets the actor's location in the game world
 
+  * - |server-only-label|
+    - 
+    - SetNetworkAuthority( |br-p| :ref:`Player` player = nil, |br-p| :term:`number` time_ms = 0 |br| )
+    - Sets this actor's new Player network authority. This player will be manually assigned to handle this actor physics and share it's location with other clients. The authority assignment will still be overriden by the game automatically, to avoid that set a big time value so the player can keep longer with the authority and override the natural authority selection.
+
   * - |authority-only-label|
     - 
     - SetRotation(:ref:`Rotator`)
