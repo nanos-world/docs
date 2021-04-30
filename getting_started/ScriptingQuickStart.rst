@@ -123,10 +123,10 @@ And that's it! Ah, just remember to destroy the Characters when players disconne
         new_player:Possess(new_character)
     end)
 
-    -- Called when Player unpossess a Character (when Players disconnect, they will trigger UnPossess event)
-    Player:Subscribe("UnPossess", function(player, character, isPlayerDisconnecting)
-        -- If Player is disconnecting from the server, destroys it's Character
-        if (isPlayerDisconnecting) then
+    -- When Player leaves the server, destroy it's Character
+    Player:Subscribe("Destroy", function(player)
+        local character = player:GetControlledCharacter()
+        if (character) then
             character:Destroy()
         end
     end)

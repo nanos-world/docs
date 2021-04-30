@@ -10,6 +10,7 @@ Tutorials & Examples
 	BasicHUDCanvas.rst
 	BasicHUDHTML.rst
 	ChatColors.rst
+	Doors.rst
 	GravityGun.rst
 	Hosting4Free.rst
 	MonsterTruck.rst
@@ -158,6 +159,13 @@ Samples / Snippets
 			"https://i.imgur.com/mO9tCdo.jpg",
 			"Play as Prop",
 			"How to simulate a Prop possessing."
+		);
+
+		DrawCard(
+			"Doors.html",
+			"https://i.imgur.com/pZVm8Wm.png",
+			"Automatic Doors",
+			"Creating doors in nanos world."
 		);
 
 		DrawCard(

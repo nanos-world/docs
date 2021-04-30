@@ -190,7 +190,7 @@ Events
 
   * -
     - UnPossess
-    - :ref:`Player` player, |br| :ref:`Character` character, |br| :term:`boolean` is_player_disconnecting
+    - :ref:`Player` player, |br| :ref:`Character` character
     - A :ref:`Character` was released from the ``Player``
 
   * -
