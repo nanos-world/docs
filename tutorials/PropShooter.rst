@@ -29,5 +29,5 @@ This sample code modifies a :ref:`Weapon` to make it shoot :ref:`Prop`\s instead
         local spawn_location = shooter:GetLocation() + Vector(0, 0, 40) + forward_vector * Vector(200)
         
         local prop = Prop(spawn_location, control_rotation, "NanosWorld::SM_TeaPot_Interior", 1)
-        prop:AddImpulse(forward_vector * Vector(10000))
+        prop:AddImpulse(forward_vector * Vector(10000), true)
     end)

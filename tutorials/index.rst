@@ -11,6 +11,7 @@ Tutorials & Examples
 	BasicHUDHTML.rst
 	ChatColors.rst
 	Doors.rst
+	Fireworks.rst
 	GravityGun.rst
 	Hosting4Free.rst
 	MonsterTruck.rst
@@ -145,6 +146,13 @@ Samples / Snippets
 			"https://i.imgur.com/Mq3FBv4.png",
 			"Prop Shooter",
 			"A small example of how to shoot Props from a weapon!"
+		);
+
+		DrawCard(
+			"Fireworks.html",
+			"https://i.imgur.com/neLjwKZ.png",
+			"Firework Shooter",
+			"A small example of how to shoot Fireworks from a weapon using a custom Asset Pack"
 		);
 
 		DrawCard(

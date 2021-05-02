@@ -432,6 +432,7 @@ nanos world provides a default Asset Pack already included in the base game, fee
 
         # Particles Assets
         [assets.particles]
+        P_Error = "Effects/Particles/P_Error"
         P_Bullet_Trail = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Bullet_Trail_System"
         P_Weapon_BarrelSmoke = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_BarrelSmoke_System"
         P_Weapon_Shells_12Gauge = "Weapons/Common/Effects/ParticlesSystems/Weapons/P_Weapon_Shells_12Gauge_System"
