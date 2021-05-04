@@ -236,6 +236,11 @@ Functions
     - SetCameraMode(:term:`number` camera_mode)
     - Sets the Camera Mode (0 - FPS and TPS, 1 = FPS only, 2 = TPS only)
 
+  * - |client-only-label|
+    - 
+    - SetCameraOffset(:ref:`Vector` camera_offset)
+    - Sets the Camera Offset (only affects TPS)
+
   * - |server-only-label|
     - 
     - SetCanCrouch(:term:`boolean`)
