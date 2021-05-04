@@ -10,6 +10,16 @@ Cable
 
 A Cable represents a Physics Constraint which joins two Actors with a rope-like visual representation between them.
 
+nanos world Cables are composed primarily of two Unreal Engine components: a `Cable <https://docs.unrealengine.com/en-US/API/Plugins/CableComponent/UCableComponent/index.html>`_ and a `PhysicsConstraint <https://docs.unrealengine.com/en-US/InteractiveExperiences/Physics/Constraints/ConstraintsBlueprints/index.html>`_. The first is used for visual purposes only and the second one gives the effective physical effects that are applied to each end of the Cable.
+
+Cable **visuals** can be tweaked with ``:SetForces()``, ``:SetCableSettings()`` and ``:SetRenderingSettings()`` methods. Those methods don't have effect on the physics being applied and only have effects on the visual representation.
+
+Cable **physics** can be tweaked with ``:SetAngularLimits()`` and ``:SetLinearLimits()``.
+
+After attaching the two sides of your cable, the physics can be tweaked to affect how the constraint will affect the objects.
+
+.. tip:: You can find more useful information regarding physical properties of the joint in the end of this page.
+
 
 Usage
 -----
@@ -23,7 +33,6 @@ Usage
 
     my_cable:AttachStartTo(cube_01)
     my_cable:AttachEndTo(cube_02)
-
 
 
 Constructor Parameters
@@ -54,8 +63,28 @@ Functions
 
   * - |authority-only-label|
     - 
+    - AttachStartTo( |br-p| Actor other, |br-p| :term:`string` bone_name = "", |br-p| :ref:`Vector` relative_location = Vector() |br| )
+    - Attached the beginning of this cable to another Actor at a specific bone or relative location
+
+  * - |authority-only-label|
+    - 
+    - AttachEndTo( |br-p| Actor other, |br-p| :term:`string` bone_name = "", |br-p| :ref:`Vector` relative_location = Vector() |br| )
+    - Attached the end of this cable to another Actor at a specific bone or relative location
+
+  * - |authority-only-label|
+    - 
     - Destroy()
     - Destroys this Actor
+
+  * - |authority-only-label|
+    - 
+    - DetachEnd()
+    - Detaches the End of this Cable
+
+  * - |authority-only-label|
+    - 
+    - DetachStart()
+    - Detaches the Start of this Cable
 
   * - |authority-only-label|
     - 
@@ -74,7 +103,7 @@ Functions
 
   * - |authority-only-label|
     - 
-    - SetLinearLimits( |br-p| :term:`ConstraintMotion` x_motion, |br-p| :term:`ConstraintMotion` y_motion, |br-p| :term:`ConstraintMotion` z_motion, |br| :term:`number` limit |br| )
+    - SetLinearLimits( |br-p| :term:`ConstraintMotion` x_motion, |br-p| :term:`ConstraintMotion` y_motion, |br-p| :term:`ConstraintMotion` z_motion, |br-p| :term:`number` limit |br| )
     - Sets the Physics Linear Limits of this cable
 
   * - |authority-only-label|
@@ -89,13 +118,13 @@ Functions
 
   * - 
     - 
-    - SetValue(:term:`string` key, :term:`any` value)
-    - Sets a value in this entity, which can be accessed by any package (local only)
+    - SetValue( |br-p| :term:`string` key, |br-p| :term:`any` value, |br-p| :term:`boolean` sync_on_clients |br| )
+    - Sets a value in this entity, which can be accessed by any package (optionally sync on clients if called from server)
 
   * - 
     - :term:`boolean`
     - IsValid()
-    - Returns if this is Valid
+    - Returns if this entity is valid (i.e. wasn't destroyed and points to a valid entity)
 
   * - 
     - :term:`number`
@@ -117,3 +146,56 @@ Events
 ------
 
 .. include:: ../common/events/Actor.rst
+
+
+Linear Limits
+-------------
+
+- **x_motion**, **y_motion** or **z_motion** indicate the linear constraint along its Axis.
+- **limit** defines the distance allowed between the two joint reference frames.
+
+The Constraints can be set to one of the following *Constraint Motions*:
+
+
+.. list-table:: 
+  :widths: 25 75
+
+  * - **Constraint Motion**
+    - **Description**
+
+  * - **ConstraintMotion.Free**
+    - No constraint along this axis.
+
+  * - **ConstraintMotion.Limited**
+    - Limited freedom along this axis. The limit is defined for all axes by the **limit** property.
+
+  * - **ConstraintMotion.Locked**
+    - Fully constraint along this axis.
+
+
+Angular Limits
+--------------
+
+- **swing_1_motion**, **swing_2_motion** or **twist_motion** indicates whether it's limit is used.
+- **swing_1_limit** Angle of movement along the **XY** Plane.
+- **swing_2_limit** Angle of movement along the **XZ** Plane.
+- **twist_limit** Symmetric angle of roll along the **X**-axis.
+
+The Constraints can be set to one of the following *Constraint Motions*:
+
+
+.. list-table:: 
+  :widths: 25 75
+
+  * - **Constraint Motion**
+    - **Description**
+
+  * - **ConstraintMotion.Free**
+    - No constraint along this axis.
+
+  * - **ConstraintMotion.Limited**
+    - Limited freedom around this axis. The limit for each Angular Motion is controlled individually by a correspondingly named Limit property: **swing_1_limit**, **swing_2_limit**, and **twist_limit**.
+
+  * - **ConstraintMotion.Locked**
+    - Fully constraint along this axis.
+

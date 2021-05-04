@@ -22,7 +22,7 @@ Functions (Inherited from Pickable)
   * - 
     - 
     - SetDefaultMaterial( |br-p| :term:`MaterialType` material_type = MaterialType.Masked |br| )
-    - Replaces all materials of this actor with a nanos basic material with comon parameters available **Material Types**: (*Masked, Translucent*)
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available **Material Types**: (*Masked, Translucent, TranslucentDepth*)
 
   * - 
     - 

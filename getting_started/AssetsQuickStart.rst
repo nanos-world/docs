@@ -115,24 +115,24 @@ It is extremely important to setup your ``Assets.toml`` file, in there you will 
         # Asset Pack Name
         name =              "MyPack"
         # Contributors
-        author =            "SyedMuhammad"
+        author =            "The incredible Asset Creator"
         # Version
         version =           "1.0.0"
         # Image URL
-        image =             "https://i.imgur.com/AjtVZBQ.jpg"
+        image =             "https://i.imgur.com/Qa6Tswl.png"
         # Unreal Folder - the root folder which the assets will have references to each other
-        unreal_folder =     "CityPark"
+        unreal_folder =     "MyPack"
 
     # Assets Files
     [assets]
         # Maps
         [assets.maps]
-        AwesomeAndBigMap = "Maps/BigMap_01"
+        # MyMap = "MyFolder/MyAwesomeMap"
+        # ...
 
         # Static Meshes
         [assets.static_meshes]
-        # SM_Flower_01 = "MyFolder/SM_Awesome_Flower_01"
-        # ...
+        SM_Cube = "SM_Cube"
 
         # Skeletal Meshes
         [assets.skeletal_meshes]

@@ -33,6 +33,11 @@ Functions
 
   * - |server-only-label|
     - 
+    - Connect(:term:`string` IP, :term:`string` password = "")
+    - Redirects the player to another server
+
+  * - |server-only-label|
+    - 
     - Kick(:term:`string` reason)
     - Kicks the player from the server
 
@@ -58,8 +63,8 @@ Functions
 
   * - 
     - 
-    - SetValue(:term:`string` key, :term:`any` value)
-    - Sets a value in this entity, which can be accessed by any package (local only)
+    - SetValue( |br-p| :term:`string` key, |br-p| :term:`any` value, |br-p| :term:`boolean` sync_on_clients |br| )
+    - Sets a value in this entity, which can be accessed by any package (optionally sync on clients if called from server)
 
   * - |server-only-label|
     - 
@@ -79,12 +84,22 @@ Functions
   * - 
     - :term:`string`
     - GetAccountID()
-    - *Currently this is not the real Account ID. This ID is generated based on Player's IP which can be used for now to identify Players during a short period (until his IP changes). This is a temporary solution while our Account System isn't fully integrated.*
+    - Gets the nanos account ID
 
   * - 
     - :term:`string`
     - GetAccountName()
     - Gets the nanos account name
+
+  * - |client-only-label|
+    - :ref:`Vector` location
+    - GetCameraLocation()
+    - Gets the Player's Camera Location 
+
+  * - |client-only-label|
+    - :ref:`Vector` location
+    - GetCameraRotation()
+    - Gets the Player's Camera Rotation 
 
   * - 
     - :ref:`Character`
@@ -134,7 +149,7 @@ Functions
   * - 
     - :term:`boolean`
     - IsValid()
-    - Returns if this is Valid
+    - Returns if this entity is valid (i.e. wasn't destroyed and points to a valid entity)
 
   * - 
     - :term:`VOIPSetting`
@@ -171,11 +186,11 @@ Events
   * - |server-only-label|
     - Ready
     - :ref:`Player` player
-    - Triggered when Player is ready (i.e. fully loaded and ready to play)
+    - Triggered when Player is ready (the client fully joined, loaded the map and all entities and is ready to play)
 
   * -
     - UnPossess
-    - :ref:`Player` player, |br| :ref:`Character` character, |br| :term:`boolean` is_player_disconnecting
+    - :ref:`Player` player, |br| :ref:`Character` character
     - A :ref:`Character` was released from the ``Player``
 
   * -

@@ -41,7 +41,7 @@ The following example will show you how to get what and where the player is look
         local end_location = viewport_3D.Position + viewport_3D.Direction * trace_max_distance
 
         -- Last parameter as true means it will draw a Debug Line in the traced segment
-        local trace_result = Client:Trace(start_location, end_location, true)
+        local trace_result = Client:Trace(start_location, end_location, CollisionChannel.WorldStatic | CollisionChannel.PhysicsBody, false, true, false, true)
 
         -- If hit something draws a Debug Point at the location
         if (trace_result.Success) then
@@ -49,11 +49,11 @@ The following example will show you how to get what and where the player is look
             -- Makes the point Red or Green if hit an Actor
             local color = Color(1, 0, 0) -- Red
 
-            if (trace_result.Actor) then
+            if (trace_result.Entity) then
                 color = Color(0, 1, 0) -- Green
 
                 -- Here you can check which actor you hit like
-                -- if (trace_result.Actor:GetType() == "Character") then ...
+                -- if (trace_result.Entity:GetType() == "Character") then ...
                 -- Currently only Character, Vehicles and Props are returned, if you want more you can request and we will add
             end
 
@@ -61,3 +61,5 @@ The following example will show you how to get what and where the player is look
             Client:DrawDebugPoint(trace_result.Location, color, 3, 1)
         end
     end)
+
+.. tip:: As you could see, we can pass bit-wise operators to Trace for more than one CollisionChannel at once! Use ``|`` between the CollisionChannels to achieve that.

@@ -77,6 +77,32 @@ Functions
     - Reset()
     - Activates the Emitter again
 
+  * - 
+    - 
+    - SetParameterFloat(:term:`string` parameter, :term:`number` value)
+    - Sets a parameter in this Particle System
+
+  * - 
+    - 
+    - SetParameterInt(:term:`string` parameter, :term:`number` value)
+    - Sets a parameter in this Particle System
+
+  * - 
+    - 
+    - SetParameterBool(:term:`string` parameter, :term:`boolean` value)
+    - Sets a parameter in this Particle System
+
+  * - 
+    - 
+    - SetParameterVector(:term:`string` parameter, :term:`Vector` value)
+    - Sets a parameter in this Particle System
+
+  * - 
+    - 
+    - SetParameterColor(:term:`string` parameter, :term:`Color` value)
+    - Sets a parameter in this Particle System
+
+
 .. include:: ../common/functions/Actor.rst
 
 

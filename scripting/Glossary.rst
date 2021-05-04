@@ -78,6 +78,11 @@ nanos world Enumerators
 
 			{ FPSTPS = 0, FPSOnly = 1, TPSOnly = 2 }
 
+	CollisionChannel
+		.. code-block:: lua
+
+	 		{ WorldStatic = 1 << 0, WorldDynamic = 1 << 1, Pawn = 1 << 2, PhysicsBody = 1 << 5, Vehicle = 1 << 6, Destructible = 1 << 7, TracePrimitive = 1 << 16, Mesh = 1 << 17, Foliage = 1 << 20 }
+
 	CollisionType
 		.. code-block:: lua
 
@@ -90,6 +95,7 @@ nanos world Enumerators
 
 	CrosshairType
 		.. code-block:: lua
+
 			{ None = 0, Regular = 1, Circle = 2, Crossbow = 3, Dot = 4, Holo = 5, Launcher = 6, RegularX = 7, Rocket = 8, SeparatedTriangle = 9, Shotgun = 10, Square = 11, Submachine = 12, Tee = 13, ThreeDots = 14, Triangle = 15, Vee = 16 }
 
 	DamageType
@@ -110,7 +116,7 @@ nanos world Enumerators
 	FontType
 		.. code-block:: lua
 
-			{ Roboto = 0, GothicA1 = 1, PoiretOne = 2 }
+			{ Roboto = 0, GothicA1 = 1, PoiretOne = 2, Oswald = 3, RobotoMono = 4, OpenSans = 5 }
 
 	GaitMode
 		.. code-block:: lua
@@ -125,7 +131,7 @@ nanos world Enumerators
 	LogType
 		.. code-block:: lua
 
-			{ Display = 0, Warning = 1,	Error = 2, Debug = 3, Verbose = 4, Scripting = 5, Chat = 6, WebUI = 7 }
+			{ Display = 0, Warning = 1, Error = 2, Debug = 3, Verbose = 4, Scripting = 5, Chat = 6, WebUI = 7 }
 
 	LightType
 		.. code-block:: lua
@@ -135,7 +141,7 @@ nanos world Enumerators
 	MaterialType
 		.. code-block:: lua
 
-			{ Masked = 1, Translucent = 2 }
+			{ None = 0, Masked = 1, Translucent = 2, TranslucentDepth = 3 }
 
 	SoundType
 		.. code-block:: lua
@@ -147,25 +153,40 @@ nanos world Enumerators
 
 			{ None = 0, Standing = 1, Crouching = 2, Proning = 3 }
 
+	SurfaceType
+		.. code-block:: lua
+
+			{ Default = 0, Carpet = 1, Concrete = 2, Grass = 3, Gravel = 4, Ground = 5, MetalLight = 6, Plastic = 7, Sand = 8, Snow = 9, Water = 10, WoodLight = 11, Flesh = 12, MetalHeavy = 13, WoodHeavy = 14, Ice = 15, Mud = 16, Rock = 17, Thump = 18, Glass = 19 }
+
 	SwimmingMode
 		.. code-block:: lua
 
 			{ None = 0, Superficie = 1, Underwater = 2 }
+
+	TextRenderAlignCamera
+		.. code-block:: lua
+
+			{ Unaligned = 0, AlignCameraRotation = 1, FaceCamera = 2 }
+
+	TextRenderBevelType
+		.. code-block:: lua
+
+			{ Linear = 0, HalfCircle = 1, Convex = 2, Concave = 3, OneStep = 4, TwoSteps = 5, Engraved = 6 }
 
 	TextRenderHorizontalAlignment
 		.. code-block:: lua
 
 			{ Left = 0, Center = 1, Right = 2 }
 
-	TextRenderType
-		.. code-block:: lua
-
-			{ Lit = 0, Unlit = 1, UnlitAlwaysVisible = 2 }
-
 	TextRenderVerticalAlignment
 		.. code-block:: lua
 
 			{ Top = 0, Center = 1, Bottom = 2, QuadTop = 3 }
+
+	TriggerType
+		.. code-block:: lua
+
+			{ Sphere = 0, Box = 1 }
 
 	ViewMode
 		.. code-block:: lua
@@ -176,3 +197,8 @@ nanos world Enumerators
 		.. code-block:: lua
 
 			{ Local = 0, Global = 1, Muted = 2 }
+
+	WeatherType
+		.. code-block:: lua
+
+			{ Clear = 0, Rain = 1, Cloudy = 2, Thunderstorm = 3 }

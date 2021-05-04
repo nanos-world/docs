@@ -73,7 +73,7 @@ Events
   :widths: 10 20 70
    
   * - **Name**
-    - **Parameters**
+    - **Arguments**
     - **Description**
 
   * - Chat

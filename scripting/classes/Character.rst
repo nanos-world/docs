@@ -67,8 +67,35 @@ Constructor Parameters
     - NanosWorld::A_Male_01_Pain
 
 
-Usage
------
+Examples
+--------
+
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"../tutorials/PlayAsProp.html",
+			"https://i.imgur.com/mO9tCdo.jpg",
+			"Play as Prop",
+			"How to simulate a Prop possessing."
+		);
+
+		DrawCard(
+			"../tutorials/NameTags.html",
+			"https://i.imgur.com/AyHKrG1.png",
+			"NameTags",
+			"How to add Player's name above Character's head."
+		);
+
+		DrawCard(
+			"https://github.com/nanos-world/nanos-world-sandbox",
+			"https://i.imgur.com/kXKtrJT.jpg",
+			"Sandbox ↗",
+			"Official Sandbox package, with basic functionalities and how to spawn Players at random locations!",
+			true
+		);
+	</script>
+
 
 .. tabs::
  .. code-tab:: lua Lua
@@ -196,8 +223,23 @@ Functions
 
   * - |server-only-label|
     - 
+    - SetAccelerationSettings( |br-p| :term:`number` walking = 768, |br-p| :term:`number` parachuting = 512, |br-p| :term:`number` skydiving = 768, |br-p| :term:`number` falling = 128, |br-p| :term:`number` swimming = 256, |br-p| :term:`number` swimming_superficie = 256 |br| );
+    - Sets the Movement Max Acceleration of this Character.
+
+  * - |server-only-label|
+    - 
+    - SetBrakingSettings( |br-p| :term:`number` ground_friction = 2, |br-p| :term:`number` braking_friction_factor = 2, |br-p| :term:`number` braking_walking = 96, |br-p| :term:`number` braking_flying = 3000, |br-p| :term:`number` braking_swimming = 10, |br-p| :term:`number` braking_falling = 0 |br| );
+    - Sets the Movement Braking Settings of this Character.
+
+  * - |server-only-label|
+    - 
     - SetCameraMode(:term:`number` camera_mode)
     - Sets the Camera Mode (0 - FPS and TPS, 1 = FPS only, 2 = TPS only)
+
+  * - |client-only-label|
+    - 
+    - SetCameraOffset(:ref:`Vector` camera_offset)
+    - Sets the Camera Offset (only affects TPS)
 
   * - |server-only-label|
     - 
@@ -232,12 +274,17 @@ Functions
   * - 
     - 
     - SetDefaultMaterial( |br-p| :term:`MaterialType` material_type = MaterialType.Masked |br| )
-    - Replaces all materials of this actor with a nanos basic material with comon parameters available (*Masked, Translucent*)
+    - Replaces all materials of this actor with a nanos basic material with comon parameters available (*Masked, Translucent, TranslucentDepth*)
 
   * - |server-only-label|
     - 
     - SetGaitMode(:term:`GaitMode` mode)
     - **Gait Modes**: *None, Walking, Sprinting*
+
+  * - |server-only-label|
+    - 
+    - SetGravityScale(:term:`number` Scale)
+    - Changes the Gravity Scale of this Character (can be negative)
 
   * - |server-only-label|
     - 
@@ -373,6 +420,11 @@ Functions
     - :ref:`Prop`
     - GetGrabbedProp()
     - Gets the Grabbing Prop
+
+  * - 
+    - :term:`number`
+    - GetGravityScale()
+    - Gets the Gravity Scale of this Character
 
   * - 
     - :term:`number`

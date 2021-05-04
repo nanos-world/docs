@@ -8,6 +8,8 @@ Trigger
 
 A Trigger class is a utility class to trigger events when any Entity enters an Area.
 
+.. image:: https://i.imgur.com/LcjQqpj.png
+
 
 Usage
 -----
@@ -15,10 +17,20 @@ Usage
 .. tabs::
  .. code-tab:: lua Lua
 
-    local my_trigger = Trigger(Vector(-200, 100, 500), 100)
+    local sphere_trigger = Trigger(Vector(-200, 100, 500), Rotator(), Vector(100), TriggerType.Sphere, true, Color(1, 0, 0))
 
-    my_trigger:Subscribe("BeginOverlap", function(trigger, actor_triggering)
-        Package:Log("Someone entered my Trigger")
+    sphere_trigger:Subscribe("BeginOverlap", function(trigger, actor_triggering)
+        Package:Log("Something entered my Sphere Trigger")
+    end)
+
+    local box_trigger = Trigger(Vector(300, 200, 500), Rotator(0, 45, 0), Vector(150, 150, 150), TriggerType.Box, true, Color(0, 1, 0))
+
+    box_trigger:Subscribe("BeginOverlap", function(trigger, actor_triggering)
+        Package:Log("Something entered my Box Trigger")
+    end)
+  
+    box_trigger:Subscribe("EndOverlap", function(trigger, actor_triggering)
+        Package:Log("Something left my Box Trigger")
     end)
 
 
@@ -36,13 +48,21 @@ Constructor Parameters
     - location
     - Vector(0, 0, 0)
 
-  * - :term:`number`
-    - radius
-    - 100
+  * - :ref:`Rotator`
+    - rotation
+    - Rotator(0, 0, 0)
+
+  * - :ref:`Vector`
+    - extent
+    - Vector(0, 0, 0)
+
+  * - :term:`TriggerType`
+    - trigger_type (*Sphere* or *Box*)
+    - TriggerType.Sphere
 
   * - :term:`boolean`
     - is_visible
-    - true
+    - false
 
   * - :ref:`Color`
     - color (of the Trigger Sphere - if Visible)
@@ -62,8 +82,8 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetRadius(:term:`number` radius)
-    - Sets the radius of this trigger
+    - SetExtent(:ref:`Vector` extent)
+    - Sets the extent size of this trigger (sphere triggers will use only the .X component for radius)
 
   * - |server-only-label|
     - 

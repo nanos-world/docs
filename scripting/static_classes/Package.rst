@@ -22,8 +22,13 @@ Functions
 
   * -
     - :term:`any`
-    - Call(:term:`string` package_name, :term:`string` function_name, :term:`table` {args...})
+    - Call( |br-p| :term:`string` package_name, |br-p| :term:`string` function_name, |br-p| :term:`table` {args...} |br| )
     - Calls an exported function from an other Package
+
+  * -
+    -
+    - Error(:term:`string` message, ...)
+    - Logs and formats an error message in the console in Red (the proper and nanos way)
 
   * -
     - 
@@ -32,8 +37,8 @@ Functions
 
   * -
     -
-    - Log(:term:`string` message)
-    - Logs a message in the console (the proper and nanos way)
+    - Log(:term:`string` message, ...)
+    - Logs and formats a message in the console (the proper and nanos way)
 
   * -
     -
@@ -47,6 +52,11 @@ Functions
 
   * -
     -
+    - Warn(:term:`string` message, ...)
+    - Logs and formats a warning message in the console in Orange (the proper and nanos way)
+
+  * -
+    -
     - SetPersistentData(:term:`string` key, :term:`any` Value)
     - Sets a Persistent Value which will be saved to Disk
 
@@ -57,7 +67,7 @@ Functions
 
   * -
     - :term:`table`\<:term:`string`\>
-    - GetFiles(:term:`string` path_filter = "", :term:`string` extension_filter = "")
+    - GetFiles( |br-p| :term:`string` path_filter = "", |br-p| :term:`string` extension_filter = "" |br| )
     - Gets a list of all files in this package, optionally with filters
 
   * -
@@ -90,12 +100,12 @@ Events
   * -
     - Load
     - 
-    - Is called as soon as a package is loaded.
+    - Called as soon as a package is loaded.
 
   * -
     - Unload
     - 
-    - Is called as soon as a package is unloaded.
+    - Called as soon as a package is unloaded.
 
 
 Examples

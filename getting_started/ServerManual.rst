@@ -42,7 +42,7 @@ The server Configuration file ``Config.toml`` is generated automatically when th
         # Server Description
         description =         ""
         # Server Logo URL (Recommended Size: 150x75)
-        logo =            
+        logo =                ""
         # Max Players
         max_players =         64
         # Leave it blank for no password
@@ -86,9 +86,9 @@ Available parameters: ``--name``, ``--description``, ``--password``, ``--ip``, `
 
 Usage:
 
-.. code:: 
+.. code-block:: console
 
-  ./NanosWorldServer --port 6666 --map "NanosWorld::BlankMap" --announce 0 --max_players 1024 --packages "MyAwesomePackage, AnotherGoodPackage"
+  $ ./NanosWorldServer --port 7777 --map "NanosWorld::BlankMap" --announce 0 --max_players 1024 --packages "MyAwesomePackage, AnotherGoodPackage"
 
 
 Map and Level

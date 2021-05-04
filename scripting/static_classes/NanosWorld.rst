@@ -21,9 +21,19 @@ Functions
     - **Description**
 
   * -
+    - :ref:`string`
+    - Dump(:term:`table`)
+    - Dumps a table into a readable text
+
+  * -
     - :ref:`Character`\[]
     - GetCharacters()
     - Returns an array of all characters on the server.
+
+  * -
+    - :ref:`Cable`\[]
+    - GetCables()
+    - Returns an array of all cables on the server.
 
   * -
     - :ref:`Grenade`\[]
@@ -35,10 +45,20 @@ Functions
     - GetItems()
     - Returns an array of all items on the server.
 
+  * -
+    - :ref:`Light`\[]
+    - GetLights()
+    - Returns an array of all lights on the server.
+
   * - |client-only-label|
     - :ref:`Player`
     - GetLocalPlayer()
     - Returns the Local Player (Client Side)
+
+  * -
+    - :ref:`Particle`\[]
+    - GetParticles()
+    - Returns an array of all particles on the server.
 
   * -
     - :ref:`Player`\[]
@@ -50,6 +70,26 @@ Functions
     - GetProps()
     - Returns an array of all props on the server.
 
+  * - |client-only-label|
+    - :ref:`Sound`\[]
+    - GetSounds()
+    - Returns an array of all sounds on the server.
+
+  * -
+    - :ref:`StaticMesh`\[]
+    - GetStaticMeshes()
+    - Returns an array of all static meshes on the server.
+
+  * - |client-only-label|
+    - :ref:`TextRender`\[]
+    - GetTextRenders()
+    - Returns an array of all text renders on the server.
+
+  * -
+    - :ref:`Trigger`\[]
+    - GetTriggers()
+    - Returns an array of all triggers on the server.
+
   * -
     - :ref:`Vehicle`\[]
     - GetVehicles()
@@ -60,6 +100,11 @@ Functions
     - GetWeapons()
     - Returns an array of all weapons on the server.
 
+  * -
+    - :term:`boolean`
+    - IsA(:term:`any` object, Class class_type)
+    - Returns if an object is a class
+
 
 Events
 ------
@@ -69,7 +114,7 @@ Events
    
   * - 
     - **Name**
-    - **Parameters**
+    - **Arguments**
     - **Description**
 
   * - |client-only-label|
@@ -86,9 +131,16 @@ Examples
 
     -- change all vehicles on the server to black body colors
     for key, vehicle in pairs(NanosWorld:GetVehicles()) do
-      vehicle:SetBodyColor(Color(0, 0, 0))
+        vehicle:SetMaterialColorParameter("Tint", Color(0, 0, 0))
     end
 
     NanosWorld:Subscribe("SpawnLocalPlayer", function(local_player)
         Package:Log("LocalPlayer is ready!")
     end)
+
+    -- checks if p is a Prop
+    local p = Prop()
+
+    NanosWorld:IsA(p, Prop) -- returns true
+    NanosWorld:IsA(p, StaticMesh) -- returns false
+    NanosWorld:IsA(p, Color) -- returns false

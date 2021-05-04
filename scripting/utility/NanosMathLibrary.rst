@@ -25,7 +25,7 @@ Functions
 
 .. list-table::
   :widths: 10 30 60
-   
+
   * - **Returns**
     - **Name**
     - **Description**
@@ -64,6 +64,9 @@ Besides having the NanosMathLibrary table, we've added some new methods to the b
 
 Functions
 ---------
+
+.. list-table::
+  :widths: 10 30 60
 
   * - :term:`number`
     - math.clamp(:term:`number` value, :term:`number` min, :term:`number` max)

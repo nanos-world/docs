@@ -23,7 +23,7 @@ Functions
 
   * - 
     - CallLevelBlueprintEvent(:term:`string` event_name)
-    - Calls a Level Blueprint custom event (which can be added when creating levels through Unreal Engine). Parameters can be concatened to event_name
+    - Calls a Level Blueprint custom event (which can be added when creating levels through Unreal Engine). Parameters can be concatened to event_name like ``"MyEventName 123, 'MyParameter2', 456"``
 
   * - 
     - DrawDebugLine( |br-p| :ref:`Vector` start, |br-p| :ref:`Vector` end, |br-p| :ref:`Color` color = (1, 0, 0), |br-p| :term:`number` duration = 5, |br-p| :term:`number` thickness = 0 |br| )
@@ -40,10 +40,6 @@ Functions
   * - 
     - InitializeDiscord(:term:`number` client_id)
     - Initializes the Discord Integration with your custom client_id
-
-  * - LogEntry
-    - :term:`string` text, :term:`LogType` type
-    - Called when a Client log is received
 
   * - 
     - SendChatMessage(:term:`string` Message)
@@ -74,8 +70,8 @@ Functions
     - Changes the Outline Color for interactable stuff. Multiply it by 5 (or more) for having a glowing effect.
 
   * - 
-    - SetHighlightColor(:ref:`Color` highlight_color)
-    - Changes the Highlight Color for highlighted actors. Multiply it by 5 (or more) for having a glowing effect.
+    - SetHighlightColor( |br-p| :ref:`Color` highlight_color, |br-p| :term:`number` Index |br| )
+    - Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 (or more) for having a glowing effect.
 
   * - 
     - SetValue(:term:`string` key, :term:`any` value)
@@ -90,11 +86,11 @@ Functions
     - Leaves the Spectator's State.
 
   * - :term:`table`
-    - Trace( |br-p| :ref:`Vector` start, |br-p| :ref:`Vector` end, |br-p| :term:`boolean` draw_debug = false |br| )
-    - Trace a ray against the world and returns a table with the first blocking hit information ``{"Success", "Location", "Normal", "Actor"}``. Currently only supports trace for :ref:`Character`, :ref:`Vehicle` and :ref:`Prop`, more can be requested.
+    - Trace( |br-p| :ref:`Vector` start, |br-p| :ref:`Vector` end, |br-p| :term:`CollisionChannel` collision_channel = WorldStatic, |br-p| :term:`boolean` trace_complex = false, |br-p| :term:`boolean` return_entity = false, |br-p| :term:`boolean` return_physical_material = false, |br-p| :term:`boolean` draw_debug = false |br| )
+    - Trace a ray against the world and returns a table with the first blocking hit information. Currently only supports trace for :ref:`Character`, :ref:`Vehicle`, :ref:`StaticMesh` and :ref:`Prop`, more can be requested. |br| |br| Returned Table: ``{"Success", "Location", "Normal", "Entity",`` ``"ActorName", "ComponentName", "SurfaceType"}``
 
   * - :ref:`Vector`
-    - GetRandomReachablePointInRadius(:ref:`Vector` origin, :term:`number` radius)
+    - GetRandomReachablePointInRadius( |br-p| :ref:`Vector` origin, |br-p| :term:`number` radius |br| )
     - Finds random, reachable point in navigable space restricted to radius around origin (only if map has a NavMesh)
 
   * - :ref:`Vector2D`
@@ -125,7 +121,7 @@ Events
   :widths: 15 35 50
    
   * - **Name**
-    - **Parameters**
+    - **Arguments**
     - **Description**
 
   * - Chat
@@ -148,6 +144,10 @@ Events
     - :term:`string` key_name
     - A keyboard key has been released - Return false to block it
 
+  * - LogEntry
+    - :term:`string` text, :term:`LogType` type
+    - Called when a Client log is received
+
   * - MouseDown
     - :term:`string` key_name, |br| :term:`number` mouse_x, |br| :term:`number` mouse_y
     - A mouse button has been pressed / is being pressed - Return false to block it
@@ -164,6 +164,25 @@ Events
 Examples
 --------
 
+.. raw:: html
+
+	<script>
+		DrawCard(
+			"Trace.html",
+			"https://i.imgur.com/4LeSR2G.png",
+			"Trace / Raycasting",
+			"Check out how to get World information with Traces!"
+		);
+
+		DrawCard(
+			"XRay.html",
+			"https://i.imgur.com/OuQHLIJ.jpeg",
+			"X-Ray",
+			"Check how to Highlight objects through walls."
+		);
+	</script>
+
+
 .. tabs::
  .. code-tab:: lua Lua
 
@@ -174,33 +193,370 @@ Examples
     end)
 
 
-Available Discord Images
-------------------------
+Key Names
+---------
 
-Yeah naming is trash
+List of all keys names returned in Key/Mouse events.
+
+Function Keys
+~~~~~~~~~~~~~
 
 .. list-table:: 
-  :widths: 100
-   
-  * - **Name**
+  :widths: 20 80
 
-  * - screenshot_137
-  * - screenshot_140
-  * - screenshot_141
-  * - screenshot_146
-  * - screenshot_148
-  * - screenshot_152
-  * - screenshot_152
-  * - screenshot_156
-  * - screenshot_157
-  * - screenshot_157
-  * - screenshot_159
-  * - screenshot_159
-  * - screenshot_164
-  * - screenshot_168
-  * - screenshot_173
-  * - screenshot_173
-  * - screenshot_175
-  * - screenshot_191
-  * - screenshot_191
-  * - screenshot_195
+  * - **Key Name**
+    - **Description**
+
+  * - **F1**
+    - Function two
+
+  * - **F2**
+    - Function two
+
+  * - **F3**
+    - Function three
+
+  * - **F4**
+    - Function four
+
+  * - **F5**
+    - Function five
+
+  * - **F6**
+    - Function six
+  
+  * - **F7**
+    - Function seven
+  
+  * - **F8**
+    - Function eight
+  
+  * - **F9**
+    - Function nine
+  
+  * - **F10**
+    - Function ten
+  
+  * - **F11**
+    - Function eleven
+  
+  * - **F12**
+    - Function twelve
+
+
+Alphanumerical keys
+~~~~~~~~~~~~~~~~~~~
+
+.. list-table:: 
+  :widths: 20 80
+
+  * - **Key Name**
+    - **Description**
+
+  * - **F1**
+    - Function two
+
+  * - **A**
+    - Letter A
+
+  * - **B**
+    - Letter B
+
+  * - **C**
+    - Letter C
+
+  * - **D**
+    - Letter D
+
+  * - **E**
+    - Letter E
+
+  * - **F**
+    - Letter F
+
+  * - **G**
+    - Letter G
+
+  * - **H**
+    - Letter H
+
+  * - **I**
+    - Letter I
+
+  * - **J**
+    - Letter J
+
+  * - **K**
+    - Letter K
+
+  * - **L**
+    - Letter L
+
+  * - **M**
+    - Letter M
+
+  * - **N**
+    - Letter N
+
+  * - **O**
+    - Letter O
+
+  * - **P**
+    - Letter P
+
+  * - **Q**
+    - Letter Q
+
+  * - **R**
+    - Letter R
+
+  * - **S**
+    - Letter S
+
+  * - **T**
+    - Letter T
+
+  * - **U**
+    - Letter U
+
+  * - **V**
+    - Letter V
+
+  * - **W**
+    - Letter W
+
+  * - **X**
+    - Letter X
+
+  * - **Y**
+    - Letter Y
+
+  * - **Z**
+    - Letter Z.
+
+
+Special keys
+~~~~~~~~~~~~
+
+.. list-table:: 
+  :widths: 20 80
+
+  * - **Key Name**
+    - **Description**
+
+  * - **Escape**
+    - Escape
+
+  * - **Tab**
+    - Tab
+
+  * - **Tilde**
+    - ~
+
+  * - **ScrollLock**
+    - Scroll lock
+
+  * - **Pause**
+    - Pause
+
+  * - **One**
+    - One
+
+  * - **Two**
+    - Two
+
+  * - **Three**
+    - Three
+
+  * - **Four**
+    - Four
+
+  * - **Five**
+    - Five
+
+  * - **Six**
+    - Six
+
+  * - **Seven**
+    - Seven
+
+  * - **Eight**
+    - Eight
+
+  * - **Nine**
+    - Nine
+
+  * - **zero**
+    - Zero
+
+  * - **Underscore**
+    - _
+
+  * - **Equals**
+    - =
+
+  * - **Backslash**
+    - \
+
+  * - **LeftBracket**
+    - [
+  
+  * - **RightBracket**
+    - ]
+
+  * - **Enter**
+    - Enter or Numpad enter
+
+  * - **CapsLock**
+    - Caps lock
+
+  * - **Semicolon**
+    - ;
+
+  * - **Quote**
+    - '
+
+  * - **LeftShift**
+    - Left shift
+
+  * - **Comma**
+    - ,
+
+  * - **Period**
+    - .
+
+  * - **Slash**
+    - /
+
+  * - **RightShift**
+    - Right Shif
+
+  * - **LeftControl**
+    - Left control
+
+  * - **LeftAlt**
+    - Left alt
+
+  * - **SpaceBar**
+    - Space bar
+
+  * - **RightAlt**
+    - Right alt
+
+  * - **RightControl**
+    - Right control
+
+  * - **Left**
+    - Left
+
+  * - **Up**
+    - Up
+
+  * - **Down**
+    - Down
+
+  * - **Right**
+    - Right
+
+  * - **Home**
+    - Home
+
+  * - **End**
+    - End
+
+  * - **Insert**
+    - Insert
+
+  * - **PageUp**
+    - Page up
+
+  * - **Delete**
+    - Delete
+
+  * - **PageDown**
+    - Page down
+
+  * - **NumLock**
+    - Num lock
+
+  * - **Divide**
+    - Numpad /
+
+  * - **Multiply**
+    - Numpad *
+
+  * - **Subtract**
+    - Numpad -
+
+  * - **Add**
+    - Numpad +
+
+  * - **PageDown**
+    - Page down
+
+  * - **NumPadOne**
+    - Numpad one
+
+  * - **NumPadTwo**
+    - Numpad two
+
+  * - **NumPadThree**
+    - Numpad three
+
+  * - **NumPadFour**
+    - Numpad four
+
+  * - **NumPadFive**
+    - Numpad five
+
+  * - **NumPadSix**
+    - Numpad six
+
+  * - **NumPadSeven**
+    - Numpad seven
+
+  * - **NumPadEight**
+    - Numpad eight
+
+  * - **NumPadNine**
+    - Numpad nine
+
+  * - **NumPadZero**
+    - Numpad zero
+
+  * - **Decimal**
+    - Numpad decimal
+
+
+Mouse
+~~~~~
+
+.. list-table:: 
+  :widths: 20 80
+
+  * - **Key Name**
+    - **Description**
+
+  * - **LeftMouseButton**
+    - Left mouse button
+
+  * - **RightMouseButton**
+    - Right mouse button
+
+  * - **ThumbMouseButton**
+    - Primary mouse thumb button
+
+  * - **ThumbMouseButton2**
+    - Secondary mouse thumb button
+
+  * - **MouseScrollUp**
+    - Mouse wheel scrolling up
+
+  * - **MouseScrollDown**
+    - Mouse wheel scrolling down
+
+  * - **MouseX**
+    - Mouse movement on the X axis
+
+  * - **MouseY**
+    - Mouse movement on the Y axis

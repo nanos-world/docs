@@ -11,18 +11,23 @@ Functions (Inherited from Actor)
 
   * - |authority-only-label|
     - 
-    - AddImpulse(:ref:`Vector` force)
+    - AddImpulse( |br-p| :ref:`Vector` force, |br-p| :term:`boolean` velocity_change = false |br| )
     - Applies a Force in world coordinate on this Actor (the force is applied on Client side, by the (in most of cases) the closest player of this object)
 
   * - |authority-only-label|
     - 
-    - AttachTo( |br-p| Actor other, |br-p| :term:`string` bone_name = "", |br-p| :ref:`Vector` relative_location = {}, |br-p| :ref:`Rotator` relative_rotation = {} |br| )
+    - AttachTo( |br-p| Actor other, |br-p| :term:`string` bone_name = "", |br-p| :ref:`Vector` relative_location = Vector(), |br-p| :ref:`Rotator` relative_rotation = Rotator() |br| )
     - Attaches this Actor to any other Actor with a Relative Offset/Rotation
 
   * - |authority-only-label|
     - 
     - Destroy()
     - Destroys this Actor
+
+  * - |authority-only-label|
+    - 
+    - Detach()
+    - Detaches this Actor from AttachedTo Actor
 
   * - |authority-only-label|
     - 
@@ -36,8 +41,8 @@ Functions (Inherited from Actor)
 
   * - |authority-only-label|
     - 
-    - SetHighlightEnabled(:term:`boolean`)
-    - Sets if this Actors is Highlighting
+    - SetHighlightEnabled( |br-p| :term:`boolean`, |br-p| :term:`number` Index |br| )
+    - Sets if this Actors is Highlighting at a specific Index color
 
   * - |authority-only-label|
     - 
@@ -48,6 +53,11 @@ Functions (Inherited from Actor)
     - 
     - SetLocation(:ref:`Vector`)
     - Sets the actor's location in the game world
+
+  * - |server-only-label|
+    - 
+    - SetNetworkAuthority( |br-p| :ref:`Player` player = nil, |br-p| :term:`number` time_ms = 0 |br| )
+    - Sets this actor's new Player network authority. This player will be manually assigned to handle this actor physics and share it's location with other clients. The authority assignment will still be overriden by the game automatically, to avoid that set a big time value so the player can keep longer with the authority and override the natural authority selection.
 
   * - |authority-only-label|
     - 
@@ -61,8 +71,8 @@ Functions (Inherited from Actor)
 
   * - 
     - 
-    - SetValue(:term:`string` key, :term:`any` value)
-    - Sets a value in this entity, which can be accessed by any package (local only)
+    - SetValue( |br-p| :term:`string` key, |br-p| :term:`any` value, |br-p| :term:`boolean` sync_on_clients |br| )
+    - Sets a value in this entity, which can be accessed by any package (optionally sync on clients if called from server)
 
   * - 
     - 
@@ -87,7 +97,7 @@ Functions (Inherited from Actor)
   * - 
     - :term:`boolean`
     - IsValid()
-    - Returns if this is Valid
+    - Returns if this entity is valid (i.e. wasn't destroyed and points to a valid entity)
 
   * - 
     - :term:`number`

@@ -93,3 +93,7 @@ table .std-term, table .std-ref {
 .rst-content .toc-backref {
 	color: #fff;
 }
+
+.rst-content code {
+    margin: 0px 2px;
+}

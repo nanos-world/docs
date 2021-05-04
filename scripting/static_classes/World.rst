@@ -15,7 +15,7 @@ Functions
 ---------
 
 .. list-table:: 
-  :widths: 10 50 40
+  :widths: 10 40 50
 
   * - **Returns**
     - **Name**
@@ -26,7 +26,7 @@ Functions
     - Loads a Level in runtime
 
   * - 
-    - SetFogDensity(:term:`number` density, :term:`number` second_density = 0)
+    - SetFogDensity( |br-p| :term:`number` density, |br-p| :term:`number` second_density = 0 |br| )
     - 
 
   * - 
@@ -74,7 +74,7 @@ Functions
     - Set Post Process Film Settings
 
   * - 
-    - SetPPGlobalSaturation(const Color& color)
+    - SetPPGlobalSaturation(:ref:`Color` color)
     - Set Post Process Saturation Colors. Use Alpha for overall Saturation intensity
 
   * - 
@@ -90,8 +90,8 @@ Functions
     - Sets the global's time of the day
 
   * - 
-    - SetWeather(:term:`number` weather)
-    - Sets the global Weather (0 - Clear, 1 - Rain, 2 - Cloudy, 3 - Thunderstorm)
+    - SetWeather(:term:`WeatherType` weather)
+    - Sets the global Predefined Weather (*Clear, Rain, Cloudy, Thunderstorm*)
 
   * - 
     - SpawnDefaultSun()
@@ -113,11 +113,11 @@ Functions
     - GetSunSpeed()
     - 
 
-  * - {hours, minutes}
+  * - ``{hours, minutes}``
     - GetTime()
     - Returns a table containing current Sun hours and minutes
 
-  * - :term:`number`
+  * - :term:`WeatherType`
     - GetWeather()
     - 
 
@@ -137,3 +137,62 @@ Examples
 
    -- make it 11:30 AM
    World:SetTime(11, 30)
+
+
+Weather Types
+-------------
+
+nanos world provides default Weathers with predefined sky/sun/fog parameters, you can use it or create your own Weather.
+
+.. list-table:: 
+  :widths: 10 10 8 8 20 20 8 8 8
+
+  * - **WeatherType**
+    - **Sun Intensity**
+    - **Fog Second Density**
+    - **Fog Height Falloff**
+    - **Sun Light Color**
+    - **Sky Rayleigh Scattering**
+    - **Sun Temp. Multiplier**
+    - **Sky Light Intensity**
+    - **Wind**
+
+  * - **Clear**
+    - 150
+    - 0.005
+    - 0.2
+    - :ref:`Color`\(1.0, 0.9, 0.8)
+    - :ref:`Color`\(0.17, 0.41, 1.0)
+    - 1.0
+    - 1.0
+    - 0.25
+
+  * - **Rain**
+    - 10
+    - 0.025
+    - 0.03
+    - :ref:`Color`\(0.82, 0.9, 1.0)
+    - :ref:`Color`\(0.73, 0.8, 1.0)
+    - 2.0
+    - 0.3
+    - 1.0
+
+  * - **Cloudy**
+    - 10
+    - 0.1
+    - 0.01
+    - :ref:`Color`\(1.0, 0.9, 0.8)
+    - :ref:`Color`\(0.73, 0.8, 1.0)
+    - 1.25
+    - 0.2
+    - 0.3
+
+  * - **Thunderstorm**
+    - 5
+    - 0.5
+    - 0.025
+    - :ref:`Color`\(0.82, 0.9, 1.0)
+    - :ref:`Color`\(0.73, 0.8, 1.0)
+    - 2.0
+    - 0.25
+    - 3.0

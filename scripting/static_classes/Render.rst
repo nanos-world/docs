@@ -49,9 +49,9 @@ Functions
     - Project(:ref:`Vector` world_position)
     - Transforms a 3D world-space vector into 2D screen coordinates.
 
-  * - :ref:`Vector`
+  * - :term:`table`
     - Deproject(:ref:`Vector2D` screen_position)
-    - Transforms a 2D screen coordinates into 3D world-space location.
+    - Transforms a 2D screen coordinates into 3D world-space location. |br| Returns ``{"Position", "Direction"}``
 
   * - 
     - ClearItems(:term:`number` group_id)
@@ -77,7 +77,7 @@ Events
   :widths: 15 35 50
    
   * - **Name**
-    - **Parameters**
+    - **Arguments**
     - **Description**
 
   * - ViewportResized

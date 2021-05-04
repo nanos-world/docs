@@ -11,9 +11,7 @@ In nanos world the way to transmit data between Packages or between Client and S
 
 .. tip:: This is a Static Class named ``Events``. You can access it's methods directly with ``:``. It is not possible to initialize or create new instances.
 
-.. tip:: It is possible to pass any kind of Official Classes and Structures (:ref:`Vector`, :ref:`Rotator`, :ref:`Color`, :ref:`Character`, :ref:`Player`, :ref:`Prop`, etc...) through events, including through network =D!
-
-.. attention:: It is NOT (*yet*) possible to send tables through network Events.
+.. tip:: It is possible to pass any kind of Official Classes and Structures (:ref:`Vector`, :ref:`Rotator`, :ref:`Color`, :ref:`Character`, :ref:`Player`, :ref:`Prop`, etc...) through events, including entities and tables through network =D!
 
 
 Functions
