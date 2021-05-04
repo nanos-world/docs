@@ -5,11 +5,42 @@
 Fireworks
 *********
 
-This sample code shows how to create a Firework-shooter weapon using the *Firework Particle Effects* Asset Pack from our Vault!
+This sample code shows how to create a Firework-shooter weapon using the **Fireworks Particle Effects** Asset Pack from our Vault!
 
 .. raw:: html
 
     <video controls src="https://i.imgur.com/aeKQXZQ.mp4" width="100%"></video><br><br>
+
+
+First you will need to download **Fireworks Particle Effects** from our Vault!
+
+.. image:: https://i.imgur.com/5eSdT6e.png
+
+
+After that you will need to add the requirement of this **Asset Pack** into your Package *Config.toml*:
+
+.. code-block:: toml
+
+    # Package Configurations
+    [package]
+        # Package Name
+        name =                  "My Awesome Firework Package"
+        # Contributors
+        author =                "SyedMuhammad"
+        # Version
+        version =               "1.0.0"
+        # Image URL
+        image =                 "https://i.imgur.com/tQXi0xt.jpg"
+        # Package Type: 'executable' (normal package) | 'library' (doesn't run - useful for code library)
+        type =                   "executable"
+        # Whether to force the Custom Map Script to do NOT load
+        force_no_map_script =    false
+        # Auto Destroy all entities spawned by this package when it unloads
+        auto_cleanup =           true
+        # Asset Packs Requirements
+        assets_requirements = [
+            "TS_Fireworks",
+        ]
 
 
 .. note:: The following code runs on Server.
