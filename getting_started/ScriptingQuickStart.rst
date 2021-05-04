@@ -44,7 +44,7 @@ Each Package must have a file called ``Index.lua``, this is the only file which 
 Creating your first Script
 --------------------------
 
-.. note:: Please check out :ref:`ServerManual` before proceeding to setup your server.
+.. note:: Please check out :ref:`ServerConfiguration` before proceeding to setup your server.
 
 In this example we will show you how to spawn a few :ref:`Prop`\s, spawn a :ref:`Character` for :ref:`Player`\s and interact with some :ref:`Events`.
 

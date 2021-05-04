@@ -13,7 +13,8 @@ Fundamental information for scripters and modders to start our creating servers 
 
    AssetsQuickStart.rst
    ScriptingQuickStart.rst
-   ServerManual.rst
+   server_manual/ServerRequirements.rst
+   server_manual/ServerConfiguration.rst
    WebUIQuickStart.rst
 
 
@@ -24,9 +25,16 @@ Starting Out
 
 	<script>
 		DrawCard(
-			"ServerManual.html",
+			"server_manual/ServerRequirements.html",
+			"https://falaxir.fr/images/nanos/server_screenfetch.png",
+			"Server Requirements",
+			"What is required to run a nanos world server."
+		);
+
+		DrawCard(
+			"server_manual/ServerConfiguration.html",
 			"https://www.puttygen.com/wp-content/uploads/2019/04/cmder.jpg",
-			"Server Manual",
+			"Server Configuration",
 			"How to create and start your own server."
 		);
 

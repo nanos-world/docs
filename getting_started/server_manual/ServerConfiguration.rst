@@ -1,21 +1,14 @@
-.. _ServerManual:
+.. _ServerConfiguration:
 
 *************
-Server Manual
+Server Configuration
 *************
 
-Creating servers in nanos world is very simple and straightforward, just a few steps and you have your server up and ready!
 
-
-System Requirements
+Server Requirements
 -------------------
 
-*  OS: Windows or Linux
-*  Processor: 1.0 GHz
-*  Memory: 50 MB (grows if having too many Players or spawned Entities)
-*  Storage: 10 MB (+ Assets size)
-*  Network: Recommended at least 1 MB/s (grows if having too many Players or spawned Entities)
-*  Network Forwarded Ports: 7777 TCP and UDP (you can change that on the config)
+.. note:: Before taking a look at this page, please read our :ref:`ServerRequirements`
 
 
 Starting Out
