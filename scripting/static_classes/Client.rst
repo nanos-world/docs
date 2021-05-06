@@ -55,7 +55,7 @@ Functions
 
   * - 
     - SetDiscordActivity( |br-p| :term:`string` state, |br-p| :term:`string` details, |br-p| :term:`string` large_image, |br-p| :term:`string` large_text |br| )
-    - Comunicates with Discord and sets a custom user status
+    - Communicates with Discord and sets a custom user status
 
   * - 
     - SetInputEnabled(:term:`boolean` enable_input)

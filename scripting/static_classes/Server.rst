@@ -97,7 +97,7 @@ Events
     - Server has been started.
 
   * - PlayerConnect
-    - :term:`string` ip
+    - :term:`string` IP, :term:`string` player_account_ID, :term:`string` player_name
     - Called when a player is attempting to connect to the server - return false to do not allow it
 
   * - Stop
