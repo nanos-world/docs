@@ -54,6 +54,10 @@ Functions
     - Enables/Disables the default Crosshair
 
   * - 
+    - SetHardwareCursor( |br-p| :term:`CursorType` cursor_shape, |br-p| :term:`string` cursor_path, |br-p| :ref:`Vector2D` hotspot = (0, 0) |br| )
+    - Loads or sets a hardware cursor from the content directory in the game.
+
+  * - 
     - SetDiscordActivity( |br-p| :term:`string` state, |br-p| :term:`string` details, |br-p| :term:`string` large_image, |br-p| :term:`string` large_text |br| )
     - Communicates with Discord and sets a custom user status
 
