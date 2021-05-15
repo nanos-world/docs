@@ -50,6 +50,10 @@ Functions
     - Configure the Chat. Anchors = (1, 1) means the location will be relative to bottom right and (0, 0) to top left.
 
   * - 
+    - SetChatVisibility(:term:`boolean`)
+    - Set if the Chat is visible or not
+
+  * - 
     - SetCrosshairEnabled(:term:`boolean`)
     - Enables/Disables the default Crosshair
 
@@ -212,7 +216,7 @@ Function Keys
     - **Description**
 
   * - **F1**
-    - Function two
+    - Function one
 
   * - **F2**
     - Function two
@@ -256,9 +260,6 @@ Alphanumerical keys
 
   * - **Key Name**
     - **Description**
-
-  * - **F1**
-    - Function two
 
   * - **A**
     - Letter A
@@ -336,7 +337,7 @@ Alphanumerical keys
     - Letter Y
 
   * - **Z**
-    - Letter Z.
+    - Letter Z
 
 
 Special keys

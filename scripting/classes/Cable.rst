@@ -103,8 +103,8 @@ Functions
 
   * - |authority-only-label|
     - 
-    - SetLinearLimits( |br-p| :term:`ConstraintMotion` x_motion, |br-p| :term:`ConstraintMotion` y_motion, |br-p| :term:`ConstraintMotion` z_motion, |br-p| :term:`number` limit |br| )
-    - Sets the Physics Linear Limits of this cable
+    - SetLinearLimits( |br-p| :term:`ConstraintMotion` x_motion, |br-p| :term:`ConstraintMotion` y_motion, |br-p| :term:`ConstraintMotion` z_motion, |br-p| :term:`number` limit, |br-p| :term:`number` restitution = 0, |br-p| :term:`boolean` use_soft_constraint = false, |br-p| :term:`number` stiffness = 0, |br-p| :term:`number` damping = 0 |br| )
+    - Sets the Physics Linear Limits of this cable. If use_soft_constraint is enabled, then stiffness and damping will be used, otherwise restitution will be used.
 
   * - |authority-only-label|
     - 

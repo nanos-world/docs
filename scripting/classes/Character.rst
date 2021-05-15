@@ -248,6 +248,11 @@ Functions
 
   * - |server-only-label|
     - 
+    - SetCanAim(:term:`boolean`)
+    - Sets if this Character is allowed to Aim
+
+  * - |server-only-label|
+    - 
     - SetCanSprint(:term:`boolean`)
     - Sets if this Character is allowed to Sprint
 
@@ -260,6 +265,11 @@ Functions
     - 
     - SetCanPickupPickables(:term:`boolean`)
     - Sets if this Character is allowed to Pick up any Pickable (Weapon, Grenade, Item...)
+
+  * - |server-only-label|
+    - 
+    - SetCanPunch(:term:`boolean`)
+    - Sets if this Character is allowed to Punch (Melee)
 
   * - |server-only-label|
     - 
@@ -278,6 +288,11 @@ Functions
 
   * - |server-only-label|
     - 
+    - SetFallDamageTaken(:term:`number` damage)
+    - Set the Fall Damage taken when falling from High places (default: 10). Setting to 0 will make the Character to do not take damage or enter ragdoll mode
+
+  * - |server-only-label|
+    - 
     - SetGaitMode(:term:`GaitMode` mode)
     - **Gait Modes**: *None, Walking, Sprinting*
 
@@ -288,13 +303,13 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetStanceMode(:term:`StanceMode` mode)
-    - **Stance Modes**: *None, Standing, Crouching, Proning*
+    - SetHealth(:term:`number` new_health)
+    - Sets the Health of this Character. If the character is dead, respawns it with full health
 
   * - |server-only-label|
     - 
-    - SetHealth(:term:`number` new_health)
-    - Sets the Health of this Character. If the character is dead, respawns it with full health
+    - SetImpactDamageTaken(:term:`number` damage)
+    - Set the Impact Damage taken when being roamed by things (default: 10). Setting to 0 will make the Character to do not take damage or enter ragdoll mode
 
   * - |server-only-label|
     - 
@@ -348,6 +363,11 @@ Functions
 
   * - |server-only-label|
     - 
+    - SetPunchDamage(:term:`number` damage)
+    - Set the Punch Damage this Character will apply on others
+
+  * - |server-only-label|
+    - 
     - SetRagdollMode(:term:`boolean`)
     - Sets Character Ragdoll Mode
 
@@ -355,6 +375,11 @@ Functions
     - 
     - SetSpeedMultiplier(:term:`number` multiplier)
     - 1 = normal
+
+  * - |server-only-label|
+    - 
+    - SetStanceMode(:term:`StanceMode` mode)
+    - **Stance Modes**: *None, Standing, Crouching, Proning*
 
   * - |server-only-label|
     - 

@@ -448,3 +448,4 @@ nanos world provides a default Asset Pack already included in the base game, fee
         P_Fire = "Effects/Particles/P_Fire"
         P_Explosion_Dirt = "Weapons/Common/Effects/ParticlesSystems/Explosions/PS_Explosion_Dirt"
         P_Explosion_Water = "Weapons/Common/Effects/ParticlesSystems/Explosions/PS_Explosion_Water"
+		P_Beam = "Effects/Particles/P_NanosBeam"

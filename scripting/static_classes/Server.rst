@@ -62,6 +62,9 @@ Functions
   * - :term:`table` GetPackages(:term:`boolean` only_loaded = true)
     - Returns a list of Packages folder names available in the server, optionally returns only loaded and running packages
 
+  * - :term:`table` GetMapConfig()
+    - Returns a list of the Custom Config of the current map (stored in the MAP_NAME.toml)
+
   * - :term:`any` GetValue(:term:`string` key)
     - Gets a value given a key
 
