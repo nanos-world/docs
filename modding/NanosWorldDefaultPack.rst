@@ -37,6 +37,9 @@ nanos world provides a default Asset Pack already included in the base game, fee
         SM_Error = "Props/Utils/SM_Error"
         SM_None = "Props/Utils/SM_None"
 
+        SM_Lamp = "Props/Basics/SM_Lamp"
+        SM_Balloon = "Props/Basics/SM_Balloon"
+
         SM_PlasticBarrel_01 = "Art/City/Construction_Props/Mesh/SM_PlasticBarrel_01"
         SM_RockingChair = "Art/City/House_Props/Meshes/SM_RockingChair"
         SM_RoundStand = "Art/City/House_Props/Meshes/SM_RoundStand"

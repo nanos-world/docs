@@ -47,3 +47,74 @@ Properties
   * - :term:`number`
     - A
     - Alpha color percentage (0-1). Alpha is the transparency. 0 -> fully transparency and 1 -> no transparency
+
+
+Static Properties
+-----------------
+
+.. list-table::
+  :widths: 30 70
+
+  * - **Value**
+    - **Name**
+
+		* - Color(1, 1, 1)
+      - Color.WHITE
+
+		* - Color(0, 0, 0)
+      - Color.BLACK
+
+		* - Color(1, 0, 0)
+      - Color.RED
+
+		* - Color(0, 1, 0)
+      - Color.GREEN
+
+		* - Color(0, 0, 1)
+      - Color.BLUE
+
+		* - Color(1, 1, 0)
+      - Color.YELLOW
+
+		* - Color(0, 1, 1)
+      - Color.CYAN
+
+		* - Color(1, 0, 1)
+      - Color.MAGENTA
+
+		* - Color(1, 0.5, 0)
+      - Color.ORANGE
+
+		* - Color(0.5, 1, 1)
+      - Color.CHARTREUSE
+
+		* - Color(0, 1, 0.5)
+      - Color.AQUAMARINE
+
+		* - Color(0, 0.5, 1)
+      - Color.AZURE
+
+		* - Color(0.5, 0, 1)
+      - Color.VIOLET
+
+		* - Color(1, 0, 0.5)
+      - Color.ROSE
+
+
+Static Functions
+----------------
+
+.. list-table::
+  :widths: 10 40 50
+
+  * - **Returns**
+    - **Name**
+    - **Description**
+
+  * - :ref:`Color`
+    - Color.RandomPalette()
+    - Returns a random color from Color Palette
+
+  * - :ref:`Color`
+    - Color.Random()
+    - Returns a random color from all color scope
