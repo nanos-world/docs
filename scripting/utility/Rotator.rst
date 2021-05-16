@@ -60,12 +60,16 @@ Functions
     - Get the forward (X) unit direction vector from this component, in world space.
 
   * - :ref:`Vector`
-    - RotateVector()
-    - Rotates a Vector by this Rotator.
+    - RotateVector(:ref:`Vector` vector)
+    - Rotate a vector rotated by this rotator.
 
   * - 
     - Normalize()
     - In-place normalize, removes all winding and creates the "shortest route" rotation.
+
+  * - :ref:`Vector`
+    - UnrotateVector(:ref:`Vector` vector)
+    - Returns the vector rotated by the inverse of this rotator.
 
   * - :ref:`Rotator`
     - GetNormalized()
