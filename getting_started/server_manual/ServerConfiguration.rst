@@ -1,8 +1,8 @@
 .. _ServerConfiguration:
 
-*************
+********************
 Server Configuration
-*************
+********************
 
 
 Server Requirements
