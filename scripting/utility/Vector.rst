@@ -87,6 +87,10 @@ Functions
     - SizeSquared()
     - 
 
+  * - :ref:`Rotator`
+    - Rotation()
+    - Returns the orientation corresponding to the direction in which the vector points.
+
   * - :term:`number`
     - Size()
     - 

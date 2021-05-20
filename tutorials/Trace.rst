@@ -54,7 +54,6 @@ The following example will show you how to get what and where the player is look
 
                 -- Here you can check which actor you hit like
                 -- if (trace_result.Entity:GetType() == "Character") then ...
-                -- Currently only Character, Vehicles and Props are returned, if you want more you can request and we will add
             end
 
             -- Draws a Debug Point at the Hit location for 3 seconds with tickness 1
