@@ -98,6 +98,11 @@ Functions
     - SetMaterialVectorParameter(:term:`string` parameter_name, :ref:`Vector` vector)
     - Sets a Vector parameter in this actor's material
 
+  * - |server-only-label|
+    - 
+    - SetPhysicsDamping(:term:`number` linear_damping = 0.1, :term:`number` angular_damping = 0)
+    - Sets the Physics damping of this Prop
+
   * - 
     - :term:`string`
     - GetAssetName()

@@ -36,6 +36,11 @@ Functions (Inherited from Actor)
 
   * - |authority-only-label|
     - 
+    - SetForce(:ref:`Vector` force, :term:`boolean` acceleration_change)
+    - Adds a permanent force to this actor. Set to Vector(0, 0, 0) to cancel.
+
+  * - |authority-only-label|
+    - 
     - SetGravityEnabled(:term:`boolean`)
     - Sets the actor's gravity enabled
 
@@ -76,8 +81,8 @@ Functions (Inherited from Actor)
 
   * - 
     - 
-    - TranslateTo( |br-p| :ref:`Vector` location, |br-p| :term:`number` speed |br| )
-    - Smoothly moves this actor to a Location with a certain Speed
+    - TranslateTo( |br-p| :ref:`Vector` location, |br-p| :term:`number` speed, |br-p| :term:`boolean` sweep |br| )
+    - Smoothly moves this actor to a Location with a certain Speed - optionally enables sweep to stop when colliding
 
   * - 
     - 
