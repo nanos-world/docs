@@ -68,6 +68,11 @@ nanos world Enumerators
 
 			{ FullBody = 0, UpperBody = 1 }
 
+	AttachmentRule
+		.. code-block:: lua
+
+			{ KeepRelative = 0, KeepWorld = 1, SnapToTarget = 2 }
+
 	AttenuationFunction
 		.. code-block:: lua
 

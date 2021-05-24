@@ -35,7 +35,9 @@ This sample shows how to add Name Tags to Characters
         )
 
         -- Attaches it to the character and saves it to the player's values
-        nametag:AttachTo(character, "", Vector(0, 0, 250), Rotator())
+        nametag:AttachTo(character)
+        nametag:SetRelativeLocation(Vector(0, 0, 250))
+
         player:SetValue("Nametag", nametag)
     end
     

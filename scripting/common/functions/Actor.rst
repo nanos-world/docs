@@ -16,8 +16,8 @@ Functions (Inherited from Actor)
 
   * - |authority-only-label|
     - 
-    - AttachTo( |br-p| Actor other, |br-p| :term:`string` bone_name = "", |br-p| :ref:`Vector` relative_location = Vector(), |br-p| :ref:`Rotator` relative_rotation = Rotator() |br| )
-    - Attaches this Actor to any other Actor with a Relative Offset/Rotation
+    - AttachTo( |br-p| Actor other, |br-p| :term:`AttachmentRule` attachment_rule = SnapToTarget, |br-p| :term:`string` bone_name = "" |br| )
+    - Attaches this Actor to any other Actor, optionally at a specific bone
 
   * - |authority-only-label|
     - 
@@ -36,7 +36,7 @@ Functions (Inherited from Actor)
 
   * - |authority-only-label|
     - 
-    - SetForce(:ref:`Vector` force, :term:`boolean` acceleration_change)
+    - SetForce(:ref:`Vector` force, :term:`boolean` local = true)
     - Adds a permanent force to this actor. Set to Vector(0, 0, 0) to cancel.
 
   * - |authority-only-label|

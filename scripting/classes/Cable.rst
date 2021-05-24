@@ -63,12 +63,12 @@ Functions
 
   * - |authority-only-label|
     - 
-    - AttachStartTo( |br-p| Actor other, |br-p| :term:`string` bone_name = "", |br-p| :ref:`Vector` relative_location = Vector() |br| )
+    - AttachStartTo( |br-p| Actor other, |br-p| :ref:`Vector` relative_location = Vector(), |br-p| :term:`string` bone_name = "" |br| )
     - Attached the beginning of this cable to another Actor at a specific bone or relative location
 
   * - |authority-only-label|
     - 
-    - AttachEndTo( |br-p| Actor other, |br-p| :term:`string` bone_name = "", |br-p| :ref:`Vector` relative_location = Vector() |br| )
+    - AttachEndTo( |br-p| Actor other, |br-p| :ref:`Vector` relative_location = Vector(), |br-p| :term:`string` bone_name = "" |br| )
     - Attached the end of this cable to another Actor at a specific bone or relative location
 
   * - |authority-only-label|

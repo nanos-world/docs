@@ -24,7 +24,8 @@ This sample code attaches a :ref:`Light` to a :ref:`Weapon` to make a Flashlight
     my_light = Light(Vector(), Rotator(), Color(0, 0, 0), 1, 1000, 1000, 35)
 
     -- Attaches the Light to the Weapon with offset X = 100 (at the weapon's front)
-    my_light:AttachTo(my_weapon, "", Vector(100, 0, 0), Rotator())
+    my_light:AttachTo(my_weapon)
+    my_light:SetRelativeLocation(Vector(100, 0, 0))
 
     -- Stores the light on the Weapon
     my_weapon:SetValue("Light", my_light)

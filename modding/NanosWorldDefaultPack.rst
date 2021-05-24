@@ -37,6 +37,7 @@ nanos world provides a default Asset Pack already included in the base game, fee
         SM_Error = "Props/Utils/SM_Error"
         SM_None = "Props/Utils/SM_None"
 
+        SM_Jet_Thruster = "Props/Basics/SM_Jet_Thruster"
         SM_Lamp = "Props/Basics/SM_Lamp"
         SM_Balloon = "Props/Basics/SM_Balloon"
 

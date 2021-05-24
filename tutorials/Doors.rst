@@ -31,7 +31,8 @@ This sample code shows how to create a simple and automatic door when Characters
     door_mesh:SetScale(Vector(1, 2, 1))
 
     -- Attaches to the Hinge at a relative location of 50 units (to be at the hinge location)
-    door_mesh:AttachTo(door, "", Vector(50, 0, 0))
+    door_mesh:AttachTo(door)
+    door_mesh:SetRelativeLocation(Vector(50, 0, 0))
 
     -- Spawns our trigger at the center of the Door
     local trigger = Trigger(Vector(0, 0, 100), Rotator(), 150)
