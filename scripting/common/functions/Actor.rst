@@ -105,6 +105,16 @@ Functions (Inherited from Actor)
     - Returns if this entity is valid (i.e. wasn't destroyed and points to a valid entity)
 
   * - 
+    - :term:`table`
+    - GetAttachedEntities()
+    - Gets all actors attached to this entity
+
+  * - 
+    - :term:`any`
+    - GetAttachedTo()
+    - Gets the actor i'm attached to
+
+  * - 
     - :term:`number`
     - GetCollision()
     - Gets the current actor's collision
