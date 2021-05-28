@@ -10,6 +10,7 @@ Utility
 
    Color.rst
    JSON.rst
+   Quat.rst
    Rotator.rst
    Vector.rst
    Vector2D.rst

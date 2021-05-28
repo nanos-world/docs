@@ -146,7 +146,11 @@ Events
 
   * - KeyDown
     - :term:`string` key_name
-    - A keyboard key has been pressed / is being pressed - Return false to block it
+    - A keyboard key is being pressed - Return false to block it
+
+  * - KeyPress
+    - :term:`string` key_name
+    - A keyboard key has been pressed - Return false to block it
 
   * - KeyUp
     - :term:`string` key_name

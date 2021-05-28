@@ -81,13 +81,13 @@ Functions (Inherited from Actor)
 
   * - 
     - 
-    - TranslateTo( |br-p| :ref:`Vector` location, |br-p| :term:`number` speed, |br-p| :term:`boolean` sweep |br| )
-    - Smoothly moves this actor to a Location with a certain Speed - optionally enables sweep to stop when colliding
+    - TranslateTo( |br-p| :ref:`Vector` location, |br-p| :term:`number` speed, |br-p| :term:`boolean` sweep, |br-p| :term:`boolean` teleport |br| )
+    - Smoothly moves this actor to a Location with a certain Speed - optionally enables sweep to stop when colliding - use teleport flag will not affect velocity
 
   * - 
     - 
-    - RotateTo( |br-p| :ref:`Rotator` rotation, |br-p| :term:`number` speed |br| )
-    - Smoothly rotates this actor to a Rotation with a certain Speed
+    - RotateTo( |br-p| :ref:`Rotator` rotation, |br-p| :term:`number` speed, |br-p| :term:`boolean` teleport |br| )
+    - Smoothly rotates this actor to a Rotation with a certain Speed - use teleport flag will not affect velocity
 
   * - 
     - :term:`boolean`

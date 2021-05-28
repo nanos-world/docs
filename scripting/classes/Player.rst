@@ -92,12 +92,12 @@ Functions
     - Gets the nanos account name
 
   * - |client-only-label|
-    - :ref:`Vector` location
+    - :ref:`Vector`
     - GetCameraLocation()
     - Gets the Player's Camera Location 
 
   * - |client-only-label|
-    - :ref:`Vector` location
+    - :ref:`Rotator`
     - GetCameraRotation()
     - Gets the Player's Camera Rotation 
 

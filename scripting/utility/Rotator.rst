@@ -71,6 +71,10 @@ Functions
     - UnrotateVector(:ref:`Vector` vector)
     - Returns the vector rotated by the inverse of this rotator.
 
+  * - :ref:`Quat`
+    - Quaternion()
+    - Get Rotation as a quaternion.
+
   * - :ref:`Rotator`
     - GetNormalized()
     - Returns a new Rotator normalized.
