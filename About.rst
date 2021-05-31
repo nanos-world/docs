@@ -6,9 +6,9 @@ Our Vision and Concept is to change the way multiplayer gaming is experienced. T
 The Team
 ========
 
-`gtnardy <https://twitter.com/gtnardy>`_ - nanos world Lead Developer
-@Malte S. - nanos Manager and also nanos world Level Designer in the free time
-@MegaThorx - nanos world Backend / Services Developer
+- `gtnardy <https://twitter.com/gtnardy>`_ - nanos world Lead Developer
+- @Malte S. - nanos Manager and also nanos world Level Designer in the free time
+- @MegaThorx - nanos world Backend / Services Developer
 
 
 For any legal information contact malte.s@nanos.io
