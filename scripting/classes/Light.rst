@@ -24,7 +24,7 @@ Usage
         LightType.Point, -- Point Light type
         100, -- Intensity
         250, -- Attenuation Radius
-        0, -- Cone Angle (Relevant only for Spot light type)
+        44, -- Cone Angle (Relevant only for Spot light type)
         0, -- Inner Cone Angle Percent (Relevant only for Spot light type)
         0, -- Max Draw Distance (Good for performance - 0 for infinite)
         true, -- Whether to use physically based inverse squared distance falloff, where Attenuation Radius is only clamping the light's contribution. (Spot and Point types only)
@@ -84,7 +84,7 @@ Constructor Parameters
 
   * - :term:`number`
     - cone_angle
-    - 0
+    - 44
 
   * - :term:`number`
     - inner_cone_angle_percent (0-1)
@@ -95,11 +95,11 @@ Constructor Parameters
     - 0
 
   * - :term:`boolean`
-    - cast_shadows
+    - use_inverse_squared_falloff
     - true
 
   * - :term:`boolean`
-    - use_inverse_squared_falloff
+    - cast_shadows
     - true
 
   * - :term:`boolean`
