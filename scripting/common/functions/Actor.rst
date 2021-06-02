@@ -101,6 +101,11 @@ Functions (Inherited from Actor)
 
   * - 
     - :term:`boolean`
+    - IsNetworkDistributed()
+    - Gets if the actor is network distributed. Only actors being network distributed can be set network authority.
+
+  * - 
+    - :term:`boolean`
     - IsValid()
     - Returns if this entity is valid (i.e. wasn't destroyed and points to a valid entity)
 
