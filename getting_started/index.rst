@@ -13,7 +13,7 @@ Fundamental information for scripters and modders to start our creating servers 
 
    AssetsQuickStart.rst
    ScriptingQuickStart.rst
-   server_manual/ServerRequirements.rst
+   server_manual/ServerInstallation.rst
    server_manual/ServerConfiguration.rst
    WebUIQuickStart.rst
 
@@ -25,7 +25,7 @@ Starting Out
 
 	<script>
 		DrawCard(
-			"server_manual/ServerRequirements.html",
+			"server_manual/ServerInstallation.html",
 			"https://falaxir.fr/images/nanos/server_screenfetch.png",
 			"Server Requirements",
 			"What is required to run a nanos world server."

@@ -4,11 +4,7 @@
 Server Configuration
 ********************
 
-
-Server Requirements
--------------------
-
-.. note:: Before taking a look at this page, please read our :ref:`ServerRequirements`
+.. note:: Before taking a look at this page, please read our :ref:`ServerInstallation`
 
 
 Starting Out
@@ -285,6 +281,63 @@ Assets can be included in a folder called ``Assets/`` in the root server folder.
    |   |   Big_Fucking_Gun.uasset
    |   |   ...
    |   Assets.toml
+
+
+CLI - Command Line Interface
+----------------------------
+
+nanos world provides a CLI (Command Line Interface) to help updating the server, packages and assets and also downloading them!
+
+To run the cli, start the server with ``--cli`` argument:
+
+.. tabs::
+ .. code-tab:: console Windows
+
+    $ ./NanosWorldServer.exe --cli
+
+
+ .. code-tab:: console Linux
+
+    $ ./NanosWorldServer --cli
+
+
+After started, if you type ``help`` you can see all the available commands:
+
+.. image:: https://i.imgur.com/sX2xlvK.png
+
+
+To install or update a Package:
+
+.. code-block:: console
+
+    $ install/update package [PACKAGE_PATH]
+
+
+To install or update an Asset Pack:
+
+.. code-block:: console
+
+    $ install/update assets [ASSET_PATH]
+
+
+To update the Server:
+
+.. code-block:: console
+
+    $ update server
+
+
+It is also possible to run the CLI in a non-interactive mode, just run the command together:
+
+.. tabs::
+ .. code-tab:: console Windows
+
+    $ ./NanosWorldServer.exe --cli update server
+
+
+ .. code-tab:: console Linux
+
+    $ ./NanosWorldServer --cli update server
 
 
 Common Console Messages/Warnings/Erros and it's meanings

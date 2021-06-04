@@ -138,10 +138,12 @@ Events
 
   * - Ready
     - 
-    - When this page is fully loaded
+    - When this page is fully loaded (DOM and JavaScript)
 
 
 .. note:: It is only allowed to pass :term:`number`, :term:`string` and :term:`boolean` in Events between WebUI and your Package.
+
+.. tip:: Events called before "Ready" event will be enqueued until it is Ready.
 
 
 Examples

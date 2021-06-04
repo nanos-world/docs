@@ -1,10 +1,11 @@
-.. _ServerRequirements:
+.. _ServerInstallation:
 
 *******************
-Server Requirements
+Server Installation
 *******************
 
 Creating servers in nanos world is very simple and straightforward, just a few steps and you have your server up and ready!
+
 
 System Requirements
 -------------------
@@ -16,14 +17,34 @@ System Requirements
 *  Network: Recommended at least 1 MB/s (grows if having too many Players or spawned Entities)
 *  Network Forwarded Ports: 7777 TCP and UDP (you can change that on the config)
 
--------
+
+Installation
+------------
+
+All nanos world server versions are hosted in our GitHub: https://github.com/nanos-world/nanos-world-server/releases.
+
+.. tip:: You can get the latest version directly from this `link <https://github.com/nanos-world/nanos-world-server/releases/latest>`_.
+
+Summary:
+
+* `Windows Installation <#windows>`_
+* `Linux Installation <#linux>`_
+* `Debian 10 Installation <#debian-10>`_
+
+
 Windows
 -------
 
 It should work fine without the need to install any external programs.
 Make sure that your system is updated.
 
------
+You can download it using ``PowerShell`` (to download the version 0.68.3):
+
+.. code-block:: PowerShell
+
+  $ Invoke-WebRequest -Uri "https://github.com/nanos-world/nanos-world-server/releases/download/0.68.3/NanosWorldServer.exe" -OutFile NanosWorldServer.exe
+
+
 Linux
 -----
 
@@ -36,6 +57,14 @@ The system need to be updated with the latest version of your distribution.
 If your distribution is the latest and you have at least gcc-9 installed, it should work.
 
 .. note:: Please check below if you have a error like this when launching the server : ``version "GLIBCXX_3.4.26" not found``
+
+
+You can download it using ``wget`` (to download the version 0.68.3):
+
+.. code-block:: console
+
+  $ wget "https://github.com/nanos-world/nanos-world-server/releases/download/0.68.3/NanosWorldServer"
+
 
 Debian 10
 ---------
@@ -80,7 +109,7 @@ Finished!, you can now proceed to the next steps to configure your nanos world s
 
 .. note:: If it still doesn't work, try installing gcc-9 testing package and then, tell your system to use this new version of gcc instead of the old one.
 
---------------------
+
 Server configuration
 --------------------
 
