@@ -26,27 +26,27 @@ Usage
         "NanosWorld::SK_AK47",  -- Model
         CollisionType.Normal,   -- Collision (Normal)
         true,                   -- Gravity Enabled
-        30,                     -- Default Ammo in the Clip
-        1000,                   -- Default Ammo in the Bag
+        30,                     -- Ammo in the Clip
+        1000,                   -- Ammo in the Bag
         30,                     -- Clip Capacity
         30,                     -- Base Damage
-        20,                     -- Spread
+        30,                     -- Spread
         1,                      -- Bullet Count (1 for common weapons, > 1 for shotguns)
         30,                     -- Ammo to Reload (Ammo Clip for common weapons, 1 for shotguns)
         20000,                  -- Max Bullet Distance
-        7500,                   -- Bullet Speed (visual only)
-        Color(20, 10000, 0),    -- Bullet Color
+        20000,                  -- Bullet Speed (visual only)
+        Color(100, 58, 0),      -- Bullet Color
         0.5,                    -- Sight's FOV multiplier
         Vector(0, 0, -14.85),   -- Sight Location
         Rotator(-1, 0, 0),      -- Sight Rotation
         Vector(26, 0, 8.5),     -- Left Hand Location
         Rotator(0, 60, 90),     -- Left Hand Rotation
         Vector(-10, 0, 0),      -- Right Hand Offset
-        HandlingMode.DoubleHandedWeapon, -- Handling Mode (SingleHandedWeapon, DoubleHandedWeapon, SingleHandedMelee, DoubleHandedMelee, Throwable, Torch, Barrel, Box)
-        0.15,                                    -- Cadence (1 shot at each 0.15seconds)
-        true,                                    -- Can Hold Use (keep pressing to keep firing, common to automatic weapons)
-        false,                                   -- Need to release to Fire (common to Bows)
-        "NanosWorld::P_Bullet_Trail_System",     -- Bullet Trail Particle
+        HandlingMode.DoubleHandedWeapon,
+        0.1,                    -- Cadence (1 shot at each 0.15seconds)
+        true,                   -- Can Hold Use (keep pressing to keep firing, common to automatic weapons)
+        false,                  -- Need to release to Fire (common to Bows)
+        "NanosWorld::P_Bullet_Trail",            -- Bullet Trail Particle
         "NanosWorld::P_Weapon_BarrelSmoke",      -- Barrel Particle
         "NanosWorld::P_Weapon_Shells_762x39",    -- Shells Particle
         "NanosWorld::A_Rifle_Dry",               -- Weapon's Dry Sound
