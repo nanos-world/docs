@@ -118,3 +118,23 @@ Static Functions
   * - :ref:`Color`
     - Color.Random()
     - Returns a random color from all color scope
+
+  * - :ref:`Color`
+    - Color.FromRGBA( |br-p| :term:`number` r, |br-p| :term:`number` g, |br-p| :term:`number` b, |br-p| :term:`number` a |br| )
+    - Returns the color from 0-255 range values
+
+  * - :ref:`Color`
+    - Color.FromCYMK( |br-p| :term:`number` c, |br-p| :term:`number` y, |br-p| :term:`number` m, |br-p| :term:`number` k, |br-p| :term:`number` a |br| )
+    - Returns a color from the CYMK format
+
+  * - :ref:`Color`
+    - Color.FromHSL( |br-p| :term:`number` h, |br-p| :term:`number` s, :term:`number` l |br| )
+    - Returns a color from the HSL format
+
+  * - :ref:`Color`
+    - Color.FromHSV( |br-p| :term:`number` h, |br-p| :term:`number` s, :term:`number` v |br| )
+    - Returns a color from the HSV format
+
+  * - :ref:`Color`
+    - Color.FromHEX(:term:`string` hex)
+    - Returns a color from the Hexadecimal format
