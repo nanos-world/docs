@@ -64,6 +64,7 @@ You can download it using ``wget`` (to download the version 0.68.3):
 .. code-block:: console
 
   $ wget "https://github.com/nanos-world/nanos-world-server/releases/download/0.68.3/NanosWorldServer"
+  $ chmod +x NanosWorldServer
 
 
 Debian 10
