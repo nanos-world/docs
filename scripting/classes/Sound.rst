@@ -41,11 +41,11 @@ Constructor Parameters
     - **Default**
 
   * - :ref:`Vector`
-    - location (Used only if 3D sound)
+    - location (used only if 3D sound)
     - Vector(0, 0, 0)
 
   * - :term:`string`
-    - asset (Sound)
+    - asset (sound)
     - 
 
   * - :term:`boolean`
@@ -104,7 +104,7 @@ Functions
     - Stops the sound with a fade effect
 
   * - 
-    - Play(:term:`number` StartTime = 0)
+    - Play(:term:`number` start_time = 0)
     - Starts the sound
 
   * - 
