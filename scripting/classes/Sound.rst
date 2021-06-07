@@ -150,3 +150,49 @@ Events
 ------
 
 .. include:: ../common/events/Actor.rst
+
+
+Sound Attenuation
+-----------------
+
+This property defines the function that determines the rate of attenuation over distance. There are a number of different functions to choose from:
+
+
+Linear
+~~~~~~
+
+.. image:: https://i.imgur.com/PZ5xFDb.png
+
+This is the default function. When using this function the volume will attenuate linearly and so the changes in volume are constant as the listener moves towards and away from the source. This function is good for crossfading between large background-type sounds that don't need tightly focussed 3D spatial falloff settings.
+
+
+Logarithmic
+~~~~~~~~~~~
+
+.. image:: https://i.imgur.com/DVlwkiZ.png
+
+When using this function the volume attenuates such that the changes in volume are greater at close distances, and lesser at far distances. This function is good for spot sounds that need good 3D positioning, while still being audible at reasonable distances.
+
+
+Inverse
+~~~~~~~
+
+.. image:: https://i.imgur.com/AUEKMD4.png
+
+When using this function, the changes in volume are similar to that of the logarithmic curve, but are more exaggerated. This function is good for sounds that only need to be just audible at far distances, but that gets significantly louder as the listener gets quite close to the source.
+
+
+Log Reverse
+~~~~~~~~~~~
+
+.. image:: https://i.imgur.com/UB5LFHx.png
+
+When using this function, the changes in volume are lesser at close distances, with more dramatic differences at far distances. This function is good for sounds that need to be loud across larger distances.
+
+
+Natural Sound
+~~~~~~~~~~~~~
+
+.. image:: https://i.imgur.com/hIw1HfW.png
+
+This function attempts to model a more ‘naturalistic' falloff behavior to produce behaviors that closer match reality. This function is a kind of ‘middle ground' between the Logarithmic and Inverse functions.
