@@ -22,7 +22,7 @@ Functions
 
   * -
     - :term:`any`
-    - Call( |br-p| :term:`string` package_name, |br-p| :term:`string` function_name, |br-p| :term:`table` {args...} |br| )
+    - Call( |br-p| :term:`string` package_name, |br-p| :term:`string` function_name, |br-p| :term:`table` {args...}, |br-p| throw_error = true |br| )
     - Calls an exported function from an other Package
 
   * -
