@@ -198,7 +198,7 @@ Now that our UI is done, let's finish our Lua code to handle that whole thing!
 
         -- Sets on character an event to update the health's UI after it takes damage
         character:Subscribe("TakeDamage", function(charac, damage, type, bone, from_direction, instigator)
-            UpdateHealth(charac:GetHealth())
+            UpdateHealth(math.max(charac:GetHealth() - damage, 0))
         end)
 
         -- Sets on character an event to update the health's UI after it dies

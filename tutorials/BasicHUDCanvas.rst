@@ -50,7 +50,7 @@ This sample code shows how to add a basic HUD using :ref:`Render`'s Canvas featu
 
         -- Sets on character an event to update the health's UI after it takes damage
         character:Subscribe("TakeDamage", function(charac, damage, type, bone, from_direction, instigator)
-            UpdateHealth(character:GetHealth())
+            UpdateHealth(math.max(charac:GetHealth() - damage, 0))
         end)
 
         -- Sets on character an event to update the health's UI after it dies
