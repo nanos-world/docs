@@ -171,7 +171,7 @@ nanos world Enumerators
 	SwimmingMode
 		.. code-block:: lua
 
-			{ None = 0, Superficie = 1, Underwater = 2 }
+			{ None = 0, Surface = 1, Underwater = 2 }
 
 	TextRenderAlignCamera
 		.. code-block:: lua

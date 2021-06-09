@@ -223,7 +223,7 @@ Functions
 
   * - |server-only-label|
     - 
-    - SetAccelerationSettings( |br-p| :term:`number` walking = 768, |br-p| :term:`number` parachuting = 512, |br-p| :term:`number` skydiving = 768, |br-p| :term:`number` falling = 128, |br-p| :term:`number` swimming = 256, |br-p| :term:`number` swimming_superficie = 256 |br| );
+    - SetAccelerationSettings( |br-p| :term:`number` walking = 768, |br-p| :term:`number` parachuting = 512, |br-p| :term:`number` skydiving = 768, |br-p| :term:`number` falling = 128, |br-p| :term:`number` swimming = 256, |br-p| :term:`number` swimming_surface = 256, |br-p| :term:`number` flying = 1024 |br| );
     - Sets the Movement Max Acceleration of this Character.
 
   * - |server-only-label|
@@ -290,6 +290,11 @@ Functions
     - 
     - SetFallDamageTaken(:term:`number` damage)
     - Set the Fall Damage taken when falling from High places (default: 10). Setting to 0 will make the Character to do not take damage or enter ragdoll mode
+
+  * - |server-only-label|
+    - 
+    - SetFlyingMode(:term:`boolean` enabled)
+    - Sets the Flying Mode
 
   * - |server-only-label|
     - 
@@ -608,7 +613,7 @@ Events
   * -
     - SwimmingModeChanged
     - :ref:`Character` self, |br| :term:`SwimmingMode` old_state, |br| :term:`SwimmingMode` new_state
-    - **Swimming Modes**: *None, Superficie, Underwater*
+    - **Swimming Modes**: *None, Surface, Underwater*
 
   * -
     - TakeDamage
