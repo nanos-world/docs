@@ -19,8 +19,10 @@ Usage
       Vector(-900, 185, 215), 
       Rotator(0, 90, 90), 
       "NanosWorld::SM_Torch",
+      CollisionType.Normal,
       true,
-      5
+      HandlingMode.SingleHandedMelee,
+      CrosshairType.None
     )
 
 
@@ -57,6 +59,10 @@ Constructor Parameters
   * - :term:`HandlingMode`
     - handling_mode *(SingleHandedWeapon, DoubleHandedWeapon, SingleHandedMelee, DoubleHandedMelee, Throwable, Torch)*
     - HandlingMode.Torch
+
+  * - :term:`CrosshairType`
+    - crosshair_type
+    - CrosshairType.None
 
 
 Functions
