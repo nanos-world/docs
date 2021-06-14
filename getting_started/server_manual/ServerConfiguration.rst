@@ -71,7 +71,7 @@ Command Line Parameters
 
 It is possible to override the Server Configuration with Command Line Parameters. Note: this will not write to the Config file.
 
-Available parameters: ``--name``, ``--description``, ``--password``, ``--ip``, ``--map``, ``--port``, ``--http_port``, ``--announce`` , ``--packages`` and ``--max_players``.
+Available parameters: ``--name``, ``--description``, ``--password``, ``--ip``, ``--map``, ``--port``, ``--http_port``, ``--announce``, ``--packages``, ``--save`` and ``--max_players``.
 
 Usage:
 

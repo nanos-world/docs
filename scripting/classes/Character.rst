@@ -289,7 +289,7 @@ Functions
   * - |server-only-label|
     - 
     - SetFallDamageTaken(:term:`number` damage)
-    - Set the Fall Damage taken when falling from High places (default: 10). Setting to 0 will make the Character to do not take damage or enter ragdoll mode
+    - Set the Fall Damage multiplier taken when falling from High places (default: 10). Setting to 0 will make the Character to do not take damage or enter ragdoll mode
 
   * - |server-only-label|
     - 
@@ -427,11 +427,6 @@ Functions
     - Gets Character Movement Enabled
 
   * - 
-    - :term:`string`
-    - GetMesh()
-    - Gets the Mesh Asset name
-
-  * - 
     - :ref:`Rotator`
     - GetControlRotation()
     - Gets the rotation this character is looking at
@@ -440,6 +435,11 @@ Functions
     - :term:`FallingMode`
     - GetFallingMode()
     - Gets the Falling Mode
+
+  * - 
+    - :term:`boolean`
+    - GetFlyingMode()
+    - Gets if the Character is in Flying Mode
 
   * - 
     - :term:`GaitMode`
@@ -465,6 +465,11 @@ Functions
     - :term:`number`
     - GetMaxHealth()
     - Gets the Character's MaxHealth.
+
+  * - 
+    - :term:`string`
+    - GetMesh()
+    - Gets the Mesh Asset name
 
   * - 
     - Entity

@@ -119,6 +119,11 @@ Functions (Inherited from Actor)
     - GetAttachedTo()
     - Gets the actor i'm attached to
 
+  * - |client-only-label|
+    - :term:`table`
+    - GetBounds()
+    - Gets the actor bounds size. |br| |br| Returned Table:  ``{"Origin", "BoxExtent", "SphereRadius"}``
+
   * - 
     - :term:`number`
     - GetCollision()

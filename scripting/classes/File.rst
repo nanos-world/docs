@@ -101,6 +101,10 @@ Functions
     - Tell()
     - Returns the current file pointer position
 
+  * - :term:`number`
+    - Time()
+    - Returns when the file was last modified in Unix time
+
   * - 
     - Write(:term:`string` data)
     - Writes the Data at the current position of the file
