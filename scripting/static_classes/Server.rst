@@ -56,15 +56,13 @@ Functions
   * - Stop()
     - Stops the server
 
-  * - 
-    - Subscribe(:term:`string` event_name, :term:`function`)
+  * - Subscribe(:term:`string` event_name, :term:`function`)
     - Subscribes for an Event 
 
   * - UnloadPackage(:term:`string` package_folder_name)
     - Unloads a Package
 
-  * - 
-    - Unsubscribe(:term:`string` event_name, :term:`function` = nil)
+  * - Unsubscribe(:term:`string` event_name, :term:`function` = nil)
     - Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback
 
   * - :term:`table` GetPackages(:term:`boolean` only_loaded = true)
