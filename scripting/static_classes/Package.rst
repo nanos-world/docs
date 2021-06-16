@@ -50,6 +50,14 @@ Functions
     - RequirePackage(:term:`string` package_name)
     - Includes other Package in this Package
 
+  * - 
+    - Subscribe(:term:`string` event_name, :term:`function`)
+    - Subscribes for an Event 
+
+  * - 
+    - Unsubscribe(:term:`string` event_name, :term:`function` = nil)
+    - Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback
+
   * -
     -
     - Warn(:term:`string` message, ...)

@@ -168,3 +168,11 @@ Functions (Inherited from Actor)
     - :ref:`Vector`
     - GetVelocity()
     - Returns the current actor Velocity
+
+  * - 
+    - Subscribe(:term:`string` event_name, :term:`function`)
+    - Subscribes for an Event 
+
+  * - 
+    - Unsubscribe(:term:`string` event_name, :term:`function` = nil)
+    - Unsubscribes from all subscribed Events in this Entity and in this Package, optionally passing the function to unsubscribe only that callback

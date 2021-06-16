@@ -58,6 +58,14 @@ Functions
     - Remove all drawing of using that specific group_id
 
   * - 
+    - Subscribe(:term:`string` event_name, :term:`function`)
+    - Subscribes for an Event 
+
+  * - 
+    - Unsubscribe(:term:`string` event_name, :term:`function` = nil)
+    - Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback
+
+  * - 
     - UpdateItemText( |br-p| :term:`number` group_id, |br-p| :term:`number` item_id, |br-p| :term:`string` new_text |br| )
     - Updates a specific Canvas Text giving it's group_id and item_id
 

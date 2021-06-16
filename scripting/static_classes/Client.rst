@@ -90,6 +90,14 @@ Functions
     - Spectates a Player. The local camera will follow the Player's camera.
 
   * - 
+    - Subscribe(:term:`string` event_name, :term:`function`)
+    - Subscribes for an Event 
+
+  * - 
+    - Unsubscribe(:term:`string` event_name, :term:`function` = nil)
+    - Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback
+
+  * - 
     - Unspectate()
     - Leaves the Spectator's State.
 

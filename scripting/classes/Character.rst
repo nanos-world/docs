@@ -369,7 +369,7 @@ Functions
   * - |server-only-label|
     - 
     - SetPunchDamage(:term:`number` damage)
-    - Set the Punch Damage this Character will apply on others
+    - Set the Punch Damage this Character will apply on others (default is 15)
 
   * - |server-only-label|
     - 

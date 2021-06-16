@@ -40,6 +40,14 @@ Functions
     - BroadcastRemote(:term:`string` event_name, :term:`table` {args...})
     - Calls an Event on Server which will be triggered in all Client's Packages
 
+  * - 
+    - Subscribe(:term:`string` event_name, :term:`function`)
+    - Subscribes for an user-created event which will be triggered for both local or remote called events
+
+  * - 
+    - Unsubscribe(:term:`string` event_name, :term:`function` = nil)
+    - Unsubscribes from all subcribed events in this Package with that event name, optionally passing the function to unsubscribe only that callback
+
 
 Examples
 --------

@@ -105,6 +105,10 @@ Functions
     - IsA(:term:`any` object, Class class_type)
     - Returns if an object is a class
 
+  * - 
+    - Subscribe(:term:`string` event_name, :term:`function`)
+    - Subscribes for an Event 
+
 
 Events
 ------
