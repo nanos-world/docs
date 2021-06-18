@@ -102,9 +102,11 @@ Now you must download nanos world server in your VM.
 
 For that, you can use our public repository in the GitHub to download it with the following two commands:
 
+Note that the URL is pointing to version v0.71.1, if you want to download a newer version, please refer to https://github.com/nanos-world/nanos-world-server/releases.
+
 .. code-block:: console
 
-   $ curl -L https://github.com/nanos-world/nanos-world-server/releases/download/latest/NanosWorldServer -o NanosWorldServer
+   $ curl -L https://github.com/nanos-world/nanos-world-server/releases/download/v0.71.1/NanosWorldServer -o NanosWorldServer
    $ chmod +x NanosWorldServer
 
 This will download NanosWorldServer executable and set it to be an executable itself. After downloading, you can start your server like:

@@ -38,11 +38,13 @@ Windows
 It should work fine without the need to install any external programs.
 Make sure that your system is updated.
 
-You can download it using ``PowerShell`` (to download the version 0.68.3):
+You can download it using ``PowerShell``:
+
+Note that the URL is pointing to version v0.71.1, if you want to download a newer version, please refer to https://github.com/nanos-world/nanos-world-server/releases.
 
 .. code-block:: PowerShell
 
-  $ Invoke-WebRequest -Uri "https://github.com/nanos-world/nanos-world-server/releases/download/v0.68.3/NanosWorldServer.exe" -OutFile NanosWorldServer.exe
+  $ Invoke-WebRequest -Uri "https://github.com/nanos-world/nanos-world-server/releases/download/v0.71.1/NanosWorldServer.exe" -OutFile NanosWorldServer.exe
 
 
 Linux
@@ -59,11 +61,13 @@ If your distribution is the latest and you have at least gcc-9 installed, it sho
 .. note:: Please check below if you have a error like this when launching the server : ``version "GLIBCXX_3.4.26" not found``
 
 
-You can download it using ``wget`` (to download the version 0.68.3):
+You can download it using ``wget``:
+
+Note that the URL is pointing to version v0.71.1, if you want to download a newer version, please refer to https://github.com/nanos-world/nanos-world-server/releases.
 
 .. code-block:: console
 
-  $ wget "https://github.com/nanos-world/nanos-world-server/releases/download/v0.68.3/NanosWorldServer"
+  $ wget "https://github.com/nanos-world/nanos-world-server/releases/download/v0.71.1/NanosWorldServer"
   $ chmod +x NanosWorldServer
 
 
