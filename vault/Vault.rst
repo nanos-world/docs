@@ -117,6 +117,7 @@ Your Asset Pack must contain the ``Assets.toml`` in the root of your .zip, with 
 		[assets.particles]
 		# Other Assets (for not yet categorized ones)
 		[assets.others]
+		
 
 
 Your .zip would end up like:
