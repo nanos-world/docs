@@ -22,6 +22,11 @@ Usage
     )
 
 
+.. note:: Props smaller than radius 20 units will have CCD (Continuous Collision Detection) to avoid them falling through the floor or other objects. This will slightly increase the performance cost of them!
+
+.. note:: Props bigger than radius 200 units will have 'CanGrab' off by default.
+
+
 Constructor Parameters
 ----------------------
 

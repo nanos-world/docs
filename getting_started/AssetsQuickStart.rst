@@ -176,11 +176,11 @@ The first step to be able to reference your assets in your packages is requiring
         # Image URL
         image =                 "https://i.imgur.com/AjtVZBQ.jpg"
         # Package Type: 'executable' (normal package) | 'library' (doesn't run - useful for code library)
-        type =                   "executable"
+        type =                  "executable"
         # Whether to force the Custom Map Script to do NOT load
-        force_no_map_script =    false
+        force_no_map_script =   false
         # Auto Destroy all entities spawned by this package when it unloads
-        auto_cleanup =           true
+        auto_cleanup =          true
         # Asset Packs Requirements
         assets_requirements = [
             "MyAwesomeAssetPACK",
