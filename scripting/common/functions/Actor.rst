@@ -16,7 +16,7 @@ Functions (Inherited from Actor)
 
   * - |authority-only-label|
     - 
-    - AttachTo( |br-p| Actor other, |br-p| :term:`AttachmentRule` attachment_rule = SnapToTarget, |br-p| :term:`string` bone_name = "" |br| )
+    - AttachTo( |br-p| Actor other, |br-p| :term:`AttachmentRule` attachment_rule = SnapToTarget, |br-p| :term:`string` bone_name = "", |br-p| :term:`string` autodestroy_when_detached = false |br| )
     - Attaches this Actor to any other Actor, optionally at a specific bone
 
   * - |authority-only-label|

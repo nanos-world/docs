@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'nanos.world Documentation'
-copyright = '2020, nanos GbR'
+copyright = '2021, nanos GbR'
 author = 'Gabriel T. Nardy'
 
 
