@@ -13,7 +13,7 @@ Functions
 ---------
 
 .. list-table:: 
-  :widths: 5 10 35 50
+  :widths: 5 15 35 45
 
   * - 
     - **Returns**

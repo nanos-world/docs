@@ -32,6 +32,7 @@ To illustrate, let's spawn a Cube and change it's Material using Lua:
 
    -- spawns a static mesh cube
    local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "NanosWorld::SM_Cube")
+
    -- replaces it's materials with the nanos default Masked one
    my_cube:SetDefaultMaterial(MaterialType.Masked)
 
@@ -45,6 +46,7 @@ Now let's set it's material to red! To be able to do that, we must set the Color
 
    -- spawns a static mesh cube
    local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "NanosWorld::SM_Cube")
+
    -- replaces it's materials with the nanos default Masked one
    my_cube:SetDefaultMaterial(MaterialType.Masked)
 
@@ -63,14 +65,13 @@ Now let's give it a metallic style! You can learn more about `Physically Based M
 
    -- spawns a static mesh cube
    local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "NanosWorld::SM_Cube")
+
    -- replaces it's materials with the nanos default one
    my_cube:SetDefaultMaterial(MaterialType.Masked)
 
-   -- paints it red
+   -- paints it red, metallic and glossy
    my_cube:SetMaterialColorParameter("Tint", Color(1, 0, 0))
-   -- makes it metallic
    my_cube:SetMaterialScalarParameter("Metallic", 0.85)
-   -- makes it glossy
    my_cube:SetMaterialScalarParameter("Roughness", 0)
 
 
@@ -84,6 +85,7 @@ A fun thing to do is to make a material fully reflective, like a mirror:
 
    -- spawns a static mesh cube
    local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "NanosWorld::SM_Cube")
+
    -- replaces it's materials with the nanos default one
    my_cube:SetDefaultMaterial(MaterialType.Masked)
 
@@ -95,15 +97,9 @@ A fun thing to do is to make a material fully reflective, like a mirror:
 .. image:: https://i.imgur.com/x22FhT8.png
 
 
-It is even possible to load images (.jpg, .png, etc) from disk and apply to the mesh! For that you will need to create an Asset Pack (:ref:`AssetsQuickStart`) and place your images inside of it.
+It is even possible to load images (.jpg, .png, etc) from disk and apply to the mesh! For that you will need to have an image inside an Asset Pack or a Package (in the Client/ folder). We gonna use `this (imgur) <https://i.imgur.com/67CGqHb.jpg>`_ with the name ``syed.jpg`` and we will place it inside our Package Client/ folder.
 
-Let use `this (imgur) <https://i.imgur.com/67CGqHb.jpg>`_ image! Download it and place in a folder called ``MyAwesomePhotos/`` in your server/Assets folder.
-
-.. image:: https://i.imgur.com/jT07X1T.png
-
-Now make sure you require your new Asset Pack in your Package.toml to grant those files will be downloaded when you join the server:
-
-.. image:: https://i.imgur.com/F7ffjnW.png
+.. image:: https://i.imgur.com/4LXazhn.png
 
 And now you can set it like that:
 
@@ -112,12 +108,15 @@ And now you can set it like that:
 
    -- spawns a static mesh cube
    local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "NanosWorld::SM_Cube")
+
    -- replaces it's materials with the nanos default one
    my_cube:SetDefaultMaterial(MaterialType.Masked)
 
    -- applies a custom texture to a parameter called "Texture"
-   my_cube:SetMaterialTextureParameter("Texture", "MyAwesomePhotos/Syed.jpg")
+   my_cube:SetMaterialTextureParameter("Texture", "package///YOUR_PACKAGE_NAME/Client/syed.jpg")
 
 .. image:: https://i.imgur.com/Lh5HKLb.png
+
+.. warning:: Be careful! Loading raw images directly from disk is a slow operation and may cause unwanted stutters! Also raw images aren't cached neither automatically pre-loaded when joining a server.
 
 And voila! Easy Peasy! Feel free to create your own materials and textures and tweak them in-game!

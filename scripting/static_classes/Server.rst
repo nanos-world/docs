@@ -65,11 +65,14 @@ Functions
   * - Unsubscribe(:term:`string` event_name, :term:`function` = nil)
     - Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback
 
-  * - :term:`table` GetPackages(:term:`boolean` only_loaded = true)
-    - Returns a list of Packages folder names available in the server, optionally returns only loaded and running packages
+  * - :term:`string` GetMap()
+    - Returns the current Map
 
   * - :term:`table` GetMapConfig()
     - Returns a list of the Custom Config of the current map (stored in the MAP_NAME.toml)
+
+  * - :term:`table` GetPackages(:term:`boolean` only_loaded = true)
+    - Returns a list of Packages folder names available in the server, optionally returns only loaded and running packages
 
   * - :term:`any` GetValue(:term:`string` key)
     - Gets a value given a key
