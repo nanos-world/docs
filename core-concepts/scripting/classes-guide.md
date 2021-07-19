@@ -22,6 +22,10 @@ local my_entity = Entity()
 my_entity:MyFunction()
 ```
 
+{% hint style="success" %}
+Access to **Entities / Spawned Objects** **Methods** are made with **`:`**.
+{% endhint %}
+
 This is how **OOP** works! You create objects and call functions/catch events on that object. Unlike other scripting games which have tons of global functions and events to interact with entities, nanos world scripting is a **modern approach** to **modern programming**.
 
 {% page-ref page="../../scripting-reference/classes/" %}
@@ -94,6 +98,10 @@ World.SetTime(9, 25)
 {% endcode %}
 {% endtab %}
 {% endtabs %}
+
+{% hint style="success" %}
+Access to **Static Classes / Static Methods** are made with **`.`**.
+{% endhint %}
 
 {% page-ref page="../../scripting-reference/static-classes/" %}
 

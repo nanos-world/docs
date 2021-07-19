@@ -61,7 +61,7 @@ World.LoadStreamLevel(level_name)
 
 ### `SetFogDensity`
 
->
+&gt;
 
 ```lua
 World.SetFogDensity(density, second_density)
@@ -74,7 +74,7 @@ World.SetFogDensity(density, second_density)
 
 ### `SetFogHeightFalloff`
 
->
+&gt;
 
 ```lua
 World.SetFogHeightFalloff(falloff)
@@ -86,7 +86,7 @@ World.SetFogHeightFalloff(falloff)
 
 ### `SetFogHeightOffset`
 
->
+&gt;
 
 ```lua
 World.SetFogHeightOffset(offset)
@@ -98,7 +98,7 @@ World.SetFogHeightOffset(offset)
 
 ### `SetSunLightColor`
 
->
+&gt;
 
 ```lua
 World.SetSunLightColor(color)
@@ -110,7 +110,7 @@ World.SetSunLightColor(color)
 
 ### `SetSkyLightIntensity`
 
->
+&gt;
 
 ```lua
 World.SetSkyLightIntensity(ntensity)
@@ -122,7 +122,7 @@ World.SetSkyLightIntensity(ntensity)
 
 ### `SetSkyRayleighScattering`
 
->
+&gt;
 
 ```lua
 World.SetSkyRayleighScattering(color)
@@ -134,7 +134,7 @@ World.SetSkyRayleighScattering(color)
 
 ### `SetSunLightIntensity`
 
->
+&gt;
 
 ```lua
 World.SetSunLightIntensity([number](intensity)
@@ -146,7 +146,7 @@ World.SetSunLightIntensity([number](intensity)
 
 ### `SetSunTemperatureMultiplier`
 
->
+&gt;
 
 ```lua
 World.SetSunTemperatureMultiplier(multiplier)
