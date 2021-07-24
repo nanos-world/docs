@@ -106,8 +106,9 @@
     * [WIP: Water](assets-modding/creating-assets/maps-and-levels/water.md)
   * [Static Meshes](assets-modding/creating-assets/static-meshes.md)
   * [Characters Meshes](assets-modding/creating-assets/characters-meshes.md)
+  * [WIP: Weapons](assets-modding/creating-assets/wip-weapons.md)
 * [nanos world Asset Pack](assets-modding/default-asset-pack/README.md)
-  * [Default Particles](assets-modding/default-asset-pack/default-particles.md)
+  * [WIP: Default Particles](assets-modding/default-asset-pack/default-particles.md)
 
 ## 🛒 Vault & Marketplace
 
