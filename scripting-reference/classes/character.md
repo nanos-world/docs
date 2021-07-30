@@ -181,7 +181,7 @@ woman:AddStaticMeshAttached("hair", "nanos-world::SM_Hair_Kwang", "hair_female")
 
 ## Functions Detailed
 
-### [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) ApplyDamage
+### [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) `ApplyDamage`
 
 > Do damage in a character, will trigger all related events and apply modified damage based on bone. Also will apply impulse if it's a heavy explosion
 
