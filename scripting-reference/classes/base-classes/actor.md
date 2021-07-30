@@ -138,6 +138,10 @@ entity:AddImpulse(force, velocity_change)
 ### [![](../../../.gitbook/assets/authority-only.png)](../../../core-concepts/scripting/authority-concepts.md) `AttachTo`
 
 > Attaches this Actor to any other Actor, optionally at a specific bone
+>
+> * **`AttachmentRule.KeepRelative`** will keep the current Relative Position/Rotation if already attached.
+> * **`AttachmentRule.KeepWorld`** will calculate the new Relative Position/Rotation so the Actor stays on the same position after attached.
+> * **`AttachmentRule.SnapToTarget`** will set the Actor to the same position/rotation to **`other_actor`** \(or at the bone location\) and reset it's Relative Position/Rotation to **zero**.
 
 ```lua
 entity:AttachTo(other_actor, attachment_rule, bone_name, autodestroy_when_detached)
@@ -148,7 +152,7 @@ entity:AttachTo(other_actor, attachment_rule, bone_name, autodestroy_when_detach
 | [Actor](actor.md) | **`other`** |  | Other actor to attach |
 | [AttachmentRule](../../glossary/enums.md#attachmentrule) | **`attachment_rule`** | `SnapToTarget` | How to attach |
 | [string](../../glossary/basic-types.md#string) | **`bone_name`** | `""` | Which bone to attach |
-| [boolean](../../glossary/basic-types.md#boolean) | **`autodestroy_when_detached`** | `""` | Whether to auto destroy when detached |
+| [boolean](../../glossary/basic-types.md#boolean) | **`autodestroy_when_detached`** | `false` | Whether to auto destroy when detached |
 
 ### [![](../../../.gitbook/assets/authority-only.png)](../../../core-concepts/scripting/authority-concepts.md) `Destroy`
 

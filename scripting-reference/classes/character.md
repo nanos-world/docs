@@ -290,6 +290,8 @@ my_character:LookAt(location)
 ### [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) `MoveTo`
 
 > AI: Makes this Character to walk to the Location
+>
+> Triggers event [MoveCompleted](character.md#movecompleted).
 
 ```lua
 my_character:MoveTo(location, acceptance_radius)
