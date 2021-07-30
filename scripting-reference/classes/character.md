@@ -110,7 +110,7 @@ woman:AddStaticMeshAttached("hair", "nanos-world::SM_Hair_Kwang", "hair_female")
 | [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) |  | [**`SetDeathSound`**](character.md#setdeathsound) | Changes the Death sound when Character dies |
 | [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) |  | [**`SetFallDamageTaken`**](character.md#SetFallDamageTaken) | Set the Fall Damage multiplier taken when falling from High places \(default: 10\). Setting to 0 will make the Character to do not take damage or enter ragdoll mode |
 | [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) |  | [**`SetFlyingMode`**](character.md#setflyingmode) | Sets the Flying Mode |
-| [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) |  | [**`SetGaitMode`**](character.md#setgaitmode) | \*\*\*\* |
+| [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) |  | [**`SetGaitMode`**](character.md#setgaitmode) | Sets the Gait Mode |
 | [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) |  | [**`SetGravityScale`**](character.md#setgravityscale) | Changes the Gravity Scale of this Character \(can be negative\) |
 | [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) |  | [**`SetHealth`**](character.md#sethealth) | Sets the Health of this Character. If the character is dead, respawns it with full health |
 | [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) |  | [**`SetImpactDamageTaken`**](character.md#setimpactdamagetaken) | Set the Impact Damage taken when being roamed by things \(default: 10\). Setting to 0 will make the Character to do not take damage or enter ragdoll mode |
@@ -545,12 +545,12 @@ my_character:SetFlyingMode(flying_mode)
 > **Gait Modes**: _None, Walking, Sprinting_
 
 ```lua
-my_character:SetGaitMode(:term:`GaitMode` mode)
+my_character:SetGaitMode(mode)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| GaitMode | **`mode`** |  |  |
+| [GaitMode](../glossary/enums.md#gaitmode) | **`mode`** |  |  |
 
 ### [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) `SetGravityScale`
 
