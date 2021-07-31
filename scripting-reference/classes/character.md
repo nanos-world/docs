@@ -407,7 +407,7 @@ my_character:SetCameraMode(camera_mode)
 | :--- | :--- | :--- | :--- |
 | [CameraMode](../glossary/enums.md#cameramode) | **`camera_mode`** |  |  |
 
-### \|client-only-label\| `SetCameraOffset`
+### [![](../../.gitbook/assets/client-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability)`SetCameraOffset`
 
 > Sets the Camera Offset \(only affects TPS\)
 
@@ -626,7 +626,7 @@ my_character:SetMesh(skeletal_mesh_asset)
 
 ### `SetMorphTarget`
 
-&gt;
+>
 
 ```lua
 my_character:SetMorphTarget(key, value)
@@ -707,7 +707,7 @@ my_character:SetStanceMode(mode)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| StanceMode | **`mode`** |  |  |
+| [StanceMode](../glossary/enums.md#stancemode) | **`mode`** |  |  |
 
 ### [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) `SetTeam`
 
@@ -731,7 +731,7 @@ my_character:SetViewMode(view_mode)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| ViewMode | **`view_mode`** |  |  |
+| [ViewMode](../glossary/enums.md#viewmode) | **`view_mode`** |  |  |
 
 ### [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) `SetWeaponAimMode`
 
@@ -743,7 +743,7 @@ my_character:SetWeaponAimMode(aim_mode)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| AimMode | **`aim_mode`** |  |  |
+| [AimMode](../glossary/enums.md#aimmode) | **`aim_mode`** |  |  |
 
 ### [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) `StopAnimation`
 
