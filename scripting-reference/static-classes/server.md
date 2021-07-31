@@ -67,7 +67,7 @@ end)
 |  | [**`Unsubscribe`**](server.md#unsubscribe) | Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback |
 | [string](../glossary/basic-types.md#string) | [**`GetMap`**](server.md#getmap) | Returns the current Map |
 | [table](../glossary/basic-types.md#table) | [**`GetMapConfig`**](server.md#getmapconfig) | Returns a list of the Custom Config of the current map \(stored in the MAP\_NAME.toml\) |
-| [table](../glossary/basic-types.md#table) | [**`GetPackage`**](server.md#getpackage) | Returns a list of Packages folder names available in the server, optionally returns only loaded and running packages |
+| [table](../glossary/basic-types.md#table) | [**`GetPackages`**](server.md#getpackage) | Returns a list of Packages folder names available in the server, optionally returns only loaded and running packages |
 |  | [**`GetValue`**](server.md#getvalue) | Gets a value given a key |
 
 ## Events
