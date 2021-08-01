@@ -108,7 +108,7 @@
   * [Characters Meshes](assets-modding/creating-assets/characters-meshes.md)
   * [WIP: Weapons](assets-modding/creating-assets/wip-weapons.md)
 * [nanos world Asset Pack](assets-modding/default-asset-pack/README.md)
-  * [WIP: Default Materials](assets-modding/default-asset-pack/wip-default-materials.md)
+  * [Default Materials](assets-modding/default-asset-pack/wip-default-materials.md)
   * [Default Particles](assets-modding/default-asset-pack/default-particles.md)
   * [WIP: Default Vehicles](assets-modding/default-asset-pack/wip-default-vehicles.md)
   * [WIP: Default Weapons](assets-modding/default-asset-pack/wip-default-weapons.md)

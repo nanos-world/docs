@@ -27,7 +27,7 @@ This is a Niagara particle which joins two points with a Beam. Cool for creating
 
 ### `P_Ribbon`
 
-![](../../.gitbook/assets/image%20%2866%29.png)
+![](../../.gitbook/assets/image%20%2868%29.png)
 
 This is a Niagara particle which makes a "trail" effect when moves.
 
@@ -41,7 +41,7 @@ This is a Niagara particle which makes a "trail" effect when moves.
 
 ### `P_DirectionalBurst`
 
-![](../../.gitbook/assets/image%20%2865%29.png)
+![](../../.gitbook/assets/image%20%2867%29.png)
 
 This is a Niagara particle which spawns a bunch of particles in a direction.
 
@@ -54,7 +54,7 @@ This is a Niagara particle which spawns a bunch of particles in a direction.
 
 ### `P_Fountain`
 
-![](../../.gitbook/assets/image%20%2867%29.png)
+![](../../.gitbook/assets/image%20%2869%29.png)
 
 This is a Niagara particle which simulates a fountain.
 
@@ -67,7 +67,7 @@ This is a Niagara particle which simulates a fountain.
 
 ### `P_HangingParticulates`
 
-![](../../.gitbook/assets/image%20%2862%29.png)
+![](../../.gitbook/assets/image%20%2863%29.png)
 
 This is a Niagara particle which makes a 3-dimentional "hanging particles" effect.
 
@@ -79,7 +79,7 @@ This is a Niagara particle which makes a 3-dimentional "hanging particles" effec
 
 ### `P_OmnidirectionalBurst`
 
-![](../../.gitbook/assets/image%20%2864%29.png)
+![](../../.gitbook/assets/image%20%2866%29.png)
 
 This is a Niagara particle which makes a "explosion" effect in all directions.
 
