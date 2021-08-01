@@ -5,10 +5,6 @@ description: A File represents an entry to a system file.
 # File
 
 {% hint style="info" %}
-Currently it is not possible to Delete or Rename files, that will be added for a future update.
-{% endhint %}
-
-{% hint style="info" %}
 This is a **Server** side class. It is not possible to open files from outside the server folder. All path must be relative to the Server’s executable folder. All files are opened as binary file by default.
 {% endhint %}
 
@@ -26,10 +22,105 @@ local configuration_file_json = JSON.parse(configuration_file:Read(configuration
 
 ## Constructor Parameters
 
-| **Type** | **Name** | **Default** |
+| **Type** | **Name** | **Default** | Description |
+| :--- | :--- | :--- | :--- |
+| [string](../glossary/basic-types.md#string) | **`file_path`** |  | Path relative to server executable |
+| [boolean](../glossary/basic-types.md#boolean) | **`truncate`** | `false` | Whether or not to clear the file upon opening it |
+
+## Static Functions
+
+| **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
-| [string](../glossary/basic-types.md#string) | **`file_path`** |  |
-| [boolean](../glossary/basic-types.md#boolean) | **`truncate`** | `false` |
+| [number](../glossary/basic-types.md#number) | \*\*\*\*[**`Time`**](file.md#time)\*\*\*\* | Returns when a file was last modified in Unix time |
+| [boolean](../glossary/basic-types.md#boolean) | [**`CreateDirectory`**](file.md#createdirectory) | Creates a directory \(for every folder passed\) |
+| [number](../glossary/basic-types.md#number) | \*\*\*\*[**`Remove`**](file.md#remove)\*\*\*\* | Deletes a folder or file |
+| [boolean](../glossary/basic-types.md#boolean) | \*\*\*\*[**`Exists`**](file.md#exists)\*\*\*\* | Verifies if a entry exists in the file system |
+| [boolean](../glossary/basic-types.md#boolean) | \*\*\*\*[**`IsDirectory`**](file.md#isdirectory)\*\*\*\* | Checks if a path is a directory |
+| [boolean](../glossary/basic-types.md#boolean) | \*\*\*\*[**`IsRegularFile`**](file.md#isregularfile)\*\*\*\* | Checks if a path is a file |
+
+### `Time`
+
+> Returns when the file was last modified in Unix time
+>
+> Returns [number](../glossary/basic-types.md#number)
+
+```lua
+File.Time(path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [string](../glossary/basic-types.md#string) | **`path`** | Path to file |
+
+### `CreateDirectory`
+
+> Creates a directory \(for every folder passed\)
+>
+> Returns [boolean](../glossary/basic-types.md#boolean) if succeeded
+
+```lua
+File.CreateDirectory(path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [string](../glossary/basic-types.md#string) | **`path`** | Path to folder |
+
+### `Remove`
+
+> Deletes a folder or a file
+>
+> Returns [number](../glossary/basic-types.md#number) \(number of files or directories deleted\)
+
+```lua
+File.Remove(path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [string](../glossary/basic-types.md#string) | **`path`** | Path to file or folder |
+
+### `Exists`
+
+> Gets if a file or folder exists
+>
+> Returns [boolean](../glossary/basic-types.md#boolean)
+
+```lua
+File.Exists(path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [string](../glossary/basic-types.md#string) | **`path`** | Path to file or folder |
+
+### `IsDirectory`
+
+> Gets if a path is a directory
+>
+> Returns [boolean](../glossary/basic-types.md#boolean)
+
+```lua
+File.IsDirectory(path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [string](../glossary/basic-types.md#string) | **`path`** | Path to folder |
+
+### `IsRegularFile`
+
+> Gets if a path is a file
+>
+> Returns [boolean](../glossary/basic-types.md#boolean)
+
+```lua
+File.IsRegularFile(path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [string](../glossary/basic-types.md#string) | **`path`** | Path to file |
 
 ## Functions
 
@@ -47,7 +138,6 @@ local configuration_file_json = JSON.parse(configuration_file:Read(configuration
 | [number](../glossary/basic-types.md#number) | [**`Size`**](file.md#size) | Returns the size of the file |
 |  | [**`Skip`**](file.md#skip) | Skips n \(amount\) positions from the current file pointer position |
 | [number](../glossary/basic-types.md#number) | [**`Tell`**](file.md#tell) | Returns the current file pointer position |
-| [number](../glossary/basic-types.md#number) | [**`Time`**](file.md#time) | Returns when the file was last modified in Unix time |
 |  | [**`Write`**](file.md#write) | Writes the Data at the current position of the file |
 
 ### `Close`
@@ -172,16 +262,6 @@ my_file:Skip(amount)
 
 ```lua
 my_file:Tell()
-```
-
-### `Time`
-
-> Returns when the file was last modified in Unix time
->
-> Returns [number](../glossary/basic-types.md#number)
-
-```lua
-my_file:Time()
 ```
 
 ### `Write`
