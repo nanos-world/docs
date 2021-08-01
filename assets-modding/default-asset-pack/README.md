@@ -4,7 +4,7 @@
 
 nanos world provides a default Asset Pack already included in the base game, feel free to use the assets the way you want:
 
-In order to use those assets, you need to use the key `NanosWorld`.
+In order to use those assets, you need to use the key `nanos-world`.
 
 {% code title="Assets.toml" %}
 ```bash
