@@ -74,3 +74,42 @@ my_trigger:SetVisibility(is_visible)
 | :--- | :--- | :--- |
 | [boolean](../glossary/basic-types.md#boolean) | **`is_visible`** |  |
 
+## Events
+
+|  | **Name** | **Description** |
+| :--- | :--- | :--- |
+| [![](https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-McxSn_occzhXBX6BNoH%2Fsync%2F47d896a044d50e645c888356b18fe44c6a94d8d9.png?generation=1624738441629723&alt=media)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) | \*\*\*\*[**`BeginOverlap`**](trigger.md#beginoverlap)\*\*\*\* | Triggered when something overlaps this Trigger |
+| [![](https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-McxSn_occzhXBX6BNoH%2Fsync%2F47d896a044d50e645c888356b18fe44c6a94d8d9.png?generation=1624738441629723&alt=media)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) | [**`EndOverlap`**](trigger.md#endoverlap) | Triggered when something leaves this Trigger |
+
+### [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability)`BeginOverlap`
+
+> Triggered when something overlaps this Trigger
+
+```lua
+Trigger.Subscribe("BeginOverlap", function(self, entity)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Trigger](trigger.md) | `self` | The Trigger entity |
+| [Actor](base-classes/actor.md) | `entity` | Any Actor which overlaps |
+
+### [![](../../.gitbook/assets/server-only.png)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability)`EndOverlap`
+
+> Triggered when something leaves this Trigger
+
+```lua
+Trigger.Subscribe("EndOverlap", function(self, entity)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Trigger](trigger.md) | `self` | The Trigger entity |
+| [Actor](base-classes/actor.md) | `entity` | Any Actor which left the Trigger |
+
+## 
+
