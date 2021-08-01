@@ -34,14 +34,14 @@ end)
 
 ## Constructor Parameters
 
-| **Type** | **Name** | **Default** |
-| :--- | :--- | :--- |
-| [Vector](../utility-classes/vector.md) | **`location`** | `Vector(0, 0, 0)` |
-| [Rotator](../utility-classes/rotator.md) | **`rotation`** | `Rotator(0, 0, 0)` |
-| [Vector](../utility-classes/vector.md) | **`extent`** | `Vector(0, 0, 0)` |
-| [TriggerType](../glossary/enums.md#triggertype) | **`trigger_type`** \(_Sphere_ or _Box_\) | `TriggerType.Sphere` |
-| [boolean](../glossary/basic-types.md#boolean) | **`is_visible`** | `false` |
-| [Color](../utility-classes/color.md) | **`color`** \(of the Trigger Sphere - if Visible\) | `Color(1, 0, 0, 1)` |
+| **Type** | **Name** | **Default** |  |
+| :--- | :--- | :--- | :--- |
+| [Vector](../utility-classes/vector.md) | **`location`** | `Vector(0, 0, 0)` |  |
+| [Rotator](../utility-classes/rotator.md) | **`rotation`** | `Rotator(0, 0, 0)` |  |
+| [Vector](../utility-classes/vector.md) | **`extent`** | `Vector(0, 0, 0)` | Size of the Trigger. If using Sphere, only the **X** is used |
+| [TriggerType](../glossary/enums.md#triggertype) | **`trigger_type`** | `TriggerType.Sphere` | Currently supports **Sphere** of **Box** |
+| [boolean](../glossary/basic-types.md#boolean) | **`is_visible`** | `false` | Useful for debugging |
+| [Color](../utility-classes/color.md) | **`color`** | `Color.RED` | Color to paint the Trigger bounds - if Visible |
 
 ## Functions
 
@@ -64,7 +64,7 @@ my_trigger:SetExtent(extent)
 
 ### [ ![](https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-McxSn_occzhXBX6BNoH%2Fsync%2F47d896a044d50e645c888356b18fe44c6a94d8d9.png?generation=1624738441629723&alt=media)](../../core-concepts/scripting/authority-concepts.md#methods-and-events-availability) **`SetVisibility`**
 
-> Sets if this Trigger is visible as a Sphere
+> Sets if this Trigger is visible for debugging
 
 ```lua
 my_trigger:SetVisibility(is_visible)
