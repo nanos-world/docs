@@ -135,8 +135,11 @@ my_character:PickUp(my_ak47)
 |  | [number](https://docs.nanos.world/scripting/Glossary.html#term-number) | [**`GetAmmoBag`**](weapon.md#getammobag) | Gets this Weapon’s Ammo Bag |
 |  | [number](https://docs.nanos.world/scripting/Glossary.html#term-number) | [**`GetAmmoClip`**](weapon.md#getammoclip) | Gets this Weapon’s Ammo Clip |
 |  | [Color](https://docs.nanos.world/scripting/utility/Color.html#color) | [**`GetBulletColor`**](weapon.md#getbulletcolor) |  |
+|  | [number](https://docs.nanos.world/scripting/Glossary.html#term-number) | \*\*\*\*[**`GetCadence`**](weapon.md#getcadence)\*\*\*\* |  |
+|  | [number](https://docs.nanos.world/scripting/Glossary.html#term-number) | \*\*\*\*[**`GetClipCapacity`**](weapon.md#getclipcapacity)\*\*\*\* |  |
 |  | [number](https://docs.nanos.world/scripting/Glossary.html#term-number) | [**`GetDamage`**](weapon.md#getdamage) |  |
-|  | [Vector](https://docs.nanos.world/scripting/utility/Vector.html#vector) | [**`GetRightHandOffset`**](weapon.md#getrighthandoffset) | \`\` |
+|  | [Vector](https://docs.nanos.world/scripting/utility/Vector.html#vector) | [**`GetRightHandOffset`**](weapon.md#getrighthandoffset) |  |
+|  | [number](https://docs.nanos.world/scripting/Glossary.html#term-number) | \*\*\*\*[**`GetSightFOVMultiplier`**](weapon.md#getsightfovmultiplier)\*\*\*\* |  |
 |  | [number](https://docs.nanos.world/scripting/Glossary.html#term-number) | [**`GetSpread`**](weapon.md#getspread) |  |
 
 ## Events
@@ -521,10 +524,26 @@ my_weapon:GetAmmoClip()
 
 ### `GetBulletColor`
 
-> Returns Color
+> Returns [Color](../utility-classes/color.md)
 
 ```lua
 my_weapon:GetBulletColor()
+```
+
+### `GetCadence`
+
+> Returns [number](../glossary/basic-types.md#number)
+
+```lua
+my_weapon:GetCadence()
+```
+
+### `GetClipCapacity`
+
+> Returns [number](../glossary/basic-types.md#number)
+
+```lua
+my_weapon:GetClipCapacity()
 ```
 
 ### `GetDamage`
@@ -537,10 +556,18 @@ my_weapon:GetDamage()
 
 ### `GetRightHandOffset`
 
-> Returns Vector
+> Returns [Vector](../utility-classes/vector.md)
 
 ```lua
 my_weapon:GetRightHandOffset()
+```
+
+### `GetSightFOVMultiplier`
+
+> Returns [number](../glossary/basic-types.md#number)
+
+```lua
+my_weapon:GetSightFOVMultiplier()
 ```
 
 ### `GetSpread`
