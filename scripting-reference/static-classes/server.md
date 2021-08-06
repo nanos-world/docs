@@ -4,6 +4,8 @@ description: Server represents all Server controls in the Server side
 
 # Server
 
+![](../../.gitbook/assets/image%20%2871%29.png)
+
 {% hint style="success" %}
 This is a Static Class named `Server`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 

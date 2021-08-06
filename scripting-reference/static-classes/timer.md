@@ -4,6 +4,8 @@ description: Execute of code at specified time intervals
 
 # Timer
 
+![](../../.gitbook/assets/image%20%2874%29.png)
+
 {% hint style="success" %}
 This is a Static Class named `Timer`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 {% endhint %}

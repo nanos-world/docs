@@ -7,6 +7,8 @@ description: >-
 
 # Item
 
+![](../../.gitbook/assets/image%20%2870%29.png)
+
 {% hint style="info" %}
 ⏬ **Inheritance:** This class inherits from [Actor](base-classes/actor.md) and [Pickable](base-classes/pickable.md). Please check it's pages for inherited **Methods** and **Events**.
 {% endhint %}

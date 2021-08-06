@@ -4,6 +4,8 @@ description: A Light represents a Lighting source
 
 # Light
 
+![](../../.gitbook/assets/image%20%2872%29.png)
+
 A Light represents a Lighting source. nanos world provides 3 types of lights: **Spot**, **Point** and **Rect**. All lights are Dynamic and because of that, very expensive! Keep that in mind before spawning 1000 lights ;\).
 
 {% hint style="success" %}

@@ -6,6 +6,8 @@ description: >-
 
 # Player
 
+![](../../.gitbook/assets/image%20%2868%29.png)
+
 {% hint style="info" %}
 You cannot Spawn or Destroy Players.
 {% endhint %}

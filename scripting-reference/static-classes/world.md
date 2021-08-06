@@ -4,6 +4,8 @@ description: Interaction with World and Environment elements
 
 # World
 
+![](../../.gitbook/assets/screenshot_150.png)
+
 {% hint style="success" %}
 This is a Static Class named `World`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 

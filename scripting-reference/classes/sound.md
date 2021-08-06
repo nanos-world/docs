@@ -4,6 +4,8 @@ description: Class for playing in-game 2D and 3D sounds
 
 # Sound
 
+![](../../.gitbook/assets/image%20%2873%29.png)
+
 {% hint style="success" %}
 This is a **Client** only Class.
 {% endhint %}

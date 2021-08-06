@@ -4,6 +4,8 @@ description: Static Class present on Client side
 
 # Client
 
+![](../../.gitbook/assets/image%20%2875%29.png)
+
 {% hint style="success" %}
 This is a Static Class named `Client`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 
@@ -422,7 +424,9 @@ Client.IsMouseEnabled()
 
 ### `Chat`
 
-> Called when a chat text is submitted \(by LocalPlayer\) Return false to prevent the message to be sent
+> Called when a chat text is submitted \(by LocalPlayer\)
+>
+> Return false to prevent the message to be sent
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
@@ -436,7 +440,9 @@ end)
 
 ### `ChatEntry`
 
-> Called when a Chat Entry is received This is also triggered when `SendChatMessage` is called
+> Called when a Chat Entry is received
+>
+> This is also triggered when `SendChatMessage` is called \(useful for creating your own Chat interface while still use the built-in system\)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
@@ -465,7 +471,9 @@ end)
 
 ### `KeyDown`
 
-> A keyboard key is being pressed Return false to block it
+> A keyboard key is being pressed
+>
+> Return **false** to block it
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
@@ -479,7 +487,9 @@ end)
 
 ### `KeyPress`
 
-> A keyboard key has been pressed Return false to block it
+> A keyboard key has been pressed
+>
+> Return **false** to block it
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
@@ -493,7 +503,9 @@ end)
 
 ### `KeyUp`
 
-> A keyboard key has been released Return false to block it
+> A keyboard key has been released
+>
+> Return **false** to block it
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
@@ -522,7 +534,9 @@ end)
 
 ### `MouseDown`
 
-> A mouse button has been pressed / is being pressed Return false to block it
+> A mouse button has been pressed / is being pressed
+>
+> Return **false** to block it
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
@@ -538,7 +552,9 @@ end)
 
 ### `MouseUp`
 
-> A mouse button has been released Return false to block it
+> A mouse button has been released
+>
+> Return **false** to block it
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
