@@ -31,7 +31,7 @@ MyUI = WebUI("My UI", "file:///UI/index.html")
 
 -- When the HTML is ready, triggers an Event in there
 MyUI:Subscribe("Ready", function()
-    MyUI:CallEvent("MyAwesomeEvent", {"Hello! You are ready!"})
+    MyUI:CallEvent("MyAwesomeEvent", "Hello! You are ready!")
 end)
 
 MyUI:Subscribe("MyAwesomeAnswer", function(param1)
