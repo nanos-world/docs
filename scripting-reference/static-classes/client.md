@@ -347,6 +347,16 @@ Client.Trace(start_location, end_location, collision_channel, trace_complex, ret
 | [boolean](../glossary/basic-types.md#boolean) | **`return_physical_material`** | `false` |  |
 | [boolean](../glossary/basic-types.md#boolean) | **`draw_debug`** | `false` |  |
 
+### `GetLocalPlayer`
+
+> Gets the local Player
+>
+> Returns [Player](../classes/player.md)
+
+```lua
+Client.GetLocalPlayer()
+```
+
 ### `GetRandomReachablePointInRadius`
 
 > Finds random, reachable point in navigable space restricted to radius around origin \(only if map has a NavMesh\)

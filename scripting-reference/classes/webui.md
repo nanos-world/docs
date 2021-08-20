@@ -18,10 +18,13 @@ This is a **Client** only Class.
 
 {% page-ref page="../../core-concepts/scripting/user-interface.md" %}
 
+{% page-ref page="../../getting-started/tutorials-and-examples/basic-hud-html.md" %}
+
 ## Usage
 
 {% tabs %}
 {% tab title="Lua" %}
+{% code title="Client/Index.lua" %}
 ```lua
 -- Using a local file
 my_ui = WebUI(
@@ -44,6 +47,44 @@ my_ui = WebUI(
     true,                              -- Is Visible
     "my_ui_library_package"            -- Package where this HTML is located
 )
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
+
+#### Communicating between Lua and JS \(WebUI\)
+
+{% tabs %}
+{% tab title="Package \(Lua\)" %}
+{% code title="Client/Index.lua" %}
+```lua
+my_ui = WebUI("Awesome UI", "file:///UI/index.html")
+
+local param1 = 123
+local param2 = "hello"
+
+-- Calls a JS event
+my_ui:CallEvent("MyEvent", param1, param2)
+
+-- Subscribes to receive JS events
+my_ui:Subscribe("MyAnswer", function(param1)
+    Package.Log("Received back! %s", param1)
+    -- Will output 'Received back! Hey there!'
+end)
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="WebUI \(JavaScript\)" %}
+```javascript
+// Register for "MyEvent" from Lua
+Events.Subscribe("MyEvent", function(param1, param2) {
+    console.log("Triggered! " + param1 + " " + param2);
+    // Will output 'Triggered! 123 hello'
+
+    // Triggers "MyAnswer" on Lua
+    Events.Call("MyAnswer", "Hey there!");
+})
 ```
 {% endtab %}
 {% endtabs %}
