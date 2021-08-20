@@ -95,7 +95,7 @@ Client.DrawDebugLine(start_position, end_position, color, duration, thickness)
 > Draws a Debug Point in the World
 
 ```lua
-Client.DrawDebugPoint(start_position, color, duration, thickness)
+Client.DrawDebugPoint(start_position, color, duration, size)
 ```
 
 | Type | Parameter | Default Value | Description |
@@ -103,9 +103,9 @@ Client.DrawDebugPoint(start_position, color, duration, thickness)
 | [Vector](../utility-classes/vector.md) | **`start_position`** |  |  |
 | [Color](../utility-classes/color.md) | **`color`** | `Color.RED` |  |
 | [number](../glossary/basic-types.md#number) | **`duration`** | `5` |  |
-| [number](../glossary/basic-types.md#number) | **`thickness`** | `0` |  |
+| [number](../glossary/basic-types.md#number) | **`size`** | `10` |  |
 
-### `DrawDebugSphere(`
+### `DrawDebugSphere`
 
 > Draws a Debug Line in the World
 
@@ -340,8 +340,8 @@ Client.Trace(start_location, end_location, collision_channel, trace_complex, ret
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | [Vector](../utility-classes/vector.md) | **`start_location`** |  |  |
-| [Vector](../utility-classes/vector.md) | **`start_location`** |  |  |
-| [CollisionChannel](../glossary/enums.md#collisionchannel) | **`collision_channel`** | `CollisionChannel.WorldStatic` |  |
+| [Vector](../utility-classes/vector.md) | **`end_location`** |  |  |
+| [CollisionChannel](../glossary/enums.md#collisionchannel) | **`collision_channel`** | `CollisionChannel.WorldStatic` | Supports several channels separating by `|` |
 | [boolean](../glossary/basic-types.md#boolean) | **`trace_complex`** | `false` |  |
 | [boolean](../glossary/basic-types.md#boolean) | **`return_entity`** | `false` |  |
 | [boolean](../glossary/basic-types.md#boolean) | **`return_physical_material`** | `false` |  |

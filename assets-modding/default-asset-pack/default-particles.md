@@ -27,7 +27,7 @@ This is a Niagara particle which joins two points with a Beam. Cool for creating
 
 ### `P_Ribbon`
 
-![](../../.gitbook/assets/image%20%2866%29.png)
+![](../../.gitbook/assets/image%20%2866%29%20%281%29.png)
 
 This is a Niagara particle which makes a "trail" effect when moves.
 

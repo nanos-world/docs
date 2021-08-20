@@ -45,8 +45,8 @@ Timer.SetInterval(function()
             -- if (trace_result.Entity:GetType() == "Character") then ...
         end
 
-        -- Draws a Debug Point at the Hit location for 3 seconds with tickness 1
-        Client.DrawDebugPoint(trace_result.Location, color, 3, 1)
+        -- Draws a Debug Point at the Hit location for 5 seconds with size 10
+        Client.DrawDebugPoint(trace_result.Location, color, 5, 10)
     end
 end, 100)
 ```
@@ -55,6 +55,6 @@ end, 100)
 {% endtabs %}
 
 {% hint style="success" %}
-As you could see, we can pass bit-wise operators to Trace for more than one [CollisionChannel](../../scripting-reference/glossary/enums.md#collisionchannel) at once! Use `|` between the CollisionChannels to achieve that.
+As you could see, we can pass bit-wise operators to Trace for more than one [CollisionChannel](../../scripting-reference/glossary/enums.md#collisionchannel) at once! Use `|` between the **CollisionChannels** to achieve that.
 {% endhint %}
 
