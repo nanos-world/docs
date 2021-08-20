@@ -60,7 +60,7 @@ This is a Niagara particle which simulates a fountain.
 
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
-| **`BeamColor`** | [Color](../../scripting-reference/utility-classes/color.md) | `Color.WHITE` | Color - multiply it to make it glow |
+| **`Color`** | [Color](../../scripting-reference/utility-classes/color.md) | `Color.WHITE` | Color - multiply it to make it glow |
 | **`SpawnRate`** | Float | `90.0` | Rate to spawn particles |
 | **`VelocityStrengthMax`** | Float | `850.0` | Max velocity |
 | **`VelocityStrengthMin`** | Float | `500.0` | Min velocity |
