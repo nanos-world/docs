@@ -31,20 +31,21 @@ For more information regarding **Material Types** and **Blend Modes**, please re
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left">&#x200B;<a href="https://docs.nanos.world/scripting-reference/utility-classes/color">Color</a>&#x200B;</td>
-      <td
-      style="text-align:left"><b><code>Tint</code></b>
-        </td>
-        <td style="text-align:left"><code>Color.WHITE</code>
-        </td>
-        <td style="text-align:left">
-          <p>Affects <code>Base Color</code> input</p>
-          <p><b>Tint</b> multiplies with <b>Texture</b> parameter to generate the final
-            color</p>
-        </td>
+      <td style="text-align:left"><a href="../../scripting-reference/classes/base-classes/paintable.md#setmaterialcolorparameter">&#x200B;Color&#x200B;</a>
+      </td>
+      <td style="text-align:left"><b><code>Tint</code></b>
+      </td>
+      <td style="text-align:left"><code>Color.WHITE</code>
+      </td>
+      <td style="text-align:left">
+        <p>Affects <code>Base Color</code> input</p>
+        <p><b>Tint</b> multiplies with <b>Texture</b> parameter to generate the final
+          color</p>
+      </td>
     </tr>
     <tr>
-      <td style="text-align:left">Texture</td>
+      <td style="text-align:left"><a href="../../scripting-reference/classes/base-classes/paintable.md#setmaterialtextureparameter">Texture</a>
+      </td>
       <td style="text-align:left"><b><code>Texture</code></b>
       </td>
       <td style="text-align:left"><code>White Texture</code>
@@ -52,7 +53,8 @@ For more information regarding **Material Types** and **Blend Modes**, please re
       <td style="text-align:left">Image which multiplies with <b>Tint</b> to generate the final color</td>
     </tr>
     <tr>
-      <td style="text-align:left">Texture</td>
+      <td style="text-align:left"><a href="../../scripting-reference/classes/base-classes/paintable.md#setmaterialtextureparameter">Texture</a>
+      </td>
       <td style="text-align:left"><b><code>Normal</code></b>
       </td>
       <td style="text-align:left"><code>Default Normal Map Vector(0.5, 0.5, 1)</code>
@@ -60,16 +62,16 @@ For more information regarding **Material Types** and **Blend Modes**, please re
       <td style="text-align:left">Image which affects how Light reflects on the object</td>
     </tr>
     <tr>
-      <td style="text-align:left">&#x200B;<a href="https://docs.nanos.world/scripting-reference/utility-classes/color">Color</a>&#x200B;</td>
-      <td
-      style="text-align:left"><b><code>Emissive</code></b>
-        </td>
-        <td style="text-align:left"><code>Color.BLACK</code>
-        </td>
-        <td style="text-align:left">Affects <code>Emissive</code> input, high values will cause bloom effect</td>
+      <td style="text-align:left">&#x200B;&#x200B;<a href="../../scripting-reference/classes/base-classes/paintable.md#setmaterialcolorparameter">&#x200B;Color&#x200B;</a>
+      </td>
+      <td style="text-align:left"><b><code>Emissive</code></b>
+      </td>
+      <td style="text-align:left"><code>Color.BLACK</code>
+      </td>
+      <td style="text-align:left">Affects <code>Emissive</code> input, high values will cause bloom effect</td>
     </tr>
     <tr>
-      <td style="text-align:left">&#x200B;<a href="https://docs.nanos.world/scripting-reference/glossary/basic-types#number">number</a>&#x200B;</td>
+      <td style="text-align:left"><a href="../../scripting-reference/classes/base-classes/paintable.md#setmaterialscalarparameter">Scalar</a>&#x200B;</td>
       <td
       style="text-align:left"><b><code>Metallic</code></b>
         </td>
@@ -78,36 +80,36 @@ For more information regarding **Material Types** and **Blend Modes**, please re
         <td style="text-align:left">Affects <code>Metallic</code> input - goes from 0 to 1</td>
     </tr>
     <tr>
-      <td style="text-align:left">&#x200B;<a href="https://docs.nanos.world/scripting-reference/glossary/basic-types#number">number</a>&#x200B;</td>
-      <td
-      style="text-align:left"><b><code>Specular</code></b>
-        </td>
-        <td style="text-align:left"><code>0.5</code>
-        </td>
-        <td style="text-align:left">Affects <code>Specular</code> input - goes from 0 to 1</td>
+      <td style="text-align:left"><a href="../../scripting-reference/classes/base-classes/paintable.md#setmaterialscalarparameter">Scalar</a>
+      </td>
+      <td style="text-align:left"><b><code>Specular</code></b>
+      </td>
+      <td style="text-align:left"><code>0.5</code>
+      </td>
+      <td style="text-align:left">Affects <code>Specular</code> input - goes from 0 to 1</td>
     </tr>
     <tr>
-      <td style="text-align:left">&#x200B;<a href="https://docs.nanos.world/scripting-reference/glossary/basic-types#number">number</a>&#x200B;</td>
-      <td
-      style="text-align:left"><b><code>Roughness</code></b>
-        </td>
-        <td style="text-align:left"><code>0.65</code>
-        </td>
-        <td style="text-align:left">Affects <code>Roughness</code> input - goes from 0 to 1</td>
+      <td style="text-align:left"><a href="../../scripting-reference/classes/base-classes/paintable.md#setmaterialscalarparameter">Scalar</a>
+      </td>
+      <td style="text-align:left"><b><code>Roughness</code></b>
+      </td>
+      <td style="text-align:left"><code>0.65</code>
+      </td>
+      <td style="text-align:left">Affects <code>Roughness</code> input - goes from 0 to 1</td>
     </tr>
     <tr>
-      <td style="text-align:left">&#x200B;<a href="https://docs.nanos.world/scripting-reference/glossary/basic-types#number">number</a>&#x200B;</td>
-      <td
-      style="text-align:left"><b><code>Opacity</code></b>
-        </td>
-        <td style="text-align:left"><code>0</code>
-        </td>
-        <td style="text-align:left">
-          <p>Affects <code>Opacity</code> and <code>Opacity Mask</code> inputs - goes from
-            0 to 1</p>
-          <p><b>Opacity</b> multiplies with <b>Texture</b> Alpha Channel to generate the
-            final opacity</p>
-        </td>
+      <td style="text-align:left"><a href="../../scripting-reference/classes/base-classes/paintable.md#setmaterialscalarparameter">Scalar</a>
+      </td>
+      <td style="text-align:left"><b><code>Opacity</code></b>
+      </td>
+      <td style="text-align:left"><code>0</code>
+      </td>
+      <td style="text-align:left">
+        <p>Affects <code>Opacity</code> and <code>Opacity Mask</code> inputs - goes from
+          0 to 1</p>
+        <p><b>Opacity</b> multiplies with <b>Texture</b> Alpha Channel to generate the
+          final opacity</p>
+      </td>
     </tr>
   </tbody>
 </table>
