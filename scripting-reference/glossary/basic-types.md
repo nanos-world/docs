@@ -48,19 +48,23 @@ We use any here in the Docs to represent that any Type can be used.
 
 nanos world supports a special type of Path when loading **Textures** or referencing files from **WebUI**. It allows any Package or WebUI to access files from other Packages or Asset Packs easily.
 
-SpecialPath is a string input which supports the following formats for acessing Assets or Packages files:
+**SpecialPath** is a string input which supports the following formats for accessing Assets or Packages files:
 
 #### Referencing Asset Packs files
 
-`assets///ASSET_PACK_PATH/path/to/file.jpg`
+`assets///[ASSET_PACK_PATH]/[PATH/TO/FILE.jpg]`
 
 #### Referencing Packages files
 
-`package///PACKAGE_PATH/path/to/file.jpg`
+`package///[PACKAGE_PATH]/[PATH/TO/FILE.jpg]`
 
-#### Example accessing images from Quaternius Asset Pack:
+#### Example accessing images from _Quaternius_ Asset Pack:
 
 `assets///quaternius/Thumbnails/SK_Revolver_01.jpg`
+
+#### Example accessing a .ogg from _sandbox_ Package:
+
+`package///sandbox/Client/my_awesome_audio.ogg`
 
 {% hint style="success" %}
 **Note:** It also supports relative and common paths as well!
