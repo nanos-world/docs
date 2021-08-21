@@ -58,11 +58,11 @@ nanos world supports a special type of Path when loading **Textures** or referen
 
 `package///[PACKAGE_PATH]/[PATH/TO/FILE.jpg]`
 
-#### Example accessing images from _Quaternius_ Asset Pack:
+#### Example accessing _images_ from `quaternius` Asset Pack:
 
 `assets///quaternius/Thumbnails/SK_Revolver_01.jpg`
 
-#### Example accessing a .ogg from _sandbox_ Package:
+#### Example accessing a _.ogg sound_ from `sandbox` Package:
 
 `package///sandbox/Client/my_awesome_audio.ogg`
 
