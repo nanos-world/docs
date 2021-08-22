@@ -78,7 +78,7 @@ The server Configuration file `Config.toml` is generated automatically when the 
 | **`tick_rate`** | Server Tick in ms. We recommend leaving it 33 |
 | **`log_level`** | Which Log level to output |
 | **`game_mode`** | [game-mode](../packages/#package-types) package to load -  you can only load one game-mode at once. |
-| **`loading_screen`** | [loading-screen ](../packages/wip-loading-screen.md)package to load - you can only load one loading-screen at once. |
+| **`loading_screen`** | [loading-screen ](../packages/loading-screen.md)package to load - you can only load one loading-screen at once. |
 | **`packages`** | [script ](../packages/#package-types)packages to load |
 | **`assets`** | Additional assets to force to load |
 | **`map`** | Which map to load |

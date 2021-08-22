@@ -33,7 +33,7 @@ man:AddSkeletalMeshAttached("shirt", "nanos-world::SK_Shirt") -- Men only
 man:AddSkeletalMeshAttached("shirt", "nanos-world::SK_Underwear") -- Men only
 man:AddSkeletalMeshAttached("pants", "nanos-world::SK_Pants") -- Men only
 man:AddSkeletalMeshAttached("shoes", "nanos-world::SK_Shoes_01")
-man:AddSkeletalMeshAttached("shoes", "nanos-world::SK_Tie")
+man:AddSkeletalMeshAttached("tie", "nanos-world::SK_Tie")
 
 -- Adds Clothes to Woman
 woman:AddSkeletalMeshAttached("full", "nanos-world::SK_CasualSet") -- Woman only

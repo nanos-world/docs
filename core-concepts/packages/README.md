@@ -122,7 +122,7 @@ In nanos world we have 3 kind of packages: **script**, **game-mode** and **loadi
         <p>Special Package which will be loaded during player&apos;s loading screen,
           those</p>
         <p>packages must have an <code>Index.html</code> in the root.</p>
-        <p>Please refer to <a href="wip-loading-screen.md">Loading Screen</a> for more
+        <p>Please refer to <a href="loading-screen.md">Loading Screen</a> for more
           information.</p>
       </td>
     </tr>
