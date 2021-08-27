@@ -1,0 +1,138 @@
+---
+description: Particle Entity
+---
+
+# ✨ Particle
+
+Particle Entity.
+
+import * as AuthorityType from '/docs/components/_authority-components.mdx';
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+![](/img/docs/particle.jpg)
+
+:::tip
+Both **Cascade** and **Niagara** Particle Systems are supported!
+:::
+
+:::tip
+You can spawn this entity is both **Client** or **Server** \(if you spawn it on client, it won’t be synchronized with other players\).
+:::
+
+## Usage
+
+
+```lua
+local my_particle = Particle(
+    Vector(-200, 100, 100),
+    Rotator(0, 0, 0),
+    "nanos-world::P_Explosion",
+    true, -- Auto Destroy?
+    true -- Auto Activate?
+)
+```
+
+## Constructor Parameters
+
+| **Type** | **Name** | **Default** |
+| :--- | :--- | :--- |
+| <StructType.Vector /> | **`location`** | `Vector(0, 0, 0)` |
+| <StructType.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
+| <BasicType.String /> | **`model_name`** | **\`\`** |
+| <BasicType.Boolean /> | **`auto_destroy`** | `true` |
+| <BasicType.Boolean /> | **`auto_activate`** | `true` |
+
+:::info Note
+**`auto_destroy`** means the Entity will be immediately destroyed after spawned, losing references to the _Particle System_ spawned in-game. So if the _Particle System_ itself loops indefinitely, it will keep playing until the Player reconnects.
+:::
+
+## Functions
+
+import BaseActorFunctions from '/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
+
+<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
+
+| **Returns** | **Name** | **Description** |
+| :--- | :--- | :--- |
+|  | [`Reset`](particle#reset) | Activates the Emitter again |
+|  | [`SetParameterFloat`](particle#setparameterfloat) | Sets a **Float** parameter in this Particle System |
+|  | [`SetParameterInt`](particle#setparameterint) | Sets an **Integer** parameter in this Particle System |
+|  | [`SetParameterBool`](particle#setparameterbool) | Sets a **Boolean** parameter in this Particle System |
+|  | [`SetParameterVector`](particle#setparametervector) | Sets a **Vector** parameter in this Particle System |
+|  | [`SetParameterColor`](particle#setparametercolor) | Sets a **Color** parameter in this Particle System |
+
+### `Reset`
+
+> Activates the Emitter again
+
+```lua
+my_particle:Reset()
+```
+
+### `SetParameterFloat`
+
+> Sets a float parameter in this Particle System
+
+```lua
+my_particle:SetParameterFloat(parameter)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`parameter`** | The float parameter |
+
+### `SetParameterInt`
+
+> Sets an integer parameter in this Particle System
+
+```lua
+my_particle:SetParameterInt(parameter)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`parameter`** | The int parameter |
+
+### `SetParameterBool`
+
+> Sets a boolean parameter in this Particle System
+
+```lua
+my_particle:SetParameterBool(parameter)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`parameter`** | The boolean parameter |
+
+### `SetParameterVector`
+
+> Sets a float parameter in this Particle System
+
+```lua
+my_particle:SetParameterVector(parameter)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <StructType.Vector /> | **`parameter`** | The Vector parameter |
+
+### `SetParameterColor`
+
+> Sets a Color parameter in this Particle System
+
+```lua
+my_particle:SetParameterColor(parameter)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <StructType.Color /> | **`parameter`** | The Color parameter |
+
+
+## Events
+
+import BaseActorEvents from '/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
+
+<details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>

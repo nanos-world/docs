@@ -1,26 +1,33 @@
----
-description: Welcome to the new nanos world Official Documentation!
----
+# Website
 
-# 👋 Welcome
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
-![](.gitbook/assets/docs_full_new.png)
+## Installation
 
-Welcome to the **nanos world Official Documentation**! A compilation of technical documentation written by nanos and you! Get started by reading through the introductory pages, or navigate to a specific page by using the search box.
+```console
+yarn install
+```
 
-{% hint style="info" %}
-💹 This docs is constantly improving and growing. We count on your help giving us feedback and even adding new pages or information on it 😁!
+## Local Development
 
-💑 You are allowed and encouraged to edit this and the other pages of this docs, please refer to [Contributing to the Docs](contributing-to-the-docs.md) for more information on how to collaborate!
-{% endhint %}
+```console
+yarn start
+```
 
-{% hint style="success" %}
-💡 We have a centralized space for reporting **BUGs** and **Suggest** new Ideas in [https://issues.nanos.world](https://issues.nanos.world). nanos world is a feedback-driven game, all your suggestions are listened and deeply internally discussed!
-{% endhint %}
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-{% embed url="https://issues.nanos.world" %}
+## Build
 
-## Starting Out
+```console
+yarn build
+```
 
-{% page-ref page="getting-started/migrating-to-0.73.0.md" %}
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
+## Deployment
+
+```console
+GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.

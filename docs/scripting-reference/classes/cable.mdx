@@ -1,0 +1,197 @@
+---
+description: >-
+  A Cable represents a Physics Constraint which joins two Actors with a
+  rope-like visual representation between them
+---
+
+# ⛓️ Cable
+
+A Cable represents a Physics Constraint which joins two Actors with a rope-like visual representation between them
+
+import * as AuthorityType from '/docs/components/_authority-components.mdx';
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+nanos world **Cables** are composed primarily of two Unreal Engine components: a [Cable](https://docs.unrealengine.com/en-US/API/Plugins/CableComponent/UCableComponent/index.html) and a [PhysicsConstraint](https://docs.unrealengine.com/en-US/InteractiveExperiences/Physics/Constraints/ConstraintsBlueprints/index.html). The first is used for visual purposes only and the second one gives the effective physical effects that are applied to each end of the Cable.
+
+:::info
+Cable **visuals** can be tweaked with `:SetForces()`, `:SetCableSettings()` and `:SetRenderingSettings()` methods. Those methods don’t have effect on the physics being applied and only have effects on the visual representation.
+
+Cable **physics** can be tweaked with `:SetAngularLimits()` and `:SetLinearLimits()`.
+:::
+
+After attaching the two sides of your cable, the physics can be tweaked to affect how the constraint will affect the objects.
+
+:::tip
+Cables are automatically **destroyed** when one of the sides are detached
+:::
+
+:::tip
+You can find more useful information regarding physical properties of the joint in the end of this page.
+:::
+
+## Usage
+
+```lua title="Server/Index.lua"
+local my_cable: = Cable()
+local cube_01 = Prop(Vector(100, 100, 100), Rotator(), "nanos-world::SM_Cube")
+local cube_02 = Prop(Vector(200, 0, 100), Rotator(), "nanos-world::SM_Cube")
+
+my_cable::AttachStartTo(cube_01)
+my_cable::AttachEndTo(cube_02)
+```
+
+
+## Constructor Parameters
+
+| **Type** | **Name** | **Default** |
+| :--- | :--- | :--- |
+| <StructType.Vector /> | **`location`** | `Vector(0, 0, 0)` |
+
+
+## Functions
+
+import BaseActorFunctions from '/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
+import BasePaintableFunctions from '/docs/scripting-reference/classes/base-classes/_base-paintable-functions.mdx';
+
+<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
+<details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
+
+|  | **Returns** | **Name** | **Description** |
+| :--- | :--- | :--- | :--- |
+| <AuthorityType.AuthorityOnly /> |  | [**`AttachStartTo`**](cable#attachstartto) | Attached the beginning of this cable to another Actor at a specific bone or relative location |
+| <AuthorityType.AuthorityOnly /> |  | [**`AttachEndTo`**](cable#attachendto) | Attached the end of this cable to another Actor at a specific bone or relative location |
+| <AuthorityType.AuthorityOnly /> |  | [**`DetachEnd`**](cable#detachend) | Detaches the End of this Cable |
+| <AuthorityType.AuthorityOnly /> |  | [**`DetachStart`**](cable#detachstart) | Detaches the Start of this Cable |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetAngularLimits`**](cable#setangularlimits) | Sets the Physics Angular Limits of this cable |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetCableSettings`**](cable#setcablesettings) | Set the overall settings for this cable \(visuals only\) |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetForces`**](cable#setforces) | Set the forces the cable has applied \(visuals only\) |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetLinearLimits`**](cable#setlinearlimits) | Sets the Physics Linear Limits of this cable. If use\_soft\_constraint is enabled, then stiffness and damping will be used, otherwise restitution will be used. |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetRenderingSettings`**](cable#setrenderingsettings) | Set the rendering settings of this cable \(visuals only\) |
+
+### <AuthorityType.AuthorityOnly /> `AttachStartTo`
+
+> Attached the beginning of this cable to another Actor at a specific bone or relative location
+
+```lua
+my_cable:AttachStartTo(other, relative_location, bone_name)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| [Actor](/docs/scripting-reference/base-classes/actor) | **`other`** |  |  |
+| <StructType.Vector /> | **`relative_location`** | `Vector()` |  |
+| <BasicType.String /> | **`bone_name`** | \`\` |  |
+
+### <AuthorityType.AuthorityOnly /> `AttachEndTo`
+
+> Attached the end of this cable to another Actor at a specific bone or relative location
+
+```lua
+my_cable:AttachEndTo(other, relative_location, bone_name)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| [Actor](/docs/scripting-reference/base-classes/actor) | **`other`** |  |  |
+| <StructType.Vector /> | **`relative_location`** | `Vector()` |  |
+| <BasicType.String /> | **`bone_name`** | \`\` |  |
+
+### <AuthorityType.AuthorityOnly /> `DetachEnd`
+
+> Detaches the End of this Cable
+
+```lua
+my_cable:DetachEnd()
+```
+
+### <AuthorityType.AuthorityOnly /> `DetachStart`
+
+> Detaches the Start of this Cable
+
+```lua
+my_cable:DetachStart()
+```
+
+### <AuthorityType.AuthorityOnly /> `SetAngularLimits`
+
+> Sets the Physics Angular Limits of this cable
+
+```lua
+my_cable:SetAngularLimits(swing_1_motion, swing_2_motion, twist_motion, swing_1_limit, swing_2_limit, twist_limit)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| [ConstraintMotion](/docs/scripting-reference/glossary/enums#constraintmotion) | **`swing_1_motion`** |  |  |
+| [ConstraintMotion](/docs/scripting-reference/glossary/enums#constraintmotion) | **`swing_2_motion`** |  |  |
+| <BasicType.Number /> | **`swing_1_limit`** |  |  |
+| <BasicType.Number /> | **`swing_2_limit`** |  |  |
+| <BasicType.Number /> | **`twist_limit`** |  |  |
+
+### <AuthorityType.AuthorityOnly /> `SetCableSettings`
+
+> Set the overall settings for this cable \(visuals only\)
+
+```lua
+my_cable:SetCableSettings(length, num_segments, solver_iterations)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`length`** |  |  |
+| <BasicType.Number /> | **`num_segments`** |  |  |
+| <BasicType.Number /> | **`solver_iterations`** |  |  |
+
+### <AuthorityType.AuthorityOnly /> `SetForces`
+
+> Set the forces the cable has applied \(visuals only\)
+
+```lua
+my_cable:SetForces(force, gravity_scale)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <StructType.Vector /> | **`force`** |  |  |
+| <BasicType.Number /> | **`gravity_scale`** | `1` |  |
+
+### <AuthorityType.AuthorityOnly /> `SetLinearLimits`
+
+> Sets the Physics Linear Limits of this cable. If use\_soft\_constraint is enabled, then stiffness and damping will be used, otherwise restitution will be used.
+
+```lua
+my_cable:SetLinearLimits(x_motion, y_motion, z_motion, limit, restitution, use_soft_constraint, stiffness, damping)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`x_motion`** |  |  |
+| <BasicType.Number /> | **`y_motion`** |  |  |
+| <BasicType.Number /> | **`z_motion`** |  |  |
+| <BasicType.Number /> | **`limit`** |  |  |
+| <BasicType.Number /> | **`restitution`** | `0` |  |
+| <BasicType.Boolean /> | **`use_soft_constraint`** | `false` |  |
+| <BasicType.Number /> | **`stiffness`** | `0` |  |
+| <BasicType.Number /> | **`damping`** | `0` |  |
+
+### <AuthorityType.AuthorityOnly /> `SetRenderingSettings`
+
+> Set the rendering settings of this cable \(visuals only\)
+
+```lua
+my_cable:SetRenderingSettings(width, num_sides, tile_material)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`width`** |  |  |
+| <BasicType.Number /> | **`num_sides`** |  |  |
+| <BasicType.Number /> | **`tile_material`** |  |  |
+
+
+## Events
+
+import BaseActorEvents from '/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
+
+<details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>

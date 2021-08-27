@@ -1,0 +1,178 @@
+---
+description: >-
+  A Prop represents a Dynamic Mesh which can be spawned in the world, can be
+  grabbed around by characters and have physics.
+---
+
+# 📦 Prop
+
+A Prop represents a Dynamic Mesh which can be spawned in the world, can be grabbed around by characters and have physics.
+
+import * as AuthorityType from '/docs/components/_authority-components.mdx';
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+![](/img/docs/props.jpg)
+
+:::info
+⏬ **Inheritance:** This class inherits from [Actor](/docs/scripting-reference/base-classes/actor) and [Paintable](/docs/scripting-reference/base-classes/paintable). Please check their pages for inherited **Methods** and **Events**.
+:::
+
+## Usage
+
+
+```lua
+local my_prop = Prop(
+  Vector(-900, 185, 215),
+  Rotator(0, 90, 90),
+  "nanos-world::SM_Crate_07"
+)
+```
+
+:::info
+🧙 **Note:** Props smaller than radius 20 units will have **CCD** \(Continuous Collision Detection\) enabled to avoid them falling through the floor or other objects. This will slightly increase the performance cost of them!
+:::
+
+:::info
+🧙 **Note:** Props bigger than radius 200 units will have **`Grabbable`** off by default.
+:::
+
+## Constructor Parameters
+
+| **Type** | **Name** | **Default Value** |
+| :--- | :--- | :--- |
+| <StructType.Vector /> | **`location`** | `Vector(0, 0, 0)` |
+| <StructType.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
+| <BasicType.String /> | **`model_name`** |  |
+| [CollisionType](/docs/scripting-reference/glossary/enums#collisiontype) | **`collision_type`** | `CollisionType.Normal` |
+| <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
+| <BasicType.Boolean /> | **`is_grabbable`** | `true` |
+
+## Functions
+
+import BaseActorFunctions from '/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
+import BasePaintableFunctions from '/docs/scripting-reference/classes/base-classes/_base-paintable-functions.mdx';
+
+<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
+<details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
+
+|  | **Returns** | **Name** | Description |
+| :---: | :--- | :--- | :--- |
+| <AuthorityType.ServerOnly /> |  | [**`SetGrabbable`**](prop#setgrabbable) | Sets ability to Characters to Grab this Prop |
+| <AuthorityType.ServerOnly /> |  | [**`SetPhysicsDamping`**](prop#setphysicsdamping) | Sets the Physics damping of this Prop |
+|  | <BasicType.String /> | [**`GetAssetName`**](prop#getassetname) | Gets the Asset name |
+|  | [Character](/docs/scripting-reference/classes/character) | [**`GetHandler`**](prop#gethandler) | Gets the Character \(if existing\) which is holding this |
+|  | <BasicType.Boolean /> | [**`IsGrabbable`**](prop#isgrabbable) | Gets ability to Grab this Prop |
+
+### <AuthorityType.ServerOnly />**`SetGrabbable`**
+
+> Sets ability to Characters to Grab this Prop
+
+```lua
+my_prop:SetGrabbable(is_grabbable)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`is_grabbable`** | If the Prop will be able to be grabbable or not |
+
+### <AuthorityType.ServerOnly />**`SetPhysicsDamping`**
+
+> Sets the Physics damping of this Prop
+
+```lua
+my_prop:SetPhysicsDamping(linear_damping, angular_damping)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`linear_damping`** |  |
+| <BasicType.Number /> | **`angular_damping`** |  |
+
+### **`GetAssetName`**
+
+> Gets the Asset name
+>
+> Returns <BasicType.String />
+
+```lua
+local asset_name = my_prop:GetAssetName()
+-- e.g. returns "nanos-world::SM_Cube"
+```
+
+### **`GetHandler`**
+
+> Gets the Character \(if existing\) which is holding this
+>
+> Returns [Character](/docs/scripting-reference/classes/character)
+
+```lua
+local handler = my_prop:GetHandler()
+```
+
+### **`IsGrabbable`**
+
+> Gets ability to Grab this Prop
+>
+> Returns <BasicType.Boolean />
+
+```lua
+my_prop:IsGrabbable()
+```
+
+## Events
+
+import BaseActorEvents from '/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
+
+<details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
+
+|  | **Name** | **Description** |
+| :--- | :--- | :--- |
+|  | [**`Grab`**](prop#grab) | Triggered when Character grabs a Prop |
+|  | [**`Hit`**](prop#hit) | Triggered when this Prop hits something |
+|  | [**`UnGrab`**](prop#ungrab) | Triggered when Character ungrabs a Prop |
+
+### `Grab`
+
+> Triggered when Character grabs a Prop
+
+```lua
+Prop.Subscribe("Grab", function(self, character)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Prop](prop) | `self` | The prop which was Grabbed |
+| [Character](/docs/scripting-reference/classes/character) | `character` | The new Grabber |
+
+### `Hit`
+
+> Triggered when this Prop hits something
+
+```lua
+Prop.Subscribe("Hit", function(self)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Prop](prop) | `self` | The prop which has been hit |
+
+### `UnGrab`
+
+> Triggered when this Prop hits something
+
+```lua
+Prop.Subscribe("UnGrab", function(self, character)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Prop](prop) | `self` | The prop which has been ungrabbed |
+| [Character](/docs/scripting-reference/classes/character) | `character` | The old Grabber |
+

@@ -1,0 +1,266 @@
+---
+description: Class which represents the Current Package
+---
+
+# 📦 Package
+
+Class which represents the Current Package
+
+import * as AuthorityType from '/docs/components/_authority-components.mdx';
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+:::tip
+This is a Static Class named `Package`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+:::
+
+## Static Functions
+
+| **Returns** | **Name** | **Description** |
+| :--- | :--- | :--- |
+| <BasicType.Any /> | [**`Call`**](package#call) | Calls an exported function from an other Package |
+|  | [**`Error`**](package#error) | Logs and formats an error message in the console in _Red_ |
+|  | [**`Export`**](package#export) | ‘Exports’ a function to be called from any other Package |
+|  | [**`Log`**](package#log) | Logs and formats a message in the console |
+|  | [**`Require`**](package#require) | Includes new .lua files |
+|  | [**`RequirePackage`**](package#requirepackage) | Includes other Package in this Package |
+|  | [**`Subscribe`**](package#subscribe) | Subscribes for an Event |
+|  | [**`Unsubscribe`**](package#unsubscribe) | Unsubscribes from all subscribed Events in this Class and in this Package |
+|  | [**`Warn`**](package#Warn) | Logs and formats a warning message in the console in _Orange_ |
+|  | [**`SetPersistentData`**](package#setpersistentdata) | Sets a Persistent Value which will be saved to Disk |
+| <BasicType.Table /> | [**`GetDirectories`**](package#getdirectories) | Gets a list of all directories in this package |
+| <BasicType.Table /> | [**`GetFiles`**](package#getfiles) | Gets a list of all files in this package |
+| <BasicType.String /> | [**`GetName`**](package#getname) | Gives the package name |
+| <BasicType.String /> | [**`GetPath`**](package#getpath) | Gives the package path |
+| <BasicType.Table /> | [**`GetPersistentData`**](package#getpersistentdata) | Gets all Persistent Values from the Disk |
+
+## Events
+
+| **Name** | **Description** |
+| :--- | :--- |
+| [**`Load`**](package#load) | Called when this package is loaded |
+| [**`Unload`**](package#unload) | Called when this package is unloaded |
+
+## Functions Detailed
+
+### `Call`
+
+> Calls an exported function from an other Package
+>
+> Returns <BasicType.Any />
+
+```lua
+Package.Call(package_name, function_name, args...)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`package_name`** |  |
+| <BasicType.String /> | **`function_name`** |  |
+| <BasicType.Any /> | **`args...`** |  |
+
+### `Error`
+
+> Logs and formats an error message in the console in Red \(the proper and nanos way\)
+
+```lua
+Package.Error(message, ...)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`message`** |  |
+| <BasicType.Any /> | **`args...`** |  |
+
+### `Export`
+
+> 'exports' a function to be called from any other package
+
+```lua
+Package.Export(function_name, callback)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`function_name`** |  |
+| <BasicType.Function /> | **`callback`** |  |
+
+### `Log`
+
+> Logs and formats a message in the console \(the proper and nanos way\)
+
+```lua
+Package.Log(message, ...)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`message`** |  |
+| <BasicType.Any /> | **`args...`** |  |
+
+### `Require`
+
+> Includes new .lua files
+
+```lua
+Package.Require(script_file)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`script_file`** |  |
+
+### `RequirePackage`
+
+> Includes other Package in this Package
+
+```lua
+Package.RequirePackage(package_name)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`package_name`** |  |
+
+### `Subscribe`
+
+> Subscribes for an Event
+
+```lua
+Package.Subscribe(event_name, callback)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`event_name`** |  |
+| <BasicType.Function /> | **`callback`** |  |
+
+### `Unsubscribe`
+
+> Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback
+
+```lua
+Package.Unsubscribe(event_name, callback)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`event_name`** |  |  |
+| <BasicType.Function /> | **`callback`** | `nil` |  |
+
+### `Warn`
+
+> Logs and formats a warning message in the console in Orange \(the proper and nanos way\)
+>
+> Returns
+
+```lua
+Package.Warn(message, ...)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`message`** |  |
+| <BasicType.Any /> | **`args...`** |  |
+
+### `SetPersistentData`
+
+> Sets a Persistent Value which will be saved to Disk
+
+```lua
+Package.SetPersistentData(key, value)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`key`** |  |
+| <BasicType.Any /> | **`value`** |  |
+
+### `GetDirectories`
+
+> Gets a list of all directories in this package, optionally with filters
+>
+> Returns <BasicType.Table /> of [strings](/docs/scripting-reference/glossary/basic-types#string)
+
+```lua
+Package.GetDirectories(path_filter)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`path_filter`** | `""` |  |
+
+### `GetFiles`
+
+> Gets a list of all files in this package, optionally with filters
+>
+> Returns <BasicType.Table /> of [strings](/docs/scripting-reference/glossary/basic-types#string)
+
+```lua
+Package.GetFiles(path_filter, extension_filter)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`path_filter`** | `""` |  |
+| <BasicType.String /> | **`extension_filter`** | `""` |  |
+
+### `GetName`
+
+> Gives the package name
+>
+> Returns <BasicType.String />
+
+```lua
+Package.GetName()
+```
+
+### `GetPath`
+
+> Gives the package path
+>
+> Returns <BasicType.String />
+
+```lua
+Package.GetPath()
+```
+
+### `GetPersistentData`
+
+> Gets all Persistent Values from the Disk
+>
+> Returns <BasicType.Table /> of <BasicType.Any />
+
+```lua
+Package.GetPersistentData()
+```
+
+## Events Detailed
+
+### `Load`
+
+> Called when this package is loaded
+
+:::info
+The event `Load` is triggered differently depending on the situation:
+
+* When the **server starts** or you run **`package reload all`** the event triggers only after ALL packages are loaded.
+* In all other cases \(**`package load/reload`** or **`Package.Load/Reload`**\) the event is triggered immediately after the package is loaded/reloaded.
+:::
+
+```lua
+Package.Subscribe("Load", function()
+    -- Package has been loaded
+end)
+```
+
+### `Unload`
+
+> Triggered when this page fails to load
+
+```lua
+Package.Subscribe("Unload", function()
+    -- Package has been unloaded
+end)
+```
+
