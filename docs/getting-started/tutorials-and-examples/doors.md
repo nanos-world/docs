@@ -4,7 +4,7 @@ description: How to create a simple and automatic door when Characters move in
 
 # Doors
 
-How to create a simple and automatic door when Characters move in
+How to create a simple and automatic door when Characters move in.
 
 ### Final result
 

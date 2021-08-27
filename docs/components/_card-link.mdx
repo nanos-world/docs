@@ -1,0 +1,7 @@
+export const CardLink = ({ title, description, new_tab, href, image_src }) => (
+	<a class="card-link" href={href} > 
+		<img src={image_src ? image_src : '/img/docs/nanos-world-background.jpg'} />
+		<h4>{title}</h4>
+		<p>{description}</p>
+	</a>
+);

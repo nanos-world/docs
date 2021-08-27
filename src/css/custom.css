@@ -97,7 +97,7 @@ header + p::after {
   content: " ";
   display: block;
   background-color: var(--ifm-color-emphasis-200);
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-bottom: 4rem;
 }
 
@@ -336,9 +336,72 @@ a.reference-link:before {
   margin-right: 10px;
 }
 
-a span {
+a.reference-link span {
   color: var(--ifm-color-emphasis-400);
   font-weight: var(--ifm-font-weight-normal);
   float: right;
   font-size: .8125rem;
+}
+
+/* Card Link */
+.card-links {
+  display: flex;
+	flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+a.card-link {
+  display: flex;
+  flex-grow: 1;
+	min-height: 250px;
+  min-width: 250px;
+  width: 250px;
+
+	position: relative;
+	margin: 0 0.5rem 1rem;
+  overflow: hidden;
+  cursor: pointer !important;
+
+  border-color: var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-alert-border-radius);
+  border-style: solid;
+  border-width: var(--ifm-alert-border-width);
+}
+
+a.card-link:hover {
+  border-color: var(--ifm-color-emphasis-500);
+  transition: border-color .15s cubic-bezier(.4,0,.2,1);
+	box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.1);
+	transform: scale(1.01);
+}
+
+a.card-link:hover img {
+	filter: brightness(0.75);
+  transition: filter .15s cubic-bezier(.4,0,.2,1);
+}
+
+.card-link img {
+	margin: 0px !important;
+	filter: brightness(0.5);
+	height: 100px;
+	width: 100%;
+	object-fit: cover;
+  cursor: pointer !important;
+  pointer-events: none;
+}
+
+.card-link h4 {
+  color: white !important;
+	position: absolute;
+	padding: 25px;
+  width: 100%;
+}
+
+.card-link p {
+  color: var(--ifm-color-emphasis-700);
+	top: 100px;
+	position: absolute;
+	padding: 25px;
+  width: 100%;
+  font-size: 90%;
 }
