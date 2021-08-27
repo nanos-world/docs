@@ -7,7 +7,7 @@ sidebar_position: 4
 
 There have been no significant changes from version 0.73.0 to Alpha, however this guide remains for those coming from older versions.
 
-![THE DAY THE API STOOD STEADY update](/img/updates/devastation.jpg)
+![THE DAY THE API STOOD STEADY update](/img/blog/updates/devastation.jpg)
 
 ## Migration Notes
 
