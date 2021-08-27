@@ -1,0 +1,48 @@
+---
+description: >-
+  A container for rotation information. All rotation values are stored in
+  degrees.
+---
+
+# Rotator
+
+A container for rotation information. All rotation values are stored in degrees.
+
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+:::info
+**Tip:** This structure is Open Sourced at [https://github.com/nanos-world/nanos-world-lua-lib](https://github.com/nanos-world/nanos-world-lua-lib). Feel free to push merge requests and suggest changes!
+:::
+
+## 👌Usage
+
+```lua
+local new_vector = Vector(1452.5, 512, 943.1)
+```
+
+## 🎚Properties
+
+| **Type** | **Name** | **Description** |
+| :--- | :--- | :--- |
+| <BasicType.Number /> |
+| <BasicType.Number />, Tilting your head, 0=Straight, +Clockwise, -CCW. |
+| <BasicType.Number />, Running in circles 0=East, +North, -South. |
+
+## ⏩Functions
+
+:::tip
+**Note:** This structure supports `+`, `-`, `*` and `tostring` operations.
+:::
+
+| **Returns** | **Name** | **Description** |
+| :--- | :--- | :--- |
+| <StructType.Vector /> | `GetForwardVector()` | Get the forward \(X\) unit direction vector from this component, in world space. |
+| <StructType.Vector /> | `RotateVector(vector)` | Rotate a vector rotated by this rotator. |
+|  | `Normalize()` | In-place normalize, removes all winding and creates the “shortest route” rotation. |
+| <StructType.Vector /> | `UnrotateVector(vector)` | Returns the vector rotated by the inverse of this rotator. |
+| <StructType.Quat /> | `Quaternion()` | Get Rotation as a quaternion. |
+| <StructType.Rotator /> | `GetNormalized()` | Returns a new Rotator normalized. |
+| <BasicType.Boolean />` |  |
+| <BasicType.Boolean />` |  |
+

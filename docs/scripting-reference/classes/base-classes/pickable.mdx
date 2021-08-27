@@ -1,0 +1,168 @@
+---
+description: Base class for all Pickable entities
+---
+
+# Base Pickable
+
+Base class for all Pickable entities
+
+import * as AuthorityType from '/docs/components/_authority-components.mdx';
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+**Pickable** are special entities which can be **grabbed**, **hold** and **used** by [Characters](/docs/scripting-reference/classes/character). Example of Pickable entities are: [Weapons](/docs/scripting-reference/classes/weapon), [Items](/docs/scripting-reference/classes/item) and [Grenade](/docs/scripting-reference/classes/grenade).
+
+They have special methods and events and are highlighted when looking at by a Character.
+
+## Functions
+
+|  | **Returns** | **Name** | **Description** |
+| :---: | :--- | :--- | :--- |
+|  |  | [**`AddSkeletalMeshAttached`**](pickable#addskeletalmeshattached) | Spawns and Attaches a SkeletalMesh into this Actor |
+|  |  | [**`AddStaticMeshAttached`**](pickable#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Actor |
+| <AuthorityType.ServerOnly /> |  | [**`PullUse`**](pickable#pulluse) | Force this Pickable to be used |
+| <AuthorityType.ServerOnly /> |  | [**`ReleaseUse`**](pickable#releaseuse) | Force this Pickable to be released the usage |
+|  |  | [**`RemoveSkeletalMeshAttached`**](pickable#removeskeletalmeshattached) | Removes, if existing, a SkeletalMesh from this Actor given it's custom ID |
+|  |  | [**`RemoveStaticMeshAttached`**](pickable#removestaticmeshattached) | Removes, if existing, a StaticMesh from this Actor given it's custom ID |
+|  | <BasicType.String /> | [**`GetAssetName`**](pickable#getassetname) | Gets the Asset name |
+|  | [Character](/docs/scripting-reference/classes/character) | [**`GetHandler`**](pickable#gethandler) | Gets the Character \(if existing\) which is holding this |
+
+### `AddSkeletalMeshAttached`
+
+> Spawns and Attaches a SkeletalMesh into this Actor, the SkeletalMesh must have the same Skeletal used by this Actor Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
+
+```lua
+entity:AddSkeletalMeshAttached(id, skeletal_mesh_path)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`id`** |  | Unique ID to set the Skeletal Mesh |
+| <BasicType.String /> | **`skeletal_mesh_path`** |  | Skeletal Mesh Asset to use |
+
+### `AddStaticMeshAttached`
+
+> Spawns and Attaches a StaticMesh into this Actor in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
+
+```lua
+entity:AddStaticMeshAttached(id, static_mesh_path, socket, relative_location, relative_rotation)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`id`** |  | Unique ID to set the Static Mesh |
+| <BasicType.String /> | **`static_mesh_path`** |  | Static Mesh Asset to use |
+| <BasicType.String /> | **`socket`** | `""` | Bone Socket to attach to |
+| <StructType.Vector /> | **`relative_location`** | `Vector(0, 0, 0)` | Relative Location |
+| <StructType.Rotator /> | **`relative_rotation`** | `Rotator(0, 0, 0)` | Relative Rotation |
+
+### <AuthorityType.ServerOnly />`PullUse`
+
+> Force this Pickable to be used \(e.g. if this is a Weapon, will fire\)
+
+```lua
+entity:PullUse()
+```
+
+### <AuthorityType.ServerOnly />`ReleaseUse`
+
+> Force this Pickable to be released the usage
+
+```lua
+entity:ReleaseUse()
+```
+
+### `RemoveSkeletalMeshAttached`
+
+> Removes, if existing, a SkeletalMesh from this Actor given it's custom ID
+
+```lua
+entity:RemoveSkeletalMeshAttached(id)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`id`** |  | Unique ID to remove the Attached Mesh |
+
+### `RemoveStaticMeshAttached`
+
+> Removes, if existing, a StaticMesh from this Actor given it's custom ID
+
+```lua
+entity:RemoveStaticMeshAttached(id)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`id`** |  | Unique ID to remove the Attached Mesh |
+
+### `GetAssetName`
+
+> Returns the Asset name \(<BasicType.String />
+
+```lua
+entity:GetAssetName()
+```
+
+### `GetHandler`
+
+> Gets the Character \(if existing\) which is holding this
+
+```lua
+entity:GetHandler()
+```
+
+## Events
+
+| **Name** | **Description** |
+| :--- | :--- |
+| [**`Drop`**](pickable#drop) | When a Character drops this |
+| [**`Hit`**](pickable#hit) | When this Entity hits something |
+| [**`PickUp`**](pickable#pickup) | When a Character picks up this |
+
+### `Drop`
+
+> When a Character drops this
+
+```lua
+Weapon.Subscribe("Drop", function(self, character, was_triggered_by_player)
+    -- called when any weapon is dropped by a Character
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Pickable](pickable) | `self` | The entity which has been dropped |
+| Character | `character` | The Character which picked up |
+| <BasicType.Boolean /> | `was_triggered_by_player` | If the Player has actively pressed 'G' to drop |
+
+### `Hit`
+
+> When this Entity hits something
+
+```lua
+Weapon.Subscribe("Hit", function(self, intensity)
+    -- called when any weapon hits something
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Pickable](pickable) | `self` | The entity which has been hit |
+| <BasicType.Number /> | `intensity` | Intensity of the Hit |
+
+### `PickUp`
+
+> When a Character picks up this
+
+```lua
+Weapon.Subscribe("PickUp", function(self, character)
+    -- called when any weapon is picked up by a Character
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Pickable](pickable) | `self` | The entity which has been picked up |
+| [Character](/docs/scripting-reference/classes/character) | `character` | The Character which picked up |
+

@@ -1,0 +1,123 @@
+---
+description: Retrieve Assets from Asset Packs
+---
+
+# 🍀 Assets
+
+Retrieve Assets from Asset Packs
+
+import * as AuthorityType from '/docs/components/_authority-components.mdx';
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+:::tip
+This is a Static Class named `Assets`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+:::
+
+## Static Functions
+
+| Returns | Name | Description |
+| :--- | :--- | :--- |
+| <BasicType.Table /> | [**`GetAssetPacks`**](assets#getassetpacks) | Returns an array of tables containing information about all loaded Asset Packs |
+| <BasicType.Table /> | [**`GetAnimations`**](assets#getanimations) | Returns an array of strings containing all Animation Assets Keys from an AssetPack |
+| <BasicType.Table /> | [**`GetMaps`**](assets#getmaps) | Returns an array of strings containing all Map Asset Keys from an AssetPack |
+| <BasicType.Table /> | [**`GetParticles`**](assets#getparticles) | Returns an array of strings containing all Particle Assets Keys from an AssetPack |
+| <BasicType.Table /> | [**`GetSounds`**](assets#GetSounds) | Returns an array of strings containing all Sound Assets Keys from an AssetPack |
+| <BasicType.Table /> | [**`GetSkeletalMeshes`**](assets#GetSkeletalMeshes) | Returns an array of strings containing all Skeletal Mesh Asset Keys from an AssetPack |
+| <BasicType.Table /> | [**`GetStaticMeshes`**](assets#GetStaticMeshes) | Returns an array of strings containing all Static Mesh Assets Keys from an AssetPack |
+| <BasicType.Table /> | [**`GetOthers`**](assets#GetOthers) | Returns an array of strings containing all Other Assets Keys from an AssetPack |
+
+### `GetAssetPacks`
+
+> Returns an array of tables containing information about all loaded Asset Packs
+>
+> Returned table format `[{Name, Path, Author, Version}, ...]`
+
+```lua
+Assets.GetAssetPacks()
+```
+
+### `GetAnimations`
+
+> Returns an array of strings containing all Animation Assets Keys from an AssetPack
+
+```lua
+Assets.GetAnimations(asset_pack_path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`asset_pack_path`** | The Asset Pack path to get the assets |
+
+### `GetMaps`
+
+> Returns an array of strings containing all Map Asset Keys from an AssetPack
+
+```lua
+Assets.GetMaps(asset_pack_path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`asset_pack_path`** | The Asset Pack path to get the assets |
+
+### `GetParticles`
+
+> Returns an array of strings containing all Particle Assets Keys from an AssetPack
+
+```lua
+Assets.GetParticles(asset_pack_path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`asset_pack_path`** | The Asset Pack path to get the assets |
+
+### `GetSounds`
+
+> Returns an array of strings containing all Sound Assets Keys from an AssetPack
+
+```lua
+Assets.GetSounds(asset_pack_path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`asset_pack_path`** | The Asset Pack path to get the assets |
+
+### `GetSkeletalMeshes`
+
+> Returns an array of strings containing all Skeletal Mesh Asset Keys from an AssetPack
+
+```lua
+Assets.GetSkeletalMeshes(asset_pack_path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`asset_pack_path`** | The Asset Pack path to get the assets |
+
+### `GetStaticMeshes`
+
+> Returns an array of strings containing all Static Mesh Assets Keys from an AssetPack
+
+```lua
+Assets.GetStaticMeshes(asset_pack_path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`asset_pack_path`** | The Asset Pack path to get the assets |
+
+### `GetOthers`
+
+> Returns an array of strings containing all Other Assets Keys from an AssetPack
+
+```lua
+Assets.GetOthers(asset_pack_path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`asset_pack_path`** | The Asset Pack path to get the assets |
+

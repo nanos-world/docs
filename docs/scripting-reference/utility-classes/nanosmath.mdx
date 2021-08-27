@@ -1,0 +1,160 @@
+---
+description: A table containing useful and aux Math functions
+---
+
+# NanosMath
+
+A table containing useful and aux Math functions
+
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+:::info
+**Tip:** This structure is Open Sourced at [https://github.com/nanos-world/nanos-world-lua-lib](https://github.com/nanos-world/nanos-world-lua-lib). Feel free to push merge requests and suggest changes!
+:::
+
+## Usage
+
+```lua
+local axis = NanosMath.ClampAxis(720)
+```
+
+## Functions
+
+| Returns | Name | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | Rounds a number |
+| <BasicType.Number /> |  |
+| <BasicType.Number /> | Clamps an angle to the range of \[0, 360\] |
+| <BasicType.Number /> | Clamps an angle to the range of \[-180, 180\] |
+| <BasicType.Number /> | Interpolate number from Current to Target |
+| <StructType.Rotator /> | [**`RInterpTo`**](nanosmath.md#rinterpto) | Interpolate Rotator from Current to Target |
+| <StructType.Rotator /> | [**`RInterpConstantTo`**](nanosmath.md#rinterpconstantto) | Interpolate Rotator from Current to Target with a constant step |
+| <StructType.Vector /> | [**`VInterpTo`**](nanosmath.md#vinterpto) | Interpolate Vector from Current to Target |
+| <StructType.Vector /> | [**`VInterpConstantTo`**](nanosmath.md#vinterpconstantto) | Interpolate Vector from Current to Target with a constant step |
+
+### `Round`
+
+> Rounds a number
+
+```lua
+NanosMath.Round(value)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`value`** |  |
+
+### `Clamp`
+
+> Clamps a number
+
+```lua
+NanosMath.Round(value, min, max)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`value`** |  |
+| <BasicType.Number /> | **`min`** |  |
+| <BasicType.Number /> | **`max`** |  |
+
+### `ClampAxis`
+
+> Clamps an angle to the range of \[0, 360\].
+
+```lua
+NanosMath.ClampAxis(value)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`value`** |  |
+
+### `NormalizeAxis`
+
+> Clamps an angle to the range of \[-180, 180\].
+
+```lua
+NanosMath.NormalizeAxis(value)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`value`** |  |
+
+### `FInterpTo`
+
+> Interpolate scalar from Current to Target
+
+```lua
+NanosMath.FInterpTo(current, target, delta_time, interp_speed)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`current`** |  |
+| <BasicType.Number /> | **`target`** |  |
+| <BasicType.Number /> | **`delta_time`** |  |
+| <BasicType.Number /> | **`interp_speed`** |  |
+
+### `RInterpTo`
+
+> Interpolate Rotator from Current to Target
+
+```lua
+NanosMath.RInterpTo(current, target, delta_time, interp_speed)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <StructType.Rotator /> | **`current`** |  |
+| <StructType.Rotator /> | **`target`** |  |
+| <BasicType.Number /> | **`delta_time`** |  |
+| <BasicType.Number /> | **`interp_speed`** |  |
+
+### `RInterpConstantTo`
+
+> Interpolate Rotator from Current to Target with a constant step
+
+```lua
+NanosMath.RInterpConstantTo(current, target, delta_time, interp_speed)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <StructType.Rotator /> | **`current`** |  |
+| <StructType.Rotator /> | **`target`** |  |
+| <BasicType.Number /> | **`delta_time`** |  |
+| <BasicType.Number /> | **`interp_speed`** |  |
+
+### `VInterpTo`
+
+> Interpolate Vector from Current to Target
+
+```lua
+NanosMath.VInterpTo(current, target, delta_time, interp_speed)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <StructType.Vector /> | **`current`** |  |
+| <StructType.Vector /> | **`target`** |  |
+| <BasicType.Number /> | **`delta_time`** |  |
+| <BasicType.Number /> | **`interp_speed`** |  |
+
+### `VInterpConstantTo`
+
+> Interpolate Vector from Current to Target with a constant step
+
+```lua
+NanosMath.VInterpConstantTo(current, target, delta_time, interp_speed)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <StructType.Vector /> | **`current`** |  |
+| <StructType.Vector /> | **`target`** |  |
+| <BasicType.Number /> | **`delta_time`** |  |
+| <BasicType.Number /> | **`interp_speed`** |  |
+

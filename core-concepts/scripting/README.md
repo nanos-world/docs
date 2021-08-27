@@ -1,6 +1,0 @@
----
-description: Scripting Guide
----
-
-# Scripting
-

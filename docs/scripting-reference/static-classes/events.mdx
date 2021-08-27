@@ -1,0 +1,188 @@
+---
+description: Subscribe for user-defined Events
+---
+
+# 🚩 Events
+
+Subscribe for user-defined Events
+
+import * as AuthorityType from '/docs/components/_authority-components.mdx';
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+:::tip
+This is a Static Class named `Events`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+:::
+
+{% page-ref page="../../core-concepts/scripting/events-guide.md" %}
+
+## Static Functions
+
+| Returns | Name | Description |
+| :--- | :--- | :--- |
+|  | [**`Call`**](events#call) | Calls an Event which will be triggered in all Local Packages |
+| <AuthorityType.ClientOnly /> | [**`CallRemote`**](events#callremote) | Calls an Event on Client which will be triggered in all Server Packages |
+| <AuthorityType.ServerOnly /> | [**`CallRemote`**](events#callremote) | Calls an Event on Server which will be triggered in all Client's Packages of `Player` |
+| <AuthorityType.ServerOnly /> | [**`BroadcastRemote`**](events#broadcastremote) | Calls an Event on Server which will be triggered in all Client's Packages |
+|  | [**`Subscribe`**](events#subscribe) | Subscribes for an user-created event which will be triggered for both local or _remote\*_ called events |
+|  | [**`Unsubscribe`**](events#unsubscribe) | Unsubscribes from all subscribed events in this Package with that event name, optionally passing the function to unsubscribe only that callback |
+
+:::info
+_Remote\*_ means the other side, e.g.: if I’m the **Client**, the remote is the Server. If I’m the **Server**, the remote is the Client.
+:::
+
+#### `Call`
+
+> Calls an Event which will be triggered in all Local Packages
+
+```lua
+Events.Call(event_name, args...)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`event_name`** | The Event Name to trigger the event |
+| <BasicType.Any /> | **`args...`** | Arguments to pass to the event |
+
+#### <AuthorityType.ClientOnly /> `CallRemote`
+
+> Calls an Event on Client which will be triggered in all Server Packages
+
+```lua
+Events.CallRemote(event_name, args...)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`event_name`** | The Event Name to trigger the event |
+| <BasicType.Any /> | **`args...`** | Arguments to pass to the event |
+
+#### <AuthorityType.ServerOnly />`CallRemote`
+
+> Calls an Event on Server which will be triggered in all Client's Packages of `Player`
+
+```lua
+Events.CallRemote(event_name, player, args...)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`event_name`** | The Event Name to trigger the event |
+| Player | **`player`** | The remote player to send this event |
+| <BasicType.Any /> | **`args...`** | Arguments to pass to the event |
+
+#### <AuthorityType.ServerOnly />`BroadcastRemote`
+
+> Calls an Event on Server which will be triggered in all Client's Packages
+
+```lua
+Events.BroadcastRemote(event_name, args...)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`event_name`** | The Event Name to trigger the event |
+| Player | **`player`** | The remote player to send this event |
+| <BasicType.Any /> | **`args...`** | Arguments to pass to the event |
+
+#### `Subscribe`
+
+> Subscribes for an user-created event which will be triggered for both local or remote called events
+
+```lua
+Events.Subscribe(event_name, function()
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`event_name`** | The Event Name to Subscribe for an event |
+| <BasicType.Function /> | **`callback`** | The callback function to execute |
+
+#### `Unsubscribe`
+
+> Unsubscribes from all subscribed events in this Package with that event name, optionally passing the function to unsubscribe only that callback
+
+```lua
+Events.Unsubscribe(event_name, callback)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`event_name`** |  | The Event Name to Unsubscribe |
+| <BasicType.Function /> | **`callback`** | `nil` | The callback function to unsubscribe |
+
+## Examples
+
+
+```lua title="Client/Index.lua"
+-- register for a local Event (local = client only)
+Events.Subscribe("MyLocalEvent", function(my_text)
+    Package.Log("Event received locally! " .. my_text)
+    -- outputs "Event received locally! hello nanos world!"
+end)
+
+-- calls a local Event in all Local Packages
+Events.Call("MyLocalEvent", "hello nanos world!")
+
+-- register for a server Event (remote = server)
+Events.Subscribe("MyClientEvent", function(my_text)
+    Package.Log("Event received from server! " .. my_text)
+    -- outputs "Event received from server! hello nanos world!"
+end)
+
+-- calls a remote Event in all Server Packages
+Events.CallRemote("MyServerEvent", "hello nanos world!")
+```
+
+
+:::info
+On **Server**, registering for remote events has an addition parameter: [Player](/docs/scripting-reference/classes/player), which is the client who sent the event.
+:::
+
+
+```lua title="Server/Index.lua"
+-- register for a local Event (local = server only)
+Events.Subscribe("MyLocalEvent", function(my_text)
+    Package.Log("Event received locally! " .. my_text)
+    -- outputs "Event received locally! hello nanos world!"
+end)
+
+-- calls a local Event in all Local Packages
+Events.Call("MyLocalEvent", "hello nanos world!")
+
+-- register for a client Event (remote = client)
+Events.Subscribe("MyServerEvent", function(player, my_text)
+    Package.Log(player:GetName() .. " sent an event from client! " .. my_text)
+    -- outputs "Syed sent an event from client! hello nanos world!"
+
+            -- sends an "answer" to the player which sent this event
+    Events.CallRemote("MyClientEvent", player, "hello nanos world! message only for you!")
+end)
+
+-- sends a remote Event to all Players in all Client Packages
+Events.BroadcastRemote("MyClientEvent", "hello nanos world!")
+```
+
+
+### Passing entities through Events
+
+
+```lua
+-- register for an Event (remote or local)
+Events.Subscribe("MyAnotherEvent", function(my_text, my_vector, my_character, my_number)
+    Package.Log("Event received! " .. my_text .. " " .. my_vector.X .. " " .. my_character:GetViewMode() .. " " .. my_number)
+    -- outputs "Event received! hello nanos world! 123 1 456"
+end)
+
+-- passing Characters through events
+local my_temp_character = Character()
+
+-- calls a local Event in all Local Packages
+Events.Call("MyEvent", "hello nanos world!", Vector(123, 123, 123), my_temp_character, 456)
+
+-- calls a remote Event in all Server Packages
+Events.CallRemote("MyEvent", "hello nanos world!", Vector(123, 123, 123), my_temp_character, 456)
+```
+

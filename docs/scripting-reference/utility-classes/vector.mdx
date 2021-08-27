@@ -1,0 +1,48 @@
+---
+description: 'A vector composed of components (X, Y, Z) with floating point precision.'
+---
+
+# Vector
+
+A vector composed of components (X, Y, Z) with floating point precision.
+
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+:::info
+**Tip:** This structure is Open Sourced at [https://github.com/nanos-world/nanos-world-lua-lib](https://github.com/nanos-world/nanos-world-lua-lib). Feel free to push merge requests and suggest changes!
+:::
+
+## 👌Usage
+
+```lua
+local new_vector = Vector(1452.5, 512, 943.1)
+```
+
+## 🎚Properties
+
+| **Type** | **Name** | **Description** |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`X`** | X Coordinate |
+| <BasicType.Number /> | **`Y`** | Y Coordinate |
+| <BasicType.Number /> | **`Z`** | Z Coordinate |
+
+## ⏩Functions
+
+:::tip
+**Note:** This structure supports `+`, `-`, `*`, `/`, `^`, `==`, and `tostring` operations.
+:::
+
+| **Returns** | **Name** | **Description** |
+| :--- | :--- | :--- |
+| <BasicType.Boolean />`** | Check against another vector for equality, within specified error limits |
+| <BasicType.Number />`** | Squared distance between two points. |
+| <BasicType.Number />`** |  |
+| <StructType.Vector /> | **`GetSafeNormal()`** | Gets a normalized copy of the vector, checking it is safe to do so based on the length |
+| <BasicType.Boolean />`** | Checks whether vector is near to zero within a specified tolerance |
+| <BasicType.Boolean />`** | Checks whether all components of the vector are exactly zero |
+|  | **`Normalize()`** | Normalize this vector in-place if it is larger than a given tolerance. Leaves it unchanged if not |
+| <BasicType.Number />`** | Get the squared length of this vector |
+| <StructType.Rotator /> | **`Rotation()`** | Returns the orientation corresponding to the direction in which the vector points |
+| <BasicType.Number /> of this vector |
+
