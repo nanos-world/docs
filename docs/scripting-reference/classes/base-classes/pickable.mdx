@@ -16,16 +16,9 @@ They have special methods and events and are highlighted when looking at by a Ch
 
 ## Functions
 
-|  | **Returns** | **Name** | **Description** |
-| :---: | :--- | :--- | :--- |
-|  |  | [**`AddSkeletalMeshAttached`**](pickable#addskeletalmeshattached) | Spawns and Attaches a SkeletalMesh into this Actor |
-|  |  | [**`AddStaticMeshAttached`**](pickable#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Actor |
-| <AuthorityType.ServerOnly /> |  | [**`PullUse`**](pickable#pulluse) | Force this Pickable to be used |
-| <AuthorityType.ServerOnly /> |  | [**`ReleaseUse`**](pickable#releaseuse) | Force this Pickable to be released the usage |
-|  |  | [**`RemoveSkeletalMeshAttached`**](pickable#removeskeletalmeshattached) | Removes, if existing, a SkeletalMesh from this Actor given it's custom ID |
-|  |  | [**`RemoveStaticMeshAttached`**](pickable#removestaticmeshattached) | Removes, if existing, a StaticMesh from this Actor given it's custom ID |
-|  | <BasicType.String /> | [**`GetAssetName`**](pickable#getassetname) | Gets the Asset name |
-|  | [Character](/docs/scripting-reference/classes/character) | [**`GetHandler`**](pickable#gethandler) | Gets the Character \(if existing\) which is holding this |
+import BasePickableFunctions from '/docs/scripting-reference/classes/base-classes/_base-pickable-functions.mdx';
+
+<BasePickableFunctions hidden_reference={true} />
 
 ### `AddSkeletalMeshAttached`
 
@@ -114,11 +107,9 @@ entity:GetHandler()
 
 ## Events
 
-| **Name** | **Description** |
-| :--- | :--- |
-| [**`Drop`**](pickable#drop) | When a Character drops this |
-| [**`Hit`**](pickable#hit) | When this Entity hits something |
-| [**`PickUp`**](pickable#pickup) | When a Character picks up this |
+import BasePickableEvents from '/docs/scripting-reference/classes/base-classes/_base-pickable-events.mdx';
+
+<BasePickableEvents hidden_reference={true} />
 
 ### `Drop`
 

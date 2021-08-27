@@ -320,6 +320,7 @@ a.reference-link {
   border-width: var(--ifm-alert-border-width);
 
   margin: 1rem 0;
+  position: relative;
 }
 
 a.reference-link:hover {
@@ -339,8 +340,17 @@ a.reference-link:before {
 a.reference-link span {
   color: var(--ifm-color-emphasis-400);
   font-weight: var(--ifm-font-weight-normal);
-  float: right;
   font-size: .8125rem;
+  position: absolute;
+  right: 1rem;
+  line-height: 24px;
+}
+
+/* Hides in specific screen sizes */
+@media screen and (min-width: 995px) and (max-width: 1300px), (max-width: 800px) {
+  a.reference-link span {
+    display: none;
+  }
 }
 
 /* Card Link */
