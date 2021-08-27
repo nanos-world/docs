@@ -1,0 +1,66 @@
+---
+description: >-
+  An Item represents an Entity which can be Pickable by a Character, doesn’t
+  have any special action unless holding it with hands with pre-defined handling
+  modes.
+---
+
+# 🔦 Item
+
+An Item represents an Entity which can be Pickable by a Character, doesn’t have any special action unless holding it with hands with pre-defined handling modes.
+
+import * as AuthorityType from '/docs/components/_authority-components.mdx';
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+![](/img/docs/torch.png)
+
+:::info
+⏬ **Inheritance:** This class inherits from [Actor](/docs/scripting-reference/classes/base-classes/actor) and [Pickable](/docs/scripting-reference/classes/base-classes/pickable). Please check it's pages for inherited **Methods** and **Events**.
+:::
+
+## Usage
+
+
+```lua
+local NewItem = Item(
+  Vector(-900, 185, 215),
+  Rotator(0, 90, 90),
+  "nanos-world::SM_Torch",
+  CollisionType.Normal,
+  true,
+  HandlingMode.SingleHandedMelee,
+  CrosshairType.None
+)
+```
+
+## Constructor Parameters
+
+| **Type** | **Name** | **Default** |
+| :--- | :--- | :--- |
+| <StructType.Vector /> | **`location`** | Vector\(0, 0, 0\) |
+| <StructType.Rotator /> | **`rotation`** | Rotator\(0, 0, 0\) |
+| <BasicType.String /> |  |
+| [CollisionType](/docs/scripting-reference/glossary/enums#collisiontype) | **`collision_type`** | CollisionType.Normal |
+| <BasicType.Boolean /> | gravity\_enabled | true |
+| [HandlingMode](/docs/scripting-reference/glossary/enums#handlingmode) | **`handling_mode`** | HandlingMode.Torch |
+| [CrosshairType](/docs/scripting-reference/glossary/enums#crosshairtype) | **`crosshair_type`** | CrosshairType.None |
+
+## Functions
+
+import BaseActorFunctions from '/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
+import BasePaintableFunctions from '/docs/scripting-reference/classes/base-classes/_base-paintable-functions.mdx';
+
+<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
+<details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
+
+## Events
+
+import BaseActorEvents from '/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
+
+<details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
+
+## WIP: HandlingModes
+
+TODO: Add Handling Modes images
+

@@ -1,0 +1,81 @@
+---
+description: How to use nanos world CLI to install packages and update the server.
+sidebar_position: 3
+---
+
+# Command Line Interface
+
+How to use nanos world CLI to install packages and update the server.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+nanos world provides a CLI \(Command Line Interface\) to help updating the server, packages and assets and also downloading them!
+
+## Starting the CLI
+
+To run the cli, start the server with `--cli` argument:
+
+<Tabs
+  defaultValue="cmd"
+  values={[
+    {label: 'Windows', value: 'cmd'},
+    {label: 'Linux', value: 'linux'},
+  ]}>
+  <TabItem value="cmd">
+
+```shell
+./NanosWorldServer.exe --cli
+```
+
+  </TabItem>
+  <TabItem value="linux">
+
+```shell
+./NanosWorldServer --cli
+```
+
+  </TabItem>
+</Tabs>
+
+ After started, if you type `help` you can see all the available commands:
+
+![](/img/docs/cli-01.jpg)
+
+## CLI Commands
+
+| Commands | Description |
+| :--- | :--- |
+| `install package [PACKAGE_NAME]` | Install a Package |
+| `update package [PACKAGE_NAME]` | Update a Package |
+| `install assets [ASSET_NAME]` | Install an Asset Pack |
+| `update assets [ASSET_NAME]` | Update an Asset Pack |
+| `update server` | Update the Server |
+
+## One-Liner CLI
+
+:::info
+It is also possible to run the CLI in a non-interactive mode, just run the command together after the `--cli`.
+:::
+
+<Tabs
+  defaultValue="cmd"
+  values={[
+    {label: 'Windows', value: 'cmd'},
+    {label: 'Linux', value: 'linux'},
+  ]}>
+  <TabItem value="cmd">
+
+```shell
+./NanosWorldServer.exe --cli update server
+```
+
+  </TabItem>
+  <TabItem value="linux">
+
+```shell
+./NanosWorldServer --cli update server
+```
+
+  </TabItem>
+</Tabs>

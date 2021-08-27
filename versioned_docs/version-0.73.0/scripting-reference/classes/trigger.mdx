@@ -1,0 +1,125 @@
+---
+description: >-
+  A Trigger class is a utility class to trigger events when any Entity enters an
+  Area
+---
+
+# 🪤 Trigger
+
+A Trigger class is a utility class to trigger events when any Entity enters an Area.
+
+import * as AuthorityType from '/docs/components/_authority-components.mdx';
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+![](/img/docs/trigger.jpg)
+
+## Usage
+
+```lua
+local sphere_trigger = Trigger(Vector(-200, 100, 500), Rotator(), Vector(100), TriggerType.Sphere, true, Color(1, 0, 0))
+
+sphere_trigger:Subscribe("BeginOverlap", function(trigger, actor_triggering)
+    Package.Log("Something entered my Sphere Trigger")
+end)
+
+local box_trigger = Trigger(Vector(300, 200, 500), Rotator(0, 45, 0), Vector(150, 150, 150), TriggerType.Box, true, Color(0, 1, 0))
+
+box_trigger:Subscribe("BeginOverlap", function(trigger, actor_triggering)
+    Package.Log("Something entered my Box Trigger")
+end)
+
+box_trigger:Subscribe("EndOverlap", function(trigger, actor_triggering)
+    Package.Log("Something left my Box Trigger")
+end)
+```
+
+## Constructor Parameters
+
+| **Type** | **Name** | **Default** |  |
+| :--- | :--- | :--- | :--- |
+| <StructType.Vector /> | **`location`** | `Vector(0, 0, 0)` |  |
+| <StructType.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |  |
+| <StructType.Vector /> | **`extent`** | `Vector(0, 0, 0)` | Size of the Trigger. If using Sphere, only the **X** is used |
+| [TriggerType](/docs/scripting-reference/glossary/enums#triggertype) | **`trigger_type`** | `TriggerType.Sphere` | Currently supports **Sphere** of **Box** |
+| <BasicType.Boolean /> | **`is_visible`** | `false` | Useful for debugging |
+| <StructType.Color /> | **`color`** | `Color.RED` | Color to paint the Trigger bounds - if Visible |
+
+## Functions
+
+import BaseActorFunctions from '/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
+
+<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
+
+|  | **Returns** | **Name** | **Description** |
+| :--- | :--- | :--- | :--- |
+| <AuthorityType.ServerOnly /> |  | **`SetExtent`** | Sets the extent size of this trigger |
+| <AuthorityType.ServerOnly /> |  | **`SetVisibility`** | Sets if this Trigger is visible as a Sphere |
+
+### <AuthorityType.ServerOnly />`SetExtent`
+
+> Sets the extent size of this trigger \(sphere triggers will use only the .X component for radius\)
+
+```lua
+my_trigger:SetExtent(extent)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <StructType.Vector /> | **`extent`** | Sphere triggers will use only the .X component for radius |
+
+### <AuthorityType.ServerOnly />`SetVisibility`
+
+> Sets if this Trigger is visible for debugging
+
+```lua
+my_trigger:SetVisibility(is_visible)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`is_visible`** |  |
+
+## Events
+
+import BaseActorEvents from '/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
+
+<details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
+
+|  | **Name** | **Description** |
+| :--- | :--- | :--- |
+| <AuthorityType.ServerOnly /> | [**`BeginOverlap`**](trigger#beginoverlap) | Triggered when something overlaps this Trigger |
+| <AuthorityType.ServerOnly /> | [**`EndOverlap`**](trigger#endoverlap) | Triggered when something leaves this Trigger |
+
+### <AuthorityType.ServerOnly />`BeginOverlap`
+
+> Triggered when something overlaps this Trigger
+
+```lua
+Trigger.Subscribe("BeginOverlap", function(self, entity)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Trigger](trigger) | `self` | The Trigger entity |
+| [Actor](/docs/scripting-reference/classes/base-classes/actor) | `entity` | Any Actor which overlaps |
+
+### <AuthorityType.ServerOnly />`EndOverlap`
+
+> Triggered when something leaves this Trigger
+
+```lua
+Trigger.Subscribe("EndOverlap", function(self, entity)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Trigger](trigger) | `self` | The Trigger entity |
+| [Actor](/docs/scripting-reference/classes/base-classes/actor) | `entity` | Any Actor which left the Trigger |
+
+## 
+

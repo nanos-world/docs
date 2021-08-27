@@ -1,0 +1,121 @@
+---
+description: Execute of code at specified time intervals
+---
+
+# ⏱️ Timer
+
+Execute of code at specified time intervals
+
+import * as AuthorityType from '/docs/components/_authority-components.mdx';
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+![](/img/docs/stopwatch.png)
+
+:::tip
+This is a Static Class named `Timer`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+:::
+
+:::info
+The shortest interval possible is equal to the local Tick Rate - usually at 33ms. On the Server this can vary depending on the Config.toml setting.
+:::
+
+## Static Functions
+
+| Returns | Name | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | Executes a function, after waiting a specified number of milliseconds |
+| <BasicType.Number />, but repeats the execution of the function continuously |
+|  | [**`ClearTimeout`**](timer#cleartimeout) | Stops the execution of the function specified in SetTimeout\(\) |
+|  | [**`ClearInterval`**](timer#clearinterval) | Stops the execution of the function specified in SetInterval\(\) |
+
+### `SetTimeout`
+
+> Executes a function, after waiting a specified number of milliseconds
+>
+> Returns the timeout\_id
+
+
+```lua
+Timer.SetTimeout(function(param1, param2)
+    Package.Log("Timeout after 3 seconds! Param1: " .. param1 .. ". Param2: " .. param2)
+end, 3000, "hello", 123)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Function /> | **`callback`** |  | The callback that will be executed |
+| <BasicType.Number /> | **`milliseconds`** | **`0`** | The number of milliseconds to wait before executing the code |
+| <BasicType.Any /> | **`parameters...`** |  | Additional parameters to pass to the function |
+
+### `SetInterval`
+
+> Same as SetTimeout\(\), but repeats the execution of the function continuously
+>
+> Returns the interval\_id
+
+
+```lua
+Timer.SetInterval(function(param1, param2)
+    Package.Log("Triggered each 2 seconds! Param1: " .. param1 .. ". Param2: " .. param2)
+end, 2000, "world", 456)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Function /> | **`callback`** |  | The callback that will be executed |
+| <BasicType.Number /> on how often to execute the code |
+| <BasicType.Any /> | **`parameters...`** |  | Additional parameters to pass to the function |
+
+### `ClearTimeout`
+
+> Stops the execution of the function specified in SetTimeout\(\) The ID value returned by SetTimeout\(\) is used as the parameter for the ClearTimeout\(\) method
+
+
+```lua
+-- Creates the Timeout
+local my_timeout = Timer.SetTimeout(function() end, 3000)
+
+-- Stops the Timeout
+Timer.ClearTimeout(my_timeout)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> method |
+
+### `ClearInterval`
+
+> Stops the execution of the function specified in SetInterval\(\) The ID value returned by SetInterval\(\) is used as the parameter for the ClearInterval\(\) method
+
+
+```lua
+-- Creates the Interval
+local my_interval = Timer.SetInterval(function() end, 3000)
+
+-- Stops the Interval
+Timer.ClearInterval(my_interval)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> method |
+
+## Examples
+
+
+```lua
+-- creates a Interval to call a function at every 1 second
+local my_interval = Timer.SetInterval(1000, function()
+    Package.Log("Tick 1 second!")
+end)
+
+-- cancels the Interval
+Timer.ClearInterval(my_id)
+
+-- creates a Timeout to call my_function in 5 seconds, once - passing a parameter
+Timer.SetTimeout(function(my_param)
+    Package.Log("nanos " .. my_param)
+end, 5000, "world")
+```
+

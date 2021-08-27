@@ -1,0 +1,92 @@
+---
+description: Base Paintable Class
+---
+
+# Base Paintable
+
+Base Paintable Class
+
+import * as AuthorityType from '/docs/components/_authority-components.mdx';
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+A **Paintable** class is a base Class in nanos world which provides customization on the Meshes Materials, exposing common functions to allow you to set custom Material Parameters and loading Textures from Disk.
+
+:::info
+This is a base Class. You cannot spawn it directly.
+:::
+
+## Functions
+
+import BasePaintableFunctions from '/docs/scripting-reference/classes/base-classes/_base-paintable-functions.mdx';
+
+<BasePaintableFunctions />
+
+### `SetDefaultMaterial`
+
+> Replaces all materials of this actor with a nanos basic material with common parameters available
+
+
+```lua
+my_entity:SetDefaultMaterial(material_type)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [MaterialType](/docs/scripting-reference/glossary/enums#materialtype) | material\_type | The `MaterialType` to apply |
+
+### `SetMaterialColorParameter`
+
+> Sets a Color parameter in this actor’s material
+
+
+```lua
+my_entity:SetMaterialColorParameter(parameter_name, color)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | parameter_name | The name of Material parameter |
+| <StructType.Color /> | color | The value to set |
+
+### `SetMaterialScalarParameter`
+
+> Sets a Scalar parameter in this actor’s material
+
+
+```lua
+my_entity:SetMaterialScalarParameter(parameter_name, number)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | parameter\_name | The name of Material parameter |
+| <BasicType.String /> | scalar | The value to set |
+
+### `SetMaterialTextureParameter`
+
+> Loads a image from computer \(relative to Assets/ folder\) and sets as parameter in this actor’s material
+
+
+```lua
+my_entity:SetMaterialTextureParameter(parameter_name, texture_path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | parameter\_name | The name of Material parameter |
+| [SpecialPath](/docs/scripting-reference/glossary/basic-types#specialpath) | texture\_path | The path of the Texture |
+
+### `SetMaterialVectorParameter`
+
+> Sets a Vector parameter in this actor’s material
+
+
+```lua
+my_entity:SetMaterialVectorParameter(parameter_name, vector)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | parameter\_name | The name of Material parameter |
+| <StructType.Vector /> | vector | The vector to apply |

@@ -1,0 +1,178 @@
+---
+description: >-
+  A Text Render class is useful for spawning Texts in 3D world, you can even
+  attach it to other entities
+---
+
+# 🆒 TextRender
+
+A Text Render class is useful for spawning Texts in 3D world, you can even attach it to other entities.
+
+import { ReferenceLink } from '/docs/components/_reference-link.mdx';
+import * as AuthorityType from '/docs/components/_authority-components.mdx';
+import * as BasicType from '/docs/components/_common-types.mdx';
+import * as StructType from '/docs/components/_struct-types.mdx';
+
+![](/img/docs/text-render.jpg)
+
+:::tip
+This is a **Client** only Class.
+:::
+
+:::info
+⏬ **Inheritance:** This class inherits from [Actor](/docs/scripting-reference/classes/base-classes/actor) and [Pickable](/docs/scripting-reference/classes/base-classes/pickable). Please check it's pages for inherited **Methods** and **Events**.
+:::
+
+## Usage
+
+```lua
+local my_text_render = TextRender(
+    Vector(-100, 200, 300),
+    Rotator(),
+    "My Awesome Text",
+    Vector(1, 1, 1) -- Scale
+    Color(1, 0, 0), -- Red Color
+    FontType.OpenSans,
+    TextRenderAlignCamera.FaceCamera
+)
+```
+
+:::info
+If you desire your **TextRender** to be visible through walls, replace it’s material with the nanos Default TranslucentDepth one!
+
+`SetDefaultMaterial(MaterialType.TranslucentDepth)`.
+
+You can also tweak it’s color and other properties using the Material methods.
+:::
+
+<ReferenceLink href="/docs/getting-started/tutorials-and-examples/name-tags">Nametags</ReferenceLink>
+
+## Constructor Parameters
+
+| **Type** | **Name** | **Default** |
+| :--- | :--- | :--- |
+| <StructType.Vector /> | **`location`** | `Vector(0, 0, 0)` |
+| <StructType.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
+| <BasicType.String /> | **`text`** |  |
+| <StructType.Vector /> | **`scale`** | `Vector(1, 1, 1)` |
+| <StructType.Color /> | **`color`** | `Color(1, 1, 1, 1)` |
+| [FontType](/docs/scripting-reference/glossary/enums#fonttype) | **`font_type`** | `FontType.Roboto` |
+| [TextRenderAlignCamera](/docs/scripting-reference/glossary/enums#textrenderaligncamera) | **`align_camera`** | `TextRenderAlignCamera.Unaligned` |
+
+## Functions
+
+import BaseActorFunctions from '/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
+import BasePaintableFunctions from '/docs/scripting-reference/classes/base-classes/_base-paintable-functions.mdx';
+
+<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
+<details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
+
+| **Returns** | **Name** | **Description** |
+| :--- | :--- | :--- |
+|  | [`SetColor`](text-render#setcolor) | Sets the Color |
+|  | [`SetFont`](text-render#setfont) | Sets the Font |
+|  | [`SetFreeze`](text-render#setfreeze) | Freeze mesh rebuild, to avoid unnecessary mesh rebuilds when setting a few properties together |
+|  | [`SetGlyphSettings`](text-render#setglyphsettings) | Sets the Glyph representation settings to generate the 3D Mesh for this text render |
+|  | [`SetMaxSize`](text-render#setmaxsize) | Sets the Max Size of the TextRender, optionally scaling it proportionally |
+|  | [`SetText`](text-render#settext) | Sets the Text |
+|  | [`SetTextSettings`](text-render#settextsettings) | Sets the Text & Font settings for this text render |
+
+### `SetColor`
+
+> Sets the Color Internally this will call the _SetMaterialColorParameter\("Tint", color\)_ method
+
+```lua
+my_text_render:SetColor(color)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <StructType.Color /> | **`color`** |  |
+
+### `SetFont`
+
+> Sets the Font
+
+```lua
+my_text_render:SetFont(:font_type)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [FontType](/docs/scripting-reference/glossary/enums#fonttype) | **`font_type`** |  |
+
+### `SetFreeze`
+
+> Freeze mesh rebuild, to avoid unnecessary mesh rebuilds when setting a few properties together
+
+```lua
+my_text_render:SetFreeze(freeze)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`freeze`** |  |
+
+### `SetGlyphSettings`
+
+> Sets the Glyph representation settings to generate the 3D Mesh for this text render
+
+```lua
+my_text_render:SetGlyphSettings(extrude, bevel, bevel_type, bevel_segments, outline)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`extrude`** | `0` |  |
+| <BasicType.Number /> | **`level`** | `0` |  |
+| [TextRenderBevelType](/docs/scripting-reference/glossary/enums#textrenderbeveltype) | **`bevel_type`** | `TextRenderBevelType.Convex` |  |
+| <BasicType.Number /> | **`bevel_segments`** | `8` |  |
+| <BasicType.Boolean /> | **`outline`** | `false` |  |
+
+### `SetMaxSize`
+
+> Sets the Max Size of the TextRender, optionally scaling it proportionally
+
+```lua
+my_text_render:SetMaxSize(max_width, max_height, scale_proportionally)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`max_width`** | `0` |  |
+| <BasicType.Number /> | **`max_height`** | `0` |  |
+| <BasicType.Boolean /> | **`boolean`** | `true` |  |
+
+### `SetText`
+
+> Sets the Text
+
+```lua
+my_text_render:SetText(text)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`text`** |  |
+
+### `SetTextSettings`
+
+> Sets the Text & Font settings for this text render
+
+```lua
+my_text_render:SetTextSettings(kerning, line_spacing, word_spacing, horizontal_alignment, vertical_alignment)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`kerning`** | `0` |  |
+| <BasicType.Number /> | **`line_spacing`** | `0` |  |
+| <BasicType.Number /> | **`word_spacing`** | `0` |  |
+| [TextRenderHorizontalAlignment](/docs/scripting-reference/glossary/enums#textrenderhorizontalalignment) | **`horizontal_alignment`** | `TextRenderHorizontalAlignment.Center` |  |
+| [TextRenderVerticalAlignment](/docs/scripting-reference/glossary/enums#textrenderverticalalignment) | **`vertical_alignment`** | `TextRenderVerticalAlignment.Center` |  |
+
+## Events
+
+import BaseActorEvents from '/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
+
+<details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
