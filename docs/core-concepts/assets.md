@@ -4,6 +4,8 @@ description: All you need to know about Assets
 
 # Assets
 
+All you need to know about Assets
+
 **Assets** in nanos world are all objects or content which come from Unreal Engine, i.e. _Maps_, _StaticMeshes_, _SkeletalMeshes_, _Sounds_, _Particles_, etc are all **Assets**.
 
 In order to use custom Assets in your servers, you must have or create an **Asset Pack**. Asset Packs are a set of Assets that were exported together from Unreal.

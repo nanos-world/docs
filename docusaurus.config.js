@@ -7,11 +7,12 @@ module.exports = {
   tagline: 'nanos world',
   url: 'https://docs.nanos.world',
   baseUrl: '/',
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'ignore',
+  onBrokenMarkdownLinks: 'ignore',
   favicon: 'img/favicon.ico',
-  organizationName: 'nanos', // Usually your GitHub org/user name.
-  projectName: 'nanos world docs', // Usually your repo name.
+  organizationName: 'nanos-world',
+  projectName: 'docs',
+  trailingSlash: false,
   // i18n: {
   //   defaultLocale: 'en',
   //   locales: ['en'], //isDeployPreview ? ['en'] : ['en', 'fr', 'pt-BR', 'ko', 'zh-CN'],

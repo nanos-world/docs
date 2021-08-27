@@ -4,6 +4,8 @@ description: Extending the functionalities of nanos world Scripting API
 
 # Modules
 
+Extending the functionalities of nanos world Scripting API
+
 Modules allows you to extend the functionality of the nanos world scripting API on the server side. Currently only C modules are supported.
 
 :::caution

@@ -212,7 +212,7 @@ article p img {
 }
 
 /* summary/details margin */
-markdown details div {
+.markdown details div:first-child {
   margin-top: 1rem !important;
 }
 
@@ -300,4 +300,9 @@ html[data-theme='dark'] .header-discord-link:before {
 
 .authority-availability img {
   display: flex;
+}
+
+/* Bug? Announcement bar affecting it somehow? */
+.menu.thin-scrollbar {
+  margin-bottom: 0 !important;
 }
