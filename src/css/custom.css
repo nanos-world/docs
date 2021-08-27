@@ -306,3 +306,39 @@ html[data-theme='dark'] .header-discord-link:before {
 .menu.thin-scrollbar {
   margin-bottom: 0 !important;
 }
+
+/* Reference Link */
+a.reference-link {
+  text-decoration: none;
+  display: block;
+  padding: 1.25rem 1rem;
+  font-weight: var(--ifm-font-weight-bold);
+
+  border-color: var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-alert-border-radius);
+  border-style: solid;
+  border-width: var(--ifm-alert-border-width);
+
+  margin: 1rem 0;
+}
+
+a.reference-link:hover {
+  border-color: var(--ifm-color-emphasis-300);
+  transition: border-color .15s cubic-bezier(.4,0,.2,1);
+}
+
+a.reference-link:before {
+  content: url("/img/arrow-right.svg");
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+a span {
+  color: var(--ifm-color-emphasis-400);
+  font-weight: var(--ifm-font-weight-normal);
+  float: right;
+  font-size: .8125rem;
+}
