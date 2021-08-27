@@ -24,7 +24,7 @@ end)
 ```
 
 :::info
-Most events are triggered on both Client and Server sides, only a few rare exceptions which will be elicited by the [Availability](../../scripting-reference/glossary/#methods-availability).
+Most events are triggered on both Client and Server sides, only a few rare exceptions which will be elicited by the [Availability](/docs/core-concepts/scripting/authority-concepts#methods-and-events-availability).
 :::
 
 ### Unsubscribing of Class Events

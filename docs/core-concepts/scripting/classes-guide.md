@@ -50,7 +50,7 @@ local my_character = Character()
 :::tip
 Each Class will contain it's own **Constructor**, **Properties**, **Methods** and **Events**.
 
-Check all Classes that nanos world provides in [Classes](/docs/scripting-reference/classes/).
+Check all Classes that nanos world provides in the sidebar **Scripting Reference -> Classes** item.
 :::
 
 :::info

@@ -28,7 +28,7 @@ After exporting your project (refer to [Creating Assets](/docs/assets-modding/cr
 
 As nanos world server is not aware of Unreal or it's Assets, we need to somehow say to the server where are the scriptable part of the map, wuch as Spawn Points, Props locations, Weapon locations and so on.
 
-For that we created 2 solutions: [Custom Map Script](./#custom-map-script) and [Custom Map Data](./#custom-map-data).
+For that we created 2 solutions: [Custom Map Script](#custom-map-script) and [Custom Map Data](#custom-map-data).
 
 ### Custom Map Script
 
@@ -41,7 +41,7 @@ TODO
 ## Creating a Map in Unreal Engine 4 from Scratch
 
 :::caution
-Attention! This page is old and this tutorial may be outdated! Please refer to [ADK](../adk-assets-development-kit.md) for a modern approach.
+Attention! This page is old and this tutorial may be outdated! Please refer to [ADK](/docs/assets-modding/creating-assets/adk-assets-development-kit) for a modern approach.
 :::
 
 ### Video Tutorial by EinfachMax
@@ -187,7 +187,7 @@ And paste it inside your server’s `Assets/` folder:
 
 ![](/img/docs/custom-maps-33.jpg)
 
-Open the folder you copied and create a `Assets.toml` file in it, \(you can paste the content located at [Assets Configuration File](../../../core-concepts/assets.md#assets-pack-configuration) into this file. 
+Open the folder you copied and create a `Assets.toml` file in it, \(you can paste the content located at [Assets Configuration File](/docs/core-concepts/assets#assets-pack-configuration) into this file. 
 
 ![](/img/docs/custom-maps-34.jpg)
 

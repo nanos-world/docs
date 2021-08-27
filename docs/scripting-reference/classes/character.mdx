@@ -18,7 +18,7 @@ Characters are Skeletal Meshes using Unreal’s Mannequin Skeletal, with animati
 :::
 
 :::info
-⏬ **Inheritance:** This class inherits from [Actor](/docs/scripting-reference/base-classes/actor) and [Pickable](/docs/scripting-reference/base-classes/pickable). Please check it's pages for inherited **Methods** and **Events**.
+⏬ **Inheritance:** This class inherits from [Actor](/docs/scripting-reference/classes/base-classes/actor) and [Pickable](/docs/scripting-reference/classes/base-classes/pickable). Please check it's pages for inherited **Methods** and **Events**.
 :::
 
 ## Usage
@@ -138,23 +138,23 @@ import BasePaintableFunctions from '/docs/scripting-reference/classes/base-class
 |  | <BasicType.Boolean /> | Gets if the Character can receive damage |
 |  | <BasicType.Boolean /> | Gets Character Movement Enabled |
 |  | <StructType.Rotator /> | [**`GetControlRotation`**](character#getcontrolrotation) | Gets the rotation this character is looking at |
-|  | [FallingMode](https://docs.nanos.world/scripting/Glossary.html#term-fallingmode) | [**`GetFallingMode`**](character#GetFallingMode) | Gets the Falling Mode |
+|  | [FallingMode](#/docs/scripting-reference/glossary/enumsfallingmode) | [**`GetFallingMode`**](character#GetFallingMode) | Gets the Falling Mode |
 |  | <BasicType.Boolean /> | Gets if the Character is in Flying Mode |
-|  | [GaitMode](https://docs.nanos.world/scripting/Glossary.html#term-gaitmode) | [**`GetGaitMode`**](character#getgaitmode) | Gets the Gait Mode |
-|  | [Prop](https://docs.nanos.world/scripting/classes/Prop.html#prop) | [**`GetGrabbedProp`**](character#GetGrabbedProp) | Gets the Grabbing Prop |
+|  | [GaitMode](/docs/scripting-reference/glossary/enums#gaitmode) | [**`GetGaitMode`**](character#getgaitmode) | Gets the Gait Mode |
+|  | [Prop](/docs/scripting-reference/classes/prop) | [**`GetGrabbedProp`**](character#GetGrabbedProp) | Gets the Grabbing Prop |
 |  | <BasicType.Number /> | Gets the Gravity Scale of this Character |
 |  | <BasicType.Number /> | Gets the Character’s Health. |
 |  | <BasicType.Number /> | Gets the Character’s MaxHealth. |
 |  | <BasicType.String /> | Gets the Mesh Asset name |
 |  | Entity | [**`GetPicked`**](character#getpicked) | Gets the holding Picked Item/Grenade/Weapon |
-|  | [Player](https://docs.nanos.world/scripting/classes/Player.html#player) | [**`GetPlayer`**](character#getplayer) | Gets the Player controlling this Character |
+|  | [Player](/docs/scripting-reference/classes/player) | [**`GetPlayer`**](character#getplayer) | Gets the Player controlling this Character |
 |  | <BasicType.Number /> |  |
-|  | [StanceMode](https://docs.nanos.world/scripting/Glossary.html#term-stancemode) | [**`GetStanceMode`**](character#getstancemode) |  |
-|  | [SwimmingMode](https://docs.nanos.world/scripting/Glossary.html#term-swimmingmode) | [**`GetSwimmingMode`**](character#getswimmingmode) |  |
+|  | [StanceMode](/docs/scripting-reference/glossary/enums#stancemode) | [**`GetStanceMode`**](character#getstancemode) |  |
+|  | [SwimmingMode](/docs/scripting-reference/glossary/enums#swimmingmode) | [**`GetSwimmingMode`**](character#getswimmingmode) |  |
 |  | <BasicType.Number /> |  |
-|  | [Vehicle](https://docs.nanos.world/scripting/classes/Vehicle.html#vehicle) | [**`GetVehicle`**](character#getvehicle) | Gets the Vehicle the Character is on |
-|  | [ViewMode](https://docs.nanos.world/scripting/Glossary.html#term-viewmode) | [**`GetViewMode`**](character#getviewmode) | Gets Character View Mode |
-|  | [AimMode](https://docs.nanos.world/scripting/Glossary.html#term-aimmode) | [**`GetWeaponAimMode`**](character#getweaponaimmode) | Gets Character Aim Mode |
+|  | [Vehicle](/docs/scripting-reference/classes/vehicle) | [**`GetVehicle`**](character#getvehicle) | Gets the Vehicle the Character is on |
+|  | [ViewMode](/docs/scripting-reference/glossary/enums#viewmode) | [**`GetViewMode`**](character#getviewmode) | Gets Character View Mode |
+|  | [AimMode](/docs/scripting-reference/glossary/enums#aimmode) | [**`GetWeaponAimMode`**](character#getweaponaimmode) | Gets Character Aim Mode |
 
 ## Events
 
@@ -204,7 +204,7 @@ my_character:ApplyDamage(damage, bone_name, damage_type, from_direction, instiga
 | <BasicType.String /> | **`bone_name`** | \`\` |  |
 | DamageType | **`damage_type`** | `DamageType.Shot` |  |
 | <StructType.Vector /> | **`from_direction`** | `Vector()` |  |
-| [Player](https://github.com/nanos-world/docs-gitbook/tree/456785b68b61f82d2a0b36e60cac438e7b99c660/scripting-reference/player.md) | **`instigator`** | `nil` |  |
+| [Player](/docs/scripting-reference/classes/player) | **`instigator`** | `nil` |  |
 
 ### `AddSkeletalMeshAttached`
 
@@ -253,7 +253,7 @@ my_character:EnterVehicle(vehicle, seat)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| [Vehicle](vehicle.md) | **`vehicle`** |  |  |
+| [Vehicle](/docs/scripting-reference/classes/vehicle) | **`vehicle`** |  |  |
 | <BasicType.Number /> | **`seat`** | `0` |  |
 
 ### <AuthorityType.ServerOnly />`GrabProp`
@@ -266,7 +266,7 @@ my_character:GrabProp(prop)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| [Prop](prop.md) | **`prop`** |  |  |
+| [Prop](/docs/scripting-reference/classes/prop) | **`prop`** |  |  |
 
 ### <AuthorityType.ServerOnly />`Jump`
 
@@ -989,7 +989,7 @@ my_character:GetWeaponAimMode()
 | <BasicType.String /> | **`last_bone_damaged`** |  |
 | DamageType | **`damage_type_reason`** |  |
 | <StructType.Vector /> | **`hit_from_direction`** |  |
-| [Player](https://github.com/nanos-world/docs-gitbook/tree/456785b68b61f82d2a0b36e60cac438e7b99c660/scripting-reference/player.md) | **`instigator`** |  |
+| [Player](/docs/scripting-reference/classes/player) | **`instigator`** |  |
 
 ```lua
 Character.Subscribe("Death", function(self, last_damage_taken, last_bone_damage, damage_type_reason, hit_from_direction, instigator)
@@ -1157,7 +1157,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| [Player](https://github.com/nanos-world/docs-gitbook/tree/456785b68b61f82d2a0b36e60cac438e7b99c660/scripting-reference/player.md) | **`possesser`** |  |
+| [Player](/docs/scripting-reference/classes/player) | **`possesser`** |  |
 
 ```lua
 Character.Subscribe("Possessed", function(self, possesser)
@@ -1268,7 +1268,7 @@ end)
 | <BasicType.String /> | **`bone`** |  |
 | DamageType | **`type`** |  |
 | <StructType.Vector /> | **`from_direction`** |  |
-| [Player](https://github.com/nanos-world/docs-gitbook/tree/456785b68b61f82d2a0b36e60cac438e7b99c660/scripting-reference/player.md) | **`instigator`** |  |
+| [Player](/docs/scripting-reference/classes/player) | **`instigator`** |  |
 
 ```lua
 Character.Subscribe("TakeDamage", function(self, damage, bone, type, from_direction, instigator)
@@ -1298,7 +1298,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| [Player](https://github.com/nanos-world/docs-gitbook/tree/456785b68b61f82d2a0b36e60cac438e7b99c660/scripting-reference/player.md) | **`old_possesser`** |  |
+| [Player](/docs/scripting-reference/classes/player) | **`old_possesser`** |  |
 
 ```lua
 Character.Subscribe("UnPossessed", function(self, old_possesser)

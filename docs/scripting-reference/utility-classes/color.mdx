@@ -24,52 +24,15 @@ local grey_color = Color(0.5, 0.5, 0.5, 1)
 ```
 
 ## Properties
-<!-- 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left"><b>Type</b>
-      </th>
-      <th style="text-align:left"><b>Name</b>
-      </th>
-      <th style="text-align:left"><b>Description</b>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><a href="/docs/scripting-reference/glossary/basic-types#number">number</a>
-      </td>
-      <td style="text-align:left"><b><code>R</code></b>
-      </td>
-      <td style="text-align:left">Red color percentage (0-1)</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="/docs/scripting-reference/glossary/basic-types#number">number</a>
-      </td>
-      <td style="text-align:left"><b><code>G</code></b>
-      </td>
-      <td style="text-align:left">Green color percentage (0-1)</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="/docs/scripting-reference/glossary/basic-types#number">number</a>
-      </td>
-      <td style="text-align:left"><b><code>B</code></b>
-      </td>
-      <td style="text-align:left">Blue color percentage (0-1)</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="/docs/scripting-reference/glossary/basic-types#number">number</a>
-      </td>
-      <td style="text-align:left"><b><code>A</code></b>
-      </td>
-      <td style="text-align:left">
-        <p>Alpha transparency percentage (0-1)</p>
-        <p>0 -&gt; fully transparency and 1 -&gt; no transparency</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+
+| **Value** | **Name** | **Description** |
+| --------- | -------- | --------------- |
+| <BasicType.Number /> | **`R`** | Red color percentage (0-1) |
+| <BasicType.Number /> | **`G`** | Green color percentage (0-1) |
+| <BasicType.Number /> | **`B`** | Blue color percentage (0-1) |
+| <BasicType.Number /> | **`A`** | Alpha transparency percentage (0-1) |
+
+
 
 ## Static Properties
 
@@ -92,77 +55,12 @@ local grey_color = Color(0.5, 0.5, 0.5, 1)
 
 ## Static Functions
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left"><b>Returns</b>
-      </th>
-      <th style="text-align:left"><b>Name</b>
-      </th>
-      <th style="text-align:left"><b>Description</b>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><a href="color.md">Color</a>
-      </td>
-      <td style="text-align:left"><b><code>Color.RandomPalette()</code></b>
-      </td>
-      <td style="text-align:left">Returns a random color from Color Palette</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="color.md">Color</a>
-      </td>
-      <td style="text-align:left"><b><code>Color.Random()</code></b>
-      </td>
-      <td style="text-align:left">Returns a random color from all color scope</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="color.md">Color</a>
-      </td>
-      <td style="text-align:left"><b><code>Color.FromRGBA(<br /> number r,<br /> number g,<br /> number b,<br /> number a<br />)</code></b>
-      </td>
-      <td style="text-align:left">Returns the color from 0-255 range values</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="color.md">Color</a>
-      </td>
-      <td style="text-align:left"><b><code>Color.FromCYMK(<br /> number c,<br /> number y,<br /> number m,<br /> number k,<br /> number a<br />)</code></b>
-      </td>
-      <td style="text-align:left">Returns a color from the CYMK format</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="color.md">Color</a>
-      </td>
-      <td style="text-align:left">
-        <p><b><code>Color.FromHSL(<br /> number h,</code></b>
-        </p>
-        <p><b><code> number s,</code></b>
-        </p>
-        <p><b><code> number l<br />)</code></b>
-        </p>
-      </td>
-      <td style="text-align:left">Returns a color from the HSL format</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="color.md">Color</a>
-      </td>
-      <td style="text-align:left">
-        <p><b><code>Color.FromHSV(<br /> number h,<br /> number s,</code></b>
-        </p>
-        <p><b><code> number v<br />)</code></b>
-        </p>
-      </td>
-      <td style="text-align:left">Returns a color from the HSV format</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="color.md">Color</a>
-      </td>
-      <td style="text-align:left"><b><code>Color.FromHEX(string hex)</code></b>
-      </td>
-      <td style="text-align:left">Returns a color from the Hexadecimal format</td>
-    </tr>
-  </tbody>
-</table>
- -->
+| **Returns**    | **Name**                                                     | **Description**                             |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| [Color](color) | **`Color.RandomPalette()`**                                  | Returns a random color from Color Palette   |
+| [Color](color) | **`Color.Random()`**                                         | Returns a random color from all color scope |
+| [Color](color) | **`Color.FromRGBA(number r, number g, number b, number a)`** | Returns the color from 0-255 range values   |
+| [Color](color) | **`Color.FromCYMK(number c, number y, number m, number k, number a)`** | Returns a color from the CYMK format        |
+| [Color](color) | **`Color.FromHSL(number h, number s, number l)`**            | Returns a color from the HSL format         |
+| [Color](color) | **`Color.FromHSV(number h, number s, number v)`**            | Returns a color from the HSV format         |
+| [Color](color) | **`Color.FromHEX(string hex)`**                              | Returns a color from the Hexadecimal format |

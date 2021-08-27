@@ -17,7 +17,7 @@ For the methods of interaction with the Sun exposed in the [World](/docs/scripti
 Once you run the method `World.SpawnDefaultSun()`, the game will destroy all \(Unreal\) Actors with the tag `Sun` and will spawn a brand new Actor which contains a `Directional Light`, `Sky Light`, `Fog`, `Clouds` and some others components which you will be able to control with **World** methods.
 
 :::tip
-Because of that it is important to set all your [Actors with `Sun` tag when creating Maps](/docs/assets-modding/creating-assets/maps-and-levels/#rules-for-creating-a-map-level-for-nanos-world)!
+Because of that it is important to set all your [Actors with `Sun` tag when creating Maps](/docs/assets-modding/creating-assets/maps-and-levels/importing-maps#rules-for-creating-a-map-level-for-nanos-world)!
 :::
 
 :::caution

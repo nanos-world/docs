@@ -80,7 +80,7 @@ Packages have a configuration file in the root of the package folder, called `Pa
 | **`author`** | Author\(s\) of the Package |
 | **`version`** | Version of the Package - please refer to [SemVer](https://semver.org/) |
 | **`image`** | Image URL to be displayed in the Vault |
-| **`type`** | Type of the Package - please refer to [Package Types](./#package-types) |
+| **`type`** | Type of the Package - please refer to [Package Types](#package-types) |
 | **`force_no_map_script`** | Enabling this will force the map-script \(if any\) to do NOT load |
 | **`auto_cleanup`** | Enabling this will destroy all entities spawned by this Package when it unloads |
 | **`packages_requirements`** | List of Packages which need to be loaded first |
@@ -89,44 +89,12 @@ Packages have a configuration file in the root of the package folder, called `Pa
 ### Package Types
 
 In nanos world we have 3 kind of packages: **script**, **game-mode** and **loading-screen**, each one with with a specific functionality and an unique purpose.
-<!-- 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Type</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left"><b><code>script</code></b>
-      </td>
-      <td style="text-align:left">Normal Package, will execute it&apos;s scripts and start a new <b>Lua VM </b>when
-        started.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b><code>game-mode</code></b>
-      </td>
-      <td style="text-align:left">
-        <p>Like <b><code>script</code> </b>but you can only load one <b><code>game-mode</code></b> package
-          at once. Useful</p>
-        <p>when you are creating full games which cannot risk being loaded with other</p>
-        <p>full games packages.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b><code>loading-screen</code></b>
-      </td>
-      <td style="text-align:left">
-        <p>Special Package which will be loaded during player&apos;s loading screen,
-          those</p>
-        <p>packages must have an <code>Index.html</code> in the root.</p>
-        <p>Please refer to <a href="loading-screen.md">Loading Screen</a> for more
-          information.</p>
-      </td>
-    </tr>
-  </tbody>
-</table> -->
+
+| Type | Description |
+| :--- | :--- |
+| **`script`** | Normal Package, will execute it's scripts and start a new **Lua VM** when started. |
+| **`game-mode`** | Like `script` but you can only load one `game-mode` package at once.<br />Useful when you are creating full games which cannot risk being<br />loaded with other full games packages. |
+| **`loading-screen`** | Special Package which will be loaded during player's loading screen.<br />Those packages must have an `Index.html` in the root.<br />Please refer to [Loading Screen](/docs/core-concepts/packages/loading-screen) for more information. |
 
 :::tip
 If you are creating a **Library**, a **Tool** or some **Utility** package, make it **`script`**!

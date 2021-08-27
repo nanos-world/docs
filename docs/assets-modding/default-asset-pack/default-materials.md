@@ -50,7 +50,7 @@ Translucent Materials are the the heavier ones to render, and cause a lot of ove
 Is the same as Translucent but will be always visible in the screen, even behind walls or other objects.
 
 :::tip
-**Note**: All those Materials in this page are already included in the base game in the [Default nanos world Asset Pack](./), you can reference them like that: **`nanos-world::M_NanosDefault`.**
+**Note**: All those Materials in this page are already included in the base game in the [Default nanos world Asset Pack](/docs/assets-modding/default-asset-pack/default-asset-pack), you can reference them like that: **`nanos-world::M_NanosDefault`.**
 :::
 
 #### Supported Parameters in each Material

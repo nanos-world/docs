@@ -12,7 +12,7 @@ In nanos world it is possible to add a customized and dynamic Loading Screen to 
 
 ## Creating a Loading Screen
 
-For that, you will need to create a new Package of type [loading-screen](./#package-types), and add your HTML/CSS/JS files into the Package's root folder. Your primary HTML file should be called `index.html`. It will look like that:
+For that, you will need to create a new Package of type [loading-screen](#package-types), and add your HTML/CSS/JS files into the Package's root folder. Your primary HTML file should be called `index.html`. It will look like that:
 
 ```text
 Packages/
@@ -67,7 +67,7 @@ var LoadingScreen = {
 
 ## Configuring your server to use the Loading Screen
 
-After creating your loading-screen package, you will need to configure your server to load it in your [Config.toml](../server-manual/server-configuration.md#server-configuration-file). Just set the setting `loading_screen` to your Package's folder name.
+After creating your loading-screen package, you will need to configure your server to load it in your [Config.toml](/docs/core-concepts/server-manual/server-configuration#server-configuration-file). Just set the setting `loading_screen` to your Package's folder name.
 
 ```toml
 # loading-screen package to load (the loading screen will be displayed when players join your server)

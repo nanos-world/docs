@@ -17,7 +17,7 @@ We've created several **REGEX** to help you converting your Packages. Please ref
 
 Here it follows a list with all changes we had which need attention:
 
-### 1. Now all [StaticClasses](../scripting-reference/static-classes/) are accessed with `.` instead of `:`
+### 1. Now all Static Classes are accessed with `.` instead of `:`
 
 ```lua
 -- Before:
@@ -94,7 +94,7 @@ Although this still works, it is highly recommended to convert your **Asset Pack
 
 We don't have type `library` anymore, we now have `script`, `game-mode` and `loading-screen`. All your Packages has been replaced with `script` by default. If your Package is a full game, please set it `game-mode`.
 
-> Please refer to [Packages](../core-concepts/packages/) for more information.
+> Please refer to [Packages](/docs/core-concepts/packages/packages) for more information.
 
 ### 6. Timer has a new signature and methods
 
@@ -102,13 +102,14 @@ We don't have type `library` anymore, we now have `script`, `game-mode` and `loa
 
 ### 7. LoadingScreen folder has been replaced with Package `loading-screen`
 
-> Please refer to [Loading Screen](../core-concepts/packages/loading-screen.md) for more information.
+> Please refer to [Loading Screen](/docs/core-concepts/packages/loading-screen) for more information.
 
 ## Converting your Code with Regex
 
 We've created some regexes to help you migrating your code, if you use **VSCode**, using the replacer tool with regex is very easy and straightforward.
 
-<!-- ![VSCode Replacer \(CTRL + F\) with Regex \(ALT + R\), Match Whole World \(Alt + W\) and Match Case enabled](/img/assets/image%20%2856%29.png) -->
+#### VSCode Replacer \(CTRL + F\) with Regex \(ALT + R\), Match Whole World \(Alt + W\) and Match Case enabled
+![](/img/docs/migrating-to-alpha.jpg)
 
 ### Fixing Events:Call Variadic Parameters
 

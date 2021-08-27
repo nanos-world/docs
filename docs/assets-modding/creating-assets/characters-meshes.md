@@ -108,7 +108,7 @@ And now we have only our wanted Skeletal Mesh and it’s Textures/Materials into
 ### Converting the Skeleton to nanos world’s Skeleton and Physics Asset
 
 :::info
-Please refer to section [Tips for integrating Skeletal Meshes with nanos world Character](characters-meshes.md#tips-for-integrating-skeletal-meshs-with-nanos-world-character) for converting the `MESH_PC_00` to use our **Skeleton** and the **Physics Asset**.
+Please refer to section [Tips for integrating Skeletal Meshes with nanos world Character](characters-meshes#tips-for-integrating-skeletal-meshs-with-nanos-world-character) for converting the `MESH_PC_00` to use our **Skeleton** and the **Physics Asset**.
 :::
 
 After it’s converted, save everything and you can delete the old Skeleton \(which was located at `SCK_Casual01/Mannquin/` folder\): 
