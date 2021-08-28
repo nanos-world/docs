@@ -14,7 +14,7 @@ module.exports = {
   trailingSlash: false,
   i18n: {
     defaultLocale: 'en',
-    locales: isDev ? ['en'] : ['en', 'pt-BR', 'de'],
+    locales: isDev ? ['en'] : ['en', 'pt-BR', 'de', 'fr'],
     localeConfigs: {
       en: {
         label: '🇬🇧 English'
@@ -24,6 +24,9 @@ module.exports = {
       },
       de: {
         label: '🇩🇪 Deutsch'
+      },
+      fr: {
+        label: '🇫🇷 Français'
       },
     }
   },
