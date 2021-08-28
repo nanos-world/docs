@@ -1,6 +1,7 @@
 ---
 description: How to correctly import custom Models into nanos world
 sidebar_position: 4
+tags: [assets]
 ---
 
 # Characters Meshes

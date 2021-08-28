@@ -1,5 +1,6 @@
 ---
 description: Basic Types used in the API.
+tags: [scripting]
 ---
 
 # Basic Types

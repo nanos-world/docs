@@ -1,5 +1,6 @@
 ---
 description: nanos world Enums.
+tags: [scripting]
 ---
 
 # Enums

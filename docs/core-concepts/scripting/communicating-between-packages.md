@@ -1,6 +1,7 @@
 ---
 description: All you need to know to communicate between different Packages
 sidebar_position: 3
+tags: [scripting]
 ---
 
 # Packages Communication

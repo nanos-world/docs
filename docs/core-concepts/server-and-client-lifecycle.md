@@ -1,5 +1,6 @@
 ---
 description: How nanos word framework works
+tags: [hosting]
 ---
 
 # Server & Client Lifecycle

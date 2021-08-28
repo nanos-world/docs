@@ -1,6 +1,7 @@
 ---
 description: All you need to know about Packages
 sidebar_position: 0
+tags: [scripting]
 ---
 
 # Packages Guide

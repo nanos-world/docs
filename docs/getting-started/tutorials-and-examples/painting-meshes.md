@@ -1,5 +1,6 @@
 ---
 description: How to use the new Material customization methods available to use
+tags: [tutorial-example, scripting, assets]
 ---
 
 # Painting Meshes

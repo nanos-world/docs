@@ -1,6 +1,7 @@
 ---
 description: Custom Loading Screen for your servers
 sidebar_position: 1
+tags: [scripting, ui]
 ---
 
 # Loading Screen

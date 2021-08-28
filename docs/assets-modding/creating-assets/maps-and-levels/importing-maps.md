@@ -1,5 +1,6 @@
 ---
 description: How to create and export maps from Unreal to nanos world
+tags: [assets]
 ---
 
 # Creating Custom Maps

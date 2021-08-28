@@ -1,5 +1,6 @@
 ---
 description: Default nanos world Materials and it's Parameters
+tags: [assets]
 ---
 
 # Default Materials

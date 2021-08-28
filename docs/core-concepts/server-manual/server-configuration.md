@@ -1,6 +1,7 @@
 ---
 description: All you need to know to Configure your server!
 sidebar_position: 2
+tags: [hosting]
 ---
 
 # Server Configuration

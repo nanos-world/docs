@@ -1,6 +1,7 @@
 ---
 description: All you need to know about Events
 sidebar_position: 1
+tags: [scripting]
 ---
 
 # Events Guide

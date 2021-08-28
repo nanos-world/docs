@@ -1,6 +1,7 @@
 ---
 description: How to export and use Static Meshes from Unreal Engine
 sidebar_position: 3
+tags: [assets]
 ---
 
 # Static Meshes

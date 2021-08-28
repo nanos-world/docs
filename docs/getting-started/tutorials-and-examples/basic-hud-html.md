@@ -2,6 +2,7 @@
 description: >-
   How to add a basic HUD using HTML + JavaScript + CSS to display the
   character’s Health and Ammo based on CS:GO HUD
+tags: [tutorial-example, scripting, ui]
 ---
 
 # Basic HUD (HTML)

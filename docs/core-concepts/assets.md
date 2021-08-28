@@ -1,5 +1,6 @@
 ---
 description: All you need to know about Assets
+tags: [assets]
 ---
 
 # Assets

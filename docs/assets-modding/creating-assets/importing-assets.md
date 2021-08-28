@@ -1,6 +1,7 @@
 ---
 description: Learn how to Create and Import custom Assets into nanos world
 sidebar_position: 1
+tags: [assets]
 ---
 
 # Importing Custom Assets
@@ -16,7 +17,7 @@ Please before continuing, make sure you read [Assets](/docs/core-concepts/assets
 The first step for creating your own Assets, is downloading and installing Unreal Engine.
 
 :::tip
-Little by little we are able to allow loading some 'assets' without the need of cooking them in Unreal, such as **Textures** and soon™ **Sounds**.
+Little by little we are able to allow loading some assets without the need of cooking them in Unreal, such as **Textures** and soon™ **Sounds**.
 :::
 
 #### 1. Download and Install [Epic Games Launcher](https://www.unrealengine.com/en-US/download/ue_non_games) 

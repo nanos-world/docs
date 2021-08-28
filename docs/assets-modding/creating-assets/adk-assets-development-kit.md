@@ -1,6 +1,7 @@
 ---
 description: nanos world Assets Development Kit - ADK
 sidebar_position: 2
+tags: [assets]
 ---
 
 # Assets Development Kit

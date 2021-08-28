@@ -2,6 +2,7 @@
 description: >-
   How to create a Linux virtual machine instance on Compute Engine using the
   Google Cloud Console withing the Free Tier limit
+tags: [tutorial-example, hosting]
 ---
 
 # Hosting Server 4Free

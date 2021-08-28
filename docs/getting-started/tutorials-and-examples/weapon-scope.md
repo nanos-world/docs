@@ -2,6 +2,7 @@
 description: >-
   This sample code shows how to attach custom sights meshes into a Weapon and
   work as real scopes.
+tags: [tutorial-example, scripting, assets]
 ---
 
 # Weapon Scope

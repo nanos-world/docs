@@ -1,5 +1,6 @@
 ---
 description: How to create a Monster Truck using the Vehicle system
+tags: [tutorial-example, scripting, assets]
 ---
 
 # Monster Truck

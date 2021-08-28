@@ -1,6 +1,7 @@
 ---
 description: How to migrate your Scripts to the newer API version
 sidebar_position: 4
+tags: [scripting]
 ---
 
 # 🧳 Migrating to Alpha

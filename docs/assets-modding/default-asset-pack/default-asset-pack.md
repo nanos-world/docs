@@ -1,3 +1,7 @@
+---
+tags: [assets]
+---
+
 # nanos world Asset Pack List
 
 nanos world provides a default Asset Pack already included in the base game, feel free to use the assets the way you want!

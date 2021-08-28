@@ -2,6 +2,7 @@
 description: >-
   How to use nanos world Discord methods to create a nice integration for your
   server
+tags: [scripting]
 ---
 
 # Discord Integration

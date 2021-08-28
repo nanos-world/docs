@@ -2,6 +2,7 @@
 description: >-
   How to create a Firework-shooter weapon using the Fireworks Particle Effects
   Asset Pack from our Vault!
+tags: [tutorial-example, scripting, assets]
 ---
 
 # Fireworks

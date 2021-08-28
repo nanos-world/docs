@@ -1,6 +1,7 @@
 ---
 description: How AI works in nanos world
 sidebar_position: 6
+tags: [scripting]
 ---
 
 # Artificial Intelligence

@@ -1,6 +1,7 @@
 ---
 description: All you need to know about Classes
 sidebar_position: 0
+tags: [scripting]
 ---
 
 # Classes Guide
