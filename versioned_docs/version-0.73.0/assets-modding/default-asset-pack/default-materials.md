@@ -43,7 +43,7 @@ Masked is the default Material Type in nanos world. Masked Materials are the mos
 
 ### **`M_NanosTranslucent`**
 
-Translucent Materials are the the heavier ones to render, and cause a lot of overdraw \(and performance issues\) if used incorrectly. It supports **Opacity** but does not support **Normal**, **Metallic,** **Specular** and **Roughness** inputs for optimization reasons.
+Translucent Materials are the heavier ones to render, and cause a lot of overdraw \(and performance issues\) if used incorrectly. It supports **Opacity** but does not support **Normal**, **Metallic,** **Specular** and **Roughness** inputs for optimization reasons.
 
 ### **`M_NanosTranslucent_Depth`**
 
