@@ -89,7 +89,7 @@ html[data-theme='dark']  .alert {
 /* Header Description */
 header + p {
   color: var(--ifm-color-gray-600) !important;
-  margin-top: -2rem !important;
+  margin-top: -1rem !important;
 }
 
 header + p::after {
@@ -125,7 +125,7 @@ h2 {
   font-size: 1.5rem !important;
 }
 
-h2:not(header + * + h2):before {
+.doc-page h2:not(header + * + h2):before {
   height: 1px;
   content: " ";
   display: block;
@@ -190,13 +190,14 @@ article,
 }
 
 article .badge.badge--secondary {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 /* Tables */
 table {
   width: 100%;
   display: table;
+  margin-bottom: 2rem;
 }
 
 article p img {

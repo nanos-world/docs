@@ -98,8 +98,7 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/',
+          editUrl: 'https://github.com/nanos-world/docs/edit/master/',
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           versions: {
@@ -110,8 +109,11 @@ module.exports = {
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+          editUrl: 'https://github.com/nanos-world/docs/edit/master/',
+          blogTitle: 'nanos world news!',
+          blogDescription: 'All official news from nanos world!',
+          blogSidebarTitle: 'nanos world news',
+          blogSidebarCount: 'ALL',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -152,14 +154,7 @@ module.exports = {
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
-        // ... Your options.
-        // `hashed` is recommended as long-term-cache of index file is possible.
         hashed: true,
-        // For Docs using Chinese, The `language` is recommended to set to:
-        // ```
-        // language: ["en", "zh"],
-        // ```
-        // When applying `zh` in language, please install `nodejieba` in your project.
       },
     ],
   ]
