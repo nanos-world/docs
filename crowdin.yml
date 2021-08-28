@@ -15,6 +15,9 @@ files: [
     {
       source: '/docs/**/*',
       translation: '/i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%',
+      ignore: [
+        '/docs/components/**/*',
+      ],
       languages_mapping: *languages_mapping,
     },
     # Blog Markdown files

@@ -14,10 +14,6 @@ In nanos world it is possible to store data on entities. Those values can be acc
 
 In [Actors](/docs/scripting-reference/classes/base-classes/actor) page we can find the definitions of `:SetValue()` and `:GetValue()` methods. Also it is possible to store Values globally on [Client](/docs/scripting-reference/static-classes/client) and [Server](/docs/scripting-reference/static-classes/server) Static Classes with the same methods!
 
-:::info
-**Note:** On **Client** and **Server** Static Classes we won't have the last parameter `sync`. As the value will only exist on the side you are setting.
-:::
-
 ## `SetValue`
 
 In any entity, you can use the command `:SetValue(key, value, sync)` to set any kind of value on that entity.
@@ -27,6 +23,10 @@ It is possible to store <BasicType.Any /> kind of value, except `functions`.
 :::
 
 If you pass `sync` as true, that value will be automatically synchronized with all clients. Note that `sync`is an optional parameter only available on the **Server** side.
+
+:::info note
+**Client:SetValue()** and **Server:SetValue()** won't have the last parameter `sync`. As the value will only exist on the side you are setting.
+:::
 
 ## `GetValue`
 
