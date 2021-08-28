@@ -1,5 +1,4 @@
-const isDeployPreview =
-  process.env.NETLIFY && process.env.CONTEXT === 'deploy-preview';
+const isDev = process.env.NODE_ENV === 'development';
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -13,10 +12,21 @@ module.exports = {
   organizationName: 'nanos-world',
   projectName: 'docs',
   trailingSlash: false,
-  // i18n: {
-  //   defaultLocale: 'en',
-  //   locales: ['en'], //isDeployPreview ? ['en'] : ['en', 'fr', 'pt-BR', 'ko', 'zh-CN'],
-  // },
+  i18n: {
+    defaultLocale: 'en',
+    locales: isDev ? ['en'] : ['en', 'pt-BR', 'de'],
+    localeConfigs: {
+      en: {
+        label: '🇬🇧 English'
+      },
+      'pt-BR': {
+        label: '🇧🇷 Português (Brasil)'
+      },
+      de: {
+        label: '🇩🇪 Deutsch'
+      },
+    }
+  },
   themeConfig: {
     // announcementBar: {
     //   id: 'support_us', // Any value that will identify this message.
@@ -55,6 +65,16 @@ module.exports = {
           position: 'right',
         },
         {
+          type: 'localeDropdown',
+          position: 'right',
+          dropdownItemsAfter: [
+            {
+              href: 'https://crowdin.com/project/nanos-world-docs/',
+              label: 'Help Us Translate',
+            },
+          ],
+        },
+        {
           href: 'https://discord.nanos.world',
           position: 'right',
           className: 'header-discord-link',
@@ -66,16 +86,6 @@ module.exports = {
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
         },
-        // {
-        //   type: 'localeDropdown',
-        //   position: 'right',
-        //   // dropdownItemsAfter: [
-        //   //   {
-        //   //     href: 'https://github.com/facebook/docusaurus/issues/3526',
-        //   //     label: 'Help Us Translate',
-        //   //   },
-        //   // ],
-        // },
         {
           type: 'search',
           position: 'right',

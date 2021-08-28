@@ -157,6 +157,11 @@ div[class^='codeBlockTitle'] {
   line-height: 1.6;
 }
 
+/* Disable Language Icon */
+svg[class^='iconLanguage'] {
+  display: none;
+}
+
 /* Code line counter */
 .prism-code {
   counter-reset: line-number;

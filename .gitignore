@@ -4,6 +4,9 @@
 # Production
 /build
 
+# i18n
+i18n
+
 # Generated files
 .docusaurus
 .cache-loader
