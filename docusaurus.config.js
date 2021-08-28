@@ -124,34 +124,6 @@ module.exports = {
   plugins: [
     'plugin-image-zoom',
     [
-      '@docusaurus/plugin-client-redirects',
-      {
-        fromExtensions: ['html'],
-
-        createRedirects: function (path) {
-          
-          console.log(path)
-          const allDocHomesPaths = [
-            '/docs/',
-            '/docs/next/',
-            // ...versions.slice(1).map((version) => `/docs/${version}/`),
-          ];
-
-          // redirect to /docs from /docs/introduction,
-          // as introduction has been made the home doc
-          if (allDocHomesPaths.includes(path)) {
-            return [`${path}/introduction`];
-          }
-        },
-        // redirects: [
-        //   {
-        //     from: ['/docs/', '/docs'], // string | string[]
-        //     to: '/docs/welcome', // string
-        //   },
-        // ],
-      },
-    ],
-    [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
         hashed: true,
