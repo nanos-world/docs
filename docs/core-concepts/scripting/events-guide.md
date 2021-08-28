@@ -25,7 +25,9 @@ end)
 ```
 
 :::info
+
 Most events are triggered on both Client and Server sides, only a few rare exceptions which will be elicited by the [Availability](/docs/core-concepts/scripting/authority-concepts#methods-and-events-availability).
+
 :::
 
 ### Unsubscribing of Class Events
@@ -33,7 +35,9 @@ Most events are triggered on both Client and Server sides, only a few rare excep
 Currently there is two ways of unsubscribing from events:
 
 :::info
+
 **Note:** Unsubscribing events will **always** only unregister from events which were registered in the Package you are.
+
 :::
 
 #### Unsubscribing from all Events
@@ -82,7 +86,9 @@ end)
 ```
 
 :::tip
+
 Note that once the entity is destroyed, all events registered for it will be unregistered automatically!
+
 :::
 
 ### Unsubscribing of Entity Events
@@ -90,7 +96,9 @@ Note that once the entity is destroyed, all events registered for it will be unr
 Currently there is two ways of unsubscribing from events:
 
 :::info
+
 **Note:** Unsubscribing events will **always** only unregister from events which were registered in the Package you are.
+
 :::
 
 #### Unsubscribing from all Entity Events
@@ -126,6 +134,8 @@ my_character:Unsubscribe("EnterVehicle", OnCharacterEnteredVehicle)
 In nanos world, it is possible to define and call Custom Events. For that, please refer to Events Static Class.
 
 :::info
+
 Custom Events will be always called and triggered in all Packages.
+
 :::
 

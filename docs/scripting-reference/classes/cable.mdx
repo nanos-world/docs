@@ -17,19 +17,25 @@ import * as StructType from '/docs/components/_struct-types.mdx';
 nanos world **Cables** are composed primarily of two Unreal Engine components: a [Cable](https://docs.unrealengine.com/en-US/API/Plugins/CableComponent/UCableComponent/index.html) and a [PhysicsConstraint](https://docs.unrealengine.com/en-US/InteractiveExperiences/Physics/Constraints/ConstraintsBlueprints/index.html). The first is used for visual purposes only and the second one gives the effective physical effects that are applied to each end of the Cable.
 
 :::info
+
 Cable **visuals** can be tweaked with `:SetForces()`, `:SetCableSettings()` and `:SetRenderingSettings()` methods. Those methods don’t have effect on the physics being applied and only have effects on the visual representation.
 
 Cable **physics** can be tweaked with `:SetAngularLimits()` and `:SetLinearLimits()`.
+
 :::
 
 After attaching the two sides of your cable, the physics can be tweaked to affect how the constraint will affect the objects.
 
 :::tip
+
 Cables are automatically **destroyed** when one of the sides are detached
+
 :::
 
 :::tip
+
 You can find more useful information regarding physical properties of the joint in the end of this page.
+
 :::
 
 ## Usage

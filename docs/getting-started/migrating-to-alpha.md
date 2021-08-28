@@ -13,7 +13,9 @@ There have been no significant changes from version 0.73.0 to Alpha, however thi
 ## Migration Notes
 
 :::tip
+
 We've created several **REGEX** to help you converting your Packages. Please refer to [Converting your Code with Regex](migrating-to-alpha#converting-your-code-with-regex).
+
 :::
 
 Here it follows a list with all changes we had which need attention:
@@ -42,9 +44,11 @@ end)
 ### 2. The Static Class **`NanosWorld`** has been deprecated
 
 :::tip
+
 Use **`Player.GetAll()`** instead of `NanosWorld:GetPlayers()`.
 
 Use **`NanosUtils.Dump()`** instead of `NanosWorld:Dump()`.
+
 :::
 
 ```lua
@@ -86,9 +90,11 @@ Although this still works, it is highly recommended to convert your **Asset Pack
 | `MyAssets_Withouth-any-PaTtern` | **`my-assets-with-pattern`** |
 
 :::caution
+
 **Note:** All reference to assets now must use the new format as well \(the folder name\). So
 
 `nanos-world::SM_Cube` would become `nanos-world::SM_Cube`.
+
 :::
 
 ### 5. Package Types has been reworked

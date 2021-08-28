@@ -8,7 +8,9 @@ tags: [assets]
 Maps and Levels are quite the most straightforward asset that you can create and import. In Unreal, Maps are called `Levels`, usually these levels are filled with a Landscape component to make the terrain, some Lights and some Static Meshes \(Trees, Houses, etc\).
 
 :::info
+
 Please refer to [Unreal’s Official tutorial - Working with Levels](https://docs.unrealengine.com/en-US/Engine/Levels/HowTo/WorkWithLevelAssets/index.html).
+
 :::
 
 ## Rules for creating a Map/Level for nanos world
@@ -20,7 +22,9 @@ Please refer to [Unreal’s Official tutorial - Working with Levels](https://doc
 ![GameMode Overrides nullified](/img/docs/custom-maps-01.jpg)
 
 :::info
+
 Most of [World](/docs/scripting-reference/static-classes/world) functions rely on our own assets and code, so it is not (yet) possible to change the lighting or weather in your custom Map with World scripting functions.
+
 :::
 
 After exporting your project (refer to [Creating Assets](/docs/assets-modding/creating-assets/importing-assets#exporting-and-cooking-your-assets)), you can just reference your map in your server config like `MyPack::MyLevel`.
@@ -42,7 +46,9 @@ TODO
 ## Creating a Map in Unreal Engine 4 from Scratch
 
 :::caution
+
 Attention! This page is old and this tutorial may be outdated! Please refer to [ADK](/docs/assets-modding/creating-assets/adk-assets-development-kit) for a modern approach.
+
 :::
 
 ### Video Tutorial by EinfachMax
@@ -205,7 +211,9 @@ Or just open the game and \(if you are using the built-in nanos world Server\), 
 ![](/img/docs/custom-maps-37.jpg)
 
 :::tip
+
 You can now just start the New Game with the `Sandbox` package selected and VOILA! Your playable new map made from scratch! 
+
 :::
 
 ![](/img/docs/custom-maps-38.jpg)

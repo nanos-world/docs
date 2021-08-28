@@ -11,7 +11,9 @@ All you need to know to Configure your server!
 ## Server Configuration File
 
 :::tip
+
 nanos world Config files use **TOML** \(Tom’s Obvious, Minimal Language\), please refer to [https://github.com/toml-lang/toml](https://github.com/toml-lang/toml) for more information and syntax.
+
 :::
 
 The server Configuration file `Config.toml` is generated automatically when the server is launched for the first time. This file will always be overridden with the proper pattern after the server is loaded.

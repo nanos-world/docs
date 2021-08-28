@@ -20,7 +20,9 @@ Creating servers in nanos world is very simple and straightforward, just a few s
 ## Installation
 
 :::tip
+
 All nanos world server versions are hosted in our [GitHub](https://github.com/nanos-world/nanos-world-server/releases).
+
 :::
 
 ### Windows Installation
@@ -76,6 +78,8 @@ sudo apt-get --target-release testing install libstdc++6
 ```
 
 :::tip
+
 Finished!, you can now proceed to the next steps to configure your nanos world server.
+
 :::
 

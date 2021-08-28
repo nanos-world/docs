@@ -23,12 +23,16 @@ By default, all pages on GitHub are in English and all translation is provided b
 ![Crowdin](https://badges.crowdin.net/nanos-world-docs/localized.svg)
 
 :::info
+
 You can suggest changes directly on GitHub by pressing `Edit this Page` button at the bottom left of each Page, just make a suggestion and a [**Pull Request**](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) on it! Once accepted, your suggestion will immediately apply on the docs!
 **Note**: This will affect the English version only.
+
 :::
 
 :::info
+
 All suggestion and translation will apply on the **bleeding-edge** version of the docs (i.e. will only take effect on the 'default version' once a new version is released)!
+
 :::
 
 ![](/img/docs/contributing-to-the-docs.png)

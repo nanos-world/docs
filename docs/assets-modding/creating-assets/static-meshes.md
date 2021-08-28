@@ -9,21 +9,29 @@ tags: [assets]
 A Static Mesh is the most straightforward asset to be imported and used in nanos world, as they don’t have skeleton, their usage is very seamless. In nanos world Static Meshes are mainly used for [Props](/docs/scripting-reference/classes/character) and/or Weapons.
 
 :::caution
+
 Please do not confuse [Unreal's Static Mesh](/docs/scripting-reference/classes/static-mesh)!
+
 :::
 
 :::info
+
 Please refer to [Unreal's Static Mesh](/docs/core-concepts/assets#types-of-assets) official definition and usage, also for information on how to import a .FBX into Unreal, how to optimize it and so on. There are also thousands of tutorials regarding importing a .FBX from Blender \(or other Modeling tool\) into Unreal Engine.
+
 :::
 
 ## Creating and Exporting a Static Mesh
 
 :::caution
+
 Attention! This page is old and this tutorial may be outdated! Please refer to [ADK](adk-assets-development-kit) for a modern approach.
+
 :::
 
 :::caution
+
 Please before continuing, make sure you have and are using the [ADK - Assets Development Kit](adk-assets-development-kit).
+
 :::
 
 It is very simple to create and export Static Meshes, let's create simple Cube imported from a .fbx \(Static Mesh\) and a Material \(applied to the cube\) for our Assets. We’ve also created and placed them in a folder called MyPack which will help us afterwards.

@@ -28,7 +28,9 @@ Server.BroadcastChatMessage("Hello with <italic>Italic</> text message!")
 
 
 :::caution
+
 It is NOT possible to combine two or more styles together \(eg.: Bold + Red\).
+
 :::
 
 ## All supported text styles/tags

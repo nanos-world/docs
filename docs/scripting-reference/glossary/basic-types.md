@@ -8,7 +8,9 @@ tags: [scripting]
 ## Lua Types
 
 :::info
+
 For more information and tutorials, please refer to [Official Lua Documentation](https://www.lua.org/pil/2.html).
+
 :::
 
 ### `number`
@@ -68,6 +70,8 @@ nanos world supports a special type of Path when loading **Textures** or referen
 `package///sandbox/Client/my_awesome_audio.ogg`
 
 :::tip
+
 **Note:** It also supports relative and common paths as well!
+
 :::
 

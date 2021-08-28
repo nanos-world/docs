@@ -18,11 +18,15 @@ For the methods of interaction with the Sun exposed in the [World](/docs/scripti
 Once you run the method `World.SpawnDefaultSun()`, the game will destroy all \(Unreal\) Actors with the tag `Sun` and will spawn a brand new Actor which contains a `Directional Light`, `Sky Light`, `Fog`, `Clouds` and some others components which you will be able to control with **World** methods.
 
 :::tip
+
 Because of that it is important to set all your [Actors with `Sun` tag when creating Maps](/docs/assets-modding/creating-assets/maps-and-levels/importing-maps#rules-for-creating-a-map-level-for-nanos-world)!
+
 :::
 
 :::caution
+
 Sometimes if you use `SpawnDefaultSun()` in some maps, you may notice you will end up with **two** Directional or Sky Lights, this means the Map wasn't configured with the `Sun` tags.
+
 :::
 
 ## Interacting with the Sun
@@ -30,7 +34,9 @@ Sometimes if you use `SpawnDefaultSun()` in some maps, you may notice you will e
 It is possible to change Several aspects and settings from the Sun.
 
 :::info
+
 All methods available for customizing the Sun are listed in [World](/docs/scripting-reference/static-classes/world) Static Class page.
+
 :::
 
 Some examples of methods are `World.SetTime(hours, minutes)` or `World.SetFogDensity(density)` which will change the current Time and the Fog, respectively.

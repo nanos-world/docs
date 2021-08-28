@@ -29,7 +29,9 @@ Client.SetDiscordActivity(state, details, large_image, large_text)
 ![How it will look like](/img/docs/discord-integration-01.jpg)
 
 :::info
+
 You can use your own Application ID to upload your own Images!
+
 :::
 
 ## Using your own Application ID
@@ -45,5 +47,7 @@ Client.InitializeDiscord(client_id)
 ```
 
 :::tip
+
 And you are done! Now you can use the `Client.SetDiscordActivity()`method!
+
 :::

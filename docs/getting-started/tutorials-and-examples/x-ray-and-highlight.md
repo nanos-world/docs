@@ -12,9 +12,11 @@ This sample code shows how to set Actors to be highlighted when behind walls, or
 ![](/img/docs/tutorials/xray.jpg)
 
 :::tip
+
 As highlighting is something calculated in Post Processing, it is really hard to define custom colors for individual entities.
 
 Fortunately nanos world supports having **3** different colors which you can configure yourself!
+
 :::
 
 #### To configure the global Highlight color for a specific index, use:
@@ -26,7 +28,9 @@ Fortunately nanos world supports having **3** different colors which you can con
 `my_entity:SetHighlightEnabled(true, index)`
 
 :::info
+
 Valid indexes are **`0`**, **`1`** and **`2`**.
+
 :::
 
 

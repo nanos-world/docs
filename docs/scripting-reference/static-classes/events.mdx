@@ -13,7 +13,9 @@ import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
 
 :::tip
+
 This is a Static Class named `Events`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+
 :::
 
 <ReferenceLink href="/docs/core-concepts/scripting/events-guide">Events Guide</ReferenceLink>
@@ -30,7 +32,9 @@ This is a Static Class named `Events`. You can access it’s methods directly wi
 |  | [**`Unsubscribe`**](events#unsubscribe) | Unsubscribes from all subscribed events in this Package with that event name, optionally passing the function to unsubscribe only that callback |
 
 :::info
+
 _Remote\*_ means the other side, e.g.: if I’m the **Client**, the remote is the Server. If I’m the **Server**, the remote is the Client.
+
 :::
 
 #### `Call`
@@ -140,7 +144,9 @@ Events.CallRemote("MyServerEvent", "hello nanos world!")
 
 
 :::info
+
 On **Server**, registering for remote events has an addition parameter: [Player](/docs/scripting-reference/classes/player), which is the client who sent the event.
+
 :::
 
 

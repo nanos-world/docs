@@ -11,7 +11,9 @@ nanos world Assets Development Kit - ADK
 nanos world provides a fully configurable and ready **Unreal Project** called Assets Development Kit \(ADK\) to help you integrating and exporting Assets and Maps much faster. This project contains **Placeholders**, **Tools** and **Correct References** that must be used in order to create **Characters** and make proper **Physical Materials**, for example.
 
 :::caution
+
 **Note:** To be able to use the **ADK**, you will need to have [Unreal Engine](#installing-unreal-engine-4) installed.
+
 :::
 
 ## Downloading nanos world Assets Development Kit - ADK
@@ -25,13 +27,17 @@ You will find a file `NanosWorldADK.uproject` in there, just open it with Unreal
 You will notice we two folders in the root directory: `NanosWorld/` and `MyAssetPack/`.
 
 :::info
+
 **Tip:** You can rename `MyAssetPack` to anything you want to be your Asset Pack. Or you can delete it, but note that deleting this folder through Unreal may not work. If you want to delete it, please do it through Windows Explorer.
+
 :::
 
 :::danger
+
 Please do not **MODIFY**, **DELETE**, **CREATE** or **COPY** any file inside `NanosWorld/` folder, otherwise the ADK will not work properly. Also make sure you DO NOT modify them unintentionally! If asked to save any modified file in there, cancel it! All references must use `NanosWorld/` where they are.
 
 `NanosWorld/` folder has some Assets which you can use to reference **your** assets and make the export keep the correct references when using them in-game.
+
 :::
 
 ## Tools available in the ADK project
@@ -75,9 +81,11 @@ This is an **Editor Utility Widget** which scans a folder \(determined by the Te
 This is a pre-configured **Sun & Sky Blueprint** which can be used and easily replaced by nanos world Official Sun with `World,SpawnDefaultSun()`. This is useful to get an approximate result of how the light will look like in-game if you decide to Spawn the Default Sun.
 
 :::info
+
 **Note:** Overriding the Sun through Scripting with `World.SpawnDefaultSun()`, will respawn the Sun actor, which means no configuration did on the Sun & Sky actor will persist
 
 Example: Light Intensity, Color, Post Process and other configuration will be lost.
+
 :::
 
 ### Physical Materials
@@ -88,7 +96,9 @@ Example: Light Intensity, Color, Post Process and other configuration will be lo
 If you are creating a **Material**, you can \(and should\) use these **Physical Materials** do integrate better with nanos world. Using these Physical Materials will allow nanos world recognize which type of surface your Prop/Object is, giving it the proper auto-generated Hit or Footstep sound.
 
 :::danger
+
 DO NOT **modify** or **rename** any Physical Materials, only use by referencing them in your Materials.
+
 :::
 
 ### Mannequin Skeleton
@@ -106,9 +116,11 @@ To change a Skeletal Mesh’s Skeleton: right click on it &gt;&gt; Skeleton &gt;
 We’ve shipped a **Thumbnail Generator** tool to help you generating `.jpg` images of your assets. To use that, just open **ThumbnailGenerator** level and hit Play. Then you will be able to define a folder for search the assets \(currently only Static and Skeletal Meshes are supported\) and a folder to save the images \(.jpg\). You can optionally keep the directory hierarchy in the output folder or save all images in the same folder. Once you hit **Generate**, it will start loading all assets and taking a photo from them.
 
 :::info
+
 **Note:** this may be a slow process depending if your assets were already compiled previously.
 
 It is also recommended to generate the Thumbnails twice, so you grant they will be saved in the max quality possible.
+
 :::
 
 ![](/img/docs/adk-07.jpg)

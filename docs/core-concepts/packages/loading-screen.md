@@ -41,11 +41,15 @@ To be able to display dynamic information in the screen, you can listen to the E
 | **`current_stage`** | The current stage of the load \(`loading`, `downloading`\) |
 
 :::tip
+
 **TIP**: You can use **`progress`** and **`progress_total`** for filling up the main loading bar, and **`progress_small`** for a small/sub loading bar.
+
 :::
 
 :::info
+
 Always use `progress / progress_total` for getting the current `%` percentage, as progress\_total can represent the total amount of files being downloaded for example.
+
 :::
 
 ```javascript title="Packages/my-loading-screen/index.js"

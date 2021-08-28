@@ -9,11 +9,15 @@ Extending the functionalities of nanos world Scripting API
 Modules allows you to extend the functionality of the nanos world scripting API on the server side. Currently only C modules are supported.
 
 :::caution
+
 Be aware that this part of the scripting API is currently work in progress and may change at any time.
+
 :::
 
 :::info
+
 A guide to create your own module will follow \(soon™\).
+
 :::
 
 ## List of Supported Modules
@@ -65,6 +69,8 @@ end
 ```
 
 :::info
+
 **Tip:** Always escape all query parameters with `:escape` function!
+
 :::
 

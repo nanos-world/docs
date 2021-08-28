@@ -98,8 +98,10 @@ In nanos world we have 3 kind of packages: **script**, **game-mode** and **loadi
 | **`loading-screen`** | Special Package which will be loaded during player's loading screen.<br />Those packages must have an `Index.html` in the root.<br />Please refer to [Loading Screen](/docs/core-concepts/packages/loading-screen) for more information. |
 
 :::tip
+
 If you are creating a **Library**, a **Tool** or some **Utility** package, make it **`script`**!
 
 If you are creating an unique and complete **Game** with several functionalities which you don't want to be messed if someone load two full games, make it **`game-mode`**!
+
 :::
 
