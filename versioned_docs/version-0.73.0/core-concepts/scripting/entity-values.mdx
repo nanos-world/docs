@@ -9,23 +9,28 @@ tags: [scripting]
 How to store data in Entities accessible from anywhere
 
 import * as BasicType from '/docs/components/_common-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 
 In nanos world it is possible to store data on entities. Those values can be accessed by any Package and also you can determine if the value will be automatically synchronized with the Clients.
 
-In [Actors](/docs/scripting-reference/classes/base-classes/actor) page we can find the definitions of `:SetValue()` and `:GetValue()` methods. Also it is possible to store Values globally on [Client](/docs/scripting-reference/static-classes/client) and [Server](/docs/scripting-reference/static-classes/server) Static Classes with the same methods!
+In <Classes.Actor /> page we can find the definitions of `:SetValue()` and `:GetValue()` methods. Also it is possible to store Values globally on [Client](./scripting-reference/static-classes/client.mdx) and [Server](./scripting-reference/static-classes/server.mdx) Static Classes with the same methods!
 
 ## `SetValue`
 
 In any entity, you can use the command `:SetValue(key, value, sync)` to set any kind of value on that entity.
 
 :::tip
+
 It is possible to store <BasicType.Any /> kind of value, except `functions`.
+
 :::
 
 If you pass `sync` as true, that value will be automatically synchronized with all clients. Note that `sync`is an optional parameter only available on the **Server** side.
 
 :::info note
+
 **Client:SetValue()** and **Server:SetValue()** won't have the last parameter `sync`. As the value will only exist on the side you are setting.
+
 :::
 
 ## `GetValue`
@@ -33,6 +38,8 @@ If you pass `sync` as true, that value will be automatically synchronized with a
 After set, you can access any value from any entity using `:GetValue(key)` on any entity you want. If you set the value to be synchronized on Clients, you will be able to get the values on the Client side as well.
 
 :::caution
+
 Be aware that storing **entities** itself will not nullify the value if the entity is destroyed, so it is a good practice to validate if values with `:IsValid()` after retrieving them.
+
 :::
 

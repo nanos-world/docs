@@ -1,5 +1,7 @@
+import { getActiveVersionPath } from '/docs/components/_active-version.mdx';
+
 export const CardLink = ({ title, description, href, image_src }) => (
-	<a class="card-link" href={href} > 
+	<a class="card-link" href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`} > 
 		<img src={image_src ? image_src : '/img/docs/nanos-world-background.jpg'} />
 		<h4>{title}</h4>
 		<p>{description}</p>

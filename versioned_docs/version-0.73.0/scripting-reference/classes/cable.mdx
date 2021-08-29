@@ -3,6 +3,7 @@ description: >-
   A Cable represents a Physics Constraint which joins two Actors with a
   rope-like visual representation between them
 sidebar_position: 0
+tags: [class]
 ---
 
 # ⛓️ Cable
@@ -12,23 +13,30 @@ A Cable represents a Physics Constraint which joins two Actors with a rope-like 
 import * as AuthorityType from '/docs/components/_authority-components.mdx';
 import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 
 nanos world **Cables** are composed primarily of two Unreal Engine components: a [Cable](https://docs.unrealengine.com/en-US/API/Plugins/CableComponent/UCableComponent/index.html) and a [PhysicsConstraint](https://docs.unrealengine.com/en-US/InteractiveExperiences/Physics/Constraints/ConstraintsBlueprints/index.html). The first is used for visual purposes only and the second one gives the effective physical effects that are applied to each end of the Cable.
 
 :::info
+
 Cable **visuals** can be tweaked with `:SetForces()`, `:SetCableSettings()` and `:SetRenderingSettings()` methods. Those methods don’t have effect on the physics being applied and only have effects on the visual representation.
 
 Cable **physics** can be tweaked with `:SetAngularLimits()` and `:SetLinearLimits()`.
+
 :::
 
 After attaching the two sides of your cable, the physics can be tweaked to affect how the constraint will affect the objects.
 
 :::tip
+
 Cables are automatically **destroyed** when one of the sides are detached
+
 :::
 
 :::tip
+
 You can find more useful information regarding physical properties of the joint in the end of this page.
+
 :::
 
 ## Usage
@@ -80,7 +88,7 @@ my_cable:AttachStartTo(other, relative_location, bone_name)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| [Actor](/docs/scripting-reference/classes/base-classes/actor) | **`other`** |  |  |
+| <Classes.Actor /> | **`other`** |  |  |
 | <StructType.Vector /> | **`relative_location`** | `Vector()` |  |
 | <BasicType.String /> | **`bone_name`** | \`\` |  |
 
@@ -94,7 +102,7 @@ my_cable:AttachEndTo(other, relative_location, bone_name)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| [Actor](/docs/scripting-reference/classes/base-classes/actor) | **`other`** |  |  |
+| <Classes.Actor /> | **`other`** |  |  |
 | <StructType.Vector /> | **`relative_location`** | `Vector()` |  |
 | <BasicType.String /> | **`bone_name`** | \`\` |  |
 
@@ -124,8 +132,8 @@ my_cable:SetAngularLimits(swing_1_motion, swing_2_motion, twist_motion, swing_1_
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| [ConstraintMotion](/docs/scripting-reference/glossary/enums#constraintmotion) | **`swing_1_motion`** |  |  |
-| [ConstraintMotion](/docs/scripting-reference/glossary/enums#constraintmotion) | **`swing_2_motion`** |  |  |
+| [ConstraintMotion](./scripting-reference/glossary/enums.md#constraintmotion) | **`swing_1_motion`** |  |  |
+| [ConstraintMotion](./scripting-reference/glossary/enums.md#constraintmotion) | **`swing_2_motion`** |  |  |
 | <BasicType.Number /> | **`swing_1_limit`** |  |  |
 | <BasicType.Number /> | **`swing_2_limit`** |  |  |
 | <BasicType.Number /> | **`twist_limit`** |  |  |

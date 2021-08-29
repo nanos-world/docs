@@ -1,5 +1,6 @@
 ---
 description: Learn how to use and print colored messages to the built-in chat
+tags: [tutorial-example]
 ---
 
 # Chat Colors
@@ -27,7 +28,9 @@ Server.BroadcastChatMessage("Hello with <italic>Italic</> text message!")
 
 
 :::caution
+
 It is NOT possible to combine two or more styles together \(eg.: Bold + Red\).
+
 :::
 
 ## All supported text styles/tags

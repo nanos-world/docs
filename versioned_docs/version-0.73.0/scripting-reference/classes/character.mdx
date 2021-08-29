@@ -1,6 +1,7 @@
 ---
 description: Characters represents Actors which can be possessed, can move and interact with world. They are the default Skeletal Mesh Character built for nanos world
 sidebar_position: 0
+tags: [class]
 ---
 
 # 🧑 Character
@@ -11,15 +12,20 @@ import { ReferenceLink } from '/docs/components/_reference-link.mdx';
 import * as AuthorityType from '/docs/components/_authority-components.mdx';
 import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 
 ![](https://i.imgur.com/yPtYbR6.jpg)
 
 :::info
+
 Characters are Skeletal Meshes using Unreal’s Mannequin Skeletal, with animations and interactivity already natively integrated into nanos world. It is possible to import any Skeletal Mesh \(which uses Unreal’s Mannequin Skeletal\) to this Character.
+
 :::
 
 :::info
-⏬ **Inheritance:** This class inherits from [Actor](/docs/scripting-reference/classes/base-classes/actor) and [Pickable](/docs/scripting-reference/classes/base-classes/pickable). Please check it's pages for inherited **Methods** and **Events**.
+
+⏬ **Inheritance:** This class inherits from [Actor](./scripting-reference/classes/base-classes/actor.mdx) and [Pickable](./scripting-reference/classes/base-classes/pickable.mdx). Please check it's pages for inherited **Methods** and **Events**.
+
 :::
 
 ## Usage
@@ -67,15 +73,15 @@ woman:AddStaticMeshAttached("hair", "nanos-world::SM_Hair_Kwang", "hair_female")
 | <StructType.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <StructType.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
 | <BasicType.String /> | **`skeletal_mesh`** | `nanos-world::SK_Mannequin` |
-| [CollisionType](/docs/scripting-reference/glossary/enums#collisiontype) | **`collision_type`** | `CollisionType.Normal` |
+| <BasicType.Enum type="CollisionType" /> | **`collision_type`** | `CollisionType.Normal` |
 | <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
 | <BasicType.Number /> | **`health/max_health`** | `100` |
 | <BasicType.String /> | **`death_sounds`** | `nanos-world::A_Male_01_Death` |
 | <BasicType.String /> | **`pain_sounds`** | `nanos-world::A_Male_01_Pain` |
 
-<ReferenceLink href="/docs/getting-started/tutorials-and-examples/play-as-prop">Play as Prop</ReferenceLink>
-<ReferenceLink href="/docs/getting-started/tutorials-and-examples/name-tags">Nametags</ReferenceLink>
-<ReferenceLink href="/docs/assets-modding/creating-assets/characters-meshes">Character Meshes Guide</ReferenceLink>
+<ReferenceLink href="getting-started/tutorials-and-examples/play-as-prop">Play as Prop</ReferenceLink>
+<ReferenceLink href="getting-started/tutorials-and-examples/name-tags">Nametags</ReferenceLink>
+<ReferenceLink href="assets-modding/creating-assets/characters-meshes">Character Meshes Guide</ReferenceLink>
 
 ## Functions
 
@@ -139,23 +145,23 @@ import BasePaintableFunctions from '/docs/scripting-reference/classes/base-class
 |  | <BasicType.Boolean /> | Gets if the Character can receive damage |
 |  | <BasicType.Boolean /> | Gets Character Movement Enabled |
 |  | <StructType.Rotator /> | [**`GetControlRotation`**](character#getcontrolrotation) | Gets the rotation this character is looking at |
-|  | [FallingMode](#/docs/scripting-reference/glossary/enumsfallingmode) | [**`GetFallingMode`**](character#GetFallingMode) | Gets the Falling Mode |
+|  | <BasicType.Enum type="FallingMode" /> | [**`GetFallingMode`**](character#GetFallingMode) | Gets the Falling Mode |
 |  | <BasicType.Boolean /> | Gets if the Character is in Flying Mode |
-|  | [GaitMode](/docs/scripting-reference/glossary/enums#gaitmode) | [**`GetGaitMode`**](character#getgaitmode) | Gets the Gait Mode |
-|  | [Prop](/docs/scripting-reference/classes/prop) | [**`GetGrabbedProp`**](character#GetGrabbedProp) | Gets the Grabbing Prop |
+|  | <BasicType.Enum type="CollisionType" /> | [**`GetGaitMode`**](character.mdx#getgaitmode) | Gets the Gait Mode |
+|  | <Classes.Prop /> | [**`GetGrabbedProp`**](character.mdx#GetGrabbedProp) | Gets the Grabbing Prop |
 |  | <BasicType.Number /> | Gets the Gravity Scale of this Character |
 |  | <BasicType.Number /> | Gets the Character’s Health. |
 |  | <BasicType.Number /> | Gets the Character’s MaxHealth. |
 |  | <BasicType.String /> | Gets the Mesh Asset name |
 |  | Entity | [**`GetPicked`**](character#getpicked) | Gets the holding Picked Item/Grenade/Weapon |
-|  | [Player](/docs/scripting-reference/classes/player) | [**`GetPlayer`**](character#getplayer) | Gets the Player controlling this Character |
+|  | <Classes.Player /> | [**`GetPlayer`**](character.mdx#getplayer) | Gets the Player controlling this Character |
 |  | <BasicType.Number /> |  |
-|  | [StanceMode](/docs/scripting-reference/glossary/enums#stancemode) | [**`GetStanceMode`**](character#getstancemode) |  |
-|  | [SwimmingMode](/docs/scripting-reference/glossary/enums#swimmingmode) | [**`GetSwimmingMode`**](character#getswimmingmode) |  |
+|  | <BasicType.Enum type="StanceMode" /> | [**`GetStanceMode`**](character.mdx#getstancemode) |  |
+|  | <BasicType.Enum type="SwimmingMode" /> | [**`GetSwimmingMode`**](character.mdx#getswimmingmode) |  |
 |  | <BasicType.Number /> |  |
-|  | [Vehicle](/docs/scripting-reference/classes/vehicle) | [**`GetVehicle`**](character#getvehicle) | Gets the Vehicle the Character is on |
-|  | [ViewMode](/docs/scripting-reference/glossary/enums#viewmode) | [**`GetViewMode`**](character#getviewmode) | Gets Character View Mode |
-|  | [AimMode](/docs/scripting-reference/glossary/enums#aimmode) | [**`GetWeaponAimMode`**](character#getweaponaimmode) | Gets Character Aim Mode |
+|  | <Classes.Vehicle /> | [**`GetVehicle`**](character.mdx#getvehicle) | Gets the Vehicle the Character is on |
+|  | <BasicType.Enum type="ViewMode" /> | [**`GetViewMode`**](character.mdx#getviewmode) | Gets Character View Mode |
+|  | <BasicType.Enum type="AimMode" /> | [**`GetWeaponAimMode`**](character.mdx#getweaponaimmode) | Gets Character Aim Mode |
 
 ## Events
 
@@ -203,9 +209,9 @@ my_character:ApplyDamage(damage, bone_name, damage_type, from_direction, instiga
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`damage`** |  |  |
 | <BasicType.String /> | **`bone_name`** | \`\` |  |
-| DamageType | **`damage_type`** | `DamageType.Shot` |  |
+| <BasicType.Enum type="DamageType" /> | **`damage_type`** | `DamageType.Shot` |  |
 | <StructType.Vector /> | **`from_direction`** | `Vector()` |  |
-| [Player](/docs/scripting-reference/classes/player) | **`instigator`** | `nil` |  |
+| <Classes.Player /> | **`instigator`** | `nil` |  |
 
 ### `AddSkeletalMeshAttached`
 
@@ -254,7 +260,7 @@ my_character:EnterVehicle(vehicle, seat)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| [Vehicle](/docs/scripting-reference/classes/vehicle) | **`vehicle`** |  |  |
+| <Classes.Vehicle /> | **`vehicle`** |  |  |
 | <BasicType.Number /> | **`seat`** | `0` |  |
 
 ### <AuthorityType.ServerOnly />`GrabProp`
@@ -267,7 +273,7 @@ my_character:GrabProp(prop)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| [Prop](/docs/scripting-reference/classes/prop) | **`prop`** |  |  |
+| <Classes.Prop /> | **`prop`** |  |  |
 
 ### <AuthorityType.ServerOnly />`Jump`
 
@@ -335,7 +341,7 @@ my_character:PlayAnimation(animation_path, slot_type, loop_indefinitely)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`animation_path`** |  |  |
-| [AnimationSlotType](/docs/scripting-reference/glossary/enums#animationslottype) | **`slot_type`** | `FullBody` |  |
+| <BasicType.Enum type="AnimationSlotType" /> | **`slot_type`** | `FullBody` |  |
 | <BasicType.Boolean /> | **`loop_indefinitely`** |  |  |
 
 ### `RemoveSkeletalMeshAttached`
@@ -990,7 +996,7 @@ my_character:GetWeaponAimMode()
 | <BasicType.String /> | **`last_bone_damaged`** |  |
 | DamageType | **`damage_type_reason`** |  |
 | <StructType.Vector /> | **`hit_from_direction`** |  |
-| [Player](/docs/scripting-reference/classes/player) | **`instigator`** |  |
+| <Classes.Player /> | **`instigator`** |  |
 
 ```lua
 Character.Subscribe("Death", function(self, last_damage_taken, last_bone_damage, damage_type_reason, hit_from_direction, instigator)
@@ -1158,7 +1164,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| [Player](/docs/scripting-reference/classes/player) | **`possesser`** |  |
+| <Classes.Player /> | **`possesser`** |  |
 
 ```lua
 Character.Subscribe("Possessed", function(self, possesser)
@@ -1269,7 +1275,7 @@ end)
 | <BasicType.String /> | **`bone`** |  |
 | DamageType | **`type`** |  |
 | <StructType.Vector /> | **`from_direction`** |  |
-| [Player](/docs/scripting-reference/classes/player) | **`instigator`** |  |
+| <Classes.Player /> | **`instigator`** |  |
 
 ```lua
 Character.Subscribe("TakeDamage", function(self, damage, bone, type, from_direction, instigator)
@@ -1299,7 +1305,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| [Player](/docs/scripting-reference/classes/player) | **`old_possesser`** |  |
+| <Classes.Player /> | **`old_possesser`** |  |
 
 ```lua
 Character.Subscribe("UnPossessed", function(self, old_possesser)
@@ -1381,7 +1387,9 @@ The following items can be used to customize Male & Female \(`nanos-world::SK_Ma
 ## Character’s Skeleton Bone Names
 
 :::info
+
 Ugly list I know.
+
 :::
 
 * `root`

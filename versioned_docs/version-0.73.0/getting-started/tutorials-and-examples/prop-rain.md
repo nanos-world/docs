@@ -2,6 +2,7 @@
 description: >-
   How to create a rain effect with Props (boxes) falling from sky once a
   Character enters a Trigger
+tags: [tutorial-example, scripting]
 ---
 
 # Prop Rain

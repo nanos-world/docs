@@ -10,6 +10,7 @@ Server represents all Server controls in the Server side
 import * as AuthorityType from '/docs/components/_authority-components.mdx';
 import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 
 ![](/img/docs/server.jpg)
 
@@ -155,7 +156,7 @@ Server.SendChatMessage(player, message)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| [Player](/docs/scripting-reference/classes/player) | **`player`** |  |  |
+| <Classes.Player /> | **`player`** |  |  |
 | <BasicType.String /> | **`message`** |  |  |
 
 ### `SetDescription`
@@ -341,7 +342,7 @@ Server.GetValue(key)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`text`** |  |
-| [Player](/docs/scripting-reference/classes/player) | **`sender`** |  |
+| <Classes.Player /> | **`sender`** |  |
 
 ```lua
 Server.Subscribe("Chat", function(text, sender)
@@ -356,7 +357,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`text`** |  |
-| [Player](/docs/scripting-reference/classes/player) | **`sender`** |  |
+| <Classes.Player /> | **`sender`** |  |
 
 ```lua
 Server.Subscribe("ChatEntry", function(text, sender)
@@ -385,7 +386,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`text`** |  |
-| [LogType](/docs/scripting-reference/glossary/enums#logtype) | **`type`** |  |
+| <BasicType.Enum type="LogType" /> | **`type`** |  |
 
 ```lua
 Server.Subscribe("LogEntry", function(text, type)

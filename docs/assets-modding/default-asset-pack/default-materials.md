@@ -58,7 +58,7 @@ Is the same as Translucent but will be always visible in the screen, even behind
 
 :::tip
 
-**Note**: All those Materials in this page are already included in the base game in the [Default nanos world Asset Pack](/docs/assets-modding/default-asset-pack/default-asset-pack), you can reference them like that: **`nanos-world::M_NanosDefault`.**
+**Note**: All those Materials in this page are already included in the base game in the [Default nanos world Asset Pack](./assets-modding/default-asset-pack/default-asset-pack.md), you can reference them like that: **`nanos-world::M_NanosDefault`.**
 
 :::
 

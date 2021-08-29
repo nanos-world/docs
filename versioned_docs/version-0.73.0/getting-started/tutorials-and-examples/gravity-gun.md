@@ -1,5 +1,6 @@
 ---
 description: How to create a simple Gravity Gun to move Props around
+tags: [tutorial-example, scripting]
 ---
 
 # Gravity Gun
@@ -13,7 +14,9 @@ How to create a simple Gravity Gun to move Props around.
 </video>
 
 :::tip
+
 You can now find a fully working Gravity Gun in the [Sandbox](https://github.com/nanos-world/nanos-world-sandbox) game-mode!
+
 :::
 
 ### Code Snippet

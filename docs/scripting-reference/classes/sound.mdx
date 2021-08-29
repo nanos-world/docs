@@ -48,12 +48,12 @@ local my_sound = Sound(
 | <BasicType.String /> | **`asset`** |  |  |
 | <BasicType.Boolean /> | **`is_2D_sound`** | `false` |  |
 | <BasicType.Boolean /> | **`auto_destroy`** | `true` | If to destroy after finished playing |
-| [SoundType](/docs/scripting-reference/glossary/enums#soundtype) | **`sound_type`** | `SoundType.SFX` | Used to apply user’s volume settings |
+| <BasicType.Enum type="SoundType" /> | **`sound_type`** | `SoundType.SFX` | Used to apply user’s volume settings |
 | <BasicType.Number /> | **`volume`** | `1` |  |
 | <BasicType.Number /> | **`pitch`** | `1` |  |
 | <BasicType.Number /> | **`inner_radius`** | `400` | 3D only |
 | <BasicType.Number /> | **`falloff_distance`** | `3600` | 3D only |
-| [AttenuationFunction](/docs/scripting-reference/glossary/enums#attenuationfunction) | **`attenuation_function`** | `Linear` | 3D only |
+| <BasicType.Enum type="AttenuationFunction" /> | **`attenuation_function`** | `Linear` | 3D only |
 | <BasicType.Boolean /> | **`keep_playing_when_silent`** | `false` | 3D only - Whether to keep playing this sound when it’s not audible - Use with caution, it may cause performance issues! |
 
 ## Functions

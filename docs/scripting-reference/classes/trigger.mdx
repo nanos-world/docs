@@ -13,6 +13,7 @@ A Trigger class is a utility class to trigger events when any Entity enters an A
 import * as AuthorityType from '/docs/components/_authority-components.mdx';
 import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 
 ![](/img/docs/trigger.jpg)
 
@@ -43,7 +44,7 @@ end)
 | <StructType.Vector /> | **`location`** | `Vector(0, 0, 0)` |  |
 | <StructType.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |  |
 | <StructType.Vector /> | **`extent`** | `Vector(0, 0, 0)` | Size of the Trigger. If using Sphere, only the **X** is used |
-| [TriggerType](/docs/scripting-reference/glossary/enums#triggertype) | **`trigger_type`** | `TriggerType.Sphere` | Currently supports **Sphere** of **Box** |
+| <BasicType.Enum type="TriggerType" /> | **`trigger_type`** | `TriggerType.Sphere` | Currently supports **Sphere** of **Box** |
 | <BasicType.Boolean /> | **`is_visible`** | `false` | Useful for debugging |
 | <StructType.Color /> | **`color`** | `Color.RED` | Color to paint the Trigger bounds - if Visible |
 
@@ -106,7 +107,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Trigger](trigger) | `self` | The Trigger entity |
-| [Actor](/docs/scripting-reference/classes/base-classes/actor) | `entity` | Any Actor which overlaps |
+| <Classes.Actor /> | `entity` | Any Actor which overlaps |
 
 ### <AuthorityType.ServerOnly />`EndOverlap`
 
@@ -121,7 +122,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Trigger](trigger) | `self` | The Trigger entity |
-| [Actor](/docs/scripting-reference/classes/base-classes/actor) | `entity` | Any Actor which left the Trigger |
+| <Classes.Actor /> | `entity` | Any Actor which left the Trigger |
 
 ## 
 

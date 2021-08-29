@@ -2,6 +2,7 @@
 description: >-
   JSON library, useful for sending data from Client’s Package to WebUI
   environment
+tags: [utility-class]
 ---
 
 # JSON
@@ -11,11 +12,15 @@ JSON library, useful for sending data from Client’s Package to WebUI environme
 import * as BasicType from '/docs/components/_common-types.mdx';
 
 :::tip
+
 nanos world implements a lightweight JSON library from [https://github.com/rxi/json.lua](https://github.com/rxi/json.lua).
+
 :::
 
 :::info
+
 **Tip:** This structure is Open Sourced at [https://github.com/nanos-world/nanos-world-lua-lib](https://github.com/nanos-world/nanos-world-lua-lib). Feel free to push merge requests and suggest changes!
+
 :::
 
 ## Usage
@@ -27,7 +32,9 @@ local decoded_value = JSON.parse('[1,2,3,{"x":10}]') -- Returns { 1, 2, 3, { x =
 ```
 
 :::caution
+
 Note that custom classes \(e.g. **Vehicle**, **Vector**, **Character**… etc\) aren’t stringified with this functions and stringifying them will cause unknown behavior.
+
 :::
 
 ### Functions

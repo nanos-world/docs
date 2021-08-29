@@ -13,6 +13,7 @@ Players are Entities that represents the individual behind the mouse and keyboar
 import * as AuthorityType from '/docs/components/_authority-components.mdx';
 import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 
 :::info
 
@@ -57,7 +58,7 @@ end)
 |  | <BasicType.String /> | [**`GetAccountName`**](player#getaccountname) | Gets the nanos account name |
 | <AuthorityType.ClientOnly /> | <StructType.Vector /> | [**`GetCameraLocation`**](player#getcameralocation) | Gets the Player’s Camera Location |
 | <AuthorityType.ClientOnly /> | <StructType.Rotator /> | [**`GetCameraRotation`**](player#getcamerarotation) | Gets the Player’s Camera Rotation |
-|  | [Character](/docs/scripting-reference/classes/character) | [**`GetControlledCharacter`**](player#getcontrolledcharacter) | Returns the character of the player |
+|  | <Classes.Character /> | [**`GetControlledCharacter`**](player#getcontrolledcharacter) | Returns the character of the player |
 |  | <BasicType.Number /> | [**`GetID`**](player#getid) | Gets the network ID of this entity |
 | <AuthorityType.AuthorityOnly /> | <BasicType.String /> | [**`GetIP`**](player#getip) | Gets the IP of this Player |
 |  | <BasicType.String /> | [**`GetName`**](player#getname) | Returns the player’s name |
@@ -131,7 +132,7 @@ my_player:Possess(new_character)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| [Character](/docs/scripting-reference/classes/character) | **`new_character`** |  |
+| <Classes.Character /> | **`new_character`** |  |
 
 ### `SetCameraLocation`
 
@@ -207,7 +208,7 @@ my_player:SetVOIPSetting(setting)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| [VOIPSetting](/docs/scripting-reference/glossary/enums#voipsetting) | **`setting`** |  |
+| <BasicType.Enum type="VOIPSetting" /> | **`setting`** |  |
 
 ### <AuthorityType.AuthorityOnly /> `UnPossess`
 
@@ -321,7 +322,7 @@ my_player:GetType()
 
 > Returns the VOIP Channel of this Player
 >
-> Returns [VOIPChannel](/docs/scripting-reference/glossary/enums#voipsetting)
+> Returns <BasicType.Enum type="VOIPChannel" />
 
 ```lua
 my_player:GetVOIPChannel()
@@ -365,7 +366,7 @@ my_player:IsValid()
 
 > Returns this Player VOIP Setting
 >
-> Returns [VOIPSetting](/docs/scripting-reference/glossary/enums#voipsetting)
+> Returns <BasicType.Enum type="VOIPSetting" />
 
 ```lua
 my_player:GetVOIPSetting()
@@ -426,7 +427,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Player](player) | `self` |  |
-| [Character](/docs/scripting-reference/classes/character) | `character` |  |
+| <Classes.Character /> | `character` |  |
 
 ### `Spawn`
 
@@ -469,7 +470,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Player](player) | `self` |  |
-| [Character](/docs/scripting-reference/classes/character) | `character` |  |
+| <Classes.Character /> | `character` |  |
 
 ### `VOIP`
 

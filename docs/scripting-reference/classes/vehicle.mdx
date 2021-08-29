@@ -12,6 +12,7 @@ import { ReferenceLink } from '/docs/components/_reference-link.mdx';
 import * as AuthorityType from '/docs/components/_authority-components.mdx';
 import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 
 ![](/img/docs/vehicle.jpg)
 
@@ -29,11 +30,11 @@ Please take a look at our Default’s Vehicle package with all built-in Vehicles
 
 :::
 
-<ReferenceLink href="/docs/getting-started/tutorials-and-examples/monster-truck">Monster Truck</ReferenceLink>
+<ReferenceLink href="getting-started/tutorials-and-examples/monster-truck">Monster Truck</ReferenceLink>
 
 :::info
 
-⏬ **Inheritance:** This class inherits from [Actor](/docs/scripting-reference/classes/base-classes/actor) and [Paintable](/docs/scripting-reference/classes/base-classes/paintable). Please check their pages for inherited **Methods** and **Events**.
+⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />. Please check their pages for inherited **Methods** and **Events**.
 
 :::
 
@@ -72,7 +73,7 @@ vehicle:RecreatePhysics()
 | <StructType.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <StructType.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
 | <BasicType.String /> | **`model_name`** (Skeletal Mesh) | ` ` |
-| [CollisionType](/docs/scripting-reference/glossary/enums#collisiontype) | **`collision_type`** | `CollisionType.Normal` |
+| <BasicType.Enum type="CollisionType" /> | **`collision_type`** | `CollisionType.Normal` |
 | <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
 | <BasicType.Boolean /> | **`auto_create_physics`** _(can be disabled to improve performance when setting several configs. Must call `RecreatePhysics()` after all)_ | `true` |
 | <BasicType.Boolean /> |  **`auto_unflip`** _(auto rotates the vehicle if flipped)_ | `true` |
@@ -111,7 +112,7 @@ Most of the functions below will reset the vehicle Physics State \(automatically
 | <AuthorityType.ServerOnly /> |  | [**`SetSteeringWheelSetup`**](vehicle#setsteeringwheelsetup) | Configures where the Steering Wheel is located |
 | <AuthorityType.ServerOnly /> |  | [**`SetHeadlightsSetup`**](vehicle#setheadlightssetup) | Configures the Headlights Offset and Color |
 |  | <BasicType.String /> | [**`GetAssetName`**](vehicle#getassetname) | Gets the Asset name |
-|  | [Character](/docs/scripting-reference/classes/character) | [**`GetPassenger`**](vehicle#GetPassenger) | Gets a passengers at an index |
+|  | <Classes.Character /> | [**`GetPassenger`**](vehicle#GetPassenger) | Gets a passengers at an index |
 |  | <BasicType.Table /> | [**`GetPassengers`**](vehicle#getpassengers) | Gets all passengers |
 
 ## Events
@@ -187,7 +188,7 @@ my_vehicle:SetDifferentialSetup(differential_type, front_rear_split, front_left_
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| [DifferentialType](/docs/scripting-reference/glossary/enums#differentialtype) | **`differential_type`** | `LimitedSlip_4W` | |
+| <BasicType.Enum type="DifferentialType" /> | **`differential_type`** | `LimitedSlip_4W` | |
 | <BasicType.Number /> | **`front_rear_split`** | `0.45` | Ratio of torque split between front and rear.<br/> **>0.5** means more to front<br/> **<0.5** means more to rear<br/> _(works only with 4W type)_
 | <BasicType.Number /> | **`front_left_right_split`** | `0.5` | Ratio of torque split between front-left and front-right.<br/> **>0.5** means more to front-left<br/> **<0.5** means more to front-right<br/> _(works only with 4W and LimitedSlip_FrontDrive)_ |
 | <BasicType.Number /> | **`rear_left_right_split`** | `0.5` | Ratio of torque split between rear-left and rear-right<br/> **>0.5** means more to rear-left<br/> **<0.5** means more to rear-right<br/> _(works only with 4W and LimitedSlip_RearDrive)_ |
@@ -334,7 +335,7 @@ my_vehicle:GetAssetName()
 
 > Gets a passenger from a seat
 >
-> returns [Player ](/docs/scripting-reference/classes/player)or [nil ](/docs/scripting-reference/glossary/basic-types#nil)if Seat is invalid or empty
+> returns <Classes.Player /> or <BasicType.Nil /> if Seat is invalid or empty
 
 ```lua
 my_vehicle:GetPassenger(seat)

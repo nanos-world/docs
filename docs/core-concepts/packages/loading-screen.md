@@ -6,7 +6,7 @@ tags: [scripting, ui]
 
 # Loading Screen
 
-In nanos world it is possible to add a customized and dynamic Loading Screen to your Server using [WebUI](/docs/scripting-reference/classes/webui).
+In nanos world it is possible to add a customized and dynamic Loading Screen to your Server using [WebUI](./scripting-reference/classes/webui.mdx).
 
 ![](/img/docs/loading-screen.jpg)
 
@@ -72,7 +72,7 @@ var LoadingScreen = {
 
 ## Configuring your server to use the Loading Screen
 
-After creating your loading-screen package, you will need to configure your server to load it in your [Config.toml](/docs/core-concepts/server-manual/server-configuration#server-configuration-file). Just set the setting `loading_screen` to your Package's folder name.
+After creating your loading-screen package, you will need to configure your server to load it in your [Config.toml](./core-concepts/server-manual/server-configuration.md#server-configuration-file). Just set the setting `loading_screen` to your Package's folder name.
 
 ```toml
 # loading-screen package to load (the loading screen will be displayed when players join your server)

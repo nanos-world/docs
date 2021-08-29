@@ -1,6 +1,7 @@
 ---
 description: How to migrate your Scripts to the newer API version
 sidebar_position: 4
+tags: [scripting]
 ---
 
 # 🧳 Migrating to Alpha
@@ -12,7 +13,9 @@ There have been no significant changes from version 0.73.0 to Alpha, however thi
 ## Migration Notes
 
 :::tip
+
 We've created several **REGEX** to help you converting your Packages. Please refer to [Converting your Code with Regex](migrating-to-alpha#converting-your-code-with-regex).
+
 :::
 
 Here it follows a list with all changes we had which need attention:
@@ -41,9 +44,11 @@ end)
 ### 2. The Static Class **`NanosWorld`** has been deprecated
 
 :::tip
+
 Use **`Player.GetAll()`** instead of `NanosWorld:GetPlayers()`.
 
 Use **`NanosUtils.Dump()`** instead of `NanosWorld:Dump()`.
+
 :::
 
 ```lua
@@ -85,16 +90,18 @@ Although this still works, it is highly recommended to convert your **Asset Pack
 | `MyAssets_Withouth-any-PaTtern` | **`my-assets-with-pattern`** |
 
 :::caution
+
 **Note:** All reference to assets now must use the new format as well \(the folder name\). So
 
 `nanos-world::SM_Cube` would become `nanos-world::SM_Cube`.
+
 :::
 
 ### 5. Package Types has been reworked
 
 We don't have type `library` anymore, we now have `script`, `game-mode` and `loading-screen`. All your Packages has been replaced with `script` by default. If your Package is a full game, please set it `game-mode`.
 
-> Please refer to [Packages](/docs/core-concepts/packages/packages) for more information.
+> Please refer to [Packages](./core-concepts/packages/packages.md) for more information.
 
 ### 6. Timer has a new signature and methods
 
@@ -102,7 +109,7 @@ We don't have type `library` anymore, we now have `script`, `game-mode` and `loa
 
 ### 7. LoadingScreen folder has been replaced with Package `loading-screen`
 
-> Please refer to [Loading Screen](/docs/core-concepts/packages/loading-screen) for more information.
+> Please refer to [Loading Screen](./core-concepts/packages/loading-screen.md) for more information.
 
 ## Converting your Code with Regex
 

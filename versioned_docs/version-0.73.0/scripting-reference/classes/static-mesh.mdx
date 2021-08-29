@@ -3,6 +3,7 @@ description: >-
   A StaticMesh entity represents a Mesh which can be spawned in the world, can’t
   move and is more optimized for using in decorating the world
 sidebar_position: 0
+tags: [class]
 ---
 
 # 🏠 StaticMesh
@@ -12,15 +13,20 @@ A StaticMesh entity represents a Mesh which can be spawned in the world, can’t
 import * as AuthorityType from '/docs/components/_authority-components.mdx';
 import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 
 ![](/img/docs/static-mesh.jpg)
 
 :::tip
+
 You can spawn this entity is both **Client** or **Server** \(if you spawn it on client, it won’t be synchronized with other players\).
+
 :::
 
 :::info
-⏬ **Inheritance:** This class inherits from [Actor](/docs/scripting-reference/classes/base-classes/actor) and [Paintable](/docs/scripting-reference/classes/base-classes/paintable). Please check their pages for inherited **Methods** and **Events**.
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />. Please check their pages for inherited **Methods** and **Events**.
+
 :::
 
 ## Usage
@@ -40,7 +46,7 @@ local static_mesh = StaticMesh(
 | <StructType.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <StructType.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
 | <BasicType.String /> | **`asset`** | ` ` |
-| [CollisionType](/docs/scripting-reference/glossary/enums#collisiontype) | **`collision_type`** | `CollisionType.Normal` |
+| <BasicType.Enum type="CollisionType" /> | **`collision_type`** | `CollisionType.Normal` |
 
 ## Functions
 

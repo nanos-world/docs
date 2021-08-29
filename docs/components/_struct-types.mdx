@@ -1,19 +1,13 @@
-export const Vector = () => (
-	<a href="/docs/scripting-reference/utility-classes/vector">Vector</a>
+import { getActiveVersionPath } from '/docs/components/_active-version.mdx';
+
+<!-- Generic Struct Type component -->
+export const StructType = (label, path) => (
+	<a href={`${getActiveVersionPath()}/scripting-reference/utility-classes/${path ? path : label.toLowerCase()}`}>{label}</a>
 );
 
-export const Rotator = () => (
-	<a href="/docs/scripting-reference/utility-classes/rotator">Rotator</a>
-);
-
-export const Color = () => (
-	<a href="/docs/scripting-reference/utility-classes/color">Color</a>
-);
-
-export const Quat = () => (
-	<a href="/docs/scripting-reference/utility-classes/quaternion">Quat</a>
-);
-
-export const Vector2D = () => (
-	<a href="/docs/scripting-reference/utility-classes/vectortwod">Vector2D</a>
-);
+<!-- Defines Struct Types componenets -->
+export const Vector = () => StructType("Vector");
+export const Rotator = () => StructType("Rotator");
+export const Color = () => StructType("Color");
+export const Quat = () => StructType("Quat", "quaternion");
+export const Vector2D = () => StructType("Vector2D", "vectortwod");

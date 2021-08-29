@@ -10,6 +10,7 @@ Static Class present on Client side
 import * as AuthorityType from '/docs/components/_authority-components.mdx';
 import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 
 :::tip
 
@@ -44,7 +45,7 @@ This is a **Client** only Class.
 |  | [**`Unsubscribe`**](client#unsubscribe) | Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback |
 |  | [**`Unspectate`**](client#unspectate) | Leaves the Spectator’s State. |
 | <BasicType.Table /> | [**`Trace`**](client#trace) | Trace a ray against the world and returns a table with the first blocking hit information |
-| [Player](/docs/scripting-reference/classes/player) | [**`GetLocalPlayer`**](client#getlocalplayer) | Gets the local Player |
+| <Classes.Player /> | [**`GetLocalPlayer`**](client#getlocalplayer) | Gets the local Player |
 | <StructType.Vector /> | [**`GetRandomReachablePointInRadius`**](client#getrandomreachablepointinradius) | Finds random, reachable point in navigable space restricted to radius around origin |
 | <StructType.Vector2D /> | [**`GetMousePosition`**](client#getmouseposition) | Gets the current mouse screen location |
 | <BasicType.Table /> | [**`GetPackages`**](client#getpackages) | Returns a list of Packages folder names loaded and running in the client |
@@ -205,7 +206,7 @@ Client.SetHardwareCursor(cursor_shape, cursor_path, hotspot)
 
 | Type | Parameter | Default Value | Description |  |
 | :--- | :--- | :--- | :--- | :--- |
-| [CursorType](/docs/scripting-reference/glossary/enums#cursortype) | **`cursor_shape`** |  |  |  |
+| <BasicType.Enum type="CursorType" /> | **`cursor_shape`** |  |  |  |
 | <BasicType.String /> | **`cursor_path`** |  |  |  |
 | <StructType.Vector2D /> | **`hotspot`** | `Vector(0, 0)` |  | = |
 
@@ -298,7 +299,7 @@ Client.Spectate(player)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| [Player](/docs/scripting-reference/classes/player) | **`player`** |  |
+| <Classes.Player /> | **`player`** |  |
 
 ### `Subscribe`
 
@@ -336,7 +337,7 @@ Client.Unspectate()
 
 ### `Trace`
 
-> Trace a ray against the world and returns a table with the first blocking hit information. Currently only supports trace for [Character](/docs/scripting-reference/classes/character), [Vehicle](/docs/scripting-reference/classes/vehicle), [StaticMesh](/docs/scripting-reference/classes/static-mesh), [Weapon](/docs/scripting-reference/classes/weapon), [Item](/docs/scripting-reference/classes/item), [Grenade ](/docs/scripting-reference/classes/grenade)and [Prop](/docs/scripting-reference/classes/prop), more can be requested.
+> Trace a ray against the world and returns a table with the first blocking hit information. Currently only supports trace for <Classes.Character />, <Classes.Vehicle />, <Classes.StaticMesh />, <Classes.Weapon />, <Classes.Item />, <Classes.Grenade /> and <Classes.Prop />, more can be requested.
 >
 > Returned Table: `{"Success", "Location", "Normal", "Entity", "BoneName", "ActorName", "ComponentName", "SurfaceType"}`
 
@@ -348,7 +349,7 @@ Client.Trace(start_location, end_location, collision_channel, trace_complex, ret
 | :--- | :--- | :--- | :--- |
 | <StructType.Vector /> | **`start_location`** |  |  |
 | <StructType.Vector /> | **`end_location`** |  |  |
-| [CollisionChannel](/docs/scripting-reference/glossary/enums#collisionchannel) | **`collision_channel`** | `CollisionChannel.WorldStatic` | Supports several channels separating by `|` |
+| <BasicType.Enum type="CollisionChannel" /> | **`collision_channel`** | `CollisionChannel.WorldStatic` | Supports several channels separating by `|` |
 | <BasicType.Boolean /> | **`trace_complex`** | `false` |  |
 | <BasicType.Boolean /> | **`return_entity`** | `false` |  |
 | <BasicType.Boolean /> | **`return_physical_material`** | `false` |  |
@@ -358,7 +359,7 @@ Client.Trace(start_location, end_location, collision_channel, trace_complex, ret
 
 > Gets the local Player
 >
-> Returns [Player](/docs/scripting-reference/classes/player)
+> Returns <Classes.Player />
 
 ```lua
 Client.GetLocalPlayer()
@@ -464,7 +465,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`text`** |  |
-| [Player](/docs/scripting-reference/classes/player) | **`sender`** |  |
+| <Classes.Player /> | **`sender`** |  |
 
 ```lua
 Client.Subscribe("ChatEntry", function(text, sender)
@@ -541,7 +542,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`text`** |  |
-| [LogType](/docs/scripting-reference/glossary/enums#logtype) | **`type`** |  |
+| <BasicType.Enum type="LogType" /> | **`type`** |  |
 
 ```lua
 Client.Subscribe("LogEntry", function(text, type)

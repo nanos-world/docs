@@ -1,0 +1,28 @@
+import { getActiveVersionPath } from '/docs/components/_active-version.mdx';
+
+<!-- Generic Struct Type component -->
+export const ClassType = (label, path) => (
+	<a href={`${getActiveVersionPath()}/scripting-reference/classes/${path ? path : label.toLowerCase()}`}>{label}</a>
+);
+
+<!-- Defines Struct Types componenets -->
+export const Actor = () => ClassType("Actor", "base-classes/actor");
+export const Paintable = () => ClassType("Paintable", "base-classes/paintable");
+export const Pickable = () => ClassType("Pickable", "base-classes/pickable");
+
+export const Cable = () => ClassType("Cable");
+export const Character = () => ClassType("Character");
+export const File = () => ClassType("File");
+export const Grenade = () => ClassType("Grenade");
+export const Item = () => ClassType("Item");
+export const Light = () => ClassType("Light");
+export const Particle = () => ClassType("Particle");
+export const Player = () => ClassType("Player");
+export const Prop = () => ClassType("Prop");
+export const Sound = () => ClassType("Sound");
+export const StaticMesh = () => ClassType("StaticMesh", "static-mesh");
+export const TextRender = () => ClassType("TextRender", "text-render");
+export const Trigger = () => ClassType("Trigger");
+export const Vehicle = () => ClassType("Vehicle");
+export const Weapon = () => ClassType("Weapon");
+export const WebUI = () => ClassType("WebUI");

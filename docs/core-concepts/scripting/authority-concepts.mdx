@@ -11,6 +11,7 @@ All you need to know about Authority & Network Authority concepts.
 import * as AuthorityType from '/docs/components/_authority-components.mdx';
 import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 
 ## Authority
 
@@ -39,13 +40,13 @@ In the same way, entities spawned in the **Client** will only exist for that Cli
 
 ## Network Authority
 
-Another important concept in nanos world is the **Network Authority**. We have a "_distributed network authority_" concept, which means the work of calculating physics and AI \(for example\) are automatically assigned and distributed to the clients. In general, if an [Actor](/docs/scripting-reference/classes/base-classes/actor) is near an in-game Character, it's physics will be calculated by that player's device. The Player that is responsible for calculating and sharing the results is called **Network Authority**.
+Another important concept in nanos world is the **Network Authority**. We have a "_distributed network authority_" concept, which means the work of calculating physics and AI \(for example\) are automatically assigned and distributed to the clients. In general, if an [Actor](./scripting-reference/classes/base-classes/actor.mdx) is near an in-game Character, it's physics will be calculated by that player's device. The Player that is responsible for calculating and sharing the results is called **Network Authority**.
 
 The Player assigned is automatically calculated by the server and takes some things into consideration, this calculation is only made if the Player is possessing a Character:
 
 * The **distance** from the Character to the object
-* If the Character is **grabbing** a [Prop](/docs/scripting-reference/classes/prop)
-* If the Character is **handling** a [Pickable](/docs/scripting-reference/classes/base-classes/pickable)
+* If the Character is **grabbing** a <Classes.Prop />
+* If the Character is **handling** a [Pickable](./scripting-reference/classes/base-classes/pickable.mdx)
 * If the Character is **driving** a Vehicle
 * If the Character has just **shot** something
 

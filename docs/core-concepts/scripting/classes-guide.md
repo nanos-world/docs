@@ -8,7 +8,7 @@ tags: [scripting]
 
 All you need to know about Classes
 
-All entities in nanos world are represented by a Class. In Lua, classes are represented by [tables](/docs/scripting-reference/classes/prop), etc\) are made with Classes/tables methods following an [OOP \(Object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming) pattern\). In this page we will explain more about that.
+All entities in nanos world are represented by a Class. In Lua, classes are represented by [tables](./scripting-reference/glossary/basic-types.md#table), etc\) are made with Classes/tables methods following an [OOP \(Object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming) pattern\). In this page we will explain more about that.
 
 :::tip
 
@@ -18,7 +18,7 @@ In nanos world we have 3 types of Classes (or Structures): `Classes`, `Static Cl
 
 ## Classes
 
-If you read our [Quick Start](/docs/getting-started/quick-start) guide, you noticed we were spawning entities in the following format:
+If you read our [Quick Start](./getting-started/quick-start.mdx) guide, you noticed we were spawning entities in the following format:
 
 ```lua
 -- Spawning an entity with a Constructor
@@ -38,11 +38,11 @@ This is how **OOP** works! You create objects and call functions/catch events on
 
 ### Classes Inheritance
 
-Under the hood, nanos world Classes follow an [Inheritance Pattern](https://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29), which means we have base parent classes, and it’s childs which inherits all functions, events and properties from them. You will notice that all Classes that can be spawned in the world are [Actors](/docs/scripting-reference/classes/base-classes/actor), for example in Character and [Prop](/docs/scripting-reference/classes/prop) \(which are Actors\) it is possible to call the function: `:SetLocation(Vector)`.
+Under the hood, nanos world Classes follow an [Inheritance Pattern](https://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29), which means we have base parent classes, and it’s childs which inherits all functions, events and properties from them. You will notice that all Classes that can be spawned in the world are [Actors](./scripting-reference/classes/base-classes/actor.mdx), for example in Character and [Prop](./scripting-reference/classes/prop.mdx) \(which are Actors\) it is possible to call the function: `:SetLocation(Vector)`.
 
 :::info
 
-The [Base Class Actor](/docs/scripting-reference/classes/base-classes/actor) is a very important class in nanos world. It contains the most of methods which are shared through all Classes we have, and also **Static Methods** to get and retrieve entities directly.
+The [Base Class Actor](./scripting-reference/classes/base-classes/actor.mdx) is a very important class in nanos world. It contains the most of methods which are shared through all Classes we have, and also **Static Methods** to get and retrieve entities directly.
 
 :::
 

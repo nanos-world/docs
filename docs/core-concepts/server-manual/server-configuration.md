@@ -82,9 +82,9 @@ The server Configuration file `Config.toml` is generated automatically when the 
 | **`announce`** | Whether to announce or not in the Server List |
 | **`tick_rate`** | Server Tick in ms. We recommend leaving it 33 |
 | **`log_level`** | Which Log level to output |
-| **`game_mode`** | [game-mode](/docs/core-concepts/packages/packages#package-types) package to load -  you can only load one game-mode at once. |
-| **`loading_screen`** | [loading-screen](/docs/core-concepts/packages/loading-screen) package to load - you can only load one loading-screen at once. |
-| **`packages`** | [script](/docs/core-concepts/packages/packages#package-types) packages to load |
+| **`game_mode`** | [game-mode](./core-concepts/packages/packages.md#package-types) package to load -  you can only load one game-mode at once. |
+| **`loading_screen`** | [loading-screen](./core-concepts/packages/loading-screen.md) package to load - you can only load one loading-screen at once. |
+| **`packages`** | [script](./core-concepts/packages/packages.md#package-types) packages to load |
 | **`assets`** | Additional assets to force to load |
 | **`map`** | Which map to load |
 | **`banned_ips`** | List of banned IPs |

@@ -3,6 +3,7 @@ description: >-
   A Text Render class is useful for spawning Texts in 3D world, you can even
   attach it to other entities
 sidebar_position: 0
+tags: [class]
 ---
 
 # 🆒 TextRender
@@ -13,15 +14,20 @@ import { ReferenceLink } from '/docs/components/_reference-link.mdx';
 import * as AuthorityType from '/docs/components/_authority-components.mdx';
 import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 
 ![](/img/docs/text-render.jpg)
 
 :::tip
+
 This is a **Client** only Class.
+
 :::
 
 :::info
-⏬ **Inheritance:** This class inherits from [Actor](/docs/scripting-reference/classes/base-classes/actor) and [Pickable](/docs/scripting-reference/classes/base-classes/pickable). Please check it's pages for inherited **Methods** and **Events**.
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Pickable />. Please check it's pages for inherited **Methods** and **Events**.
+
 :::
 
 ## Usage
@@ -39,14 +45,16 @@ local my_text_render = TextRender(
 ```
 
 :::info
+
 If you desire your **TextRender** to be visible through walls, replace it’s material with the nanos Default TranslucentDepth one!
 
 `SetDefaultMaterial(MaterialType.TranslucentDepth)`.
 
 You can also tweak it’s color and other properties using the Material methods.
+
 :::
 
-<ReferenceLink href="/docs/getting-started/tutorials-and-examples/name-tags">Nametags</ReferenceLink>
+<ReferenceLink href="getting-started/tutorials-and-examples/name-tags">Nametags</ReferenceLink>
 
 ## Constructor Parameters
 
@@ -57,8 +65,8 @@ You can also tweak it’s color and other properties using the Material methods.
 | <BasicType.String /> | **`text`** |  |
 | <StructType.Vector /> | **`scale`** | `Vector(1, 1, 1)` |
 | <StructType.Color /> | **`color`** | `Color(1, 1, 1, 1)` |
-| [FontType](/docs/scripting-reference/glossary/enums#fonttype) | **`font_type`** | `FontType.Roboto` |
-| [TextRenderAlignCamera](/docs/scripting-reference/glossary/enums#textrenderaligncamera) | **`align_camera`** | `TextRenderAlignCamera.Unaligned` |
+| <BasicType.Enum type="FontType" /> | **`font_type`** | `FontType.Roboto` |
+| <BasicType.Enum type="TextRenderAlignCamera" /> | **`align_camera`** | `TextRenderAlignCamera.Unaligned` |
 
 ## Functions
 
@@ -100,7 +108,7 @@ my_text_render:SetFont(:font_type)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| [FontType](/docs/scripting-reference/glossary/enums#fonttype) | **`font_type`** |  |
+| <BasicType.Enum type="FontType" /> | **`font_type`** |  |
 
 ### `SetFreeze`
 
@@ -126,7 +134,7 @@ my_text_render:SetGlyphSettings(extrude, bevel, bevel_type, bevel_segments, outl
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`extrude`** | `0` |  |
 | <BasicType.Number /> | **`level`** | `0` |  |
-| [TextRenderBevelType](/docs/scripting-reference/glossary/enums#textrenderbeveltype) | **`bevel_type`** | `TextRenderBevelType.Convex` |  |
+| <BasicType.Enum type="TextRenderBevelType" /> | **`bevel_type`** | `TextRenderBevelType.Convex` |  |
 | <BasicType.Number /> | **`bevel_segments`** | `8` |  |
 | <BasicType.Boolean /> | **`outline`** | `false` |  |
 
@@ -169,8 +177,8 @@ my_text_render:SetTextSettings(kerning, line_spacing, word_spacing, horizontal_a
 | <BasicType.Number /> | **`kerning`** | `0` |  |
 | <BasicType.Number /> | **`line_spacing`** | `0` |  |
 | <BasicType.Number /> | **`word_spacing`** | `0` |  |
-| [TextRenderHorizontalAlignment](/docs/scripting-reference/glossary/enums#textrenderhorizontalalignment) | **`horizontal_alignment`** | `TextRenderHorizontalAlignment.Center` |  |
-| [TextRenderVerticalAlignment](/docs/scripting-reference/glossary/enums#textrenderverticalalignment) | **`vertical_alignment`** | `TextRenderVerticalAlignment.Center` |  |
+| <BasicType.Enum type="TextRenderHorizontalAlignment" /> | **`horizontal_alignment`** | `TextRenderHorizontalAlignment.Center` |  |
+| <BasicType.Enum type="TextRenderVerticalAlignment" /> | **`vertical_alignment`** | `TextRenderVerticalAlignment.Center` |  |
 
 ## Events
 

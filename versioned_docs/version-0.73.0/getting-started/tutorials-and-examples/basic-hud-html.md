@@ -2,6 +2,7 @@
 description: >-
   How to add a basic HUD using HTML + JavaScript + CSS to display the
   character’s Health and Ammo based on CS:GO HUD
+tags: [tutorial-example, scripting, ui]
 ---
 
 # Basic HUD (HTML)
@@ -9,7 +10,9 @@ description: >-
 How to add a basic HUD using HTML + JavaScript + CSS to display the character’s Health and Ammo based on CS:GO HUD.
 
 :::tip
+
 The following example is deprecated and you can find an updated HTML UI in our [Sandbox Official Repository](https://github.com/nanos-world/nanos-world-sandbox). 
+
 :::
 
 ![](/img/docs/tutorials/html-01.jpg)
@@ -23,7 +26,9 @@ Inside your Package’s Client folder, create a new folder \(optional\) called `
 Inside `UI/` let’s create the following files: `index.html`, `style.cs` and `index.js`:
 
 :::info
+
 In this UI we will be using [JQuery](https://jquery.com/), please download [the latest version](https://code.jquery.com/jquery-3.5.1.min.js) and place it inside `UI/` folder. 
+
 :::
 
 ![](/img/docs/tutorials/html-03.jpg)
@@ -53,7 +58,9 @@ In this UI we will be using [JQuery](https://jquery.com/), please download [the 
 ```
 
 :::info
+
 If you noticed we are using an image `health.png`, you can download it here [https://i.imgur.com/0BmQJVZ.png](https://i.imgur.com/0BmQJVZ.png) and place it inside `UI/` as well.
+
 :::
 
 Now let’s add the style to it, for that, edit your `style.css` and add the following `CSS` code:
@@ -246,6 +253,8 @@ end
 
 
 :::tip
+
 That's it! Feel free to use it in your Packages!
+
 :::
 

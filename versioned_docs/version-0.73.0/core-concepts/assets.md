@@ -1,5 +1,6 @@
 ---
 description: All you need to know about Assets
+tags: [assets]
 ---
 
 # Assets
@@ -15,7 +16,9 @@ In order to use custom Assets in your servers, you must have or create an **Asse
 All Asset Packs go under `Server/Assets/` folder. Each Asset Pack is a folder under that.
 
 :::info
+
 **Note:** Asset Packs downloaded when connecting to servers will be stored in `Server/Assets/` folder as well!
+
 :::
 
 ```text title="Server Folder"
@@ -117,7 +120,9 @@ Once the Asset Pack is loaded, you can refer to it's assets using the following 
 example: `"my-asset-pack-01::SM_Cube"`
 
 :::info
+
 **Note:**`ASSET_PACK_PATH` is the Asset Pack folder name and `ASSET_KEY` is the key defined in the `Assets.toml`.
+
 :::
 
 ## Types of Assets
@@ -131,10 +136,12 @@ example: `"my-asset-pack-01::SM_Cube"`
 | **Animations** | Unreal Animations can be used for settings in Character and Weapons |
 
 :::info
+
 **Note:** Some methods require some specific Type of Assets to load, attempting to load an invalid or wrong type will cause an Error. E.g.: `Character:SetMesh()` requires an Asset of type `Skeletal Mesh`.
+
 :::
 
 ## nanos world Default Asset Pack
 
-nanos world provides a default  Asset Pack which is already included in the base game. Please refer to [nanos world Default Asset Pack](/docs/assets-modding/default-asset-pack/default-asset-pack) for more information.
+nanos world provides a default  Asset Pack which is already included in the base game. Please refer to [nanos world Default Asset Pack](./assets-modding/default-asset-pack/default-asset-pack.md) for more information.
 

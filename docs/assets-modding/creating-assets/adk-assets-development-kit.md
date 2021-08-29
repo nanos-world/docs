@@ -104,7 +104,7 @@ DO NOT **modify** or **rename** any Physical Materials, only use by referencing 
 ### Mannequin Skeleton
 #### `NanosWorld/Characters/Common/SKEL_Mannequin`
 
-To be able to create Skeletal \(Character\) Meshes which work with our [Character ](/docs/scripting-reference/classes/character)class, you must set your Skeletal Mesh to use our **Mannequin Skeleton**. This Skeleton is the same as Unreal Engine 4 default Mannequin, so any Skeletal Mesh which uses UE4’s Mannequin Skeleton will work for us!
+To be able to create Skeletal \(Character\) Meshes which work with our [Character](./scripting-reference/classes/character.mdx) class, you must set your Skeletal Mesh to use our **Mannequin Skeleton**. This Skeleton is the same as Unreal Engine 4 default Mannequin, so any Skeletal Mesh which uses UE4’s Mannequin Skeleton will work for us!
 
 To change a Skeletal Mesh’s Skeleton: right click on it &gt;&gt; Skeleton &gt;&gt; Assign Skeleton and change it to our `SKEL_Mannequin`.
 

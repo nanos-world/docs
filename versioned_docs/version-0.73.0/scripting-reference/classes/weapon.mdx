@@ -1,5 +1,6 @@
 ---
 sidebar_position: 0
+tags: [class]
 ---
 
 # 🔫 Weapon
@@ -14,7 +15,9 @@ import * as StructType from '/docs/components/_struct-types.mdx';
 Weapons are fully customizable, all pieces of the weapon can be changed with immense possibility of creation
 
 :::info
+
 Please take a look at our Default’s Weapon package with all built-in Weapons already properly configured and ready to use: [https://github.com/nanos-world/nanos-world-weapons](https://github.com/nanos-world/nanos-world-weapons).
+
 :::
 
 ## Usage
@@ -75,9 +78,9 @@ local my_ak47 = NanosWorldWeapons.AK47(Vector(1035, 154, 300), Rotator())
 my_character:PickUp(my_ak47)
 ```
 
-<ReferenceLink href="/docs/getting-started/tutorials-and-examples/prop-shooter">Prop Shooter</ReferenceLink>
-<ReferenceLink href="/docs/getting-started/tutorials-and-examples/weapon-scope">Weapon Scope</ReferenceLink>
-<ReferenceLink href="/docs/getting-started/tutorials-and-examples/weapon-flashlight">Weapon Flashlight</ReferenceLink>
+<ReferenceLink href="getting-started/tutorials-and-examples/prop-shooter">Prop Shooter</ReferenceLink>
+<ReferenceLink href="getting-started/tutorials-and-examples/weapon-scope">Weapon Scope</ReferenceLink>
+<ReferenceLink href="getting-started/tutorials-and-examples/weapon-flashlight">Weapon Flashlight</ReferenceLink>
 
 ## Constructor Parameters
 
@@ -86,10 +89,10 @@ my_character:PickUp(my_ak47)
 | <StructType.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <StructType.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
 | <BasicType.String /> | **`model_name`** | `Skeletal Mesh Path` |
-| [CollisionType](/docs/scripting-reference/glossary/enums#collisiontype) | **`collision_type`** | `CollisionType.Normal` |
+| <BasicType.Enum type="CollisionType" /> | **`collision_type`** | `CollisionType.Normal` |
 | <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
 
-## Available [Crosshairs Types](/docs/scripting-reference/glossary/enums#crosshairtype)
+## Available [Crosshairs Types](./scripting-reference/glossary/enums.md#crosshairtype)
 
 ![All available Crosshairs](/img/docs/crosshairs.jpg)
 

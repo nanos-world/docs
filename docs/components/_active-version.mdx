@@ -1,0 +1,7 @@
+import { useActiveVersion } from '@theme/hooks/useDocs';
+
+<!-- Getter to get the current version path - for links -->
+export const getActiveVersionPath = () => {
+	const activeVersion = useActiveVersion();
+	return activeVersion.path;
+};

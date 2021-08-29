@@ -2,6 +2,7 @@
 description: >-
   How to create a Linux virtual machine instance on Compute Engine using the
   Google Cloud Console withing the Free Tier limit
+tags: [tutorial-example, hosting]
 ---
 
 # Hosting Server 4Free
@@ -9,11 +10,15 @@ description: >-
 How to create a Linux virtual machine instance on Compute Engine using the Google Cloud Console withing the Free Tier limit.
 
 :::caution
+
 We are not responsible for charges or improper configurations in your Google Cloud platform, this guide is only intended to give a hint of an opportunity and possibility of hosting.
+
 :::
 
 :::info
+
 The following guide was based and had several excerpts taken from [https://linuxhint.com/setup\_google\_cloud\_server](https://linuxhint.com/setup_google_cloud_server).
+
 :::
 
 ## What Is Google Cloud?
@@ -108,7 +113,9 @@ This will download NanosWorldServer executable and set it to be an executable it
 ![](/img/docs/tutorials/hosting-4free-13.jpg)
 
 :::tip
+
 And voila! You have a nanos world server running 24/7!
+
 :::
 
 Note that your server failed to communicate with the **Master Server**, this is because we didn’t forward the correct ports yet in your VM, let’s do that in the next step!
@@ -132,7 +139,9 @@ Now you can restart your server and you will see it will communicate properly wi
 ![](/img/docs/tutorials/hosting-4free-17.jpg)
 
 :::tip success!
+
 And now you can find it in the **Find Servers** menu!
+
 :::
 
 ![](/img/docs/tutorials/hosting-4free-18.jpg)

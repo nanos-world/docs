@@ -1,17 +1,13 @@
-export const AuthorityOnly = () => (
-	<a class="authority-availability" href="/docs/core-concepts/scripting/authority-concepts#methods-and-events-availability">
-		<img src="/img/scripting/authority-only.svg" title="authority-only - you can only call this method on the side which spawned it!" />
+import { getActiveVersionPath } from '/docs/components/_active-version.mdx';
+
+<!-- Generic Base Authority component -->
+export const BaseAuthority = (img, title) => (
+	<a class="authority-availability" href={`${getActiveVersionPath()}/core-concepts/scripting/authority-concepts#methods-and-events-availability`}>
+		<img src={img} title={title} />
 	</a>
 );
 
-export const ServerOnly = () => (
-<a class="authority-availability" href="/docs/core-concepts/scripting/authority-concepts#methods-and-events-availability">
-	<img src="/img/scripting/server-only.svg" title="server-only - you can only call this method on server side!" />
-</a>
-);
-
-export const ClientOnly = () => (
-	<a class="authority-availability" href="/docs/core-concepts/scripting/authority-concepts#methods-and-events-availability">
-		<img src="/img/scripting/client-only.svg" title="client-only - you can only call this method on client side!" />
-	</a>
-);
+<!-- Defines Struct Types componenets -->
+export const AuthorityOnly = () => BaseAuthority("/img/scripting/authority-only.svg", "authority-only - you can only call this method on the side which spawned it!");
+export const ServerOnly = () => BaseAuthority("/img/scripting/server-only.svg", "server-only - you can only call this method on server side!");
+export const ClientOnly = () => BaseAuthority("/img/scripting/client-only.svg", "client-only - you can only call this method on client side!");

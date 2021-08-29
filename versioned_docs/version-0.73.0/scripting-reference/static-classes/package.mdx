@@ -1,5 +1,6 @@
 ---
 description: Class which represents the Current Package
+tags: [static-class]
 ---
 
 # 📦 Package
@@ -11,7 +12,9 @@ import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
 
 :::tip
+
 This is a Static Class named `Package`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+
 :::
 
 ## Static Functions
@@ -242,10 +245,12 @@ Package.GetPersistentData()
 > Called when this package is loaded
 
 :::info
+
 The event `Load` is triggered differently depending on the situation:
 
 * When the **server starts** or you run **`package reload all`** the event triggers only after ALL packages are loaded.
 * In all other cases \(**`package load/reload`** or **`Package.Load/Reload`**\) the event is triggered immediately after the package is loaded/reloaded.
+
 :::
 
 ```lua

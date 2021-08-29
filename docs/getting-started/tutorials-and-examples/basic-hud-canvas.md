@@ -11,7 +11,7 @@ How to add a basic HUD using Render’s Canvas features, to display the characte
 
 :::tip
 
-There is a new and modern way of making UIs, please check it out: [Basic HUD (HTML)](/docs/getting-started/tutorials-and-examples/basic-hud-html).
+There is a new and modern way of making UIs, please check it out: [Basic HUD (HTML)](./getting-started/tutorials-and-examples/basic-hud-html.md).
 
 :::
 

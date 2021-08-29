@@ -1,5 +1,6 @@
 ---
 description: Base class for all Actors entities
+tags: [base-class]
 ---
 
 # Base Actor
@@ -15,13 +16,17 @@ An **Actor** is an object which can be spawned and destroyed through Lua code. A
 In nanos world, **Actor** is base for several entities, and all those entities share the same **Methods** and **Events** described in this page.
 
 :::info
+
 This is the base Class for all actors we have. You cannot spawn it directly.
+
 :::
 
 ## Static Functions
 
 :::tip
+
 **Note:** The following functions are accessed statically using the specific **Class** and with a **dot**. Example: `Character.GetAll()`.
+
 :::
 
 | **Returns** | **Name** | **Description** |
@@ -34,7 +39,9 @@ This is the base Class for all actors we have. You cannot spawn it directly.
 ## Functions
 
 :::caution
+
 **Note:** Some of the following methods don't work in some specific entities.
+
 :::
 
 import BaseActorFunctions from '/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
@@ -121,7 +128,7 @@ entity:AttachTo(other_actor, attachment_rule, bone_name, autodestroy_when_detach
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | [Actor](actor) | **`other`** |  | Other actor to attach |
-| [AttachmentRule](/docs/scripting-reference/glossary/enums#attachmentrule) | **`attachment_rule`** | `SnapToTarget` | How to attach |
+| <BasicType.Enum type="AttachmentRule" /> | **`attachment_rule`** | `SnapToTarget` | How to attach |
 | <BasicType.String /> | **`bone_name`** | `""` | Which bone to attach |
 | <BasicType.Boolean /> | **`autodestroy_when_detached`** | `false` | Whether to auto destroy when detached |
 
@@ -151,7 +158,7 @@ entity:SetCollision(collision_type)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| [CollisionType](/docs/scripting-reference/glossary/enums#collisiontype) | **`collision_type`** |  | Collision Type |
+| <BasicType.Enum type="CollisionType" /> | **`collision_type`** |  | Collision Type |
 
 ### <AuthorityType.AuthorityOnly />`SetForce`
 

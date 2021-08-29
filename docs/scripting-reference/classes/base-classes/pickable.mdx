@@ -10,8 +10,9 @@ Base class for all Pickable entities
 import * as AuthorityType from '/docs/components/_authority-components.mdx';
 import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 
-**Pickable** are special entities which can be **grabbed**, **hold** and **used** by [Characters](/docs/scripting-reference/classes/character). Example of Pickable entities are: [Weapons](/docs/scripting-reference/classes/weapon), [Items](/docs/scripting-reference/classes/item) and [Grenade](/docs/scripting-reference/classes/grenade).
+**Pickable** are special entities which can be **grabbed**, **hold** and **used** by <Classes.Character />. Example of Pickable entities are: <Classes.Weapon />, <Classes.Item /> and <Classes.Grenade />.
 
 They have special methods and events and are highlighted when looking at by a Character.
 
@@ -156,5 +157,5 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Pickable](pickable) | `self` | The entity which has been picked up |
-| [Character](/docs/scripting-reference/classes/character) | `character` | The Character which picked up |
+| <Classes.Character /> | `character` | The Character which picked up |
 

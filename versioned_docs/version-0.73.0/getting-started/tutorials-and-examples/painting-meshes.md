@@ -1,5 +1,6 @@
 ---
 description: How to use the new Material customization methods available to use
+tags: [tutorial-example, scripting, assets]
 ---
 
 # Painting Meshes
@@ -13,9 +14,11 @@ In Unreal Engine, a [Material](https://docs.unrealengine.com/en-US/RenderingAndG
 In Unreal Engine, when you create a Material, you can define custom [Parameters](https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/HowTo/Making_Parameters/index.html) for it. So if you defined some parameters for a Material in a mesh, you can tweak it with simple comands in nanos world!
 
 :::caution
+
 **nanos world** provides a bunch of methods to allow you to interact with the parameters you created for your materials using our scripting!
 
-Please read [Base Paintable](/docs/scripting-reference/classes/base-classes/paintable) Class to check all available methods before proceeding!
+Please read [Base Paintable](./scripting-reference/classes/base-classes/paintable.mdx) Class to check all available methods before proceeding!
+
 :::
 
 ## Replacing a Mesh Material with Default Material
@@ -123,10 +126,14 @@ my_cube:SetMaterialTextureParameter("Texture", "package///MyAwesomePhotos/Client
 ![](/img/docs/tutorials/painting-meshes-07.jpg)
 
 :::tip
+
 And voila! Easy Peasy! Feel free to create your own materials and textures and tweak them in-game!
+
 :::
 
 :::caution
+
 Be careful! Loading raw images directly from disk is a slow operation and may cause unwanted stutters! Also raw images aren't cached neither automatically pre-loaded when joining a server.
+
 :::
 

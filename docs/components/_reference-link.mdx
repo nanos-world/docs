@@ -1,8 +1,10 @@
-export const ReferenceLink = ({children, href}) => (
-	<a class="reference-link" href={href}>
+import { getActiveVersionPath } from '/docs/components/_active-version.mdx';
+
+export const ReferenceLink = ({ children, href }) => (
+	<a class="reference-link" href={`${getActiveVersionPath()}/${href}`}>
 		{children}
 		<span>
-			{href.replace('/docs/', '/')}
+			{href}
 		</span>
 	</a>
 );

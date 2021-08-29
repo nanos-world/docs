@@ -1,6 +1,7 @@
 ---
 description: All you need to know about Packages
 sidebar_position: 0
+tags: [scripting]
 ---
 
 # Packages Guide
@@ -94,11 +95,13 @@ In nanos world we have 3 kind of packages: **script**, **game-mode** and **loadi
 | :--- | :--- |
 | **`script`** | Normal Package, will execute it's scripts and start a new **Lua VM** when started. |
 | **`game-mode`** | Like `script` but you can only load one `game-mode` package at once.<br />Useful when you are creating full games which cannot risk being<br />loaded with other full games packages. |
-| **`loading-screen`** | Special Package which will be loaded during player's loading screen.<br />Those packages must have an `Index.html` in the root.<br />Please refer to [Loading Screen](/docs/core-concepts/packages/loading-screen) for more information. |
+| **`loading-screen`** | Special Package which will be loaded during player's loading screen.<br />Those packages must have an `Index.html` in the root.<br />Please refer to [Loading Screen](./core-concepts/packages/loading-screen.md) for more information. |
 
 :::tip
+
 If you are creating a **Library**, a **Tool** or some **Utility** package, make it **`script`**!
 
 If you are creating an unique and complete **Game** with several functionalities which you don't want to be messed if someone load two full games, make it **`game-mode`**!
+
 :::
 

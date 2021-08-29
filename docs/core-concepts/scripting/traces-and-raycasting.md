@@ -54,7 +54,7 @@ end, 100)
 
 :::tip
 
-As you could see, we can pass bit-wise operators to Trace for more than one [CollisionChannel](/docs/scripting-reference/glossary/enums#collisionchannel) at once! Use `|` between the **CollisionChannels** to achieve that.
+As you could see, we can pass bit-wise operators to Trace for more than one [CollisionChannel](./scripting-reference/glossary/enums.md#collisionchannel) at once! Use `|` between the **CollisionChannels** to achieve that.
 
 :::
 

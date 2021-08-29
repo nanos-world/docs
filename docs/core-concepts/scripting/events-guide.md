@@ -26,7 +26,7 @@ end)
 
 :::info
 
-Most events are triggered on both Client and Server sides, only a few rare exceptions which will be elicited by the [Availability](/docs/core-concepts/scripting/authority-concepts#methods-and-events-availability).
+Most events are triggered on both Client and Server sides, only a few rare exceptions which will be elicited by the [Availability](./core-concepts/scripting/authority-concepts.mdx#methods-and-events-availability).
 
 :::
 

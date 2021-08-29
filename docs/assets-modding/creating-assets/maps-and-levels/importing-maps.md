@@ -15,7 +15,7 @@ Please refer to [Unreal’s Official tutorial - Working with Levels](https://doc
 
 ## Rules for creating a Map/Level for nanos world
 
-1. Do not spawn/place **Dynamic Meshes** (with Physics), as they will not be synced in-game. You need to spawn them as a [Prop](/docs/scripting-reference/classes/prop) on the scripting.
+1. Do not spawn/place **Dynamic Meshes** (with Physics), as they will not be synced in-game. You need to spawn them as a [Prop](./scripting-reference/classes/prop.mdx) on the scripting.
 2. Add a “**Sun**” actor-tag to all Lighting/Sky/Sun related actors (**DirectionalLight**, **SkyLight**, **DomeMesh**, **SkyAtmosphere** or **SunSky**), this will allow, if wanted, to your light to be overridden by scripters to use, instead, the Official nanos world Sun through `World.SpawnDefaultSun()`, which allows in-game light/sun customization.
 3. If you are creating a Map, please remember to nullify (set to None) all references it has for Unreal **GameModes** Override in the World Settings.
 
@@ -23,11 +23,11 @@ Please refer to [Unreal’s Official tutorial - Working with Levels](https://doc
 
 :::info
 
-Most of [World](/docs/scripting-reference/static-classes/world) functions rely on our own assets and code, so it is not (yet) possible to change the lighting or weather in your custom Map with World scripting functions.
+Most of [World](./scripting-reference/static-classes/world.mdx) functions rely on our own assets and code, so it is not (yet.mdx) possible to change the lighting or weather in your custom Map with World scripting functions.
 
 :::
 
-After exporting your project (refer to [Creating Assets](/docs/assets-modding/creating-assets/importing-assets#exporting-and-cooking-your-assets)), you can just reference your map in your server config like `MyPack::MyLevel`.
+After exporting your project (refer to [Creating Assets](./assets-modding/creating-assets/importing-assets.md#exporting-and-cooking-your-assets).mdx), you can just reference your map in your server config like `MyPack::MyLevel`.
 
 ## Storing data in your Map
 
@@ -47,7 +47,7 @@ TODO
 
 :::caution
 
-Attention! This page is old and this tutorial may be outdated! Please refer to [ADK](/docs/assets-modding/creating-assets/adk-assets-development-kit) for a modern approach.
+Attention! This page is old and this tutorial may be outdated! Please refer to [ADK](./assets-modding/creating-assets/adk-assets-development-kit.md) for a modern approach.
 
 :::
 
@@ -194,7 +194,7 @@ And paste it inside your server’s `Assets/` folder:
 
 ![](/img/docs/custom-maps-33.jpg)
 
-Open the folder you copied and create a `Assets.toml` file in it, \(you can paste the content located at [Assets Configuration File](/docs/core-concepts/assets#assets-pack-configuration) into this file. 
+Open the folder you copied and create a `Assets.toml` file in it, \(you can paste the content located at [Assets Configuration File](./core-concepts/assets.md#assets-pack-configuration) into this file. 
 
 ![](/img/docs/custom-maps-34.jpg)
 

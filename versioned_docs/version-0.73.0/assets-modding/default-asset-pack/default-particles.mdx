@@ -1,5 +1,6 @@
 ---
 description: Default nanos world Particles and it's Parameters
+tags: [assets]
 ---
 
 # Default Particles
@@ -10,7 +11,9 @@ import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
 
 :::tip
-**Note**: All Particles in this page are already included in the base game in the [Default nanos world Asset Pack](/docs/assets-modding/default-asset-pack/default-asset-pack), you can reference them like that: **`nanos-world::P_Beam`.**
+
+**Note**: All Particles in this page are already included in the base game in the [Default nanos world Asset Pack](./assets-modding/default-asset-pack/default-asset-pack.md), you can reference them like that: **`nanos-world::P_Beam`.**
+
 :::
 
 ## Template Particles
@@ -27,8 +30,8 @@ This is a Niagara particle which joins two points with a Beam. Cool for creating
 | :--- | :--- | :--- | :--- |
 | **`BeamColor`** | <StructType.Color /> | `Color(0, 0, 10, 1)` | Color of the Beam - multiply it to make it glow |
 | **`BeamEnd`** | <StructType.Vector /> | `Vector(0, 0, 0)` | World position of the second joint |
-| **`BeamWidth`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `5.0` | Beam thickness |
-| **`JitterAmount`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `0.1` | Amount of jitterness |
+| **`BeamWidth`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `5.0` | Beam thickness |
+| **`JitterAmount`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `0.1` | Amount of jitterness |
 
 ### `P_Ribbon`
 
@@ -39,10 +42,10 @@ This is a Niagara particle which makes a "trail" effect when moves.
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | **`Color`** | <StructType.Color /> | `Color.WHITE` | Color - multiply it to make it glow |
-| **`SpawnRate`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `100.0` | Rate of spawn the "ribbons" |
-| **`Mass`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `10.0` | Mass of the "ribbons" |
-| **`LifeTime`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `5.0` | How much time each "ribbon" will last |
-| **`RibbonWidth`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `10.0` | The thickness of the Ribbon |
+| **`SpawnRate`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `100.0` | Rate of spawn the "ribbons" |
+| **`Mass`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `10.0` | Mass of the "ribbons" |
+| **`LifeTime`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `5.0` | How much time each "ribbon" will last |
+| **`RibbonWidth`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `10.0` | The thickness of the Ribbon |
 
 ### `P_DirectionalBurst`
 
@@ -53,9 +56,9 @@ This is a Niagara particle which spawns a bunch of particles in a direction.
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | **`Color`** | <StructType.Color /> | `Color.WHITE` | Color - multiply it to make it glow |
-| **`SpawnCount`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `25.0` | Amount of Particles to spawn |
-| **`VelocityStrengthMax`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `350.0` | Max velocity of the Particles |
-| **`VelocityStrengthMin`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `125.0` | Min velocity of the Particles |
+| **`SpawnCount`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `25.0` | Amount of Particles to spawn |
+| **`VelocityStrengthMax`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `350.0` | Max velocity of the Particles |
+| **`VelocityStrengthMin`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `125.0` | Min velocity of the Particles |
 
 ### `P_Fountain`
 
@@ -66,9 +69,9 @@ This is a Niagara particle which simulates a fountain.
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | **`Color`** | <StructType.Color /> | `Color.WHITE` | Color - multiply it to make it glow |
-| **`SpawnRate`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `90.0` | Rate to spawn particles |
-| **`VelocityStrengthMax`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `850.0` | Max velocity |
-| **`VelocityStrengthMin`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `500.0` | Min velocity |
+| **`SpawnRate`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `90.0` | Rate to spawn particles |
+| **`VelocityStrengthMax`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `850.0` | Max velocity |
+| **`VelocityStrengthMin`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `500.0` | Min velocity |
 
 ### `P_HangingParticulates`
 
@@ -80,7 +83,7 @@ This is a Niagara particle which makes a 3-dimensional "hanging particles" effec
 | :--- | :--- | :--- | :--- |
 | **`Color`** | <StructType.Color /> | `Color.WHITE` | Color of the Particles |
 | **`BoxSize`** | <StructType.Vector /> | `Vector(400, 400, 100)` | 3D Size to spawn the Particles |
-| **`SpawnRate`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `50.0` | Rate of spawn |
+| **`SpawnRate`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `50.0` | Rate of spawn |
 
 ### `P_OmnidirectionalBurst`
 
@@ -91,8 +94,8 @@ This is a Niagara particle which makes a "explosion" effect in all directions.
 | Parameter | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | **`Color`** | <StructType.Color /> | `Color.WHITE` | Color - multiply it to make it glow |
-| **`SpawnCount`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `50.0` | Amount of Particles to spawn |
-| **`SphereRadius`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `10.0` | Radius to spawn the particles |
-| **`VelocityStrengthMax`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `300.0` | Max velocity of the Particles |
-| **`VelocityStrengthMin`** | [Float](/docs/scripting-reference/classes/particle#setparameterfloat) | `75.0` | Min velocity of the Particles |
+| **`SpawnCount`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `50.0` | Amount of Particles to spawn |
+| **`SphereRadius`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `10.0` | Radius to spawn the particles |
+| **`VelocityStrengthMax`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `300.0` | Max velocity of the Particles |
+| **`VelocityStrengthMin`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `75.0` | Min velocity of the Particles |
 

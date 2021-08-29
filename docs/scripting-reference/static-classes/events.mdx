@@ -11,6 +11,7 @@ import { ReferenceLink } from '/docs/components/_reference-link.mdx';
 import * as AuthorityType from '/docs/components/_authority-components.mdx';
 import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 
 :::tip
 
@@ -18,7 +19,7 @@ This is a Static Class named `Events`. You can access it’s methods directly wi
 
 :::
 
-<ReferenceLink href="/docs/core-concepts/scripting/events-guide">Events Guide</ReferenceLink>
+<ReferenceLink href="core-concepts/scripting/events-guide">Events Guide</ReferenceLink>
 
 ## Static Functions
 
@@ -145,7 +146,7 @@ Events.CallRemote("MyServerEvent", "hello nanos world!")
 
 :::info
 
-On **Server**, registering for remote events has an addition parameter: [Player](/docs/scripting-reference/classes/player), which is the client who sent the event.
+On **Server**, registering for remote events has an addition parameter: <Classes.Player />, which is the client who sent the event.
 
 :::
 

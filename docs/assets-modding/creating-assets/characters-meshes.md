@@ -8,7 +8,7 @@ tags: [assets]
 
 :::info
 
-nanos.world Characters use Unreal’s Default Mannequin Skeleton. So any Skeletal Mesh which uses it by default will probably work in nanos world as a [Character](/docs/scripting-reference/classes/character).
+nanos.world Characters use Unreal’s Default Mannequin Skeleton. So any Skeletal Mesh which uses it by default will probably work in nanos world as a [Character](./scripting-reference/classes/character.mdx).
 
 :::
 

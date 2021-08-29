@@ -1,27 +1,38 @@
+import { useActiveVersion } from '@theme/hooks/useDocs';
+
+export const GetActiveVersionPath = () => {
+	const activeVersion = useActiveVersion();
+	return activeVersion.path;
+};
+
 export const Number = () => (
-	<a href="/docs/scripting-reference/glossary/basic-types#number">number</a>
+	<a href="./scripting-reference/glossary/basic-types.md#number">number</a>
 );
 
 export const String = () => (
-	<a href="/docs/scripting-reference/glossary/basic-types#string">string</a>
+	<a href="./scripting-reference/glossary/basic-types.md#string">string</a>
 );
 
 export const Boolean = () => (
-	<a href="/docs/scripting-reference/glossary/basic-types#boolean">boolean</a>
+	<a href="./scripting-reference/glossary/basic-types.md#boolean">boolean</a>
 );
 
 export const Table = () => (
-	<a href="/docs/scripting-reference/glossary/basic-types#table">table</a>
+	<a href="./scripting-reference/glossary/basic-types.md#table">table</a>
 );
 
 export const Iterator = () => (
-	<a href="/docs/scripting-reference/glossary/basic-types#iterator">iterator</a>
+	<a href="./scripting-reference/glossary/basic-types.md#iterator">iterator</a>
 );
 
 export const Any = () => (
-	<a href="/docs/scripting-reference/glossary/basic-types#any">any</a>
+	<a href="./scripting-reference/glossary/basic-types.md#any">any</a>
 );
 
 export const Function = () => (
-	<a href="/docs/scripting-reference/glossary/basic-types#function">function</a>
+	<a href="./scripting-reference/glossary/basic-types.md#function">function</a>
+);
+
+export const Enum = ({type}) => (
+	<a href={`${GetActiveVersionPath()}/scripting-reference/glossary/enums#${type.toLowerCase()}`}>{type}</a>
 );

@@ -1,6 +1,7 @@
 ---
 description: All you need to know to communicate between different Packages
 sidebar_position: 3
+tags: [scripting]
 ---
 
 # Packages Communication
@@ -12,7 +13,9 @@ In nanos world there are 3 main ways which you can interact with other **Package
 ## Custom Events
 
 :::tip
+
 For more information and examples about using Custom Events, please refer to Events.
+
 :::
 
 ### Communicating with Packages in the same Side
@@ -36,7 +39,9 @@ end)
 ```
 
 :::info
+
 **Note:** Calling events will trigger the event in all Packages.
+
 :::
 
 ### Sending data through the network
@@ -62,7 +67,9 @@ end)
 ```
 
 :::info
+
 **Note:** Calling network events will trigger the event in all Packages from the other side.
+
 :::
 
 ## Packages Exported Functions
@@ -70,7 +77,9 @@ end)
 Another way of communicating is using Exported Functions. With Exported Functions you can define functions in your Package which can be called by any other Package and have a value returned.
 
 :::info
+
 Unlike events, exported functions can return values to the caller. But you can only call Exported Functions from the same side \(Server or Client\).
+
 :::
 
 ### Exporting a Function

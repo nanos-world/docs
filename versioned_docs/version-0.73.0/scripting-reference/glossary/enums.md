@@ -1,5 +1,6 @@
 ---
 description: nanos world Enums.
+tags: [scripting]
 ---
 
 # Enums
@@ -24,7 +25,9 @@ character:SetViewMode(ViewMode.FPS)
 ```
 
 :::info
+
 The functions which use the Enums are still receiving numbers as parameters \(as always\), using Enums is just a facilitator.
+
 :::
 
 ## All Enums

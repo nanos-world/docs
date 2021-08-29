@@ -14,12 +14,13 @@ An Item represents an Entity which can be Pickable by a Character, doesn’t hav
 import * as AuthorityType from '/docs/components/_authority-components.mdx';
 import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 
 ![](/img/docs/torch.png)
 
 :::info
 
-⏬ **Inheritance:** This class inherits from [Actor](/docs/scripting-reference/classes/base-classes/actor) and [Pickable](/docs/scripting-reference/classes/base-classes/pickable). Please check it's pages for inherited **Methods** and **Events**.
+⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Pickable />. Please check it's pages for inherited **Methods** and **Events**.
 
 :::
 
@@ -45,10 +46,10 @@ local NewItem = Item(
 | <StructType.Vector /> | **`location`** | Vector\(0, 0, 0\) |
 | <StructType.Rotator /> | **`rotation`** | Rotator\(0, 0, 0\) |
 | <BasicType.String /> |  |
-| [CollisionType](/docs/scripting-reference/glossary/enums#collisiontype) | **`collision_type`** | CollisionType.Normal |
+| <BasicType.Enum type="CollisionType" /> | **`collision_type`** | CollisionType.Normal |
 | <BasicType.Boolean /> | gravity\_enabled | true |
-| [HandlingMode](/docs/scripting-reference/glossary/enums#handlingmode) | **`handling_mode`** | HandlingMode.Torch |
-| [CrosshairType](/docs/scripting-reference/glossary/enums#crosshairtype) | **`crosshair_type`** | CrosshairType.None |
+| <BasicType.Enum type="HandlingMode" /> | **`handling_mode`** | HandlingMode.Torch |
+| <BasicType.Enum type="CrosshairType" /> | **`crosshair_type`** | CrosshairType.None |
 
 ## Functions
 

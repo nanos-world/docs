@@ -1,27 +1,21 @@
-export const Number = () => (
-	<a href="/docs/scripting-reference/glossary/basic-types#number">number</a>
+import { getActiveVersionPath } from '/docs/components/_active-version.mdx';
+
+<!-- Generic Basic Type component -->
+export const BasicType = (label) => (
+	<a href={`${getActiveVersionPath()}/scripting-reference/glossary/basic-types#${label.toLowerCase()}`}>{label}</a>
 );
 
-export const String = () => (
-	<a href="/docs/scripting-reference/glossary/basic-types#string">string</a>
+<!-- Define Enum component -->
+export const Enum = ({ type }) => (
+	<a href={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${type.toLowerCase()}`}>{type}</a>
 );
 
-export const Boolean = () => (
-	<a href="/docs/scripting-reference/glossary/basic-types#boolean">boolean</a>
-);
-
-export const Table = () => (
-	<a href="/docs/scripting-reference/glossary/basic-types#table">table</a>
-);
-
-export const Iterator = () => (
-	<a href="/docs/scripting-reference/glossary/basic-types#iterator">iterator</a>
-);
-
-export const Any = () => (
-	<a href="/docs/scripting-reference/glossary/basic-types#any">any</a>
-);
-
-export const Function = () => (
-	<a href="/docs/scripting-reference/glossary/basic-types#function">function</a>
-);
+<!-- Defines Basic Types componenets -->
+export const Number = () => BasicType("number");
+export const String = () => BasicType("string");
+export const Boolean = () => BasicType("boolean");
+export const Table = () => BasicType("table");
+export const Iterator = () => BasicType("iterator");
+export const Any = () => BasicType("any");
+export const Function = () => BasicType("function");
+export const Nil = () => BasicType("nil");

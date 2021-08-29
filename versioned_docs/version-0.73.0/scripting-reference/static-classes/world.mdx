@@ -1,5 +1,6 @@
 ---
 description: Interaction with World and Environment elements
+tags: [static-class]
 ---
 
 # 🌍 World
@@ -14,16 +15,20 @@ import * as StructType from '/docs/components/_struct-types.mdx';
 ![](/img/docs/world.jpg)
 
 :::tip
+
 This is a Static Class named `World`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 
 This is a **Client** only Class.
+
 :::
 
 :::info
+
 Please check [Interacting with Sun](/docs/core-concepts/scripting/interacting-with-the-sun) for further information and examples.
+
 :::
 
-<ReferenceLink href="/docs/core-concepts/scripting/interacting-with-the-sun">Interacting with the Sun</ReferenceLink>
+<ReferenceLink href="core-concepts/scripting/interacting-with-the-sun">Interacting with the Sun</ReferenceLink>
 
 ## Static Functions
 
@@ -53,7 +58,7 @@ Please check [Interacting with Sun](/docs/core-concepts/scripting/interacting-wi
 | <BasicType.Number /> | [**`GetSunAngle`**](world#getsunangle) | |
 | <BasicType.Number /> | [**`GetSunSpeed`**](world#getsunspeed) | |
 | <BasicType.Table /> | [**`GetTime`**](world#gettime) | Returns a table containing current Sun hours and minutes |
-| [WeatherType](/docs/scripting-reference/glossary/enums#weathertype) | [**`GetWeather`**](world#getweather) |  |
+| <BasicType.Enum type="WeatherType" /> | [**`GetWeather`**](world#getweather) |  |
 | <BasicType.Number /> | [**`GetWind`**](world#getwind) |  |
 
 ### `LoadStreamLevel`
@@ -280,7 +285,7 @@ World.SetWeather(weather)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| [WeatherType](/docs/scripting-reference/glossary/enums#weathertype) | **`weather`** |  |  |
+| <BasicType.Enum type="WeatherType" /> | **`weather`** |  |  |
 
 ### `SpawnDefaultSun`
 

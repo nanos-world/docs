@@ -143,5 +143,5 @@ example: `"my-asset-pack-01::SM_Cube"`
 
 ## nanos world Default Asset Pack
 
-nanos world provides a default  Asset Pack which is already included in the base game. Please refer to [nanos world Default Asset Pack](/docs/assets-modding/default-asset-pack/default-asset-pack) for more information.
+nanos world provides a default  Asset Pack which is already included in the base game. Please refer to [nanos world Default Asset Pack](./assets-modding/default-asset-pack/default-asset-pack.md) for more information.
 

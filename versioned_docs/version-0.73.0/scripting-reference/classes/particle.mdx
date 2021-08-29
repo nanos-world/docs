@@ -1,6 +1,7 @@
 ---
 description: Particle Entity
 sidebar_position: 0
+tags: [class]
 ---
 
 # ✨ Particle
@@ -14,11 +15,15 @@ import * as StructType from '/docs/components/_struct-types.mdx';
 ![](/img/docs/particle.jpg)
 
 :::tip
+
 Both **Cascade** and **Niagara** Particle Systems are supported!
+
 :::
 
 :::tip
+
 You can spawn this entity is both **Client** or **Server** \(if you spawn it on client, it won’t be synchronized with other players\).
+
 :::
 
 ## Usage
@@ -45,7 +50,9 @@ local my_particle = Particle(
 | <BasicType.Boolean /> | **`auto_activate`** | `true` |
 
 :::info Note
+
 **`auto_destroy`** means the Entity will be immediately destroyed after spawned, losing references to the _Particle System_ spawned in-game. So if the _Particle System_ itself loops indefinitely, it will keep playing until the Player reconnects.
+
 :::
 
 ## Functions

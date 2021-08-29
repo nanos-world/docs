@@ -6,17 +6,17 @@ tags: [assets]
 
 # Static Meshes
 
-A Static Mesh is the most straightforward asset to be imported and used in nanos world, as they don’t have skeleton, their usage is very seamless. In nanos world Static Meshes are mainly used for [Props](/docs/scripting-reference/classes/character) and/or Weapons.
+A Static Mesh is the most straightforward asset to be imported and used in nanos world, as they don’t have skeleton, their usage is very seamless. In nanos world Static Meshes are mainly used for [Props](./scripting-reference/classes/character.mdx) and/or Weapons.
 
 :::caution
 
-Please do not confuse [Unreal's Static Mesh](/docs/scripting-reference/classes/static-mesh)!
+Please do not confuse [Unreal's Static Mesh](./scripting-reference/classes/static-mesh.mdx)!
 
 :::
 
 :::info
 
-Please refer to [Unreal's Static Mesh](/docs/core-concepts/assets#types-of-assets) official definition and usage, also for information on how to import a .FBX into Unreal, how to optimize it and so on. There are also thousands of tutorials regarding importing a .FBX from Blender \(or other Modeling tool\) into Unreal Engine.
+Please refer to [Unreal's Static Mesh](./core-concepts/assets.md#types-of-assets) official definition and usage, also for information on how to import a .FBX into Unreal, how to optimize it and so on. There are also thousands of tutorials regarding importing a .FBX from Blender \(or other Modeling tool\.mdx) into Unreal Engine.
 
 :::
 
@@ -58,7 +58,7 @@ After packaging your project, we will manually copy the exported folder from it,
 
 ![](/img/docs/static-meshes-06.jpg)
 
-And thats it! You must now just copy `MyPack/` folder inside your Server’s `Assets/` folder and create a configuration file called `Assets.toml` in `MyPack/` folder with the pattern described in [Assets Pack Configuration File](/docs/core-concepts/assets#assets-pack-configuration). For each Asset you have in your Pack, you must add an entry in the configuration file.
+And thats it! You must now just copy `MyPack/` folder inside your Server’s `Assets/` folder and create a configuration file called `Assets.toml` in `MyPack/` folder with the pattern described in [Assets Pack Configuration File](./core-concepts/assets.md#assets-pack-configuration). For each Asset you have in your Pack, you must add an entry in the configuration file.
 
 For our Cube mesh, we just need to add an entry with the Path of the cube relative to our Assets folder in the pattern `[ASSET_NAME] = "[ASSET_PATH]"`:
 

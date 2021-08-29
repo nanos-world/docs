@@ -1,10 +1,11 @@
 import * as AuthorityType from '/docs/components/_authority-components.mdx';
 import * as BasicType from '/docs/components/_common-types.mdx';
 import * as StructType from '/docs/components/_struct-types.mdx';
+import * as Classes from '/docs/components/_classes.mdx';
 import { ReferenceLink } from '/docs/components/_reference-link.mdx';
 
 <>
-	{!props.hidden_reference ? (<ReferenceLink href="/docs/scripting-reference/classes/base-classes/pickable">Base Pickable</ReferenceLink>) : <></>}
+	{!props.hidden_reference ? (<ReferenceLink href="scripting-reference/classes/base-classes/pickable">Base Pickable</ReferenceLink>) : <></>}
 </>
 
 |  | **Returns** | **Name** | **Description** |
@@ -16,4 +17,4 @@ import { ReferenceLink } from '/docs/components/_reference-link.mdx';
 |  |  | [**`RemoveSkeletalMeshAttached`**](/docs/scripting-reference/classes/base-classes/pickable#removeskeletalmeshattached) | Removes, if existing, a SkeletalMesh from this Actor given it's custom ID |
 |  |  | [**`RemoveStaticMeshAttached`**](/docs/scripting-reference/classes/base-classes/pickable#removestaticmeshattached) | Removes, if existing, a StaticMesh from this Actor given it's custom ID |
 |  | <BasicType.String /> | [**`GetAssetName`**](/docs/scripting-reference/classes/base-classes/pickable#getassetname) | Gets the Asset name |
-|  | [Character](/docs/scripting-reference/classes/character) | [**`GetHandler`**](/docs/scripting-reference/classes/base-classes/pickable#gethandler) | Gets the Character \(if existing\) which is hol
+|  | <Classes.Character /> | [**`GetHandler`**](/docs/scripting-reference/classes/base-classes/pickable#gethandler) | Gets the Character \(if existing\) which is hol
