@@ -116,8 +116,11 @@ module.exports = {
           showLastUpdateTime: true,
           versions: {
             current: {
-              label: `bleeding-edge 🩸`,
+              label: 'bleeding-edge 🩸',
             },
+            latest: {
+              label: 'latest - 0.73.0',
+            }
           },
         },
         blog: {

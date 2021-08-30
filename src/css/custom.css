@@ -6,10 +6,10 @@
  */
 
 /* SVG font */
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@600&display=swap');
+@import url('m-plus-rounded-1c.css');
 
 /* Website font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('poppins.css');
 
 /* You can override the default Infima variables here. */
 :root {
