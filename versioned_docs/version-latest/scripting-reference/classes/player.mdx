@@ -65,7 +65,7 @@ end)
 |  | <BasicType.Any /> | [**`GetValue`**](player#getvalue) | Gets a value given a key |
 | <AuthorityType.ClientOnly /> | <BasicType.Boolean /> | [**`IsLocalPlayer`**](player#islocalplayer) | Returns if this is the LocalPlayer |
 |  | <BasicType.Boolean /> | [**`IsValid`**](player#isvalid) | Returns if this entity is valid \(i.e. wasn’t destroyed and points to a valid entity\) |
-|  | [VOIPSetting](/docs/scripting-reference/glossary/basic-types#voipsetting) | [**`GetVOIPSetting`**](player#getvoipsetting) | Returns this Player VOIP Setting |
+|  | <Enums>VOIPSetting</Enums> | [**`GetVOIPSetting`**](player#getvoipsetting) | Returns this Player VOIP Setting |
 |  |  | [**`Subscribe`**](player#subscribe) | Subscribes for an Event |
 |  |  | [**`Unsubscribe`**](player#unsubscribe) | Unsubscribes from all subscribed Events in this Entity and in this Package |
 
@@ -171,7 +171,7 @@ my_player:SetName(new_name)
 
 > Sets a value in this entity, which can be accessed by any package \(optionally sync on clients if called from server\)
 >
-> Please refer to [Entity Values](/docs/core-concepts/scripting/entity-values) for more information
+> Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
 
 ```lua
 my_player:SetValue(key, value, sync_on_clients)
@@ -259,7 +259,7 @@ my_player:GetCameraRotation()
 
 > Returns the character of the player. If the player has not yet been assigned a character, nil is returned
 >
-> Returns Character or [nil](/docs/scripting-reference/glossary/basic-types#nil)
+> Returns Character or <BasicType.Nil />
 
 ```lua
 my_player:GetControlledCharacter()
@@ -327,7 +327,7 @@ my_player:GetVOIPChannel()
 
 ### `GetValue`
 
-> Gets a value given a key. Please refer to [Entity Values](/docs/core-concepts/scripting/entity-values) for more information
+> Gets a value given a key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
 >
 > Returns <BasicType.Any />
 
