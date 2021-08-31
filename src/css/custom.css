@@ -223,6 +223,10 @@ article p img {
   margin-top: 1rem !important;
 }
 
+.markdown details a.reference-link:first-child {
+  margin-top: 0 !important;
+}
+
 details,
 blockquote {
   margin-bottom: 1.5rem !important;

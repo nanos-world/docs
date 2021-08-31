@@ -90,24 +90,24 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 
 |  | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- | :--- |
-| <AuthorityType.ServerOnly /> | <BasicType.Number /> | [**`ApplyDamage`**](character#applydamage) | Do damage in a character, will trigger all related events and apply modified damage based on bone. Also will apply impulse if it’s a heavy explosion. |
-|  |  | [**`AddSkeletalMeshAttached`**](character#addskeletalmeshattached) | Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further |
-|  |  | [**`AddStaticMeshAttached`**](character#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further |
+| <AuthorityType.ServerOnly /> | <BasicType.Number /> | [**`ApplyDamage`**](character#applydamage) | Do damage in a character |
+|  |  | [**`AddSkeletalMeshAttached`**](character#addskeletalmeshattached) | Spawns and Attaches a SkeletalMesh into this Character |
+|  |  | [**`AddStaticMeshAttached`**](character#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Character |
 | <AuthorityType.ServerOnly /> |  | [**`Drop`**](character#drop) | Drops any <Classes.Pickable /> the Character is holding |
-| <AuthorityType.ServerOnly /> |  | [**`EnterVehicle`**](character#entervehicle) | Enters the Vehicle at Seat \(0 - Driver\) |
+| <AuthorityType.ServerOnly /> |  | [**`EnterVehicle`**](character#entervehicle) | Enters the Vehicle at Seat (0 - Driver) |
 | <AuthorityType.ServerOnly /> |  | [**`GrabProp`**](character#grabprop) | Gives a <Classes.Prop /> to the Character |
 | <AuthorityType.ServerOnly /> |  | [**`Jump`**](character#jump) | Triggers this Character to jump |
 | <AuthorityType.ServerOnly /> |  | [**`LeaveVehicle`**](character#leavevehicle) | Leaves the current Vehicle |
 | <AuthorityType.ServerOnly /> |  | [**`LookAt`**](character#lookat) | AI: Tries to make this Character to look at Location |
 | <AuthorityType.ServerOnly /> |  | [**`MoveTo`**](character#moveto) | AI: Makes this Character to walk to the Location |
-| <AuthorityType.ServerOnly /> |  | [**`PickUp`**](character#pickup) | Gives a Item/Grenade/Weapon \(Pickable\) to the Character |
+| <AuthorityType.ServerOnly /> |  | [**`PickUp`**](character#pickup) | Gives a Item/Grenade/Weapon (Pickable) to the Character |
 | <AuthorityType.ServerOnly /> |  | [**`PlayAnimation`**](character#playanimation) | Plays an Animation Montage on this character |
 |  |  | [**`RemoveSkeletalMeshAttached`**](character#removeskeletalmeshattached) | Removes, if existing, a SkeletalMesh from this Character given it’s custom ID |
 |  |  | [**`RemoveStaticMeshAttached`**](character#removestaticmeshattached) | Removes, if existing, a StaticMesh from this Character given it’s custom ID |
 | <AuthorityType.ServerOnly /> |  | [**`Respawn`**](character#respawn) | Respawns the Character, fullying it’s Health and moving it to it’s Initial Location |
 | <AuthorityType.ServerOnly /> |  | [**`SetAccelerationSettings`**](character#setaccelerationsettings) | Sets the Movement Max Acceleration of this Character. |
 | <AuthorityType.ServerOnly /> |  | [**`SetBrakingSettings`**](character#setbrakingsettings) | Sets the Movement Braking Settings of this Character. |
-| <AuthorityType.ServerOnly /> |  | [**`SetCameraMode`**](character#setcameramode) | Sets the Camera Mode \(0 - FPS and TPS, 1 = FPS only, 2 = TPS only\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetCameraMode`**](character#setcameramode) | Sets the Camera Mode |
 | <AuthorityType.ClientOnly /> |  | [**`SetCameraOffset`**](character#setcameraoffset) | Sets the Camera Offset \(only affects TPS\) |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanCrouch`**](character#setcancrouch) | Sets if this Character is allowed to Crouch and to Prone |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanAim`**](character#setcanaim) | Sets if this Character is allowed to Aim |
@@ -115,22 +115,22 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetCanGrabProps`**](character#setcangrabprops) | Sets if this Character is allowed to Grab any <Classes.Prop /> |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanPickupPickables`**](character#setcanpickuppickables) | Sets if this Character is allowed to Pick up any <Classes.Pickable /> (Weapon, Grenade, Item…) |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanPunch`**](character#setcanpunch) | Sets if this Character is allowed to Punch \(Melee\) |
-| <AuthorityType.ServerOnly /> |  | [**`SetCapsuleSize`**](character#setcapsulesize) | Sets this Character’s Capsule size \(will affect Camera location and Character’s collision\) - default is \(42, 96\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetCapsuleSize`**](character#setcapsulesize) | Sets this Character’s Capsule size |
 | <AuthorityType.ServerOnly /> |  | [**`SetDamageMultiplier`**](character#setdamagemultiplier) | Changes how much damage this character takes |
 | <AuthorityType.ServerOnly /> |  | [**`SetDeathSound`**](character#setdeathsound) | Changes the Death sound when Character dies |
-| <AuthorityType.ServerOnly /> |  | [**`SetFallDamageTaken`**](character#SetFallDamageTaken) | Set the Fall Damage multiplier taken when falling from High places \(default: 10\). Setting to 0 will make the Character to do not take damage or enter ragdoll mode |
+| <AuthorityType.ServerOnly /> |  | [**`SetFallDamageTaken`**](character#SetFallDamageTaken) | Set the Fall Damage multiplier taken when falling from High places |
 | <AuthorityType.ServerOnly /> |  | [**`SetFlyingMode`**](character#setflyingmode) | Sets the Flying Mode |
 | <AuthorityType.ServerOnly /> |  | [**`SetGaitMode`**](character#setgaitmode) | Sets the Gait Mode |
-| <AuthorityType.ServerOnly /> |  | [**`SetGravityScale`**](character#setgravityscale) | Changes the Gravity Scale of this Character \(can be negative\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetGravityScale`**](character#setgravityscale) | Changes the Gravity Scale of this Character |
 | <AuthorityType.ServerOnly /> |  | [**`SetHealth`**](character#sethealth) | Sets the Health of this Character. If the character is dead, respawns it with full health |
-| <AuthorityType.ServerOnly /> |  | [**`SetImpactDamageTaken`**](character#setimpactdamagetaken) | Set the Impact Damage taken when being roamed by things \(default: 10\). Setting to 0 will make the Character to do not take damage or enter ragdoll mode |
+| <AuthorityType.ServerOnly /> |  | [**`SetImpactDamageTaken`**](character#setimpactdamagetaken) | Set the Impact Damage taken when being roamed by things |
 | <AuthorityType.ServerOnly /> |  | [**`SetInvulnerable`**](character#setinvulnerable) | Sets if the Character can receive any damage |
 | <AuthorityType.ServerOnly /> |  | [**`SetMaxHealth`**](character#setmaxhealth) | Sets the MaxHealth of this Character |
 | <AuthorityType.ServerOnly /> |  | [**`SetMesh`**](character#setmesh) | Changes the Character Mesh on the fly |
 |  |  | [**`SetMorphTarget`**](character#setmorphtarget) |  |
 | <AuthorityType.ServerOnly /> |  | [**`SetMovementEnabled`**](character#setmovementenabled) | Enables/Disables Character’s Movement |
 | <AuthorityType.ServerOnly /> |  | [**`SetPainSound`**](character#setpainsound) | Changes the Pain sound when Character takes damage |
-| <AuthorityType.ServerOnly /> |  | [**`SetPunchDamage`**](character#setpunchdamage) | Set the Punch Damage this Character will apply on others \(default is 15\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetPunchDamage`**](character#setpunchdamage) | Set the Punch Damage this Character will apply on others |
 | <AuthorityType.ServerOnly /> |  | [**`SetRagdollMode`**](character#setragdollmode) | Sets Character Ragdoll Mode |
 | <AuthorityType.ServerOnly /> |  | [**`SetSpeedMultiplier`**](character#setspeedmultiplier) | 1 = normal |
 | <AuthorityType.ServerOnly /> |  | [**`SetStanceMode`**](character#setstancemode) | **Stance Modes**: _None, Standing, Crouching, Proning_ |
@@ -162,7 +162,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 |  | <BasicType.Number /> | [**`GetImpactDamageTaken`**](character#getimpactdamagetaken) |  |
 |  | <BasicType.Number /> | [**`GetMaxHealth`**](character#getmaxhealth) | Gets the Character’s MaxHealth. |
 |  | <BasicType.String /> | [**`GetMesh`**](character#getmesh) | Gets the Mesh Asset name |
-|  | Entity | [**`GetPicked`**](character#getpicked) | Gets the holding Picked Item/Grenade/Weapon |
+|  | <Classes.Pickable /> | [**`GetPicked`**](character#getpicked) | Gets the holding Picked Item/Grenade/Weapon |
 |  | <Classes.Player /> | [**`GetPlayer`**](character.mdx#getplayer) | Gets the Player controlling this Character |
 |  | <BasicType.Number /> | [**`GetPunchDamage`**](character.mdx#getpunchdamage) |  |
 |  | <BasicType.Number /> | [**`GetSpeedMultiplier`**](character#getspeedmultiplier) |  |
