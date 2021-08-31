@@ -136,6 +136,7 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 | :--- | :--- | :--- |
 |  | [**`Grab`**](prop#grab) | Triggered when Character grabs a Prop |
 |  | [**`Hit`**](prop#hit) | Triggered when this Prop hits something |
+|  | [**`Interact`**](prop#interact) | Triggered when a Character tries to Grab up this |
 |  | [**`UnGrab`**](prop#ungrab) | Triggered when Character ungrabs a Prop |
 
 ### `Grab`
@@ -166,6 +167,15 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Prop](prop) | `self` | The prop which has been hit |
+
+### <AuthorityType.ServerOnly />`Interact`
+
+> When a Character interacts with this Prop (i.e. try to pick it up) - return false to prevent it
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Prop](prop) | **`self`** |  |
+| <Classes.Character /> | **`character`** |  |
 
 ### `UnGrab`
 

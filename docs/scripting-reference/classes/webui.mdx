@@ -52,6 +52,10 @@ my_ui = WebUI(
     "Awesome UI from Another Package", -- Name
     "file:///UI/index.html",           -- Path relative to this package (Client/)
     true,                              -- Is Visible
+    true,
+    true,
+    0,
+    0,
     "my_ui_library_package"            -- Package where this HTML is located
 )
 ```
@@ -92,8 +96,12 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`name`** |  |  |
 | <BasicType.String /> | **`path`** |  | URL or `file:///relative/to/client/folder.html` |
-| <BasicType.Boolean /> | **`is_visible`** | `true` |  |
-| <BasicType.String /> | **`package_name`** | defaults to this package |  |
+| <BasicType.Boolean /> | **`is_visible`** | `true` | if WebUI is visible by default |
+| <BasicType.Boolean /> | **`is_transparent`** | `true` | if WebUI background is transparent |
+| <BasicType.Boolean /> | **`auto_resize`** | `true` | if should auto resize when screen changes it's size (useful OFF when you are painting meshes with WebUI) |
+| <BasicType.Number /> | **`width`** | `0` | size of the WebUI when you are not using auto_resize |
+| <BasicType.Number /> | **`height`** | `0` | size of the WebUI when you are not using auto_resize |
+| <BasicType.String /> | **`package_name`** | defaults to current package |  |
 
 ## Functions
 
@@ -104,6 +112,7 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 |  | [**`Destroy`**](webui#destroy) | Destroys this Browser |
 |  | [**`LoadURL`**](webui#loadurl) | Loads a new File/URL in this Browser |
 |  | [**`SetFocus`**](webui#setfocus) | Enables the focus on this browser |
+|  | [**`SetFreeze`**](webui#setfreeze) | Freezes the WebUI Rendering to the surface |
 |  | [**`SetVisible`**](webui#setvisible) | Toggles the visibility |
 | <BasicType.Boolean /> | [**`IsValid`**](webui#isvalid) | Returns if this entity is Valid |
 | <BasicType.Number /> | [**`GetID`**](webui#getid) | Gets the network ID of this entity |
@@ -161,6 +170,14 @@ my_webui:LoadURL(url)
 
 ```lua
 my_webui:SetFocus()
+```
+
+### `SetFreeze`
+
+> Freezes the WebUI Rendering to the surface (it will still execute the JS under the hood)
+
+```lua
+my_webui:SetFreeze()
 ```
 
 ### `SetVisible`

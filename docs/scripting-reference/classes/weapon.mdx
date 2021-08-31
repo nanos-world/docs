@@ -56,8 +56,8 @@ new_weapon:SetAnimationReload("nanos-world::AM_Mannequin_Reload_Rifle")
 -- Configures the Mesh to drop when reloading
 new_weapon:SetMagazineMesh("nanos-world::SM_AK47_Mag_Empty")
 
--- Configures the Crosshair Type
-new_weapon:SetCrosshairSetting(CrosshairType.Regular)
+-- Configures the Crosshair Material
+new_weapon:SetCrosshairMaterial("nanos-world::MI_Crosshair_Regular")
 ```
 
 
@@ -89,10 +89,6 @@ my_character:PickUp(my_ak47)
 | <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
 | <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
 
-## Available [Crosshairs Types](./scripting-reference/glossary/enums.md#crosshairtype)
-
-![All available Crosshairs](/img/docs/crosshairs.jpg)
-
 ## Functions
 
 import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
@@ -114,7 +110,6 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetBulletSettings`**](weapon#setbulletsettings) | Auxiliary for setting and configuring the Bullet |
 | <AuthorityType.ServerOnly /> |  | [**`SetCadence`**](weapon#setcadence) | Speed of shots |
 | <AuthorityType.ServerOnly /> |  | [**`SetClipCapacity`**](weapon#setclipcapacity) | Capacity of the Weapon’s Clip |
-| <AuthorityType.ServerOnly /> |  | [**`SetCrosshairSetting`**](weapon#setcrosshairsetting) | Sets the Crosshair Type |
 | <AuthorityType.ServerOnly /> |  | [**`SetDamage`**](weapon#setdamage) | Base Weapon’s Damage |
 | <AuthorityType.ServerOnly /> |  | [**`SetHandlingMode`**](weapon#sethandlingmode) | Sets how the Character grabs this Weapon |
 | <AuthorityType.ServerOnly /> |  | [**`SetLeftHandTransform`**](weapon#setlefthandtransform) | Left Hand Offset |
@@ -131,23 +126,43 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundZooming`**](weapon#setsoundzooming) | Sound when Zooming |
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundAim`**](weapon#setsoundaim) | Sound when Aiming |
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundFire`**](weapon#setsoundfire) | Sound when Shooting |
-| <AuthorityType.ServerOnly /> |  | [**`SetSpread`**](weapon#setspread) | Base Weapon’s Spread \(the higher the less precision - recommended value: 20\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetSpread`**](weapon#setspread) | Base Weapon’s Spread (the higher the less precision) |
+| <AuthorityType.ServerOnly /> |  | [**`SetRecoil`**](weapon#setrecoil) | Base Weapon’s Recoil Multiplier |
 | <AuthorityType.ServerOnly /> |  | [**`SetUsageSettings`**](weapon#setusagesettings) | Sets if the Weapon can hold to keep firing and if it needs to release to fire |
 |  | <BasicType.Number /> | [**`GetAmmoBag`**](weapon#getammobag) | Gets this Weapon’s Ammo Bag |
 |  | <BasicType.Number /> | [**`GetAmmoClip`**](weapon#getammoclip) | Gets this Weapon’s Ammo Clip |
+|  | <BasicType.Number /> | [**`GetAmmoToReload`**](weapon#GetAmmoToReload) |  |
+|  | <BasicType.String /> | [**`GetAnimationCharacterFire`**](weapon#GetAnimationCharacterFire) |  |
 |  | <Structs.Color /> | [**`GetBulletColor`**](weapon#getbulletcolor) |  |
+|  | <BasicType.Number /> | [**`GetBulletCount`**](weapon#GetBulletCount) |  |
 |  | <BasicType.Number /> | [**`GetCadence`**](weapon#getcadence) |  |
+|  | <BasicType.Boolean /> | [**`GetCanHoldUse`**](weapon#GetCanHoldUse) |  |
 |  | <BasicType.Number /> | [**`GetClipCapacity`**](weapon#getclipcapacity) |  |
 |  | <BasicType.Number /> | [**`GetDamage`**](weapon#getdamage) |  |
+|  | <Enums>HandlingMode</Enums> | [**`GetHandlingMode`**](weapon#GetHandlingMode) |  |
+|  | <BasicType.Boolean /> | [**`GetHoldReleaseUse`**](weapon#GetHoldReleaseUse) |  |
+|  | <BasicType.String /> | [**`GetMagazineMesh`**](weapon#GetMagazineMesh) |  |
+|  | <BasicType.String /> | [**`GetParticlesBulletTrail`**](weapon#GetParticlesBulletTrail) |  |
+|  | <BasicType.String /> | [**`GetParticlesBarrel`**](weapon#GetParticlesBarrel) |  |
+|  | <BasicType.String /> | [**`GetParticlesShells`**](weapon#GetParticlesShells) |  |
 |  | <Structs.Vector /> | [**`GetRightHandOffset`**](weapon#getrighthandoffset) |  |
 |  | <BasicType.Number /> | [**`GetSightFOVMultiplier`**](weapon#getsightfovmultiplier) |  |
+|  | <BasicType.String /> | [**`GetSoundDry`**](weapon#GetSoundDry) |  |
+|  | <BasicType.String /> | [**`GetSoundLoad`**](weapon#GetSoundLoad) |  |
+|  | <BasicType.String /> | [**`GetSoundUnload`**](weapon#GetSoundUnload) |  |
+|  | <BasicType.String /> | [**`GetSoundZooming`**](weapon#GetSoundZooming) |  |
+|  | <BasicType.String /> | [**`GetSoundAim`**](weapon#GetSoundAim) |  |
+|  | <BasicType.String /> | [**`GetSoundFire`**](weapon#GetSoundFire) |  |
 |  | <BasicType.Number /> | [**`GetSpread`**](weapon#getspread) |  |
+|  | <BasicType.Number /> | [**`GetRecoil`**](weapon#getrecoil) |  |
 
 ## Events
 
 import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
+import BasePickableEvents from '@site/docs/scripting-reference/classes/base-classes/_base-pickable-events.mdx';
 
 <details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
+<details><summary>Inherited Pickable Events</summary><BasePickableEvents /></details>
 
 | **Name** | **Description** |
 | :--- | :--- |
@@ -273,18 +288,6 @@ my_weapon:SetClipCapacity(clip)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`clip`** |  |  |
-
-### <AuthorityType.ServerOnly />`SetCrosshairSetting`
-
-> Sets the Crosshair Type
-
-```lua
-my_weapon:SetCrosshairSetting(type)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| CrosshairType | **`type`** |  |  |
 
 ### <AuthorityType.ServerOnly />`SetDamage`
 
@@ -484,15 +487,27 @@ my_weapon:SetSoundFire(sound_asset_path)
 
 ### <AuthorityType.ServerOnly />`SetSpread`
 
-> Base Weapon's Spread \(the higher the less precision - recommended value: 20\)
+> Base Weapon's Spread (the higher the less precision - recommended value: 20)
 
 ```lua
-my_weapon:SetSpread(damage)
+my_weapon:SetSpread(spread)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`damage`** |  |  |
+| <BasicType.Number /> | **`spread`** |  |  |
+
+### <AuthorityType.ServerOnly />`SetRecoil`
+
+> Base Weapon's Recoil - 0 means no Recoil, default is 1
+
+```lua
+my_weapon:SetRecoil(damage)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`recoil`** |  |  |
 
 ### <AuthorityType.ServerOnly />`SetUsageSettings`
 
@@ -525,6 +540,134 @@ my_weapon:GetAmmoBag()
 
 ```lua
 my_weapon:GetAmmoClip()
+```
+
+### `GetAmmoToReload`
+
+> Returns <BasicType.Number />
+
+```lua
+my_weapon:GetAmmoToReload()
+```
+
+### `GetHandlingMode`
+
+> Returns <Enums>HandlingMode</Enums>
+
+```lua
+my_weapon:GetHandlingMode()
+```
+
+### `GetAnimationCharacterFire`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetAnimationCharacterFire()
+```
+
+### `GetMagazineMesh`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetMagazineMesh()
+```
+
+### `GetParticlesBulletTrail`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetParticlesBulletTrail()
+```
+
+### `GetParticlesBarrel`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetParticlesBarrel()
+```
+
+### `GetParticlesShells`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetParticlesShells()
+```
+
+### `GetSoundDry`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetSoundDry()
+```
+
+### `GetSoundLoad`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetSoundLoad()
+```
+
+### `GetSoundUnload`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetSoundUnload()
+```
+
+### `GetSoundZooming`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetSoundZooming()
+```
+
+### `GetSoundAim`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetSoundAim()
+```
+
+### `GetSoundFire`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetSoundFire()
+```
+
+### `GetCanHoldUse`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetCanHoldUse()
+```
+
+### `GetHoldReleaseUse`
+
+> Returns <BasicType.Boolean />
+
+```lua
+my_weapon:GetHoldReleaseUse()
+```
+
+### `GetBulletCount`
+
+> Returns <BasicType.Boolean />
+
+```lua
+my_weapon:GetBulletCount()
 ```
 
 ### `GetBulletColor`
@@ -581,6 +724,14 @@ my_weapon:GetSightFOVMultiplier()
 
 ```lua
 my_weapon:GetSpread()
+```
+
+### `GetRecoil`
+
+> Returns <BasicType.Number />
+
+```lua
+my_weapon:GetRecoil()
 ```
 
 ## Events Detailed

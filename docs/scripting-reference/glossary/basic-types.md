@@ -49,7 +49,7 @@ We use any here in the Docs to represent that any Type can be used.
 
 ### `SpecialPath`
 
-nanos world supports a special type of Path when loading **Textures** or referencing files from **WebUI**. It allows any Package or WebUI to access files from other Packages or Asset Packs easily.
+nanos world supports a special type of Path when loading **Textures**, **Sounds (.ogg)** or referencing files from **WebUI**. It allows any Package or WebUI to access files from other Packages or Asset Packs easily.
 
 **SpecialPath** is a string input which supports the following formats for accessing Assets or Packages files:
 

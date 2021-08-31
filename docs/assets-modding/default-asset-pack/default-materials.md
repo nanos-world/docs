@@ -29,14 +29,14 @@ For more information regarding **Material Types** and **Blend Modes**, please re
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| Color | **`Tint`** | `Color.WHITE` | Affects `Base Color` input | **Tint** multiplies with **Texture** parameter to generate the final color |
-| Texture | **`Texture`** | White Texture | Image which multiplies with **Tint** to generate the final color |
-| Texture | **`Normal`** | UP Normal Map `Vector(0.5, 0.5, 1)` | Image which affects how Light reflects on the object |
-| ​​​Color​ | **`Emissive`** | `Color.BLACK` | Affects `Emissive` input, high values will cause bloom effect |
-| Scalar​ | **`Metallic`** | `0` | Affects `Metallic `input - goes from 0 to 1 |
-| Scalar | **`Specular`** | `0.5` | Affects `Specular` input - goes from 0 to 1 |
-| Scalar | **`Roughness`** | `0.65` | Affects `Roughness` input - goes from 0 to 1 |
-| Scalar | **`Opacity`** | `0` | Affects `Opacity` and `Opacity Mask` inputs - goes from 0 to 1 <br />**Opacity** multiplies with **Texture** Alpha Channel to generate the final opacity |
+| [Color](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialcolorparameter) | **`Tint`** | `Color.WHITE` | Affects `Base Color` input | **Tint** multiplies with **Texture** parameter to generate the final color |
+| [Texture](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialtextureparameter) | **`Texture`** | White Texture | Image which multiplies with **Tint** to generate the final color |
+| [Texture](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialtextureparameter) | **`Normal`** | UP Normal Map `Vector(0.5, 0.5, 1)` | Image which affects how Light reflects on the object |
+| [​​​Color​](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialcolorparameter) | **`Emissive`** | `Color.BLACK` | Affects `Emissive` input, high values will cause bloom effect |
+| [Scalar​](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialscalarparameter) | **`Metallic`** | `0` | Affects `Metallic `input - goes from 0 to 1 |
+| [Scalar](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialscalarparameter) | **`Specular`** | `0.5` | Affects `Specular` input - goes from 0 to 1 |
+| [Scalar](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialscalarparameter) | **`Roughness`** | `0.65` | Affects `Roughness` input - goes from 0 to 1 |
+| [Scalar](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialscalarparameter) | **`Opacity`** | `0` | Affects `Opacity` and `Opacity Mask` inputs - goes from 0 to 1 <br />**Opacity** multiplies with **Texture** Alpha Channel to generate the final opacity |
 
 :::tip
 
@@ -56,6 +56,10 @@ Translucent Materials are the heavier ones to render, and cause a lot of overdra
 
 Is the same as Translucent but will be always visible in the screen, even behind walls or other objects.
 
+### **`M_NanosWireframe`**
+
+Material which renders objects as Wireframe. Supported parameter: **Tint** and **Emissive**.
+
 :::tip
 
 **Note**: All those Materials in this page are already included in the base game in the [Default nanos world Asset Pack](./assets-modding/default-asset-pack/default-asset-pack.md), you can reference them like that: **`nanos-world::M_NanosDefault`.**
@@ -64,10 +68,11 @@ Is the same as Translucent but will be always visible in the screen, even behind
 
 #### Supported Parameters in each Material
 
-| Tint | Texture | Normal | Emissive | Metallic | Specular | Roughness | Opacity |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+|  | Tint | Texture | Normal | Emissive | Metallic | Specular | Roughness | Opacity |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Masked** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `true*` |
 | **Translucent** | `true` | `true` | `false` | `true` | `false` | `false` | `false` | `true` |
 | **Translucent Depth** | `true` | `true` | `false` | `true` | `false` | `false` | `false` | `true` |
+| **Wireframe** | `true` | `false` | `false` | `true` | `false` | `false` | `false` | `false` |
 
 > *Masked Material's Opacity supports only Opacity Mask: `0` or `1`

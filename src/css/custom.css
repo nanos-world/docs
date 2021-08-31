@@ -200,8 +200,9 @@ article .badge.badge--secondary {
 
 /* Tables */
 table {
-  width: 100%;
-  display: table;
+  /* too big tables overflow, too small shrink */
+  /* width: 100%; */
+  /* display: table; */
   margin-bottom: 2rem;
 }
 

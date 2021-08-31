@@ -140,6 +140,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--packages` | string list | Server packages |
 | `--save` | 0 or 1 | If to save the parameters in Config.toml |
 | `--max_players` | number | Max allowed players |
+| `--profiling` | 0 or 1 | Enables Performance Profiling Logs for debugging |
 
 ## Common Console Messages/Warnings/Erros and it’s meanings
 

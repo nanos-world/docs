@@ -19,6 +19,10 @@ import BasePickableFunctions from '@site/docs/scripting-reference/classes/base-c
 
 <BasePickableFunctions hidden_reference={true} />
 
+## Available [Crosshairs Types](./scripting-reference/glossary/enums.md#crosshairtype)
+
+![All available Crosshairs](/img/docs/crosshairs.jpg)
+
 ### `AddSkeletalMeshAttached`
 
 > Spawns and Attaches a SkeletalMesh into this Actor, the SkeletalMesh must have the same Skeletal used by this Actor Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
@@ -88,6 +92,18 @@ entity:RemoveStaticMeshAttached(id)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`id`** |  | Unique ID to remove the Attached Mesh |
 
+### <AuthorityType.ServerOnly />`SetCrosshairMaterial`
+
+> Sets the Crosshair Material
+
+```lua
+entity:SetCrosshairMaterial(path)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`path`** |  |  |
+
 ### `GetAssetName`
 
 > Returns the Asset name \(<BasicType.String />
@@ -140,6 +156,15 @@ end)
 | :--- | :--- | :--- |
 | [Pickable](pickable) | `self` | The entity which has been hit |
 | <BasicType.Number /> | `intensity` | Intensity of the Hit |
+
+### <AuthorityType.ServerOnly />`Interact`
+
+> When a Character interacts with this Pickable (i.e. try to pick it up) - return false to prevent it
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Pickable](pickable) | **`self`** |  |
+| <Classes.Character /> | **`character`** |  |
 
 ### `PickUp`
 

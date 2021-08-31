@@ -1,12 +1,13 @@
-import { ReferenceLink } from '@site/docs/components/_nanos.mdx';
+import { ReferenceLink, AuthorityType } from '@site/docs/components/_nanos.mdx';
 
 <>
 	{!props.hidden_reference ? (<ReferenceLink href="scripting-reference/classes/base-classes/pickable">Base Pickable</ReferenceLink>) : <></>}
 </>
 
 
-| **Name** | **Description** |
-| :--- | :--- |
-| [**`Drop`**](./scripting-reference/classes/base-classes/pickable.mdx#drop) | When a Character drops this |
-| [**`Hit`**](./scripting-reference/classes/base-classes/pickable.mdx#hit) | When this Entity hits something |
-| [**`PickUp`**](./scripting-reference/classes/base-classes/pickable.mdx#pickup) | When a Character picks up this |
+|  | **Name** | **Description** |
+| :---: | :--- | :--- |
+|  | [**`Drop`**](./scripting-reference/classes/base-classes/pickable.mdx#drop) | When a Character drops this |
+|  | [**`Hit`**](./scripting-reference/classes/base-classes/pickable.mdx#hit) | When this Entity hits something |
+| <AuthorityType.ServerOnly /> | [**`Interact`**](./scripting-reference/classes/base-classes/pickable.mdx#interact) | Triggered when a Character tries to Pick up this |
+|  | [**`PickUp`**](./scripting-reference/classes/base-classes/pickable.mdx#pickup) | When a Character picks up this |

@@ -53,8 +53,17 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 
 |  | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- | :--- |
+| <AuthorityType.ServerOnly /> |  | **`ForceOverlapChecking`** | Forces a Overlap check to occur |
 | <AuthorityType.ServerOnly /> |  | **`SetExtent`** | Sets the extent size of this trigger |
 | <AuthorityType.ServerOnly /> |  | **`SetVisibility`** | Sets if this Trigger is visible as a Sphere |
+
+### <AuthorityType.ServerOnly />`ForceOverlapChecking`
+
+> Forces a Overlap checking to occur, will immediately trigger overlaps
+
+```lua
+my_trigger:ForceOverlapChecking()
+```
 
 ### <AuthorityType.ServerOnly />`SetExtent`
 

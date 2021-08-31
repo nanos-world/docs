@@ -50,6 +50,7 @@ end)
 |  |  | [**`SetValue`**](player#setvalue) | Sets a value in this entity, which can be accessed by any package |
 | <AuthorityType.AuthorityOnly /> |  | [**`SetVOIPChannel`**](player#setvoipchannel) | Sets the VOIP Channel of this Player |
 |  |  | [**`SetVOIPSetting`**](player#setvoipsetting) | Sets the VOIP Settings of this Player |
+|  |  | [**`SetVOIPVolume`**](player#setvoipvolume) | Sets the VOIP Volume of this Player |
 | <AuthorityType.AuthorityOnly /> |  | [**`UnPossess`**](player#unpossess) | Release the `Player` from the Character |
 |  | <BasicType.String /> | [**`GetAccountID`**](player#getaccountid) | Gets the nanos account ID |
 |  | <BasicType.String /> | [**`GetAccountName`**](player#getaccountname) | Gets the nanos account name |
@@ -206,6 +207,18 @@ my_player:SetVOIPSetting(setting)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <Enums>VOIPSetting</Enums> | **`setting`** |  |
+
+### `SetVOIPVolume`
+
+> Sets the VOIP Volume of this Player
+
+```lua
+my_player:SetVOIPSetting(volume)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`volume`** |  |
 
 ### <AuthorityType.AuthorityOnly /> `UnPossess`
 

@@ -82,6 +82,11 @@ Asset Packs have a configuration file in the root of the Asset Pack folder, call
     # A_Character_Jump = "Animations/A_Character_Jump"
     # ...
 
+    # Materials
+    [assets.materials]
+    # M_Awesome_Colorful = "Materials/M_Awesome_Colorful"
+    # ...
+
     # Other Assets (for not yet categorized ones)
     [assets.others]
     # A_Audio_Rifle_Fire = "Audios/A_Audio_Rifle_Fire_03"
@@ -103,6 +108,7 @@ Asset Packs have a configuration file in the root of the Asset Pack folder, call
 | **`assets.skeletal_meshes`** | List of Skeletal Meshes in this Asset Pack |
 | **`assets.sounds`** | List of Sounds in this Asset Pack |
 | **`assets.animations`** | List of Animations in this Asset Pack |
+| **`assets.materials`** | List of Materials in this Asset Pack |
 | **`assets.others`** | List of other Assets in this Asset Pack |
 
 ## Referencing Assets in Scripting

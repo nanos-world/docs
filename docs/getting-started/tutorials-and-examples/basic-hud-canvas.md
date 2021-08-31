@@ -52,7 +52,7 @@ function UpdateLocalCharacter(character)
     UpdateHealth(character:GetHealth())
 
     -- Sets on character an event to update the health's UI after it takes damage
-    character:Subscribe("TakeDamage", function(charac, damage, type, bone, from_direction, instigator)
+    character:Subscribe("TakeDamage", function(charac, damage, type, bone, from_direction, instigator, causer)
         UpdateHealth(math.max(charac:GetHealth() - damage, 0))
     end)
 

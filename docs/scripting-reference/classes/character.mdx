@@ -93,9 +93,9 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> | <BasicType.Number /> | [**`ApplyDamage`**](character#applydamage) | Do damage in a character, will trigger all related events and apply modified damage based on bone. Also will apply impulse if it’s a heavy explosion. |
 |  |  | [**`AddSkeletalMeshAttached`**](character#addskeletalmeshattached) | Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further |
 |  |  | [**`AddStaticMeshAttached`**](character#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further |
-| <AuthorityType.ServerOnly /> |  | [**`Drop`**](character#drop) | Drops any Pickable the Character is holding |
+| <AuthorityType.ServerOnly /> |  | [**`Drop`**](character#drop) | Drops any <Classes.Pickable /> the Character is holding |
 | <AuthorityType.ServerOnly /> |  | [**`EnterVehicle`**](character#entervehicle) | Enters the Vehicle at Seat \(0 - Driver\) |
-| <AuthorityType.ServerOnly /> |  | [**`GrabProp`**](character#grabprop) | Gives a Prop to the Character |
+| <AuthorityType.ServerOnly /> |  | [**`GrabProp`**](character#grabprop) | Gives a <Classes.Prop /> to the Character |
 | <AuthorityType.ServerOnly /> |  | [**`Jump`**](character#jump) | Triggers this Character to jump |
 | <AuthorityType.ServerOnly /> |  | [**`LeaveVehicle`**](character#leavevehicle) | Leaves the current Vehicle |
 | <AuthorityType.ServerOnly /> |  | [**`LookAt`**](character#lookat) | AI: Tries to make this Character to look at Location |
@@ -112,10 +112,11 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetCanCrouch`**](character#setcancrouch) | Sets if this Character is allowed to Crouch and to Prone |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanAim`**](character#setcanaim) | Sets if this Character is allowed to Aim |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanSprint`**](character#setcansprint) | Sets if this Character is allowed to Sprint |
-| <AuthorityType.ServerOnly /> |  | [**`SetCanGrabProps`**](character#setcangrabprops) | Sets if this Character is allowed to Grab any Prop |
-| <AuthorityType.ServerOnly /> |  | [**`SetCanPickupPickables`**](character#setcanpickuppickables) | Sets if this Character is allowed to Pick up any Pickable \(Weapon, Grenade, Item…\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetCanGrabProps`**](character#setcangrabprops) | Sets if this Character is allowed to Grab any <Classes.Prop /> |
+| <AuthorityType.ServerOnly /> |  | [**`SetCanPickupPickables`**](character#setcanpickuppickables) | Sets if this Character is allowed to Pick up any <Classes.Pickable /> (Weapon, Grenade, Item…) |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanPunch`**](character#setcanpunch) | Sets if this Character is allowed to Punch \(Melee\) |
 | <AuthorityType.ServerOnly /> |  | [**`SetCapsuleSize`**](character#setcapsulesize) | Sets this Character’s Capsule size \(will affect Camera location and Character’s collision\) - default is \(42, 96\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetDamageMultiplier`**](character#setdamagemultiplier) | Changes how much damage this character takes |
 | <AuthorityType.ServerOnly /> |  | [**`SetDeathSound`**](character#setdeathsound) | Changes the Death sound when Character dies |
 | <AuthorityType.ServerOnly /> |  | [**`SetFallDamageTaken`**](character#SetFallDamageTaken) | Set the Fall Damage multiplier taken when falling from High places \(default: 10\). Setting to 0 will make the Character to do not take damage or enter ragdoll mode |
 | <AuthorityType.ServerOnly /> |  | [**`SetFlyingMode`**](character#setflyingmode) | Sets the Flying Mode |
@@ -137,25 +138,37 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetViewMode`**](character#setviewmode) | **View Modes**: _FPS, TPS1, TPS2, TPS3_ |
 | <AuthorityType.ServerOnly /> |  | [**`SetWeaponAimMode`**](character#setweaponaimmode) | **Aim Modes**: _None, ADS, ZoomedZoom, Zoomed, ZoomedFar_ |
 | <AuthorityType.ServerOnly /> |  | [**`StopAnimation`**](character#stopanimation) | Stops an Animation Montage on this character |
-| <AuthorityType.ServerOnly /> |  | [**`UnGrabProp`**](character#ungrabprop) | UnGrabs/Drops the Prop the Character is holding |
-|  | <BasicType.Boolean /> | Gets Character Ragdoll Mode |
-|  | <BasicType.Boolean /> | Gets if the Character can receive damage |
-|  | <BasicType.Boolean /> | Gets Character Movement Enabled |
+| <AuthorityType.ServerOnly /> |  | [**`UnGrabProp`**](character#ungrabprop) | UnGrabs/Drops the <Classes.Prop /> the Character is holding |
+|  | <BasicType.Boolean /> | [**`IsInRagdollMode`**](character#isinragdollmode) | Gets Character Ragdoll Mode |
+|  | <BasicType.Boolean /> | [**`IsInvulnerable`**](character#isinvulnerable) | Gets if the Character can receive damage |
+|  | <BasicType.Boolean /> | [**`IsMovementEnabled`**](character#ismovementenabled) | Gets Character Movement Enabled |
+|  | <Enums>CameraMode</Enums> | [**`GetCameraMode`**](character#getcameramode) |  |
+|  | <BasicType.Boolean /> | [**`GetCanDrop`**](character#getcandrop) |  |
+|  | <BasicType.Boolean /> | [**`GetCanPunch`**](character#getcanpunch) |  |
+|  | <BasicType.Boolean /> | [**`GetCanAim`**](character#getcanaim) |  |
+|  | <BasicType.Boolean /> | [**`GetCanCrouch`**](character#getcancrouch) |  |
+|  | <BasicType.Boolean /> | [**`GetCanSprint`**](character#getcansprint) |  |
+|  | <BasicType.Boolean /> | [**`GetCanGrabProps`**](character#getcangrabprops) |  |
+|  | <BasicType.Boolean /> | [**`GetCanPickupPickables`**](character#getcanpickuppickables) |  |
 |  | <Structs.Rotator /> | [**`GetControlRotation`**](character#getcontrolrotation) | Gets the rotation this character is looking at |
-|  | <Enums>FallingMode</Enums> | [**`GetFallingMode`**](character#GetFallingMode) | Gets the Falling Mode |
-|  | <BasicType.Boolean /> | Gets if the Character is in Flying Mode |
+|  | <BasicType.Number /> | [**`GetDamageMultiplier`**](character#getdamagemultiplier) |  |
+|  | <BasicType.Number /> | [**`GetFallDamageTaken`**](character#getfalldamagetaken) |  |
+|  | <Enums>FallingMode</Enums> | [**`GetFallingMode`**](character#getfallingmode) | Gets the Falling Mode |
+|  | <BasicType.Boolean /> | [**`GetFlyingMode`**](character#getflyingmode) | Gets if the Character is in Flying Mode |
 |  | <Enums>CollisionType</Enums> | [**`GetGaitMode`**](character.mdx#getgaitmode) | Gets the Gait Mode |
-|  | <Classes.Prop /> | [**`GetGrabbedProp`**](character.mdx#GetGrabbedProp) | Gets the Grabbing Prop |
-|  | <BasicType.Number /> | Gets the Gravity Scale of this Character |
-|  | <BasicType.Number /> | Gets the Character’s Health. |
-|  | <BasicType.Number /> | Gets the Character’s MaxHealth. |
-|  | <BasicType.String /> | Gets the Mesh Asset name |
+|  | <Classes.Prop /> | [**`GetGrabbedProp`**](character.mdx#getgrabbedprop) | Gets the Grabbing <Classes.Prop /> |
+|  | <BasicType.Number /> | [**`GetGravityScale`**](character#getgravityscale) | Gets the Gravity Scale of this Character |
+|  | <BasicType.Number /> | [**`GetHealth`**](character#gethealth) | Gets the Character’s Health. |
+|  | <BasicType.Number /> | [**`GetImpactDamageTaken`**](character#getimpactdamagetaken) |  |
+|  | <BasicType.Number /> | [**`GetMaxHealth`**](character#getmaxhealth) | Gets the Character’s MaxHealth. |
+|  | <BasicType.String /> | [**`GetMesh`**](character#getmesh) | Gets the Mesh Asset name |
 |  | Entity | [**`GetPicked`**](character#getpicked) | Gets the holding Picked Item/Grenade/Weapon |
 |  | <Classes.Player /> | [**`GetPlayer`**](character.mdx#getplayer) | Gets the Player controlling this Character |
-|  | <BasicType.Number /> |  |
+|  | <BasicType.Number /> | [**`GetPunchDamage`**](character.mdx#getpunchdamage) |  |
+|  | <BasicType.Number /> | [**`GetSpeedMultiplier`**](character#getspeedmultiplier) |  |
 |  | <Enums>StanceMode</Enums> | [**`GetStanceMode`**](character.mdx#getstancemode) |  |
 |  | <Enums>SwimmingMode</Enums> | [**`GetSwimmingMode`**](character.mdx#getswimmingmode) |  |
-|  | <BasicType.Number /> |  |
+|  | <BasicType.Number /> | [**`GetTeam`**](character#getteam) |  |
 |  | <Classes.Vehicle /> | [**`GetVehicle`**](character.mdx#getvehicle) | Gets the Vehicle the Character is on |
 |  | <Enums>ViewMode</Enums> | [**`GetViewMode`**](character.mdx#getviewmode) | Gets Character View Mode |
 |  | <Enums>AimMode</Enums> | [**`GetWeaponAimMode`**](character.mdx#getweaponaimmode) | Gets Character Aim Mode |
@@ -174,7 +187,8 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 |  | [**`FallingModeChanged`**](character#fallingmodechanged) | **Falling Modes**: _None, Jumping, Climbing, Vaulting, Falling, HighFalling, Parachuting, SkyDiving_ |
 |  | [**`Fire`**](character#fire) | When Character fires a Weapon |
 |  | [**`GaitModeChanged`**](character#gaitmodechanged) | **Gait Modes**: _None, Walking, Sprinting_ |
-|  | [**`GrabProp`**](character#grabprop) | When Character grabs up a Prop |
+|  | [**`GrabProp`**](character#grabprop) | When Character grabs up a <Classes.Prop /> |
+|  | [**`Highlight`**](character#highlight) | When Character highlights/looks at a <Classes.Prop /> or a <Classes.Pickable /> |
 | <AuthorityType.ServerOnly /> | [**`Interact`**](character#interact) | When a Character interacts with an object \(i.e. try to pick it up\) - return false to prevent it |
 |  | [**`LeaveVehicle`**](character#leavevehicle) | When Character leaves a vehicle |
 |  | [**`MoveCompleted`**](character#movecompleted) | Called when AI reaches it’s destination, or when it fails |
@@ -187,7 +201,7 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 |  | [**`StanceModeChanged`**](character#stancemodechanged) | **Stance Modes**: _None, Standing, Crouching, Proning_ |
 |  | [**`SwimmingModeChanged`**](character#swimmingmodechanged) | **Swimming Modes**: _None, Surface, Underwater_ |
 |  | [**`TakeDamage`**](character#takedamage) | When Character takes Damage |
-|  | [**`UnGrabProp`**](character#ungrabprop) | When Character drops a Prop |
+|  | [**`UnGrabProp`**](character#ungrabprop) | When Character drops a <Classes.Prop /> |
 |  | [**`UnPossessed`**](character#unpossessed) | When Character is unpossessed |
 |  | [**`ViewModeChanged`**](character#viewmodechanged) | **View Modes**: _FPS, TPS1, TPS2, TPS3_ |
 |  | [**`WeaponAimModeChanged`**](character#weaponaimmodechanged) | **Aim Modes**: _None, ADS, ZoomedZoom, Zoomed, ZoomedFar_ |
@@ -241,7 +255,7 @@ my_character:AddStaticMeshAttached( id, static_mesh_path, socket, relative_locat
 
 ### <AuthorityType.ServerOnly />`Drop`
 
-> Drops any Pickable the Character is holding
+> Drops any <Classes.Pickable /> the Character is holding
 
 ```lua
 my_character:Drop()
@@ -262,7 +276,7 @@ my_character:EnterVehicle(vehicle, seat)
 
 ### <AuthorityType.ServerOnly />`GrabProp`
 
-> Gives a Prop to the Character
+> Gives a <Classes.Prop /> to the Character
 
 ```lua
 my_character:GrabProp(prop)
@@ -325,21 +339,24 @@ my_character:PickUp(pickable)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| Pickable | **`pickable`** |  |  |
+| <Classes.Pickable /> | **`pickable`** |  |  |
 
 ### <AuthorityType.ServerOnly />`PlayAnimation`
 
 > Plays an Animation Montage on this character
 
 ```lua
-my_character:PlayAnimation(animation_path, slot_type, loop_indefinitely)
+my_character:PlayAnimation(animation_path, slot_type, loop_indefinitely, blend_in_time, blend_out_time, play_rate)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`animation_path`** |  |  |
-| <Enums>AnimationSlotType</Enums> | **`slot_type`** | `FullBody` |  |
-| <BasicType.Boolean /> | **`loop_indefinitely`** |  |  |
+| <Enums>AnimationSlotType</Enums> | **`slot_type`** | `AnimationSlotType.FullBody` |  |
+| <BasicType.Boolean /> | **`loop_indefinitely`** | `false` |  |
+| <BasicType.Number /> | **`blend_in_time`** | `0.25` |  |
+| <BasicType.Number /> | **`blend_out_time`** | `0.25` |  |
+| <BasicType.Number /> | **`play_rate`** | `1.0` |  |
 
 ### `RemoveSkeletalMeshAttached`
 
@@ -482,7 +499,7 @@ my_character:SetCanGrabProps(can_grab_props)
 
 ### <AuthorityType.ServerOnly />`SetCanPickupPickables`
 
-> Sets if this Character is allowed to Pick up any Pickable \(Weapon, Grenade, Item...\)
+> Sets if this Character is allowed to Pick up any <Classes.Pickable /> (Weapon, Grenade, Item...)
 
 ```lua
 my_character:SetCanPickupPickables(can_pickup)
@@ -516,6 +533,19 @@ my_character:SetCapsuleSize(radius, half_height)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`radius`** |  |  |
 | <BasicType.Boolean /> | **`half_height`** |  |  |
+
+### <AuthorityType.ServerOnly />`SetDamageMultiplier`
+
+> Changes how much damage this character takes
+
+```lua
+my_character:SetDamageMultiplier(bone_name, multiplier)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`bone_name`** |  |  |
+| <BasicType.Number /> | **`multiplier`** |  |  |
 
 ### <AuthorityType.ServerOnly />`SetDeathSound`
 
@@ -808,6 +838,86 @@ my_character:IsInvulnerable()
 my_character:IsMovementEnabled()
 ```
 
+### `GetCameraMode`
+
+> 
+>
+> Returns <Enums>CameraMode</Enums>
+
+```lua
+my_character:GetCameraMode()
+```
+
+### `GetCanDrop`
+
+> 
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:GetCanDrop()
+```
+
+### `GetCanPunch`
+
+> 
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:GetCanPunch()
+```
+
+### `GetCanAim`
+
+> 
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:GetCanAim()
+```
+
+### `GetCanCrouch`
+
+> 
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:GetCanCrouch()
+```
+
+### `GetCanSprint`
+
+> 
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:GetCanSprint()
+```
+
+### `GetCanGrabProps`
+
+> 
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:GetCanGrabProps()
+```
+
+### `GetCanPickupPickables`
+
+> 
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:GetCanPickupPickables()
+```
+
 ### `GetControlRotation`
 
 > Gets the rotation this character is looking at
@@ -816,6 +926,26 @@ my_character:IsMovementEnabled()
 
 ```lua
 my_character:GetControlRotation()
+```
+
+### `GetDamageMultiplier`
+
+> 
+>
+> Returns <BasicType.Number />
+
+```lua
+my_character:GetDamageMultiplier()
+```
+
+### `GetFallDamageTaken`
+
+> 
+>
+> Returns <BasicType.Number />
+
+```lua
+my_character:GetFallDamageTaken()
 ```
 
 ### `GetFallingMode`
@@ -878,6 +1008,16 @@ my_character:GetGravityScale()
 my_character:GetHealth()
 ```
 
+### `GetImpactDamageTaken`
+
+> 
+>
+> Returns <BasicType.Number />
+
+```lua
+my_character:GetImpactDamageTaken()
+```
+
 ### `GetMaxHealth`
 
 > Gets the Character's MaxHealth.
@@ -916,6 +1056,14 @@ my_character:GetPicked()
 
 ```lua
 my_character:GetPlayer()
+```
+
+### `GetPunchDamage`
+
+> Returns <BasicType.Number />
+
+```lua
+my_character:GetSpeedMultiplier()
 ```
 
 ### `GetSpeedMultiplier`
@@ -991,7 +1139,7 @@ my_character:GetWeaponAimMode()
 | [Character](character) | **`self`** |  |
 | <BasicType.Number /> | **`last_damage_taken`** |  |
 | <BasicType.String /> | **`last_bone_damaged`** |  |
-| DamageType | **`damage_type_reason`** |  |
+| <Enums>DamageType</Enums> | **`damage_type_reason`** |  |
 | <Structs.Vector /> | **`hit_from_direction`** |  |
 | <Classes.Player /> | **`instigator`** |  |
 
@@ -1008,7 +1156,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Pickable | **`object`** |  |
+| <Classes.Pickable /> | **`object`** |  |
 | <BasicType.Boolean /> | **`triggered_by_player`** |  |
 
 ```lua
@@ -1070,8 +1218,8 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| GaitMode | **`old_state`** |  |
-| GaitMode | **`new_state`** |  |
+| <Enums>GaitMode</Enums> | **`old_state`** |  |
+| <Enums>GaitMode</Enums> | **`new_state`** |  |
 
 ```lua
 Character.Subscribe("GaitModeChanged", function(self, old_state, new_state)
@@ -1086,7 +1234,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Prop | **`prop`** |  |
+| <Classes.Prop /> | **`prop`** |  |
 
 ```lua
 Character.Subscribe("GrabProp", function(self, prop)
@@ -1094,14 +1242,29 @@ Character.Subscribe("GrabProp", function(self, prop)
 end)
 ```
 
-### \|server-only-label\| `Interact`
+### `Highlight`
+
+>  When Character highlights/looks at a <Classes.Prop /> or a Pickable
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <Classes.Prop /> or <Classes.Pickable /> | **`object`** |  |
+
+```lua
+Character.Subscribe("Highlight", function(self, object)
+
+end)
+```
+
+### <AuthorityType.ServerOnly />`Interact`
 
 > When a Character interacts with an object \(i.e. try to pick it up\) - return false to prevent it
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Pickable | **`object`** |  |
+| <Classes.Pickable /> or <Classes.Prop /> | **`object`** |  |
 
 ```lua
 Character.Subscribe("Interact", function(self, object)
@@ -1116,7 +1279,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Vehicle | **`vehicle`** |  |
+| <Classes.Vehicle /> | **`vehicle`** |  |
 
 ```lua
 Character.Subscribe("LeaveVehicle", function(self, vehicle)
@@ -1146,7 +1309,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Pickable | **`object`** |  |
+| <Classes.Pickable /> | **`object`** |  |
 
 ```lua
 Character.Subscribe("PickUp", function(self, object)
@@ -1270,12 +1433,13 @@ end)
 | [Character](character) | **`self`** |  |
 | <BasicType.Number /> | **`damage`** |  |
 | <BasicType.String /> | **`bone`** |  |
-| DamageType | **`type`** |  |
+| <Enums>DamageType</Enums> | **`type`** |  |
 | <Structs.Vector /> | **`from_direction`** |  |
-| <Classes.Player /> | **`instigator`** |  |
+| <Classes.Player /> | **`instigator`** | The player which caused the damage |
+| <BasicType.Any /> | **`causer`** | The object which caused the damage |
 
 ```lua
-Character.Subscribe("TakeDamage", function(self, damage, bone, type, from_direction, instigator)
+Character.Subscribe("TakeDamage", function(self, damage, bone, type, from_direction, instigator, causer)
 
 end)
 ```
@@ -1287,7 +1451,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Prop | **`prop`** |  |
+| <Classes.Prop /> | **`prop`** |  |
 
 ```lua
 Character.Subscribe("UnGrabProp", function(self, prop)
