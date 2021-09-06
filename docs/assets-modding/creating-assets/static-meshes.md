@@ -10,7 +10,7 @@ A Static Mesh is the most straightforward asset to be imported and used in nanos
 
 :::caution
 
-Please do not confuse [Unreal's Static Mesh](./scripting-reference/classes/static-mesh.mdx)!
+Please do not confuse with nanos world [Static Mesh](./scripting-reference/classes/static-mesh.mdx) Class!
 
 :::
 
