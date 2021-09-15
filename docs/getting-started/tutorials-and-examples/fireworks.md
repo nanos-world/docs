@@ -105,11 +105,9 @@ weapon:Subscribe("Fire", function(weap, shooter)
         --  float: 'BurstMulti', 'SparkleMulti'
     end, 500, prop)
 
-    -- After 1000 miliseconds, destroy the particle and the projectile
-    Timer.SetTimeout(function(pr, pa)
-        pr:Destroy()
-        pa:Destroy()
-    end, 1000, prop, particle)
+    -- After 1 second, destroy the particle and the projectile
+    prop:SetLifeSpan(1)
+    particle:SetLifeSpan(1)
 end)
 ```
 

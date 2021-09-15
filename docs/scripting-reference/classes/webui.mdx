@@ -111,7 +111,7 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 |  | [**`CallEvent`**](webui#callevent) | Calls an Event on the Browser’s JavaScript |
 |  | [**`Destroy`**](webui#destroy) | Destroys this Browser |
 |  | [**`LoadURL`**](webui#loadurl) | Loads a new File/URL in this Browser |
-|  | [**`SetFocus`**](webui#setfocus) | Enables the focus on this browser |
+|  | [**`SetFocus`**](webui#setfocus) | Forces Focus on this Browser |
 |  | [**`SetFreeze`**](webui#setfreeze) | Freezes the WebUI Rendering to the surface |
 |  | [**`SetVisible`**](webui#setvisible) | Toggles the visibility |
 | <BasicType.Boolean /> | [**`IsValid`**](webui#isvalid) | Returns if this entity is Valid |
@@ -166,7 +166,9 @@ my_webui:LoadURL(url)
 
 ### `SetFocus`
 
-> Enables the focus on this browser \(i.e. can receives keyboard and mouse input\). Note: only one browser can have focus per time. When you click at the screen/WebUI the focus is got automatically as well
+> Enables the focus on this browser (i.e. can receive Keyboard input). You must call it when you want to enable Keyboard Input on WebUIs (after disabling Client's Input)
+> 
+> Note: Only one browser can have focus per time.
 
 ```lua
 my_webui:SetFocus()

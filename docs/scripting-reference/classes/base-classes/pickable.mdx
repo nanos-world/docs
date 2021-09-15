@@ -156,7 +156,7 @@ end)
 > When this Entity hits something
 
 ```lua
-Weapon.Subscribe("Hit", function(self, intensity)
+Weapon.Subscribe("Hit", function(self, impact_force, normal_impulse, impact_location, velocity)
     -- called when any weapon hits something
 end)
 ```
@@ -164,7 +164,10 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Pickable](pickable) | `self` | The entity which has been hit |
-| <BasicType.Number /> | `intensity` | Intensity of the Hit |
+| <BasicType.Number /> | `impact_force` | The intensity of the Hit normalized by the Pickable's weight |
+| <Structs.Vector /> | `normal_impulse` | The impulse direction it hits |
+| <Structs.Vector /> | `impact_location` | The world 3D location of the impact |
+| <Structs.Vector /> | `velocity` | The Pickable velocity at the moment it hits |
 
 ### <AuthorityType.ServerOnly />`Interact`
 

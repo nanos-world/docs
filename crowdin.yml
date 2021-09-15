@@ -17,6 +17,7 @@ files: [
       translation: '/i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%',
       ignore: [
         '/docs/components/**/*',
+        '/docs/**/*.yml',
       ],
       languages_mapping: *languages_mapping,
     },
@@ -26,6 +27,7 @@ files: [
       translation: '/i18n/%two_letters_code%/docusaurus-plugin-content-docs/**/%original_file_name%',
       ignore: [
         '/versioned_docs/components/**/*',
+        '/versioned_docs/**/*.yml',
       ],
       languages_mapping: *languages_mapping,
     },

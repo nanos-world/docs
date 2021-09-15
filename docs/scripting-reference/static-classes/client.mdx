@@ -22,9 +22,15 @@ This is a **Client** only Class.
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
 |  | [**`CallLevelBlueprintEvent`**](client#calllevelblueprintevent) | Calls a Level Blueprint custom event \(which can be added when creating levels through Unreal Engine\) |
+|  | [**`DrawDebugBox`**](client#drawdebugbox) |  |
+|  | [**`DrawDebugCoordinateSystem`**](client#drawdebugcoordinatesystem) |  |
+|  | [**`DrawDebugCrosshairs`**](client#drawdebugcrosshairs) |  |
+|  | [**`DrawDebugCylinder`**](client#drawdebugcylinder) |  |
+|  | [**`DrawDebugDirectionalArrow`**](client#drawdebugdirectionalarrow) |  |
 |  | [**`DrawDebugLine`**](client#drawdebugline) | Draws a Debug Line in the World |
 |  | [**`DrawDebugPoint`**](client#drawdebugpoint) | Draws a Debug Point in the World |
 |  | [**`DrawDebugSphere`**](client#drawdebugsphere) | Draws a Debug Line in the World |
+|  | [**`DrawDebugString`**](client#drawdebugstring) |  |
 |  | [**`InitializeDiscord`**](client#initializediscord) | Initializes the Discord Integration with your custom client\_id |
 |  | [**`SendChatMessage`**](client#sendchatmessage) | Sends a chat message which will display local only |
 |  | [**`SetChatConfiguration`**](client#setchatconfiguration) | Configure the Chat |
@@ -78,6 +84,108 @@ Client.CallLevelBlueprintEvent(event_name)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`event_name`** |  |
+
+### `DrawDebugBox`
+
+> DrawDebugBox
+
+```lua
+Client.DrawDebugBox(location, extent, rotation, color, life_time, thickness)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** |  |
+| <Structs.Vector /> | **`extent`** |  |
+| <Structs.Rotator /> | **`rotation`** |  |
+| <Structs.Color /> | **`color`** |  |
+| <BasicType.Number /> | **`life_time`** | `5` |
+| <BasicType.Number /> | **`thickness`** | `0` |
+
+### `DrawDebugCoordinateSystem`
+
+> DrawDebugCoordinateSystem
+
+```lua
+Client.DrawDebugCoordinateSystem(location, rotation, size, life_time, thickness)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** |  |
+| <Structs.Rotator /> | **`rotation`** |  |
+| <BasicType.Number /> | **`size`** | `100` |
+| <BasicType.Number /> | **`life_time`** | `5` |
+| <BasicType.Number /> | **`thickness`** | `0` |
+
+### `DrawDebugCrosshairs`
+
+> DrawDebugCrosshairs
+
+```lua
+Client.DrawDebugCrosshairs(location, rotation, size, color, life_time, thickness)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** |  |
+| <Structs.Rotator /> | **`rotation`** |  |
+| <BasicType.Number /> | **`size`** | `100` |
+| <Structs.Color /> | **`color`** | `Color.RED` |
+| <BasicType.Number /> | **`life_time`** | `5` |
+| <BasicType.Number /> | **`thickness`** | `0` |
+
+### `DrawDebugDirectionalArrow`
+
+> DrawDebugDirectionalArrow
+
+```lua
+Client.DrawDebugDirectionalArrow(start_location, end_location, arrow_size, color, life_time, thickness)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`start_location`** |  |
+| <Structs.Vector /> | **`end_location`** |  |
+| <BasicType.Number /> | **`arrow_size`** | `100` |
+| <Structs.Color /> | **`color`** | `Color.RED` |
+| <BasicType.Number /> | **`life_time`** | `5` |
+| <BasicType.Number /> | **`thickness`** | `0` |
+
+### `DrawDebugCylinder`
+
+> DrawDebugCylinder
+
+```lua
+Client.DrawDebugCylinder(start_location, end_location, radius, segments, color, life_time, thickness)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`start_location`** |  |
+| <Structs.Vector /> | **`end_location`** |  |
+| <BasicType.Number /> | **`radius`** |  |
+| <BasicType.Number /> | **`segments`** |  |
+| <Structs.Color /> | **`color`** | `Color.RED` |
+| <BasicType.Number /> | **`life_time`** | `5` |
+| <BasicType.Number /> | **`thickness`** | `0` |
+
+### `DrawDebugString`
+
+> DrawDebugString
+
+```lua
+Client.DrawDebugString(location, text, color, life_time, draw_shadow, font_scale)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** |  |
+| <BasicType.String /> | **`text`** |  |
+| <Structs.Color /> | **`color`** | `Color.RED` |
+| <BasicType.Number /> | **`life_time`** | `5` |
+| <BasicType.Boolean /> | **`draw_shadow`** | `false` |
+| <BasicType.Number /> | **`font_scale`** | `1` |
 
 ### `DrawDebugLine`
 
@@ -261,15 +369,20 @@ Client.SetOutlineColor(outline_color)
 ### `SetHighlightColor`
 
 > Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 \(or more\) for having a glowing effect.
+> 
+> `HighlightMode.Always` will always be visible, even behind walls
+> `HighlightMode.OnlyHidden` will only be visible if behind a wall
+> `HighlightMode.OnlyVisible` will only be visible if not behind a wall
 
 ```lua
-Client.SetHighlightColor(highlight_color, index)
+Client.SetHighlightColor(highlight_color, index, mode)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <Structs.Color /> | **`highlight_color`** |  |
 | <BasicType.Number /> | **`index`** |  |
+| <Enums>HighlightMode</Enums> | **`mode`** |  |
 
 ### `SetValue`
 

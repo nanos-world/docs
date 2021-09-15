@@ -373,7 +373,7 @@ end)
 > Triggered when Vehicle hits something
 
 ```lua
-Vehicle.Subscribe("Hit", function(self, intensity)
+Vehicle.Subscribe("Hit", function(self, impact_force, normal_impulse, impact_location, velocity)
 
 end)
 ```
@@ -381,5 +381,8 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Vehicle](vehicle) | `self` |  |
-| <BasicType.Number /> | `intensity` |  |
+| <BasicType.Number /> | `impact_force` | The intensity of the Hit normalized by the Vehicle's weight |
+| <Structs.Vector /> | `normal_impulse` | The impulse direction it hits |
+| <Structs.Vector /> | `impact_location` | The world 3D location of the impact |
+| <Structs.Vector /> | `velocity` | The Vehicle velocity at the moment it hits |
 

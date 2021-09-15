@@ -33,26 +33,27 @@ local my_prop = Prop(
 
 :::info
 
-🧙 **Note:** Props smaller than radius 20 units will have **CCD** \(Continuous Collision Detection\) enabled to avoid them falling through the floor or other objects. This will slightly increase the performance cost of them!
+🧙 **Note:** Props smaller than radius 30 units will have **CCD** \(Continuous Collision Detection\) enabled to avoid them falling through the floor or other objects. This will slightly increase the performance cost of them! Also they will have Collision disabled against Characters.
 
 :::
 
 :::info
 
-🧙 **Note:** Props bigger than radius 200 units will have **`Grabbable`** off by default.
+🧙 **Note:** Props bigger than radius 200 units will have **`Grabbable`** off by default. This can be overridden with `:SetGrabbable()`.
 
 :::
 
 ## Constructor Parameters
 
-| **Type** | **Name** | **Default Value** |
-| :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
-| <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <BasicType.String /> | **`model_name`** |  |
-| <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
-| <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
-| <BasicType.Boolean /> | **`is_grabbable`** | `true` |
+| Type | Name | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` | Location to spawn |
+| <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` | Rotation to spawn |
+| <BasicType.String /> | **`model_name`** |  | Static Mesh to use |
+| <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` | Collision |
+| <BasicType.Boolean /> | **`gravity_enabled`** | `true` |  |
+| <BasicType.Boolean /> | **`is_grabbable`** | `true` |  |
+| <BasicType.Boolean /> | **`force_no_ccd`** | `false` | Force CCD to not be used on small Props (may cause Props passing through objects if it's kinda small) |
 
 ## Functions
 
@@ -62,7 +63,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 <details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
 <details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
 
-|  | **Returns** | **Name** | Description |
+|  | Returns | Name | Description |
 | :---: | :--- | :--- | :--- |
 | <AuthorityType.ServerOnly /> |  | [**`SetGrabbable`**](prop#setgrabbable) | Sets ability to Characters to Grab this Prop |
 | <AuthorityType.ServerOnly /> |  | [**`SetPhysicsDamping`**](prop#setphysicsdamping) | Sets the Physics damping of this Prop |
@@ -159,7 +160,7 @@ end)
 > Triggered when this Prop hits something
 
 ```lua
-Prop.Subscribe("Hit", function(self)
+Prop.Subscribe("Hit", function(self, impact_force, normal_impulse, impact_location, velocity)
 
 end)
 ```
@@ -167,6 +168,10 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Prop](prop) | `self` | The prop which has been hit |
+| <BasicType.Number /> | `impact_force` | The intensity of the Hit normalized by the Prop's weight |
+| <Structs.Vector /> | `normal_impulse` | The impulse direction it hits |
+| <Structs.Vector /> | `impact_location` | The world 3D location of the impact |
+| <Structs.Vector /> | `velocity` | The Prop velocity at the moment it hits |
 
 ### <AuthorityType.ServerOnly />`Interact`
 

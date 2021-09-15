@@ -7,7 +7,7 @@ tags: [static-class]
 
 Execute of code at specified time intervals
 
-import { Structs, BasicType, AuthorityType } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, Classes } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/stopwatch.png)
 
@@ -27,16 +27,17 @@ The shortest interval possible is equal to the local Tick Rate - usually at 33ms
 
 | Returns | Name | Description |
 | :--- | :--- | :--- |
-| <BasicType.Number /> | Executes a function, after waiting a specified number of milliseconds |
-| <BasicType.Number />, but repeats the execution of the function continuously |
-|  | [**`ClearTimeout`**](timer#cleartimeout) | Stops the execution of the function specified in SetTimeout\(\) |
-|  | [**`ClearInterval`**](timer#clearinterval) | Stops the execution of the function specified in SetInterval\(\) |
+| <BasicType.Number /> | [**`SetTimeout`**](timer#settimeout) | Executes a function, after waiting a specified number of milliseconds |
+| <BasicType.Number /> | [**`SetInterval`**](timer#setinterval) | Same as SetTimeout(), but repeats the execution of the function continuously |
+|  | [**`ClearTimeout`**](timer#cleartimeout) | Stops the execution of the function specified in SetTimeout() |
+|  | [**`ClearInterval`**](timer#clearinterval) | Stops the execution of the function specified in SetInterval() |
+|  | [**`Bind`**](timer#bind) | Binds a Timer to any Actor. The timer will be automatically cleared when the Actor is destroyed |
 
 ### `SetTimeout`
 
 > Executes a function, after waiting a specified number of milliseconds
 >
-> Returns the timeout\_id
+> Returns the timeout_id
 
 
 ```lua
@@ -53,9 +54,9 @@ end, 3000, "hello", 123)
 
 ### `SetInterval`
 
-> Same as SetTimeout\(\), but repeats the execution of the function continuously
+> Same as SetTimeout(), but repeats the execution of the function continuously
 >
-> Returns the interval\_id
+> Returns the interval_id
 
 
 ```lua
@@ -72,7 +73,7 @@ end, 2000, "world", 456)
 
 ### `ClearTimeout`
 
-> Stops the execution of the function specified in SetTimeout\(\) The ID value returned by SetTimeout\(\) is used as the parameter for the ClearTimeout\(\) method
+> Stops the execution of the function specified in SetTimeout() The ID value returned by SetTimeout() is used as the parameter for the ClearTimeout() method
 
 
 ```lua
@@ -89,7 +90,7 @@ Timer.ClearTimeout(my_timeout)
 
 ### `ClearInterval`
 
-> Stops the execution of the function specified in SetInterval\(\) The ID value returned by SetInterval\(\) is used as the parameter for the ClearInterval\(\) method
+> Stops the execution of the function specified in SetInterval() The ID value returned by SetInterval() is used as the parameter for the ClearInterval() method
 
 
 ```lua
@@ -104,8 +105,33 @@ Timer.ClearInterval(my_interval)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> method |
 
-## Examples
+### `Bind`
 
+> Binds a Timer to any Actor. The timer will be automatically cleared when the Actor is destroyed
+
+```lua
+local character = Character(...)
+
+my_timer = Timer.SetTimeout(function(_character)
+    -- Do something with _character
+    -- Ex: Destroy the character after 10 seconds
+    _character:Destroy()
+end, 10000, character)
+
+-- Binds the Timer to the Character
+Timer.Bind(my_timer, character)
+
+-- This will ensure it will never trigger if the character is destroyed before it
+-- With this you don't need to validate if the '_character' parameter is valid
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`timer_id`** |  | The Timer ID |
+| <Classes.Actor /> | **`actor`** |  | Actor to be bound |
+
+
+## Examples
 
 ```lua
 -- creates a Interval to call a function at every 1 second
