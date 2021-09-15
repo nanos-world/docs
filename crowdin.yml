@@ -35,6 +35,9 @@ files: [
     {
       source: '/blog/**/*',
       translation: '/i18n/%two_letters_code%/docusaurus-plugin-content-blog/**/%original_file_name%',
+      ignore: [
+        '/**/*.yml',
+      ],
       languages_mapping: *languages_mapping,
     },
   ]
