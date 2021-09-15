@@ -145,5 +145,13 @@ module.exports = {
         hashed: true,
       },
     ],
+  ],
+  scripts: [
+    {
+      src: 'https://analytics.nanos.io/js/plausible.js',
+      async: true,
+      defer: true,
+      "data-domain": "docs.nanos.world"
+    },
   ]
 };
