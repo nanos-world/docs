@@ -148,7 +148,7 @@ module.exports = {
   ],
   scripts: [
     {
-      src: 'https://analytics.nanos.io/js/plausible.js',
+      src: 'https://pac.nanos.io/js/script.js',
       async: true,
       defer: true,
       "data-domain": "docs.nanos.world"
