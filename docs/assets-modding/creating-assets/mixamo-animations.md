@@ -114,7 +114,7 @@ If you double click it you will be able to see it working!
 
 ![](/img/docs/tutorials/mixamo-15.jpg)
 
-### Step 8: Exporting the animation from Unreal
+## Step 8: Exporting the animation from Unreal
 
 :::tip
 
@@ -128,7 +128,7 @@ Go to File -> Package Export -> Windows 64 Bits and select a folder in your comp
 
 ![](/img/docs/tutorials/mixamo-17.jpg)
 
-### Step 9: Creating your nanos world Asset Pack
+## Step 9: Creating your nanos world Asset Pack
 
 Wait the Packaging to finish!
 
@@ -146,7 +146,7 @@ We are not going to cover all aspects of creating Asset Packs here for avoiding 
 
 :::
 
-### Step 10: Using your animations!
+## Step 10: Using your animations!
 
 After exported and created your Asset Pack, you will be able to use them in code like that!
 

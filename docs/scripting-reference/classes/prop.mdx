@@ -31,15 +31,15 @@ local my_prop = Prop(
 )
 ```
 
-:::info
+:::info Note
 
-🧙 **Note:** Props smaller than radius 30 units will have **CCD** \(Continuous Collision Detection\) enabled to avoid them falling through the floor or other objects. This will slightly increase the performance cost of them! Also they will have Collision disabled against Characters.
+Props smaller than radius **40** units or very thin (any side smaller than 20 units) will have **CCD** (Continuous Collision Detection) enabled to avoid falling through the floor or other objects. This will slightly increase the performance cost of them! Also, they will have Collision disabled against Characters.
 
 :::
 
-:::info
+:::info Note
 
-🧙 **Note:** Props bigger than radius 200 units will have **`Grabbable`** off by default. This can be overridden with `:SetGrabbable()`.
+Props bigger than radius 200 units will have **`Grabbable`** off by default. This can be overridden with `:SetGrabbable()`.
 
 :::
 

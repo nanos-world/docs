@@ -41,12 +41,19 @@ local new_vector = Vector(1452.5, 512, 943.1)
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
-| <Structs.Vector /> | `GetForwardVector()` | Get the forward \(X\) unit direction vector from this component, in world space. |
-| <Structs.Vector /> | `RotateVector(vector)` | Rotate a vector rotated by this rotator. |
-|  | `Normalize()` | In-place normalize, removes all winding and creates the “shortest route” rotation. |
-| <Structs.Vector /> | `UnrotateVector(vector)` | Returns the vector rotated by the inverse of this rotator. |
-| <Structs.Quat /> | `Quaternion()` | Get Rotation as a quaternion. |
-| <Structs.Rotator /> | `GetNormalized()` | Returns a new Rotator normalized. |
-| <BasicType.Boolean />` |  |
-| <BasicType.Boolean />` |  |
+| <Structs.Vector /> | **`GetForwardVector()`** | Get the forward (X) unit direction vector from this component, in world space. |
+| <Structs.Vector /> | **`RotateVector(vector)`** | Rotate a vector rotated by this rotator. |
+|  | **`Normalize()`** | In-place normalize, removes all winding and creates the “shortest route” rotation. |
+| <Structs.Vector /> | **`UnrotateVector(vector)`** | Returns the vector rotated by the inverse of this rotator. |
+| <Structs.Quat /> | **`Quaternion()`** | Get Rotation as a quaternion. |
+| <Structs.Rotator /> | **`GetNormalized()`** | Returns a new Rotator normalized. |
+| <BasicType.Boolean /> | **`IsNearlyZero(tolerance)`** | Checks whether rotator is near to zero within a specified tolerance |
+| <BasicType.Boolean /> | **`IsZero()`** | Checks whether all components of the rotator are exactly zero |
 
+
+## ⏩ Static Functions
+
+| **Returns** | **Name** | **Description** |
+| :--- | :--- | :--- |
+
+| <Structs.Rotator /> | `Random(roll)` | Generates a random rotation, with optional random roll |
