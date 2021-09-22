@@ -59,9 +59,9 @@ module.exports = {
           position: 'left'
         },
         {
-          href: 'https://roadmap.nanos.world',
-          label: 'roadmap',
-          position: 'left',
+          href: 'https://auth.nanos.io',
+          label: 'account',
+          position: 'left'
         },
         {
           type: 'docsVersionDropdown',

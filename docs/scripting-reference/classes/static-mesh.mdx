@@ -64,3 +64,28 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
 
 <details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
+
+|  | **Name** | **Description** |
+| :--- | :--- | :--- |
+|  | [**`TakeDamage`**](static-mesh#takedamage) | When a StaticMesh takes Damage |
+
+
+### `TakeDamage`
+
+> When a StaticMesh takes Damage
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [StaticMesh](static-mesh) | **`self`** |  |
+| <BasicType.Number /> | **`damage`** |  |
+| <BasicType.String /> | **`bone`** |  |
+| <Enums>DamageType</Enums> | **`type`** |  |
+| <Structs.Vector /> | **`from_direction`** |  |
+| <Classes.Player /> | **`instigator`** | The player which caused the damage |
+| <BasicType.Any /> | **`causer`** | The object which caused the damage |
+
+```lua
+StaticMesh.Subscribe("TakeDamage", function(self, damage, bone, type, from_direction, instigator, causer)
+
+end)
+```

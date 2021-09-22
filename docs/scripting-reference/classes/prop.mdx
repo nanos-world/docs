@@ -138,6 +138,7 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 |  | [**`Grab`**](prop#grab) | Triggered when Character grabs a Prop |
 |  | [**`Hit`**](prop#hit) | Triggered when this Prop hits something |
 |  | [**`Interact`**](prop#interact) | Triggered when a Character tries to Grab up this |
+|  | [**`TakeDamage`**](prop#takedamage) | Triggered when a Prop takes Damage |
 |  | [**`UnGrab`**](prop#ungrab) | Triggered when Character ungrabs a Prop |
 
 ### `Grab`
@@ -181,6 +182,26 @@ end)
 | :--- | :--- | :--- |
 | [Prop](prop) | **`self`** |  |
 | <Classes.Character /> | **`character`** |  |
+
+### `TakeDamage`
+
+> When Prop takes Damage
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Prop](prop) | **`self`** |  |
+| <BasicType.Number /> | **`damage`** |  |
+| <BasicType.String /> | **`bone`** |  |
+| <Enums>DamageType</Enums> | **`type`** |  |
+| <Structs.Vector /> | **`from_direction`** |  |
+| <Classes.Player /> | **`instigator`** | The player which caused the damage |
+| <BasicType.Any /> | **`causer`** | The object which caused the damage |
+
+```lua
+Prop.Subscribe("TakeDamage", function(self, damage, bone, type, from_direction, instigator, causer)
+
+end)
+```
 
 ### `UnGrab`
 

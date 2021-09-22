@@ -54,7 +54,7 @@ Package.RequirePackage("nanos-world-weapons")
 
 -- Let's spawn a Glock and set it to give no damage, this also avoids it from spawning a trail particle
 local weapon = NanosWorldWeapons.Glock()
-weapon.BaseDamage = 0
+weapon:SetDamage(0)
 
 -- Let's subscribe for 'Fire' event from this weapon, this will be triggered for every fire it shoots
 weapon:Subscribe("Fire", function(weap, shooter)

@@ -1,10 +1,10 @@
 ---
 description: How to suggest changes and contribute to the Docs
-sidebar_position: 0.1
+sidebar_position: 0.3
 tags: [docs]
 ---
 
-# Contributing to the Docs
+# 🤝 Contributing to the Docs
 
 Hello Dyno! Hello Markdown!
 

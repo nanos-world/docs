@@ -31,29 +31,11 @@ local new_grenade = Grenade(
 | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <BasicType.String /> | **`static_mesh_asset`** | `“nanos-world::SM_Grenade_G67”` |
-| <BasicType.String /> | **`explosion_particles`** | `“nanos-world::P_Explosion_Dirt”` |
-| <BasicType.String /> | **`explosion_sound`** | `“nanos-world::A_Explosion_Large` |
+| <BasicType.String /> | **`static_mesh_asset`** | `"nanos-world::SM_Grenade_G67""` |
+| <BasicType.String /> | **`explosion_particles`** | `"nanos-world::P_Explosion_Dirt"` |
+| <BasicType.String /> | **`explosion_sound`** | `"nanos-world::A_Explosion_Large"` |
 | [CollisionType](./scripting-reference/glossary/enums.md#collisiontype) | **`collision_type`** | `CollisionType.Normal` |
 | <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
-
-## Properties
-
-:::caution
-
-**Note:** In future updates, properties access will be completely deprecated!
-
-:::
-
-| **Type** | **Name** | **Description** |
-| :--- | :--- | :--- |
-| <BasicType.Number /> | **`BaseDamage`** | Damage at Inner Radius |
-| <BasicType.Number /> | **`DamageFalloff`** | Radius which BaseDamage will apply proportionally |
-| <BasicType.Number /> | **`DamageInnerRadius`** | Radius which MinimumDamage will apply |
-| <BasicType.Number /> | **`DamageOuterRadius`** | Radius which BaseDamage will apply |
-| <BasicType.Number /> | **`MinimumDamage`** | Damage at Outer Radius |
-| <BasicType.Number /> | **`TimeToExplode`** | Time until Explosion |
-| <BasicType.Number /> | **`ThrowForce`** | Impulse applied when throwing |
 
 ## Functions
 
@@ -68,6 +50,16 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 |  | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- | :--- |
 | <AuthorityType.ServerOnly /> |  | **`Explode`** | Forces this grenade to Explode |
+| <AuthorityType.ServerOnly /> |  | **`SetDamage`** | Sets Damage parameters of this Grenade |
+| <AuthorityType.ServerOnly /> |  | **`SetTimeToExplode`** | Set Time until Explosion after thrown |
+| <AuthorityType.ServerOnly /> |  | **`SetThrowForce`** | Set Impulse applied when throwing |
+|  | <BasicType.Number /> | **`GetBaseDamage`** | Damage at Inner Radius |
+|  | <BasicType.Number /> | **`GetDamageFalloff`** | Radius which BaseDamage will apply proportionally |
+|  | <BasicType.Number /> | **`GetDamageInnerRadius`** | Radius which MinimumDamage will apply |
+|  | <BasicType.Number /> | **`GetDamageOuterRadius`** | Radius which BaseDamage will apply |
+|  | <BasicType.Number /> | **`GetMinimumDamage`** | Damage at Outer Radius |
+|  | <BasicType.Number /> | **`GetTimeToExplode`** | Time until Explosion |
+|  | <BasicType.Number /> | **`GetThrowForce`** | Impulse applied when throwing |
 
 ### <AuthorityType.ServerOnly /> **`Explode`**
 
@@ -76,6 +68,23 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 ```lua
 my_grenade:Explode()
 ```
+
+### <AuthorityType.ServerOnly /> **`SetDamage`**
+
+> Sets Damage parameters of this Grenade
+
+```lua
+my_grenade:SetDamage(base_damage, minimum_damage, damage_inner_radius, damage_outer_radius, damage_falloff)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`base_damage`** | `90` | Max damage when inner radius |
+| <BasicType.Number /> | **`minimum_damage`** | `0` | Min damage when outer radius |
+| <BasicType.Number /> | **`damage_inner_radius`** | `200` | Radius which damage will be 100% |
+| <BasicType.Number /> | **`damage_outer_radius`** | `1000` | Radius which damage will be interpoled through `falloff` |
+| <BasicType.Number /> | **`damage_falloff`** | `1` | Lerp function between Max and Min damage |
+
 
 ## Events
 
