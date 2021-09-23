@@ -93,7 +93,7 @@ Although this still works, it is highly recommended to convert your **Asset Pack
 
 **Note:** All reference to assets now must use the new format as well \(the folder name\). So
 
-`nanos-world::SM_Cube` would become `nanos-world::SM_Cube`.
+`NanosWorld::SM_Cube` would become `nanos-world::SM_Cube`.
 
 :::
 
@@ -237,8 +237,3 @@ Timer.SetTimeout(function()
     -- Triggers once after 4000 ms
 end, 4000)
 ```
-
-#### Boiling H²O
-
-![yes](/img/docs/migrating-boiling.jpg)
-
