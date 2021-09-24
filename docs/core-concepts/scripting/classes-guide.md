@@ -12,7 +12,7 @@ All entities in nanos world are represented by a Class. In Lua, classes are repr
 
 :::tip
 
-In nanos world we have 3 types of Classes (or Structures): `Classes`, `Static Classes` and `Utility Classes`.
+In nanos world we have 3 types of Classes (or structures): `Classes`, `Static Classes` and `Utility Classes`.
 
 :::
 
