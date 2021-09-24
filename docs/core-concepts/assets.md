@@ -24,17 +24,16 @@ All Asset Packs go under `Server/Assets/` folder. Each Asset Pack is a folder un
 ```text title="Server Folder"
 NanosWorldServer.exe
 Packages/
-|   my-asset-pack-01/
-|   |   MyAsset_01.uasset
-|   |   MyAsset_02.uasset
-|   |   MyBigMap.umap
-|   |   ...
-|   |   Assets.toml
-|   awesome-weapons/
-|   |   BigFuckingGun.uasset
-|   |   AwesomeWeaponBundle.pak
-|   |   ...
-|   |   Assets.toml
+├── my-asset-pack-01/
+│   ├── MyAsset_01.uasset
+│   ├── MyAsset_02.uasset
+│   ├── MyBigMap.umap
+│   │    ...
+│   └── Assets.toml
+├── awesome-weapons/
+│   ├── BigFuckingGun.uasset
+│   │   ...
+│   └── Assets.toml
 Assets/
 Config.toml
 ```

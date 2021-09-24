@@ -11,38 +11,95 @@ Creating servers in nanos world is very simple and straightforward, just a few s
 ## System Requirements
 
 * OS: Windows or Linux
-* Processor: `1.0 GHz` \(Faster core is better than multiple cores\)
-* Memory: `50 MB` \(grows if having too many Players or spawned Entities\)
-* Storage: `10 MB` \(+ Assets & Packages size\)
-* Network: Recommended at least `1 MB/s` \(grows if having too many Players or spawned Entities\)
-* Network Forwarded Ports: `7777 TCP` and `UDP` \(you can change that on the config\)
+* Processor: `1.0 GHz` (Faster core is better than multiple cores)
+* Memory: `50 MB` (grows if having too many Players or spawned Entities)
+* Storage: `10 MB` (+ Assets & Packages size)
+* Network: Recommended at least `1 MB/s` (grows if having too many Players or spawned Entities)
+* Network Forwarded Ports: `7777 TCP/UDP` and `7778 UDP` (you can change that in the Config)
 
-## Installation
+:::info
 
-:::tip
-
-All nanos world server versions are hosted in our [GitHub](https://github.com/nanos-world/nanos-world-server/releases).
+The default installation of nanos world already contains the server executable, you can find it at `nanos-world/Server/NanosWorldServer.exe`. You can use this one to create your custom Packages as it seamlessly integrates with New Game menu screen!
 
 :::
 
-### Windows Installation
+## Installing
 
-Downloading it using `PowerShell`:
+nanos world servers are downloaded through SteamCMD, a command line version of Steam. Please [download it](https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_SteamCMD) before proceeding.
 
-```bash
-Invoke-WebRequest -Uri "https://github.com/nanos-world/nanos-world-server/releases/latest/download/NanosWorldServer.exe" -OutFile NanosWorldServer.exe
-```
+### 1. Run SteamCMD
 
-### Linux Installation
-
-Downloading it using `wget`:
+After downloaded, run `steamcmd` executable, it will update and you will enter it's console:
 
 ```bash
-wget "https://github.com/nanos-world/nanos-world-server/releases/latest/download/NanosWorldServer"
-chmod +x NanosWorldServer
+Steam>
 ```
 
-### Debian 10 Installation
+### 2. Login
+
+The next step is to login on SteamCMD, you can login anonymously with:
+
+```bash
+Steam> login anonymous
+```
+
+### 3. Specify an installation directory
+
+You can optionally define an installation folder to install nanos world server:
+
+```bash
+Steam> force_install_dir c:\nanos-world-server\
+```
+
+### 4. Download nanos world Server
+
+You can then install nanos world server using it's app id: `1686460`:
+
+```bash
+Steam> app_update 1686460
+```
+
+:::tip
+
+You can run `app_update 1686460` to update your nanos world server to the latest version as well!
+
+:::
+
+And you are done! You can quit the console:
+
+```bash
+Steam> quit
+```
+
+## Automated Installation
+
+You can optionally use a one-liner command to install/update nanos world server:
+
+```bash
+steamcmd.exe +login anonymous +app_update 1686460 validate +quit
+```
+
+:::tip
+
+Finished!, you can now proceed to the next steps to configure your nanos world server.
+
+:::
+
+## Installing bleeding-edge version
+
+To install the `bleeding-edge` version of the server, you will need to specify it's branch when installing:
+
+```bash
+Steam> app_update 1686460 -beta bleeding-edge
+```
+
+or
+
+```bash
+steamcmd.exe +login anonymous +app_update "1686460 -beta bleeding-edge" validate +quit
+```
+
+## Debian 10 Installation
 
 For this distribution, some extra steps are required. Since nanos world use `gcc 9`, we will need to upgrade one of our package to the testing repository.
 
@@ -82,4 +139,3 @@ sudo apt-get --target-release testing install libstdc++6
 Finished!, you can now proceed to the next steps to configure your nanos world server.
 
 :::
-

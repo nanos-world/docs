@@ -17,11 +17,11 @@ For that, you will need to create a new Package of type [loading-screen](#packag
 
 ```text
 Packages/
-|   my-loading-screen/
-|   |   Package.toml
-|   |   index.html
-|   |   style.css
-|   |   ...
+└── my-loading-screen/
+    ├── Package.toml
+    ├── index.html
+    ├── style.css
+    └── ...
 ```
 
 ### Getting Load/Download Progress

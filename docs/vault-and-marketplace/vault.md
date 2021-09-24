@@ -46,13 +46,12 @@ We are advising everyone to **.zip** and upload their **Packages** and **Assets*
 Your .zip would end up like:
 
 ```text title="MyPackage.zip"
-|   Server/
-|   |   Index.lua
-|   |   *.lua
-|   |   ...
-|   Client/
-|   Shared/
-|   Package.toml
+Server/
+├── Index.lua
+└── ...
+Client/
+Shared/
+Package.toml
 ```
 
 ### Prepare your Asset Pack!
@@ -60,12 +59,14 @@ Your .zip would end up like:
 Your Asset Pack must contain the `Assets.toml` in the root of your .zip, your .zip would end up like:
 
 ```text title="MyAssetPack.zip"
-|   MyMap/
-|   |   Map.umap
-|   |   *.uasset
-|   |   ...
-|   MyMeshes/
-|   Assets.toml
+MyMap/
+├── Map.umap
+└── *.uasset
+MyMeshes/
+├── SM_NiceCube.uasset
+├── *.uasset
+└── ...
+Assets.toml
 ```
 
 :::tip
