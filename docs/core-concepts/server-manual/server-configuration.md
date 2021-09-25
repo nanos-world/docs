@@ -135,7 +135,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--ip` | string | Server IP |
 | `--map` | string | Map to load |
 | `--port` | number | Server port |
-| `--http_port` | number | Server HTTP port |
+| `--query_port` | number | Server Query port |
 | `--announce` | 0 or 1 | If announce in master list |
 | `--packages` | string list | Server packages |
 | `--save` | 0 or 1 | If to save the parameters in Config.toml |
