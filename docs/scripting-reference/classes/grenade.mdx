@@ -20,7 +20,7 @@ local new_grenade = Grenade(
   Vector(-900, 185, 215),
   Rotator(0, 90, 90),
   "nanos-world::SM_Grenade_G67",
-  "nanos-world::P_Explosion_Dirt",
+  "nanos-world::P_Grenade_Special",
   "nanos-world::A_Explosion_Large"
 )
 ```
@@ -32,10 +32,18 @@ local new_grenade = Grenade(
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
 | <BasicType.String /> | **`static_mesh_asset`** | `"nanos-world::SM_Grenade_G67""` |
-| <BasicType.String /> | **`explosion_particles`** | `"nanos-world::P_Explosion_Dirt"` |
+| <BasicType.String /> | **`explosion_particles`** | `"nanos-world::P_Grenade_Special"` |
 | <BasicType.String /> | **`explosion_sound`** | `"nanos-world::A_Explosion_Large"` |
 | [CollisionType](./scripting-reference/glossary/enums.md#collisiontype) | **`collision_type`** | `CollisionType.Normal` |
 | <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
+
+:::tip
+
+nanos world provides a special _Particle*_ called `nanos-world::P_Grenade_Special` which spawns different particles depending on the surface it explodes, and also if is underwater.
+
+**This "Particle" is just a special identifier which can only be used on Grenades!*
+
+:::
 
 ## Functions
 
@@ -49,17 +57,17 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 
 |  | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- | :--- |
-| <AuthorityType.ServerOnly /> |  | **`Explode`** | Forces this grenade to Explode |
-| <AuthorityType.ServerOnly /> |  | **`SetDamage`** | Sets Damage parameters of this Grenade |
-| <AuthorityType.ServerOnly /> |  | **`SetTimeToExplode`** | Set Time until Explosion after thrown |
-| <AuthorityType.ServerOnly /> |  | **`SetThrowForce`** | Set Impulse applied when throwing |
-|  | <BasicType.Number /> | **`GetBaseDamage`** | Damage at Inner Radius |
-|  | <BasicType.Number /> | **`GetDamageFalloff`** | Radius which BaseDamage will apply proportionally |
-|  | <BasicType.Number /> | **`GetDamageInnerRadius`** | Radius which MinimumDamage will apply |
-|  | <BasicType.Number /> | **`GetDamageOuterRadius`** | Radius which BaseDamage will apply |
-|  | <BasicType.Number /> | **`GetMinimumDamage`** | Damage at Outer Radius |
-|  | <BasicType.Number /> | **`GetTimeToExplode`** | Time until Explosion |
-|  | <BasicType.Number /> | **`GetThrowForce`** | Impulse applied when throwing |
+| <AuthorityType.ServerOnly /> |  | [**`Explode`**](grenade#explode) | Forces this grenade to Explode |
+| <AuthorityType.ServerOnly /> |  | [**`SetDamage`**](grenade#setdamage) | Sets Damage parameters of this Grenade |
+| <AuthorityType.ServerOnly /> |  | [**`SetTimeToExplode`**](grenade#settimetoexplode) | Set Time until Explosion after thrown |
+| <AuthorityType.ServerOnly /> |  | [**`SetThrowForce`**](grenade#setthrowforce) | Set Impulse applied when throwing |
+|  | <BasicType.Number /> | [**`GetBaseDamage`**](grenade#getbasedamage) | Damage at Inner Radius |
+|  | <BasicType.Number /> | [**`GetDamageFalloff`**](grenade#getdamagefalloff) | Radius which BaseDamage will apply proportionally |
+|  | <BasicType.Number /> | [**`GetDamageInnerRadius`**](grenade#getdamageinnerradius) | Radius which MinimumDamage will apply |
+|  | <BasicType.Number /> | [**`GetDamageOuterRadius`**](grenade#getdamageouterradius) | Radius which BaseDamage will apply |
+|  | <BasicType.Number /> | [**`GetMinimumDamage`**](grenade#getminimumdamage) | Damage at Outer Radius |
+|  | <BasicType.Number /> | [**`GetTimeToExplode`**](grenade#gettimetoexplode) | Time until Explosion |
+|  | <BasicType.Number /> | [**`GetThrowForce`**](grenade#getthrowforce) | Impulse applied when throwing |
 
 ### <AuthorityType.ServerOnly /> **`Explode`**
 

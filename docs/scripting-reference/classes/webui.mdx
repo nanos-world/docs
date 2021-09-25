@@ -16,7 +16,13 @@ import { Structs, BasicType, AuthorityType, ReferenceLink } from '@site/docs/com
 
 :::tip
 
-This HTML implementation is built upon same core as WebKit/Safari. And currently does not support HTML5 videos and audios.
+This HTML implementation is built upon same core as WebKit/Safari using [Ultralight](https://ultralig.ht) library, a next-generation HTML Renderer.
+
+:::
+
+:::caution
+
+We are using a beta build of Ultralight, which now supports Audio and Video. Although it is still very unstable and some crashes may happen! Also the Audio currently plays only in 2D.
 
 :::
 
@@ -60,8 +66,7 @@ my_ui = WebUI(
 )
 ```
 
-
-#### Communicating between Lua and JS \(WebUI\)
+#### Communicating between Lua and JS (WebUI)
 
 ```lua title="Client/Index.lua"
 my_ui = WebUI("Awesome UI", "file:///UI/index.html")
@@ -101,7 +106,7 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 | <BasicType.Boolean /> | **`auto_resize`** | `true` | if should auto resize when screen changes it's size (useful OFF when you are painting meshes with WebUI) |
 | <BasicType.Number /> | **`width`** | `0` | size of the WebUI when you are not using auto_resize |
 | <BasicType.Number /> | **`height`** | `0` | size of the WebUI when you are not using auto_resize |
-| <BasicType.String /> | **`package_name`** | defaults to current package |  |
+| <BasicType.String /> | **`package_name`** | defaults to current package | Usually you won't want to change this |
 
 ## Functions
 

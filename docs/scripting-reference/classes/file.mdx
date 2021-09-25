@@ -36,12 +36,12 @@ local configuration_file_json = JSON.parse(configuration_file:Read(configuration
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
-| <BasicType.Number /> | Returns when a file was last modified in Unix time |
-| <BasicType.Boolean /> |
-| <BasicType.Number /> | Deletes a folder or file |
-| <BasicType.Boolean /> | Verifies if a entry exists in the file system |
-| <BasicType.Boolean /> | Checks if a path is a directory |
-| <BasicType.Boolean /> | Checks if a path is a file |
+| <BasicType.Number /> | [**`Time`**](file#time) | Returns when a file was last modified in Unix time |
+| <BasicType.Boolean /> | [**`CreateDirectory`**](file#createdirectory) | Creates a Directory (for every folder passed\ |
+| <BasicType.Number /> | [**`Remove`**](file#remove) | Deletes a folder or file |
+| <BasicType.Boolean /> | [**`Exists`**](file#exists) | Verifies if a entry exists in the file system |
+| <BasicType.Boolean /> | [**`IsDirectory`**](file#isdirectory) | Checks if a path is a directory |
+| <BasicType.Boolean /> | [**`IsRegularFile`**](file#isregularfile) | Checks if a path is a file |
 
 ### `Time`
 
