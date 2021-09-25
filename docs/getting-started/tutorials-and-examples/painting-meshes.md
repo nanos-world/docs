@@ -31,7 +31,7 @@ To illustrate, let’s spawn a Cube and change it’s Material using Lua:
 local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "nanos-world::SM_Cube")
 
 -- replaces it's materials with the nanos default Masked one
-my_cube:Material("nanos-world::M_NanosMasked")
+my_cube:SetMaterial("nanos-world::M_NanosMasked")
 ```
 
 Blank Cube with Default Masked Material
