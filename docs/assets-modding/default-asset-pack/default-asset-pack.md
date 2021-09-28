@@ -577,7 +577,7 @@ In order to use those assets, you need to use the key `nanos-world`.
     A_Mannequin_Get_Here_01 = "Characters/Common/Animations/GenericNPC/A_Mannequin_Get_Here_01"
     A_Mannequin_Get_Here_02 = "Characters/Common/Animations/GenericNPC/A_Mannequin_Get_Here_02"
     A_Mannequin_Go_Away = "Characters/Common/Animations/GenericNPC/A_Mannequin_Go_Away"
-    A_Mannequin_Got_AM_Mannequin_Deal = "Characters/Common/Animations/GenericNPC/A_Mannequin_Got_AM_Mannequin_Deal"
+    A_Mannequin_Deal = "Characters/Common/Animations/GenericNPC/A_Mannequin_Deal"
     A_Mannequin_Head_Scratch = "Characters/Common/Animations/GenericNPC/A_Mannequin_Head_Scratch"
     A_Mannequin_Hold_Baby = "Characters/Common/Animations/GenericNPC/A_Mannequin_Hold_Baby"
     A_Mannequin_Idle_01 = "Characters/Common/Animations/GenericNPC/A_Mannequin_Idle_01"

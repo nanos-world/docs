@@ -104,6 +104,13 @@ module.exports = {
       ],
     },
     zoomSelector: '.markdown :not(.authority-availability) > img',
+    algolia: {
+      apiKey: '24fb9bfd0b1d04bc5a3711d5ff6b5411',
+      indexName: 'nanos',
+      contextualSearch: true,
+      appId: 'BH4D9OD16A',
+      searchParameters: {},
+    },
   },
   presets: [
     [
@@ -139,12 +146,6 @@ module.exports = {
   ],
   plugins: [
     'plugin-image-zoom',
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-      },
-    ],
   ],
   scripts: [
     {
