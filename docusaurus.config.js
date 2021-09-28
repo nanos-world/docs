@@ -108,8 +108,6 @@ module.exports = {
       apiKey: '24fb9bfd0b1d04bc5a3711d5ff6b5411',
       indexName: 'nanos',
       contextualSearch: true,
-      appId: 'BH4D9OD16A',
-      searchParameters: {},
     },
   },
   presets: [
