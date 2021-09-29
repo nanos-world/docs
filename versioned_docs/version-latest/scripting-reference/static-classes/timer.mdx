@@ -114,7 +114,7 @@ local my_interval = Timer.SetInterval(function()
 end, 1000)
 
 -- cancels the Interval
-Timer.ClearInterval(my_id)
+Timer.ClearInterval(my_interval)
 
 -- creates a Timeout to call my_function in 5 seconds, once - passing a parameter
 Timer.SetTimeout(function(my_param)
