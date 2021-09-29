@@ -109,12 +109,12 @@ Timer.ClearInterval(my_interval)
 
 ```lua
 -- creates a Interval to call a function at every 1 second
-local my_interval = Timer.SetInterval(1000, function()
+local my_interval = Timer.SetInterval(function()
     Package.Log("Tick 1 second!")
-end)
+end, 1000)
 
 -- cancels the Interval
-Timer.ClearInterval(my_id)
+Timer.ClearInterval(my_interval)
 
 -- creates a Timeout to call my_function in 5 seconds, once - passing a parameter
 Timer.SetTimeout(function(my_param)
