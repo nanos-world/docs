@@ -88,7 +88,7 @@ And voila every time a Watermelon spawns through the Spawn Menu, it will be brea
 
 ## Explosive Props 💥
 
-In a sub-category as Breakable Props, we can have Explosive ones! Which will not only break if they take damage or get Hit, but will also EXPLODE! Causing damage, and even start a chain reaction of explosions! explo
+In a sub-category as Breakable Props, we can have Explosive ones! Which will not only break if they take damage or get Hit, but will also EXPLODE! Causing damage, and even start a chain reaction of explosions!
 
 <video controls="true" allowfullscreen="true">
     <source src="/videos/blog/sandbox-improvements/chain-explosions.mp4" type="video/mp4" />
