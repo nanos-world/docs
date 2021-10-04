@@ -301,8 +301,8 @@ entity:TranslateTo(location, speed, sweep, teleport)
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** |  | Location to Translate to |
 | <BasicType.Number /> | **`speed`** |  |  |
-| <BasicType.Number /> | **`sweep`** |  | Whether |
-| <BasicType.Boolean /> | **`teleport`** |  |  |
+| <BasicType.Boolean /> | **`sweep`** | `false` | Whether to stop movement if collides |
+| <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current Velocity |
 
 ### `RotateTo`
 
@@ -316,7 +316,7 @@ entity:RotateTo(otation, speed, teleport)
 | :--- | :--- | :--- | :--- |
 | <Structs.Rotator /> | **`rotation`** |  | Rotation to Translate to |
 | <BasicType.Number /> | **`speed`** |  |  |
-| <BasicType.Boolean /> | **`teleport`** |  | Whether to affect the current Velocity |
+| <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current Velocity |
 
 ### `IsGravityEnabled`
 

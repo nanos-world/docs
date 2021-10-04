@@ -42,6 +42,7 @@ This is a **Client** only Class.
 |  | [**`SetMouseEnabled`**](client#setmouseenabled) | Displays/Hides Mouse Cursor |
 |  | [**`SetOutlineColor`**](client#setoutlinecolor) | Changes the Outline Color for interactable stuff |
 |  | [**`SetHighlightColor`**](client#sethighlightcolor) | Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 \(or more\) for having a glowing effect. |
+|  | [**`SetSteamRichPresence`**](client#setsteamrichpresence) | Sets Steam Rich Presence value |
 |  | [**`SetValue`**](client#setvalue) | Sets a global value in the Client, which can be accessed from anywhere \(client side\) |
 |  | [**`Spectate`**](client#spectate) | Spectates a Player. The local camera will follow the Player’s camera. |
 |  | [**`Subscribe`**](client#subscribe) | Subscribes for an Event |
@@ -383,6 +384,18 @@ Client.SetHighlightColor(highlight_color, index, mode)
 | <Structs.Color /> | **`highlight_color`** |  |
 | <BasicType.Number /> | **`index`** |  |
 | <Enums>HighlightMode</Enums> | **`mode`** |  |
+
+### `SetSteamRichPresence`
+
+> Changes the Steam Rich Presence text
+
+```lua
+Client.SetSteamRichPresence(text)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`text`** |  |
 
 ### `SetValue`
 

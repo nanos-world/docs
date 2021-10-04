@@ -52,6 +52,7 @@ end)
 |  |  | [**`SetVOIPSetting`**](player#setvoipsetting) | Sets the VOIP Settings of this Player |
 |  |  | [**`SetVOIPVolume`**](player#setvoipvolume) | Sets the VOIP Volume of this Player |
 | <AuthorityType.AuthorityOnly /> |  | [**`UnPossess`**](player#unpossess) | Release the `Player` from the Character |
+|  | <BasicType.String /> | [**`GetSteamID`**](player#getsteamid) | Gets the Steam account ID |
 |  | <BasicType.String /> | [**`GetAccountID`**](player#getaccountid) | Gets the nanos account ID |
 |  | <BasicType.String /> | [**`GetAccountName`**](player#getaccountname) | Gets the nanos account name |
 | <AuthorityType.ClientOnly /> | <Structs.Vector /> | [**`GetCameraLocation`**](player#getcameralocation) | Gets the Player’s Camera Location |
@@ -226,6 +227,16 @@ my_player:SetVOIPSetting(volume)
 
 ```lua
 my_player:UnPossess()
+```
+
+### `GetSteamID`
+
+> Gets the Steam account ID
+>
+> Returns <BasicType.String />
+
+```lua
+my_player:GetSteamID()
 ```
 
 ### `GetAccountID`

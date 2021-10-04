@@ -96,6 +96,9 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`Drop`**](character#drop) | Drops any <Classes.Pickable /> the Character is holding |
 | <AuthorityType.ServerOnly /> |  | [**`EnterVehicle`**](character#entervehicle) | Enters the Vehicle at Seat (0 - Driver) |
 | <AuthorityType.ServerOnly /> |  | [**`GrabProp`**](character#grabprop) | Gives a <Classes.Prop /> to the Character |
+|  |  | [**`HideBone`**](character#hidebone) | Hides a bone of this Character |
+|  |  | [**`UnHideBone`**](character#unhidebone) | UnHides a bone of this Character |
+|  |  | [**`IsBoneHidden`**](character#isbonehidden) | Gets if a bone is hidden |
 | <AuthorityType.ServerOnly /> |  | [**`Jump`**](character#jump) | Triggers this Character to jump |
 | <AuthorityType.ServerOnly /> |  | [**`LeaveVehicle`**](character#leavevehicle) | Leaves the current Vehicle |
 | <AuthorityType.ServerOnly /> |  | [**`LookAt`**](character#lookat) | AI: Tries to make this Character to look at Location |
@@ -162,6 +165,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 |  | <BasicType.Number /> | [**`GetImpactDamageTaken`**](character#getimpactdamagetaken) |  |
 |  | <BasicType.Number /> | [**`GetMaxHealth`**](character#getmaxhealth) | Gets the Character’s MaxHealth. |
 |  | <BasicType.String /> | [**`GetMesh`**](character#getmesh) | Gets the Mesh Asset name |
+|  | <Structs.Vector /> | [**`GetMovingTo`**](character#getmovingto) | Gets if Character is moving to |
 |  | <Classes.Pickable /> | [**`GetPicked`**](character#getpicked) | Gets the holding Picked Item/Grenade/Weapon |
 |  | <Classes.Player /> | [**`GetPlayer`**](character.mdx#getplayer) | Gets the Player controlling this Character |
 |  | <BasicType.Number /> | [**`GetPunchDamage`**](character.mdx#getpunchdamage) |  |
@@ -285,6 +289,48 @@ my_character:GrabProp(prop)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <Classes.Prop /> | **`prop`** |  |  |
+
+
+### `HideBone`
+
+> Hides a bone of this Character. Check [Bone Names List](character.mdx#characters-skeleton-bone-names) for all Bone names
+
+```lua
+my_character:HideBone(bone_name)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`bone_name`** |  |  |
+
+
+### `UnHideBone`
+
+> UnHide a bone of this Character. Check [Bone Names List](character.mdx#characters-skeleton-bone-names) for all Bone names
+
+```lua
+my_character:UnHideBone(bone_name)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`bone_name`** |  |  |
+
+
+### `IsBoneHidden`
+
+> Check if a Bone is Hidden
+>
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:IsBoneHidden(bone_name)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`bone_name`** |  |  |
+
 
 ### <AuthorityType.ServerOnly />`Jump`
 
@@ -1033,6 +1079,16 @@ my_character:GetMaxHealth()
 > Gets the Mesh Asset name
 >
 > Returns <BasicType.String />
+
+```lua
+my_character:GetMesh()
+```
+
+### `GetMovingTo`
+
+> Gets the Character moving to location, returns Vector(0, 0, 0) if it's not
+>
+> Returns <Structs.Vector />
 
 ```lua
 my_character:GetMesh()

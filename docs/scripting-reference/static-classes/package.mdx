@@ -102,6 +102,13 @@ Package.Log(message, ...)
 ### `Require`
 
 > Includes new .lua files
+> 
+> We currently support 5 searchers, which are looked in the following order:
+> 1. Relative to `current-file-path/`
+> 2. Relative to `current-package/Client/` or `current-package/Server/` *(depending on your side)*
+> 3. Relative to `current-package/Shared/`
+> 4. Relative to `current-package/`
+> 5. Relative to `Packages/`
 
 ```lua
 Package.Require(script_file)

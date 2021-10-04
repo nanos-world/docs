@@ -284,6 +284,14 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`SoundType.SFX`** | `0` |
 | **`SoundType.Music`** | `1` |
 
+### `SoundLoopMode`
+
+| Label | Value |
+| :--- | :--- |
+| **`SoundLoopMode.Default`** | `0` |
+| **`SoundLoopMode.Forever`** | `1` |
+| **`SoundLoopMode.Never`** | `2` |
+
 ### `StanceMode`
 
 | Label | Value |
