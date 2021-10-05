@@ -243,6 +243,7 @@ my_weapon:SetAnimationCharacterFire(animation_asset_path)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`animation_asset_path`** |  |  |
 
+
 ### <AuthorityType.ServerOnly />`SetAnimationReload`
 
 > Animation played by the Character when Reloading
@@ -250,12 +251,14 @@ my_weapon:SetAnimationCharacterFire(animation_asset_path)
 > Currently this animation must be one of the default ones: `AM_Mannequin_Reload_Rifle`, `AM_Mannequin_Reload_Pistol` or `AM_Mannequin_Reload_Shotgun`, as they have internal triggers to finish the reload
 
 ```lua
-my_weapon:SetAnimationReload(animation_asset_path)
+my_weapon:SetAnimationReload(animation_asset_path, play_rate)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`animation_asset_path`** |  |  |
+| <BasicType.Number /> | **`play_rate`** | `1` |  |
+
 
 ### <AuthorityType.ServerOnly />`SetBulletColor`
 
