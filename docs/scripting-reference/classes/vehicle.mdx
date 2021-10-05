@@ -117,10 +117,14 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 
 <details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
 
-| **Name** | **Description** |
-| :--- | :--- |
-| [**`Horn`**](vehicle#horn-1) | When Vehicle honks |
-| [**`Hit`**](vehicle#hit) | When Vehicle hits something |
+|  | **Name** | **Description** |
+| :--- | :--- | :--- |
+|  | [**`Horn`**](vehicle#horn-1) | When Vehicle honks |
+|  | [**`Hit`**](vehicle#hit) | When Vehicle hits something |
+|  | [**`CharacterEntered`**](vehicle#characterentered) | When a Character enters the Vehicle |
+|  | [**`CharacterLeft`**](vehicle#characterleft) | When Character leaves the Vehicle |
+| <AuthorityType.ServerOnly /> | [**`CharacterAttemptEnter`**](vehicle#characterattemptenter) | When a Character attempts to Enter the Vehicle |
+| <AuthorityType.ServerOnly /> | [**`CharacterAttemptLeave`**](vehicle#characterattemptleave) | When a Character attempts to Leave the Vehicle |
 
 ## Functions Detailed
 
@@ -351,6 +355,7 @@ my_vehicle:GetPassenger(seat)
 my_vehicle:GetPassengers()
 ```
 
+
 ## Events Detailed
 
 ### `Horn`
@@ -367,6 +372,7 @@ end)
 | :--- | :--- | :--- |
 | [Vehicle](vehicle) | `self` |  |
 | <BasicType.Boolean /> | `is_honking` |  |
+
 
 ### `Hit`
 
@@ -386,3 +392,72 @@ end)
 | <Structs.Vector /> | `impact_location` | The world 3D location of the impact |
 | <Structs.Vector /> | `velocity` | The Vehicle velocity at the moment it hits |
 
+
+### `CharacterEntered`
+
+> Triggered when a Character fully enters the Vehicle
+
+```lua
+Vehicle.Subscribe("CharacterEntered", function(self, character, seat)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Vehicle](vehicle) | `self` |  |
+| <Classes.Character /> | `character` |  |
+| <BasicType.Number /> | `seat` | The seat index |
+
+
+### `CharacterLeft`
+
+> Triggered when a Character fully leaves the Vehicle
+
+```lua
+Vehicle.Subscribe("CharacterLeft", function(self, character)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Vehicle](vehicle) | `self` |  |
+| <Classes.Character /> | `character` |  |
+
+
+### <AuthorityType.ServerOnly />`CharacterAttemptEnter`
+
+> Triggered when a Character attempts to enter the Vehicle
+> 
+> Return false to prevent it
+
+```lua
+Vehicle.Subscribe("CharacterAttemptEnter", function(self, character, seat)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Vehicle](vehicle) | `self` |  |
+| <Classes.Character /> | `character` |  |
+| <BasicType.Number /> | `seat` | The seat index |
+
+
+### <AuthorityType.ServerOnly />`CharacterAttemptLeave`
+
+> Triggered when a Character attempts to enter the Vehicle
+> 
+> Return false to prevent it
+
+```lua
+Vehicle.Subscribe("CharacterAttemptLeave", function(self, character)
+
+end)
+
+```
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Vehicle](vehicle) | `self` |  |
+| <Classes.Character /> | `character` |  |

@@ -188,27 +188,30 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 |  | [**`Death`**](character#death) | When Character Dies |
 |  | [**`Drop`**](character#drop) | When Character drops anything |
 |  | [**`EnterVehicle`**](character#entervehicle) | When Character enters a vehicle |
-|  | [**`FallingModeChanged`**](character#fallingmodechanged) | **Falling Modes**: _None, Jumping, Climbing, Vaulting, Falling, HighFalling, Parachuting, SkyDiving_ |
+| <AuthorityType.ServerOnly /> | [**`AttemptEnterVehicle`**](character#attemptentervehicle) | When Character attempts to enter a vehicle |
+|  | [**`FallingModeChanged`**](character#fallingmodechanged) |  |
 |  | [**`Fire`**](character#fire) | When Character fires a Weapon |
-|  | [**`GaitModeChanged`**](character#gaitmodechanged) | **Gait Modes**: _None, Walking, Sprinting_ |
+|  | [**`GaitModeChanged`**](character#gaitmodechanged) |  |
 |  | [**`GrabProp`**](character#grabprop) | When Character grabs up a <Classes.Prop /> |
 |  | [**`Highlight`**](character#highlight) | When Character highlights/looks at a <Classes.Prop /> or a <Classes.Pickable /> |
-| <AuthorityType.ServerOnly /> | [**`Interact`**](character#interact) | When a Character interacts with an object \(i.e. try to pick it up\) - return false to prevent it |
+| <AuthorityType.ServerOnly /> | [**`Interact`**](character#interact) | When a Character interacts with a <Classes.Prop /> or <Classes.Pickable /> to pick it up |
 |  | [**`LeaveVehicle`**](character#leavevehicle) | When Character leaves a vehicle |
+| <AuthorityType.ServerOnly /> | [**`AttemptLeaveVehicle`**](character#attemptleavevehicle) | When Character attempts to leave a vehicle |
 |  | [**`MoveCompleted`**](character#movecompleted) | Called when AI reaches it’s destination, or when it fails |
 |  | [**`PickUp`**](character#pickup) | When Character picks up anything |
 |  | [**`Possessed`**](character#possessed) | When Character is possessed |
 |  | [**`Punch`**](character#punch) | When Character punches |
 |  | [**`RagdollModeChanged`**](character#ragdollmodechanged) |  |
+| <AuthorityType.ServerOnly /> | [**`AttemptReload`**](character#reload) | When Character attempts to reload a weapon |
 |  | [**`Reload`**](character#reload) | When Character reloads a weapon |
 |  | [**`Respawn`**](character#respawn) | When Character Respawns |
-|  | [**`StanceModeChanged`**](character#stancemodechanged) | **Stance Modes**: _None, Standing, Crouching, Proning_ |
-|  | [**`SwimmingModeChanged`**](character#swimmingmodechanged) | **Swimming Modes**: _None, Surface, Underwater_ |
+|  | [**`StanceModeChanged`**](character#stancemodechanged) |  |
+|  | [**`SwimmingModeChanged`**](character#swimmingmodechanged) |  |
 |  | [**`TakeDamage`**](character#takedamage) | When Character takes Damage |
 |  | [**`UnGrabProp`**](character#ungrabprop) | When Character drops a <Classes.Prop /> |
 |  | [**`UnPossessed`**](character#unpossessed) | When Character is unpossessed |
-|  | [**`ViewModeChanged`**](character#viewmodechanged) | **View Modes**: _FPS, TPS1, TPS2, TPS3_ |
-|  | [**`WeaponAimModeChanged`**](character#weaponaimmodechanged) | **Aim Modes**: _None, ADS, ZoomedZoom, Zoomed, ZoomedFar_ |
+|  | [**`ViewModeChanged`**](character#viewmodechanged) |  |
+|  | [**`WeaponAimModeChanged`**](character#weaponaimmodechanged) |  |
 
 ## Functions Detailed
 
@@ -1184,11 +1187,18 @@ my_character:GetViewMode()
 my_character:GetWeaponAimMode()
 ```
 
+
 ## Events Detailed
 
 ### `Death`
 
 > When Character Dies
+
+```lua
+Character.Subscribe("Death", function(self, last_damage_taken, last_bone_damage, damage_type_reason, hit_from_direction, instigator)
+
+end)
+```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
@@ -1199,21 +1209,10 @@ my_character:GetWeaponAimMode()
 | <Structs.Vector /> | **`hit_from_direction`** |  |
 | <Classes.Player /> | **`instigator`** |  |
 
-```lua
-Character.Subscribe("Death", function(self, last_damage_taken, last_bone_damage, damage_type_reason, hit_from_direction, instigator)
-
-end)
-```
 
 ### `Drop`
 
-> When Character drops anything
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| [Character](character) | **`self`** |  |
-| <Classes.Pickable /> | **`object`** |  |
-| <BasicType.Boolean /> | **`triggered_by_player`** |  |
+> When Character drops the currently picked up <Classes.Pickable />
 
 ```lua
 Character.Subscribe("Drop", function(self, object, triggered_by_player)
@@ -1221,30 +1220,50 @@ Character.Subscribe("Drop", function(self, object, triggered_by_player)
 end)
 ```
 
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <Classes.Pickable /> | **`object`** |  |
+| <BasicType.Boolean /> | **`triggered_by_player`** |  |
+
+
 ### `EnterVehicle`
 
 > When Character enters a vehicle
 
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| [Character](character) | **`self`** |  |
-| Vehicle | **`vehicle`** |  |
-
 ```lua
-Character.Subscribe("EnterVehicle", function(self, vehicle)
+Character.Subscribe("EnterVehicle", function(self, vehicle, seat_index)
 
 end)
 ```
 
-### `FallingModeChanged`
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <Classes.Vehicle /> | **`vehicle`** |  |
+| <BasicType.Number /> | **`seat_index`** |  |
 
-> **Falling Modes**: _None, Jumping, Climbing, Vaulting, Falling, HighFalling, Parachuting, SkyDiving_
+
+### <AuthorityType.ServerOnly />`AttemptEnterVehicle`
+
+> When Character attempts to enter a vehicle
+
+```lua
+Character.Subscribe("AttemptEnterVehicle", function(self, vehicle, seat_index)
+
+end)
+```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| FallingMode | **`old_state`** |  |
-| FallingMode | **`new_state`** |  |
+| <Classes.Vehicle /> | **`vehicle`** |  |
+| <BasicType.Number /> | **`seat_index`** |  |
+
+
+### `FallingModeChanged`
+
+> **Falling Modes**: _None, Jumping, Climbing, Vaulting, Falling, HighFalling, Parachuting, SkyDiving_
 
 ```lua
 Character.Subscribe("FallingModeChanged", function(self, old_state, new_state)
@@ -1252,14 +1271,16 @@ Character.Subscribe("FallingModeChanged", function(self, old_state, new_state)
 end)
 ```
 
-### `Fire`
-
-> When Character fires a Weapon
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Weapon | **`weapon`** |  |
+| <Enums>FallingMode</Enums> | **`old_state`** |  |
+| <Enums>FallingMode</Enums> | **`new_state`** |  |
+
+
+### `Fire`
+
+> When Character fires a Weapon
 
 ```lua
 Character.Subscribe("Fire", function(self, weapon)
@@ -1267,15 +1288,15 @@ Character.Subscribe("Fire", function(self, weapon)
 end)
 ```
 
-### `GaitModeChanged`
-
-> **Gait Modes**: _None, Walking, Sprinting_
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| <Enums>GaitMode</Enums> | **`old_state`** |  |
-| <Enums>GaitMode</Enums> | **`new_state`** |  |
+| <Classes.Weapon /> | **`weapon`** |  |
+
+
+### `GaitModeChanged`
+
+> **Gait Modes**: _None, Walking, Sprinting_
 
 ```lua
 Character.Subscribe("GaitModeChanged", function(self, old_state, new_state)
@@ -1283,14 +1304,16 @@ Character.Subscribe("GaitModeChanged", function(self, old_state, new_state)
 end)
 ```
 
-### `GrabProp`
-
-> When Character grabs up a Prop
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| <Classes.Prop /> | **`prop`** |  |
+| <Enums>GaitMode</Enums> | **`old_state`** |  |
+| <Enums>GaitMode</Enums> | **`new_state`** |  |
+
+
+### `GrabProp`
+
+> When Character grabs up a Prop
 
 ```lua
 Character.Subscribe("GrabProp", function(self, prop)
@@ -1298,14 +1321,15 @@ Character.Subscribe("GrabProp", function(self, prop)
 end)
 ```
 
-### `Highlight`
-
->  When Character highlights/looks at a <Classes.Prop /> or a Pickable
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| <Classes.Prop /> or <Classes.Pickable /> | **`object`** |  |
+| <Classes.Prop /> | **`prop`** |  |
+
+
+### `Highlight`
+
+>  When Character highlights/looks at a <Classes.Prop /> or a Pickable
 
 ```lua
 Character.Subscribe("Highlight", function(self, object)
@@ -1313,14 +1337,17 @@ Character.Subscribe("Highlight", function(self, object)
 end)
 ```
 
-### <AuthorityType.ServerOnly />`Interact`
-
-> When a Character interacts with an object \(i.e. try to pick it up\) - return false to prevent it
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| <Classes.Pickable /> or <Classes.Prop /> | **`object`** |  |
+| <Classes.Prop /> or <Classes.Pickable /> | **`object`** |  |
+
+
+### <AuthorityType.ServerOnly />`Interact`
+
+> When a Character interacts with a <Classes.Prop /> or <Classes.Pickable /> to pick it up
+> 
+> Return false to prevent it
 
 ```lua
 Character.Subscribe("Interact", function(self, object)
@@ -1328,14 +1355,15 @@ Character.Subscribe("Interact", function(self, object)
 end)
 ```
 
-### `LeaveVehicle`
-
-> When Character leaves a vehicle
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| <Classes.Vehicle /> | **`vehicle`** |  |
+| <Classes.Pickable /> or <Classes.Prop /> | **`object`** |  |
+
+
+### `LeaveVehicle`
+
+> When Character leaves a vehicle
 
 ```lua
 Character.Subscribe("LeaveVehicle", function(self, vehicle)
@@ -1343,14 +1371,31 @@ Character.Subscribe("LeaveVehicle", function(self, vehicle)
 end)
 ```
 
-### `MoveCompleted`
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <Classes.Vehicle /> | **`vehicle`** |  |
 
-> Called when AI reaches it's destination, or when it fails
+
+### <AuthorityType.ServerOnly />`AttemptLeaveVehicle`
+
+> When Character attempts to leave a vehicle
+
+```lua
+Character.Subscribe("AttemptLeaveVehicle", function(self, vehicle)
+
+end)
+```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| <BasicType.Boolean /> | **`succeeded`** |  |
+| <Classes.Vehicle /> | **`vehicle`** |  |
+
+
+### `MoveCompleted`
+
+> Called when AI reaches it's destination, or when it fails
 
 ```lua
 Character.Subscribe("MoveCompleted", function(self, succeeded)
@@ -1358,14 +1403,15 @@ Character.Subscribe("MoveCompleted", function(self, succeeded)
 end)
 ```
 
-### `PickUp`
-
-> When Character picks up anything
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| <Classes.Pickable /> | **`object`** |  |
+| <BasicType.Boolean /> | **`succeeded`** |  |
+
+
+### `PickUp`
+
+> When Character picks up anything
 
 ```lua
 Character.Subscribe("PickUp", function(self, object)
@@ -1373,14 +1419,15 @@ Character.Subscribe("PickUp", function(self, object)
 end)
 ```
 
-### `Possessed`
-
-> When Character is possessed
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| <Classes.Player /> | **`possesser`** |  |
+| <Classes.Pickable /> | **`object`** |  |
+
+
+### `Possessed`
+
+> When Character is possessed
 
 ```lua
 Character.Subscribe("Possessed", function(self, possesser)
@@ -1388,13 +1435,15 @@ Character.Subscribe("Possessed", function(self, possesser)
 end)
 ```
 
-### `Punch`
-
-> When Character punches
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
+| <Classes.Player /> | **`possesser`** |  |
+
+
+### `Punch`
+
+> When Character punches
 
 ```lua
 Character.Subscribe("Punch", function(self)
@@ -1402,15 +1451,14 @@ Character.Subscribe("Punch", function(self)
 end)
 ```
 
-### `RagdollModeChanged`
-
-&gt;
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| <BasicType.Boolean /> | **`old_state`** |  |
-| <BasicType.Boolean /> | **`new_state`** |  |
+
+
+### `RagdollModeChanged`
+
+> When Character enters or leaves ragdoll
 
 ```lua
 Character.Subscribe("RagdollModeChanged", function(self, old_state, new_state)
@@ -1418,15 +1466,34 @@ Character.Subscribe("RagdollModeChanged", function(self, old_state, new_state)
 end)
 ```
 
-### `Reload`
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <BasicType.Boolean /> | **`old_state`** |  |
+| <BasicType.Boolean /> | **`new_state`** |  |
 
-> When Character reloads a weapon
+
+### `AttemptReload`
+
+> When Character attempts to reload a weapon
+> 
+> Return false to prevent it
+
+```lua
+Character.Subscribe("AttemptReload", function(self, weapon)
+
+end)
+```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Weapon | **`weapon`** |  |
-| <BasicType.Number /> | **`ammo_to_reload`** |  |
+| <Classes.Weapon /> | **`weapon`** |  |
+
+
+### `Reload`
+
+> When Character reloads a weapon
 
 ```lua
 Character.Subscribe("Reload", function(self, weapon, ammo_to_reload)
@@ -1434,13 +1501,16 @@ Character.Subscribe("Reload", function(self, weapon, ammo_to_reload)
 end)
 ```
 
-### `Respawn`
-
-> When Character Respawns
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
+| <Classes.Weapon /> | **`weapon`** |  |
+| <BasicType.Number /> | **`ammo_to_reload`** |  |
+
+
+### `Respawn`
+
+> When Character Respawns
 
 ```lua
 Character.Subscribe("Respawn", function(self)
@@ -1448,15 +1518,14 @@ Character.Subscribe("Respawn", function(self)
 end)
 ```
 
-### `StanceModeChanged`
-
-> **Stance Modes**: _None, Standing, Crouching, Proning_
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| StanceMode | **`old_state`** |  |
-| StanceMode | **`new_state`** |  |
+
+
+### `StanceModeChanged`
+
+> **Stance Modes**: _None, Standing, Crouching, Proning_
 
 ```lua
 Character.Subscribe("StanceModeChanged", function(self, old_state, new_state)
@@ -1464,15 +1533,16 @@ Character.Subscribe("StanceModeChanged", function(self, old_state, new_state)
 end)
 ```
 
-### `SwimmingModeChanged`
-
-> **Swimming Modes**: _None, Surface, Underwater_
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| SwimmingMode | **`old_state`** |  |
-| SwimmingMode | **`new_state`** |  |
+| <Enums>StanceMode</Enums> | **`old_state`** |  |
+| <Enums>StanceMode</Enums> | **`new_state`** |  |
+
+
+### `SwimmingModeChanged`
+
+> **Swimming Modes**: _None, Surface, Underwater_
 
 ```lua
 Character.Subscribe("SwimmingModeChanged", function(self, old_state, new_state)
@@ -1480,9 +1550,22 @@ Character.Subscribe("SwimmingModeChanged", function(self, old_state, new_state)
 end)
 ```
 
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <Enums>SwimmingMode</Enums> | **`old_state`** |  |
+| <Enums>SwimmingMode</Enums> | **`new_state`** |  |
+
+
 ### `TakeDamage`
 
 > When Character takes Damage
+
+```lua
+Character.Subscribe("TakeDamage", function(self, damage, bone, type, from_direction, instigator, causer)
+
+end)
+```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
@@ -1494,20 +1577,10 @@ end)
 | <Classes.Player /> | **`instigator`** | The player which caused the damage |
 | <BasicType.Any /> | **`causer`** | The object which caused the damage |
 
-```lua
-Character.Subscribe("TakeDamage", function(self, damage, bone, type, from_direction, instigator, causer)
-
-end)
-```
 
 ### `UnGrabProp`
 
 > When Character drops a Prop
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| [Character](character) | **`self`** |  |
-| <Classes.Prop /> | **`prop`** |  |
 
 ```lua
 Character.Subscribe("UnGrabProp", function(self, prop)
@@ -1515,14 +1588,15 @@ Character.Subscribe("UnGrabProp", function(self, prop)
 end)
 ```
 
-### `UnPossessed`
-
-> When Character is unpossessed
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| <Classes.Player /> | **`old_possesser`** |  |
+| <Classes.Prop /> | **`prop`** |  |
+
+
+### `UnPossessed`
+
+> When Character is unpossessed
 
 ```lua
 Character.Subscribe("UnPossessed", function(self, old_possesser)
@@ -1530,15 +1604,15 @@ Character.Subscribe("UnPossessed", function(self, old_possesser)
 end)
 ```
 
-### `ViewModeChanged`
-
-> **View Modes**: _FPS, TPS1, TPS2, TPS3_
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| ViewMode | **`old_state`** |  |
-| ViewMode | **`new_state`** |  |
+| <Classes.Player /> | **`old_possesser`** |  |
+
+
+### `ViewModeChanged`
+
+> When Character changes it's View Mode: _FPS, TPS1, TPS2, TPS3_
 
 ```lua
 Character.Subscribe("ViewModeChanged", function(self, old_state, new_state)
@@ -1546,9 +1620,22 @@ Character.Subscribe("ViewModeChanged", function(self, old_state, new_state)
 end)
 ```
 
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <Enums>ViewMode</Enums> | **`old_state`** |  |
+| <Enums>ViewMode</Enums> | **`new_state`** |  |
+
+
 ### `WeaponAimModeChanged`
 
 > **Aim Modes**: _None, ADS, ZoomedZoom, Zoomed, ZoomedFar_
+
+```lua
+Character.Subscribe("WeaponAimModeChanged", function(self, old_state, new_state)
+
+end)
+```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
@@ -1556,11 +1643,6 @@ end)
 | AimMode | **`old_state`** |  |
 | AimMode | **`new_state`** |  |
 
-```lua
-Character.Subscribe("WeaponAimModeChanged", function(self, old_state, new_state)
-
-end)
-```
 
 ## Male & Female Customization
 
