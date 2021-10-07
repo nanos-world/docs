@@ -431,13 +431,20 @@ my_character:RemoveStaticMeshAttached(id)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`id`** |  |  |
 
+
 ### <AuthorityType.ServerOnly />`Respawn`
 
 > Respawns the Character, fullying it's Health and moving it to it's Initial Location
 
 ```lua
-my_character:Respawn()
+my_character:Respawn(location, rotation)
 ```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** | `initial location` | If not passed will use the initial location passed when the Character spawned |
+| <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |  |
+
 
 ### <AuthorityType.ServerOnly />`SetAccelerationSettings`
 
@@ -1560,6 +1567,8 @@ end)
 ### `TakeDamage`
 
 > When Character takes Damage
+>
+> Return false to cancel the damage (will still display animations, particles and apply impact forces)
 
 ```lua
 Character.Subscribe("TakeDamage", function(self, damage, bone, type, from_direction, instigator, causer)
@@ -1571,9 +1580,9 @@ end)
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
 | <BasicType.Number /> | **`damage`** |  |
-| <BasicType.String /> | **`bone`** |  |
-| <Enums>DamageType</Enums> | **`type`** |  |
-| <Structs.Vector /> | **`from_direction`** |  |
+| <BasicType.String /> | **`bone`** | Damaged bone |
+| <Enums>DamageType</Enums> | **`type`** | Damage Type |
+| <Structs.Vector /> | **`from_direction`** | Direction of the damage relative to the damaged actor |
 | <Classes.Player /> | **`instigator`** | The player which caused the damage |
 | <BasicType.Any /> | **`causer`** | The object which caused the damage |
 

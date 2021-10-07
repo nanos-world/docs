@@ -130,6 +130,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundZooming`**](weapon#setsoundzooming) | Sound when Zooming |
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundAim`**](weapon#setsoundaim) | Sound when Aiming |
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundFire`**](weapon#setsoundfire) | Sound when Shooting |
+| <AuthorityType.ServerOnly /> |  | [**`SetSoundFireLastBullets`**](weapon#setsoundfirelastbullets) | Sound when Shooting last bullets |
 | <AuthorityType.ServerOnly /> |  | [**`SetSpread`**](weapon#setspread) | Base Weapon’s Spread (the higher the less precision) |
 | <AuthorityType.ServerOnly /> |  | [**`SetRecoil`**](weapon#setrecoil) | Base Weapon’s Recoil Multiplier |
 | <AuthorityType.ServerOnly /> |  | [**`SetUsageSettings`**](weapon#setusagesettings) | Sets if the Weapon can hold to keep firing and if it needs to release to fire |
@@ -508,6 +509,21 @@ my_weapon:SetSoundFire(sound_asset_path)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`sound_asset_path`** |  |  |
+
+
+### <AuthorityType.ServerOnly />`SetSoundFireLastBullets`
+
+> Sound when firing with only having X remaining bullets in the magazine, useful for last shot 'ping' or sound when low on bullets
+
+```lua
+my_weapon:SetSoundFireLastBullets(sound_asset_path, remaining_bullets_count)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`sound_asset_path`** |  |  |
+| <BasicType.Number /> | **`remaining_bullets_count`** | `1` | The amount of remaining bullet to start playing this sound |
+
 
 ### <AuthorityType.ServerOnly />`SetSpread`
 

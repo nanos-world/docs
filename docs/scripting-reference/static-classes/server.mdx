@@ -66,6 +66,7 @@ end)
 |  | [**`SetName`**](server#setname) | Sets the name of the server, optionally overrides Config.toml |
 |  | [**`SetPassword`**](server#setpassword) | Sets the password of the server, optionally overrides Config.toml |
 |  | [**`SetValue`**](server#setvalue) | Sets a global value in the Server, which can be accessed from anywhere \(server side\) |
+|  | [**`GetValue`**](server#getvalue) | Gets a value given a key |
 |  | [**`Stop`**](server#stop) | Stops the server |
 |  | [**`Subscribe`**](server#subscribe) | Subscribes for an Event |
 |  | [**`UnloadPackage`**](server#unloadpackage) | Unloads a Package |
@@ -73,7 +74,9 @@ end)
 | <BasicType.String /> | [**`GetMap`**](server#getmap) | Returns the current Map |
 | <BasicType.Table /> | [**`GetMapConfig`**](server#getmapconfig) | Returns a list of the Custom Config of the current map \(stored in the MAP\_NAME.toml\) |
 | <BasicType.Table /> | [**`GetPackages`**](server#getpackage) | Returns a list of Packages folder names available in the server, optionally returns only loaded and running packages |
-|  | [**`GetValue`**](server#getvalue) | Gets a value given a key |
+| <BasicType.String /> | [**`GetVersion`**](server#getversion) | Returns the server version |
+| <BasicType.String /> | [**`GetBuildID`**](server#getbuildid) | Returns the server build id |
+| <BasicType.String /> | [**`GetBranch`**](server#getbranch) | Returns the server branch name |
 
 ## Events
 
@@ -221,6 +224,7 @@ Server.SetPassword(password, persist_to_config_file)
 | <BasicType.String /> | **`password`** |  |  |
 | <BasicType.Boolean /> | **`persist_to_config_file`** | `false` |  |
 
+
 ### `SetValue`
 
 > Sets a global value in the Server, which can be accessed from anywhere \(server side\)
@@ -235,6 +239,18 @@ Server.SetValue(key, value)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** |  | Key |
 | <BasicType.Any /> | **`value`** |  | Value |
+
+
+### `GetValue`
+
+> Gets a value given a key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
+>
+> Returns <BasicType.Any />
+
+```lua
+Server.GetValue(key)
+```
+
 
 ### `Stop`
 
@@ -316,15 +332,39 @@ Server.GetPackages(only_loaded)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`only_loaded`** | `true` |  |
 
-### `GetValue`
 
-> Gets a value given a key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
+### `GetVersion`
+
+> Gets the server Version
 >
-> Returns <BasicType.Any />
+> Returns <BasicType.String />
 
 ```lua
-Server.GetValue(key)
+Server.GetVersion()
 ```
+
+
+### `GetBuildID`
+
+> Gets the build id
+>
+> Returns <BasicType.String />
+
+```lua
+Server.GetBuildID()
+```
+
+
+### `GetBranch`
+
+> Gets the server branch name (i.e. 'bleeding-edge')
+>
+> Returns <BasicType.String />
+
+```lua
+Server.GetBranch()
+```
+
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
