@@ -82,7 +82,6 @@ end)
 | **Name** | **Description** |
 | :--- | :--- |
 | [**`Chat`**](server#chat) | Called when a player types something in the chat - return false to do not send the message |
-| [**`ChatEntry`**](server#chatentry) | Called when a Chat Entry is received, this is also triggered when `SendChatMessage` is called |
 | [**`Console`**](server#console) | Called when a console command is submitted |
 | [**`LogEntry`**](server#logentry) | Called when a Server log is received |
 | [**`Start`**](server#start) | Server has been started. |
@@ -359,21 +358,6 @@ Server.GetVersion()
 
 ```lua
 Server.Subscribe("Chat", function(text, sender)
-
-end)
-```
-
-### `ChatEntry`
-
-> Called when a Chat Entry is received, this is also triggered when `SendChatMessage` is called
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`text`** |  |
-| <Classes.Player /> | **`sender`** |  |
-
-```lua
-Server.Subscribe("ChatEntry", function(text, sender)
 
 end)
 ```

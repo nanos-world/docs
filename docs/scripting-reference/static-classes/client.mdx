@@ -61,8 +61,8 @@ This is a **Client** only Class.
 
 | **Name** | **Description** |
 | :--- | :--- |
-| [**`Chat`**](client#chat) | Called when a chat text is submitted \(by LocalPlayer\) |
-| [**`ChatEntry`**](client#chatentry) | Called when a Chat Entry is received |
+| [**`Chat`**](client#chat) | Called when a chat text is submitted (by LocalPlayer) |
+| [**`ChatEntry`**](server#chatentry) | Called when a Chat Entry is received, this is also triggered when `SendChatMessage` is called |
 | [**`Console`**](client#console) | Called when a console command is submitted |
 | [**`KeyDown`**](client#keydown) | A keyboard key is being pressed |
 | [**`KeyPress`**](client#keypress) | A keyboard key has been pressed |
@@ -583,7 +583,7 @@ end)
 
 > Called when a Chat Entry is received
 >
-> This is also triggered when `SendChatMessage` is called \(useful for creating your own Chat interface while still use the built-in system\)
+> This is also triggered when `SendChatMessage` is called (useful for creating your own Chat interface while still use the built-in system)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
