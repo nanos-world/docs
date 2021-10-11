@@ -86,12 +86,12 @@ local player_count = Player.GetCount()
 
 ### `GetPairs`
 
-> Returns an iterator with all entities of this class to be used with `ipairs` or `pairs`. This is a more performatic way than `GetAll()` as it will return the iterator to access the entities directly, instead of creating and returning a copy of the entities table.
+> Returns an iterator with all entities of this class to be used with `pairs()`. This is a more performatic way than `GetAll()` as it will return the iterator to access the entities directly instead of creating and returning a copy of the entities table.
 >
-> **Note:** Destroying entities from inside GetPairs\(\) loop will cause the iteration to change it's size during the process. If you want to loop-and-destroy, please use `GetAll()`.
+> **Note:** Destroying entities from inside GetPairs() loop will cause the iteration to change it's size during the process. If you want to loop-and-destroy, please use `GetAll()`.
 
 ```lua
-for k, player in ipairs(Player.GetPairs()) do
+for k, player in pairs(Player.GetPairs()) do
     Package.Log(player:GetName() .. " is connected!")
 end
 ```

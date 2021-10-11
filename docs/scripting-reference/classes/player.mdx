@@ -135,27 +135,31 @@ my_player:Possess(new_character)
 
 ### `SetCameraLocation`
 
-> Sets the Player's Camera Location \(only works if not possessing any Character\)
+> Sets the Player's Camera Location (only works if not possessing any Character)
 
 ```lua
-my_player:SetCameraLocation(location)
+my_player:SetCameraLocation(location, time, exp)
 ```
 
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** |  |
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** |  |  |
+| <BasicType.Number /> | **`time`** | `0` | Time to interp from current camera location to target location |
+| <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
 ### `SetCameraRotation`
 
 > Sets the Player's Camera Rotation
 
 ```lua
-my_player:SetCameraRotation(rotation)
+my_player:SetCameraRotation(rotation, time, exp)
 ```
 
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <Structs.Rotator /> | **`rotation`** |  |
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Rotator /> | **`rotation`** |  |  |
+| <BasicType.Number /> | **`time`** | `0` | Time to interp from current camera rotation to target rotation |
+| <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
 ### <AuthorityType.AuthorityOnly /> `SetName`
 

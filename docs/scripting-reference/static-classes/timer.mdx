@@ -32,6 +32,8 @@ The shortest interval possible is equal to the local Tick Rate - usually at 33ms
 |  | [**`ClearTimeout`**](timer#cleartimeout) | Stops the execution of the function specified in SetTimeout() |
 |  | [**`ClearInterval`**](timer#clearinterval) | Stops the execution of the function specified in SetInterval() |
 |  | [**`Bind`**](timer#bind) | Binds a Timer to any Actor. The timer will be automatically cleared when the Actor is destroyed |
+|  | [**`IsValid`**](timer#isvalid) | Checks if a Timer is currently active or waiting to be triggered |
+
 
 ### `SetTimeout`
 
@@ -52,6 +54,7 @@ end, 3000, "hello", 123)
 | <BasicType.Number /> | **`milliseconds`** | **`0`** | The number of milliseconds to wait before executing the code |
 | <BasicType.Any /> | **`parameters...`** |  | Additional parameters to pass to the function |
 
+
 ### `SetInterval`
 
 > Same as SetTimeout(), but repeats the execution of the function continuously
@@ -71,6 +74,7 @@ end, 2000, "world", 456)
 | <BasicType.Number /> on how often to execute the code |
 | <BasicType.Any /> | **`parameters...`** |  | Additional parameters to pass to the function |
 
+
 ### `ClearTimeout`
 
 > Stops the execution of the function specified in SetTimeout() The ID value returned by SetTimeout() is used as the parameter for the ClearTimeout() method
@@ -88,6 +92,7 @@ Timer.ClearTimeout(my_timeout)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> method |
 
+
 ### `ClearInterval`
 
 > Stops the execution of the function specified in SetInterval() The ID value returned by SetInterval() is used as the parameter for the ClearInterval() method
@@ -104,6 +109,7 @@ Timer.ClearInterval(my_interval)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> method |
+
 
 ### `Bind`
 
@@ -129,6 +135,19 @@ Timer.Bind(my_timer, character)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`timer_id`** |  | The Timer ID |
 | <Classes.Actor /> | **`actor`** |  | Actor to be bound |
+
+
+### `IsValid`
+
+> Checks if a Timer is currently active or waiting to be triggered
+
+```lua
+Timer.IsValid(timer_id)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`timer_id`** |  | The Timer ID |
 
 
 ## Examples
