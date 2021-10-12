@@ -18,7 +18,7 @@ export const CardLink = ({ title, description, href, image_src }) => (
 
 <!-- Rectangular Reference Link -->
 export const ReferenceLink = ({ children, href }) => (
-	<a class="reference-link" href={`${getActiveVersionPath()}/${href}`}>
+	<a class="reference-link" href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`}>
 		{children}
 		<span>
 			{href}

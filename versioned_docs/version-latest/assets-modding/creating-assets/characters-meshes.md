@@ -8,7 +8,7 @@ tags: [assets]
 
 :::info
 
-nanos.world Characters use Unreal’s Default Mannequin Skeleton. So any Skeletal Mesh which uses it by default will probably work in nanos world as a [Character](./scripting-reference/classes/character.mdx).
+nanos world Characters use Unreal’s Default Mannequin Skeleton. So any Skeletal Mesh which uses it by default will probably work in nanos world as a [Character](./scripting-reference/classes/character.mdx).
 
 :::
 
@@ -38,7 +38,7 @@ Besides converting your mesh to use nanos world **Skeleton**, it is also needed 
 
 :::tip
 
-This is allow your Characters when using your meshes to have a proper Ragdoll physics.
+This is needed so your Characters can have a proper in-game Ragdoll physics.
 
 :::
 

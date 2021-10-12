@@ -16,7 +16,13 @@ import { Structs, BasicType, AuthorityType, ReferenceLink } from '@site/docs/com
 
 :::tip
 
-This HTML implementation is built upon same core as WebKit/Safari. And currently does not support HTML5 videos and audios.
+This HTML implementation is built upon same core as WebKit/Safari using [Ultralight](https://ultralig.ht) library, a next-generation HTML Renderer.
+
+:::
+
+:::caution
+
+We are using a beta build of Ultralight, which now supports Audio and Video. Although it is still very unstable and some crashes may happen! Also the Audio currently plays only in 2D.
 
 :::
 
@@ -52,12 +58,15 @@ my_ui = WebUI(
     "Awesome UI from Another Package", -- Name
     "file:///UI/index.html",           -- Path relative to this package (Client/)
     true,                              -- Is Visible
+    true,
+    true,
+    0,
+    0,
     "my_ui_library_package"            -- Package where this HTML is located
 )
 ```
 
-
-#### Communicating between Lua and JS \(WebUI\)
+#### Communicating between Lua and JS (WebUI)
 
 ```lua title="Client/Index.lua"
 my_ui = WebUI("Awesome UI", "file:///UI/index.html")
@@ -92,8 +101,12 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`name`** |  |  |
 | <BasicType.String /> | **`path`** |  | URL or `file:///relative/to/client/folder.html` |
-| <BasicType.Boolean /> | **`is_visible`** | `true` |  |
-| <BasicType.String /> | **`package_name`** | defaults to this package |  |
+| <BasicType.Boolean /> | **`is_visible`** | `true` | if WebUI is visible by default |
+| <BasicType.Boolean /> | **`is_transparent`** | `true` | if WebUI background is transparent |
+| <BasicType.Boolean /> | **`auto_resize`** | `true` | if should auto resize when screen changes it's size (useful OFF when you are painting meshes with WebUI) |
+| <BasicType.Number /> | **`width`** | `0` | size of the WebUI when you are not using auto_resize |
+| <BasicType.Number /> | **`height`** | `0` | size of the WebUI when you are not using auto_resize |
+| <BasicType.String /> | **`package_name`** | defaults to current package | Usually you won't want to change this |
 
 ## Functions
 
@@ -103,7 +116,8 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 |  | [**`CallEvent`**](webui#callevent) | Calls an Event on the Browser’s JavaScript |
 |  | [**`Destroy`**](webui#destroy) | Destroys this Browser |
 |  | [**`LoadURL`**](webui#loadurl) | Loads a new File/URL in this Browser |
-|  | [**`SetFocus`**](webui#setfocus) | Enables the focus on this browser |
+|  | [**`SetFocus`**](webui#setfocus) | Forces Focus on this Browser |
+|  | [**`SetFreeze`**](webui#setfreeze) | Freezes the WebUI Rendering to the surface |
 |  | [**`SetVisible`**](webui#setvisible) | Toggles the visibility |
 | <BasicType.Boolean /> | [**`IsValid`**](webui#isvalid) | Returns if this entity is Valid |
 | <BasicType.Number /> | [**`GetID`**](webui#getid) | Gets the network ID of this entity |
@@ -157,10 +171,20 @@ my_webui:LoadURL(url)
 
 ### `SetFocus`
 
-> Enables the focus on this browser \(i.e. can receives keyboard and mouse input\). Note: only one browser can have focus per time. When you click at the screen/WebUI the focus is got automatically as well
+> Enables the focus on this browser (i.e. can receive Keyboard input). You must call it when you want to enable Keyboard Input on WebUIs (after disabling Client's Input)
+> 
+> Note: Only one browser can have focus per time.
 
 ```lua
 my_webui:SetFocus()
+```
+
+### `SetFreeze`
+
+> Freezes the WebUI Rendering to the surface (it will still execute the JS under the hood)
+
+```lua
+my_webui:SetFreeze()
 ```
 
 ### `SetVisible`
@@ -265,7 +289,7 @@ end)
 
 ### `Ready`
 
-> Triggered when this page fails to load
+> Triggered when this page is fully loaded
 
 ```lua
 my_webui:Subscribe("Ready", function()

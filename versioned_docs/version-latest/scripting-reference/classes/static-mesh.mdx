@@ -14,6 +14,8 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 
 ![](/img/docs/static-mesh.jpg)
 
+Static Meshes are like <Classes.Prop />s, but with fewer interaction options. Static Meshes are aimed to offer better performance on spawning Static "objects" in the world than Props.
+
 :::tip
 
 You can spawn this entity is both **Client** or **Server** \(if you spawn it on client, it won’t be synchronized with other players\).
@@ -62,3 +64,28 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
 
 <details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
+
+|  | **Name** | **Description** |
+| :--- | :--- | :--- |
+|  | [**`TakeDamage`**](static-mesh#takedamage) | When a StaticMesh takes Damage |
+
+
+### `TakeDamage`
+
+> When a StaticMesh takes Damage
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [StaticMesh](static-mesh) | **`self`** |  |
+| <BasicType.Number /> | **`damage`** |  |
+| <BasicType.String /> | **`bone`** | Damaged bone |
+| <Enums>DamageType</Enums> | **`type`** | Damage Type |
+| <Structs.Vector /> | **`from_direction`** | Direction of the damage relative to the damaged actor |
+| <Classes.Player /> | **`instigator`** | The player which caused the damage |
+| <BasicType.Any /> | **`causer`** | The object which caused the damage |
+
+```lua
+StaticMesh.Subscribe("TakeDamage", function(self, damage, bone, type, from_direction, instigator, causer)
+
+end)
+```

@@ -122,13 +122,13 @@ Note that your server failed to communicate with the **Master Server**, this is 
 
 ### Step 5: Forwarding Ports in the Google Cloud
 
-To be able to communicate with Master Server or for other players to be able to connect to your server, you must forward your server ports. By default nanos world use ports 7777 \(UDP and TCP\).
+To be able to communicate with Master Server or for other players to be able to connect to your server, you must forward your server ports. By default nanos world use ports 7777 (UDP and TCP) and 7778 (UDP).
 
 First go to the left menu bar and select **VPC network** and **Firewall**: 
 
 ![](/img/docs/tutorials/hosting-4free-14.jpg)
 
-In that, you will be able to create a new **Firewall Rule**, add the name you want to it, set it to **Ingress**, set source IP: **0.0.0.0/0** and select **Specified protocol and ports**: **tcp: 7777** and **udp: 7777**, and create it.  
+In that, you will be able to create a new **Firewall Rule**, add the name you want to it, set it to **Ingress**, set source IP: **0.0.0.0/0** and select **Specified protocol and ports**: **tcp: 7777** and **udp: 7777-7778**, and create it.  
 
 ![](/img/docs/tutorials/hosting-4free-15.jpg)
 

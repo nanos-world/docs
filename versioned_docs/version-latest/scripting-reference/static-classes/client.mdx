@@ -17,14 +17,21 @@ This is a **Client** only Class.
 
 :::
 
+
 ## Functions
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
 |  | [**`CallLevelBlueprintEvent`**](client#calllevelblueprintevent) | Calls a Level Blueprint custom event \(which can be added when creating levels through Unreal Engine\) |
+|  | [**`DrawDebugBox`**](client#drawdebugbox) |  |
+|  | [**`DrawDebugCoordinateSystem`**](client#drawdebugcoordinatesystem) |  |
+|  | [**`DrawDebugCrosshairs`**](client#drawdebugcrosshairs) |  |
+|  | [**`DrawDebugCylinder`**](client#drawdebugcylinder) |  |
+|  | [**`DrawDebugDirectionalArrow`**](client#drawdebugdirectionalarrow) |  |
 |  | [**`DrawDebugLine`**](client#drawdebugline) | Draws a Debug Line in the World |
 |  | [**`DrawDebugPoint`**](client#drawdebugpoint) | Draws a Debug Point in the World |
 |  | [**`DrawDebugSphere`**](client#drawdebugsphere) | Draws a Debug Line in the World |
+|  | [**`DrawDebugString`**](client#drawdebugstring) |  |
 |  | [**`InitializeDiscord`**](client#initializediscord) | Initializes the Discord Integration with your custom client\_id |
 |  | [**`SendChatMessage`**](client#sendchatmessage) | Sends a chat message which will display local only |
 |  | [**`SetChatConfiguration`**](client#setchatconfiguration) | Configure the Chat |
@@ -36,6 +43,7 @@ This is a **Client** only Class.
 |  | [**`SetMouseEnabled`**](client#setmouseenabled) | Displays/Hides Mouse Cursor |
 |  | [**`SetOutlineColor`**](client#setoutlinecolor) | Changes the Outline Color for interactable stuff |
 |  | [**`SetHighlightColor`**](client#sethighlightcolor) | Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 \(or more\) for having a glowing effect. |
+|  | [**`SetSteamRichPresence`**](client#setsteamrichpresence) | Sets Steam Rich Presence value |
 |  | [**`SetValue`**](client#setvalue) | Sets a global value in the Client, which can be accessed from anywhere \(client side\) |
 |  | [**`Spectate`**](client#spectate) | Spectates a Player. The local camera will follow the Player’s camera. |
 |  | [**`Subscribe`**](client#subscribe) | Subscribes for an Event |
@@ -49,13 +57,15 @@ This is a **Client** only Class.
 | <BasicType.Any /> | [**`GetValue`**](client#getvalue) | Gets a value given a key |
 | <BasicType.Boolean /> | [**`IsKeyDown`**](client#iskeydown) | Returns if a key is being pressed |
 | <BasicType.Boolean /> | [**`IsMouseEnabled`**](client#ismouseenabled) |  |
+| <BasicType.Boolean /> | [**`IsInputEnabled`**](client#isinputenabled) |  |
+
 
 ## Events
 
 | **Name** | **Description** |
 | :--- | :--- |
-| [**`Chat`**](client#chat) | Called when a chat text is submitted \(by LocalPlayer\) |
-| [**`ChatEntry`**](client#chatentry) | Called when a Chat Entry is received |
+| [**`Chat`**](client#chat) | Called when a chat text is submitted (by LocalPlayer) |
+| [**`ChatEntry`**](server#chatentry) | Called when a Chat Entry is received, this is also triggered when `SendChatMessage` is called |
 | [**`Console`**](client#console) | Called when a console command is submitted |
 | [**`KeyDown`**](client#keydown) | A keyboard key is being pressed |
 | [**`KeyPress`**](client#keypress) | A keyboard key has been pressed |
@@ -65,7 +75,9 @@ This is a **Client** only Class.
 | [**`MouseUp`**](client#mouseup) | A mouse button has been released |
 | [**`Tick`**](client#tick) | Called Every Frame. Do not abuse |
 
+
 ## Functions Detailed
+
 
 ### `CallLevelBlueprintEvent`
 
@@ -78,6 +90,115 @@ Client.CallLevelBlueprintEvent(event_name)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`event_name`** |  |
+
+
+### `DrawDebugBox`
+
+> DrawDebugBox
+
+```lua
+Client.DrawDebugBox(location, extent, rotation, color, life_time, thickness)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** |  |
+| <Structs.Vector /> | **`extent`** |  |
+| <Structs.Rotator /> | **`rotation`** |  |
+| <Structs.Color /> | **`color`** |  |
+| <BasicType.Number /> | **`life_time`** | `5` |
+| <BasicType.Number /> | **`thickness`** | `0` |
+
+
+### `DrawDebugCoordinateSystem`
+
+> DrawDebugCoordinateSystem
+
+```lua
+Client.DrawDebugCoordinateSystem(location, rotation, size, life_time, thickness)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** |  |
+| <Structs.Rotator /> | **`rotation`** |  |
+| <BasicType.Number /> | **`size`** | `100` |
+| <BasicType.Number /> | **`life_time`** | `5` |
+| <BasicType.Number /> | **`thickness`** | `0` |
+
+
+### `DrawDebugCrosshairs`
+
+> DrawDebugCrosshairs
+
+```lua
+Client.DrawDebugCrosshairs(location, rotation, size, color, life_time, thickness)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** |  |
+| <Structs.Rotator /> | **`rotation`** |  |
+| <BasicType.Number /> | **`size`** | `100` |
+| <Structs.Color /> | **`color`** | `Color.RED` |
+| <BasicType.Number /> | **`life_time`** | `5` |
+| <BasicType.Number /> | **`thickness`** | `0` |
+
+
+### `DrawDebugDirectionalArrow`
+
+> DrawDebugDirectionalArrow
+
+```lua
+Client.DrawDebugDirectionalArrow(start_location, end_location, arrow_size, color, life_time, thickness)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`start_location`** |  |
+| <Structs.Vector /> | **`end_location`** |  |
+| <BasicType.Number /> | **`arrow_size`** | `100` |
+| <Structs.Color /> | **`color`** | `Color.RED` |
+| <BasicType.Number /> | **`life_time`** | `5` |
+| <BasicType.Number /> | **`thickness`** | `0` |
+
+
+### `DrawDebugCylinder`
+
+> DrawDebugCylinder
+
+```lua
+Client.DrawDebugCylinder(start_location, end_location, radius, segments, color, life_time, thickness)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`start_location`** |  |
+| <Structs.Vector /> | **`end_location`** |  |
+| <BasicType.Number /> | **`radius`** |  |
+| <BasicType.Number /> | **`segments`** |  |
+| <Structs.Color /> | **`color`** | `Color.RED` |
+| <BasicType.Number /> | **`life_time`** | `5` |
+| <BasicType.Number /> | **`thickness`** | `0` |
+
+
+### `DrawDebugString`
+
+> DrawDebugString
+
+```lua
+Client.DrawDebugString(location, text, color, life_time, draw_shadow, font_scale)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** |  |
+| <BasicType.String /> | **`text`** |  |
+| <Structs.Color /> | **`color`** | `Color.RED` |
+| <BasicType.Number /> | **`life_time`** | `5` |
+| <BasicType.Boolean /> | **`draw_shadow`** | `false` |
+| <BasicType.Number /> | **`font_scale`** | `1` |
+
 
 ### `DrawDebugLine`
 
@@ -95,6 +216,7 @@ Client.DrawDebugLine(start_position, end_position, color, duration, thickness)
 | <BasicType.Number /> | **`duration`** | `5` |  |
 | <BasicType.Number /> | **`thickness`** | `0` |  |
 
+
 ### `DrawDebugPoint`
 
 > Draws a Debug Point in the World
@@ -109,6 +231,7 @@ Client.DrawDebugPoint(start_position, color, duration, size)
 | <Structs.Color /> | **`color`** | `Color.RED` |  |
 | <BasicType.Number /> | **`duration`** | `5` |  |
 | <BasicType.Number /> | **`size`** | `10` |  |
+
 
 ### `DrawDebugSphere`
 
@@ -127,6 +250,7 @@ Client.DrawDebugSphere(start_position, radius, segments, color, duration, thickn
 | <BasicType.Number /> | **`duration`** | `5` |  |
 | <BasicType.Number /> | **`thickness`** | `0` |  |
 
+
 ### `InitializeDiscord`
 
 > Initializes the Discord Integration with your custom client\_id
@@ -139,6 +263,7 @@ Client.InitializeDiscord(client_id)
 | :--- | :--- | :--- |
 | <BasicType.Number /> | **`client_id`** |  |
 
+
 ### `SendChatMessage`
 
 > Sends a chat message which will display local only
@@ -150,6 +275,7 @@ Client.SendChatMessage(message)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`message`** |  |
+
 
 ### `SetChatConfiguration`
 
@@ -169,6 +295,7 @@ Client.SetChatConfiguration(screen_location, size, anchors_min, anchors_max, ali
 | <BasicType.Boolean /> |
 | <BasicType.Boolean /> | **`show_scrollbar`** | `true` |  |
 
+
 ### `SetChatVisibility`
 
 > Set if the Chat is visible or not
@@ -181,6 +308,7 @@ Client.SetChatVisibility(is_visible)
 | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_visible`** |  |
 
+
 ### `SetCrosshairEnabled`
 
 > Enables/Disables the default Crosshair
@@ -192,6 +320,7 @@ Client.SetCrosshairEnabled(is_enabled)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_enabled`** |  |
+
 
 ### `SetHardwareCursor`
 
@@ -206,6 +335,7 @@ Client.SetHardwareCursor(cursor_shape, cursor_path, hotspot)
 | <Enums>CursorType</Enums> | **`cursor_shape`** |  |  |  |
 | <BasicType.String /> | **`cursor_path`** |  |  |  |
 | <Structs.Vector2D /> | **`hotspot`** | `Vector(0, 0)` |  | = |
+
 
 ### `SetDiscordActivity`
 
@@ -222,6 +352,7 @@ Client.SetDiscordActivity(state, details, large_image, large_text)
 | <BasicType.String /> | **`large_image`** |  |
 | <BasicType.String /> | **`large_text`** |  |
 
+
 ### `SetInputEnabled`
 
 > Toggles Local Player input
@@ -233,6 +364,7 @@ Client.SetInputEnabled(enable_input)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`enable_input`** |  |
+
 
 ### `SetMouseEnabled`
 
@@ -246,6 +378,7 @@ Client.SetMouseEnabled(is_enabled)
 | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_enabled`** |  |
 
+
 ### `SetOutlineColor`
 
 > Changes the Outline Color for interactable stuff. Multiply it by 5 \(or more\) for having a glowing effect.
@@ -258,18 +391,38 @@ Client.SetOutlineColor(outline_color)
 | :--- | :--- | :--- |
 | <Structs.Color /> | **`outline_color`** |  |
 
+
 ### `SetHighlightColor`
 
 > Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 \(or more\) for having a glowing effect.
+> 
+> `HighlightMode.Always` will always be visible, even behind walls
+> `HighlightMode.OnlyHidden` will only be visible if behind a wall
+> `HighlightMode.OnlyVisible` will only be visible if not behind a wall
 
 ```lua
-Client.SetHighlightColor(highlight_color, index)
+Client.SetHighlightColor(highlight_color, index, mode)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <Structs.Color /> | **`highlight_color`** |  |
 | <BasicType.Number /> | **`index`** |  |
+| <Enums>HighlightMode</Enums> | **`mode`** |  |
+
+
+### `SetSteamRichPresence`
+
+> Changes the Steam Rich Presence text
+
+```lua
+Client.SetSteamRichPresence(text)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`text`** |  |
+
 
 ### `SetValue`
 
@@ -285,6 +438,7 @@ Client.SetValue(key, value)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** |  | Key |
 | <BasicType.Any /> | **`value`** |  | Value |
+
 
 ### `Spectate`
 
@@ -311,6 +465,7 @@ Client.Subscribe(event_name, callback)
 | <BasicType.String /> | **`event_name`** |  |
 | <BasicType.Function /> | **`function`** |  |
 
+
 ### `Unsubscribe`
 
 > Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback
@@ -324,6 +479,7 @@ Client.Unsubscribe(event_name, callback)
 | <BasicType.String /> | **`event_name`** |  |  |
 | <BasicType.Function /> | **`function`** | `nil` |  |
 
+
 ### `Unspectate`
 
 > Leaves the Spectator's State.
@@ -331,6 +487,7 @@ Client.Unsubscribe(event_name, callback)
 ```lua
 Client.Unspectate()
 ```
+
 
 ### `Trace`
 
@@ -352,6 +509,7 @@ Client.Trace(start_location, end_location, collision_channel, trace_complex, ret
 | <BasicType.Boolean /> | **`return_physical_material`** | `false` |  |
 | <BasicType.Boolean /> | **`draw_debug`** | `false` |  |
 
+
 ### `GetLocalPlayer`
 
 > Gets the local Player
@@ -361,6 +519,7 @@ Client.Trace(start_location, end_location, collision_channel, trace_complex, ret
 ```lua
 Client.GetLocalPlayer()
 ```
+
 
 ### `GetRandomReachablePointInRadius`
 
@@ -377,6 +536,7 @@ Client.GetRandomReachablePointInRadius(origin, radius)
 | <Structs.Vector /> | **`origin`** |  |
 | <BasicType.Number /> | **`radius`** |  |
 
+
 ### `GetMousePosition`
 
 > Gets the current mouse screen location
@@ -387,6 +547,7 @@ Client.GetRandomReachablePointInRadius(origin, radius)
 Client.GetMousePosition()
 ```
 
+
 ### `GetPackages`
 
 > Gets a list of Packages folder names loaded and running in the client
@@ -396,6 +557,7 @@ Client.GetMousePosition()
 ```lua
 Client.GetPackages()
 ```
+
 
 ### `GetValue`
 
@@ -411,6 +573,7 @@ Client.GetValue(key)
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** |  |
 
+
 ### `IsKeyDown`
 
 > Gets if a key is being pressed
@@ -425,6 +588,7 @@ Client.IsKeyDown(key_name)
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`key_name`** |  |
 
+
 ### `IsMouseEnabled`
 
 > Gets if the mouse is visible
@@ -434,6 +598,18 @@ Client.IsKeyDown(key_name)
 ```lua
 Client.IsMouseEnabled()
 ```
+
+
+### `IsInputEnabled`
+
+> Gets if the input is visible
+>
+> Returns <BasicType.Boolean />
+
+```lua
+Client.IsInputEnabled()
+```
+
 
 ## Events Detailed
 
@@ -457,7 +633,7 @@ end)
 
 > Called when a Chat Entry is received
 >
-> This is also triggered when `SendChatMessage` is called \(useful for creating your own Chat interface while still use the built-in system\)
+> This is also triggered when `SendChatMessage` is called (useful for creating your own Chat interface while still use the built-in system)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |

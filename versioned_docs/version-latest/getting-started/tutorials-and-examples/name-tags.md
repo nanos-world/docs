@@ -58,7 +58,7 @@ Character.Subscribe("Possessed", function(character, player)
 end)
 
 -- Removes the Nametag from a character which was unpossessed
-Character:.Subscribe("UnPossessed", function(character, player)
+Character.Subscribe("UnPossessed", function(character, player)
     RemoveNametag(player, character)
 end)
 

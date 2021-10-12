@@ -85,7 +85,7 @@ The following functions have an `group_id` parameter, which you can group relate
 > Returns <BasicType.Number /> `item_id`
 
 ```lua
-World.AddLine(group_id, start_position, end_position, thickness, color)
+Render.AddLine(group_id, start_position, end_position, thickness, color)
 ```
 
 | Type | Parameter | Description |
@@ -103,7 +103,7 @@ World.AddLine(group_id, start_position, end_position, thickness, color)
 > Returns <BasicType.Number /> item\_id
 
 ```lua
-World.AddBox(group_id, start_position, end_position, thickness, color)
+Render.AddBox(group_id, start_position, end_position, thickness, color)
 ```
 
 | Type | Parameter | Description |
@@ -121,7 +121,7 @@ World.AddBox(group_id, start_position, end_position, thickness, color)
 > Returns <BasicType.Number /> item\_id
 
 ```lua
-World.AddTile(group_id, position, size, color)
+Render.AddTile(group_id, position, size, color)
 ```
 
 | Type | Parameter | Description |
@@ -138,7 +138,7 @@ World.AddTile(group_id, position, size, color)
 > Returns <BasicType.Number /> item\_id
 
 ```lua
-World.AddPolygon(group_id, screen_position, radius,  number_of_sides, color)
+Render.AddPolygon(group_id, screen_position, radius,  number_of_sides, color)
 ```
 
 | Type | Parameter | Description |
@@ -156,7 +156,7 @@ World.AddPolygon(group_id, screen_position, radius,  number_of_sides, color)
 > Returns <BasicType.Number /> item\_id
 
 ```lua
-World.AddText(group_id, text, position, font_type, font_size, text_color, kerning, is_centered_x, is_centered_y, enable_shadow, shadow_offset, shadow_color, enable_outline,  outline_color)
+Render.AddText(group_id, text, position, font_type, font_size, text_color, kerning, is_centered_x, is_centered_y, enable_shadow, shadow_offset, shadow_color, enable_outline,  outline_color)
 ```
 
 | Type | Parameter | Description |
@@ -183,7 +183,7 @@ World.AddText(group_id, text, position, font_type, font_size, text_color, kernin
 > Returns Vector2D
 
 ```lua
-World.Project(world_position)
+Render.Project(world_position)
 ```
 
 | Type | Parameter | Description |
@@ -197,7 +197,7 @@ World.Project(world_position)
 > Returns table in the format `{"Position", "Direction"}`
 
 ```lua
-World.Deproject(screen_position)
+Render.Deproject(screen_position)
 ```
 
 | Type | Parameter | Description |
@@ -209,7 +209,7 @@ World.Deproject(screen_position)
 > Remove all drawing of using that specific group\_id
 
 ```lua
-World.ClearItems(group_id)
+Render.ClearItems(group_id)
 ```
 
 | Type | Parameter | Description |
@@ -221,7 +221,7 @@ World.ClearItems(group_id)
 > Subscribes for an Event
 
 ```lua
-World.Subscribe(event_name, callback)
+Render.Subscribe(event_name, callback)
 ```
 
 | Type | Parameter | Description |
@@ -234,7 +234,7 @@ World.Subscribe(event_name, callback)
 > Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback
 
 ```lua
-World.Unsubscribe(event_name, callback)
+Render.Unsubscribe(event_name, callback)
 ```
 
 | Type | Parameter | Default Value | Description |
@@ -247,7 +247,7 @@ World.Unsubscribe(event_name, callback)
 > Updates a specific Canvas Text giving it's group\_id and item\_id
 
 ```lua
-World.UpdateItemText(group_id, item_id, new_text)
+Render.UpdateItemText(group_id, item_id, new_text)
 ```
 
 | Type | Parameter | Description |
@@ -258,10 +258,10 @@ World.UpdateItemText(group_id, item_id, new_text)
 
 ### `UpdateItemPosition`
 
-> Updates a specific Canvas's position giving it's group\_id and item\_id
+> Updates a specific Canvas's position giving it's group_id and item_id
 
 ```lua
-World.UpdateItemPosition(group_id, item_id, new_position)
+Render.UpdateItemPosition(group_id, item_id, new_position)
 ```
 
 | Type | Parameter | Description |
@@ -272,12 +272,12 @@ World.UpdateItemPosition(group_id, item_id, new_position)
 
 ### `GetViewportSize`
 
-> Gets the size of viewport \(how much screen space the game window occupies\)
+> Gets the size of viewport (how much screen space the game window occupies)
 >
 > Returns Vector2D
 
 ```lua
-World.GetViewportSize()
+Render.GetViewportSize()
 ```
 
 ## Events Detailed

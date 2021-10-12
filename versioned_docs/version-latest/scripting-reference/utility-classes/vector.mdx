@@ -9,9 +9,17 @@ A vector composed of components (X, Y, Z) with floating point precision.
 
 import { BasicType, Structs } from '@site/docs/components/_nanos.mdx';
 
+:::info Tip
+
+This structure is Open Sourced at [https://github.com/nanos-world/nanos-world-lua-lib](https://github.com/nanos-world/nanos-world-lua-lib). Feel free to push merge requests and suggest changes!
+
+:::
+
 :::info
 
-**Tip:** This structure is Open Sourced at [https://github.com/nanos-world/nanos-world-lua-lib](https://github.com/nanos-world/nanos-world-lua-lib). Feel free to push merge requests and suggest changes!
+Vectors are internally and automatically compressed, which reduces it's size in the network up to 90%. Some cool details:
+* Vectors parameters in Classes Methods are usually compressed with precision of 1 decimal place (with some exceptions which we need more precision).
+* Vectors passed in Remote Events are compressed with precision of 2 decimal places. If you need more precision, we recommend passing them as raw <BasicType.Number /> instead.
 
 :::
 
@@ -39,14 +47,14 @@ local new_vector = Vector(1452.5, 512, 943.1)
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
-| <BasicType.Boolean />`** | Check against another vector for equality, within specified error limits |
-| <BasicType.Number />`** | Squared distance between two points. |
-| <BasicType.Number />`** |  |
+| <BasicType.Boolean /> | **`Equals(other, tolerance)`** | Check against another vector for equality, within specified error limits |
+| <BasicType.Number /> | **`Distance(other)`** | Distance between two points |
+| <BasicType.Number /> | **`DistanceSquared(other)`** | Squared distance between two points |
+| <Structs.Vector /> | **`GetUnsafeNormal()`** | Calculates normalized version of vector without checking for zero length |
 | <Structs.Vector /> | **`GetSafeNormal()`** | Gets a normalized copy of the vector, checking it is safe to do so based on the length |
-| <BasicType.Boolean />`** | Checks whether vector is near to zero within a specified tolerance |
-| <BasicType.Boolean />`** | Checks whether all components of the vector are exactly zero |
-|  | **`Normalize()`** | Normalize this vector in-place if it is larger than a given tolerance. Leaves it unchanged if not |
-| <BasicType.Number />`** | Get the squared length of this vector |
+| <BasicType.Boolean /> | **`IsNearlyZero(tolerance)`** | Checks whether vector is near to zero within a specified tolerance |
+| <BasicType.Boolean /> | **`IsZero()`** | Checks whether all components of the vector are exactly zero |
+| <BasicType.Boolean /> | **`Normalize()`** | Normalize this vector in-place if it is larger than a given tolerance. Leaves it unchanged if not |
+| <BasicType.Number /> | **`Size()`** | Get the length (magnitude) of this vector |
+| <BasicType.Number /> | **`SizeSquared()`** | Get the squared length of this vector |
 | <Structs.Rotator /> | **`Rotation()`** | Returns the orientation corresponding to the direction in which the vector points |
-| <BasicType.Number /> of this vector |
-

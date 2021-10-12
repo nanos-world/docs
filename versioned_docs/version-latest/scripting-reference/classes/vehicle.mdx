@@ -95,7 +95,7 @@ Most of the functions below will reset the vehicle Physics State \(automatically
 
 |  | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- | :--- |
-|  |  | [**`AddStaticMeshAttached`**](vehicle#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Vehicle in a Socket with relative Location and Rotation |
+|  |  | [**`AddStaticMeshAttached`**](vehicle#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Vehicle |
 | <AuthorityType.ServerOnly /> |  | [**`Horn`**](vehicle#horn) | Starts or stops the vehicles horn |
 | <AuthorityType.ServerOnly /> |  | [**`RecreatePhysics`**](vehicle#recreatephysics) | Recreate the Vehicle Physics |
 |  |  | [**`RemoveStaticMeshAttached`**](vehicle#RemoveStaticMeshAttached) | Removes, if existing, a StaticMesh from this Vehicle given it’s custom ID |
@@ -117,10 +117,14 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 
 <details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
 
-| **Name** | **Description** |
-| :--- | :--- |
-| [**`Horn`**](vehicle#horn-1) | When Vehicle honks |
-| [**`Hit`**](vehicle#hit) | When Vehicle hits something |
+|  | **Name** | **Description** |
+| :--- | :--- | :--- |
+|  | [**`Horn`**](vehicle#horn-1) | When Vehicle honks |
+|  | [**`Hit`**](vehicle#hit) | When Vehicle hits something |
+|  | [**`CharacterEntered`**](vehicle#characterentered) | When a Character enters the Vehicle |
+|  | [**`CharacterLeft`**](vehicle#characterleft) | When Character leaves the Vehicle |
+| <AuthorityType.ServerOnly /> | [**`CharacterAttemptEnter`**](vehicle#characterattemptenter) | When a Character attempts to Enter the Vehicle |
+| <AuthorityType.ServerOnly /> | [**`CharacterAttemptLeave`**](vehicle#characterattemptleave) | When a Character attempts to Leave the Vehicle |
 
 ## Functions Detailed
 
@@ -351,6 +355,7 @@ my_vehicle:GetPassenger(seat)
 my_vehicle:GetPassengers()
 ```
 
+
 ## Events Detailed
 
 ### `Horn`
@@ -368,12 +373,13 @@ end)
 | [Vehicle](vehicle) | `self` |  |
 | <BasicType.Boolean /> | `is_honking` |  |
 
+
 ### `Hit`
 
 > Triggered when Vehicle hits something
 
 ```lua
-Vehicle.Subscribe("Hit", function(self, intensity)
+Vehicle.Subscribe("Hit", function(self, impact_force, normal_impulse, impact_location, velocity)
 
 end)
 ```
@@ -381,5 +387,77 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Vehicle](vehicle) | `self` |  |
-| <BasicType.Number /> | `intensity` |  |
+| <BasicType.Number /> | `impact_force` | The intensity of the Hit normalized by the Vehicle's weight |
+| <Structs.Vector /> | `normal_impulse` | The impulse direction it hits |
+| <Structs.Vector /> | `impact_location` | The world 3D location of the impact |
+| <Structs.Vector /> | `velocity` | The Vehicle velocity at the moment it hits |
 
+
+### `CharacterEntered`
+
+> Triggered when a Character fully enters the Vehicle
+
+```lua
+Vehicle.Subscribe("CharacterEntered", function(self, character, seat)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Vehicle](vehicle) | `self` |  |
+| <Classes.Character /> | `character` |  |
+| <BasicType.Number /> | `seat` | The seat index |
+
+
+### `CharacterLeft`
+
+> Triggered when a Character fully leaves the Vehicle
+
+```lua
+Vehicle.Subscribe("CharacterLeft", function(self, character)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Vehicle](vehicle) | `self` |  |
+| <Classes.Character /> | `character` |  |
+
+
+### <AuthorityType.ServerOnly />`CharacterAttemptEnter`
+
+> Triggered when a Character attempts to enter the Vehicle
+> 
+> Return false to prevent it
+
+```lua
+Vehicle.Subscribe("CharacterAttemptEnter", function(self, character, seat)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Vehicle](vehicle) | `self` |  |
+| <Classes.Character /> | `character` |  |
+| <BasicType.Number /> | `seat` | The seat index |
+
+
+### <AuthorityType.ServerOnly />`CharacterAttemptLeave`
+
+> Triggered when a Character attempts to enter the Vehicle
+> 
+> Return false to prevent it
+
+```lua
+Vehicle.Subscribe("CharacterAttemptLeave", function(self, character)
+
+end)
+
+```
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Vehicle](vehicle) | `self` |  |
+| <Classes.Character /> | `character` |  |

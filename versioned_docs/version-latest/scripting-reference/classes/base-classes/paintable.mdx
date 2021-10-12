@@ -7,7 +7,7 @@ tags: [base-class]
 
 Base Paintable Class
 
-import { Structs, BasicType, AuthorityType, Enums } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, Enums, Classes } from '@site/docs/components/_nanos.mdx';
 
 A **Paintable** class is a base Class in nanos world which provides customization on the Meshes Materials, exposing common functions to allow you to set custom Material Parameters and loading Textures from Disk.
 
@@ -23,18 +23,31 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 
 <BasePaintableFunctions hidden_reference={true} />
 
-### `SetDefaultMaterial`
+### `SetMaterial`
 
-> Replaces all materials of this actor with a nanos basic material with common parameters available
-
+> Replace a materials of this actor with another Material
 
 ```lua
-my_entity:SetDefaultMaterial(material_type)
+my_entity:SetMaterial(new_material, index)
 ```
 
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | material_path | The new Material to apply |
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | material_path | | The new Material to apply |
+| <BasicType.Number /> | index | `-1` | The index to apply - -1 means all indexes |
+
+### <AuthorityType.ClientOnly />`SetMaterialFromWebUI`
+
+> Replace a materials of this actor with a WebUI Material
+
+```lua
+my_entity:SetMaterialFromWebUI(webui, index)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Classes.WebUI /> | webui | | The WebUI entity to use as Material |
+| <BasicType.Number /> | index | `-1` | The index to apply - -1 means all indexes |
 
 ### `SetMaterialColorParameter`
 

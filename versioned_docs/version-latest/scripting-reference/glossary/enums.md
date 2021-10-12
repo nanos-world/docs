@@ -124,28 +124,6 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`ConstraintMotion.Limited`** | `1` |
 | **`ConstraintMotion.Locked`** | `2` |
 
-### `CrosshairType`
-
-| Label | Value |
-| :--- | :--- |
-| **`CrosshairType.None`** | `0` |
-| **`CrosshairType.Regular`** | `1` |
-| **`CrosshairType.Circle`** | `2` |
-| **`CrosshairType.Crossbow`** | `3` |
-| **`CrosshairType.Dot`** | `4` |
-| **`CrosshairType.Holo`** | `5` |
-| **`CrosshairType.Launcher`** | `6` |
-| **`CrosshairType.RegularX`** | `7` |
-| **`CrosshairType.Rocket`** | `8` |
-| **`CrosshairType.SeparatedTriangle`** | `9` |
-| **`CrosshairType.Shotgun`** | `10` |
-| **`CrosshairType.Square`** | `11` |
-| **`CrosshairType.Submachine`** | `12` |
-| **`CrosshairType.Tee`** | `13` |
-| **`CrosshairType.ThreeDots`** | `14` |
-| **`CrosshairType.Triangle`** | `15` |
-| **`CrosshairType.Vee`** | `16` |
-
 ### `DamageType`
 
 | Label | Value |
@@ -154,8 +132,9 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`DamageType.Explosion`** | `1` |
 | **`DamageType.Punch`** | `2` |
 | **`DamageType.Fall`** | `3` |
-| **`DamageType.RunOver`** | `4` |
-| **`DamageType.Unknown`** | `5` |
+| **`DamageType.RunOverProp`** | `4` |
+| **`DamageType.RunOverVehicle`** | `5` |
+| **`DamageType.Unknown`** | `6` |
 
 ### `DifferentialType`
 
@@ -200,6 +179,14 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`GaitMode.Walking`** | `1` |
 | **`GaitMode.Sprinting`** | `2` |
 
+### `HighlightMode`
+
+| Label | Value |
+| :--- | :--- |
+| **`HighlightMode.Always`** | `0` |
+| **`HighlightMode.OnlyHidden`** | `1` |
+| **`HighlightMode.OnlyVisible`** | `2` |
+
 ### `HandlingMode`
 
 | Label | Value |
@@ -212,6 +199,62 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`HandlingMode.Torch`** | `5` |
 | **`HandlingMode.Barrel`** | `6` |
 | **`HandlingMode.Box`** | `7` |
+
+### `LightProfile`
+
+| Label | Value |
+| :--- | :--- |
+| **`None`** | `0` |
+| **`Arrow_Star`** | `1` |
+| **`Arrow_Up`** | `2` |
+| **`Beam_01`** | `3` |
+| **`Beam_02`** | `4` |
+| **`Beam_03`** | `5` |
+| **`Beam_04`** | `6` |
+| **`Beam_05`** | `7` |
+| **`Beam_06`** | `8` |
+| **`Beam_07`** | `9` |
+| **`Beam_08`** | `10` |
+| **`Beam_LED_01`** | `11` |
+| **`Beam_LED_02`** | `12` |
+| **`Beam_LED_03`** | `13` |
+| **`Beam_LED_04`** | `14` |
+| **`Beam_LED_05`** | `15` |
+| **`Beam_LED_06`** | `16` |
+| **`Beam_LED_07`** | `17` |
+| **`Bow`** | `18` |
+| **`Capped_01`** | `19` |
+| **`Capped_02`** | `20` |
+| **`Shattered_01`** | `21` |
+| **`Shattered_02`** | `22` |
+| **`Shattered_03`** | `23` |
+| **`Shattered_04`** | `24` |
+| **`Shattered_05`** | `25` |
+| **`SpotLight_01`** | `26` |
+| **`SpotLight_02`** | `27` |
+| **`SpotLight_03`** | `28` |
+| **`SpotLight_04`** | `29` |
+| **`Spreadout_01`** | `30` |
+| **`Spreadout_02`** | `31` |
+| **`Spreadout_03`** | `32` |
+| **`Spreadout_04`** | `33` |
+| **`Star_Bow`** | `34` |
+| **`Star_Burst_01`** | `35` |
+| **`Star_Burst_02`** | `36` |
+| **`Star_Burst_03`** | `37` |
+| **`Star_Burst_04`** | `38` |
+| **`Star_Burst_05`** | `39` |
+| **`Star_Burst_06`** | `40` |
+| **`Star_Burst_07`** | `41` |
+| **`Star_Burst_08`** | `42` |
+| **`Star_X_01`** | `43` |
+| **`Star_X_02`** | `44` |
+| **`Wall_Boomerang`** | `45` |
+| **`Wall_Inverted_V`** | `46` |
+| **`Wall_Star_T`** | `47` |
+| **`Wing_6`** | `48` |
+| **`Wing_V_01`** | `49` |
+| **`Wing_V_02`** | `50` |
 
 ### `LogType`
 
@@ -234,21 +277,20 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`LightType.Spot`** | `1` |
 | **`LightType.React`** | `2` |
 
-### `MaterialType`
-
-| Label | Value |
-| :--- | :--- |
-| **`MaterialType.None`** | `0` |
-| **`MaterialType.Masked`** | `1` |
-| **`MaterialType.Translucent`** | `2` |
-| **`MaterialType.TranslucentDepth`** | `3` |
-
 ### `SoundType`
 
 | Label | Value |
 | :--- | :--- |
 | **`SoundType.SFX`** | `0` |
 | **`SoundType.Music`** | `1` |
+
+### `SoundLoopMode`
+
+| Label | Value |
+| :--- | :--- |
+| **`SoundLoopMode.Default`** | `0` |
+| **`SoundLoopMode.Forever`** | `1` |
+| **`SoundLoopMode.Never`** | `2` |
 
 ### `StanceMode`
 

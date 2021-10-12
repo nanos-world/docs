@@ -5,7 +5,7 @@ tags: [class]
 
 # 🔫 Weapon
 
-import { Structs, BasicType, AuthorityType, ReferenceLink, Enums } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, Classes, ReferenceLink, Enums } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/weapon.jpg)
 
@@ -27,8 +27,10 @@ local new_weapon = Weapon(Vector(-900, 185, 215), Rotator(0, 90, 90), "nanos-wor
 new_weapon:SetAmmoSettings(30, 1000)
 new_weapon:SetDamage(30)
 new_weapon:SetSpread(30)
+new_weapon:SetRecoil(0.25)
 new_weapon:SetBulletSettings(1, 20000, 20000, Color(100, 58, 0))
 new_weapon:SetCadence(0.1)
+new_weapon:SetWallbangSettings(50, 0.75)
 
 -- Configures how the Character Grabs and Aims the Weapon
 new_weapon:SetHandlingMode(HandlingMode.DoubleHandedWeapon)
@@ -50,14 +52,15 @@ new_weapon:SetSoundAim("nanos-world::A_Rattle")
 new_weapon:SetSoundFire("nanos-world::A_AK47_Shot")
 
 -- Configures Weapon Animations
+new_weapon:SetAnimationFire("nanos-world::A_AK47_Fire")
 new_weapon:SetAnimationCharacterFire("nanos-world::AM_Mannequin_Sight_Fire")
 new_weapon:SetAnimationReload("nanos-world::AM_Mannequin_Reload_Rifle")
 
 -- Configures the Mesh to drop when reloading
 new_weapon:SetMagazineMesh("nanos-world::SM_AK47_Mag_Empty")
 
--- Configures the Crosshair Type
-new_weapon:SetCrosshairSetting(CrosshairType.Regular)
+-- Configures the Crosshair Material
+new_weapon:SetCrosshairMaterial("nanos-world::MI_Crosshair_Regular")
 ```
 
 
@@ -89,10 +92,6 @@ my_character:PickUp(my_ak47)
 | <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
 | <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
 
-## Available [Crosshairs Types](./scripting-reference/glossary/enums.md#crosshairtype)
-
-![All available Crosshairs](/img/docs/crosshairs_dark.jpg)
-
 ## Functions
 
 import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
@@ -108,13 +107,13 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetAmmoBag`**](weapon#setammobag) | Sets this Weapon’s Ammo in the Bag |
 | <AuthorityType.ServerOnly /> |  | [**`SetAmmoClip`**](weapon#setammoclip) | Sets this Weapon’s Ammo in the Clip |
 | <AuthorityType.ServerOnly /> |  | [**`SetAmmoSettings`**](weapon#setammosettings) | Auxiliary for setting and configuring ammo |
+| <AuthorityType.ServerOnly /> |  | [**`SetAnimationFire`**](weapon#setanimationfire) | Animation played by the Weapon when Firing |
 | <AuthorityType.ServerOnly /> |  | [**`SetAnimationCharacterFire`**](weapon#setanimationcharacterfire) | Animation played by the Character when Firing |
 | <AuthorityType.ServerOnly /> |  | [**`SetAnimationReload`**](weapon#setanimationreload) | Animation played by the Character when Reloading |
 | <AuthorityType.ServerOnly /> |  | [**`SetBulletColor`**](weapon#setbulletcolor) | Set the Bullet Color |
 | <AuthorityType.ServerOnly /> |  | [**`SetBulletSettings`**](weapon#setbulletsettings) | Auxiliary for setting and configuring the Bullet |
 | <AuthorityType.ServerOnly /> |  | [**`SetCadence`**](weapon#setcadence) | Speed of shots |
 | <AuthorityType.ServerOnly /> |  | [**`SetClipCapacity`**](weapon#setclipcapacity) | Capacity of the Weapon’s Clip |
-| <AuthorityType.ServerOnly /> |  | [**`SetCrosshairSetting`**](weapon#setcrosshairsetting) | Sets the Crosshair Type |
 | <AuthorityType.ServerOnly /> |  | [**`SetDamage`**](weapon#setdamage) | Base Weapon’s Damage |
 | <AuthorityType.ServerOnly /> |  | [**`SetHandlingMode`**](weapon#sethandlingmode) | Sets how the Character grabs this Weapon |
 | <AuthorityType.ServerOnly /> |  | [**`SetLeftHandTransform`**](weapon#setlefthandtransform) | Left Hand Offset |
@@ -131,23 +130,49 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundZooming`**](weapon#setsoundzooming) | Sound when Zooming |
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundAim`**](weapon#setsoundaim) | Sound when Aiming |
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundFire`**](weapon#setsoundfire) | Sound when Shooting |
-| <AuthorityType.ServerOnly /> |  | [**`SetSpread`**](weapon#setspread) | Base Weapon’s Spread \(the higher the less precision - recommended value: 20\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetSoundFireLastBullets`**](weapon#setsoundfirelastbullets) | Sound when Shooting last bullets |
+| <AuthorityType.ServerOnly /> |  | [**`SetSpread`**](weapon#setspread) | Base Weapon’s Spread (the higher the less precision) |
+| <AuthorityType.ServerOnly /> |  | [**`SetRecoil`**](weapon#setrecoil) | Base Weapon’s Recoil Multiplier |
 | <AuthorityType.ServerOnly /> |  | [**`SetUsageSettings`**](weapon#setusagesettings) | Sets if the Weapon can hold to keep firing and if it needs to release to fire |
+| <AuthorityType.ServerOnly /> |  | [**`SetWallbangSettings`**](weapon#setwallbangsettings) | Sets how the bullets will pass through walls |
 |  | <BasicType.Number /> | [**`GetAmmoBag`**](weapon#getammobag) | Gets this Weapon’s Ammo Bag |
 |  | <BasicType.Number /> | [**`GetAmmoClip`**](weapon#getammoclip) | Gets this Weapon’s Ammo Clip |
+|  | <BasicType.Number /> | [**`GetAmmoToReload`**](weapon#getammotoreload) |  |
+|  | <BasicType.String /> | [**`GetAnimationCharacterFire`**](weapon#getanimationcharacterfire) |  |
+|  | <BasicType.String /> | [**`GetAnimationFire`**](weapon#getanimationfire) |  |
 |  | <Structs.Color /> | [**`GetBulletColor`**](weapon#getbulletcolor) |  |
+|  | <BasicType.Number /> | [**`GetBulletCount`**](weapon#getbulletcount) |  |
 |  | <BasicType.Number /> | [**`GetCadence`**](weapon#getcadence) |  |
+|  | <BasicType.Boolean /> | [**`GetCanHoldUse`**](weapon#getcanholduse) |  |
 |  | <BasicType.Number /> | [**`GetClipCapacity`**](weapon#getclipcapacity) |  |
 |  | <BasicType.Number /> | [**`GetDamage`**](weapon#getdamage) |  |
+|  | <Enums>HandlingMode</Enums> | [**`GetHandlingMode`**](weapon#gethandlingmode) |  |
+|  | <BasicType.Boolean /> | [**`GetHoldReleaseUse`**](weapon#getholdreleaseuse) |  |
+|  | <BasicType.Boolean /> | [**`GetLeftHandLocation`**](weapon#getlefthandlocation) |  |
+|  | <BasicType.String /> | [**`GetMagazineMesh`**](weapon#getmagazinemesh) |  |
+|  | <BasicType.String /> | [**`GetParticlesBulletTrail`**](weapon#getparticlesbullettrail) |  |
+|  | <BasicType.String /> | [**`GetParticlesBarrel`**](weapon#getparticlesbarrel) |  |
+|  | <BasicType.String /> | [**`GetParticlesShells`**](weapon#getparticlesshells) |  |
 |  | <Structs.Vector /> | [**`GetRightHandOffset`**](weapon#getrighthandoffset) |  |
+|  | <BasicType.Number /> | [**`GetSightLocation`**](weapon#getsightlocation) |  |
+|  | <BasicType.Number /> | [**`GetSightRotation`**](weapon#getsightrotation) |  |
 |  | <BasicType.Number /> | [**`GetSightFOVMultiplier`**](weapon#getsightfovmultiplier) |  |
+|  | <BasicType.String /> | [**`GetSoundDry`**](weapon#getsounddry) |  |
+|  | <BasicType.String /> | [**`GetSoundLoad`**](weapon#getsoundload) |  |
+|  | <BasicType.String /> | [**`GetSoundUnload`**](weapon#getsoundunload) |  |
+|  | <BasicType.String /> | [**`GetSoundZooming`**](weapon#getsoundzooming) |  |
+|  | <BasicType.String /> | [**`GetSoundAim`**](weapon#getsoundaim) |  |
+|  | <BasicType.String /> | [**`GetSoundFire`**](weapon#getsoundfire) |  |
 |  | <BasicType.Number /> | [**`GetSpread`**](weapon#getspread) |  |
+|  | <BasicType.Number /> | [**`GetRecoil`**](weapon#getrecoil) |  |
 
 ## Events
 
 import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
+import BasePickableEvents from '@site/docs/scripting-reference/classes/base-classes/_base-pickable-events.mdx';
 
 <details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
+<details><summary>Inherited Pickable Events</summary><BasePickableEvents /></details>
 
 | **Name** | **Description** |
 | :--- | :--- |
@@ -195,6 +220,18 @@ my_weapon:SetAmmoSettings(ammo_clip, ammo_bag, ammo_to_reload, clip_capacity)
 | <BasicType.Number /> | **`ammo_to_reload`** | `ammo_clip` | The amount of ammo which will be effectively reloaded in the clip when reloading |
 | <BasicType.Number /> | **`clip_capacity`** | `ammo_clip` | How much ammo the clip can hold without needing to reload |
 
+### <AuthorityType.ServerOnly />`SetAnimationFire`
+
+> Animation played by the Weapon when Firing
+
+```lua
+my_weapon:SetAnimationFire(animation_asset_path)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`animation_asset_path`** |  |  |
+
 ### <AuthorityType.ServerOnly />`SetAnimationCharacterFire`
 
 > Animation played by the Character when Firing
@@ -207,6 +244,7 @@ my_weapon:SetAnimationCharacterFire(animation_asset_path)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`animation_asset_path`** |  |  |
 
+
 ### <AuthorityType.ServerOnly />`SetAnimationReload`
 
 > Animation played by the Character when Reloading
@@ -214,12 +252,14 @@ my_weapon:SetAnimationCharacterFire(animation_asset_path)
 > Currently this animation must be one of the default ones: `AM_Mannequin_Reload_Rifle`, `AM_Mannequin_Reload_Pistol` or `AM_Mannequin_Reload_Shotgun`, as they have internal triggers to finish the reload
 
 ```lua
-my_weapon:SetAnimationReload(animation_asset_path)
+my_weapon:SetAnimationReload(animation_asset_path, play_rate)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`animation_asset_path`** |  |  |
+| <BasicType.Number /> | **`play_rate`** | `1` |  |
+
 
 ### <AuthorityType.ServerOnly />`SetBulletColor`
 
@@ -273,18 +313,6 @@ my_weapon:SetClipCapacity(clip)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`clip`** |  |  |
-
-### <AuthorityType.ServerOnly />`SetCrosshairSetting`
-
-> Sets the Crosshair Type
-
-```lua
-my_weapon:SetCrosshairSetting(type)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| CrosshairType | **`type`** |  |  |
 
 ### <AuthorityType.ServerOnly />`SetDamage`
 
@@ -482,17 +510,44 @@ my_weapon:SetSoundFire(sound_asset_path)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`sound_asset_path`** |  |  |
 
-### <AuthorityType.ServerOnly />`SetSpread`
 
-> Base Weapon's Spread \(the higher the less precision - recommended value: 20\)
+### <AuthorityType.ServerOnly />`SetSoundFireLastBullets`
+
+> Sound when firing with only having X remaining bullets in the magazine, useful for last shot 'ping' or sound when low on bullets
 
 ```lua
-my_weapon:SetSpread(damage)
+my_weapon:SetSoundFireLastBullets(sound_asset_path, remaining_bullets_count)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`damage`** |  |  |
+| <BasicType.String /> | **`sound_asset_path`** |  |  |
+| <BasicType.Number /> | **`remaining_bullets_count`** | `1` | The amount of remaining bullet to start playing this sound |
+
+
+### <AuthorityType.ServerOnly />`SetSpread`
+
+> Base Weapon's Spread (the higher the less precision - recommended value: 20)
+
+```lua
+my_weapon:SetSpread(spread)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`spread`** |  |  |
+
+### <AuthorityType.ServerOnly />`SetRecoil`
+
+> Base Weapon's Recoil - 0 means no Recoil, default is 1
+
+```lua
+my_weapon:SetRecoil(damage)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`recoil`** |  |  |
 
 ### <AuthorityType.ServerOnly />`SetUsageSettings`
 
@@ -506,6 +561,19 @@ my_weapon:SetUsageSettings(can_hold_use, hold_release_use)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`can_hold_use`** |  |  |
 | <BasicType.Boolean /> | **`hold_release_use`** |  |  |
+
+### <AuthorityType.ServerOnly />`SetWallbangSettings`
+
+> Sets how the bullet will pass through walls
+
+```lua
+my_weapon:SetWallbangSettings(max_distance, damage_multiplier)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`max_distance`** |  | Max distance to pass through another wall |
+| <BasicType.Number /> | **`damage_multiplier`** |  | Damage given if wallbangged |
 
 ### `GetAmmoBag`
 
@@ -525,6 +593,142 @@ my_weapon:GetAmmoBag()
 
 ```lua
 my_weapon:GetAmmoClip()
+```
+
+### `GetAmmoToReload`
+
+> Returns <BasicType.Number />
+
+```lua
+my_weapon:GetAmmoToReload()
+```
+
+### `GetHandlingMode`
+
+> Returns <Enums>HandlingMode</Enums>
+
+```lua
+my_weapon:GetHandlingMode()
+```
+
+### `GetAnimationCharacterFire`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetAnimationCharacterFire()
+```
+
+### `GetAnimationFire`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetAnimationFire()
+```
+
+### `GetMagazineMesh`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetMagazineMesh()
+```
+
+### `GetParticlesBulletTrail`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetParticlesBulletTrail()
+```
+
+### `GetParticlesBarrel`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetParticlesBarrel()
+```
+
+### `GetParticlesShells`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetParticlesShells()
+```
+
+### `GetSoundDry`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetSoundDry()
+```
+
+### `GetSoundLoad`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetSoundLoad()
+```
+
+### `GetSoundUnload`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetSoundUnload()
+```
+
+### `GetSoundZooming`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetSoundZooming()
+```
+
+### `GetSoundAim`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetSoundAim()
+```
+
+### `GetSoundFire`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetSoundFire()
+```
+
+### `GetCanHoldUse`
+
+> Returns <BasicType.String />
+
+```lua
+my_weapon:GetCanHoldUse()
+```
+
+### `GetHoldReleaseUse`
+
+> Returns <BasicType.Boolean />
+
+```lua
+my_weapon:GetHoldReleaseUse()
+```
+
+### `GetBulletCount`
+
+> Returns <BasicType.Boolean />
+
+```lua
+my_weapon:GetBulletCount()
 ```
 
 ### `GetBulletColor`
@@ -567,6 +771,38 @@ my_weapon:GetDamage()
 my_weapon:GetRightHandOffset()
 ```
 
+### `GetLeftHandLocation`
+
+> Returns <Structs.Vector />
+
+```lua
+my_weapon:GetLeftHandLocation()
+```
+
+### `GetLeftHandRotation`
+
+> Returns <Structs.Rotator />
+
+```lua
+my_weapon:GetLeftHandRotation()
+```
+
+### `GetSightLocation`
+
+> Returns <Structs.Vector />
+
+```lua
+my_weapon:GetSightLocation()
+```
+
+### `GetSightRotation`
+
+> Returns <Structs.Rotator />
+
+```lua
+my_weapon:GetSightRotation()
+```
+
 ### `GetSightFOVMultiplier`
 
 > Returns <BasicType.Number />
@@ -583,11 +819,19 @@ my_weapon:GetSightFOVMultiplier()
 my_weapon:GetSpread()
 ```
 
+### `GetRecoil`
+
+> Returns <BasicType.Number />
+
+```lua
+my_weapon:GetRecoil()
+```
+
 ## Events Detailed
 
 ### `Fire`
 
-> Triggered when Weapon fired
+> Triggered when Weapon fires (this will be triggered for each shot)
 
 ```lua
 Weapon.Subscribe("Fire", function(self, shooter)
@@ -598,7 +842,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Weapon](weapon) | `self` |  |
-| Character | `shooter` |  |
+| <Classes.Character /> | `shooter` |  |
 
 ### `Reload`
 
@@ -613,6 +857,6 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Weapon](weapon) | `self` |  |
-| Character | `character` |  |
+| <Classes.Character /> | `character` |  |
 | <BasicType.Number /> | **`ammo_to_reload`** |  |
 

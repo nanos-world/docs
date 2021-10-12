@@ -50,7 +50,9 @@ end)
 |  |  | [**`SetValue`**](player#setvalue) | Sets a value in this entity, which can be accessed by any package |
 | <AuthorityType.AuthorityOnly /> |  | [**`SetVOIPChannel`**](player#setvoipchannel) | Sets the VOIP Channel of this Player |
 |  |  | [**`SetVOIPSetting`**](player#setvoipsetting) | Sets the VOIP Settings of this Player |
+|  |  | [**`SetVOIPVolume`**](player#setvoipvolume) | Sets the VOIP Volume of this Player |
 | <AuthorityType.AuthorityOnly /> |  | [**`UnPossess`**](player#unpossess) | Release the `Player` from the Character |
+|  | <BasicType.String /> | [**`GetSteamID`**](player#getsteamid) | Gets the Steam account ID |
 |  | <BasicType.String /> | [**`GetAccountID`**](player#getaccountid) | Gets the nanos account ID |
 |  | <BasicType.String /> | [**`GetAccountName`**](player#getaccountname) | Gets the nanos account name |
 | <AuthorityType.ClientOnly /> | <Structs.Vector /> | [**`GetCameraLocation`**](player#getcameralocation) | Gets the Player’s Camera Location |
@@ -133,27 +135,31 @@ my_player:Possess(new_character)
 
 ### `SetCameraLocation`
 
-> Sets the Player's Camera Location \(only works if not possessing any Character\)
+> Sets the Player's Camera Location (only works if not possessing any Character)
 
 ```lua
-my_player:SetCameraLocation(location)
+my_player:SetCameraLocation(location, time, exp)
 ```
 
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** |  |
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** |  |  |
+| <BasicType.Number /> | **`time`** | `0` | Time to interp from current camera location to target location |
+| <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
 ### `SetCameraRotation`
 
 > Sets the Player's Camera Rotation
 
 ```lua
-my_player:SetCameraRotation(rotation)
+my_player:SetCameraRotation(rotation, time, exp)
 ```
 
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <Structs.Rotator /> | **`rotation`** |  |
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Rotator /> | **`rotation`** |  |  |
+| <BasicType.Number /> | **`time`** | `0` | Time to interp from current camera rotation to target rotation |
+| <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
 ### <AuthorityType.AuthorityOnly /> `SetName`
 
@@ -207,12 +213,34 @@ my_player:SetVOIPSetting(setting)
 | :--- | :--- | :--- |
 | <Enums>VOIPSetting</Enums> | **`setting`** |  |
 
+### `SetVOIPVolume`
+
+> Sets the VOIP Volume of this Player
+
+```lua
+my_player:SetVOIPSetting(volume)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`volume`** |  |
+
 ### <AuthorityType.AuthorityOnly /> `UnPossess`
 
 > Release the `Player` from the :ref:`Character`
 
 ```lua
 my_player:UnPossess()
+```
+
+### `GetSteamID`
+
+> Gets the Steam account ID
+>
+> Returns <BasicType.String />
+
+```lua
+my_player:GetSteamID()
 ```
 
 ### `GetAccountID`

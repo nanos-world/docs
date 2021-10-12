@@ -56,6 +56,10 @@ Translucent Materials are the heavier ones to render, and cause a lot of overdra
 
 Is the same as Translucent but will be always visible in the screen, even behind walls or other objects.
 
+### **`M_NanosDecal`**
+
+Translucent Material which renders objects as Deferred Decals to be used in Decals.
+
 ### **`M_NanosWireframe`**
 
 Material which renders objects as Wireframe. Supported parameter: **Tint** and **Emissive**.
@@ -73,6 +77,7 @@ Material which renders objects as Wireframe. Supported parameter: **Tint** and *
 | **Masked** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `true*` |
 | **Translucent** | `true` | `true` | `false` | `true` | `false` | `false` | `false` | `true` |
 | **Translucent Depth** | `true` | `true` | `false` | `true` | `false` | `false` | `false` | `true` |
+| **Decal** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `true` |
 | **Wireframe** | `true` | `false` | `false` | `true` | `false` | `false` | `false` | `false` |
 
 > *Masked Material's Opacity supports only Opacity Mask: `0` or `1`

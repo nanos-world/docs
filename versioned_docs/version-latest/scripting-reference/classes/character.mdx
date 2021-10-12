@@ -90,46 +90,50 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 
 |  | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- | :--- |
-| <AuthorityType.ServerOnly /> | <BasicType.Number /> | [**`ApplyDamage`**](character#applydamage) | Do damage in a character, will trigger all related events and apply modified damage based on bone. Also will apply impulse if it’s a heavy explosion. |
-|  |  | [**`AddSkeletalMeshAttached`**](character#addskeletalmeshattached) | Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further |
-|  |  | [**`AddStaticMeshAttached`**](character#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further |
-| <AuthorityType.ServerOnly /> |  | [**`Drop`**](character#drop) | Drops any Pickable the Character is holding |
-| <AuthorityType.ServerOnly /> |  | [**`EnterVehicle`**](character#entervehicle) | Enters the Vehicle at Seat \(0 - Driver\) |
-| <AuthorityType.ServerOnly /> |  | [**`GrabProp`**](character#grabprop) | Gives a Prop to the Character |
+| <AuthorityType.ServerOnly /> | <BasicType.Number /> | [**`ApplyDamage`**](character#applydamage) | Do damage in a character |
+|  |  | [**`AddSkeletalMeshAttached`**](character#addskeletalmeshattached) | Spawns and Attaches a SkeletalMesh into this Character |
+|  |  | [**`AddStaticMeshAttached`**](character#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Character |
+| <AuthorityType.ServerOnly /> |  | [**`Drop`**](character#drop) | Drops any <Classes.Pickable /> the Character is holding |
+| <AuthorityType.ServerOnly /> |  | [**`EnterVehicle`**](character#entervehicle) | Enters the Vehicle at Seat (0 - Driver) |
+| <AuthorityType.ServerOnly /> |  | [**`GrabProp`**](character#grabprop) | Gives a <Classes.Prop /> to the Character |
+|  |  | [**`HideBone`**](character#hidebone) | Hides a bone of this Character |
+|  |  | [**`UnHideBone`**](character#unhidebone) | UnHides a bone of this Character |
+|  |  | [**`IsBoneHidden`**](character#isbonehidden) | Gets if a bone is hidden |
 | <AuthorityType.ServerOnly /> |  | [**`Jump`**](character#jump) | Triggers this Character to jump |
 | <AuthorityType.ServerOnly /> |  | [**`LeaveVehicle`**](character#leavevehicle) | Leaves the current Vehicle |
 | <AuthorityType.ServerOnly /> |  | [**`LookAt`**](character#lookat) | AI: Tries to make this Character to look at Location |
 | <AuthorityType.ServerOnly /> |  | [**`MoveTo`**](character#moveto) | AI: Makes this Character to walk to the Location |
-| <AuthorityType.ServerOnly /> |  | [**`PickUp`**](character#pickup) | Gives a Item/Grenade/Weapon \(Pickable\) to the Character |
+| <AuthorityType.ServerOnly /> |  | [**`PickUp`**](character#pickup) | Gives a Item/Grenade/Weapon (Pickable) to the Character |
 | <AuthorityType.ServerOnly /> |  | [**`PlayAnimation`**](character#playanimation) | Plays an Animation Montage on this character |
 |  |  | [**`RemoveSkeletalMeshAttached`**](character#removeskeletalmeshattached) | Removes, if existing, a SkeletalMesh from this Character given it’s custom ID |
 |  |  | [**`RemoveStaticMeshAttached`**](character#removestaticmeshattached) | Removes, if existing, a StaticMesh from this Character given it’s custom ID |
 | <AuthorityType.ServerOnly /> |  | [**`Respawn`**](character#respawn) | Respawns the Character, fullying it’s Health and moving it to it’s Initial Location |
 | <AuthorityType.ServerOnly /> |  | [**`SetAccelerationSettings`**](character#setaccelerationsettings) | Sets the Movement Max Acceleration of this Character. |
 | <AuthorityType.ServerOnly /> |  | [**`SetBrakingSettings`**](character#setbrakingsettings) | Sets the Movement Braking Settings of this Character. |
-| <AuthorityType.ServerOnly /> |  | [**`SetCameraMode`**](character#setcameramode) | Sets the Camera Mode \(0 - FPS and TPS, 1 = FPS only, 2 = TPS only\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetCameraMode`**](character#setcameramode) | Sets the Camera Mode |
 | <AuthorityType.ClientOnly /> |  | [**`SetCameraOffset`**](character#setcameraoffset) | Sets the Camera Offset \(only affects TPS\) |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanCrouch`**](character#setcancrouch) | Sets if this Character is allowed to Crouch and to Prone |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanAim`**](character#setcanaim) | Sets if this Character is allowed to Aim |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanSprint`**](character#setcansprint) | Sets if this Character is allowed to Sprint |
-| <AuthorityType.ServerOnly /> |  | [**`SetCanGrabProps`**](character#setcangrabprops) | Sets if this Character is allowed to Grab any Prop |
-| <AuthorityType.ServerOnly /> |  | [**`SetCanPickupPickables`**](character#setcanpickuppickables) | Sets if this Character is allowed to Pick up any Pickable \(Weapon, Grenade, Item…\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetCanGrabProps`**](character#setcangrabprops) | Sets if this Character is allowed to Grab any <Classes.Prop /> |
+| <AuthorityType.ServerOnly /> |  | [**`SetCanPickupPickables`**](character#setcanpickuppickables) | Sets if this Character is allowed to Pick up any <Classes.Pickable /> (Weapon, Grenade, Item…) |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanPunch`**](character#setcanpunch) | Sets if this Character is allowed to Punch \(Melee\) |
-| <AuthorityType.ServerOnly /> |  | [**`SetCapsuleSize`**](character#setcapsulesize) | Sets this Character’s Capsule size \(will affect Camera location and Character’s collision\) - default is \(42, 96\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetCapsuleSize`**](character#setcapsulesize) | Sets this Character’s Capsule size |
+| <AuthorityType.ServerOnly /> |  | [**`SetDamageMultiplier`**](character#setdamagemultiplier) | Changes how much damage this character takes |
 | <AuthorityType.ServerOnly /> |  | [**`SetDeathSound`**](character#setdeathsound) | Changes the Death sound when Character dies |
-| <AuthorityType.ServerOnly /> |  | [**`SetFallDamageTaken`**](character#SetFallDamageTaken) | Set the Fall Damage multiplier taken when falling from High places \(default: 10\). Setting to 0 will make the Character to do not take damage or enter ragdoll mode |
+| <AuthorityType.ServerOnly /> |  | [**`SetFallDamageTaken`**](character#SetFallDamageTaken) | Set the Fall Damage multiplier taken when falling from High places |
 | <AuthorityType.ServerOnly /> |  | [**`SetFlyingMode`**](character#setflyingmode) | Sets the Flying Mode |
 | <AuthorityType.ServerOnly /> |  | [**`SetGaitMode`**](character#setgaitmode) | Sets the Gait Mode |
-| <AuthorityType.ServerOnly /> |  | [**`SetGravityScale`**](character#setgravityscale) | Changes the Gravity Scale of this Character \(can be negative\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetGravityScale`**](character#setgravityscale) | Changes the Gravity Scale of this Character |
 | <AuthorityType.ServerOnly /> |  | [**`SetHealth`**](character#sethealth) | Sets the Health of this Character. If the character is dead, respawns it with full health |
-| <AuthorityType.ServerOnly /> |  | [**`SetImpactDamageTaken`**](character#setimpactdamagetaken) | Set the Impact Damage taken when being roamed by things \(default: 10\). Setting to 0 will make the Character to do not take damage or enter ragdoll mode |
+| <AuthorityType.ServerOnly /> |  | [**`SetImpactDamageTaken`**](character#setimpactdamagetaken) | Set the Impact Damage taken when being roamed by things |
 | <AuthorityType.ServerOnly /> |  | [**`SetInvulnerable`**](character#setinvulnerable) | Sets if the Character can receive any damage |
 | <AuthorityType.ServerOnly /> |  | [**`SetMaxHealth`**](character#setmaxhealth) | Sets the MaxHealth of this Character |
 | <AuthorityType.ServerOnly /> |  | [**`SetMesh`**](character#setmesh) | Changes the Character Mesh on the fly |
 |  |  | [**`SetMorphTarget`**](character#setmorphtarget) |  |
 | <AuthorityType.ServerOnly /> |  | [**`SetMovementEnabled`**](character#setmovementenabled) | Enables/Disables Character’s Movement |
 | <AuthorityType.ServerOnly /> |  | [**`SetPainSound`**](character#setpainsound) | Changes the Pain sound when Character takes damage |
-| <AuthorityType.ServerOnly /> |  | [**`SetPunchDamage`**](character#setpunchdamage) | Set the Punch Damage this Character will apply on others \(default is 15\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetPunchDamage`**](character#setpunchdamage) | Set the Punch Damage this Character will apply on others |
 | <AuthorityType.ServerOnly /> |  | [**`SetRagdollMode`**](character#setragdollmode) | Sets Character Ragdoll Mode |
 | <AuthorityType.ServerOnly /> |  | [**`SetSpeedMultiplier`**](character#setspeedmultiplier) | 1 = normal |
 | <AuthorityType.ServerOnly /> |  | [**`SetStanceMode`**](character#setstancemode) | **Stance Modes**: _None, Standing, Crouching, Proning_ |
@@ -137,25 +141,38 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetViewMode`**](character#setviewmode) | **View Modes**: _FPS, TPS1, TPS2, TPS3_ |
 | <AuthorityType.ServerOnly /> |  | [**`SetWeaponAimMode`**](character#setweaponaimmode) | **Aim Modes**: _None, ADS, ZoomedZoom, Zoomed, ZoomedFar_ |
 | <AuthorityType.ServerOnly /> |  | [**`StopAnimation`**](character#stopanimation) | Stops an Animation Montage on this character |
-| <AuthorityType.ServerOnly /> |  | [**`UnGrabProp`**](character#ungrabprop) | UnGrabs/Drops the Prop the Character is holding |
-|  | <BasicType.Boolean /> | Gets Character Ragdoll Mode |
-|  | <BasicType.Boolean /> | Gets if the Character can receive damage |
-|  | <BasicType.Boolean /> | Gets Character Movement Enabled |
+| <AuthorityType.ServerOnly /> |  | [**`UnGrabProp`**](character#ungrabprop) | UnGrabs/Drops the <Classes.Prop /> the Character is holding |
+|  | <BasicType.Boolean /> | [**`IsInRagdollMode`**](character#isinragdollmode) | Gets Character Ragdoll Mode |
+|  | <BasicType.Boolean /> | [**`IsInvulnerable`**](character#isinvulnerable) | Gets if the Character can receive damage |
+|  | <BasicType.Boolean /> | [**`IsMovementEnabled`**](character#ismovementenabled) | Gets Character Movement Enabled |
+|  | <Enums>CameraMode</Enums> | [**`GetCameraMode`**](character#getcameramode) |  |
+|  | <BasicType.Boolean /> | [**`GetCanDrop`**](character#getcandrop) |  |
+|  | <BasicType.Boolean /> | [**`GetCanPunch`**](character#getcanpunch) |  |
+|  | <BasicType.Boolean /> | [**`GetCanAim`**](character#getcanaim) |  |
+|  | <BasicType.Boolean /> | [**`GetCanCrouch`**](character#getcancrouch) |  |
+|  | <BasicType.Boolean /> | [**`GetCanSprint`**](character#getcansprint) |  |
+|  | <BasicType.Boolean /> | [**`GetCanGrabProps`**](character#getcangrabprops) |  |
+|  | <BasicType.Boolean /> | [**`GetCanPickupPickables`**](character#getcanpickuppickables) |  |
 |  | <Structs.Rotator /> | [**`GetControlRotation`**](character#getcontrolrotation) | Gets the rotation this character is looking at |
-|  | <Enums>FallingMode</Enums> | [**`GetFallingMode`**](character#GetFallingMode) | Gets the Falling Mode |
-|  | <BasicType.Boolean /> | Gets if the Character is in Flying Mode |
+|  | <BasicType.Number /> | [**`GetDamageMultiplier`**](character#getdamagemultiplier) |  |
+|  | <BasicType.Number /> | [**`GetFallDamageTaken`**](character#getfalldamagetaken) |  |
+|  | <Enums>FallingMode</Enums> | [**`GetFallingMode`**](character#getfallingmode) | Gets the Falling Mode |
+|  | <BasicType.Boolean /> | [**`GetFlyingMode`**](character#getflyingmode) | Gets if the Character is in Flying Mode |
 |  | <Enums>CollisionType</Enums> | [**`GetGaitMode`**](character.mdx#getgaitmode) | Gets the Gait Mode |
-|  | <Classes.Prop /> | [**`GetGrabbedProp`**](character.mdx#GetGrabbedProp) | Gets the Grabbing Prop |
-|  | <BasicType.Number /> | Gets the Gravity Scale of this Character |
-|  | <BasicType.Number /> | Gets the Character’s Health. |
-|  | <BasicType.Number /> | Gets the Character’s MaxHealth. |
-|  | <BasicType.String /> | Gets the Mesh Asset name |
-|  | Entity | [**`GetPicked`**](character#getpicked) | Gets the holding Picked Item/Grenade/Weapon |
+|  | <Classes.Prop /> | [**`GetGrabbedProp`**](character.mdx#getgrabbedprop) | Gets the Grabbing <Classes.Prop /> |
+|  | <BasicType.Number /> | [**`GetGravityScale`**](character#getgravityscale) | Gets the Gravity Scale of this Character |
+|  | <BasicType.Number /> | [**`GetHealth`**](character#gethealth) | Gets the Character’s Health. |
+|  | <BasicType.Number /> | [**`GetImpactDamageTaken`**](character#getimpactdamagetaken) |  |
+|  | <BasicType.Number /> | [**`GetMaxHealth`**](character#getmaxhealth) | Gets the Character’s MaxHealth. |
+|  | <BasicType.String /> | [**`GetMesh`**](character#getmesh) | Gets the Mesh Asset name |
+|  | <Structs.Vector /> | [**`GetMovingTo`**](character#getmovingto) | Gets if Character is moving to |
+|  | <Classes.Pickable /> | [**`GetPicked`**](character#getpicked) | Gets the holding Picked Item/Grenade/Weapon |
 |  | <Classes.Player /> | [**`GetPlayer`**](character.mdx#getplayer) | Gets the Player controlling this Character |
-|  | <BasicType.Number /> |  |
+|  | <BasicType.Number /> | [**`GetPunchDamage`**](character.mdx#getpunchdamage) |  |
+|  | <BasicType.Number /> | [**`GetSpeedMultiplier`**](character#getspeedmultiplier) |  |
 |  | <Enums>StanceMode</Enums> | [**`GetStanceMode`**](character.mdx#getstancemode) |  |
 |  | <Enums>SwimmingMode</Enums> | [**`GetSwimmingMode`**](character.mdx#getswimmingmode) |  |
-|  | <BasicType.Number /> |  |
+|  | <BasicType.Number /> | [**`GetTeam`**](character#getteam) |  |
 |  | <Classes.Vehicle /> | [**`GetVehicle`**](character.mdx#getvehicle) | Gets the Vehicle the Character is on |
 |  | <Enums>ViewMode</Enums> | [**`GetViewMode`**](character.mdx#getviewmode) | Gets Character View Mode |
 |  | <Enums>AimMode</Enums> | [**`GetWeaponAimMode`**](character.mdx#getweaponaimmode) | Gets Character Aim Mode |
@@ -171,26 +188,30 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 |  | [**`Death`**](character#death) | When Character Dies |
 |  | [**`Drop`**](character#drop) | When Character drops anything |
 |  | [**`EnterVehicle`**](character#entervehicle) | When Character enters a vehicle |
-|  | [**`FallingModeChanged`**](character#fallingmodechanged) | **Falling Modes**: _None, Jumping, Climbing, Vaulting, Falling, HighFalling, Parachuting, SkyDiving_ |
+| <AuthorityType.ServerOnly /> | [**`AttemptEnterVehicle`**](character#attemptentervehicle) | When Character attempts to enter a vehicle |
+|  | [**`FallingModeChanged`**](character#fallingmodechanged) |  |
 |  | [**`Fire`**](character#fire) | When Character fires a Weapon |
-|  | [**`GaitModeChanged`**](character#gaitmodechanged) | **Gait Modes**: _None, Walking, Sprinting_ |
-|  | [**`GrabProp`**](character#grabprop) | When Character grabs up a Prop |
-| <AuthorityType.ServerOnly /> | [**`Interact`**](character#interact) | When a Character interacts with an object \(i.e. try to pick it up\) - return false to prevent it |
+|  | [**`GaitModeChanged`**](character#gaitmodechanged) |  |
+|  | [**`GrabProp`**](character#grabprop) | When Character grabs up a <Classes.Prop /> |
+|  | [**`Highlight`**](character#highlight) | When Character highlights/looks at a <Classes.Prop /> or a <Classes.Pickable /> |
+| <AuthorityType.ServerOnly /> | [**`Interact`**](character#interact) | When a Character interacts with a <Classes.Prop /> or <Classes.Pickable /> to pick it up |
 |  | [**`LeaveVehicle`**](character#leavevehicle) | When Character leaves a vehicle |
+| <AuthorityType.ServerOnly /> | [**`AttemptLeaveVehicle`**](character#attemptleavevehicle) | When Character attempts to leave a vehicle |
 |  | [**`MoveCompleted`**](character#movecompleted) | Called when AI reaches it’s destination, or when it fails |
 |  | [**`PickUp`**](character#pickup) | When Character picks up anything |
 |  | [**`Possessed`**](character#possessed) | When Character is possessed |
 |  | [**`Punch`**](character#punch) | When Character punches |
 |  | [**`RagdollModeChanged`**](character#ragdollmodechanged) |  |
+| <AuthorityType.ServerOnly /> | [**`AttemptReload`**](character#reload) | When Character attempts to reload a weapon |
 |  | [**`Reload`**](character#reload) | When Character reloads a weapon |
 |  | [**`Respawn`**](character#respawn) | When Character Respawns |
-|  | [**`StanceModeChanged`**](character#stancemodechanged) | **Stance Modes**: _None, Standing, Crouching, Proning_ |
-|  | [**`SwimmingModeChanged`**](character#swimmingmodechanged) | **Swimming Modes**: _None, Surface, Underwater_ |
+|  | [**`StanceModeChanged`**](character#stancemodechanged) |  |
+|  | [**`SwimmingModeChanged`**](character#swimmingmodechanged) |  |
 |  | [**`TakeDamage`**](character#takedamage) | When Character takes Damage |
-|  | [**`UnGrabProp`**](character#ungrabprop) | When Character drops a Prop |
+|  | [**`UnGrabProp`**](character#ungrabprop) | When Character drops a <Classes.Prop /> |
 |  | [**`UnPossessed`**](character#unpossessed) | When Character is unpossessed |
-|  | [**`ViewModeChanged`**](character#viewmodechanged) | **View Modes**: _FPS, TPS1, TPS2, TPS3_ |
-|  | [**`WeaponAimModeChanged`**](character#weaponaimmodechanged) | **Aim Modes**: _None, ADS, ZoomedZoom, Zoomed, ZoomedFar_ |
+|  | [**`ViewModeChanged`**](character#viewmodechanged) |  |
+|  | [**`WeaponAimModeChanged`**](character#weaponaimmodechanged) |  |
 
 ## Functions Detailed
 
@@ -241,7 +262,7 @@ my_character:AddStaticMeshAttached( id, static_mesh_path, socket, relative_locat
 
 ### <AuthorityType.ServerOnly />`Drop`
 
-> Drops any Pickable the Character is holding
+> Drops any <Classes.Pickable /> the Character is holding
 
 ```lua
 my_character:Drop()
@@ -262,7 +283,7 @@ my_character:EnterVehicle(vehicle, seat)
 
 ### <AuthorityType.ServerOnly />`GrabProp`
 
-> Gives a Prop to the Character
+> Gives a <Classes.Prop /> to the Character
 
 ```lua
 my_character:GrabProp(prop)
@@ -271,6 +292,48 @@ my_character:GrabProp(prop)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <Classes.Prop /> | **`prop`** |  |  |
+
+
+### `HideBone`
+
+> Hides a bone of this Character. Check [Bone Names List](character.mdx#characters-skeleton-bone-names) for all Bone names
+
+```lua
+my_character:HideBone(bone_name)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`bone_name`** |  |  |
+
+
+### `UnHideBone`
+
+> UnHide a bone of this Character. Check [Bone Names List](character.mdx#characters-skeleton-bone-names) for all Bone names
+
+```lua
+my_character:UnHideBone(bone_name)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`bone_name`** |  |  |
+
+
+### `IsBoneHidden`
+
+> Check if a Bone is Hidden
+>
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:IsBoneHidden(bone_name)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`bone_name`** |  |  |
+
 
 ### <AuthorityType.ServerOnly />`Jump`
 
@@ -325,21 +388,24 @@ my_character:PickUp(pickable)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| Pickable | **`pickable`** |  |  |
+| <Classes.Pickable /> | **`pickable`** |  |  |
 
 ### <AuthorityType.ServerOnly />`PlayAnimation`
 
 > Plays an Animation Montage on this character
 
 ```lua
-my_character:PlayAnimation(animation_path, slot_type, loop_indefinitely)
+my_character:PlayAnimation(animation_path, slot_type, loop_indefinitely, blend_in_time, blend_out_time, play_rate)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`animation_path`** |  |  |
-| <Enums>AnimationSlotType</Enums> | **`slot_type`** | `FullBody` |  |
-| <BasicType.Boolean /> | **`loop_indefinitely`** |  |  |
+| <Enums>AnimationSlotType</Enums> | **`slot_type`** | `AnimationSlotType.FullBody` |  |
+| <BasicType.Boolean /> | **`loop_indefinitely`** | `false` |  |
+| <BasicType.Number /> | **`blend_in_time`** | `0.25` |  |
+| <BasicType.Number /> | **`blend_out_time`** | `0.25` |  |
+| <BasicType.Number /> | **`play_rate`** | `1.0` |  |
 
 ### `RemoveSkeletalMeshAttached`
 
@@ -365,13 +431,20 @@ my_character:RemoveStaticMeshAttached(id)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`id`** |  |  |
 
+
 ### <AuthorityType.ServerOnly />`Respawn`
 
 > Respawns the Character, fullying it's Health and moving it to it's Initial Location
 
 ```lua
-my_character:Respawn()
+my_character:Respawn(location, rotation)
 ```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** | `initial location` | If not passed will use the initial location passed when the Character spawned |
+| <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |  |
+
 
 ### <AuthorityType.ServerOnly />`SetAccelerationSettings`
 
@@ -482,7 +555,7 @@ my_character:SetCanGrabProps(can_grab_props)
 
 ### <AuthorityType.ServerOnly />`SetCanPickupPickables`
 
-> Sets if this Character is allowed to Pick up any Pickable \(Weapon, Grenade, Item...\)
+> Sets if this Character is allowed to Pick up any <Classes.Pickable /> (Weapon, Grenade, Item...)
 
 ```lua
 my_character:SetCanPickupPickables(can_pickup)
@@ -516,6 +589,19 @@ my_character:SetCapsuleSize(radius, half_height)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`radius`** |  |  |
 | <BasicType.Boolean /> | **`half_height`** |  |  |
+
+### <AuthorityType.ServerOnly />`SetDamageMultiplier`
+
+> Changes how much damage this character takes
+
+```lua
+my_character:SetDamageMultiplier(bone_name, multiplier)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`bone_name`** |  |  |
+| <BasicType.Number /> | **`multiplier`** |  |  |
 
 ### <AuthorityType.ServerOnly />`SetDeathSound`
 
@@ -808,6 +894,86 @@ my_character:IsInvulnerable()
 my_character:IsMovementEnabled()
 ```
 
+### `GetCameraMode`
+
+> 
+>
+> Returns <Enums>CameraMode</Enums>
+
+```lua
+my_character:GetCameraMode()
+```
+
+### `GetCanDrop`
+
+> 
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:GetCanDrop()
+```
+
+### `GetCanPunch`
+
+> 
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:GetCanPunch()
+```
+
+### `GetCanAim`
+
+> 
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:GetCanAim()
+```
+
+### `GetCanCrouch`
+
+> 
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:GetCanCrouch()
+```
+
+### `GetCanSprint`
+
+> 
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:GetCanSprint()
+```
+
+### `GetCanGrabProps`
+
+> 
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:GetCanGrabProps()
+```
+
+### `GetCanPickupPickables`
+
+> 
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+my_character:GetCanPickupPickables()
+```
+
 ### `GetControlRotation`
 
 > Gets the rotation this character is looking at
@@ -816,6 +982,26 @@ my_character:IsMovementEnabled()
 
 ```lua
 my_character:GetControlRotation()
+```
+
+### `GetDamageMultiplier`
+
+> 
+>
+> Returns <BasicType.Number />
+
+```lua
+my_character:GetDamageMultiplier()
+```
+
+### `GetFallDamageTaken`
+
+> 
+>
+> Returns <BasicType.Number />
+
+```lua
+my_character:GetFallDamageTaken()
 ```
 
 ### `GetFallingMode`
@@ -878,6 +1064,16 @@ my_character:GetGravityScale()
 my_character:GetHealth()
 ```
 
+### `GetImpactDamageTaken`
+
+> 
+>
+> Returns <BasicType.Number />
+
+```lua
+my_character:GetImpactDamageTaken()
+```
+
 ### `GetMaxHealth`
 
 > Gets the Character's MaxHealth.
@@ -893,6 +1089,16 @@ my_character:GetMaxHealth()
 > Gets the Mesh Asset name
 >
 > Returns <BasicType.String />
+
+```lua
+my_character:GetMesh()
+```
+
+### `GetMovingTo`
+
+> Gets the Character moving to location, returns Vector(0, 0, 0) if it's not
+>
+> Returns <Structs.Vector />
 
 ```lua
 my_character:GetMesh()
@@ -916,6 +1122,14 @@ my_character:GetPicked()
 
 ```lua
 my_character:GetPlayer()
+```
+
+### `GetPunchDamage`
+
+> Returns <BasicType.Number />
+
+```lua
+my_character:GetSpeedMultiplier()
 ```
 
 ### `GetSpeedMultiplier`
@@ -980,20 +1194,12 @@ my_character:GetViewMode()
 my_character:GetWeaponAimMode()
 ```
 
+
 ## Events Detailed
 
 ### `Death`
 
 > When Character Dies
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| [Character](character) | **`self`** |  |
-| <BasicType.Number /> | **`last_damage_taken`** |  |
-| <BasicType.String /> | **`last_bone_damaged`** |  |
-| DamageType | **`damage_type_reason`** |  |
-| <Structs.Vector /> | **`hit_from_direction`** |  |
-| <Classes.Player /> | **`instigator`** |  |
 
 ```lua
 Character.Subscribe("Death", function(self, last_damage_taken, last_bone_damage, damage_type_reason, hit_from_direction, instigator)
@@ -1001,15 +1207,19 @@ Character.Subscribe("Death", function(self, last_damage_taken, last_bone_damage,
 end)
 ```
 
-### `Drop`
-
-> When Character drops anything
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Pickable | **`object`** |  |
-| <BasicType.Boolean /> | **`triggered_by_player`** |  |
+| <BasicType.Number /> | **`last_damage_taken`** |  |
+| <BasicType.String /> | **`last_bone_damaged`** |  |
+| <Enums>DamageType</Enums> | **`damage_type_reason`** |  |
+| <Structs.Vector /> | **`hit_from_direction`** |  |
+| <Classes.Player /> | **`instigator`** |  |
+
+
+### `Drop`
+
+> When Character drops the currently picked up <Classes.Pickable />
 
 ```lua
 Character.Subscribe("Drop", function(self, object, triggered_by_player)
@@ -1017,30 +1227,50 @@ Character.Subscribe("Drop", function(self, object, triggered_by_player)
 end)
 ```
 
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <Classes.Pickable /> | **`object`** |  |
+| <BasicType.Boolean /> | **`triggered_by_player`** |  |
+
+
 ### `EnterVehicle`
 
 > When Character enters a vehicle
 
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| [Character](character) | **`self`** |  |
-| Vehicle | **`vehicle`** |  |
-
 ```lua
-Character.Subscribe("EnterVehicle", function(self, vehicle)
+Character.Subscribe("EnterVehicle", function(self, vehicle, seat_index)
 
 end)
 ```
 
-### `FallingModeChanged`
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <Classes.Vehicle /> | **`vehicle`** |  |
+| <BasicType.Number /> | **`seat_index`** |  |
 
-> **Falling Modes**: _None, Jumping, Climbing, Vaulting, Falling, HighFalling, Parachuting, SkyDiving_
+
+### <AuthorityType.ServerOnly />`AttemptEnterVehicle`
+
+> When Character attempts to enter a vehicle
+
+```lua
+Character.Subscribe("AttemptEnterVehicle", function(self, vehicle, seat_index)
+
+end)
+```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| FallingMode | **`old_state`** |  |
-| FallingMode | **`new_state`** |  |
+| <Classes.Vehicle /> | **`vehicle`** |  |
+| <BasicType.Number /> | **`seat_index`** |  |
+
+
+### `FallingModeChanged`
+
+> **Falling Modes**: _None, Jumping, Climbing, Vaulting, Falling, HighFalling, Parachuting, SkyDiving_
 
 ```lua
 Character.Subscribe("FallingModeChanged", function(self, old_state, new_state)
@@ -1048,14 +1278,16 @@ Character.Subscribe("FallingModeChanged", function(self, old_state, new_state)
 end)
 ```
 
-### `Fire`
-
-> When Character fires a Weapon
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Weapon | **`weapon`** |  |
+| <Enums>FallingMode</Enums> | **`old_state`** |  |
+| <Enums>FallingMode</Enums> | **`new_state`** |  |
+
+
+### `Fire`
+
+> When Character fires a Weapon
 
 ```lua
 Character.Subscribe("Fire", function(self, weapon)
@@ -1063,15 +1295,15 @@ Character.Subscribe("Fire", function(self, weapon)
 end)
 ```
 
-### `GaitModeChanged`
-
-> **Gait Modes**: _None, Walking, Sprinting_
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| GaitMode | **`old_state`** |  |
-| GaitMode | **`new_state`** |  |
+| <Classes.Weapon /> | **`weapon`** |  |
+
+
+### `GaitModeChanged`
+
+> **Gait Modes**: _None, Walking, Sprinting_
 
 ```lua
 Character.Subscribe("GaitModeChanged", function(self, old_state, new_state)
@@ -1079,14 +1311,16 @@ Character.Subscribe("GaitModeChanged", function(self, old_state, new_state)
 end)
 ```
 
-### `GrabProp`
-
-> When Character grabs up a Prop
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Prop | **`prop`** |  |
+| <Enums>GaitMode</Enums> | **`old_state`** |  |
+| <Enums>GaitMode</Enums> | **`new_state`** |  |
+
+
+### `GrabProp`
+
+> When Character grabs up a Prop
 
 ```lua
 Character.Subscribe("GrabProp", function(self, prop)
@@ -1094,14 +1328,33 @@ Character.Subscribe("GrabProp", function(self, prop)
 end)
 ```
 
-### \|server-only-label\| `Interact`
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <Classes.Prop /> | **`prop`** |  |
 
-> When a Character interacts with an object \(i.e. try to pick it up\) - return false to prevent it
+
+### `Highlight`
+
+>  When Character highlights/looks at a <Classes.Prop /> or a Pickable
+
+```lua
+Character.Subscribe("Highlight", function(self, object)
+
+end)
+```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Pickable | **`object`** |  |
+| <Classes.Prop /> or <Classes.Pickable /> | **`object`** |  |
+
+
+### <AuthorityType.ServerOnly />`Interact`
+
+> When a Character interacts with a <Classes.Prop /> or <Classes.Pickable /> to pick it up
+> 
+> Return false to prevent it
 
 ```lua
 Character.Subscribe("Interact", function(self, object)
@@ -1109,14 +1362,15 @@ Character.Subscribe("Interact", function(self, object)
 end)
 ```
 
-### `LeaveVehicle`
-
-> When Character leaves a vehicle
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Vehicle | **`vehicle`** |  |
+| <Classes.Pickable /> or <Classes.Prop /> | **`object`** |  |
+
+
+### `LeaveVehicle`
+
+> When Character leaves a vehicle
 
 ```lua
 Character.Subscribe("LeaveVehicle", function(self, vehicle)
@@ -1124,14 +1378,31 @@ Character.Subscribe("LeaveVehicle", function(self, vehicle)
 end)
 ```
 
-### `MoveCompleted`
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <Classes.Vehicle /> | **`vehicle`** |  |
 
-> Called when AI reaches it's destination, or when it fails
+
+### <AuthorityType.ServerOnly />`AttemptLeaveVehicle`
+
+> When Character attempts to leave a vehicle
+
+```lua
+Character.Subscribe("AttemptLeaveVehicle", function(self, vehicle)
+
+end)
+```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| <BasicType.Boolean /> | **`succeeded`** |  |
+| <Classes.Vehicle /> | **`vehicle`** |  |
+
+
+### `MoveCompleted`
+
+> Called when AI reaches it's destination, or when it fails
 
 ```lua
 Character.Subscribe("MoveCompleted", function(self, succeeded)
@@ -1139,14 +1410,15 @@ Character.Subscribe("MoveCompleted", function(self, succeeded)
 end)
 ```
 
-### `PickUp`
-
-> When Character picks up anything
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Pickable | **`object`** |  |
+| <BasicType.Boolean /> | **`succeeded`** |  |
+
+
+### `PickUp`
+
+> When Character picks up anything
 
 ```lua
 Character.Subscribe("PickUp", function(self, object)
@@ -1154,14 +1426,15 @@ Character.Subscribe("PickUp", function(self, object)
 end)
 ```
 
-### `Possessed`
-
-> When Character is possessed
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| <Classes.Player /> | **`possesser`** |  |
+| <Classes.Pickable /> | **`object`** |  |
+
+
+### `Possessed`
+
+> When Character is possessed
 
 ```lua
 Character.Subscribe("Possessed", function(self, possesser)
@@ -1169,13 +1442,15 @@ Character.Subscribe("Possessed", function(self, possesser)
 end)
 ```
 
-### `Punch`
-
-> When Character punches
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
+| <Classes.Player /> | **`possesser`** |  |
+
+
+### `Punch`
+
+> When Character punches
 
 ```lua
 Character.Subscribe("Punch", function(self)
@@ -1183,15 +1458,14 @@ Character.Subscribe("Punch", function(self)
 end)
 ```
 
-### `RagdollModeChanged`
-
-&gt;
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| <BasicType.Boolean /> | **`old_state`** |  |
-| <BasicType.Boolean /> | **`new_state`** |  |
+
+
+### `RagdollModeChanged`
+
+> When Character enters or leaves ragdoll
 
 ```lua
 Character.Subscribe("RagdollModeChanged", function(self, old_state, new_state)
@@ -1199,15 +1473,34 @@ Character.Subscribe("RagdollModeChanged", function(self, old_state, new_state)
 end)
 ```
 
-### `Reload`
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <BasicType.Boolean /> | **`old_state`** |  |
+| <BasicType.Boolean /> | **`new_state`** |  |
 
-> When Character reloads a weapon
+
+### `AttemptReload`
+
+> When Character attempts to reload a weapon
+> 
+> Return false to prevent it
+
+```lua
+Character.Subscribe("AttemptReload", function(self, weapon)
+
+end)
+```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| Weapon | **`weapon`** |  |
-| <BasicType.Number /> | **`ammo_to_reload`** |  |
+| <Classes.Weapon /> | **`weapon`** |  |
+
+
+### `Reload`
+
+> When Character reloads a weapon
 
 ```lua
 Character.Subscribe("Reload", function(self, weapon, ammo_to_reload)
@@ -1215,13 +1508,16 @@ Character.Subscribe("Reload", function(self, weapon, ammo_to_reload)
 end)
 ```
 
-### `Respawn`
-
-> When Character Respawns
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
+| <Classes.Weapon /> | **`weapon`** |  |
+| <BasicType.Number /> | **`ammo_to_reload`** |  |
+
+
+### `Respawn`
+
+> When Character Respawns
 
 ```lua
 Character.Subscribe("Respawn", function(self)
@@ -1229,15 +1525,14 @@ Character.Subscribe("Respawn", function(self)
 end)
 ```
 
-### `StanceModeChanged`
-
-> **Stance Modes**: _None, Standing, Crouching, Proning_
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| StanceMode | **`old_state`** |  |
-| StanceMode | **`new_state`** |  |
+
+
+### `StanceModeChanged`
+
+> **Stance Modes**: _None, Standing, Crouching, Proning_
 
 ```lua
 Character.Subscribe("StanceModeChanged", function(self, old_state, new_state)
@@ -1245,15 +1540,16 @@ Character.Subscribe("StanceModeChanged", function(self, old_state, new_state)
 end)
 ```
 
-### `SwimmingModeChanged`
-
-> **Swimming Modes**: _None, Surface, Underwater_
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| SwimmingMode | **`old_state`** |  |
-| SwimmingMode | **`new_state`** |  |
+| <Enums>StanceMode</Enums> | **`old_state`** |  |
+| <Enums>StanceMode</Enums> | **`new_state`** |  |
+
+
+### `SwimmingModeChanged`
+
+> **Swimming Modes**: _None, Surface, Underwater_
 
 ```lua
 Character.Subscribe("SwimmingModeChanged", function(self, old_state, new_state)
@@ -1261,33 +1557,39 @@ Character.Subscribe("SwimmingModeChanged", function(self, old_state, new_state)
 end)
 ```
 
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <Enums>SwimmingMode</Enums> | **`old_state`** |  |
+| <Enums>SwimmingMode</Enums> | **`new_state`** |  |
+
+
 ### `TakeDamage`
 
 > When Character takes Damage
+>
+> Return false to cancel the damage (will still display animations, particles and apply impact forces)
+
+```lua
+Character.Subscribe("TakeDamage", function(self, damage, bone, type, from_direction, instigator, causer)
+
+end)
+```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
 | <BasicType.Number /> | **`damage`** |  |
-| <BasicType.String /> | **`bone`** |  |
-| DamageType | **`type`** |  |
-| <Structs.Vector /> | **`from_direction`** |  |
-| <Classes.Player /> | **`instigator`** |  |
+| <BasicType.String /> | **`bone`** | Damaged bone |
+| <Enums>DamageType</Enums> | **`type`** | Damage Type |
+| <Structs.Vector /> | **`from_direction`** | Direction of the damage relative to the damaged actor |
+| <Classes.Player /> | **`instigator`** | The player which caused the damage |
+| <BasicType.Any /> | **`causer`** | The object which caused the damage |
 
-```lua
-Character.Subscribe("TakeDamage", function(self, damage, bone, type, from_direction, instigator)
-
-end)
-```
 
 ### `UnGrabProp`
 
 > When Character drops a Prop
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| [Character](character) | **`self`** |  |
-| Prop | **`prop`** |  |
 
 ```lua
 Character.Subscribe("UnGrabProp", function(self, prop)
@@ -1295,14 +1597,15 @@ Character.Subscribe("UnGrabProp", function(self, prop)
 end)
 ```
 
-### `UnPossessed`
-
-> When Character is unpossessed
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| <Classes.Player /> | **`old_possesser`** |  |
+| <Classes.Prop /> | **`prop`** |  |
+
+
+### `UnPossessed`
+
+> When Character is unpossessed
 
 ```lua
 Character.Subscribe("UnPossessed", function(self, old_possesser)
@@ -1310,15 +1613,15 @@ Character.Subscribe("UnPossessed", function(self, old_possesser)
 end)
 ```
 
-### `ViewModeChanged`
-
-> **View Modes**: _FPS, TPS1, TPS2, TPS3_
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| ViewMode | **`old_state`** |  |
-| ViewMode | **`new_state`** |  |
+| <Classes.Player /> | **`old_possesser`** |  |
+
+
+### `ViewModeChanged`
+
+> When Character changes it's View Mode: _FPS, TPS1, TPS2, TPS3_
 
 ```lua
 Character.Subscribe("ViewModeChanged", function(self, old_state, new_state)
@@ -1326,21 +1629,29 @@ Character.Subscribe("ViewModeChanged", function(self, old_state, new_state)
 end)
 ```
 
-### `WeaponAimModeChanged`
-
-> **Aim Modes**: _None, ADS, ZoomedZoom, Zoomed, ZoomedFar_
-
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
-| AimMode | **`old_state`** |  |
-| AimMode | **`new_state`** |  |
+| <Enums>ViewMode</Enums> | **`old_state`** |  |
+| <Enums>ViewMode</Enums> | **`new_state`** |  |
+
+
+### `WeaponAimModeChanged`
+
+> **Aim Modes**: _None, ADS, ZoomedZoom, Zoomed, ZoomedFar_
 
 ```lua
 Character.Subscribe("WeaponAimModeChanged", function(self, old_state, new_state)
 
 end)
 ```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <Enums>AimMode</Enums> | **`old_state`** |  |
+| <Enums>AimMode</Enums> | **`new_state`** |  |
+
 
 ## Male & Female Customization
 

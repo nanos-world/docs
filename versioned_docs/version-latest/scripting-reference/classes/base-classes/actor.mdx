@@ -86,12 +86,12 @@ local player_count = Player.GetCount()
 
 ### `GetPairs`
 
-> Returns an iterator with all entities of this class to be used with `ipairs` or `pairs`. This is a more performatic way than `GetAll()` as it will return the iterator to access the entities directly, instead of creating and returning a copy of the entities table.
+> Returns an iterator with all entities of this class to be used with `pairs()`. This is a more performatic way than `GetAll()` as it will return the iterator to access the entities directly instead of creating and returning a copy of the entities table.
 >
-> **Note:** Destroying entities from inside GetPairs\(\) loop will cause the iteration to change it's size during the process. If you want to loop-and-destroy, please use `GetAll()`.
+> **Note:** Destroying entities from inside GetPairs() loop will cause the iteration to change it's size during the process. If you want to loop-and-destroy, please use `GetAll()`.
 
 ```lua
-for k, player in ipairs(Player.GetPairs()) do
+for k, player in pairs(Player.GetPairs()) do
     Package.Log(player:GetName() .. " is connected!")
 end
 ```
@@ -118,9 +118,11 @@ entity:AddImpulse(force, velocity_change)
 > * **`AttachmentRule.KeepRelative`** will keep the current Relative Position/Rotation if already attached.
 > * **`AttachmentRule.KeepWorld`** will calculate the new Relative Position/Rotation so the Actor stays on the same position after attached.
 > * **`AttachmentRule.SnapToTarget`** will set the Actor to the same position/rotation to **`other_actor`** \(or at the bone location\) and reset it's Relative Position/Rotation to **zero**.
+> 
+> Setting **`lifespan_when_detached`** to `0` will automatically destroy this actor when detached, setting to `10` will destroy it after 10 seconds when detached.
 
 ```lua
-entity:AttachTo(other_actor, attachment_rule, bone_name, autodestroy_when_detached)
+entity:AttachTo(other_actor, attachment_rule, bone_name, lifespan_when_detached)
 ```
 
 | Type | Parameter | Default Value | Description |
@@ -128,7 +130,7 @@ entity:AttachTo(other_actor, attachment_rule, bone_name, autodestroy_when_detach
 | [Actor](actor) | **`other`** |  | Other actor to attach |
 | <Enums>AttachmentRule</Enums> | **`attachment_rule`** | `SnapToTarget` | How to attach |
 | <BasicType.String /> | **`bone_name`** | `""` | Which bone to attach |
-| <BasicType.Boolean /> | **`autodestroy_when_detached`** | `false` | Whether to auto destroy when detached |
+| <BasicType.Number /> | **`lifespan_when_detached`** | `-1` | Lifespan to automatically destroy this actor after `X` seconds when detached |
 
 ### <AuthorityType.AuthorityOnly />`Destroy`
 
@@ -196,17 +198,17 @@ entity:SetHighlightEnabled(is_enabled)
 | <BasicType.Boolean /> | **`is_enabled`** |  | Enabled |
 | <BasicType.Number /> |
 
-### `SetInitialLocation`
+### `SetLifeSpan`
 
-> Sets the initial location
+> Sets the life span of this Actor in seconds. After the time has been passed, the actor will be automatically destroyed.
 
 ```lua
-entity:SetInitialLocation(vector)
+entity:SetLifeSpan(seconds)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** |  | New Location |
+| <BasicType.Number /> | **`seconds`** |  | Time to be destroyed |
 
 ### `SetLocation`
 
@@ -233,7 +235,7 @@ entity:SetNetworkAuthority(player, time_ms)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | Player | **`player`** | `nil` | New player which will assume the Network Authority of this entity |
-| <BasicType.Number /> | **`time_ms`** | `0` | New player which will assume the Network Authority of this entity |
+| <BasicType.Number /> | **`time_ms`** | `0` | Time to force the network authority active on this player |
 
 ### <AuthorityType.AuthorityOnly />`SetRotation`
 
@@ -287,8 +289,8 @@ entity:TranslateTo(location, speed, sweep, teleport)
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** |  | Location to Translate to |
 | <BasicType.Number /> | **`speed`** |  |  |
-| <BasicType.Number /> | **`sweep`** |  | Whether |
-| <BasicType.Boolean /> | **`teleport`** |  |  |
+| <BasicType.Boolean /> | **`sweep`** | `false` | Whether to stop movement if collides |
+| <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current Velocity |
 
 ### `RotateTo`
 
@@ -302,7 +304,7 @@ entity:RotateTo(otation, speed, teleport)
 | :--- | :--- | :--- | :--- |
 | <Structs.Rotator /> | **`rotation`** |  | Rotation to Translate to |
 | <BasicType.Number /> | **`speed`** |  |  |
-| <BasicType.Boolean /> | **`teleport`** |  | Whether to affect the current Velocity |
+| <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current Velocity |
 
 ### `IsGravityEnabled`
 

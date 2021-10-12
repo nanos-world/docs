@@ -31,28 +31,29 @@ local my_prop = Prop(
 )
 ```
 
-:::info
+:::info Note
 
-🧙 **Note:** Props smaller than radius 20 units will have **CCD** \(Continuous Collision Detection\) enabled to avoid them falling through the floor or other objects. This will slightly increase the performance cost of them!
+Props smaller than radius **40** units or very thin (any side smaller than 20 units) will have **CCD** (Continuous Collision Detection) enabled to avoid falling through the floor or other objects. This will slightly increase the performance cost of them! Also, they will have Collision disabled against Characters.
 
 :::
 
-:::info
+:::info Note
 
-🧙 **Note:** Props bigger than radius 200 units will have **`Grabbable`** off by default.
+Props bigger than radius 200 units will have **`Grabbable`** off by default. This can be overridden with `:SetGrabbable()`.
 
 :::
 
 ## Constructor Parameters
 
-| **Type** | **Name** | **Default Value** |
-| :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
-| <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <BasicType.String /> | **`model_name`** |  |
-| <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
-| <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
-| <BasicType.Boolean /> | **`is_grabbable`** | `true` |
+| Type | Name | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` | Location to spawn |
+| <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` | Rotation to spawn |
+| <BasicType.String /> | **`model_name`** |  | Static Mesh to use |
+| <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` | Collision |
+| <BasicType.Boolean /> | **`gravity_enabled`** | `true` |  |
+| <BasicType.Boolean /> | **`is_grabbable`** | `true` |  |
+| <BasicType.Boolean /> | **`force_no_ccd`** | `false` | Force CCD to not be used on small Props (may cause Props passing through objects if it's kinda small) |
 
 ## Functions
 
@@ -62,7 +63,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 <details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
 <details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
 
-|  | **Returns** | **Name** | Description |
+|  | Returns | Name | Description |
 | :---: | :--- | :--- | :--- |
 | <AuthorityType.ServerOnly /> |  | [**`SetGrabbable`**](prop#setgrabbable) | Sets ability to Characters to Grab this Prop |
 | <AuthorityType.ServerOnly /> |  | [**`SetPhysicsDamping`**](prop#setphysicsdamping) | Sets the Physics damping of this Prop |
@@ -136,6 +137,8 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 | :--- | :--- | :--- |
 |  | [**`Grab`**](prop#grab) | Triggered when Character grabs a Prop |
 |  | [**`Hit`**](prop#hit) | Triggered when this Prop hits something |
+|  | [**`Interact`**](prop#interact) | Triggered when a Character tries to Grab up this |
+|  | [**`TakeDamage`**](prop#takedamage) | Triggered when a Prop takes Damage |
 |  | [**`UnGrab`**](prop#ungrab) | Triggered when Character ungrabs a Prop |
 
 ### `Grab`
@@ -158,7 +161,7 @@ end)
 > Triggered when this Prop hits something
 
 ```lua
-Prop.Subscribe("Hit", function(self)
+Prop.Subscribe("Hit", function(self, impact_force, normal_impulse, impact_location, velocity)
 
 end)
 ```
@@ -166,6 +169,41 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Prop](prop) | `self` | The prop which has been hit |
+| <BasicType.Number /> | `impact_force` | The intensity of the Hit normalized by the Prop's weight |
+| <Structs.Vector /> | `normal_impulse` | The impulse direction it hits |
+| <Structs.Vector /> | `impact_location` | The world 3D location of the impact |
+| <Structs.Vector /> | `velocity` | The Prop velocity at the moment it hits |
+
+### <AuthorityType.ServerOnly />`Interact`
+
+> When a Character interacts with this Prop (i.e. try to Grab it)
+> 
+> Return false to prevent it
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Prop](prop) | **`self`** |  |
+| <Classes.Character /> | **`character`** |  |
+
+### `TakeDamage`
+
+> When Prop takes Damage
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Prop](prop) | **`self`** |  |
+| <BasicType.Number /> | **`damage`** |  |
+| <BasicType.String /> | **`bone`** | Damaged bone |
+| <Enums>DamageType</Enums> | **`type`** | Damage Type |
+| <Structs.Vector /> | **`from_direction`** | Direction of the damage relative to the damaged actor |
+| <Classes.Player /> | **`instigator`** | The player which caused the damage |
+| <BasicType.Any /> | **`causer`** | The object which caused the damage |
+
+```lua
+Prop.Subscribe("TakeDamage", function(self, damage, bone, type, from_direction, instigator, causer)
+
+end)
+```
 
 ### `UnGrab`
 

@@ -24,17 +24,16 @@ All Asset Packs go under `Server/Assets/` folder. Each Asset Pack is a folder un
 ```text title="Server Folder"
 NanosWorldServer.exe
 Packages/
-|   my-asset-pack-01/
-|   |   MyAsset_01.uasset
-|   |   MyAsset_02.uasset
-|   |   MyBigMap.umap
-|   |   ...
-|   |   Assets.toml
-|   awesome-weapons/
-|   |   BigFuckingGun.uasset
-|   |   AwesomeWeaponBundle.pak
-|   |   ...
-|   |   Assets.toml
+├── my-asset-pack-01/
+│   ├── MyAsset_01.uasset
+│   ├── MyAsset_02.uasset
+│   ├── MyBigMap.umap
+│   │    ...
+│   └── Assets.toml
+├── awesome-weapons/
+│   ├── BigFuckingGun.uasset
+│   │   ...
+│   └── Assets.toml
 Assets/
 Config.toml
 ```
@@ -82,6 +81,11 @@ Asset Packs have a configuration file in the root of the Asset Pack folder, call
     # A_Character_Jump = "Animations/A_Character_Jump"
     # ...
 
+    # Materials
+    [assets.materials]
+    # M_Awesome_Colorful = "Materials/M_Awesome_Colorful"
+    # ...
+
     # Other Assets (for not yet categorized ones)
     [assets.others]
     # A_Audio_Rifle_Fire = "Audios/A_Audio_Rifle_Fire_03"
@@ -103,6 +107,7 @@ Asset Packs have a configuration file in the root of the Asset Pack folder, call
 | **`assets.skeletal_meshes`** | List of Skeletal Meshes in this Asset Pack |
 | **`assets.sounds`** | List of Sounds in this Asset Pack |
 | **`assets.animations`** | List of Animations in this Asset Pack |
+| **`assets.materials`** | List of Materials in this Asset Pack |
 | **`assets.others`** | List of other Assets in this Asset Pack |
 
 ## Referencing Assets in Scripting
@@ -134,6 +139,7 @@ example: `"my-asset-pack-01::SM_Cube"`
 | **Skeletal Mesh** | Unreal Skeletal Meshes can be used to load meshes for Characters and Vehicles |
 | **Sounds** | Unreal Sounds to load Sounds |
 | **Animations** | Unreal Animations can be used for settings in Character and Weapons |
+| **Materials** | Unreal Materials can be used for customizing meshes surfaces and used as Post Process |
 
 :::info
 

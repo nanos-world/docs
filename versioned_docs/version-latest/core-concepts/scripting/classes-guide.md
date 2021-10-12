@@ -8,11 +8,11 @@ tags: [scripting]
 
 All you need to know about Classes
 
-All entities in nanos world are represented by a Class. In Lua, classes are represented by [tables](./scripting-reference/glossary/basic-types.md#table), etc\) are made with Classes/tables methods following an [OOP \(Object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming) pattern\). In this page we will explain more about that.
+All entities in nanos world are represented by a Class. In Lua, classes are represented by [tables](./scripting-reference/glossary/basic-types.md#table). That means that every interaction with entities (Players, Characters, Props, etc) are made with Classes/tables methods following an [OOP \(Object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming) pattern\). In this page we will explain more about that.
 
 :::tip
 
-In nanos world we have 3 types of Classes (or Structures): `Classes`, `Static Classes` and `Utility Classes`.
+In nanos world we have 3 types of Classes (or structures): `Classes`, `Static Classes` and `Utility Classes`.
 
 :::
 
@@ -78,7 +78,9 @@ my_character:Destroy()
 
 :::info
 
-Destroying an Entity will trigger the event `Destroy` and also will automatically detach all attached entities it had attached.
+Destroying an Entity will trigger the event `Destroy` and also will automatically detach all attached entities it had attached*.
+
+**If you attached entities with `auto_destroy_when_detached` parameter, all attached entities will be destroyed as well 😉*.
 
 :::
 

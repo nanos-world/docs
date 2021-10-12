@@ -33,10 +33,10 @@ The server Configuration file `Config.toml` is generated automatically when the 
     password =              ""
     # server IP. we recommend leaving it 0.0.0.0 for default
     ip =                    "0.0.0.0"
-    # server port (UDP forwarding needed)
+	# server port (TCP and UDP forwarding needed)
     port =                  7777
-    # HTTP port (TCP forwarding needed)
-    http_port =             7777
+	# query port (UDP forwarding needed)
+	query_port =		7778
     # announce server in the master server list
     announce =              true
     # server tick rate in milliseconds (dangerous! server will tick at each [tick_rate] ms, affecting both server and client performance. 33 ms means 30 ticks per second and is the default and recommended value)
@@ -77,8 +77,8 @@ The server Configuration file `Config.toml` is generated automatically when the 
 | **`max_players`** | Max ammount of players allowed to join |
 | **`password`** | Password to be able to connect |
 | **`ip`** | Server IP. We recommend leaving it blank |
-| **`port`** | Server main Port \(UDP\) |
-| **`http_port`** | Server HTTP Port \(TCP\) |
+| **`port`** | Server main Port and HTTP Port (UDP/TCP) |
+| **`query_port`** | Server query Port (UDP) |
 | **`announce`** | Whether to announce or not in the Server List |
 | **`tick_rate`** | Server Tick in ms. We recommend leaving it 33 |
 | **`log_level`** | Which Log level to output |
@@ -135,11 +135,12 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--ip` | string | Server IP |
 | `--map` | string | Map to load |
 | `--port` | number | Server port |
-| `--http_port` | number | Server HTTP port |
+| `--query_port` | number | Server Query port |
 | `--announce` | 0 or 1 | If announce in master list |
 | `--packages` | string list | Server packages |
 | `--save` | 0 or 1 | If to save the parameters in Config.toml |
 | `--max_players` | number | Max allowed players |
+| `--profiling` | 0 or 1 | Enables Performance Profiling Logs for debugging |
 
 ## Common Console Messages/Warnings/Erros and it’s meanings
 

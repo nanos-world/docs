@@ -8,6 +8,7 @@ tags: [base-class]
 Base class for all Pickable entities
 
 import { Structs, BasicType, AuthorityType, Classes } from '@site/docs/components/_nanos.mdx';
+import ThemedImage from '@theme/ThemedImage';
 
 **Pickable** are special entities which can be **grabbed**, **hold** and **used** by <Classes.Character />. Example of Pickable entities are: <Classes.Weapon />, <Classes.Item /> and <Classes.Grenade />.
 
@@ -18,6 +19,7 @@ They have special methods and events and are highlighted when looking at by a Ch
 import BasePickableFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-pickable-functions.mdx';
 
 <BasePickableFunctions hidden_reference={true} />
+
 
 ### `AddSkeletalMeshAttached`
 
@@ -88,6 +90,18 @@ entity:RemoveStaticMeshAttached(id)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`id`** |  | Unique ID to remove the Attached Mesh |
 
+### <AuthorityType.ServerOnly />`SetCrosshairMaterial`
+
+> Sets the Crosshair Material
+
+```lua
+entity:SetCrosshairMaterial(path)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`path`** |  |  |
+
 ### `GetAssetName`
 
 > Returns the Asset name \(<BasicType.String />
@@ -110,6 +124,7 @@ import BasePickableEvents from '@site/docs/scripting-reference/classes/base-clas
 
 <BasePickableEvents hidden_reference={true} />
 
+
 ### `Drop`
 
 > When a Character drops this
@@ -126,12 +141,13 @@ end)
 | Character | `character` | The Character which picked up |
 | <BasicType.Boolean /> | `was_triggered_by_player` | If the Player has actively pressed 'G' to drop |
 
+
 ### `Hit`
 
 > When this Entity hits something
 
 ```lua
-Weapon.Subscribe("Hit", function(self, intensity)
+Weapon.Subscribe("Hit", function(self, impact_force, normal_impulse, impact_location, velocity)
     -- called when any weapon hits something
 end)
 ```
@@ -139,7 +155,22 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Pickable](pickable) | `self` | The entity which has been hit |
-| <BasicType.Number /> | `intensity` | Intensity of the Hit |
+| <BasicType.Number /> | `impact_force` | The intensity of the Hit normalized by the Pickable's weight |
+| <Structs.Vector /> | `normal_impulse` | The impulse direction it hits |
+| <Structs.Vector /> | `impact_location` | The world 3D location of the impact |
+| <Structs.Vector /> | `velocity` | The Pickable velocity at the moment it hits |
+
+### <AuthorityType.ServerOnly />`Interact`
+
+> When a Character interacts with this Pickable (i.e. try to pick it up)
+> 
+> return false to prevent it
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Pickable](pickable) | **`self`** |  |
+| <Classes.Character /> | **`character`** |  |
+
 
 ### `PickUp`
 
@@ -156,3 +187,68 @@ end)
 | [Pickable](pickable) | `self` | The entity which has been picked up |
 | <Classes.Character /> | `character` | The Character which picked up |
 
+
+### `PullUse`
+
+>  When a Character Pulls the Usage of this (i.e. pulls Left Mouse button when using it or pulls the trigger if it's a Weapon)
+
+```lua
+Weapon.Subscribe("PullUse", function(self, character)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Pickable](pickable) | `self` | The entity which has been picked up |
+| <Classes.Character /> | `character` | The Character which picked up |
+
+
+### `ReleaseUse`
+
+>  When a Character Releases the Usage of this (i.e. releases Left Mouse button when using it or releases the trigger if it's a Weapon)
+
+```lua
+Weapon.Subscribe("ReleaseUse", function(self, character)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Pickable](pickable) | `self` | The entity which has been picked up |
+| <Classes.Character /> | `character` | The Character which picked up |
+
+
+## Available Crosshairs Types
+
+nanos world provides a bunch of Crosshair Materials which can be used in Weapons/Pickable entities. You can of course create your own Crosshair Material and use like that!
+
+````mdx-code-block
+<ThemedImage
+    alt="All available Crosshairs"
+    sources={{
+        light: '/img/docs/crosshairs_light.jpg',
+        dark: '/img/docs/crosshairs_dark.jpg',
+    }}
+/>
+````
+
+#### List of Crosshairs Materials included in Default Asset Pack
+
+* `nanos-world::MI_Crosshair_Circle`
+* `nanos-world::MI_Crosshair_Crossbow`
+* `nanos-world::MI_Crosshair_Dot`
+* `nanos-world::MI_Crosshair_Holo`
+* `nanos-world::MI_Crosshair_Launcher`
+* `nanos-world::MI_Crosshair_Regular`
+* `nanos-world::MI_Crosshair_Regular_X`
+* `nanos-world::MI_Crosshair_Rocket`
+* `nanos-world::MI_Crosshair_Separated_Triangle`
+* `nanos-world::MI_Crosshair_Shotgun`
+* `nanos-world::MI_Crosshair_Square`
+* `nanos-world::MI_Crosshair_Submachine`
+* `nanos-world::MI_Crosshair_Tee`
+* `nanos-world::MI_Crosshair_ThreeDots`
+* `nanos-world::MI_Crosshair_Triangle`
+* `nanos-world::MI_Crosshair_Vee`

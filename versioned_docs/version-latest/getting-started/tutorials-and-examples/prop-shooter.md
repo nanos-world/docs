@@ -17,8 +17,8 @@ This sample code modifies a Weapon to make it shoot Props instead of normal bull
 ```lua title="Server/Index.lua"
 Package.RequirePackage("nanos-world-weapons")
 
-my_weap = NanosWorldWeapons.AR4(Vector(-2250, 9153, 192), Rotator(0, 90, 90))
-my_weap.BaseDamage = 0
+local my_weap = NanosWorldWeapons.AR4(Vector(-2250, 9153, 192), Rotator(0, 90, 90))
+my_weap:SetDamage(0)
 
 my_weap:Subscribe("Fire", function(shooter)
     local control_rotation = shooter:GetControlRotation()

@@ -49,7 +49,7 @@ distance_trace_object = nil
 distance = 200
 
 -- Sets the color of Highlighing at index 1
-Client.SetHighlightColor(Color(0, 20, 20, 1.5), 1, HighlightMode.Always)
+Client.SetHighlightColor(Color(0, 20, 20, 1.5), 1, HighlightMode.OnlyVisible)
 
 -- When Player clicks
 Client.Subscribe("MouseUp", function(key_name)
