@@ -26,16 +26,16 @@ Rotators are internally and automatically compressed, which reduces it's size in
 ## 👌 Usage
 
 ```lua
-local new_vector = Vector(1452.5, 512, 943.1)
+local new_rotator = Rotator(-90, 153, 24.5)
 ```
 
 ## 🎚 Properties
 
 | **Type** | **Name** | **Description** |
 | :--- | :--- | :--- |
-| <BasicType.Number /> |
-| <BasicType.Number />, Tilting your head, 0=Straight, +Clockwise, -CCW. |
-| <BasicType.Number />, Running in circles 0=East, +North, -South. |
+| <BasicType.Number /> | Pitch | Rotation around the right axis (around Y axis), Looking up and down (0=Straight Ahead, +Up, -Down) |
+| <BasicType.Number /> | Yaw | Rotation around the up axis (around Z axis), Running in circles 0=East, +North, -South. |
+| <BasicType.Number /> | Roll | Rotation around the forward axis (around X axis), Tilting your head, 0=Straight, +Clockwise, -CCW. |
 
 ## ⏩ Functions
 
