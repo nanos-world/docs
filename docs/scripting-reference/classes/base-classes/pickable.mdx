@@ -124,6 +124,7 @@ import BasePickableEvents from '@site/docs/scripting-reference/classes/base-clas
 
 <BasePickableEvents hidden_reference={true} />
 
+
 ### `Drop`
 
 > When a Character drops this
@@ -139,6 +140,7 @@ end)
 | [Pickable](pickable) | `self` | The entity which has been dropped |
 | Character | `character` | The Character which picked up |
 | <BasicType.Boolean /> | `was_triggered_by_player` | If the Player has actively pressed 'G' to drop |
+
 
 ### `Hit`
 
@@ -169,6 +171,7 @@ end)
 | [Pickable](pickable) | **`self`** |  |
 | <Classes.Character /> | **`character`** |  |
 
+
 ### `PickUp`
 
 > When a Character picks up this
@@ -176,6 +179,38 @@ end)
 ```lua
 Weapon.Subscribe("PickUp", function(self, character)
     -- called when any weapon is picked up by a Character
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Pickable](pickable) | `self` | The entity which has been picked up |
+| <Classes.Character /> | `character` | The Character which picked up |
+
+
+### `PullUse`
+
+>  When a Character Pulls the Usage of this (i.e. pulls Left Mouse button when using it or pulls the trigger if it's a Weapon)
+
+```lua
+Weapon.Subscribe("PullUse", function(self, character)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Pickable](pickable) | `self` | The entity which has been picked up |
+| <Classes.Character /> | `character` | The Character which picked up |
+
+
+### `ReleaseUse`
+
+>  When a Character Releases the Usage of this (i.e. releases Left Mouse button when using it or releases the trigger if it's a Weapon)
+
+```lua
+Weapon.Subscribe("ReleaseUse", function(self, character)
+
 end)
 ```
 
