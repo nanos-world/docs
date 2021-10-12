@@ -139,6 +139,7 @@ example: `"my-asset-pack-01::SM_Cube"`
 | **Skeletal Mesh** | Unreal Skeletal Meshes can be used to load meshes for Characters and Vehicles |
 | **Sounds** | Unreal Sounds to load Sounds |
 | **Animations** | Unreal Animations can be used for settings in Character and Weapons |
+| **Materials** | Unreal Materials can be used for customizing meshes surfaces and used as Post Process |
 
 :::info
 
