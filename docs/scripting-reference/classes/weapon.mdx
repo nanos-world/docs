@@ -165,6 +165,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 |  | <BasicType.String /> | [**`GetSoundFire`**](weapon#getsoundfire) |  |
 |  | <BasicType.Number /> | [**`GetSpread`**](weapon#getspread) |  |
 |  | <BasicType.Number /> | [**`GetRecoil`**](weapon#getrecoil) |  |
+|  | <BasicType.String /> | [**`GetAssetName`**](weapon#getassetname) | Gets the Asset name |
 
 ## Events
 
@@ -825,6 +826,16 @@ my_weapon:GetSpread()
 
 ```lua
 my_weapon:GetRecoil()
+```
+
+### **`GetAssetName`**
+
+> Gets the Asset name
+>
+> Returns <BasicType.String />
+
+```lua
+local asset_name = weapon:GetAssetName()
 ```
 
 ## Events Detailed
