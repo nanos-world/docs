@@ -180,7 +180,7 @@ my_vehicle:RemoveStaticMeshAttached(id)
 
 ### <AuthorityType.ServerOnly />`SetDifferentialSetup`
 
-> Configures the Vehicle Differential. Check the page bottom to see each property explanation
+> Configures the Vehicle Differential
 
 ```lua
 my_vehicle:SetDifferentialSetup(differential_type, front_rear_split, front_left_right_split, rear_left_right_split, center_bias, front_bias, rear_bias)
@@ -198,7 +198,7 @@ my_vehicle:SetDifferentialSetup(differential_type, front_rear_split, front_left_
 
 ### <AuthorityType.ServerOnly />`SetEngineSetup`
 
-> Configures the Vehicle Engine. Check the page bottom to see each property explanation
+> Configures the Vehicle Engine
 
 ```lua
 my_vehicle:SetEngineSetup(max_rpm, moi, damping_rate_full_throttle, d_r_zero_trt_clutch_engaged, d_r_zero_trt_clutch_disengaged)
@@ -214,7 +214,7 @@ my_vehicle:SetEngineSetup(max_rpm, moi, damping_rate_full_throttle, d_r_zero_trt
 
 ### <AuthorityType.ServerOnly />`SetVehicleSetup`
 
-> Configures the Vehicle General Settings. Check the page bottom to see each property explanation
+> Configures the Vehicle General Settings
 
 ```lua
 my_vehicle:SetVehicleSetup(drag_coefficient, throttle_input_rise_rate, throttle_input_fall_rate, brake_input_rise_rate, brake_input_fall_rate, handbrake_input_rise_rate, handbrake_input_fall_rate, steering_input_rise_rate, steering_input_fall_rate)
@@ -234,7 +234,7 @@ my_vehicle:SetVehicleSetup(drag_coefficient, throttle_input_rise_rate, throttle_
 
 ### <AuthorityType.ServerOnly />`SetTransmissionSetup`
 
-> Configures the Vehicle Transmission. Check the page bottom to see each property explanation
+> Configures the Vehicle Transmission
 
 ```lua
 my_vehicle:SetTransmissionSetup(has_automatic_transmission, gear_switch_time, gear_auto_box_latency, final_ratio, clutch_strength)
@@ -242,15 +242,15 @@ my_vehicle:SetTransmissionSetup(has_automatic_transmission, gear_switch_time, ge
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Boolean /> | **`has_automatic_transmission`** | `true` |  |
-| <BasicType.Number /> |
-| <BasicType.Number /> |
+| <BasicType.Boolean /> | **`has_automatic_transmission`** | `true` | Whether to use automatic transmission |
+| <BasicType.Number /> | **`gear_switch_time`** | `0.5` | Time it takes to switch gears (seconds) |
+| <BasicType.Number /> | **`gear_auto_box_latency`** | `2` | Minimum time it takes the automatic transmission to initiate a gear change (seconds) |
 | <BasicType.Number /> | **`final_ratio`** | `4` | The final gear ratio multiplies the transmission gear ratios |
-| <BasicType.Number /> |
+| <BasicType.Number /> | **`clutch_strength`** | `10` | Strength of clutch (Kgm^2/s) |
 
 ### <AuthorityType.ServerOnly />`SetWheel`
 
-> Configures a Vehicle Wheel. Check the page bottom to see each property explanation
+> Configures a Vehicle Wheel
 
 ```lua
 my_vehicle:SetWheel(index, bone_name, shape_radius, shape_width, steer_angle, mass, damping_rate, lat_stiff_max_load, lat_stiff_value, long_stiff_value, suspension_force_offset, suspension_max_raise, suspension_max_drop, suspension_natural_frequency, suspension_damping_ratio, max_brake_torque, max_handbrake_torque, is_affected_by_handbrake, offset)
@@ -264,19 +264,19 @@ my_vehicle:SetWheel(index, bone_name, shape_radius, shape_width, steer_angle, ma
 | <BasicType.Number /> | **`shape_width`** | `10` | Width of the wheel |
 | <BasicType.Number /> | **`steer_angle`** | `70` | Steer angle in degrees for this wheel |
 | <BasicType.Number /> | **`mass`** | `20` | Mass of this wheel |
-| <BasicType.Number /> |
+| <BasicType.Number /> | **`damping_rate`** | `0.25` | Damping rate for this wheel (Kgm^2/s) |
 | <BasicType.Number /> | **`lat_stiff_max_load`** | `2` | Max normalized tire load at which the tire can deliver no more lateral stiffness no matter how much extra load is applied to the tire |
 | <BasicType.Number /> | **`lat_stiff_value`** | `17` | How much lateral stiffness to have given lateral slip |
 | <BasicType.Number /> | **`long_stiff_value`** | `1000` | How much longitudinal stiffness to have given longitudinal slip |
-| <BasicType.Number /> |
+| <BasicType.Number /> | **`suspension_force_offset`** | `0` | Vertical offset from where suspension forces are applied (along Z-axis) |
 | <BasicType.Number /> | **`suspension_max_raise`** | `10` | How far the wheel can go above the resting position |
 | <BasicType.Number /> | **`suspension_max_drop`** | `10` | How far the wheel can drop below the resting position |
 | <BasicType.Number /> | **`suspension_natural_frequency`** | `7` | Oscillation frequency of suspension. Standard cars have values between 5 and 10 |
-| <BasicType.Number /> | **`suspension_damping_ratio`** | `1` | The rate at which energy is dissipated from the spring. Standard cars have values between 0.8 and 1.2. Values &lt; 1 are more sluggish, values &gt; 1 or more twitchy |
-| <BasicType.Number /> |
-| <BasicType.Number />. A handbrake should have a stronger brake torque than the brake. This will be ignored for wheels that are not affected by the handbrake |
+| <BasicType.Number /> | **`suspension_damping_ratio`** | `1` | The rate at which energy is dissipated from the spring. Standard cars have values between 0.8 and 1.2. Values < 1 are more sluggish, values > 1 or more twitchy |
+| <BasicType.Number /> | **`max_brake_torque`** | `1500` | Max brake torque for this wheel |
+| <BasicType.Number /> | **`max_handbrake_torque`** | `3000` | Max handbrake brake torque for this wheel. A handbrake should have a stronger brake torque than the brake. This will be ignored for wheels that are not affected by the handbrake. |
 | <BasicType.Boolean /> | **`is_affected_by_handbrake`** | `true` |  |
-| <Structs.Vector /> | **`offset`** | `Vector(0, 0, 0)` | If **bone\_name** is specified, offset the wheel from the bone’s location. Otherwise this offsets the wheel from the vehicle’s origin |
+| <Structs.Vector /> | **`offset`** | `Vector(0, 0, 0)` | If **bone_name** is specified, offset the wheel from the bone’s location. Otherwise this offsets the wheel from the vehicle’s origin |
 
 ### <AuthorityType.ServerOnly />`SetDoor`
 
