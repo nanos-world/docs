@@ -61,8 +61,7 @@ my_ui = WebUI(
     true,
     true,
     0,
-    0,
-    "my_ui_library_package"            -- Package where this HTML is located
+    0
 )
 ```
 
@@ -106,7 +105,6 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 | <BasicType.Boolean /> | **`auto_resize`** | `true` | if should auto resize when screen changes it's size (useful OFF when you are painting meshes with WebUI) |
 | <BasicType.Number /> | **`width`** | `0` | size of the WebUI when you are not using auto_resize |
 | <BasicType.Number /> | **`height`** | `0` | size of the WebUI when you are not using auto_resize |
-| <BasicType.String /> | **`package_name`** | defaults to current package | Usually you won't want to change this |
 
 ## Functions
 
