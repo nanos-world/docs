@@ -106,6 +106,7 @@ nanos world counts on \(for now\) 2 built-in maps: `nanos-world::BlankMap` and `
 | Command | Description |
 | :--- | :--- |
 | `chat [message]` | Sends a chat message |
+| `map [map_path]` | Changes the Map, reloads all Packages and reconnect all Players |
 | `stop` | Stops the server |
 | `package run [package_name] [lua_code]` | Runs a code in a package |
 | `package reload [package_name]` | Reloads a package |
