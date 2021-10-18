@@ -99,12 +99,23 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 | **Type** | **Name** | **Default** | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`name`** |  |  |
-| <BasicType.String /> | **`path`** |  | URL or `file:///relative/to/client/folder.html` |
+| <BasicType.String /> | **`path`** |  | URL or `file:///my_file.html` |
 | <BasicType.Boolean /> | **`is_visible`** | `true` | if WebUI is visible by default |
 | <BasicType.Boolean /> | **`is_transparent`** | `true` | if WebUI background is transparent |
 | <BasicType.Boolean /> | **`auto_resize`** | `true` | if should auto resize when screen changes it's size (useful OFF when you are painting meshes with WebUI) |
 | <BasicType.Number /> | **`width`** | `0` | size of the WebUI when you are not using auto_resize |
 | <BasicType.Number /> | **`height`** | `0` | size of the WebUI when you are not using auto_resize |
+
+
+:::tip
+
+Loading a .html file supports the following searchers, which are looked in the following order:
+1. Relative to `current-file-path/`
+2. Relative to `current-package/Client/`
+3. Relative to `current-package/`
+4. Relative to `Packages/`
+
+:::
 
 ## Functions
 

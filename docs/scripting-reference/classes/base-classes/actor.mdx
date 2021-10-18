@@ -249,6 +249,33 @@ entity:SetRotation(rotator)
 | :--- | :--- | :--- | :--- |
 | <Structs.Rotator /> | **`rotation`** |  | New Rotation |
 
+
+### <AuthorityType.AuthorityOnly />`SetRelativeLocation`
+
+> Sets the actor's relative location in local space (only if this actor is attached)
+
+```lua
+entity:SetRelativeLocation(relative_location)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`relative_location`** |  | New Relative Location |
+
+
+### <AuthorityType.AuthorityOnly />`SetRelativeRotation`
+
+> Sets the actor's relative rotation in local space (only if this actor is attached)
+
+```lua
+entity:SetRelativeRotation(relative_rotation)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Rotator /> | **`relative_rotation`** |  | New Relative Rotation |
+
+
 ### <AuthorityType.AuthorityOnly />`SetScale`
 
 > Sets the actor's scale
