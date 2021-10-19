@@ -126,12 +126,15 @@ my_player:Kick(reason)
 > Makes a `Player` to possess and control a `Character`
 
 ```lua
-my_player:Possess(new_character)
+my_player:Possess(new_character, blend_time, exp)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <Classes.Character /> | **`new_character`** |  |
+| <BasicType.Number /> | **`blend_time`** | `0` | Time to blend from current camera location to possessed pawn |
+| <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
+
 
 ### `SetCameraLocation`
 
