@@ -70,7 +70,6 @@ woman:AddStaticMeshAttached("hair", "nanos-world::SM_Hair_Kwang", "hair_female")
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
 | <BasicType.String /> | **`skeletal_mesh`** | `nanos-world::SK_Mannequin` |
 | <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
-| <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
 | <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
 | <BasicType.Number /> | **`health/max_health`** | `100` |
 | <BasicType.String /> | **`death_sounds`** | `nanos-world::A_Male_01_Death` |
@@ -124,6 +123,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetDeathSound`**](character#setdeathsound) | Changes the Death sound when Character dies |
 | <AuthorityType.ServerOnly /> |  | [**`SetFallDamageTaken`**](character#SetFallDamageTaken) | Set the Fall Damage multiplier taken when falling from High places |
 | <AuthorityType.ServerOnly /> |  | [**`SetFlyingMode`**](character#setflyingmode) | Sets the Flying Mode |
+| <AuthorityType.ServerOnly /> |  | [**`SetFOVMultiplier`**](character#setfovmultiplier) | Sets the FOV multiplier |
 | <AuthorityType.ServerOnly /> |  | [**`SetGaitMode`**](character#setgaitmode) | Sets the Gait Mode |
 | <AuthorityType.ServerOnly /> |  | [**`SetGravityScale`**](character#setgravityscale) | Changes the Gravity Scale of this Character |
 | <AuthorityType.ServerOnly /> |  | [**`SetHealth`**](character#sethealth) | Sets the Health of this Character. If the character is dead, respawns it with full health |
@@ -651,6 +651,20 @@ my_character:SetFlyingMode(flying_mode)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`flying_mode`** |  |  |
+
+
+### <AuthorityType.ServerOnly />`SetFOVMultiplier`
+
+> Sets the Field of View multiplier
+
+```lua
+my_character:SetFOVMultiplier(multiplier)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`multiplier`** |  |  |
+
 
 ### <AuthorityType.ServerOnly />`SetGaitMode`
 

@@ -82,7 +82,7 @@ Client.Subscribe("MouseUp", function(key_name)
         local collision_trace = CollisionChannel.WorldStatic | CollisionChannel.PhysicsBody
 
         -- Do the Trace
-        local trace_result = Client.Trace(start_location, end_location, collision_trace, false, true, false, true)
+        local trace_result = Client.Trace(start_location, end_location, collision_trace, false, true, false, {}, true)
 
         -- If hit something and hit an Entity
         if (trace_result.Success and trace_result.Entity) then
