@@ -363,12 +363,13 @@ my_player:GetVOIPChannel()
 > Returns <BasicType.Any />
 
 ```lua
-my_player:GetValue(key)
+my_player:GetValue(key, fallback)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** |  | Key |
+| <BasicType.Any /> | **`fallback`** |  | Fallback Value if key doesn't exist |
 
 ### <AuthorityType.ClientOnly /> `IsLocalPlayer`
 

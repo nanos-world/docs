@@ -567,12 +567,13 @@ Client.GetPackages()
 > Returns <BasicType.Any />
 
 ```lua
-Client.GetValue(key)
+Client.GetValue(key, fallback)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <BasicType.String /> | **`key`** |  |
+| <BasicType.String /> | **`key`** | Key |
+| <BasicType.Any /> | **`fallback`** | Fallback Value if key doesn't exist |
 
 
 ### `IsKeyDown`

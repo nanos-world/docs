@@ -480,12 +480,13 @@ entity:GetType()
 > Returns <BasicType.Any />
 
 ```lua
-entity:GetValue(key)
+entity:GetValue(key, fallback)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** |  | Key |
+| <BasicType.Any /> | **`fallback`** |  | Fallback Value if key doesn't exist |
 
 ### <AuthorityType.ClientOnly />`GetVelocity`
 
