@@ -57,10 +57,8 @@ my_cable::AttachEndTo(cube_02)
 
 ## Functions
 
-import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
 import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-paintable-functions.mdx';
 
-<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
 <details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
 
 |  | **Returns** | **Name** | **Description** |
@@ -70,10 +68,15 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.AuthorityOnly /> |  | [**`DetachEnd`**](cable#detachend) | Detaches the End of this Cable |
 | <AuthorityType.AuthorityOnly /> |  | [**`DetachStart`**](cable#detachstart) | Detaches the Start of this Cable |
 | <AuthorityType.AuthorityOnly /> |  | [**`SetAngularLimits`**](cable#setangularlimits) | Sets the Physics Angular Limits of this cable |
-| <AuthorityType.AuthorityOnly /> |  | [**`SetCableSettings`**](cable#setcablesettings) | Set the overall settings for this cable \(visuals only\) |
-| <AuthorityType.AuthorityOnly /> |  | [**`SetForces`**](cable#setforces) | Set the forces the cable has applied \(visuals only\) |
-| <AuthorityType.AuthorityOnly /> |  | [**`SetLinearLimits`**](cable#setlinearlimits) | Sets the Physics Linear Limits of this cable. If use\_soft\_constraint is enabled, then stiffness and damping will be used, otherwise restitution will be used. |
-| <AuthorityType.AuthorityOnly /> |  | [**`SetRenderingSettings`**](cable#setrenderingsettings) | Set the rendering settings of this cable \(visuals only\) |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetCableSettings`**](cable#setcablesettings) | Set the overall settings for this cable (visuals only) |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetForces`**](cable#setforces) | Set the forces the cable has applied (visuals only) |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetLinearLimits`**](cable#setlinearlimits) | Sets the Physics Linear Limits of this cable. If use_soft_constraint is enabled, then stiffness and damping will be used, otherwise restitution will be used. |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetRenderingSettings`**](cable#setrenderingsettings) | Set the rendering settings of this cable (visuals only) |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetLocation`**](./scripting-reference/classes/base-classes/actor.mdx#setlocation) | Sets the actor’s location in the game world |
+| <AuthorityType.AuthorityOnly /> |  | [**`GetLocation`**](./scripting-reference/classes/base-classes/actor.mdx#getlocation) | Gets the actor’s location in the game world |
+| <AuthorityType.AuthorityOnly /> |  | [**`GetAttachedStartTo`**](cable#getattachedstartto) | Gets the actor’s attached to Start of this Cable |
+| <AuthorityType.AuthorityOnly /> |  | [**`GetAttachedEndTo`**](cable#getattachedendto) | Gets the actor’s attached to End of this Cable |
+
 
 ### <AuthorityType.AuthorityOnly /> `AttachStartTo`
 
@@ -89,6 +92,7 @@ my_cable:AttachStartTo(other, relative_location, bone_name)
 | <Structs.Vector /> | **`relative_location`** | `Vector()` |  |
 | <BasicType.String /> | **`bone_name`** | \`\` |  |
 
+
 ### <AuthorityType.AuthorityOnly /> `AttachEndTo`
 
 > Attached the end of this cable to another Actor at a specific bone or relative location
@@ -103,6 +107,7 @@ my_cable:AttachEndTo(other, relative_location, bone_name)
 | <Structs.Vector /> | **`relative_location`** | `Vector()` |  |
 | <BasicType.String /> | **`bone_name`** | \`\` |  |
 
+
 ### <AuthorityType.AuthorityOnly /> `DetachEnd`
 
 > Detaches the End of this Cable
@@ -111,6 +116,7 @@ my_cable:AttachEndTo(other, relative_location, bone_name)
 my_cable:DetachEnd()
 ```
 
+
 ### <AuthorityType.AuthorityOnly /> `DetachStart`
 
 > Detaches the Start of this Cable
@@ -118,6 +124,7 @@ my_cable:DetachEnd()
 ```lua
 my_cable:DetachStart()
 ```
+
 
 ### <AuthorityType.AuthorityOnly /> `SetAngularLimits`
 
@@ -135,6 +142,7 @@ my_cable:SetAngularLimits(swing_1_motion, swing_2_motion, twist_motion, swing_1_
 | <BasicType.Number /> | **`swing_2_limit`** |  |  |
 | <BasicType.Number /> | **`twist_limit`** |  |  |
 
+
 ### <AuthorityType.AuthorityOnly /> `SetCableSettings`
 
 > Set the overall settings for this cable \(visuals only\)
@@ -149,6 +157,7 @@ my_cable:SetCableSettings(length, num_segments, solver_iterations)
 | <BasicType.Number /> | **`num_segments`** |  |  |
 | <BasicType.Number /> | **`solver_iterations`** |  |  |
 
+
 ### <AuthorityType.AuthorityOnly /> `SetForces`
 
 > Set the forces the cable has applied \(visuals only\)
@@ -161,6 +170,7 @@ my_cable:SetForces(force, gravity_scale)
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`force`** |  |  |
 | <BasicType.Number /> | **`gravity_scale`** | `1` |  |
+
 
 ### <AuthorityType.AuthorityOnly /> `SetLinearLimits`
 
@@ -181,6 +191,7 @@ my_cable:SetLinearLimits(x_motion, y_motion, z_motion, limit, restitution, use_s
 | <BasicType.Number /> | **`stiffness`** | `0` |  |
 | <BasicType.Number /> | **`damping`** | `0` |  |
 
+
 ### <AuthorityType.AuthorityOnly /> `SetRenderingSettings`
 
 > Set the rendering settings of this cable \(visuals only\)
@@ -194,6 +205,28 @@ my_cable:SetRenderingSettings(width, num_sides, tile_material)
 | <BasicType.Number /> | **`width`** |  |  |
 | <BasicType.Number /> | **`num_sides`** |  |  |
 | <BasicType.Number /> | **`tile_material`** |  |  |
+
+
+### `GetAttachedStartTo`
+
+> Gets the actor attached to Start
+>
+> Returns <BasicType.Any />
+
+```lua
+entity:GetAttachedStartTo()
+```
+
+
+### `GetAttachedEndTo`
+
+> Gets the actor attached to End
+>
+> Returns <BasicType.Any />
+
+```lua
+entity:GetAttachedEndTo()
+```
 
 
 ## Events

@@ -1,0 +1,160 @@
+---
+description: Create custom Bindings and Retrieve Input information
+tags: [static-class, client]
+---
+
+# 🕹️ Input
+
+Create custom Bindings and Retrieve Input information
+
+import { Structs, BasicType, Enums, AuthorityType } from '@site/docs/components/_nanos.mdx';
+
+:::tip
+
+This is a Static Class named `Input`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+
+This is a **Client** only Class.
+
+:::
+
+:::caution
+
+This Class is **experiemental**, so you can try it out and provide feedback before it's full release!
+
+:::
+
+
+## Usage
+
+```lua title="Client/Index.lua"
+-- Registers the binding_name 'SpawnMenu' with default key 'Q'
+-- This will add 'SpawnMenu' to user KeyBinding Settings automatically
+Input.Register("SpawnMenu", "Q")
+
+-- Subscribes for Pressing the key
+Input.Bind("SpawnMenu", InputEvent.Pressed, function()
+	-- Opens the Spawn Menu
+end)
+
+-- Subscribes for Releasing the key
+Input.Bind("SpawnMenu", InputEvent.Released, function()
+	-- Closes the Spawn Menu
+end)
+```
+
+
+## Static Functions
+
+| Returns | Name | Description |
+| :--- | :--- | :--- |
+|  | [**`Bind`**](input#bind) | Binds a function to an Input defined using `Register` or from Game |
+|  | [**`Unbind`**](input#unbind) | Unbinds a Input function |
+|  | [**`Register`**](input#register) | Registers a BindingName to a Key |
+|  | [**`Unregister`**](input#unregister) | Unregisters a BindingName |
+| <BasicType.String /> | [**`GetMappedKey`**](input#getmappedkey) | Returns the Key given a BindingName |
+|  | [**`ResetBindings`**](input#resetbindings) | Resets all Bound functions by this Package |
+| <BasicType.Table /> | [**`GetGameKeyBindings`**](input#getgamekeybindings) | Returns a table with all Game KeyBindings  |
+| <BasicType.Table /> | [**`GetScriptingKeyBindings`**](input#getscriptingkeybindings) | Returns a table with all Scripting KeyBindings |
+
+
+### `Bind`
+
+> Binds a function to an Input defined using `Register` or from Game
+
+```lua
+Input.Bind(binding_name, input_event, callback)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`binding_name`** | The KeyBinding ID |
+| <Enums>InputEvent</Enums> | **`input_event`** | Which Event to register (Released/Pressed) |
+| <BasicType.Function /> | **`callback`** | The function to trigger |
+
+
+### `Unbind`
+
+> Unbinds all Input functions related to that binding_name and input_event
+
+```lua
+Input.Unbind(binding_name, input_event)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`binding_name`** | The KeyBinding ID |
+| <Enums>InputEvent</Enums> | **`input_event`** | Which Event to register (Released/Pressed) |
+
+
+### `Register`
+
+> Registers a BindingName to a default Key
+
+```lua
+Input.Register(binding_name, key_name)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`binding_name`** | The KeyBinding ID |
+| <BasicType.String /> | **`key_name`** |  |
+
+
+### `Unregister`
+
+> Unregisters a BindingName
+
+```lua
+Input.Unregister(binding_name, key_name)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`binding_name`** | The KeyBinding ID |
+| <BasicType.String /> | **`key_name`** |  |
+
+
+### `GetMappedKey`
+
+> Gets the Key given a BindingName
+> 
+> Returns <BasicType.String />
+
+```lua
+Input.GetMappedKey(binding_name)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`binding_name`** | The KeyBinding ID |
+
+
+### `ResetBindings`
+
+> Resets all Bound functions from this Package
+
+```lua
+Input.ResetBindings()
+```
+
+
+### `GetScriptingKeyBindings`
+
+> Returns a table with all Scripting KeyBindings
+>
+> Returns a <BasicType.Table /> 
+
+```lua
+Input.GetScriptingKeyBindings()
+```
+
+
+### `GetGameKeyBindings`
+
+> Returns a table with all Game KeyBindings
+>
+> Returns a <BasicType.Table /> 
+
+```lua
+Input.GetGameKeyBindings()
+```

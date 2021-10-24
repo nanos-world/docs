@@ -496,7 +496,7 @@ Client.Unspectate()
 > Returned Table: `{"Success", "Location", "Normal", "Entity", "BoneName", "ActorName", "ComponentName", "SurfaceType"}`
 
 ```lua
-Client.Trace(start_location, end_location, collision_channel, trace_complex, return_entity, return_physical_material, draw_debug)
+Client.Trace(start_location, end_location, collision_channel, trace_complex, return_entity, return_physical_material, ignored_actors, draw_debug)
 ```
 
 | Type | Parameter | Default Value | Description |
@@ -507,6 +507,7 @@ Client.Trace(start_location, end_location, collision_channel, trace_complex, ret
 | <BasicType.Boolean /> | **`trace_complex`** | `false` |  |
 | <BasicType.Boolean /> | **`return_entity`** | `false` |  |
 | <BasicType.Boolean /> | **`return_physical_material`** | `false` |  |
+| <BasicType.Table /> | **`ignored_actors`** | `{}` | List of Ignored actors |
 | <BasicType.Boolean /> | **`draw_debug`** | `false` |  |
 
 
@@ -566,12 +567,13 @@ Client.GetPackages()
 > Returns <BasicType.Any />
 
 ```lua
-Client.GetValue(key)
+Client.GetValue(key, fallback)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <BasicType.String /> | **`key`** |  |
+| <BasicType.String /> | **`key`** | Key |
+| <BasicType.Any /> | **`fallback`** | Fallback Value if key doesn't exist |
 
 
 ### `IsKeyDown`

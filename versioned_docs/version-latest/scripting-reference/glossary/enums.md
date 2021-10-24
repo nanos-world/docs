@@ -200,6 +200,13 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`HandlingMode.Barrel`** | `6` |
 | **`HandlingMode.Box`** | `7` |
 
+### `InputEvent`
+
+| Label | Value |
+| :--- | :--- |
+| **`InputEvent.Pressed`** | `0` |
+| **`InputEvent.Released`** | `1` |
+
 ### `LightProfile`
 
 | Label | Value |

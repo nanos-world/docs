@@ -233,7 +233,7 @@ Server.SetPassword(password, persist_to_config_file)
 Server.SetValue(key, value)
 ```
 
-| Type | Parameter | Description |  |
+| Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** |  | Key |
 | <BasicType.Any /> | **`value`** |  | Value |
@@ -246,12 +246,13 @@ Server.SetValue(key, value)
 > Returns <BasicType.Any />
 
 ```lua
-Server.GetValue(key)
+Server.GetValue(key, fallback)
 ```
 
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`key`** |  |
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`key`** |  | Key |
+| <BasicType.Any /> | **`fallback`** |  | Fallback Value if key doesn't exist |
 
 
 ### `Stop`

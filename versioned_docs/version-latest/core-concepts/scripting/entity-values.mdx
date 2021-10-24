@@ -34,7 +34,7 @@ If you pass `sync` as true, that value will be automatically synchronized with a
 
 ## `GetValue`
 
-After set, you can access any value from any entity using `:GetValue(key)` on any entity you want. If you set the value to be synchronized on Clients, you will be able to get the values on the Client side as well.
+After set, you can access any value from any entity using `:GetValue(key, fallback)` on any entity you want. If you set the value to be synchronized on Clients, you will be able to get the values on the Client side as well. You can pass an aditional parameter `fallback` which will be returned if the key doesn't exist!
 
 :::caution
 

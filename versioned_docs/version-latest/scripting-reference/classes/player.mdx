@@ -126,12 +126,15 @@ my_player:Kick(reason)
 > Makes a `Player` to possess and control a `Character`
 
 ```lua
-my_player:Possess(new_character)
+my_player:Possess(new_character, blend_time, exp)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <Classes.Character /> | **`new_character`** |  |
+| <BasicType.Number /> | **`blend_time`** | `0` | Time to blend from current camera location to possessed pawn |
+| <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
+
 
 ### `SetCameraLocation`
 
@@ -187,7 +190,7 @@ my_player:SetValue(key, value, sync_on_clients)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** |  | Key |
 | <BasicType.Any /> | **`value`** |  | Value |
-| <BasicType.Boolean /> |
+| <BasicType.Boolean /> | **`sync_on_clients`** | Server side parameter, if enabled will sync this value through all clients |
 
 ### <AuthorityType.AuthorityOnly /> `SetVOIPChannel`
 
@@ -360,12 +363,13 @@ my_player:GetVOIPChannel()
 > Returns <BasicType.Any />
 
 ```lua
-my_player:GetValue(key)
+my_player:GetValue(key, fallback)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** |  | Key |
+| <BasicType.Any /> | **`fallback`** |  | Fallback Value if key doesn't exist |
 
 ### <AuthorityType.ClientOnly /> `IsLocalPlayer`
 
