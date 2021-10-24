@@ -333,6 +333,18 @@ entity:RotateTo(otation, speed, teleport)
 | <BasicType.Number /> | **`speed`** |  |  |
 | <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current Velocity |
 
+
+### `IsBeingDestroyed`
+
+> Gets if the actor is being destroyed (you can check if inside other callbacks e.g. `Drop` to see if a Pickable is being dropped because it's going to be destroyed)
+>
+> Returns <BasicType.Boolean />
+
+```lua
+entity:IsBeingDestroyed()
+```
+
+
 ### `IsGravityEnabled`
 
 > Gets the actor's gravity enabled
