@@ -197,7 +197,7 @@ In order to use those assets, you need to use the key `nanos-world`.
     SM_Portal_Turret = "NanosWorldAssets/Funny/Valve/Turret/SM_PortalTurret"
 
     SM_StreetSigns_NoEntry = "NanosWorldAssets/Street/SM_StreetSigns_NoEntry"
-    SM_MainBox_01 = "NanosWorldAssets/Street/SM_MainBox_01"
+    SM_MailBox_01 = "NanosWorldAssets/Street/SM_MailBox_01"
     SM_TrashCan_01 = "NanosWorldAssets/Street/SM_TrashCan_01"
     SM_Grave_12 = "NanosWorldAssets/Cemetery/Meshes/SM_Grave_12"
     SM_Grave_13 = "NanosWorldAssets/Cemetery/Meshes/SM_Grave_13"

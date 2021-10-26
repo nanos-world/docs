@@ -118,22 +118,28 @@ Server.ChangeMap(map_path)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`map_path`** |  |  |
 
+
 ### `HTTPRequest`
 
-> Makes a HTTP Request, the result will be returned in the provided Callback function in the format \(Status, Response\)
+> Makes a HTTP Request, the result will be returned in the provided Callback function in the format (status, data)
+> 
+> Note: The Request is made in a Sync way (i.e. the server will freeze during the request, in a future update we should allow async requests)
 
 ```lua
-Server.HTTPRequest(uri, endpoint, method, data, headers, callback)
+Server.HTTPRequest(uri, endpoint, method, content_type, compress, data, headers, callback)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`uri`** |  |  |
-| <BasicType.String /> | **`endpoint`** | \`\` |  |
+| <BasicType.String /> | **`uri`** |  | The main URL |
+| <BasicType.String /> | **`endpoint`** | `/` | The endpoint |
 | <BasicType.String /> | **`method`** | `GET` |  |
-| <BasicType.String /> | **`data`** | \`\` |  |
+| <BasicType.String /> | **`content_type`** | `application/json` |  |
+| <BasicType.Boolean /> | **`compress`** | `false` | Whether or not to compress the content with gzip |
+| <BasicType.String /> | **`data`** | ` ` |  |
 | <BasicType.Table /> | **`headers`** | `{}` |  |
 | <BasicType.Function /> | **`callback`** | `nil` |  |
+
 
 ### `ReloadPackage`
 
