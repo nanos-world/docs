@@ -75,6 +75,9 @@ end)
 | <BasicType.Table /> | [**`GetMapConfig`**](server#getmapconfig) | Returns a list of the Custom Config of the current map \(stored in the MAP\_NAME.toml\) |
 | <BasicType.Table /> | [**`GetPackages`**](server#getpackage) | Returns a list of Packages folder names available in the server, optionally returns only loaded and running packages |
 | <BasicType.String /> | [**`GetVersion`**](server#getversion) | Returns the server version |
+| <BasicType.String /> | [**`GetIP`**](server#getip) | Returns the server Public IP |
+| <BasicType.Number /> | [**`GetPort`**](server#getport) | Returns the server Port |
+| <BasicType.Number /> | [**`GetQueryPort`**](server#getqueryport) | Returns the server QueryPort |
 
 
 ## Events
@@ -345,6 +348,40 @@ Server.GetPackages(only_loaded)
 ```lua
 Server.GetVersion()
 ```
+
+
+### `GetIP`
+
+> Gets the server IP
+> 
+> Returns <BasicType.String />
+
+```lua
+Server.GetIP()
+```
+
+
+### `GetPort`
+
+> Gets the server Port
+> 
+> Returns <BasicType.Number />
+
+```lua
+Server.GetPort()
+```
+
+
+### `GetQueryPort`
+
+> Gets the server QueryPort
+> 
+> Returns <BasicType.Number />
+
+```lua
+Server.GetQueryPort()
+```
+
 
 ## Events Detailed
 
