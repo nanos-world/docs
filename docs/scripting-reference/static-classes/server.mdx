@@ -40,14 +40,6 @@ end)
 
 -- sends a chat message to everyone
 Server.BroadcastChatMessage("Welcome to the server!")
-
--- makes a HTTP Request
-Server.HTTPRequest("localhost:7777", "/fetch", "GET", "", {}, function(status, data)
-    Package.Log(status) -- 200
-    Package.Log(data)
-    local json_ret = JSON.parse(data)
-    -- ...
-end)
 ```
 
 
@@ -57,7 +49,6 @@ end)
 | :--- | :--- | :--- |
 |  | [**`BroadcastChatMessage`**](server#broadcastchatmessage) | Sends a chat message to everyone |
 |  | [**`ChangeMap`**](server#changemap) | Restarts the server in a new Map, restarts all packages and reconnects all players |
-|  | [**`HTTPRequest`**](server#httprequest) | Makes a HTTP Request, the result will be returned in the provided Callback function in the format \(Status, Response\) |
 |  | [**`ReloadPackage`**](server#reloadpackage) | Reloads a Package |
 |  | [**`SendChatMessage`**](server#sendchatmessage) | Sends a chat message to Player only |
 |  | [**`SetDescription`**](server#setdescription) | Sets the description of the server, optionally overrides Config.toml |
@@ -117,28 +108,6 @@ Server.ChangeMap(map_path)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`map_path`** |  |  |
-
-
-### `HTTPRequest`
-
-> Makes a HTTP Request, the result will be returned in the provided Callback function in the format (status, data)
-> 
-> Note: The Request is made in a Sync way (i.e. the server will freeze during the request, in a future update we should allow async requests)
-
-```lua
-Server.HTTPRequest(uri, endpoint, method, content_type, compress, data, headers, callback)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`uri`** |  | The main URL |
-| <BasicType.String /> | **`endpoint`** | `/` | The endpoint |
-| <BasicType.String /> | **`method`** | `GET` |  |
-| <BasicType.String /> | **`data`** | ` ` |  |
-| <BasicType.String /> | **`content_type`** | `application/json` |  |
-| <BasicType.Boolean /> | **`compress`** | `false` | Whether or not to compress the content with gzip |
-| <BasicType.Table /> | **`headers`** | `{}` |  |
-| <BasicType.Function /> | **`callback`** | `nil` |  |
 
 
 ### `ReloadPackage`
