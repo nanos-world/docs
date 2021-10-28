@@ -5,7 +5,7 @@ description: >-
 tags: [tutorial-example, hosting]
 ---
 
-# Hosting Server 4Free
+# Hosting Server 4Free - Google Cloud
 
 How to create a Linux virtual machine instance on Compute Engine using the Google Cloud Console withing the Free Tier limit.
 
@@ -92,6 +92,12 @@ ssh [YOUR_VM_EXTERNAL_IP]
 Type **yes** if asked, and you will be in! 
 
 ![](/img/docs/tutorials/hosting-4free-12.jpg)
+
+:::tip
+
+If your system doesn't have a built-in SSH client, you may use third-party clients like PuTTY.
+
+:::
 
 ### Step 4: Installing nanos world server
 
