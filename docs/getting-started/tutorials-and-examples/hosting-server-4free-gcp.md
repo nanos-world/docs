@@ -1,13 +1,13 @@
 ---
 description: >-
   How to create a Linux virtual machine instance on Compute Engine using the
-  Google Cloud Console within the Free Tier limit
+  Google Cloud Console within the Free Tier.
 tags: [tutorial-example, hosting]
 ---
 
 # Hosting Server 4Free - Google Cloud
 
-How to create a Linux virtual machine instance on Compute Engine using the Google Cloud Console within the Free Tier limit.
+How to create a Linux virtual machine instance on Compute Engine using the Google Cloud Console within the Free Tier.
 
 :::caution
 
@@ -120,7 +120,7 @@ This will download NanosWorldServer executable and set it to be an executable it
 
 :::tip
 
-And voila! You have a nanos world server running 24/7!
+Use `tmux` if you want to run the server even if you're not logged in via SSH. In case it isn't installed in your instance, do `sudo apt install tmux`.
 
 :::
 
