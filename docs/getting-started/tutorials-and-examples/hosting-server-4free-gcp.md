@@ -103,17 +103,39 @@ If your system doesn't have a built-in SSH client, you may use third-party clien
 
 Now you must download nanos world server in your VM.
 
-For that, you can use our public repository in the GitHub to download it with the following two commands:
+For that, you should use SteamCMD. Install it by doing:
 
 ```bash
-curl -L https://github.com/nanos-world/nanos-world-server/releases/latest/download/NanosWorldServer -o NanosWorldServer
-chmod +x NanosWorldServer
+sudo add-apt-repository multiverse
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install lib32gcc1 steamcmd 
 ```
 
-This will download NanosWorldServer executable and set it to be an executable itself. After downloading, you can start your server like:
+Then, launch SteamCMD by running `steamcmd`.
+
+Login anonymously.
 
 ```bash
-./NanosWorldServer
+Steam> login anonymous
+```
+Then select a directory for your server:
+
+```bash
+Steam> force_install_dir ./nanos-world-server
+```
+
+Install nanos world server by using this command:
+
+```bash
+Steam> app_update 1686460
+```
+
+This will download the server. After downloading, navigate to your server folder and start your server like:
+
+```bash
+chmod +x ./NanosWorldServer.sh
+./NanosWorldServer.sh
 ```
 
 ![](/img/docs/tutorials/hosting-4free-13.jpg)
