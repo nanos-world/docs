@@ -1,21 +1,21 @@
 ---
-description: Base class for all Actors entities
+description: Base class for all Actor entities
 tags: [base-class]
 ---
 
 # Base Actor
 
-Base class for all Actors entities
+Base class for all Actor entities
 
 import { Structs, BasicType, AuthorityType, Enums } from '@site/docs/components/_nanos.mdx';
 
-An **Actor** is an object which can be spawned and destroyed through Lua code. Actors support 3D transformations such as translation \(location\), rotation, and scaling.
+An **Actor** is an object which can be spawned and destroyed through Lua. Actors support 3D transformations such as translation \(location\), rotation, and scale.
 
-In nanos world, **Actor** is base for several entities, and all those entities share the same **Methods** and **Events** described in this page.
+In nanos world, **Actor** is the base for several entities, and all those entities share the same **Methods** and **Events** described in this page.
 
 :::info
 
-This is the base Class for all actors we have. You cannot spawn it directly.
+This is the base class for all Actors we have. You cannot spawn it directly.
 
 :::
 
@@ -23,22 +23,22 @@ This is the base Class for all actors we have. You cannot spawn it directly.
 
 :::tip
 
-**Note:** The following functions are accessed statically using the specific **Class** and with a **dot**. Example: `Character.GetAll()`.
+**Note:** The following functions are accessed statically using the specific **class** with a **dot**. Example: `Character.GetAll()`.
 
 :::
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
-| <BasicType.Table /> | [**`GetAll`**](actor#getall) | Gets a copy table with all entities _\(copy\)_ |
-| [Actor](actor) | [**`GetByIndex`**](actor#getbyindex) | Gets a specific entity at index _\(direct\)_ |
-| <BasicType.Number /> | [**`GetCount`**](actor#getcount) | Gets how many entities of this class exist _(direct)_ |
-| <BasicType.Iterator /> | [**`GetPairs`**](actor#getall) | Gets an iterator with all entities of this class _\(direct\)_ |
+| <BasicType.Table /> | [**`GetAll`**](actor#getall) | Returns a table containing all Actors of the class this is called on _\(copy\)_ |
+| [Actor](actor) | [**`GetByIndex`**](actor#getbyindex) | Returns a specific Actor of this class at an index _\(direct\)_ |
+| <BasicType.Number /> | [**`GetCount`**](actor#getcount) | Returns how many Actors of this class exist _\(direct\)_ |
+| <BasicType.Iterator /> | [**`GetPairs`**](actor#getall) | Returns an iterator with all Actors of this class _\(direct\)_ |
 
 ## Functions
 
 :::caution
 
-**Note:** Some of the following methods don't work in some specific entities.
+**Note:** Some of the following methods don't work with certain Actor classes.
 
 :::
 
@@ -56,7 +56,7 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 
 ### `GetAll`
 
-> Returns a copy table with all entities of this class
+> Returns a table containing all Actors of the class this is called on
 
 ```lua
 local entities_copy = Player.GetAll()
@@ -66,7 +66,7 @@ entities_copy[5] -- Player 5
 
 ### `GetByIndex`
 
-> Returns an [Actor](actor) of the specific class at index
+> Returns a specific [Actor](actor) of this class at an index
 
 ```lua
 local first_character = Character.GetByIndex(1)
@@ -74,11 +74,11 @@ local first_character = Character.GetByIndex(1)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <BasicType.Number /> | **`index`** | The index of the entity |
+| <BasicType.Number /> | **`index`** | The index of the Actor |
 
 ### `GetCount`
 
-> Returns how many entities of this class exist
+> Returns how many Actors of this class exist
 
 ```lua
 local player_count = Player.GetCount()
@@ -86,9 +86,9 @@ local player_count = Player.GetCount()
 
 ### `GetPairs`
 
-> Returns an iterator with all entities of this class to be used with `pairs()`. This is a more performatic way than `GetAll()` as it will return the iterator to access the entities directly instead of creating and returning a copy of the entities table.
+> Returns an iterator with all Actors of this class to be used with `pairs()`. This is a more performant method than `GetAll()`, as it will return the iterator to access the Actors directly instead of creating and returning a copy of the Actors table.
 >
-> **Note:** Destroying entities from inside GetPairs() loop will cause the iteration to change it's size during the process. If you want to loop-and-destroy, please use `GetAll()`.
+> **Note:** Destroying Actors from inside a GetPairs() loop will cause the iterable to change size during the process. If you want to loop-and-destroy, please use `GetAll()`.
 
 ```lua
 for k, player in pairs(Player.GetPairs()) do
@@ -100,7 +100,7 @@ end
 
 ### <AuthorityType.AuthorityOnly />`AddImpulse`
 
-> Applies a Force in world coordinate on this Actor \(the force is applied on Client side, by the \(in most of cases\) the closest player of this object\)
+> Applies a force in world world to this Actor \(the force is applied client side, by, in most cases, the player closest to this Actor\)
 
 ```lua
 entity:AddImpulse(force, velocity_change)
@@ -115,11 +115,11 @@ entity:AddImpulse(force, velocity_change)
 
 > Attaches this Actor to any other Actor, optionally at a specific bone
 >
-> * **`AttachmentRule.KeepRelative`** will keep the current Relative Position/Rotation if already attached.
-> * **`AttachmentRule.KeepWorld`** will calculate the new Relative Position/Rotation so the Actor stays on the same position after attached.
-> * **`AttachmentRule.SnapToTarget`** will set the Actor to the same position/rotation to **`other_actor`** \(or at the bone location\) and reset it's Relative Position/Rotation to **zero**.
+> * **`AttachmentRule.KeepRelative`** will keep the current relative position/rotation if already attached.
+> * **`AttachmentRule.KeepWorld`** will calculate the new relative position/rotation so the Actor stays at the same position after being attached.
+> * **`AttachmentRule.SnapToTarget`** will set the Actor to the same position/rotation as **`other_actor`** \(or at the bone location\) and reset its relative position/rotation to **zero**.
 > 
-> Setting **`lifespan_when_detached`** to `0` will automatically destroy this actor when detached, setting to `10` will destroy it after 10 seconds when detached.
+> Setting **`lifespan_when_detached`** to `0` will automatically destroy this actor when detached, setting it to `10` will destroy this after 10 seconds when detached.
 
 ```lua
 entity:AttachTo(other_actor, attachment_rule, bone_name, lifespan_when_detached)
@@ -129,8 +129,8 @@ entity:AttachTo(other_actor, attachment_rule, bone_name, lifespan_when_detached)
 | :--- | :--- | :--- | :--- |
 | [Actor](actor) | **`other`** |  | Other actor to attach |
 | <Enums>AttachmentRule</Enums> | **`attachment_rule`** | `SnapToTarget` | How to attach |
-| <BasicType.String /> | **`bone_name`** | `""` | Which bone to attach |
-| <BasicType.Number /> | **`lifespan_when_detached`** | `-1` | Lifespan to automatically destroy this actor after `X` seconds when detached |
+| <BasicType.String /> | **`bone_name`** | `""` | Which bone to attach to |
+| <BasicType.Number /> | **`lifespan_when_detached`** | `-1` | Seconds before destroying this Actor when detached |
 
 ### <AuthorityType.AuthorityOnly />`Destroy`
 
@@ -150,7 +150,7 @@ entity:Detach()
 
 ### <AuthorityType.AuthorityOnly />`SetCollision`
 
-> Sets the actor's collision
+> Sets this Actor's collision type
 
 ```lua
 entity:SetCollision(collision_type)
@@ -162,7 +162,7 @@ entity:SetCollision(collision_type)
 
 ### <AuthorityType.AuthorityOnly />`SetForce`
 
-> Adds a permanent force to this actor Set to Vector\(0, 0, 0\) to cancel
+> Adds a permanent force to this Actor, set to Vector\(0, 0, 0\) to cancel
 
 ```lua
 entity:SetForce(force, is_local)
@@ -176,7 +176,7 @@ entity:SetForce(force, is_local)
 
 ### <AuthorityType.AuthorityOnly />`SetGravityEnabled`
 
-> Sets the actor's gravity enabled
+> Sets whether gravity is enabled on this Actor
 
 ```lua
 entity:SetGravityEnabled(is_enabled)
@@ -189,7 +189,7 @@ entity:SetGravityEnabled(is_enabled)
 
 ### <AuthorityType.AuthorityOnly />`SetHighlightEnabled`
 
-> Sets if this Actors is Highlighting at a specific Index color
+> Sets whether the highlight is enabled on this Actor, and which highlight index to use
 
 ```lua
 entity:SetHighlightEnabled(is_enabled, index)
@@ -197,13 +197,13 @@ entity:SetHighlightEnabled(is_enabled, index)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Boolean /> | **`is_enabled`** |  | Enabled |
-| <BasicType.Number /> | **`index`** | `0` | Index to enable (should be `0`, `1` or `2`.) |
+| <BasicType.Boolean /> | **`is_enabled`** |  | Whether the highlight should be enabled |
+| <BasicType.Number /> | **`index`** | `0` | Index to use (should be `0`, `1` or `2`) |
 
 
 ### `SetLifeSpan`
 
-> Sets the life span of this Actor in seconds. After the time has been passed, the actor will be automatically destroyed.
+> Sets the time \(in seconds\) before this Actor is destroyed. After this time has passed, the actor will be automatically destroyed.
 
 ```lua
 entity:SetLifeSpan(seconds)
@@ -211,11 +211,11 @@ entity:SetLifeSpan(seconds)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`seconds`** |  | Time to be destroyed |
+| <BasicType.Number /> | **`seconds`** |  | Seconds before being destroyed |
 
 ### `SetLocation`
 
-> Sets the actor's location in the game world
+> Sets this Actor’s location in the game world
 
 ```lua
 entity:SetLocation(vector)
@@ -223,11 +223,11 @@ entity:SetLocation(vector)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** |  | New Location |
+| <Structs.Vector /> | **`location`** |  | New location |
 
 ### <AuthorityType.ClientOnly />`SetNetworkAuthority`
 
-> Sets this actor's new Player network authority. This player will be manually assigned to handle this actor physics and share it's location with other clients. The authority assignment will still be overridden by the game automatically, to avoid that set a big time value so the player can keep longer with the authority and override the natural authority selection
+> Sets the Player to have network authority over this Actor. This Player will be manually assigned to handle this Actor's physics and share its location with other clients. The authority assignment will still be overridden by the game automatically, to avoid that set a big time value so the Player keeps the authority for longer
 >
 > Please refer to [Network Authority](./core-concepts/scripting/authority-concepts.mdx#network-authority) for more information
 
@@ -237,12 +237,12 @@ entity:SetNetworkAuthority(player, time_ms)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| Player | **`player`** | `nil` | New player which will assume the Network Authority of this entity |
-| <BasicType.Number /> | **`time_ms`** | `0` | Time to force the network authority active on this player |
+| Player | **`player`** | `nil` | New player which will assume the Network Authority of this Actor |
+| <BasicType.Number /> | **`time_ms`** | `0` | Milliseconds before resuming automatic network authority for this Actor |
 
 ### <AuthorityType.AuthorityOnly />`SetRotation`
 
-> Sets the actor's rotation in the game world
+> Sets this Actor’s rotation in the game world
 
 ```lua
 entity:SetRotation(rotator)
@@ -250,12 +250,12 @@ entity:SetRotation(rotator)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <Structs.Rotator /> | **`rotation`** |  | New Rotation |
+| <Structs.Rotator /> | **`rotation`** |  | New rotation |
 
 
 ### <AuthorityType.AuthorityOnly />`SetRelativeLocation`
 
-> Sets the actor's relative location in local space (only if this actor is attached)
+> Sets this Actor’s relative location in local space (only if this actor is attached)
 
 ```lua
 entity:SetRelativeLocation(relative_location)
@@ -263,12 +263,12 @@ entity:SetRelativeLocation(relative_location)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <Structs.Vector /> | **`relative_location`** |  | New Relative Location |
+| <Structs.Vector /> | **`relative_location`** |  | New relative location |
 
 
 ### <AuthorityType.AuthorityOnly />`SetRelativeRotation`
 
-> Sets the actor's relative rotation in local space (only if this actor is attached)
+> Sets this Actor’s relative rotation in local space (only if this actor is attached)
 
 ```lua
 entity:SetRelativeRotation(relative_rotation)
@@ -276,12 +276,12 @@ entity:SetRelativeRotation(relative_rotation)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <Structs.Rotator /> | **`relative_rotation`** |  | New Relative Rotation |
+| <Structs.Rotator /> | **`relative_rotation`** |  | New relative rotation |
 
 
 ### <AuthorityType.AuthorityOnly />`SetScale`
 
-> Sets the actor's scale
+> Sets this Actor’s scale
 
 ```lua
 entity:SetScale(vector)
@@ -289,11 +289,11 @@ entity:SetScale(vector)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <Structs.Vector /> | **`scale`** |  | New Scale |
+| <Structs.Vector /> | **`scale`** |  | New scale |
 
 ### `SetValue`
 
-> Sets a value in this entity, which can be accessed by any package \(optionally sync on clients if called from server\)
+> Sets a value in this Actor, which can be accessed by any package \(optionally sync on clients if called from server\)
 >
 > Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
 
@@ -305,11 +305,11 @@ entity:SetValue(key, value, sync_on_clients)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** |  | Key |
 | <BasicType.Any /> | **`value`** |  | Value |
-| <BasicType.Boolean /> | **`sync_on_clients`** | Server side parameter, if enabled will sync this value through all clients |
+| <BasicType.Boolean /> | **`sync_on_clients`** | Server side parameter, if enabled will sync this value with all clients |
 
 ### `TranslateTo`
 
-> Smoothly moves this actor to a Location with a certain Speed - optionally enables sweep to stop when colliding - use teleport flag will not affect velocity
+> Smoothly moves this actor to a location with a certain speed - optionally enables sweep to stop when colliding - use teleport flag to not affect velocity
 
 ```lua
 entity:TranslateTo(location, speed, sweep, teleport)
@@ -317,14 +317,14 @@ entity:TranslateTo(location, speed, sweep, teleport)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** |  | Location to Translate to |
+| <Structs.Vector /> | **`location`** |  | Location to translate to |
 | <BasicType.Number /> | **`speed`** |  |  |
-| <BasicType.Boolean /> | **`sweep`** | `false` | Whether to stop movement if collides |
-| <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current Velocity |
+| <BasicType.Boolean /> | **`sweep`** | `false` | Whether to stop movement if there's a collision |
+| <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current velocity |
 
 ### `RotateTo`
 
-> Smoothly rotates this actor to a Rotation with a certain Speed
+> Smoothly rotates this Actor to an angle with a certain speed
 
 ```lua
 entity:RotateTo(otation, speed, teleport)
@@ -332,14 +332,14 @@ entity:RotateTo(otation, speed, teleport)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <Structs.Rotator /> | **`rotation`** |  | Rotation to Translate to |
+| <Structs.Rotator /> | **`rotation`** |  | Angle to rotate to |
 | <BasicType.Number /> | **`speed`** |  |  |
-| <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current Velocity |
+| <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current velocity |
 
 
 ### `IsBeingDestroyed`
 
-> Gets if the actor is being destroyed (you can check if inside other callbacks e.g. `Drop` to see if a Pickable is being dropped because it's going to be destroyed)
+> Gets if this Actor is being destroyed (you can check this inside events like `Drop` to see if a Pickable is being dropped because it's going to be destroyed)
 >
 > Returns <BasicType.Boolean />
 
@@ -350,7 +350,7 @@ entity:IsBeingDestroyed()
 
 ### `IsGravityEnabled`
 
-> Gets the actor's gravity enabled
+> Gets whether gravity is enabled on this Actor
 >
 > Returns <BasicType.Boolean />
 
@@ -360,7 +360,7 @@ entity:IsGravityEnabled()
 
 ### `IsInWater`
 
-> Gets if the actor is in Water
+> Gets if this Actor is in water
 >
 > Returns <BasicType.Boolean />
 
@@ -370,7 +370,7 @@ entity:IsInWater()
 
 ### `IsNetworkDistributed`
 
-> Gets if the actor is network distributed. Only actors being network distributed can be set network authority.
+> Gets if this Actor is network distributed. Only actors being network distributed can have their network authority set.
 >
 > Returns <BasicType.Boolean />
 
@@ -380,7 +380,7 @@ entity:IsNetworkDistributed()
 
 ### `IsValid`
 
-> Gets if this entity is valid \(i.e. wasn't destroyed and points to a valid entity\)
+> Gets if this Actor is valid \(i.e. wasn't destroyed and points to a valid Actor\)
 >
 > Returns <BasicType.Boolean />
 
@@ -390,7 +390,7 @@ entity:IsValid()
 
 ### `GetAttachedEntities`
 
-> Gets all actors attached to this entity
+> Gets all Actors attached to this Actor
 >
 > Returns <BasicType.Table />
 
@@ -400,7 +400,7 @@ entity:GetAttachedEntities()
 
 ### `GetAttachedTo`
 
-> Gets the actor I'm attached to
+> Gets the Actor this Actor is attached to
 >
 > Returns <BasicType.Any />
 
@@ -410,9 +410,9 @@ entity:GetAttachedTo()
 
 ### <AuthorityType.ClientOnly />`GetBounds`
 
-> Gets the actor bounds size
+> Gets this Actor's bounds
 >
-> Returns <BasicType.Table /> in format `{"Origin", "BoxExtent", "SphereRadius"}`
+> Returns <BasicType.Table /> in the format `{"Origin", "BoxExtent", "SphereRadius"}`
 
 ```lua
 entity:GetBounds()
@@ -420,7 +420,7 @@ entity:GetBounds()
 
 ### `GetCollision`
 
-> Gets the current actor's collision
+> Gets this Actor’s collision type
 >
 > Returns <BasicType.Number />
 
@@ -430,7 +430,7 @@ entity:GetCollision()
 
 ### `GetID`
 
-> Gets the network ID of this entity \(same in both client and server\)
+> Gets the universal network ID of this Actor \(same on both client and server\)
 >
 > Returns <BasicType.Number />
 
@@ -440,7 +440,7 @@ entity:GetID()
 
 ### `GetLocation`
 
-> Get the actor's position in the game world
+> Gets this Actor’s location in the game world
 >
 > Returns <Structs.Vector />
 
@@ -450,7 +450,7 @@ entity:GetLocation()
 
 ### <AuthorityType.ClientOnly />`GetInitialLocation`
 
-> Gets the initial location
+> Gets the initial location of this Actor
 >
 > Returns <Structs.Vector />
 
@@ -460,7 +460,7 @@ entity:GetInitialLocation()
 
 ### `GetRotation`
 
-> Gets the actor's rotation in the game world
+> Gets this Actor’s angle in the game world
 >
 > Returns <Structs.Rotator />
 
@@ -470,7 +470,7 @@ entity:GetRotation()
 
 ### `GetScale`
 
-> Gets the actor's scale
+> Gets this Actor’s scale
 >
 > Returns <Structs.Vector />
 
@@ -490,7 +490,7 @@ entity:GetType()
 
 ### `GetValue`
 
-> Gets a value given a key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
+> Gets a value stored on this Actor at the given key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
 >
 > Returns <BasicType.Any />
 
@@ -501,11 +501,11 @@ entity:GetValue(key, fallback)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** |  | Key |
-| <BasicType.Any /> | **`fallback`** |  | Fallback Value if key doesn't exist |
+| <BasicType.Any /> | **`fallback`** |  | Fallback value if key doesn't exist |
 
 ### <AuthorityType.ClientOnly />`GetVelocity`
 
-> Gets the current actor Velocity
+> Returns this Actor's current velocity
 >
 > Returns <Structs.Vector />
 
@@ -515,7 +515,7 @@ entity:GetVelocity()
 
 ### `Subscribe`
 
-> Subscribes for an Event
+> Subscribes to an Event
 
 ```lua
 entity:Subscribe(event_name, callback)
@@ -523,12 +523,12 @@ entity:Subscribe(event_name, callback)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`event_name`** |  |  |
-| <BasicType.Function /> | **`function`** |  |  |
+| <BasicType.String /> | **`event_name`** |  | Name of the event to subscribe to |
+| <BasicType.Function /> | **`function`** |  | Event callback |
 
 ### `Unsubscribe`
 
-> Unsubscribes from all subscribed Events in this Entity and in this Package, optionally passing the function to unsubscribe only that callback
+> Unsubscribes all callbacks from this Event in this Actor within this Package, optionally passing the function to unsubscribe only that callback
 
 ```lua
 entity:Unsubscribe(event_name, callback)
@@ -536,14 +536,14 @@ entity:Unsubscribe(event_name, callback)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`event_name`** |  |  |
-| <BasicType.Function /> | **`function`** | `nil` |  |
+| <BasicType.String /> | **`event_name`** |  | Name of the event to unsubscribe from |
+| <BasicType.Function /> | **`function`** | `nil` | Optional callback to unsubscribe |
 
 ## Events Detailed
 
 ### `Destroy`
 
-> Triggered when an Entity is Destroyed
+> Triggered when an Actor is destroyed
 
 ```lua
 Vehicle.Subscribe("Destroy", function(self)
@@ -553,11 +553,11 @@ end)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| [Actor](actor) | `self` | The entity which has been destroyed |
+| [Actor](actor) | `self` | The Actor which has been destroyed |
 
 ### `Spawn`
 
-> Triggered when an Entity is Spawned/Created
+> Triggered when an Actor is spawned/created
 
 ```lua
 Vehicle.Subscribe("Spawn", function(self)
@@ -567,11 +567,11 @@ end)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| [Actor](actor) | `self` | The entity which has been spawned |
+| [Actor](actor) | `self` | The Actor which has been spawned |
 
 ### `ValueChange`
 
-> Triggered when an Entity has it’s value changed with `:SetValue()`
+> Triggered when an Actor has a value changed with `:SetValue()`
 
 ```lua
 Vehicle.Subscribe("ValueChange", function(self, key, value)
@@ -581,7 +581,7 @@ end)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| [Actor](actor) | `self` | The entity which has the value changed |
-| <BasicType.String /> | `key` | The key changed |
+| [Actor](actor) | `self` | The Actor that just had a value changed |
+| <BasicType.String /> | `key` | The key used |
 | <BasicType.Any /> | `value` | The value changed |
 

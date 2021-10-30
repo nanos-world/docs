@@ -6,12 +6,12 @@ import { Structs, BasicType, AuthorityType, Classes, ReferenceLink } from '@site
 
 |  | **Returns** | **Name** | **Description** |
 | :---: | :--- | :--- | :--- |
-|  |  | [**`AddSkeletalMeshAttached`**](./scripting-reference/classes/base-classes/pickable.mdx#addskeletalmeshattached) | Spawns and Attaches a SkeletalMesh into this Actor |
-|  |  | [**`AddStaticMeshAttached`**](./scripting-reference/classes/base-classes/pickable.mdx#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Actor |
-| <AuthorityType.ServerOnly /> |  | [**`PullUse`**](./scripting-reference/classes/base-classes/pickable.mdx#pulluse) | Force this Pickable to be used |
-| <AuthorityType.ServerOnly /> |  | [**`ReleaseUse`**](./scripting-reference/classes/base-classes/pickable.mdx#releaseuse) | Force this Pickable to be released the usage |
-|  |  | [**`RemoveSkeletalMeshAttached`**](./scripting-reference/classes/base-classes/pickable.mdx#removeskeletalmeshattached) | Removes, if existing, a SkeletalMesh from this Actor given it's custom ID |
-|  |  | [**`RemoveStaticMeshAttached`**](./scripting-reference/classes/base-classes/pickable.mdx#removestaticmeshattached) | Removes, if existing, a StaticMesh from this Actor given it's custom ID |
-| <AuthorityType.ServerOnly /> |  | [**`SetCrosshairMaterial`**](./scripting-reference/classes/base-classes/pickable.mdx#setcrosshairmaterial) | Sets the Crosshair Material |
-|  | <BasicType.String /> | [**`GetAssetName`**](./scripting-reference/classes/base-classes/pickable.mdx#getassetname) | Gets the Asset name |
-|  | <Classes.Character /> | [**`GetHandler`**](./scripting-reference/classes/base-classes/pickable.mdx#gethandler) | Gets the Character \(if existing\) which is hol
+|  |  | [**`AddSkeletalMeshAttached`**](./scripting-reference/classes/base-classes/pickable.mdx#addskeletalmeshattached) | Spawns and attaches a SkeletalMesh to this Pickable |
+|  |  | [**`AddStaticMeshAttached`**](./scripting-reference/classes/base-classes/pickable.mdx#addstaticmeshattached) | Spawns and attaches a StaticMesh to this Pickable |
+| <AuthorityType.ServerOnly /> |  | [**`PullUse`**](./scripting-reference/classes/base-classes/pickable.mdx#pulluse) | Triggers the `PullUse` event on this Pickable |
+| <AuthorityType.ServerOnly /> |  | [**`ReleaseUse`**](./scripting-reference/classes/base-classes/pickable.mdx#releaseuse) | Triggers the `ReleaseUse` event on this Pickable |
+|  |  | [**`RemoveSkeletalMeshAttached`**](./scripting-reference/classes/base-classes/pickable.mdx#removeskeletalmeshattached) | Removes, if it exists, a SkeletalMesh from this Pickable given its custom ID |
+|  |  | [**`RemoveStaticMeshAttached`**](./scripting-reference/classes/base-classes/pickable.mdx#removestaticmeshattached) | Removes, if it exists, a StaticMesh from this Pickable given its custom ID |
+| <AuthorityType.ServerOnly /> |  | [**`SetCrosshairMaterial`**](./scripting-reference/classes/base-classes/pickable.mdx#setcrosshairmaterial) | Sets the crosshair material for this Pickable |
+|  | <BasicType.String /> | [**`GetAssetName`**](./scripting-reference/classes/base-classes/pickable.mdx#getassetname) | Gets the name of the asset this Pickable uses |
+|  | <Classes.Character /> | [**`GetHandler`**](./scripting-reference/classes/base-classes/pickable.mdx#gethandler) | Gets the Character, if it exists, that's holding this Pickable |
