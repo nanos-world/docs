@@ -1,18 +1,18 @@
 ---
-description: Base class for all Pickable entities
+description: Base class for all Pickables
 tags: [base-class]
 ---
 
 # Base Pickable
 
-Base class for all Pickable entities
+Base class for all Pickables
 
 import { Structs, BasicType, AuthorityType, Classes } from '@site/docs/components/_nanos.mdx';
 import ThemedImage from '@theme/ThemedImage';
 
-**Pickable** are special entities which can be **grabbed**, **hold** and **used** by <Classes.Character />. Example of Pickable entities are: <Classes.Weapon />, <Classes.Item /> and <Classes.Grenade />.
+**Pickable**s are special Actors which can be **grabbed**, **held** and **used** by <Classes.Character />s. Examples of Pickable Actor are: <Classes.Weapon />, <Classes.Item /> and <Classes.Grenade />.
 
-They have special methods and events and are highlighted when looking at by a Character.
+They have special methods and events and are highlighted when looked at by a Character.
 
 ## Functions
 
@@ -23,7 +23,7 @@ import BasePickableFunctions from '@site/docs/scripting-reference/classes/base-c
 
 ### `AddSkeletalMeshAttached`
 
-> Spawns and Attaches a SkeletalMesh into this Actor, the SkeletalMesh must have the same Skeletal used by this Actor Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
+> Spawns and attaches a SkeletalMesh to this Pickable, the SkeletalMesh must have the same skeleton used by this Actor's mesh, and will follow all animations from it. Uses a custom ID to be used for removing it later
 
 ```lua
 entity:AddSkeletalMeshAttached(id, skeletal_mesh_path)
@@ -31,12 +31,12 @@ entity:AddSkeletalMeshAttached(id, skeletal_mesh_path)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`id`** |  | Unique ID to set the Skeletal Mesh |
-| <BasicType.String /> | **`skeletal_mesh_path`** |  | Skeletal Mesh Asset to use |
+| <BasicType.String /> | **`id`** |  | Unique ID to assign to the SkeletalMesh |
+| <BasicType.String /> | **`skeletal_mesh_path`** |  | SkeletalMesh asset to use |
 
 ### `AddStaticMeshAttached`
 
-> Spawns and Attaches a StaticMesh into this Actor in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
+> Spawns and attaches a StaticMesh to this Pickable in a Socket with a relative location and rotation. Uses a custom ID to be used for removing it later
 
 ```lua
 entity:AddStaticMeshAttached(id, static_mesh_path, socket, relative_location, relative_rotation)
@@ -44,15 +44,15 @@ entity:AddStaticMeshAttached(id, static_mesh_path, socket, relative_location, re
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`id`** |  | Unique ID to set the Static Mesh |
-| <BasicType.String /> | **`static_mesh_path`** |  | Static Mesh Asset to use |
-| <BasicType.String /> | **`socket`** | `""` | Bone Socket to attach to |
-| <Structs.Vector /> | **`relative_location`** | `Vector(0, 0, 0)` | Relative Location |
-| <Structs.Rotator /> | **`relative_rotation`** | `Rotator(0, 0, 0)` | Relative Rotation |
+| <BasicType.String /> | **`id`** |  | Unique ID to assign to the StaticMesh |
+| <BasicType.String /> | **`static_mesh_path`** |  | StaticMesh asset to use |
+| <BasicType.String /> | **`socket`** | `""` | Bone socket to attach to |
+| <Structs.Vector /> | **`relative_location`** | `Vector(0, 0, 0)` | Relative location |
+| <Structs.Rotator /> | **`relative_rotation`** | `Rotator(0, 0, 0)` | Relative rotation |
 
 ### <AuthorityType.ServerOnly />`PullUse`
 
-> Force this Pickable to be used \(e.g. if this is a Weapon, will fire\)
+> Triggers the `PullUse` event on this Pickable
 
 ```lua
 entity:PullUse()
@@ -60,7 +60,7 @@ entity:PullUse()
 
 ### <AuthorityType.ServerOnly />`ReleaseUse`
 
-> Force this Pickable to be released the usage
+> Triggers the `ReleaseUse` event on this Pickable
 
 ```lua
 entity:ReleaseUse()
@@ -68,7 +68,7 @@ entity:ReleaseUse()
 
 ### `RemoveSkeletalMeshAttached`
 
-> Removes, if existing, a SkeletalMesh from this Actor given it's custom ID
+> Removes, if it exists, a SkeletalMesh from this Pickable given its custom ID
 
 ```lua
 entity:RemoveSkeletalMeshAttached(id)
@@ -76,11 +76,11 @@ entity:RemoveSkeletalMeshAttached(id)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`id`** |  | Unique ID to remove the Attached Mesh |
+| <BasicType.String /> | **`id`** |  | Unique ID of the SkeletalMesh to remove |
 
 ### `RemoveStaticMeshAttached`
 
-> Removes, if existing, a StaticMesh from this Actor given it's custom ID
+> Removes, if it exists, a StaticMesh from this Pickable given its custom ID
 
 ```lua
 entity:RemoveStaticMeshAttached(id)
@@ -88,11 +88,11 @@ entity:RemoveStaticMeshAttached(id)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`id`** |  | Unique ID to remove the Attached Mesh |
+| <BasicType.String /> | **`id`** |  | Unique ID of the StaticMesh to remove |
 
 ### <AuthorityType.ServerOnly />`SetCrosshairMaterial`
 
-> Sets the Crosshair Material
+> Sets the crosshair material for this Pickable
 
 ```lua
 entity:SetCrosshairMaterial(path)
@@ -100,11 +100,11 @@ entity:SetCrosshairMaterial(path)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`path`** |  |  |
+| <BasicType.String /> | **`path`** |  | Asset path to the crosshair material |
 
 ### `GetAssetName`
 
-> Returns the Asset name \(<BasicType.String />
+> Gets the name of the asset this Pickable uses
 
 ```lua
 entity:GetAssetName()
@@ -112,7 +112,7 @@ entity:GetAssetName()
 
 ### `GetHandler`
 
-> Gets the Character \(if existing\) which is holding this
+> Gets the Character, if it exists, that's holding this Pickable
 
 ```lua
 entity:GetHandler()
@@ -127,7 +127,7 @@ import BasePickableEvents from '@site/docs/scripting-reference/classes/base-clas
 
 ### `Drop`
 
-> When a Character drops this
+> When a Character drops this Pickable
 
 ```lua
 Weapon.Subscribe("Drop", function(self, character, was_triggered_by_player)
@@ -137,14 +137,14 @@ end)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| [Pickable](pickable) | `self` | The entity which has been dropped |
-| Character | `character` | The Character which picked up |
-| <BasicType.Boolean /> | `was_triggered_by_player` | If the Player has actively pressed 'G' to drop |
+| [Pickable](pickable) | `self` | The Pickable which has been dropped |
+| Character | `character` | The Character that dropped it |
+| <BasicType.Boolean /> | `was_triggered_by_player` | If the Player actively pressed 'G' to drop |
 
 
 ### `Hit`
 
-> When this Entity hits something
+> When this Pickable hits something
 
 ```lua
 Weapon.Subscribe("Hit", function(self, impact_force, normal_impulse, impact_location, velocity)
@@ -154,27 +154,27 @@ end)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| [Pickable](pickable) | `self` | The entity which has been hit |
-| <BasicType.Number /> | `impact_force` | The intensity of the Hit normalized by the Pickable's weight |
-| <Structs.Vector /> | `normal_impulse` | The impulse direction it hits |
-| <Structs.Vector /> | `impact_location` | The world 3D location of the impact |
-| <Structs.Vector /> | `velocity` | The Pickable velocity at the moment it hits |
+| [Pickable](pickable) | `self` | The Actor that was hit |
+| <BasicType.Number /> | `impact_force` | The intensity of the hit normalized by the Pickable's weight |
+| <Structs.Vector /> | `normal_impulse` | The impulse direction of the hit |
+| <Structs.Vector /> | `impact_location` | The world space location of the impact |
+| <Structs.Vector /> | `velocity` | The Pickable's velocity at the moment it hit |
 
 ### <AuthorityType.ServerOnly />`Interact`
 
-> When a Character interacts with this Pickable (i.e. try to pick it up)
+> When a Character interacts with this Pickable (i.e. tries to pick it up)
 > 
-> return false to prevent it
+> return false to prevent the interaction
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| [Pickable](pickable) | **`self`** |  |
-| <Classes.Character /> | **`character`** |  |
+| [Pickable](pickable) | **`self`** | The Pickable that just got interacted with |
+| <Classes.Character /> | **`character`** | The Character that interacted with it |
 
 
 ### `PickUp`
 
-> When a Character picks up this
+> When a Character picks this up
 
 ```lua
 Weapon.Subscribe("PickUp", function(self, character)
@@ -184,13 +184,13 @@ end)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| [Pickable](pickable) | `self` | The entity which has been picked up |
-| <Classes.Character /> | `character` | The Character which picked up |
+| [Pickable](pickable) | `self` | The Picable that just got picked up |
+| <Classes.Character /> | `character` | The Character that picked it up |
 
 
 ### `PullUse`
 
->  When a Character Pulls the Usage of this (i.e. pulls Left Mouse button when using it or pulls the trigger if it's a Weapon)
+>  When a Character presses the use button for this Pickable (i.e. clicks left mouse button with this equipped)
 
 ```lua
 Weapon.Subscribe("PullUse", function(self, character)
@@ -200,13 +200,13 @@ end)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| [Pickable](pickable) | `self` | The entity which has been picked up |
-| <Classes.Character /> | `character` | The Character which picked up |
+| [Pickable](pickable) | `self` | The Pickable which has just been used |
+| <Classes.Character /> | `character` | The Character that used it |
 
 
 ### `ReleaseUse`
 
->  When a Character Releases the Usage of this (i.e. releases Left Mouse button when using it or releases the trigger if it's a Weapon)
+>  When a Character releases the use button for this Pickable (i.e. releases left mouse button with this equipped)
 
 ```lua
 Weapon.Subscribe("ReleaseUse", function(self, character)
@@ -216,13 +216,13 @@ end)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| [Pickable](pickable) | `self` | The entity which has been picked up |
-| <Classes.Character /> | `character` | The Character which picked up |
+| [Pickable](pickable) | `self` | The Pickable which has just stopped being used |
+| <Classes.Character /> | `character` | The Character that stopped using it |
 
 
-## Available Crosshairs Types
+## Available crosshairs
 
-nanos world provides a bunch of Crosshair Materials which can be used in Weapons/Pickable entities. You can of course create your own Crosshair Material and use like that!
+nanos world provides a bunch of crosshair materials which can be used in Weapons/Pickables. You can of course create your own crosshair materialr and use those instead!
 
 ````mdx-code-block
 <ThemedImage
@@ -234,7 +234,7 @@ nanos world provides a bunch of Crosshair Materials which can be used in Weapons
 />
 ````
 
-#### List of Crosshairs Materials included in Default Asset Pack
+#### List of crosshair materials included in the default asset pack
 
 * `nanos-world::MI_Crosshair_Circle`
 * `nanos-world::MI_Crosshair_Crossbow`
