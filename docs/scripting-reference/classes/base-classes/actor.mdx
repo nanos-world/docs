@@ -173,6 +173,7 @@ entity:SetForce(force, is_local)
 | <Structs.Vector /> | **`force`** |  | Force to apply |
 | <BasicType.Boolean /> | **`is_local`** | `true` | Whether to apply the force at local space |
 
+
 ### <AuthorityType.AuthorityOnly />`SetGravityEnabled`
 
 > Sets the actor's gravity enabled
@@ -185,18 +186,20 @@ entity:SetGravityEnabled(is_enabled)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_enabled`** |  |  |
 
+
 ### <AuthorityType.AuthorityOnly />`SetHighlightEnabled`
 
 > Sets if this Actors is Highlighting at a specific Index color
 
 ```lua
-entity:SetHighlightEnabled(is_enabled)
+entity:SetHighlightEnabled(is_enabled, index)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_enabled`** |  | Enabled |
-| <BasicType.Number /> |
+| <BasicType.Number /> | **`index`** | `0` | Index to enable (should be `0`, `1` or `2`.) |
+
 
 ### `SetLifeSpan`
 

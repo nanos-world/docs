@@ -21,7 +21,7 @@ Fortunately nanos world supports having **3** different colors which you can con
 
 #### To configure the global Highlight color for a specific index, use:
 
-`Client.SetHighlightColor(highlight_color, index)`
+`Client.SetHighlightColor(highlight_color, index, mode)`
 
 #### To enable the Highlight to a specific actor, use:
 
@@ -36,11 +36,9 @@ Valid indexes are **`0`**, **`1`** and **`2`**.
 
 ```lua title="Client/Index.lua"
 -- Sets the Global desired Highlight color
--- Note: Alpha from 0-1 will only appear if visible
---       Alpha from 1-2 will appear even if behind a wall or other objects
 -- Higher color values make it glow (e.g. Color(100, 0, 0))
-local highlight_color = Color(10, 2.5, 0, 1)
-Client.SetHighlightColor(highlight_color, 0)
+local highlight_color = Color(10, 2.5, 0)
+Client.SetHighlightColor(highlight_color, 0, HighlightMode.Always)
 
 -- Setting all Characters to highlight
 Character.Subscribe("Spawn", function(character)
