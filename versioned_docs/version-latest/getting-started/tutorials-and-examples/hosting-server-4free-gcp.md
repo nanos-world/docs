@@ -1,13 +1,13 @@
 ---
 description: >-
   How to create a Linux virtual machine instance on Compute Engine using the
-  Google Cloud Console withing the Free Tier limit
+  Google Cloud Console within the Free Tier.
 tags: [tutorial-example, hosting]
 ---
 
-# Hosting Server 4Free
+# Hosting Server 4Free - Google Cloud
 
-How to create a Linux virtual machine instance on Compute Engine using the Google Cloud Console withing the Free Tier limit.
+How to create a Linux virtual machine instance on Compute Engine using the Google Cloud Console within the Free Tier.
 
 :::caution
 
@@ -93,28 +93,56 @@ Type **yes** if asked, and you will be in!
 
 ![](/img/docs/tutorials/hosting-4free-12.jpg)
 
+:::tip
+
+If your system doesn't have a built-in SSH client, you may use third-party clients like PuTTY.
+
+:::
+
 ### Step 4: Installing nanos world server
 
 Now you must download nanos world server in your VM.
 
-For that, you can use our public repository in the GitHub to download it with the following two commands:
+For that, you should use SteamCMD. Install it by doing:
 
 ```bash
-curl -L https://github.com/nanos-world/nanos-world-server/releases/latest/download/NanosWorldServer -o NanosWorldServer
-chmod +x NanosWorldServer
+sudo add-apt-repository multiverse
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install lib32gcc1 steamcmd 
 ```
 
-This will download NanosWorldServer executable and set it to be an executable itself. After downloading, you can start your server like:
+Then, launch SteamCMD by running `steamcmd`.
+
+Login anonymously.
 
 ```bash
-./NanosWorldServer
+Steam> login anonymous
+```
+Then select a directory for your server:
+
+```bash
+Steam> force_install_dir ./nanos-world-server
+```
+
+Install nanos world server by using this command:
+
+```bash
+Steam> app_update 1686460
+```
+
+This will download the server. After downloading, navigate to your server folder and start your server like:
+
+```bash
+chmod +x ./NanosWorldServer.sh
+./NanosWorldServer.sh
 ```
 
 ![](/img/docs/tutorials/hosting-4free-13.jpg)
 
 :::tip
 
-And voila! You have a nanos world server running 24/7!
+Use `tmux` if you want to run the server even if you're not logged in via SSH. In case it isn't installed in your instance, do `sudo apt install tmux`.
 
 :::
 

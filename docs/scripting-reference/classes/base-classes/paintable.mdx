@@ -17,13 +17,15 @@ This is a base class. You cannot spawn it directly.
 
 :::
 
+
 ## Functions
 
 import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-paintable-functions.mdx';
 
 <BasePaintableFunctions hidden_reference={true} />
 
-### `SetMaterial`
+
+### <AuthorityType.Both />`SetMaterial`
 
 > Sets the material at the specified index of this Actor
 
@@ -35,6 +37,7 @@ my_entity:SetMaterial(new_material, index)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | material_path | | The new Material to apply |
 | <BasicType.Number /> | index | `-1` | The index to apply - -1 means all indices |
+
 
 ### <AuthorityType.ClientOnly />`SetMaterialFromWebUI`
 
@@ -49,7 +52,8 @@ my_entity:SetMaterialFromWebUI(webui, index)
 | <Classes.WebUI /> | webui | | The WebUI object to use as a material |
 | <BasicType.Number /> | index | `-1` | The index to apply - -1 means all indices |
 
-### `SetMaterialColorParameter`
+
+### <AuthorityType.Both />`SetMaterialColorParameter`
 
 > Sets a Color parameter in this Actor’s material
 
@@ -63,7 +67,8 @@ my_entity:SetMaterialColorParameter(parameter_name, color)
 | <BasicType.String /> | parameter_name | The name of the material parameter |
 | <Structs.Color /> | color | The value to set |
 
-### `SetMaterialScalarParameter`
+
+### <AuthorityType.Both />`SetMaterialScalarParameter`
 
 > Sets a Scalar parameter in this Actor’s material
 
@@ -77,7 +82,8 @@ my_entity:SetMaterialScalarParameter(parameter_name, number)
 | <BasicType.String /> | parameter\_name | The name of the material parameter |
 | <BasicType.String /> | scalar | The value to set |
 
-### `SetMaterialTextureParameter`
+
+### <AuthorityType.Both />`SetMaterialTextureParameter`
 
 > Sets a texture parameter in this Actor's material to an image on disk
 
@@ -91,7 +97,8 @@ my_entity:SetMaterialTextureParameter(parameter_name, texture_path)
 | <BasicType.String /> | parameter\_name | The name of the material parameter |
 | [SpecialPath](./scripting-reference/glossary/basic-types.md#specialpath) | texture\_path | The path to the texture |
 
-### `SetMaterialVectorParameter`
+
+### <AuthorityType.Both />`SetMaterialVectorParameter`
 
 > Sets a Vector parameter in this Actor’s material
 

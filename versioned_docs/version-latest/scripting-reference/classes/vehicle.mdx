@@ -98,7 +98,7 @@ Most of the functions below will reset the vehicle Physics State \(automatically
 |  |  | [**`AddStaticMeshAttached`**](vehicle#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Vehicle |
 | <AuthorityType.ServerOnly /> |  | [**`Horn`**](vehicle#horn) | Starts or stops the vehicles horn |
 | <AuthorityType.ServerOnly /> |  | [**`RecreatePhysics`**](vehicle#recreatephysics) | Recreate the Vehicle Physics |
-|  |  | [**`RemoveStaticMeshAttached`**](vehicle#RemoveStaticMeshAttached) | Removes, if existing, a StaticMesh from this Vehicle given it’s custom ID |
+| <AuthorityType.Both /> |  | [**`RemoveStaticMeshAttached`**](vehicle#RemoveStaticMeshAttached) | Removes, if existing, a StaticMesh from this Vehicle given it’s custom ID |
 | <AuthorityType.ServerOnly /> |  | [**`SetDifferentialSetup`**](vehicle#setdifferentialsetup) | Configures the Vehicle Differential |
 | <AuthorityType.ServerOnly /> |  | [**`SetEngineSetup`**](vehicle#setenginesetup) | Configures the Vehicle Engine |
 | <AuthorityType.ServerOnly /> |  | [**`SetVehicleSetup`**](vehicle#setvehiclesetup) | Configures the Vehicle General Settings |
@@ -107,9 +107,9 @@ Most of the functions below will reset the vehicle Physics State \(automatically
 | <AuthorityType.ServerOnly /> |  | [**`SetDoor`**](vehicle#setdoor) | Adds a Door |
 | <AuthorityType.ServerOnly /> |  | [**`SetSteeringWheelSetup`**](vehicle#setsteeringwheelsetup) | Configures where the Steering Wheel is located |
 | <AuthorityType.ServerOnly /> |  | [**`SetHeadlightsSetup`**](vehicle#setheadlightssetup) | Configures the Headlights Offset and Color |
-|  | <BasicType.String /> | [**`GetAssetName`**](vehicle#getassetname) | Gets the Asset name |
-|  | <Classes.Character /> | [**`GetPassenger`**](vehicle#GetPassenger) | Gets a passengers at an index |
-|  | <BasicType.Table /> | [**`GetPassengers`**](vehicle#getpassengers) | Gets all passengers |
+| <AuthorityType.Both /> | <BasicType.String /> | [**`GetAssetName`**](vehicle#getassetname) | Gets the Asset name |
+| <AuthorityType.Both /> | <Classes.Character /> | [**`GetPassenger`**](vehicle#GetPassenger) | Gets a passengers at an index |
+| <AuthorityType.Both /> | <BasicType.Table /> | [**`GetPassengers`**](vehicle#getpassengers) | Gets all passengers |
 
 ## Events
 
@@ -128,7 +128,8 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 
 ## Functions Detailed
 
-### `AddStaticMeshAttached`
+
+### <AuthorityType.Both />`AddStaticMeshAttached`
 
 > Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
@@ -166,7 +167,8 @@ my_vehicle:Horn(enable_horn)
 my_vehicle:RecreatePhysics()
 ```
 
-### `RemoveStaticMeshAttached`
+
+### <AuthorityType.Both />`RemoveStaticMeshAttached`
 
 > Removes, if existing, a StaticMesh from this Vehicle given it's custom ID
 
@@ -321,7 +323,8 @@ my_vehicle:SetHeadlightsSetup(location, color)
 | <Structs.Vector /> | **`location`** |  |  |
 | <Structs.Color /> | **`color`** | `Color(1, 0.86, 0.5)` |  |
 
-### `GetAssetName`
+
+### <AuthorityType.Both />`GetAssetName`
 
 > Gets the Asset name
 >
@@ -331,7 +334,8 @@ my_vehicle:SetHeadlightsSetup(location, color)
 my_vehicle:GetAssetName()
 ```
 
-### `GetPassenger`
+
+### <AuthorityType.Both />`GetPassenger`
 
 > Gets a passenger from a seat
 >

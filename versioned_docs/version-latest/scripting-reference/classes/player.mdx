@@ -44,32 +44,33 @@ end)
 | <AuthorityType.AuthorityOnly /> |  | [**`Connect`**](player#connect) | Redirects the player to another server |
 | <AuthorityType.AuthorityOnly /> |  | [**`Kick`**](player#kick) | Kicks the player from the server |
 | <AuthorityType.AuthorityOnly /> |  | [**`Possess`**](player#possess) | Bind the `Player` to a Character |
-|  |  | [**`SetCameraLocation`**](player#setcameralocation) | Sets the Player’s Camera Location |
-|  |  | [**`SetCameraRotation`**](player#setcamerarotation) | Sets the Player’s Camera Rotation |
+| <AuthorityType.Both /> |  | [**`SetCameraLocation`**](player#setcameralocation) | Sets the Player’s Camera Location |
+| <AuthorityType.Both /> |  | [**`SetCameraRotation`**](player#setcamerarotation) | Sets the Player’s Camera Rotation |
 | <AuthorityType.AuthorityOnly /> |  | [**`SetName`**](player#setname) | Sets the player’s name |
-|  |  | [**`SetValue`**](player#setvalue) | Sets a value in this entity, which can be accessed by any package |
+| <AuthorityType.Both /> |  | [**`SetValue`**](player#setvalue) | Sets a value in this entity, which can be accessed by any package |
 | <AuthorityType.AuthorityOnly /> |  | [**`SetVOIPChannel`**](player#setvoipchannel) | Sets the VOIP Channel of this Player |
-|  |  | [**`SetVOIPSetting`**](player#setvoipsetting) | Sets the VOIP Settings of this Player |
-|  |  | [**`SetVOIPVolume`**](player#setvoipvolume) | Sets the VOIP Volume of this Player |
+| <AuthorityType.Both /> |  | [**`SetVOIPSetting`**](player#setvoipsetting) | Sets the VOIP Settings of this Player |
+| <AuthorityType.Both /> |  | [**`SetVOIPVolume`**](player#setvoipvolume) | Sets the VOIP Volume of this Player |
 | <AuthorityType.AuthorityOnly /> |  | [**`UnPossess`**](player#unpossess) | Release the `Player` from the Character |
-|  | <BasicType.String /> | [**`GetSteamID`**](player#getsteamid) | Gets the Steam account ID |
-|  | <BasicType.String /> | [**`GetAccountID`**](player#getaccountid) | Gets the nanos account ID |
-|  | <BasicType.String /> | [**`GetAccountName`**](player#getaccountname) | Gets the nanos account name |
+| <AuthorityType.Both /> | <BasicType.String /> | [**`GetSteamID`**](player#getsteamid) | Gets the Steam account ID |
+| <AuthorityType.Both /> | <BasicType.String /> | [**`GetAccountID`**](player#getaccountid) | Gets the nanos account ID |
+| <AuthorityType.Both /> | <BasicType.String /> | [**`GetAccountName`**](player#getaccountname) | Gets the nanos account name |
 | <AuthorityType.ClientOnly /> | <Structs.Vector /> | [**`GetCameraLocation`**](player#getcameralocation) | Gets the Player’s Camera Location |
 | <AuthorityType.ClientOnly /> | <Structs.Rotator /> | [**`GetCameraRotation`**](player#getcamerarotation) | Gets the Player’s Camera Rotation |
-|  | <Classes.Character /> | [**`GetControlledCharacter`**](player#getcontrolledcharacter) | Returns the character of the player |
-|  | <BasicType.Number /> | [**`GetID`**](player#getid) | Gets the network ID of this entity |
+| <AuthorityType.Both /> | <Classes.Character /> | [**`GetControlledCharacter`**](player#getcontrolledcharacter) | Returns the character of the player |
+| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetID`**](player#getid) | Gets the network ID of this entity |
 | <AuthorityType.AuthorityOnly /> | <BasicType.String /> | [**`GetIP`**](player#getip) | Gets the IP of this Player |
-|  | <BasicType.String /> | [**`GetName`**](player#getname) | Returns the player’s name |
-|  | <BasicType.Number /> | [**`GetPing`**](player#getping) | Returns the ping of a player |
-|  | <BasicType.String /> | [**`GetType`**](player#gettype) | Returns the type of this Actor |
-|  | <BasicType.Number /> | [**`GetVOIPChannel`**](player#getvoipchannel) | Returns the VOIP Channel of this Player |
-|  | <BasicType.Any /> | [**`GetValue`**](player#getvalue) | Gets a value given a key |
+| <AuthorityType.Both /> | <BasicType.String /> | [**`GetName`**](player#getname) | Returns the player’s name |
+| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetPing`**](player#getping) | Returns the ping of a player |
+| <AuthorityType.Both /> | <BasicType.String /> | [**`GetType`**](player#gettype) | Returns the type of this Actor |
+| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetVOIPChannel`**](player#getvoipchannel) | Returns the VOIP Channel of this Player |
+| <AuthorityType.Both /> | <BasicType.Any /> | [**`GetValue`**](player#getvalue) | Gets a value given a key |
 | <AuthorityType.ClientOnly /> | <BasicType.Boolean /> | [**`IsLocalPlayer`**](player#islocalplayer) | Returns if this is the LocalPlayer |
-|  | <BasicType.Boolean /> | [**`IsValid`**](player#isvalid) | Returns if this entity is valid \(i.e. wasn’t destroyed and points to a valid entity\) |
-|  | <Enums>VOIPSetting</Enums> | [**`GetVOIPSetting`**](player#getvoipsetting) | Returns this Player VOIP Setting |
-|  |  | [**`Subscribe`**](player#subscribe) | Subscribes for an Event |
-|  |  | [**`Unsubscribe`**](player#unsubscribe) | Unsubscribes from all subscribed Events in this Entity and in this Package |
+| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsValid`**](player#isvalid) | Returns if this entity is valid \(i.e. wasn’t destroyed and points to a valid entity\) |
+| <AuthorityType.Both /> | <Enums>VOIPSetting</Enums> | [**`GetVOIPSetting`**](player#getvoipsetting) | Returns this Player VOIP Setting |
+| <AuthorityType.Both /> |  | [**`Subscribe`**](player#subscribe) | Subscribes for an Event |
+| <AuthorityType.Both /> |  | [**`Unsubscribe`**](player#unsubscribe) | Unsubscribes from all subscribed Events in this Entity and in this Package |
+
 
 ## Events
 
@@ -82,9 +83,10 @@ end)
 |  | [**`UnPossess`**](player#unpossess-1) | A Character was released from the `Player` |
 |  | [**`VOIP`**](player#voip) | When a Player starts/ends using VOIP |
 
+
 ## Functions Detailed
 
-### <AuthorityType.AuthorityOnly /> `Ban`
+### <AuthorityType.AuthorityOnly />`Ban`
 
 > Bans the player from the server
 
@@ -96,7 +98,8 @@ my_player:Ban(reason)
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`reason`** |  |
 
-### <AuthorityType.AuthorityOnly /> `Connect`
+
+### <AuthorityType.AuthorityOnly />`Connect`
 
 > Redirects the player to another server
 
@@ -109,7 +112,8 @@ my_player:Connect(IP, password = "")
 | <BasicType.String /> | **`IP`** |  | Server IP |
 | <BasicType.String /> | **`password`** | `""` | Server password |
 
-### <AuthorityType.AuthorityOnly /> `Kick`
+
+### <AuthorityType.AuthorityOnly />`Kick`
 
 > Kicks the player from the server
 
@@ -121,7 +125,8 @@ my_player:Kick(reason)
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`reason`** |  |
 
-### <AuthorityType.AuthorityOnly /> `Possess`
+
+### <AuthorityType.AuthorityOnly />`Possess`
 
 > Makes a `Player` to possess and control a `Character`
 
@@ -136,7 +141,7 @@ my_player:Possess(new_character, blend_time, exp)
 | <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
 
-### `SetCameraLocation`
+### <AuthorityType.Both />`SetCameraLocation`
 
 > Sets the Player's Camera Location (only works if not possessing any Character)
 
@@ -150,7 +155,8 @@ my_player:SetCameraLocation(location, time, exp)
 | <BasicType.Number /> | **`time`** | `0` | Time to interp from current camera location to target location |
 | <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
-### `SetCameraRotation`
+
+### <AuthorityType.Both />`SetCameraRotation`
 
 > Sets the Player's Camera Rotation
 
@@ -164,7 +170,8 @@ my_player:SetCameraRotation(rotation, time, exp)
 | <BasicType.Number /> | **`time`** | `0` | Time to interp from current camera rotation to target rotation |
 | <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
-### <AuthorityType.AuthorityOnly /> `SetName`
+
+### <AuthorityType.AuthorityOnly />`SetName`
 
 > Sets the player's name
 
@@ -176,7 +183,8 @@ my_player:SetName(new_name)
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`new_name`** |  |
 
-### `SetValue`
+
+### <AuthorityType.Both />`SetValue`
 
 > Sets a value in this entity, which can be accessed by any package \(optionally sync on clients if called from server\)
 >
@@ -192,7 +200,8 @@ my_player:SetValue(key, value, sync_on_clients)
 | <BasicType.Any /> | **`value`** |  | Value |
 | <BasicType.Boolean /> | **`sync_on_clients`** | Server side parameter, if enabled will sync this value through all clients |
 
-### <AuthorityType.AuthorityOnly /> `SetVOIPChannel`
+
+### <AuthorityType.AuthorityOnly />`SetVOIPChannel`
 
 > Sets the VOIP Channel of this Player \(will only communicate with other players in the same channel\)
 
@@ -204,7 +213,8 @@ my_player:SetVOIPChannel(channel)
 | :--- | :--- | :--- |
 | <BasicType.Number /> | **`channel`** |  |
 
-### `SetVOIPSetting`
+
+### <AuthorityType.Both />`SetVOIPSetting`
 
 > Sets the VOIP Settings of this Player
 
@@ -216,7 +226,8 @@ my_player:SetVOIPSetting(setting)
 | :--- | :--- | :--- |
 | <Enums>VOIPSetting</Enums> | **`setting`** |  |
 
-### `SetVOIPVolume`
+
+### <AuthorityType.Both />`SetVOIPVolume`
 
 > Sets the VOIP Volume of this Player
 
@@ -228,7 +239,8 @@ my_player:SetVOIPSetting(volume)
 | :--- | :--- | :--- |
 | <BasicType.Number /> | **`volume`** |  |
 
-### <AuthorityType.AuthorityOnly /> `UnPossess`
+
+### <AuthorityType.AuthorityOnly />`UnPossess`
 
 > Release the `Player` from the :ref:`Character`
 
@@ -236,7 +248,8 @@ my_player:SetVOIPSetting(volume)
 my_player:UnPossess()
 ```
 
-### `GetSteamID`
+
+### <AuthorityType.Both />`GetSteamID`
 
 > Gets the Steam account ID
 >
@@ -246,7 +259,8 @@ my_player:UnPossess()
 my_player:GetSteamID()
 ```
 
-### `GetAccountID`
+
+### <AuthorityType.Both />`GetAccountID`
 
 > Gets the nanos account ID
 >
@@ -256,7 +270,8 @@ my_player:GetSteamID()
 my_player:GetAccountID()
 ```
 
-### `GetAccountName`
+
+### <AuthorityType.Both />`GetAccountName`
 
 > Gets the nanos account name
 >
@@ -276,7 +291,8 @@ my_player:GetAccountName()
 my_player:GetCameraLocation()
 ```
 
-### <AuthorityType.ClientOnly /> `GetCameraRotation`
+
+### <AuthorityType.ClientOnly />`GetCameraRotation`
 
 > Gets the Player's Camera Rotation
 >
@@ -286,7 +302,8 @@ my_player:GetCameraLocation()
 my_player:GetCameraRotation()
 ```
 
-### `GetControlledCharacter`
+
+### <AuthorityType.Both />`GetControlledCharacter`
 
 > Returns the character of the player. If the player has not yet been assigned a character, nil is returned
 >
@@ -296,9 +313,10 @@ my_player:GetCameraRotation()
 my_player:GetControlledCharacter()
 ```
 
-### `GetID`
 
-> Gets the network ID of this entity \(same in both client and server\)
+### <AuthorityType.Both />`GetID`
+
+> Gets the network ID of this entity (same in both client and server)
 >
 > Returns <BasicType.Number />
 
@@ -306,7 +324,7 @@ my_player:GetControlledCharacter()
 my_player:GetID()
 ```
 
-### <AuthorityType.AuthorityOnly /> `GetIP`
+### <AuthorityType.AuthorityOnly />`GetIP`
 
 > Gets the IP of this Player
 >
@@ -316,7 +334,8 @@ my_player:GetID()
 my_player:GetIP()
 ```
 
-### `GetName`
+
+### <AuthorityType.Both />`GetName`
 
 > Returns the player's name
 >
@@ -326,7 +345,8 @@ my_player:GetIP()
 my_player:GetName()
 ```
 
-### `GetPing`
+
+### <AuthorityType.Both />`GetPing`
 
 > Returns the ping of a player
 >
@@ -336,7 +356,8 @@ my_player:GetName()
 my_player:GetPing()
 ```
 
-### `GetType`
+
+### <AuthorityType.Both />`GetType`
 
 > Returns the type of this Actor
 >
@@ -346,7 +367,8 @@ my_player:GetPing()
 my_player:GetType()
 ```
 
-### `GetVOIPChannel`
+
+### <AuthorityType.Both />`GetVOIPChannel`
 
 > Returns the VOIP Channel of this Player
 >
@@ -356,7 +378,8 @@ my_player:GetType()
 my_player:GetVOIPChannel()
 ```
 
-### `GetValue`
+
+### <AuthorityType.Both />`GetValue`
 
 > Gets a value given a key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
 >
@@ -371,7 +394,7 @@ my_player:GetValue(key, fallback)
 | <BasicType.String /> | **`key`** |  | Key |
 | <BasicType.Any /> | **`fallback`** |  | Fallback Value if key doesn't exist |
 
-### <AuthorityType.ClientOnly /> `IsLocalPlayer`
+### <AuthorityType.ClientOnly />`IsLocalPlayer`
 
 > Returns if this is the LocalPlayer
 >
@@ -381,7 +404,8 @@ my_player:GetValue(key, fallback)
 my_player:IsLocalPlayer()
 ```
 
-### `IsValid`
+
+### <AuthorityType.Both />`IsValid`
 
 > Returns if this entity is valid \(i.e. wasn't destroyed and points to a valid entity\)
 >
@@ -391,7 +415,8 @@ my_player:IsLocalPlayer()
 my_player:IsValid()
 ```
 
-### `GetVOIPSetting`
+
+### <AuthorityType.Both />`GetVOIPSetting`
 
 > Returns this Player VOIP Setting
 >
@@ -401,7 +426,8 @@ my_player:IsValid()
 my_player:GetVOIPSetting()
 ```
 
-### `Subscribe`
+
+### <AuthorityType.Both />`Subscribe`
 
 > Subscribes for an Event
 
@@ -414,7 +440,8 @@ my_player:Subscribe(event_name, callback)
 | <BasicType.String /> | **`event_name`** |  |  |
 | <BasicType.Function /> | **`function`** |  |  |
 
-### `Unsubscribe`
+
+### <AuthorityType.Both />`Unsubscribe`
 
 > Unsubscribes from all subscribed Events in this Entity and in this Package, optionally passing the function to unsubscribe only that callback
 
@@ -426,6 +453,7 @@ my_player:Unsubscribe(event_name, callback)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`event_name`** |  |  |
 | <BasicType.Function /> | **`function`** | `nil` |  |
+
 
 ## Events Detailed
 

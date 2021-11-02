@@ -69,6 +69,9 @@ Server.BroadcastChatMessage("Welcome to the server!")
 | <BasicType.String /> | [**`GetIP`**](server#getip) | Returns the server Public IP |
 | <BasicType.Number /> | [**`GetPort`**](server#getport) | Returns the server Port |
 | <BasicType.Number /> | [**`GetQueryPort`**](server#getqueryport) | Returns the server QueryPort |
+| <BasicType.Number /> | [**`GetMaxPlayers`**](server#getmaxplayers) | Returns the Max Players configured |
+| <BasicType.Number /> | [**`GetDescription`**](server#getdescription) | Returns the Server Description |
+| <BasicType.Number /> | [**`IsAnnounced`**](server#isannounced) | Returns if the Server is announced in the Master List |
 
 
 ## Events
@@ -355,6 +358,38 @@ Server.GetPort()
 
 ```lua
 Server.GetQueryPort()
+```
+
+### `GetMaxPlayers`
+
+> Gets the server Max Players allowed
+> 
+> Returns <BasicType.Number />
+
+```lua
+Server.GetMaxPlayers()
+```
+
+
+### `GetDescription`
+
+> Gets the server Description
+> 
+> Returns <BasicType.String />
+
+```lua
+Server.GetDescription()
+```
+
+
+### `IsAnnounced`
+
+> Gets if the server is announced in the Master List
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+Server.IsAnnounced()
 ```
 
 

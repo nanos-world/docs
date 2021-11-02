@@ -14,6 +14,7 @@ import { Structs, BasicType, AuthorityType, Classes } from '@site/docs/component
 
 Some Classes can only be spawned on the Server, others can only be spawned in the Client, and there are some which can be spawned in both Server or Client. The side which the Class is spawned is called **Authority**.
 
+
 ### Methods & Events Availability
 
 Some methods and events in the API are only available on a specific side \(Client or Server\), others are only available in the side which spawned it Authority side\):
@@ -27,6 +28,9 @@ Methods or Events which can only be called in the **Client** side.
 #### <AuthorityType.AuthorityOnly />**`Authority Side`**
 Methods or Events which can only be called in the side which spawned it.
 
+#### <AuthorityType.Both />**`Both Sides`**
+Methods or Events which can only be called in any side.
+
 :::tip
 
 All entities spawned in the **Server** will be automatically synced in the **Client**. I.e. you can access it's methods and get all data from it without needing to manually sync it.
@@ -35,9 +39,10 @@ In the same way, entities spawned in the **Client** will only exist for that Cli
 
 :::
 
+
 ## Network Authority
 
-Another important concept in nanos world is the **Network Authority**. We have a _"distributed network authority"_ concept, which means the work of calculating physics and AI \(for example\) are automatically assigned and distributed to the clients. In general, if an [Actor](./scripting-reference/classes/base-classes/actor.mdx) is near an in-game Character, it's physics will be calculated by that player's device. The Player that is responsible for calculating and sharing the results is called **Network Authority**.
+Another important concept in nanos world is the **Network Authority**. We have a _"distributed network authority"_ concept, which means the work of calculating physics and AI (for example) are automatically assigned and distributed to the clients. In general, if an [Actor](./scripting-reference/classes/base-classes/actor.mdx) is near an in-game Character, it's physics will be calculated by that player's device. The Player that is responsible for calculating and sharing the results is called **Network Authority**.
 
 The Player assigned is automatically calculated by the server and takes some things into consideration, this calculation is only made if the Player is possessing a Character:
 
@@ -49,6 +54,7 @@ The Player assigned is automatically calculated by the server and takes some thi
 
 In all this cases, the Player will be automatically assigned to be the **Network Authority** of that Object.
 
+
 ### Overriding the current Network Authority
 
 It is possible to override the current Network Authority of a specific entity by using the method `:SetNetworkAuthority()`.
@@ -58,6 +64,7 @@ It is possible to override the current Network Authority of a specific entity by
 **Note:** Some actors aren't **Network Distributed**. This means they will not be automatically assigned neither be able to have it's Network Authority changed. You can check if an entity is Network Distributed with the method `:IsNetworkDistributed()`.
 
 :::
+
 
 #### Examples of actions that are only executed by the Network Authority of that Actor
 

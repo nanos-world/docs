@@ -90,22 +90,22 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 |  | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- | :--- |
 | <AuthorityType.ServerOnly /> | <BasicType.Number /> | [**`ApplyDamage`**](character#applydamage) | Do damage in a character |
-|  |  | [**`AddSkeletalMeshAttached`**](character#addskeletalmeshattached) | Spawns and Attaches a SkeletalMesh into this Character |
-|  |  | [**`AddStaticMeshAttached`**](character#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Character |
+| <AuthorityType.Both /> |  | [**`AddSkeletalMeshAttached`**](character#addskeletalmeshattached) | Spawns and Attaches a SkeletalMesh into this Character |
+| <AuthorityType.Both /> |  | [**`AddStaticMeshAttached`**](character#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Character |
 | <AuthorityType.ServerOnly /> |  | [**`Drop`**](character#drop) | Drops any <Classes.Pickable /> the Character is holding |
 | <AuthorityType.ServerOnly /> |  | [**`EnterVehicle`**](character#entervehicle) | Enters the Vehicle at Seat (0 - Driver) |
 | <AuthorityType.ServerOnly /> |  | [**`GrabProp`**](character#grabprop) | Gives a <Classes.Prop /> to the Character |
-|  |  | [**`HideBone`**](character#hidebone) | Hides a bone of this Character |
-|  |  | [**`UnHideBone`**](character#unhidebone) | UnHides a bone of this Character |
-|  |  | [**`IsBoneHidden`**](character#isbonehidden) | Gets if a bone is hidden |
+|  <AuthorityType.Both /> |  | [**`HideBone`**](character#hidebone) | Hides a bone of this Character |
+|  <AuthorityType.Both /> |  | [**`UnHideBone`**](character#unhidebone) | UnHides a bone of this Character |
+|  <AuthorityType.Both /> |  | [**`IsBoneHidden`**](character#isbonehidden) | Gets if a bone is hidden |
 | <AuthorityType.ServerOnly /> |  | [**`Jump`**](character#jump) | Triggers this Character to jump |
 | <AuthorityType.ServerOnly /> |  | [**`LeaveVehicle`**](character#leavevehicle) | Leaves the current Vehicle |
 | <AuthorityType.ServerOnly /> |  | [**`LookAt`**](character#lookat) | AI: Tries to make this Character to look at Location |
 | <AuthorityType.ServerOnly /> |  | [**`MoveTo`**](character#moveto) | AI: Makes this Character to walk to the Location |
 | <AuthorityType.ServerOnly /> |  | [**`PickUp`**](character#pickup) | Gives a Item/Grenade/Weapon (Pickable) to the Character |
 | <AuthorityType.ServerOnly /> |  | [**`PlayAnimation`**](character#playanimation) | Plays an Animation Montage on this character |
-|  |  | [**`RemoveSkeletalMeshAttached`**](character#removeskeletalmeshattached) | Removes, if existing, a SkeletalMesh from this Character given it’s custom ID |
-|  |  | [**`RemoveStaticMeshAttached`**](character#removestaticmeshattached) | Removes, if existing, a StaticMesh from this Character given it’s custom ID |
+|  <AuthorityType.Both /> |  | [**`RemoveSkeletalMeshAttached`**](character#removeskeletalmeshattached) | Removes, if existing, a SkeletalMesh from this Character given it’s custom ID |
+|  <AuthorityType.Both /> |  | [**`RemoveStaticMeshAttached`**](character#removestaticmeshattached) | Removes, if existing, a StaticMesh from this Character given it’s custom ID |
 | <AuthorityType.ServerOnly /> |  | [**`Respawn`**](character#respawn) | Respawns the Character, fullying it’s Health and moving it to it’s Initial Location |
 | <AuthorityType.ServerOnly /> |  | [**`SetAccelerationSettings`**](character#setaccelerationsettings) | Sets the Movement Max Acceleration of this Character. |
 | <AuthorityType.ServerOnly /> |  | [**`SetBrakingSettings`**](character#setbrakingsettings) | Sets the Movement Braking Settings of this Character. |
@@ -129,9 +129,10 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetHealth`**](character#sethealth) | Sets the Health of this Character. If the character is dead, respawns it with full health |
 | <AuthorityType.ServerOnly /> |  | [**`SetImpactDamageTaken`**](character#setimpactdamagetaken) | Set the Impact Damage taken when being roamed by things |
 | <AuthorityType.ServerOnly /> |  | [**`SetInvulnerable`**](character#setinvulnerable) | Sets if the Character can receive any damage |
+| <AuthorityType.ServerOnly /> |  | [**`SetJumpZVelocity`**](character#setjumpzvelocity) | Sets the velocity of the jump |
 | <AuthorityType.ServerOnly /> |  | [**`SetMaxHealth`**](character#setmaxhealth) | Sets the MaxHealth of this Character |
 | <AuthorityType.ServerOnly /> |  | [**`SetMesh`**](character#setmesh) | Changes the Character Mesh on the fly |
-|  |  | [**`SetMorphTarget`**](character#setmorphtarget) |  |
+|  <AuthorityType.Both /> |  | [**`SetMorphTarget`**](character#setmorphtarget) |  |
 | <AuthorityType.ServerOnly /> |  | [**`SetMovementEnabled`**](character#setmovementenabled) | Enables/Disables Character’s Movement |
 | <AuthorityType.ServerOnly /> |  | [**`SetPainSound`**](character#setpainsound) | Changes the Pain sound when Character takes damage |
 | <AuthorityType.ServerOnly /> |  | [**`SetPunchDamage`**](character#setpunchdamage) | Set the Punch Damage this Character will apply on others |
@@ -143,40 +144,43 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetWeaponAimMode`**](character#setweaponaimmode) | **Aim Modes**: _None, ADS, ZoomedZoom, Zoomed, ZoomedFar_ |
 | <AuthorityType.ServerOnly /> |  | [**`StopAnimation`**](character#stopanimation) | Stops an Animation Montage on this character |
 | <AuthorityType.ServerOnly /> |  | [**`UnGrabProp`**](character#ungrabprop) | UnGrabs/Drops the <Classes.Prop /> the Character is holding |
-|  | <BasicType.Boolean /> | [**`IsInRagdollMode`**](character#isinragdollmode) | Gets Character Ragdoll Mode |
-|  | <BasicType.Boolean /> | [**`IsInvulnerable`**](character#isinvulnerable) | Gets if the Character can receive damage |
-|  | <BasicType.Boolean /> | [**`IsMovementEnabled`**](character#ismovementenabled) | Gets Character Movement Enabled |
-|  | <Enums>CameraMode</Enums> | [**`GetCameraMode`**](character#getcameramode) |  |
-|  | <BasicType.Boolean /> | [**`GetCanDrop`**](character#getcandrop) |  |
-|  | <BasicType.Boolean /> | [**`GetCanPunch`**](character#getcanpunch) |  |
-|  | <BasicType.Boolean /> | [**`GetCanAim`**](character#getcanaim) |  |
-|  | <BasicType.Boolean /> | [**`GetCanCrouch`**](character#getcancrouch) |  |
-|  | <BasicType.Boolean /> | [**`GetCanSprint`**](character#getcansprint) |  |
-|  | <BasicType.Boolean /> | [**`GetCanGrabProps`**](character#getcangrabprops) |  |
-|  | <BasicType.Boolean /> | [**`GetCanPickupPickables`**](character#getcanpickuppickables) |  |
-|  | <Structs.Rotator /> | [**`GetControlRotation`**](character#getcontrolrotation) | Gets the rotation this character is looking at |
-|  | <BasicType.Number /> | [**`GetDamageMultiplier`**](character#getdamagemultiplier) |  |
-|  | <BasicType.Number /> | [**`GetFallDamageTaken`**](character#getfalldamagetaken) |  |
-|  | <Enums>FallingMode</Enums> | [**`GetFallingMode`**](character#getfallingmode) | Gets the Falling Mode |
-|  | <BasicType.Boolean /> | [**`GetFlyingMode`**](character#getflyingmode) | Gets if the Character is in Flying Mode |
-|  | <Enums>CollisionType</Enums> | [**`GetGaitMode`**](character.mdx#getgaitmode) | Gets the Gait Mode |
-|  | <Classes.Prop /> | [**`GetGrabbedProp`**](character.mdx#getgrabbedprop) | Gets the Grabbing <Classes.Prop /> |
-|  | <BasicType.Number /> | [**`GetGravityScale`**](character#getgravityscale) | Gets the Gravity Scale of this Character |
-|  | <BasicType.Number /> | [**`GetHealth`**](character#gethealth) | Gets the Character’s Health. |
-|  | <BasicType.Number /> | [**`GetImpactDamageTaken`**](character#getimpactdamagetaken) |  |
-|  | <BasicType.Number /> | [**`GetMaxHealth`**](character#getmaxhealth) | Gets the Character’s MaxHealth. |
-|  | <BasicType.String /> | [**`GetMesh`**](character#getmesh) | Gets the Mesh Asset name |
-|  | <Structs.Vector /> | [**`GetMovingTo`**](character#getmovingto) | Gets if Character is moving to |
-|  | <Classes.Pickable /> | [**`GetPicked`**](character#getpicked) | Gets the holding Picked Item/Grenade/Weapon |
-|  | <Classes.Player /> | [**`GetPlayer`**](character.mdx#getplayer) | Gets the Player controlling this Character |
-|  | <BasicType.Number /> | [**`GetPunchDamage`**](character.mdx#getpunchdamage) |  |
-|  | <BasicType.Number /> | [**`GetSpeedMultiplier`**](character#getspeedmultiplier) |  |
-|  | <Enums>StanceMode</Enums> | [**`GetStanceMode`**](character.mdx#getstancemode) |  |
-|  | <Enums>SwimmingMode</Enums> | [**`GetSwimmingMode`**](character.mdx#getswimmingmode) |  |
-|  | <BasicType.Number /> | [**`GetTeam`**](character#getteam) |  |
-|  | <Classes.Vehicle /> | [**`GetVehicle`**](character.mdx#getvehicle) | Gets the Vehicle the Character is on |
-|  | <Enums>ViewMode</Enums> | [**`GetViewMode`**](character.mdx#getviewmode) | Gets Character View Mode |
-|  | <Enums>AimMode</Enums> | [**`GetWeaponAimMode`**](character.mdx#getweaponaimmode) | Gets Character Aim Mode |
+|  <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsInRagdollMode`**](character#isinragdollmode) | Gets Character Ragdoll Mode |
+|  <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsInvulnerable`**](character#isinvulnerable) | Gets if the Character can receive damage |
+|  <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsMovementEnabled`**](character#ismovementenabled) | Gets Character Movement Enabled |
+|  <AuthorityType.Both /> | <Enums>CameraMode</Enums> | [**`GetCameraMode`**](character#getcameramode) |  |
+|  <AuthorityType.Both /> | <BasicType.Boolean /> | [**`GetCanAim`**](character#getcanaim) |  |
+|  <AuthorityType.Both /> | <BasicType.Boolean /> | [**`GetCanCrouch`**](character#getcancrouch) |  |
+|  <AuthorityType.Both /> | <BasicType.Boolean /> | [**`GetCanDrop`**](character#getcandrop) |  |
+|  <AuthorityType.Both /> | <BasicType.Boolean /> | [**`GetCanGrabProps`**](character#getcangrabprops) |  |
+|  <AuthorityType.Both /> | <BasicType.Boolean /> | [**`GetCanPunch`**](character#getcanpunch) |  |
+|  <AuthorityType.Both /> | <BasicType.Boolean /> | [**`GetCanSprint`**](character#getcansprint) |  |
+|  <AuthorityType.Both /> | <BasicType.Boolean /> | [**`GetCanPickupPickables`**](character#getcanpickuppickables) |  |
+|  <AuthorityType.Both /> | <BasicType.Table /> | [**`GetCapsuleSize`**](character#getcapsulesize) |  |
+|  <AuthorityType.Both /> | <Structs.Rotator /> | [**`GetControlRotation`**](character#getcontrolrotation) | Gets the rotation this character is looking at |
+|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetDamageMultiplier`**](character#getdamagemultiplier) |  |
+|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetFallDamageTaken`**](character#getfalldamagetaken) |  |
+|  <AuthorityType.Both /> | <Enums>FallingMode</Enums> | [**`GetFallingMode`**](character#getfallingmode) | Gets the Falling Mode |
+|  <AuthorityType.Both /> | <BasicType.Boolean /> | [**`GetFlyingMode`**](character#getflyingmode) | Gets if the Character is in Flying Mode |
+|  <AuthorityType.Both /> | <Enums>CollisionType</Enums> | [**`GetGaitMode`**](character.mdx#getgaitmode) | Gets the Gait Mode |
+|  <AuthorityType.Both /> | <Classes.Prop /> | [**`GetGrabbedProp`**](character.mdx#getgrabbedprop) | Gets the Grabbing <Classes.Prop /> |
+|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetGravityScale`**](character#getgravityscale) | Gets the Gravity Scale of this Character |
+|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetHealth`**](character#gethealth) | Gets the Character’s Health. |
+|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetImpactDamageTaken`**](character#getimpactdamagetaken) |  |
+|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetJumpZVelocity`**](character#getjumpzvelocity) |  |
+|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetMaxHealth`**](character#getmaxhealth) | Gets the Character’s MaxHealth. |
+|  <AuthorityType.Both /> | <BasicType.String /> | [**`GetMesh`**](character#getmesh) | Gets the Mesh Asset name |
+|  <AuthorityType.Both /> | <Structs.Vector /> | [**`GetMovingTo`**](character#getmovingto) | Gets if Character is moving to |
+|  <AuthorityType.Both /> | <Classes.Pickable /> | [**`GetPicked`**](character#getpicked) | Gets the holding Picked Item/Grenade/Weapon |
+|  <AuthorityType.Both /> | <Classes.Player /> | [**`GetPlayer`**](character.mdx#getplayer) | Gets the Player controlling this Character |
+|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetPunchDamage`**](character.mdx#getpunchdamage) |  |
+|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetSpeedMultiplier`**](character#getspeedmultiplier) |  |
+|  <AuthorityType.Both /> | <Enums>StanceMode</Enums> | [**`GetStanceMode`**](character.mdx#getstancemode) |  |
+|  <AuthorityType.Both /> | <Enums>SwimmingMode</Enums> | [**`GetSwimmingMode`**](character.mdx#getswimmingmode) |  |
+|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetTeam`**](character#getteam) |  |
+|  <AuthorityType.Both /> | <Classes.Vehicle /> | [**`GetVehicle`**](character.mdx#getvehicle) | Gets the Vehicle the Character is on |
+|  <AuthorityType.Both /> | <Enums>ViewMode</Enums> | [**`GetViewMode`**](character.mdx#getviewmode) | Gets Character View Mode |
+|  <AuthorityType.Both /> | <Enums>AimMode</Enums> | [**`GetWeaponAimMode`**](character.mdx#getweaponaimmode) | Gets Character Aim Mode |
+
 
 ## Events
 
@@ -214,6 +218,7 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 |  | [**`ViewModeChanged`**](character#viewmodechanged) |  |
 |  | [**`WeaponAimModeChanged`**](character#weaponaimmodechanged) |  |
 
+
 ## Functions Detailed
 
 ### <AuthorityType.ServerOnly />`ApplyDamage`
@@ -232,7 +237,8 @@ my_character:ApplyDamage(damage, bone_name, damage_type, from_direction, instiga
 | <Structs.Vector /> | **`from_direction`** | `Vector()` |  |
 | <Classes.Player /> | **`instigator`** | `nil` |  |
 
-### `AddSkeletalMeshAttached`
+
+###  <AuthorityType.Both />`AddSkeletalMeshAttached`
 
 > Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
 
@@ -245,7 +251,8 @@ my_character:AddSkeletalMeshAttached(id, skeletal_mesh_path)
 | <BasicType.String /> | **`id`** |  |  |
 | <BasicType.String /> | **`skeletal_mesh_path`** | \`\` |  |
 
-### `AddStaticMeshAttached`
+
+###  <AuthorityType.Both />`AddStaticMeshAttached`
 
 > Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
@@ -261,6 +268,7 @@ my_character:AddStaticMeshAttached( id, static_mesh_path, socket, relative_locat
 | <Structs.Vector /> | **`relative_location`** | `Vector()` |  |
 | <Structs.Rotator /> | **`relative_rotation`** | `Rotator()` |  |
 
+
 ### <AuthorityType.ServerOnly />`Drop`
 
 > Drops any <Classes.Pickable /> the Character is holding
@@ -268,6 +276,7 @@ my_character:AddStaticMeshAttached( id, static_mesh_path, socket, relative_locat
 ```lua
 my_character:Drop()
 ```
+
 
 ### <AuthorityType.ServerOnly />`EnterVehicle`
 
@@ -295,7 +304,7 @@ my_character:GrabProp(prop)
 | <Classes.Prop /> | **`prop`** |  |  |
 
 
-### `HideBone`
+### <AuthorityType.Both />`HideBone`
 
 > Hides a bone of this Character. Check [Bone Names List](character.mdx#characters-skeleton-bone-names) for all Bone names
 
@@ -308,7 +317,7 @@ my_character:HideBone(bone_name)
 | <BasicType.String /> | **`bone_name`** |  |  |
 
 
-### `UnHideBone`
+### <AuthorityType.Both />`UnHideBone`
 
 > UnHide a bone of this Character. Check [Bone Names List](character.mdx#characters-skeleton-bone-names) for all Bone names
 
@@ -321,7 +330,7 @@ my_character:UnHideBone(bone_name)
 | <BasicType.String /> | **`bone_name`** |  |  |
 
 
-### `IsBoneHidden`
+### <AuthorityType.Both />`IsBoneHidden`
 
 > Check if a Bone is Hidden
 >
@@ -344,6 +353,7 @@ my_character:IsBoneHidden(bone_name)
 my_character:Jump()
 ```
 
+
 ### <AuthorityType.ServerOnly />`LeaveVehicle`
 
 > Leaves the current Vehicle
@@ -351,6 +361,7 @@ my_character:Jump()
 ```lua
 my_character:LeaveVehicle()
 ```
+
 
 ### <AuthorityType.ServerOnly />`LookAt`
 
@@ -363,6 +374,7 @@ my_character:LookAt(location)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** |  |  |
+
 
 ### <AuthorityType.ServerOnly />`MoveTo`
 
@@ -379,6 +391,7 @@ my_character:MoveTo(location, acceptance_radius)
 | <Structs.Vector /> | **`location`** |  |  |
 | <BasicType.Number /> | **`acceptance_radius`** | `50` |  |
 
+
 ### <AuthorityType.ServerOnly />`PickUp`
 
 > Gives a Item/Grenade/Weapon \(Pickable\) to the Character
@@ -390,6 +403,7 @@ my_character:PickUp(pickable)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <Classes.Pickable /> | **`pickable`** |  |  |
+
 
 ### <AuthorityType.ServerOnly />`PlayAnimation`
 
@@ -408,7 +422,8 @@ my_character:PlayAnimation(animation_path, slot_type, loop_indefinitely, blend_i
 | <BasicType.Number /> | **`blend_out_time`** | `0.25` |  |
 | <BasicType.Number /> | **`play_rate`** | `1.0` |  |
 
-### `RemoveSkeletalMeshAttached`
+
+### <AuthorityType.Both />`RemoveSkeletalMeshAttached`
 
 > Removes, if existing, a SkeletalMesh from this Character given it's custom ID
 
@@ -420,7 +435,7 @@ my_character:RemoveSkeletalMeshAttached(id)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`id`** |  |  |
 
-### `RemoveStaticMeshAttached`
+### <AuthorityType.Both />`RemoveStaticMeshAttached`
 
 > Removes, if existing, a StaticMesh from this Character given it's custom ID
 
@@ -726,6 +741,20 @@ my_character:SetInvulnerable(is_invulnerable)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_invulnerable`** |  |  |
 
+
+### <AuthorityType.ServerOnly />`SetJumpZVelocity`
+
+> Sets the velocity of the jump. Default is 450.
+
+```lua
+my_character:SetJumpZVelocity(velocity)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`velocity`** |  |  |
+
+
 ### <AuthorityType.ServerOnly />`SetMaxHealth`
 
 > Sets the MaxHealth of this Character
@@ -737,6 +766,7 @@ my_character:SetMaxHealth(new_max_health)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`new_max_health`** |  |  |
+
 
 ### <AuthorityType.ServerOnly />`SetMesh`
 
@@ -750,7 +780,8 @@ my_character:SetMesh(skeletal_mesh_asset)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`skeletal_mesh_asset`** |  |  |
 
-### `SetMorphTarget`
+
+### <AuthorityType.Both />`SetMorphTarget`
 
 >
 
@@ -891,7 +922,8 @@ my_character:StopAnimation(animation_path = "")
 my_character:UnGrabProp()
 ```
 
-### `IsInRagdollMode`
+
+### <AuthorityType.Both />`IsInRagdollMode`
 
 > Gets Character Ragdoll Mode
 >
@@ -901,7 +933,8 @@ my_character:UnGrabProp()
 my_character:IsInRagdollMode()
 ```
 
-### `IsInvulnerable`
+
+### <AuthorityType.Both />`IsInvulnerable`
 
 > Gets if the Character can receive damage
 >
@@ -911,7 +944,8 @@ my_character:IsInRagdollMode()
 my_character:IsInvulnerable()
 ```
 
-### `IsMovementEnabled`
+
+### <AuthorityType.Both />`IsMovementEnabled`
 
 > Gets Character Movement Enabled
 >
@@ -921,7 +955,8 @@ my_character:IsInvulnerable()
 my_character:IsMovementEnabled()
 ```
 
-### `GetCameraMode`
+
+### <AuthorityType.Both />`GetCameraMode`
 
 > 
 >
@@ -931,7 +966,8 @@ my_character:IsMovementEnabled()
 my_character:GetCameraMode()
 ```
 
-### `GetCanDrop`
+
+### <AuthorityType.Both />`GetCanDrop`
 
 > 
 > 
@@ -941,7 +977,8 @@ my_character:GetCameraMode()
 my_character:GetCanDrop()
 ```
 
-### `GetCanPunch`
+
+### <AuthorityType.Both />`GetCanPunch`
 
 > 
 > 
@@ -951,7 +988,8 @@ my_character:GetCanDrop()
 my_character:GetCanPunch()
 ```
 
-### `GetCanAim`
+
+### <AuthorityType.Both />`GetCanAim`
 
 > 
 > 
@@ -961,7 +999,8 @@ my_character:GetCanPunch()
 my_character:GetCanAim()
 ```
 
-### `GetCanCrouch`
+
+### <AuthorityType.Both />`GetCanCrouch`
 
 > 
 > 
@@ -971,7 +1010,8 @@ my_character:GetCanAim()
 my_character:GetCanCrouch()
 ```
 
-### `GetCanSprint`
+
+### <AuthorityType.Both />`GetCanSprint`
 
 > 
 > 
@@ -981,7 +1021,7 @@ my_character:GetCanCrouch()
 my_character:GetCanSprint()
 ```
 
-### `GetCanGrabProps`
+### <AuthorityType.Both />`GetCanGrabProps`
 
 > 
 > 
@@ -991,7 +1031,8 @@ my_character:GetCanSprint()
 my_character:GetCanGrabProps()
 ```
 
-### `GetCanPickupPickables`
+
+### <AuthorityType.Both />`GetCanPickupPickables`
 
 > 
 > 
@@ -1001,7 +1042,20 @@ my_character:GetCanGrabProps()
 my_character:GetCanPickupPickables()
 ```
 
-### `GetControlRotation`
+
+### <AuthorityType.Both />`GetCapsuleSize`
+
+> Gets the Capsule Size set by `:SetCapsuleSize()`
+> 
+> Returns a <BasicType.Table /> in the format `{ Radius, HalfHeight }`
+
+```lua
+my_character:GetCapsuleSize()
+```
+
+
+
+### <AuthorityType.Both />`GetControlRotation`
 
 > Gets the rotation this character is looking at
 >
@@ -1011,7 +1065,8 @@ my_character:GetCanPickupPickables()
 my_character:GetControlRotation()
 ```
 
-### `GetDamageMultiplier`
+
+### <AuthorityType.Both />`GetDamageMultiplier`
 
 > 
 >
@@ -1025,7 +1080,8 @@ my_character:GetDamageMultiplier(bone_name)
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`bone_name`** |  |
 
-### `GetFallDamageTaken`
+
+### <AuthorityType.Both />`GetFallDamageTaken`
 
 > 
 >
@@ -1035,7 +1091,8 @@ my_character:GetDamageMultiplier(bone_name)
 my_character:GetFallDamageTaken()
 ```
 
-### `GetFallingMode`
+
+### <AuthorityType.Both />`GetFallingMode`
 
 > Gets the Falling Mode
 >
@@ -1045,7 +1102,8 @@ my_character:GetFallDamageTaken()
 my_character:GetFallingMode()
 ```
 
-### `GetFlyingMode`
+
+### <AuthorityType.Both />`GetFlyingMode`
 
 > Gets if the Character is in Flying Mode
 >
@@ -1055,7 +1113,8 @@ my_character:GetFallingMode()
 my_character:GetFlyingMode()
 ```
 
-### `GetGaitMode`
+
+### <AuthorityType.Both />`GetGaitMode`
 
 > Gets the Gait Mode
 >
@@ -1065,7 +1124,8 @@ my_character:GetFlyingMode()
 my_character:GetGaitMode()
 ```
 
-### `GetGrabbedProp`
+
+### <AuthorityType.Both />`GetGrabbedProp`
 
 > Gets the Grabbing Prop
 >
@@ -1075,7 +1135,8 @@ my_character:GetGaitMode()
 my_character:GetGrabbedProp()
 ```
 
-### `GetGravityScale`
+
+### <AuthorityType.Both />`GetGravityScale`
 
 > Gets the Gravity Scale of this Character
 >
@@ -1085,7 +1146,8 @@ my_character:GetGrabbedProp()
 my_character:GetGravityScale()
 ```
 
-### `GetHealth`
+
+### <AuthorityType.Both />`GetHealth`
 
 > Gets the Character's Health.
 >
@@ -1095,7 +1157,8 @@ my_character:GetGravityScale()
 my_character:GetHealth()
 ```
 
-### `GetImpactDamageTaken`
+
+### <AuthorityType.Both />`GetImpactDamageTaken`
 
 > 
 >
@@ -1105,7 +1168,19 @@ my_character:GetHealth()
 my_character:GetImpactDamageTaken()
 ```
 
-### `GetMaxHealth`
+
+### <AuthorityType.Both />`GetJumpZVelocity`
+
+> 
+>
+> Returns <BasicType.Number />
+
+```lua
+my_character:GetJumpZVelocity()
+```
+
+
+### <AuthorityType.Both />`GetMaxHealth`
 
 > Gets the Character's MaxHealth.
 >
@@ -1115,7 +1190,8 @@ my_character:GetImpactDamageTaken()
 my_character:GetMaxHealth()
 ```
 
-### `GetMesh`
+
+### <AuthorityType.Both />`GetMesh`
 
 > Gets the Mesh Asset name
 >
@@ -1125,7 +1201,8 @@ my_character:GetMaxHealth()
 my_character:GetMesh()
 ```
 
-### `GetMovingTo`
+
+### <AuthorityType.Both />`GetMovingTo`
 
 > Gets the Character moving to location, returns Vector(0, 0, 0) if it's not
 >
@@ -1135,7 +1212,8 @@ my_character:GetMesh()
 my_character:GetMovingTo()
 ```
 
-### `GetPicked`
+
+### <AuthorityType.Both />`GetPicked`
 
 > Gets the holding Picked Item/Grenade/Weapon
 >
@@ -1145,7 +1223,8 @@ my_character:GetMovingTo()
 my_character:GetPicked()
 ```
 
-### `GetPlayer`
+
+### <AuthorityType.Both />`GetPlayer`
 
 > Gets the Player controlling this Character
 >
@@ -1155,7 +1234,8 @@ my_character:GetPicked()
 my_character:GetPlayer()
 ```
 
-### `GetPunchDamage`
+
+### <AuthorityType.Both />`GetPunchDamage`
 
 > Returns <BasicType.Number />
 
@@ -1163,7 +1243,8 @@ my_character:GetPlayer()
 my_character:GetPunchDamage()
 ```
 
-### `GetSpeedMultiplier`
+
+### <AuthorityType.Both />`GetSpeedMultiplier`
 
 > Returns <BasicType.Number />
 
@@ -1171,7 +1252,8 @@ my_character:GetPunchDamage()
 my_character:GetSpeedMultiplier()
 ```
 
-### `GetStanceMode`
+
+### <AuthorityType.Both />`GetStanceMode`
 
 > Returns StanceMode
 
@@ -1179,7 +1261,8 @@ my_character:GetSpeedMultiplier()
 my_character:GetStanceMode()
 ```
 
-### `GetSwimmingMode`
+
+### <AuthorityType.Both />`GetSwimmingMode`
 
 > Returns SwimmingMode
 
@@ -1187,7 +1270,8 @@ my_character:GetStanceMode()
 my_character:GetSwimmingMode()
 ```
 
-### `GetTeam`
+
+### <AuthorityType.Both />`GetTeam`
 
 > Returns <BasicType.Number />
 
@@ -1195,7 +1279,8 @@ my_character:GetSwimmingMode()
 my_character:GetTeam()
 ```
 
-### `GetVehicle`
+
+### <AuthorityType.Both />`GetVehicle`
 
 > Gets the Vehicle the Character is on
 >
@@ -1205,7 +1290,8 @@ my_character:GetTeam()
 my_character:GetVehicle()
 ```
 
-### `GetViewMode`
+
+### <AuthorityType.Both />`GetViewMode`
 
 > Gets Character View Mode
 >
@@ -1215,7 +1301,8 @@ my_character:GetVehicle()
 my_character:GetViewMode()
 ```
 
-### `GetWeaponAimMode`
+
+### <AuthorityType.Both />`GetWeaponAimMode`
 
 > Gets Character Aim Mode
 >
@@ -1228,7 +1315,7 @@ my_character:GetWeaponAimMode()
 
 ## Events Detailed
 
-### `Death`
+### <AuthorityType.Both />`Death`
 
 > When Character Dies
 

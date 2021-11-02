@@ -14,6 +14,7 @@ import ThemedImage from '@theme/ThemedImage';
 
 They have special methods and events and are highlighted when looked at by a Character.
 
+
 ## Functions
 
 import BasePickableFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-pickable-functions.mdx';
@@ -21,7 +22,7 @@ import BasePickableFunctions from '@site/docs/scripting-reference/classes/base-c
 <BasePickableFunctions hidden_reference={true} />
 
 
-### `AddSkeletalMeshAttached`
+### <AuthorityType.Both />`AddSkeletalMeshAttached`
 
 > Spawns and attaches a SkeletalMesh to this Pickable, the SkeletalMesh must have the same skeleton used by this Actor's mesh, and will follow all animations from it. Uses a custom ID to be used for removing it later
 
@@ -34,7 +35,8 @@ entity:AddSkeletalMeshAttached(id, skeletal_mesh_path)
 | <BasicType.String /> | **`id`** |  | Unique ID to assign to the SkeletalMesh |
 | <BasicType.String /> | **`skeletal_mesh_path`** |  | SkeletalMesh asset to use |
 
-### `AddStaticMeshAttached`
+
+### <AuthorityType.Both />`AddStaticMeshAttached`
 
 > Spawns and attaches a StaticMesh to this Pickable in a Socket with a relative location and rotation. Uses a custom ID to be used for removing it later
 
@@ -66,7 +68,8 @@ entity:PullUse()
 entity:ReleaseUse()
 ```
 
-### `RemoveSkeletalMeshAttached`
+
+### <AuthorityType.Both />`RemoveSkeletalMeshAttached`
 
 > Removes, if it exists, a SkeletalMesh from this Pickable given its custom ID
 
@@ -78,7 +81,8 @@ entity:RemoveSkeletalMeshAttached(id)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`id`** |  | Unique ID of the SkeletalMesh to remove |
 
-### `RemoveStaticMeshAttached`
+
+### <AuthorityType.Both />`RemoveStaticMeshAttached`
 
 > Removes, if it exists, a StaticMesh from this Pickable given its custom ID
 
@@ -89,6 +93,7 @@ entity:RemoveStaticMeshAttached(id)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`id`** |  | Unique ID of the StaticMesh to remove |
+
 
 ### <AuthorityType.ServerOnly />`SetCrosshairMaterial`
 
@@ -102,7 +107,8 @@ entity:SetCrosshairMaterial(path)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`path`** |  | Asset path to the crosshair material |
 
-### `GetAssetName`
+
+### <AuthorityType.Both />`GetAssetName`
 
 > Gets the name of the asset this Pickable uses
 
@@ -110,13 +116,14 @@ entity:SetCrosshairMaterial(path)
 entity:GetAssetName()
 ```
 
-### `GetHandler`
+### <AuthorityType.Both />`GetHandler`
 
 > Gets the Character, if it exists, that's holding this Pickable
 
 ```lua
 entity:GetHandler()
 ```
+
 
 ## Events
 
@@ -159,6 +166,7 @@ end)
 | <Structs.Vector /> | `normal_impulse` | The impulse direction of the hit |
 | <Structs.Vector /> | `impact_location` | The world space location of the impact |
 | <Structs.Vector /> | `velocity` | The Pickable's velocity at the moment it hit |
+
 
 ### <AuthorityType.ServerOnly />`Interact`
 
@@ -220,7 +228,7 @@ end)
 | <Classes.Character /> | `character` | The Character that stopped using it |
 
 
-## Available crosshairs
+## Available Crosshairs
 
 nanos world provides a bunch of crosshair materials which can be used in Weapons/Pickables. You can of course create your own crosshair materialr and use those instead!
 
@@ -233,6 +241,7 @@ nanos world provides a bunch of crosshair materials which can be used in Weapons
     }}
 />
 ````
+
 
 #### List of crosshair materials included in the default asset pack
 

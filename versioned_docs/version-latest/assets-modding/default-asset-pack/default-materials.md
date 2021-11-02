@@ -29,14 +29,14 @@ For more information regarding **Material Types** and **Blend Modes**, please re
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| [Color](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialcolorparameter) | **`Tint`** | `Color.WHITE` | Affects `Base Color` input | **Tint** multiplies with **Texture** parameter to generate the final color |
-| [Texture](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialtextureparameter) | **`Texture`** | White Texture | Image which multiplies with **Tint** to generate the final color |
-| [Texture](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialtextureparameter) | **`Normal`** | UP Normal Map `Vector(0.5, 0.5, 1)` | Image which affects how Light reflects on the object |
-| [​​​Color​](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialcolorparameter) | **`Emissive`** | `Color.BLACK` | Affects `Emissive` input, high values will cause bloom effect |
-| [Scalar​](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialscalarparameter) | **`Metallic`** | `0` | Affects `Metallic `input - goes from 0 to 1 |
-| [Scalar](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialscalarparameter) | **`Specular`** | `0.5` | Affects `Specular` input - goes from 0 to 1 |
-| [Scalar](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialscalarparameter) | **`Roughness`** | `0.65` | Affects `Roughness` input - goes from 0 to 1 |
-| [Scalar](./scripting-reference/classes/base-classes/paintable.mdx#setsetmaterialscalarparameter) | **`Opacity`** | `0` | Affects `Opacity` and `Opacity Mask` inputs - goes from 0 to 1 <br />**Opacity** multiplies with **Texture** Alpha Channel to generate the final opacity |
+| [Color](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialcolorparameter) | **`Tint`** | `Color.WHITE` | Affects `Base Color` input | **Tint** multiplies with **Texture** parameter to generate the final color |
+| [Texture](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialtextureparameter) | **`Texture`** | White Texture | Image which multiplies with **Tint** to generate the final color |
+| [Texture](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialtextureparameter) | **`Normal`** | UP Normal Map `Vector(0.5, 0.5, 1)` | Image which affects how Light reflects on the object |
+| [​​​Color​](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialcolorparameter) | **`Emissive`** | `Color.BLACK` | Affects `Emissive` input, high values will cause bloom effect |
+| [Scalar​](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Metallic`** | `0` | Affects `Metallic `input - goes from 0 to 1 |
+| [Scalar](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Specular`** | `0.5` | Affects `Specular` input - goes from 0 to 1 |
+| [Scalar](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Roughness`** | `0.65` | Affects `Roughness` input - goes from 0 to 1 |
+| [Scalar](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Opacity`** | `0` | Affects `Opacity` and `Opacity Mask` inputs - goes from 0 to 1 <br />**Opacity** multiplies with **Texture** Alpha Channel to generate the final opacity |
 
 :::tip
 

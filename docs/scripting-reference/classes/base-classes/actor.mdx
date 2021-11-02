@@ -19,6 +19,7 @@ This is the base class for all Actors we have. You cannot spawn it directly.
 
 :::
 
+
 ## Static Functions
 
 :::tip
@@ -34,6 +35,7 @@ This is the base class for all Actors we have. You cannot spawn it directly.
 | <BasicType.Number /> | [**`GetCount`**](actor#getcount) | Returns how many Actors of this class exist _\(direct\)_ |
 | <BasicType.Iterator /> | [**`GetPairs`**](actor#getall) | Returns an iterator with all Actors of this class _\(direct\)_ |
 
+
 ## Functions
 
 :::caution
@@ -46,13 +48,16 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 
 <BaseActorFunctions hidden_reference={true} />
 
+
 ## Events
 
 import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
 
 <BaseActorEvents hidden_reference={true} />
 
+
 ## Static Functions Detailed
+
 
 ### `GetAll`
 
@@ -63,6 +68,7 @@ local entities_copy = Player.GetAll()
 entities_copy[1] -- Player 1
 entities_copy[5] -- Player 5
 ```
+
 
 ### `GetByIndex`
 
@@ -76,6 +82,7 @@ local first_character = Character.GetByIndex(1)
 | :--- | :--- | :--- |
 | <BasicType.Number /> | **`index`** | The index of the Actor |
 
+
 ### `GetCount`
 
 > Returns how many Actors of this class exist
@@ -83,6 +90,7 @@ local first_character = Character.GetByIndex(1)
 ```lua
 local player_count = Player.GetCount()
 ```
+
 
 ### `GetPairs`
 
@@ -95,6 +103,7 @@ for k, player in pairs(Player.GetPairs()) do
     Package.Log(player:GetName() .. " is connected!")
 end
 ```
+
 
 ## Functions Detailed
 
@@ -110,6 +119,7 @@ entity:AddImpulse(force, velocity_change)
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`force`** |  | Force to apply |
 | <BasicType.Boolean /> | **`velocity_change`** | `false` | Whether to ignore mass |
+
 
 ### <AuthorityType.AuthorityOnly />`AttachTo`
 
@@ -132,6 +142,7 @@ entity:AttachTo(other_actor, attachment_rule, bone_name, lifespan_when_detached)
 | <BasicType.String /> | **`bone_name`** | `""` | Which bone to attach to |
 | <BasicType.Number /> | **`lifespan_when_detached`** | `-1` | Seconds before destroying this Actor when detached |
 
+
 ### <AuthorityType.AuthorityOnly />`Destroy`
 
 > Destroys this Actor
@@ -140,6 +151,7 @@ entity:AttachTo(other_actor, attachment_rule, bone_name, lifespan_when_detached)
 entity:Destroy()
 ```
 
+
 ### <AuthorityType.AuthorityOnly />`Detach`
 
 > Detaches this Actor from AttachedTo Actor
@@ -147,6 +159,7 @@ entity:Destroy()
 ```lua
 entity:Detach()
 ```
+
 
 ### <AuthorityType.AuthorityOnly />`SetCollision`
 
@@ -159,6 +172,7 @@ entity:SetCollision(collision_type)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <Enums>CollisionType</Enums> | **`collision_type`** |  | Collision Type |
+
 
 ### <AuthorityType.AuthorityOnly />`SetForce`
 
@@ -201,7 +215,7 @@ entity:SetHighlightEnabled(is_enabled, index)
 | <BasicType.Number /> | **`index`** | `0` | Index to use (should be `0`, `1` or `2`) |
 
 
-### `SetLifeSpan`
+### <AuthorityType.AuthorityOnly />`SetLifeSpan`
 
 > Sets the time \(in seconds\) before this Actor is destroyed. After this time has passed, the actor will be automatically destroyed.
 
@@ -213,7 +227,8 @@ entity:SetLifeSpan(seconds)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`seconds`** |  | Seconds before being destroyed |
 
-### `SetLocation`
+
+### <AuthorityType.AuthorityOnly />`SetLocation`
 
 > Sets this Actor’s location in the game world
 
@@ -225,7 +240,8 @@ entity:SetLocation(vector)
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** |  | New location |
 
-### <AuthorityType.ClientOnly />`SetNetworkAuthority`
+
+### <AuthorityType.ServerOnly />`SetNetworkAuthority`
 
 > Sets the Player to have network authority over this Actor. This Player will be manually assigned to handle this Actor's physics and share its location with other clients. The authority assignment will still be overridden by the game automatically, to avoid that set a big time value so the Player keeps the authority for longer
 >
@@ -239,6 +255,7 @@ entity:SetNetworkAuthority(player, time_ms)
 | :--- | :--- | :--- | :--- |
 | Player | **`player`** | `nil` | New player which will assume the Network Authority of this Actor |
 | <BasicType.Number /> | **`time_ms`** | `0` | Milliseconds before resuming automatic network authority for this Actor |
+
 
 ### <AuthorityType.AuthorityOnly />`SetRotation`
 
@@ -291,7 +308,8 @@ entity:SetScale(vector)
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`scale`** |  | New scale |
 
-### `SetValue`
+
+### <AuthorityType.Both />`SetValue`
 
 > Sets a value in this Actor, which can be accessed by any package \(optionally sync on clients if called from server\)
 >
@@ -307,7 +325,8 @@ entity:SetValue(key, value, sync_on_clients)
 | <BasicType.Any /> | **`value`** |  | Value |
 | <BasicType.Boolean /> | **`sync_on_clients`** | Server side parameter, if enabled will sync this value with all clients |
 
-### `TranslateTo`
+
+### <AuthorityType.AuthorityOnly />`TranslateTo`
 
 > Smoothly moves this actor to a location with a certain speed - optionally enables sweep to stop when colliding - use teleport flag to not affect velocity
 
@@ -322,7 +341,8 @@ entity:TranslateTo(location, speed, sweep, teleport)
 | <BasicType.Boolean /> | **`sweep`** | `false` | Whether to stop movement if there's a collision |
 | <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current velocity |
 
-### `RotateTo`
+
+### <AuthorityType.AuthorityOnly />`RotateTo`
 
 > Smoothly rotates this Actor to an angle with a certain speed
 
@@ -337,7 +357,7 @@ entity:RotateTo(otation, speed, teleport)
 | <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current velocity |
 
 
-### `IsBeingDestroyed`
+### <AuthorityType.Both />`IsBeingDestroyed`
 
 > Gets if this Actor is being destroyed (you can check this inside events like `Drop` to see if a Pickable is being dropped because it's going to be destroyed)
 >
@@ -348,7 +368,7 @@ entity:IsBeingDestroyed()
 ```
 
 
-### `IsGravityEnabled`
+### <AuthorityType.Both />`IsGravityEnabled`
 
 > Gets whether gravity is enabled on this Actor
 >
@@ -368,7 +388,8 @@ entity:IsGravityEnabled()
 entity:IsInWater()
 ```
 
-### `IsNetworkDistributed`
+
+### <AuthorityType.Both />`IsNetworkDistributed`
 
 > Gets if this Actor is network distributed. Only actors being network distributed can have their network authority set.
 >
@@ -378,7 +399,8 @@ entity:IsInWater()
 entity:IsNetworkDistributed()
 ```
 
-### `IsValid`
+
+### <AuthorityType.Both />`IsValid`
 
 > Gets if this Actor is valid \(i.e. wasn't destroyed and points to a valid Actor\)
 >
@@ -388,7 +410,8 @@ entity:IsNetworkDistributed()
 entity:IsValid()
 ```
 
-### `GetAttachedEntities`
+
+### <AuthorityType.Both />`GetAttachedEntities`
 
 > Gets all Actors attached to this Actor
 >
@@ -398,7 +421,8 @@ entity:IsValid()
 entity:GetAttachedEntities()
 ```
 
-### `GetAttachedTo`
+
+### <AuthorityType.Both />`GetAttachedTo`
 
 > Gets the Actor this Actor is attached to
 >
@@ -407,6 +431,7 @@ entity:GetAttachedEntities()
 ```lua
 entity:GetAttachedTo()
 ```
+
 
 ### <AuthorityType.ClientOnly />`GetBounds`
 
@@ -418,7 +443,8 @@ entity:GetAttachedTo()
 entity:GetBounds()
 ```
 
-### `GetCollision`
+
+### <AuthorityType.Both />`GetCollision`
 
 > Gets this Actor’s collision type
 >
@@ -428,7 +454,8 @@ entity:GetBounds()
 entity:GetCollision()
 ```
 
-### `GetID`
+
+### <AuthorityType.Both />`GetID`
 
 > Gets the universal network ID of this Actor \(same on both client and server\)
 >
@@ -438,7 +465,8 @@ entity:GetCollision()
 entity:GetID()
 ```
 
-### `GetLocation`
+
+### <AuthorityType.Both />`GetLocation`
 
 > Gets this Actor’s location in the game world
 >
@@ -448,17 +476,8 @@ entity:GetID()
 entity:GetLocation()
 ```
 
-### <AuthorityType.ClientOnly />`GetInitialLocation`
 
-> Gets the initial location of this Actor
->
-> Returns <Structs.Vector />
-
-```lua
-entity:GetInitialLocation()
-```
-
-### `GetRotation`
+### <AuthorityType.Both />`GetRotation`
 
 > Gets this Actor’s angle in the game world
 >
@@ -468,7 +487,8 @@ entity:GetInitialLocation()
 entity:GetRotation()
 ```
 
-### `GetScale`
+
+### <AuthorityType.Both />`GetScale`
 
 > Gets this Actor’s scale
 >
@@ -478,7 +498,8 @@ entity:GetRotation()
 entity:GetScale()
 ```
 
-### `GetType`
+
+### <AuthorityType.Both />`GetType`
 
 > Gets the type of this Actor
 >
@@ -488,7 +509,8 @@ entity:GetScale()
 entity:GetType()
 ```
 
-### `GetValue`
+
+### <AuthorityType.Both />`GetValue`
 
 > Gets a value stored on this Actor at the given key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
 >
@@ -503,6 +525,7 @@ entity:GetValue(key, fallback)
 | <BasicType.String /> | **`key`** |  | Key |
 | <BasicType.Any /> | **`fallback`** |  | Fallback value if key doesn't exist |
 
+
 ### <AuthorityType.ClientOnly />`GetVelocity`
 
 > Returns this Actor's current velocity
@@ -513,7 +536,8 @@ entity:GetValue(key, fallback)
 entity:GetVelocity()
 ```
 
-### `Subscribe`
+
+### <AuthorityType.Both />`Subscribe`
 
 > Subscribes to an Event
 
@@ -526,7 +550,8 @@ entity:Subscribe(event_name, callback)
 | <BasicType.String /> | **`event_name`** |  | Name of the event to subscribe to |
 | <BasicType.Function /> | **`function`** |  | Event callback |
 
-### `Unsubscribe`
+
+### <AuthorityType.Both />`Unsubscribe`
 
 > Unsubscribes all callbacks from this Event in this Actor within this Package, optionally passing the function to unsubscribe only that callback
 
@@ -538,6 +563,7 @@ entity:Unsubscribe(event_name, callback)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`event_name`** |  | Name of the event to unsubscribe from |
 | <BasicType.Function /> | **`function`** | `nil` | Optional callback to unsubscribe |
+
 
 ## Events Detailed
 
@@ -555,6 +581,7 @@ end)
 | :--- | :--- | :--- |
 | [Actor](actor) | `self` | The Actor which has been destroyed |
 
+
 ### `Spawn`
 
 > Triggered when an Actor is spawned/created
@@ -568,6 +595,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Actor](actor) | `self` | The Actor which has been spawned |
+
 
 ### `ValueChange`
 
