@@ -1,6 +1,5 @@
 ---
 description: How to import Mixamo animations into nanos world
-sidebar_position: 5
 tags: [assets, animations]
 ---
 

@@ -11,7 +11,7 @@ tags: [class]
 
 An Item represents an Entity which can be Pickable by a Character, doesn’t have any special action unless holding it with hands with pre-defined handling modes.
 
-import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, Classes, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/torch.png)
 
@@ -42,11 +42,11 @@ local NewItem = Item(
 | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** | Vector(0, 0, 0) |
 | <Structs.Rotator /> | **`rotation`** | Rotator(0, 0, 0) |
-| <BasicType.String /> |  |
+| <AssetPath.StaticMesh /> | `asset` | ` ` |
 | <Enums>CollisionType</Enums> | **`collision_type`** | CollisionType.Normal |
 | <BasicType.Boolean /> | **`gravity_enabled`** | true |
 | <Enums>HandlingMode</Enums> | **`handling_mode`** | HandlingMode.Torch |
-| <BasicType.String /> | **`crosshair_type`** | ` ` |
+| <AssetPath.Material /> | **`crosshair_material`** | ` ` |
 
 ## Functions
 

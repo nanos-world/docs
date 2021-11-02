@@ -45,6 +45,7 @@ Iterator allows you to traverse elements of a table with `for k, v in ipairs()`.
 
 We use any here in the Docs to represent that any Type can be used.
 
+
 ## Special Types
 
 ### `SpecialPath`
@@ -71,7 +72,6 @@ nanos world supports a special type of Path when loading **Textures**, **Sounds 
 
 :::tip
 
-**Note:** It also supports relative and common paths as well!
+SpecialPath input also supports relative and traditional paths!
 
 :::
-

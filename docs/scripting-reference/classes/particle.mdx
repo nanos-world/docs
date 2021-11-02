@@ -8,7 +8,7 @@ tags: [class]
 
 Particle Entity.
 
-import { Structs, BasicType, AuthorityType } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, AssetPath } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/particle.jpg)
 
@@ -20,7 +20,7 @@ Both **Cascade** and **Niagara** Particle Systems are supported!
 
 :::tip
 
-You can spawn this entity is both **Client** or **Server** \(if you spawn it on client, it won’t be synchronized with other players\).
+You can spawn this entity is both **Client** or **Server** (if you spawn it on client, it won’t be synchronized with other players).
 
 :::
 
@@ -43,7 +43,7 @@ local my_particle = Particle(
 | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <BasicType.String /> | **`model_name`** | **\`\`** |
+| <AssetPath.Particle /> | **`asset`** | ` ` |
 | <BasicType.Boolean /> | **`auto_destroy`** | `true` |
 | <BasicType.Boolean /> | **`auto_activate`** | `true` |
 
@@ -83,12 +83,13 @@ my_particle:Reset()
 > Sets a float parameter in this Particle System
 
 ```lua
-my_particle:SetParameterFloat(parameter)
+my_particle:SetParameterFloat(parameter, value)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <BasicType.Number /> | **`parameter`** | The float parameter |
+| <BasicType.String /> | **`parameter`** | The parameter name |
+| <BasicType.Number /> | **`value`** | The float value |
 
 
 ### <AuthorityType.Both />`SetParameterInt`
@@ -96,12 +97,13 @@ my_particle:SetParameterFloat(parameter)
 > Sets an integer parameter in this Particle System
 
 ```lua
-my_particle:SetParameterInt(parameter)
+my_particle:SetParameterInt(parameter, value)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <BasicType.Number /> | **`parameter`** | The int parameter |
+| <BasicType.String /> | **`parameter`** | The parameter name |
+| <BasicType.Number /> | **`value`** | The int value |
 
 
 ### <AuthorityType.Both />`SetParameterBool`
@@ -109,12 +111,13 @@ my_particle:SetParameterInt(parameter)
 > Sets a boolean parameter in this Particle System
 
 ```lua
-my_particle:SetParameterBool(parameter)
+my_particle:SetParameterBool(parameter, value)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <BasicType.Boolean /> | **`parameter`** | The boolean parameter |
+| <BasicType.String /> | **`parameter`** | The parameter name |
+| <BasicType.Boolean /> | **`value`** | The boolean value |
 
 
 ### <AuthorityType.Both />`SetParameterVector`
@@ -122,12 +125,13 @@ my_particle:SetParameterBool(parameter)
 > Sets a float parameter in this Particle System
 
 ```lua
-my_particle:SetParameterVector(parameter)
+my_particle:SetParameterVector(parameter, value)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <Structs.Vector /> | **`parameter`** | The Vector parameter |
+| <BasicType.String /> | **`parameter`** | The parameter name |
+| <Structs.Vector /> | **`value`** | The Vector value |
 
 
 ### <AuthorityType.Both />`SetParameterColor`
@@ -135,12 +139,13 @@ my_particle:SetParameterVector(parameter)
 > Sets a Color parameter in this Particle System
 
 ```lua
-my_particle:SetParameterColor(parameter)
+my_particle:SetParameterColor(parameter, value)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <Structs.Color /> | **`parameter`** | The Color parameter |
+| <BasicType.String /> | **`parameter`** | The parameter name |
+| <Structs.Color /> | **`value`** | The Color value |
 
 
 ## Events

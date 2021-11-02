@@ -10,7 +10,7 @@ tags: [scripting, ui]
 
 Class for spawning a web browser in the screen. The browser will fill up the whole screen and is automatically resized.
 
-import { Structs, BasicType, AuthorityType, ReferenceLink } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, ReferenceLink, AssetPath } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/webui.jpg)
 
@@ -98,8 +98,8 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 
 | **Type** | **Name** | **Default** | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`name`** |  |  |
-| <BasicType.String /> | **`path`** |  | URL or `file:///my_file.html` |
+| <BasicType.String /> | **`name`** | ` ` | *Currently not used* |
+| <BasicType.String /> | **`path`** | ` ` | URL or `file:///my_file.html` or <AssetPath.HTML /> |
 | <BasicType.Boolean /> | **`is_visible`** | `true` | if WebUI is visible by default |
 | <BasicType.Boolean /> | **`is_transparent`** | `true` | if WebUI background is transparent |
 | <BasicType.Boolean /> | **`auto_resize`** | `true` | if should auto resize when screen changes it's size (useful OFF when you are painting meshes with WebUI) |

@@ -10,7 +10,7 @@ tags: [class]
 
 A Prop represents a Dynamic Mesh which can be spawned in the world, can be grabbed around by characters and have physics.
 
-import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, Classes, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/props.jpg)
 
@@ -49,7 +49,7 @@ Props bigger than radius 200 units will have **`Grabbable`** off by default. Thi
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` | Location to spawn |
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` | Rotation to spawn |
-| <BasicType.String /> | **`model_name`** |  | Static Mesh to use |
+| <AssetPath.StaticMesh /> | **`asset`** | ` ` | Static Mesh Asset to use |
 | <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` | Collision |
 | <BasicType.Boolean /> | **`gravity_enabled`** | `true` |  |
 | <BasicType.Boolean /> | **`is_grabbable`** | `true` |  |
@@ -113,7 +113,7 @@ local asset_name = my_prop:GetAssetName()
 
 ### <AuthorityType.Both />`GetHandler`
 
-> Gets the Character \(if existing\) which is holding this
+> Gets the Character (if existing) which is holding this
 >
 > Returns <Classes.Character />
 

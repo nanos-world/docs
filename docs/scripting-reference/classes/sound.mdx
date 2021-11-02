@@ -8,7 +8,7 @@ tags: [class]
 
 Class for playing in-game 2D and 3D sounds
 
-import { Structs, BasicType, AuthorityType, Enums } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/sound.png)
 
@@ -43,7 +43,7 @@ local my_sound = Sound(
 | **Type** | **Name** | **Default** | Description |
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` | 3D only |
-| [SpecialPath](./scripting-reference/glossary/basic-types.md#specialpath) | **`asset`** |  |  |
+| <AssetPath.Sound /> | **`asset`** | ` ` | The Sound Asset or Special Path |
 | <BasicType.Boolean /> | **`is_2D_sound`** | `false` |  |
 | <BasicType.Boolean /> | **`auto_destroy`** | `true` | If to destroy after finished playing |
 | <Enums>SoundType</Enums> | **`sound_type`** | `SoundType.SFX` | Used to apply user’s volume settings |

@@ -5,7 +5,7 @@ tags: [class]
 
 # 🔫 Weapon
 
-import { Structs, BasicType, AuthorityType, Classes, ReferenceLink, Enums } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, Classes, ReferenceLink, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/weapon.jpg)
 
@@ -88,7 +88,7 @@ my_character:PickUp(my_ak47)
 | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <BasicType.String /> | **`model_name`** | `Skeletal Mesh Path` |
+| <AssetPath.SkeletalMesh /> | **`asset`** | ` ` |
 | <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
 | <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
 
@@ -234,7 +234,7 @@ my_weapon:SetAnimationFire(animation_asset_path)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`animation_asset_path`** |  |  |
+| <AssetPath.Animation /> | **`animation_asset_path`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetAnimationCharacterFire`
@@ -247,7 +247,7 @@ my_weapon:SetAnimationCharacterFire(animation_asset_path)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`animation_asset_path`** |  |  |
+| <AssetPath.Animation /> | **`animation_asset_path`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetAnimationReload`
@@ -262,7 +262,7 @@ my_weapon:SetAnimationReload(animation_asset_path, play_rate)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`animation_asset_path`** |  |  |
+| <AssetPath.Animation /> | **`animation_asset_path`** |  |  |
 | <BasicType.Number /> | **`play_rate`** | `1` |  |
 
 
@@ -278,7 +278,7 @@ my_weapon:SetBulletColor(color)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| Color | **`color`** |  |  |
+| <Structs.Color /> | **`color`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetBulletSettings`
@@ -294,7 +294,7 @@ my_weapon:SetBulletSettings(bullet_count, bullet_max_distance, bullet_velocity, 
 | <BasicType.Number /> | **`bullet_count`** |  | 1 for common weapons, &gt; 1 for shotguns |
 | <BasicType.Number /> | **`bullet_max_distance`** |  |  |
 | <BasicType.Number /> | **`bullet_velocity`** |  | Visuals only |
-| Color | **`bullet_color`** |  |  |
+| <Structs.Color /> | **`bullet_color`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetCadence`
@@ -348,7 +348,7 @@ my_weapon:SetHandlingMode(mode)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| HandlingMode | **`mode`** |  |  |
+| <Enums>HandlingMode</Enums> | **`mode`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetLeftHandTransform`
@@ -361,8 +361,8 @@ my_weapon:SetLeftHandTransform(location, rotation)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| Vector | **`location`** |  |  |
-| Rotator | **`rotation`** |  |  |
+| <Structs.Vector /> | **`location`** |  |  |
+| <Structs.Rotator /> | **`rotation`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetMagazineMesh`
@@ -375,7 +375,7 @@ my_weapon:SetMagazineMesh(static_mesh_asset_path)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`static_mesh_asset_path`** |  |  |
+| <AssetPath.StaticMesh /> | **`static_mesh_asset_path`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetParticlesBulletTrail`
@@ -388,7 +388,7 @@ my_weapon:SetParticlesBulletTrail(particle_asset_path)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`particle_asset_path`** |  |  |
+| <AssetPath.Particle /> | **`particle_asset_path`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetParticlesBarrel`
@@ -401,7 +401,7 @@ my_weapon:SetParticlesBarrel(particle_asset_path)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`particle_asset_path`** |  |  |
+| <AssetPath.Particle /> | **`particle_asset_path`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetParticlesShells`
@@ -414,7 +414,7 @@ my_weapon:SetParticlesShells(particle_asset_path)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`particle_asset_path`** |  |  |
+| <AssetPath.Particle /> | **`particle_asset_path`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetRightHandOffset`
@@ -427,7 +427,7 @@ my_weapon:SetRightHandOffset(offset)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| Vector | **`offset`** |  |  |
+| <Structs.Vector /> | **`offset`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetSightFOVMultiplier`
@@ -453,8 +453,8 @@ my_weapon:SetSightTransform(location, rotation)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| Vector | **`location`** |  |  |
-| Rotator | **`rotation`** |  |  |
+| <Structs.Vector /> | **`location`** |  |  |
+| <Structs.Rotator /> | **`rotation`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetSoundDry`
@@ -467,7 +467,7 @@ my_weapon:SetSoundDry(sound_asset_path)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`sound_asset_path`** |  |  |
+| <AssetPath.Sound /> | **`sound_asset_path`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetSoundLoad`
@@ -480,7 +480,7 @@ my_weapon:SetSoundLoad(sound_asset_path)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`sound_asset_path`** |  |  |
+| <AssetPath.Sound /> | **`sound_asset_path`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetSoundUnload`
@@ -493,7 +493,7 @@ my_weapon:SetSoundUnload(sound_asset_path)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`sound_asset_path`** |  |  |
+| <AssetPath.Sound /> | **`sound_asset_path`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetSoundZooming`
@@ -506,7 +506,7 @@ my_weapon:SetSoundZooming(sound_asset_path)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`sound_asset_path`** |  |  |
+| <AssetPath.Sound /> | **`sound_asset_path`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetSoundAim`
@@ -519,7 +519,7 @@ my_weapon:SetSoundAim(sound_asset_path)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`sound_asset_path`** |  |  |
+| <AssetPath.Sound /> | **`sound_asset_path`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetSoundFire`
@@ -532,7 +532,7 @@ my_weapon:SetSoundFire(sound_asset_path)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`sound_asset_path`** |  |  |
+| <AssetPath.Sound /> | **`sound_asset_path`** |  |  |
 
 
 ### <AuthorityType.ServerOnly />`SetSoundFireLastBullets`
@@ -545,7 +545,7 @@ my_weapon:SetSoundFireLastBullets(sound_asset_path, remaining_bullets_count)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`sound_asset_path`** |  |  |
+| <AssetPath.Sound /> | **`sound_asset_path`** |  |  |
 | <BasicType.Number /> | **`remaining_bullets_count`** | `1` | The amount of remaining bullet to start playing this sound |
 
 

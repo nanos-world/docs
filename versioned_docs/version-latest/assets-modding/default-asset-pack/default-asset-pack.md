@@ -9,7 +9,7 @@ nanos world provides a default Asset Pack already included in the base game, fee
 ![](/img/docs/nanos-world-asset-pack.jpg)
 
 
-In order to use those assets, you need to use the key `nanos-world`.
+In order to use those assets, you need to use the key `nanos-world`. E.g.: `nanos-world::SM_Cube`.
 
 ```bash title="Assets.toml"
 # Assets Files

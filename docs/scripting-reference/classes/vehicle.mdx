@@ -8,7 +8,7 @@ tags: [class]
 
 Vehicles are 4-wheeled entities which Characters can possesses and drive.
 
-import { Structs, BasicType, AuthorityType, Classes, ReferenceLink, Enums } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, Classes, ReferenceLink, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/vehicle.jpg)
 
@@ -68,16 +68,16 @@ vehicle:RecreatePhysics()
 | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <BasicType.String /> | **`model_name`** (Skeletal Mesh) | ` ` |
+| <AssetPath.SkeletalMesh /> | **`asset`** | ` ` |
 | <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
 | <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
 | <BasicType.Boolean /> | **`auto_create_physics`** _(can be disabled to improve performance when setting several configs. Must call `RecreatePhysics()` after all)_ | `true` |
 | <BasicType.Boolean /> |  **`auto_unflip`** _(auto rotates the vehicle if flipped)_ | `true` |
-| <BasicType.String /> | **`engine_sound_asset`** | `nanos-world::A_Vehicle_Engine_01` |
-| <BasicType.String /> | **`horn_sound_asset`** | `nanos-world::A_Vehicle_Horn_Toyota` |
-| <BasicType.String /> | **`brake_sound_asset`** | `nanos-world::A_Vehicle_Brake` |
-| <BasicType.String /> | **`engine_start_sound_asset`** | `nanos-world::A_Car_Engine_Start` |
-| <BasicType.String /> | **`vehicle_door_sound_asset`** | `nanos-world::A_Vehicle_Door` |
+| <AssetPath.Sound /> | **`engine_sound_asset`** | `nanos-world::A_Vehicle_Engine_01` |
+| <AssetPath.Sound /> | **`horn_sound_asset`** | `nanos-world::A_Vehicle_Horn_Toyota` |
+| <AssetPath.Sound /> | **`brake_sound_asset`** | `nanos-world::A_Vehicle_Brake` |
+| <AssetPath.Sound /> | **`engine_start_sound_asset`** | `nanos-world::A_Car_Engine_Start` |
+| <AssetPath.Sound /> | **`vehicle_door_sound_asset`** | `nanos-world::A_Vehicle_Door` |
 
 ## Functions
 

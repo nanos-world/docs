@@ -10,7 +10,7 @@ tags: [class]
 
 A StaticMesh entity represents a Mesh which can be spawned in the world, can’t move and is more optimized for using in decorating the world.
 
-import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, Classes, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/static-mesh.jpg)
 
@@ -44,7 +44,7 @@ local static_mesh = StaticMesh(
 | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <BasicType.String /> | **`asset`** | ` ` |
+| <AssetPath.StaticMesh /> | **`asset`** | ` ` |
 | <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
 
 ## Functions

@@ -8,7 +8,7 @@ tags: [class]
 
 Chad Grenade
 
-import { Structs, BasicType, AuthorityType } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, AssetPath, Enums } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/grenade.jpg)
 
@@ -31,10 +31,10 @@ local new_grenade = Grenade(
 | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <BasicType.String /> | **`static_mesh_asset`** | `"nanos-world::SM_Grenade_G67""` |
-| <BasicType.String /> | **`explosion_particles`** | `"nanos-world::P_Grenade_Special"` |
-| <BasicType.String /> | **`explosion_sound`** | `"nanos-world::A_Explosion_Large"` |
-| [CollisionType](./scripting-reference/glossary/enums.md#collisiontype) | **`collision_type`** | `CollisionType.Normal` |
+| <AssetPath.StaticMesh /> | **`static_mesh_asset`** | `"nanos-world::SM_Grenade_G67""` |
+| <AssetPath.Particle /> | **`explosion_particles`** | `"nanos-world::P_Grenade_Special"` |
+| <AssetPath.Sound /> | **`explosion_sound`** | `"nanos-world::A_Explosion_Large"` |
+| <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
 | <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
 
 :::tip

@@ -1,7 +1,6 @@
 ---
 description: How to correctly import custom Models into nanos world
-sidebar_position: 4
-tags: [assets]
+tags: [assets, characters, skeletal-meshes]
 ---
 
 # Characters Meshes
@@ -20,19 +19,24 @@ It’s of paramount importance to convert all **Skeleton** references to use nan
 
 :::caution
 
-**Note:** It is only possible to convert Skeletal Meshes of Meshes which already use the defualt **Unreal Mannequin Skeleton**.
+**Note:** It is only possible to convert Skeletal Meshes of Meshes which already use the default **Unreal Mannequin Skeleton**.
 
 :::
 
 For that, just right click on your **Skeletal Mesh** ➡ Skeleton ➡ Assign Skeleton, and select our Skeleton `SKEL_Mannequin`, press _Accept_ to convert:  
 
+
 #### Right click on your mesh and select to assign a Skeleton
+
 ![Right click on your mesh and select to assign a Skeleton](/img/docs/character-meshes-01.jpg)
 
+
 #### Selecting SKEL_Mannequin and pressing Accept to convert
+
 ![Selecting SKEL_Mannequin and pressing Accept to convert](/img/docs/character-meshes-02.jpg)
 
-### 2. Use nanos world Physics Assets PHYS\_Mannequin
+
+### 2. Use nanos world Physics Assets PHYS_Mannequin
 
 Besides converting your mesh to use nanos world **Skeleton**, it is also needed that you set your mesh to use the nanos world **Physics Assets**.
 
@@ -44,8 +48,11 @@ This is needed so your Characters can have a proper in-game Ragdoll physics.
 
 Open your **Skeletal Mesh** and set the **Physics Asset** to use `PHYS_Mannequin`:
 
+
 #### Opening Skeletal Mesh to use the proper Physics Asset
+
 ![Opening Skeletal Mesh to use the proper Physics Asset](/img/docs/character-meshes-03.jpg)
+
 
 ## Importing a new Character Skeletal Mesh
 
@@ -53,10 +60,13 @@ Learn how to import and use custom Skeletal Meshes in nanos world Characters.
 
 For this Guide, we will import a Skeletal Mesh from [Stylized Character Kit: Casual 01](https://www.unrealengine.com/marketplace/en-US/product/stylized-male-character-kit-casual) \(which is a [Free Marketplace Content for September 2020](https://www.unrealengine.com/en-US/blog/featured-free-marketplace-content---september-2020)\). 
 
+
 #### Stylized Character Kit from Unreal Engine Marketplace
+
 ![Stylized Character Kit from Unreal Engine Marketplace](/img/docs/character-meshes-04.jpg)
 
 Also, we will be using our [Assets Development Kit - ADK](adk-assets-development-kit), make sure you downloaded it.
+
 
 ### Downloading the Asset Pack from Unreal Marketplace
 
@@ -69,10 +79,14 @@ The first step is to download the Asset Pack _Stylized Character Kit: Casual 01_
 
 In Vault section you will find all your Marketplace content you have in your account, to download it click on _Add To Project_ and select the **Assets Development Kit** project, this will download all files and ‘install’ them into the ADK project.  
 
+
 #### Finding Stylized Character Kit: Casual 01
+
 ![Finding Stylized Character Kit: Casual 01](/img/docs/character-meshes-05.jpg)
 
+
 #### Adding Stylized Character Kit: Casual 01 to ADK Project
+
 ![Adding Stylized Character Kit: Casual 01 to ADK Project](/img/docs/character-meshes-06.jpg)
 
 You can now notice that there is a new folder `Content/SCK_Casual01/` in the ADK project, this is the Asset Pack you just downloaded from UE4 Marketplace: 
@@ -81,14 +95,19 @@ You can now notice that there is a new folder `Content/SCK_Casual01/` in the ADK
 
 And you can find it’s Skeletal Meshes inside `Content/SCK_Casual01/Models/Premade_Characters/`: 
 
+
 #### Opened Premade_Characters folder
+
 ![Opened Premade_Characters folder](/img/docs/character-meshes-08.jpg)
+
 
 ### Copying the wanted files to our Asset Pack folder
 
 For this example, let’s import the Skeletal Mesh `MESH_PC_00` to nanos world and use it as our Character’s Mesh: 
 
+
 #### Opened MESH_PC_00
+
 ![Opened MESH_PC_00](/img/docs/character-meshes-09.jpg)
 
 The first step is to copy it and all it’s dependencies to your `AssetPack/` folder inside the Project:
@@ -102,11 +121,14 @@ If you want, you don’t need to do this and instead you can generate an Asset P
 To do so, just drag-n-drop `MESH_PC_00` into your `AssetPack/` folder and select _Advanced Copy Here_, this will copy all files and all dependencies in there, i.e. only the real needed ones: 
 
 #### Right clicked MESH_PC_00 and Advancing Copying into MyAssetPack/ folder
+
 ![Right clicked MESH_PC_00 and Advancing Copying into MyAssetPack/ folder](/img/docs/character-meshes-10.jpg)
 
 Press OK to confirm: 
 
+
 #### Confirming copying files
+
 ![Confirming copying files](/img/docs/character-meshes-11.jpg)
 
 And now we have only our wanted Skeletal Mesh and it’s Textures/Materials into our Asset Pack folder, which we will export: 

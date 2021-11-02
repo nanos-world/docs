@@ -51,7 +51,17 @@ export const BaseClass = (label, path) => (
 
 <!-- Define Enum component -->
 export const Enums = ({ children }) => (
-	<a href={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${children.toLowerCase()}`}>{children}</a>
+	<a href={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${children.toLowerCase()}`} title={`${children} Enum (number)`}>{children}</a>
+);
+
+<!-- Define Asset Path component -->
+export const BaseAssetPath = (label) => (
+	<a href={`${getActiveVersionPath()}/core-concepts/assets#referencing-assets-in-scripting`} title="Asset Path (string)">{label}</a>
+);
+
+<!-- Define Special Path component -->
+export const SpecialPath = (label) => (
+	<a href={`${getActiveVersionPath()}/scripting-reference/glossary/basic-types#specialpath`} title="Special Path (string)">{label}</a>
 );
 
 
@@ -105,4 +115,17 @@ export const Classes = {
 	Vehicle: () => BaseClass("Vehicle"),
 	Weapon: () => BaseClass("Weapon"),
 	WebUI: () => BaseClass("WebUI"),
+};
+
+<!-- Defines Assets Path -->
+export const AssetPath = {
+	StaticMesh: () => BaseAssetPath("StaticMesh Asset"),
+	SkeletalMesh: () => BaseAssetPath("SkeletalMesh Asset"),
+	Animation: () => BaseAssetPath("Animation Asset"),
+	Particle: () => BaseAssetPath("Particle Asset"),
+	Material: () => BaseAssetPath("Material Asset"),
+	Map: () => BaseAssetPath("Map Asset"),
+	Sound: () => SpecialPath("Sound Asset or Special Path"),
+	Image: () => SpecialPath("Image Special Path"),
+	HTML: () => SpecialPath("HTML Special Path"),
 };
