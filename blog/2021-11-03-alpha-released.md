@@ -28,6 +28,9 @@ The following changelog contains all features since last officially announced re
 
 :::
 
+<iframe class="steam-widget" src="https://store.steampowered.com/widget/1686450/" frameborder="0" width="620" height="190" loading="lazy"></iframe>
+
+
 ## Materials
 
 ![](/img/blog/alpha/material.jpg)
@@ -75,8 +78,8 @@ New additions for [Actors](/docs/scripting-reference/classes/base-classes/actor)
 * Added new method for all actors: [:SetLifeSpan(time)](/docs/scripting-reference/classes/base-classes/actor#setlifespan) which will automatically destroy this actor after `time` seconds.
 * Added new method for all actors: [:IsBeingDestroyed()](/docs/scripting-reference/classes/base-classes/actor#isbeingdestroyed) which will return if this actor is being destroyed (useful to check from inside other Events such as `Drop` or `Ungrab`).
 * Added new parameter for all actors [:AttachTo()](/docs/scripting-reference/classes/base-classes/actor#attachto) method: `lifespan_when_detached`, which will destroy the actor after `time` seconds after it's detached.
-* Now event [:TakeDamage()](/docs/scripting-reference/classes/base-classes/actor#takedamage) has a new argument: `causer` (the object/actor which caused the damage). Also added new damage types: `RunOverVehicle` and `RunOverProp`.
-* Now event [:Hit()](/docs/scripting-reference/classes/base-classes/actor#hit) has new arguments: `impact_force`, `normal_impulse`, `impact_location` and `velocity`.
+* Now event [TakeDamage](/docs/scripting-reference/classes/base-classes/actor#takedamage) has a new argument: `causer` (the object/actor which caused the damage). Also added new damage types: `RunOverVehicle` and `RunOverProp`.
+* Now event [Hit](/docs/scripting-reference/classes/base-classes/actor#hit) has new arguments: `impact_force`, `normal_impulse`, `impact_location` and `velocity`.
 * Now [:SetLocation()](/docs/scripting-reference/classes/base-classes/actor#setlocation) will try to find the better spot to teleport the Actor (to avoid collisions).
 
 
@@ -115,8 +118,8 @@ New additions for [Weapons](/docs/scripting-reference/classes/weapon):
 * Added [:SetRecoil()](/docs/scripting-reference/classes/weapon#setrecoil) how much the weapon recoils physically.
 * Added [:SetWallbangSettings()](/docs/scripting-reference/classes/weapon#setwallbangsettings) configure if bullets wallbangs walls.
 * Added [:SetAnimationFire()](/docs/scripting-reference/classes/weapon#setanimationfire) animation on Weapon Skeletal when firing.
-* Added [:SetSoundFireLastBullets()](/docs/scripting-reference/classes/weapon#setsoundfirelastbullets) sound when N last bullets are remaining in the clip.
-* Improved [:SetAnimationReload()](/docs/scripting-reference/classes/weapon#setanimationreload) now has play_rate parameter.
+* Added [:SetSoundFireLastBullets()](/docs/scripting-reference/classes/weapon#setsoundfirelastbullets) sound when `N` last bullets are remaining in the clip.
+* Improved [:SetAnimationReload()](/docs/scripting-reference/classes/weapon#setanimationreload) now has `play_rate` parameter.
 
 **Additional stuff:**
 * Now weapons are hidden when Characters are driving.
