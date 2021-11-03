@@ -95,11 +95,11 @@ New additions for [Characters](/docs/scripting-reference/classes/character):
 * Removed `:SetInitialLocation()`, it has been replaced with [:Respawn()](/docs/scripting-reference/classes/character#respawn).
 
 **Character Events additions/improvements:**
-* Added [:AttemptEnterVehicle()](/docs/scripting-reference/classes/character#attemptentervehicle) called when Character tries to enter a vehicle, returns false to prevent it.
-* Added [:AttemptLeaveVehicle()](/docs/scripting-reference/classes/character#attemptleavevehicle) called when Character tries to leave a vehicle, returns false to prevent it.
-* Added [:AttemptReload()](/docs/scripting-reference/classes/character#attemptreload) called when Character tries to reload it's weapon, returns false to prevent it.
-* Added [:Interact()](/docs/scripting-reference/classes/character#interact) called when Characters tries to Pick Up a Pickable or Grab a Prop.
-* Added [:Highlight()](/docs/scripting-reference/classes/character#highlight) called when Characters looks at a Prop or Pickable being able to pick up it.
+* Added [AttemptEnterVehicle](/docs/scripting-reference/classes/character#attemptentervehicle) called when Character tries to enter a vehicle, returns false to prevent it.
+* Added [AttemptLeaveVehicle](/docs/scripting-reference/classes/character#attemptleavevehicle) called when Character tries to leave a vehicle, returns false to prevent it.
+* Added [AttemptReload](/docs/scripting-reference/classes/character#attemptreload) called when Character tries to reload it's weapon, returns false to prevent it.
+* Added [Interact](/docs/scripting-reference/classes/character#interact) called when Characters tries to Pick Up a Pickable or Grab a Prop.
+* Added [Highlight](/docs/scripting-reference/classes/character#highlight) called when Characters looks at a Prop or Pickable being able to pick up it.
 
 Some Characters animations have been renamed from `AM_` to `A_` in the Default Asset Pack (as they are not Montages anymore). Also lots of new Animations have been added.
 
