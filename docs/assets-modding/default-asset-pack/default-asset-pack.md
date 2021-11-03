@@ -193,8 +193,6 @@ In order to use those assets, you need to use the key `nanos-world`. E.g.: `nano
     SM_TopHat = "Packs/Coffin/SM_TopHat"
 
     SM_Valve = "NanosWorldAssets/Funny/Valve/Valve/SM_Valve"
-    SM_Portal_CompanionCube = "NanosWorldAssets/Funny/Valve/CompanionCube/SM_CompanionCube"
-    SM_Portal_Turret = "NanosWorldAssets/Funny/Valve/Turret/SM_PortalTurret"
 
     SM_StreetSigns_NoEntry = "NanosWorldAssets/Street/SM_StreetSigns_NoEntry"
     SM_MailBox_01 = "NanosWorldAssets/Street/SM_MailBox_01"
@@ -551,7 +549,6 @@ In order to use those assets, you need to use the key `nanos-world`. E.g.: `nano
     SK_AK5C_G203 = "Weapons/Rifles/AK5C/SK_AK5C_G203"
 
     SK_Blaster = "Weapons/Tools/Blaster/SK_Blaster"
-    SK_Portal_PortalGun = "NanosWorldAssets/Funny/Valve/PortalGun/SK_PortalGun"
     SK_FlareGun = "Weapons/Tools/FlareGun/SK_FlareGun"
     SK_FlareGun_Short = "Weapons/Tools/FlareGun/SK_FlareGun_Short"
 
