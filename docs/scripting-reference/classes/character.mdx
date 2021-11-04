@@ -1372,6 +1372,8 @@ end)
 ### <AuthorityType.ServerOnly />`AttemptEnterVehicle`
 
 > When Character attempts to enter a vehicle
+> 
+> Return false to prevent it
 
 ```lua
 Character.Subscribe("AttemptEnterVehicle", function(self, vehicle, seat_index)
@@ -1506,6 +1508,8 @@ end)
 ### <AuthorityType.ServerOnly />`AttemptLeaveVehicle`
 
 > When Character attempts to leave a vehicle
+> 
+> Return false to prevent it
 
 ```lua
 Character.Subscribe("AttemptLeaveVehicle", function(self, vehicle)
