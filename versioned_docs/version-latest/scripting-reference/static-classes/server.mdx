@@ -83,7 +83,7 @@ Server.BroadcastChatMessage("Welcome to the server!")
 | [**`LogEntry`**](server#logentry) | Called when a Server log is received |
 | [**`Start`**](server#start) | Server has been started. |
 | [**`PlayerConnect`**](server#playerconnect) | Called when a player is attempting to connect to the server - return false to do not allow it |
-| [**`Stop`**](server#stop) | Server has been stopped. |
+| [**`Stop`**](server#stopevent) | Server has been stopped. |
 | [**`Tick`**](server#tick) | Is called every 30 ms by default. Only small operations should be performed here, otherwise this can lead the server to delays. |
 
 ## Functions Detailed
@@ -465,7 +465,7 @@ Server.Subscribe("PlayerConnect", function(IP, player_account_ID, player_name)
 end)
 ```
 
-### `Stop`
+### `Stop` {#stopevent}
 
 > Server has been stopped.
 
