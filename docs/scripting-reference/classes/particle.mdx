@@ -8,9 +8,17 @@ tags: [class]
 
 Particle Entity.
 
-import { Structs, BasicType, AuthorityType, AssetPath } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, AssetPath, Classes } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/particle.jpg)
+
+:::info
+
+🏫 **Authority:** This class can be spawned on both [Client](./core-concepts/scripting/authority-concepts) and [Server](./core-concepts/scripting/authority-concepts) (if you spawn it on client, it won't be synchronized with other players).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor />.
+
+:::
 
 :::tip
 
@@ -18,11 +26,6 @@ Both **Cascade** and **Niagara** Particle Systems are supported!
 
 :::
 
-:::tip
-
-You can spawn this entity is both **Client** or **Server** (if you spawn it on client, it won’t be synchronized with other players).
-
-:::
 
 ## Usage
 

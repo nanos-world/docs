@@ -12,6 +12,17 @@ A Cable represents a Physics Constraint which joins two Actors with a rope-like 
 
 import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/components/_nanos.mdx';
 
+![](/img/docs/cable.jpg)
+
+:::info
+
+🏫 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />.
+
+:::
+
+
 nanos world **Cables** are composed primarily of two Unreal Engine components: a [Cable](https://docs.unrealengine.com/en-US/API/Plugins/CableComponent/UCableComponent/index.html) and a [PhysicsConstraint](https://docs.unrealengine.com/en-US/InteractiveExperiences/Physics/Constraints/ConstraintsBlueprints/index.html). The first is used for visual purposes only and the second one gives the effective physical effects that are applied to each end of the Cable.
 
 :::info

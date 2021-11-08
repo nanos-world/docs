@@ -8,13 +8,15 @@ tags: [class]
 
 Scene Capture is an Actor which captures a fully dynamic image of the scene into a Texture. It captures the scene from its view frustum, stores that view as an image, which is then used within a Material.
 
-import { Structs, BasicType, AuthorityType, AssetPath, Enums } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, AssetPath, Enums, Classes } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/scenecapture.jpg)
 
 :::info
 
-This is a **Client** only Class.
+🏫 **Authority:** This class can only be spawned on [Client](./core-concepts/scripting/authority-concepts).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor />.
 
 :::
 
