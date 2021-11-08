@@ -39,6 +39,20 @@ my_entity:SetMaterial(new_material, index)
 | <BasicType.Number /> | `index` | `-1` | The index to apply - -1 means all indices |
 
 
+### <AuthorityType.ClientOnly />`SetMaterialFromSceneCapture`
+
+> Sets the material at the specified index of this Actor to a SceneCapture object
+
+```lua
+my_entity:SetMaterialFromSceneCapture(webui, index)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Classes.SceneCapture /> | `scene_capture` | | The SceneCapture object to use as a material |
+| <BasicType.Number /> | `index` | `-1` | The index to apply - -1 means all indices |
+
+
 ### <AuthorityType.ClientOnly />`SetMaterialFromWebUI`
 
 > Sets the material at the specified index of this Actor to a WebUI object
