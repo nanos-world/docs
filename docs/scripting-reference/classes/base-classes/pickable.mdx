@@ -22,7 +22,7 @@ import BasePickableFunctions from '@site/docs/scripting-reference/classes/base-c
 <BasePickableFunctions hidden_reference={true} />
 
 
-### <AuthorityType.Both />`AddSkeletalMeshAttached`
+### <AuthorityType.Both /> `AddSkeletalMeshAttached`
 
 > Spawns and attaches a SkeletalMesh to this Pickable, the SkeletalMesh must have the same skeleton used by this Actor's mesh, and will follow all animations from it. Uses a custom ID to be used for removing it later
 
@@ -36,7 +36,7 @@ entity:AddSkeletalMeshAttached(id, skeletal_mesh_path)
 | <BasicType.String /> | **`skeletal_mesh_path`** |  | SkeletalMesh asset to use |
 
 
-### <AuthorityType.Both />`AddStaticMeshAttached`
+### <AuthorityType.Both /> `AddStaticMeshAttached`
 
 > Spawns and attaches a StaticMesh to this Pickable in a Socket with a relative location and rotation. Uses a custom ID to be used for removing it later
 
@@ -52,7 +52,7 @@ entity:AddStaticMeshAttached(id, static_mesh_path, socket, relative_location, re
 | <Structs.Vector /> | **`relative_location`** | `Vector(0, 0, 0)` | Relative location |
 | <Structs.Rotator /> | **`relative_rotation`** | `Rotator(0, 0, 0)` | Relative rotation |
 
-### <AuthorityType.ServerOnly />`PullUse`
+### <AuthorityType.ServerOnly /> `PullUse`
 
 > Triggers the `PullUse` event on this Pickable
 
@@ -60,7 +60,7 @@ entity:AddStaticMeshAttached(id, static_mesh_path, socket, relative_location, re
 entity:PullUse()
 ```
 
-### <AuthorityType.ServerOnly />`ReleaseUse`
+### <AuthorityType.ServerOnly /> `ReleaseUse`
 
 > Triggers the `ReleaseUse` event on this Pickable
 
@@ -69,7 +69,7 @@ entity:ReleaseUse()
 ```
 
 
-### <AuthorityType.Both />`RemoveSkeletalMeshAttached`
+### <AuthorityType.Both /> `RemoveSkeletalMeshAttached`
 
 > Removes, if it exists, a SkeletalMesh from this Pickable given its custom ID
 
@@ -82,7 +82,7 @@ entity:RemoveSkeletalMeshAttached(id)
 | <BasicType.String /> | **`id`** |  | Unique ID of the SkeletalMesh to remove |
 
 
-### <AuthorityType.Both />`RemoveStaticMeshAttached`
+### <AuthorityType.Both /> `RemoveStaticMeshAttached`
 
 > Removes, if it exists, a StaticMesh from this Pickable given its custom ID
 
@@ -95,7 +95,7 @@ entity:RemoveStaticMeshAttached(id)
 | <BasicType.String /> | **`id`** |  | Unique ID of the StaticMesh to remove |
 
 
-### <AuthorityType.ServerOnly />`SetCrosshairMaterial`
+### <AuthorityType.ServerOnly /> `SetCrosshairMaterial`
 
 > Sets the crosshair material for this Pickable
 
@@ -108,7 +108,7 @@ entity:SetCrosshairMaterial(path)
 | <BasicType.String /> | **`path`** |  | Asset path to the crosshair material |
 
 
-### <AuthorityType.Both />`GetAssetName`
+### <AuthorityType.Both /> `GetAssetName`
 
 > Gets the name of the asset this Pickable uses
 
@@ -116,7 +116,7 @@ entity:SetCrosshairMaterial(path)
 entity:GetAssetName()
 ```
 
-### <AuthorityType.Both />`GetHandler`
+### <AuthorityType.Both /> `GetHandler`
 
 > Gets the Character, if it exists, that's holding this Pickable
 
@@ -168,7 +168,7 @@ end)
 | <Structs.Vector /> | `velocity` | The Pickable's velocity at the moment it hit |
 
 
-### <AuthorityType.ServerOnly />`Interact`
+### <AuthorityType.ServerOnly /> `Interact`
 
 > When a Character interacts with this Pickable (i.e. tries to pick it up)
 > 

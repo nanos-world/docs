@@ -16,7 +16,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums, AssetPath } from '@s
 
 :::info
 
-🏫 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts).
+🟦 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts.mdx).
 
 ⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />.
 
@@ -75,7 +75,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsGrabbable`**](prop#isgrabbable) | Gets ability to Grab this Prop |
 
 
-### <AuthorityType.ServerOnly />`SetGrabbable`
+### <AuthorityType.ServerOnly /> `SetGrabbable`
 
 > Sets ability to Characters to Grab this Prop
 
@@ -88,7 +88,7 @@ my_prop:SetGrabbable(is_grabbable)
 | <BasicType.Boolean /> | **`is_grabbable`** | If the Prop will be able to be grabbable or not |
 
 
-### <AuthorityType.ServerOnly />`SetPhysicsDamping`
+### <AuthorityType.ServerOnly /> `SetPhysicsDamping`
 
 > Sets the Physics damping of this Prop
 
@@ -102,7 +102,7 @@ my_prop:SetPhysicsDamping(linear_damping, angular_damping)
 | <BasicType.Number /> | **`angular_damping`** |  |
 
 
-### <AuthorityType.Both />`GetAssetName`
+### <AuthorityType.Both /> `GetAssetName`
 
 > Gets the Asset name
 >
@@ -114,7 +114,7 @@ local asset_name = my_prop:GetAssetName()
 ```
 
 
-### <AuthorityType.Both />`GetHandler`
+### <AuthorityType.Both /> `GetHandler`
 
 > Gets the Character (if existing) which is holding this
 >
@@ -125,7 +125,7 @@ local handler = my_prop:GetHandler()
 ```
 
 
-### <AuthorityType.Both />`IsGrabbable`
+### <AuthorityType.Both /> `IsGrabbable`
 
 > Gets ability to Grab this Prop
 >
@@ -183,7 +183,7 @@ end)
 | <Structs.Vector /> | `impact_location` | The world 3D location of the impact |
 | <Structs.Vector /> | `velocity` | The Prop velocity at the moment it hits |
 
-### <AuthorityType.ServerOnly />`Interact`
+### <AuthorityType.ServerOnly /> `Interact`
 
 > When a Character interacts with this Prop (i.e. try to Grab it)
 > 

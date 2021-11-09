@@ -16,7 +16,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 
 :::info
 
-🏫 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts).
+🟦 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts.mdx).
 
 ⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />.
 
@@ -89,7 +89,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.Both /> |  | [**`GetAttachedEndTo`**](cable#getattachedendto) | Gets the actor’s attached to End of this Cable |
 
 
-### <AuthorityType.ServerOnly />`AttachStartTo`
+### <AuthorityType.ServerOnly /> `AttachStartTo`
 
 > Attached the beginning of this cable to another Actor at a specific bone or relative location
 
@@ -104,7 +104,7 @@ my_cable:AttachStartTo(other, relative_location, bone_name)
 | <BasicType.String /> | **`bone_name`** | \`\` |  |
 
 
-### <AuthorityType.ServerOnly />`AttachEndTo`
+### <AuthorityType.ServerOnly /> `AttachEndTo`
 
 > Attached the end of this cable to another Actor at a specific bone or relative location
 
@@ -119,7 +119,7 @@ my_cable:AttachEndTo(other, relative_location, bone_name)
 | <BasicType.String /> | **`bone_name`** | \`\` |  |
 
 
-### <AuthorityType.ServerOnly />`  DetachEnd `
+### <AuthorityType.ServerOnly /> `  DetachEnd `
 
 > Detaches the End of this Cable
 
@@ -128,7 +128,7 @@ my_cable:DetachEnd()
 ```
 
 
-### <AuthorityType.ServerOnly />`DetachStart`
+### <AuthorityType.ServerOnly /> `DetachStart`
 
 > Detaches the Start of this Cable
 
@@ -137,7 +137,7 @@ my_cable:DetachStart()
 ```
 
 
-### <AuthorityType.ServerOnly />`SetAngularLimits`
+### <AuthorityType.ServerOnly /> `SetAngularLimits`
 
 > Sets the Physics Angular Limits of this cable
 
@@ -154,7 +154,7 @@ my_cable:SetAngularLimits(swing_1_motion, swing_2_motion, twist_motion, swing_1_
 | <BasicType.Number /> | **`twist_limit`** |  |  |
 
 
-### <AuthorityType.ServerOnly />`SetCableSettings`
+### <AuthorityType.ServerOnly /> `SetCableSettings`
 
 > Set the overall settings for this cable \(visuals only\)
 
@@ -169,7 +169,7 @@ my_cable:SetCableSettings(length, num_segments, solver_iterations)
 | <BasicType.Number /> | **`solver_iterations`** |  |  |
 
 
-### <AuthorityType.ServerOnly />`SetForces`
+### <AuthorityType.ServerOnly /> `SetForces`
 
 > Set the forces the cable has applied \(visuals only\)
 
@@ -183,7 +183,7 @@ my_cable:SetForces(force, gravity_scale)
 | <BasicType.Number /> | **`gravity_scale`** | `1` |  |
 
 
-### <AuthorityType.ServerOnly />`SetLinearLimits`
+### <AuthorityType.ServerOnly /> `SetLinearLimits`
 
 > Sets the Physics Linear Limits of this cable. If use\_soft\_constraint is enabled, then stiffness and damping will be used, otherwise restitution will be used.
 
@@ -203,7 +203,7 @@ my_cable:SetLinearLimits(x_motion, y_motion, z_motion, limit, restitution, use_s
 | <BasicType.Number /> | **`damping`** | `0` |  |
 
 
-### <AuthorityType.ServerOnly />`SetRenderingSettings`
+### <AuthorityType.ServerOnly /> `SetRenderingSettings`
 
 > Set the rendering settings of this cable \(visuals only\)
 
@@ -218,7 +218,7 @@ my_cable:SetRenderingSettings(width, num_sides, tile_material)
 | <BasicType.Number /> | **`tile_material`** |  |  |
 
 
-### <AuthorityType.Both />`GetAttachedStartTo`
+### <AuthorityType.Both /> `GetAttachedStartTo`
 
 > Gets the actor attached to Start
 >
@@ -229,7 +229,7 @@ entity:GetAttachedStartTo()
 ```
 
 
-### <AuthorityType.Both />`GetAttachedEndTo`
+### <AuthorityType.Both /> `GetAttachedEndTo`
 
 > Gets the actor attached to End
 >

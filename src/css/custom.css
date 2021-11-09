@@ -435,3 +435,7 @@ a.card-link:hover img {
   margin: 1rem auto;
   width: 100%;
 }
+
+.hash-link, .authority-availability {
+  user-select: none;
+}
