@@ -66,7 +66,7 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 | <AuthorityType.ServerOnly /> |  | [**`SetExtent`**](trigger#setextent) | Sets the extent size of this trigger |
 | <AuthorityType.ServerOnly /> |  | [**`SetVisibility`**](trigger#setvisibility) | Sets if this Trigger is visible as a Sphere |
 
-### <AuthorityType.ServerOnly /> `ForceOverlapChecking`
+### <AuthorityType.ServerOnly />`ForceOverlapChecking`
 
 > Forces a Overlap checking to occur, will immediately trigger overlaps
 
@@ -74,7 +74,7 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 my_trigger:ForceOverlapChecking()
 ```
 
-### <AuthorityType.ServerOnly /> `SetExtent`
+### <AuthorityType.ServerOnly />`SetExtent`
 
 > Sets the extent size of this trigger \(sphere triggers will use only the .X component for radius\)
 
@@ -86,7 +86,7 @@ my_trigger:SetExtent(extent)
 | :--- | :--- | :--- |
 | <Structs.Vector /> | **`extent`** | Sphere triggers will use only the .X component for radius |
 
-### <AuthorityType.ServerOnly /> `SetVisibility`
+### <AuthorityType.ServerOnly />`SetVisibility`
 
 > Sets if this Trigger is visible for debugging
 
@@ -109,7 +109,7 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 | <AuthorityType.ServerOnly /> | [**`BeginOverlap`**](trigger#beginoverlap) | Triggered when something overlaps this Trigger |
 | <AuthorityType.ServerOnly /> | [**`EndOverlap`**](trigger#endoverlap) | Triggered when something leaves this Trigger |
 
-### <AuthorityType.ServerOnly /> `BeginOverlap`
+### <AuthorityType.ServerOnly />`BeginOverlap`
 
 > Triggered when something overlaps this Trigger
 
@@ -124,7 +124,7 @@ end)
 | [Trigger](trigger) | `self` | The Trigger entity |
 | <Classes.Actor /> | `entity` | Any Actor which overlaps |
 
-### <AuthorityType.ServerOnly /> `EndOverlap`
+### <AuthorityType.ServerOnly />`EndOverlap`
 
 > Triggered when something leaves this Trigger
 
