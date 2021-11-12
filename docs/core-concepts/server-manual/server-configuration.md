@@ -8,11 +8,12 @@ tags: [hosting]
 
 All you need to know to Configure your server!
 
+
 ## Server Configuration File
 
 :::tip
 
-nanos world Config files use **TOML** \(Tom’s Obvious, Minimal Language\), please refer to [https://github.com/toml-lang/toml](https://github.com/toml-lang/toml) for more information and syntax.
+nanos world Config files use **TOML** (Tom’s Obvious, Minimal Language), please refer to [https://github.com/toml-lang/toml](https://github.com/toml-lang/toml) for more information and syntax.
 
 :::
 
@@ -36,7 +37,7 @@ The server Configuration file `Config.toml` is generated automatically when the 
 	# server port (TCP and UDP forwarding needed)
     port =                  7777
 	# query port (UDP forwarding needed)
-	query_port =		7778
+	query_port =            7778
     # announce server in the master server list
     announce =              true
     # server tick rate in milliseconds (dangerous! server will tick at each [tick_rate] ms, affecting both server and client performance. 33 ms means 30 ticks per second and is the default and recommended value)
@@ -89,17 +90,20 @@ The server Configuration file `Config.toml` is generated automatically when the 
 | **`map`** | Which map to load |
 | **`banned_ips`** | List of banned IPs |
 
+
 ## Map & Level
 
 ![](/img/docs/server-map.jpg)
 
-The Map \(or Level\) is defined in the Server’s config file, this level will be loaded when the player joins the server and the Path is supposed for be or a built-in asset or an asset which is located at `Assets/` folder.
+The Map (or Level) is defined in the Server’s config file, this level will be loaded when the player joins the server and the Path is supposed for be or a built-in asset or an asset which is located at `Assets/` folder.
 
-nanos world counts on \(for now\) 2 built-in maps: `nanos-world::BlankMap` and `nanos-world::TestingMap` which can be used in your server without needing to download any Asset Pack.
+nanos world counts on (for now) 2 built-in maps: `nanos-world::BlankMap` and `nanos-world::TestingMap` which can be used in your server without needing to download any Asset Pack.
+
 
 ## Server Console
 
 ![](/img/docs/server.jpg)
+
 
 ### Built-in Commands
 
@@ -114,15 +118,17 @@ nanos world counts on \(for now\) 2 built-in maps: `nanos-world::BlankMap` and `
 | `package unload [package_name]` | Unloads a package |
 | `package load [package_name]` | Loads a package |
 
+
 ### Custom Commands
 
-All \(non built-in\) commands will be sent into an event to the scripting/server-side:
+All (non built-in) commands will be sent into an event to the scripting/server-side:
 
 ```lua title="Server/Index.lua"
 Server.Subscribe("Console", function(my_input)
     Package.Log("Console command received: " .. my_input)
 end)
 ```
+
 
 ## Command Line Parameters
 
@@ -147,7 +153,23 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--profiling` | 0 or 1 | Enables Performance Profiling Logs for debugging |
 
 
-## Common Console Messages/Warnings/Erros and it’s meanings
+### One-liner Server Configuration
+
+With Command Line Parameters and [Command Line Interface (CLI)](./core-concepts/server-manual/nanos-world-cli.mdx), it is also possible to automate the full server installation, here's an example:
+
+```shell title="Shell/Linux"
+# Installs/Updates the server through SteamCMD
+steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_update "1686460 -beta bleeding-edge" validate +quit
+
+# Installs all needed Packages (this will install needed Assets as well)
+./NanosWorldServer.sh --cli install package sandbox battlefield-kill-ui ts-fireworks-tools
+
+# Starts the server with all configs set
+./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --gamemode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/U1rZp5v.png"
+```
+
+
+## Common Console Messages/Warnings/Errors and it’s meanings
 
 #### `Server Tick too/extreme high! Verify the server performance! Server got stuck for Xms.`
 

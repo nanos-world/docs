@@ -54,15 +54,20 @@ entity:AddStaticMeshAttached(id, static_mesh_path, socket, relative_location, re
 
 ### <AuthorityType.ServerOnly />`PullUse`
 
-> Triggers the `PullUse` event on this Pickable
+> Pulls the usage of this Pickable (will start firing if this is a weapon)
 
 ```lua
-entity:PullUse()
+entity:PullUse(release_use_after)
 ```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`release_use_after`** | `-1` | Time in seconds to automatically release the usage (-1 will not release, 0 will release one tick after) |
+
 
 ### <AuthorityType.ServerOnly />`ReleaseUse`
 
-> Triggers the `ReleaseUse` event on this Pickable
+> Releases the usage of this Pickable (will stop firing if this is a weapon)
 
 ```lua
 entity:ReleaseUse()
