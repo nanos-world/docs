@@ -8,9 +8,18 @@ tags: [class]
 
 Chad Grenade
 
-import { Structs, BasicType, AuthorityType, AssetPath, Enums } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, AssetPath, Enums, Classes } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/grenade.jpg)
+
+:::info
+
+🟦 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts.mdx).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor />, <Classes.Paintable /> and <Classes.Pickable />.
+
+:::
+
 
 ## Usage
 
@@ -31,7 +40,7 @@ local new_grenade = Grenade(
 | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <AssetPath.StaticMesh /> | **`static_mesh_asset`** | `"nanos-world::SM_Grenade_G67""` |
+| <AssetPath.StaticMesh /> | **`static_mesh_asset`** | `"nanos-world::SM_Grenade_G67"` |
 | <AssetPath.Particle /> | **`explosion_particles`** | `"nanos-world::P_Grenade_Special"` |
 | <AssetPath.Sound /> | **`explosion_sound`** | `"nanos-world::A_Explosion_Large"` |
 | <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
@@ -107,6 +116,7 @@ import BasePickableEvents from '@site/docs/scripting-reference/classes/base-clas
 | **`Explode`** | `Grenade` has exploded |
 | **`Throw`** | `Grenade` has been thrown |
 
+
 ### `Explode`
 
 > Triggered when the has exploded
@@ -120,6 +130,7 @@ end)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | [Grenade](grenade) | `self` | The grenade which exploded |
+
 
 ### **`Throw`**
 

@@ -8,11 +8,12 @@ tags: [hosting]
 
 All you need to know to Configure your server!
 
+
 ## Server Configuration File
 
 :::tip
 
-nanos world Config files use **TOML** \(Tom’s Obvious, Minimal Language\), please refer to [https://github.com/toml-lang/toml](https://github.com/toml-lang/toml) for more information and syntax.
+nanos world Config files use **TOML** (Tom’s Obvious, Minimal Language), please refer to [https://github.com/toml-lang/toml](https://github.com/toml-lang/toml) for more information and syntax.
 
 :::
 
@@ -36,7 +37,7 @@ The server Configuration file `Config.toml` is generated automatically when the 
 	# server port (TCP and UDP forwarding needed)
     port =                  7777
 	# query port (UDP forwarding needed)
-	query_port =		7778
+	query_port =            7778
     # announce server in the master server list
     announce =              true
     # server tick rate in milliseconds (dangerous! server will tick at each [tick_rate] ms, affecting both server and client performance. 33 ms means 30 ticks per second and is the default and recommended value)
@@ -89,17 +90,20 @@ The server Configuration file `Config.toml` is generated automatically when the 
 | **`map`** | Which map to load |
 | **`banned_ips`** | List of banned IPs |
 
+
 ## Map & Level
 
 ![](/img/docs/server-map.jpg)
 
-The Map \(or Level\) is defined in the Server’s config file, this level will be loaded when the player joins the server and the Path is supposed for be or a built-in asset or an asset which is located at `Assets/` folder.
+The Map (or Level) is defined in the Server’s config file, this level will be loaded when the player joins the server and the Path is supposed for be or a built-in asset or an asset which is located at `Assets/` folder.
 
-nanos world counts on \(for now\) 2 built-in maps: `nanos-world::BlankMap` and `nanos-world::TestingMap` which can be used in your server without needing to download any Asset Pack.
+nanos world counts on (for now) 2 built-in maps: `nanos-world::BlankMap` and `nanos-world::TestingMap` which can be used in your server without needing to download any Asset Pack.
+
 
 ## Server Console
 
 ![](/img/docs/server.jpg)
+
 
 ### Built-in Commands
 
@@ -114,15 +118,17 @@ nanos world counts on \(for now\) 2 built-in maps: `nanos-world::BlankMap` and `
 | `package unload [package_name]` | Unloads a package |
 | `package load [package_name]` | Loads a package |
 
+
 ### Custom Commands
 
-All \(non built-in\) commands will be sent into an event to the scripting/server-side:
+All (non built-in) commands will be sent into an event to the scripting/server-side:
 
 ```lua title="Server/Index.lua"
 Server.Subscribe("Console", function(my_input)
     Package.Log("Console command received: " .. my_input)
 end)
 ```
+
 
 ## Command Line Parameters
 
@@ -132,22 +138,45 @@ It is possible to override the Server Configuration with Command Line Parameters
 | :--- | :--- | :--- |
 | `--name` | string | Server name |
 | `--description` | string | Server description |
+| `--logo` | string | Server Logo |
 | `--password` | string | Server password |
 | `--ip` | string | Server IP |
 | `--map` | string | Map to load |
 | `--port` | number | Server port |
 | `--query_port` | number | Server Query port |
 | `--announce` | 0 or 1 | If announce in master list |
+| `--game_mode` | string | Server game-mode |
+| `--loading_screen` | string | Server loading-screen |
 | `--packages` | string list | Server packages |
-| `--save` | 0 or 1 | If to save the parameters in Config.toml |
 | `--max_players` | number | Max allowed players |
+| `--save` | 0 or 1 | If to save the parameters in Config.toml |
 | `--profiling` | 0 or 1 | Enables Performance Profiling Logs for debugging |
 
-## Common Console Messages/Warnings/Erros and it’s meanings
+
+### One-liner Server Configuration
+
+With Command Line Parameters and [Command Line Interface (CLI)](./core-concepts/server-manual/nanos-world-cli.mdx), it is also possible to automate the full server installation, here's an example:
+
+```shell title="Shell/Linux"
+# Installs/Updates the server through SteamCMD
+steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_update "1686460 -beta bleeding-edge" validate +quit
+
+# Installs all needed Packages (this will install needed Assets as well)
+./NanosWorldServer.sh --cli install package sandbox battlefield-kill-ui ts-fireworks-tools
+
+# Starts the server with all configs set
+./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --gamemode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/U1rZp5v.png"
+```
+
+
+## Common Console Messages/Warnings/Errors and it’s meanings
 
 #### `Server Tick too/extreme high! Verify the server performance! Server got stuck for Xms.`
 
-It means the server got **stuck** \(laggy\) for X milliseconds. The warning \(_yellow_\) is not something to worry about, but too many Errors \(_red_\) could mean your server infrastructure is not that good or your scripting code is not that optimized. The server _tries¹_ runs at 33 Ticks per seconds \(or the amount configured at Config.toml\). The server runs in an infinite loop which in a frequency of **1/33** milliseconds. Inside this loop, all server operations are executed: receiving/sending network packages, executing functions \(received from network\), triggering scripting events, executing all Scripting’s Ticks events, calculating Trigger overlaps, and so on. So if any of these operations take more more than **1/33** milliseconds to run, this warning will appear up.
+It means the server got **stuck** (laggy) for X milliseconds. The warning (_yellow_) is not something to worry about, but too many Errors (_red_) could mean your server infrastructure is not that good or your scripting code is not that optimized. The server _tries¹_ runs at 33 Ticks per seconds (or the value configured at Config.toml). The server runs in an infinite loop which in a frequency of **1/33** milliseconds. Inside this loop, all server operations are executed: receiving/sending network packages, executing functions (received from network), triggering scripting events, executing all Scripting’s Ticks events, calculating Trigger overlaps, and so on. So if any of these operations take more more than **1/33** milliseconds to run, this warning will appear up.
 
 I said _tries¹_ because on windows that is not that precise than on linux due internal c++ implementations.
 
+#### `Assertion Failed: [...] problem (5002) We don't have cert, and self-signed certs not allowed, but connection already dead (0 5002 We don't have cert, and self-signed certs not allowed)`
+
+This is an internal problem from Steam Library when you attempt to connect to a server too fast (when it has just started). There is nothing to worry about.

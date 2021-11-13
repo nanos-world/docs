@@ -9,7 +9,7 @@ Default nanos world Materials and it's Parameters.
 
 ## Template Materials
 
-nanos world provides 3 Material types ready to use with predefined parameters which can be easily accessed with this page methods.
+nanos world provides several built-in template materials which can be easily used and customized with [Paintable](./scripting-reference/classes/base-classes/paintable.mdx) methods.
 
 :::info
 
@@ -81,3 +81,38 @@ Material which renders objects as Wireframe. Supported parameter: **Tint** and *
 | **Wireframe** | `true` | `false` | `false` | `true` | `false` | `false` | `false` | `false` |
 
 > *Masked Material's Opacity supports only Opacity Mask: `0` or `1`
+
+
+## Physical Materials
+
+[Physical Materials](https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/Physics/PhysicalMaterials/) are materials which define Physical properties of an object. With [Paintable.SetPhysicalMaterial()](./scripting-reference/classes/base-classes/paintable.mdx#setphysicalmaterial) you can change the default physical material of an Entity.
+
+Besides the Physical Properties of an object (friction, restitution, density, etc), Physical Materials are used in nanos world for applying special effects and sounds when events happen. For example on Footsteps Effects, Bullets Impacts or Objects Hits.
+
+nanos world provides a list of the built-in Physical Materials which you can use to override in-game the Physical properties of an Entity.
+
+:::tip
+
+You also can create your own Physical Materials and use them in-game! Just remember to configure in them the proper **SurfaceType** for a better integration!
+
+:::
+
+
+|  | Friction | Restitution | Density | [Surface Type](./scripting-reference/glossary/enums#surfacetype) |
+| :--- | :--- | :--- | :--- | :--- |
+| **PM_Concrete** | `0.9` | `0.3` | `2.0` | `SurfaceType.Concrete` |
+| **PM_Flesh** | `0.7` | `0.3` | `1.0` | `SurfaceType.Flesh` |
+| **PM_Glass** | `0.2` | `0.2` | `2.0` | `SurfaceType.Glass` |
+| **PM_Grass** | `0.7` | `0.3` | `1.0` | `SurfaceType.Grass` |
+| **PM_Gravel** | `0.7` | `0.3` | `1.0` | `SurfaceType.Gravel` |
+| **PM_Ground** | `0.7` | `0.3` | `1.0` | `SurfaceType.Ground` |
+| **PM_Metal** | `0.6` | `0.1` | `1.0` | `SurfaceType.MetalHeavy` |
+| **PM_MetalLight** | `0.6` | `0.2` | `1.0` | `SurfaceType.MetalLight` |
+| **PM_Mud** | `0.7` | `0.3` | `1.0` | `SurfaceType.Mud` |
+| **PM_Plastic** | `0.7` | `0.7` | `1.0` | `SurfaceType.Plastic` |
+| **PM_Rock** | `0.9` | `0.3` | `1.0` | `SurfaceType.Rock` |
+| **PM_Rubber** | `0.7` | `1.0` | `1.0` | `SurfaceType.Rubber` |
+| **PM_Sand** | `0.6` | `0.3` | `1.0` | `SurfaceType.Sand` |
+| **PM_Water** | `0.7` | `0.3` | `1.0` | `SurfaceType.Water` |
+| **PM_Wood** | `0.7` | `0.3` | `0.5` | `SurfaceType.WoodLight` |
+| **PM_WoodHeavy** | `0.7` | `0.3` | `0.5` | `SurfaceType.WoodHeavy` |

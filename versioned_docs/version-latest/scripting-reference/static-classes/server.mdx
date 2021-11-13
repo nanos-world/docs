@@ -11,11 +11,11 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 
 ![](/img/docs/server.jpg)
 
-:::tip
+:::info
 
-This is a Static Class named `Server`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+🟦 **Authority:** This can be accessed only on [Server](./core-concepts/scripting/authority-concepts.mdx).
 
-This is a **Server** only Class.
+🗿 **Static Class:** This is a Static Class. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 
 :::
 
@@ -83,7 +83,7 @@ Server.BroadcastChatMessage("Welcome to the server!")
 | [**`LogEntry`**](server#logentry) | Called when a Server log is received |
 | [**`Start`**](server#start) | Server has been started. |
 | [**`PlayerConnect`**](server#playerconnect) | Called when a player is attempting to connect to the server - return false to do not allow it |
-| [**`Stop`**](server#stopevent) | Server has been stopped. |
+| [**`Stop`**](server#stop) | Server has been stopped. |
 | [**`Tick`**](server#tick) | Is called every 30 ms by default. Only small operations should be performed here, otherwise this can lead the server to delays. |
 
 ## Functions Detailed
@@ -465,7 +465,7 @@ Server.Subscribe("PlayerConnect", function(IP, player_account_ID, player_name)
 end)
 ```
 
-### `Stop` {#stopevent}
+### `Stop`
 
 > Server has been stopped.
 

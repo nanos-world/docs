@@ -67,10 +67,10 @@ export const SpecialPath = (label) => (
 
 <!-- Defines Authority Types componenets -->
 export const AuthorityType = {
-	AuthorityOnly: () => BaseAuthority("/img/scripting/authority-only.svg", "authority-only - you can only call this method on the side which spawned it!"),
-	ServerOnly: () => BaseAuthority("/img/scripting/server-only.svg", "server-only - you can only call this method on server side!"),
-	ClientOnly: () => BaseAuthority("/img/scripting/client-only.svg", "client-only - you can only call this method on client side!"),
-	Both: () => BaseAuthority("/img/scripting/both.png", "both-sides - you can only call this method on any side!"),
+	AuthorityOnly: () => BaseAuthority("/img/scripting/authority-only.svg", "authority-only - this can be called only on the side which spawned it!"),
+	ServerOnly: () => BaseAuthority("/img/scripting/server-only.svg", "server-only - this can be called only on server side!"),
+	ClientOnly: () => BaseAuthority("/img/scripting/client-only.svg", "client-only - this can be called only on client side!"),
+	Both: () => BaseAuthority("/img/scripting/both.png", "both-sides - this can be called on any side!"),
 };
 
 <!-- Defines Basic Types componenets -->
@@ -109,6 +109,7 @@ export const Classes = {
 	Player: () => BaseClass("Player"),
 	Prop: () => BaseClass("Prop"),
 	Sound: () => BaseClass("Sound"),
+	SceneCapture: () => BaseClass("SceneCapture", "scene-capture"),
 	StaticMesh: () => BaseClass("StaticMesh", "static-mesh"),
 	TextRender: () => BaseClass("TextRender", "text-render"),
 	Trigger: () => BaseClass("Trigger"),

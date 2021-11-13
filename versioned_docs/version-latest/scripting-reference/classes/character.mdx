@@ -14,15 +14,18 @@ import { ReferenceLink, AuthorityType, BasicType, Structs, Classes, Enums, Asset
 
 :::info
 
-Characters are Skeletal Meshes using Unreal’s Mannequin Skeletal, with animations and interactivity already natively integrated into nanos world. It is possible to import any Skeletal Mesh \(which uses Unreal’s Mannequin Skeletal\) to this Character.
+🟦 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts.mdx).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />.
 
 :::
 
 :::info
 
-⏬ **Inheritance:** This class inherits from [Actor](./scripting-reference/classes/base-classes/actor.mdx) and [Pickable](./scripting-reference/classes/base-classes/pickable.mdx). Please check it's pages for inherited **Methods** and **Events**.
+Characters are Skeletal Meshes using Unreal’s Mannequin Skeletal, with animations and interactivity already natively integrated into nanos world. It is possible to import any Skeletal Mesh (which uses Unreal’s Mannequin Skeletal) to this Character.
 
 :::
+
 
 ## Usage
 
@@ -509,7 +512,7 @@ my_character:SetCameraMode(camera_mode)
 | :--- | :--- | :--- | :--- |
 | <Enums>CameraMode</Enums> | **`camera_mode`** |  |  |
 
-### <AuthorityType.ClientOnly /> `SetCameraOffset`
+### <AuthorityType.ClientOnly />`SetCameraOffset`
 
 > Sets the Camera Offset \(only affects TPS\)
 
@@ -1372,6 +1375,8 @@ end)
 ### <AuthorityType.ServerOnly />`AttemptEnterVehicle`
 
 > When Character attempts to enter a vehicle
+> 
+> Return false to prevent it
 
 ```lua
 Character.Subscribe("AttemptEnterVehicle", function(self, vehicle, seat_index)
@@ -1506,6 +1511,8 @@ end)
 ### <AuthorityType.ServerOnly />`AttemptLeaveVehicle`
 
 > When Character attempts to leave a vehicle
+> 
+> Return false to prevent it
 
 ```lua
 Character.Subscribe("AttemptLeaveVehicle", function(self, vehicle)

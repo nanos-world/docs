@@ -8,15 +8,16 @@ tags: [class]
 
 # 👩‍💻 Player
 
+:::info
+
+🟥 **Authority:** You cannot spawn or Destroy Players.
+
+:::
+
 Players are Entities that represents the individual behind the mouse and keyboard. Players are spawned automatically when connected to the server.
 
 import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/components/_nanos.mdx';
 
-:::info
-
-You cannot Spawn or Destroy Players.
-
-:::
 
 ## Usage
 
@@ -198,7 +199,7 @@ my_player:SetValue(key, value, sync_on_clients)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** |  | Key |
 | <BasicType.Any /> | **`value`** |  | Value |
-| <BasicType.Boolean /> | **`sync_on_clients`** | Server side parameter, if enabled will sync this value through all clients |
+| <BasicType.Boolean /> | **`sync_on_clients`** | `false` | Server side parameter, if enabled will sync this value through all clients |
 
 
 ### <AuthorityType.AuthorityOnly />`SetVOIPChannel`
@@ -281,7 +282,7 @@ my_player:GetAccountID()
 my_player:GetAccountName()
 ```
 
-### <AuthorityType.ClientOnly /> `GetCameraLocation`
+### <AuthorityType.ClientOnly />`GetCameraLocation`
 
 > Gets the Player's Camera Location
 >

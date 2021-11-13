@@ -10,7 +10,18 @@ tags: [class]
 
 A Cable represents a Physics Constraint which joins two Actors with a rope-like visual representation between them
 
-import { Structs, BasicType, AuthorityType, Classes } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/components/_nanos.mdx';
+
+![](/img/docs/cable.jpg)
+
+:::info
+
+🟦 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts.mdx).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />.
+
+:::
+
 
 nanos world **Cables** are composed primarily of two Unreal Engine components: a [Cable](https://docs.unrealengine.com/en-US/API/Plugins/CableComponent/UCableComponent/index.html) and a [PhysicsConstraint](https://docs.unrealengine.com/en-US/InteractiveExperiences/Physics/Constraints/ConstraintsBlueprints/index.html). The first is used for visual purposes only and the second one gives the effective physical effects that are applied to each end of the Cable.
 
@@ -78,7 +89,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.Both /> |  | [**`GetAttachedEndTo`**](cable#getattachedendto) | Gets the actor’s attached to End of this Cable |
 
 
-### <AuthorityType.ServerOnly /> `AttachStartTo`
+### <AuthorityType.ServerOnly />`AttachStartTo`
 
 > Attached the beginning of this cable to another Actor at a specific bone or relative location
 
@@ -93,7 +104,7 @@ my_cable:AttachStartTo(other, relative_location, bone_name)
 | <BasicType.String /> | **`bone_name`** | \`\` |  |
 
 
-### <AuthorityType.ServerOnly /> `AttachEndTo`
+### <AuthorityType.ServerOnly />`AttachEndTo`
 
 > Attached the end of this cable to another Actor at a specific bone or relative location
 
@@ -108,7 +119,7 @@ my_cable:AttachEndTo(other, relative_location, bone_name)
 | <BasicType.String /> | **`bone_name`** | \`\` |  |
 
 
-### <AuthorityType.ServerOnly /> `DetachEnd`
+### <AuthorityType.ServerOnly />`  DetachEnd `
 
 > Detaches the End of this Cable
 
@@ -117,7 +128,7 @@ my_cable:DetachEnd()
 ```
 
 
-### <AuthorityType.ServerOnly /> `DetachStart`
+### <AuthorityType.ServerOnly />`DetachStart`
 
 > Detaches the Start of this Cable
 
@@ -126,7 +137,7 @@ my_cable:DetachStart()
 ```
 
 
-### <AuthorityType.ServerOnly /> `SetAngularLimits`
+### <AuthorityType.ServerOnly />`SetAngularLimits`
 
 > Sets the Physics Angular Limits of this cable
 
@@ -136,14 +147,14 @@ my_cable:SetAngularLimits(swing_1_motion, swing_2_motion, twist_motion, swing_1_
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| [ConstraintMotion](./scripting-reference/glossary/enums.md#constraintmotion) | **`swing_1_motion`** |  |  |
-| [ConstraintMotion](./scripting-reference/glossary/enums.md#constraintmotion) | **`swing_2_motion`** |  |  |
+| <Enums>ConstraintMotion</Enums> | **`swing_1_motion`** |  |  |
+| <Enums>ConstraintMotion</Enums> | **`swing_2_motion`** |  |  |
 | <BasicType.Number /> | **`swing_1_limit`** |  |  |
 | <BasicType.Number /> | **`swing_2_limit`** |  |  |
 | <BasicType.Number /> | **`twist_limit`** |  |  |
 
 
-### <AuthorityType.ServerOnly /> `SetCableSettings`
+### <AuthorityType.ServerOnly />`SetCableSettings`
 
 > Set the overall settings for this cable \(visuals only\)
 
@@ -158,7 +169,7 @@ my_cable:SetCableSettings(length, num_segments, solver_iterations)
 | <BasicType.Number /> | **`solver_iterations`** |  |  |
 
 
-### <AuthorityType.ServerOnly /> `SetForces`
+### <AuthorityType.ServerOnly />`SetForces`
 
 > Set the forces the cable has applied \(visuals only\)
 
@@ -172,7 +183,7 @@ my_cable:SetForces(force, gravity_scale)
 | <BasicType.Number /> | **`gravity_scale`** | `1` |  |
 
 
-### <AuthorityType.ServerOnly /> `SetLinearLimits`
+### <AuthorityType.ServerOnly />`SetLinearLimits`
 
 > Sets the Physics Linear Limits of this cable. If use\_soft\_constraint is enabled, then stiffness and damping will be used, otherwise restitution will be used.
 
@@ -182,9 +193,9 @@ my_cable:SetLinearLimits(x_motion, y_motion, z_motion, limit, restitution, use_s
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`x_motion`** |  |  |
-| <BasicType.Number /> | **`y_motion`** |  |  |
-| <BasicType.Number /> | **`z_motion`** |  |  |
+| <Enums>ConstraintMotion</Enums> | **`x_motion`** |  |  |
+| <Enums>ConstraintMotion</Enums> | **`y_motion`** |  |  |
+| <Enums>ConstraintMotion</Enums> | **`z_motion`** |  |  |
 | <BasicType.Number /> | **`limit`** |  |  |
 | <BasicType.Number /> | **`restitution`** | `0` |  |
 | <BasicType.Boolean /> | **`use_soft_constraint`** | `false` |  |
@@ -192,7 +203,7 @@ my_cable:SetLinearLimits(x_motion, y_motion, z_motion, limit, restitution, use_s
 | <BasicType.Number /> | **`damping`** | `0` |  |
 
 
-### <AuthorityType.ServerOnly /> `SetRenderingSettings`
+### <AuthorityType.ServerOnly />`SetRenderingSettings`
 
 > Set the rendering settings of this cable \(visuals only\)
 

@@ -193,8 +193,6 @@ In order to use those assets, you need to use the key `nanos-world`. E.g.: `nano
     SM_TopHat = "Packs/Coffin/SM_TopHat"
 
     SM_Valve = "NanosWorldAssets/Funny/Valve/Valve/SM_Valve"
-    SM_Portal_CompanionCube = "NanosWorldAssets/Funny/Valve/CompanionCube/SM_CompanionCube"
-    SM_Portal_Turret = "NanosWorldAssets/Funny/Valve/Turret/SM_PortalTurret"
 
     SM_StreetSigns_NoEntry = "NanosWorldAssets/Street/SM_StreetSigns_NoEntry"
     SM_MailBox_01 = "NanosWorldAssets/Street/SM_MailBox_01"
@@ -551,7 +549,6 @@ In order to use those assets, you need to use the key `nanos-world`. E.g.: `nano
     SK_AK5C_G203 = "Weapons/Rifles/AK5C/SK_AK5C_G203"
 
     SK_Blaster = "Weapons/Tools/Blaster/SK_Blaster"
-    SK_Portal_PortalGun = "NanosWorldAssets/Funny/Valve/PortalGun/SK_PortalGun"
     SK_FlareGun = "Weapons/Tools/FlareGun/SK_FlareGun"
     SK_FlareGun_Short = "Weapons/Tools/FlareGun/SK_FlareGun_Short"
 
@@ -1151,6 +1148,24 @@ In order to use those assets, you need to use the key `nanos-world`. E.g.: `nano
     # Util Materials
     M_NanosBillboardError = "MaterialLibrary/MI_NanosBillboardError"
     M_NanosMaterialError = "MaterialLibrary/M_NanosMaterialError"
+
+    # Physical Materials
+    PM_Concrete = "MaterialLibrary/PhysicalMaterials/PM_Concrete"
+    PM_Flesh = "MaterialLibrary/PhysicalMaterials/PM_Flesh"
+    PM_Glass = "MaterialLibrary/PhysicalMaterials/PM_Glass"
+    PM_Grass = "MaterialLibrary/PhysicalMaterials/PM_Grass"
+    PM_Gravel = "MaterialLibrary/PhysicalMaterials/PM_Gravel"
+    PM_Ground = "MaterialLibrary/PhysicalMaterials/PM_Ground"
+    PM_Metal = "MaterialLibrary/PhysicalMaterials/PM_Metal"
+    PM_MetalLight = "MaterialLibrary/PhysicalMaterials/PM_MetalLight"
+    PM_Mud = "MaterialLibrary/PhysicalMaterials/PM_Mud"
+    PM_Plastic = "MaterialLibrary/PhysicalMaterials/PM_Plastic"
+    PM_Rock = "MaterialLibrary/PhysicalMaterials/PM_Rock"
+    PM_Rubber = "MaterialLibrary/PhysicalMaterials/PM_Rubber"
+    PM_Sand = "MaterialLibrary/PhysicalMaterials/PM_Sand"
+    PM_Water = "MaterialLibrary/PhysicalMaterials/PM_Water"
+    PM_Wood = "MaterialLibrary/PhysicalMaterials/PM_Wood"
+    PM_WoodHeavy = "MaterialLibrary/PhysicalMaterials/PM_WoodHeavy"
 
     # Weapons
     MI_AK47 = "Weapons/Rifles/AK47/MI_AK47"
