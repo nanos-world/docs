@@ -68,6 +68,7 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
 |  | [**`SetColor`**](light#setcolor) | Sets the light color |
+|  | [**`SetTextureLightProfile`**](light#settexturelightprofile) | Sets the light texture profile |
 
 
 ### <AuthorityType.Both />`SetColor`
@@ -82,8 +83,37 @@ my_light:SetColor(color)
 | :--- | :--- | :--- | :--- |
 | <Structs.Color /> | **`color`** |  | The light color |
 
+
+### <AuthorityType.Both />`SetTextureLightProfile`
+
+> Sets the light Texture Profile
+
+```lua
+my_light:SetTextureLightProfile(light_profile)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Enums>LightProfile</Enums> | **`light_profile`** |  | The Light Profile to use |
+
+
 ## Events
 
 import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
 
 <details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
+
+
+## Light Profiles
+
+Light Profiles are texture files which describes a light's distribution from a light source using real world measured data.
+
+:::tip
+
+Please check [Unreal Engine Light Profile documentation](https://docs.unrealengine.com/4.27/en-US/BuildingWorlds/LightingAndShadows/IESLightProfiles/) for more information about Light Profiles!
+
+:::
+
+nanos world provides **50** Light Profiles included in the base game which you can use to enhance your Lights. You can set them using `:SetTextureLightProfile()` with the enum <Enums>LightProfile</Enums>.
+
+![](/img/docs/ies-pack.jpg)
