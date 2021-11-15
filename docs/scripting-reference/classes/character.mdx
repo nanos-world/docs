@@ -105,6 +105,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`LeaveVehicle`**](character#leavevehicle) | Leaves the current Vehicle |
 | <AuthorityType.ServerOnly /> |  | [**`LookAt`**](character#lookat) | AI: Tries to make this Character to look at Location |
 | <AuthorityType.ServerOnly /> |  | [**`MoveTo`**](character#moveto) | AI: Makes this Character to walk to the Location |
+| <AuthorityType.ServerOnly /> |  | [**`Follow`**](character#follow) | AI: Makes this Character to follow another actor |
 | <AuthorityType.ServerOnly /> |  | [**`PickUp`**](character#pickup) | Gives a Item/Grenade/Weapon (Pickable) to the Character |
 | <AuthorityType.ServerOnly /> |  | [**`PlayAnimation`**](character#playanimation) | Plays an Animation Montage on this character |
 |  <AuthorityType.Both /> |  | [**`RemoveSkeletalMeshAttached`**](character#removeskeletalmeshattached) | Removes, if existing, a SkeletalMesh from this Character given it’s custom ID |
@@ -393,6 +394,24 @@ my_character:MoveTo(location, acceptance_radius)
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** |  |  |
 | <BasicType.Number /> | **`acceptance_radius`** | `50` |  |
+
+
+### <AuthorityType.ServerOnly />`Follow`
+
+> AI: Makes this Character to follow another Actor
+>
+> Triggers event [MoveCompleted](character#movecompleted).
+
+```lua
+my_character:MoveTo(actor, acceptance_radius, stop_on_completed, update_rate)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Classes.Actor /> | **`actor`** |  |  |
+| <BasicType.Number /> | **`acceptance_radius`** | `50` |  |
+| <BasicType.Boolean /> | **`stop_on_completed`** | `false` | Whether to stop when MoveCompleted |
+| <BasicType.Number /> | **`update_rate`** | `0.5` | Frequency to recalculate route |
 
 
 ### <AuthorityType.ServerOnly />`PickUp`
