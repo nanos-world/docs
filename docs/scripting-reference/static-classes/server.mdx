@@ -458,9 +458,10 @@ end)
 | <BasicType.String /> | **`IP`** |  |
 | <BasicType.String /> | **`player_account_ID`** |  |
 | <BasicType.String /> | **`player_name`** |  |
+| <BasicType.String /> | **`player_steam_ID`** |  |
 
 ```lua
-Server.Subscribe("PlayerConnect", function(IP, player_account_ID, player_name)
+Server.Subscribe("PlayerConnect", function(IP, player_account_ID, player_name, player_steam_ID)
 
 end)
 ```
