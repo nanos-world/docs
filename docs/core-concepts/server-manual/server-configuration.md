@@ -169,20 +169,28 @@ steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_updat
 ```
 
 
-## Common Console Messages/Warnings/Errors and it’s meanings
+## Common Console Messages and Errors
 
-#### `Server Tick too/extreme high! Verify the server performance! Server got stuck for Xms`
+#### `Server Tick too/extreme high! Verify the server performance! Server got stuck for Xms...`
 
-It means the server got **stuck** (laggy) for X milliseconds. The warning (_yellow_) is not something to worry about, but too many Errors (_red_) could mean your server infrastructure is not that good or your scripting code is not that optimized. The server _tries¹_ runs at 33 Ticks per seconds (or the value configured at Config.toml). The server runs in an infinite loop which in a frequency of **1/33** milliseconds. Inside this loop, all server operations are executed: receiving/sending network packages, executing functions (received from network), triggering scripting events, executing all Scripting’s Ticks events, calculating Trigger overlaps, and so on. So if any of these operations take more more than **1/33** milliseconds to run, this warning will appear up.
+It means the server got **stuck** for X milliseconds. The warning (_yellow_) is not something to worry about, but too many messages in _red_) could mean your server infrastructure is not that good or your scripting code is not that optimized.
 
-I said _tries¹_ because on windows that is not that precise than on linux due internal c++ implementations.
+Usually the server runs at 33 ticks per second (or the value configured at Config.toml), the server runs in an infinite loop in that frequency, and inside that loop all server operations are executed, such as receiving and sending network packets, triggering lua events, executing functions or callbacks, and so on.
+
+If a single tick takes more than 33 milliseconds, this warning will appear up.
+
+:::tip
+
+In some shared VPS, this warning may appear up more frequently due how the VPS handles the scaling of it's machines, sometimes the provider may think your VPS is "idle" (due nanos world server using extremely low CPU) and may decrease your processing power, causing this warning show up as well.
+
+:::
 
 
-#### `Assertion Failed: [...] problem (5002) We don't have cert, and self-signed certs not allowed, but connection already dead (0 5002 We don't have cert, and self-signed certs not allowed)`
+#### `Assertion Failed: [...] problem (5002) We don't have cert, and self-signed certs not allowed...`
 
-This is an internal problem from Steam Library when you attempt to connect to a server too fast (when it has just started). There is nothing to worry about.
+This is an internal problem from Steam Library when you attempt to connect to a server too fast (when it has just started). The server automatically fixes it by retrying the connection, there is **nothing to worry about**.
 
 
-#### `Lua Stack Error: Should be x, is y`
+#### `Lua Stack Error: Should be X, is Y...`
 
-This is an internal error and should not suppose to happen. Those are guards set around our Lua Scripting implementation to prevent bad things from happening. If this error appears it means a implementation bug happened. Please communicate immediately with the devs, and if possible how to reproduce that!
+This is an internal error and **should not supposed to happen**. Those are guards set around our Lua Scripting implementation to prevent bad things from happening. If this error appears it means a implementation bug happened. Please communicate immediately with the devs, and if possible how to reproduce that!
