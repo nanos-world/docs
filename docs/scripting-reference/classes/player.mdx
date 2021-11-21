@@ -47,6 +47,11 @@ end)
 | <AuthorityType.AuthorityOnly /> |  | [**`Possess`**](player#possess) | Bind the `Player` to a Character |
 | <AuthorityType.Both /> |  | [**`SetCameraLocation`**](player#setcameralocation) | Sets the Player’s Camera Location |
 | <AuthorityType.Both /> |  | [**`SetCameraRotation`**](player#setcamerarotation) | Sets the Player’s Camera Rotation |
+| <AuthorityType.Both /> |  | [**`SetCameraSocketOffset`**](player#setcamerasocketoffset) | Sets the Player’s Camera Socket Offset |
+| <AuthorityType.Both /> |  | [**`SetCameraArmLength`**](player#setcameraarmlength) | Sets the Player’s Camera Arm Length |
+| <AuthorityType.Both /> |  | [**`AttachCameraTo`**](player#attachcamerato) | Attaches the Player’s Camera to an Actor |
+| <AuthorityType.Both /> |  | [**`ResetCamera`**](player#resetcamera) | Resets the Player’s Camera to the default state |
+| <AuthorityType.Both /> |  | [**`Spectate`**](player#spectate) | Spectates another Player |
 | <AuthorityType.AuthorityOnly /> |  | [**`SetName`**](player#setname) | Sets the player’s name |
 | <AuthorityType.Both /> |  | [**`SetValue`**](player#setvalue) | Sets a value in this entity, which can be accessed by any package |
 | <AuthorityType.AuthorityOnly /> |  | [**`SetVOIPChannel`**](player#setvoipchannel) | Sets the VOIP Channel of this Player |
@@ -170,6 +175,70 @@ my_player:SetCameraRotation(rotation, time, exp)
 | <Structs.Rotator /> | **`rotation`** |  |  |
 | <BasicType.Number /> | **`time`** | `0` | Time to interp from current camera rotation to target rotation |
 | <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
+
+
+### <AuthorityType.Both />`SetCameraSocketOffset`
+
+> Sets the Player’s Camera Socket Offset (Spring Arm Offset)
+
+```lua
+my_player:SetCameraSocketOffset(socket_offset)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`socket_offset`** |  |  |
+
+
+### <AuthorityType.Both />`SetCameraArmLength`
+
+> Sets the Player’s Camera Arm Length (Spring Arm length)
+
+```lua
+my_player:SetCameraArmLength(length)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`length`** |  |  |
+
+
+### <AuthorityType.Both />`AttachCameraTo`
+
+> Attaches the Player`s Camera to an Actor
+
+```lua
+my_player:AttachCameraTo(actor, socket_offset, blend_speed)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Classes.Actor /> | **`actor`** |  |  |
+| <Structs.Vector /> | **`socket_offset`** |  |  |
+| <BasicType.Number /> | **`blend_speed`** |  |  |
+
+
+### <AuthorityType.Both />`ResetCamera`
+
+> Resets the Camera to default state (Unspectate and Detaches)
+
+```lua
+my_player:ResetCamera()
+```
+
+
+### <AuthorityType.Both />`Spectate`
+
+> Spectates other Player
+
+```lua
+my_player:Spectate(player, blend_speed)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Classes.Player /> | **`player`** |  |  |
+| <BasicType.Number /> | **`blend_speed`** |  |  |
 
 
 ### <AuthorityType.AuthorityOnly />`SetName`
