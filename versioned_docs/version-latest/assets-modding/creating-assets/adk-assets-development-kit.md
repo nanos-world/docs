@@ -78,7 +78,7 @@ This is an **Editor Utility Widget** which scans a folder \(determined by the Te
 ### Sun & Sky Actor
 #### `NanosWorld/Blueprints/World/BP_SunSky`
 
-This is a pre-configured **Sun & Sky Blueprint** which can be used and easily replaced by nanos world Official Sun with `World,SpawnDefaultSun()`. This is useful to get an approximate result of how the light will look like in-game if you decide to Spawn the Default Sun.
+This is a pre-configured **Sun & Sky Blueprint** which can be used and easily replaced by nanos world Official Sun with `World.SpawnDefaultSun()`. This is useful to get an approximate result of how the light will look like in-game if you decide to Spawn the Default Sun.
 
 :::info
 
