@@ -392,6 +392,7 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`ViewMode.TPS1`** | `1` |
 | **`ViewMode.TPS2`** | `2` |
 | **`ViewMode.TPS3`** | `3` |
+| **`ViewMode.TopDown`** | `4` |
 
 ### `VOIPSetting`
 

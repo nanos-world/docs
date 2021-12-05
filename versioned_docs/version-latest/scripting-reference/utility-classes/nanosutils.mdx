@@ -49,6 +49,8 @@ NanosUtils.IsA(my_variable, Vehicle) -- false
 | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`IsA`** | Returns if an object is a type |
 | <BasicType.String /> | **`Dump`** | Dumps a table into a readable text |
+|  | **`Benchmark`** | Benchmarks a function performance |
+
 
 ### `IsA`
 
@@ -65,6 +67,7 @@ NanosUtils.IsA(object, type)
 | <BasicType.Any /> | **`object`** | Object to verify |
 | <BasicType.Any /> | **`type`** | Type to verify |
 
+
 ### **`Dump`**
 
 > Dumps a table into a readable text
@@ -80,4 +83,18 @@ NanosUtils.Dump(table)
 | <BasicType.Table /> | **`table`** | Table to dump |
 
 
+### **`Benchmark`**
+
+> Benchmarks a function performance, outputs in the console the elapsed time
+
+```lua
+NanosUtils.Benchmark(name, amount, func, args...)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`name`** | Benchmark name to output |
+| <BasicType.Number /> | **`amount`** | Amount of times to loop |
+| <BasicType.Function /> | **`func`** | The function to call |
+| <BasicType.Any /> | **`args...`** | The arguments of the function to call |
 

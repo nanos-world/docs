@@ -105,7 +105,8 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`LeaveVehicle`**](character#leavevehicle) | Leaves the current Vehicle |
 | <AuthorityType.ServerOnly /> |  | [**`LookAt`**](character#lookat) | AI: Tries to make this Character to look at Location |
 | <AuthorityType.ServerOnly /> |  | [**`MoveTo`**](character#moveto) | AI: Makes this Character to walk to the Location |
-| <AuthorityType.ServerOnly /> |  | [**`PickUp`**](character#pickup) | Gives a Item/Grenade/Weapon (Pickable) to the Character |
+| <AuthorityType.ServerOnly /> |  | [**`Follow`**](character#follow) | AI: Makes this Character to follow another actor |
+| <AuthorityType.ServerOnly /> |  | [**`PickUp`**](character#pickup) | Gives a Melee/Grenade/Weapon (Pickable) to the Character |
 | <AuthorityType.ServerOnly /> |  | [**`PlayAnimation`**](character#playanimation) | Plays an Animation Montage on this character |
 |  <AuthorityType.Both /> |  | [**`RemoveSkeletalMeshAttached`**](character#removeskeletalmeshattached) | Removes, if existing, a SkeletalMesh from this Character given it’s custom ID |
 |  <AuthorityType.Both /> |  | [**`RemoveStaticMeshAttached`**](character#removestaticmeshattached) | Removes, if existing, a StaticMesh from this Character given it’s custom ID |
@@ -116,10 +117,10 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ClientOnly /> |  | [**`SetCameraOffset`**](character#setcameraoffset) | Sets the Camera Offset \(only affects TPS\) |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanCrouch`**](character#setcancrouch) | Sets if this Character is allowed to Crouch and to Prone |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanAim`**](character#setcanaim) | Sets if this Character is allowed to Aim |
-| <AuthorityType.ServerOnly /> |  | [**`SetCanDrop`**](character#setcandrop) | Sets if this Character is allowed to Drop the PickedUp Item |
+| <AuthorityType.ServerOnly /> |  | [**`SetCanDrop`**](character#setcandrop) | Sets if this Character is allowed to Drop the Picked Up pickable |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanSprint`**](character#setcansprint) | Sets if this Character is allowed to Sprint |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanGrabProps`**](character#setcangrabprops) | Sets if this Character is allowed to Grab any <Classes.Prop /> |
-| <AuthorityType.ServerOnly /> |  | [**`SetCanPickupPickables`**](character#setcanpickuppickables) | Sets if this Character is allowed to Pick up any <Classes.Pickable /> (Weapon, Grenade, Item…) |
+| <AuthorityType.ServerOnly /> |  | [**`SetCanPickupPickables`**](character#setcanpickuppickables) | Sets if this Character is allowed to Pick up any <Classes.Pickable /> (Weapon, Grenade, Melee) |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanPunch`**](character#setcanpunch) | Sets if this Character is allowed to Punch \(Melee\) |
 | <AuthorityType.ServerOnly /> |  | [**`SetCapsuleSize`**](character#setcapsulesize) | Sets this Character’s Capsule size |
 | <AuthorityType.ServerOnly /> |  | [**`SetDamageMultiplier`**](character#setdamagemultiplier) | Changes how much damage this character takes |
@@ -173,7 +174,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 |  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetMaxHealth`**](character#getmaxhealth) | Gets the Character’s MaxHealth. |
 |  <AuthorityType.Both /> | <BasicType.String /> | [**`GetMesh`**](character#getmesh) | Gets the Mesh Asset name |
 |  <AuthorityType.Both /> | <Structs.Vector /> | [**`GetMovingTo`**](character#getmovingto) | Gets if Character is moving to |
-|  <AuthorityType.Both /> | <Classes.Pickable /> | [**`GetPicked`**](character#getpicked) | Gets the holding Picked Item/Grenade/Weapon |
+|  <AuthorityType.Both /> | <Classes.Pickable /> | [**`GetPicked`**](character#getpicked) | Gets the holding Picked Melee/Grenade/Weapon |
 |  <AuthorityType.Both /> | <Classes.Player /> | [**`GetPlayer`**](character.mdx#getplayer) | Gets the Player controlling this Character |
 |  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetPunchDamage`**](character.mdx#getpunchdamage) |  |
 |  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetSpeedMultiplier`**](character#getspeedmultiplier) |  |
@@ -395,9 +396,28 @@ my_character:MoveTo(location, acceptance_radius)
 | <BasicType.Number /> | **`acceptance_radius`** | `50` |  |
 
 
+### <AuthorityType.ServerOnly />`Follow`
+
+> AI: Makes this Character to follow another Actor
+>
+> Triggers event [MoveCompleted](character#movecompleted).
+
+```lua
+my_character:Follow(actor, acceptance_radius, stop_on_succeed, stop_on_fail, update_rate)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Classes.Actor /> | **`actor`** |  |  |
+| <BasicType.Number /> | **`acceptance_radius`** | `50` |  |
+| <BasicType.Boolean /> | **`stop_on_succeed`** | `false` | Whether to stop when reaching the target |
+| <BasicType.Boolean /> | **`stop_on_fail`** | `false` | Whether to stop when failed to reach the target |
+| <BasicType.Number /> | **`update_rate`** | `0.25` | How often to recalculate the AI path |
+
+
 ### <AuthorityType.ServerOnly />`PickUp`
 
-> Gives a Item/Grenade/Weapon \(Pickable\) to the Character
+> Gives a Melee/Grenade/Weapon \(Pickable\) to the Character
 
 ```lua
 my_character:PickUp(pickable)
@@ -586,7 +606,7 @@ my_character:SetCanGrabProps(can_grab_props)
 
 ### <AuthorityType.ServerOnly />`SetCanPickupPickables`
 
-> Sets if this Character is allowed to Pick up any <Classes.Pickable /> (Weapon, Grenade, Item...)
+> Sets if this Character is allowed to Pick up any <Classes.Pickable /> (Weapon, Grenade, Melee...)
 
 ```lua
 my_character:SetCanPickupPickables(can_pickup)
@@ -1218,7 +1238,7 @@ my_character:GetMovingTo()
 
 ### <AuthorityType.Both />`GetPicked`
 
-> Gets the holding Picked Item/Grenade/Weapon
+> Gets the holding Picked Melee/Grenade/Weapon
 >
 > Returns Pickable
 

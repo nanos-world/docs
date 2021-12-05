@@ -90,7 +90,7 @@ We hardly recommend and encourage you to follow [Allar’s Asset Naming Conventi
 
 After you created your Assets, exporting them from Unreal Engine is pretty much like packaging a game.
 
-For that, select **File ➡ Package Content ➡ Windows \(64-bit\)** and select a folder to save.
+For that, select **File ➡ Package Project ➡ Windows \(64-bit\)** and select a folder to save.
 
 ![](/img/docs/importing-assets-03.jpg)
 

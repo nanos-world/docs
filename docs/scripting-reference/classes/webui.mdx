@@ -133,7 +133,7 @@ Loading a .html file supports the following searchers, which are looked in the f
 | <BasicType.Number /> | [**`GetID`**](webui#getid) | Gets the network ID of this entity |
 | <BasicType.String /> | [**`GetType`**](webui#gettype) | Returns the type of this Entity |
 | <BasicType.Boolean /> | [**`IsVisible`**](webui#isvisible) | Returns if this WebUI is currently visible |
-|  | [**`Subscribe`**](webui#subscribe) | Subscribes for an Event |
+| <BasicType.Function /> | [**`Subscribe`**](webui#subscribe) | Subscribes for an Event |
 |  | [**`Unsubscribe`**](webui#unsubscribe) | Unsubscribes from all subscribed Events in this Entity and in this Package |
 
 ### `BringToFront`
@@ -252,6 +252,8 @@ my_webui:IsVisible()
 ### `Subscribe`
 
 > Subscribes for an Event
+> 
+> Returns the <BasicType.Function /> callback itself
 
 ```lua
 my_webui:Subscribe(event_name, callback)

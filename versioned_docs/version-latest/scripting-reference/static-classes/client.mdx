@@ -45,10 +45,8 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 |  | [**`SetHighlightColor`**](client#sethighlightcolor) | Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 \(or more\) for having a glowing effect. |
 |  | [**`SetSteamRichPresence`**](client#setsteamrichpresence) | Sets Steam Rich Presence value |
 |  | [**`SetValue`**](client#setvalue) | Sets a global value in the Client, which can be accessed from anywhere \(client side\) |
-|  | [**`Spectate`**](client#spectate) | Spectates a Player. The local camera will follow the Player’s camera. |
-|  | [**`Subscribe`**](client#subscribe) | Subscribes for an Event |
+| <BasicType.Function /> | [**`Subscribe`**](client#subscribe) | Subscribes for an Event |
 |  | [**`Unsubscribe`**](client#unsubscribe) | Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback |
-|  | [**`Unspectate`**](client#unspectate) | Leaves the Spectator’s State. |
 | <BasicType.Table /> | [**`Trace`**](client#trace) | Trace a ray against the world and returns a table with the first blocking hit information |
 | <Classes.Player /> | [**`GetLocalPlayer`**](client#getlocalplayer) | Gets the local Player |
 | <Structs.Vector /> | [**`GetRandomReachablePointInRadius`**](client#getrandomreachablepointinradius) | Finds random, reachable point in navigable space restricted to radius around origin |
@@ -440,21 +438,11 @@ Client.SetValue(key, value)
 | <BasicType.Any /> | **`value`** |  | Value |
 
 
-### `Spectate`
-
-> Spectates a Player. The local camera will follow the Player's camera.
-
-```lua
-Client.Spectate(player)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <Classes.Player /> | **`player`** |  |
-
 ### `Subscribe`
 
 > Subscribes for an Event
+> 
+> Returns the <BasicType.Function /> callback itself
 
 ```lua
 Client.Subscribe(event_name, callback)
@@ -480,18 +468,9 @@ Client.Unsubscribe(event_name, callback)
 | <BasicType.Function /> | **`function`** | `nil` |  |
 
 
-### `Unspectate`
-
-> Leaves the Spectator's State.
-
-```lua
-Client.Unspectate()
-```
-
-
 ### `Trace`
 
-> Trace a ray against the world and returns a table with the first blocking hit information. Currently only supports trace for <Classes.Character />, <Classes.Vehicle />, <Classes.StaticMesh />, <Classes.Weapon />, <Classes.Item />, <Classes.Grenade /> and <Classes.Prop />, more can be requested.
+> Trace a ray against the world and returns a table with the first blocking hit information. Currently only supports trace for <Classes.Character />, <Classes.Vehicle />, <Classes.StaticMesh />, <Classes.Weapon />, <Classes.Melee />, <Classes.Grenade /> and <Classes.Prop />, more can be requested.
 >
 > Returned Table: `{"Success", "Location", "Normal", "Entity", "BoneName", "ActorName", "ComponentName", "SurfaceType"}`
 

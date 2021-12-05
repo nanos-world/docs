@@ -1,6 +1,6 @@
 ---
 slug: alpha-released
-title: Alpha released!
+title: "October: Alpha released!"
 authors: gtnardy
 tags: [updates]
 ---

@@ -66,7 +66,7 @@ The following functions have an `group_id` parameter, which you can group relate
 | <Structs.Vector2D /> | [**`Project`**](render#project) | Transforms a 3D world-space vector into 2D screen coordinates. |
 | <BasicType.Table /> | [**`Deproject`**](render#deproject) | Transforms a 2D screen coordinates into 3D world-space location |
 |  | [**`ClearItems`**](render#clearitems) | Remove all drawing of using that specific group\_id |
-|  | [**`Subscribe`**](render#subscribe) | Subscribes for an Event |
+| <BasicType.Function /> | [**`Subscribe`**](render#subscribe) | Subscribes for an Event |
 |  | [**`Unsubscribe`**](render#unsubscribe) | Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback |
 |  | [**`UpdateItemText`**](render#updateitemtext) | Updates a specific Canvas’s position giving it’s group\_id and item\_id |
 | <Structs.Vector2D /> | [**`GetViewportSize`**](render#getviewportsize) | Returns the size of viewport \(how much screen space the game window occupies\) |
@@ -220,6 +220,8 @@ Render.ClearItems(group_id)
 ### `Subscribe`
 
 > Subscribes for an Event
+> 
+> Returns the <BasicType.Function /> callback itself
 
 ```lua
 Render.Subscribe(event_name, callback)

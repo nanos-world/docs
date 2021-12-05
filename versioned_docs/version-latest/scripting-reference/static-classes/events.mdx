@@ -28,7 +28,7 @@ import { Structs, BasicType, AuthorityType, Classes, ReferenceLink } from '@site
 | <AuthorityType.ClientOnly /> | [**`CallRemote`**](events#callremote) | Calls an Event if on Client which will be triggered in all Server Packages |
 | <AuthorityType.ServerOnly /> | [**`CallRemote`**](events#callremote) | Calls an Event if on Server which will be triggered in all Client's Packages of a specific Player |
 | <AuthorityType.ServerOnly /> | [**`BroadcastRemote`**](events#broadcastremote) | Calls an Event on Server which will be triggered in all Client's Packages |
-|  | [**`Subscribe`**](events#subscribe) | Subscribes for an user-created event which will be triggered for both local or _remote\*_ called events |
+| <BasicType.Function /> | [**`Subscribe`**](events#subscribe) | Subscribes for an user-created event which will be triggered for both local or _remote\*_ called events |
 |  | [**`Unsubscribe`**](events#unsubscribe) | Unsubscribes from all subscribed events in this Package with that event name, optionally passing the function to unsubscribe only that callback |
 
 :::info
@@ -94,6 +94,8 @@ Events.BroadcastRemote(event_name, args...)
 #### `Subscribe`
 
 > Subscribes for an user-created event which will be triggered for both local or remote called events
+> 
+> Returns the <BasicType.Function /> callback itself
 
 ```lua
 Events.Subscribe(event_name, function()

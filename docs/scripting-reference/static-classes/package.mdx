@@ -29,7 +29,7 @@ import { Structs, BasicType, AuthorityType } from '@site/docs/components/_nanos.
 |  | [**`Export`**](package#export) | ‘Exports’ a function to be called from any other Package |
 |  | [**`Require`**](package#require) | Includes new .lua files |
 |  | [**`RequirePackage`**](package#requirepackage) | Includes other Package in this Package |
-|  | [**`Subscribe`**](package#subscribe) | Subscribes for an Event |
+| <BasicType.Function /> | [**`Subscribe`**](package#subscribe) | Subscribes for an Event |
 |  | [**`Unsubscribe`**](package#unsubscribe) | Unsubscribes from all subscribed Events in this Class and in this Package |
 |  | [**`SetPersistentData`**](package#setpersistentdata) | Sets a Persistent Value which will be saved to Disk |
 | <BasicType.Table /> | [**`GetDirectories`**](package#getdirectories) | Gets a list of all directories in this package |
@@ -136,6 +136,8 @@ Package.RequirePackage(package_name)
 ### `Subscribe`
 
 > Subscribes for an Event
+> 
+> Returns the <BasicType.Function /> callback itself
 
 ```lua
 Package.Subscribe(event_name, callback)

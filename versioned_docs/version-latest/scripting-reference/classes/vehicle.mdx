@@ -212,10 +212,10 @@ my_vehicle:SetEngineSetup(max_rpm, moi, damping_rate_full_throttle, d_r_zero_trt
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`max_rpm`** | `4500` | Maximum revolutions per minute of the engine |
-| <BasicType.Number /> |
-| <BasicType.Number /> |
-| <BasicType.Number /> |
-| <BasicType.Number /> |
+| <BasicType.Number /> | **`moi`** | `1` | Moment of inertia of the engine around the axis of rotation (Kgm^2) |
+| <BasicType.Number /> | **`damping_rate_full_throttle`** | `0.15` | Damping rate of engine when full throttle is applied (Kgm^2/s) |
+| <BasicType.Number /> | **`d_r_zero_trt_clutch_engaged`** | `2` | Damping rate of engine in at zero throttle when the clutch is engaged (Kgm^2/s) |
+| <BasicType.Number /> | **`d_r_zero_trt_clutch_disengaged`** | `0.35` | Damping rate of engine in at zero throttle when the clutch is disengaged (in neutral gear) (Kgm^2/s) |
 
 ### <AuthorityType.ServerOnly />`SetVehicleSetup`
 

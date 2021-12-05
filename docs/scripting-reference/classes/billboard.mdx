@@ -1,0 +1,55 @@
+---
+description: A Billboard is a 2D Material that will be rendered always facing the camera.
+sidebar_position: 0
+tags: [class, client]
+---
+
+# 🪧 Billboard
+
+A Billboard is a 2D Material that will be rendered always facing the camera.
+
+import { Structs, BasicType, AuthorityType, Classes, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
+
+![](/img/docs/billboard.jpg)
+
+:::info
+
+🟧 **Authority:** This class can only be spawned on [Client](./core-concepts/scripting/authority-concepts.mdx).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />.
+
+:::
+
+
+## Usage
+
+```lua title=Client/Index.lua
+local my_billboard = Billboard(
+    Vector(200, 200, 200), -- location
+    "nanos-world::M_NanosMasked", -- material
+    Vector2D(32, 32), -- size
+    true
+)
+
+my_billboard:SetMaterialTextureParameter("Texture", "package///my_package/Client/image.jpg")
+```
+
+
+## Constructor Parameters
+
+| **Type** | **Name** | **Default** | **Description** |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |  |
+| <AssetPath.Material /> | **`material_asset`** | ` ` | Material Asset |
+| <Structs.Vector2D /> | **`size`** | `Vector2D(32, 32)` | Size of the Billboard |
+| <BasicType.Boolean /> | **`size_in_screen_space`** | `false` | Size is in Screen or World Space |
+
+
+## Functions
+
+import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
+import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-paintable-functions.mdx';
+
+<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
+<details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
+

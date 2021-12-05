@@ -59,7 +59,7 @@ Server.BroadcastChatMessage("Welcome to the server!")
 |  | [**`SetValue`**](server#setvalue) | Sets a global value in the Server, which can be accessed from anywhere \(server side\) |
 |  | [**`GetValue`**](server#getvalue) | Gets a value given a key |
 |  | [**`Stop`**](server#stop) | Stops the server |
-|  | [**`Subscribe`**](server#subscribe) | Subscribes for an Event |
+| <BasicType.Function /> | [**`Subscribe`**](server#subscribe) | Subscribes for an Event |
 |  | [**`UnloadPackage`**](server#unloadpackage) | Unloads a Package |
 |  | [**`Unsubscribe`**](server#unsubscribe) | Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback |
 | <BasicType.String /> | [**`GetMap`**](server#getmap) | Returns the current Map |
@@ -247,6 +247,8 @@ Server.Stop()
 ### `Subscribe`
 
 > Subscribes for an Event
+> 
+> Returns the <BasicType.Function /> callback itself
 
 ```lua
 Server.Subscribe(event_name, callback)
@@ -458,9 +460,10 @@ end)
 | <BasicType.String /> | **`IP`** |  |
 | <BasicType.String /> | **`player_account_ID`** |  |
 | <BasicType.String /> | **`player_name`** |  |
+| <BasicType.String /> | **`player_steam_ID`** |  |
 
 ```lua
-Server.Subscribe("PlayerConnect", function(IP, player_account_ID, player_name)
+Server.Subscribe("PlayerConnect", function(IP, player_account_ID, player_name, player_steam_ID)
 
 end)
 ```
