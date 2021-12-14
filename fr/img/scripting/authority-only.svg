@@ -1,0 +1,6 @@
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <ellipse ry="64" rx="64" cy="64" cx="64" fill="#409942"/>
+  <text font-weight="600" text-anchor="middle" font-family="'M PLUS Rounded 1c', sans-serif" font-size="102" dominant-baseline="central" x="50%" y="50%" fill="#ffffff">A</text>
+ </g>
+</svg>
