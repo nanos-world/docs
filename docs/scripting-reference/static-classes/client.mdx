@@ -71,6 +71,8 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | [**`LogEntry`**](client#logentry) | Called when a Client log is received |
 | [**`MouseDown`**](client#mousedown) | A mouse button has been pressed / is being pressed |
 | [**`MouseUp`**](client#mouseup) | A mouse button has been released |
+| [**`OpenChat`**](client#openchat) | When player opens the Chat |
+| [**`CloseChat`**](client#closechat) | When player closes the Chat |
 | [**`Tick`**](client#tick) | Called Every Frame. Do not abuse |
 
 
@@ -740,6 +742,29 @@ Client.Subscribe("MouseUp", function(key_name, mouse_x, mouse_y)
 end)
 ```
 
+
+### `OpenChat`
+
+> When player opens the chat
+
+```lua
+Client.Subscribe("OpenChat", function()
+
+end)
+```
+
+
+### `CloseChat`
+
+> When player closes the chat
+
+```lua
+Client.Subscribe("CloseChat", function()
+
+end)
+```
+
+
 ### `Tick`
 
 > Called Every Frame. Do not abuse.
@@ -753,6 +778,7 @@ Client.Subscribe("Tick", function(delta_time)
 
 end)
 ```
+
 
 ## Key Names
 

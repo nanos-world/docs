@@ -148,9 +148,11 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--game_mode` | string | Server game-mode |
 | `--loading_screen` | string | Server loading-screen |
 | `--packages` | string list | Server packages |
+| `--assets` | string list | Server assets |
 | `--max_players` | number | Max allowed players |
 | `--save` | 0 or 1 | If to save the parameters in Config.toml |
 | `--profiling` | 0 or 1 | Enables Performance Profiling Logs for debugging |
+| `--auto_download` | 0 or 1 | Automatically downloads Packages and Assets from Vault if needed |
 
 
 ### One-liner Server Configuration
@@ -168,6 +170,12 @@ steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_updat
 ./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --gamemode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/U1rZp5v.png"
 ```
 
+Another shorter example:
+
+```shell title="Shell/Linux"
+# Starts the server with all configs set and auto downloads the packages and assets if needed
+./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --gamemode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download 1 --logo "https://i.imgur.com/U1rZp5v.png"
+```
 
 ## Common Console Messages and Errors
 
