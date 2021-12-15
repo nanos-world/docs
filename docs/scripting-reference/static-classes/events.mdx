@@ -22,14 +22,14 @@ import { Structs, BasicType, AuthorityType, Classes, ReferenceLink } from '@site
 
 ## Static Functions
 
-| Returns | Name | Description |
-| :--- | :--- | :--- |
-|  | [**`Call`**](events#call) | Calls an Event which will be triggered in all Local Packages |
-| <AuthorityType.ClientOnly /> | [**`CallRemote`**](events#callremote) | Calls an Event if on Client which will be triggered in all Server Packages |
-| <AuthorityType.ServerOnly /> | [**`CallRemote`**](events#callremote) | Calls an Event if on Server which will be triggered in all Client's Packages of a specific Player |
-| <AuthorityType.ServerOnly /> | [**`BroadcastRemote`**](events#broadcastremote) | Calls an Event on Server which will be triggered in all Client's Packages |
-| <BasicType.Function /> | [**`Subscribe`**](events#subscribe) | Subscribes for an user-created event which will be triggered for both local or _remote\*_ called events |
-|  | [**`Unsubscribe`**](events#unsubscribe) | Unsubscribes from all subscribed events in this Package with that event name, optionally passing the function to unsubscribe only that callback |
+|  | Returns | Name | Description |
+| :--- | :--- | :--- | :--- |
+| <AuthorityType.Both /> |  | [**`Call`**](events#call) | Calls an Event which will be triggered in all Local Packages |
+| <AuthorityType.ClientOnly /> |  | [**`CallRemote`**](events#callremote) | Calls an Event if on Client which will be triggered in all Server Packages |
+| <AuthorityType.ServerOnly /> |  | [**`CallRemote`**](events#callremote) | Calls an Event if on Server which will be triggered in all Client's Packages of a specific Player |
+| <AuthorityType.ServerOnly /> |  | [**`BroadcastRemote`**](events#broadcastremote) | Calls an Event on Server which will be triggered in all Client's Packages |
+| <AuthorityType.Both /> | <BasicType.Function /> | [**`Subscribe`**](events#subscribe) | Subscribes for an user-created event which will be triggered for both local or _remote\*_ called events |
+| <AuthorityType.Both /> |  | [**`Unsubscribe`**](events#unsubscribe) | Unsubscribes from all subscribed events in this Package with that event name, optionally passing the function to unsubscribe only that callback |
 
 :::info
 

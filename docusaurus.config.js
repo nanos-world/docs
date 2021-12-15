@@ -4,7 +4,7 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
   title: 'nanos world',
   tagline: 'nanos world',
-  url: 'https://docs.nanos.world',
+  url: 'https://docs.nanos.world/',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -105,7 +105,8 @@ module.exports = {
     },
     zoomSelector: '.markdown :not(.authority-availability) > img',
     algolia: {
-      apiKey: '24fb9bfd0b1d04bc5a3711d5ff6b5411',
+      appId: '2O07FIGQII',
+      apiKey: 'b53f482139534494c9253752259660ed',
       indexName: 'nanos',
       contextualSearch: true,
     },
