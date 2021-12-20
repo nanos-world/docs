@@ -50,6 +50,8 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | <BasicType.Table /> | [**`Trace`**](client#trace) | Trace a ray against the world and returns a table with the first blocking hit information |
 | <Classes.Player /> | [**`GetLocalPlayer`**](client#getlocalplayer) | Gets the local Player |
 | <Structs.Vector /> | [**`GetRandomReachablePointInRadius`**](client#getrandomreachablepointinradius) | Finds random, reachable point in navigable space restricted to radius around origin |
+| <Structs.Vector /> | [**`GetRandomPointInNavigableRadius`**](client#getrandompointinnavigableradius) | Finds random, point in navigable space restricted to Radius around Origin. Resulting location is not tested for reachability from the Origin |
+| <Structs.Vector /> | [**`FindPathToLocation`**](client#findpathtolocation) | Finds a Path given Start and End location |
 | <Structs.Vector2D /> | [**`GetMousePosition`**](client#getmouseposition) | Gets the current mouse screen location |
 | <BasicType.Table /> | [**`GetPackages`**](client#getpackages) | Returns a list of Packages folder names loaded and running in the client |
 | <BasicType.Any /> | [**`GetValue`**](client#getvalue) | Gets a value given a key |
@@ -505,9 +507,9 @@ Client.GetLocalPlayer()
 
 ### `GetRandomReachablePointInRadius`
 
-> Finds random, reachable point in navigable space restricted to radius around origin \(only if map has a NavMesh\)
+> Finds random, reachable point in navigable space restricted to radius around origin (only if map has a NavMesh)
 >
-> Returns Vector2D
+> Returns <Structs.Vector />
 
 ```lua
 Client.GetRandomReachablePointInRadius(origin, radius)
@@ -519,11 +521,43 @@ Client.GetRandomReachablePointInRadius(origin, radius)
 | <BasicType.Number /> | **`radius`** |  |
 
 
+### `GetRandomPointInNavigableRadius`
+
+> Finds random, point in navigable space restricted to Radius around Origin. Resulting location is not tested for reachability from the Origin (only if map has a NavMesh)
+>
+> Returns <Structs.Vector />
+
+```lua
+Client.GetRandomPointInNavigableRadius(origin, radius)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Vector /> | **`origin`** |  |
+| <BasicType.Number /> | **`radius`** |  |
+
+
+### `FindPathToLocation`
+
+> Finds a Path given Start and End location (only if map has a NavMesh)
+>
+> Returned Table: `{"IsValid", "IsPartial", "Length", "Cost", "PathPoints"}`
+
+```lua
+Client.FindPathToLocation(start_location, end_location)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Vector /> | **`start_location`** |  |
+| <Structs.Vector /> | **`end_location`** |  |
+
+
 ### `GetMousePosition`
 
 > Gets the current mouse screen location
 >
-> Returns Vector2D
+> Returns <Structs.Vector2D />
 
 ```lua
 Client.GetMousePosition()
