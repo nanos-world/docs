@@ -47,28 +47,28 @@ Packages have a configuration file in the root of the package folder, called `Pa
 ```toml title="Package.toml"
 # package configurations
 [package]
-	# package name
-	name =								"testing"
-	# contributors
-	author =							""
-	# version
-	version =							"0.0.1"
-	# image URL
-	image =								""
-	# package type: 'script' (normal package), 'game-mode' (unique package - can only load one at a time) or 'loading-screen' (special package loaded in loading screen)
-	type =								"script"
-	# whether to force the custom map Script to do not load
-	force_no_map_script =	false
-	# auto destroy all entities spawned by this package when it unloads
-	auto_cleanup =				true
-	# packages requirements
-	packages_requirements = [
-		
-	]
-	# asset packs requirements
-	assets_requirements = [
-		
-	]
+    # package name
+    name =                              "testing"
+    # contributors
+    author =                            ""
+    # version
+    version =                           "0.0.1"
+    # image URL
+    image =                             ""
+    # package type: 'script' (normal package), 'game-mode' (unique package - can only load one at a time) or 'loading-screen' (special package loaded in loading screen)
+    type =                              "script"
+    # whether to force the custom map Script to do not load
+    force_no_map_script =               false
+    # auto destroy all entities spawned by this package when it unloads
+    auto_cleanup =                      true
+    # packages requirements
+    packages_requirements = [
+        
+    ]
+    # asset packs requirements
+    assets_requirements = [
+        
+    ]
 
 ```
 

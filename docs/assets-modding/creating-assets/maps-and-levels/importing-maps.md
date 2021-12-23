@@ -23,25 +23,12 @@ Please refer to [Unreal’s Official tutorial - Working with Levels](https://doc
 
 :::info
 
-Most of [World](./scripting-reference/static-classes/world.mdx) functions rely on our own assets and code, so it is not (yet.mdx) possible to change the lighting or weather in your custom Map with World scripting functions.
+Most of [World](./scripting-reference/static-classes/world.mdx) functions rely on our own assets and code, so it is not (yet) possible to change the lighting or weather in your custom Map with World scripting functions.
 
 :::
 
-After exporting your project (refer to [Creating Assets](./assets-modding/creating-assets/importing-assets.md#exporting-and-cooking-your-assets).mdx), you can just reference your map in your server config like `MyPack::MyLevel`.
+After exporting your project (refer to [Creating Assets](./assets-modding/creating-assets/importing-assets.md#exporting-and-cooking-your-assets), you can just reference your map in your server config like `MyPack::MyLevel`.
 
-## Storing data in your Map
-
-As nanos world server is not aware of Unreal or it's Assets, we need to somehow say to the server where are the scriptable part of the map, wuch as Spawn Points, Props locations, Weapon locations and so on.
-
-For that we created 2 solutions: [Custom Map Script](#custom-map-script) and [Custom Map Data](#custom-map-data).
-
-### Custom Map Script
-
-Maps can also have a **Custom Script** \(server-only\) attached to it. These are files named `[MAP_NAME].lua` in the same folder as the map in the `Assets/` folder. If no one of your Packages disallow it, this script file will be loaded as well as a package. Usually these scripts should have map specific spawn props/weapons points and pertinent stuff.
-
-### Custom Map Data
-
-TODO
 
 ## Creating a Map in Unreal Engine 4 from Scratch
 
@@ -76,7 +63,7 @@ Rename it with the map name you desire, save it and open it up. You will notice 
 
 ![](/img/docs/custom-maps-05.jpg)
 
-First let’s add a floor, for that just drag-and-drop a Plane from Place Actors -&gt; Basic window into the Viewport:
+First let’s add a floor, for that just drag-and-drop a Plane from Place Actors -> Basic window into the Viewport:
 
 ![](/img/docs/custom-maps-06.jpg)
 
@@ -218,3 +205,9 @@ You can now just start the New Game with the `Sandbox` package selected and VOIL
 
 ![](/img/docs/custom-maps-38.jpg)
 
+
+## Configuring your Map
+
+Also it is possible to add a Image, a Configuration File, Custom Data and even a exclusive Package (scripting) for your map.
+
+After importing your map, please refer to [Map Script and Configuration](./assets-modding/creating-assets/maps-and-levels/map-script-and-data.md)
