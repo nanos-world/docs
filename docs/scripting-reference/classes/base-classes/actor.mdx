@@ -341,10 +341,10 @@ entity:SetValue(key, value, sync_on_clients)
 
 ### <AuthorityType.AuthorityOnly />`TranslateTo`
 
-> Smoothly moves this actor to a location with a certain speed - optionally enables sweep to stop when colliding - use teleport flag to not affect velocity
+> Smoothly moves this actor to a location with a certain speed - optionally enables sweep to stop when colliding
 
 ```lua
-entity:TranslateTo(location, speed, sweep, teleport)
+entity:TranslateTo(location, speed, sweep)
 ```
 
 | Type | Parameter | Default Value | Description |
@@ -352,7 +352,6 @@ entity:TranslateTo(location, speed, sweep, teleport)
 | <Structs.Vector /> | **`location`** |  | Location to translate to |
 | <BasicType.Number /> | **`speed`** |  |  |
 | <BasicType.Boolean /> | **`sweep`** | `false` | Whether to stop movement if there's a collision |
-| <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current velocity |
 
 
 ### <AuthorityType.AuthorityOnly />`RotateTo`
@@ -360,14 +359,13 @@ entity:TranslateTo(location, speed, sweep, teleport)
 > Smoothly rotates this Actor to an angle with a certain speed
 
 ```lua
-entity:RotateTo(rotation, speed, teleport)
+entity:RotateTo(rotation, speed)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <Structs.Rotator /> | **`rotation`** |  | Angle to rotate to |
 | <BasicType.Number /> | **`speed`** |  |  |
-| <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current velocity |
 
 
 ### <AuthorityType.Both />`IsBeingDestroyed`
