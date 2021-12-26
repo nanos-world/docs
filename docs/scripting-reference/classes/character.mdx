@@ -121,7 +121,8 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetCanSprint`**](character#setcansprint) | Sets if this Character is allowed to Sprint |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanGrabProps`**](character#setcangrabprops) | Sets if this Character is allowed to Grab any <Classes.Prop /> |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanPickupPickables`**](character#setcanpickuppickables) | Sets if this Character is allowed to Pick up any <Classes.Pickable /> (Weapon, Grenade, Melee) |
-| <AuthorityType.ServerOnly /> |  | [**`SetCanPunch`**](character#setcanpunch) | Sets if this Character is allowed to Punch \(Melee\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetCanPunch`**](character#setcanpunch) | Sets if this Character is allowed to Punch |
+| <AuthorityType.ServerOnly /> |  | [**`SetCanDeployParachute`**](character#setcandeployparachute) | Sets if this Character is allowed to open the parachute |
 | <AuthorityType.ServerOnly /> |  | [**`SetCapsuleSize`**](character#setcapsulesize) | Sets this Character’s Capsule size |
 | <AuthorityType.ServerOnly /> |  | [**`SetDamageMultiplier`**](character#setdamagemultiplier) | Changes how much damage this character takes |
 | <AuthorityType.ServerOnly /> |  | [**`SetDeathSound`**](character#setdeathsound) | Changes the Death sound when Character dies |
@@ -138,6 +139,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetMesh`**](character#setmesh) | Changes the Character Mesh on the fly |
 |  <AuthorityType.Both /> |  | [**`SetMorphTarget`**](character#setmorphtarget) |  |
 | <AuthorityType.ServerOnly /> |  | [**`SetMovementEnabled`**](character#setmovementenabled) | Enables/Disables Character’s Movement |
+| <AuthorityType.ServerOnly /> |  | [**`SetParachuteTexture`**](character#setparachutetexture) | Changes the Parachute Texture |
 | <AuthorityType.ServerOnly /> |  | [**`SetPainSound`**](character#setpainsound) | Changes the Pain sound when Character takes damage |
 | <AuthorityType.ServerOnly /> |  | [**`SetPunchDamage`**](character#setpunchdamage) | Set the Punch Damage this Character will apply on others |
 | <AuthorityType.ServerOnly /> |  | [**`SetRagdollMode`**](character#setragdollmode) | Sets Character Ragdoll Mode |
@@ -618,7 +620,7 @@ my_character:SetCanPickupPickables(can_pickup)
 
 ### <AuthorityType.ServerOnly />`SetCanPunch`
 
-> Sets if this Character is allowed to Punch \(Melee\)
+> Sets if this Character is allowed to Punch
 
 ```lua
 my_character:SetCanPunch(can_punch)
@@ -627,6 +629,20 @@ my_character:SetCanPunch(can_punch)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`can_punch`** |  |  |
+
+
+### <AuthorityType.ServerOnly />`SetCanDeployParachute`
+
+> Sets if this Character is allowed to deploy the Parachute
+
+```lua
+my_character:SetCanDeployParachute(can_deploy_parachute)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`can_deploy_parachute`** |  |  |
+
 
 ### <AuthorityType.ServerOnly />`SetCapsuleSize`
 
@@ -817,6 +833,7 @@ my_character:SetMorphTarget(key, value)
 | <BasicType.String /> | **`skeletal_mesh_asset`** |  |  |
 | <BasicType.Number /> | **`value`** |  |  |
 
+
 ### <AuthorityType.ServerOnly />`SetMovementEnabled`
 
 > Enables/Disables Character's Movement
@@ -828,6 +845,20 @@ my_character:SetMovementEnabled(is_movement_enabled)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_movement_enabled`** |  |  |
+
+
+### <AuthorityType.ServerOnly />`SetParachuteTexture`
+
+> Changes the Parachute Texture
+
+```lua
+my_character:SetParachuteTexture(texture)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <AssetPath.Image /> | **`texture`** |  |  |
+
 
 ### <AuthorityType.ServerOnly />`SetPainSound`
 
