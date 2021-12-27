@@ -98,7 +98,7 @@ You also can create your own Physical Materials and use them in-game! Just remem
 :::
 
 
-|  | Friction | Restitution | Density | [Surface Type](./scripting-reference/glossary/enums#surfacetype) |
+|  | Friction | Restitution | Density | [Surface Type](./scripting-reference/glossary/enums.md#surfacetype) |
 | :--- | :--- | :--- | :--- | :--- |
 | **PM_Concrete** | `0.9` | `0.3` | `2.0` | `SurfaceType.Concrete` |
 | **PM_Flesh** | `0.7` | `0.3` | `1.0` | `SurfaceType.Flesh` |
