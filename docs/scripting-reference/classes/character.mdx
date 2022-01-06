@@ -1374,7 +1374,7 @@ my_character:GetWeaponAimMode()
 > When Character Dies
 
 ```lua
-Character.Subscribe("Death", function(self, last_damage_taken, last_bone_damage, damage_type_reason, hit_from_direction, instigator)
+Character.Subscribe("Death", function(self, last_damage_taken, last_bone_damage, damage_type_reason, hit_from_direction, instigator, causer)
 
 end)
 ```
@@ -1387,6 +1387,7 @@ end)
 | <Enums>DamageType</Enums> | **`damage_type_reason`** |  |
 | <Structs.Vector /> | **`hit_from_direction`** |  |
 | <Classes.Player /> | **`instigator`** |  |
+| <BasicType.Any /> | **`causer`** | The object which caused the damage |
 
 
 ### `Drop`

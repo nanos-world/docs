@@ -52,6 +52,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | <Structs.Vector /> | [**`GetRandomReachablePointInRadius`**](client#getrandomreachablepointinradius) | Finds random, reachable point in navigable space restricted to radius around origin |
 | <Structs.Vector /> | [**`GetRandomPointInNavigableRadius`**](client#getrandompointinnavigableradius) | Finds random, point in navigable space restricted to Radius around Origin. Resulting location is not tested for reachability from the Origin |
 | <Structs.Vector /> | [**`FindPathToLocation`**](client#findpathtolocation) | Finds a Path given Start and End location |
+| <BasicType.String /> | [**`GetMap`**](client#getmap) | Returns the current Map |
 | <Structs.Vector2D /> | [**`GetMousePosition`**](client#getmouseposition) | Gets the current mouse screen location |
 | <BasicType.Table /> | [**`GetPackages`**](client#getpackages) | Returns a list of Packages folder names loaded and running in the client |
 | <BasicType.Any /> | [**`GetValue`**](client#getvalue) | Gets a value given a key |
@@ -73,6 +74,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | [**`LogEntry`**](client#logentry) | Called when a Client log is received |
 | [**`MouseDown`**](client#mousedown) | A mouse button has been pressed / is being pressed |
 | [**`MouseUp`**](client#mouseup) | A mouse button has been released |
+| [**`MouseEnabled`**](client#mouseenabled) | When mouse cursor is displayed/hidden |
 | [**`OpenChat`**](client#openchat) | When player opens the Chat |
 | [**`CloseChat`**](client#closechat) | When player closes the Chat |
 | [**`Tick`**](client#tick) | Called Every Frame. Do not abuse |
@@ -553,6 +555,17 @@ Client.FindPathToLocation(start_location, end_location)
 | <Structs.Vector /> | **`end_location`** |  |
 
 
+### `GetMap`
+
+> Returns the current Map
+>
+> Returns <BasicType.String />
+
+```lua
+Client.GetMap()
+```
+
+
 ### `GetMousePosition`
 
 > Gets the current mouse screen location
@@ -758,6 +771,7 @@ Client.Subscribe("MouseDown", function(key_name, mouse_x, mouse_y)
 end)
 ```
 
+
 ### `MouseUp`
 
 > A mouse button has been released
@@ -772,6 +786,21 @@ end)
 
 ```lua
 Client.Subscribe("MouseUp", function(key_name, mouse_x, mouse_y)
+
+end)
+```
+
+
+### `MouseEnabled`
+
+> When mouse cursor is displayed/hidden
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`is_enabled`** |  |
+
+```lua
+Client.Subscribe("MouseEnabled", function(is_enabled)
 
 end)
 ```

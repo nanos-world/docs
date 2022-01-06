@@ -100,6 +100,21 @@ entity:RemoveStaticMeshAttached(id)
 | <BasicType.String /> | **`id`** |  | Unique ID of the StaticMesh to remove |
 
 
+### <AuthorityType.ServerOnly />`SetAttachmentSettings`
+
+> Sets the Attachment Settings for this Pickable (how it attaches to the Character when Picking up)
+
+```lua
+entity:SetAttachmentSettings(relative_location, relative_rotation, socket)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`relative_location`** |  | Relative location to the Socket |
+| <Structs.Rotator /> | **`relative_rotation`** | `Rotator()` | Relative rotation to the Socket |
+| <BasicType.String /> | **`socket`** | `hand_r_socket` | Character Socket to attach |
+
+
 ### <AuthorityType.ServerOnly />`SetCrosshairMaterial`
 
 > Sets the crosshair material for this Pickable
