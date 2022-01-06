@@ -113,6 +113,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 
 |  | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- | :--- |
+| <AuthorityType.ServerOnly /> |  | [**`Reload`**](weapon#reload) | Forces this weapon to Reload |
 | <AuthorityType.ServerOnly /> |  | [**`SetAmmoBag`**](weapon#setammobag) | Sets this Weapon’s Ammo in the Bag |
 | <AuthorityType.ServerOnly /> |  | [**`SetAmmoClip`**](weapon#setammoclip) | Sets this Weapon’s Ammo in the Clip |
 | <AuthorityType.ServerOnly /> |  | [**`SetAmmoSettings`**](weapon#setammosettings) | Auxiliary for setting and configuring ammo |
@@ -190,6 +191,15 @@ import BasePickableEvents from '@site/docs/scripting-reference/classes/base-clas
 
 
 ## Functions Detailed
+
+### <AuthorityType.ServerOnly />`Reload`
+
+> Forces this Weapon to reload (only if being handled by a Character)
+
+```lua
+my_weapon:Reload()
+```
+
 
 ### <AuthorityType.ServerOnly />`SetAmmoBag`
 
