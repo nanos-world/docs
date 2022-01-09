@@ -106,6 +106,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`LookAt`**](character#lookat) | AI: Tries to make this Character to look at Location |
 | <AuthorityType.ServerOnly /> |  | [**`MoveTo`**](character#moveto) | AI: Makes this Character to walk to the Location |
 | <AuthorityType.ServerOnly /> |  | [**`Follow`**](character#follow) | AI: Makes this Character to follow another actor |
+| <AuthorityType.ServerOnly /> |  | [**`StopMovement`**](character#stopmovement) | AI: Stops the movement |
 | <AuthorityType.ServerOnly /> |  | [**`PickUp`**](character#pickup) | Gives a Melee/Grenade/Weapon (Pickable) to the Character |
 | <AuthorityType.ServerOnly /> |  | [**`PlayAnimation`**](character#playanimation) | Plays an Animation Montage on this character |
 |  <AuthorityType.Both /> |  | [**`RemoveSkeletalMeshAttached`**](character#removeskeletalmeshattached) | Removes, if existing, a SkeletalMesh from this Character given it’s custom ID |
@@ -232,7 +233,7 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 > Do damage in a character, will trigger all related events and apply modified damage based on bone. Also will apply impulse if it's a heavy explosion
 
 ```lua
-my_character:ApplyDamage(damage, bone_name, damage_type, from_direction, instigator)
+my_character:ApplyDamage(damage, bone_name, damage_type, from_direction, instigator, causer)
 ```
 
 | Type | Parameter | Default Value | Description |
@@ -242,6 +243,7 @@ my_character:ApplyDamage(damage, bone_name, damage_type, from_direction, instiga
 | <Enums>DamageType</Enums> | **`damage_type`** | `DamageType.Shot` |  |
 | <Structs.Vector /> | **`from_direction`** | `Vector()` |  |
 | <Classes.Player /> | **`instigator`** | `nil` |  |
+| <BasicType.Any /> | **`causer`** | `nil` | The object which caused the damage |
 
 
 ###  <AuthorityType.Both />`AddSkeletalMeshAttached`
@@ -415,6 +417,17 @@ my_character:Follow(actor, acceptance_radius, stop_on_succeed, stop_on_fail, upd
 | <BasicType.Boolean /> | **`stop_on_succeed`** | `false` | Whether to stop when reaching the target |
 | <BasicType.Boolean /> | **`stop_on_fail`** | `false` | Whether to stop when failed to reach the target |
 | <BasicType.Number /> | **`update_rate`** | `0.25` | How often to recalculate the AI path |
+
+
+### <AuthorityType.ServerOnly />`StopMovement`
+
+> AI: Stops the movement
+>
+> Triggers event [MoveCompleted](character#movecompleted).
+
+```lua
+my_character:StopMovement()
+```
 
 
 ### <AuthorityType.ServerOnly />`PickUp`
@@ -934,6 +947,8 @@ my_character:SetTeam(team)
 
 ### <AuthorityType.ServerOnly />`SetViewMode`
 
+> Changes the Predefined View Mode
+> 
 > **View Modes**: _FPS, TPS1, TPS2, TPS3_
 
 ```lua

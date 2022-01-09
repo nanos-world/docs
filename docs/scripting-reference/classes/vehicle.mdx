@@ -113,6 +113,8 @@ Most of the functions below will reset the vehicle Physics State \(automatically
 | <AuthorityType.Both /> | <BasicType.String /> | [**`GetAssetName`**](vehicle#getassetname) | Gets the Asset name |
 | <AuthorityType.Both /> | <Classes.Character /> | [**`GetPassenger`**](vehicle#GetPassenger) | Gets a passengers at an index |
 | <AuthorityType.Both /> | <BasicType.Table /> | [**`GetPassengers`**](vehicle#getpassengers) | Gets all passengers |
+| <AuthorityType.ClientOnly /> | <BasicType.Number /> | [**`GetRPM`**](vehicle#getrpm) | Gets the current RPM |
+| <AuthorityType.ClientOnly /> | <BasicType.Number /> | [**`GetGear`**](vehicle#getgear) | Gets the current Gear |
 
 ## Events
 
@@ -352,6 +354,7 @@ my_vehicle:GetPassenger(seat)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`seat`** |  |  |
 
+
 ### `GetPassengers`
 
 > Gets all passengers
@@ -360,6 +363,28 @@ my_vehicle:GetPassenger(seat)
 
 ```lua
 my_vehicle:GetPassengers()
+```
+
+
+### <AuthorityType.ClientOnly />`GetRPM`
+
+> Gets the current RPM
+>
+> Returns <BasicType.Number />
+
+```lua
+my_vehicle:GetRPM()
+```
+
+
+### <AuthorityType.ClientOnly />`GetGear`
+
+> Gets the current Gear
+>
+> Returns <BasicType.Number />
+
+```lua
+my_vehicle:GetGear()
 ```
 
 
