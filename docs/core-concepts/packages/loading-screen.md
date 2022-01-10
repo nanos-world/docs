@@ -63,8 +63,9 @@ Also, it is possible to fetch Player’s information by accessing a global varia
 ```javascript
 var LoadingScreen = {
   server_ip,
+  server_name,
+  server_description,
   server_port,
-  server_query_port,
   player_nanos_id,
   player_nanos_username
 };

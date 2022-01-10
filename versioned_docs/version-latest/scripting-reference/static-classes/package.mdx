@@ -9,25 +9,28 @@ Class which represents the Current Package
 
 import { Structs, BasicType, AuthorityType } from '@site/docs/components/_nanos.mdx';
 
-:::tip
+:::info
 
-This is a Static Class named `Package`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+🟦🟧 **Authority:** This can be accessed on both [Client](./core-concepts/scripting/authority-concepts.mdx) and [Server](./core-concepts/scripting/authority-concepts.mdx).
+
+🗿 **Static Class:** This is a Static Class. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 
 :::
+
 
 ## Static Functions
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
-| <BasicType.Any /> | [**`Call`**](package#call) | Calls an exported function from an other Package |
-|  | [**`Error`**](package#error) | Logs and formats an error message in the console in _Red_ |
-|  | [**`Export`**](package#export) | ‘Exports’ a function to be called from any other Package |
 |  | [**`Log`**](package#log) | Logs and formats a message in the console |
+|  | [**`Warn`**](package#Warn) | Logs and formats a warning message in the console in _Orange_ |
+|  | [**`Error`**](package#error) | Logs and formats an error message in the console in _Red_ |
+| <BasicType.Any /> | [**`Call`**](package#call) | Calls an exported function from an other Package |
+|  | [**`Export`**](package#export) | ‘Exports’ a function to be called from any other Package |
 |  | [**`Require`**](package#require) | Includes new .lua files |
 |  | [**`RequirePackage`**](package#requirepackage) | Includes other Package in this Package |
-|  | [**`Subscribe`**](package#subscribe) | Subscribes for an Event |
+| <BasicType.Function /> | [**`Subscribe`**](package#subscribe) | Subscribes for an Event |
 |  | [**`Unsubscribe`**](package#unsubscribe) | Unsubscribes from all subscribed Events in this Class and in this Package |
-|  | [**`Warn`**](package#Warn) | Logs and formats a warning message in the console in _Orange_ |
 |  | [**`SetPersistentData`**](package#setpersistentdata) | Sets a Persistent Value which will be saved to Disk |
 | <BasicType.Table /> | [**`GetDirectories`**](package#getdirectories) | Gets a list of all directories in this package |
 | <BasicType.Table /> | [**`GetFiles`**](package#getfiles) | Gets a list of all files in this package |
@@ -102,6 +105,13 @@ Package.Log(message, ...)
 ### `Require`
 
 > Includes new .lua files
+> 
+> We currently support 5 searchers, which are looked in the following order:
+> 1. Relative to `current-file-path/`
+> 2. Relative to `current-package/Client/` or `current-package/Server/` *(depending on your side)*
+> 3. Relative to `current-package/Shared/`
+> 4. Relative to `current-package/`
+> 5. Relative to `Packages/`
 
 ```lua
 Package.Require(script_file)
@@ -126,6 +136,8 @@ Package.RequirePackage(package_name)
 ### `Subscribe`
 
 > Subscribes for an Event
+> 
+> Returns the <BasicType.Function /> callback itself
 
 ```lua
 Package.Subscribe(event_name, callback)

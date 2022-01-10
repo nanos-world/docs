@@ -47,10 +47,15 @@ To run the cli, start the server with `--cli` argument:
 
 | Commands | Description |
 | :--- | :--- |
-| `install package [PACKAGE_NAME]` | Install a Package |
-| `update package [PACKAGE_NAME]` | Update a Package |
-| `install assets [ASSET_NAME]` | Install an Asset Pack |
-| `update assets [ASSET_NAME]` | Update an Asset Pack |
+| `install package [PACKAGE_NAMES...]` | Install Packages |
+| `update package [PACKAGE_NAMES...]` | Update Packages |
+| `install assets [ASSET_NAMES...]` | Install Asset Packs |
+| `update assets [ASSET_NAMES...]` | Update Asset Packs |
+| `add package [PACKAGE_PATH]` | Creates a new Package in a interactive way |
+| `add assets [ASSET_PATH]` | Creates a new Asset Pack in a interactive way |
+| `check` | Check for Updates |
+| `help` | Display all Commands |
+| `stop` | Stops the CLI |
 
 ## One-Liner CLI
 
@@ -59,6 +64,7 @@ To run the cli, start the server with `--cli` argument:
 It is also possible to run the CLI in a non-interactive mode, just run the command together after the `--cli`.
 
 :::
+
 
 <Tabs
   defaultValue="cmd"
@@ -81,3 +87,14 @@ It is also possible to run the CLI in a non-interactive mode, just run the comma
 
   </TabItem>
 </Tabs>
+
+
+:::tip
+
+You can also install/update several Packages/Assets in a single command, separating them by spaces:
+
+```shell
+install package sandbox battlefield-kill-ui
+```
+
+:::

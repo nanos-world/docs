@@ -9,11 +9,14 @@ Subscribe for user-defined Events
 
 import { Structs, BasicType, AuthorityType, Classes, ReferenceLink } from '@site/docs/components/_nanos.mdx';
 
-:::tip
+:::info
 
-This is a Static Class named `Events`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+🟦🟧 **Authority:** This can be accessed on both [Client](./core-concepts/scripting/authority-concepts.mdx) and [Server](./core-concepts/scripting/authority-concepts.mdx).
+
+🗿 **Static Class:** This is a Static Class. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 
 :::
+
 
 <ReferenceLink href="core-concepts/scripting/events-guide">Events Guide</ReferenceLink>
 
@@ -22,10 +25,10 @@ This is a Static Class named `Events`. You can access it’s methods directly wi
 | Returns | Name | Description |
 | :--- | :--- | :--- |
 |  | [**`Call`**](events#call) | Calls an Event which will be triggered in all Local Packages |
-| <AuthorityType.ClientOnly /> | [**`CallRemote`**](events#callremote) | Calls an Event on Client which will be triggered in all Server Packages |
-| <AuthorityType.ServerOnly /> | [**`CallRemote`**](events#callremote) | Calls an Event on Server which will be triggered in all Client's Packages of `Player` |
+| <AuthorityType.ClientOnly /> | [**`CallRemote`**](events#callremote) | Calls an Event if on Client which will be triggered in all Server Packages |
+| <AuthorityType.ServerOnly /> | [**`CallRemote`**](events#callremote) | Calls an Event if on Server which will be triggered in all Client's Packages of a specific Player |
 | <AuthorityType.ServerOnly /> | [**`BroadcastRemote`**](events#broadcastremote) | Calls an Event on Server which will be triggered in all Client's Packages |
-|  | [**`Subscribe`**](events#subscribe) | Subscribes for an user-created event which will be triggered for both local or _remote\*_ called events |
+| <BasicType.Function /> | [**`Subscribe`**](events#subscribe) | Subscribes for an user-created event which will be triggered for both local or _remote\*_ called events |
 |  | [**`Unsubscribe`**](events#unsubscribe) | Unsubscribes from all subscribed events in this Package with that event name, optionally passing the function to unsubscribe only that callback |
 
 :::info
@@ -47,7 +50,7 @@ Events.Call(event_name, args...)
 | <BasicType.String /> | **`event_name`** | The Event Name to trigger the event |
 | <BasicType.Any /> | **`args...`** | Arguments to pass to the event |
 
-#### <AuthorityType.ClientOnly /> `CallRemote`
+#### <AuthorityType.ClientOnly />`CallRemote`
 
 > Calls an Event on Client which will be triggered in all Server Packages
 
@@ -71,7 +74,7 @@ Events.CallRemote(event_name, player, args...)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`event_name`** | The Event Name to trigger the event |
-| Player | **`player`** | The remote player to send this event |
+| <Classes.Player /> | **`player`** | The remote player to send this event |
 | <BasicType.Any /> | **`args...`** | Arguments to pass to the event |
 
 #### <AuthorityType.ServerOnly />`BroadcastRemote`
@@ -85,12 +88,14 @@ Events.BroadcastRemote(event_name, args...)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`event_name`** | The Event Name to trigger the event |
-| Player | **`player`** | The remote player to send this event |
+| <Classes.Player /> | **`player`** | The remote player to send this event |
 | <BasicType.Any /> | **`args...`** | Arguments to pass to the event |
 
 #### `Subscribe`
 
 > Subscribes for an user-created event which will be triggered for both local or remote called events
+> 
+> Returns the <BasicType.Function /> callback itself
 
 ```lua
 Events.Subscribe(event_name, function()

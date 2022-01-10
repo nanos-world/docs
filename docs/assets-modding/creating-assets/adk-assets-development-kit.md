@@ -10,9 +10,9 @@ nanos world Assets Development Kit - ADK
 
 nanos world provides a fully configurable and ready **Unreal Project** called Assets Development Kit \(ADK\) to help you integrating and exporting Assets and Maps much faster. This project contains **Placeholders**, **Tools** and **Correct References** that must be used in order to create **Characters** and make proper **Physical Materials**, for example.
 
-:::caution
+:::caution Note
 
-**Note:** To be able to use the **ADK**, you will need to have [Unreal Engine](#installing-unreal-engine-4) installed.
+To be able to use the **ADK**, you will need to have [Unreal Engine](#installing-unreal-engine-4) installed.
 
 :::
 
@@ -26,13 +26,13 @@ You will find a file `NanosWorldADK.uproject` in there, just open it with Unreal
 
 You will notice we two folders in the root directory: `NanosWorld/` and `MyAssetPack/`.
 
-:::info
+:::info Tip
 
-**Tip:** You can rename `MyAssetPack` to anything you want to be your Asset Pack. Or you can delete it, but note that deleting this folder through Unreal may not work. If you want to delete it, please do it through Windows Explorer.
+You can rename `MyAssetPack` to anything you want to be your Asset Pack. Or you can delete it, but note that deleting this folder through Unreal may not work. If you want to delete it, please do it through Windows Explorer.
 
 :::
 
-:::danger
+:::caution
 
 Please do not **MODIFY**, **DELETE**, **CREATE** or **COPY** any file inside `NanosWorld/` folder, otherwise the ADK will not work properly. Also make sure you DO NOT modify them unintentionally! If asked to save any modified file in there, cancel it! All references must use `NanosWorld/` where they are.
 
@@ -95,7 +95,7 @@ Example: Light Intensity, Color, Post Process and other configuration will be lo
 
 If you are creating a **Material**, you can \(and should\) use these **Physical Materials** do integrate better with nanos world. Using these Physical Materials will allow nanos world recognize which type of surface your Prop/Object is, giving it the proper auto-generated Hit or Footstep sound.
 
-:::danger
+:::caution
 
 DO NOT **modify** or **rename** any Physical Materials, only use by referencing them in your Materials.
 

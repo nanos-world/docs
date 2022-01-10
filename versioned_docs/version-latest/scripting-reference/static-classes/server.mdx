@@ -11,11 +11,11 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 
 ![](/img/docs/server.jpg)
 
-:::tip
+:::info
 
-This is a Static Class named `Server`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+🟦 **Authority:** This can be accessed only on [Server](./core-concepts/scripting/authority-concepts.mdx).
 
-This is a **Server** only Class.
+🗿 **Static Class:** This is a Static Class. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 
 :::
 
@@ -40,14 +40,6 @@ end)
 
 -- sends a chat message to everyone
 Server.BroadcastChatMessage("Welcome to the server!")
-
--- makes a HTTP Request
-Server.HTTPRequest("localhost:7777", "/fetch", "GET", "", {}, function(status, data)
-    Package.Log(status) -- 200
-    Package.Log(data)
-    local json_ret = JSON.parse(data)
-    -- ...
-end)
 ```
 
 
@@ -57,7 +49,6 @@ end)
 | :--- | :--- | :--- |
 |  | [**`BroadcastChatMessage`**](server#broadcastchatmessage) | Sends a chat message to everyone |
 |  | [**`ChangeMap`**](server#changemap) | Restarts the server in a new Map, restarts all packages and reconnects all players |
-|  | [**`HTTPRequest`**](server#httprequest) | Makes a HTTP Request, the result will be returned in the provided Callback function in the format \(Status, Response\) |
 |  | [**`ReloadPackage`**](server#reloadpackage) | Reloads a Package |
 |  | [**`SendChatMessage`**](server#sendchatmessage) | Sends a chat message to Player only |
 |  | [**`SetDescription`**](server#setdescription) | Sets the description of the server, optionally overrides Config.toml |
@@ -66,21 +57,28 @@ end)
 |  | [**`SetName`**](server#setname) | Sets the name of the server, optionally overrides Config.toml |
 |  | [**`SetPassword`**](server#setpassword) | Sets the password of the server, optionally overrides Config.toml |
 |  | [**`SetValue`**](server#setvalue) | Sets a global value in the Server, which can be accessed from anywhere \(server side\) |
+|  | [**`GetValue`**](server#getvalue) | Gets a value given a key |
 |  | [**`Stop`**](server#stop) | Stops the server |
-|  | [**`Subscribe`**](server#subscribe) | Subscribes for an Event |
+| <BasicType.Function /> | [**`Subscribe`**](server#subscribe) | Subscribes for an Event |
 |  | [**`UnloadPackage`**](server#unloadpackage) | Unloads a Package |
 |  | [**`Unsubscribe`**](server#unsubscribe) | Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback |
-| <BasicType.String /> | Returns the current Map |
+| <BasicType.String /> | [**`GetMap`**](server#getmap) | Returns the current Map |
 | <BasicType.Table /> | [**`GetMapConfig`**](server#getmapconfig) | Returns a list of the Custom Config of the current map \(stored in the MAP\_NAME.toml\) |
 | <BasicType.Table /> | [**`GetPackages`**](server#getpackage) | Returns a list of Packages folder names available in the server, optionally returns only loaded and running packages |
-|  | [**`GetValue`**](server#getvalue) | Gets a value given a key |
+| <BasicType.String /> | [**`GetVersion`**](server#getversion) | Returns the server version |
+| <BasicType.String /> | [**`GetIP`**](server#getip) | Returns the server Public IP |
+| <BasicType.Number /> | [**`GetPort`**](server#getport) | Returns the server Port |
+| <BasicType.Number /> | [**`GetQueryPort`**](server#getqueryport) | Returns the server QueryPort |
+| <BasicType.Number /> | [**`GetMaxPlayers`**](server#getmaxplayers) | Returns the Max Players configured |
+| <BasicType.Number /> | [**`GetDescription`**](server#getdescription) | Returns the Server Description |
+| <BasicType.Number /> | [**`IsAnnounced`**](server#isannounced) | Returns if the Server is announced in the Master List |
+
 
 ## Events
 
 | **Name** | **Description** |
 | :--- | :--- |
 | [**`Chat`**](server#chat) | Called when a player types something in the chat - return false to do not send the message |
-| [**`ChatEntry`**](server#chatentry) | Called when a Chat Entry is received, this is also triggered when `SendChatMessage` is called |
 | [**`Console`**](server#console) | Called when a console command is submitted |
 | [**`LogEntry`**](server#logentry) | Called when a Server log is received |
 | [**`Start`**](server#start) | Server has been started. |
@@ -114,22 +112,6 @@ Server.ChangeMap(map_path)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`map_path`** |  |  |
 
-### `HTTPRequest`
-
-> Makes a HTTP Request, the result will be returned in the provided Callback function in the format \(Status, Response\)
-
-```lua
-Server.HTTPRequest(uri, endpoint, method, data, headers, callback)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`uri`** |  |  |
-| <BasicType.String /> | **`endpoint`** | \`\` |  |
-| <BasicType.String /> | **`method`** | `GET` |  |
-| <BasicType.String /> | **`data`** | \`\` |  |
-| <BasicType.Table /> | **`headers`** | `{}` |  |
-| <BasicType.Function /> | **`callback`** | `nil` |  |
 
 ### `ReloadPackage`
 
@@ -221,6 +203,7 @@ Server.SetPassword(password, persist_to_config_file)
 | <BasicType.String /> | **`password`** |  |  |
 | <BasicType.Boolean /> | **`persist_to_config_file`** | `false` |  |
 
+
 ### `SetValue`
 
 > Sets a global value in the Server, which can be accessed from anywhere \(server side\)
@@ -231,10 +214,27 @@ Server.SetPassword(password, persist_to_config_file)
 Server.SetValue(key, value)
 ```
 
-| Type | Parameter | Description |  |
+| Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** |  | Key |
 | <BasicType.Any /> | **`value`** |  | Value |
+
+
+### `GetValue`
+
+> Gets a value given a key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
+>
+> Returns <BasicType.Any />
+
+```lua
+Server.GetValue(key, fallback)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`key`** |  | Key |
+| <BasicType.Any /> | **`fallback`** |  | Fallback Value if key doesn't exist |
+
 
 ### `Stop`
 
@@ -247,6 +247,8 @@ Server.Stop()
 ### `Subscribe`
 
 > Subscribes for an Event
+> 
+> Returns the <BasicType.Function /> callback itself
 
 ```lua
 Server.Subscribe(event_name, callback)
@@ -316,19 +318,82 @@ Server.GetPackages(only_loaded)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`only_loaded`** | `true` |  |
 
-### `GetValue`
 
-> Gets a value given a key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
+### `GetVersion`
+
+> Gets the server Version
 >
-> Returns <BasicType.Any />
+> Returns <BasicType.String />
 
 ```lua
-Server.GetValue(key)
+Server.GetVersion()
 ```
 
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`key`** |  |
+
+### `GetIP`
+
+> Gets the server IP
+> 
+> Returns <BasicType.String />
+
+```lua
+Server.GetIP()
+```
+
+
+### `GetPort`
+
+> Gets the server Port
+> 
+> Returns <BasicType.Number />
+
+```lua
+Server.GetPort()
+```
+
+
+### `GetQueryPort`
+
+> Gets the server QueryPort
+> 
+> Returns <BasicType.Number />
+
+```lua
+Server.GetQueryPort()
+```
+
+### `GetMaxPlayers`
+
+> Gets the server Max Players allowed
+> 
+> Returns <BasicType.Number />
+
+```lua
+Server.GetMaxPlayers()
+```
+
+
+### `GetDescription`
+
+> Gets the server Description
+> 
+> Returns <BasicType.String />
+
+```lua
+Server.GetDescription()
+```
+
+
+### `IsAnnounced`
+
+> Gets if the server is announced in the Master List
+> 
+> Returns <BasicType.Boolean />
+
+```lua
+Server.IsAnnounced()
+```
+
 
 ## Events Detailed
 
@@ -343,21 +408,6 @@ Server.GetValue(key)
 
 ```lua
 Server.Subscribe("Chat", function(text, sender)
-
-end)
-```
-
-### `ChatEntry`
-
-> Called when a Chat Entry is received, this is also triggered when `SendChatMessage` is called
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`text`** |  |
-| <Classes.Player /> | **`sender`** |  |
-
-```lua
-Server.Subscribe("ChatEntry", function(text, sender)
 
 end)
 ```
@@ -410,9 +460,10 @@ end)
 | <BasicType.String /> | **`IP`** |  |
 | <BasicType.String /> | **`player_account_ID`** |  |
 | <BasicType.String /> | **`player_name`** |  |
+| <BasicType.String /> | **`player_steam_ID`** |  |
 
 ```lua
-Server.Subscribe("PlayerConnect", function(IP, player_account_ID, player_name)
+Server.Subscribe("PlayerConnect", function(IP, player_account_ID, player_name, player_steam_ID)
 
 end)
 ```

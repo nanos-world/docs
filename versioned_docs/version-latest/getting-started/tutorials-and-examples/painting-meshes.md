@@ -31,7 +31,7 @@ To illustrate, let’s spawn a Cube and change it’s Material using Lua:
 local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "nanos-world::SM_Cube")
 
 -- replaces it's materials with the nanos default Masked one
-my_cube:SetDefaultMaterial(MaterialType.Masked)
+my_cube:SetMaterial("nanos-world::M_NanosMasked")
 ```
 
 Blank Cube with Default Masked Material
@@ -47,7 +47,7 @@ Now let’s set it’s material to red! To be able to do that, we must set the C
 -- spawns a static mesh cube
 local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "nanos-world::SM_Cube")
 -- replaces it's materials with the nanos default Masked one
-my_cube:SetDefaultMaterial(MaterialType.Masked)
+my_cube:SetMaterial("nanos-world::M_NanosMasked")
 
 -- paints it red
 my_cube:SetMaterialColorParameter("Tint", Color(1, 0, 0))
@@ -66,7 +66,7 @@ Now let’s give it a metallic style! You can learn more about [Physically Based
 -- spawns a static mesh cube
 local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "nanos-world::SM_Cube")
 -- replaces it's materials with the nanos default one
-my_cube:SetDefaultMaterial(MaterialType.Masked)
+my_cube:SetMaterial("nanos-world::M_NanosMasked")
 
 -- paints it red
 my_cube:SetMaterialColorParameter("Tint", Color(1, 0, 0))
@@ -92,7 +92,7 @@ A fun thing to do is to make a material fully reflective, like a mirror:
 local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "nanos-world::SM_Cube")
 
 -- replaces it's materials with the nanos default one
-my_cube:SetDefaultMaterial(MaterialType.Masked)
+my_cube:SetMaterial("nanos-world::M_NanosMasked")
 
 -- makes it fully metallic and glossy
 my_cube:SetMaterialScalarParameter("Metallic", 1)
@@ -117,10 +117,10 @@ And now you can set it like that:
 local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "nanos-world::SM_Cube")
 
 -- replaces it's materials with the nanos default one
-my_cube:SetDefaultMaterial(MaterialType.Masked)
+my_cube:SetMaterial("nanos-world::M_NanosMasked")
 
 -- applies a custom texture to a parameter called "Texture"
-my_cube:SetMaterialTextureParameter("Texture", "package///MyAwesomePhotos/Client/syed.jpg")
+my_cube:SetMaterialTextureParameter("Texture", "package///testing/Client/syed.jpg")
 ```
 
 ![](/img/docs/tutorials/painting-meshes-07.jpg)

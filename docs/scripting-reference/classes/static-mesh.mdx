@@ -10,23 +10,20 @@ tags: [class]
 
 A StaticMesh entity represents a Mesh which can be spawned in the world, can’t move and is more optimized for using in decorating the world.
 
-import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, Classes, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/static-mesh.jpg)
 
 Static Meshes are like <Classes.Prop />s, but with fewer interaction options. Static Meshes are aimed to offer better performance on spawning Static "objects" in the world than Props.
 
-:::tip
-
-You can spawn this entity is both **Client** or **Server** \(if you spawn it on client, it won’t be synchronized with other players\).
-
-:::
-
 :::info
 
-⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />. Please check their pages for inherited **Methods** and **Events**.
+🟦🟧 **Authority:** This class can be spawned on both [Client](./core-concepts/scripting/authority-concepts.mdx) and [Server](./core-concepts/scripting/authority-concepts.mdx) (if you spawn it on client, it won't be synchronized with other players).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />.
 
 :::
+
 
 ## Usage
 
@@ -44,7 +41,7 @@ local static_mesh = StaticMesh(
 | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <BasicType.String /> | **`asset`** | ` ` |
+| <AssetPath.StaticMesh /> | **`asset`** | ` ` |
 | <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
 
 ## Functions
@@ -55,9 +52,9 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 <details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
 <details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
 
-| **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`GetMesh`** | Gets the Asset name |
+|  | **Returns** | **Name** | **Description** |
+| :--- | :--- | :--- | :--- |
+| <AuthorityType.Both /> | <BasicType.String /> | **`GetMesh`** | Gets the Asset name |
 
 ## Events
 
@@ -78,9 +75,9 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 | :--- | :--- | :--- |
 | [StaticMesh](static-mesh) | **`self`** |  |
 | <BasicType.Number /> | **`damage`** |  |
-| <BasicType.String /> | **`bone`** |  |
-| <Enums>DamageType</Enums> | **`type`** |  |
-| <Structs.Vector /> | **`from_direction`** |  |
+| <BasicType.String /> | **`bone`** | Damaged bone |
+| <Enums>DamageType</Enums> | **`type`** | Damage Type |
+| <Structs.Vector /> | **`from_direction`** | Direction of the damage relative to the damaged actor |
 | <Classes.Player /> | **`instigator`** | The player which caused the damage |
 | <BasicType.Any /> | **`causer`** | The object which caused the damage |
 

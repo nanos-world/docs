@@ -9,11 +9,14 @@ Retrieve Assets from Asset Packs
 
 import { Structs, BasicType, AuthorityType } from '@site/docs/components/_nanos.mdx';
 
-:::tip
+:::info
 
-This is a Static Class named `Assets`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+🟦🟧 **Authority:** This can be accessed on both [Client](./core-concepts/scripting/authority-concepts.mdx) and [Server](./core-concepts/scripting/authority-concepts.mdx).
+
+🗿 **Static Class:** This is a Static Class. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 
 :::
+
 
 ## Static Functions
 
@@ -22,6 +25,7 @@ This is a Static Class named `Assets`. You can access it’s methods directly wi
 | <BasicType.Table /> | [**`GetAssetPacks`**](assets#getassetpacks) | Returns an array of tables containing information about all loaded Asset Packs |
 | <BasicType.Table /> | [**`GetAnimations`**](assets#getanimations) | Returns an array of strings containing all Animation Assets Keys from an AssetPack |
 | <BasicType.Table /> | [**`GetMaps`**](assets#getmaps) | Returns an array of strings containing all Map Asset Keys from an AssetPack |
+| <BasicType.Table /> | [**`GetMaterials`**](assets#getmaterials) | Returns an array of strings containing all Materials Asset Keys from an AssetPack |
 | <BasicType.Table /> | [**`GetParticles`**](assets#getparticles) | Returns an array of strings containing all Particle Assets Keys from an AssetPack |
 | <BasicType.Table /> | [**`GetSounds`**](assets#GetSounds) | Returns an array of strings containing all Sound Assets Keys from an AssetPack |
 | <BasicType.Table /> | [**`GetSkeletalMeshes`**](assets#GetSkeletalMeshes) | Returns an array of strings containing all Skeletal Mesh Asset Keys from an AssetPack |
@@ -56,6 +60,18 @@ Assets.GetAnimations(asset_pack_path)
 
 ```lua
 Assets.GetMaps(asset_pack_path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`asset_pack_path`** | The Asset Pack path to get the assets |
+
+### `GetMaterials`
+
+> Returns an array of strings containing all Material Assets Keys from an AssetPack
+
+```lua
+Assets.GetMaterials(asset_pack_path)
 ```
 
 | Type | Parameter | Description |

@@ -14,6 +14,15 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 
 ![](/img/docs/trigger.jpg)
 
+:::info
+
+🟦 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts.mdx).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor />.
+
+:::
+
+
 ## Usage
 
 ```lua
@@ -53,8 +62,17 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 
 |  | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- | :--- |
-| <AuthorityType.ServerOnly /> |  | **`SetExtent`** | Sets the extent size of this trigger |
-| <AuthorityType.ServerOnly /> |  | **`SetVisibility`** | Sets if this Trigger is visible as a Sphere |
+| <AuthorityType.ServerOnly /> |  | [**`ForceOverlapChecking`**](trigger#forceoverlapchecking) | Forces a Overlap check to occur |
+| <AuthorityType.ServerOnly /> |  | [**`SetExtent`**](trigger#setextent) | Sets the extent size of this trigger |
+| <AuthorityType.ServerOnly /> |  | [**`SetVisibility`**](trigger#setvisibility) | Sets if this Trigger is visible as a Sphere |
+
+### <AuthorityType.ServerOnly />`ForceOverlapChecking`
+
+> Forces a Overlap checking to occur, will immediately trigger overlaps
+
+```lua
+my_trigger:ForceOverlapChecking()
+```
 
 ### <AuthorityType.ServerOnly />`SetExtent`
 

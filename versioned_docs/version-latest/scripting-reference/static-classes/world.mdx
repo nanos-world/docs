@@ -11,13 +11,14 @@ import { Structs, BasicType, AuthorityType, ReferenceLink, Enums } from '@site/d
 
 ![](/img/docs/world.jpg)
 
-:::tip
+:::info
 
-This is a Static Class named `World`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+🟧 **Authority:** This can be accessed only on [Client](./core-concepts/scripting/authority-concepts.mdx).
 
-This is a **Client** only Class.
+🗿 **Static Class:** This is a Static Class. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 
 :::
+
 
 :::info
 
@@ -45,6 +46,8 @@ Please check [Interacting with Sun](./core-concepts/scripting/interacting-with-t
 |  | [**`SetPPImageEffects`**](world#setppimageeffects) | Set Post Process Image Effect Settings |
 |  | [**`SetPPFilm`**](world#setppfilm) | Set Post Process Film Settings |
 |  | [**`SetPPGlobalSaturation`**](world#setppglobalsaturation) | Set Post Process Saturation Colors |
+|  | [**`SetPPMaterial`**](world#setppmaterial) | Sets a PostProcess Material |
+|  | [**`RemovePPMaterial`**](world#setppmaterial) | Removes the PostProcess Material |
 |  | [**`SetSunAngle`**](world#setsunangle) | Sets the Sun's angle |
 |  | [**`SetSunSpeed`**](world#setsunspeed) | Sets the Sun's time speed |
 |  | [**`SetTime`**](world#settime) | Sets the global time of the day |
@@ -117,7 +120,7 @@ World.SetSunLightColor(color)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| Color | **`color`** |  |  |
+| <Structs.Color /> | **`color`** |  |  |
 
 ### `SetSkyLightIntensity`
 
@@ -141,7 +144,7 @@ World.SetSkyRayleighScattering(color)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| Color | **`color`** |  |  |
+| <Structs.Color /> | **`color`** |  |  |
 
 ### `SetSunLightIntensity`
 
@@ -233,7 +236,27 @@ World.SetPPGlobalSaturation(color)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| Color | **`color`** |  |  |
+| <Structs.Color /> | **`color`** |  |  |
+
+### `SetPPMaterial`
+
+> Sets a PostProcess Material
+
+```lua
+World.SetPPMaterial(material_path)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`material_path`** |  | The Material Asset to set as Post Process |
+
+### `RemovePPMaterial`
+
+> Removes the current Post Process Material
+
+```lua
+World.RemovePPMaterial()
+```
 
 ### `SetSunAngle`
 

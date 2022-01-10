@@ -27,6 +27,19 @@ The default installation of nanos world already contains the server executable, 
 
 nanos world servers are downloaded through SteamCMD, a command line version of Steam. Please [download it](https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_SteamCMD) before proceeding.
 
+:::tip
+
+If you are on Linux Ubuntu/Debian machine, you can easily install it like that:
+
+```shell
+sudo add-apt-repository multiverse
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install lib32gcc1 steamcmd 
+```
+
+:::
+
 ### 1. Run SteamCMD
 
 After downloaded, run `steamcmd` executable, it will update and you will enter it's console:
@@ -70,6 +83,10 @@ And you are done! You can quit the console:
 ```bash
 Steam> quit
 ```
+
+## Running on Linux
+
+On Linux, you must start the server using the Shell Script `./NanosWorldServer.sh`, which will configure proper paths and needed dynamic libraries which need to be loaded!
 
 ## Automated Installation
 

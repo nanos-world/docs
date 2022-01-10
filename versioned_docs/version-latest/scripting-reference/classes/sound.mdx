@@ -8,19 +8,21 @@ tags: [class]
 
 Class for playing in-game 2D and 3D sounds
 
-import { Structs, BasicType, AuthorityType, Enums } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, Enums, AssetPath, Classes } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/sound.png)
 
-:::tip
+:::info
 
-This is a **Client** only Class.
+🟧 **Authority:** This class can only be spawned on [Client](./core-concepts/scripting/authority-concepts.mdx).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor />.
 
 :::
 
-:::info
+:::tip
 
-It is not possible \(yet?\) to load custom sound files \(.mp3, .wav…\), the sounds must be pre-cooked in Unreal before used.
+You can also load raw `.ogg` files from disk! Please check [SpecialPath](./scripting-reference/glossary/basic-types.md#specialpath).
 
 :::
 
@@ -43,7 +45,7 @@ local my_sound = Sound(
 | **Type** | **Name** | **Default** | Description |
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` | 3D only |
-| <BasicType.String /> | **`asset`** |  |  |
+| <AssetPath.Sound /> | **`asset`** | ` ` | The Sound Asset or Special Path |
 | <BasicType.Boolean /> | **`is_2D_sound`** | `false` |  |
 | <BasicType.Boolean /> | **`auto_destroy`** | `true` | If to destroy after finished playing |
 | <Enums>SoundType</Enums> | **`sound_type`** | `SoundType.SFX` | Used to apply user’s volume settings |
@@ -53,6 +55,7 @@ local my_sound = Sound(
 | <BasicType.Number /> | **`falloff_distance`** | `3600` | 3D only |
 | <Enums>AttenuationFunction</Enums> | **`attenuation_function`** | `Linear` | 3D only |
 | <BasicType.Boolean /> | **`keep_playing_when_silent`** | `false` | 3D only - Whether to keep playing this sound when it’s not audible - Use with caution, it may cause performance issues! |
+| <Enums>SoundLoopMode</Enums> | **`loop_mode`** | `Default` | Loop Mode (if should force sound to loop) |
 
 ## Functions
 
@@ -74,6 +77,7 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 |  | [**`Stop`**](sound#stop) | Stops the sound |
 |  | [**`StopDelayed`**](sound#stopdelayed) | Stops the sound after the provided delay |
 | <BasicType.Boolean /> | [**`IsPlaying`**](sound#isplaying) | Returns if the sound is playing |
+| <BasicType.Number /> | [**`GetDuration`**](sound#getduration) | Returns the duration of sound |
 
 ## Events
 
@@ -89,24 +93,25 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 my_sound:FadeIn(fade_in_duration, fade_volume_level, start_time)
 ```
 
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Number /> | **`fade_in_duration`** |  |
-| <BasicType.Number /> | **`fade_volume_level`** |  |
-| <BasicType.Number /> | **`start_time`** |  |
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`fade_in_duration`** |  |  |
+| <BasicType.Number /> | **`fade_volume_level`** | `1` |  |
+| <BasicType.Number /> | **`start_time`** | `0` |  |
 
 ### `FadeOut`
 
 > Stops the sound with a fade effect
 
 ```lua
-my_sound:FadeOut(fade_out_duration, fade_volume_level)
+my_sound:FadeOut(fade_out_duration, fade_volume_level, destroy_after_fadeout)
 ```
 
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Number /> | **`fade_out_duration`** |  |
-| <BasicType.Number /> | **`fade_volume_level`** |  |
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`fade_out_duration`** |  |  |
+| <BasicType.Number /> | **`fade_volume_level`** | `0` |  |
+| <BasicType.Boolean /> | **`destroy_after_fadeout`** | `false` |  |
 
 ### `Play`
 
@@ -220,6 +225,16 @@ my_sound:StopDelayed(delay)
 
 ```lua
 my_sound:IsPlaying()
+```
+
+### `GetDuration`
+
+> Gets the duration of the Sound.
+>
+> Returns <BasicType.Number />
+
+```lua
+my_sound:GetDuration()
 ```
 
 ## Sound Attenuation

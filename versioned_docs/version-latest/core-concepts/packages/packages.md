@@ -23,18 +23,18 @@ Each **Package** must have a file called `Index.lua` inside **Server**, **Client
 ```text title="Server Folder"
 NanosWorldServer.exe
 Packages/
-|   My_Package_01/
-|   |   Server/
-|   |   |   Index.lua
-|   |   |   *.lua
-|   |   Client/
-|   |   |   *.lua
-|   |   Shared/
-|   |   |   *.lua
-|   |   Package.toml
-|   My_Package_02/
-|   |   Package.toml
-|   |   ...
+├── My_Package_01/
+│	├── Server/
+│	│   ├── Index.lua
+│	│   └── *.lua
+│	├── Client/
+│	│   └── *.lua
+│	├── Shared/
+│	│   └── *.lua
+│	└── Package.toml
+├── My_Package_02/
+│	├── Package.toml
+│	└── ...
 Assets/
 Config.toml
 ```

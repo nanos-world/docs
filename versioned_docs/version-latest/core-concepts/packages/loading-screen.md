@@ -17,11 +17,11 @@ For that, you will need to create a new Package of type [loading-screen](#packag
 
 ```text
 Packages/
-|   my-loading-screen/
-|   |   Package.toml
-|   |   index.html
-|   |   style.css
-|   |   ...
+└── my-loading-screen/
+    ├── Package.toml
+    ├── index.html
+    ├── style.css
+    └── ...
 ```
 
 ### Getting Load/Download Progress
@@ -63,8 +63,8 @@ Also, it is possible to fetch Player’s information by accessing a global varia
 ```javascript
 var LoadingScreen = {
   server_ip,
+  server_name,
   server_port,
-  server_http_port,
   player_nanos_id,
   player_nanos_username
 };

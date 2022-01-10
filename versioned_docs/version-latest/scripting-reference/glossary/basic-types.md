@@ -45,11 +45,12 @@ Iterator allows you to traverse elements of a table with `for k, v in ipairs()`.
 
 We use any here in the Docs to represent that any Type can be used.
 
+
 ## Special Types
 
 ### `SpecialPath`
 
-nanos world supports a special type of Path when loading **Textures** or referencing files from **WebUI**. It allows any Package or WebUI to access files from other Packages or Asset Packs easily.
+nanos world supports a special type of Path when loading **Textures**, **Sounds (.ogg)** or referencing files from **WebUI**. It allows any Package or WebUI to access files from other Packages or Asset Packs easily.
 
 **SpecialPath** is a string input which supports the following formats for accessing Assets or Packages files:
 
@@ -71,7 +72,6 @@ nanos world supports a special type of Path when loading **Textures** or referen
 
 :::tip
 
-**Note:** It also supports relative and common paths as well!
+SpecialPath input also supports relative and traditional paths!
 
 :::
-

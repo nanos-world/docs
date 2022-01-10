@@ -101,7 +101,7 @@ Although this still works, it is highly recommended to convert your **Asset Pack
 
 We don't have type `library` anymore, we now have `script`, `game-mode` and `loading-screen`. All your Packages has been replaced with `script` by default. If your Package is a full game, please set it `game-mode`.
 
-> Please refer to [Packages](./core-concepts/packages/packages.md) for more information.
+> Please refer to [Packages](./core-concepts/packages/packages-guide.md) for more information.
 
 ### 6. Timer has a new signature and methods
 

@@ -232,9 +232,10 @@ blockquote {
   margin-bottom: 1.5rem !important;
 }
 
+
 /* First items / Categories Sidebar */
-.menu > .menu__list > .menu__list-item > .menu__link:not([href]),
-.menu > .menu__list > li > a.menu__link--sublist {
+
+.menu__link:not([href]) {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
   color: #888;
@@ -242,10 +243,10 @@ blockquote {
   text-transform: uppercase;
   font-size: 90%;
 }
-/* 
-.menu > .menu__list > .menu__list {
-  padding-left: 15px;
-} */
+
+.menu__link {
+  user-select: none;
+}
 
 
 /* Zoom Image */
@@ -434,4 +435,8 @@ a.card-link:hover img {
 .steam-widget {
   margin: 1rem auto;
   width: 100%;
+}
+
+.hash-link, .authority-availability {
+  user-select: none;
 }

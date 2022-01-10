@@ -127,5 +127,12 @@ Hello from Package One!
 Hello from Package Two!
 ```
 
-This will copy all content from `PackageOne` into `PackageTwo`. I.e. the Index.lua from `PackageTwo` will be loaded where you called `Package.RequirePackage()`.
+This will load the file Index.lua from PackageOne into the VM of PackageOne where you called `Package.RequirePackage()`.
 
+Also the Required Package will be sent to the clients, then you can `RequirePackage` in the client side too.
+
+:::note
+
+To be able to `RequirePackage` in the Client, you must first `RequirePackage` it in the Server, so it can be loaded and sent to Clients.
+
+:::

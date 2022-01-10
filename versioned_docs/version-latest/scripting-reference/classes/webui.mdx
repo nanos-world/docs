@@ -10,21 +10,28 @@ tags: [scripting, ui]
 
 Class for spawning a web browser in the screen. The browser will fill up the whole screen and is automatically resized.
 
-import { Structs, BasicType, AuthorityType, ReferenceLink } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, ReferenceLink, AssetPath } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/webui.jpg)
 
-:::tip
-
-This HTML implementation is built upon same core as WebKit/Safari. And currently does not support HTML5 videos and audios.
-
-:::
-
 :::info
 
-This is a **Client** only Class.
+🟧 **Authority:** This class can only be spawned on [Client](./core-concepts/scripting/authority-concepts.mdx).
 
 :::
+
+:::tip
+
+This HTML implementation is built upon same core as WebKit/Safari using [Ultralight](https://ultralig.ht) library, a next-generation HTML Renderer.
+
+:::
+
+:::caution
+
+We are using a beta build of Ultralight, which now supports Audio and Video. Although it is still very unstable and some crashes may happen! Also the Audio currently plays only in 2D.
+
+:::
+
 
 <ReferenceLink href="core-concepts/scripting/user-interface">User Interface</ReferenceLink>
 <ReferenceLink href="getting-started/tutorials-and-examples/basic-hud-html">Basic HUD (HTML)</ReferenceLink>
@@ -52,12 +59,14 @@ my_ui = WebUI(
     "Awesome UI from Another Package", -- Name
     "file:///UI/index.html",           -- Path relative to this package (Client/)
     true,                              -- Is Visible
-    "my_ui_library_package"            -- Package where this HTML is located
+    true,
+    true,
+    0,
+    0
 )
 ```
 
-
-#### Communicating between Lua and JS \(WebUI\)
+#### Communicating between Lua and JS (WebUI)
 
 ```lua title="Client/Index.lua"
 my_ui = WebUI("Awesome UI", "file:///UI/index.html")
@@ -90,10 +99,24 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 
 | **Type** | **Name** | **Default** | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`name`** |  |  |
-| <BasicType.String /> | **`path`** |  | URL or `file:///relative/to/client/folder.html` |
-| <BasicType.Boolean /> | **`is_visible`** | `true` |  |
-| <BasicType.String /> | **`package_name`** | defaults to this package |  |
+| <BasicType.String /> | **`name`** | ` ` | *Currently not used* |
+| <BasicType.String /> | **`path`** | ` ` | URL or `file:///my_file.html` or <AssetPath.HTML /> |
+| <BasicType.Boolean /> | **`is_visible`** | `true` | if WebUI is visible by default |
+| <BasicType.Boolean /> | **`is_transparent`** | `true` | if WebUI background is transparent |
+| <BasicType.Boolean /> | **`auto_resize`** | `true` | if should auto resize when screen changes it's size (useful OFF when you are painting meshes with WebUI) |
+| <BasicType.Number /> | **`width`** | `0` | size of the WebUI when you are not using auto_resize |
+| <BasicType.Number /> | **`height`** | `0` | size of the WebUI when you are not using auto_resize |
+
+
+:::tip
+
+Loading a .html file supports the following searchers, which are looked in the following order:
+1. Relative to `current-file-path/`
+2. Relative to `current-package/Client/`
+3. Relative to `current-package/`
+4. Relative to `Packages/`
+
+:::
 
 ## Functions
 
@@ -103,13 +126,14 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 |  | [**`CallEvent`**](webui#callevent) | Calls an Event on the Browser’s JavaScript |
 |  | [**`Destroy`**](webui#destroy) | Destroys this Browser |
 |  | [**`LoadURL`**](webui#loadurl) | Loads a new File/URL in this Browser |
-|  | [**`SetFocus`**](webui#setfocus) | Enables the focus on this browser |
+|  | [**`SetFocus`**](webui#setfocus) | Forces Focus on this Browser |
+|  | [**`SetFreeze`**](webui#setfreeze) | Freezes the WebUI Rendering to the surface |
 |  | [**`SetVisible`**](webui#setvisible) | Toggles the visibility |
 | <BasicType.Boolean /> | [**`IsValid`**](webui#isvalid) | Returns if this entity is Valid |
 | <BasicType.Number /> | [**`GetID`**](webui#getid) | Gets the network ID of this entity |
 | <BasicType.String /> | [**`GetType`**](webui#gettype) | Returns the type of this Entity |
 | <BasicType.Boolean /> | [**`IsVisible`**](webui#isvisible) | Returns if this WebUI is currently visible |
-|  | [**`Subscribe`**](webui#subscribe) | Subscribes for an Event |
+| <BasicType.Function /> | [**`Subscribe`**](webui#subscribe) | Subscribes for an Event |
 |  | [**`Unsubscribe`**](webui#unsubscribe) | Unsubscribes from all subscribed Events in this Entity and in this Package |
 
 ### `BringToFront`
@@ -157,10 +181,20 @@ my_webui:LoadURL(url)
 
 ### `SetFocus`
 
-> Enables the focus on this browser \(i.e. can receives keyboard and mouse input\). Note: only one browser can have focus per time. When you click at the screen/WebUI the focus is got automatically as well
+> Enables the focus on this browser (i.e. can receive Keyboard input). You must call it when you want to enable Keyboard Input on WebUIs (after disabling Client's Input)
+> 
+> Note: Only one browser can have focus per time.
 
 ```lua
 my_webui:SetFocus()
+```
+
+### `SetFreeze`
+
+> Freezes the WebUI Rendering to the surface (it will still execute the JS under the hood)
+
+```lua
+my_webui:SetFreeze()
 ```
 
 ### `SetVisible`
@@ -218,6 +252,8 @@ my_webui:IsVisible()
 ### `Subscribe`
 
 > Subscribes for an Event
+> 
+> Returns the <BasicType.Function /> callback itself
 
 ```lua
 my_webui:Subscribe(event_name, callback)
@@ -265,7 +301,7 @@ end)
 
 ### `Ready`
 
-> Triggered when this page fails to load
+> Triggered when this page is fully loaded
 
 ```lua
 my_webui:Subscribe("Ready", function()

@@ -76,6 +76,10 @@ Asset Packs have a configuration file in the root of the Asset Pack folder, call
     # A_RingSound = "Audios/A_RingSound"
     # ...
 
+    [assets.particles]
+    # P_Explosion = "Particles/P_Explosion"
+    # ...
+
     # Animations
     [assets.animations]
     # A_Character_Jump = "Animations/A_Character_Jump"
@@ -88,7 +92,6 @@ Asset Packs have a configuration file in the root of the Asset Pack folder, call
 
     # Other Assets (for not yet categorized ones)
     [assets.others]
-    # A_Audio_Rifle_Fire = "Audios/A_Audio_Rifle_Fire_03"
     # ...
 ```
 
@@ -107,28 +110,33 @@ Asset Packs have a configuration file in the root of the Asset Pack folder, call
 | **`assets.skeletal_meshes`** | List of Skeletal Meshes in this Asset Pack |
 | **`assets.sounds`** | List of Sounds in this Asset Pack |
 | **`assets.animations`** | List of Animations in this Asset Pack |
+| **`assets.particles`** | List of Particles in this Asset Pack |
 | **`assets.materials`** | List of Materials in this Asset Pack |
 | **`assets.others`** | List of other Assets in this Asset Pack |
+
 
 ## Referencing Assets in Scripting
 
 To be able to use Assets through scripting, you will first have to ensure that the Asset Pack is loaded, an Asset Pack is loaded if:
 
-1. Set the Map to be loaded \(this will make it's Asset Pack to be loaded automatically\)
+1. Set the Map to be loaded (this will make it's Asset Pack to be loaded automatically)
 2. Manually set in `Server.toml` the `assets` to load
 3. Manually set in any loaded package, in `Package.toml` the `asset_requirements`
 
-Once the Asset Pack is loaded, you can refer to it's assets using the following pattern: 
+With that, you can refer to it's assets using the following pattern: 
 
 `"ASSET_PACK_PATH::ASSET_KEY"`
 
-example: `"my-asset-pack-01::SM_Cube"`
+Example:
 
-:::info
+`"my-asset-pack-01::SM_Cube"`
 
-**Note:**`ASSET_PACK_PATH` is the Asset Pack folder name and `ASSET_KEY` is the key defined in the `Assets.toml`.
+:::tip
+
+`ASSET_PACK_PATH` is the Asset Pack folder name and `ASSET_KEY` is the key defined in the `Assets.toml`.
 
 :::
+
 
 ## Types of Assets
 
@@ -137,14 +145,17 @@ example: `"my-asset-pack-01::SM_Cube"`
 | **Map** | An Unreal Engine Map/Level |
 | **Static Mesh** | Unreal Static Meshes can be used to load meshes for Props and StaticMeshes |
 | **Skeletal Mesh** | Unreal Skeletal Meshes can be used to load meshes for Characters and Vehicles |
-| **Sounds** | Unreal Sounds to load Sounds |
-| **Animations** | Unreal Animations can be used for settings in Character and Weapons |
+| **Sound** | Unreal Sounds to load Sounds |
+| **Particle** | Unreal Particles can be used for settings in several entities, including Particle Class itself |
+| **Animation** | Unreal Animations can be used for settings in Character and Weapons |
+| **Material** | Unreal Materials can be used for customizing meshes surfaces and used as Post Process |
 
-:::info
+:::info Note
 
-**Note:** Some methods require some specific Type of Assets to load, attempting to load an invalid or wrong type will cause an Error. E.g.: `Character:SetMesh()` requires an Asset of type `Skeletal Mesh`.
+Some methods require some specific Type of Assets to load, attempting to load an invalid or wrong type will cause an Error. E.g.: `Character:SetMesh()` requires an Asset of type `Skeletal Mesh`.
 
 :::
+
 
 ## nanos world Default Asset Pack
 

@@ -8,9 +8,18 @@ tags: [class]
 
 Vehicles are 4-wheeled entities which Characters can possesses and drive.
 
-import { Structs, BasicType, AuthorityType, Classes, ReferenceLink, Enums } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, Classes, ReferenceLink, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/vehicle.jpg)
+
+:::info
+
+🟦 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts.mdx).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />.
+
+:::
+
 
 Any Skeletal Mesh can be used to create a Vehicle, although only Skeletal Meshes with Wheels bones can use the built-in feature of animated Wheels.
 
@@ -27,12 +36,6 @@ Please take a look at our Default’s Vehicle package with all built-in Vehicles
 :::
 
 <ReferenceLink href="getting-started/tutorials-and-examples/monster-truck">Monster Truck</ReferenceLink>
-
-:::info
-
-⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />. Please check their pages for inherited **Methods** and **Events**.
-
-:::
 
 ## Usage
 
@@ -68,16 +71,16 @@ vehicle:RecreatePhysics()
 | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <BasicType.String /> | **`model_name`** (Skeletal Mesh) | ` ` |
+| <AssetPath.SkeletalMesh /> | **`asset`** | ` ` |
 | <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
 | <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
 | <BasicType.Boolean /> | **`auto_create_physics`** _(can be disabled to improve performance when setting several configs. Must call `RecreatePhysics()` after all)_ | `true` |
 | <BasicType.Boolean /> |  **`auto_unflip`** _(auto rotates the vehicle if flipped)_ | `true` |
-| <BasicType.String /> | **`engine_sound_asset`** | `nanos-world::A_Vehicle_Engine_01` |
-| <BasicType.String /> | **`horn_sound_asset`** | `nanos-world::A_Vehicle_Horn_Toyota` |
-| <BasicType.String /> | **`brake_sound_asset`** | `nanos-world::A_Vehicle_Brake` |
-| <BasicType.String /> | **`engine_start_sound_asset`** | `nanos-world::A_Car_Engine_Start` |
-| <BasicType.String /> | **`vehicle_door_sound_asset`** | `nanos-world::A_Vehicle_Door` |
+| <AssetPath.Sound /> | **`engine_sound_asset`** | `nanos-world::A_Vehicle_Engine_01` |
+| <AssetPath.Sound /> | **`horn_sound_asset`** | `nanos-world::A_Vehicle_Horn_Toyota` |
+| <AssetPath.Sound /> | **`brake_sound_asset`** | `nanos-world::A_Vehicle_Brake` |
+| <AssetPath.Sound /> | **`engine_start_sound_asset`** | `nanos-world::A_Car_Engine_Start` |
+| <AssetPath.Sound /> | **`vehicle_door_sound_asset`** | `nanos-world::A_Vehicle_Door` |
 
 ## Functions
 
@@ -98,7 +101,7 @@ Most of the functions below will reset the vehicle Physics State \(automatically
 |  |  | [**`AddStaticMeshAttached`**](vehicle#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Vehicle |
 | <AuthorityType.ServerOnly /> |  | [**`Horn`**](vehicle#horn) | Starts or stops the vehicles horn |
 | <AuthorityType.ServerOnly /> |  | [**`RecreatePhysics`**](vehicle#recreatephysics) | Recreate the Vehicle Physics |
-|  |  | [**`RemoveStaticMeshAttached`**](vehicle#RemoveStaticMeshAttached) | Removes, if existing, a StaticMesh from this Vehicle given it’s custom ID |
+| <AuthorityType.Both /> |  | [**`RemoveStaticMeshAttached`**](vehicle#RemoveStaticMeshAttached) | Removes, if existing, a StaticMesh from this Vehicle given it’s custom ID |
 | <AuthorityType.ServerOnly /> |  | [**`SetDifferentialSetup`**](vehicle#setdifferentialsetup) | Configures the Vehicle Differential |
 | <AuthorityType.ServerOnly /> |  | [**`SetEngineSetup`**](vehicle#setenginesetup) | Configures the Vehicle Engine |
 | <AuthorityType.ServerOnly /> |  | [**`SetVehicleSetup`**](vehicle#setvehiclesetup) | Configures the Vehicle General Settings |
@@ -107,9 +110,11 @@ Most of the functions below will reset the vehicle Physics State \(automatically
 | <AuthorityType.ServerOnly /> |  | [**`SetDoor`**](vehicle#setdoor) | Adds a Door |
 | <AuthorityType.ServerOnly /> |  | [**`SetSteeringWheelSetup`**](vehicle#setsteeringwheelsetup) | Configures where the Steering Wheel is located |
 | <AuthorityType.ServerOnly /> |  | [**`SetHeadlightsSetup`**](vehicle#setheadlightssetup) | Configures the Headlights Offset and Color |
-|  | <BasicType.String /> | [**`GetAssetName`**](vehicle#getassetname) | Gets the Asset name |
-|  | <Classes.Character /> | [**`GetPassenger`**](vehicle#GetPassenger) | Gets a passengers at an index |
-|  | <BasicType.Table /> | [**`GetPassengers`**](vehicle#getpassengers) | Gets all passengers |
+| <AuthorityType.Both /> | <BasicType.String /> | [**`GetAssetName`**](vehicle#getassetname) | Gets the Asset name |
+| <AuthorityType.Both /> | <Classes.Character /> | [**`GetPassenger`**](vehicle#GetPassenger) | Gets a passengers at an index |
+| <AuthorityType.Both /> | <BasicType.Table /> | [**`GetPassengers`**](vehicle#getpassengers) | Gets all passengers |
+| <AuthorityType.ClientOnly /> | <BasicType.Number /> | [**`GetRPM`**](vehicle#getrpm) | Gets the current RPM |
+| <AuthorityType.ClientOnly /> | <BasicType.Number /> | [**`GetGear`**](vehicle#getgear) | Gets the current Gear |
 
 ## Events
 
@@ -117,14 +122,19 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 
 <details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
 
-| **Name** | **Description** |
-| :--- | :--- |
-| [**`Horn`**](vehicle#horn-1) | When Vehicle honks |
-| [**`Hit`**](vehicle#hit) | When Vehicle hits something |
+|  | **Name** | **Description** |
+| :--- | :--- | :--- |
+|  | [**`Horn`**](vehicle#horn-1) | When Vehicle honks |
+|  | [**`Hit`**](vehicle#hit) | When Vehicle hits something |
+|  | [**`CharacterEntered`**](vehicle#characterentered) | When a Character enters the Vehicle |
+|  | [**`CharacterLeft`**](vehicle#characterleft) | When Character leaves the Vehicle |
+| <AuthorityType.ServerOnly /> | [**`CharacterAttemptEnter`**](vehicle#characterattemptenter) | When a Character attempts to Enter the Vehicle |
+| <AuthorityType.ServerOnly /> | [**`CharacterAttemptLeave`**](vehicle#characterattemptleave) | When a Character attempts to Leave the Vehicle |
 
 ## Functions Detailed
 
-### `AddStaticMeshAttached`
+
+### <AuthorityType.Both />`AddStaticMeshAttached`
 
 > Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
 
@@ -162,7 +172,8 @@ my_vehicle:Horn(enable_horn)
 my_vehicle:RecreatePhysics()
 ```
 
-### `RemoveStaticMeshAttached`
+
+### <AuthorityType.Both />`RemoveStaticMeshAttached`
 
 > Removes, if existing, a StaticMesh from this Vehicle given it's custom ID
 
@@ -176,7 +187,7 @@ my_vehicle:RemoveStaticMeshAttached(id)
 
 ### <AuthorityType.ServerOnly />`SetDifferentialSetup`
 
-> Configures the Vehicle Differential. Check the page bottom to see each property explanation
+> Configures the Vehicle Differential
 
 ```lua
 my_vehicle:SetDifferentialSetup(differential_type, front_rear_split, front_left_right_split, rear_left_right_split, center_bias, front_bias, rear_bias)
@@ -194,7 +205,7 @@ my_vehicle:SetDifferentialSetup(differential_type, front_rear_split, front_left_
 
 ### <AuthorityType.ServerOnly />`SetEngineSetup`
 
-> Configures the Vehicle Engine. Check the page bottom to see each property explanation
+> Configures the Vehicle Engine
 
 ```lua
 my_vehicle:SetEngineSetup(max_rpm, moi, damping_rate_full_throttle, d_r_zero_trt_clutch_engaged, d_r_zero_trt_clutch_disengaged)
@@ -203,14 +214,14 @@ my_vehicle:SetEngineSetup(max_rpm, moi, damping_rate_full_throttle, d_r_zero_trt
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`max_rpm`** | `4500` | Maximum revolutions per minute of the engine |
-| <BasicType.Number /> |
-| <BasicType.Number /> |
-| <BasicType.Number /> |
-| <BasicType.Number /> |
+| <BasicType.Number /> | **`moi`** | `1` | Moment of inertia of the engine around the axis of rotation (Kgm^2) |
+| <BasicType.Number /> | **`damping_rate_full_throttle`** | `0.15` | Damping rate of engine when full throttle is applied (Kgm^2/s) |
+| <BasicType.Number /> | **`d_r_zero_trt_clutch_engaged`** | `2` | Damping rate of engine in at zero throttle when the clutch is engaged (Kgm^2/s) |
+| <BasicType.Number /> | **`d_r_zero_trt_clutch_disengaged`** | `0.35` | Damping rate of engine in at zero throttle when the clutch is disengaged (in neutral gear) (Kgm^2/s) |
 
 ### <AuthorityType.ServerOnly />`SetVehicleSetup`
 
-> Configures the Vehicle General Settings. Check the page bottom to see each property explanation
+> Configures the Vehicle General Settings
 
 ```lua
 my_vehicle:SetVehicleSetup(drag_coefficient, throttle_input_rise_rate, throttle_input_fall_rate, brake_input_rise_rate, brake_input_fall_rate, handbrake_input_rise_rate, handbrake_input_fall_rate, steering_input_rise_rate, steering_input_fall_rate)
@@ -230,7 +241,7 @@ my_vehicle:SetVehicleSetup(drag_coefficient, throttle_input_rise_rate, throttle_
 
 ### <AuthorityType.ServerOnly />`SetTransmissionSetup`
 
-> Configures the Vehicle Transmission. Check the page bottom to see each property explanation
+> Configures the Vehicle Transmission
 
 ```lua
 my_vehicle:SetTransmissionSetup(has_automatic_transmission, gear_switch_time, gear_auto_box_latency, final_ratio, clutch_strength)
@@ -238,15 +249,15 @@ my_vehicle:SetTransmissionSetup(has_automatic_transmission, gear_switch_time, ge
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Boolean /> | **`has_automatic_transmission`** | `true` |  |
-| <BasicType.Number /> |
-| <BasicType.Number /> |
+| <BasicType.Boolean /> | **`has_automatic_transmission`** | `true` | Whether to use automatic transmission |
+| <BasicType.Number /> | **`gear_switch_time`** | `0.5` | Time it takes to switch gears (seconds) |
+| <BasicType.Number /> | **`gear_auto_box_latency`** | `2` | Minimum time it takes the automatic transmission to initiate a gear change (seconds) |
 | <BasicType.Number /> | **`final_ratio`** | `4` | The final gear ratio multiplies the transmission gear ratios |
-| <BasicType.Number /> |
+| <BasicType.Number /> | **`clutch_strength`** | `10` | Strength of clutch (Kgm^2/s) |
 
 ### <AuthorityType.ServerOnly />`SetWheel`
 
-> Configures a Vehicle Wheel. Check the page bottom to see each property explanation
+> Configures a Vehicle Wheel
 
 ```lua
 my_vehicle:SetWheel(index, bone_name, shape_radius, shape_width, steer_angle, mass, damping_rate, lat_stiff_max_load, lat_stiff_value, long_stiff_value, suspension_force_offset, suspension_max_raise, suspension_max_drop, suspension_natural_frequency, suspension_damping_ratio, max_brake_torque, max_handbrake_torque, is_affected_by_handbrake, offset)
@@ -260,19 +271,19 @@ my_vehicle:SetWheel(index, bone_name, shape_radius, shape_width, steer_angle, ma
 | <BasicType.Number /> | **`shape_width`** | `10` | Width of the wheel |
 | <BasicType.Number /> | **`steer_angle`** | `70` | Steer angle in degrees for this wheel |
 | <BasicType.Number /> | **`mass`** | `20` | Mass of this wheel |
-| <BasicType.Number /> |
+| <BasicType.Number /> | **`damping_rate`** | `0.25` | Damping rate for this wheel (Kgm^2/s) |
 | <BasicType.Number /> | **`lat_stiff_max_load`** | `2` | Max normalized tire load at which the tire can deliver no more lateral stiffness no matter how much extra load is applied to the tire |
 | <BasicType.Number /> | **`lat_stiff_value`** | `17` | How much lateral stiffness to have given lateral slip |
 | <BasicType.Number /> | **`long_stiff_value`** | `1000` | How much longitudinal stiffness to have given longitudinal slip |
-| <BasicType.Number /> |
+| <BasicType.Number /> | **`suspension_force_offset`** | `0` | Vertical offset from where suspension forces are applied (along Z-axis) |
 | <BasicType.Number /> | **`suspension_max_raise`** | `10` | How far the wheel can go above the resting position |
 | <BasicType.Number /> | **`suspension_max_drop`** | `10` | How far the wheel can drop below the resting position |
 | <BasicType.Number /> | **`suspension_natural_frequency`** | `7` | Oscillation frequency of suspension. Standard cars have values between 5 and 10 |
-| <BasicType.Number /> | **`suspension_damping_ratio`** | `1` | The rate at which energy is dissipated from the spring. Standard cars have values between 0.8 and 1.2. Values &lt; 1 are more sluggish, values &gt; 1 or more twitchy |
-| <BasicType.Number /> |
-| <BasicType.Number />. A handbrake should have a stronger brake torque than the brake. This will be ignored for wheels that are not affected by the handbrake |
+| <BasicType.Number /> | **`suspension_damping_ratio`** | `1` | The rate at which energy is dissipated from the spring. Standard cars have values between 0.8 and 1.2. Values < 1 are more sluggish, values > 1 or more twitchy |
+| <BasicType.Number /> | **`max_brake_torque`** | `1500` | Max brake torque for this wheel |
+| <BasicType.Number /> | **`max_handbrake_torque`** | `3000` | Max handbrake brake torque for this wheel. A handbrake should have a stronger brake torque than the brake. This will be ignored for wheels that are not affected by the handbrake. |
 | <BasicType.Boolean /> | **`is_affected_by_handbrake`** | `true` |  |
-| <Structs.Vector /> | **`offset`** | `Vector(0, 0, 0)` | If **bone\_name** is specified, offset the wheel from the bone’s location. Otherwise this offsets the wheel from the vehicle’s origin |
+| <Structs.Vector /> | **`offset`** | `Vector(0, 0, 0)` | If **bone_name** is specified, offset the wheel from the bone’s location. Otherwise this offsets the wheel from the vehicle’s origin |
 
 ### <AuthorityType.ServerOnly />`SetDoor`
 
@@ -317,7 +328,8 @@ my_vehicle:SetHeadlightsSetup(location, color)
 | <Structs.Vector /> | **`location`** |  |  |
 | <Structs.Color /> | **`color`** | `Color(1, 0.86, 0.5)` |  |
 
-### `GetAssetName`
+
+### <AuthorityType.Both />`GetAssetName`
 
 > Gets the Asset name
 >
@@ -327,7 +339,8 @@ my_vehicle:SetHeadlightsSetup(location, color)
 my_vehicle:GetAssetName()
 ```
 
-### `GetPassenger`
+
+### <AuthorityType.Both />`GetPassenger`
 
 > Gets a passenger from a seat
 >
@@ -341,6 +354,7 @@ my_vehicle:GetPassenger(seat)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`seat`** |  |  |
 
+
 ### `GetPassengers`
 
 > Gets all passengers
@@ -350,6 +364,29 @@ my_vehicle:GetPassenger(seat)
 ```lua
 my_vehicle:GetPassengers()
 ```
+
+
+### <AuthorityType.ClientOnly />`GetRPM`
+
+> Gets the current RPM
+>
+> Returns <BasicType.Number />
+
+```lua
+my_vehicle:GetRPM()
+```
+
+
+### <AuthorityType.ClientOnly />`GetGear`
+
+> Gets the current Gear
+>
+> Returns <BasicType.Number />
+
+```lua
+my_vehicle:GetGear()
+```
+
 
 ## Events Detailed
 
@@ -367,6 +404,7 @@ end)
 | :--- | :--- | :--- |
 | [Vehicle](vehicle) | `self` |  |
 | <BasicType.Boolean /> | `is_honking` |  |
+
 
 ### `Hit`
 
@@ -386,3 +424,72 @@ end)
 | <Structs.Vector /> | `impact_location` | The world 3D location of the impact |
 | <Structs.Vector /> | `velocity` | The Vehicle velocity at the moment it hits |
 
+
+### `CharacterEntered`
+
+> Triggered when a Character fully enters the Vehicle
+
+```lua
+Vehicle.Subscribe("CharacterEntered", function(self, character, seat)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Vehicle](vehicle) | `self` |  |
+| <Classes.Character /> | `character` |  |
+| <BasicType.Number /> | `seat` | The seat index |
+
+
+### `CharacterLeft`
+
+> Triggered when a Character fully leaves the Vehicle
+
+```lua
+Vehicle.Subscribe("CharacterLeft", function(self, character)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Vehicle](vehicle) | `self` |  |
+| <Classes.Character /> | `character` |  |
+
+
+### <AuthorityType.ServerOnly />`CharacterAttemptEnter`
+
+> Triggered when a Character attempts to enter the Vehicle
+> 
+> Return false to prevent it
+
+```lua
+Vehicle.Subscribe("CharacterAttemptEnter", function(self, character, seat)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Vehicle](vehicle) | `self` |  |
+| <Classes.Character /> | `character` |  |
+| <BasicType.Number /> | `seat` | The seat index |
+
+
+### <AuthorityType.ServerOnly />`CharacterAttemptLeave`
+
+> Triggered when a Character attempts to enter the Vehicle
+> 
+> Return false to prevent it
+
+```lua
+Vehicle.Subscribe("CharacterAttemptLeave", function(self, character)
+
+end)
+
+```
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Vehicle](vehicle) | `self` |  |
+| <Classes.Character /> | `character` |  |

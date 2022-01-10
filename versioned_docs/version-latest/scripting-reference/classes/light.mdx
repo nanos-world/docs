@@ -12,19 +12,16 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 
 ![](/img/docs/light.jpg)
 
-nanos world provides 3 types of lights: **Spot**, **Point** and **Rect**. All lights are Dynamic and because of that, very expensive! Keep that in mind before spawning 1000 lights ;\).
-
-:::tip
-
-You can spawn this entity is both **Client** or **Server** \(if you spawn it on client, it won’t be synchronized with other players\).
-
-:::
-
 :::info
 
-⏬ **Inheritance:** This class inherits from <Classes.Actor />. Please check it's pages for inherited **Methods** and **Events**.
+🟦🟧 **Authority:** This class can be spawned on both [Client](./core-concepts/scripting/authority-concepts.mdx) and [Server](./core-concepts/scripting/authority-concepts.mdx) (if you spawn it on client, it won't be synchronized with other players).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor />.
 
 :::
+
+nanos world provides 3 types of lights: **Spot**, **Point** and **Rect**. All lights are Dynamic and because of that, very expensive! Keep that in mind before spawning 1000 lights 😉.
+
 
 ## Usage
 
@@ -70,9 +67,11 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
-|  | `SetColor` | Sets the light color |
+|  | [**`SetColor`**](light#setcolor) | Sets the light color |
+|  | [**`SetTextureLightProfile`**](light#settexturelightprofile) | Sets the light texture profile |
 
-### `SetColor`
+
+### <AuthorityType.Both />`SetColor`
 
 > Sets the light color
 
@@ -84,8 +83,37 @@ my_light:SetColor(color)
 | :--- | :--- | :--- | :--- |
 | <Structs.Color /> | **`color`** |  | The light color |
 
+
+### <AuthorityType.Both />`SetTextureLightProfile`
+
+> Sets the light Texture Profile
+
+```lua
+my_light:SetTextureLightProfile(light_profile)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Enums>LightProfile</Enums> | **`light_profile`** |  | The Light Profile to use |
+
+
 ## Events
 
 import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
 
 <details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
+
+
+## Light Profiles
+
+Light Profiles are texture files which describes a light's distribution from a light source using real world measured data.
+
+:::tip
+
+Please check [Unreal Engine Light Profile documentation](https://docs.unrealengine.com/4.27/en-US/BuildingWorlds/LightingAndShadows/IESLightProfiles/) for more information about Light Profiles!
+
+:::
+
+nanos world provides **50** Light Profiles included in the base game which you can use to enhance your Lights. You can set them using `:SetTextureLightProfile()` with the enum <Enums>LightProfile</Enums>.
+
+![](/img/docs/ies-pack.jpg)

@@ -77,17 +77,16 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 
 ### `CollisionChannel`
 
-| Label | Value |
-| :--- | :--- |
-| **`CollisionChannel.WorldStatic`** | `1 << 0` |
-| **`CollisionChannel.WorldDynamic`** | `1 << 1` |
-| **`CollisionChannel.Pawn`** | `1 << 2` |
-| **`CollisionChannel.PhysicsBody`** | `1 << 5` |
-| **`CollisionChannel.Vehicle`** | `1 << 6` |
-| **`CollisionChannel.Destructible`** | `1 << 7` |
-| **`CollisionChannel.TracePrimitive`** | `1 << 16` |
-| **`CollisionChannel.Mesh`** | `1 << 17` |
-| **`CollisionChannel.Foliage`** | `1 << 20` |
+| Label | Value | Description |
+| :--- | :--- | :--- |
+| **`CollisionChannel.WorldStatic`** | `1 << 0` | WorldStatic Object Types |
+| **`CollisionChannel.WorldDynamic`** | `1 << 1` | WorldDynamic Object Types |
+| **`CollisionChannel.Pawn`** | `1 << 2` | Capsules (usually from Characters) |
+| **`CollisionChannel.PhysicsBody`** | `1 << 5` | Pickables and Props Meshes |
+| **`CollisionChannel.Vehicle`** | `1 << 6` | Vehicles Meshes |
+| **`CollisionChannel.TracePrimitive`** | `1 << 16` | Interactable Spheres, Damage Primitives (mainly internal use) |
+| **`CollisionChannel.Mesh`** | `1 << 17` | Character Mesh |
+| **`CollisionChannel.Foliage`** | `1 << 20` | Foliage Meshes |
 
 ### `CollisionType`
 
@@ -200,6 +199,13 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`HandlingMode.Barrel`** | `6` |
 | **`HandlingMode.Box`** | `7` |
 
+### `InputEvent`
+
+| Label | Value |
+| :--- | :--- |
+| **`InputEvent.Pressed`** | `0` |
+| **`InputEvent.Released`** | `1` |
+
 ### `LightProfile`
 
 | Label | Value |
@@ -283,6 +289,14 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | :--- | :--- |
 | **`SoundType.SFX`** | `0` |
 | **`SoundType.Music`** | `1` |
+
+### `SoundLoopMode`
+
+| Label | Value |
+| :--- | :--- |
+| **`SoundLoopMode.Default`** | `0` |
+| **`SoundLoopMode.Forever`** | `1` |
+| **`SoundLoopMode.Never`** | `2` |
 
 ### `StanceMode`
 
@@ -378,6 +392,7 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`ViewMode.TPS1`** | `1` |
 | **`ViewMode.TPS2`** | `2` |
 | **`ViewMode.TPS3`** | `3` |
+| **`ViewMode.TopDown`** | `4` |
 
 ### `VOIPSetting`
 

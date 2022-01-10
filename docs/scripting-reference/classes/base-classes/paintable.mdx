@@ -1,21 +1,22 @@
 ---
-description: Base Paintable Class
+description: Base class for all Paintables
 tags: [base-class]
 ---
 
 # Base Paintable
 
-Base Paintable Class
+Base class for all Paintables
 
-import { Structs, BasicType, AuthorityType, Enums, Classes } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, Enums, Classes, AssetPath } from '@site/docs/components/_nanos.mdx';
 
-A **Paintable** class is a base Class in nanos world which provides customization on the Meshes Materials, exposing common functions to allow you to set custom Material Parameters and loading Textures from Disk.
+A **Paintable** class is a base class in nanos world which provides customization for materials, exposing common functions to allow you to set custom material parameters, including loading textures from disk.
 
 :::info
 
-This is a base Class. You cannot spawn it directly.
+This is a base class. You cannot spawn it directly.
 
 :::
+
 
 ## Functions
 
@@ -23,9 +24,10 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 
 <BasePaintableFunctions hidden_reference={true} />
 
-### `SetMaterial`
 
-> Replace a materials of this actor with another Material
+### <AuthorityType.Both />`SetMaterial`
+
+> Sets the material at the specified index of this Actor
 
 ```lua
 my_entity:SetMaterial(new_material, index)
@@ -33,12 +35,27 @@ my_entity:SetMaterial(new_material, index)
 
 | Type | Parameter | Default | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | material_path | | The new Material to apply |
-| <BasicType.Number /> | index | `-1` | The index to apply - -1 means all indexes |
+| <AssetPath.Material /> | `material_path` |  | The new Material to apply |
+| <BasicType.Number /> | `index` | `-1` | The index to apply - -1 means all indices |
+
+
+### <AuthorityType.ClientOnly />`SetMaterialFromSceneCapture`
+
+> Sets the material at the specified index of this Actor to a SceneCapture object
+
+```lua
+my_entity:SetMaterialFromSceneCapture(webui, index)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Classes.SceneCapture /> | `scene_capture` | | The SceneCapture object to use as a material |
+| <BasicType.Number /> | `index` | `-1` | The index to apply - -1 means all indices |
+
 
 ### <AuthorityType.ClientOnly />`SetMaterialFromWebUI`
 
-> Replace a materials of this actor with a WebUI Material
+> Sets the material at the specified index of this Actor to a WebUI object
 
 ```lua
 my_entity:SetMaterialFromWebUI(webui, index)
@@ -46,13 +63,26 @@ my_entity:SetMaterialFromWebUI(webui, index)
 
 | Type | Parameter | Default | Description |
 | :--- | :--- | :--- | :--- |
-| <Classes.WebUI /> | webui | | The WebUI entity to use as Material |
-| <BasicType.Number /> | index | `-1` | The index to apply - -1 means all indexes |
+| <Classes.WebUI /> | `webui` | | The WebUI object to use as a material |
+| <BasicType.Number /> | `index` | `-1` | The index to apply - -1 means all indices |
 
-### `SetMaterialColorParameter`
 
-> Sets a Color parameter in this actor’s material
+### <AuthorityType.Both />`ResetMaterial`
 
+> Resets the material from the specified index to the original one
+
+```lua
+my_entity:ResetMaterial(index)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | `index` | `-1` | The index to apply - -1 means all indices |
+
+
+### <AuthorityType.Both />`SetMaterialColorParameter`
+
+> Sets a Color parameter in this Actor’s material
 
 ```lua
 my_entity:SetMaterialColorParameter(parameter_name, color)
@@ -60,13 +90,13 @@ my_entity:SetMaterialColorParameter(parameter_name, color)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <BasicType.String /> | parameter_name | The name of Material parameter |
-| <Structs.Color /> | color | The value to set |
+| <BasicType.String /> | `parameter_name` | The name of the material parameter |
+| <Structs.Color /> | `color` | The value to set |
 
-### `SetMaterialScalarParameter`
 
-> Sets a Scalar parameter in this actor’s material
+### <AuthorityType.Both />`SetMaterialScalarParameter`
 
+> Sets a Scalar parameter in this Actor’s material
 
 ```lua
 my_entity:SetMaterialScalarParameter(parameter_name, number)
@@ -74,13 +104,13 @@ my_entity:SetMaterialScalarParameter(parameter_name, number)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <BasicType.String /> | parameter\_name | The name of Material parameter |
-| <BasicType.String /> | scalar | The value to set |
+| <BasicType.String /> | `parameter_name` | The name of the material parameter |
+| <BasicType.String /> | `scalar` | The value to set |
 
-### `SetMaterialTextureParameter`
 
-> Loads a image from computer \(relative to Assets/ folder\) and sets as parameter in this actor’s material
+### <AuthorityType.Both />`SetMaterialTextureParameter`
 
+> Sets a texture parameter in this Actor's material to an image on disk
 
 ```lua
 my_entity:SetMaterialTextureParameter(parameter_name, texture_path)
@@ -88,13 +118,13 @@ my_entity:SetMaterialTextureParameter(parameter_name, texture_path)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <BasicType.String /> | parameter\_name | The name of Material parameter |
-| [SpecialPath](./scripting-reference/glossary/basic-types.md#specialpath) | texture\_path | The path of the Texture |
+| <BasicType.String /> | `parameter_name` | The name of the material parameter |
+| <AssetPath.Image /> | `texture_path` | The path to the texture |
 
-### `SetMaterialVectorParameter`
 
-> Sets a Vector parameter in this actor’s material
+### <AuthorityType.Both />`SetMaterialVectorParameter`
 
+> Sets a Vector parameter in this Actor’s material
 
 ```lua
 my_entity:SetMaterialVectorParameter(parameter_name, vector)
@@ -102,5 +132,18 @@ my_entity:SetMaterialVectorParameter(parameter_name, vector)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <BasicType.String /> | parameter\_name | The name of Material parameter |
-| <Structs.Vector /> | vector | The vector to apply |
+| <BasicType.String /> | `parameter_name` | The name of the material parameter |
+| <Structs.Vector /> | `vector` | The value to set |
+
+
+### <AuthorityType.Both />`SetPhysicalMaterial`
+
+> Overrides this Actor's Physical Material with a new one
+
+```lua
+my_entity:SetPhysicalMaterial(physical_material_path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <AssetPath.Material /> | `physical_material_path` | The Physical Material to override |

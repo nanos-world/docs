@@ -14,9 +14,15 @@ In nanos world it is possible to store data on entities. Those values can be acc
 
 In <Classes.Actor /> page we can find the definitions of `:SetValue()` and `:GetValue()` methods. Also it is possible to store Values globally on [Client](./scripting-reference/static-classes/client.mdx) and [Server](./scripting-reference/static-classes/server.mdx) Static Classes with the same methods!
 
+
 ## `SetValue`
 
-In any entity, you can use the command `:SetValue(key, value, sync)` to set any kind of value on that entity.
+In any entity, you can use the method `:SetValue(key, value, sync)` to set any kind of value on that entity. Example:
+
+```lua title="Server/Index.lua"
+-- Sets a synchronized 'my_value' value
+my_player:SetValue("my_value", 100, true)
+```
 
 :::tip
 
@@ -28,13 +34,19 @@ If you pass `sync` as true, that value will be automatically synchronized with a
 
 :::info note
 
-**Client:SetValue()** and **Server:SetValue()** won't have the last parameter `sync`. As the value will only exist on the side you are setting.
+**Client.SetValue()** and **Server.SetValue()** won't have the last parameter `sync`. As the value will only exist on the side you are setting.
 
 :::
 
+
 ## `GetValue`
 
-After set, you can access any value from any entity using `:GetValue(key)` on any entity you want. If you set the value to be synchronized on Clients, you will be able to get the values on the Client side as well.
+After set, you can access any value from any entity using `:GetValue(key, fallback)` on any entity you want. If you set the value to be synchronized on Clients, you will be able to get the values on the Client side as well. You can pass an aditional parameter `fallback` which will be returned if the key doesn't exist!
+
+```lua
+-- Gets 'my_value' value, or returns '0' if no value is set
+local my_value = my_player:GetValue("my_value", 0)
+```
 
 :::caution
 

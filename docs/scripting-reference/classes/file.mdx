@@ -12,7 +12,13 @@ import { Structs, BasicType, AuthorityType } from '@site/docs/components/_nanos.
 
 :::info
 
-This is a **Server** side class. It is not possible to open files from outside the server folder. All path must be relative to the Server’s executable folder. All files are opened as binary file by default.
+🟦 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts.mdx).
+
+:::
+
+:::info
+
+It is not possible to open files from outside the server folder. All path must be relative to the Server’s executable folder. All files are opened as binary file by default.
 
 :::
 
@@ -131,18 +137,18 @@ File.IsRegularFile(path)
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
-|  | [**`Close`**](file#functions) | Closes the file |
+|  | [**`Close`**](file#close) | Closes the file |
 |  | [**`Flush`**](file#flush) | Flushes content to the file |
-| <BasicType.Boolean /> | Checks if the file status is End of File |
-| <BasicType.Boolean /> | Checks if the file status is Bad |
-| <BasicType.Boolean /> | Checks if the file status is Good |
-| <BasicType.Boolean /> | Checks if the last operation has Failed |
-| <BasicType.String /> characters from the File and returns it. Also moves the file pointer to the latest read position. Pass 0 to read the whole file |
-| <BasicType.String /> | Reads and returns the next file line |
+| <BasicType.Boolean /> | [**`IsEOF`**](file#iseof) | Checks if the file status is End of File |
+| <BasicType.Boolean /> | [**`IsBad`**](file#isbad) | Checks if the file status is Bad |
+| <BasicType.Boolean /> | [**`IsGood`**](file#isgood) | Checks if the file status is Good |
+| <BasicType.Boolean /> | [**`HasFailed`**](file#hasfailed) | Checks if the last operation has Failed |
+| <BasicType.String /> | [**`Read`**](file#read) | Reads characters from the File and returns it. Also moves the file pointer to the latest read position. Pass 0 to read the whole file |
+| <BasicType.String /> | [**`ReadLine`**](file#readline) | Reads and returns the next file line |
 |  | [**`Seek`**](file#seek) | Sets the file pointer to a specific position |
-| <BasicType.Number /> | Returns the size of the file |
-|  | [**`Skip`**](file#skip) | Skips n \(amount\) positions from the current file pointer position |
-| <BasicType.Number /> | Returns the current file pointer position |
+| <BasicType.Number /> | [**`Size`**](file#size) | Returns the size of the file |
+|  | [**`Skip`**](file#skip) | Skips n (amount) positions from the current file pointer position |
+| <BasicType.Number /> | [**`Tell`**](file#tell) | Returns the current file pointer position |
 |  | [**`Write`**](file#write) | Writes the Data at the current position of the file |
 
 ### `Close`

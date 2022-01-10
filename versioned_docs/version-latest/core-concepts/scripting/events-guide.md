@@ -131,7 +131,7 @@ my_character:Unsubscribe("EnterVehicle", OnCharacterEnteredVehicle)
 
 ## Custom Events
 
-In nanos world, it is possible to define and call Custom Events. For that, please refer to Events Static Class.
+In nanos world, it is possible to define and call Custom Events. For that, please refer to [Events](./scripting-reference/static-classes/events.mdx) Static Class:
 
 :::info
 

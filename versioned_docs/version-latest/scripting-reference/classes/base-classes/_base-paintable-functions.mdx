@@ -4,10 +4,14 @@ import { Structs, BasicType, AuthorityType, ReferenceLink } from '@site/docs/com
 	{!props.hidden_reference ? (<ReferenceLink href="scripting-reference/classes/base-classes/paintable">Base Paintable</ReferenceLink>) : <></>}
 </>
 
-| **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- |
-|  | [**`SetDefaultMaterial`**](./scripting-reference/classes/base-classes/paintable.mdx#setmaterial) | Replace a materials of this actor with another Material |
-|  | [**`SetMaterialColorParameter`**](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialcolorparameter) | Sets a Color parameter in this actor’s material |
-|  | [**`SetMaterialScalarParameter`**](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | Sets a scalar parameter in this actor’s material |
-|  | [**`SetMaterialTextureParameter`**](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialtextureparameter) | Loads a image from computer (relative to Assets/ folder) and sets as parameter in this actor’s material |
-|  | [**`SetMaterialVectorParameter`**](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialvectorparameter) | Sets a Vector parameter in this actor’s material |
+|  | **Returns** | **Name** | **Description** |
+| :---: | :--- | :--- | :--- |
+| <AuthorityType.Both /> |  | [**`SetMaterial`**](./scripting-reference/classes/base-classes/paintable.mdx#setmaterial) | Sets the material at the specified index of this Actor |
+| <AuthorityType.ClientOnly /> |  | [**`SetMaterialFromWebUI`**](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialfromwebui) | Sets the material at the specified index of this Actor to a WebUI object |
+| <AuthorityType.ClientOnly /> |  | [**`SetMaterialFromSceneCapture`**](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialfromscenecapture) | Sets the material at the specified index of this Actor to a SceneCapture object |
+| <AuthorityType.ClientOnly /> |  | [**`ResetMaterial`**](./scripting-reference/classes/base-classes/paintable.mdx#resetmaterial) | Resets the material from the specified index to the original one |
+| <AuthorityType.Both /> |  | [**`SetMaterialColorParameter`**](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialcolorparameter) | Sets a Color parameter in this Actor’s material |
+| <AuthorityType.Both /> |  | [**`SetMaterialScalarParameter`**](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | Sets a scalar parameter in this Actor’s material |
+| <AuthorityType.Both /> |  | [**`SetMaterialTextureParameter`**](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialtextureparameter) | Sets a texture parameter in this Actor's material to an image on disk |
+| <AuthorityType.Both /> |  | [**`SetMaterialVectorParameter`**](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialvectorparameter) | Sets a Vector parameter in this Actor’s material |
+| <AuthorityType.Both /> |  | [**`SetPhysicalMaterial`**](./scripting-reference/classes/base-classes/paintable.mdx#setphysicalmaterial) | Overrides this Actor's Physical Material with a new one |

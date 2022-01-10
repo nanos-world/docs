@@ -8,9 +8,17 @@ tags: [class]
 
 Particle Entity.
 
-import { Structs, BasicType, AuthorityType } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AuthorityType, AssetPath, Classes } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/particle.jpg)
+
+:::info
+
+🟦🟧 **Authority:** This class can be spawned on both [Client](./core-concepts/scripting/authority-concepts.mdx) and [Server](./core-concepts/scripting/authority-concepts.mdx) (if you spawn it on client, it won't be synchronized with other players).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor />.
+
+:::
 
 :::tip
 
@@ -18,11 +26,6 @@ Both **Cascade** and **Niagara** Particle Systems are supported!
 
 :::
 
-:::tip
-
-You can spawn this entity is both **Client** or **Server** \(if you spawn it on client, it won’t be synchronized with other players\).
-
-:::
 
 ## Usage
 
@@ -43,7 +46,7 @@ local my_particle = Particle(
 | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <BasicType.String /> | **`model_name`** | **\`\`** |
+| <AssetPath.Particle /> | **`asset`** | ` ` |
 | <BasicType.Boolean /> | **`auto_destroy`** | `true` |
 | <BasicType.Boolean /> | **`auto_activate`** | `true` |
 
@@ -61,14 +64,15 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
-|  | [`Reset`](particle#reset) | Activates the Emitter again |
-|  | [`SetParameterFloat`](particle#setparameterfloat) | Sets a **Float** parameter in this Particle System |
-|  | [`SetParameterInt`](particle#setparameterint) | Sets an **Integer** parameter in this Particle System |
-|  | [`SetParameterBool`](particle#setparameterbool) | Sets a **Boolean** parameter in this Particle System |
-|  | [`SetParameterVector`](particle#setparametervector) | Sets a **Vector** parameter in this Particle System |
-|  | [`SetParameterColor`](particle#setparametercolor) | Sets a **Color** parameter in this Particle System |
+| <AuthorityType.Both /> | [`Reset`](particle#reset) | Activates the Emitter again |
+| <AuthorityType.Both /> | [`SetParameterFloat`](particle#setparameterfloat) | Sets a **Float** parameter in this Particle System |
+| <AuthorityType.Both /> | [`SetParameterInt`](particle#setparameterint) | Sets an **Integer** parameter in this Particle System |
+| <AuthorityType.Both /> | [`SetParameterBool`](particle#setparameterbool) | Sets a **Boolean** parameter in this Particle System |
+| <AuthorityType.Both /> | [`SetParameterVector`](particle#setparametervector) | Sets a **Vector** parameter in this Particle System |
+| <AuthorityType.Both /> | [`SetParameterColor`](particle#setparametercolor) | Sets a **Color** parameter in this Particle System |
 
-### `Reset`
+
+### <AuthorityType.Both />`Reset`
 
 > Activates the Emitter again
 
@@ -76,65 +80,75 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 my_particle:Reset()
 ```
 
-### `SetParameterFloat`
+
+### <AuthorityType.Both />`SetParameterFloat`
 
 > Sets a float parameter in this Particle System
 
 ```lua
-my_particle:SetParameterFloat(parameter)
+my_particle:SetParameterFloat(parameter, value)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <BasicType.Number /> | **`parameter`** | The float parameter |
+| <BasicType.String /> | **`parameter`** | The parameter name |
+| <BasicType.Number /> | **`value`** | The float value |
 
-### `SetParameterInt`
+
+### <AuthorityType.Both />`SetParameterInt`
 
 > Sets an integer parameter in this Particle System
 
 ```lua
-my_particle:SetParameterInt(parameter)
+my_particle:SetParameterInt(parameter, value)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <BasicType.Number /> | **`parameter`** | The int parameter |
+| <BasicType.String /> | **`parameter`** | The parameter name |
+| <BasicType.Number /> | **`value`** | The int value |
 
-### `SetParameterBool`
+
+### <AuthorityType.Both />`SetParameterBool`
 
 > Sets a boolean parameter in this Particle System
 
 ```lua
-my_particle:SetParameterBool(parameter)
+my_particle:SetParameterBool(parameter, value)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <BasicType.Boolean /> | **`parameter`** | The boolean parameter |
+| <BasicType.String /> | **`parameter`** | The parameter name |
+| <BasicType.Boolean /> | **`value`** | The boolean value |
 
-### `SetParameterVector`
+
+### <AuthorityType.Both />`SetParameterVector`
 
 > Sets a float parameter in this Particle System
 
 ```lua
-my_particle:SetParameterVector(parameter)
+my_particle:SetParameterVector(parameter, value)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <Structs.Vector /> | **`parameter`** | The Vector parameter |
+| <BasicType.String /> | **`parameter`** | The parameter name |
+| <Structs.Vector /> | **`value`** | The Vector value |
 
-### `SetParameterColor`
+
+### <AuthorityType.Both />`SetParameterColor`
 
 > Sets a Color parameter in this Particle System
 
 ```lua
-my_particle:SetParameterColor(parameter)
+my_particle:SetParameterColor(parameter, value)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <Structs.Color /> | **`parameter`** | The Color parameter |
+| <BasicType.String /> | **`parameter`** | The parameter name |
+| <Structs.Color /> | **`value`** | The Color value |
 
 
 ## Events

@@ -4,7 +4,7 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
   title: 'nanos world',
   tagline: 'nanos world',
-  url: 'https://docs.nanos.world',
+  url: 'https://docs.nanos.world/',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -104,6 +104,12 @@ module.exports = {
       ],
     },
     zoomSelector: '.markdown :not(.authority-availability) > img',
+    algolia: {
+      appId: '2O07FIGQII',
+      apiKey: 'b53f482139534494c9253752259660ed',
+      indexName: 'nanos',
+      contextualSearch: true,
+    },
   },
   presets: [
     [
@@ -119,7 +125,7 @@ module.exports = {
               label: 'bleeding-edge 🩸',
             },
             latest: {
-              label: 'latest - 0.73.0',
+              label: 'latest - a1.2.0 ⚖️',
             }
           },
         },
@@ -139,12 +145,6 @@ module.exports = {
   ],
   plugins: [
     'plugin-image-zoom',
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-      },
-    ],
   ],
   scripts: [
     {

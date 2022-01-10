@@ -1,7 +1,6 @@
 ---
 description: >-
-  A Text Render class is useful for spawning Texts in 3D world, you can even
-  attach it to other entities
+  A Text Render class is useful for spawning Texts in 3D world, you can even attach it to other entities
 sidebar_position: 0
 tags: [class]
 ---
@@ -14,17 +13,14 @@ import { Structs, BasicType, AuthorityType, Classes, ReferenceLink, Enums } from
 
 ![](/img/docs/text-render.jpg)
 
-:::tip
-
-This is a **Client** only Class.
-
-:::
-
 :::info
 
-⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Pickable />. Please check it's pages for inherited **Methods** and **Events**.
+🟦🟧 **Authority:** This class can be spawned on both [Client](./core-concepts/scripting/authority-concepts.mdx) and [Server](./core-concepts/scripting/authority-concepts.mdx) (if you spawn it on client, it won't be synchronized with other players).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />.
 
 :::
+
 
 ## Usage
 
@@ -33,7 +29,7 @@ local my_text_render = TextRender(
     Vector(-100, 200, 300),
     Rotator(),
     "My Awesome Text",
-    Vector(1, 1, 1) -- Scale
+    Vector(1, 1, 1), -- Scale
     Color(1, 0, 0), -- Red Color
     FontType.OpenSans,
     TextRenderAlignCamera.FaceCamera
@@ -44,7 +40,7 @@ local my_text_render = TextRender(
 
 If you desire your **TextRender** to be visible through walls, replace it’s material with the nanos Default TranslucentDepth one!
 
-`SetDefaultMaterial(MaterialType.TranslucentDepth)`.
+`SetMaterial("nanos-world::M_NanosTranslucent_Depth")`.
 
 You can also tweak it’s color and other properties using the Material methods.
 

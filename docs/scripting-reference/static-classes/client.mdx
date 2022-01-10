@@ -9,13 +9,14 @@ Static Class present on Client side
 
 import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/components/_nanos.mdx';
 
-:::tip
+:::info
 
-This is a Static Class named `Client`. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+🟧 **Authority:** This can be accessed only on [Client](./core-concepts/scripting/authority-concepts.mdx).
 
-This is a **Client** only Class.
+🗿 **Static Class:** This is a Static Class. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 
 :::
+
 
 ## Functions
 
@@ -42,26 +43,30 @@ This is a **Client** only Class.
 |  | [**`SetMouseEnabled`**](client#setmouseenabled) | Displays/Hides Mouse Cursor |
 |  | [**`SetOutlineColor`**](client#setoutlinecolor) | Changes the Outline Color for interactable stuff |
 |  | [**`SetHighlightColor`**](client#sethighlightcolor) | Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 \(or more\) for having a glowing effect. |
+|  | [**`SetSteamRichPresence`**](client#setsteamrichpresence) | Sets Steam Rich Presence value |
 |  | [**`SetValue`**](client#setvalue) | Sets a global value in the Client, which can be accessed from anywhere \(client side\) |
-|  | [**`Spectate`**](client#spectate) | Spectates a Player. The local camera will follow the Player’s camera. |
-|  | [**`Subscribe`**](client#subscribe) | Subscribes for an Event |
+| <BasicType.Function /> | [**`Subscribe`**](client#subscribe) | Subscribes for an Event |
 |  | [**`Unsubscribe`**](client#unsubscribe) | Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback |
-|  | [**`Unspectate`**](client#unspectate) | Leaves the Spectator’s State. |
 | <BasicType.Table /> | [**`Trace`**](client#trace) | Trace a ray against the world and returns a table with the first blocking hit information |
 | <Classes.Player /> | [**`GetLocalPlayer`**](client#getlocalplayer) | Gets the local Player |
 | <Structs.Vector /> | [**`GetRandomReachablePointInRadius`**](client#getrandomreachablepointinradius) | Finds random, reachable point in navigable space restricted to radius around origin |
+| <Structs.Vector /> | [**`GetRandomPointInNavigableRadius`**](client#getrandompointinnavigableradius) | Finds random, point in navigable space restricted to Radius around Origin. Resulting location is not tested for reachability from the Origin |
+| <Structs.Vector /> | [**`FindPathToLocation`**](client#findpathtolocation) | Finds a Path given Start and End location |
+| <BasicType.String /> | [**`GetMap`**](client#getmap) | Returns the current Map |
 | <Structs.Vector2D /> | [**`GetMousePosition`**](client#getmouseposition) | Gets the current mouse screen location |
 | <BasicType.Table /> | [**`GetPackages`**](client#getpackages) | Returns a list of Packages folder names loaded and running in the client |
 | <BasicType.Any /> | [**`GetValue`**](client#getvalue) | Gets a value given a key |
 | <BasicType.Boolean /> | [**`IsKeyDown`**](client#iskeydown) | Returns if a key is being pressed |
 | <BasicType.Boolean /> | [**`IsMouseEnabled`**](client#ismouseenabled) |  |
+| <BasicType.Boolean /> | [**`IsInputEnabled`**](client#isinputenabled) |  |
+
 
 ## Events
 
 | **Name** | **Description** |
 | :--- | :--- |
-| [**`Chat`**](client#chat) | Called when a chat text is submitted \(by LocalPlayer\) |
-| [**`ChatEntry`**](client#chatentry) | Called when a Chat Entry is received |
+| [**`Chat`**](client#chat) | Called when a chat text is submitted (by LocalPlayer) |
+| [**`ChatEntry`**](server#chatentry) | Called when a Chat Entry is received, this is also triggered when `SendChatMessage` is called |
 | [**`Console`**](client#console) | Called when a console command is submitted |
 | [**`KeyDown`**](client#keydown) | A keyboard key is being pressed |
 | [**`KeyPress`**](client#keypress) | A keyboard key has been pressed |
@@ -69,9 +74,14 @@ This is a **Client** only Class.
 | [**`LogEntry`**](client#logentry) | Called when a Client log is received |
 | [**`MouseDown`**](client#mousedown) | A mouse button has been pressed / is being pressed |
 | [**`MouseUp`**](client#mouseup) | A mouse button has been released |
+| [**`MouseEnabled`**](client#mouseenabled) | When mouse cursor is displayed/hidden |
+| [**`OpenChat`**](client#openchat) | When player opens the Chat |
+| [**`CloseChat`**](client#closechat) | When player closes the Chat |
 | [**`Tick`**](client#tick) | Called Every Frame. Do not abuse |
 
+
 ## Functions Detailed
+
 
 ### `CallLevelBlueprintEvent`
 
@@ -84,6 +94,7 @@ Client.CallLevelBlueprintEvent(event_name)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`event_name`** |  |
+
 
 ### `DrawDebugBox`
 
@@ -102,6 +113,7 @@ Client.DrawDebugBox(location, extent, rotation, color, life_time, thickness)
 | <BasicType.Number /> | **`life_time`** | `5` |
 | <BasicType.Number /> | **`thickness`** | `0` |
 
+
 ### `DrawDebugCoordinateSystem`
 
 > DrawDebugCoordinateSystem
@@ -117,6 +129,7 @@ Client.DrawDebugCoordinateSystem(location, rotation, size, life_time, thickness)
 | <BasicType.Number /> | **`size`** | `100` |
 | <BasicType.Number /> | **`life_time`** | `5` |
 | <BasicType.Number /> | **`thickness`** | `0` |
+
 
 ### `DrawDebugCrosshairs`
 
@@ -135,6 +148,7 @@ Client.DrawDebugCrosshairs(location, rotation, size, color, life_time, thickness
 | <BasicType.Number /> | **`life_time`** | `5` |
 | <BasicType.Number /> | **`thickness`** | `0` |
 
+
 ### `DrawDebugDirectionalArrow`
 
 > DrawDebugDirectionalArrow
@@ -151,6 +165,7 @@ Client.DrawDebugDirectionalArrow(start_location, end_location, arrow_size, color
 | <Structs.Color /> | **`color`** | `Color.RED` |
 | <BasicType.Number /> | **`life_time`** | `5` |
 | <BasicType.Number /> | **`thickness`** | `0` |
+
 
 ### `DrawDebugCylinder`
 
@@ -170,6 +185,7 @@ Client.DrawDebugCylinder(start_location, end_location, radius, segments, color, 
 | <BasicType.Number /> | **`life_time`** | `5` |
 | <BasicType.Number /> | **`thickness`** | `0` |
 
+
 ### `DrawDebugString`
 
 > DrawDebugString
@@ -187,6 +203,7 @@ Client.DrawDebugString(location, text, color, life_time, draw_shadow, font_scale
 | <BasicType.Boolean /> | **`draw_shadow`** | `false` |
 | <BasicType.Number /> | **`font_scale`** | `1` |
 
+
 ### `DrawDebugLine`
 
 > Draws a Debug Line in the World
@@ -203,6 +220,7 @@ Client.DrawDebugLine(start_position, end_position, color, duration, thickness)
 | <BasicType.Number /> | **`duration`** | `5` |  |
 | <BasicType.Number /> | **`thickness`** | `0` |  |
 
+
 ### `DrawDebugPoint`
 
 > Draws a Debug Point in the World
@@ -217,6 +235,7 @@ Client.DrawDebugPoint(start_position, color, duration, size)
 | <Structs.Color /> | **`color`** | `Color.RED` |  |
 | <BasicType.Number /> | **`duration`** | `5` |  |
 | <BasicType.Number /> | **`size`** | `10` |  |
+
 
 ### `DrawDebugSphere`
 
@@ -235,6 +254,7 @@ Client.DrawDebugSphere(start_position, radius, segments, color, duration, thickn
 | <BasicType.Number /> | **`duration`** | `5` |  |
 | <BasicType.Number /> | **`thickness`** | `0` |  |
 
+
 ### `InitializeDiscord`
 
 > Initializes the Discord Integration with your custom client\_id
@@ -247,6 +267,7 @@ Client.InitializeDiscord(client_id)
 | :--- | :--- | :--- |
 | <BasicType.Number /> | **`client_id`** |  |
 
+
 ### `SendChatMessage`
 
 > Sends a chat message which will display local only
@@ -258,6 +279,7 @@ Client.SendChatMessage(message)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`message`** |  |
+
 
 ### `SetChatConfiguration`
 
@@ -277,6 +299,7 @@ Client.SetChatConfiguration(screen_location, size, anchors_min, anchors_max, ali
 | <BasicType.Boolean /> |
 | <BasicType.Boolean /> | **`show_scrollbar`** | `true` |  |
 
+
 ### `SetChatVisibility`
 
 > Set if the Chat is visible or not
@@ -289,6 +312,7 @@ Client.SetChatVisibility(is_visible)
 | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_visible`** |  |
 
+
 ### `SetCrosshairEnabled`
 
 > Enables/Disables the default Crosshair
@@ -300,6 +324,7 @@ Client.SetCrosshairEnabled(is_enabled)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_enabled`** |  |
+
 
 ### `SetHardwareCursor`
 
@@ -314,6 +339,7 @@ Client.SetHardwareCursor(cursor_shape, cursor_path, hotspot)
 | <Enums>CursorType</Enums> | **`cursor_shape`** |  |  |  |
 | <BasicType.String /> | **`cursor_path`** |  |  |  |
 | <Structs.Vector2D /> | **`hotspot`** | `Vector(0, 0)` |  | = |
+
 
 ### `SetDiscordActivity`
 
@@ -330,6 +356,7 @@ Client.SetDiscordActivity(state, details, large_image, large_text)
 | <BasicType.String /> | **`large_image`** |  |
 | <BasicType.String /> | **`large_text`** |  |
 
+
 ### `SetInputEnabled`
 
 > Toggles Local Player input
@@ -341,6 +368,7 @@ Client.SetInputEnabled(enable_input)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`enable_input`** |  |
+
 
 ### `SetMouseEnabled`
 
@@ -354,6 +382,7 @@ Client.SetMouseEnabled(is_enabled)
 | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_enabled`** |  |
 
+
 ### `SetOutlineColor`
 
 > Changes the Outline Color for interactable stuff. Multiply it by 5 \(or more\) for having a glowing effect.
@@ -365,6 +394,7 @@ Client.SetOutlineColor(outline_color)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <Structs.Color /> | **`outline_color`** |  |
+
 
 ### `SetHighlightColor`
 
@@ -384,6 +414,20 @@ Client.SetHighlightColor(highlight_color, index, mode)
 | <BasicType.Number /> | **`index`** |  |
 | <Enums>HighlightMode</Enums> | **`mode`** |  |
 
+
+### `SetSteamRichPresence`
+
+> Changes the Steam Rich Presence text
+
+```lua
+Client.SetSteamRichPresence(text)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`text`** |  |
+
+
 ### `SetValue`
 
 > Sets a global value in the Client, which can be accessed from anywhere \(client side\)
@@ -399,21 +443,12 @@ Client.SetValue(key, value)
 | <BasicType.String /> | **`key`** |  | Key |
 | <BasicType.Any /> | **`value`** |  | Value |
 
-### `Spectate`
-
-> Spectates a Player. The local camera will follow the Player's camera.
-
-```lua
-Client.Spectate(player)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <Classes.Player /> | **`player`** |  |
 
 ### `Subscribe`
 
 > Subscribes for an Event
+> 
+> Returns the <BasicType.Function /> callback itself
 
 ```lua
 Client.Subscribe(event_name, callback)
@@ -423,6 +458,7 @@ Client.Subscribe(event_name, callback)
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`event_name`** |  |
 | <BasicType.Function /> | **`function`** |  |
+
 
 ### `Unsubscribe`
 
@@ -437,22 +473,15 @@ Client.Unsubscribe(event_name, callback)
 | <BasicType.String /> | **`event_name`** |  |  |
 | <BasicType.Function /> | **`function`** | `nil` |  |
 
-### `Unspectate`
-
-> Leaves the Spectator's State.
-
-```lua
-Client.Unspectate()
-```
 
 ### `Trace`
 
-> Trace a ray against the world and returns a table with the first blocking hit information. Currently only supports trace for <Classes.Character />, <Classes.Vehicle />, <Classes.StaticMesh />, <Classes.Weapon />, <Classes.Item />, <Classes.Grenade /> and <Classes.Prop />, more can be requested.
+> Trace a ray against the world and returns a table with the first blocking hit information. Currently only supports trace for <Classes.Character />, <Classes.Vehicle />, <Classes.StaticMesh />, <Classes.Weapon />, <Classes.Melee />, <Classes.Grenade /> and <Classes.Prop />, more can be requested.
 >
 > Returned Table: `{"Success", "Location", "Normal", "Entity", "BoneName", "ActorName", "ComponentName", "SurfaceType"}`
 
 ```lua
-Client.Trace(start_location, end_location, collision_channel, trace_complex, return_entity, return_physical_material, draw_debug)
+Client.Trace(start_location, end_location, collision_channel, trace_complex, return_entity, return_physical_material, ignored_actors, draw_debug)
 ```
 
 | Type | Parameter | Default Value | Description |
@@ -463,7 +492,9 @@ Client.Trace(start_location, end_location, collision_channel, trace_complex, ret
 | <BasicType.Boolean /> | **`trace_complex`** | `false` |  |
 | <BasicType.Boolean /> | **`return_entity`** | `false` |  |
 | <BasicType.Boolean /> | **`return_physical_material`** | `false` |  |
+| <BasicType.Table /> | **`ignored_actors`** | `{}` | List of Ignored actors |
 | <BasicType.Boolean /> | **`draw_debug`** | `false` |  |
+
 
 ### `GetLocalPlayer`
 
@@ -475,11 +506,12 @@ Client.Trace(start_location, end_location, collision_channel, trace_complex, ret
 Client.GetLocalPlayer()
 ```
 
+
 ### `GetRandomReachablePointInRadius`
 
-> Finds random, reachable point in navigable space restricted to radius around origin \(only if map has a NavMesh\)
+> Finds random, reachable point in navigable space restricted to radius around origin (only if map has a NavMesh)
 >
-> Returns Vector2D
+> Returns <Structs.Vector />
 
 ```lua
 Client.GetRandomReachablePointInRadius(origin, radius)
@@ -490,15 +522,60 @@ Client.GetRandomReachablePointInRadius(origin, radius)
 | <Structs.Vector /> | **`origin`** |  |
 | <BasicType.Number /> | **`radius`** |  |
 
+
+### `GetRandomPointInNavigableRadius`
+
+> Finds random, point in navigable space restricted to Radius around Origin. Resulting location is not tested for reachability from the Origin (only if map has a NavMesh)
+>
+> Returns <Structs.Vector />
+
+```lua
+Client.GetRandomPointInNavigableRadius(origin, radius)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Vector /> | **`origin`** |  |
+| <BasicType.Number /> | **`radius`** |  |
+
+
+### `FindPathToLocation`
+
+> Finds a Path given Start and End location (only if map has a NavMesh)
+>
+> Returned Table: `{"IsValid", "IsPartial", "Length", "Cost", "PathPoints"}`
+
+```lua
+Client.FindPathToLocation(start_location, end_location)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Vector /> | **`start_location`** |  |
+| <Structs.Vector /> | **`end_location`** |  |
+
+
+### `GetMap`
+
+> Returns the current Map
+>
+> Returns <BasicType.String />
+
+```lua
+Client.GetMap()
+```
+
+
 ### `GetMousePosition`
 
 > Gets the current mouse screen location
 >
-> Returns Vector2D
+> Returns <Structs.Vector2D />
 
 ```lua
 Client.GetMousePosition()
 ```
+
 
 ### `GetPackages`
 
@@ -510,6 +587,7 @@ Client.GetMousePosition()
 Client.GetPackages()
 ```
 
+
 ### `GetValue`
 
 > Gets a value given a key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
@@ -517,12 +595,14 @@ Client.GetPackages()
 > Returns <BasicType.Any />
 
 ```lua
-Client.GetValue(key)
+Client.GetValue(key, fallback)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
-| <BasicType.String /> | **`key`** |  |
+| <BasicType.String /> | **`key`** | Key |
+| <BasicType.Any /> | **`fallback`** | Fallback Value if key doesn't exist |
+
 
 ### `IsKeyDown`
 
@@ -538,6 +618,7 @@ Client.IsKeyDown(key_name)
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`key_name`** |  |
 
+
 ### `IsMouseEnabled`
 
 > Gets if the mouse is visible
@@ -547,6 +628,18 @@ Client.IsKeyDown(key_name)
 ```lua
 Client.IsMouseEnabled()
 ```
+
+
+### `IsInputEnabled`
+
+> Gets if the input is visible
+>
+> Returns <BasicType.Boolean />
+
+```lua
+Client.IsInputEnabled()
+```
+
 
 ## Events Detailed
 
@@ -570,7 +663,7 @@ end)
 
 > Called when a Chat Entry is received
 >
-> This is also triggered when `SendChatMessage` is called \(useful for creating your own Chat interface while still use the built-in system\)
+> This is also triggered when `SendChatMessage` is called (useful for creating your own Chat interface while still use the built-in system)
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
@@ -678,6 +771,7 @@ Client.Subscribe("MouseDown", function(key_name, mouse_x, mouse_y)
 end)
 ```
 
+
 ### `MouseUp`
 
 > A mouse button has been released
@@ -696,6 +790,44 @@ Client.Subscribe("MouseUp", function(key_name, mouse_x, mouse_y)
 end)
 ```
 
+
+### `MouseEnabled`
+
+> When mouse cursor is displayed/hidden
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`is_enabled`** |  |
+
+```lua
+Client.Subscribe("MouseEnabled", function(is_enabled)
+
+end)
+```
+
+
+### `OpenChat`
+
+> When player opens the chat
+
+```lua
+Client.Subscribe("OpenChat", function()
+
+end)
+```
+
+
+### `CloseChat`
+
+> When player closes the chat
+
+```lua
+Client.Subscribe("CloseChat", function()
+
+end)
+```
+
+
 ### `Tick`
 
 > Called Every Frame. Do not abuse.
@@ -709,6 +841,7 @@ Client.Subscribe("Tick", function(delta_time)
 
 end)
 ```
+
 
 ## Key Names
 

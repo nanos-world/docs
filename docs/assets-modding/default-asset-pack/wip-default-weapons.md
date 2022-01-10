@@ -1,2 +1,0 @@
-# WIP: Default Weapons
-
