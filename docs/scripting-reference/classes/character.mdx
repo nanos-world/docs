@@ -197,33 +197,35 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 
 |  | **Name** | **Description** |
 | :--- | :--- | :--- |
-|  | [**`Death`**](character#death) | When Character Dies |
-|  | [**`Drop`**](character#drop) | When Character drops anything |
-|  | [**`EnterVehicle`**](character#entervehicle) | When Character enters a vehicle |
+| <AuthorityType.ClientOnly /> | [**`AnimationBeginNotify`**](character#animationbeginnotify) | When an Animation Montage Notify begins |
+| <AuthorityType.ClientOnly /> | [**`AnimationEndNotify`**](character#animationendnotify) | When an Animation Montage Notify ends |
+| <AuthorityType.Both /> | [**`Death`**](character#death) | When Character Dies |
+| <AuthorityType.Both /> | [**`Drop`**](character#drop) | When Character drops anything |
+| <AuthorityType.Both /> | [**`EnterVehicle`**](character#entervehicle) | When Character enters a vehicle |
 | <AuthorityType.ServerOnly /> | [**`AttemptEnterVehicle`**](character#attemptentervehicle) | When Character attempts to enter a vehicle |
-|  | [**`FallingModeChanged`**](character#fallingmodechanged) |  |
-|  | [**`Fire`**](character#fire) | When Character fires a Weapon |
-|  | [**`GaitModeChanged`**](character#gaitmodechanged) |  |
-|  | [**`GrabProp`**](character#grabprop) | When Character grabs up a <Classes.Prop /> |
-|  | [**`Highlight`**](character#highlight) | When Character highlights/looks at a <Classes.Prop /> or a <Classes.Pickable /> |
+| <AuthorityType.Both /> | [**`FallingModeChanged`**](character#fallingmodechanged) |  |
+| <AuthorityType.Both /> | [**`Fire`**](character#fire) | When Character fires a Weapon |
+| <AuthorityType.Both /> | [**`GaitModeChanged`**](character#gaitmodechanged) |  |
+| <AuthorityType.Both /> | [**`GrabProp`**](character#grabprop) | When Character grabs up a <Classes.Prop /> |
+| <AuthorityType.Both /> | [**`Highlight`**](character#highlight) | When Character highlights/looks at a <Classes.Prop /> or a <Classes.Pickable /> |
 | <AuthorityType.ServerOnly /> | [**`Interact`**](character#interact) | When a Character interacts with a <Classes.Prop /> or <Classes.Pickable /> to pick it up |
-|  | [**`LeaveVehicle`**](character#leavevehicle) | When Character leaves a vehicle |
+| <AuthorityType.Both /> | [**`LeaveVehicle`**](character#leavevehicle) | When Character leaves a vehicle |
 | <AuthorityType.ServerOnly /> | [**`AttemptLeaveVehicle`**](character#attemptleavevehicle) | When Character attempts to leave a vehicle |
-|  | [**`MoveCompleted`**](character#movecompleted) | Called when AI reaches it’s destination, or when it fails |
-|  | [**`PickUp`**](character#pickup) | When Character picks up anything |
-|  | [**`Possessed`**](character#possessed) | When Character is possessed |
-|  | [**`Punch`**](character#punch) | When Character punches |
-|  | [**`RagdollModeChanged`**](character#ragdollmodechanged) |  |
+| <AuthorityType.Both /> | [**`MoveCompleted`**](character#movecompleted) | Called when AI reaches it’s destination, or when it fails |
+| <AuthorityType.Both /> | [**`PickUp`**](character#pickup) | When Character picks up anything |
+| <AuthorityType.Both /> | [**`Possessed`**](character#possessed) | When Character is possessed |
+| <AuthorityType.Both /> | [**`Punch`**](character#punch) | When Character punches |
+| <AuthorityType.Both /> | [**`RagdollModeChanged`**](character#ragdollmodechanged) |  |
 | <AuthorityType.ServerOnly /> | [**`AttemptReload`**](character#reload) | When Character attempts to reload a weapon |
-|  | [**`Reload`**](character#reload) | When Character reloads a weapon |
-|  | [**`Respawn`**](character#respawn) | When Character Respawns |
-|  | [**`StanceModeChanged`**](character#stancemodechanged) |  |
-|  | [**`SwimmingModeChanged`**](character#swimmingmodechanged) |  |
-|  | [**`TakeDamage`**](character#takedamage) | When Character takes Damage |
-|  | [**`UnGrabProp`**](character#ungrabprop) | When Character drops a <Classes.Prop /> |
-|  | [**`UnPossessed`**](character#unpossessed) | When Character is unpossessed |
-|  | [**`ViewModeChanged`**](character#viewmodechanged) |  |
-|  | [**`WeaponAimModeChanged`**](character#weaponaimmodechanged) |  |
+| <AuthorityType.Both /> | [**`Reload`**](character#reload) | When Character reloads a weapon |
+| <AuthorityType.Both /> | [**`Respawn`**](character#respawn) | When Character Respawns |
+| <AuthorityType.Both /> | [**`StanceModeChanged`**](character#stancemodechanged) |  |
+| <AuthorityType.Both /> | [**`SwimmingModeChanged`**](character#swimmingmodechanged) |  |
+| <AuthorityType.Both /> | [**`TakeDamage`**](character#takedamage) | When Character takes Damage |
+| <AuthorityType.Both /> | [**`UnGrabProp`**](character#ungrabprop) | When Character drops a <Classes.Prop /> |
+| <AuthorityType.Both /> | [**`UnPossessed`**](character#unpossessed) | When Character is unpossessed |
+| <AuthorityType.Both /> | [**`ViewModeChanged`**](character#viewmodechanged) |  |
+| <AuthorityType.Both /> | [**`WeaponAimModeChanged`**](character#weaponaimmodechanged) |  |
 
 
 ## Functions Detailed
@@ -1383,6 +1385,38 @@ my_character:GetWeaponAimMode()
 
 
 ## Events Detailed
+
+### <AuthorityType.ClientOnly />`AnimationBeginNotify`
+
+> When an Animation Montage Notify begins
+
+```lua
+Character.Subscribe("AnimationBeginNotify", function(self, notify_name)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <BasicType.String /> | **`notify_name`** |  |
+
+
+### <AuthorityType.ClientOnly />`AnimationEndNotify`
+
+> When an Animation Montage Notify ends
+
+```lua
+Character.Subscribe("AnimationEndNotify", function(self, notify_name)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <BasicType.String /> | **`notify_name`** |  |
+
 
 ### <AuthorityType.Both />`Death`
 
