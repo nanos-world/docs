@@ -167,7 +167,7 @@ Finished!, you can now proceed to the next steps to configure your nanos world s
 
 :::warning
 
-EXPERIEMENTAL : Use at your own risk!, unstable
+EXPERIMENTAL : Use at your own risk!, unstable
 
 :::
 
