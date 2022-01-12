@@ -480,6 +480,12 @@ Client.Unsubscribe(event_name, callback)
 >
 > Returned Table: `{"Success", "Location", "Normal", "Entity", "BoneName", "ActorName", "ComponentName", "SurfaceType"}`
 
+:::info
+
+The Trace will collide with the ObjectType (in the Collision Settings), even if the channel is ignored below.
+
+:::
+
 ```lua
 Client.Trace(start_location, end_location, collision_channel, trace_complex, return_entity, return_physical_material, ignored_actors, draw_debug)
 ```
