@@ -450,7 +450,7 @@ my_character:PickUp(pickable)
 > Plays an Animation Montage on this character
 
 ```lua
-my_character:PlayAnimation(animation_path, slot_type, loop_indefinitely, blend_in_time, blend_out_time, play_rate)
+my_character:PlayAnimation(animation_path, slot_type, loop_indefinitely, blend_in_time, blend_out_time, play_rate, stop_all_montages)
 ```
 
 | Type | Parameter | Default Value | Description |
@@ -461,6 +461,7 @@ my_character:PlayAnimation(animation_path, slot_type, loop_indefinitely, blend_i
 | <BasicType.Number /> | **`blend_in_time`** | `0.25` |  |
 | <BasicType.Number /> | **`blend_out_time`** | `0.25` |  |
 | <BasicType.Number /> | **`play_rate`** | `1.0` |  |
+| <BasicType.Boolean /> | **`stop_all_montages`** | `false` | Stops all running Montages from the same Group |
 
 
 ### <AuthorityType.Both />`RemoveSkeletalMeshAttached`
