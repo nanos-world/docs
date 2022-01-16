@@ -152,14 +152,12 @@ my_player:Possess(new_character, blend_time, exp)
 > Sets the Player's Camera Location (only works if not possessing any Character)
 
 ```lua
-my_player:SetCameraLocation(location, time, exp)
+my_player:SetCameraLocation(location)
 ```
 
 | Type | Parameter | Default | Description |
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** |  |  |
-| <BasicType.Number /> | **`time`** | `0` | Time to interp from current camera location to target location |
-| <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
 
 ### <AuthorityType.Both />`SetCameraRotation`
@@ -167,13 +165,41 @@ my_player:SetCameraLocation(location, time, exp)
 > Sets the Player's Camera Rotation
 
 ```lua
-my_player:SetCameraRotation(rotation, time, exp)
+my_player:SetCameraRotation(rotation)
 ```
 
 | Type | Parameter | Default | Description |
 | :--- | :--- | :--- | :--- |
 | <Structs.Rotator /> | **`rotation`** |  |  |
-| <BasicType.Number /> | **`time`** | `0` | Time to interp from current camera rotation to target rotation |
+
+
+### <AuthorityType.Both />`TranslateCameraTo`
+
+> Smoothly moves the Player's Camera Location (only works if not possessing any Character)
+
+```lua
+my_player:TranslateCameraTo(location, time, exp)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** |  |  |
+| <BasicType.Number /> | **`time`** |  | Time to interp from current camera location to target location |
+| <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
+
+
+### <AuthorityType.Both />`RotateCameraTo`
+
+> Smoothly moves the Player's Camera Rotation
+
+```lua
+my_player:RotateCameraTo(rotation, time, exp)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Rotator /> | **`rotation`** |  |  |
+| <BasicType.Number /> | **`time`** |  | Time to interp from current camera rotation to target rotation |
 | <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
 

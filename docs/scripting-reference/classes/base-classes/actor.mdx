@@ -341,31 +341,32 @@ entity:SetValue(key, value, sync_on_clients)
 
 ### <AuthorityType.AuthorityOnly />`TranslateTo`
 
-> Smoothly moves this actor to a location with a certain speed - optionally enables sweep to stop when colliding
+> Smoothly moves this actor to a location during a certain time
 
 ```lua
-entity:TranslateTo(location, speed, sweep)
+entity:TranslateTo(location, time, exp)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** |  | Location to translate to |
-| <BasicType.Number /> | **`speed`** |  |  |
-| <BasicType.Boolean /> | **`sweep`** | `false` | Whether to stop movement if there's a collision |
+| <BasicType.Number /> | **`time`** |  | Time to interp from current location to target location |
+| <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
 
 ### <AuthorityType.AuthorityOnly />`RotateTo`
 
-> Smoothly rotates this Actor to an angle with a certain speed
+> Smoothly rotates this Actor to an angle during a certain time
 
 ```lua
-entity:RotateTo(rotation, speed)
+entity:RotateTo(rotation, time, exp)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <Structs.Rotator /> | **`rotation`** |  | Angle to rotate to |
-| <BasicType.Number /> | **`speed`** |  |  |
+| <BasicType.Number /> | **`time`** |  | Time to interp from current rotation to target rotation |
+| <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
 
 ### <AuthorityType.Both />`IsBeingDestroyed`

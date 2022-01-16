@@ -1,12 +1,11 @@
 ---
-description: How to migrate your Scripts to the newer API version
-sidebar_position: 4
+description: How to migrate your Packages and Asset Packs to the Alpha 1.0 version
 tags: [scripting]
 ---
 
-# 🧳 Migrating to Alpha
+# Migrating to Alpha 1.0
 
-There have been no significant changes from version 0.73.0 to Alpha, however this guide remains for those coming from older versions.
+There have been no significant changes from version 0.73 to Alpha 1.0, however this guide remains for those coming from older versions.
 
 ![THE DAY THE API STOOD STEADY update](/img/blog/updates/devastation.jpg)
 
