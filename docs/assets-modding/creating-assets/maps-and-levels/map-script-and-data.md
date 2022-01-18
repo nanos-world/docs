@@ -52,7 +52,7 @@ Now maps can have it's own Configuration file `Map.toml`, this file contains a h
     ]
 
 [custom_data]
-    # whatever = "anything"
+    whatever = "anything"
 
 ```
 
