@@ -50,6 +50,9 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | <BasicType.Table /> | [**`Trace`**](client#trace) | Trace a ray against the world and returns a table with the first blocking hit information |
 | <Classes.Player /> | [**`GetLocalPlayer`**](client#getlocalplayer) | Gets the local Player |
 | <Structs.Vector /> | [**`GetRandomReachablePointInRadius`**](client#getrandomreachablepointinradius) | Finds random, reachable point in navigable space restricted to radius around origin |
+| <Structs.Vector /> | [**`GetRandomPointInNavigableRadius`**](client#getrandompointinnavigableradius) | Finds random, point in navigable space restricted to Radius around Origin. Resulting location is not tested for reachability from the Origin |
+| <Structs.Vector /> | [**`FindPathToLocation`**](client#findpathtolocation) | Finds a Path given Start and End location |
+| <BasicType.String /> | [**`GetMap`**](client#getmap) | Returns the current Map |
 | <Structs.Vector2D /> | [**`GetMousePosition`**](client#getmouseposition) | Gets the current mouse screen location |
 | <BasicType.Table /> | [**`GetPackages`**](client#getpackages) | Returns a list of Packages folder names loaded and running in the client |
 | <BasicType.Any /> | [**`GetValue`**](client#getvalue) | Gets a value given a key |
@@ -71,6 +74,9 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | [**`LogEntry`**](client#logentry) | Called when a Client log is received |
 | [**`MouseDown`**](client#mousedown) | A mouse button has been pressed / is being pressed |
 | [**`MouseUp`**](client#mouseup) | A mouse button has been released |
+| [**`MouseEnabled`**](client#mouseenabled) | When mouse cursor is displayed/hidden |
+| [**`OpenChat`**](client#openchat) | When player opens the Chat |
+| [**`CloseChat`**](client#closechat) | When player closes the Chat |
 | [**`Tick`**](client#tick) | Called Every Frame. Do not abuse |
 
 
@@ -474,6 +480,12 @@ Client.Unsubscribe(event_name, callback)
 >
 > Returned Table: `{"Success", "Location", "Normal", "Entity", "BoneName", "ActorName", "ComponentName", "SurfaceType"}`
 
+:::info
+
+The Trace will collide with the ObjectType (in the Collision Settings), even if the channel is ignored below.
+
+:::
+
 ```lua
 Client.Trace(start_location, end_location, collision_channel, trace_complex, return_entity, return_physical_material, ignored_actors, draw_debug)
 ```
@@ -482,7 +494,7 @@ Client.Trace(start_location, end_location, collision_channel, trace_complex, ret
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`start_location`** |  |  |
 | <Structs.Vector /> | **`end_location`** |  |  |
-| <Enums>CollisionChannel</Enums> | **`collision_channel`** | `CollisionChannel.WorldStatic` | Supports several channels separating by `|` |
+| <Enums>CollisionChannel</Enums> | **`collision_channel`** | `CollisionChannel.WorldStatic` | Supports several channels separating by **\|** |
 | <BasicType.Boolean /> | **`trace_complex`** | `false` |  |
 | <BasicType.Boolean /> | **`return_entity`** | `false` |  |
 | <BasicType.Boolean /> | **`return_physical_material`** | `false` |  |
@@ -503,9 +515,9 @@ Client.GetLocalPlayer()
 
 ### `GetRandomReachablePointInRadius`
 
-> Finds random, reachable point in navigable space restricted to radius around origin \(only if map has a NavMesh\)
+> Finds random, reachable point in navigable space restricted to radius around origin (only if map has a NavMesh)
 >
-> Returns Vector2D
+> Returns <Structs.Vector />
 
 ```lua
 Client.GetRandomReachablePointInRadius(origin, radius)
@@ -517,11 +529,54 @@ Client.GetRandomReachablePointInRadius(origin, radius)
 | <BasicType.Number /> | **`radius`** |  |
 
 
+### `GetRandomPointInNavigableRadius`
+
+> Finds random, point in navigable space restricted to Radius around Origin. Resulting location is not tested for reachability from the Origin (only if map has a NavMesh)
+>
+> Returns <Structs.Vector />
+
+```lua
+Client.GetRandomPointInNavigableRadius(origin, radius)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Vector /> | **`origin`** |  |
+| <BasicType.Number /> | **`radius`** |  |
+
+
+### `FindPathToLocation`
+
+> Finds a Path given Start and End location (only if map has a NavMesh)
+>
+> Returned Table: `{"IsValid", "IsPartial", "Length", "Cost", "PathPoints"}`
+
+```lua
+Client.FindPathToLocation(start_location, end_location)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Vector /> | **`start_location`** |  |
+| <Structs.Vector /> | **`end_location`** |  |
+
+
+### `GetMap`
+
+> Returns the current Map
+>
+> Returns <BasicType.String />
+
+```lua
+Client.GetMap()
+```
+
+
 ### `GetMousePosition`
 
 > Gets the current mouse screen location
 >
-> Returns Vector2D
+> Returns <Structs.Vector2D />
 
 ```lua
 Client.GetMousePosition()
@@ -722,6 +777,7 @@ Client.Subscribe("MouseDown", function(key_name, mouse_x, mouse_y)
 end)
 ```
 
+
 ### `MouseUp`
 
 > A mouse button has been released
@@ -740,6 +796,44 @@ Client.Subscribe("MouseUp", function(key_name, mouse_x, mouse_y)
 end)
 ```
 
+
+### `MouseEnabled`
+
+> When mouse cursor is displayed/hidden
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`is_enabled`** |  |
+
+```lua
+Client.Subscribe("MouseEnabled", function(is_enabled)
+
+end)
+```
+
+
+### `OpenChat`
+
+> When player opens the chat
+
+```lua
+Client.Subscribe("OpenChat", function()
+
+end)
+```
+
+
+### `CloseChat`
+
+> When player closes the chat
+
+```lua
+Client.Subscribe("CloseChat", function()
+
+end)
+```
+
+
 ### `Tick`
 
 > Called Every Frame. Do not abuse.
@@ -753,6 +847,7 @@ Client.Subscribe("Tick", function(delta_time)
 
 end)
 ```
+
 
 ## Key Names
 

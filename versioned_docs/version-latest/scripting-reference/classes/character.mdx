@@ -106,6 +106,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`LookAt`**](character#lookat) | AI: Tries to make this Character to look at Location |
 | <AuthorityType.ServerOnly /> |  | [**`MoveTo`**](character#moveto) | AI: Makes this Character to walk to the Location |
 | <AuthorityType.ServerOnly /> |  | [**`Follow`**](character#follow) | AI: Makes this Character to follow another actor |
+| <AuthorityType.ServerOnly /> |  | [**`StopMovement`**](character#stopmovement) | AI: Stops the movement |
 | <AuthorityType.ServerOnly /> |  | [**`PickUp`**](character#pickup) | Gives a Melee/Grenade/Weapon (Pickable) to the Character |
 | <AuthorityType.ServerOnly /> |  | [**`PlayAnimation`**](character#playanimation) | Plays an Animation Montage on this character |
 |  <AuthorityType.Both /> |  | [**`RemoveSkeletalMeshAttached`**](character#removeskeletalmeshattached) | Removes, if existing, a SkeletalMesh from this Character given it’s custom ID |
@@ -121,7 +122,8 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetCanSprint`**](character#setcansprint) | Sets if this Character is allowed to Sprint |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanGrabProps`**](character#setcangrabprops) | Sets if this Character is allowed to Grab any <Classes.Prop /> |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanPickupPickables`**](character#setcanpickuppickables) | Sets if this Character is allowed to Pick up any <Classes.Pickable /> (Weapon, Grenade, Melee) |
-| <AuthorityType.ServerOnly /> |  | [**`SetCanPunch`**](character#setcanpunch) | Sets if this Character is allowed to Punch \(Melee\) |
+| <AuthorityType.ServerOnly /> |  | [**`SetCanPunch`**](character#setcanpunch) | Sets if this Character is allowed to Punch |
+| <AuthorityType.ServerOnly /> |  | [**`SetCanDeployParachute`**](character#setcandeployparachute) | Sets if this Character is allowed to open the parachute |
 | <AuthorityType.ServerOnly /> |  | [**`SetCapsuleSize`**](character#setcapsulesize) | Sets this Character’s Capsule size |
 | <AuthorityType.ServerOnly /> |  | [**`SetDamageMultiplier`**](character#setdamagemultiplier) | Changes how much damage this character takes |
 | <AuthorityType.ServerOnly /> |  | [**`SetDeathSound`**](character#setdeathsound) | Changes the Death sound when Character dies |
@@ -138,6 +140,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetMesh`**](character#setmesh) | Changes the Character Mesh on the fly |
 |  <AuthorityType.Both /> |  | [**`SetMorphTarget`**](character#setmorphtarget) |  |
 | <AuthorityType.ServerOnly /> |  | [**`SetMovementEnabled`**](character#setmovementenabled) | Enables/Disables Character’s Movement |
+| <AuthorityType.ServerOnly /> |  | [**`SetParachuteTexture`**](character#setparachutetexture) | Changes the Parachute Texture |
 | <AuthorityType.ServerOnly /> |  | [**`SetPainSound`**](character#setpainsound) | Changes the Pain sound when Character takes damage |
 | <AuthorityType.ServerOnly /> |  | [**`SetPunchDamage`**](character#setpunchdamage) | Set the Punch Damage this Character will apply on others |
 | <AuthorityType.ServerOnly /> |  | [**`SetRagdollMode`**](character#setragdollmode) | Sets Character Ragdoll Mode |
@@ -194,33 +197,35 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 
 |  | **Name** | **Description** |
 | :--- | :--- | :--- |
-|  | [**`Death`**](character#death) | When Character Dies |
-|  | [**`Drop`**](character#drop) | When Character drops anything |
-|  | [**`EnterVehicle`**](character#entervehicle) | When Character enters a vehicle |
+| <AuthorityType.ClientOnly /> | [**`AnimationBeginNotify`**](character#animationbeginnotify) | When an Animation Montage Notify begins |
+| <AuthorityType.ClientOnly /> | [**`AnimationEndNotify`**](character#animationendnotify) | When an Animation Montage Notify ends |
+| <AuthorityType.Both /> | [**`Death`**](character#death) | When Character Dies |
+| <AuthorityType.Both /> | [**`Drop`**](character#drop) | When Character drops anything |
+| <AuthorityType.Both /> | [**`EnterVehicle`**](character#entervehicle) | When Character enters a vehicle |
 | <AuthorityType.ServerOnly /> | [**`AttemptEnterVehicle`**](character#attemptentervehicle) | When Character attempts to enter a vehicle |
-|  | [**`FallingModeChanged`**](character#fallingmodechanged) |  |
-|  | [**`Fire`**](character#fire) | When Character fires a Weapon |
-|  | [**`GaitModeChanged`**](character#gaitmodechanged) |  |
-|  | [**`GrabProp`**](character#grabprop) | When Character grabs up a <Classes.Prop /> |
-|  | [**`Highlight`**](character#highlight) | When Character highlights/looks at a <Classes.Prop /> or a <Classes.Pickable /> |
+| <AuthorityType.Both /> | [**`FallingModeChanged`**](character#fallingmodechanged) |  |
+| <AuthorityType.Both /> | [**`Fire`**](character#fire) | When Character fires a Weapon |
+| <AuthorityType.Both /> | [**`GaitModeChanged`**](character#gaitmodechanged) |  |
+| <AuthorityType.Both /> | [**`GrabProp`**](character#grabprop) | When Character grabs up a <Classes.Prop /> |
+| <AuthorityType.Both /> | [**`Highlight`**](character#highlight) | When Character highlights/looks at a <Classes.Prop /> or a <Classes.Pickable /> |
 | <AuthorityType.ServerOnly /> | [**`Interact`**](character#interact) | When a Character interacts with a <Classes.Prop /> or <Classes.Pickable /> to pick it up |
-|  | [**`LeaveVehicle`**](character#leavevehicle) | When Character leaves a vehicle |
+| <AuthorityType.Both /> | [**`LeaveVehicle`**](character#leavevehicle) | When Character leaves a vehicle |
 | <AuthorityType.ServerOnly /> | [**`AttemptLeaveVehicle`**](character#attemptleavevehicle) | When Character attempts to leave a vehicle |
-|  | [**`MoveCompleted`**](character#movecompleted) | Called when AI reaches it’s destination, or when it fails |
-|  | [**`PickUp`**](character#pickup) | When Character picks up anything |
-|  | [**`Possessed`**](character#possessed) | When Character is possessed |
-|  | [**`Punch`**](character#punch) | When Character punches |
-|  | [**`RagdollModeChanged`**](character#ragdollmodechanged) |  |
+| <AuthorityType.Both /> | [**`MoveCompleted`**](character#movecompleted) | Called when AI reaches it’s destination, or when it fails |
+| <AuthorityType.Both /> | [**`PickUp`**](character#pickup) | When Character picks up anything |
+| <AuthorityType.Both /> | [**`Possessed`**](character#possessed) | When Character is possessed |
+| <AuthorityType.Both /> | [**`Punch`**](character#punch) | When Character punches |
+| <AuthorityType.Both /> | [**`RagdollModeChanged`**](character#ragdollmodechanged) |  |
 | <AuthorityType.ServerOnly /> | [**`AttemptReload`**](character#reload) | When Character attempts to reload a weapon |
-|  | [**`Reload`**](character#reload) | When Character reloads a weapon |
-|  | [**`Respawn`**](character#respawn) | When Character Respawns |
-|  | [**`StanceModeChanged`**](character#stancemodechanged) |  |
-|  | [**`SwimmingModeChanged`**](character#swimmingmodechanged) |  |
-|  | [**`TakeDamage`**](character#takedamage) | When Character takes Damage |
-|  | [**`UnGrabProp`**](character#ungrabprop) | When Character drops a <Classes.Prop /> |
-|  | [**`UnPossessed`**](character#unpossessed) | When Character is unpossessed |
-|  | [**`ViewModeChanged`**](character#viewmodechanged) |  |
-|  | [**`WeaponAimModeChanged`**](character#weaponaimmodechanged) |  |
+| <AuthorityType.Both /> | [**`Reload`**](character#reload) | When Character reloads a weapon |
+| <AuthorityType.Both /> | [**`Respawn`**](character#respawn) | When Character Respawns |
+| <AuthorityType.Both /> | [**`StanceModeChanged`**](character#stancemodechanged) |  |
+| <AuthorityType.Both /> | [**`SwimmingModeChanged`**](character#swimmingmodechanged) |  |
+| <AuthorityType.Both /> | [**`TakeDamage`**](character#takedamage) | When Character takes Damage |
+| <AuthorityType.Both /> | [**`UnGrabProp`**](character#ungrabprop) | When Character drops a <Classes.Prop /> |
+| <AuthorityType.Both /> | [**`UnPossessed`**](character#unpossessed) | When Character is unpossessed |
+| <AuthorityType.Both /> | [**`ViewModeChanged`**](character#viewmodechanged) |  |
+| <AuthorityType.Both /> | [**`WeaponAimModeChanged`**](character#weaponaimmodechanged) |  |
 
 
 ## Functions Detailed
@@ -230,7 +235,7 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 > Do damage in a character, will trigger all related events and apply modified damage based on bone. Also will apply impulse if it's a heavy explosion
 
 ```lua
-my_character:ApplyDamage(damage, bone_name, damage_type, from_direction, instigator)
+my_character:ApplyDamage(damage, bone_name, damage_type, from_direction, instigator, causer)
 ```
 
 | Type | Parameter | Default Value | Description |
@@ -240,6 +245,7 @@ my_character:ApplyDamage(damage, bone_name, damage_type, from_direction, instiga
 | <Enums>DamageType</Enums> | **`damage_type`** | `DamageType.Shot` |  |
 | <Structs.Vector /> | **`from_direction`** | `Vector()` |  |
 | <Classes.Player /> | **`instigator`** | `nil` |  |
+| <BasicType.Any /> | **`causer`** | `nil` | The object which caused the damage |
 
 
 ###  <AuthorityType.Both />`AddSkeletalMeshAttached`
@@ -415,6 +421,17 @@ my_character:Follow(actor, acceptance_radius, stop_on_succeed, stop_on_fail, upd
 | <BasicType.Number /> | **`update_rate`** | `0.25` | How often to recalculate the AI path |
 
 
+### <AuthorityType.ServerOnly />`StopMovement`
+
+> AI: Stops the movement
+>
+> Triggers event [MoveCompleted](character#movecompleted).
+
+```lua
+my_character:StopMovement()
+```
+
+
 ### <AuthorityType.ServerOnly />`PickUp`
 
 > Gives a Melee/Grenade/Weapon \(Pickable\) to the Character
@@ -433,7 +450,7 @@ my_character:PickUp(pickable)
 > Plays an Animation Montage on this character
 
 ```lua
-my_character:PlayAnimation(animation_path, slot_type, loop_indefinitely, blend_in_time, blend_out_time, play_rate)
+my_character:PlayAnimation(animation_path, slot_type, loop_indefinitely, blend_in_time, blend_out_time, play_rate, stop_all_montages)
 ```
 
 | Type | Parameter | Default Value | Description |
@@ -444,6 +461,7 @@ my_character:PlayAnimation(animation_path, slot_type, loop_indefinitely, blend_i
 | <BasicType.Number /> | **`blend_in_time`** | `0.25` |  |
 | <BasicType.Number /> | **`blend_out_time`** | `0.25` |  |
 | <BasicType.Number /> | **`play_rate`** | `1.0` |  |
+| <BasicType.Boolean /> | **`stop_all_montages`** | `false` | Stops all running Montages from the same Group |
 
 
 ### <AuthorityType.Both />`RemoveSkeletalMeshAttached`
@@ -523,6 +541,12 @@ my_character:SetBrakingSettings(ground_friction, braking_friction_factor, brakin
 ### <AuthorityType.ServerOnly />`SetCameraMode`
 
 > Sets the Camera Mode (i.e. Only TPS, FPS or if allow both)
+
+:::info
+
+Using FPSOnly CameraMode on AI will lock his body rotation (when using LookAt).
+
+:::
 
 ```lua
 my_character:SetCameraMode(camera_mode)
@@ -618,7 +642,7 @@ my_character:SetCanPickupPickables(can_pickup)
 
 ### <AuthorityType.ServerOnly />`SetCanPunch`
 
-> Sets if this Character is allowed to Punch \(Melee\)
+> Sets if this Character is allowed to Punch
 
 ```lua
 my_character:SetCanPunch(can_punch)
@@ -627,6 +651,20 @@ my_character:SetCanPunch(can_punch)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`can_punch`** |  |  |
+
+
+### <AuthorityType.ServerOnly />`SetCanDeployParachute`
+
+> Sets if this Character is allowed to deploy the Parachute
+
+```lua
+my_character:SetCanDeployParachute(can_deploy_parachute)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`can_deploy_parachute`** |  |  |
+
 
 ### <AuthorityType.ServerOnly />`SetCapsuleSize`
 
@@ -817,6 +855,7 @@ my_character:SetMorphTarget(key, value)
 | <BasicType.String /> | **`skeletal_mesh_asset`** |  |  |
 | <BasicType.Number /> | **`value`** |  |  |
 
+
 ### <AuthorityType.ServerOnly />`SetMovementEnabled`
 
 > Enables/Disables Character's Movement
@@ -828,6 +867,20 @@ my_character:SetMovementEnabled(is_movement_enabled)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_movement_enabled`** |  |  |
+
+
+### <AuthorityType.ServerOnly />`SetParachuteTexture`
+
+> Changes the Parachute Texture
+
+```lua
+my_character:SetParachuteTexture(texture)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <AssetPath.Image /> | **`texture`** |  |  |
+
 
 ### <AuthorityType.ServerOnly />`SetPainSound`
 
@@ -903,6 +956,8 @@ my_character:SetTeam(team)
 
 ### <AuthorityType.ServerOnly />`SetViewMode`
 
+> Changes the Predefined View Mode
+> 
 > **View Modes**: _FPS, TPS1, TPS2, TPS3_
 
 ```lua
@@ -1338,12 +1393,44 @@ my_character:GetWeaponAimMode()
 
 ## Events Detailed
 
+### <AuthorityType.ClientOnly />`AnimationBeginNotify`
+
+> When an Animation Montage Notify begins
+
+```lua
+Character.Subscribe("AnimationBeginNotify", function(self, notify_name)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <BasicType.String /> | **`notify_name`** |  |
+
+
+### <AuthorityType.ClientOnly />`AnimationEndNotify`
+
+> When an Animation Montage Notify ends
+
+```lua
+Character.Subscribe("AnimationEndNotify", function(self, notify_name)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <BasicType.String /> | **`notify_name`** |  |
+
+
 ### <AuthorityType.Both />`Death`
 
 > When Character Dies
 
 ```lua
-Character.Subscribe("Death", function(self, last_damage_taken, last_bone_damage, damage_type_reason, hit_from_direction, instigator)
+Character.Subscribe("Death", function(self, last_damage_taken, last_bone_damage, damage_type_reason, hit_from_direction, instigator, causer)
 
 end)
 ```
@@ -1356,6 +1443,7 @@ end)
 | <Enums>DamageType</Enums> | **`damage_type_reason`** |  |
 | <Structs.Vector /> | **`hit_from_direction`** |  |
 | <Classes.Player /> | **`instigator`** |  |
+| <BasicType.Any /> | **`causer`** | The object which caused the damage |
 
 
 ### `Drop`

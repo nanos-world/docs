@@ -37,7 +37,7 @@ end)
 
 -- Subscribe for Client's custom event, to update the position of the object he is grabbing
 Events.Subscribe("UpdateObjectPosition", function(player, object, location)
-    object:TranslateTo(location, 10)
+    object:TranslateTo(location, 0.1)
 end)
 ```
 

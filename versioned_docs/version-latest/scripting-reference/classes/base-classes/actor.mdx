@@ -201,6 +201,19 @@ entity:SetGravityEnabled(is_enabled)
 | <BasicType.Boolean /> | **`is_enabled`** |  |  |
 
 
+### <AuthorityType.AuthorityOnly />`SetVisibility`
+
+> Sets whether the actor is visible or not
+
+```lua
+entity:SetVisibility(is_visible)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`is_visible`** |  |  |
+
+
 ### <AuthorityType.AuthorityOnly />`SetHighlightEnabled`
 
 > Sets whether the highlight is enabled on this Actor, and which highlight index to use
@@ -328,33 +341,32 @@ entity:SetValue(key, value, sync_on_clients)
 
 ### <AuthorityType.AuthorityOnly />`TranslateTo`
 
-> Smoothly moves this actor to a location with a certain speed - optionally enables sweep to stop when colliding - use teleport flag to not affect velocity
+> Smoothly moves this actor to a location during a certain time
 
 ```lua
-entity:TranslateTo(location, speed, sweep, teleport)
+entity:TranslateTo(location, time, exp)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** |  | Location to translate to |
-| <BasicType.Number /> | **`speed`** |  |  |
-| <BasicType.Boolean /> | **`sweep`** | `false` | Whether to stop movement if there's a collision |
-| <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current velocity |
+| <BasicType.Number /> | **`time`** |  | Time to interp from current location to target location |
+| <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
 
 ### <AuthorityType.AuthorityOnly />`RotateTo`
 
-> Smoothly rotates this Actor to an angle with a certain speed
+> Smoothly rotates this Actor to an angle during a certain time
 
 ```lua
-entity:RotateTo(rotation, speed, teleport)
+entity:RotateTo(rotation, time, exp)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <Structs.Rotator /> | **`rotation`** |  | Angle to rotate to |
-| <BasicType.Number /> | **`speed`** |  |  |
-| <BasicType.Boolean /> | **`teleport`** | `false` | Whether to affect the current velocity |
+| <BasicType.Number /> | **`time`** |  | Time to interp from current rotation to target rotation |
+| <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
 
 ### <AuthorityType.Both />`IsBeingDestroyed`

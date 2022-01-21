@@ -75,7 +75,7 @@ The server Configuration file `Config.toml` is generated automatically when the 
 | **`name`** | Name of the Server |
 | **`description`** | Description of the Server |
 | **`logo`** | Image URL to be displayed in the Server List |
-| **`max_players`** | Max ammount of players allowed to join |
+| **`max_players`** | Max amount of players allowed to join |
 | **`password`** | Password to be able to connect |
 | **`ip`** | Server IP. We recommend leaving it blank |
 | **`port`** | Server main Port and HTTP Port (UDP/TCP) |
@@ -83,9 +83,9 @@ The server Configuration file `Config.toml` is generated automatically when the 
 | **`announce`** | Whether to announce or not in the Server List |
 | **`tick_rate`** | Server Tick in ms. We recommend leaving it 33 |
 | **`log_level`** | Which Log level to output |
-| **`game_mode`** | [game-mode](./core-concepts/packages/packages.md#package-types) package to load -  you can only load one game-mode at once. |
+| **`game_mode`** | [game-mode](./core-concepts/packages/packages-guide.md#package-types) package to load -  you can only load one game-mode at once. |
 | **`loading_screen`** | [loading-screen](./core-concepts/packages/loading-screen.md) package to load - you can only load one loading-screen at once. |
-| **`packages`** | [script](./core-concepts/packages/packages.md#package-types) packages to load |
+| **`packages`** | [script](./core-concepts/packages/packages-guide.md#package-types) packages to load |
 | **`assets`** | Additional assets to force to load |
 | **`map`** | Which map to load |
 | **`banned_ips`** | List of banned IPs |
@@ -148,9 +148,11 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--game_mode` | string | Server game-mode |
 | `--loading_screen` | string | Server loading-screen |
 | `--packages` | string list | Server packages |
+| `--assets` | string list | Server assets |
 | `--max_players` | number | Max allowed players |
 | `--save` | 0 or 1 | If to save the parameters in Config.toml |
 | `--profiling` | 0 or 1 | Enables Performance Profiling Logs for debugging |
+| `--auto_download` | 0 or 1 | Automatically downloads Packages and Assets from Vault if needed |
 
 
 ### One-liner Server Configuration
@@ -168,6 +170,12 @@ steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_updat
 ./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --gamemode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/U1rZp5v.png"
 ```
 
+Another shorter example:
+
+```shell title="Shell/Linux"
+# Starts the server with all configs set and auto downloads the packages and assets if needed
+./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --gamemode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download 1 --logo "https://i.imgur.com/U1rZp5v.png"
+```
 
 ## Common Console Messages and Errors
 
