@@ -36,6 +36,7 @@ import { Structs, BasicType, AuthorityType } from '@site/docs/components/_nanos.
 | <BasicType.Table /> | [**`GetFiles`**](package#getfiles) | Gets a list of all files in this package |
 | <BasicType.String /> | [**`GetName`**](package#getname) | Gives the package name |
 | <BasicType.String /> | [**`GetPath`**](package#getpath) | Gives the package path |
+| <BasicType.String /> | [**`GetVersion`**](package#getversion) | Gets the package version |
 | <BasicType.Table /> | [**`GetPersistentData`**](package#getpersistentdata) | Gets all Persistent Values from the Disk |
 
 ## Events
@@ -228,6 +229,7 @@ Package.GetFiles(path_filter, extension_filter)
 Package.GetName()
 ```
 
+
 ### `GetPath`
 
 > Gives the package path
@@ -237,6 +239,18 @@ Package.GetName()
 ```lua
 Package.GetPath()
 ```
+
+
+### `GetVersion`
+
+> Gets the package version
+>
+> Returns <BasicType.String />
+
+```lua
+Package.GetVersion()
+```
+
 
 ### `GetPersistentData`
 
