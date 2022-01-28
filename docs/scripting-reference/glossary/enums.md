@@ -67,6 +67,18 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`AttenuationFunction.LogReverse`** | `3` |
 | **`AttenuationFunction.NaturalSound`** | `4` |
 
+### `BlendMode`
+
+| Label | Value |
+| :--- | :--- |
+| **`BlendMode.Opaque`** | `0` |
+| **`BlendMode.Masked`** | `1` |
+| **`BlendMode.Translucent`** | `2` |
+| **`BlendMode.Additive`** | `3` |
+| **`BlendMode.Modulate`** | `4` |
+| **`BlendMode.AlphaComposite`** | `5` |
+| **`BlendMode.AlphaHoldout`** | `6` |
+
 ### `CameraMode`
 
 | Label | Value |

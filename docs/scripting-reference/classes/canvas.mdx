@@ -1,0 +1,272 @@
+---
+description: Canvas is an entity which you can draw onto it.
+sidebar_position: 0
+tags: [class]
+---
+
+# 🖼️ Canvas
+
+Canvas is an entity which you can draw onto it.
+
+import { Structs, BasicType, AuthorityType, AssetPath, Enums, Classes } from '@site/docs/components/_nanos.mdx';
+
+
+:::info
+
+🟧 **Authority:** This class can only be spawned on [Client](./core-concepts/scripting/authority-concepts.mdx).
+
+:::
+
+
+## Usage
+
+```lua title=Client/Index.lua
+-- Spawns a Canvas
+local canvas = Canvas(
+  true,
+  Color(0, 0, 0, 0)
+  0,
+  true,
+)
+
+-- Subscribes for Update, we can only Draw inside this event
+canvas:Subscribe("Update", function(self, width, height)
+  -- Draws a Text in the middle of the screen
+  self:DrawText("Hello World!", Vector2D(width / 2, height / 2))
+
+  -- Draws a red line Horizontally
+  self:DrawLine(Vector2D(0, height / 2), Vector2D(width, height / 2), 10, Color.RED)
+end)
+
+-- Forces the canvas to repaint, this will make it trigger the Update event
+canvas:Repaint()
+
+-- Applies the Canvas material into a Prop
+my_prop:SetMaterialFromCanvas(canvas)
+```
+
+:::tip
+
+You can use the output Texture from a Canvas with [:SetMaterialFromCanvas()](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialfromcanvas) method!
+
+:::
+
+
+## Constructor Parameters
+
+| **Type** | **Name** | **Default** | **Description** |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`is_visible`** | `true` | if Canvas is visible on Screen by default |
+| <Structs.Color /> | **`clear_color`** | `Color(0, 0, 0, 0)` | color of the default background |
+| <BasicType.Number /> | **`auto_repaint_rate`** | `-1` | frequency to auto repaint (to retrigger Update event) |
+| <BasicType.Boolean /> | **`auto_resize`** | `true` | if should auto resize when screen changes it's size (useful OFF when you are painting meshes with Canvas) |
+| <BasicType.Number /> | **`width`** | `0` | size of the Canvas when you are not using auto_resize |
+| <BasicType.Number /> | **`height`** | `0` | size of the Canvas when you are not using auto_resize |
+
+
+## Functions
+
+import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
+
+<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
+
+| **Returns** | **Name** | **Description** |
+| :--- | :--- | :--- |
+|  | [**`DrawBox`**](canvas#drawbox) | Draws a unfilled box on the Canvas |
+|  | [**`DrawLine`**](canvas#drawline) | Draws a line on the Canvas |
+|  | [**`DrawMaterial`**](canvas#drawmaterial) | Draws a Material on the Canvas |
+|  | [**`DrawText`**](canvas#drawtext) | Draws a text on the Canvas |
+|  | [**`DrawTexture`**](canvas#drawtexture) | Draws a Texture on the Canvas |
+|  | [**`DrawPolygon`**](canvas#drawpolygon) | Draws a N-Polygon on the Canvas |
+|  | [**`DrawRect`**](canvas#drawrect) | Draws a filled rect on the Canvas |
+|  | [**`SetAutoRepaintRate`**](canvas#setautorepaintrate) | Changes the frequency of the auto update |
+|  | [**`SetVisible`**](canvas#setvisible) | Changes if it's visible on screen |
+|  | [**`Repaint`**](canvas#repaint) | Forces the repaint |
+
+
+### **`DrawBox`**
+
+> Draws a box on the Canvas
+
+```lua
+canvas:DrawBox(screen_position, screen_size, thickness, render_color)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector2D /> | **`screen_position`** |  |
+| <Structs.Vector2D /> | **`screen_size`** |  |
+| <BasicType.Number /> | **`thickness`** |  |
+| <Structs.Color /> | **`render_color`** |  |
+
+
+### **`DrawLine`**
+
+> Draws a line on the Canvas
+
+```lua
+canvas:DrawLine(screen_position_a, screen_position_b, thickness, render_color)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector2D /> | **`screen_position_a`** |  |
+| <Structs.Vector2D /> | **`screen_position_b`** |  |
+| <BasicType.Number /> | **`thickness`** |  |
+| <Structs.Color /> | **`render_color`** |  |
+
+
+### **`DrawMaterial`**
+
+> Draws a Material on the Canvas
+
+```lua
+canvas:DrawMaterial(material_path, screen_position, screen_size, coordinate_position, coordinate_size, rotation, pivot_point)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <AssetPath.Material /> | **`material_path`** |  |
+| <Structs.Vector2D /> | **`screen_position`** |  |
+| <Structs.Vector2D /> | **`screen_size`** |  |
+| <Structs.Vector2D /> | **`coordinate_position`** |  |
+| <Structs.Vector2D /> | **`coordinate_size`** | `Vector2D(1, 1)` |
+| <BasicType.Number /> | **`rotation`** | `0` |
+| <Structs.Vector2D /> | **`pivot_point`** | `Vector2D(0.5, 0.5)` |
+
+
+### **`DrawText`**
+
+> Draws a Text on the Canvas
+
+```lua
+canvas:DrawText(text, screen_position, font_type, font_size, text_color, kerning, center_x, center_y, shadow_color, shadow_offset, outlined, outline_color)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`text`** |  |
+| <Structs.Vector2D /> | **`screen_position`** |  |
+| <Enums>FontType</Enums> | **`font_type`** | `FontType.Roboto` |
+| <BasicType.Number /> | **`font_size`** | `12` |
+| <Structs.Color /> | **`text_color`** | `Color.WHITE` |
+| <BasicType.Number /> | **`kerning`** | `0` |
+| <BasicType.Boolean /> | **`center_x`** | `false` |
+| <BasicType.Boolean /> | **`center_y`** | `false` |
+| <Structs.Color /> | **`shadow_color`** | `Color(0, 0, 0, 0)` |
+| <Structs.Vector2D /> | **`shadow_offset`** | `Vector2D(1, 1)` |
+| <BasicType.Boolean /> | **`outlined`** | `false` |
+| <Structs.Color /> | **`outline_color`** | `Color.BLACK` |
+
+
+### **`DrawTexture`**
+
+> Draws a Texture on the Canvas
+
+```lua
+canvas:DrawTexture(texture_path, screen_position, screen_size, coordinate_position, coordinate_size, render_color, blend_mode, rotation, pivot_point)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <AssetPath.Image /> | **`texture_path`** |  |
+| <Structs.Vector2D /> | **`screen_position`** |  |
+| <Structs.Vector2D /> | **`screen_size`** |  |
+| <Structs.Vector2D /> | **`coordinate_position`** |  |
+| <Structs.Vector2D /> | **`coordinate_size`** | `Vector2D(1, 1)` |
+| <Structs.Color /> | **`render_color`** | `Color.WHITE` |
+| <Enums>BlendMode</Enums> | **`blend_mode`** | `BlendMode.Opaque` |
+| <BasicType.Number /> | **`rotation`** | `0` |
+| <Structs.Vector2D /> | **`pivot_point`** | `Vector2D(0.5, 0.5)` |
+
+
+### **`DrawPolygon`**
+
+> Draws a N-Polygon on the Canvas
+
+```lua
+canvas:DrawPolygon(texture_path, screen_position, radius, number_of_sides, render_color)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <AssetPath.Image /> | **`texture_path`** |  | Pass `""` to use default white Texture |
+| <Structs.Vector2D /> | **`screen_position`** |  |  |
+| <Structs.Vector2D /> | **`radius`** | `Vector2D(1, 1)` |  |
+| <BasicType.Number /> | **`number_of_sides`** | `3` |  |
+| <Structs.Color /> | **`render_color`** | `Color.WHITE` |  |
+
+
+
+### **`DrawRect`**
+
+> Draws a filled Rect on the Canvas
+
+```lua
+canvas:DrawRect(texture_path, screen_position, screen_size, render_color)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <AssetPath.Image /> | **`texture_path`** |  | Pass `""` to use default white Texture |
+| <Structs.Vector2D /> | **`screen_position`** |  |  |
+| <Structs.Vector2D /> | **`screen_size`** |  |  |
+| <Structs.Color /> | **`render_color`** | `Color.WHITE` |  |
+
+
+### **`SetAutoRepaintRate`**
+
+> Change the auto repaint Rate
+> 
+> Sets it to -1 to stop auto repainting or 0 to repaint every frame
+
+```lua
+canvas:SetAutoRepaintRate(auto_repaint_rate)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`auto_repaint_rate`** |  |
+
+
+### **`SetVisible`**
+
+> Sets if it's visible on screen
+
+```lua
+canvas:SetVisible(visible)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`visible`** |  |
+
+
+### **`Repaint`**
+
+> Forces the repaint, this will trigger **Update** event
+
+```lua
+canvas:Repaint()
+```
+
+
+## Events
+
+### `Update`
+
+> Called when the Canvas needs to be painted
+>
+> You can only call `:Draw...()` methods from inside this event
+
+```lua
+my_canvas:Subscribe("Update", function(self, width, height)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Canvas](canvas) | `self` |  |
+| <BasicType.Number /> | `width` |  |
+| <BasicType.Number /> | `height` |  |

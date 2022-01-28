@@ -39,6 +39,20 @@ my_entity:SetMaterial(new_material, index)
 | <BasicType.Number /> | `index` | `-1` | The index to apply - -1 means all indices |
 
 
+### <AuthorityType.ClientOnly />`SetMaterialFromCanvas`
+
+> Sets the material at the specified index of this Actor to a Canvas object
+
+```lua
+my_entity:SetMaterialFromCanvas(canvas, index)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Classes.Canvas /> | `canvas` | | The Canvas object to use as a material |
+| <BasicType.Number /> | `index` | `-1` | The index to apply - -1 means all indices |
+
+
 ### <AuthorityType.ClientOnly />`SetMaterialFromSceneCapture`
 
 > Sets the material at the specified index of this Actor to a SceneCapture object

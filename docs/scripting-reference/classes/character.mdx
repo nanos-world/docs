@@ -163,6 +163,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 |  <AuthorityType.Both /> | <BasicType.Boolean /> | [**`GetCanSprint`**](character#getcansprint) |  |
 |  <AuthorityType.Both /> | <BasicType.Boolean /> | [**`GetCanPickupPickables`**](character#getcanpickuppickables) |  |
 |  <AuthorityType.Both /> | <BasicType.Table /> | [**`GetCapsuleSize`**](character#getcapsulesize) |  |
+|  <AuthorityType.ClientOnly /> | <BasicType.Table /> | [**`GetBoneTransform`**](character#getbonetransform) | Gets a bone Location and Rotation |
 |  <AuthorityType.Both /> | <Structs.Rotator /> | [**`GetControlRotation`**](character#getcontrolrotation) | Gets the rotation this character is looking at |
 |  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetDamageMultiplier`**](character#getdamagemultiplier) |  |
 |  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetFallDamageTaken`**](character#getfalldamagetaken) |  |
@@ -1131,6 +1132,20 @@ my_character:GetCanPickupPickables()
 my_character:GetCapsuleSize()
 ```
 
+
+### <AuthorityType.ClientOnly />`GetBoneTransform`
+
+> Gets the Bone Transform in World Space
+> 
+> Returns a <BasicType.Table /> in the format `{ Location, Rotation }`
+
+```lua
+my_character:GetBoneTransform(bone_name)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`bone_name`** |  |
 
 
 ### <AuthorityType.Both />`GetControlRotation`
