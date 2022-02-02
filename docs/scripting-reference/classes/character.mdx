@@ -138,7 +138,10 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetJumpZVelocity`**](character#setjumpzvelocity) | Sets the velocity of the jump |
 | <AuthorityType.ServerOnly /> |  | [**`SetMaxHealth`**](character#setmaxhealth) | Sets the MaxHealth of this Character |
 | <AuthorityType.ServerOnly /> |  | [**`SetMesh`**](character#setmesh) | Changes the Character Mesh on the fly |
-|  <AuthorityType.Both /> |  | [**`SetMorphTarget`**](character#setmorphtarget) |  |
+|  <AuthorityType.Both /> |  | [**`SetMorphTarget`**](character#setmorphtarget) | Set Morph Target with Name and Value |
+|  <AuthorityType.Both /> |  | [**`GetMorphTarget`**](character#getmorphtarget) | Get Morph target with given name |
+|  <AuthorityType.Both /> |  | [**`ClearMorphTargets`**](character#clearmorphtargets) | Clear all Morph Target that are set to this Mesh |
+|  <AuthorityType.ClientOnly /> |  | [**`GetAllMorphTargetNames`**](character#getallmorphtargetnames) | Returns the list of all morph targets of this Skeletal Mesh |
 | <AuthorityType.ServerOnly /> |  | [**`SetMovementEnabled`**](character#setmovementenabled) | Enables/Disables Character’s Movement |
 | <AuthorityType.ServerOnly /> |  | [**`SetParachuteTexture`**](character#setparachutetexture) | Changes the Parachute Texture |
 | <AuthorityType.ServerOnly /> |  | [**`SetPainSound`**](character#setpainsound) | Changes the Pain sound when Character takes damage |
@@ -845,16 +848,51 @@ my_character:SetMesh(skeletal_mesh_asset)
 
 ### <AuthorityType.Both />`SetMorphTarget`
 
->
+> Set Morph Target with Name and Value
 
 ```lua
-my_character:SetMorphTarget(key, value)
+my_character:SetMorphTarget(name, value)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`skeletal_mesh_asset`** |  |  |
+| <BasicType.String /> | **`name`** |  | Morph Target Name |
 | <BasicType.Number /> | **`value`** |  |  |
+
+
+### <AuthorityType.Both />`GetMorphTarget`
+
+> Get Morph target with given name
+>
+> Returns <BasicType.Number />
+
+```lua
+my_character:GetMorphTarget(name)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`name`** |  | Morph Target Name |
+
+
+### <AuthorityType.Both />`ClearMorphTargets`
+
+> Clear all Morph Target that are set to this Mesh
+
+```lua
+my_character:ClearMorphTargets()
+```
+
+
+### <AuthorityType.ClientOnly />`GetAllMorphTargetNames`
+
+> Returns the list of all morph targets of this Skeletal Mesh
+> 
+> Returns a <BasicType.Table />
+
+```lua
+my_character:GetAllMorphTargetNames()
+```
 
 
 ### <AuthorityType.ServerOnly />`SetMovementEnabled`

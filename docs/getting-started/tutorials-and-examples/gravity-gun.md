@@ -70,8 +70,8 @@ Client.Subscribe("MouseUp", function(key_name)
         end
 
         -- Get the camera location in 3D World Space
-        local viewport_2D_center = Render:GetViewportSize() / 2
-        local viewport_3D = Render:Deproject(viewport_2D_center)
+        local viewport_2D_center = Client.GetViewportSize() / 2
+        local viewport_3D = Client.DeprojectScreenToWorld(viewport_2D_center)
         local start_location = viewport_3D.Position
 
         -- Gets the end location of the trace (5000 units ahead)
@@ -112,7 +112,7 @@ Client.Subscribe("MouseUp", function(key_name)
     end
 end)
 
-Client:Subscribe("Tick", function(delta_time)
+Client.Subscribe("Tick", function(delta_time)
     -- On Tick, updates the Position of the object, based on it's distance and camera rotation
     if (picking_object == nil) then return end
 
@@ -120,8 +120,8 @@ Client:Subscribe("Tick", function(delta_time)
     if (player == nil) then return end
 
     -- Get the camera location in 3D World Space
-    local viewport_2D_center = Render.GetViewportSize() / 2
-    local viewport_3D = Render.Deproject(viewport_2D_center)
+    local viewport_2D_center = Client.GetViewportSize() / 2
+    local viewport_3D = Client.DeprojectScreenToWorld(viewport_2D_center)
     local start_location = viewport_3D.Position
 
     -- Gets the new object location
