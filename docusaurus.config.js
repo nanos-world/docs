@@ -143,6 +143,9 @@ module.exports = {
       },
     ],
   ],
+  themes: [
+    '@saucelabs/theme-github-codeblock',
+  ],
   plugins: [
     'plugin-image-zoom',
   ],
