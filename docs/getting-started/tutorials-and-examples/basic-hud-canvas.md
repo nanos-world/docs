@@ -11,22 +11,88 @@ How to add a basic HUD using Render’s Canvas features, to display the characte
 
 :::tip
 
-There is a new and modern way of making UIs, please check it out: [Basic HUD (HTML)](./getting-started/tutorials-and-examples/basic-hud-html.md).
+You can also create complete and complex UIs using HTML + JavaScript + CSS, check it out: [Basic HUD (HTML)](./getting-started/tutorials-and-examples/basic-hud-html.md).
 
 :::
 
 ![](/img/docs/tutorials/canvas.jpg)
 
+A Canvas is a painting fabric which can be drawn to. The following code shows how to add a basic UI using Canvas:
+
 
 ```lua title="Client/Index.lua"
--- Variable to stores the Health Canvas Group ID of this UI (to be used to clear all canvas with that ID when the package unloads)
-health_group_id = 10
-ammo_group_id = 11
+-- Spawns the Canvas
+HUDCanvas = Canvas(true, Color.TRANSPARENT, 0, true)
 
--- Variable to stores the Canvas Item ID of Health UI (to be used to edit a specific Canvas Item (Text))
-health_item_id = nil
-ammo_clip_item_id = nil
-ammo_bag_item_id = nil
+-- Subscribes for Update event, we can only draw inside this event
+HUDCanvas:Subscribe("Update", function(self, width, height)
+    -- Gets the Local Player
+    local local_player = Client.GetLocalPlayer()
+    if (not local_player) then return end
+
+    -- Gets the Local Character (possessed by the Local Player)
+    local local_character = local_player:GetControlledCharacter()
+    if (not local_character) then return end
+
+    -- Draws the Health
+    self:DrawText(tostring(local_character:GetHealth()), Vector2D(100, height - 100), FontType.PoiretOne, 25, Color.WHITE)
+
+    -- Gets the Local Weapon
+    local character_weapon = local_character:GetPicked()
+    if (character_weapon and character_weapon:GetType() == "Weapon") then
+        -- Draws the Ammo Clip
+        self:DrawText(tostring(character_weapon:GetAmmoClip()), Vector2D(width - 200, height - 100), FontType.PoiretOne, 25, Color.WHITE)
+
+        -- Draws the Ammo Bag
+        self:DrawText("/ " .. tostring(character_weapon:GetAmmoBag()), Vector2D(width - 140, height - 87), FontType.PoiretOne, 15, Color.WHITE)
+    end
+end)
+```
+
+
+The example above re-renders and updates all health/ammo information ever tick, which could be bad for performance. Gladly we can fast improve it by limiting the auto repaint rate by changing it in the constructor:
+
+```lua
+-- Instead of 0 in the auto_repaint_rate parameter
+HUDCanvas = Canvas(true, Color.TRANSPARENT, 0, true)
+
+-- Use 0.033, so it only updates every 0.033ms (i.e. at 30 fps)
+HUDCanvas = Canvas(true, Color.TRANSPARENT, 0.033, true)
+```
+
+
+Another further optimization is to only update when needed, for this case we will need to implement some additional code. In this case, we set `auto_repaint_rate` to -1 to disable it from being auto repainted:
+
+```lua
+-- We set -1 to never auto repaint
+HUDCanvas = Canvas(true, Color.TRANSPARENT, -1, true)
+
+-- Subscribes for Update event, we can only draw inside this event (as usual)
+HUDCanvas:Subscribe("Update", function(self, width, height)
+    -- Gets the Local Player
+    local local_player = Client.GetLocalPlayer()
+    if (not local_player) then return end
+
+    -- Gets the Local Character (possessed by the Local Player)
+    local local_character = local_player:GetControlledCharacter()
+    if (not local_character) then return end
+
+    -- Draws the Health
+    self:DrawText(tostring(local_character:GetHealth()), Vector2D(100, height - 100), FontType.PoiretOne, 25, Color.WHITE)
+
+    -- Gets the Local Weapon
+    local character_weapon = local_character:GetPicked()
+    if (character_weapon and character_weapon:GetType() == "Weapon") then
+        -- Draws the Ammo Clip
+        self:DrawText(tostring(character_weapon:GetAmmoClip()), Vector2D(width - 200, height - 100), FontType.PoiretOne, 25, Color.WHITE)
+
+        -- Draws the Ammo Bag
+        self:DrawText("/ " .. tostring(character_weapon:GetAmmoBag()), Vector2D(width - 140, height - 87), FontType.PoiretOne, 15, Color.WHITE)
+    end
+end)
+
+
+-- Now we subscribe for when we want it to be updated:
 
 -- When LocalPlayer spawns, sets an event on it to trigger when we possesses a new character, to store the local controlled character locally. This event is only called once, see Package.Subscribe("Load") to load it when reloading a package
 Client.Subscribe("SpawnLocalPlayer", function(local_player)
@@ -39,7 +105,7 @@ end)
 Package.Subscribe("Load", function()
     local local_player = Client.GetLocalPlayer()
     if (local_player  ~= nil) then
-        UpdateLocalCharacter(local_player :GetControlledCharacter())
+        UpdateLocalCharacter(local_player:GetControlledCharacter())
     end
 end)
 
@@ -48,97 +114,44 @@ function UpdateLocalCharacter(character)
     -- Verifies if character is not nil (eg. when GetControllerCharacter() doesn't return a character)
     if (character == nil) then return end
 
-    -- Updates the UI with the current character's health
-    UpdateHealth(character:GetHealth())
-
     -- Sets on character an event to update the health's UI after it takes damage
     character:Subscribe("TakeDamage", function(charac, damage, type, bone, from_direction, instigator, causer)
-        UpdateHealth(math.max(charac:GetHealth() - damage, 0))
+        HUDCanvas:Repaint()
     end)
 
     -- Sets on character an event to update the health's UI after it dies
     character:Subscribe("Death", function(charac)
-        UpdateHealth(0)
+        HUDCanvas:Repaint()
     end)
-
-    -- Try to get if the character is holding any weapon
-    local current_picked_item = character:GetPicked()
-
-    -- If so, update the UI
-    if (current_picked_item and current_picked_item:GetType() == "Weapon") then
-        UpdateAmmo(true, current_picked_item:GetAmmoClip(), current_picked_item:GetAmmoBag())
-    end
 
     -- Sets on character an event to update his grabbing weapon (to show ammo on UI)
     character:Subscribe("PickUp", function(charac, object)
         if (object:GetType() == "Weapon") then
-            UpdateAmmo(true, object:GetAmmoClip(), object:GetAmmoBag())
+            HUDCanvas:Repaint()
         end
     end)
 
     -- Sets on character an event to remove the ammo ui when he drops it's weapon
     character:Subscribe("Drop", function(charac, object)
-        UpdateAmmo(false)
+        HUDCanvas:Repaint()
     end)
 
     -- Sets on character an event to update the UI when he fires
     character:Subscribe("Fire", function(charac, weapon)
-        UpdateAmmo(true, weapon:GetAmmoClip(), weapon:GetAmmoBag())
+        HUDCanvas:Repaint()
     end)
 
     -- Sets on character an event to update the UI when he reloads the weapon
     character:Subscribe("Reload", function(charac, weapon, ammo_to_reload)
-        UpdateAmmo(true, weapon:GetAmmoClip(), weapon:GetAmmoBag())
+        HUDCanvas:Repaint()
     end)
-end
 
--- Function to update the Ammo's UI
-function UpdateAmmo(enable_ui, ammo, ammo_bag)
-    if (enable_ui) then
-        if (ammo_clip_item_id == nil and ammo_bag_item_id == nil) then
-            -- Creates a new Text Canvas to display the character's Health, we choose the ID ammo_group_id = 11 arbitrarily for being our Health Canvas ID (to be able to edit it later on)
-            ammo_clip_item_id = Render.AddText(ammo_group_id, tostring(ammo), Render:GetViewportSize() - Vector2D(200, 100), 2, 25, Color(1, 1, 1), 0, false, false, true, Vector2D(2, 2), Color(0, 0, 0), true, Color(0, 0, 0))
-            ammo_bag_item_id = Render.AddText(ammo_group_id, "/ " .. tostring(ammo_bag), Render:GetViewportSize() - Vector2D(140, 87), 2, 15, Color(1, 1, 1), 0, false, false, true, Vector2D(2, 2), Color(0, 0, 0), true, Color(0, 0, 0))
-        else
-            -- Otherwise if a Text Canvas is already created, then just update it (more performatic than deleting and creating a new one all the time)
-            Render.UpdateItemText(ammo_group_id, ammo_clip_item_id, tostring(ammo))
-            Render.UpdateItemText(ammo_group_id, ammo_bag_item_id, "/ " .. tostring(ammo_bag))
-        end
-    else
-        Render.ClearItems(ammo_group_id)
-        ammo_clip_item_id = nil
-        ammo_bag_item_id = nil
-    end
+    -- Updates the UI immeditelly
+    HUDCanvas:Repaint()
 end
-
--- Function to update the Health's UI
-function UpdateHealth(health)
-    if (health_item_id == nil) then
-        -- Creates a new Text Canvas to display the character's Health, we choose the ID health_group_id = 10 arbitrarily for being our Health Canvas ID (to be able to edit it later on)
-        health_item_id = Render.AddText(health_group_id, tostring(health), Vector2D(100, Render:GetViewportSize().Y - 100), 2, 25, Color(1, 1, 1), 0, false, false, true, Vector2D(2, 2), Color(0, 0, 0), true, Color(0, 0, 0))
-    else
-        -- Otherwise if a Text Canvas is already created, then just update it (more performatic than deleting and creating a new one all the time)
-        Render.UpdateItemText(health_group_id, health_item_id, tostring(health))
-    end
-end
-
--- Clear the UI when the package unloads
-Package.Subscribe("Unload", function()
-    Render.ClearItems(health_group_id)
-    Render.ClearItems(ammo_group_id)
-end)
 
 -- Updates the UI positions when the Viewport (screen) is resized
-Render.Subscribe("ViewportResized", function(NewSize)
-    if (health_item_id ~= nil) then
-        Render.UpdateItemPosition(health_group_id, health_item_id, Vector2D(100, Render:GetViewportSize().Y - 100))
-    end
-
-    if (ammo_clip_item_id ~= nil and ammo_bag_item_id ~= nil) then
-        Render.UpdateItemPosition(ammo_group_id, ammo_clip_item_id, Render:GetViewportSize() - Vector2D(200, 100))
-        Render.UpdateItemPosition(ammo_group_id, ammo_bag_item_id, Render:GetViewportSize() - Vector2D(140, 87))
-    end
+Client.Subscribe("ViewportResized", function(NewSize)
+    HUDCanvas:Repaint()
 end)
 ```
-
-

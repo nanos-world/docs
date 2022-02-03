@@ -24,7 +24,7 @@ import { Structs, BasicType, AuthorityType, AssetPath, Enums, Classes } from '@s
 -- Spawns a Canvas
 local canvas = Canvas(
   true,
-  Color(0, 0, 0, 0),
+  Color.TRANSPARENT,
   0,
   true
 )
@@ -57,18 +57,15 @@ You can use the output Texture from a Canvas with [:SetMaterialFromCanvas()](./s
 | **Type** | **Name** | **Default** | **Description** |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_visible`** | `true` | if Canvas is visible on Screen by default |
-| <Structs.Color /> | **`clear_color`** | `Color(0, 0, 0, 0)` | color of the default background |
+| <Structs.Color /> | **`clear_color`** | `Color.TRANSPARENT` | color of the default background |
 | <BasicType.Number /> | **`auto_repaint_rate`** | `-1` | frequency to auto repaint (to retrigger Update event) |
+| <BasicType.Boolean /> | **`should_clear_before_update`** | `true` | if should clear the Canvas (using clear_color) before every Update |
 | <BasicType.Boolean /> | **`auto_resize`** | `true` | if should auto resize when screen changes it's size (useful OFF when you are painting meshes with Canvas) |
 | <BasicType.Number /> | **`width`** | `0` | size of the Canvas when you are not using auto_resize |
 | <BasicType.Number /> | **`height`** | `0` | size of the Canvas when you are not using auto_resize |
 
 
 ## Functions
-
-import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
-
-<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
@@ -82,11 +79,18 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 |  | [**`SetAutoRepaintRate`**](canvas#setautorepaintrate) | Changes the frequency of the auto update |
 |  | [**`SetVisible`**](canvas#setvisible) | Changes if it's visible on screen |
 |  | [**`Repaint`**](canvas#repaint) | Forces the repaint |
+|  | [**`Clear`**](canvas#clear) | Clears the Canvas with a specific Color |
 
 
 ### **`DrawBox`**
 
 > Draws a box on the Canvas
+
+:::note
+
+This method can only be called from inside [Update](canvas#update) event
+
+:::
 
 ```lua
 canvas:DrawBox(screen_position, screen_size, thickness, render_color)
@@ -104,6 +108,12 @@ canvas:DrawBox(screen_position, screen_size, thickness, render_color)
 
 > Draws a line on the Canvas
 
+:::note
+
+This method can only be called from inside [Update](canvas#update) event
+
+:::
+
 ```lua
 canvas:DrawLine(screen_position_a, screen_position_b, thickness, render_color)
 ```
@@ -119,6 +129,12 @@ canvas:DrawLine(screen_position_a, screen_position_b, thickness, render_color)
 ### **`DrawMaterial`**
 
 > Draws a Material on the Canvas
+
+:::note
+
+This method can only be called from inside [Update](canvas#update) event
+
+:::
 
 ```lua
 canvas:DrawMaterial(material_path, screen_position, screen_size, coordinate_position, coordinate_size, rotation, pivot_point)
@@ -139,6 +155,14 @@ canvas:DrawMaterial(material_path, screen_position, screen_size, coordinate_posi
 
 > Draws a Text on the Canvas
 
+:::note
+
+This method can only be called from inside [Update](canvas#update) event
+
+Shadow and Outline won't work properly with Transparent `clear_color`.
+
+:::
+
 ```lua
 canvas:DrawText(text, screen_position, font_type, font_size, text_color, kerning, center_x, center_y, shadow_color, shadow_offset, outlined, outline_color)
 ```
@@ -153,7 +177,7 @@ canvas:DrawText(text, screen_position, font_type, font_size, text_color, kerning
 | <BasicType.Number /> | **`kerning`** | `0` |
 | <BasicType.Boolean /> | **`center_x`** | `false` |
 | <BasicType.Boolean /> | **`center_y`** | `false` |
-| <Structs.Color /> | **`shadow_color`** | `Color(0, 0, 0, 0)` |
+| <Structs.Color /> | **`shadow_color`** | `Color.TRANSPARENT` |
 | <Structs.Vector2D /> | **`shadow_offset`** | `Vector2D(1, 1)` |
 | <BasicType.Boolean /> | **`outlined`** | `false` |
 | <Structs.Color /> | **`outline_color`** | `Color.BLACK` |
@@ -162,6 +186,12 @@ canvas:DrawText(text, screen_position, font_type, font_size, text_color, kerning
 ### **`DrawTexture`**
 
 > Draws a Texture on the Canvas
+
+:::note
+
+This method can only be called from inside [Update](canvas#update) event
+
+:::
 
 ```lua
 canvas:DrawTexture(texture_path, screen_position, screen_size, coordinate_position, coordinate_size, render_color, blend_mode, rotation, pivot_point)
@@ -184,6 +214,12 @@ canvas:DrawTexture(texture_path, screen_position, screen_size, coordinate_positi
 
 > Draws a N-Polygon on the Canvas
 
+:::note
+
+This method can only be called from inside [Update](canvas#update) event
+
+:::
+
 ```lua
 canvas:DrawPolygon(texture_path, screen_position, radius, number_of_sides, render_color)
 ```
@@ -201,6 +237,12 @@ canvas:DrawPolygon(texture_path, screen_position, radius, number_of_sides, rende
 ### **`DrawRect`**
 
 > Draws a filled Rect on the Canvas
+
+:::note
+
+This method can only be called from inside [Update](canvas#update) event
+
+:::
 
 ```lua
 canvas:DrawRect(texture_path, screen_position, screen_size, render_color)
@@ -226,7 +268,7 @@ canvas:SetAutoRepaintRate(auto_repaint_rate)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Boolean /> | **`auto_repaint_rate`** |  |
+| <BasicType.Boolean /> | **`auto_repaint_rate`** |  |  |
 
 
 ### **`SetVisible`**
@@ -239,7 +281,7 @@ canvas:SetVisible(visible)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Boolean /> | **`visible`** |  |
+| <BasicType.Boolean /> | **`visible`** |  |  |
 
 
 ### **`Repaint`**
@@ -251,6 +293,18 @@ canvas:Repaint()
 ```
 
 
+### **`Clear`**
+
+> Clear the Canvas with a specific Color
+
+```lua
+canvas:Clear(clear_color)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Color /> | **`clear_color`** |  |  |
+
 ## Events
 
 ### `Update`
@@ -261,7 +315,8 @@ canvas:Repaint()
 
 ```lua
 my_canvas:Subscribe("Update", function(self, width, height)
-
+  self:DrawText(...)
+  self:DrawLine(...)
 end)
 ```
 
