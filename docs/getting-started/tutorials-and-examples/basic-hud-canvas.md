@@ -57,6 +57,7 @@ The example above re-renders and updates all health/ammo information ever tick, 
 HUDCanvas = Canvas(true, Color.TRANSPARENT, 0, true)
 
 -- Use 0.033, so it only updates every 0.033ms (i.e. at 30 fps)
+// highlight-next-line
 HUDCanvas = Canvas(true, Color.TRANSPARENT, 0.033, true)
 ```
 

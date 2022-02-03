@@ -36,24 +36,9 @@ Assets/
 
 Now maps can have it's own Configuration file `Map.toml`, this file contains a header with common configuration and a space for custom data.
 
-```toml title="Map.toml"
-# map configurations
-[map]
-    # compatible game-modes
-    compatible_game_modes = [
-        "sandbox",
-        "deathmatch"
-    ]
 
-    # list of spawn points
-    spawn_points = [
-        { location = "Vector(100, 200, 100)", rotation = "Rotator(0, 90, 0)" },
-        { location = "Vector(200, 300, 100)", rotation = "Rotator(0, 90, 0)" },
-    ]
-
-[custom_data]
-    whatever = "anything"
-
+```toml reference
+https://github.com/nanos-world/nanos-world-server/blob/main/Map.toml
 ```
 
 This data can be get with `Server.GetMapCustomData()` and `Server.GetMapSpawnPoints()`.

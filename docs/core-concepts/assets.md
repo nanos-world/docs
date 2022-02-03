@@ -42,57 +42,8 @@ Config.toml
 
 Asset Packs have a configuration file in the root of the Asset Pack folder, called `Assets.toml`, in this file we can setup all pertinent settings related to the Asset Pack:
 
-```toml title="Assets.toml"
-# Asset Pack Configurations
-[asset_pack]
-    # Asset Pack Name
-    name =              "MyPack"
-    # Contributors
-    author =            "The Incredible Asset Creator"
-    # Version
-    version =           "1.0.0"
-    # Image URL
-    image =             "https://i.imgur.com/Qa6Tswl.png"
-    # Unreal Folder - the root folder which the assets will have references to each other
-    unreal_folder =     "MyPack"
-
-# Assets Files
-[assets]
-    # Maps
-    [assets.maps]
-    # MyMap = "MyFolder/MyAwesomeMap"
-    # ...
-
-    # Static Meshes
-    [assets.static_meshes]
-    SM_Cube = "SM_Cube"
-
-    # Skeletal Meshes
-    [assets.skeletal_meshes]
-    # SK_Better_Man = "Characters/SK_BetterMan_3"
-    # ...
-
-    [assets.sounds]
-    # A_RingSound = "Audios/A_RingSound"
-    # ...
-
-    [assets.particles]
-    # P_Explosion = "Particles/P_Explosion"
-    # ...
-
-    # Animations
-    [assets.animations]
-    # A_Character_Jump = "Animations/A_Character_Jump"
-    # ...
-
-    # Materials
-    [assets.materials]
-    # M_Awesome_Colorful = "Materials/M_Awesome_Colorful"
-    # ...
-
-    # Other Assets (for not yet categorized ones)
-    [assets.others]
-    # ...
+```toml reference
+https://github.com/nanos-world/nanos-world-server/blob/main/Assets.toml
 ```
 
 
