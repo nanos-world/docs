@@ -61,6 +61,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | <BasicType.Table /> | [**`GetPackages`**](client#getpackages) | Returns a list of Packages folder names loaded and running in the client |
 | <BasicType.Any /> | [**`GetViewportSize`**](client#getviewportsize) | Gets the size of viewport |
 | <BasicType.Any /> | [**`GetValue`**](client#getvalue) | Gets a value given a key |
+| <BasicType.Boolean /> | [**`InputKey`**](client#inputkey) | Forces an Input Key event on Local Player |
 | <BasicType.Boolean /> | [**`IsKeyDown`**](client#iskeydown) | Returns if a key is being pressed |
 | <BasicType.Boolean /> | [**`IsMouseEnabled`**](client#ismouseenabled) |  |
 | <BasicType.Boolean /> | [**`IsInputEnabled`**](client#isinputenabled) |  |
@@ -71,7 +72,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | **Name** | **Description** |
 | :--- | :--- |
 | [**`Chat`**](client#chat) | Called when a chat text is submitted (by LocalPlayer) |
-| [**`ChatEntry`**](server#chatentry) | Called when a Chat Entry is received, this is also triggered when `SendChatMessage` is called |
+| [**`ChatEntry`**](client#chatentry) | Called when a Chat Entry is received, this is also triggered when `SendChatMessage` is called |
 | [**`Console`**](client#console) | Called when a console command is submitted |
 | [**`KeyDown`**](client#keydown) | A keyboard key is being pressed |
 | [**`KeyPress`**](client#keypress) | A keyboard key has been pressed |
@@ -82,6 +83,8 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | [**`MouseEnabled`**](client#mouseenabled) | When mouse cursor is displayed/hidden |
 | [**`OpenChat`**](client#openchat) | When player opens the Chat |
 | [**`CloseChat`**](client#closechat) | When player closes the Chat |
+| [**`OpenConsole`**](client#openconsole) | When player closes the Console |
+| [**`CloseConsole`**](client#closeconsole) | When player closes the Console |
 | [**`Tick`**](client#tick) | Called Every Frame. Do not abuse |
 | [**`ViewportResized`**](client#viewportresized) | Called when the screen is resized |
 
@@ -685,6 +688,23 @@ Client.GetValue(key, fallback)
 | <BasicType.Any /> | **`fallback`** | Fallback Value if key doesn't exist |
 
 
+### `InputKey`
+
+> Forces a Input Key event on Local Player
+>
+> This won't trigger any Scripting event as it bypass internal validations
+
+```lua
+Client.InputKey(key_name, input_event, amount_depressed)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`key_name`** |  | Key Name to input |
+| <Enums>InputEvent</Enums> | **`input_event`** | Which Event to input (Released/Pressed) |
+| <BasicType.Number /> | **`amount_depressed`** | `1` | The amount pressed |
+
+
 ### `IsKeyDown`
 
 > Gets if a key is being pressed
@@ -904,6 +924,28 @@ end)
 
 ```lua
 Client.Subscribe("CloseChat", function()
+
+end)
+```
+
+
+### `OpenConsole`
+
+> When player opens the console
+
+```lua
+Client.Subscribe("OpenConsole", function()
+
+end)
+```
+
+
+### `CloseConsole`
+
+> When player closes the console
+
+```lua
+Client.Subscribe("CloseConsole", function()
 
 end)
 ```

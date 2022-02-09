@@ -33,6 +33,7 @@ Please check [Interacting with Sun](./core-concepts/scripting/interacting-with-t
 | Returns | Name | Description |
 | :--- | :--- | :--- |
 |  | [**`LoadStreamLevel`**](world#loadstreamlevel) | Loads a Level in runtime |
+|  | [**`UnloadStreamLevel`**](world#unloadstreamlevel) | Unloads a Level in runtime |
 |  | [**`SetFogDensity`**](world#setfogdensity) |  |
 |  | [**`SetFogHeightFalloff`**](world#setfogheightfalloff) |  |
 |  | [**`SetFogHeightOffset`**](world#setfogheightoffset) |  |
@@ -54,28 +55,54 @@ Please check [Interacting with Sun](./core-concepts/scripting/interacting-with-t
 |  | [**`SetWeather`**](world#setweather) | Sets the global Predefined Weather |
 |  | [**`SpawnDefaultSun`**](world#spawndefaultsun) | Overrides all Light/Sun Actors with the NanosWorld's Official one |
 |  | [**`SetWind`**](world#setwind) | Sets the global Wind intensity |
-|  | [**`UnloadStreamLevel`**](world#unloadstreamlevel) | Unloads a Level in runtime |
 | <BasicType.Number /> | [**`GetSunAngle`**](world#getsunangle) | |
 | <BasicType.Number /> | [**`GetSunSpeed`**](world#getsunspeed) | |
 | <BasicType.Table /> | [**`GetTime`**](world#gettime) | Returns a table containing current Sun hours and minutes |
 | <Enums>WeatherType</Enums> | [**`GetWeather`**](world#getweather) |  |
 | <BasicType.Number /> | [**`GetWind`**](world#getwind) |  |
 
+
+## Events
+
+| **Name** | **Description** |
+| :--- | :--- |
+| [**`StreamLevelLoaded`**](world#streamlevelloaded) | Called when a Stream Level is loaded |
+| [**`StreamLevelUnloaded`**](world#streamlevelunloaded) | Called when a Stream Level is unloaded |
+
+
+## Functions Detailed
+
 ### `LoadStreamLevel`
 
 > Loads a Level in runtime
 
 ```lua
-World.LoadStreamLevel(level_name)
+World.LoadStreamLevel(level_name, should_block_on_load)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`level_name`** |  |  |
+| <BasicType.String /> | **`level_name`** |  |  |
+| <BasicType.Boolean /> | **`should_block_on_load`** | `false` | If this should be a blocking operation - the game will freeze |
+
+
+### `UnloadStreamLevel`
+
+> Unloads a Level in runtime
+
+```lua
+World.UnloadStreamLevel(level_name, should_block_on_unload)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`level_name`** |  |  |
+| <BasicType.Boolean /> | **`should_block_on_unload`** | `false` | If this should be a blocking operation - the game will freeze |
+
 
 ### `SetFogDensity`
 
-&gt;
+> 
 
 ```lua
 World.SetFogDensity(density, second_density)
@@ -86,9 +113,10 @@ World.SetFogDensity(density, second_density)
 | <BasicType.Number /> | **`density`** |  |  |
 | <BasicType.Number /> | **`second_density`** | `0` |  |
 
+
 ### `SetFogHeightFalloff`
 
-&gt;
+> 
 
 ```lua
 World.SetFogHeightFalloff(falloff)
@@ -98,9 +126,10 @@ World.SetFogHeightFalloff(falloff)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`falloff`** |  |  |
 
+
 ### `SetFogHeightOffset`
 
-&gt;
+> 
 
 ```lua
 World.SetFogHeightOffset(offset)
@@ -110,9 +139,10 @@ World.SetFogHeightOffset(offset)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`offset`** |  |  |
 
+
 ### `SetSunLightColor`
 
-&gt;
+> 
 
 ```lua
 World.SetSunLightColor(color)
@@ -122,9 +152,10 @@ World.SetSunLightColor(color)
 | :--- | :--- | :--- | :--- |
 | <Structs.Color /> | **`color`** |  |  |
 
+
 ### `SetSkyLightIntensity`
 
-&gt;
+> 
 
 ```lua
 World.SetSkyLightIntensity(ntensity)
@@ -134,9 +165,10 @@ World.SetSkyLightIntensity(ntensity)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`intensity`** |  |  |
 
+
 ### `SetSkyRayleighScattering`
 
-&gt;
+> 
 
 ```lua
 World.SetSkyRayleighScattering(color)
@@ -146,9 +178,10 @@ World.SetSkyRayleighScattering(color)
 | :--- | :--- | :--- | :--- |
 | <Structs.Color /> | **`color`** |  |  |
 
+
 ### `SetSunLightIntensity`
 
-&gt;
+> 
 
 ```lua
 World.SetSunLightIntensity(<BasicType.Number />
@@ -158,9 +191,10 @@ World.SetSunLightIntensity(<BasicType.Number />
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`intensity`** |  |  |
 
+
 ### `SetSunTemperatureMultiplier`
 
-&gt;
+> 
 
 ```lua
 World.SetSunTemperatureMultiplier(multiplier)
@@ -169,6 +203,7 @@ World.SetSunTemperatureMultiplier(multiplier)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`multiplier`** |  |  |
+
 
 ### `SetPPBloom`
 
@@ -183,6 +218,7 @@ World.SetPPBloom(intensity, threshold)
 | <BasicType.Number /> | **`intensity`** | `0.675` |  |
 | <BasicType.Number /> | **`threshold`** | `-1` |  |
 
+
 ### `SetPPChromaticAberration`
 
 > Set Post Process Chromatic Aberration Settings
@@ -195,6 +231,7 @@ World.SetPPChromaticAberration(intensity, start_offset)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`intensity`** | `0` |  |
 | <BasicType.Number /> | **`start_offset`** | `0` |  |
+
 
 ### `SetPPImageEffects`
 
@@ -209,6 +246,7 @@ World.SetPPImageEffects(vignette_intensity, grain_jitter, grain_intensity)
 | <BasicType.Number /> | **`vignette_intensity`** | `0.6` |  |
 | <BasicType.Number /> | **`grain_jitter`** | `0` |  |
 | <BasicType.Number /> | **`grain_intensity`** | `0` |  |
+
 
 ### `SetPPFilm`
 
@@ -226,6 +264,7 @@ World.SetPPFilm(slope , toe, shoulder, black_clip, white_clip)
 | <BasicType.Number /> | **`black_clip`** | `0` |  |
 | <BasicType.Number /> | **`white_clip`** | `0.3` |  |
 
+
 ### `SetPPGlobalSaturation`
 
 > Set Post Process Saturation Colors. Use Alpha for overall Saturation intensity
@@ -237,6 +276,7 @@ World.SetPPGlobalSaturation(color)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <Structs.Color /> | **`color`** |  |  |
+
 
 ### `SetPPMaterial`
 
@@ -250,6 +290,7 @@ World.SetPPMaterial(material_path)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`material_path`** |  | The Material Asset to set as Post Process |
 
+
 ### `RemovePPMaterial`
 
 > Removes the current Post Process Material
@@ -257,6 +298,7 @@ World.SetPPMaterial(material_path)
 ```lua
 World.RemovePPMaterial()
 ```
+
 
 ### `SetSunAngle`
 
@@ -270,6 +312,7 @@ World.SetSunAngle(angle)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`angle`** |  |  |
 
+
 ### `SetSunSpeed`
 
 > Sets the sun's time speed \(default: '60', which means 60 seconds in game = 1 second in real world\)
@@ -281,6 +324,7 @@ World.SetSunSpeed(speed)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`speed`** |  |  |
+
 
 ### `SetTime`
 
@@ -295,6 +339,7 @@ World.SetTime(hours, minutes)
 | <BasicType.Number /> | **`hours`** |  |  |
 | <BasicType.Number /> | **`minutes`** |  |  |
 
+
 ### `SetWeather`
 
 > Sets the global Predefined Weather \(_Clear, Rain, Cloudy, Thunderstorm_\)
@@ -307,6 +352,7 @@ World.SetWeather(weather)
 | :--- | :--- | :--- | :--- |
 | <Enums>WeatherType</Enums> | **`weather`** |  |  |
 
+
 ### `SpawnDefaultSun`
 
 > Overrides all Light/Sun Actors with the NanosWorld's Official one, to be able to use the functions from this page
@@ -314,6 +360,7 @@ World.SetWeather(weather)
 ```lua
 World.SpawnDefaultSun()
 ```
+
 
 ### `SetWind`
 
@@ -327,17 +374,6 @@ World.SetWind(intensity)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`intensity`** |  |  |
 
-### `UnloadStreamLevel`
-
-> Unloads a Level in runtime
-
-```lua
-World.UnloadStreamLevel(level_name)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`level_name`** |  |  |
 
 ### `GetSunAngle`
 
@@ -347,6 +383,7 @@ World.UnloadStreamLevel(level_name)
 World.GetSunAngle()
 ```
 
+
 ### `GetSunSpeed`
 
 > Returns <BasicType.Number />
@@ -354,6 +391,7 @@ World.GetSunAngle()
 ```lua
 World.GetSunSpeed()
 ```
+
 
 ### `GetTime`
 
@@ -365,6 +403,7 @@ World.GetSunSpeed()
 World.GetTime()
 ```
 
+
 ### `GetWeather`
 
 > Returns WeatherType
@@ -372,6 +411,7 @@ World.GetTime()
 ```lua
 World.GetWeather()
 ```
+
 
 ### `GetWind`
 
@@ -381,3 +421,34 @@ World.GetWeather()
 World.GetWind()
 ```
 
+
+## Events Detailed
+
+### `StreamLevelLoaded`
+
+> Called when a Stream Level is loaded
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`level_name`** |  |
+
+```lua
+Client.Subscribe("StreamLevelLoaded", function(level_name)
+
+end)
+```
+
+
+### `StreamLevelUnloaded`
+
+> Called when a Stream Level is unloaded
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`level_name`** |  |
+
+```lua
+Client.Subscribe("StreamLevelUnloaded", function(level_name)
+
+end)
+```

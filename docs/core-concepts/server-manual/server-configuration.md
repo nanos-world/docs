@@ -45,6 +45,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | **`packages`** | [script](./core-concepts/packages/packages-guide.md#package-types) packages to load |
 | **`assets`** | Additional assets to force to load |
 | **`map`** | Which map to load |
+| **`token`** | Server Token used for authorize downloads through CLI |
 | **`banned_ips`** | List of banned IPs |
 
 
@@ -106,6 +107,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--loading_screen` | string | Server loading-screen |
 | `--packages` | string list | Server packages |
 | `--assets` | string list | Server assets |
+| `--token` | string | Server authorization token |
 | `--max_players` | number | Max allowed players |
 | `--save` | 0 or 1 | If to save the parameters in Config.toml |
 | `--profiling` | 0 or 1 | Enables Performance Profiling Logs for debugging |

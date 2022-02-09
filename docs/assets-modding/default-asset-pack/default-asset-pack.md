@@ -1141,7 +1141,7 @@ In order to use those assets, you need to use the key `nanos-world`. E.g.: `nano
     # Template Materials
     M_NanosMasked = "MaterialLibrary/M_NanosDefault"
     M_NanosTranslucent = "MaterialLibrary/MI_NanosDefault_Translucent"
-    M_NanosTranslucent_Depth = "MaterialLibrary/MI_NanosDefault_Translucent_Depth"
+    M_NanosTranslucent_Depth = "MaterialLibrary/M_NanosDefault_Translucent_Depth"
     M_NanosDecal = "MaterialLibrary/M_NanosDefault_Decal"
     M_NanosWireframe = "MaterialLibrary/M_NanosWireframe"
 
