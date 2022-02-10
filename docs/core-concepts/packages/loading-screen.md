@@ -1,7 +1,8 @@
 ---
 description: Custom Loading Screen for your servers
 sidebar_position: 1
-tags: [scripting, ui]
+tags: [scripting, ui, webui, packages]
+keywords: [loading, screen, package, html, webui]
 ---
 
 # Loading Screen

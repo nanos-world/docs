@@ -1,5 +1,6 @@
 ---
 tags: [assets]
+keywords: [assets, built-in, default]
 ---
 
 # nanos world Asset Pack List

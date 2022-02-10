@@ -1,6 +1,7 @@
 ---
 description: How to create your own Weapons
 tags: [assets, weapons, skeletal-meshes]
+keywords: [weapon, skeleton, unreal]
 ---
 
 # Weapons Meshes

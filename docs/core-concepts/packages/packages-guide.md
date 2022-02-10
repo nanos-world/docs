@@ -1,7 +1,8 @@
 ---
 description: All you need to know about Packages
 sidebar_position: 0
-tags: [scripting]
+tags: [scripting, packages]
+keywords: [packages, scripting, lua]
 ---
 
 # Packages Guide

@@ -1,6 +1,7 @@
 ---
 description: Default nanos world Weapons and it's Parameters
 tags: [assets]
+keywords: [assets, weapons, built-in, default]
 ---
 
 # Default Weapons
