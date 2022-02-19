@@ -102,11 +102,13 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 
 ### `CollisionType`
 
-| Label | Value |
-| :--- | :--- |
-| **`CollisionType.Normal`** | `0` |
-| **`CollisionType.StaticOnly`** | `1` |
-| **`CollisionType.NoCollision`** | `2` |
+| Label | Value | Description |
+| :--- | :--- | :--- |
+| **`CollisionType.Normal`** | `0` | Blocks All |
+| **`CollisionType.StaticOnly`** | `1` | Only Blocks Static objects |
+| **`CollisionType.NoCollision`** | `2` | Doesn't Block anything |
+| **`CollisionType.IgnoreOnlyPawn`** | `3` | Blocks everything but Pawns (Characters) |
+| **`CollisionType.Auto`** | `4` | Automatically selects - usually will be Normal. On Props it will switch between **Normal** and **IgnoreOnlyPawn** depending on the Prop size |
 
 ### `CursorType`
 
