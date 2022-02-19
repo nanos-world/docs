@@ -36,13 +36,19 @@ local my_prop = Prop(
 
 :::info Note
 
-Props smaller than radius **40** units or very thin (any side smaller than 20 units) will have **CCD** (Continuous Collision Detection) enabled to avoid falling through the floor or other objects. This will slightly increase the performance cost of them! Also, they will have Collision disabled against Characters.
+Props smaller than radius **40** units or very thin (any side smaller than 20 units) will have **CCD** (Continuous Collision Detection) enabled to avoid falling through the floor or other objects. This will slightly increase the performance cost of them!
 
 :::
 
 :::info Note
 
 Props bigger than radius 200 units will have **`Grabbable`** off by default. This can be overridden with `:SetGrabbable()`.
+
+:::
+
+:::info Note
+
+Setting `CollisionType.Auto` on Props will make them automatically switch between `Normal` and `IgnoreOnlyPawn` if they are smaller than radius **40** units.
 
 :::
 
@@ -53,7 +59,7 @@ Props bigger than radius 200 units will have **`Grabbable`** off by default. Thi
 | <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` | Location to spawn |
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` | Rotation to spawn |
 | <AssetPath.StaticMesh /> | **`asset`** | ` ` | Static Mesh Asset to use |
-| <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` | Collision |
+| <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Auto` | Collision |
 | <BasicType.Boolean /> | **`gravity_enabled`** | `true` |  |
 | <BasicType.Boolean /> | **`is_grabbable`** | `true` |  |
 | <BasicType.Boolean /> | **`force_no_ccd`** | `false` | Force CCD to not be used on small Props (may cause Props passing through objects if it's kinda small) |

@@ -1,6 +1,7 @@
 ---
 description: Default nanos world Materials and it's Parameters
 tags: [assets]
+keywords: [assets, materials, built-in, default]
 ---
 
 # Default Materials

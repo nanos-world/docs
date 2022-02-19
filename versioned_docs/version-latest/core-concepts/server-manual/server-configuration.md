@@ -19,52 +19,9 @@ nanos world Config files use **TOML** (Tom’s Obvious, Minimal Language), pleas
 
 The server Configuration file `Config.toml` is generated automatically when the server is launched for the first time. This file will always be overridden with the proper pattern after the server is loaded.
 
-```toml title="Server.toml"
-# server configurations
-[server]
-    # server name
-    name =                  "nanos world Server"
-    # server description (max 250 characters)
-    description =           ""
-    # server logo URL (recommended size: 150x75)
-    logo =                  "https://i.imgur.com/U1rZp5v.png"
-    # max players
-    max_players =           60
-    # leave it blank for no password
-    password =              ""
-    # server IP. we recommend leaving it 0.0.0.0 for default
-    ip =                    "0.0.0.0"
-	# server port (TCP and UDP forwarding needed)
-    port =                  7777
-	# query port (UDP forwarding needed)
-	query_port =            7778
-    # announce server in the master server list
-    announce =              true
-    # server tick rate in milliseconds (dangerous! server will tick at each [tick_rate] ms, affecting both server and client performance. 33 ms means 30 ticks per second and is the default and recommended value)
-    tick_rate =             33
-    # log Level. (1) normal - (2) debug - (3) verbose
-    log_level =             2
 
-# nanos world configurations
-[world]
-    # game-mode package to load (set the main game-mode package to load - you can load only one 'game-mode' package type at once)
-    game_mode =             ""
-    # loading-screen package to load (the loading screen will be displayed when players join your server)
-    loading_screen =        ""
-    # packages script list (leave it blank to load all packages, this is usually useful when you have tons of packages downloaded and only wants to load one or some)
-    packages = [
-
-    ]
-    # asset packs list (this will additionally load the asset packs you define here)
-    assets = [
-
-    ]
-    # default startup map
-    map =                   "nanos-world::BlankMap"
-    # banned IPs
-    banned_ips = [
-
-    ]
+```toml reference
+https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 ```
 
 
@@ -88,6 +45,7 @@ The server Configuration file `Config.toml` is generated automatically when the 
 | **`packages`** | [script](./core-concepts/packages/packages-guide.md#package-types) packages to load |
 | **`assets`** | Additional assets to force to load |
 | **`map`** | Which map to load |
+| **`token`** | Server Token used for authorize downloads through CLI |
 | **`banned_ips`** | List of banned IPs |
 
 
@@ -149,6 +107,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--loading_screen` | string | Server loading-screen |
 | `--packages` | string list | Server packages |
 | `--assets` | string list | Server assets |
+| `--token` | string | Server authorization token |
 | `--max_players` | number | Max allowed players |
 | `--save` | 0 or 1 | If to save the parameters in Config.toml |
 | `--profiling` | 0 or 1 | Enables Performance Profiling Logs for debugging |

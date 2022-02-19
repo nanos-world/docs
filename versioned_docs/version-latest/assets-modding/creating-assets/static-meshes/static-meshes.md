@@ -1,6 +1,7 @@
 ---
 description: How to export and use Static Meshes from Unreal Engine
 tags: [assets]
+keywords: [static, mesh, prop, unreal]
 ---
 
 # Static Meshes

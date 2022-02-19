@@ -1,6 +1,7 @@
 ---
 description: How to create your own Vehicles
 tags: [assets, vehicles, skeletal-meshes]
+keywords: [vehicle, unreal]
 ---
 
 # Vehicles Meshes

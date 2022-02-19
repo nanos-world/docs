@@ -2,6 +2,7 @@
 description: Learn how to Create and Import custom Assets into nanos world
 sidebar_position: 1
 tags: [assets]
+keywords: [assets, ADK, import, unreal]
 ---
 
 # Importing Custom Assets

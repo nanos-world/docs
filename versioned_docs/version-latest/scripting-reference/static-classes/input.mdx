@@ -51,6 +51,7 @@ end)
 |  | [**`Unbind`**](input#unbind) | Unbinds a Input function |
 |  | [**`Register`**](input#register) | Registers a BindingName to a Key |
 |  | [**`Unregister`**](input#unregister) | Unregisters a BindingName |
+| <BasicType.String /> | [**`GetKeyIcon`**](input#getkeyicon) | Gets the icon Path of a Key |
 | <BasicType.String /> | [**`GetMappedKey`**](input#getmappedkey) | Returns the Key given a BindingName |
 |  | [**`ResetBindings`**](input#resetbindings) | Resets all Bound functions by this Package |
 | <BasicType.Table /> | [**`GetGameKeyBindings`**](input#getgamekeybindings) | Returns a table with all Game KeyBindings  |
@@ -111,6 +112,21 @@ Input.Unregister(binding_name, key_name)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`binding_name`** | The KeyBinding ID |
+| <BasicType.String /> | **`key_name`** |  |
+
+
+### `GetKeyIcon`
+
+> Gets the Icon image path from a Key
+> 
+> Returns <BasicType.String />
+
+```lua
+Input.GetKeyIcon(key_name)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
 | <BasicType.String /> | **`key_name`** |  |
 
 

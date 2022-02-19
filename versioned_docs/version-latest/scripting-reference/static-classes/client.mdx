@@ -32,11 +32,15 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 |  | [**`DrawDebugPoint`**](client#drawdebugpoint) | Draws a Debug Point in the World |
 |  | [**`DrawDebugSphere`**](client#drawdebugsphere) | Draws a Debug Line in the World |
 |  | [**`DrawDebugString`**](client#drawdebugstring) |  |
+|  | [**`ProjectWorldToScreen`**](client#projectworldtoscreen) | Transforms a 3D world-space vector into 2D screen coordinates |
+|  | [**`DeprojectScreenToWorld`**](client#deprojectscreentoworld) | Transforms a 2D screen coordinates into 3D world-space location |
 |  | [**`InitializeDiscord`**](client#initializediscord) | Initializes the Discord Integration with your custom client\_id |
 |  | [**`SendChatMessage`**](client#sendchatmessage) | Sends a chat message which will display local only |
 |  | [**`SetChatConfiguration`**](client#setchatconfiguration) | Configure the Chat |
 |  | [**`SetChatVisibility`**](client#setchatvisibility) | Set if the Chat is visible or not |
 |  | [**`SetCrosshairEnabled`**](client#setcrosshairenabled) | Enables/Disables the default Crosshair |
+|  | [**`SetBloodScreenEnabled`**](client#setbloodscreenenabled) | Enables/Disables the Blood Screen effect |
+|  | [**`SetBloodScreenIntensity`**](client#setbloodscreenintensity) | Manually sets the Blood Screen intensity  |
 |  | [**`SetHardwareCursor`**](client#sethardwarecursor) | Loads or sets a hardware cursor from the content directory in the game. |
 |  | [**`SetDiscordActivity`**](client#setdiscordactivity) | Communicates with Discord and sets a custom user status |
 |  | [**`SetInputEnabled`**](client#setinputenabled) | Toggles Local Player input |
@@ -55,7 +59,9 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | <BasicType.String /> | [**`GetMap`**](client#getmap) | Returns the current Map |
 | <Structs.Vector2D /> | [**`GetMousePosition`**](client#getmouseposition) | Gets the current mouse screen location |
 | <BasicType.Table /> | [**`GetPackages`**](client#getpackages) | Returns a list of Packages folder names loaded and running in the client |
+| <BasicType.Any /> | [**`GetViewportSize`**](client#getviewportsize) | Gets the size of viewport |
 | <BasicType.Any /> | [**`GetValue`**](client#getvalue) | Gets a value given a key |
+| <BasicType.Boolean /> | [**`InputKey`**](client#inputkey) | Forces an Input Key event on Local Player |
 | <BasicType.Boolean /> | [**`IsKeyDown`**](client#iskeydown) | Returns if a key is being pressed |
 | <BasicType.Boolean /> | [**`IsMouseEnabled`**](client#ismouseenabled) |  |
 | <BasicType.Boolean /> | [**`IsInputEnabled`**](client#isinputenabled) |  |
@@ -66,7 +72,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | **Name** | **Description** |
 | :--- | :--- |
 | [**`Chat`**](client#chat) | Called when a chat text is submitted (by LocalPlayer) |
-| [**`ChatEntry`**](server#chatentry) | Called when a Chat Entry is received, this is also triggered when `SendChatMessage` is called |
+| [**`ChatEntry`**](client#chatentry) | Called when a Chat Entry is received, this is also triggered when `SendChatMessage` is called |
 | [**`Console`**](client#console) | Called when a console command is submitted |
 | [**`KeyDown`**](client#keydown) | A keyboard key is being pressed |
 | [**`KeyPress`**](client#keypress) | A keyboard key has been pressed |
@@ -77,7 +83,10 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | [**`MouseEnabled`**](client#mouseenabled) | When mouse cursor is displayed/hidden |
 | [**`OpenChat`**](client#openchat) | When player opens the Chat |
 | [**`CloseChat`**](client#closechat) | When player closes the Chat |
+| [**`OpenConsole`**](client#openconsole) | When player closes the Console |
+| [**`CloseConsole`**](client#closeconsole) | When player closes the Console |
 | [**`Tick`**](client#tick) | Called Every Frame. Do not abuse |
+| [**`ViewportResized`**](client#viewportresized) | Called when the screen is resized |
 
 
 ## Functions Detailed
@@ -85,7 +94,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 
 ### `CallLevelBlueprintEvent`
 
-> Calls a Level Blueprint custom event \(which can be added when creating levels through Unreal Engine\). Parameters can be concatenated to event\_name like `"MyEventName 123, 'MyParameter2', 456"`
+> Calls a Level Blueprint custom event (which can be added when creating levels through Unreal Engine). Parameters can be concatenated to event_name like `'MyEventName 123, "MyParameter2", 456'`
 
 ```lua
 Client.CallLevelBlueprintEvent(event_name)
@@ -255,6 +264,36 @@ Client.DrawDebugSphere(start_position, radius, segments, color, duration, thickn
 | <BasicType.Number /> | **`thickness`** | `0` |  |
 
 
+### `DeprojectScreenToWorld`
+
+> Transforms a 2D screen coordinates into 3D world-space location
+>
+> Returns table in the format `{"Position", "Direction"}`
+
+```lua
+Client.DeprojectScreenToWorld(screen_position)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Vector2D /> | **`screen_position`** | Screen position |
+
+
+### `ProjectWorldToScreen`
+
+> Transforms a 3D world-space vector into 2D screen coordinates
+>
+> Returns <Structs.Vector2D />
+
+```lua
+Client.ProjectWorldToScreen(world_position)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Vector /> | **`world_position`** | World 3D position |
+
+
 ### `InitializeDiscord`
 
 > Initializes the Discord Integration with your custom client\_id
@@ -324,6 +363,34 @@ Client.SetCrosshairEnabled(is_enabled)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_enabled`** |  |
+
+
+### `SetBloodScreenEnabled`
+
+> Enables/Disables the Blood Screen
+
+```lua
+Client.SetBloodScreenEnabled(is_enabled)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`is_enabled`** |  |
+
+
+### `SetBloodScreenIntensity`
+
+> Manually sets the Blood Screen intensity
+> 
+> If you want the Blood Screen to do not be overridden, disable it with `Client.SetBloodScreenEnabled(false)` before
+
+```lua
+Client.SetBloodScreenIntensity(intensity)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`intensity`** | From `0.0` to `1.1` |
 
 
 ### `SetHardwareCursor`
@@ -594,6 +661,17 @@ Client.GetPackages()
 ```
 
 
+### `GetViewportSize`
+
+> Gets the size of viewport (how much screen space the game window occupies)
+>
+> Returns <Structs.Vector2D />
+
+```lua
+Client.GetViewportSize()
+```
+
+
 ### `GetValue`
 
 > Gets a value given a key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
@@ -608,6 +686,23 @@ Client.GetValue(key, fallback)
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** | Key |
 | <BasicType.Any /> | **`fallback`** | Fallback Value if key doesn't exist |
+
+
+### `InputKey`
+
+> Forces a Input Key event on Local Player
+>
+> This won't trigger any Scripting event as it bypass internal validations
+
+```lua
+Client.InputKey(key_name, input_event, amount_depressed)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`key_name`** |  | Key Name to input |
+| <Enums>InputEvent</Enums> | **`input_event`** | Which Event to input (Released/Pressed) |
+| <BasicType.Number /> | **`amount_depressed`** | `1` | The amount pressed |
 
 
 ### `IsKeyDown`
@@ -832,6 +927,43 @@ Client.Subscribe("CloseChat", function()
 
 end)
 ```
+
+
+### `OpenConsole`
+
+> When player opens the console
+
+```lua
+Client.Subscribe("OpenConsole", function()
+
+end)
+```
+
+
+### `CloseConsole`
+
+> When player closes the console
+
+```lua
+Client.Subscribe("CloseConsole", function()
+
+end)
+```
+
+
+### `ViewportResized`
+
+> Called when the screen is resized
+
+```lua
+Client.Subscribe("ViewportResized", function(new_size)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Vector2D /> | **`new_size`** | New new screen size |
 
 
 ### `Tick`
