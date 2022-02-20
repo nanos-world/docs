@@ -72,6 +72,7 @@ Server.BroadcastChatMessage("Welcome to the server!")
 | <BasicType.Number /> | [**`GetQueryPort`**](server#getqueryport) | Returns the server QueryPort |
 | <BasicType.Number /> | [**`GetMaxPlayers`**](server#getmaxplayers) | Returns the Max Players configured |
 | <BasicType.Number /> | [**`GetDescription`**](server#getdescription) | Returns the Server Description |
+| <BasicType.Number /> | [**`GetTickRate`**](server#gettickrate) | Returns the Configured Tick Rate |
 | <BasicType.Number /> | [**`IsAnnounced`**](server#isannounced) | Returns if the Server is announced in the Master List |
 
 
@@ -399,6 +400,17 @@ Server.GetMaxPlayers()
 
 ```lua
 Server.GetDescription()
+```
+
+
+### `GetTickRate`
+
+> Gets the configured Tick Rate
+> 
+> Returns <BasicType.Number />
+
+```lua
+Server.GetTickRate()
 ```
 
 

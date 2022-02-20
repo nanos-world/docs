@@ -87,6 +87,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | [**`CloseConsole`**](client#closeconsole) | When player closes the Console |
 | [**`Tick`**](client#tick) | Called Every Frame. Do not abuse |
 | [**`ViewportResized`**](client#viewportresized) | Called when the screen is resized |
+| [**`WindowFocusChanged`**](client#windowfocuschanged) | Called when the game is focused/unfocused |
 
 
 ## Functions Detailed
@@ -951,6 +952,21 @@ end)
 ```
 
 
+### `Tick`
+
+> Called Every Frame. Do not abuse.
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`delta_time`** |  |
+
+```lua
+Client.Subscribe("Tick", function(delta_time)
+
+end)
+```
+
+
 ### `ViewportResized`
 
 > Called when the screen is resized
@@ -966,19 +982,19 @@ end)
 | <Structs.Vector2D /> | **`new_size`** | New new screen size |
 
 
-### `Tick`
+### `WindowFocusChanged`
 
-> Called Every Frame. Do not abuse.
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Number /> | **`delta_time`** |  |
+> Called when the game is focused/unfocused
 
 ```lua
-Client.Subscribe("Tick", function(delta_time)
+Client.Subscribe("WindowFocusChanged", function(is_focused)
 
 end)
 ```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`is_focused`** | If it's focused |
 
 
 ## Key Names
