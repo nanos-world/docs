@@ -87,12 +87,12 @@ html[data-theme='dark']  .alert {
 }
 
 /* Header Description */
-header + p {
+h1 + p {
   color: var(--ifm-color-gray-600) !important;
   margin-top: -1rem !important;
 }
 
-header + p::after {
+h1 + p::after {
   height: 1px;
   content: " ";
   display: block;
