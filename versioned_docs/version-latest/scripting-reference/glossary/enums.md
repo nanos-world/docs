@@ -149,6 +149,14 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`DamageType.RunOverVehicle`** | `5` |
 | **`DamageType.Unknown`** | `6` |
 
+### `DatabaseEngine`
+
+| Label | Value |
+| :--- | :--- |
+| **`DatabaseEngine.SQLite`** | `0` |
+| **`DatabaseEngine.MySQL`** | `1` |
+| **`DatabaseEngine.PostgreSQL`** | `2` |
+
 ### `DifferentialType`
 
 | Label | Value |
@@ -286,8 +294,12 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`LogType.Debug`** | `3` |
 | **`LogType.Verbose`** | `4` |
 | **`LogType.Scripting`** | `5` |
-| **`LogType.Chat`** | `6` |
-| **`LogType.WebUI`** | `7` |
+| **`LogType.ScriptingWarn`** | `6` |
+| **`LogType.ScriptingError`** | `7` |
+| **`LogType.Chat`** | `8` |
+| **`LogType.WebUI`** | `9` |
+| **`LogType.Success`** | `10` |
+| **`LogType.Fatal`** | `11` |
 
 ### `LightType`
 

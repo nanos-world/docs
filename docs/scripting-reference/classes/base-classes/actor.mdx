@@ -256,18 +256,17 @@ entity:SetLocation(vector)
 
 ### <AuthorityType.ServerOnly />`SetNetworkAuthority`
 
-> Sets the Player to have network authority over this Actor. This Player will be manually assigned to handle this Actor's physics and share its location with other clients. The authority assignment will still be overridden by the game automatically, to avoid that set a big time value so the Player keeps the authority for longer
+> Sets the Player to have network authority over this Actor. This Player will be manually assigned to handle this Actor's physics and share its location with other clients. The authority assignment will still be overridden by the game automatically
 >
 > Please refer to [Network Authority](./core-concepts/scripting/authority-concepts.mdx#network-authority) for more information
 
 ```lua
-entity:SetNetworkAuthority(player, time_ms)
+entity:SetNetworkAuthority(player)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | Player | **`player`** | `nil` | New player which will assume the Network Authority of this Actor |
-| <BasicType.Number /> | **`time_ms`** | `0` | Milliseconds before resuming automatic network authority for this Actor |
 
 
 ### <AuthorityType.AuthorityOnly />`SetRotation`

@@ -393,7 +393,7 @@ my_vehicle:GetAssetName()
 
 > Gets a passenger from a seat
 >
-> returns <Classes.Player /> or <BasicType.Nil /> if Seat is invalid or empty
+> returns <Classes.Character /> or <BasicType.Nil /> if Seat is invalid or empty
 
 ```lua
 my_vehicle:GetPassenger(seat)
@@ -408,7 +408,7 @@ my_vehicle:GetPassenger(seat)
 
 > Gets all passengers
 >
-> Returns <BasicType.Table /> of Players
+> Returns <BasicType.Table /> of <Classes.Character />s
 
 ```lua
 my_vehicle:GetPassengers()
