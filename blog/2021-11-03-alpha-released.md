@@ -28,7 +28,7 @@ The following changelog contains all features since last officially announced re
 
 :::
 
-<iframe class="steam-widget" src="https://store.steampowered.com/widget/1686450/" frameborder="0" width="620" height="190" loading="lazy"></iframe>
+<iframe class="steam-widget" src="https://store.steampowered.com/widget/1841660/" frameborder="0" width="620" height="190" loading="lazy"></iframe>
 
 
 ## Materials
