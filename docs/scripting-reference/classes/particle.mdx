@@ -64,7 +64,8 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
-| <AuthorityType.Both /> | [`Reset`](particle#reset) | Activates the Emitter again |
+| <AuthorityType.Both /> | [`Activate`](particle#activate) | Activates the Emitter |
+| <AuthorityType.Both /> | [`Deactivate`](particle#deactivate) | Deactivates the Emitter |
 | <AuthorityType.Both /> | [`SetParameterFloat`](particle#setparameterfloat) | Sets a **Float** parameter in this Particle System |
 | <AuthorityType.Both /> | [`SetParameterInt`](particle#setparameterint) | Sets an **Integer** parameter in this Particle System |
 | <AuthorityType.Both /> | [`SetParameterBool`](particle#setparameterbool) | Sets a **Boolean** parameter in this Particle System |
@@ -72,12 +73,25 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 | <AuthorityType.Both /> | [`SetParameterColor`](particle#setparametercolor) | Sets a **Color** parameter in this Particle System |
 
 
-### <AuthorityType.Both />`Reset`
+### <AuthorityType.Both />`Activate`
 
-> Activates the Emitter again
+> Activates the Emitter
 
 ```lua
-my_particle:Reset()
+my_particle:Activate(should_reset)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`should_reset`** | If should reset |
+
+
+### <AuthorityType.Both />`Deactivate`
+
+> Deactivate the Emitter
+
+```lua
+my_particle:Deactivate()
 ```
 
 
