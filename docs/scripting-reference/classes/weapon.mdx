@@ -188,6 +188,8 @@ import BasePickableEvents from '@site/docs/scripting-reference/classes/base-clas
 | :--- | :--- |
 | [**`Fire`**](weapon#fire) | When Weapon is fired |
 | [**`Reload`**](weapon#reload) | When Weapon is reloaded |
+| [**`AmmoClipChanged`**](weapon#ammoclipchanged) | When the Ammo Clip is changed |
+| [**`AmmoBagChanged`**](weapon#ammobagchanged) | When the Ammo Bag is changed |
 
 
 ## Functions Detailed
@@ -939,3 +941,36 @@ end)
 | <Classes.Character /> | `character` |  |
 | <BasicType.Number /> | **`ammo_to_reload`** |  |
 
+
+### `AmmoClipChanged`
+
+> When the Ammo Clip is changed, by reloading or manually setting through scripting
+
+```lua
+Weapon.Subscribe("AmmoClipChanged", function(self, old_ammo_clip, new_ammo_clip)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Weapon](weapon) | `self` |  |
+| <BasicType.Number /> | **`old_ammo_clip`** |  |
+| <BasicType.Number /> | **`new_ammo_clip`** |  |
+
+
+### `AmmoBagChanged`
+
+> When the Ammo Bag is changed, by reloading or manually setting through scripting
+
+```lua
+Weapon.Subscribe("AmmoBagChanged", function(self, old_ammo_bag, new_ammo_bag)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Weapon](weapon) | `self` |  |
+| <BasicType.Number /> | **`old_ammo_bag`** |  |
+| <BasicType.Number /> | **`new_ammo_bag`** |  |

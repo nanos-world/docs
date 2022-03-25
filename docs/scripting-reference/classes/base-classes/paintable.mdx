@@ -110,7 +110,9 @@ my_entity:SetMaterialColorParameter(parameter_name, color)
 
 ### <AuthorityType.Both />`SetMaterialScalarParameter`
 
-> Sets a Scalar parameter in this Actor’s material
+> Sets a Scalar parameter in this Actor's material
+> 
+> For setting a parameter in an [Attachable](/docs/scripting-reference/classes/character#addskeletalmeshattached) mesh, use the following **parameter_name** pattern: `attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]`
 
 ```lua
 my_entity:SetMaterialScalarParameter(parameter_name, number)
@@ -138,7 +140,9 @@ my_entity:SetMaterialTextureParameter(parameter_name, texture_path)
 
 ### <AuthorityType.Both />`SetMaterialVectorParameter`
 
-> Sets a Vector parameter in this Actor’s material
+> Sets a Vector parameter in this Actor's material
+> 
+> For setting a parameter in an [Attachable](/docs/scripting-reference/classes/character#addskeletalmeshattached) mesh, use the following **parameter_name** pattern: `attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]`
 
 ```lua
 my_entity:SetMaterialVectorParameter(parameter_name, vector)

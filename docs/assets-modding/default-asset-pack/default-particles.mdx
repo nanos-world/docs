@@ -8,7 +8,7 @@ keywords: [assets, particles, built-in, default]
 
 Default nanos world Particles and it's Parameters.
 
-import { Structs, BasicType } from '@site/docs/components/_nanos.mdx';
+import { Structs, BasicType, AssetPath } from '@site/docs/components/_nanos.mdx';
 
 :::tip
 
@@ -19,6 +19,7 @@ import { Structs, BasicType } from '@site/docs/components/_nanos.mdx';
 ## Template Particles
 
 Bare minimum particles.
+
 
 ### `P_Beam`
 
@@ -32,6 +33,8 @@ This is a Niagara particle which joins two points with a Beam. Cool for creating
 | **`BeamEnd`** | <Structs.Vector /> | `Vector(0, 0, 0)` | World position of the second joint |
 | **`BeamWidth`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `5.0` | Beam thickness |
 | **`JitterAmount`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `0.1` | Amount of jitterness |
+| **`Material`** | <AssetPath.Material /> | `Blank White Material` | Material to override |
+
 
 ### `P_Ribbon`
 
@@ -46,6 +49,8 @@ This is a Niagara particle which makes a "trail" effect when moves.
 | **`Mass`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `10.0` | Mass of the "ribbons" |
 | **`LifeTime`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `5.0` | How much time each "ribbon" will last |
 | **`RibbonWidth`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `10.0` | The thickness of the Ribbon |
+| **`Material`** | <AssetPath.Material /> | `Blank White Material` | Material to override |
+
 
 ### `P_DirectionalBurst`
 
@@ -59,6 +64,8 @@ This is a Niagara particle which spawns a bunch of particles in a direction.
 | **`SpawnCount`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `25.0` | Amount of Particles to spawn |
 | **`VelocityStrengthMax`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `350.0` | Max velocity of the Particles |
 | **`VelocityStrengthMin`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `125.0` | Min velocity of the Particles |
+| **`Material`** | <AssetPath.Material /> | `Blank White Material` | Material to override |
+
 
 ### `P_Fountain`
 
@@ -72,6 +79,8 @@ This is a Niagara particle which simulates a fountain.
 | **`SpawnRate`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `90.0` | Rate to spawn particles |
 | **`VelocityStrengthMax`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `850.0` | Max velocity |
 | **`VelocityStrengthMin`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `500.0` | Min velocity |
+| **`Material`** | <AssetPath.Material /> | `Blank White Material` | Material to override |
+
 
 ### `P_HangingParticulates`
 
@@ -84,6 +93,8 @@ This is a Niagara particle which makes a 3-dimensional "hanging particles" effec
 | **`Color`** | <Structs.Color /> | `Color.WHITE` | Color of the Particles |
 | **`BoxSize`** | <Structs.Vector /> | `Vector(400, 400, 100)` | 3D Size to spawn the Particles |
 | **`SpawnRate`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `50.0` | Rate of spawn |
+| **`Material`** | <AssetPath.Material /> | `Blank White Material` | Material to override |
+
 
 ### `P_OmnidirectionalBurst`
 
@@ -98,4 +109,5 @@ This is a Niagara particle which makes a "explosion" effect in all directions.
 | **`SphereRadius`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `10.0` | Radius to spawn the particles |
 | **`VelocityStrengthMax`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `300.0` | Max velocity of the Particles |
 | **`VelocityStrengthMin`** | [Float](./scripting-reference/classes/particle.mdx#setparameterfloat) | `75.0` | Min velocity of the Particles |
+| **`Material`** | <AssetPath.Material /> | `Blank White Material` | Material to override |
 

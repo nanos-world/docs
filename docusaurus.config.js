@@ -109,6 +109,7 @@ module.exports = {
       apiKey: 'b53f482139534494c9253752259660ed',
       indexName: 'nanos',
       contextualSearch: true,
+      aggregateContent: true,
     },
   },
   presets: [

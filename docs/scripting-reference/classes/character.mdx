@@ -211,6 +211,7 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 | <AuthorityType.Both /> | [**`Fire`**](character#fire) | When Character fires a Weapon |
 | <AuthorityType.Both /> | [**`GaitModeChanged`**](character#gaitmodechanged) |  |
 | <AuthorityType.Both /> | [**`GrabProp`**](character#grabprop) | When Character grabs up a <Classes.Prop /> |
+| <AuthorityType.Both /> | [**`HealthChanged`**](character#healthchanged) | When Character health is changed |
 | <AuthorityType.Both /> | [**`Highlight`**](character#highlight) | When Character highlights/looks at a <Classes.Prop /> or a <Classes.Pickable /> |
 | <AuthorityType.ServerOnly /> | [**`Interact`**](character#interact) | When a Character interacts with a <Classes.Prop /> or <Classes.Pickable /> to pick it up |
 | <AuthorityType.Both /> | [**`LeaveVehicle`**](character#leavevehicle) | When Character leaves a vehicle |
@@ -1616,6 +1617,23 @@ end)
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
 | <Classes.Prop /> | **`prop`** |  |
+
+
+### `HealthChanged`
+
+> When Character has it's Health changed, or because took damage or manually set through scripting or respawning
+
+```lua
+Character.Subscribe("HealthChanged", function(self, old_health, new_health)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <BasicType.Number /> | **`old_health`** |  |
+| <BasicType.Number /> | **`new_health`** |  |
 
 
 ### `Highlight`
