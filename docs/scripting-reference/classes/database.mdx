@@ -120,7 +120,7 @@ end, parameters...)
 > Returns a <BasicType.Number /> of `affected_rows`
 
 ```lua
-local affected_rows = my_database:Execute(query, parameters...)
+local affected_rows = my_database:ExecuteSync(query, parameters...)
 ```
 
 | Type | Parameter | Default Value | Description |
@@ -155,7 +155,7 @@ end, parameters...)
 > Returns a <BasicType.Table /> of <BasicType.Table />s contains the rows fetched
 
 ```lua
-local rows = my_database:Select(query, parameters...)
+local rows = my_database:SelectedSync(query, parameters...)
 ```
 
 | Type | Parameter | Default Value | Description |
