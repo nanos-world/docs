@@ -103,7 +103,8 @@ Most of the functions below will reset the vehicle Physics State \(automatically
 |  |  | [**`AddStaticMeshAttached`**](vehicle#addstaticmeshattached) | Spawns and Attaches a StaticMesh into this Vehicle |
 | <AuthorityType.ServerOnly /> |  | [**`Horn`**](vehicle#horn) | Starts or stops the vehicles horn |
 | <AuthorityType.ServerOnly /> |  | [**`RecreatePhysics`**](vehicle#recreatephysics) | Recreate the Vehicle Physics |
-| <AuthorityType.Both /> |  | [**`RemoveStaticMeshAttached`**](vehicle#removestaticmeshattached) | Removes, if existing, a StaticMesh from this Vehicle given it’s custom ID |
+| <AuthorityType.Both /> |  | [**`RemoveStaticMeshAttached`**](vehicle#removestaticmeshattached) | Removes, if existing, a StaticMesh from this Vehicle given it's custom ID |
+| <AuthorityType.Both /> |  | [**`RemoveAllStaticMeshesAttached`**](vehicle#removeallstaticmeshesattached) | Removes all StaticMeshes attached |
 | <AuthorityType.ServerOnly /> |  | [**`SetAutoStartEngine`**](vehicle#setautostartengine) | Sets if the Engine auto starts when the driver enters the Vehicle |
 | <AuthorityType.ServerOnly /> |  | [**`SetEngineStarted`**](vehicle#setenginestarted) | Starts/Stops the Engine |
 | <AuthorityType.ServerOnly /> |  | [**`SetDifferentialSetup`**](vehicle#setdifferentialsetup) | Configures the Vehicle Differential |
@@ -189,6 +190,15 @@ my_vehicle:RemoveStaticMeshAttached(id)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`id`** |  |  |
+
+
+### <AuthorityType.Both />`RemoveAllStaticMeshesAttached`
+
+> Removes all StaticMeshes attached
+
+```lua
+my_vehicle:RemoveAllStaticMeshesAttached()
+```
 
 
 ### <AuthorityType.ServerOnly />`SetAutoStartEngine`
