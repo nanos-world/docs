@@ -1,10 +1,10 @@
 ---
+title: Weapons Meshes
 description: How to create your own Weapons
 tags: [assets, weapons, skeletal-meshes]
 keywords: [weapon, skeleton, unreal]
 ---
 
-# Weapons Meshes
 
 In nanos world, a Weapon is an entity which can be Picked Up by Characters and can have several settings tweaked to customize it. In this guide you will learn how to import custom Skeletal Meshes to create your own Weapon.
 

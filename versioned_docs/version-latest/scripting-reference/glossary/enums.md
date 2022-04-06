@@ -1,9 +1,9 @@
 ---
+title: Enums
 description: nanos world Enums.
 tags: [scripting]
 ---
 
-# Enums
 
 Instead of passing numbers to methods or comparing numbers in Events callbacks, you can use the following **Enums** to do so. Examples:
 
@@ -95,7 +95,7 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`CollisionChannel.WorldDynamic`** | `1 << 1` | WorldDynamic Object Types |
 | **`CollisionChannel.Pawn`** | `1 << 2` | Capsules (usually from Characters) |
 | **`CollisionChannel.PhysicsBody`** | `1 << 5` | Pickables and Props Meshes |
-| **`CollisionChannel.Vehicle`** | `1 << 6` | Vehicles Meshes |
+| **`CollisionChannel.Vehicle`** | `1 << 22` | Vehicles Meshes |
 | **`CollisionChannel.TracePrimitive`** | `1 << 16` | Interactable Spheres, Damage Primitives (mainly internal use) |
 | **`CollisionChannel.Mesh`** | `1 << 17` | Character Mesh |
 | **`CollisionChannel.Foliage`** | `1 << 20` | Foliage Meshes |

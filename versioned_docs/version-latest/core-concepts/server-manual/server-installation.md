@@ -1,10 +1,10 @@
 ---
+title: Server Installation
 description: Creating servers in nanos world is very simple and straightforward, just a few steps and you have your server up and ready!
 sidebar_position: 1
 tags: [hosting]
 ---
 
-# Server Installation
 
 Creating servers in nanos world is very simple and straightforward, just a few steps and you have your server up and ready!
 
@@ -48,15 +48,7 @@ After downloaded, run `steamcmd` executable, it will update and you will enter i
 Steam>
 ```
 
-### 2. Login
-
-The next step is to login on SteamCMD, you can login anonymously with:
-
-```bash
-Steam> login anonymous
-```
-
-### 3. Specify an installation directory
+### 2. Specify an installation directory
 
 You can optionally define an installation folder to install nanos world server:
 
@@ -64,17 +56,25 @@ You can optionally define an installation folder to install nanos world server:
 Steam> force_install_dir c:\nanos-world-server\
 ```
 
-### 4. Download nanos world Server
+### 3. Login
 
-You can then install nanos world server using it's app id: `1686460`:
+The next step is to login on SteamCMD, you can login anonymously with:
 
 ```bash
-Steam> app_update 1686460
+Steam> login anonymous
+```
+
+### 4. Download nanos world Server
+
+You can then install nanos world server using it's app id: `1936830`:
+
+```bash
+Steam> app_update 1936830
 ```
 
 :::tip
 
-You can run `app_update 1686460` to update your nanos world server to the latest version as well!
+You can run `app_update 1936830` to update your nanos world server to the latest version as well!
 
 :::
 
@@ -93,7 +93,7 @@ On Linux, you must start the server using the Shell Script `./NanosWorldServer.s
 You can optionally use a one-liner command to install/update nanos world server:
 
 ```bash
-steamcmd.exe +login anonymous +app_update 1686460 validate +quit
+steamcmd.exe +login anonymous +app_update 1936830 validate +quit
 ```
 
 :::tip
@@ -107,13 +107,13 @@ Finished!, you can now proceed to the next steps to configure your nanos world s
 To install the `bleeding-edge` version of the server, you will need to specify it's branch when installing:
 
 ```bash
-Steam> app_update 1686460 -beta bleeding-edge
+Steam> app_update 1936830 -beta bleeding-edge
 ```
 
 or
 
 ```bash
-steamcmd.exe +login anonymous +app_update "1686460 -beta bleeding-edge" validate +quit
+steamcmd.exe +login anonymous +app_update "1936830 -beta bleeding-edge" validate +quit
 ```
 
 ## Linux Debian 10 Installation
@@ -207,7 +207,7 @@ sudo apt install libc6:armhf libncurses5:armhf libstdc++6:armhf
 
 Clone the repository, then we will need to replace the file `libstdc++.so.6` inside the folder `x64lib`.
 You will need a newer version of this file with at least `GLIBCXX v3.4.26`.
-You can grab it inside an updated linux distro such as Ubuntu 20.04, Debian 11.
+You can grab it inside an updated Linux distro such as Ubuntu 20.04, Debian 11.
 To check if the file has at least `GLIBCXX v3.4.26`, use this command :
 ```
 strings libstdc++.so.6 | grep LIBCXX
@@ -227,7 +227,7 @@ Get steamcmd manually on a folder with this command :
 curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
 ```
 
-You can now follow the basic instructions of nanos world linux installation starting from steamcmd (run steamcmd with this command: `./steamcmd.sh`).
+You can now follow the basic instructions of nanos world Linux installation starting from steamcmd (run steamcmd with this command: `./steamcmd.sh`).
 
 
 :::tip

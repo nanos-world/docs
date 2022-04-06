@@ -1,10 +1,10 @@
 ---
+title: Traces & Raycasting
 description: How to use Traces & Raycasting to gather world information in runtime
 sidebar_position: 7
 tags: [scripting]
 ---
 
-# Traces & Raycasting
 
  How to use Traces & Raycasting to gather world information in runtime.
 

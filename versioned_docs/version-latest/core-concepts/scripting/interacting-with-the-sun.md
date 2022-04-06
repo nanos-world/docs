@@ -1,9 +1,9 @@
 ---
+title: Interacting with the Sun
 description: How to integrate and communicate with the Sun and Light
 tags: [scripting]
 ---
 
-# Interacting with the Sun
 
 How to integrate and communicate with the Sun and Light.
 

@@ -1,10 +1,10 @@
 ---
+title: Importing Mixamo Animations
 description: How to import Mixamo animations into nanos world
 tags: [assets, animations]
 keywords: [mixamo, animation, mannequin, unreal]
 ---
 
-# Importing Mixamo Animations
 
 Mixamo is a library of thousands of animations captured from professional motion actors.
 

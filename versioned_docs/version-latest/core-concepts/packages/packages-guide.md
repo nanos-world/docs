@@ -1,11 +1,11 @@
 ---
+title: Packages Guide
 description: All you need to know about Packages
 sidebar_position: 0
 tags: [scripting, packages]
 keywords: [packages, scripting, lua]
 ---
 
-# Packages Guide
 
 **Packages** are pieces/components of your server which will execute Lua scripts to interact to the game. 
 

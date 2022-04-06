@@ -1,9 +1,9 @@
 ---
+title: Doors
 description: How to create a simple and automatic door when Characters move in
 tags: [tutorial-example, scripting]
 ---
 
-# Doors
 
 How to create a simple and automatic door when Characters move in.
 

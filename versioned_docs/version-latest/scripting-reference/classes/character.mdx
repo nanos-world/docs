@@ -1,10 +1,10 @@
 ---
+title: 🧑 Character
 description: Characters represents Actors which can be possessed, can move and interact with world. They are the default Skeletal Mesh Character built for nanos world
 sidebar_position: 0
 tags: [class]
 ---
 
-# 🧑 Character
 
 Characters represents Actors which can be possessed, can move and interact with world. They are the default Skeletal Mesh Character built for nanos world
 
@@ -109,9 +109,11 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`StopMovement`**](character#stopmovement) | AI: Stops the movement |
 | <AuthorityType.ServerOnly /> |  | [**`PickUp`**](character#pickup) | Gives a Melee/Grenade/Weapon (Pickable) to the Character |
 | <AuthorityType.ServerOnly /> |  | [**`PlayAnimation`**](character#playanimation) | Plays an Animation Montage on this character |
-|  <AuthorityType.Both /> |  | [**`RemoveSkeletalMeshAttached`**](character#removeskeletalmeshattached) | Removes, if existing, a SkeletalMesh from this Character given it’s custom ID |
-|  <AuthorityType.Both /> |  | [**`RemoveStaticMeshAttached`**](character#removestaticmeshattached) | Removes, if existing, a StaticMesh from this Character given it’s custom ID |
-| <AuthorityType.ServerOnly /> |  | [**`Respawn`**](character#respawn) | Respawns the Character, fullying it’s Health and moving it to it’s Initial Location |
+|  <AuthorityType.Both /> |  | [**`RemoveSkeletalMeshAttached`**](character#removeskeletalmeshattached) | Removes, if existing, a SkeletalMesh from this Character given it's custom ID |
+|  <AuthorityType.Both /> |  | [**`RemoveStaticMeshAttached`**](character#removestaticmeshattached) | Removes, if existing, a StaticMesh from this Character given it's custom ID |
+|  <AuthorityType.Both /> |  | [**`RemoveAllStaticMeshesAttached`**](character#removeallstaticmeshesattached) | Removes all StaticMeshes attached |
+|  <AuthorityType.Both /> |  | [**`RemoveAllSkeletalMeshesAttached`**](character#removeallskeletalmeshesattached) | Removes all SkeletalMeshes attached |
+| <AuthorityType.ServerOnly /> |  | [**`Respawn`**](character#respawn) | Respawns the Character, fullying it's Health and moving it to it's Initial Location |
 | <AuthorityType.ServerOnly /> |  | [**`SetAccelerationSettings`**](character#setaccelerationsettings) | Sets the Movement Max Acceleration of this Character. |
 | <AuthorityType.ServerOnly /> |  | [**`SetBrakingSettings`**](character#setbrakingsettings) | Sets the Movement Braking Settings of this Character. |
 | <AuthorityType.ServerOnly /> |  | [**`SetCameraMode`**](character#setcameramode) | Sets the Camera Mode |
@@ -211,6 +213,7 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 | <AuthorityType.Both /> | [**`Fire`**](character#fire) | When Character fires a Weapon |
 | <AuthorityType.Both /> | [**`GaitModeChanged`**](character#gaitmodechanged) |  |
 | <AuthorityType.Both /> | [**`GrabProp`**](character#grabprop) | When Character grabs up a <Classes.Prop /> |
+| <AuthorityType.Both /> | [**`HealthChanged`**](character#healthchanged) | When Character health is changed |
 | <AuthorityType.Both /> | [**`Highlight`**](character#highlight) | When Character highlights/looks at a <Classes.Prop /> or a <Classes.Pickable /> |
 | <AuthorityType.ServerOnly /> | [**`Interact`**](character#interact) | When a Character interacts with a <Classes.Prop /> or <Classes.Pickable /> to pick it up |
 | <AuthorityType.Both /> | [**`LeaveVehicle`**](character#leavevehicle) | When Character leaves a vehicle |
@@ -480,6 +483,7 @@ my_character:RemoveSkeletalMeshAttached(id)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`id`** |  |  |
 
+
 ### <AuthorityType.Both />`RemoveStaticMeshAttached`
 
 > Removes, if existing, a StaticMesh from this Character given it's custom ID
@@ -491,6 +495,24 @@ my_character:RemoveStaticMeshAttached(id)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`id`** |  |  |
+
+
+### <AuthorityType.Both />`RemoveAllStaticMeshesAttached`
+
+> Removes all StaticMeshes attached
+
+```lua
+my_character:RemoveAllStaticMeshesAttached()
+```
+
+
+### <AuthorityType.Both />`RemoveAllSkeletalMeshesAttached`
+
+> Removes all SkeletalMeshes attached
+
+```lua
+my_character:RemoveAllSkeletalMeshesAttached()
+```
 
 
 ### <AuthorityType.ServerOnly />`Respawn`
@@ -1616,6 +1638,23 @@ end)
 | :--- | :--- | :--- |
 | [Character](character) | **`self`** |  |
 | <Classes.Prop /> | **`prop`** |  |
+
+
+### `HealthChanged`
+
+> When Character has it's Health changed, or because took damage or manually set through scripting or respawning
+
+```lua
+Character.Subscribe("HealthChanged", function(self, old_health, new_health)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| [Character](character) | **`self`** |  |
+| <BasicType.Number /> | **`old_health`** |  |
+| <BasicType.Number /> | **`new_health`** |  |
 
 
 ### `Highlight`

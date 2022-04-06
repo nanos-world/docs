@@ -1,10 +1,10 @@
 ---
+title: Static Meshes
 description: How to export and use Static Meshes from Unreal Engine
 tags: [assets]
 keywords: [static, mesh, prop, unreal]
 ---
 
-# Static Meshes
 
 A Static Mesh is the most straightforward asset to be imported and used in nanos world, as they don’t have skeleton, their usage is very seamless. In nanos world Static Meshes are mainly used for [Props](./scripting-reference/classes/prop.mdx) and [StaticMesh](./scripting-reference/classes/static-mesh.mdx) entities.
 

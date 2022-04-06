@@ -1,12 +1,10 @@
 ---
-description: >-
-  A Cable represents a Physics Constraint which joins two Actors with a
-  rope-like visual representation between them
+title: ⛓️ Cable
+description: A Cable represents a Physics Constraint which joins two Actors with a rope-like visual representation between them
 sidebar_position: 0
 tags: [class]
 ---
 
-# ⛓️ Cable
 
 A Cable represents a Physics Constraint which joins two Actors with a rope-like visual representation between them
 
@@ -61,9 +59,10 @@ my_cable::AttachEndTo(cube_02)
 
 ## Constructor Parameters
 
-| **Type** | **Name** | **Default** |
-| :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
+| **Type** | **Name** | **Default** | **Description** |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |  |
+| <BasicType.Boolean /> | **`enable_visuals`** | `true` | Toggles the cable visuals |
 
 
 ## Functions
@@ -79,12 +78,12 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`DetachEnd`**](cable#detachend) | Detaches the End of this Cable |
 | <AuthorityType.ServerOnly /> |  | [**`DetachStart`**](cable#detachstart) | Detaches the Start of this Cable |
 | <AuthorityType.ServerOnly /> |  | [**`SetAngularLimits`**](cable#setangularlimits) | Sets the Physics Angular Limits of this cable |
-| <AuthorityType.ServerOnly /> |  | [**`SetCableSettings`**](cable#setcablesettings) | Set the overall settings for this cable (visuals only) |
-| <AuthorityType.ServerOnly /> |  | [**`SetForces`**](cable#setforces) | Set the forces the cable has applied (visuals only) |
-| <AuthorityType.ServerOnly /> |  | [**`SetLinearLimits`**](cable#setlinearlimits) | Sets the Physics Linear Limits of this cable. If use_soft_constraint is enabled, then stiffness and damping will be used, otherwise restitution will be used. |
-| <AuthorityType.ServerOnly /> |  | [**`SetRenderingSettings`**](cable#setrenderingsettings) | Set the rendering settings of this cable (visuals only) |
-| <AuthorityType.ServerOnly /> |  | [**`SetLocation`**](./scripting-reference/classes/base-classes/actor.mdx#setlocation) | Sets the actor’s location in the game world |
-| <AuthorityType.Both /> |  | [**`GetLocation`**](./scripting-reference/classes/base-classes/actor.mdx#getlocation) | Gets the actor’s location in the game world |
+| <AuthorityType.ServerOnly /> |  | [**`SetLinearLimits`**](cable#setlinearlimits) | Sets the Physics Linear Limits of this cable |
+| <AuthorityType.Both /> |  | [**`SetCableSettings`**](cable#setcablesettings) | Set the overall settings for this cable (visuals only) |
+| <AuthorityType.Both /> |  | [**`SetForces`**](cable#setforces) | Set the forces the cable has applied (visuals only) |
+| <AuthorityType.Both /> |  | [**`SetRenderingSettings`**](cable#setrenderingsettings) | Set the rendering settings of this cable (visuals only) |
+| <AuthorityType.ServerOnly /> |  | [**`SetLocation`**](./scripting-reference/classes/base-classes/actor.mdx#setlocation) | Sets the actor's location in the game world |
+| <AuthorityType.Both /> |  | [**`GetLocation`**](./scripting-reference/classes/base-classes/actor.mdx#getlocation) | Gets the actor's location in the game world |
 | <AuthorityType.Both /> |  | [**`GetAttachedStartTo`**](cable#getattachedstartto) | Gets the actor’s attached to Start of this Cable |
 | <AuthorityType.Both /> |  | [**`GetAttachedEndTo`**](cable#getattachedendto) | Gets the actor’s attached to End of this Cable |
 
@@ -154,7 +153,7 @@ my_cable:SetAngularLimits(swing_1_motion, swing_2_motion, twist_motion, swing_1_
 | <BasicType.Number /> | **`twist_limit`** |  | Symmetric angle of roll along the X-axis |
 
 
-### <AuthorityType.ServerOnly />`SetCableSettings`
+### <AuthorityType.Both />`SetCableSettings`
 
 > Set the overall settings for this cable \(visuals only\)
 
@@ -169,7 +168,7 @@ my_cable:SetCableSettings(length, num_segments, solver_iterations)
 | <BasicType.Number /> | **`solver_iterations`** |  | The number of solver iterations controls how 'stiff' the cable is |
 
 
-### <AuthorityType.ServerOnly />`SetForces`
+### <AuthorityType.Both />`SetForces`
 
 > Set the forces the cable has applied \(visuals only\)
 
@@ -203,7 +202,7 @@ my_cable:SetLinearLimits(x_motion, y_motion, z_motion, limit, restitution, use_s
 | <BasicType.Number /> | **`damping`** | `0` | Damping of the soft constraint. Only used when Soft Constraint is on |
 
 
-### <AuthorityType.ServerOnly />`SetRenderingSettings`
+### <AuthorityType.Both />`SetRenderingSettings`
 
 > Set the rendering settings of this cable \(visuals only\)
 

@@ -1,10 +1,10 @@
 ---
+title: Map Script and Configuration
 description: How to create and export maps from Unreal to nanos world
 tags: [assets]
 keywords: [map, level, package, script]
 ---
 
-# Map Script and Configuration
 
 In nanos world, maps can have their own Package and a Data file associated to it. Those are automatically loaded when the server starts with a map.
 

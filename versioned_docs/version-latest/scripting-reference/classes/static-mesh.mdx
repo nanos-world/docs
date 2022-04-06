@@ -1,14 +1,13 @@
 ---
+title: 🏠 StaticMesh
 description: >-
-  A StaticMesh entity represents a Mesh which can be spawned in the world, can’t
-  move and is more optimized for using in decorating the world
+  A StaticMesh entity represents a Mesh which can be spawned in the world, can't move and is more optimized for using in decorating the world
 sidebar_position: 0
 tags: [class]
 ---
 
-# 🏠 StaticMesh
 
-A StaticMesh entity represents a Mesh which can be spawned in the world, can’t move and is more optimized for using in decorating the world.
+A StaticMesh entity represents a Mesh which can be spawned in the world, can't move and is more optimized for using in decorating the world.
 
 import { Structs, BasicType, AuthorityType, Classes, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
 
@@ -35,6 +34,13 @@ local static_mesh = StaticMesh(
 )
 ```
 
+:::tip
+
+Automatically all StaticMeshActors present in the Level will be loaded as a StaticMesh entity in the client side.
+
+:::
+
+
 ## Constructor Parameters
 
 | **Type** | **Name** | **Default** |
@@ -43,6 +49,7 @@ local static_mesh = StaticMesh(
 | <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
 | <AssetPath.StaticMesh /> | **`asset`** | ` ` |
 | <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
+
 
 ## Functions
 
@@ -55,6 +62,8 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 |  | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- | :--- |
 | <AuthorityType.Both /> | <BasicType.String /> | **`GetMesh`** | Gets the Asset name |
+| <AuthorityType.ClientOnly /> | <BasicType.Boolean /> | **`IsFromLevel`** | If this StaticMesh is from the Level |
+
 
 ## Events
 

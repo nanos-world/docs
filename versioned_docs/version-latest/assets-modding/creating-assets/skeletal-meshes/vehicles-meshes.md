@@ -1,10 +1,10 @@
 ---
+title: Vehicles Meshes
 description: How to create your own Vehicles
 tags: [assets, vehicles, skeletal-meshes]
 keywords: [vehicle, unreal]
 ---
 
-# Vehicles Meshes
 
 Vehicles in nanos world implement Unreal's [Wheeled Vehicle](https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/Vehicles/). The base Mesh of a vehicle is a **Skeletal Mesh**.
 

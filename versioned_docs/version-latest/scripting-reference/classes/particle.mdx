@@ -1,10 +1,10 @@
 ---
+title: ✨ Particle
 description: Particle Entity
 sidebar_position: 0
 tags: [class]
 ---
 
-# ✨ Particle
 
 Particle Entity.
 
@@ -64,20 +64,38 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
-| <AuthorityType.Both /> | [`Reset`](particle#reset) | Activates the Emitter again |
+| <AuthorityType.Both /> | [`Activate`](particle#activate) | Activates the Emitter |
+| <AuthorityType.Both /> | [`Deactivate`](particle#deactivate) | Deactivates the Emitter |
 | <AuthorityType.Both /> | [`SetParameterFloat`](particle#setparameterfloat) | Sets a **Float** parameter in this Particle System |
 | <AuthorityType.Both /> | [`SetParameterInt`](particle#setparameterint) | Sets an **Integer** parameter in this Particle System |
 | <AuthorityType.Both /> | [`SetParameterBool`](particle#setparameterbool) | Sets a **Boolean** parameter in this Particle System |
 | <AuthorityType.Both /> | [`SetParameterVector`](particle#setparametervector) | Sets a **Vector** parameter in this Particle System |
 | <AuthorityType.Both /> | [`SetParameterColor`](particle#setparametercolor) | Sets a **Color** parameter in this Particle System |
+| <AuthorityType.Both /> | [`SetParameterMaterial`](particle#setparametermaterial) | Sets a **Material** parameter in this Particle System |
+| <AuthorityType.Both /> | [`SetParameterMaterialFromTexture`](particle#setparametermaterialfromtexture) | Sets a **Material** parameter from a Texture in this Particle System |
+| <AuthorityType.ClientOnly /> | [`SetParameterMaterialFromCanvas`](particle#setparametermaterialfromcanvas) | Sets a **Material** parameter from a <Classes.Canvas /> in this Particle System |
+| <AuthorityType.ClientOnly /> | [`SetParameterMaterialFromWebUI`](particle#setparametermaterialfromcanvas) | Sets a **Material** parameter from a <Classes.WebUI /> in this Particle System |
 
 
-### <AuthorityType.Both />`Reset`
+### <AuthorityType.Both />`Activate`
 
-> Activates the Emitter again
+> Activates the Emitter
 
 ```lua
-my_particle:Reset()
+my_particle:Activate(should_reset)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`should_reset`** | If should reset |
+
+
+### <AuthorityType.Both />`Deactivate`
+
+> Deactivate the Emitter
+
+```lua
+my_particle:Deactivate()
 ```
 
 
@@ -149,6 +167,68 @@ my_particle:SetParameterColor(parameter, value)
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`parameter`** | The parameter name |
 | <Structs.Color /> | **`value`** | The Color value |
+
+
+### <AuthorityType.Both />`SetParameterMaterial`
+
+> Sets a Material parameter in this Particle System
+
+```lua
+my_particle:SetParameterMaterial(parameter, value)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`parameter`** | The parameter name |
+| <AssetPath.Material /> | **`value`** | The Material value |
+
+
+### <AuthorityType.ClientOnly />`SetParameterMaterialFromTexture`
+
+> Sets a Material from a Texture parameter in this Particle System
+> 
+> This will create a Material and set this Texture as it's parameter internally, then set the Material into the Particle parameter
+
+```lua
+my_particle:SetParameterMaterialFromTexture(parameter, value)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`parameter`** | The parameter name |
+| <AssetPath.Image /> | **`value`** | The Texture value |
+
+
+### <AuthorityType.ClientOnly />`SetParameterMaterialFromCanvas`
+
+> Sets a Material from a Canvas parameter in this Particle System
+> 
+> This will create a Material and set this Canvas as it's parameter internally, then set the Material into the Particle parameter
+
+```lua
+my_particle:SetParameterMaterialFromCanvas(parameter, value)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`parameter`** | The parameter name |
+| <Classes.Canvas /> | **`value`** | The Canvas entity |
+
+
+### <AuthorityType.ClientOnly />`SetParameterMaterialFromWebUI`
+
+> Sets a Material from a Canvas parameter in this Particle System
+> 
+> This will create a Material and set this WebUI as it's parameter internally, then set the Material into the Particle parameter
+
+```lua
+my_particle:SetParameterMaterialFromWebUI(parameter, value)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`parameter`** | The parameter name |
+| <Classes.WebUI /> | **`value`** | The WebUI entity |
 
 
 ## Events
