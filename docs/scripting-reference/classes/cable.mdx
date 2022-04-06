@@ -136,23 +136,6 @@ my_cable:DetachStart()
 ```
 
 
-### <AuthorityType.ServerOnly />`SetAngularLimits`
-
-> Sets the Physics Angular Limits of this cable
-
-```lua
-my_cable:SetAngularLimits(swing_1_motion, swing_2_motion, twist_motion, swing_1_limit, swing_2_limit, twist_limit)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <Enums>ConstraintMotion</Enums> | **`swing_1_motion`** |  | Indicates whether the Swing1 limit is used |
-| <Enums>ConstraintMotion</Enums> | **`swing_2_motion`** |  | Indicates whether the Swing2 limit is used |
-| <BasicType.Number /> | **`swing_1_limit`** |  | Angle of movement along the XY plane. This defines the first symmetric angle of the cone |
-| <BasicType.Number /> | **`swing_2_limit`** |  | Angle of movement along the XZ plane. This defines the second symmetric angle of the cone |
-| <BasicType.Number /> | **`twist_limit`** |  | Symmetric angle of roll along the X-axis |
-
-
 ### <AuthorityType.Both />`SetCableSettings`
 
 > Set the overall settings for this cable \(visuals only\)
@@ -180,6 +163,24 @@ my_cable:SetForces(force, gravity_scale)
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`force`** |  | Force vector (world space) applied to all particles in cable |
 | <BasicType.Number /> | **`gravity_scale`** | `1` | Scaling applied to world gravity affecting this cable |
+
+
+### <AuthorityType.ServerOnly />`SetAngularLimits`
+
+> Sets the Physics Angular Limits of this cable
+
+```lua
+my_cable:SetAngularLimits(swing_1_motion, swing_2_motion, twist_motion, swing_1_limit, swing_2_limit, twist_limit)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Enums>ConstraintMotion</Enums> | **`swing_1_motion`** |  | Indicates whether the Swing1 limit is used |
+| <Enums>ConstraintMotion</Enums> | **`swing_2_motion`** |  | Indicates whether the Swing2 limit is used |
+| <Enums>ConstraintMotion</Enums> | **`twist_motion`** |  | Indicates whether the Twist limit is used |
+| <BasicType.Number /> | **`swing_1_limit`** |  | Angle of movement along the XY plane. This defines the first symmetric angle of the cone |
+| <BasicType.Number /> | **`swing_2_limit`** |  | Angle of movement along the XZ plane. This defines the second symmetric angle of the cone |
+| <BasicType.Number /> | **`twist_limit`** |  | Symmetric angle of roll along the X-axis |
 
 
 ### <AuthorityType.ServerOnly />`SetLinearLimits`
