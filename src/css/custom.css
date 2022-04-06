@@ -87,12 +87,12 @@ html[data-theme='dark']  .alert {
 }
 
 /* Header Description */
-h1 + p {
+header + p {
   color: var(--ifm-color-gray-600) !important;
   margin-top: -1rem !important;
 }
 
-h1 + p::after {
+header + p::after {
   height: 1px;
   content: " ";
   display: block;
@@ -182,7 +182,7 @@ svg[class^='iconLanguage'] {
 /* Main content */
 @media screen and (min-width: 1600px) {
   /* Center page TODO: only fullscreen */
-  .navbar__inner, .docs-wrapper {
+  .navbar__inner, .main-wrapper {
     width: 80%;
     margin: 0 auto;
   }
@@ -246,6 +246,11 @@ blockquote {
 
 .menu__link {
   user-select: none;
+}
+
+/* Docusaurus sidebar bug keeps showing dropdown button */
+.menu__link:not([href])::after {
+  opacity: 0;
 }
 
 

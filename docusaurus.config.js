@@ -154,8 +154,11 @@ module.exports = {
     {
       src: 'https://pac.nanos.io/js/script.js',
       async: true,
-      defer: true,
       "data-domain": "docs.nanos.world"
     },
+    {
+      src: '/js/mailerlite.js',
+      defer: true,
+    }
   ]
 };

@@ -1,9 +1,9 @@
 ---
+title: Enums
 description: nanos world Enums.
 tags: [scripting]
 ---
 
-# Enums
 
 Instead of passing numbers to methods or comparing numbers in Events callbacks, you can use the following **Enums** to do so. Examples:
 

@@ -1,9 +1,9 @@
 ---
+title: 📑 Complete Tutorials List
 description: List of all tutorials
 sidebar_position: 0
 ---
 
-# 📑 Complete Tutorials List
 
 List of Tutorials, Snippets and Examples to create Packages and game-modes for nanos world.
 

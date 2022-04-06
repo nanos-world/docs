@@ -1,11 +1,11 @@
 ---
+title: Artificial Intelligence
 description: How AI works in nanos world
 sidebar_position: 6
 tags: [scripting]
 keywords: [scripting, AI]
 ---
 
-# Artificial Intelligence
 
 How AI works in nanos world
 

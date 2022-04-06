@@ -1,8 +1,9 @@
 ---
+title: Vault
 description: 'Vault & Store: share your content with others!'
+image: /img/docs/vault-01.jpg
 ---
 
-# Vault
 
 nanos world **Vault** is in-game interface to download and manage installed Asset Packs & Packages.
 

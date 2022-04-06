@@ -1,10 +1,10 @@
 ---
+title: Classes Guide
 description: All you need to know about Classes
 sidebar_position: 0
 tags: [scripting]
 ---
 
-# Classes Guide
 
 All you need to know about Classes
 
@@ -38,7 +38,7 @@ This is how **OOP** works! You create objects and call functions/catch events on
 
 ### Classes Inheritance
 
-Under the hood, nanos world Classes follow an [Inheritance Pattern](https://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29), which means we have base parent classes, and it’s childs which inherits all functions, events and properties from them. You will notice that all Classes that can be spawned in the world are [Actors](./scripting-reference/classes/base-classes/actor.mdx), for example in Character and [Prop](./scripting-reference/classes/prop.mdx) \(which are Actors\) it is possible to call the function: `:SetLocation(Vector)`.
+Under the hood, nanos world Classes follow an [Inheritance Pattern](https://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29), which means we have base parent classes, and it’s children which inherits all functions, events and properties from them. You will notice that all Classes that can be spawned in the world are [Actors](./scripting-reference/classes/base-classes/actor.mdx), for example in Character and [Prop](./scripting-reference/classes/prop.mdx) \(which are Actors\) it is possible to call the function: `:SetLocation(Vector)`.
 
 :::info
 

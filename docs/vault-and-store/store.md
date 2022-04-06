@@ -1,8 +1,9 @@
 ---
+title: Store
 description: 'Vault & Store: share your content with others!'
+image: /img/docs/store.jpg
 ---
 
-# Store
 
 nanos world [**Store**](https://store.nanos.world) is the platform on which you are invited to share your **Game-Modes**, **Packages** and **Assets** with the nanos world community!
 

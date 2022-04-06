@@ -1,15 +1,15 @@
 ---
+title: Base Actor
 description: Base class for all Actor entities
 tags: [base-class]
 ---
 
-# Base Actor
 
 Base class for all Actor entities
 
 import { Structs, BasicType, AuthorityType, Enums } from '@site/docs/components/_nanos.mdx';
 
-An **Actor** is an object which can be spawned and destroyed through Lua. Actors support 3D transformations such as translation \(location\), rotation, and scale.
+An **Actor** is an object which can be spawned and destroyed through Lua. Actors support 3D transformations such as translation (location), rotation, and scale.
 
 In nanos world, **Actor** is the base for several entities, and all those entities share the same **Methods** and **Events** described in this page.
 
@@ -30,10 +30,10 @@ This is the base class for all Actors we have. You cannot spawn it directly.
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
-| <BasicType.Table /> | [**`GetAll`**](actor#getall) | Returns a table containing all Actors of the class this is called on _\(copy\)_ |
-| [Actor](actor) | [**`GetByIndex`**](actor#getbyindex) | Returns a specific Actor of this class at an index _\(direct\)_ |
-| <BasicType.Number /> | [**`GetCount`**](actor#getcount) | Returns how many Actors of this class exist _\(direct\)_ |
-| <BasicType.Iterator /> | [**`GetPairs`**](actor#getall) | Returns an iterator with all Actors of this class _\(direct\)_ |
+| <BasicType.Table /> | [**`GetAll`**](actor#getall) | Returns a table containing all Actors of the class this is called on _(copy)_ |
+| [Actor](actor) | [**`GetByIndex`**](actor#getbyindex) | Returns a specific Actor of this class at an index _(direct)_ |
+| <BasicType.Number /> | [**`GetCount`**](actor#getcount) | Returns how many Actors of this class exist _(direct)_ |
+| <BasicType.Iterator /> | [**`GetPairs`**](actor#getall) | Returns an iterator with all Actors of this class _(direct)_ |
 
 
 ## Functions
@@ -109,7 +109,7 @@ end
 
 ### <AuthorityType.AuthorityOnly />`AddImpulse`
 
-> Applies a force in world world to this Actor \(the force is applied client side, by, in most cases, the player closest to this Actor\)
+> Applies a force in world world to this Actor (the force is applied client side, by, in most cases, the player closest to this Actor)
 
 ```lua
 entity:AddImpulse(force, velocity_change)
@@ -127,7 +127,7 @@ entity:AddImpulse(force, velocity_change)
 >
 > * **`AttachmentRule.KeepRelative`** will keep the current relative position/rotation if already attached.
 > * **`AttachmentRule.KeepWorld`** will calculate the new relative position/rotation so the Actor stays at the same position after being attached.
-> * **`AttachmentRule.SnapToTarget`** will set the Actor to the same position/rotation as **`other_actor`** \(or at the bone location\) and reset its relative position/rotation to **zero**.
+> * **`AttachmentRule.SnapToTarget`** will set the Actor to the same position/rotation as **`other_actor`** (or at the bone location) and reset its relative position/rotation to **zero**.
 > 
 > Setting **`lifespan_when_detached`** to `0` will automatically destroy this actor when detached, setting it to `10` will destroy this after 10 seconds when detached.
 
@@ -176,7 +176,7 @@ entity:SetCollision(collision_type)
 
 ### <AuthorityType.AuthorityOnly />`SetForce`
 
-> Adds a permanent force to this Actor, set to Vector\(0, 0, 0\) to cancel
+> Adds a permanent force to this Actor, set to Vector(0, 0, 0) to cancel
 
 ```lua
 entity:SetForce(force, is_local)
@@ -230,7 +230,7 @@ entity:SetHighlightEnabled(is_enabled, index)
 
 ### <AuthorityType.AuthorityOnly />`SetLifeSpan`
 
-> Sets the time \(in seconds\) before this Actor is destroyed. After this time has passed, the actor will be automatically destroyed.
+> Sets the time (in seconds) before this Actor is destroyed. After this time has passed, the actor will be automatically destroyed.
 
 ```lua
 entity:SetLifeSpan(seconds)
@@ -243,7 +243,7 @@ entity:SetLifeSpan(seconds)
 
 ### <AuthorityType.AuthorityOnly />`SetLocation`
 
-> Sets this Actor’s location in the game world
+> Sets this Actor's location in the game world
 
 ```lua
 entity:SetLocation(vector)
@@ -271,7 +271,7 @@ entity:SetNetworkAuthority(player)
 
 ### <AuthorityType.AuthorityOnly />`SetRotation`
 
-> Sets this Actor’s rotation in the game world
+> Sets this Actor's rotation in the game world
 
 ```lua
 entity:SetRotation(rotator)
@@ -284,7 +284,7 @@ entity:SetRotation(rotator)
 
 ### <AuthorityType.AuthorityOnly />`SetRelativeLocation`
 
-> Sets this Actor’s relative location in local space (only if this actor is attached)
+> Sets this Actor's relative location in local space (only if this actor is attached)
 
 ```lua
 entity:SetRelativeLocation(relative_location)
@@ -297,7 +297,7 @@ entity:SetRelativeLocation(relative_location)
 
 ### <AuthorityType.AuthorityOnly />`SetRelativeRotation`
 
-> Sets this Actor’s relative rotation in local space (only if this actor is attached)
+> Sets this Actor's relative rotation in local space (only if this actor is attached)
 
 ```lua
 entity:SetRelativeRotation(relative_rotation)
@@ -310,7 +310,7 @@ entity:SetRelativeRotation(relative_rotation)
 
 ### <AuthorityType.AuthorityOnly />`SetScale`
 
-> Sets this Actor’s scale
+> Sets this Actor's scale
 
 ```lua
 entity:SetScale(vector)
@@ -323,7 +323,7 @@ entity:SetScale(vector)
 
 ### <AuthorityType.Both />`SetValue`
 
-> Sets a value in this Actor, which can be accessed by any package \(optionally sync on clients if called from server\)
+> Sets a value in this Actor, which can be accessed by any package (optionally sync on clients if called from server)
 >
 > Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
 
@@ -379,6 +379,17 @@ entity:IsBeingDestroyed()
 ```
 
 
+### <AuthorityType.Both />`IsVisible`
+
+> Gets whether this actor is visible
+>
+> Returns <BasicType.Boolean />
+
+```lua
+entity:IsVisible()
+```
+
+
 ### <AuthorityType.Both />`IsGravityEnabled`
 
 > Gets whether gravity is enabled on this Actor
@@ -388,6 +399,7 @@ entity:IsBeingDestroyed()
 ```lua
 entity:IsGravityEnabled()
 ```
+
 
 ### `IsInWater`
 
@@ -402,7 +414,8 @@ entity:IsInWater()
 
 ### <AuthorityType.Both />`IsNetworkDistributed`
 
-> Gets if this Actor is network distributed. Only actors being network distributed can have their network authority set.
+> Gets if this Actor is currently network distributed. Only actors being network distributed can have their network authority set
+> Entities have NetworkDistributed automatically disabled when: Attached, Possessed, Grabbed, Picked Up or Driving
 >
 > Returns <BasicType.Boolean />
 
@@ -413,7 +426,7 @@ entity:IsNetworkDistributed()
 
 ### <AuthorityType.Both />`IsValid`
 
-> Gets if this Actor is valid \(i.e. wasn't destroyed and points to a valid Actor\)
+> Gets if this Actor is valid (i.e. wasn't destroyed and points to a valid Actor)
 >
 > Returns <BasicType.Boolean />
 
@@ -457,7 +470,7 @@ entity:GetBounds()
 
 ### <AuthorityType.Both />`GetCollision`
 
-> Gets this Actor’s collision type
+> Gets this Actor's collision type
 >
 > Returns <BasicType.Number />
 
@@ -468,7 +481,7 @@ entity:GetCollision()
 
 ### <AuthorityType.Both />`GetID`
 
-> Gets the universal network ID of this Actor \(same on both client and server\)
+> Gets the universal network ID of this Actor (same on both client and server)
 >
 > Returns <BasicType.Number />
 
@@ -479,7 +492,7 @@ entity:GetID()
 
 ### <AuthorityType.Both />`GetLocation`
 
-> Gets this Actor’s location in the game world
+> Gets this Actor's location in the game world
 >
 > Returns <Structs.Vector />
 
@@ -490,7 +503,7 @@ entity:GetLocation()
 
 ### <AuthorityType.Both />`GetRotation`
 
-> Gets this Actor’s angle in the game world
+> Gets this Actor's angle in the game world
 >
 > Returns <Structs.Rotator />
 
@@ -499,9 +512,42 @@ entity:GetRotation()
 ```
 
 
+### <AuthorityType.Both />`GetForce`
+
+> Gets this Actor's force (set by SetForce)
+>
+> Returns <Structs.Vector />
+
+```lua
+entity:GetForce()
+```
+
+
+### <AuthorityType.ClientOnly />`HasNetworkAuthority`
+
+> Gets if the LocalPlayer is currently the Network Authority of this Actor
+>
+> Returns <BasicType.Boolean />
+
+```lua
+entity:HasNetworkAuthority()
+```
+
+
+### <AuthorityType.ClientOnly />`HasAuthority`
+
+> Gets if this Actor was spawned by the client side. Returns false if it was spawned by the Server or true if it was spawned by the client
+>
+> Returns <BasicType.Boolean />
+
+```lua
+entity:HasAuthority()
+```
+
+
 ### <AuthorityType.Both />`GetScale`
 
-> Gets this Actor’s scale
+> Gets this Actor's scale
 >
 > Returns <Structs.Vector />
 

@@ -1,10 +1,10 @@
 ---
+title: Default Materials
 description: Default nanos world Materials and it's Parameters
 tags: [assets]
 keywords: [assets, materials, built-in, default]
 ---
 
-# Default Materials
 
 Default nanos world Materials and it's Parameters.
 
@@ -67,7 +67,7 @@ Material which renders objects as Wireframe. Supported parameter: **Tint** and *
 
 :::tip
 
-**Note**: All those Materials in this page are already included in the base game in the [Default nanos world Asset Pack](./assets-modding/default-asset-pack/default-asset-pack.md), you can reference them like that: **`nanos-world::M_NanosDefault`.**
+**Note**: All those Materials in this page are already included in the base game in the [Default nanos world Asset Pack](./assets-modding/default-asset-pack/default-asset-pack.md), you can reference them like that: **`nanos-world::M_NanosMasked`.**
 
 :::
 

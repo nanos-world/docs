@@ -1,11 +1,11 @@
 ---
+title: Importing Custom Assets
 description: Learn how to Create and Import custom Assets into nanos world
 sidebar_position: 1
 tags: [assets]
 keywords: [assets, ADK, import, unreal]
 ---
 
-# Importing Custom Assets
 
 Currently all our workflow for exporting content is through Unreal Engine as the Assets need to be Cooked and Packaged in the correct way before being accessible by the game. This page will give an overview and will have fundamental information which can be accessed at any time during the Assets creation.
 
@@ -14,6 +14,7 @@ Currently all our workflow for exporting content is through Unreal Engine as the
 Please before continuing, make sure you read [Assets](./core-concepts/assets.md) article!
 
 :::
+
 
 ## Installing Unreal Engine 4
 
@@ -25,9 +26,11 @@ Little by little we are able to allow loading some assets without the need of co
 
 :::
 
+
 #### 1. Download and Install [Epic Games Launcher](https://www.unrealengine.com/en-US/download/ue_non_games) 
 
 Follow the steps for agreeing to Unreal Engine terms
+
 
 #### 2. Install Unreal Engine from inside Epic Games Launcher
 
@@ -48,6 +51,7 @@ Please refer to [Unreal Official Documentation](https://docs.unrealengine.com/en
 
 :::
 
+
 ## Guidelines for exporting Assets from Unreal
 
 1. Always create a **Root Folder** with the name of your pack \(e.g. `/Content/My_Weapon_Pack/`\) and put all content you use inside that \(you can create sub-folders as well\)
@@ -64,10 +68,12 @@ There are some **Engine Content** which is allowed to use, but only from the fol
 
 :::
 
+
 ## Additional Tips
 
 1. Use a proper name pattern for your Assets
 2. Use small assets size and configure textures compression properly \(big files are bad for network bandwidth\). We recommend max 2048x2048 size for textures, as they will be 5MB each
+
 
 ### Recommended Asset Naming Conventions
 
@@ -86,6 +92,12 @@ We hardly recommend and encourage you to follow [Allar’s Asset Naming Conventi
 | Sound Wave | `A_` |  |
 | Sound Cue | `A_` | `_Cue` |
 | Texture | `T_` | `_?` \(see [Textures](https://github.com/Allar/ue4-style-guide#anc-textures)\) |
+
+
+### Assets Thumbnails
+
+It is a good practice to include thumbnails of your assets into a folder called `Thumbnails/` in the root of your Asset Pack. This is a convention as the **Sandbox** game-mode reads from it to display on Spawn Menu.
+
 
 ## Exporting & Cooking your Assets
 
@@ -109,15 +121,16 @@ Notice that you get an `*.exe` which is actually the "Game" you just created! Bu
 
 :::
 
-After packaging your project, we will manually copy the exported folder from it, the one we are looking for probably will be located at a `Content/` inside the main folder beside the `Engine/` \(this folder name may vary if you are using the [ADK](docs/assets-modding/creating-assets/adk-assets-development-kit) or not\).
+After packaging your project, we will manually copy the exported folder from it, the one we are looking for probably will be located at a `Content/` inside the main folder beside the `Engine/` \(this folder name may vary if you are using the [ADK](/docs/assets-modding/creating-assets/adk-assets-development-kit) or not\).
 
-Inside the `Content/` you will be able to locate the folder you created \(`MyAssetPack/`\). This is the folder we will copy which will become our [Asset Pack](docs/core-concepts/assets).
+Inside the `Content/` you will be able to locate the folder you created \(`MyAssetPack/`\). This is the folder we will copy which will become our [Asset Pack](/docs/core-concepts/assets).
 
 :::tip
 
 Now just copy it to your `Server/Assets/` , create and configure your `Assets.toml` and you are done!
 
 :::
+
 
 ### Considerations after Exporting
 

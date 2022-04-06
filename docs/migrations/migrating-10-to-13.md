@@ -1,9 +1,9 @@
 ---
+title: Migrating from 1.0 to 1.3
 description: How to migrate your Packages and Asset Packs from Alpha 1.0 to 1.3 version
-tags: [scripting]
+tags: [scripting, migration]
 ---
 
-# Migrating from 1.0 to 1.3
 
 All changes from Alpha 1.0 until 1.2 did not have breaking changes, all changes were documented as deprecated and got warnings on the console if you are using it.
 

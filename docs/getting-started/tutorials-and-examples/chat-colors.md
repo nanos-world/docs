@@ -1,9 +1,9 @@
 ---
+title: Chat Colors
 description: Learn how to use and print colored messages to the built-in chat
 tags: [tutorial-example]
 ---
 
-# Chat Colors
 
 ![](/img/docs/tutorials/chat-colors.jpg)
 

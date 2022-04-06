@@ -1,9 +1,9 @@
 ---
+title: Migrating to Alpha 1.0
 description: How to migrate your Packages and Asset Packs to the Alpha 1.0 version
-tags: [scripting]
+tags: [scripting, migration]
 ---
 
-# Migrating to Alpha 1.0
 
 There have been no significant changes from version 0.73 to Alpha 1.0, however this guide remains for those coming from older versions.
 

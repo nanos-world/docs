@@ -1,15 +1,16 @@
 ---
+title: Assets
 description: All you need to know about Assets
 tags: [assets]
 ---
 
-# Assets
 
 All you need to know about Assets
 
 **Assets** in nanos world are all objects or content which come from Unreal Engine, i.e. _Maps_, _StaticMeshes_, _SkeletalMeshes_, _Sounds_, _Particles_, etc are all **Assets**.
 
 In order to use custom Assets in your servers, you must have or create an **Asset Pack**. Asset Packs are a set of Assets that were exported together from Unreal.
+
 
 ## Folder Structure
 
@@ -63,6 +64,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Assets.toml
 | **`assets.animations`** | List of Animations in this Asset Pack |
 | **`assets.particles`** | List of Particles in this Asset Pack |
 | **`assets.materials`** | List of Materials in this Asset Pack |
+| **`assets.blueprints`** | List of Blueprints in this Asset Pack |
 | **`assets.others`** | List of other Assets in this Asset Pack |
 
 
@@ -100,6 +102,7 @@ Example:
 | **Particle** | Unreal Particles can be used for settings in several entities, including Particle Class itself |
 | **Animation** | Unreal Animations can be used for settings in Character and Weapons |
 | **Material** | Unreal Materials can be used for customizing meshes surfaces and used as Post Process |
+| **Blueprint** | Unreal Actor Blueprints can be used for spawning Blueprint entities |
 
 :::info Note
 
@@ -112,3 +115,9 @@ Some methods require some specific Type of Assets to load, attempting to load an
 
 nanos world provides a default  Asset Pack which is already included in the base game. Please refer to [nanos world Default Asset Pack](./assets-modding/default-asset-pack/default-asset-pack.md) for more information.
 
+
+:::tip
+
+To create your own Asset Pack, please refer to [Importing Assets](./assets-modding/creating-assets/importing-assets.md)
+
+:::

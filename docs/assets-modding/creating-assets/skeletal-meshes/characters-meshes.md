@@ -1,10 +1,10 @@
 ---
+title: Characters Meshes
 description: How to correctly import custom Models into nanos world
 tags: [assets, characters, skeletal-meshes]
 keywords: [mannequin, character, skeleton, mesh, unreal]
 ---
 
-# Characters Meshes
 
 :::info
 

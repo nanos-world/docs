@@ -1,9 +1,9 @@
 ---
+title: ⌨️ Client
 description: Static Class present on Client side
 tags: [static-class]
 ---
 
-# ⌨️ Client
 
 Static Class present on Client side
 
@@ -81,6 +81,8 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | [**`MouseDown`**](client#mousedown) | A mouse button has been pressed / is being pressed |
 | [**`MouseUp`**](client#mouseup) | A mouse button has been released |
 | [**`MouseEnabled`**](client#mouseenabled) | When mouse cursor is displayed/hidden |
+| [**`MouseMoveX`**](client#mousemovex) | Called when the mouse moves in the X axis |
+| [**`MouseMoveY`**](client#mousemovey) | Called when the mouse moves in the Y axis |
 | [**`OpenChat`**](client#openchat) | When player opens the Chat |
 | [**`CloseChat`**](client#closechat) | When player closes the Chat |
 | [**`OpenConsole`**](client#openconsole) | When player closes the Console |
@@ -903,6 +905,40 @@ end)
 
 ```lua
 Client.Subscribe("MouseEnabled", function(is_enabled)
+
+end)
+```
+
+
+### `MouseMoveX`
+
+> Called when the mouse moves in the X axis
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`delta`** |  |
+| <BasicType.Number /> | **`delta_time`** |  |
+| <BasicType.Number /> | **`num_samples`** |  |
+
+```lua
+Client.Subscribe("MouseMoveX", function(delta, delta_time, num_samples)
+
+end)
+```
+
+
+### `MouseMoveY`
+
+> Called when the mouse moves in the X axis
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`delta`** |  |
+| <BasicType.Number /> | **`delta_time`** |  |
+| <BasicType.Number /> | **`num_samples`** |  |
+
+```lua
+Client.Subscribe("MouseMoveY", function(delta, delta_time, num_samples)
 
 end)
 ```

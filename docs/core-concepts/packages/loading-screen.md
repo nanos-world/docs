@@ -1,11 +1,11 @@
 ---
+title: Loading Screen
 description: Custom Loading Screen for your servers
 sidebar_position: 1
 tags: [scripting, ui, webui, packages]
 keywords: [loading, screen, package, html, webui]
 ---
 
-# Loading Screen
 
 In nanos world it is possible to add a customized and dynamic Loading Screen to your Server using [WebUI](./scripting-reference/classes/webui.mdx).
 

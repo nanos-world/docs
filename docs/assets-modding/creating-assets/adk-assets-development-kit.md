@@ -1,11 +1,11 @@
 ---
+title: Assets Development Kit
 description: nanos world Assets Development Kit - ADK
 sidebar_position: 2
 tags: [assets]
 keywords: [SDK, ADK, assets, kit, unreal]
 ---
 
-# Assets Development Kit
 
 nanos world Assets Development Kit - ADK
 

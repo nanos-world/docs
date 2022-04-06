@@ -1,8 +1,8 @@
 ---
+title: Modules
 description: Extending the functionalities of nanos world Scripting API
 ---
 
-# Modules
 
 Extending the functionalities of nanos world Scripting API
 

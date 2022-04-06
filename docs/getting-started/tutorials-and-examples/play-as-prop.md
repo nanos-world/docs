@@ -1,11 +1,11 @@
 ---
+title: Play as Prop
 description: >-
   How to simulate a Prop possessing using a Character. This can be used for Prop
   Hunt game-modes!
 tags: [tutorial-example, scripting]
 ---
 
-# Play as Prop
 
 How to simulate a Prop possessing using a Character. This can be used for Prop Hunt game-modes!
 

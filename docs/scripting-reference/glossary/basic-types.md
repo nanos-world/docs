@@ -1,9 +1,9 @@
 ---
+title: Basic Types
 description: Basic Types used in the API.
 tags: [scripting]
 ---
 
-# Basic Types
 
 ## Lua Types
 
