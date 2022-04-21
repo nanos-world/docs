@@ -66,15 +66,15 @@ Steam> login anonymous
 
 ### 4. Download nanos world Server
 
-You can then install nanos world server using it's app id: `1686460`:
+You can then install nanos world server using it's app id: `1936830`:
 
 ```bash
-Steam> app_update 1686460
+Steam> app_update 1936830
 ```
 
 :::tip
 
-You can run `app_update 1686460` to update your nanos world server to the latest version as well!
+You can run `app_update 1936830` to update your nanos world server to the latest version as well!
 
 :::
 
@@ -93,7 +93,7 @@ On Linux, you must start the server using the Shell Script `./NanosWorldServer.s
 You can optionally use a one-liner command to install/update nanos world server:
 
 ```bash
-steamcmd.exe +login anonymous +app_update 1686460 validate +quit
+steamcmd.exe +login anonymous +app_update 1936830 validate +quit
 ```
 
 :::tip
@@ -107,13 +107,13 @@ Finished!, you can now proceed to the next steps to configure your nanos world s
 To install the `bleeding-edge` version of the server, you will need to specify it's branch when installing:
 
 ```bash
-Steam> app_update 1686460 -beta bleeding-edge
+Steam> app_update 1936830 -beta bleeding-edge
 ```
 
 or
 
 ```bash
-steamcmd.exe +login anonymous +app_update "1686460 -beta bleeding-edge" validate +quit
+steamcmd.exe +login anonymous +app_update "1936830 -beta bleeding-edge" validate +quit
 ```
 
 ## Linux Debian 10 Installation

@@ -9,27 +9,29 @@ keywords: [SDK, ADK, assets, kit, unreal]
 
 nanos world Assets Development Kit - ADK
 
-nanos world provides a fully configurable and ready **Unreal Project** called Assets Development Kit \(ADK\) to help you integrating and exporting Assets and Maps much faster. This project contains **Placeholders**, **Tools** and **Correct References** that must be used in order to create **Characters** and make proper **Physical Materials**, for example.
+nanos world provides a fully configurable and ready **Unreal Project** called Assets Development Kit (ADK) to help you integrating and exporting Assets and Maps much faster. This project contains **Placeholders**, **Tools** and **Correct References** that must be used in order to create **Characters** and make proper **Physical Materials**, for example.
 
 :::caution Note
 
-To be able to use the **ADK**, you will need to have [Unreal Engine](#installing-unreal-engine-4) installed.
+To be able to use the **ADK**, you will need to have [Unreal Engine](#installing-unreal-engine-5) installed.
 
 :::
 
 ## Downloading nanos world Assets Development Kit - ADK
 
-Our ADK is uploaded in [GitHub](https://github.com/nanos-world/assets-development-kit/releases/latest), please download it latest version and extract it in your computer.
+Our ADK is uploaded in [GitHub](https://github.com/nanos-world/assets-development-kit/), please download it latest version and extract it in your computer.
 
 ## Opening the Assets Development Kit Project
 
 You will find a file `NanosWorldADK.uproject` in there, just open it with Unreal Engine and you are set!
 
-You will notice we two folders in the root directory: `NanosWorld/` and `MyAssetPack/`.
+You will notice we have two folders in the root directory: `NanosWorld/` and `MyAssetPack/`:
 
-:::info Tip
+![ADK Folders](/img/docs/adk-folders.jpg)
 
-You can rename `MyAssetPack` to anything you want to be your Asset Pack. Or you can delete it, but note that deleting this folder through Unreal may not work. If you want to delete it, please do it through Windows Explorer.
+:::tip
+
+You can delete or rename `MyAssetPack` to anything you want to be your Asset Pack.
 
 :::
 
@@ -56,14 +58,14 @@ Please do not **MODIFY**, **DELETE**, **CREATE** or **COPY** any file inside `Na
 
 ![Placeholder Blueprints overview](/img/docs/adk-01.jpg)
 
-You can use the **Placeholder Blueprints** to set Spawn Positions of **Vehicles**, **Weapons**, **Characters** and **Props**. This works only to help you generating a Lua code with spawn positions after all. These Blueprints aren’t cooked with the map. Use the [Lua Code Generator](adk-assets-development-kit#lua-code-generator-nanosworld-blueprints-utility-wbp_luacodegenerator) to generate the Lua script with all spawn locations.
+You can use the **Placeholder Blueprints** to set Spawn Positions of **Vehicles**, **Weapons**, **Characters** and **Props**. This works only to help you generating a Lua code with spawn positions after all. These Blueprints aren’t cooked with the map. Use the [Lua Code Generator](adk-assets-development-kit#lua-code-generator) to generate the Lua script with all spawn locations.
 
 ### Lua Code Generator
 #### `NanosWorld/Blueprints/Utility/WBP_LuaCodeGenerator`
 
 ![Lua Code Generator Widget](/img/docs/adk-02.jpg)
 
-**Lua Code Generator** is an **Editor Utility Widget** which scans the map which is currently loaded in your Unreal and generate a list of spawn code with exact Location and Rotation for every [Placeholder Blueprint ](adk-assets-development-kit#placeholder-blueprints-nanosworld-blueprints-placeholders)you had spawned.
+**Lua Code Generator** is an **Editor Utility Widget** which scans the map which is currently loaded in your Unreal and generate a list of spawn code with exact Location and Rotation for every [Placeholder Blueprint ](adk-assets-development-kit#placeholder-blueprints)you had spawned.
 
 To open it, right click on it and press **Run Editor Utility Widget**:
 
@@ -74,7 +76,7 @@ To open it, right click on it and press **Run Editor Utility Widget**:
 
 ![](/img/docs/adk-04.jpg)
 
-This is an **Editor Utility Widget** which scans a folder \(determined by the TextBox\) and generates the configuration for an Assets.toml with all Assets in the folder \(which can be used in nanos world\).
+This is an **Editor Utility Widget** which scans a folder (determined by the TextBox) and generates the configuration for an Assets.toml with all Assets in the folder \(which can be used in nanos world\).
 
 ### Sun & Sky Actor
 #### `NanosWorld/Blueprints/World/BP_SunSky`
@@ -105,7 +107,7 @@ DO NOT **modify** or **rename** any Physical Materials, only use by referencing 
 ### Mannequin Skeleton
 #### `NanosWorld/Characters/Common/SKEL_Mannequin`
 
-To be able to create Skeletal \(Character\) Meshes which work with our [Character](./scripting-reference/classes/character.mdx) class, you must set your Skeletal Mesh to use our **Mannequin Skeleton**. This Skeleton is the same as Unreal Engine 4 default Mannequin, so any Skeletal Mesh which uses UE4’s Mannequin Skeleton will work for us!
+To be able to create Skeletal \(Character\) Meshes which work with our [Character](./scripting-reference/classes/character.mdx) class, you must set your Skeletal Mesh to use our **Mannequin Skeleton**. This Skeleton is the same as Unreal Engine 5 default Mannequin, so any Skeletal Mesh which uses UE4’s Mannequin Skeleton will work for us!
 
 To change a Skeletal Mesh’s Skeleton: right click on it &gt;&gt; Skeleton &gt;&gt; Assign Skeleton and change it to our `SKEL_Mannequin`.
 

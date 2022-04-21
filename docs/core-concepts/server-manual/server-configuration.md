@@ -120,7 +120,7 @@ With Command Line Parameters and [Command Line Interface (CLI)](./core-concepts/
 
 ```shell title="Shell/Linux"
 # Installs/Updates the server through SteamCMD
-steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_update "1686460 -beta bleeding-edge" validate +quit
+steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_update "1936830 -beta bleeding-edge" validate +quit
 
 # Installs all needed Packages (this will install needed Assets as well)
 ./NanosWorldServer.sh --cli install package sandbox battlefield-kill-ui ts-fireworks-tools
