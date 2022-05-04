@@ -55,7 +55,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 
 The Map (or Level) is defined in the Server’s config file, this level will be loaded when the player joins the server and the Path is supposed for be or a built-in asset or an asset which is located at `Assets/` folder.
 
-nanos world counts on (for now) 2 built-in maps: `nanos-world::BlankMap` and `nanos-world::TestingMap` which can be used in your server without needing to download any Asset Pack.
+nanos world counts on (for now) 4 built-in maps: `nanos-world::BlankMap`, `nanos-world::EmptyMap`, `nanos-world::OceanMap` and `nanos-world::TestingMap` which can be used in your server without needing to download any Asset Pack.
 
 
 ## Server Console
@@ -120,7 +120,7 @@ With Command Line Parameters and [Command Line Interface (CLI)](./core-concepts/
 
 ```shell title="Shell/Linux"
 # Installs/Updates the server through SteamCMD
-steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_update "1686460 -beta bleeding-edge" validate +quit
+steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_update "1936830 -beta bleeding-edge" validate +quit
 
 # Installs all needed Packages (this will install needed Assets as well)
 ./NanosWorldServer.sh --cli install package sandbox battlefield-kill-ui ts-fireworks-tools

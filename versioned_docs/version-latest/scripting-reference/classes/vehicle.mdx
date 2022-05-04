@@ -1,12 +1,12 @@
 ---
 title: 🚙 Vehicle
-description: Vehicles are 4-wheeled entities which Characters can possesses and drive
+description: Vehicles are wheeled entities which Characters can possesses and drive
 sidebar_position: 0
 tags: [class]
 ---
 
 
-Vehicles are 4-wheeled entities which Characters can possesses and drive.
+Vehicles are wheeled entities which Characters can possesses and drive.
 
 import { Structs, BasicType, AuthorityType, Classes, ReferenceLink, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
 
@@ -23,15 +23,11 @@ import { Structs, BasicType, AuthorityType, Classes, ReferenceLink, Enums, Asset
 
 Any Skeletal Mesh can be used to create a Vehicle, although only Skeletal Meshes with Wheels bones can use the built-in feature of animated Wheels.
 
-:::caution
 
-Currently only 4-Wheeled vehicles are supported.
-
-:::
 
 :::tip
 
-Please take a look at our Default’s Vehicle package with all built-in Vehicles already properly configured and ready to use: [https://github.com/nanos-world/nanos-world-vehicles](https://github.com/nanos-world/nanos-world-vehicles).
+Please take a look at our Default's Vehicle package with all built-in Vehicles already properly configured and ready to use: [https://github.com/nanos-world/nanos-world-vehicles](https://github.com/nanos-world/nanos-world-vehicles).
 
 :::
 
@@ -41,24 +37,30 @@ Please take a look at our Default’s Vehicle package with all built-in Vehicles
 
 
 ```lua title="Server/Index.lua"
--- Spawns a SUV Vehicle
-local vehicle = Vehicle(Vector(0, 0, 100), Rotator(), "nanos-world::SK_SUV", 0, true, false, true, "nanos-world::A_Vehicle_Engine_14")
+-- Spawns a Pickup Vehicle
+local vehicle = Vehicle(location or Vector(), rotation or Rotator(), "nanos-world::SK_Pickup", CollisionType.Normal, true, false, true, "nanos-world::A_Vehicle_Engine_10")
 
--- Configure it's Engine Speed and Steering Wheel location
-vehicle:SetEngineSetup(4500)
-vehicle:SetSteeringWheelSetup(Vector(0, 20, 131), 26)
+-- Configure it's Engine power and Aerodynamics
+vehicle:SetEngineSetup(700, 5000)
+vehicle:SetAerodynamicsSetup(2500)
+
+-- Configure it's Steering Wheel and Headlights location
+vehicle:SetSteeringWheelSetup(Vector(0, 27, 120), 24)
+vehicle:SetHeadlightsSetup(Vector(270, 0, 70))
 
 -- Configures each Wheel
-vehicle:SetWheel(0, "Wheel_Front_Left",  35, 22, 50, 20, 0.25, 2, 17, 1000, 50, 50, 10)
-vehicle:SetWheel(1, "Wheel_Front_Right", 35, 22, 50, 20, 0.25, 2, 17, 1000, 50, 50, 10)
-vehicle:SetWheel(2, "Wheel_Rear_Left",   35, 22,  0, 20, 0.25, 2, 17, 1000, 50, 50, 10)
-vehicle:SetWheel(3, "Wheel_Rear_Right",  35, 22,  0, 20, 0.25, 2, 17, 1000, 50, 50, 10)
+vehicle:SetWheel(0, "Wheel_Front_Left",  27, 18, 45, Vector(), true,  true, false, false, false, 1500, 3000, 1000, 1, 3, 20, 20, 250, 50, 10, 10, 0, 0.5, 0.5)
+vehicle:SetWheel(1, "Wheel_Front_Right", 27, 18, 45, Vector(), true,  true, false, false, false, 1500, 3000, 1000, 1, 3, 20, 20, 250, 50, 10, 10, 0, 0.5, 0.5)
+vehicle:SetWheel(2, "Wheel_Rear_Left",   27, 18,  0, Vector(), false, true,  true, false, false, 1500, 3000, 1000, 1, 4, 20, 20, 250, 50, 10, 10, 0, 0.5, 0.5)
+vehicle:SetWheel(3, "Wheel_Rear_Right",  27, 18,  0, Vector(), false, true,  true, false, false, 1500, 3000, 1000, 1, 4, 20, 20, 250, 50, 10, 10, 0, 0.5, 0.5)
 
--- Adds 4 Doors/Seats
-vehicle:SetDoor(0, Vector( 22, -80, 120), Vector(-18, -47, 110), Rotator(0, 0, 15), 75, -150)
-vehicle:SetDoor(1, Vector( 22,  80, 120), Vector( 5,   39,  90), Rotator(0, 0,  0), 60,  150)
-vehicle:SetDoor(2, Vector(-80, -80, 120), Vector(-60, -39,  90), Rotator(0, 0,  0), 60, -150)
-vehicle:SetDoor(3, Vector(-80,  80, 120), Vector(-60,  39,  90), Rotator(0, 0,  0), 60,  150)
+-- Adds 6 Doors/Seats
+vehicle:SetDoor(0, Vector(  50, -75, 105), Vector(   8, -32.5,  95), Rotator(0,  0,  10), 70, -150)
+vehicle:SetDoor(1, Vector(  50,  75, 105), Vector(  25,    50,  90), Rotator(0,  0,   0), 70,  150)
+vehicle:SetDoor(2, Vector( -90, -75, 130), Vector( -90,  -115, 155), Rotator(0,  90, 20), 60, -150)
+vehicle:SetDoor(3, Vector( -90,  75, 130), Vector( -90,   115, 155), Rotator(0, -90, 20), 60,  150)
+vehicle:SetDoor(4, Vector(-195, -75, 130), Vector(-195,  -115, 155), Rotator(0,  90, 20), 60, -150)
+vehicle:SetDoor(5, Vector(-195,  75, 130), Vector(-195,   115, 155), Rotator(0, -90, 20), 60,  150)
 
 -- Make it ready (so clients only create Physics once and not for each function call above)
 vehicle:RecreatePhysics()
@@ -92,11 +94,6 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 <details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
 <details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
 
-:::caution
-
-Most of the functions below will reset the vehicle Physics State \(automatically\), which means the vehicle will stop immediately if moving.
-
-:::
 
 |  | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- | :--- |
@@ -109,7 +106,7 @@ Most of the functions below will reset the vehicle Physics State \(automatically
 | <AuthorityType.ServerOnly /> |  | [**`SetEngineStarted`**](vehicle#setenginestarted) | Starts/Stops the Engine |
 | <AuthorityType.ServerOnly /> |  | [**`SetDifferentialSetup`**](vehicle#setdifferentialsetup) | Configures the Vehicle Differential |
 | <AuthorityType.ServerOnly /> |  | [**`SetEngineSetup`**](vehicle#setenginesetup) | Configures the Vehicle Engine |
-| <AuthorityType.ServerOnly /> |  | [**`SetVehicleSetup`**](vehicle#setvehiclesetup) | Configures the Vehicle General Settings |
+| <AuthorityType.ServerOnly /> |  | [**`SetAerodynamicsSetup`**](vehicle#setaerodynamicssetup) | Configures the Vehicle Aerodynamics Settings |
 | <AuthorityType.ServerOnly /> |  | [**`SetTransmissionSetup`**](vehicle#settransmissionsetup) | Configures the Vehicle Transmission |
 | <AuthorityType.ServerOnly /> |  | [**`SetWheel`**](vehicle#setwheel) | Configures a Vehicle Wheel |
 | <AuthorityType.ServerOnly /> |  | [**`SetDoor`**](vehicle#setdoor) | Adds a Door |
@@ -151,8 +148,8 @@ my_vehicle:AddStaticMeshAttached(id, static_mesh_path, socket, relative_location
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`id`** |  |  |
-| <BasicType.String /> | **`static_mesh_path`** | ` ` |  |
-| <BasicType.String /> | **`socket`** | \`\` |  |
+| <BasicType.String /> | **`static_mesh_path`** |  |  |
+| <BasicType.String /> | **`socket`** | ` ` |  |
 | <Structs.Vector /> | **`relative_location`** | `Vector()` |  |
 | <Structs.Rotator /> | **`relative_rotation`** | `Rotator()` |  |
 
@@ -248,40 +245,37 @@ my_vehicle:SetDifferentialSetup(differential_type, front_rear_split, front_left_
 
 ### <AuthorityType.ServerOnly />`SetEngineSetup`
 
-> Configures the Vehicle Engine
+> Configures the Vehicle Engine (Torque, RPM, Braking)
 
 ```lua
-my_vehicle:SetEngineSetup(max_rpm, moi, damping_rate_full_throttle, d_r_zero_trt_clutch_engaged, d_r_zero_trt_clutch_disengaged)
+my_vehicle:SetEngineSetup(max_torque, max_rpm, idle_rpm, brake_effect, rev_up_moi, rev_down_rate)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`max_rpm`** | `4500` | Maximum revolutions per minute of the engine |
-| <BasicType.Number /> | **`moi`** | `1` | Moment of inertia of the engine around the axis of rotation (Kgm^2) |
-| <BasicType.Number /> | **`damping_rate_full_throttle`** | `0.15` | Damping rate of engine when full throttle is applied (Kgm^2/s) |
-| <BasicType.Number /> | **`d_r_zero_trt_clutch_engaged`** | `2` | Damping rate of engine in at zero throttle when the clutch is engaged (Kgm^2/s) |
-| <BasicType.Number /> | **`d_r_zero_trt_clutch_disengaged`** | `0.35` | Damping rate of engine in at zero throttle when the clutch is disengaged (in neutral gear) (Kgm^2/s) |
+| <BasicType.Number /> | **`max_torque`** | `700` | Max Engine Torque (Nm) is multiplied by TorqueCurve |
+| <BasicType.Number /> | **`max_rpm`** | `5700` | Maximum revolutions per minute of the engine |
+| <BasicType.Number /> | **`idle_rpm`** | `1200` | Idle RMP of engine then in neutral/stationary |
+| <BasicType.Number /> | **`brake_effect`** | `0.05` | Braking effect from engine, when throttle released |
+| <BasicType.Number /> | **`rev_up_moi`** | `5` | Affects how fast the engine RPM speed up |
+| <BasicType.Number /> | **`rev_down_rate`** | `600` | Affects how fast the engine RPM slows down |
 
 
-### <AuthorityType.ServerOnly />`SetVehicleSetup`
+### <AuthorityType.ServerOnly />`SetAerodynamicsSetup`
 
-> Configures the Vehicle General Settings
+> Configures the Vehicle Aerodynamics Settings
 
 ```lua
-my_vehicle:SetVehicleSetup(drag_coefficient, throttle_input_rise_rate, throttle_input_fall_rate, brake_input_rise_rate, brake_input_fall_rate, handbrake_input_rise_rate, handbrake_input_fall_rate, steering_input_rise_rate, steering_input_fall_rate)
+my_vehicle:SetAerodynamicsSetup(mass, drag_coefficient, vehicle_chassis_width, vehicle_chassis_height, vehicle_downforce_coefficient)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`drag_coefficient`** | `0.3` | DragCoefficient of the vehicle chassis |
-| <BasicType.Number /> | **`throttle_input_rise_rate`** | `6` | Rate at which the input value rises |
-| <BasicType.Number /> | **`throttle_input_fall_rate`** | `10` | Rate at which the input value falls |
-| <BasicType.Number /> | **`brake_input_rise_rate`** | `6` | Rate at which the input value rises |
-| <BasicType.Number /> | **`brake_input_fall_rate`** | `10` | Rate at which the input value falls |
-| <BasicType.Number /> | **`handbrake_input_rise_rate`** | `12` | Rate at which the input value rises |
-| <BasicType.Number /> | **`handbrake_input_fall_rate`** | `12` | Rate at which the input value falls |
-| <BasicType.Number /> | **`steering_input_rise_rate`** | `2.5` | Rate at which the input value rises |
-| <BasicType.Number /> | **`steering_input_fall_rate`** | `5` | Rate at which the input value falls |
+| <BasicType.Number /> | **`mass`** | `1500` | Mass of the vehicle chassis |
+| <BasicType.Number /> | **`drag_coefficient`** | `0.3` | Force resisting forward motion at speed |
+| <BasicType.Number /> | **`vehicle_chassis_width`** | `180` | Chassis width used for drag force computation (cm) |
+| <BasicType.Number /> | **`vehicle_chassis_height`** | `140` | Chassis height used for drag force computation (cm) |
+| <BasicType.Number /> | **`vehicle_downforce_coefficient`** | `0.3` | Force pressing vehicle into ground at speed |
 
 
 ### <AuthorityType.ServerOnly />`SetTransmissionSetup`
@@ -289,50 +283,67 @@ my_vehicle:SetVehicleSetup(drag_coefficient, throttle_input_rise_rate, throttle_
 > Configures the Vehicle Transmission
 
 ```lua
-my_vehicle:SetTransmissionSetup(has_automatic_transmission, gear_switch_time, gear_auto_box_latency, final_ratio, clutch_strength)
+my_vehicle:SetTransmissionSetup(transmission_final_ratio, transmission_change_up_rpm, transmission_change_down_rpm, transmission_gear_change_time, transmission_efficiency)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Boolean /> | **`has_automatic_transmission`** | `true` | Whether to use automatic transmission |
-| <BasicType.Number /> | **`gear_switch_time`** | `0.5` | Time it takes to switch gears (seconds) |
-| <BasicType.Number /> | **`gear_auto_box_latency`** | `2` | Minimum time it takes the automatic transmission to initiate a gear change (seconds) |
-| <BasicType.Number /> | **`final_ratio`** | `4` | The final gear ratio multiplies the transmission gear ratios |
-| <BasicType.Number /> | **`clutch_strength`** | `10` | Strength of clutch (Kgm^2/s) |
+| <BasicType.Boolean /> | **`transmission_final_ratio`** | `3.08` | The final gear ratio multiplies the transmission gear ratios |
+| <BasicType.Number /> | **`transmission_change_up_rpm`** | `4500` | Engine Revs at which gear up change ocurrs |
+| <BasicType.Number /> | **`transmission_change_down_rpm`** | `2000` | Engine Revs at which gear down change ocurrs |
+| <BasicType.Number /> | **`transmission_gear_change_time`** | `0.4` | Time it takes to switch gears (seconds) |
+| <BasicType.Number /> | **`transmission_efficiency`** | `0.94` | Mechanical frictional losses mean transmission might operate at 0.94 (94% efficiency) |
+
 
 ### <AuthorityType.ServerOnly />`SetWheel`
 
 > Configures a Vehicle Wheel
 
+:::tip
+
+Wheels can be updated in runtime by calling `SetWheel` again, you can for example change the suspension high or disable a wheel totally by toggling affected_by_engine off or setting radius to 0.
+
+:::
+
+
 ```lua
-my_vehicle:SetWheel(index, bone_name, shape_radius, shape_width, steer_angle, mass, damping_rate, lat_stiff_max_load, lat_stiff_value, long_stiff_value, suspension_force_offset, suspension_max_raise, suspension_max_drop, suspension_natural_frequency, suspension_damping_ratio, max_brake_torque, max_handbrake_torque, is_affected_by_handbrake, offset)
+my_vehicle:SetWheel(index, bone_name, radius, width, max_steer_angle, offset, is_affected_by_engine, is_affected_by_brake, is_affected_by_handbrake, has_abs_enabled, has_traction_control_enabled, max_brake_torque, max_handbrake_torque, cornering_stiffness, side_slip_modifier, friction_force_multiplier, slip_threshold, skid_threshold, suspension_spring_rate, suspension_spring_preload, suspension_max_raise, suspension_max_drop, suspension_smoothing, suspension_damping_ratio, suspension_wheel_load_ratio, suspension_axis, suspension_force_offset)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Number /> |
-| <BasicType.String /> | **`bone_name`** |  |  |
-| <BasicType.Number /> | **`shape_radius`** | `30` | Radius of the wheel |
-| <BasicType.Number /> | **`shape_width`** | `10` | Width of the wheel |
-| <BasicType.Number /> | **`steer_angle`** | `70` | Steer angle in degrees for this wheel |
-| <BasicType.Number /> | **`mass`** | `20` | Mass of this wheel |
-| <BasicType.Number /> | **`damping_rate`** | `0.25` | Damping rate for this wheel (Kgm^2/s) |
-| <BasicType.Number /> | **`lat_stiff_max_load`** | `2` | Max normalized tire load at which the tire can deliver no more lateral stiffness no matter how much extra load is applied to the tire |
-| <BasicType.Number /> | **`lat_stiff_value`** | `17` | How much lateral stiffness to have given lateral slip |
-| <BasicType.Number /> | **`long_stiff_value`** | `1000` | How much longitudinal stiffness to have given longitudinal slip |
-| <BasicType.Number /> | **`suspension_force_offset`** | `0` | Vertical offset from where suspension forces are applied (along Z-axis) |
+| <BasicType.Number /> | **`index`** |  | Index of the wheel (0-N). Set it in ASC order |
+| <BasicType.String /> | **`bone_name`** |  | Name of the bone to attach this wheel to |
+| <BasicType.Number /> | **`radius`** | `32` | Radius of the wheel |
+| <BasicType.Number /> | **`width`** | `20` | Width of the wheel |
+| <BasicType.Number /> | **`max_steer_angle`** | `50` | Steer angle in degrees for this wheel |
+| <Structs.Vector /> | **`offset`** | `Vector(0, 0, 0)` | If **bone_name** is specified, offset the wheel from the bone's location. Otherwise this offsets the wheel from the vehicle's origin |
+| <BasicType.Boolean /> | **`is_affected_by_engine`** | `true` | Whether engine should power this wheel |
+| <BasicType.Boolean /> | **`is_affected_by_brake`** | `true` | Whether brake should affect this wheel |
+| <BasicType.Boolean /> | **`is_affected_by_handbrake`** | `true` | Whether handbrake should affect this wheel |
+| <BasicType.Boolean /> | **`has_abs_enabled`** | `false` | Advanced Braking System Enabled |
+| <BasicType.Boolean /> | **`has_traction_control_enabled`** | `false` | Straight Line Traction Control Enabled |
+| <BasicType.Number /> | **`max_brake_torque`** | `1500` | Max brake torque for this wheel (Nm) |
+| <BasicType.Number /> | **`max_handbrake_torque`** | `3000` | Max handbrake brake torque for this wheel (Nm). A handbrake should have a stronger brake torque than the brake |
+| <BasicType.Number /> | **`cornering_stiffness`** | `1000` | Tyre Cornering Ability |
+| <BasicType.Number /> | **`side_slip_modifier`** | `1` | Wheel Lateral Skid Grip Loss, lower number less grip on skid |
+| <BasicType.Number /> | **`friction_force_multiplier`** | `2` | Friction Force Multiplier |
+| <BasicType.Number /> | **`slip_threshold`** | `20` | Wheel Longitudinal Slip Threshold |
+| <BasicType.Number /> | **`skid_threshold`** | `20` | Wheel Lateral Skid Threshold |
+| <BasicType.Number /> | **`suspension_spring_rate`** | `250` | Spring Force (N/m) |
+| <BasicType.Number /> | **`suspension_spring_preload`** | `50` | Spring Preload (N/m) |
 | <BasicType.Number /> | **`suspension_max_raise`** | `10` | How far the wheel can go above the resting position |
 | <BasicType.Number /> | **`suspension_max_drop`** | `10` | How far the wheel can drop below the resting position |
-| <BasicType.Number /> | **`suspension_natural_frequency`** | `7` | Oscillation frequency of suspension. Standard cars have values between 5 and 10 |
-| <BasicType.Number /> | **`suspension_damping_ratio`** | `1` | The rate at which energy is dissipated from the spring. Standard cars have values between 0.8 and 1.2. Values < 1 are more sluggish, values > 1 or more twitchy |
-| <BasicType.Number /> | **`max_brake_torque`** | `1500` | Max brake torque for this wheel |
-| <BasicType.Number /> | **`max_handbrake_torque`** | `3000` | Max handbrake brake torque for this wheel. A handbrake should have a stronger brake torque than the brake. This will be ignored for wheels that are not affected by the handbrake. |
-| <BasicType.Boolean /> | **`is_affected_by_handbrake`** | `true` |  |
-| <Structs.Vector /> | **`offset`** | `Vector(0, 0, 0)` | If **bone_name** is specified, offset the wheel from the bone’s location. Otherwise this offsets the wheel from the vehicle’s origin |
+| <BasicType.Number /> | **`suspension_smoothing`** | `0` | Smooth suspension [0-off, 10-max] - Warning might cause momentary visual inter-penetration of the wheel against objects/terrain |
+| <BasicType.Number /> | **`suspension_damping_ratio`** | `0.5` | Suspension damping, larger value causes the suspension to come to rest faster [range 0 to 1] |
+| <BasicType.Number /> | **`suspension_wheel_load_ratio`** | `0.5` | Amount wheel load effects wheel friction. <br/> - At 0 wheel friction is completely independent of the loading on the wheel (This is artificial as it always assumes even balance between all wheels) <br/> - At 1 wheel friction is based on the force pressing wheel into the ground. This is more realistic. <br/> - Lower value cures lift off over-steer, generally makes vehicle easier to handle under extreme motions. |
+| <Structs.Vector /> | **`suspension_axis`** | `Vector(0, 0, -1)` | Local body direction in which where suspension forces are applied (typically along -Z-axis) |
+| <Structs.Vector /> | **`suspension_force_offset`** | `Vector(0, 0, 0)` | Vertical offset from where suspension forces are applied (along Z-axis) |
+
 
 ### <AuthorityType.ServerOnly />`SetDoor`
 
-> Adds a Door at OffsetLocation from root which will pose the Character at SeatLocation with SeatRotation rotation. LeaveLateralOffset is where the Character will be ejected when leaving it \(e.g. -150 for left door or 150 for right door\)
+> Adds a Door at OffsetLocation from root which will pose the Character at SeatLocation with SeatRotation rotation. LeaveLateralOffset is where the Character will be ejected when leaving it (e.g. -150 for left door or 150 for right door)
 
 ```lua
 my_vehicle:SetDoor(seat_index, offset_location, seat_location, seat_rotation, trigger_radius, leave_lateral_offset)
@@ -346,6 +357,7 @@ my_vehicle:SetDoor(seat_index, offset_location, seat_location, seat_rotation, tr
 | <Structs.Rotator /> | **`seat_rotation`** |  |  |
 | <BasicType.Number /> | **`trigger_radius`** |  |  |
 | <BasicType.Number /> | **`leave_lateral_offset`** |  |  |
+
 
 ### <AuthorityType.ServerOnly />`SetSteeringWheelSetup`
 

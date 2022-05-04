@@ -22,7 +22,7 @@ import { ReferenceLink, AuthorityType, BasicType, Structs, Classes, Enums, Asset
 
 :::info
 
-Characters are Skeletal Meshes using Unreal’s Mannequin Skeletal, with animations and interactivity already natively integrated into nanos world. It is possible to import any Skeletal Mesh (which uses Unreal’s Mannequin Skeletal) to this Character.
+Characters are Skeletal Meshes using Unreal's Mannequin Skeletal, with animations and interactivity already natively integrated into nanos world. It is possible to import any Skeletal Mesh (which uses Unreal's Mannequin Skeletal) to this Character.
 
 :::
 
@@ -126,11 +126,12 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetCanPickupPickables`**](character#setcanpickuppickables) | Sets if this Character is allowed to Pick up any <Classes.Pickable /> (Weapon, Grenade, Melee) |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanPunch`**](character#setcanpunch) | Sets if this Character is allowed to Punch |
 | <AuthorityType.ServerOnly /> |  | [**`SetCanDeployParachute`**](character#setcandeployparachute) | Sets if this Character is allowed to open the parachute |
-| <AuthorityType.ServerOnly /> |  | [**`SetCapsuleSize`**](character#setcapsulesize) | Sets this Character’s Capsule size |
+| <AuthorityType.ServerOnly /> |  | [**`SetCapsuleSize`**](character#setcapsulesize) | Sets this Character's Capsule size |
 | <AuthorityType.ServerOnly /> |  | [**`SetDamageMultiplier`**](character#setdamagemultiplier) | Changes how much damage this character takes |
 | <AuthorityType.ServerOnly /> |  | [**`SetDeathSound`**](character#setdeathsound) | Changes the Death sound when Character dies |
 | <AuthorityType.ServerOnly /> |  | [**`SetFallDamageTaken`**](character#SetFallDamageTaken) | Set the Fall Damage multiplier taken when falling from High places |
 | <AuthorityType.ServerOnly /> |  | [**`SetFlyingMode`**](character#setflyingmode) | Sets the Flying Mode |
+| <AuthorityType.ServerOnly /> |  | [**`SetHighFallingTime`**](character#sethighfallingtime) | Sets time elapsed until automatically transition to HighFalling state |
 | <AuthorityType.ServerOnly /> |  | [**`SetFOVMultiplier`**](character#setfovmultiplier) | Sets the FOV multiplier |
 | <AuthorityType.ServerOnly /> |  | [**`SetGaitMode`**](character#setgaitmode) | Sets the Gait Mode |
 | <AuthorityType.ServerOnly /> |  | [**`SetGravityScale`**](character#setgravityscale) | Changes the Gravity Scale of this Character |
@@ -144,7 +145,9 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 |  <AuthorityType.Both /> |  | [**`GetMorphTarget`**](character#getmorphtarget) | Get Morph target with given name |
 |  <AuthorityType.Both /> |  | [**`ClearMorphTargets`**](character#clearmorphtargets) | Clear all Morph Target that are set to this Mesh |
 |  <AuthorityType.ClientOnly /> |  | [**`GetAllMorphTargetNames`**](character#getallmorphtargetnames) | Returns the list of all morph targets of this Skeletal Mesh |
-| <AuthorityType.ServerOnly /> |  | [**`SetMovementEnabled`**](character#setmovementenabled) | Enables/Disables Character’s Movement |
+|  <AuthorityType.Both /> |  | [**`SetPhysicalAnimationSettings`**](character#setphysicalanimationsettings) | Applies the physical animation settings to the body given |
+|  <AuthorityType.Both /> |  | [**`ResetPhysicalAnimationSettings`**](character#resetphysicalanimationsettings) | Resets all Physical Animation settings |
+| <AuthorityType.ServerOnly /> |  | [**`SetMovementEnabled`**](character#setmovementenabled) | Enables/Disables Character's Movement |
 | <AuthorityType.ServerOnly /> |  | [**`SetParachuteTexture`**](character#setparachutetexture) | Changes the Parachute Texture |
 | <AuthorityType.ServerOnly /> |  | [**`SetPainSound`**](character#setpainsound) | Changes the Pain sound when Character takes damage |
 | <AuthorityType.ServerOnly /> |  | [**`SetPunchDamage`**](character#setpunchdamage) | Set the Punch Damage this Character will apply on others |
@@ -177,10 +180,10 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 |  <AuthorityType.Both /> | <Enums>CollisionType</Enums> | [**`GetGaitMode`**](character.mdx#getgaitmode) | Gets the Gait Mode |
 |  <AuthorityType.Both /> | <Classes.Prop /> | [**`GetGrabbedProp`**](character.mdx#getgrabbedprop) | Gets the Grabbing <Classes.Prop /> |
 |  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetGravityScale`**](character#getgravityscale) | Gets the Gravity Scale of this Character |
-|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetHealth`**](character#gethealth) | Gets the Character’s Health. |
+|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetHealth`**](character#gethealth) | Gets the Character's Health. |
 |  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetImpactDamageTaken`**](character#getimpactdamagetaken) |  |
 |  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetJumpZVelocity`**](character#getjumpzvelocity) |  |
-|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetMaxHealth`**](character#getmaxhealth) | Gets the Character’s MaxHealth. |
+|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetMaxHealth`**](character#getmaxhealth) | Gets the Character's MaxHealth. |
 |  <AuthorityType.Both /> | <BasicType.String /> | [**`GetMesh`**](character#getmesh) | Gets the Mesh Asset name |
 |  <AuthorityType.Both /> | <Structs.Vector /> | [**`GetMovingTo`**](character#getmovingto) | Gets if Character is moving to |
 |  <AuthorityType.Both /> | <Classes.Pickable /> | [**`GetPicked`**](character#getpicked) | Gets the holding Picked Melee/Grenade/Weapon |
@@ -218,7 +221,7 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 | <AuthorityType.ServerOnly /> | [**`Interact`**](character#interact) | When a Character interacts with a <Classes.Prop /> or <Classes.Pickable /> to pick it up |
 | <AuthorityType.Both /> | [**`LeaveVehicle`**](character#leavevehicle) | When Character leaves a vehicle |
 | <AuthorityType.ServerOnly /> | [**`AttemptLeaveVehicle`**](character#attemptleavevehicle) | When Character attempts to leave a vehicle |
-| <AuthorityType.Both /> | [**`MoveCompleted`**](character#movecompleted) | Called when AI reaches it’s destination, or when it fails |
+| <AuthorityType.Both /> | [**`MoveCompleted`**](character#movecompleted) | Called when AI reaches it's destination, or when it fails |
 | <AuthorityType.Both /> | [**`PickUp`**](character#pickup) | When Character picks up anything |
 | <AuthorityType.Both /> | [**`Possessed`**](character#possessed) | When Character is possessed |
 | <AuthorityType.Both /> | [**`Punch`**](character#punch) | When Character punches |
@@ -768,6 +771,19 @@ my_character:SetFOVMultiplier(multiplier)
 | <BasicType.Number /> | **`multiplier`** |  |  |
 
 
+### <AuthorityType.ServerOnly />`SetHighFallingTime`
+
+> Sets time elapsed until automatically transition to HighFalling state (from SmallFalling). Default is 1 second
+
+```lua
+my_character:SetHighFallingTime(time)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`time`** |  |  |
+
+
 ### <AuthorityType.ServerOnly />`SetGaitMode`
 
 > **Gait Modes**: _None, Walking, Sprinting_
@@ -917,9 +933,39 @@ my_character:GetAllMorphTargetNames()
 ```
 
 
+### <AuthorityType.Both />`SetPhysicalAnimationSettings`
+
+> Applies the physical animation settings to the body given
+
+```lua
+my_character:SetPhysicalAnimationSettings(bone, include_self, is_local_simulation, orientation_strength, angular_velocity_strength, position_strength, velocity_strength, max_linear_force, max_angular_force)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`bone`** |  | The body we will be driving |
+| <BasicType.Boolean /> | **`include_self`** |  | Whether to modify the given body |
+| <BasicType.Boolean /> | **`is_local_simulation`** |  | Whether the drive targets are in world space or local |
+| <BasicType.Boolean /> | **`orientation_strength`** | `0` | The strength used to correct orientation error |
+| <BasicType.Boolean /> | **`angular_velocity_strength`** | `0` | The strength used to correct angular velocity error |
+| <BasicType.Boolean /> | **`position_strength`** | `0` | The strength used to correct linear position error. Only used for non-local simulation |
+| <BasicType.Boolean /> | **`velocity_strength`** | `0` | The strength used to correct linear velocity error. Only used for non-local simulation |
+| <BasicType.Boolean /> | **`max_linear_force`** | `0` | The max force used to correct linear errors |
+| <BasicType.Boolean /> | **`max_angular_force`** | `0` | The max force used to correct angular errors |
+
+
+### <AuthorityType.Both />`ResetPhysicalAnimationSettings`
+
+> Resets all Physical Animation settings
+
+```lua
+my_character:ResetPhysicalAnimationSettings()
+```
+
+
 ### <AuthorityType.ServerOnly />`SetMovementEnabled`
 
-> Enables/Disables Character's Movement
+> Resets all Physical Animation settings
 
 ```lua
 my_character:SetMovementEnabled(is_movement_enabled)
@@ -2018,7 +2064,7 @@ The following items can be used to customize Male & Female \(`nanos-world::SK_Ma
 | `forehead` |  |  |  |
 | `bodyfat` |  |  |  |
 
-## Character’s Skeleton Bone Names
+## Character's Skeleton Bone Names
 
 :::info
 
