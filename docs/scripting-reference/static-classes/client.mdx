@@ -46,7 +46,8 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 |  | [**`SetInputEnabled`**](client#setinputenabled) | Toggles Local Player input |
 |  | [**`SetMouseEnabled`**](client#setmouseenabled) | Displays/Hides Mouse Cursor |
 |  | [**`SetOutlineColor`**](client#setoutlinecolor) | Changes the Outline Color for interactable stuff |
-|  | [**`SetHighlightColor`**](client#sethighlightcolor) | Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 \(or more\) for having a glowing effect. |
+|  | [**`SetHighlightColor`**](client#sethighlightcolor) | Changes the Highlight Color for highlighted actors at a specific Index |
+|  | [**`SetOutlineColor`**](client#setoutlinecolor) | Changes the Outline Color for outlined actors at a specific Index |
 |  | [**`SetSteamRichPresence`**](client#setsteamrichpresence) | Sets Steam Rich Presence value |
 |  | [**`SetValue`**](client#setvalue) | Sets a global value in the Client, which can be accessed from anywhere \(client side\) |
 | <BasicType.Function /> | [**`Subscribe`**](client#subscribe) | Subscribes for an Event |
@@ -468,7 +469,7 @@ Client.SetOutlineColor(outline_color)
 
 ### `SetHighlightColor`
 
-> Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 \(or more\) for having a glowing effect.
+> Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 (or more) for having a glowing effect.
 > 
 > `HighlightMode.Always` will always be visible, even behind walls
 > `HighlightMode.OnlyHidden` will only be visible if behind a wall
@@ -483,6 +484,20 @@ Client.SetHighlightColor(highlight_color, index, mode)
 | <Structs.Color /> | **`highlight_color`** |  |
 | <BasicType.Number /> | **`index`** |  |
 | <Enums>HighlightMode</Enums> | **`mode`** |  |
+
+
+### `SetOutlineColor`
+
+> Changes the Outline Color for outlined actors at a specific Index. Multiply it by 5 (or more) for having a glowing effect.
+
+```lua
+Client.SetOutlineColor(outline_color, index)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Color /> | **`outline_color`** |  |
+| <BasicType.Number /> | **`index`** |  |
 
 
 ### `SetSteamRichPresence`
