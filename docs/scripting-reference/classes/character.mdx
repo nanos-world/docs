@@ -14,7 +14,7 @@ import { ReferenceLink, AuthorityType, BasicType, Structs, Classes, Enums, Asset
 
 :::info
 
-🟦 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts.mdx).
+🟦 **Authority:** This class can only be spawned on [Server](/core-concepts/scripting/authority-concepts.mdx).
 
 ⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />.
 
@@ -261,6 +261,8 @@ my_character:ApplyDamage(damage, bone_name, damage_type, from_direction, instiga
 ###  <AuthorityType.Both />`AddSkeletalMeshAttached`
 
 > Spawns and Attaches a SkeletalMesh into this Character, the SkeletalMesh must have the same Skeletal used by the Character Mesh, and will follow all animations from it. Uses a custom ID to be used for removing it further
+> 
+> For customizing the Materials specific of a SkeletalMeshAttached, please use the following syntax in the <Classes.Paintable /> methods: `attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]`, where [ATTACHABLE_ID] is the ID of the Attachable, and [PARAMETER_NAME] is the name of the parameter you want to change.
 
 ```lua
 my_character:AddSkeletalMeshAttached(id, skeletal_mesh_path)
@@ -275,6 +277,8 @@ my_character:AddSkeletalMeshAttached(id, skeletal_mesh_path)
 ###  <AuthorityType.Both />`AddStaticMeshAttached`
 
 > Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
+> 
+> For customizing the Materials specific of a StaticMeshAttached, please use the following syntax as the `id` in the <Classes.Paintable /> methods: `attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]`, where [ATTACHABLE_ID] is the ID of the Attachable, and [PARAMETER_NAME] is the name of the parameter you want to change.
 
 ```lua
 my_character:AddStaticMeshAttached( id, static_mesh_path, socket, relative_location, relative_rotation)
