@@ -1,53 +1,54 @@
 import { Structs, BasicType, AuthorityType, ReferenceLink } from '@site/docs/components/_nanos.mdx';
 
-<>
-	{!props.hidden_reference ? (<ReferenceLink href="scripting-reference/classes/base-classes/actor">Base Actor</ReferenceLink>) : <></>}
-</>
+<div>
+	{!props.hidden_reference ? (<ReferenceLink href="scripting-reference/classes/base-classes/actor">Base Actor</ReferenceLink>) : <div></div>}
+</div>
 
 
 |  | **Returns** | **Name** | **Description** |
 | :---: | :--- | :--- | :--- |
-| <AuthorityType.AuthorityOnly /> |  | [**`AddImpulse`**](./scripting-reference/classes/base-classes/actor.mdx#addimpulse) | Applies a Force in world space to this Actor |
-| <AuthorityType.AuthorityOnly /> |  | [**`AttachTo`**](./scripting-reference/classes/base-classes/actor.mdx#attachto) | Attaches this Actor to another Actor |
-| <AuthorityType.AuthorityOnly /> |  | [**`Destroy`**](./scripting-reference/classes/base-classes/actor.mdx#destroy) | Destroys this Actor |
-| <AuthorityType.AuthorityOnly /> |  | [**`Detach`**](./scripting-reference/classes/base-classes/actor.mdx#detach) | Detaches this Actor if attached |
-| <AuthorityType.AuthorityOnly /> |  | [**`SetCollision`**](./scripting-reference/classes/base-classes/actor.mdx#setcollision) | Sets this Actor's collision type |
-| <AuthorityType.AuthorityOnly /> |  | [**`SetForce`**](./scripting-reference/classes/base-classes/actor.mdx#setforce) | Adds a permanent force to this Actor |
-| <AuthorityType.AuthorityOnly /> |  | [**`SetGravityEnabled`**](./scripting-reference/classes/base-classes/actor.mdx#setgravityenabled) | Sets whether gravity is enabled on this Actor |
-| <AuthorityType.Both /> |  | [**`SetVisibility`**](./scripting-reference/classes/base-classes/actor.mdx#setvisibility) | Sets the Actor visibility |
-| <AuthorityType.ClientOnly /> |  | [**`SetHighlightEnabled`**](./scripting-reference/classes/base-classes/actor.mdx#sethighlightenabled) | Sets whether the highlight is enabled on this Actor, and which highlight index to use |
-| <AuthorityType.AuthorityOnly /> |  | [**`SetLifeSpan`**](./scripting-reference/classes/base-classes/actor.mdx#setlifespan) | Sets the time \(in seconds\) before this Actor is destroyed |
-| <AuthorityType.AuthorityOnly /> |  | [**`SetLocation`**](./scripting-reference/classes/base-classes/actor.mdx#setlocation) | Sets this Actor's location in the game world |
-| <AuthorityType.ServerOnly /> |  | [**`SetNetworkAuthority`**](./scripting-reference/classes/base-classes/actor.mdx#setnetworkauthority) | Sets the Player this Actor will have its physics calculated on [Network Authority](./core-concepts/scripting/authority-concepts.mdx#network-authority) |
-| <AuthorityType.AuthorityOnly /> |  | [**`SetRelativeLocation`**](./scripting-reference/classes/base-classes/actor.mdx#setrelativelocation) | Sets this Actor's relative location in local space |
-| <AuthorityType.AuthorityOnly /> |  | [**`SetRelativeRotation`**](./scripting-reference/classes/base-classes/actor.mdx#setrelativerotation) | Sets this Actor's relative rotation in local space |
-| <AuthorityType.AuthorityOnly /> |  | [**`SetRotation`**](./scripting-reference/classes/base-classes/actor.mdx#setrotation) | Sets this Actor's rotation in the game world |
-| <AuthorityType.AuthorityOnly /> |  | [**`SetScale`**](./scripting-reference/classes/base-classes/actor.mdx#setscale) | Sets this Actor's scale |
-| <AuthorityType.Both /> |  | [**`SetValue`**](./scripting-reference/classes/base-classes/actor.mdx#setvalue) | Sets a value in this Actor, which can be accessed by any package |
-| <AuthorityType.AuthorityOnly /> |  | [**`TranslateTo`**](./scripting-reference/classes/base-classes/actor.mdx#translateto) | Smoothly moves this Actor to the specified location |
-| <AuthorityType.AuthorityOnly /> |  | [**`RotateTo`**](./scripting-reference/classes/base-classes/actor.mdx#rotateto) | Smoothly rotates this Actor to the specified angle |
-| <AuthorityType.ClientOnly /> | <BasicType.Boolean /> | [**`HasNetworkAuthority`**](./scripting-reference/classes/base-classes/actor.mdx#hasnetworkauthority) | Gets if the LocalPlayer is currently the Network Authority of this Actor |
-| <AuthorityType.ClientOnly /> | <BasicType.Boolean /> | [**`HasAuthority`**](./scripting-reference/classes/base-classes/actor.mdx#hasauthority) | Gets if this Actor was spawned by the client side |
-| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsBeingDestroyed`**](./scripting-reference/classes/base-classes/actor.mdx#isbeingdestroyed) | Gets if this Actor is being destroyed |
-| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsGravityEnabled`**](./scripting-reference/classes/base-classes/actor.mdx#isgravityenabled) | Gets whether gravity is enabled on this Actor |
-| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsVisible`**](./scripting-reference/classes/base-classes/actor.mdx#isvisible) | Gets whether this actor is Visible or not |
-| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsInWater`**](./scripting-reference/classes/base-classes/actor.mdx#isinwater) | Gets if this Actor is in water |
-| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsNetworkDistributed`**](./scripting-reference/classes/base-classes/actor.mdx#isnetworkdistributed) | Gets if this Actor is currently [Network Distributed](./core-concepts/scripting/authority-concepts.mdx#overriding-the-current-network-authority) |
-| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsValid`**](./scripting-reference/classes/base-classes/actor.mdx#isvalid) | Returns if this Actor is valid (i.e. not destroyed) |
-| <AuthorityType.Both /> | <BasicType.Table /> | [**`GetAttachedEntities`**](./scripting-reference/classes/base-classes/actor.mdx#getattachedentities) | Gets all Actors attached to this Actor |
-| <AuthorityType.Both /> | <BasicType.Any /> | [**`GetAttachedTo`**](./scripting-reference/classes/base-classes/actor.mdx#getattachedto) | Gets the Actor this Actor is attached to |
-| <AuthorityType.ClientOnly /> | <BasicType.Table /> | [**`GetBounds`**](./scripting-reference/classes/base-classes/actor.mdx#getbounds) | Gets this Actor's bounds |
-| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetCollision`**](./scripting-reference/classes/base-classes/actor.mdx#getcollision) | Gets this Actor's collision type |
-| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetID`**](./scripting-reference/classes/base-classes/actor.mdx#getid) | Gets the universal network ID of this Actor |
-| <AuthorityType.Both /> | <Structs.Vector /> | [**`GetLocation`**](./scripting-reference/classes/base-classes/actor.mdx#getlocation) | Gets this Actor's location in the game world |
-| <AuthorityType.Both /> | <Structs.Rotator /> | [**`GetRotation`**](./scripting-reference/classes/base-classes/actor.mdx#getrotation) | Gets this Actor's angle in the game world |
-| <AuthorityType.Both /> | <Structs.Vector /> | [**`GetForce`**](./scripting-reference/classes/base-classes/actor.mdx#getforce) | Gets this Actor's scale |
-| <AuthorityType.Both /> | <Structs.Vector /> | [**`GetScale`**](./scripting-reference/classes/base-classes/actor.mdx#getscale) | Gets this Actor's scale |
-| <AuthorityType.Both /> | <BasicType.String /> | [**`GetType`**](./scripting-reference/classes/base-classes/actor.mdx#gettype) | Gets the type of this Actor |
-| <AuthorityType.Both /> | <BasicType.Any /> | [**`GetValue`**](./scripting-reference/classes/base-classes/actor.mdx#getvalue) | Gets a value stored on this Actor at the given key |
-| <AuthorityType.ClientOnly /> | <Structs.Vector /> | [**`GetVelocity`**](./scripting-reference/classes/base-classes/actor.mdx#getvelocity) | Returns this Actor's current velocity |
-| <AuthorityType.ClientOnly /> | <BasicType.String /> | [**`AddActorTag`**](./scripting-reference/classes/base-classes/actor.mdx#addactortag) | Adds an Unreal Actor Tag to this Actor |
-| <AuthorityType.ClientOnly /> | <BasicType.String /> | [**RemoveActorTag`**](./scripting-reference/classes/base-classes/actor.mdx#removeactortag) | Remove an Unreal Actor Tag from this Actor |
-| <AuthorityType.ClientOnly /> | <BasicType.Table /> | [**`GetActorTags`**](./scripting-reference/classes/base-classes/actor.mdx#getactortags) | Gets all Unreal Actor Tags from this Actor |
-| <AuthorityType.Both /> | <BasicType.Function /> | [**`Subscribe`**](./scripting-reference/classes/base-classes/actor.mdx#subscribe) | Subscribes to an Event |
-| <AuthorityType.Both /> |  | [**`Unsubscribe`**](./scripting-reference/classes/base-classes/actor.mdx#unsubscribe) | Unsubscribes from an Event |
+| <AuthorityType.AuthorityOnly /> |  | [**`AddImpulse`**](/scripting-reference/classes/base-classes/actor.mdx#addimpulse) | Applies a Force in world space to this Actor |
+| <AuthorityType.AuthorityOnly /> |  | [**`AttachTo`**](/scripting-reference/classes/base-classes/actor.mdx#attachto) | Attaches this Actor to another Actor |
+| <AuthorityType.AuthorityOnly /> |  | [**`Destroy`**](/scripting-reference/classes/base-classes/actor.mdx#destroy) | Destroys this Actor |
+| <AuthorityType.AuthorityOnly /> |  | [**`Detach`**](/scripting-reference/classes/base-classes/actor.mdx#detach) | Detaches this Actor if attached |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetCollision`**](/scripting-reference/classes/base-classes/actor.mdx#setcollision) | Sets this Actor's collision type |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetForce`**](/scripting-reference/classes/base-classes/actor.mdx#setforce) | Adds a permanent force to this Actor |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetGravityEnabled`**](/scripting-reference/classes/base-classes/actor.mdx#setgravityenabled) | Sets whether gravity is enabled on this Actor |
+| <AuthorityType.Both /> |  | [**`SetVisibility`**](/scripting-reference/classes/base-classes/actor.mdx#setvisibility) | Sets the Actor visibility |
+| <AuthorityType.ClientOnly /> |  | [**`SetHighlightEnabled`**](/scripting-reference/classes/base-classes/actor.mdx#sethighlightenabled) | Sets whether the highlight is enabled on this Actor, and which highlight index to use |
+| <AuthorityType.ClientOnly /> |  | [**`SetOutlineEnabled`**](/scripting-reference/classes/base-classes/actor.mdx#setoutlineenabled) | Sets whether the outline is enabled on this Actor, and which outline index to use |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetLifeSpan`**](/scripting-reference/classes/base-classes/actor.mdx#setlifespan) | Sets the time (in seconds) before this Actor is destroyed |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetLocation`**](/scripting-reference/classes/base-classes/actor.mdx#setlocation) | Sets this Actor's location in the game world |
+| <AuthorityType.ServerOnly /> |  | [**`SetNetworkAuthority`**](/scripting-reference/classes/base-classes/actor.mdx#setnetworkauthority) | Sets the Player this Actor will have its physics calculated on [Network Authority](/core-concepts/scripting/authority-concepts.mdx#network-authority) |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetRelativeLocation`**](/scripting-reference/classes/base-classes/actor.mdx#setrelativelocation) | Sets this Actor's relative location in local space |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetRelativeRotation`**](/scripting-reference/classes/base-classes/actor.mdx#setrelativerotation) | Sets this Actor's relative rotation in local space |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetRotation`**](/scripting-reference/classes/base-classes/actor.mdx#setrotation) | Sets this Actor's rotation in the game world |
+| <AuthorityType.AuthorityOnly /> |  | [**`SetScale`**](/scripting-reference/classes/base-classes/actor.mdx#setscale) | Sets this Actor's scale |
+| <AuthorityType.Both /> |  | [**`SetValue`**](/scripting-reference/classes/base-classes/actor.mdx#setvalue) | Sets a value in this Actor, which can be accessed by any package |
+| <AuthorityType.AuthorityOnly /> |  | [**`TranslateTo`**](/scripting-reference/classes/base-classes/actor.mdx#translateto) | Smoothly moves this Actor to the specified location |
+| <AuthorityType.AuthorityOnly /> |  | [**`RotateTo`**](/scripting-reference/classes/base-classes/actor.mdx#rotateto) | Smoothly rotates this Actor to the specified angle |
+| <AuthorityType.ClientOnly /> | <BasicType.Boolean /> | [**`HasNetworkAuthority`**](/scripting-reference/classes/base-classes/actor.mdx#hasnetworkauthority) | Gets if the LocalPlayer is currently the Network Authority of this Actor |
+| <AuthorityType.ClientOnly /> | <BasicType.Boolean /> | [**`HasAuthority`**](/scripting-reference/classes/base-classes/actor.mdx#hasauthority) | Gets if this Actor was spawned by the client side |
+| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsBeingDestroyed`**](/scripting-reference/classes/base-classes/actor.mdx#isbeingdestroyed) | Gets if this Actor is being destroyed |
+| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsGravityEnabled`**](/scripting-reference/classes/base-classes/actor.mdx#isgravityenabled) | Gets whether gravity is enabled on this Actor |
+| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsVisible`**](/scripting-reference/classes/base-classes/actor.mdx#isvisible) | Gets whether this actor is Visible or not |
+| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsInWater`**](/scripting-reference/classes/base-classes/actor.mdx#isinwater) | Gets if this Actor is in water |
+| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsNetworkDistributed`**](/scripting-reference/classes/base-classes/actor.mdx#isnetworkdistributed) | Gets if this Actor is currently [Network Distributed](/core-concepts/scripting/authority-concepts.mdx#overriding-the-current-network-authority) |
+| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsValid`**](/scripting-reference/classes/base-classes/actor.mdx#isvalid) | Returns if this Actor is valid (i.e. not destroyed) |
+| <AuthorityType.Both /> | <BasicType.Table /> | [**`GetAttachedEntities`**](/scripting-reference/classes/base-classes/actor.mdx#getattachedentities) | Gets all Actors attached to this Actor |
+| <AuthorityType.Both /> | <BasicType.Any /> | [**`GetAttachedTo`**](/scripting-reference/classes/base-classes/actor.mdx#getattachedto) | Gets the Actor this Actor is attached to |
+| <AuthorityType.ClientOnly /> | <BasicType.Table /> | [**`GetBounds`**](/scripting-reference/classes/base-classes/actor.mdx#getbounds) | Gets this Actor's bounds |
+| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetCollision`**](/scripting-reference/classes/base-classes/actor.mdx#getcollision) | Gets this Actor's collision type |
+| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetID`**](/scripting-reference/classes/base-classes/actor.mdx#getid) | Gets the universal network ID of this Actor |
+| <AuthorityType.Both /> | <Structs.Vector /> | [**`GetLocation`**](/scripting-reference/classes/base-classes/actor.mdx#getlocation) | Gets this Actor's location in the game world |
+| <AuthorityType.Both /> | <Structs.Rotator /> | [**`GetRotation`**](/scripting-reference/classes/base-classes/actor.mdx#getrotation) | Gets this Actor's angle in the game world |
+| <AuthorityType.Both /> | <Structs.Vector /> | [**`GetForce`**](/scripting-reference/classes/base-classes/actor.mdx#getforce) | Gets this Actor's scale |
+| <AuthorityType.Both /> | <Structs.Vector /> | [**`GetScale`**](/scripting-reference/classes/base-classes/actor.mdx#getscale) | Gets this Actor's scale |
+| <AuthorityType.Both /> | <BasicType.String /> | [**`GetType`**](/scripting-reference/classes/base-classes/actor.mdx#gettype) | Gets the type of this Actor |
+| <AuthorityType.Both /> | <BasicType.Any /> | [**`GetValue`**](/scripting-reference/classes/base-classes/actor.mdx#getvalue) | Gets a value stored on this Actor at the given key |
+| <AuthorityType.ClientOnly /> | <Structs.Vector /> | [**`GetVelocity`**](/scripting-reference/classes/base-classes/actor.mdx#getvelocity) | Returns this Actor's current velocity |
+| <AuthorityType.ClientOnly /> | <BasicType.String /> | [**`AddActorTag`**](/scripting-reference/classes/base-classes/actor.mdx#addactortag) | Adds an Unreal Actor Tag to this Actor |
+| <AuthorityType.ClientOnly /> | <BasicType.String /> | [**RemoveActorTag`**](/scripting-reference/classes/base-classes/actor.mdx#removeactortag) | Remove an Unreal Actor Tag from this Actor |
+| <AuthorityType.ClientOnly /> | <BasicType.Table /> | [**`GetActorTags`**](/scripting-reference/classes/base-classes/actor.mdx#getactortags) | Gets all Unreal Actor Tags from this Actor |
+| <AuthorityType.Both /> | <BasicType.Function /> | [**`Subscribe`**](/scripting-reference/classes/base-classes/actor.mdx#subscribe) | Subscribes to an Event |
+| <AuthorityType.Both /> |  | [**`Unsubscribe`**](/scripting-reference/classes/base-classes/actor.mdx#unsubscribe) | Unsubscribes from an Event |

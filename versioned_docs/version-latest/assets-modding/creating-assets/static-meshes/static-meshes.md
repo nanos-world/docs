@@ -6,17 +6,17 @@ keywords: [static, mesh, prop, unreal]
 ---
 
 
-A Static Mesh is the most straightforward asset to be imported and used in nanos world, as they don’t have skeleton, their usage is very seamless. In nanos world Static Meshes are mainly used for [Props](./scripting-reference/classes/prop.mdx) and [StaticMesh](./scripting-reference/classes/static-mesh.mdx) entities.
+A Static Mesh is the most straightforward asset to be imported and used in nanos world, as they don’t have skeleton, their usage is very seamless. In nanos world Static Meshes are mainly used for [Props](/scripting-reference/classes/prop.mdx) and [StaticMesh](/scripting-reference/classes/static-mesh.mdx) entities.
 
 :::tip
 
-Please do not confuse with nanos world [Static Mesh](./scripting-reference/classes/static-mesh.mdx) Class!
+Please do not confuse with nanos world [Static Mesh](/scripting-reference/classes/static-mesh.mdx) Class!
 
 :::
 
 :::info
 
-Please refer to [Unreal's Static Mesh](./core-concepts/assets.md#types-of-assets) official definition and usage, also for information on how to import a .FBX into Unreal, how to optimize it and so on. There are also thousands of tutorials regarding importing a .FBX from Blender (or other Modeling Tool) into Unreal Engine.
+Please refer to [Unreal's Static Mesh](/core-concepts/assets.md#types-of-assets) official definition and usage, also for information on how to import a .FBX into Unreal, how to optimize it and so on. There are also thousands of tutorials regarding importing a .FBX from Blender (or other Modeling Tool) into Unreal Engine.
 
 :::
 
@@ -25,13 +25,13 @@ Please refer to [Unreal's Static Mesh](./core-concepts/assets.md#types-of-assets
 
 :::caution
 
-Attention! This page is old and this tutorial may be outdated! Please refer to [ADK](./assets-modding/creating-assets/adk-assets-development-kit.md) for a modern approach.
+Attention! This page is old and this tutorial may be outdated! Please refer to [ADK](/assets-modding/creating-assets/adk-assets-development-kit.md) for a modern approach.
 
 :::
 
 :::caution
 
-Please before continuing, make sure you have and are using the [ADK - Assets Development Kit](./assets-modding/creating-assets/adk-assets-development-kit.md).
+Please before continuing, make sure you have and are using the [ADK - Assets Development Kit](/assets-modding/creating-assets/adk-assets-development-kit.md).
 
 :::
 
@@ -61,7 +61,7 @@ After packaging your project, we will manually copy the exported folder from it,
 
 ![](/img/docs/static-meshes-06.jpg)
 
-And thats it! You must now just copy `MyPack/` folder inside your Server’s `Assets/` folder and create a configuration file called `Assets.toml` in `MyPack/` folder with the pattern described in [Assets Pack Configuration File](./core-concepts/assets.md#assets-pack-configuration). For each Asset you have in your Pack, you must add an entry in the configuration file.
+And thats it! You must now just copy `MyPack/` folder inside your Server’s `Assets/` folder and create a configuration file called `Assets.toml` in `MyPack/` folder with the pattern described in [Assets Pack Configuration File](/core-concepts/assets.md#assets-pack-configuration). For each Asset you have in your Pack, you must add an entry in the configuration file.
 
 For our Cube mesh, we just need to add an entry with the Path of the cube relative to our Assets folder in the pattern `[ASSET_NAME] = "[ASSET_PATH]"`:
 

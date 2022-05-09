@@ -22,4 +22,4 @@ It has only 4 bones behind the root, for each Wheel: `Wheel_Front_Left`, `Wheel_
 
 ## Exporting the Vehicle
 
-The Exporting process follows the usual process of exporting assets to nanos world. Please follow the [Importing Custom Assets](./assets-modding/creating-assets/importing-assets.md) Guide.
+The Exporting process follows the usual process of exporting assets to nanos world. Please follow the [Importing Custom Assets](/assets-modding/creating-assets/importing-assets.md) Guide.

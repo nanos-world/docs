@@ -8,7 +8,7 @@ keywords: [mannequin, character, skeleton, mesh, unreal]
 
 :::info
 
-nanos world Characters use Unreal’s Default Mannequin Skeleton. So any Skeletal Mesh which uses it by default will probably work in nanos world as a [Character](./scripting-reference/classes/character.mdx).
+nanos world Characters use Unreal’s Default Mannequin Skeleton. So any Skeletal Mesh which uses it by default will probably work in nanos world as a [Character](/scripting-reference/classes/character.mdx).
 
 :::
 
@@ -66,7 +66,7 @@ For this Guide, we will import a Skeletal Mesh from [Stylized Character Kit: Cas
 
 ![Stylized Character Kit from Unreal Engine Marketplace](/img/docs/character-meshes-04.jpg)
 
-Also, we will be using our [Assets Development Kit - ADK](./assets-modding/creating-assets/adk-assets-development-kit.md), make sure you downloaded it.
+Also, we will be using our [Assets Development Kit - ADK](/assets-modding/creating-assets/adk-assets-development-kit.md), make sure you downloaded it.
 
 
 ### Downloading the Asset Pack from Unreal Marketplace

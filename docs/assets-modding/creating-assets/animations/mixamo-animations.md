@@ -80,7 +80,7 @@ You can optionally select the option to delete the `/Initial` animations once is
 
 :::info
 
-Please before proceeding, make sure you read and downloaded our [Assets Development Kit](./assets-modding/creating-assets/adk-assets-development-kit.md).
+Please before proceeding, make sure you read and downloaded our [Assets Development Kit](/assets-modding/creating-assets/adk-assets-development-kit.md).
 
 :::
 
@@ -118,7 +118,7 @@ If you double click it you will be able to see it working!
 
 :::tip
 
-For more information on how to use **ADK** or Export Content in a faster way, please check [Assets Development Kit](./assets-modding/creating-assets/adk-assets-development-kit.md) and [Importing Assets](./assets-modding/creating-assets/importing-assets.md)!
+For more information on how to use **ADK** or Export Content in a faster way, please check [Assets Development Kit](/assets-modding/creating-assets/adk-assets-development-kit.md) and [Importing Assets](/assets-modding/creating-assets/importing-assets.md)!
 
 :::
 
@@ -140,7 +140,7 @@ Now that we have the compiled assets, we already can use it in nanos world! For 
 
 :::tip
 
-Please take a look into [Importing Assets](./assets-modding/creating-assets/importing-assets.md#exporting--cooking-your-assets) for how to create an Asset Pack.
+Please take a look into [Importing Assets](/assets-modding/creating-assets/importing-assets.md#exporting--cooking-your-assets) for how to create an Asset Pack.
 
 We are not going to cover all aspects of creating Asset Packs here for avoiding redundant information in the docs!
 

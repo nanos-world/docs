@@ -26,7 +26,7 @@ end)
 
 :::info
 
-Most events are triggered on both Client and Server sides, only a few rare exceptions which will be elicited by the [Availability](./core-concepts/scripting/authority-concepts.mdx#methods-and-events-availability).
+Most events are triggered on both Client and Server sides, only a few rare exceptions which will be elicited by the [Availability](/core-concepts/scripting/authority-concepts.mdx#methods-and-events-availability).
 
 :::
 
@@ -131,7 +131,7 @@ my_character:Unsubscribe("EnterVehicle", OnCharacterEnteredVehicle)
 
 ## Custom Events
 
-In nanos world, it is possible to define and call Custom Events. For that, please refer to [Events](./scripting-reference/static-classes/events.mdx) Static Class:
+In nanos world, it is possible to define and call Custom Events. For that, please refer to [Events](/scripting-reference/static-classes/events.mdx) Static Class:
 
 :::info
 

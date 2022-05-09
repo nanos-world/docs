@@ -11,7 +11,7 @@ import { Structs, BasicType, AuthorityType, Classes, ReferenceLink, Enums, Asset
 
 :::info
 
-🟦 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts.mdx).
+🟦 **Authority:** This class can only be spawned on [Server](/core-concepts/scripting/authority-concepts.mdx).
 
 ⏬ **Inheritance:** This class inherits from <Classes.Actor />, <Classes.Paintable /> and <Classes.Pickable />.
 
@@ -22,7 +22,7 @@ Weapons are fully customizable, all pieces of the weapon can be changed with imm
 
 :::info
 
-Please take a look at our Default’s Weapon package with all built-in Weapons already properly configured and ready to use: [https://github.com/nanos-world/nanos-world-weapons](https://github.com/nanos-world/nanos-world-weapons).
+Please take a look at our Default's Weapon package with all built-in Weapons already properly configured and ready to use: [https://github.com/nanos-world/nanos-world-weapons](https://github.com/nanos-world/nanos-world-weapons).
 
 :::
 
@@ -114,8 +114,8 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 |  | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- | :--- |
 | <AuthorityType.ServerOnly /> |  | [**`Reload`**](weapon#reload) | Forces this weapon to Reload |
-| <AuthorityType.ServerOnly /> |  | [**`SetAmmoBag`**](weapon#setammobag) | Sets this Weapon’s Ammo in the Bag |
-| <AuthorityType.ServerOnly /> |  | [**`SetAmmoClip`**](weapon#setammoclip) | Sets this Weapon’s Ammo in the Clip |
+| <AuthorityType.ServerOnly /> |  | [**`SetAmmoBag`**](weapon#setammobag) | Sets this Weapon's Ammo in the Bag |
+| <AuthorityType.ServerOnly /> |  | [**`SetAmmoClip`**](weapon#setammoclip) | Sets this Weapon's Ammo in the Clip |
 | <AuthorityType.ServerOnly /> |  | [**`SetAmmoSettings`**](weapon#setammosettings) | Auxiliary for setting and configuring ammo |
 | <AuthorityType.ServerOnly /> |  | [**`SetAnimationFire`**](weapon#setanimationfire) | Animation played by the Weapon when Firing |
 | <AuthorityType.ServerOnly /> |  | [**`SetAnimationCharacterFire`**](weapon#setanimationcharacterfire) | Animation played by the Character when Firing |
@@ -123,8 +123,8 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetBulletColor`**](weapon#setbulletcolor) | Set the Bullet Color |
 | <AuthorityType.ServerOnly /> |  | [**`SetBulletSettings`**](weapon#setbulletsettings) | Auxiliary for setting and configuring the Bullet |
 | <AuthorityType.ServerOnly /> |  | [**`SetCadence`**](weapon#setcadence) | Speed of shots |
-| <AuthorityType.ServerOnly /> |  | [**`SetClipCapacity`**](weapon#setclipcapacity) | Capacity of the Weapon’s Clip |
-| <AuthorityType.ServerOnly /> |  | [**`SetDamage`**](weapon#setdamage) | Base Weapon’s Damage |
+| <AuthorityType.ServerOnly /> |  | [**`SetClipCapacity`**](weapon#setclipcapacity) | Capacity of the Weapon's Clip |
+| <AuthorityType.ServerOnly /> |  | [**`SetDamage`**](weapon#setdamage) | Base Weapon's Damage |
 | <AuthorityType.ServerOnly /> |  | [**`SetHandlingMode`**](weapon#sethandlingmode) | Sets how the Character grabs this Weapon |
 | <AuthorityType.ServerOnly /> |  | [**`SetLeftHandTransform`**](weapon#setlefthandtransform) | Left Hand Offset |
 | <AuthorityType.ServerOnly /> |  | [**`SetMagazineMesh`**](weapon#setmagazinemesh) | The mesh used when the Character reloads the weapon. Will drop this Mesh as an animation effect. |
@@ -133,7 +133,7 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetParticlesShells`**](weapon#setparticlesshells) | Particle of the empty bullet flying from the weapon when shooting |
 | <AuthorityType.ServerOnly /> |  | [**`SetRightHandOffset`**](weapon#setrighthandoffset) | Offset of Right Hand. To position relative to the camera. |
 | <AuthorityType.ServerOnly /> |  | [**`SetSightFOVMultiplier`**](weapon#setsightfovmultiplier) | The FOV multiplier when ADS |
-| <AuthorityType.ServerOnly /> |  | [**`SetSightTransform`**](weapon#setsighttransform) | Offset applied to align player’s head to weapon’s sight and rotation applied on the weapon when ADS |
+| <AuthorityType.ServerOnly /> |  | [**`SetSightTransform`**](weapon#setsighttransform) | Offset applied to align player's head to weapon's sight and rotation applied on the weapon when ADS |
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundDry`**](weapon#setsounddry) | Sound when weapon has not bullet and try to shoot |
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundLoad`**](weapon#setsoundload) | Sound when Loading a magazine |
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundUnload`**](weapon#setsoundunload) | Sound when Unloading a magazine |
@@ -141,12 +141,12 @@ import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundAim`**](weapon#setsoundaim) | Sound when Aiming |
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundFire`**](weapon#setsoundfire) | Sound when Shooting |
 | <AuthorityType.ServerOnly /> |  | [**`SetSoundFireLastBullets`**](weapon#setsoundfirelastbullets) | Sound when Shooting last bullets |
-| <AuthorityType.ServerOnly /> |  | [**`SetSpread`**](weapon#setspread) | Base Weapon’s Spread (the higher the less precision) |
-| <AuthorityType.ServerOnly /> |  | [**`SetRecoil`**](weapon#setrecoil) | Base Weapon’s Recoil Multiplier |
+| <AuthorityType.ServerOnly /> |  | [**`SetSpread`**](weapon#setspread) | Base Weapon's Spread (the higher the less precision) |
+| <AuthorityType.ServerOnly /> |  | [**`SetRecoil`**](weapon#setrecoil) | Base Weapon's Recoil Multiplier |
 | <AuthorityType.ServerOnly /> |  | [**`SetUsageSettings`**](weapon#setusagesettings) | Sets if the Weapon can hold to keep firing and if it needs to release to fire |
 | <AuthorityType.ServerOnly /> |  | [**`SetWallbangSettings`**](weapon#setwallbangsettings) | Sets how the bullets will pass through walls |
-| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetAmmoBag`**](weapon#getammobag) | Gets this Weapon’s Ammo Bag |
-| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetAmmoClip`**](weapon#getammoclip) | Gets this Weapon’s Ammo Clip |
+| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetAmmoBag`**](weapon#getammobag) | Gets this Weapon's Ammo Bag |
+| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetAmmoClip`**](weapon#getammoclip) | Gets this Weapon's Ammo Clip |
 | <AuthorityType.Both /> | <BasicType.Number /> | [**`GetAmmoToReload`**](weapon#getammotoreload) |  |
 | <AuthorityType.Both /> | <BasicType.String /> | [**`GetAnimationCharacterFire`**](weapon#getanimationcharacterfire) |  |
 | <AuthorityType.Both /> | <BasicType.String /> | [**`GetAnimationFire`**](weapon#getanimationfire) |  |
@@ -250,12 +250,13 @@ my_weapon:SetAmmoSettings(ammo_clip, ammo_bag, ammo_to_reload, clip_capacity)
 > Animation played by the Weapon when Firing
 
 ```lua
-my_weapon:SetAnimationFire(animation_asset_path)
+my_weapon:SetAnimationFire(animation_asset_path, play_rate)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <AssetPath.Animation /> | **`animation_asset_path`** |  |  |
+| <BasicType.Number /> | **`play_rate`** | `1` |  |
 
 
 ### <AuthorityType.ServerOnly />`SetAnimationCharacterFire`
@@ -263,12 +264,13 @@ my_weapon:SetAnimationFire(animation_asset_path)
 > Animation played by the Character when Firing
 
 ```lua
-my_weapon:SetAnimationCharacterFire(animation_asset_path)
+my_weapon:SetAnimationCharacterFire(animation_asset_path, play_rate)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <AssetPath.Animation /> | **`animation_asset_path`** |  |  |
+| <BasicType.Number /> | **`play_rate`** | `1` |  |
 
 
 ### <AuthorityType.ServerOnly />`SetAnimationReload`
@@ -483,12 +485,14 @@ my_weapon:SetSightTransform(location, rotation)
 > Sound when weapon has not bullet and try to shoot
 
 ```lua
-my_weapon:SetSoundDry(sound_asset_path)
+my_weapon:SetSoundDry(sound_asset_path, volume, pitch)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <AssetPath.Sound /> | **`sound_asset_path`** |  |  |
+| <BasicType.Number /> | **`volume`** | `1` |  |
+| <BasicType.Number /> | **`pitch`** | `1` |  |
 
 
 ### <AuthorityType.ServerOnly />`SetSoundLoad`
@@ -496,12 +500,14 @@ my_weapon:SetSoundDry(sound_asset_path)
 > Sound when Loading a magazine
 
 ```lua
-my_weapon:SetSoundLoad(sound_asset_path)
+my_weapon:SetSoundLoad(sound_asset_path, volume, pitch)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <AssetPath.Sound /> | **`sound_asset_path`** |  |  |
+| <BasicType.Number /> | **`volume`** | `1` |  |
+| <BasicType.Number /> | **`pitch`** | `1` |  |
 
 
 ### <AuthorityType.ServerOnly />`SetSoundUnload`
@@ -509,12 +515,14 @@ my_weapon:SetSoundLoad(sound_asset_path)
 > Sound when Unloading a magazine
 
 ```lua
-my_weapon:SetSoundUnload(sound_asset_path)
+my_weapon:SetSoundUnload(sound_asset_path, volume, pitch)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <AssetPath.Sound /> | **`sound_asset_path`** |  |  |
+| <BasicType.Number /> | **`volume`** | `1` |  |
+| <BasicType.Number /> | **`pitch`** | `1` |  |
 
 
 ### <AuthorityType.ServerOnly />`SetSoundZooming`
@@ -522,12 +530,14 @@ my_weapon:SetSoundUnload(sound_asset_path)
 > Sound when Zooming
 
 ```lua
-my_weapon:SetSoundZooming(sound_asset_path)
+my_weapon:SetSoundZooming(sound_asset_path, volume, pitch)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <AssetPath.Sound /> | **`sound_asset_path`** |  |  |
+| <BasicType.Number /> | **`volume`** | `1` |  |
+| <BasicType.Number /> | **`pitch`** | `1` |  |
 
 
 ### <AuthorityType.ServerOnly />`SetSoundAim`
@@ -535,12 +545,14 @@ my_weapon:SetSoundZooming(sound_asset_path)
 > Sound when Aiming
 
 ```lua
-my_weapon:SetSoundAim(sound_asset_path)
+my_weapon:SetSoundAim(sound_asset_path, volume, pitch)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <AssetPath.Sound /> | **`sound_asset_path`** |  |  |
+| <BasicType.Number /> | **`volume`** | `1` |  |
+| <BasicType.Number /> | **`pitch`** | `1` |  |
 
 
 ### <AuthorityType.ServerOnly />`SetSoundFire`
@@ -548,12 +560,14 @@ my_weapon:SetSoundAim(sound_asset_path)
 > Sound when Shooting
 
 ```lua
-my_weapon:SetSoundFire(sound_asset_path)
+my_weapon:SetSoundFire(sound_asset_path, volume, pitch)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <AssetPath.Sound /> | **`sound_asset_path`** |  |  |
+| <BasicType.Number /> | **`volume`** | `1` |  |
+| <BasicType.Number /> | **`pitch`** | `1` |  |
 
 
 ### <AuthorityType.ServerOnly />`SetSoundFireLastBullets`

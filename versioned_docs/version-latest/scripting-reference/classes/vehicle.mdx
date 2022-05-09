@@ -14,7 +14,7 @@ import { Structs, BasicType, AuthorityType, Classes, ReferenceLink, Enums, Asset
 
 :::info
 
-🟦 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts.mdx).
+🟦 **Authority:** This class can only be spawned on [Server](/core-concepts/scripting/authority-concepts.mdx).
 
 ⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />.
 
@@ -140,6 +140,8 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 ### <AuthorityType.Both />`AddStaticMeshAttached`
 
 > Spawns and Attaches a StaticMesh into this Character in a Socket with relative Location and Rotation. Uses a custom ID to be used for removing it further
+> 
+> For customizing the Materials specific of a StaticMeshAttached, please use the following syntax as the `id` in the <Classes.Paintable /> methods: `attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]`, where [ATTACHABLE_ID] is the ID of the Attachable, and [PARAMETER_NAME] is the name of the parameter you want to change.
 
 ```lua
 my_vehicle:AddStaticMeshAttached(id, static_mesh_path, socket, relative_location, relative_rotation)

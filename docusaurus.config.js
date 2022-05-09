@@ -59,6 +59,16 @@ module.exports = {
           position: 'left'
         },
         {
+          to: '/feedback/',
+          label: 'feedback',
+          position: 'left'
+        },
+        {
+          href: 'https://issues.nanos.world',
+          label: 'bugs',
+          position: 'left'
+        },
+        {
           href: 'https://auth.nanos.io',
           label: 'account',
           position: 'left'
@@ -84,7 +94,7 @@ module.exports = {
           'aria-label': 'Discord',
         },
         {
-          href: 'https://issues.nanos.world',
+          href: 'https://github.com/nanos-world',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',

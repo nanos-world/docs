@@ -10,7 +10,7 @@ Default nanos world Materials and it's Parameters.
 
 ## Template Materials
 
-nanos world provides several built-in template materials which can be easily used and customized with [Paintable](./scripting-reference/classes/base-classes/paintable.mdx) methods.
+nanos world provides several built-in template materials which can be easily used and customized with [Paintable](/scripting-reference/classes/base-classes/paintable.mdx) methods.
 
 :::info
 
@@ -30,14 +30,14 @@ For more information regarding **Material Types** and **Blend Modes**, please re
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| [Color](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialcolorparameter) | **`Tint`** | `Color.WHITE` | Affects `Base Color` input | **Tint** multiplies with **Texture** parameter to generate the final color |
-| [Texture](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialtextureparameter) | **`Texture`** | White Texture | Image which multiplies with **Tint** to generate the final color |
-| [Texture](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialtextureparameter) | **`Normal`** | UP Normal Map `Vector(0.5, 0.5, 1)` | Image which affects how Light reflects on the object |
-| [​​​Color​](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialcolorparameter) | **`Emissive`** | `Color.BLACK` | Affects `Emissive` input, high values will cause bloom effect |
-| [Scalar​](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Metallic`** | `0` | Affects `Metallic `input - goes from 0 to 1 |
-| [Scalar](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Specular`** | `0.5` | Affects `Specular` input - goes from 0 to 1 |
-| [Scalar](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Roughness`** | `0.65` | Affects `Roughness` input - goes from 0 to 1 |
-| [Scalar](./scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Opacity`** | `0` | Affects `Opacity` and `Opacity Mask` inputs - goes from 0 to 1 <br />**Opacity** multiplies with **Texture** Alpha Channel to generate the final opacity |
+| [Color](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialcolorparameter) | **`Tint`** | `Color.WHITE` | Affects `Base Color` input | **Tint** multiplies with **Texture** parameter to generate the final color |
+| [Texture](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialtextureparameter) | **`Texture`** | White Texture | Image which multiplies with **Tint** to generate the final color |
+| [Texture](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialtextureparameter) | **`Normal`** | UP Normal Map `Vector(0.5, 0.5, 1)` | Image which affects how Light reflects on the object |
+| [​​​Color​](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialcolorparameter) | **`Emissive`** | `Color.BLACK` | Affects `Emissive` input, high values will cause bloom effect |
+| [Scalar​](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Metallic`** | `0` | Affects `Metallic `input - goes from 0 to 1 |
+| [Scalar](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Specular`** | `0.5` | Affects `Specular` input - goes from 0 to 1 |
+| [Scalar](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Roughness`** | `0.65` | Affects `Roughness` input - goes from 0 to 1 |
+| [Scalar](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Opacity`** | `0` | Affects `Opacity` and `Opacity Mask` inputs - goes from 0 to 1 <br />**Opacity** multiplies with **Texture** Alpha Channel to generate the final opacity |
 
 :::tip
 
@@ -67,7 +67,7 @@ Material which renders objects as Wireframe. Supported parameter: **Tint** and *
 
 :::tip
 
-**Note**: All those Materials in this page are already included in the base game in the [Default nanos world Asset Pack](./assets-modding/default-asset-pack/default-asset-pack.md), you can reference them like that: **`nanos-world::M_NanosMasked`.**
+**Note**: All those Materials in this page are already included in the base game in the [Default nanos world Asset Pack](/assets-modding/default-asset-pack/default-asset-pack.md), you can reference them like that: **`nanos-world::M_NanosMasked`.**
 
 :::
 
@@ -86,7 +86,7 @@ Material which renders objects as Wireframe. Supported parameter: **Tint** and *
 
 ## Physical Materials
 
-[Physical Materials](https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/Physics/PhysicalMaterials/) are materials which define Physical properties of an object. With [Paintable.SetPhysicalMaterial()](./scripting-reference/classes/base-classes/paintable.mdx#setphysicalmaterial) you can change the default physical material of an Entity.
+[Physical Materials](https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/Physics/PhysicalMaterials/) are materials which define Physical properties of an object. With [Paintable.SetPhysicalMaterial()](/scripting-reference/classes/base-classes/paintable.mdx#setphysicalmaterial) you can change the default physical material of an Entity.
 
 Besides the Physical Properties of an object (friction, restitution, density, etc), Physical Materials are used in nanos world for applying special effects and sounds when events happen. For example on Footsteps Effects, Bullets Impacts or Objects Hits.
 
@@ -99,7 +99,7 @@ You also can create your own Physical Materials and use them in-game! Just remem
 :::
 
 
-|  | Friction | Restitution | Density | [Surface Type](./scripting-reference/glossary/enums.md#surfacetype) |
+|  | Friction | Restitution | Density | [Surface Type](/scripting-reference/glossary/enums.md#surfacetype) |
 | :--- | :--- | :--- | :--- | :--- |
 | **PM_Concrete** | `0.9` | `0.3` | `2.0` | `SurfaceType.Concrete` |
 | **PM_Flesh** | `0.7` | `0.3` | `1.0` | `SurfaceType.Flesh` |

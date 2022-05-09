@@ -11,7 +11,7 @@ How to add a basic HUD using Render’s Canvas features, to display the characte
 
 :::tip
 
-You can also create complete and complex UIs using HTML + JavaScript + CSS, check it out: [Basic HUD (HTML)](./getting-started/tutorials-and-examples/basic-hud-html.md).
+You can also create complete and complex UIs using HTML + JavaScript + CSS, check it out: [Basic HUD (HTML)](/getting-started/tutorials-and-examples/basic-hud-html.md).
 
 :::
 

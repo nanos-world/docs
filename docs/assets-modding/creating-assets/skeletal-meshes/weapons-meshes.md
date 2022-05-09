@@ -52,7 +52,7 @@ And right click on any bone and select `AddSocket`, this will create a **Socket*
 
 ### `muzzle`
 
-The **muzzle** Socket is where the [Particle Barrel](./scripting-reference/classes/weapon.mdx#setparticlesbarrel) will be attached. So create a socket and place it in the muzzle of the weapon:
+The **muzzle** Socket is where the [Particle Barrel](/scripting-reference/classes/weapon.mdx#setparticlesbarrel) will be attached. So create a socket and place it in the muzzle of the weapon:
 
 * Pointing Red Axis (X) towards.
 
@@ -61,7 +61,7 @@ The **muzzle** Socket is where the [Particle Barrel](./scripting-reference/class
 
 ### `shell_eject`
 
-The **shell_eject** Socket is where the [Particle Shells](./scripting-reference/classes/weapon.mdx#setparticlesshells) will be attached. So create a socket and place it in shells eject of the weapon:
+The **shell_eject** Socket is where the [Particle Shells](/scripting-reference/classes/weapon.mdx#setparticlesshells) will be attached. So create a socket and place it in shells eject of the weapon:
 
 * Pointing Red Axis (X) outwards where the shell will be eject to.
 * And Pointing Green Axis (Y) the shell direction.
@@ -105,4 +105,4 @@ And voila! If you press Play, you will notice it will loop playing your animatio
 
 ## Exporting the Weapon
 
-The Exporting process follows the usual process of exporting assets to nanos world. Please follow the [Importing Custom Assets](./assets-modding/creating-assets/importing-assets.md) Guide.
+The Exporting process follows the usual process of exporting assets to nanos world. Please follow the [Importing Custom Assets](/assets-modding/creating-assets/importing-assets.md) Guide.

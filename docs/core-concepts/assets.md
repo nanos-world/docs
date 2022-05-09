@@ -113,11 +113,11 @@ Some methods require some specific Type of Assets to load, attempting to load an
 
 ## nanos world Default Asset Pack
 
-nanos world provides a default  Asset Pack which is already included in the base game. Please refer to [nanos world Default Asset Pack](./assets-modding/default-asset-pack/default-asset-pack.md) for more information.
+nanos world provides a default  Asset Pack which is already included in the base game. Please refer to [nanos world Default Asset Pack](/assets-modding/default-asset-pack/default-asset-pack.md) for more information.
 
 
 :::tip
 
-To create your own Asset Pack, please refer to [Importing Assets](./assets-modding/creating-assets/importing-assets.md)
+To create your own Asset Pack, please refer to [Importing Assets](/assets-modding/creating-assets/importing-assets.md)
 
 :::

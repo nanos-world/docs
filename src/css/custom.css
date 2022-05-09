@@ -42,6 +42,7 @@
   --ifm-font-family-base: Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 
   --ifm-color-info-contrast-background: #fefefe;
+  --site-color-feedback-background: #fff;
 }
 
 html[data-theme="dark"] {
@@ -64,6 +65,8 @@ html[data-theme="dark"] {
 
   --ifm-color-info-dark: #5fa0ff;
   --ifm-color-success-dark: #36ad99;
+
+  --site-color-feedback-background: #f0f8ff;
 }
 
 html[data-theme='dark'] .docusaurus-highlight-code-line {

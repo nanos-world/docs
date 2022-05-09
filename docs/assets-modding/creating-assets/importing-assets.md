@@ -11,7 +11,7 @@ Currently all our workflow for exporting content is through Unreal Engine as the
 
 :::caution
 
-Please before continuing, make sure you read [Assets](./core-concepts/assets.md) article!
+Please before continuing, make sure you read [Assets](/core-concepts/assets.md) article!
 
 :::
 

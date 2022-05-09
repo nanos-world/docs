@@ -100,7 +100,7 @@ Although this still works, it is highly recommended to convert your **Asset Pack
 
 We don't have type `library` anymore, we now have `script`, `game-mode` and `loading-screen`. All your Packages has been replaced with `script` by default. If your Package is a full game, please set it `game-mode`.
 
-> Please refer to [Packages](./core-concepts/packages/packages-guide.md) for more information.
+> Please refer to [Packages](/core-concepts/packages/packages-guide.md) for more information.
 
 ### 6. Timer has a new signature and methods
 
@@ -108,7 +108,7 @@ We don't have type `library` anymore, we now have `script`, `game-mode` and `loa
 
 ### 7. LoadingScreen folder has been replaced with Package `loading-screen`
 
-> Please refer to [Loading Screen](./core-concepts/packages/loading-screen.md) for more information.
+> Please refer to [Loading Screen](/core-concepts/packages/loading-screen.md) for more information.
 
 ## Converting your Code with Regex
 

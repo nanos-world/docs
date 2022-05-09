@@ -40,9 +40,9 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | **`announce`** | Whether to announce or not in the Server List |
 | **`tick_rate`** | Server Tick in ms. We recommend leaving it 33 |
 | **`log_level`** | Which Log level to output |
-| **`game_mode`** | [game-mode](./core-concepts/packages/packages-guide.md#package-types) package to load -  you can only load one game-mode at once. |
-| **`loading_screen`** | [loading-screen](./core-concepts/packages/loading-screen.md) package to load - you can only load one loading-screen at once. |
-| **`packages`** | [script](./core-concepts/packages/packages-guide.md#package-types) packages to load |
+| **`game_mode`** | [game-mode](/core-concepts/packages/packages-guide.md#package-types) package to load -  you can only load one game-mode at once. |
+| **`loading_screen`** | [loading-screen](/core-concepts/packages/loading-screen.md) package to load - you can only load one loading-screen at once. |
+| **`packages`** | [script](/core-concepts/packages/packages-guide.md#package-types) packages to load |
 | **`assets`** | Additional assets to force to load |
 | **`map`** | Which map to load |
 | **`token`** | Server Token used for authorize downloads through CLI |
@@ -116,7 +116,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 
 ### One-liner Server Configuration
 
-With Command Line Parameters and [Command Line Interface (CLI)](./core-concepts/server-manual/nanos-world-cli.mdx), it is also possible to automate the full server installation, here's an example:
+With Command Line Parameters and [Command Line Interface (CLI)](/core-concepts/server-manual/nanos-world-cli.mdx), it is also possible to automate the full server installation, here's an example:
 
 ```shell title="Shell/Linux"
 # Installs/Updates the server through SteamCMD

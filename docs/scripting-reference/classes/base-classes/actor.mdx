@@ -272,7 +272,7 @@ entity:SetLocation(vector)
 
 > Sets the Player to have network authority over this Actor. This Player will be manually assigned to handle this Actor's physics and share its location with other clients. The authority assignment will still be overridden by the game automatically
 >
-> Please refer to [Network Authority](./core-concepts/scripting/authority-concepts.mdx#network-authority) for more information
+> Please refer to [Network Authority](/core-concepts/scripting/authority-concepts.mdx#network-authority) for more information
 
 ```lua
 entity:SetNetworkAuthority(player)
@@ -339,7 +339,7 @@ entity:SetScale(vector)
 
 > Sets a value in this Actor, which can be accessed by any package (optionally sync on clients if called from server)
 >
-> Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
+> Please refer to [Entity Values](/core-concepts/scripting/entity-values.mdx) for more information
 
 ```lua
 entity:SetValue(key, value, sync_on_clients)
@@ -583,7 +583,7 @@ entity:GetType()
 
 ### <AuthorityType.Both />`GetValue`
 
-> Gets a value stored on this Actor at the given key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
+> Gets a value stored on this Actor at the given key. Please refer to [Entity Values](/core-concepts/scripting/entity-values.mdx) for more information
 >
 > Returns <BasicType.Any />
 
