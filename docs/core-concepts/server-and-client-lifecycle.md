@@ -1,9 +1,9 @@
 ---
+title: Server & Client Lifecycle
 description: How nanos word framework works
 tags: [hosting]
 ---
 
-# Server & Client Lifecycle
 
 How nanos word framework works
 

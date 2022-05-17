@@ -1,11 +1,9 @@
 ---
-description: >-
-  A container for rotation information. All rotation values are stored in
-  degrees.
+title: Rotator
+description: A container for rotation information. All rotation values are stored in degrees.
 tags: [utility-class]
 ---
 
-# Rotator
 
 A container for rotation information. All rotation values are stored in degrees.
 
@@ -48,6 +46,8 @@ local new_rotator = Rotator(-90, 153, 24.5)
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
 | <Structs.Vector /> | **`GetForwardVector()`** | Get the forward (X) unit direction vector from this component, in world space. |
+| <Structs.Vector /> | **`GetRightVector()`** | Get the right (Y) unit direction vector from this component, in world space. |
+| <Structs.Vector /> | **`GetUpVector()`** | Get the up (Z) unit direction vector from this component, in world space. |
 | <Structs.Vector /> | **`RotateVector(vector)`** | Rotate a vector rotated by this rotator. |
 |  | **`Normalize()`** | In-place normalize, removes all winding and creates the “shortest route” rotation. |
 | <Structs.Vector /> | **`UnrotateVector(vector)`** | Returns the vector rotated by the inverse of this rotator. |

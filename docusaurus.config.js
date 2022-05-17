@@ -59,6 +59,16 @@ module.exports = {
           position: 'left'
         },
         {
+          to: '/feedback/',
+          label: 'feedback',
+          position: 'left'
+        },
+        {
+          href: 'https://issues.nanos.world',
+          label: 'bugs',
+          position: 'left'
+        },
+        {
           href: 'https://auth.nanos.io',
           label: 'account',
           position: 'left'
@@ -84,7 +94,7 @@ module.exports = {
           'aria-label': 'Discord',
         },
         {
-          href: 'https://issues.nanos.world',
+          href: 'https://github.com/nanos-world',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
@@ -109,6 +119,7 @@ module.exports = {
       apiKey: 'b53f482139534494c9253752259660ed',
       indexName: 'nanos',
       contextualSearch: true,
+      aggregateContent: true,
     },
   },
   presets: [
@@ -125,7 +136,7 @@ module.exports = {
               label: 'bleeding-edge 🩸',
             },
             latest: {
-              label: 'latest - a1.2.0 ⚖️',
+              label: 'latest - a1.7.0 ⚖️',
             }
           },
         },
@@ -143,6 +154,9 @@ module.exports = {
       },
     ],
   ],
+  themes: [
+    '@saucelabs/theme-github-codeblock',
+  ],
   plugins: [
     'plugin-image-zoom',
   ],
@@ -150,8 +164,7 @@ module.exports = {
     {
       src: 'https://pac.nanos.io/js/script.js',
       async: true,
-      defer: true,
       "data-domain": "docs.nanos.world"
-    },
+    }
   ]
 };

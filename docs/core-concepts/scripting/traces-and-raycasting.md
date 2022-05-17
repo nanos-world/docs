@@ -1,10 +1,10 @@
 ---
+title: Traces & Raycasting
 description: How to use Traces & Raycasting to gather world information in runtime
 sidebar_position: 7
 tags: [scripting]
 ---
 
-# Traces & Raycasting
 
  How to use Traces & Raycasting to gather world information in runtime.
 
@@ -18,10 +18,10 @@ The following example will show you how to get what and where the player is look
 -- Traces at each 100ms
 Timer.SetInterval(function()
     -- Gets the middle of the screen
-    local viewport_2D_center = Render.GetViewportSize() / 2
+    local viewport_2D_center = Client.GetViewportSize() / 2
 
     -- Deprojects to get the 3D Location for the middle of the screen
-    local viewport_3D = Render.Deproject(viewport_2D_center)
+    local viewport_3D = Client.DeprojectScreenToWorld(viewport_2D_center)
 
     -- Makes a trace with the 3D Location and it's direction multiplied by 5000
     -- Meaning it will trace 5000 units in that direction
@@ -54,7 +54,7 @@ end, 100)
 
 :::tip
 
-As you could see, we can pass bit-wise operators to Trace for more than one [CollisionChannel](./scripting-reference/glossary/enums.md#collisionchannel) at once! Use `|` between the **CollisionChannels** to achieve that.
+As you could see, we can pass bit-wise operators to Trace for more than one [CollisionChannel](/scripting-reference/glossary/enums.md#collisionchannel) at once! Use `|` between the **CollisionChannels** to achieve that.
 
 :::
 

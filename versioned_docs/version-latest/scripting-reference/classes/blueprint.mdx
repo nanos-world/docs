@@ -1,0 +1,82 @@
+---
+title: 🔣 Blueprint
+description: A Blueprint Class allows spawning any Unreal Blueprint Actor in nanos world.
+sidebar_position: 0
+tags: [class, client]
+---
+
+
+A Blueprint Class allows spawning any Unreal Blueprint Actor in nanos world.
+
+import { Structs, BasicType, AuthorityType, Classes, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
+
+![](/img/docs/blueprint.png)
+
+:::info
+
+🟦🟧 **Authority:** This class can be spawned on both [Client](/core-concepts/scripting/authority-concepts.mdx) and [Server](/core-concepts/scripting/authority-concepts.mdx) (if you spawn it on client, it won't be synchronized with other players).
+
+⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />.
+
+:::
+
+
+## Usage
+
+```lua title=Index.lua
+local my_blueprint = Blueprint(
+    Vector(200, 200, 200), -- location
+    Rotator(0, 0, 0), -- rotation
+    "nanos-world::BP_AwesomeDoor" -- blueprint
+)
+```
+
+:::tip
+
+If your Actor Blueprint was spawned on the Server, it will be automatically synchronized with other players using the nanos world Network Authority system! It follows the same rules as all other entities!
+
+:::
+
+:::note
+
+Currently it is only possible to communicate in one-way with the Blueprint (Scripting -> Blueprint). We didn't find a way to have the inverse communication *hopefully yet*.
+
+:::
+
+
+## Constructor Parameters
+
+| **Type** | **Name** | **Default** | **Description** |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |  |
+| <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
+| <AssetPath.Blueprint /> | **`blueprint_path`** | ` ` |
+
+
+## Functions
+
+import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
+import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-paintable-functions.mdx';
+
+<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
+<details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
+
+
+| **Returns** | **Name** | **Description** |
+| :--- | :--- | :--- |
+|  | [**`CallBlueprintEvent`**](database#callblueprintevent) | Calls a Blueprint Event or Function |
+
+
+### `CallBlueprintEvent`
+
+> Calls a Blueprint Event or Function
+
+```lua
+my_blueprint:CallBlueprintEvent(event_name, parameters...)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`event_name`** |  | Event or Function name |
+| <BasicType.Any /> | **`parameters...`** | `nil` | Sequence of parameters to call |
+

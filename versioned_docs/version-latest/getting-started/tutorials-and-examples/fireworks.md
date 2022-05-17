@@ -1,11 +1,11 @@
 ---
+title: Fireworks
 description: >-
   How to create a Firework-shooter weapon using the Fireworks Particle Effects
   Asset Pack from our Vault!
 tags: [tutorial-example, scripting, assets]
 ---
 
-# Fireworks
 
 How to create a Firework-shooter weapon using the Fireworks Particle Effects Asset Pack from our Vault!
 
@@ -78,9 +78,9 @@ weapon:Subscribe("Fire", function(weap, shooter)
     -- Impulses the Projectile forward
     prop:AddImpulse(forward_vector * Vector(50000), true)
 
-    -- Sets the shooter to be the Network Authority of this Projectile for the next 1000 miliseconds
-    -- This way only the shooter will be reponsible to handle the physics of this object (for 1 second)
-    prop:SetNetworkAuthority(shooter:GetPlayer(), 1000)
+    -- Sets the shooter to be the Network Authority of this Projectile
+    -- This way only the shooter will be reponsible to handle the physics of this object
+    prop:SetNetworkAuthority(shooter:GetPlayer())
 
     -- Calls the client to spawn the 'Launch' sound
     Events.BroadcastRemote("SpawnFireworkSound", particle)

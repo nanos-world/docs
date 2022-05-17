@@ -1,9 +1,9 @@
 ---
+title: ⏱️ Timer
 description: Execute of code at specified time intervals
 tags: [static-class]
 ---
 
-# ⏱️ Timer
 
 Execute of code at specified time intervals
 
@@ -13,7 +13,7 @@ import { Structs, BasicType, AuthorityType, Classes } from '@site/docs/component
 
 :::info
 
-🟦🟧 **Authority:** This can be accessed on both [Client](./core-concepts/scripting/authority-concepts.mdx) and [Server](./core-concepts/scripting/authority-concepts.mdx).
+🟦🟧 **Authority:** This can be accessed on both [Client](/core-concepts/scripting/authority-concepts.mdx) and [Server](/core-concepts/scripting/authority-concepts.mdx).
 
 🗿 **Static Class:** This is a Static Class. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 
@@ -35,6 +35,10 @@ The shortest interval possible is equal to the local Tick Rate - usually at 33ms
 |  | [**`ClearInterval`**](timer#clearinterval) | Stops the execution of the function specified in SetInterval() |
 |  | [**`Bind`**](timer#bind) | Binds a Timer to any Actor. The timer will be automatically cleared when the Actor is destroyed |
 |  | [**`IsValid`**](timer#isvalid) | Checks if a Timer is currently active or waiting to be triggered |
+| <BasicType.Number /> | [**`GetElapsedTime`**](timer#getelapsedtime) | Returns the time elapsed since the last tick |
+| <BasicType.Number /> | [**`GetRemainingTime`**](timer#getremainingtime) | Returns the time remaining to the next tick |
+|  | [**`Pause`**](timer#pause) | Pauses the Timer |
+|  | [**`Resume`**](timer#resume) | Resumes the Timer |
 
 
 ### `SetTimeout`
@@ -53,7 +57,7 @@ end, 3000, "hello", 123)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Function /> | **`callback`** |  | The callback that will be executed |
-| <BasicType.Number /> | **`milliseconds`** | **`0`** | The number of milliseconds to wait before executing the code |
+| <BasicType.Number /> | **`milliseconds`** | **`0`** | The time in milliseconds to wait before executing the function |
 | <BasicType.Any /> | **`parameters...`** |  | Additional parameters to pass to the function |
 
 
@@ -73,13 +77,13 @@ end, 2000, "world", 456)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.Function /> | **`callback`** |  | The callback that will be executed |
-| <BasicType.Number /> on how often to execute the code |
+| <BasicType.Number /> | **`milliseconds`** | **`0`** | The time in milliseconds the timer should delay in between executions of the specified function |
 | <BasicType.Any /> | **`parameters...`** |  | Additional parameters to pass to the function |
 
 
 ### `ClearTimeout`
 
-> Stops the execution of the function specified in SetTimeout() The ID value returned by SetTimeout() is used as the parameter for the ClearTimeout() method
+> Stops the execution of the function specified in SetTimeout()
 
 
 ```lua
@@ -92,12 +96,12 @@ Timer.ClearTimeout(my_timeout)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Number /> method |
+| <BasicType.Number /> | **`interval_id`** |  | The ID value returned by SetTimeout() is used as the parameter for this method |
 
 
 ### `ClearInterval`
 
-> Stops the execution of the function specified in SetInterval() The ID value returned by SetInterval() is used as the parameter for the ClearInterval() method
+> Stops the execution of the function specified in SetInterval()
 
 
 ```lua
@@ -110,12 +114,13 @@ Timer.ClearInterval(my_interval)
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.Number /> method |
+| <BasicType.Number /> | **`interval_id`** |  | The ID value returned by SetInterval() is used as the parameter for this method |
 
 
 ### `Bind`
 
-> Binds a Timer to any Actor. The timer will be automatically cleared when the Actor is destroyed
+> Binds a Timer to any Actor.
+> The timer will be automatically cleared when the Actor is destroyed
 
 ```lua
 local character = Character(...)
@@ -145,6 +150,58 @@ Timer.Bind(my_timer, character)
 
 ```lua
 Timer.IsValid(timer_id)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`timer_id`** |  | The Timer ID |
+
+
+### `GetElapsedTime`
+
+> Returns the time elapsed since the last tick
+
+```lua
+local elapsed_time = Timer.GetElapsedTime(timer_id)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`timer_id`** |  | The Timer ID |
+
+
+### `GetRemainingTime`
+
+> Returns the time remaining to the next tick
+
+```lua
+local remaining_time = Timer.GetRemainingTime(timer_id)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`timer_id`** |  | The Timer ID |
+
+
+### `Pause`
+
+> Pauses the Timer
+
+```lua
+Timer.Pause(timer_id)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`timer_id`** |  | The Timer ID |
+
+
+### `Resume`
+
+> Resumes the Timer
+
+```lua
+Timer.Resume(timer_id)
 ```
 
 | Type | Parameter | Default Value | Description |

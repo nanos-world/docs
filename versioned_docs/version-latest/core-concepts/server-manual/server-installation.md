@@ -1,10 +1,10 @@
 ---
+title: Server Installation
 description: Creating servers in nanos world is very simple and straightforward, just a few steps and you have your server up and ready!
 sidebar_position: 1
 tags: [hosting]
 ---
 
-# Server Installation
 
 Creating servers in nanos world is very simple and straightforward, just a few steps and you have your server up and ready!
 
@@ -48,15 +48,7 @@ After downloaded, run `steamcmd` executable, it will update and you will enter i
 Steam>
 ```
 
-### 2. Login
-
-The next step is to login on SteamCMD, you can login anonymously with:
-
-```bash
-Steam> login anonymous
-```
-
-### 3. Specify an installation directory
+### 2. Specify an installation directory
 
 You can optionally define an installation folder to install nanos world server:
 
@@ -64,17 +56,25 @@ You can optionally define an installation folder to install nanos world server:
 Steam> force_install_dir c:\nanos-world-server\
 ```
 
-### 4. Download nanos world Server
+### 3. Login
 
-You can then install nanos world server using it's app id: `1686460`:
+The next step is to login on SteamCMD, you can login anonymously with:
 
 ```bash
-Steam> app_update 1686460
+Steam> login anonymous
+```
+
+### 4. Download nanos world Server
+
+You can then install nanos world server using it's app id: `1936830`:
+
+```bash
+Steam> app_update 1936830
 ```
 
 :::tip
 
-You can run `app_update 1686460` to update your nanos world server to the latest version as well!
+You can run `app_update 1936830` to update your nanos world server to the latest version as well!
 
 :::
 
@@ -93,7 +93,7 @@ On Linux, you must start the server using the Shell Script `./NanosWorldServer.s
 You can optionally use a one-liner command to install/update nanos world server:
 
 ```bash
-steamcmd.exe +login anonymous +app_update 1686460 validate +quit
+steamcmd.exe +login anonymous +app_update 1936830 validate +quit
 ```
 
 :::tip
@@ -107,13 +107,13 @@ Finished!, you can now proceed to the next steps to configure your nanos world s
 To install the `bleeding-edge` version of the server, you will need to specify it's branch when installing:
 
 ```bash
-Steam> app_update 1686460 -beta bleeding-edge
+Steam> app_update 1936830 -beta bleeding-edge
 ```
 
 or
 
 ```bash
-steamcmd.exe +login anonymous +app_update "1686460 -beta bleeding-edge" validate +quit
+steamcmd.exe +login anonymous +app_update "1936830 -beta bleeding-edge" validate +quit
 ```
 
 ## Linux Debian 10 Installation
@@ -156,6 +156,79 @@ We will install `libstdc++6` testing package to the server, it will allow the se
 ```bash
 sudo apt-get --target-release testing install libstdc++6
 ```
+
+:::tip
+
+Finished!, you can now proceed to the next steps to configure your nanos world server.
+
+:::
+
+## Linux ARM (raspberry & more)
+
+:::warning
+
+EXPERIMENTAL : Use at your own risk!, unstable
+
+:::
+
+Nanos world server is not officially supported on Arm, but if you really really really want your server to be running on arm platform such as a raspberry, rockpro64, ... then you can !
+
+We will need 2 emulators :
+
+* box64 for Nanos World server : https://github.com/ptitSeb/box64
+* box86 for steam : https://github.com/ptitSeb/box86
+
+You must build & install these emulators on your board.
+box86 is optional if you don't want to use steamcmd to download & update the server
+
+Follow CAREFULLY the instructions on the emulators repository, commands are different in function of the board.
+
+Example :
+* RK3399 is for Pine64, RockPro64, Orange Pi, ...
+
+:::caution
+
+These steps have been tested on Armbian Bullseye 64bits (aarch64) on a rockpro64. Some extra steps might be required for other boards & distros
+
+:::
+
+### Box86
+
+To install it, simply follow the instructions here: https://github.com/ptitSeb/box86/blob/master/docs/COMPILE.md
+
+If for some reason, your system cannot find Box86 and you are on a 64bits os, run theses commands:
+```
+sudo dpkg --add-architecture armhf
+sudo apt update
+sudo apt install libc6:armhf libncurses5:armhf libstdc++6:armhf
+```
+
+### Box64
+
+Clone the repository, then we will need to replace the file `libstdc++.so.6` inside the folder `x64lib`.
+You will need a newer version of this file with at least `GLIBCXX v3.4.26`.
+You can grab it inside an updated Linux distro such as Ubuntu 20.04, Debian 11.
+To check if the file has at least `GLIBCXX v3.4.26`, use this command :
+```
+strings libstdc++.so.6 | grep LIBCXX
+```
+
+If it shows `GLIBCXX v3.4.26`, you can put this file inside `x64lib` folder.
+
+You can now follow the rest of the instructions here (starting from `mkdir` steps since you already cloned the repo): https://github.com/ptitSeb/box64/blob/main/docs/COMPILE.md
+
+### Steam & Server
+
+You have now installed the emulators, they should be able to auto-detect if a program needs a x86_64/x86 emulation or not.
+
+Get steamcmd manually on a folder with this command :
+
+```
+curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
+```
+
+You can now follow the basic instructions of nanos world Linux installation starting from steamcmd (run steamcmd with this command: `./steamcmd.sh`).
+
 
 :::tip
 

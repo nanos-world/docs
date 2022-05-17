@@ -42,6 +42,7 @@
   --ifm-font-family-base: Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 
   --ifm-color-info-contrast-background: #fefefe;
+  --site-color-feedback-background: #fff;
 }
 
 html[data-theme="dark"] {
@@ -64,6 +65,8 @@ html[data-theme="dark"] {
 
   --ifm-color-info-dark: #5fa0ff;
   --ifm-color-success-dark: #36ad99;
+
+  --site-color-feedback-background: #f0f8ff;
 }
 
 html[data-theme='dark'] .docusaurus-highlight-code-line {
@@ -110,7 +113,7 @@ header + p::after {
 
 video {
   width: 100%;
-  margin: 2rem 0;
+  margin-bottom: 2rem;
 }
 
 /* Headers */
@@ -182,7 +185,7 @@ svg[class^='iconLanguage'] {
 /* Main content */
 @media screen and (min-width: 1600px) {
   /* Center page TODO: only fullscreen */
-  .navbar__inner, .docs-wrapper {
+  .navbar__inner, .main-wrapper {
     width: 80%;
     margin: 0 auto;
   }
@@ -246,6 +249,11 @@ blockquote {
 
 .menu__link {
   user-select: none;
+}
+
+/* Docusaurus sidebar bug keeps showing dropdown button */
+.menu__link:not([href])::after {
+  opacity: 0;
 }
 
 

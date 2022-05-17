@@ -1,9 +1,10 @@
 ---
+title: Weapons Meshes
 description: How to create your own Weapons
 tags: [assets, weapons, skeletal-meshes]
+keywords: [weapon, skeleton, unreal]
 ---
 
-# Weapons Meshes
 
 In nanos world, a Weapon is an entity which can be Picked Up by Characters and can have several settings tweaked to customize it. In this guide you will learn how to import custom Skeletal Meshes to create your own Weapon.
 
@@ -51,7 +52,7 @@ And right click on any bone and select `AddSocket`, this will create a **Socket*
 
 ### `muzzle`
 
-The **muzzle** Socket is where the [Particle Barrel](./scripting-reference/classes/weapon.mdx#setparticlesbarrel) will be attached. So create a socket and place it in the muzzle of the weapon:
+The **muzzle** Socket is where the [Particle Barrel](/scripting-reference/classes/weapon.mdx#setparticlesbarrel) will be attached. So create a socket and place it in the muzzle of the weapon:
 
 * Pointing Red Axis (X) towards.
 
@@ -60,7 +61,7 @@ The **muzzle** Socket is where the [Particle Barrel](./scripting-reference/class
 
 ### `shell_eject`
 
-The **shell_eject** Socket is where the [Particle Shells](./scripting-reference/classes/weapon.mdx#setparticlesshells) will be attached. So create a socket and place it in shells eject of the weapon:
+The **shell_eject** Socket is where the [Particle Shells](/scripting-reference/classes/weapon.mdx#setparticlesshells) will be attached. So create a socket and place it in shells eject of the weapon:
 
 * Pointing Red Axis (X) outwards where the shell will be eject to.
 * And Pointing Green Axis (Y) the shell direction.
@@ -104,4 +105,4 @@ And voila! If you press Play, you will notice it will loop playing your animatio
 
 ## Exporting the Weapon
 
-The Exporting process follows the usual process of exporting assets to nanos world. Please follow the [Importing Custom Assets](./assets-modding/creating-assets/importing-assets.md) Guide.
+The Exporting process follows the usual process of exporting assets to nanos world. Please follow the [Importing Custom Assets](/assets-modding/creating-assets/importing-assets.md) Guide.

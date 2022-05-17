@@ -1,10 +1,10 @@
 ---
+title: Extending Classes
 description: How to extend nanos world Classes
 sidebar_position: 8
 tags: [scripting]
 ---
 
-# Extending Classes
 
 How to extend nanos world Classes, nanos world provides a built-in way of extending and customizing the Classes
 

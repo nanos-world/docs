@@ -1,12 +1,10 @@
 ---
-description: >-
-  A Trigger class is a utility class to trigger events when any Entity enters an
-  Area
+title: 🪤 Trigger
+description: A Trigger class is a utility class to trigger events when any Entity enters an Area
 sidebar_position: 0
 tags: [class]
 ---
 
-# 🪤 Trigger
 
 A Trigger class is a utility class to trigger events when any Entity enters an Area.
 
@@ -16,7 +14,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 
 :::info
 
-🟦 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts.mdx).
+🟦 **Authority:** This class can only be spawned on [Server](/core-concepts/scripting/authority-concepts.mdx).
 
 ⏬ **Inheritance:** This class inherits from <Classes.Actor />.
 
@@ -64,7 +62,6 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 | :--- | :--- | :--- | :--- |
 | <AuthorityType.ServerOnly /> |  | [**`ForceOverlapChecking`**](trigger#forceoverlapchecking) | Forces a Overlap check to occur |
 | <AuthorityType.ServerOnly /> |  | [**`SetExtent`**](trigger#setextent) | Sets the extent size of this trigger |
-| <AuthorityType.ServerOnly /> |  | [**`SetVisibility`**](trigger#setvisibility) | Sets if this Trigger is visible as a Sphere |
 
 ### <AuthorityType.ServerOnly />`ForceOverlapChecking`
 
@@ -86,17 +83,6 @@ my_trigger:SetExtent(extent)
 | :--- | :--- | :--- |
 | <Structs.Vector /> | **`extent`** | Sphere triggers will use only the .X component for radius |
 
-### <AuthorityType.ServerOnly />`SetVisibility`
-
-> Sets if this Trigger is visible for debugging
-
-```lua
-my_trigger:SetVisibility(is_visible)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Boolean /> | **`is_visible`** |  |
 
 ## Events
 

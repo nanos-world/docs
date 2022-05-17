@@ -1,11 +1,11 @@
 ---
+title: Hosting Server 4Free - Google Cloud
 description: >-
   How to create a Linux virtual machine instance on Compute Engine using the
   Google Cloud Console within the Free Tier.
 tags: [tutorial-example, hosting]
 ---
 
-# Hosting Server 4Free - Google Cloud
 
 How to create a Linux virtual machine instance on Compute Engine using the Google Cloud Console within the Free Tier.
 
@@ -114,21 +114,22 @@ sudo apt install lib32gcc1 steamcmd
 
 Then, launch SteamCMD by running `steamcmd`.
 
-Login anonymously.
-
-```bash
-Steam> login anonymous
-```
-Then select a directory for your server:
+Select a directory for your server:
 
 ```bash
 Steam> force_install_dir ./nanos-world-server
 ```
 
+Then login anonymously:
+
+```bash
+Steam> login anonymous
+```
+
 Install nanos world server by using this command:
 
 ```bash
-Steam> app_update 1686460
+Steam> app_update 1936830
 ```
 
 This will download the server. After downloading, navigate to your server folder and start your server like:

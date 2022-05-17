@@ -1,11 +1,11 @@
 ---
+title: Prop Shooter
 description: >-
   This sample code modifies a Weapon to make it shoot Props instead of normal
   bullets
 tags: [tutorial-example, scripting]
 ---
 
-# Prop Shooter
 
 This sample code modifies a Weapon to make it shoot Props instead of normal bullets
 

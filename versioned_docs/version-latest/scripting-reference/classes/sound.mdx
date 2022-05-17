@@ -1,10 +1,10 @@
 ---
+title: 🔊 Sound
 description: Class for playing in-game 2D and 3D sounds
 sidebar_position: 0
 tags: [class]
 ---
 
-# 🔊 Sound
 
 Class for playing in-game 2D and 3D sounds
 
@@ -14,7 +14,7 @@ import { Structs, BasicType, AuthorityType, Enums, AssetPath, Classes } from '@s
 
 :::info
 
-🟧 **Authority:** This class can only be spawned on [Client](./core-concepts/scripting/authority-concepts.mdx).
+🟧 **Authority:** This class can only be spawned on [Client](/core-concepts/scripting/authority-concepts.mdx).
 
 ⏬ **Inheritance:** This class inherits from <Classes.Actor />.
 
@@ -22,7 +22,7 @@ import { Structs, BasicType, AuthorityType, Enums, AssetPath, Classes } from '@s
 
 :::tip
 
-You can also load raw `.ogg` files from disk! Please check [SpecialPath](./scripting-reference/glossary/basic-types.md#specialpath).
+You can also load raw `.ogg` files from disk! Please check [SpecialPath](/scripting-reference/glossary/basic-types.md#specialpath).
 
 :::
 
@@ -48,14 +48,15 @@ local my_sound = Sound(
 | <AssetPath.Sound /> | **`asset`** | ` ` | The Sound Asset or Special Path |
 | <BasicType.Boolean /> | **`is_2D_sound`** | `false` |  |
 | <BasicType.Boolean /> | **`auto_destroy`** | `true` | If to destroy after finished playing |
-| <Enums>SoundType</Enums> | **`sound_type`** | `SoundType.SFX` | Used to apply user’s volume settings |
+| <Enums>SoundType</Enums> | **`sound_type`** | `SoundType.SFX` | Used to apply user's volume settings |
 | <BasicType.Number /> | **`volume`** | `1` |  |
 | <BasicType.Number /> | **`pitch`** | `1` |  |
 | <BasicType.Number /> | **`inner_radius`** | `400` | 3D only |
 | <BasicType.Number /> | **`falloff_distance`** | `3600` | 3D only |
 | <Enums>AttenuationFunction</Enums> | **`attenuation_function`** | `Linear` | 3D only |
-| <BasicType.Boolean /> | **`keep_playing_when_silent`** | `false` | 3D only - Whether to keep playing this sound when it’s not audible - Use with caution, it may cause performance issues! |
+| <BasicType.Boolean /> | **`keep_playing_when_silent`** | `false` | 3D only - Whether to keep playing this sound when it's not audible - Use with caution, it may cause performance issues! |
 | <Enums>SoundLoopMode</Enums> | **`loop_mode`** | `Default` | Loop Mode (if should force sound to loop) |
+
 
 ## Functions
 
@@ -72,12 +73,20 @@ import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-clas
 |  | [**`SetInnerRadius`**](sound#setinnerradius) | If a 3D Sound, sets the distance within the volume is 100% |
 |  | [**`SetLowPassFilter`**](sound#setlowpassfilter) | Sets lowpass filter frequency. Sets 0 to disable it. |
 |  | [**`SetPaused`**](sound#setpaused) | Pauses the sound |
-|  | [**`SetPitch`**](sound#setpitch) | Sets the Sound’s pitch |
-|  | [**`SetVolume`**](sound#setvolume) | Sets the Sound’s volume \(0 - 1\) |
+|  | [**`SetPitch`**](sound#setpitch) | Sets the Sound's pitch |
+|  | [**`SetVolume`**](sound#setvolume) | Sets the Sound's volume (0 - 1) |
 |  | [**`Stop`**](sound#stop) | Stops the sound |
 |  | [**`StopDelayed`**](sound#stopdelayed) | Stops the sound after the provided delay |
+| <BasicType.Boolean /> | [**`Is2D`**](sound#is2d) | Returns if the sound is 2D |
 | <BasicType.Boolean /> | [**`IsPlaying`**](sound#isplaying) | Returns if the sound is playing |
 | <BasicType.Number /> | [**`GetDuration`**](sound#getduration) | Returns the duration of sound |
+| <BasicType.Number /> | [**`GetPitch`**](sound#getpitch) | Returns the pitch |
+| <BasicType.Number /> | [**`GetVolume`**](sound#getvolume) | Returns the volume |
+| <BasicType.Number /> | [**`GetLowPassFilter`**](sound#getlowpassfilter) | Returns the Low Pass Filter Frequency |
+| <BasicType.Number /> | [**`GetInnerRadius`**](sound#getinnerradius) | Returns the Attenuation Inner Radius |
+| <BasicType.Number /> | [**`GetFalloffDistance`**](sound#getfalloffdistance) | Returns the Attenuation Falloff Distance |
+| <Enums>SoundType</Enums> | [**`GetSoundType`**](sound#getsoundtype) | Returns the Sound Type |
+
 
 ## Events
 
@@ -197,6 +206,7 @@ my_sound:SetVolume(new_volume)
 | :--- | :--- | :--- |
 | <BasicType.Number /> | **`new_volume`** |  |
 
+
 ### `Stop`
 
 > Stops the sound
@@ -204,6 +214,7 @@ my_sound:SetVolume(new_volume)
 ```lua
 my_sound:Stop()
 ```
+
 
 ### `StopDelayed`
 
@@ -217,6 +228,18 @@ my_sound:StopDelayed(delay)
 | :--- | :--- | :--- |
 | <BasicType.Number /> | **`delay`** |  |
 
+
+### `Is2D`
+
+> Gets if the sound is 2D
+>
+> Returns <BasicType.Boolean />
+
+```lua
+my_sound:Is2D()
+```
+
+
 ### `IsPlaying`
 
 > Gets if the sound is playing
@@ -227,6 +250,7 @@ my_sound:StopDelayed(delay)
 my_sound:IsPlaying()
 ```
 
+
 ### `GetDuration`
 
 > Gets the duration of the Sound.
@@ -236,6 +260,72 @@ my_sound:IsPlaying()
 ```lua
 my_sound:GetDuration()
 ```
+
+### `GetPitch`
+
+> 
+>
+> Returns <BasicType.Number />
+
+```lua
+my_sound:GetPitch()
+```
+
+
+### `GetVolume`
+
+> 
+>
+> Returns <BasicType.Number />
+
+```lua
+my_sound:GetVolume()
+```
+
+
+### `GetLowPassFilter`
+
+> 
+>
+> Returns <BasicType.Number />
+
+```lua
+my_sound:GetLowPassFilter()
+```
+
+
+### `GetInnerRadius`
+
+> 
+>
+> Returns <BasicType.Number />
+
+```lua
+my_sound:GetInnerRadius()
+```
+
+
+### `GetFalloffDistance`
+
+> 
+>
+> Returns <BasicType.Number />
+
+```lua
+my_sound:GetFalloffDistance()
+```
+
+
+### `GetSoundType`
+
+> 
+>
+> Returns <BasicType.Number />
+
+```lua
+my_sound:GetSoundType()
+```
+
 
 ## Sound Attenuation
 

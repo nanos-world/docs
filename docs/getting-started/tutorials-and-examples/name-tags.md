@@ -1,9 +1,9 @@
 ---
+title: Name Tags
 description: How to add Name Tags to Characters
 tags: [tutorial-example, scripting]
 ---
 
-# Name Tags
 
 How to add Name Tags to Characters.
 

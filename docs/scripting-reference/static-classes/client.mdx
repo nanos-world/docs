@@ -1,9 +1,9 @@
 ---
+title: ⌨️ Client
 description: Static Class present on Client side
 tags: [static-class]
 ---
 
-# ⌨️ Client
 
 Static Class present on Client side
 
@@ -11,9 +11,9 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 
 :::info
 
-🟧 **Authority:** This can be accessed only on [Client](./core-concepts/scripting/authority-concepts.mdx).
+🟧 **Authority:** This can be accessed only on [Client](/core-concepts/scripting/authority-concepts.mdx).
 
-🗿 **Static Class:** This is a Static Class. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+🗿 **Static Class:** This is a Static Class. You can access it's methods directly with `.`. It is not possible to initialize or create new instances.
 
 :::
 
@@ -32,17 +32,21 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 |  | [**`DrawDebugPoint`**](client#drawdebugpoint) | Draws a Debug Point in the World |
 |  | [**`DrawDebugSphere`**](client#drawdebugsphere) | Draws a Debug Line in the World |
 |  | [**`DrawDebugString`**](client#drawdebugstring) |  |
+|  | [**`ProjectWorldToScreen`**](client#projectworldtoscreen) | Transforms a 3D world-space vector into 2D screen coordinates |
+|  | [**`DeprojectScreenToWorld`**](client#deprojectscreentoworld) | Transforms a 2D screen coordinates into 3D world-space location |
 |  | [**`InitializeDiscord`**](client#initializediscord) | Initializes the Discord Integration with your custom client\_id |
 |  | [**`SendChatMessage`**](client#sendchatmessage) | Sends a chat message which will display local only |
 |  | [**`SetChatConfiguration`**](client#setchatconfiguration) | Configure the Chat |
 |  | [**`SetChatVisibility`**](client#setchatvisibility) | Set if the Chat is visible or not |
 |  | [**`SetCrosshairEnabled`**](client#setcrosshairenabled) | Enables/Disables the default Crosshair |
+|  | [**`SetBloodScreenEnabled`**](client#setbloodscreenenabled) | Enables/Disables the Blood Screen effect |
+|  | [**`SetBloodScreenIntensity`**](client#setbloodscreenintensity) | Manually sets the Blood Screen intensity  |
 |  | [**`SetHardwareCursor`**](client#sethardwarecursor) | Loads or sets a hardware cursor from the content directory in the game. |
 |  | [**`SetDiscordActivity`**](client#setdiscordactivity) | Communicates with Discord and sets a custom user status |
 |  | [**`SetInputEnabled`**](client#setinputenabled) | Toggles Local Player input |
 |  | [**`SetMouseEnabled`**](client#setmouseenabled) | Displays/Hides Mouse Cursor |
-|  | [**`SetOutlineColor`**](client#setoutlinecolor) | Changes the Outline Color for interactable stuff |
-|  | [**`SetHighlightColor`**](client#sethighlightcolor) | Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 \(or more\) for having a glowing effect. |
+|  | [**`SetHighlightColor`**](client#sethighlightcolor) | Changes the Highlight Color for highlighted actors at a specific Index |
+|  | [**`SetOutlineColor`**](client#setoutlinecolor) | Changes the Outline Color for outlined actors at a specific Index |
 |  | [**`SetSteamRichPresence`**](client#setsteamrichpresence) | Sets Steam Rich Presence value |
 |  | [**`SetValue`**](client#setvalue) | Sets a global value in the Client, which can be accessed from anywhere \(client side\) |
 | <BasicType.Function /> | [**`Subscribe`**](client#subscribe) | Subscribes for an Event |
@@ -55,7 +59,9 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | <BasicType.String /> | [**`GetMap`**](client#getmap) | Returns the current Map |
 | <Structs.Vector2D /> | [**`GetMousePosition`**](client#getmouseposition) | Gets the current mouse screen location |
 | <BasicType.Table /> | [**`GetPackages`**](client#getpackages) | Returns a list of Packages folder names loaded and running in the client |
+| <BasicType.Any /> | [**`GetViewportSize`**](client#getviewportsize) | Gets the size of viewport |
 | <BasicType.Any /> | [**`GetValue`**](client#getvalue) | Gets a value given a key |
+| <BasicType.Boolean /> | [**`InputKey`**](client#inputkey) | Forces an Input Key event on Local Player |
 | <BasicType.Boolean /> | [**`IsKeyDown`**](client#iskeydown) | Returns if a key is being pressed |
 | <BasicType.Boolean /> | [**`IsMouseEnabled`**](client#ismouseenabled) |  |
 | <BasicType.Boolean /> | [**`IsInputEnabled`**](client#isinputenabled) |  |
@@ -66,7 +72,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | **Name** | **Description** |
 | :--- | :--- |
 | [**`Chat`**](client#chat) | Called when a chat text is submitted (by LocalPlayer) |
-| [**`ChatEntry`**](server#chatentry) | Called when a Chat Entry is received, this is also triggered when `SendChatMessage` is called |
+| [**`ChatEntry`**](client#chatentry) | Called when a Chat Entry is received, this is also triggered when `SendChatMessage` is called |
 | [**`Console`**](client#console) | Called when a console command is submitted |
 | [**`KeyDown`**](client#keydown) | A keyboard key is being pressed |
 | [**`KeyPress`**](client#keypress) | A keyboard key has been pressed |
@@ -75,9 +81,15 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | [**`MouseDown`**](client#mousedown) | A mouse button has been pressed / is being pressed |
 | [**`MouseUp`**](client#mouseup) | A mouse button has been released |
 | [**`MouseEnabled`**](client#mouseenabled) | When mouse cursor is displayed/hidden |
+| [**`MouseMoveX`**](client#mousemovex) | Called when the mouse moves in the X axis |
+| [**`MouseMoveY`**](client#mousemovey) | Called when the mouse moves in the Y axis |
 | [**`OpenChat`**](client#openchat) | When player opens the Chat |
 | [**`CloseChat`**](client#closechat) | When player closes the Chat |
+| [**`OpenConsole`**](client#openconsole) | When player closes the Console |
+| [**`CloseConsole`**](client#closeconsole) | When player closes the Console |
 | [**`Tick`**](client#tick) | Called Every Frame. Do not abuse |
+| [**`ViewportResized`**](client#viewportresized) | Called when the screen is resized |
+| [**`WindowFocusChanged`**](client#windowfocuschanged) | Called when the game is focused/unfocused |
 
 
 ## Functions Detailed
@@ -85,7 +97,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 
 ### `CallLevelBlueprintEvent`
 
-> Calls a Level Blueprint custom event \(which can be added when creating levels through Unreal Engine\). Parameters can be concatenated to event\_name like `"MyEventName 123, 'MyParameter2', 456"`
+> Calls a Level Blueprint custom event (which can be added when creating levels through Unreal Engine). Parameters can be concatenated to event_name like `'MyEventName 123, "MyParameter2", 456'`
 
 ```lua
 Client.CallLevelBlueprintEvent(event_name)
@@ -255,6 +267,36 @@ Client.DrawDebugSphere(start_position, radius, segments, color, duration, thickn
 | <BasicType.Number /> | **`thickness`** | `0` |  |
 
 
+### `DeprojectScreenToWorld`
+
+> Transforms a 2D screen coordinates into 3D world-space location
+>
+> Returns table in the format `{"Position", "Direction"}`
+
+```lua
+Client.DeprojectScreenToWorld(screen_position)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Vector2D /> | **`screen_position`** | Screen position |
+
+
+### `ProjectWorldToScreen`
+
+> Transforms a 3D world-space vector into 2D screen coordinates
+>
+> Returns <Structs.Vector2D />
+
+```lua
+Client.ProjectWorldToScreen(world_position)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Vector /> | **`world_position`** | World 3D position |
+
+
 ### `InitializeDiscord`
 
 > Initializes the Discord Integration with your custom client\_id
@@ -326,6 +368,34 @@ Client.SetCrosshairEnabled(is_enabled)
 | <BasicType.Boolean /> | **`is_enabled`** |  |
 
 
+### `SetBloodScreenEnabled`
+
+> Enables/Disables the Blood Screen
+
+```lua
+Client.SetBloodScreenEnabled(is_enabled)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`is_enabled`** |  |
+
+
+### `SetBloodScreenIntensity`
+
+> Manually sets the Blood Screen intensity
+> 
+> If you want the Blood Screen to do not be overridden, disable it with `Client.SetBloodScreenEnabled(false)` before
+
+```lua
+Client.SetBloodScreenIntensity(intensity)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`intensity`** | From `0.0` to `1.1` |
+
+
 ### `SetHardwareCursor`
 
 > Loads or sets a hardware cursor from the content directory in the game.
@@ -383,22 +453,9 @@ Client.SetMouseEnabled(is_enabled)
 | <BasicType.Boolean /> | **`is_enabled`** |  |
 
 
-### `SetOutlineColor`
-
-> Changes the Outline Color for interactable stuff. Multiply it by 5 \(or more\) for having a glowing effect.
-
-```lua
-Client.SetOutlineColor(outline_color)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <Structs.Color /> | **`outline_color`** |  |
-
-
 ### `SetHighlightColor`
 
-> Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 \(or more\) for having a glowing effect.
+> Changes the Highlight Color for highlighted actors at a specific Index. Multiply it by 5 (or more) for having a glowing effect.
 > 
 > `HighlightMode.Always` will always be visible, even behind walls
 > `HighlightMode.OnlyHidden` will only be visible if behind a wall
@@ -413,6 +470,22 @@ Client.SetHighlightColor(highlight_color, index, mode)
 | <Structs.Color /> | **`highlight_color`** |  |
 | <BasicType.Number /> | **`index`** |  |
 | <Enums>HighlightMode</Enums> | **`mode`** |  |
+
+
+### `SetOutlineColor`
+
+> Changes the Outline Color for outlined actors at a specific Index. Multiply it by 5 (or more) for having a glowing effect.
+> 
+> Note: The default Outline color index used by the game is `0` (when interacting with stuff).
+
+```lua
+Client.SetOutlineColor(outline_color, index)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Color /> | **`outline_color`** |  |
+| <BasicType.Number /> | **`index`** |  |
 
 
 ### `SetSteamRichPresence`
@@ -432,7 +505,7 @@ Client.SetSteamRichPresence(text)
 
 > Sets a global value in the Client, which can be accessed from anywhere \(client side\)
 >
-> Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
+> Please refer to [Entity Values](/core-concepts/scripting/entity-values.mdx) for more information
 
 ```lua
 Client.SetValue(key, value)
@@ -480,6 +553,12 @@ Client.Unsubscribe(event_name, callback)
 >
 > Returned Table: `{"Success", "Location", "Normal", "Entity", "BoneName", "ActorName", "ComponentName", "SurfaceType"}`
 
+:::info
+
+The Trace will collide with the ObjectType (in the Collision Settings), even if the channel is ignored below.
+
+:::
+
 ```lua
 Client.Trace(start_location, end_location, collision_channel, trace_complex, return_entity, return_physical_material, ignored_actors, draw_debug)
 ```
@@ -488,7 +567,7 @@ Client.Trace(start_location, end_location, collision_channel, trace_complex, ret
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`start_location`** |  |  |
 | <Structs.Vector /> | **`end_location`** |  |  |
-| <Enums>CollisionChannel</Enums> | **`collision_channel`** | `CollisionChannel.WorldStatic` | Supports several channels separating by `|` |
+| <Enums>CollisionChannel</Enums> | **`collision_channel`** | `CollisionChannel.WorldStatic` | Supports several channels separating by **\|** |
 | <BasicType.Boolean /> | **`trace_complex`** | `false` |  |
 | <BasicType.Boolean /> | **`return_entity`** | `false` |  |
 | <BasicType.Boolean /> | **`return_physical_material`** | `false` |  |
@@ -588,9 +667,20 @@ Client.GetPackages()
 ```
 
 
+### `GetViewportSize`
+
+> Gets the size of viewport (how much screen space the game window occupies)
+>
+> Returns <Structs.Vector2D />
+
+```lua
+Client.GetViewportSize()
+```
+
+
 ### `GetValue`
 
-> Gets a value given a key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
+> Gets a value given a key. Please refer to [Entity Values](/core-concepts/scripting/entity-values.mdx) for more information
 >
 > Returns <BasicType.Any />
 
@@ -602,6 +692,23 @@ Client.GetValue(key, fallback)
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** | Key |
 | <BasicType.Any /> | **`fallback`** | Fallback Value if key doesn't exist |
+
+
+### `InputKey`
+
+> Forces a Input Key event on Local Player
+>
+> This won't trigger any Scripting event as it bypass internal validations
+
+```lua
+Client.InputKey(key_name, input_event, amount_depressed)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`key_name`** |  | Key Name to input |
+| <Enums>InputEvent</Enums> | **`input_event`** | Which Event to input (Released/Pressed) |
+| <BasicType.Number /> | **`amount_depressed`** | `1` | The amount pressed |
 
 
 ### `IsKeyDown`
@@ -806,6 +913,40 @@ end)
 ```
 
 
+### `MouseMoveX`
+
+> Called when the mouse moves in the X axis
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`delta`** |  |
+| <BasicType.Number /> | **`delta_time`** |  |
+| <BasicType.Number /> | **`num_samples`** |  |
+
+```lua
+Client.Subscribe("MouseMoveX", function(delta, delta_time, num_samples)
+
+end)
+```
+
+
+### `MouseMoveY`
+
+> Called when the mouse moves in the X axis
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`delta`** |  |
+| <BasicType.Number /> | **`delta_time`** |  |
+| <BasicType.Number /> | **`num_samples`** |  |
+
+```lua
+Client.Subscribe("MouseMoveY", function(delta, delta_time, num_samples)
+
+end)
+```
+
+
 ### `OpenChat`
 
 > When player opens the chat
@@ -828,6 +969,28 @@ end)
 ```
 
 
+### `OpenConsole`
+
+> When player opens the console
+
+```lua
+Client.Subscribe("OpenConsole", function()
+
+end)
+```
+
+
+### `CloseConsole`
+
+> When player closes the console
+
+```lua
+Client.Subscribe("CloseConsole", function()
+
+end)
+```
+
+
 ### `Tick`
 
 > Called Every Frame. Do not abuse.
@@ -841,6 +1004,36 @@ Client.Subscribe("Tick", function(delta_time)
 
 end)
 ```
+
+
+### `ViewportResized`
+
+> Called when the screen is resized
+
+```lua
+Client.Subscribe("ViewportResized", function(new_size)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Vector2D /> | **`new_size`** | New new screen size |
+
+
+### `WindowFocusChanged`
+
+> Called when the game is focused/unfocused
+
+```lua
+Client.Subscribe("WindowFocusChanged", function(is_focused)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`is_focused`** | If it's focused |
 
 
 ## Key Names

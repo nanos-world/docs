@@ -1,9 +1,9 @@
 ---
+title: 💻 Server
 description: Server represents all Server controls in the Server side
 tags: [static-class]
 ---
 
-# 💻 Server
 
 Server represents all Server controls in the Server side
 
@@ -13,7 +13,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 
 :::info
 
-🟦 **Authority:** This can be accessed only on [Server](./core-concepts/scripting/authority-concepts.mdx).
+🟦 **Authority:** This can be accessed only on [Server](/core-concepts/scripting/authority-concepts.mdx).
 
 🗿 **Static Class:** This is a Static Class. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 
@@ -64,6 +64,7 @@ Server.BroadcastChatMessage("Welcome to the server!")
 |  | [**`Unsubscribe`**](server#unsubscribe) | Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback |
 | <BasicType.String /> | [**`GetMap`**](server#getmap) | Returns the current Map |
 | <BasicType.Table /> | [**`GetMapConfig`**](server#getmapconfig) | Returns a list of the Custom Config of the current map \(stored in the MAP\_NAME.toml\) |
+| <BasicType.Table /> | [**`GetMaps`**](server#getmaps) | Returns a list of all Maps installed on the server |
 | <BasicType.Table /> | [**`GetPackages`**](server#getpackage) | Returns a list of Packages folder names available in the server, optionally returns only loaded and running packages |
 | <BasicType.String /> | [**`GetVersion`**](server#getversion) | Returns the server version |
 | <BasicType.String /> | [**`GetIP`**](server#getip) | Returns the server Public IP |
@@ -71,6 +72,7 @@ Server.BroadcastChatMessage("Welcome to the server!")
 | <BasicType.Number /> | [**`GetQueryPort`**](server#getqueryport) | Returns the server QueryPort |
 | <BasicType.Number /> | [**`GetMaxPlayers`**](server#getmaxplayers) | Returns the Max Players configured |
 | <BasicType.Number /> | [**`GetDescription`**](server#getdescription) | Returns the Server Description |
+| <BasicType.Number /> | [**`GetTickRate`**](server#gettickrate) | Returns the Configured Tick Rate |
 | <BasicType.Number /> | [**`IsAnnounced`**](server#isannounced) | Returns if the Server is announced in the Master List |
 
 
@@ -208,7 +210,7 @@ Server.SetPassword(password, persist_to_config_file)
 
 > Sets a global value in the Server, which can be accessed from anywhere \(server side\)
 >
-> Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
+> Please refer to [Entity Values](/core-concepts/scripting/entity-values.mdx) for more information
 
 ```lua
 Server.SetValue(key, value)
@@ -222,7 +224,7 @@ Server.SetValue(key, value)
 
 ### `GetValue`
 
-> Gets a value given a key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
+> Gets a value given a key. Please refer to [Entity Values](/core-concepts/scripting/entity-values.mdx) for more information
 >
 > Returns <BasicType.Any />
 
@@ -294,15 +296,32 @@ Server.Unsubscribe(event_name, callback)
 Server.GetMap()
 ```
 
+
 ### `GetMapConfig`
 
-> Returns a list of the Custom Config of the current map \(stored in the MAP\_NAME.toml\)
+> Returns a list of the Custom Config of the current map (stored in the MAP_NAME.toml)
 >
 > Returns <BasicType.Table />
 
 ```lua
 Server.GetMapConfig()
 ```
+
+
+### `GetMaps`
+
+> Returns a list of all Maps installed on the server
+>
+> Returns a <BasicType.Table /> in the format `{{ key, author, compatible_game_modes }, ...}`
+
+```lua
+Server.GetPackages(only_loaded)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`only_loaded`** | `true` |  |
+
 
 ### `GetPackages`
 
@@ -381,6 +400,17 @@ Server.GetMaxPlayers()
 
 ```lua
 Server.GetDescription()
+```
+
+
+### `GetTickRate`
+
+> Gets the configured Tick Rate
+> 
+> Returns <BasicType.Number />
+
+```lua
+Server.GetTickRate()
 ```
 
 

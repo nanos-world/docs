@@ -1,9 +1,9 @@
 ---
+title: Base Pickable
 description: Base class for all Pickables
 tags: [base-class]
 ---
 
-# Base Pickable
 
 Base class for all Pickables
 
@@ -25,6 +25,8 @@ import BasePickableFunctions from '@site/docs/scripting-reference/classes/base-c
 ### <AuthorityType.Both />`AddSkeletalMeshAttached`
 
 > Spawns and attaches a SkeletalMesh to this Pickable, the SkeletalMesh must have the same skeleton used by this Actor's mesh, and will follow all animations from it. Uses a custom ID to be used for removing it later
+> 
+> For customizing the Materials specific of a SkeletalMeshAttached, please use the following syntax as the `id` in the <Classes.Paintable /> methods: `attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]`, where [ATTACHABLE_ID] is the ID of the Attachable, and [PARAMETER_NAME] is the name of the parameter you want to change.
 
 ```lua
 entity:AddSkeletalMeshAttached(id, skeletal_mesh_path)
@@ -39,6 +41,8 @@ entity:AddSkeletalMeshAttached(id, skeletal_mesh_path)
 ### <AuthorityType.Both />`AddStaticMeshAttached`
 
 > Spawns and attaches a StaticMesh to this Pickable in a Socket with a relative location and rotation. Uses a custom ID to be used for removing it later
+> 
+> For customizing the Materials specific of a StaticMeshAttached, please use the following syntax as the `id` in the <Classes.Paintable /> methods: `attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]`, where [ATTACHABLE_ID] is the ID of the Attachable, and [PARAMETER_NAME] is the name of the parameter you want to change.
 
 ```lua
 entity:AddStaticMeshAttached(id, static_mesh_path, socket, relative_location, relative_rotation)
@@ -100,6 +104,21 @@ entity:RemoveStaticMeshAttached(id)
 | <BasicType.String /> | **`id`** |  | Unique ID of the StaticMesh to remove |
 
 
+### <AuthorityType.ServerOnly />`SetAttachmentSettings`
+
+> Sets the Attachment Settings for this Pickable (how it attaches to the Character when Picking up)
+
+```lua
+entity:SetAttachmentSettings(relative_location, relative_rotation, socket)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`relative_location`** |  | Relative location to the Socket |
+| <Structs.Rotator /> | **`relative_rotation`** | `Rotator()` | Relative rotation to the Socket |
+| <BasicType.String /> | **`socket`** | `hand_r_socket` | Character Socket to attach |
+
+
 ### <AuthorityType.ServerOnly />`SetCrosshairMaterial`
 
 > Sets the crosshair material for this Pickable
@@ -111,6 +130,19 @@ entity:SetCrosshairMaterial(path)
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`path`** |  | Asset path to the crosshair material |
+
+
+### <AuthorityType.ServerOnly />`SetPickable`
+
+> Sets if this Pickable can be grabbed
+
+```lua
+entity:SetPickable(is_pickable)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Boolean /> | **`is_pickable`** |  |  |
 
 
 ### <AuthorityType.Both />`GetAssetName`

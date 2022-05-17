@@ -1,9 +1,10 @@
 ---
+title: Creating Custom Maps
 description: How to create and export maps from Unreal to nanos world
 tags: [assets]
+keywords: [map, level, unreal]
 ---
 
-# Creating Custom Maps
 
 Maps and Levels are quite the most straightforward asset that you can create and import. In Unreal, Maps are called `Levels`, usually these levels are filled with a Landscape component to make the terrain, some Lights and some Static Meshes \(Trees, Houses, etc\).
 
@@ -15,7 +16,7 @@ Please refer to [Unreal’s Official tutorial - Working with Levels](https://doc
 
 ## Rules for creating a Map/Level for nanos world
 
-1. Do not spawn/place **Dynamic Meshes** (with Physics), as they will not be synced in-game. You need to spawn them as a [Prop](./scripting-reference/classes/prop.mdx) on the scripting.
+1. Do not spawn/place **Dynamic Meshes** (with Physics), as they will not be synced in-game. You need to spawn them as a [Prop](/scripting-reference/classes/prop.mdx) on the scripting.
 2. Add a “**Sun**” actor-tag to all Lighting/Sky/Sun related actors (**DirectionalLight**, **SkyLight**, **DomeMesh**, **SkyAtmosphere** or **SunSky**), this will allow, if wanted, to your light to be overridden by scripters to use, instead, the Official nanos world Sun through `World.SpawnDefaultSun()`, which allows in-game light/sun customization.
 3. If you are creating a Map, please remember to nullify (set to None) all references it has for Unreal **GameModes** Override in the World Settings.
 
@@ -23,18 +24,18 @@ Please refer to [Unreal’s Official tutorial - Working with Levels](https://doc
 
 :::info
 
-Most of [World](./scripting-reference/static-classes/world.mdx) functions rely on our own assets and code, so it is not (yet) possible to change the lighting or weather in your custom Map with World scripting functions.
+Most of [World](/scripting-reference/static-classes/world.mdx) functions rely on our own assets and code, so it is not (yet) possible to change the lighting or weather in your custom Map with World scripting functions.
 
 :::
 
-After exporting your project (refer to [Creating Assets](./assets-modding/creating-assets/importing-assets.md#exporting-and-cooking-your-assets), you can just reference your map in your server config like `MyPack::MyLevel`.
+After exporting your project (refer to [Creating Assets](/assets-modding/creating-assets/importing-assets.md#exporting-and-cooking-your-assets), you can just reference your map in your server config like `MyPack::MyLevel`.
 
 
 ## Creating a Map in Unreal Engine 4 from Scratch
 
 :::caution
 
-Attention! This page is old and this tutorial may be outdated! Please refer to [ADK](./assets-modding/creating-assets/adk-assets-development-kit.md) for a modern approach.
+Attention! This page is old and this tutorial may be outdated! Please refer to [ADK](/assets-modding/creating-assets/adk-assets-development-kit.md) for a modern approach.
 
 :::
 
@@ -181,7 +182,7 @@ And paste it inside your server’s `Assets/` folder:
 
 ![](/img/docs/custom-maps-33.jpg)
 
-Open the folder you copied and create a `Assets.toml` file in it, \(you can paste the content located at [Assets Configuration File](./core-concepts/assets.md#assets-pack-configuration) into this file. 
+Open the folder you copied and create a `Assets.toml` file in it, \(you can paste the content located at [Assets Configuration File](/core-concepts/assets.md#assets-pack-configuration) into this file. 
 
 ![](/img/docs/custom-maps-34.jpg)
 
@@ -210,4 +211,4 @@ You can now just start the New Game with the `Sandbox` package selected and VOIL
 
 Also it is possible to add a Image, a Configuration File, Custom Data and even a exclusive Package (scripting) for your map.
 
-After importing your map, please refer to [Map Script and Configuration](./assets-modding/creating-assets/maps-and-levels/map-script-and-data.md)
+After importing your map, please refer to [Map Script and Configuration](/assets-modding/creating-assets/maps-and-levels/map-script-and-data.md)

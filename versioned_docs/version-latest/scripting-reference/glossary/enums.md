@@ -1,9 +1,9 @@
 ---
+title: Enums
 description: nanos world Enums.
 tags: [scripting]
 ---
 
-# Enums
 
 Instead of passing numbers to methods or comparing numbers in Events callbacks, you can use the following **Enums** to do so. Examples:
 
@@ -67,6 +67,18 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`AttenuationFunction.LogReverse`** | `3` |
 | **`AttenuationFunction.NaturalSound`** | `4` |
 
+### `BlendMode`
+
+| Label | Value |
+| :--- | :--- |
+| **`BlendMode.Opaque`** | `0` |
+| **`BlendMode.Masked`** | `1` |
+| **`BlendMode.Translucent`** | `2` |
+| **`BlendMode.Additive`** | `3` |
+| **`BlendMode.Modulate`** | `4` |
+| **`BlendMode.AlphaComposite`** | `5` |
+| **`BlendMode.AlphaHoldout`** | `6` |
+
 ### `CameraMode`
 
 | Label | Value |
@@ -83,18 +95,20 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`CollisionChannel.WorldDynamic`** | `1 << 1` | WorldDynamic Object Types |
 | **`CollisionChannel.Pawn`** | `1 << 2` | Capsules (usually from Characters) |
 | **`CollisionChannel.PhysicsBody`** | `1 << 5` | Pickables and Props Meshes |
-| **`CollisionChannel.Vehicle`** | `1 << 6` | Vehicles Meshes |
+| **`CollisionChannel.Vehicle`** | `1 << 22` | Vehicles Meshes |
 | **`CollisionChannel.TracePrimitive`** | `1 << 16` | Interactable Spheres, Damage Primitives (mainly internal use) |
 | **`CollisionChannel.Mesh`** | `1 << 17` | Character Mesh |
 | **`CollisionChannel.Foliage`** | `1 << 20` | Foliage Meshes |
 
 ### `CollisionType`
 
-| Label | Value |
-| :--- | :--- |
-| **`CollisionType.Normal`** | `0` |
-| **`CollisionType.StaticOnly`** | `1` |
-| **`CollisionType.NoCollision`** | `2` |
+| Label | Value | Description |
+| :--- | :--- | :--- |
+| **`CollisionType.Normal`** | `0` | Blocks All |
+| **`CollisionType.StaticOnly`** | `1` | Only Blocks Static objects |
+| **`CollisionType.NoCollision`** | `2` | Doesn't Block anything |
+| **`CollisionType.IgnoreOnlyPawn`** | `3` | Blocks everything but Pawns (Characters) |
+| **`CollisionType.Auto`** | `4` | Automatically selects - usually will be Normal. On Props it will switch between **Normal** and **IgnoreOnlyPawn** depending on the Prop size |
 
 ### `CursorType`
 
@@ -134,6 +148,14 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`DamageType.RunOverProp`** | `4` |
 | **`DamageType.RunOverVehicle`** | `5` |
 | **`DamageType.Unknown`** | `6` |
+
+### `DatabaseEngine`
+
+| Label | Value |
+| :--- | :--- |
+| **`DatabaseEngine.SQLite`** | `0` |
+| **`DatabaseEngine.MySQL`** | `1` |
+| **`DatabaseEngine.PostgreSQL`** | `2` |
 
 ### `DifferentialType`
 
@@ -272,8 +294,12 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`LogType.Debug`** | `3` |
 | **`LogType.Verbose`** | `4` |
 | **`LogType.Scripting`** | `5` |
-| **`LogType.Chat`** | `6` |
-| **`LogType.WebUI`** | `7` |
+| **`LogType.ScriptingWarn`** | `6` |
+| **`LogType.ScriptingError`** | `7` |
+| **`LogType.Chat`** | `8` |
+| **`LogType.WebUI`** | `9` |
+| **`LogType.Success`** | `10` |
+| **`LogType.Fatal`** | `11` |
 
 ### `LightType`
 

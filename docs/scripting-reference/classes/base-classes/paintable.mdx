@@ -1,9 +1,9 @@
 ---
+title: Base Paintable
 description: Base class for all Paintables
 tags: [base-class]
 ---
 
-# Base Paintable
 
 Base class for all Paintables
 
@@ -36,6 +36,20 @@ my_entity:SetMaterial(new_material, index)
 | Type | Parameter | Default | Description |
 | :--- | :--- | :--- | :--- |
 | <AssetPath.Material /> | `material_path` |  | The new Material to apply |
+| <BasicType.Number /> | `index` | `-1` | The index to apply - -1 means all indices |
+
+
+### <AuthorityType.ClientOnly />`SetMaterialFromCanvas`
+
+> Sets the material at the specified index of this Actor to a Canvas object
+
+```lua
+my_entity:SetMaterialFromCanvas(canvas, index)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Classes.Canvas /> | `canvas` | | The Canvas object to use as a material |
 | <BasicType.Number /> | `index` | `-1` | The index to apply - -1 means all indices |
 
 
@@ -96,7 +110,9 @@ my_entity:SetMaterialColorParameter(parameter_name, color)
 
 ### <AuthorityType.Both />`SetMaterialScalarParameter`
 
-> Sets a Scalar parameter in this Actor’s material
+> Sets a Scalar parameter in this Actor's material
+> 
+> For setting a parameter in an [Attachable](/docs/scripting-reference/classes/character#addskeletalmeshattached) mesh, use the following **parameter_name** pattern: `attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]`
 
 ```lua
 my_entity:SetMaterialScalarParameter(parameter_name, number)
@@ -124,7 +140,9 @@ my_entity:SetMaterialTextureParameter(parameter_name, texture_path)
 
 ### <AuthorityType.Both />`SetMaterialVectorParameter`
 
-> Sets a Vector parameter in this Actor’s material
+> Sets a Vector parameter in this Actor's material
+> 
+> For setting a parameter in an [Attachable](/docs/scripting-reference/classes/character#addskeletalmeshattached) mesh, use the following **parameter_name** pattern: `attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]`
 
 ```lua
 my_entity:SetMaterialVectorParameter(parameter_name, vector)

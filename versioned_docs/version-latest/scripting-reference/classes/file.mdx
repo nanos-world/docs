@@ -1,10 +1,10 @@
 ---
+title: 📁 File
 description: A File represents an entry to a system file.
 sidebar_position: 0
 tags: [class]
 ---
 
-# 📁 File
 
 A File represents an entry to a system file.
 
@@ -12,7 +12,7 @@ import { Structs, BasicType, AuthorityType } from '@site/docs/components/_nanos.
 
 :::info
 
-🟦 **Authority:** This class can only be spawned on [Server](./core-concepts/scripting/authority-concepts.mdx).
+🟦 **Authority:** This class can only be spawned on [Server](/core-concepts/scripting/authority-concepts.mdx).
 
 :::
 
@@ -144,6 +144,7 @@ File.IsRegularFile(path)
 | <BasicType.Boolean /> | [**`IsGood`**](file#isgood) | Checks if the file status is Good |
 | <BasicType.Boolean /> | [**`HasFailed`**](file#hasfailed) | Checks if the last operation has Failed |
 | <BasicType.String /> | [**`Read`**](file#read) | Reads characters from the File and returns it. Also moves the file pointer to the latest read position. Pass 0 to read the whole file |
+| <BasicType.String /> | [**`ReadAsync`**](file#readasync) | Reads characters from the File asynchronously. |
 | <BasicType.String /> | [**`ReadLine`**](file#readline) | Reads and returns the next file line |
 |  | [**`Seek`**](file#seek) | Sets the file pointer to a specific position |
 | <BasicType.Number /> | [**`Size`**](file#size) | Returns the size of the file |
@@ -207,6 +208,7 @@ my_file:IsGood()
 my_file:HasFailed()
 ```
 
+
 ### `Read`
 
 > Reads n \(Length\) characters from the File and returns it. Also moves the file pointer to the latest read position. Pass 0 to read the whole file
@@ -221,6 +223,23 @@ my_file:Read(length)
 | :--- | :--- | :--- | :--- |
 | <BasicType.Number /> | **`length`** | `0` | Length to be read from file |
 
+
+### `ReadAsync`
+
+> Reads n (Length) characters from the File asynchronously. Also moves the file pointer to the latest read position. Pass 0 to read the whole file
+
+```lua
+my_file:ReadAsync(length, function(content)
+
+end)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`length`** |  | Length to be read from file |
+| <BasicType.Function /> | **`callback`** |  | Callback with the file read |
+
+
 ### `ReadLine`
 
 > Reads and returns the next file line
@@ -230,6 +249,7 @@ my_file:Read(length)
 ```lua
 my_file:ReadLine()
 ```
+
 
 ### `Seek`
 

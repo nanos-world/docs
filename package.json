@@ -16,21 +16,17 @@
     "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download"
   },
   "dependencies": {
-    "@crowdin/cli": "^3.6.5",
-    "@docusaurus/core": "^2.0.0-beta.14",
-    "@docusaurus/plugin-client-redirects": "^2.0.0-beta.14",
-    "@docusaurus/preset-classic": "^2.0.0-beta.14",
-    "@docusaurus/theme-search-algolia": "^2.0.0-beta.14",
-    "@mdx-js/react": "^1.6.21",
-    "@svgr/webpack": "^5.5.0",
+    "@crowdin/cli": "^3.7.8",
+    "@docusaurus/core": "^2.0.0-beta.20",
+    "@docusaurus/preset-classic": "^2.0.0-beta.20",
+    "@mdx-js/react": "^1.6.22",
+    "@saucelabs/theme-github-codeblock": "^0.1.1",
     "clsx": "^1.1.1",
-    "file-loader": "^6.2.0",
-    "plugin-image-zoom": "github:ataft/plugin-image-zoom",
+    "node-polyfill-webpack-plugin": "^1.1.4",
+    "plugin-image-zoom": "flexanalytics/plugin-image-zoom",
     "prism-react-renderer": "^1.2.1",
-    "raw-loader": "^4.0.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "url-loader": "^4.1.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "browserslist": {
     "production": [

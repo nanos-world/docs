@@ -1,10 +1,13 @@
 ---
+id: contributing-to-the-docs
+title: 🤝 Contributing to the Docs
 description: How to suggest changes and contribute to the Docs
+image: /img/docs/docusaurus.svg
+keywords: [future, plan, updates]
 sidebar_position: 0.3
 tags: [docs]
 ---
 
-# 🤝 Contributing to the Docs
 
 Hello Dyno! Hello Markdown!
 

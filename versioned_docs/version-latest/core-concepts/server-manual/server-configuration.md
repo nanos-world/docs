@@ -1,10 +1,10 @@
 ---
+title: Server Configuration
 description: All you need to know to Configure your server!
 sidebar_position: 2
 tags: [hosting]
 ---
 
-# Server Configuration
 
 All you need to know to Configure your server!
 
@@ -19,52 +19,9 @@ nanos world Config files use **TOML** (Tom’s Obvious, Minimal Language), pleas
 
 The server Configuration file `Config.toml` is generated automatically when the server is launched for the first time. This file will always be overridden with the proper pattern after the server is loaded.
 
-```toml title="Server.toml"
-# server configurations
-[server]
-    # server name
-    name =                  "nanos world Server"
-    # server description (max 250 characters)
-    description =           ""
-    # server logo URL (recommended size: 150x75)
-    logo =                  "https://i.imgur.com/U1rZp5v.png"
-    # max players
-    max_players =           60
-    # leave it blank for no password
-    password =              ""
-    # server IP. we recommend leaving it 0.0.0.0 for default
-    ip =                    "0.0.0.0"
-	# server port (TCP and UDP forwarding needed)
-    port =                  7777
-	# query port (UDP forwarding needed)
-	query_port =            7778
-    # announce server in the master server list
-    announce =              true
-    # server tick rate in milliseconds (dangerous! server will tick at each [tick_rate] ms, affecting both server and client performance. 33 ms means 30 ticks per second and is the default and recommended value)
-    tick_rate =             33
-    # log Level. (1) normal - (2) debug - (3) verbose
-    log_level =             2
 
-# nanos world configurations
-[world]
-    # game-mode package to load (set the main game-mode package to load - you can load only one 'game-mode' package type at once)
-    game_mode =             ""
-    # loading-screen package to load (the loading screen will be displayed when players join your server)
-    loading_screen =        ""
-    # packages script list (leave it blank to load all packages, this is usually useful when you have tons of packages downloaded and only wants to load one or some)
-    packages = [
-
-    ]
-    # asset packs list (this will additionally load the asset packs you define here)
-    assets = [
-
-    ]
-    # default startup map
-    map =                   "nanos-world::BlankMap"
-    # banned IPs
-    banned_ips = [
-
-    ]
+```toml reference
+https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 ```
 
 
@@ -75,7 +32,7 @@ The server Configuration file `Config.toml` is generated automatically when the 
 | **`name`** | Name of the Server |
 | **`description`** | Description of the Server |
 | **`logo`** | Image URL to be displayed in the Server List |
-| **`max_players`** | Max ammount of players allowed to join |
+| **`max_players`** | Max amount of players allowed to join |
 | **`password`** | Password to be able to connect |
 | **`ip`** | Server IP. We recommend leaving it blank |
 | **`port`** | Server main Port and HTTP Port (UDP/TCP) |
@@ -83,11 +40,12 @@ The server Configuration file `Config.toml` is generated automatically when the 
 | **`announce`** | Whether to announce or not in the Server List |
 | **`tick_rate`** | Server Tick in ms. We recommend leaving it 33 |
 | **`log_level`** | Which Log level to output |
-| **`game_mode`** | [game-mode](./core-concepts/packages/packages.md#package-types) package to load -  you can only load one game-mode at once. |
-| **`loading_screen`** | [loading-screen](./core-concepts/packages/loading-screen.md) package to load - you can only load one loading-screen at once. |
-| **`packages`** | [script](./core-concepts/packages/packages.md#package-types) packages to load |
+| **`game_mode`** | [game-mode](/core-concepts/packages/packages-guide.md#package-types) package to load -  you can only load one game-mode at once. |
+| **`loading_screen`** | [loading-screen](/core-concepts/packages/loading-screen.md) package to load - you can only load one loading-screen at once. |
+| **`packages`** | [script](/core-concepts/packages/packages-guide.md#package-types) packages to load |
 | **`assets`** | Additional assets to force to load |
 | **`map`** | Which map to load |
+| **`token`** | Server Token used for authorize downloads through CLI |
 | **`banned_ips`** | List of banned IPs |
 
 
@@ -97,7 +55,7 @@ The server Configuration file `Config.toml` is generated automatically when the 
 
 The Map (or Level) is defined in the Server’s config file, this level will be loaded when the player joins the server and the Path is supposed for be or a built-in asset or an asset which is located at `Assets/` folder.
 
-nanos world counts on (for now) 2 built-in maps: `nanos-world::BlankMap` and `nanos-world::TestingMap` which can be used in your server without needing to download any Asset Pack.
+nanos world counts on (for now) 4 built-in maps: `nanos-world::BlankMap`, `nanos-world::EmptyMap`, `nanos-world::OceanMap` and `nanos-world::TestingMap` which can be used in your server without needing to download any Asset Pack.
 
 
 ## Server Console
@@ -148,18 +106,21 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--game_mode` | string | Server game-mode |
 | `--loading_screen` | string | Server loading-screen |
 | `--packages` | string list | Server packages |
+| `--assets` | string list | Server assets |
+| `--token` | string | Server authorization token |
 | `--max_players` | number | Max allowed players |
 | `--save` | 0 or 1 | If to save the parameters in Config.toml |
 | `--profiling` | 0 or 1 | Enables Performance Profiling Logs for debugging |
+| `--auto_download` | 0 or 1 | Automatically downloads Packages and Assets from Vault if needed |
 
 
 ### One-liner Server Configuration
 
-With Command Line Parameters and [Command Line Interface (CLI)](./core-concepts/server-manual/nanos-world-cli.mdx), it is also possible to automate the full server installation, here's an example:
+With Command Line Parameters and [Command Line Interface (CLI)](/core-concepts/server-manual/nanos-world-cli.mdx), it is also possible to automate the full server installation, here's an example:
 
 ```shell title="Shell/Linux"
 # Installs/Updates the server through SteamCMD
-steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_update "1686460 -beta bleeding-edge" validate +quit
+steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_update "1936830 -beta bleeding-edge" validate +quit
 
 # Installs all needed Packages (this will install needed Assets as well)
 ./NanosWorldServer.sh --cli install package sandbox battlefield-kill-ui ts-fireworks-tools
@@ -168,6 +129,12 @@ steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_updat
 ./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --gamemode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/U1rZp5v.png"
 ```
 
+Another shorter example:
+
+```shell title="Shell/Linux"
+# Starts the server with all configs set and auto downloads the packages and assets if needed
+./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --gamemode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download 1 --logo "https://i.imgur.com/U1rZp5v.png"
+```
 
 ## Common Console Messages and Errors
 

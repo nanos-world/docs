@@ -1,9 +1,9 @@
 ---
+title: 🕹️ Input
 description: Create custom Bindings and Retrieve Input information
 tags: [static-class, client]
 ---
 
-# 🕹️ Input
 
 Create custom Bindings and Retrieve Input information
 
@@ -11,7 +11,7 @@ import { Structs, BasicType, Enums, AuthorityType } from '@site/docs/components/
 
 :::info
 
-🟧 **Authority:** This can be accessed only on [Client](./core-concepts/scripting/authority-concepts.mdx).
+🟧 **Authority:** This can be accessed only on [Client](/core-concepts/scripting/authority-concepts.mdx).
 
 🗿 **Static Class:** This is a Static Class. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
 
@@ -51,6 +51,7 @@ end)
 |  | [**`Unbind`**](input#unbind) | Unbinds a Input function |
 |  | [**`Register`**](input#register) | Registers a BindingName to a Key |
 |  | [**`Unregister`**](input#unregister) | Unregisters a BindingName |
+| <BasicType.String /> | [**`GetKeyIcon`**](input#getkeyicon) | Gets the icon Path of a Key |
 | <BasicType.String /> | [**`GetMappedKey`**](input#getmappedkey) | Returns the Key given a BindingName |
 |  | [**`ResetBindings`**](input#resetbindings) | Resets all Bound functions by this Package |
 | <BasicType.Table /> | [**`GetGameKeyBindings`**](input#getgamekeybindings) | Returns a table with all Game KeyBindings  |
@@ -112,6 +113,22 @@ Input.Unregister(binding_name, key_name)
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`binding_name`** | The KeyBinding ID |
 | <BasicType.String /> | **`key_name`** |  |
+
+
+### `GetKeyIcon`
+
+> Gets the Icon image path from a Key
+> 
+> Returns <BasicType.String />
+
+```lua
+Input.GetKeyIcon(key_name, dark_mode)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`key_name`** |  |  |
+| <BasicType.Boolean /> | **`dark_mode`** | `false`  |  |
 
 
 ### `GetMappedKey`

@@ -1,9 +1,10 @@
 ---
+title: Vehicles Meshes
 description: How to create your own Vehicles
 tags: [assets, vehicles, skeletal-meshes]
+keywords: [vehicle, unreal]
 ---
 
-# Vehicles Meshes
 
 Vehicles in nanos world implement Unreal's [Wheeled Vehicle](https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/Vehicles/). The base Mesh of a vehicle is a **Skeletal Mesh**.
 
@@ -21,4 +22,4 @@ It has only 4 bones behind the root, for each Wheel: `Wheel_Front_Left`, `Wheel_
 
 ## Exporting the Vehicle
 
-The Exporting process follows the usual process of exporting assets to nanos world. Please follow the [Importing Custom Assets](./assets-modding/creating-assets/importing-assets.md) Guide.
+The Exporting process follows the usual process of exporting assets to nanos world. Please follow the [Importing Custom Assets](/assets-modding/creating-assets/importing-assets.md) Guide.

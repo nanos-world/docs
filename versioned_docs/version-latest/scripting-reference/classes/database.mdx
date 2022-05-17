@@ -1,0 +1,231 @@
+---
+title: 💾 Database
+description: The Database entity provides programmers a way to access SQL databases easily through scripting.
+sidebar_position: 0
+tags: [class]
+---
+
+
+The Database entity provides programmers a way to access SQL databases easily through scripting.
+
+![](/img/docs/db.png)
+
+import { Structs, BasicType, AuthorityType, Enums } from '@site/docs/components/_nanos.mdx';
+
+:::info
+
+🟦 **Authority:** This class can only be spawned on [Server](/core-concepts/scripting/authority-concepts.mdx).
+
+:::
+
+:::tip
+
+Currently nanos world supports `SQLite`, `MySQL` and `PostgreSQL` out of the box. 
+
+:::
+
+
+## Example
+
+```lua
+-- Creates a SQLite connection, using a local file called 'database_filename.db'
+local sqlite_db = Database(DatabaseEngine.SQLite, "db=database_filename.db timeout=2")
+
+-- Creates a table
+sqlite_db:Execute([[
+	CREATE TABLE IF NOT EXISTS test (
+		id INTEGER,
+		name VARCHAR(100)
+	)
+]])
+
+-- Executes a Query
+sqlite_db:Execute("INSERT INTO test VALUES (1, 'amazing')", function(affected_rows)
+	Package.Log("Affected Rows: " .. tostring(affected_rows))
+    -- Will output: 1
+end)
+
+-- Selects the data
+sqlite_db:Select("SELECT * FROM test", function(rows)
+	Package.Log(NanosUtils.Dump(rows))
+    -- Will output a table with all data from 'test'
+end)
+
+-- Selects the data with filter
+sqlite_db:Select("SELECT * FROM test WHERE name = :0", function(rows)
+	Package.Log(NanosUtils.Dump(rows))
+    -- Will output a table with all data from 'test' where name matches 'amazing'
+end, 'amazing')
+```
+
+:::tip
+
+All requests are thread safe! 🥳
+
+:::
+
+
+## Constructor Parameters
+
+| Type | Name | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Enums>DatabaseEngine</Enums> | **`database_engine`** |  | Database Engine |
+| <BasicType.String /> | **`connection_string`** |  | [Connection String](database#connection-string) used to create and connect to the database |
+| <BasicType.Number /> | **`pool_size`** | `10` | Size of the connection pool when calling several queries simultaneously |
+
+
+## Functions
+
+| **Returns** | **Name** | **Description** |
+| :--- | :--- | :--- |
+|  | [**`Close`**](database#close) | Closes the Database |
+|  | [**`Execute`**](database#execute) | Execute a query asyncronously |
+|  | [**`ExecuteSync`**](database#executesync) | Execute a query syncronously |
+|  | [**`Select`**](database#select) | Execute a select query asyncronously |
+|  | [**`SelectSync`**](database#selectsync) | Execute a select query syncronously |
+
+
+### `Close`
+
+> Closes the Database
+
+```lua
+my_database:Close()
+```
+
+
+### `Execute`
+
+> Execute a query asyncronously
+> 
+> Callback will be in the format (rows_affected)
+
+```lua
+my_database:Execute(query, function(rows_affected)
+    -- Do Something...
+end, parameters...)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`query`** |  | Query to execute |
+| <BasicType.Function /> | **`callback`** | `nil` | Callback to call when finishes |
+| <BasicType.Any /> | **`parameters...`** | `nil` | Sequence of parameters to escape into the Query |
+
+
+### `ExecuteSync`
+
+> Execute a query syncronously
+> 
+> Returns a <BasicType.Number /> of `affected_rows`
+
+```lua
+local affected_rows = my_database:ExecuteSync(query, parameters...)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`query`** |  | Query to execute |
+| <BasicType.Any /> | **`parameters...`** | `nil` | Sequence of parameters to escape into the Query |
+
+
+### `Select`
+
+> Execute a select query asyncronously
+> 
+> Callback will be in the format (rows)
+
+```lua
+my_database:Select(query, function(rows)
+    -- Do something
+end, parameters...)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`query`** |  | Query to select |
+| <BasicType.Function /> | **`callback`** | `nil` | Callback to call when finishes |
+| <BasicType.Any /> | **`parameters...`** | `nil` | Sequence of parameters to escape into the Query |
+
+
+### `SelectedSync`
+
+> Selects a query syncronously
+> 
+> Returns a <BasicType.Table /> of <BasicType.Table />s contains the rows fetched
+
+```lua
+local rows = my_database:SelectedSync(query, parameters...)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`query`** |  | Query to select |
+| <BasicType.Any /> | **`parameters...`** | `nil` | Sequence of parameters to escape into the Query |
+
+
+## Connection String
+
+Each **Database Engine** has it's own parameters which can be used on the `connection_string` constructor. Those parameters are defined and backend-dependent by the Engine, being passed directly to the Backend when creating the connection.
+
+They should be set in the following format: `"param1=value1 param2=value2 param3=value3"`.
+
+:::tip
+
+Usually you don't need to explicitly define all (or most) of the parameters described here, just use the ones you make sure are useful for your needs. Some of them are described by the libraries but aren't 100% tested in nanos world.
+
+:::
+
+
+### SQLite
+
+:::tip
+
+There is a special **connection_string** for SQLite: `:memory:`. This will create a database in the memory which is destroyed when the server closes.
+
+:::
+
+| Parameter | Default Value | Description |
+| :--- | :--- | :--- |
+| **`db/dbname`** |  | The database name |
+| **`timeout`** | `0` | set sqlite busy timeout (in seconds) ([link](http://www.sqlite.org/c3ref/busy_timeout.html)) |
+| **`readonly`** | `false` | open database in read-only mode instead of the default read-write (note that the database file must already exist in this case, see the [documentation](https://www.sqlite.org/c3ref/open.html)) |
+| **`synchronous`** | | set the pragma synchronous flag ([link](http://www.sqlite.org/pragma.html#pragma_synchronous)) |
+| **`shared_cache`** | | should be true ([link](http://www.sqlite.org/c3ref/enable_shared_cache.html)) |
+| **`vfs`** | | set the SQLite VFS used to as OS interface. The VFS should be registered before opening the connection, see the [documentation](https://www.sqlite.org/vfs.html) |
+
+
+### MySQL
+
+| Parameter | Default Value | Description |
+| :--- | :--- | :--- |
+| **`db/dbname`** |  | The database name |
+| **`user`** |  | User name to connect as |
+| **`password/pass`** |  | Password to be used if the server demands password authentication |
+| **`host`** |  | Name of host to connect to |
+| **`port`** |  | Port number to connect to at the server host |
+| **`unix_socket`** |  | |
+| **`sslca`** |  | |
+| **`sslcert`** |  | |
+| **`local_infile`** |  | should be `0` or `1`, `1` means `MYSQL_OPT_LOCAL_INFILE` will be set |
+| **`charset`** |  |  |
+| **`reconnect`** | `0` | if set to `1`, will attempt to reconnect on connection loss |
+| **`connect_timeout`** |  | should be positive integer value that means seconds corresponding to `MYSQL_OPT_CONNECT_TIMEOUT` |
+| **`read_timeout`** |  | should be positive integer value that means seconds corresponding to `MYSQL_OPT_READ_TIMEOUT` |
+| **`write_timeout`** |  | should be positive integer value that means seconds corresponding to `MYSQL_OPT_WRITE_TIMEOUT` |
+
+
+### PostgreSQL
+
+More parameters and complete information can be found at the [PostgreSQL Official Documentation](https://www.postgresql.org/docs/8.3/libpq-connect.html).
+
+| Parameter | Default Value | Description |
+| :--- | :--- | :--- |
+| **`host`** |  | Name of host to connect to |
+| **`hostaddr`** |  | Numeric IP address of host to connect to |
+| **`port`** |  | Port number to connect to at the server host |
+| **`user`** | same as OS user name | User name to connect as |
+| **`dbname`** | same as user name | The database name |
+| **`password`** |  | Password to be used if the server demands password authentication |
+| **`connect_timeout`** | `0` | Maximum wait for connection, in seconds |
+| **`options`** |  | Command-line options to be sent to the server |

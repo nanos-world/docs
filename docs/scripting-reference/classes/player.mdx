@@ -1,12 +1,10 @@
 ---
-description: >-
-  Players are Entities that represents the individual behind the mouse and
-  keyboard. Players are spawned automatically when connected to the server.
+title: 👩‍💻 Player
+description: Players are Entities that represents the individual behind the mouse and keyboard. Players are spawned automatically when connected to the server.
 sidebar_position: 0
 tags: [class]
 ---
 
-# 👩‍💻 Player
 
 :::info
 
@@ -71,6 +69,7 @@ end)
 | <AuthorityType.Both /> | <BasicType.String /> | [**`GetType`**](player#gettype) | Returns the type of this Actor |
 | <AuthorityType.Both /> | <BasicType.Number /> | [**`GetVOIPChannel`**](player#getvoipchannel) | Returns the VOIP Channel of this Player |
 | <AuthorityType.Both /> | <BasicType.Any /> | [**`GetValue`**](player#getvalue) | Gets a value given a key |
+| <AuthorityType.ServerOnly /> | <BasicType.Boolean /> | [**`IsHost`**](player#ishost) | Returns if this Player started the server from New Game |
 | <AuthorityType.ClientOnly /> | <BasicType.Boolean /> | [**`IsLocalPlayer`**](player#islocalplayer) | Returns if this is the LocalPlayer |
 | <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsValid`**](player#isvalid) | Returns if this entity is valid \(i.e. wasn’t destroyed and points to a valid entity\) |
 | <AuthorityType.Both /> | <Enums>VOIPSetting</Enums> | [**`GetVOIPSetting`**](player#getvoipsetting) | Returns this Player VOIP Setting |
@@ -152,14 +151,12 @@ my_player:Possess(new_character, blend_time, exp)
 > Sets the Player's Camera Location (only works if not possessing any Character)
 
 ```lua
-my_player:SetCameraLocation(location, time, exp)
+my_player:SetCameraLocation(location)
 ```
 
 | Type | Parameter | Default | Description |
 | :--- | :--- | :--- | :--- |
 | <Structs.Vector /> | **`location`** |  |  |
-| <BasicType.Number /> | **`time`** | `0` | Time to interp from current camera location to target location |
-| <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
 
 ### <AuthorityType.Both />`SetCameraRotation`
@@ -167,13 +164,41 @@ my_player:SetCameraLocation(location, time, exp)
 > Sets the Player's Camera Rotation
 
 ```lua
-my_player:SetCameraRotation(rotation, time, exp)
+my_player:SetCameraRotation(rotation)
 ```
 
 | Type | Parameter | Default | Description |
 | :--- | :--- | :--- | :--- |
 | <Structs.Rotator /> | **`rotation`** |  |  |
-| <BasicType.Number /> | **`time`** | `0` | Time to interp from current camera rotation to target rotation |
+
+
+### <AuthorityType.Both />`TranslateCameraTo`
+
+> Smoothly moves the Player's Camera Location (only works if not possessing any Character)
+
+```lua
+my_player:TranslateCameraTo(location, time, exp)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** |  |  |
+| <BasicType.Number /> | **`time`** |  | Time to interp from current camera location to target location |
+| <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
+
+
+### <AuthorityType.Both />`RotateCameraTo`
+
+> Smoothly moves the Player's Camera Rotation
+
+```lua
+my_player:RotateCameraTo(rotation, time, exp)
+```
+
+| Type | Parameter | Default | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Rotator /> | **`rotation`** |  |  |
+| <BasicType.Number /> | **`time`** |  | Time to interp from current camera rotation to target rotation |
 | <BasicType.Number /> | **`exp`** | `0` | Exponential used to smooth interp, use `0` for linear movement |
 
 
@@ -258,7 +283,7 @@ my_player:SetName(new_name)
 
 > Sets a value in this entity, which can be accessed by any package \(optionally sync on clients if called from server\)
 >
-> Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
+> Please refer to [Entity Values](/core-concepts/scripting/entity-values.mdx) for more information
 
 ```lua
 my_player:SetValue(key, value, sync_on_clients)
@@ -451,7 +476,7 @@ my_player:GetVOIPChannel()
 
 ### <AuthorityType.Both />`GetValue`
 
-> Gets a value given a key. Please refer to [Entity Values](./core-concepts/scripting/entity-values.mdx) for more information
+> Gets a value given a key. Please refer to [Entity Values](/core-concepts/scripting/entity-values.mdx) for more information
 >
 > Returns <BasicType.Any />
 
@@ -463,6 +488,18 @@ my_player:GetValue(key, fallback)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`key`** |  | Key |
 | <BasicType.Any /> | **`fallback`** |  | Fallback Value if key doesn't exist |
+
+
+### <AuthorityType.ClientOnly />`IsHost`
+
+>  Returns if this Player started the server from New Game menu
+>
+> Returns <BasicType.Boolean />
+
+```lua
+my_player:IsHost()
+```
+
 
 ### <AuthorityType.ClientOnly />`IsLocalPlayer`
 

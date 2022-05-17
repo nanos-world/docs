@@ -1,9 +1,9 @@
 ---
+title: Painting Meshes
 description: How to use the new Material customization methods available to use
 tags: [tutorial-example, scripting, assets]
 ---
 
-# Painting Meshes
 
 How to use the new Material customization methods available to use.
 
@@ -17,7 +17,7 @@ In Unreal Engine, when you create a Material, you can define custom [Parameters]
 
 **nanos world** provides a bunch of methods to allow you to interact with the parameters you created for your materials using our scripting!
 
-Please read [Base Paintable](./scripting-reference/classes/base-classes/paintable.mdx) Class to check all available methods before proceeding!
+Please read [Base Paintable](/scripting-reference/classes/base-classes/paintable.mdx) Class to check all available methods before proceeding!
 
 :::
 

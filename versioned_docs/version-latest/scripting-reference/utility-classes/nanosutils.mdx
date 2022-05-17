@@ -1,9 +1,9 @@
 ---
+title: NanosUtils
 description: A table containing useful and aux functions
 tags: [utility-class]
 ---
 
-# NanosUtils
 
 A table containing useful and aux functions
 
@@ -43,7 +43,7 @@ NanosUtils.IsA(my_variable, Character) -- true
 NanosUtils.IsA(my_variable, Vehicle) -- false
 ```
 
-## Functions
+## Static Functions
 
 | Returns | Name | Description |
 | :--- | :--- | :--- |
@@ -98,3 +98,18 @@ NanosUtils.Benchmark(name, amount, func, args...)
 | <BasicType.Function /> | **`func`** | The function to call |
 | <BasicType.Any /> | **`args...`** | The arguments of the function to call |
 
+
+### **`FormatString`**
+
+> A better string.format, replace `{num}` by the corresponding vararg in a string
+>
+> Example: `NanosUtils.FormatString("Hello {2} I'm {1}", "a noob", "world!") -- "Hello world! I'm a noob"`
+
+```lua
+NanosUtils.FormatString(text, args...)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`text`** | Text to format |
+| <BasicType.Any /> | **`args...`** | The arguments to replace |
