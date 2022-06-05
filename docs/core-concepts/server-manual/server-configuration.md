@@ -112,6 +112,8 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--save` | 0 or 1 | If to save the parameters in Config.toml |
 | `--profiling` | 0 or 1 | Enables Performance Profiling Logs for debugging |
 | `--auto_download` | 0 or 1 | Automatically downloads Packages and Assets from Vault if needed |
+| `--dedicated_server` | 0 or 1 | If to start as a Dedicated Server or P2P |
+| `--async_log` | 0 or 1 | If to use async or sync logs (async provides better performance) - default is 1 |
 
 
 ### One-liner Server Configuration
