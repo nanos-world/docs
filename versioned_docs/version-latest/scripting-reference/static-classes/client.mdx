@@ -22,7 +22,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
-|  | [**`CallLevelBlueprintEvent`**](client#calllevelblueprintevent) | Calls a Level Blueprint custom event \(which can be added when creating levels through Unreal Engine\) |
+|  | [**`CallLevelBlueprintEvent`**](client#calllevelblueprintevent) | Calls a Level Blueprint custom event (which can be added when creating levels through Unreal Engine) |
 |  | [**`DrawDebugBox`**](client#drawdebugbox) |  |
 |  | [**`DrawDebugCoordinateSystem`**](client#drawdebugcoordinatesystem) |  |
 |  | [**`DrawDebugCrosshairs`**](client#drawdebugcrosshairs) |  |
@@ -460,6 +460,8 @@ Client.SetMouseEnabled(is_enabled)
 > `HighlightMode.Always` will always be visible, even behind walls
 > `HighlightMode.OnlyHidden` will only be visible if behind a wall
 > `HighlightMode.OnlyVisible` will only be visible if not behind a wall
+>
+> Note: You can only have 3 differents indexes (0, 1 or 2).
 
 ```lua
 Client.SetHighlightColor(highlight_color, index, mode)
@@ -468,24 +470,25 @@ Client.SetHighlightColor(highlight_color, index, mode)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <Structs.Color /> | **`highlight_color`** |  |
-| <BasicType.Number /> | **`index`** |  |
-| <Enums>HighlightMode</Enums> | **`mode`** |  |
+| <BasicType.Number /> | **`index`** | `0` |
+| <Enums>HighlightMode</Enums> | **`mode`** | `HighlightMode.Always` |
 
 
 ### `SetOutlineColor`
 
 > Changes the Outline Color for outlined actors at a specific Index. Multiply it by 5 (or more) for having a glowing effect.
 > 
-> Note: The default Outline color index used by the game is `0` (when interacting with stuff).
+> Note: You can only have 3 differents indexes (0, 1 or 2), and the default Outline color index used by the game is `0` (when interacting with stuff).
 
 ```lua
-Client.SetOutlineColor(outline_color, index)
+Client.SetOutlineColor(outline_color, index, thickness)
 ```
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <Structs.Color /> | **`outline_color`** |  |
-| <BasicType.Number /> | **`index`** |  |
+| <BasicType.Number /> | **`index`** | `0` |
+| <BasicType.Number /> | **`thickness`** | `2` |
 
 
 ### `SetSteamRichPresence`

@@ -7,7 +7,7 @@ tags: [utility-class]
 
 A table containing useful and aux Math functions
 
-import { BasicType, Structs } from '@site/docs/components/_nanos.mdx';
+import { BasicType, Structs, Classes } from '@site/docs/components/_nanos.mdx';
 
 :::info
 
@@ -15,11 +15,13 @@ import { BasicType, Structs } from '@site/docs/components/_nanos.mdx';
 
 :::
 
+
 ## Usage
 
 ```lua
 local axis = NanosMath.ClampAxis(720)
 ```
+
 
 ## Static Functions
 
@@ -29,11 +31,13 @@ local axis = NanosMath.ClampAxis(720)
 | <BasicType.Number /> | [**`Clamp`**](nanosmath#clamp) |  |
 | <BasicType.Number /> | [**`ClampAxis`**](nanosmath#clampaxis) | Clamps an angle to the range of \[0, 360\] |
 | <BasicType.Number /> | [**`NormalizeAxis`**](nanosmath#normalizeaxis) | Clamps an angle to the range of \[-180, 180\] |
+| <Structs.Vector />, <Structs.Rotator /> | [**`RelativeTo`**](nanosmath#relativeto) | Calculates the location and rotation relative to an actor |
 | <BasicType.Number /> | [**`FInterpTo`**](nanosmath#finterpto) | Interpolate number from Current to Target |
 | <Structs.Rotator /> | [**`RInterpTo`**](nanosmath#rinterpto) | Interpolate Rotator from Current to Target |
 | <Structs.Rotator /> | [**`RInterpConstantTo`**](nanosmath#rinterpconstantto) | Interpolate Rotator from Current to Target with a constant step |
 | <Structs.Vector /> | [**`VInterpTo`**](nanosmath#vinterpto) | Interpolate Vector from Current to Target |
 | <Structs.Vector /> | [**`VInterpConstantTo`**](nanosmath#vinterpconstantto) | Interpolate Vector from Current to Target with a constant step |
+
 
 ### `Round`
 
@@ -46,6 +50,7 @@ NanosMath.Round(value)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.Number /> | **`value`** |  |
+
 
 ### `Clamp`
 
@@ -61,6 +66,7 @@ NanosMath.Clamp(value, min, max)
 | <BasicType.Number /> | **`min`** |  |
 | <BasicType.Number /> | **`max`** |  |
 
+
 ### `ClampAxis`
 
 > Clamps an angle to the range of \[0, 360\].
@@ -73,6 +79,7 @@ NanosMath.ClampAxis(value)
 | :--- | :--- | :--- |
 | <BasicType.Number /> | **`value`** |  |
 
+
 ### `NormalizeAxis`
 
 > Clamps an angle to the range of \[-180, 180\].
@@ -84,6 +91,24 @@ NanosMath.NormalizeAxis(value)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.Number /> | **`value`** |  |
+
+
+### `RelativeTo`
+
+> Calculates the location and rotation relative to an actor
+> 
+> Returns <Structs.Vector />, <Structs.Rotator />
+
+```lua
+NanosMath.RelativeTo(location, rotation, actor)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** |  |
+| <Structs.Rotator /> | **`rotation`** |  |
+| <Classes.Actor /> | **`actor`** |  |
+
 
 ### `FInterpTo`
 
@@ -100,6 +125,7 @@ NanosMath.FInterpTo(current, target, delta_time, interp_speed)
 | <BasicType.Number /> | **`delta_time`** |  |
 | <BasicType.Number /> | **`interp_speed`** |  |
 
+
 ### `RInterpTo`
 
 > Interpolate Rotator from Current to Target
@@ -114,6 +140,7 @@ NanosMath.RInterpTo(current, target, delta_time, interp_speed)
 | <Structs.Rotator /> | **`target`** |  |
 | <BasicType.Number /> | **`delta_time`** |  |
 | <BasicType.Number /> | **`interp_speed`** |  |
+
 
 ### `RInterpConstantTo`
 
@@ -130,6 +157,7 @@ NanosMath.RInterpConstantTo(current, target, delta_time, interp_speed)
 | <BasicType.Number /> | **`delta_time`** |  |
 | <BasicType.Number /> | **`interp_speed`** |  |
 
+
 ### `VInterpTo`
 
 > Interpolate Vector from Current to Target
@@ -144,6 +172,7 @@ NanosMath.VInterpTo(current, target, delta_time, interp_speed)
 | <Structs.Vector /> | **`target`** |  |
 | <BasicType.Number /> | **`delta_time`** |  |
 | <BasicType.Number /> | **`interp_speed`** |  |
+
 
 ### `VInterpConstantTo`
 

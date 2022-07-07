@@ -393,12 +393,13 @@ my_weapon:SetLeftHandTransform(location, rotation)
 > The mesh used when the Character reloads the weapon. Will drop this Mesh as an animation effect.
 
 ```lua
-my_weapon:SetMagazineMesh(static_mesh_asset_path)
+my_weapon:SetMagazineMesh(static_mesh_asset_path, magazine_mesh_hide_bone)
 ```
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
 | <AssetPath.StaticMesh /> | **`static_mesh_asset_path`** |  |  |
+| <BasicType.String /> | **`magazine_mesh_hide_bone`** | `b_gun_mag` | Bone to hide when reloading the weapon |
 
 
 ### <AuthorityType.ServerOnly />`SetParticlesBulletTrail`

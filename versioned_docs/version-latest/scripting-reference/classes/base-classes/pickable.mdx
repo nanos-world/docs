@@ -26,7 +26,7 @@ import BasePickableFunctions from '@site/docs/scripting-reference/classes/base-c
 
 > Spawns and attaches a SkeletalMesh to this Pickable, the SkeletalMesh must have the same skeleton used by this Actor's mesh, and will follow all animations from it. Uses a custom ID to be used for removing it later
 > 
-> For customizing the Materials specific of a SkeletalMeshAttached, please use the following syntax as the `id` in the <Classes.Paintable /> methods: `attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]`, where [ATTACHABLE_ID] is the ID of the Attachable, and [PARAMETER_NAME] is the name of the parameter you want to change.
+> For customizing the Materials specific of a SkeletalMeshAttached, please use the following syntax as the `parameter_name` in the <Classes.Paintable /> methods: `attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]`, where [ATTACHABLE_ID] is the ID of the Attachable, and [PARAMETER_NAME] is the name of the parameter you want to change.
 
 ```lua
 entity:AddSkeletalMeshAttached(id, skeletal_mesh_path)
@@ -42,7 +42,7 @@ entity:AddSkeletalMeshAttached(id, skeletal_mesh_path)
 
 > Spawns and attaches a StaticMesh to this Pickable in a Socket with a relative location and rotation. Uses a custom ID to be used for removing it later
 > 
-> For customizing the Materials specific of a StaticMeshAttached, please use the following syntax as the `id` in the <Classes.Paintable /> methods: `attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]`, where [ATTACHABLE_ID] is the ID of the Attachable, and [PARAMETER_NAME] is the name of the parameter you want to change.
+> For customizing the Materials specific of a StaticMeshAttached, please use the following syntax as the `parameter_name` in the <Classes.Paintable /> methods: `attachable///[ATTACHABLE_ID]/[PARAMETER_NAME]`, where [ATTACHABLE_ID] is the ID of the Attachable, and [PARAMETER_NAME] is the name of the parameter you want to change.
 
 ```lua
 entity:AddStaticMeshAttached(id, static_mesh_path, socket, relative_location, relative_rotation)
