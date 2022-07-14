@@ -45,6 +45,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 |  | [**`SetDiscordActivity`**](client#setdiscordactivity) | Communicates with Discord and sets a custom user status |
 |  | [**`SetInputEnabled`**](client#setinputenabled) | Toggles Local Player input |
 |  | [**`SetMouseEnabled`**](client#setmouseenabled) | Displays/Hides Mouse Cursor |
+|  | [**`SetMousePosition`**](client#setmouseposition) | Sets the mouse position |
 |  | [**`SetHighlightColor`**](client#sethighlightcolor) | Changes the Highlight Color for highlighted actors at a specific Index |
 |  | [**`SetOutlineColor`**](client#setoutlinecolor) | Changes the Outline Color for outlined actors at a specific Index |
 |  | [**`SetSteamRichPresence`**](client#setsteamrichpresence) | Sets Steam Rich Presence value |
@@ -416,15 +417,16 @@ Client.SetHardwareCursor(cursor_shape, cursor_path, hotspot)
 > Communicates with Discord and sets a custom user status
 
 ```lua
-Client.SetDiscordActivity(state, details, large_image, large_text)
+Client.SetDiscordActivity(state, details, large_image, large_text, reset_time)
 ```
 
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`state`** |  |
-| <BasicType.String /> | **`details`** |  |
-| <BasicType.String /> | **`large_image`** |  |
-| <BasicType.String /> | **`large_text`** |  |
+| Type | Parameter | Default Value  Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`state`** |  |  |
+| <BasicType.String /> | **`details`** |  |  |
+| <BasicType.String /> | **`large_image`** |  |  |
+| <BasicType.String /> | **`large_text`** |  |  |
+| <BasicType.String /> | **`reset_time`** | `false` | Whether or not to reset current activity elapsed time |
 
 
 ### `SetInputEnabled`
@@ -451,6 +453,19 @@ Client.SetMouseEnabled(is_enabled)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_enabled`** |  |
+
+
+### `SetMousePosition`
+
+> Sets the mouse position
+
+```lua
+Client.SetMousePosition(new_position)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Structs.Vector2D /> | **`new_position`** |  |
 
 
 ### `SetHighlightColor`

@@ -27,7 +27,7 @@ Little by little we are able to allow loading some assets without the need of co
 :::
 
 
-#### 1. Download and Install [Epic Games Launcher](https://store.epicgames.com/download) 
+#### 1. Download and Install [Epic Games Launcher](https://www.unrealengine.com/en-US/download) 
 
 Follow the steps for agreeing to Unreal Engine terms
 
