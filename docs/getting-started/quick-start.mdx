@@ -12,31 +12,52 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { ReferenceLink } from '@site/docs/components/_nanos.mdx';
 
+
 ## Step 1: Download the Server
 
 You have **three** options for downloading nanos world server:
 
 1. Use the executable (*.exe*) already located at `nanos-world/Server/NanosWorldServer.exe` (if you downloaded the base game).
-2. Download **nanos world Dedicated Server** tool from Steam Client.
-3. Or use SteamCMD to [download nanos world Dedicated Server](/core-concepts/server-manual/server-installation.md).
+2. Use SteamCMD to [download nanos world™ Dedicated Server](/core-concepts/server-manual/server-installation.md).
+3. Or Download **nanos world™ Dedicated Server** tool from Steam Client.
 
-:::tip
-
-The server is as simple as one executable file `NanosWorldServer.exe`. After downloaded it, run it once to generate the proper and initial folders `Assets`, `Packages` and `Config.toml` file, keep your server open for following this guide!
-
-:::
 
 ## Step 2: Creating a Basic Package
 
-1. Create a folder inside `Packages/` to be your Package, let's name it `my-package/`.
-2. Inside `my-package/` create a folder called `Server/` and a file called `Index.lua` inside `Server/`.
-3. In your server console, type `package load my-package` to load your new package and generate the configuration file `Package.toml`. You can edit this file with proper customization later on.
+After downloading the server, let's create a basic Package. We will use the handy CLI tool to speed up the proccess:
+
+For that, open a terminal in your server folder and run the following command:
+
+<Tabs
+  defaultValue="cmd"
+  values={[
+    {label: 'Windows', value: 'cmd'},
+    {label: 'Linux', value: 'linux'},
+  ]}>
+  <TabItem value="cmd">
+
+```shell
+./NanosWorldServer.exe --cli add package my-awesome-package
+```
+
+  </TabItem>
+  <TabItem value="linux">
+
+```shell
+./NanosWorldServer.sh --cli add package my-awesome-package
+```
+
+  </TabItem>
+</Tabs>
+
+After that, you will end up with a new folder inside `Packages/` called `my-awesome-package/`. Inside that there will be 3 other folders: `Server/`, `Client/` and `Shared/`, and a config file `Config.toml`.
+
 
 ## Step 3: Adding Script functionalities
 
-Open the file `Index.lua` in your preferred editor \(we recommend using [vscode](https://code.visualstudio.com/download)\), and let's edit our first script:
+Open the file `my-awesome-package/Server/Index.lua` in your preferred editor (we recommend using [VSCode](https://code.visualstudio.com/download)), and let's edit our first script:
 
-```lua title="Packages/my-package/Server/Index.lua"
+```lua title="Packages/my-awesome-package/Server/Index.lua"
 -- Let's print to Console a friendly message
 Package.Log("Loading some Props =D")
 
@@ -46,59 +67,97 @@ prop_chair = Prop(Vector(400, 200, 0), Rotator(0, 0, 0), "nanos-world::SM_Wooden
 prop_tire = Prop(Vector(600, 0, 0), Rotator(0, 0, 0), "nanos-world::SM_TireLarge")
 ```
 
-To apply your changes, run the command in the server console: `package reload all`.
+
+## Step 4: Starting the server
+
+Now let's start the server with the package you just created! For that, simply double click or launch the server from the terminal:
+
+<Tabs
+  defaultValue="cmd"
+  values={[
+    {label: 'Windows', value: 'cmd'},
+    {label: 'Linux', value: 'linux'},
+  ]}>
+  <TabItem value="cmd">
+
+```shell
+./NanosWorldServer.exe
+```
+
+  </TabItem>
+  <TabItem value="linux">
+
+```shell
+./NanosWorldServer.sh
+```
+
+  </TabItem>
+</Tabs>
+
+After starting it, your console will display something like this:
+
+```
+[display]  nanos world (C) Copyright nanos. All Rights Reserved.
+[display]  Starting Server at Port: 7777. Version: 0.0.0. Map: 'nanos-world::TestingMap'.
+[display]  Loading Package 'my-awesome-package'...
+[script]   Loading some Props =D
+[display]  Package 'my-awesome-package' loaded.
+[display]  Loading Package 'map-package'...
+[display]  Package 'map-package' loaded.
+```
+
+You can see it loaded your package and outputted the text "Loading some Props =D" on it.
+
 
 ## Step 4: Join your server
 
-:::tip
+Now let's see the results in-game! Open nanos world and connect to localhost at `127.0.0.1:7777`.
 
-If you join your server you can already see the results 😁
-
-:::
+After connecting, you will be a flying pawn and will be able to see the props spawned! 😁
 
 ![](/img/docs/quick-start-01.jpg)
 
-## Extra Step: Spawning a Character for the Player
 
-You may have noticed you are just a wandering soul flying around, let’s give you some flesh! For that, we will need to interact with some Events.
+## Extra Step: Spawning Characters
+
+### Spawning a Character for the Player
+
+You may have noticed you are just a wandering soul flying around, let's give you some flesh! For that, we will need to interact with some **Events**.
 
 Let's append some code in your `Index.lua`:
 
 ```lua title="my-package/Server/Index.lua"
--- Called when Players join the server (i.e. Spawn)
-Player.Subscribe("Spawn", function(new_player)
+-- Function to spawn a Character to a player
+function SpawnCharacter(player)
     -- Spawns a Character at position 0, 0, 0 with default's constructor parameters
     local new_character = Character(Vector(0, 0, 0))
 
     -- Possess the new Character
-    new_player:Possess(new_character)
-end)
+    player:Possess(new_character)
+end
+
+-- Subscribes to an Event which is triggered when Players join the server (i.e. Spawn)
+Player.Subscribe("Spawn", SpawnCharacter)
+
+-- Iterates for all already connected players and give them a Character as well
+-- This will make sure you also get a Character when you reload the package
+for k, player in pairs(Player.GetAll()) do
+    SpawnCharacter(player)
+end
 ```
 
-To apply your changes, run the command in the server console: `package reload all`.
-
-:::tip
-
-Now if you join the server, you will spawn into a Character!
-
-:::
+To apply your changes, run the command in the server console: `package reload all`. This will also live reload the packages and apply the changes immediatelly.
 
 ![](/img/docs/quick-start-02.jpg)
 
-### Finishing up: Destroying the Character when a player Leaves the Server
 
-Note that Characters aren't destroyed automatically if the Player disconnects. For that, we will need to Subscribe for when the Player leaves the server \(`Destroy`\) and manually destroying the Character:
+### Destroying the Character when the Player leaves the Server
+
+Note that Characters aren't destroyed automatically if the Player disconnects. For that, we will need to Subscribe for when the Player leaves the server (`Destroy` event) and manually destroying the Character.
+
+Append this code:
 
 ```lua title="my-package/Server/Index.lua"
--- Called when Players join the server (i.e. Spawn)
-Player.Subscribe("Spawn", function(new_player)
-    -- Spawns a Character at position 0, 0, 0 with default's constructor parameters
-    local new_character = Character(Vector(0, 0, 0))
-
-    -- Possess the new Character
-    new_player:Possess(new_character)
-end)
-
 -- When Player leaves the server, destroy it's Character
 Player.Subscribe("Destroy", function(player)
     local character = player:GetControlledCharacter()
@@ -110,17 +169,19 @@ end)
 
 To apply your changes, run the command in the server console: `package reload all`.
 
+
 ## Conclusion
 
 :::tip Congratulations! You have finished your first basic Script and learned:
 
 * How to setup your Server
 * How to setup a simple Package
-* Basic interact with entity Events
+* Basic interaction with entity Events
 * Spawning Props
 * Spawning & Destroying Characters
 
 :::
+
 
 #### Recommended next step
 

@@ -132,7 +132,7 @@ entity:AddImpulse(force, velocity_change)
 > Setting **`lifespan_when_detached`** to `0` will automatically destroy this actor when detached, setting it to `10` will destroy this after 10 seconds when detached.
 
 ```lua
-entity:AttachTo(other_actor, attachment_rule, bone_name, lifespan_when_detached)
+entity:AttachTo(other_actor, attachment_rule, bone_name, lifespan_when_detached, use_absolute_rotation)
 ```
 
 | Type | Parameter | Default Value | Description |
@@ -141,6 +141,7 @@ entity:AttachTo(other_actor, attachment_rule, bone_name, lifespan_when_detached)
 | <Enums>AttachmentRule</Enums> | **`attachment_rule`** | `SnapToTarget` | How to attach |
 | <BasicType.String /> | **`bone_name`** | `""` | Which bone to attach to |
 | <BasicType.Number /> | **`lifespan_when_detached`** | `-1` | Seconds before destroying this Actor when detached |
+| <BasicType.Boolean /> | **`use_absolute_rotation`** | `false` | Whether to force attached object to use absolute rotation (will not follow parent) |
 
 
 ### <AuthorityType.AuthorityOnly />`Destroy`
