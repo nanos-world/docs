@@ -90,6 +90,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | [**`CloseConsole`**](client#closeconsole) | When player closes the Console |
 | [**`Tick`**](client#tick) | Called Every Frame. Do not abuse |
 | [**`ViewportResized`**](client#viewportresized) | Called when the screen is resized |
+| [**`SpawnLocalPlayer`**](client#spawnlocalplayer) | Called when the local player spawns |
 | [**`WindowFocusChanged`**](client#windowfocuschanged) | Called when the game is focused/unfocused |
 
 
@@ -1022,6 +1023,21 @@ Client.Subscribe("Tick", function(delta_time)
 
 end)
 ```
+
+
+### `SpawnLocalPlayer`
+
+> Called when the local player spawns (just after the game has loaded)
+
+```lua
+Client.Subscribe("SpawnLocalPlayer", function(local_player)
+
+end)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <Classes.Player /> | **`local_player`** | The local Player |
 
 
 ### `ViewportResized`

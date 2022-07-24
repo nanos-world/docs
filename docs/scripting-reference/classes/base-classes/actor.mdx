@@ -28,12 +28,12 @@ This is the base class for all Actors we have. You cannot spawn it directly.
 
 :::
 
-| **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- |
-| <BasicType.Table /> | [**`GetAll`**](actor#getall) | Returns a table containing all Actors of the class this is called on _(copy)_ |
-| [Actor](actor) | [**`GetByIndex`**](actor#getbyindex) | Returns a specific Actor of this class at an index _(direct)_ |
-| <BasicType.Number /> | [**`GetCount`**](actor#getcount) | Returns how many Actors of this class exist _(direct)_ |
-| <BasicType.Iterator /> | [**`GetPairs`**](actor#getall) | Returns an iterator with all Actors of this class _(direct)_ |
+|  | **Returns** | **Name** | **Description** |
+| :--- | :--- | :--- | :--- |
+| <AuthorityType.Both /> | <BasicType.Table /> | [**`GetAll`**](actor#getall) | Returns a table containing all Actors of the class this is called on _(copy)_ |
+| <AuthorityType.Both /> | [Actor](actor) | [**`GetByIndex`**](actor#getbyindex) | Returns a specific Actor of this class at an index _(direct)_ |
+| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetCount`**](actor#getcount) | Returns how many Actors of this class exist _(direct)_ |
+| <AuthorityType.Both /> | <BasicType.Iterator /> | [**`GetPairs`**](actor#getall) | Returns an iterator with all Actors of this class _(direct)_ |
 
 
 ## Functions
@@ -59,7 +59,7 @@ import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes
 ## Static Functions Detailed
 
 
-### `GetAll`
+### <AuthorityType.Both />`GetAll`
 
 > Returns a table containing all Actors of the class this is called on
 
@@ -70,7 +70,7 @@ entities_copy[5] -- Player 5
 ```
 
 
-### `GetByIndex`
+### <AuthorityType.Both />`GetByIndex`
 
 > Returns a specific [Actor](actor) of this class at an index
 
@@ -83,7 +83,7 @@ local first_character = Character.GetByIndex(1)
 | <BasicType.Number /> | **`index`** | The index of the Actor |
 
 
-### `GetCount`
+### <AuthorityType.Both />`GetCount`
 
 > Returns how many Actors of this class exist
 
@@ -92,7 +92,7 @@ local player_count = Player.GetCount()
 ```
 
 
-### `GetPairs`
+### <AuthorityType.Both />`GetPairs`
 
 > Returns an iterator with all Actors of this class to be used with `pairs()`. This is a more performant method than `GetAll()`, as it will return the iterator to access the Actors directly instead of creating and returning a copy of the Actors table.
 >
@@ -676,7 +676,7 @@ entity:Unsubscribe(event_name, callback)
 
 ## Events Detailed
 
-### `Destroy`
+### <AuthorityType.Both />`Destroy`
 
 > Triggered when an Actor is destroyed
 
@@ -691,7 +691,7 @@ end)
 | [Actor](actor) | `self` | The Actor which has been destroyed |
 
 
-### `Spawn`
+### <AuthorityType.Both />`Spawn`
 
 > Triggered when an Actor is spawned/created
 
@@ -706,7 +706,7 @@ end)
 | [Actor](actor) | `self` | The Actor which has been spawned |
 
 
-### `ValueChange`
+### <AuthorityType.Both />`ValueChange`
 
 > Triggered when an Actor has a value changed with `:SetValue()`
 
