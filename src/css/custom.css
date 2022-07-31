@@ -193,7 +193,7 @@ svg[class^='iconLanguage'] {
 
 article,
 .pagination-nav,
-.alert.alert--warning:not(.admonition) {
+.alert.alert--warning:not(.theme-admonition) {
   margin: 1rem 4rem 3rem;
 }
 

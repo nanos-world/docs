@@ -11,14 +11,13 @@ All you need to know to Configure your server!
 
 ## Server Configuration File
 
+The server Configuration file `Config.toml` is generated automatically when the server is launched for the first time. This file will always be overridden with the proper pattern after the server is loaded.
+
 :::tip
 
 nanos world Config files use **TOML** (Tom’s Obvious, Minimal Language), please refer to [https://github.com/toml-lang/toml](https://github.com/toml-lang/toml) for more information and syntax.
 
 :::
-
-The server Configuration file `Config.toml` is generated automatically when the server is launched for the first time. This file will always be overridden with the proper pattern after the server is loaded.
-
 
 ```toml reference
 https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
@@ -46,7 +45,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | **`assets`** | Additional assets to force to load |
 | **`map`** | Which map to load |
 | **`token`** | Server Token used for authorize downloads through CLI |
-| **`banned_ips`** | List of banned IPs |
+| **`banned_ids`** | List of banned nanos account IDs |
 
 
 ## Map & Level

@@ -67,7 +67,7 @@ Material which renders objects as Wireframe. Supported parameter: **Tint** and *
 
 :::tip
 
-**Note**: All those Materials in this page are already included in the base game in the [Default nanos world Asset Pack](/assets-modding/default-asset-pack/default-asset-pack.md), you can reference them like that: **`nanos-world::M_NanosMasked`.**
+**Note**: All those Materials in this page are already included in the base game in the [Default nanos world Asset Pack](/assets-modding/default-asset-pack/default-assets-list.md), you can reference them like that: **`nanos-world::M_NanosMasked`.**
 
 :::
 
