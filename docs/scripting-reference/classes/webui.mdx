@@ -117,6 +117,8 @@ Loading a .html file supports the following searchers, which are looked in the f
 |  | [**`CallEvent`**](webui#callevent) | Calls an Event on the Browser’s JavaScript |
 |  | [**`Destroy`**](webui#destroy) | Destroys this Browser |
 |  | [**`LoadURL`**](webui#loadurl) | Loads a new File/URL in this Browser |
+|  | [**`SetFocus`**](webui#setfocus) | Sets Focus on this Browser |
+|  | [**`RemoveFocus`**](webui#removefocus) | Removes Focus from this Browser |
 |  | [**`SetFreeze`**](webui#setfreeze) | Freezes the WebUI Rendering to the surface |
 |  | [**`SetVisible`**](webui#setvisible) | Toggles the visibility |
 | <Classes.Sound /> | [**`SpawnSound`**](webui#spawnsound) | Spawns a Sound entity to plays this WebUI sound |
@@ -178,6 +180,28 @@ my_webui:LoadURL(url)
 | Type | Parameter | Description |
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`url`** |  |
+
+
+### `SetFocus`
+
+> Enables the focus on this browser (i.e. can receive Keyboard input and will trigger input events)
+> 
+> Note: Only one browser can have focus per time.
+
+```lua
+my_webui:SetFocus()
+```
+
+
+### `RemoveFocus`
+
+> Removes the focus from this WebUI (and sets it back to game viewport)
+>
+> You MUST call this after you don't need keyboard input anymore
+
+```lua
+my_webui:RemoveFocus()
+```
 
 
 ### `SetFreeze`
