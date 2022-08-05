@@ -84,6 +84,7 @@ import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/co
 | [**`MouseEnabled`**](client#mouseenabled) | When mouse cursor is displayed/hidden |
 | [**`MouseMoveX`**](client#mousemovex) | Called when the mouse moves in the X axis |
 | [**`MouseMoveY`**](client#mousemovey) | Called when the mouse moves in the Y axis |
+| [**`MouseScroll`**](client#mousescroll) | Mouse scroll event |
 | [**`OpenChat`**](client#openchat) | When player opens the Chat |
 | [**`CloseChat`**](client#closechat) | When player closes the Chat |
 | [**`OpenConsole`**](client#openconsole) | When player closes the Console |
@@ -961,6 +962,25 @@ end)
 
 ```lua
 Client.Subscribe("MouseMoveY", function(delta, delta_time, num_samples)
+
+end)
+```
+
+
+### `MouseScroll`
+
+> Mouse Scroll Event
+>
+> Return **false** to block it
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.Number /> | **`mouse_x`** |  |
+| <BasicType.Number /> | **`mouse_y`** |  |
+| <BasicType.Number /> | **`delta`** |  |
+
+```lua
+Client.Subscribe("MouseScroll", function(mouse_x, mouse_y, delta)
 
 end)
 ```

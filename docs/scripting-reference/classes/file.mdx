@@ -38,100 +38,18 @@ local configuration_file_json = JSON.parse(configuration_file:Read(configuration
 | <BasicType.String /> | **`file_path`** |  | Path relative to server executable |
 | <BasicType.Boolean /> | **`truncate`** | `false` | Whether or not to clear the file upon opening it |
 
+
 ## Static Functions
 
 | **Returns** | **Name** | **Description** |
 | :--- | :--- | :--- |
 | <BasicType.Number /> | [**`Time`**](file#time) | Returns when a file was last modified in Unix time |
-| <BasicType.Boolean /> | [**`CreateDirectory`**](file#createdirectory) | Creates a Directory (for every folder passed\ |
+| <BasicType.Boolean /> | [**`CreateDirectory`**](file#createdirectory) | Creates a Directory (for every folder passed) |
 | <BasicType.Number /> | [**`Remove`**](file#remove) | Deletes a folder or file |
 | <BasicType.Boolean /> | [**`Exists`**](file#exists) | Verifies if a entry exists in the file system |
 | <BasicType.Boolean /> | [**`IsDirectory`**](file#isdirectory) | Checks if a path is a directory |
 | <BasicType.Boolean /> | [**`IsRegularFile`**](file#isregularfile) | Checks if a path is a file |
 
-### `Time`
-
-> Returns when the file was last modified in Unix time
->
-> Returns <BasicType.Number />
-
-```lua
-File.Time(path)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`path`** | Path to file |
-
-### `CreateDirectory`
-
-> Creates a directory \(for every folder passed\)
->
-> Returns <BasicType.Boolean /> if succeeded
-
-```lua
-File.CreateDirectory(path)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`path`** | Path to folder |
-
-### `Remove`
-
-> Deletes a folder or a file
->
-> Returns <BasicType.Number />
-
-```lua
-File.Remove(path)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`path`** | Path to file or folder |
-
-### `Exists`
-
-> Gets if a file or folder exists
->
-> Returns <BasicType.Boolean />
-
-```lua
-File.Exists(path)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`path`** | Path to file or folder |
-
-### `IsDirectory`
-
-> Gets if a path is a directory
->
-> Returns <BasicType.Boolean />
-
-```lua
-File.IsDirectory(path)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`path`** | Path to folder |
-
-### `IsRegularFile`
-
-> Gets if a path is a file
->
-> Returns <BasicType.Boolean />
-
-```lua
-File.IsRegularFile(path)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`path`** | Path to file |
 
 ## Functions
 
@@ -151,6 +69,9 @@ File.IsRegularFile(path)
 |  | [**`Skip`**](file#skip) | Skips n (amount) positions from the current file pointer position |
 | <BasicType.Number /> | [**`Tell`**](file#tell) | Returns the current file pointer position |
 |  | [**`Write`**](file#write) | Writes the Data at the current position of the file |
+
+
+## Functions Detailed
 
 ### `Close`
 
@@ -307,3 +228,89 @@ my_file:Write(data)
 | :--- | :--- | :--- |
 | <BasicType.String /> | **`data`** | Writes the data to the file |
 
+
+## Static Functions Detailed
+
+### `Time`
+
+> Returns when the file was last modified in Unix time
+>
+> Returns <BasicType.Number />
+
+```lua
+File.Time(path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`path`** | Path to file |
+
+### `CreateDirectory`
+
+> Creates a directory (for every folder passed)
+>
+> Returns <BasicType.Boolean /> if succeeded
+
+```lua
+File.CreateDirectory(path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`path`** | Path to folder |
+
+### `Remove`
+
+> Deletes a folder or a file
+>
+> Returns <BasicType.Number />
+
+```lua
+File.Remove(path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`path`** | Path to file or folder |
+
+### `Exists`
+
+> Gets if a file or folder exists
+>
+> Returns <BasicType.Boolean />
+
+```lua
+File.Exists(path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`path`** | Path to file or folder |
+
+### `IsDirectory`
+
+> Gets if a path is a directory
+>
+> Returns <BasicType.Boolean />
+
+```lua
+File.IsDirectory(path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`path`** | Path to folder |
+
+### `IsRegularFile`
+
+> Gets if a path is a file
+>
+> Returns <BasicType.Boolean />
+
+```lua
+File.IsRegularFile(path)
+```
+
+| Type | Parameter | Description |
+| :--- | :--- | :--- |
+| <BasicType.String /> | **`path`** | Path to file |

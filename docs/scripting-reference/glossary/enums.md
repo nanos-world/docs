@@ -89,6 +89,8 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 
 ### `CollisionChannel`
 
+> Note: CollisionChannel supports bitwise operations.
+
 | Label | Value | Description |
 | :--- | :--- | :--- |
 | **`CollisionChannel.WorldStatic`** | `1 << 0` | WorldStatic Object Types |
@@ -437,3 +439,40 @@ The functions which use the Enums are still receiving numbers as parameters \(as
 | **`WeatherType.Cloudy`** | `2` |
 | **`WeatherType.Thunderstorm`** | `3` |
 
+### `WebUIModifier`
+
+> Note: WebUIModifier supports bitwise operations.
+
+| Label | Value |
+| :--- | :--- |
+| **`None`** | `0` |
+| **`CapsLockOn`** | `1 << 0` |
+| **`ShiftDown`** | `1 << 1` |
+| **`ControlDown`** | `1 << 2` |
+| **`AltDown`** | `1 << 3` |
+| **`LeftMouseButton`** | `1 << 4` |
+| **`MiddleMouseButton`** | `1 << 5` |
+| **`RightMouseButton`** | `1 << 6` |
+| **`CommandDown`** | `1 << 7` |
+| **`NumLockOn`** | `1 << 8` |
+| **`IsKeyPad`** | `1 << 9` |
+| **`IsLeft`** | `1 << 10` |
+| **`IsRight`** | `1 << 11` |
+| **`AltgrDown`** | `1 << 12` |
+| **`IsRepeat`** | `1 << 13` |
+
+### `WebUIKeyType`
+
+| Label | Value |
+| :--- | :--- |
+| **`Down`** | `0` |
+| **`Up`** | `1` |
+| **`Char`** | `2` |
+
+### `WebUIMouseType`
+
+| Label | Value |
+| :--- | :--- |
+| **`Left`** | `0` |
+| **`Right`** | `1` |
+| **`Middle`** | `2` |

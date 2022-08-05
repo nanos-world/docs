@@ -142,7 +142,7 @@ We've added a special Particle for Grenades `nanos-world::P_Grenade_Special` whi
 
 New additions for [Sounds](/docs/scripting-reference/classes/sound):
 
-Now it is possible to load `.ogg` sounds at runtime! You can store them in any Package or Asset Pack and load it using our new pattern for `SpecialPath` (`assets///asset-pack-name/path.ogg` or `package///package-name/path.ogg`).
+Now it is possible to load `.ogg` sounds at runtime! You can store them in any Package or Asset Pack and load it using our new pattern for `SpecialPath` (`assets://asset-pack-name/path.ogg` or `package://package-name/path.ogg`).
 
 Added `loop_mode` parameter to constructor (can loop any sound forever now).
 

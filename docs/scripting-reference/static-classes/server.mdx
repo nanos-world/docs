@@ -59,6 +59,7 @@ Server.BroadcastChatMessage("Welcome to the server!")
 |  | [**`SetValue`**](server#setvalue) | Sets a global value in the Server, which can be accessed from anywhere \(server side\) |
 |  | [**`GetValue`**](server#getvalue) | Gets a value given a key |
 |  | [**`Stop`**](server#stop) | Stops the server |
+|  | [**`Unban`**](server#unban) | Unbans a Player |
 | <BasicType.Function /> | [**`Subscribe`**](server#subscribe) | Subscribes for an Event |
 |  | [**`UnloadPackage`**](server#unloadpackage) | Unloads a Package |
 |  | [**`Unsubscribe`**](server#unsubscribe) | Unsubscribes from all subscribed Events in this Class and in this Package, optionally passing the function to unsubscribe only that callback |
@@ -245,6 +246,19 @@ Server.GetValue(key, fallback)
 ```lua
 Server.Stop()
 ```
+
+### `Unban`
+
+> Unbans a player by it's account id
+
+```lua
+Server.Unban(player_account_id)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.String /> | **`player_account_id`** |  | Player nanos account ID |
+
 
 ### `Subscribe`
 
@@ -445,6 +459,8 @@ end)
 ### `Console`
 
 > Called when a console command is submitted
+> 
+> Return **false** to say it was handled and do not display a console message
 
 | Type | Parameter | Description |
 | :--- | :--- | :--- |

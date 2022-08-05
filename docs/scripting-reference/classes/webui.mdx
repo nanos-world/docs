@@ -8,7 +8,7 @@ tags: [scripting, ui]
 
 Class for spawning a web browser in the screen.
 
-import { Structs, BasicType, AuthorityType, ReferenceLink, AssetPath } from '@site/docs/components/_nanos.mdx';
+import { Structs, Classes, Enums, BasicType, AuthorityType, ReferenceLink, AssetPath } from '@site/docs/components/_nanos.mdx';
 
 ![](/img/docs/webui.jpg)
 
@@ -20,13 +20,7 @@ import { Structs, BasicType, AuthorityType, ReferenceLink, AssetPath } from '@si
 
 :::tip
 
-This HTML implementation is built upon same core as WebKit/Safari using [Ultralight](https://ultralig.ht) library, a next-generation HTML Renderer.
-
-:::
-
-:::caution
-
-We are using a beta build of Ultralight, which now supports Audio and Video. Although it is still very unstable and some crashes may happen! Also the Audio currently plays only in 2D.
+This HTML implementation is built using the last versions of [Chromium Embedded Framework](https://bitbucket.org/chromiumembedded/cef).
 
 :::
 
@@ -34,40 +28,37 @@ We are using a beta build of Ultralight, which now supports Audio and Video. Alt
 <ReferenceLink href="core-concepts/scripting/user-interface">User Interface</ReferenceLink>
 <ReferenceLink href="getting-started/tutorials-and-examples/basic-hud-html">Basic HUD (HTML)</ReferenceLink>
 
+
 ## Usage
 
-
 ```lua title="Client/Index.lua"
--- Using a local file
-my_ui = WebUI(
+-- Loading a local file
+local my_ui = WebUI(
     "Awesome UI",            -- Name
-    "file:///UI/index.html", -- Path relative to this package (Client/)
+    "file://UI/index.html",  -- Path relative to this package (Client/)
     true,                    -- Is Visible
 )
 
--- Using a Web URL
-my_browser = WebUI(
-    "Awesome Site",       -- Name
+-- Loading a Web URL
+local my_browser = WebUI(
+    "Awesome Site",        -- Name
     "https://nanos.world", -- Web's URL
-    true,                 -- Is Visible
+    true,                  -- Is Visible
 )
 
--- Using a local file from another package folder
-my_ui = WebUI(
-    "Awesome UI from Another Package", -- Name
-    "file:///UI/index.html",           -- Path relative to this package (Client/)
-    true,                              -- Is Visible
-    true,
-    true,
-    0,
-    0
+-- Loading a local file from other package
+local my_ui = WebUI(
+    "Awesome Other UI",      -- Name
+    "file://other-package/Client/UI/index.html",
+    true,                    -- Is Visible
 )
 ```
+
 
 #### Communicating between Lua and JS (WebUI)
 
 ```lua title="Client/Index.lua"
-my_ui = WebUI("Awesome UI", "file:///UI/index.html")
+local my_ui = WebUI("Awesome UI", "file://UI/index.html")
 
 local param1 = 123
 local param2 = "hello"
@@ -93,13 +84,14 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 })
 ```
 
+
 ## Constructor Parameters
 
 | **Type** | **Name** | **Default** | Description |
 | :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`name`** | ` ` | *Currently not used* |
-| <BasicType.String /> | **`path`** | ` ` | URL or `file:///my_file.html` or <AssetPath.HTML /> |
-| <BasicType.Boolean /> | **`is_visible`** | `true` | if WebUI is visible by default |
+| <BasicType.String /> | **`name`** |  | Used for debugging logs |
+| <BasicType.String /> | **`path`** |  | URL or `file://my_file.html` or <AssetPath.HTML /> |
+| <BasicType.Boolean /> | **`is_visible`** | `true` | if WebUI is visible on screen |
 | <BasicType.Boolean /> | **`is_transparent`** | `true` | if WebUI background is transparent |
 | <BasicType.Boolean /> | **`auto_resize`** | `true` | if should auto resize when screen changes it's size (useful OFF when you are painting meshes with WebUI) |
 | <BasicType.Number /> | **`width`** | `0` | size of the WebUI when you are not using auto_resize |
@@ -116,6 +108,7 @@ Loading a .html file supports the following searchers, which are looked in the f
 
 :::
 
+
 ## Functions
 
 | **Returns** | **Name** | **Description** |
@@ -124,16 +117,21 @@ Loading a .html file supports the following searchers, which are looked in the f
 |  | [**`CallEvent`**](webui#callevent) | Calls an Event on the Browser’s JavaScript |
 |  | [**`Destroy`**](webui#destroy) | Destroys this Browser |
 |  | [**`LoadURL`**](webui#loadurl) | Loads a new File/URL in this Browser |
-|  | [**`SetFocus`**](webui#setfocus) | Sets Focus on this Browser |
-|  | [**`RemoveFocus`**](webui#removefocus) | Removes Focus from this Browser |
 |  | [**`SetFreeze`**](webui#setfreeze) | Freezes the WebUI Rendering to the surface |
 |  | [**`SetVisible`**](webui#setvisible) | Toggles the visibility |
+| <Classes.Sound /> | [**`SpawnSound`**](webui#spawnsound) | Spawns a Sound entity to plays this WebUI sound |
+|  | [**`SendMouseWheelEvent`**](webui#sendmousewheelevent) | Sends a Mouse Event into the WebUI programatically |
+|  | [**`SendKeyEvent`**](webui#sendkeyevent) | Sends a Key Event into the WebUI programatically |
+|  | [**`SendMouseMoveEvent`**](webui#sendmousemoveevent) | Sends a Mouse Move Event into the WebUI programatically |
+|  | [**`SendMouseClickEvent`**](webui#sendmouseclickevent) | Sends a Mouse Click into the WebUI programatically |
 | <BasicType.Boolean /> | [**`IsValid`**](webui#isvalid) | Returns if this entity is Valid |
 | <BasicType.Number /> | [**`GetID`**](webui#getid) | Gets the network ID of this entity |
+| <Structs.Vector2D /> | [**`GetSize`**](webui#getsize) | Gets the current WebUI size |
 | <BasicType.String /> | [**`GetType`**](webui#gettype) | Returns the type of this Entity |
 | <BasicType.Boolean /> | [**`IsVisible`**](webui#isvisible) | Returns if this WebUI is currently visible |
 | <BasicType.Function /> | [**`Subscribe`**](webui#subscribe) | Subscribes for an Event |
 |  | [**`Unsubscribe`**](webui#unsubscribe) | Unsubscribes from all subscribed Events in this Entity and in this Package |
+
 
 ### `BringToFront`
 
@@ -142,6 +140,7 @@ Loading a .html file supports the following searchers, which are looked in the f
 ```lua
 my_webui:BringToFront()
 ```
+
 
 ### `CallEvent`
 
@@ -156,6 +155,7 @@ my_webui:CallEvent(event_name, arguments...)
 | <BasicType.String /> | **`event_name`** |  |
 | <BasicType.Any /> | **`arguments...`** |  |
 
+
 ### `Destroy`
 
 > Destroys this Browser
@@ -163,6 +163,7 @@ my_webui:CallEvent(event_name, arguments...)
 ```lua
 my_webui:Destroy()
 ```
+
 
 ### `LoadURL`
 
@@ -179,28 +180,6 @@ my_webui:LoadURL(url)
 | <BasicType.String /> | **`url`** |  |
 
 
-### `SetFocus`
-
-> Enables the focus on this browser (i.e. can receive Keyboard input). You must call it when you want to enable Keyboard Input on WebUIs (after disabling Client's Input)
-> 
-> Note: Only one browser can have focus per time.
-
-```lua
-my_webui:SetFocus()
-```
-
-
-### `RemoveFocus`
-
-> Removes the focus from this WebUI (and sets it back to game viewport)
->
-> You MUST call this after you don't need keyboard input anymore
-
-```lua
-my_webui:RemoveFocus()
-```
-
-
 ### `SetFreeze`
 
 > Freezes the WebUI Rendering to the surface (it will still execute the JS under the hood)
@@ -208,6 +187,7 @@ my_webui:RemoveFocus()
 ```lua
 my_webui:SetFreeze()
 ```
+
 
 ### `SetVisible`
 
@@ -221,6 +201,78 @@ my_webui:SetVisible(is_visible)
 | :--- | :--- | :--- |
 | <BasicType.Boolean /> | **`is_visible`** |  |
 
+
+### `SpawnSound`
+
+> Spawns a Sound entity to plays this WebUI sound
+>
+> Returns a <Classes.Sound /> entity
+
+```lua
+my_webui:SpawnSound(location, is_2d, volume, inner_radius, falloff_distance, attenuation_function)
+```
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |  |
+| <BasicType.Boolean /> | **`is_2d`** | `true` |  |
+| <BasicType.Number /> | **`volume`** | `1.0` |  |
+| <BasicType.Number /> | **`inner_radius`** | `400` |  |
+| <BasicType.Number /> | **`falloff_distance`** | `3600` |  |
+| <Enums>AttenuationFunction</Enums>  | **`attenuation_function`** | `Linear` |  |
+
+
+### `SendMouseWheelEvent`
+
+> Sends a Mouse Event into the WebUI programatically
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`mouse_x`** |  | Position X of the mouse |
+| <BasicType.Number /> | **`mouse_y`** |  | Position Y of the mouse |
+| <BasicType.Number /> | **`delta_x`** |  |  |
+| <BasicType.Number /> | **`delta_y`** |  |  |
+
+
+### `SendKeyEvent`
+
+> Sends a Key Event into the WebUI programatically
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <Enums>WebUIKeyType</Enums> | **`key_type`** |  |  |
+| <BasicType.Number /> | **`key_code`** |  |  |
+| <Enums>WebUIModifier</Enums> | **`modifiers`** | `WebUIModifier.None` | Accept bitwise operators |
+
+
+### `SendMouseMoveEvent`
+
+> Sends a Mouse Move Event into the WebUI programatica
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`mouse_x`** |  | Position X of the mouse |
+| <BasicType.Number /> | **`mouse_y`** |  | Position Y of the mouse |
+| <Enums>WebUIModifier</Enums> | **`modifiers`** | `WebUIModifier.None` | Accept bitwise operators |
+| <BasicType.Boolean /> | **`mouse_leave`** | `false` |  |
+
+
+### `SendMouseClickEvent`
+
+> Sends a Mouse Click into the WebUI programatically
+> 
+> You must send both Down and Up to make it work properly
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| <BasicType.Number /> | **`mouse_x`** |  | Position X of the mouse |
+| <BasicType.Number /> | **`mouse_y`** |  | Position Y of the mouse |
+| <Enums>WebUIMouseType</Enums> | **`mouse_type`** |  | Which mouse button |
+| <BasicType.Boolean /> | **`is_mouse_up`** |  | Whether the event was up or down |
+| <Enums>WebUIModifier</Enums> | **`modifiers`** | `WebUIModifier.None` | Accept bitwise operators |
+| <BasicType.Number /> | **`click_count`** | `1` | Use 2 for double click event |
+
+
 ### `IsValid`
 
 > Gets if this entity is Valid
@@ -230,6 +282,7 @@ my_webui:SetVisible(is_visible)
 ```lua
 my_webui:IsValid()
 ```
+
 
 ### `GetID`
 
@@ -241,6 +294,18 @@ my_webui:IsValid()
 my_webui:GetID()
 ```
 
+
+### `GetSize`
+
+> Gets the current size of this WebUI
+>
+> Returns <Structs.Vector2D />
+
+```lua
+my_webui:GetSize()
+```
+
+
 ### `GetType`
 
 > Returns the type of this Entity
@@ -251,6 +316,7 @@ my_webui:GetID()
 my_webui:GetType()
 ```
 
+
 ### `IsVisible`
 
 > Returns if this WebUI is currently visible
@@ -260,6 +326,7 @@ my_webui:GetType()
 ```lua
 my_webui:IsVisible()
 ```
+
 
 ### `Subscribe`
 
@@ -275,6 +342,7 @@ my_webui:Subscribe(event_name, callback)
 | :--- | :--- | :--- | :--- |
 | <BasicType.String /> | **`event_name`** |  |  |
 | <BasicType.Function /> | **`function`** |  |  |
+
 
 ### `Unsubscribe`
 
@@ -296,6 +364,7 @@ my_webui:Unsubscribe(event_name, callback)
 | [**`Failed`**](webui#failed) | When this page fails to load |
 | [**`Ready`**](webui#ready) | When this page is fully loaded \(DOM and JavaScript\) |
 
+
 ### `Failed`
 
 > Triggered when this page fails to load
@@ -310,6 +379,7 @@ end)
 | :--- | :--- | :--- |
 | <BasicType.Number /> | **`error_code`** |  |
 | <BasicType.String /> | **`message`** |  |
+
 
 ### `Ready`
 
