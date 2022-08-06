@@ -85,6 +85,26 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 ```
 
 
+#### Pretty Scroll Bar
+
+Since we migrated from Webkit to CEF, some scrollbars got ugly. Here's a small CSS snippet to make them almost like the Webkit ones:
+
+```css
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #494949;
+}
+
+body {
+    scrollbar-gutter: stable both-edges;
+}
+```
+
+
 ## Constructor Parameters
 
 | **Type** | **Name** | **Default** | Description |
