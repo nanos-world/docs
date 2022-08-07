@@ -45,6 +45,7 @@ jobs:
         run: |
           git config --global user.email "nanosbot-github@nanos.io"
           git config --global user.name "nanosbot"
+          git submodule update --init --recursive
           if [ -e yarn.lock ]; then
             yarn install --frozen-lockfile
           elif [ -e package-lock.json ]; then
