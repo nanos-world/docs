@@ -43,6 +43,9 @@
 
   --ifm-color-info-contrast-background: #fefefe;
   --site-color-feedback-background: #fff;
+
+  /* Horizontal Line */
+  --ifm-hr-background-color: #dfdfdf;
 }
 
 html[data-theme="dark"] {
@@ -67,6 +70,9 @@ html[data-theme="dark"] {
   --ifm-color-success-dark: #36ad99;
 
   --site-color-feedback-background: #f0f8ff;
+
+  /* Horizontal Line */
+  --ifm-hr-background-color: #424242;
 }
 
 html[data-theme='dark'] .docusaurus-highlight-code-line {
