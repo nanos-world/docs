@@ -13,11 +13,11 @@ One of our main focus for nanos world is having fun, and we believe that the sma
 Since the beginning, our weapons were stiff when shooting giving an impression of rigidity and lack of fluidity. With the simple improvement of adding firing animations to that, look how it looks better:
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/weapons-improvements/m1911.mp4" type="video/mp4" />
+    <source src="/videos/blog/weapons-improvements/m1911.webm" />
 </video>
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/weapons-improvements/makarov.mp4" type="video/mp4" />
+    <source src="/videos/blog/weapons-improvements/makarov.webm" />
 </video>
 
 
@@ -26,7 +26,7 @@ Since the beginning, our weapons were stiff when shooting giving an impression o
 Besides new animations, we added a subtle detail: **Bullet Shells Drop SFX**. And not that simple! The sound is precisely played in the location and moment the shells hit the ground or any surface, listen:
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/weapons-improvements/bullet-shell-drop.mp4" type="video/mp4" />
+    <source src="/videos/blog/weapons-improvements/bullet-shell-drop.webm" />
 </video>
 
 Check out a complete before and after comparison of some of the weapons, you can notice all the improvements in detail!
@@ -44,7 +44,7 @@ Note that nanos world weapons animations and aiming are completely generated pro
 A subtle sound detail added when you grab and drop a Weapon, and also now the object is slightly thrown to forward:
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/weapons-improvements/picking-up.mp4" type="video/mp4" />
+    <source src="/videos/blog/weapons-improvements/picking-up.webm" />
 </video>
 
 
@@ -64,7 +64,7 @@ weapon:SetSightTransform(Vector(-15, 0, -4.6), Rotator(0, 0, 0))
 ```
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/weapons-improvements/sniper-scope.mp4" type="video/mp4" />
+    <source src="/videos/blog/weapons-improvements/sniper-scope.webm" />
 </video>
 
 This is completely procedural, it also uses the 3D Mesh scope materials!

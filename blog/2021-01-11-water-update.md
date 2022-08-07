@@ -6,4 +6,4 @@ tags: [updates]
 ---
 
 
-![](/img/blog/updates/water.jpg)
+![](/img/blog/updates/water.webp)

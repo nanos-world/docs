@@ -10,7 +10,7 @@ How to create a simple Gravity Gun to move Props around.
 ### Final result
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/docs/tutorials/gravity-gun.mp4" type="video/mp4" />
+    <source src="/videos/docs/tutorials/gravity-gun.webm" />
 </video>
 
 :::tip
