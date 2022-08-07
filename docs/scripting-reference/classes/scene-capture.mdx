@@ -5,20 +5,10 @@ sidebar_position: 0
 tags: [class]
 ---
 
+import ClassData from '@site/src/api/Classes/SceneCapture.json';
 
-Scene Capture is an Actor which captures a fully dynamic image of the scene into a Texture. It captures the scene from its view frustum, stores that view as an image, which is then used within a Material.
 
-import { Structs, BasicType, AuthorityType, AssetPath, Enums, Classes } from '@site/docs/components/_nanos.mdx';
-
-![](/img/docs/scenecapture.jpg)
-
-:::info
-
-🟧 **Authority:** This class can only be spawned on [Client](/core-concepts/scripting/authority-concepts.mdx).
-
-⏬ **Inheritance:** This class inherits from <Classes.Actor />.
-
-:::
+<HeaderDeclaration class_data={ClassData} image="/img/docs/scenecapture.webp" />
 
 
 ## Usage
@@ -45,18 +35,9 @@ You can use the output Texture from a SceneCapture with [:SetMaterialFromSceneCa
 :::
 
 
-## Constructor Parameters
+## Constructor
 
-| **Type** | **Name** | **Default** | **Description** |
-| :--- | :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` | Location |
-| <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` | Rotation |
-| <BasicType.Number /> | **`width`** | `128` | Width of the generated Texture |
-| <BasicType.Number /> | **`height`** | `128` | Height of the generated Texture |
-| <BasicType.Number /> | **`render_rate`** | `0.033` | Render Rate (how frequent is the capture) |
-| <BasicType.Number /> | **`view_distance`** | `5000` | Maximum distance of capturing |
-| <BasicType.Number /> | **`fov_angle`** | `90` | FOV |
-
+<ConstructorDeclaration class_data={ClassData} />
 
 :::note
 
@@ -69,77 +50,9 @@ We've worked hard to make SceneCapture as performatic as possible! Some techniqu
 
 ## Functions
 
-import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
-
-<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
-
-| **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- |
-|  | [**`SetFreeze`**](scene-capture#setfreeze) | Stops or Restore Capturing |
-|  | [**`SetFOVAngle`**](scene-capture#setfovangle) | Sets the FOV |
-|  | [**`Resize`**](scene-capture#resize) | Change the output Texture size |
-|  | [**`SetRenderRate`**](scene-capture#setrenderrate) | Set how frequent is the capture |
-
-### **`SetFreeze`**
-
-> Stops or Restore Capturing
-
-```lua
-scene_capture:SetFreeze(freeze)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Boolean /> | **`freeze`** |  |
-
-
-### **`SetFOVAngle`**
-
-> Sets the FOV
-
-```lua
-scene_capture:SetFOVAngle(angle)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`angle`** |  |
-
-
-### **`Resize`**
-
-> Change the output Texture size
-> 
-> Too high texture will make the capture slower and will affect game performance
-
-```lua
-scene_capture:Resize(width, height)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`width`** |  |
-| <BasicType.Number /> | **`height`** |  |
-
-
-### **`SetRenderRate`**
-
-> Set how frequent is the capture
-> 
-> Setting to 0 will make it capture every frame
-
-```lua
-scene_capture:SetRenderRate(render_rate)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`render_rate`** |  |
-
+<FunctionsDeclaration class_data={ClassData} />
 
 
 ## Events
 
-import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
-
-<details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
+<EventsDeclaration class_data={ClassData} />

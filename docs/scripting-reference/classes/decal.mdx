@@ -5,23 +5,13 @@ sidebar_position: 0
 tags: [class, client]
 ---
 
-
-Decals are Materials that are projected onto meshes in your level, including Static Meshes and Skeletal Meshes.
-
-import { Structs, BasicType, AuthorityType, Classes, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
-
-![](/img/docs/decals.jpg)
-
-:::info
-
-🟧 **Authority:** This class can only be spawned on [Client](/core-concepts/scripting/authority-concepts.mdx).
-
-⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />.
-
-:::
+import ClassData from '@site/src/api/Classes/Decal.json';
 
 
-## Usage
+<HeaderDeclaration class_data={ClassData} image="/img/docs/decals.webp" />
+
+
+## Example
 
 ```lua title=Client/Index.lua
 local my_decal = Decal(
@@ -37,23 +27,16 @@ my_decal:SetMaterialTextureParameter("Texture", "package://my_package/Client/ima
 ```
 
 
-## Constructor Parameters
+## Constructor
 
-| **Type** | **Name** | **Default** | **Description** |
-| :--- | :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |  |
-| <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |  |
-| <AssetPath.Material /> | **`material_asset`** | ` ` | Material Asset |
-| <Structs.Vector /> | **`size`** | `Vector(128, 256, 256)` | Size of the Decal |
-| <BasicType.Number /> | **`lifespan`** | `60` | Time until automatically destroyed |
-| <BasicType.Number /> | **`fade_screen_size`** | `0.01` | Size percentage in screen to fade out |
+<ConstructorDeclaration class_data={ClassData} />
 
 
 ## Functions
 
-import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
-import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-paintable-functions.mdx';
+<FunctionsDeclaration class_data={ClassData} />
 
-<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
-<details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
 
+## Events
+
+<EventsDeclaration class_data={ClassData} />

@@ -31,16 +31,17 @@ export function GetElementByType(type) {
 		BasicType[type_uppercase] ? BasicType[type_uppercase] :
 		Classes[type] ? Classes[type] :
 		AssetPaths[type] ? AssetPaths[type] :
-		Structs[type] ? Structs[type] :
-		<Enums>{type}</Enums>;
+		Structs[type] ? Structs[type] : null;
+	if (!TypeElement)
+		return <Enums>{type}</Enums>;
 	return <TypeElement />;
 }
 
 <!-- Authority Label Map -->
 export const AuthorityLabels = {
-	client: <>This class can only be spawned on 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a>.</>,
-	server: <>This class can only be spawned on 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a>.</>,
-	both: <>This class can be spawned on both 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a> (if you spawn it on client, it won't be synchronized with other players).</>,
+	client: <>This is a 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a> only class.</>,
+	server: <>This is a 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a> only class.</>,
+	both: <>This class is accessible on both 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a> (if you spawn it on client, it won't be synchronized with other players).</>,
 }
 
 <!-- Gets a Parameter name (with ? when optional) -->
@@ -64,9 +65,15 @@ export function GetFunctionExample(function_data) {
 	return `${return_part}my_entity:${function_data.name}(${GetParametersList(function_data.parameters)})`;
 }
 
+<!-- Generates Function Example Codeblock -->
+export function GetStaticFunctionExample(class_name, function_data) {
+	const return_part = !function_data.return ? "" : "local ret = ";
+	return `${return_part}${class_name}.${function_data.name}(${GetParametersList(function_data.parameters)})`;
+}
+
 <!-- Generates Event Example Codeblock -->
 export function GetEventExample(class_name, event_data) {
-	return `${class_name}.Subscribe("${event_data.name}", function(${GetParametersList(event_data.parameters)})\n\nend)`;
+	return `${class_name}.Subscribe("${event_data.name}", function(${GetParametersList(event_data.arguments)})\n\nend)`;
 }
 
 <!-- Authority Admonition -->
@@ -77,33 +84,34 @@ export const AuthorityAdmonition = ({ authority }) => (
 <!-- Inheritance Admonition -->
 export const InheritanceAdmonition = ({ inheritance }) => (
 	<Admonition type="info" icon="👪" title="Inheritance">
-		This class inheritance from { inheritance.map(inherit => GetElementByType(inherit)).reduce((prev, next) => [prev, ", ", next]) }.
+		This class inherits from { inheritance.map(inherit => GetElementByType(inherit)).reduce((prev, next) => [prev, ", ", next]) }.
 	</Admonition>
 );
 
 <!-- Gets Authority Element by string -->
 export function GetAuthorityType(authority) {
-	return authority == "server-only" ? <AuthorityType.ServerOnly /> :
-	authority == "client-only" ? <AuthorityType.ClientOnly /> :
-	authority == "authority-only" ? <AuthorityType.AuthorityOnly /> : <AuthorityType.Both />;
+	return authority == "server" ? <AuthorityType.ServerOnly /> :
+	authority == "client" ? <AuthorityType.ClientOnly /> :
+	authority == "authority" ? <AuthorityType.AuthorityOnly /> :
+	authority == "both" ? <AuthorityType.Both /> : "";
 };
 
 <!-- Function Block Declaration -->
-export const FunctionDeclaration = ({ data }) => (
+export const FunctionDeclaration = ({ function_data, is_static, class_name }) => (
 	<>
-		<h3 id={data.name.toLowerCase()}>
-			{ GetAuthorityType(data.authority) }
+		<h3 id={ function_data.name.toLowerCase() }>
+			{ GetAuthorityType(function_data.authority) }
 			<code>
-				{data.name}
+				{ function_data.name }
 			</code>
 		</h3>
 		<blockquote>
-			{data.description}
+			{ function_data.description }{ function_data.return ? <><br/><br/>Returns { GetElementByType(function_data.return.type) } ({ function_data.return.description })</> : "" }
 		</blockquote>
 		<CodeBlock className="language-lua">
-			{ GetFunctionExample(data) }
+			{ is_static ? GetStaticFunctionExample(class_name, function_data) : GetFunctionExample(function_data) }
 		</CodeBlock>
-		{Array.isArray(data.parameters) && data.parameters.length > 0 ?
+		{Array.isArray(function_data.parameters) && function_data.parameters.length > 0 ?
 			<table style={{ width: "100%", display: "table" }}>
 				<thead>
 					<th>Type</th>
@@ -112,7 +120,7 @@ export const FunctionDeclaration = ({ data }) => (
 					<th>Description</th>
 				</thead>
 				<tbody>
-					{data.parameters.map(function(value) {
+					{function_data.parameters.map(function(value) {
 						return <tr>
 							<td>{ GetElementByType(value.type) }</td>
 							<td><code>{ GetParameterName(value) }</code></td>
@@ -143,7 +151,7 @@ export const EventDeclaration = ({ data, class_name }) => (
 			{ GetEventExample(class_name, data) }
 		</CodeBlock>
 		{Array.isArray(data.arguments) && data.arguments.length > 0 ?
-			<table>
+			<table style={{ width: "100%", display: "table" }}>
 				<thead>
 					<th>Type</th>
 					<th>Argument</th>
@@ -165,7 +173,7 @@ export const EventDeclaration = ({ data, class_name }) => (
 );
 
 <!-- Function List Declaration -->
-export const FunctionListDeclaration = ({ class_data }) => (
+export const FunctionListDeclaration = ({ functions_list }) => (
 	<table style={{ width: "100%", display: "table" }}>
 		<thead>
 			<th></th>
@@ -174,10 +182,10 @@ export const FunctionListDeclaration = ({ class_data }) => (
 			<th>Description</th>
 		</thead>
 		<tbody>
-			{class_data.functions.map(function(value) {
+			{functions_list.map(function(value) {
 				return <tr>
 					<td width="50px">{ GetAuthorityType(value.authority) } </td>
-					<td>{ value.return ? GetElementByType(value.return) : "" }</td>
+					<td>{ value.return ? GetElementByType(value.return.type) : "" }</td>
 					<td><b><a href={`#${value.name.toLowerCase()}`}><code>{ value.name }</code></a></b></td>
 					<td>{ value.description }</td>
 				</tr>;
@@ -212,11 +220,14 @@ export const HeaderDeclaration = ({ class_data, image }) => (
 		<p>
 			{ class_data.description }
 		</p>
-		<p>
-			<img src={image} />
-		</p>
+		{
+			!image ? "" :
+			<p>
+				<img src={image} />
+			</p>
+		}
 		<AuthorityAdmonition authority={class_data.authority} />
-		<InheritanceAdmonition inheritance={class_data.inheritance} />
+		{ class_data.inheritance ? <InheritanceAdmonition inheritance={class_data.inheritance} /> : "" }
 	</>
 );
 
@@ -250,14 +261,27 @@ export const ConstructorDeclaration = ({ class_data }) => (
 <!-- Block of Functions -->
 export const FunctionsDeclaration = ({ class_data }) => (
 	<>
-		{ class_data.inheritance.includes("Actor") ? <details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details> : "" }
-		{ class_data.inheritance.includes("Paintable") ? <details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details> : "" }
-		{ class_data.inheritance.includes("Pickable") ? <details><summary>Inherited Pickable Functions</summary><BasePickableFunctions /></details> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Paintable") ? <details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <details><summary>Inherited Pickable Functions</summary><BasePickableFunctions /></details> : "" }
 		{
 			class_data.functions == null ? <i>This entity doesn't have own functions.</i> :
 			<>
-				<FunctionListDeclaration class_data={class_data} />
-				{ class_data.functions.map((value) => <FunctionDeclaration data={value} />) }
+				<FunctionListDeclaration functions_list={class_data.functions} />
+				{ class_data.functions.map((value) => <FunctionDeclaration function_data={value} />) }
+			</>
+		}
+	</>
+);
+
+<!-- Block of Static Functions -->
+export const StaticFunctionsDeclaration = ({ class_data }) => (
+	<>
+		{
+			class_data.static_functions == null ? <i>This entity doesn't have own static functions.</i> :
+			<>
+				<FunctionListDeclaration functions_list={class_data.static_functions} />
+				{ class_data.static_functions.map((value) => <FunctionDeclaration function_data={value} is_static={true} class_name={class_data.name} />) }
 			</>
 		}
 	</>
@@ -266,8 +290,8 @@ export const FunctionsDeclaration = ({ class_data }) => (
 <!-- Block of Events -->
 export const EventsDeclaration = ({ class_data }) => (
 	<>
-		{ class_data.inheritance.includes("Actor") ? <details><summary>Inherited Actor Events</summary><BaseActorEvents /></details> : "" }
-		{ class_data.inheritance.includes("Pickable") ? <details><summary>Inherited Pickable Events</summary><BasePickableEvents /></details> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <details><summary>Inherited Actor Events</summary><BaseActorEvents /></details> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <details><summary>Inherited Pickable Events</summary><BasePickableEvents /></details> : "" }
 		{
 			class_data.events == null ? <i>This entity doesn't have own events.</i> :
 			<>
