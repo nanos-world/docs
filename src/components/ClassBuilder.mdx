@@ -129,18 +129,20 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 		{Array.isArray(function_data.parameters) && function_data.parameters.length > 0 ?
 			<table style={{ width: "100%", display: "table" }}>
 				<thead>
-					<th>Type</th>
-					<th>Parameter</th>
-					<th>Default Value</th>
-					<th>Description</th>
+					<tr>
+						<th>Type</th>
+						<th>Parameter</th>
+						<th>Default</th>
+						<th>Description</th>
+					</tr>
 				</thead>
 				<tbody>
 					{function_data.parameters.map(function(value) {
 						return <tr>
 							<td>{ GetElementByType(value.type) }</td>
 							<td><code>{ GetParameterName(value) }</code></td>
-							<td>{ value.default != null ? <code>{value.default}</code> : "" }</td>
-							<td dangerouslySetInnerHTML={{ __html: value.description }}></td>
+							<td style={{ "white-space": "nowrap" }}>{ value.default != null ? <code>{value.default}</code> : "" }</td>
+							<td style={{ "word-break": "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
 						</tr>;
 					})}
 				</tbody>
@@ -168,16 +170,18 @@ export const EventDeclaration = ({ data, class_name }) => (
 		{Array.isArray(data.arguments) && data.arguments.length > 0 ?
 			<table style={{ width: "100%", display: "table" }}>
 				<thead>
-					<th>Type</th>
-					<th>Argument</th>
-					<th>Description</th>
+					<tr>
+						<th>Type</th>
+						<th>Argument</th>
+						<th>Description</th>
+					</tr>
 				</thead>
 				<tbody>
 					{data.arguments.map(function(value) {
 						return <tr>
 							<td>{ GetElementByType(value.type) }</td>
 							<td><code>{ value.name }</code></td>
-							<td dangerouslySetInnerHTML={{ __html: value.description }}></td>
+							<td dangerouslySetInnerHTML={{ __html: value.description }} style={{"word-break": "break-word"}}></td>
 						</tr>;
 					})}
 				</tbody>
@@ -191,10 +195,12 @@ export const EventDeclaration = ({ data, class_name }) => (
 export const FunctionListDeclaration = ({ functions_list }) => (
 	<table style={{ width: "100%", display: "table" }}>
 		<thead>
-			<th></th>
-			<th>Returns</th>
-			<th>Name</th>
-			<th>Description</th>
+			<tr>
+				<th></th>
+				<th>Returns</th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
 		</thead>
 		<tbody>
 			{functions_list.map(function(value) {
@@ -202,7 +208,7 @@ export const FunctionListDeclaration = ({ functions_list }) => (
 					<td width="50px">{ GetAuthorityType(value.authority) } </td>
 					<td>{ value.return ? GetElementByType(value.return.type) : "" }</td>
 					<td><b><a href={`#${value.name.toLowerCase()}`}><code>{ value.name }</code></a></b></td>
-					<td>{ value.description }</td>
+					<td style={{"word-break": "break-word"}}>{ value.description }</td>
 				</tr>;
 			})}
 		</tbody>
@@ -213,16 +219,18 @@ export const FunctionListDeclaration = ({ functions_list }) => (
 export const EventListDeclaration = ({ class_data }) => (
 	<table style={{ width: "100%", display: "table" }}>
 		<thead>
-			<th></th>
-			<th>Name</th>
-			<th>Description</th>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
 		</thead>
 		<tbody>
 			{class_data.events.map(function(value) {
 				return <tr>
 					<td width="50px">{ GetAuthorityType(value.authority) } </td>
 					<td><b><a href={`#${value.name.toLowerCase()}`}><code>{ value.name }</code></a></b></td>
-					<td>{ value.description }</td>
+					<td style={{"word-break": "break-word"}}>{ value.description }</td>
 				</tr>;
 			})}
 		</tbody>
@@ -255,18 +263,20 @@ export const ConstructorDeclaration = ({ class_data }) => (
 		</CodeBlock>
 		<table style={{ width: "100%", display: "table" }}>
 			<thead>
-				<th>Type</th>
-				<th>Name</th>
-				<th>Default</th>
-				<th>Description</th>
+				<tr>
+					<th>Type</th>
+					<th>Name</th>
+					<th>Default</th>
+					<th>Description</th>
+				</tr>
 			</thead>
 			<tbody>
 				{class_data.constructor.map(function(value) {
 					return <tr>
 						<td>{ GetElementByType(value.type) }</td>
 						<td><b><code>{ value.name }</code></b></td>
-						<td>{ value.default != null ? <code>{ value.default }</code> : "" }</td>
-						<td>{ value.description }</td>
+						<td style={{ "white-space": "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : "" }</td>
+						<td style={{"word-break": "break-word"}}>{ value.description }</td>
 					</tr>;
 				})}
 			</tbody>

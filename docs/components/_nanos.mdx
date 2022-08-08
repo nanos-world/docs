@@ -1,4 +1,67 @@
 import { useActiveVersion } from '@docusaurus/plugin-content-docs/client';
+import { Link } from "react-router-dom";
+
+import Tippy from '@tippyjs/react';
+import 'tippy.js/animations/scale-subtle.css';
+import 'tippy.js/dist/tippy.css';
+
+import EnumsData from '@site/src/api/Enums.json';
+
+import ActorData from '@site/src/api/Classes/BaseActor.json';
+import PickableData from '@site/src/api/Classes/BasePickable.json';
+import PaintableData from '@site/src/api/Classes/BasePaintable.json';
+
+import BillboardData from '@site/src/api/Classes/Billboard.json';
+import BlueprintData from '@site/src/api/Classes/Blueprint.json';
+import CableData from '@site/src/api/Classes/Cable.json';
+import CanvasData from '@site/src/api/Classes/Canvas.json';
+import CharacterData from '@site/src/api/Classes/Character.json';
+import DatabaseData from '@site/src/api/Classes/Database.json';
+import DecalData from '@site/src/api/Classes/Decal.json';
+import FileData from '@site/src/api/Classes/File.json';
+import GrenadeData from '@site/src/api/Classes/Grenade.json';
+import LightData from '@site/src/api/Classes/Light.json';
+import MeleeData from '@site/src/api/Classes/Melee.json';
+import ParticleData from '@site/src/api/Classes/Particle.json';
+import PlayerData from '@site/src/api/Classes/Player.json';
+import PropData from '@site/src/api/Classes/Prop.json';
+import SceneCaptureData from '@site/src/api/Classes/SceneCapture.json';
+import StaticMeshData from '@site/src/api/Classes/StaticMesh.json';
+import SoundData from '@site/src/api/Classes/Sound.json';
+import TextRenderData from '@site/src/api/Classes/TextRender.json';
+import TriggerData from '@site/src/api/Classes/Trigger.json';
+import VehicleData from '@site/src/api/Classes/Vehicle.json';
+import WeaponData from '@site/src/api/Classes/Weapon.json';
+import WebUIData from '@site/src/api/Classes/WebUI.json';
+
+export const ClassesData = {
+	"Base Actor": ActorData,
+	"Base Pickable": PickableData,
+	"Base Paintable": PaintableData,
+	Billboard: BillboardData,
+	Blueprint: BlueprintData,
+	Cable: CableData,
+	Canvas: CanvasData,
+	Character: CharacterData,
+	Database: DatabaseData,
+	Decal: DecalData,
+	File: FileData,
+	Grenade: GrenadeData,
+	Light: LightData,
+	Melee: MeleeData,
+	Particle: ParticleData,
+	Player: PlayerData,
+	Prop: PropData,
+	SceneCapture: SceneCaptureData,
+	StaticMesh: StaticMeshData,
+	Sound: SoundData,
+	TextRender: TextRenderData,
+	Trigger: TriggerData,
+	Vehicle: VehicleData,
+	Weapon: WeaponData,
+	WebUI: WebUIData
+};
+
 
 <!-- Getter to get the current version path - for links -->
 export const getActiveVersionPath = () => {
@@ -27,11 +90,53 @@ export const ReferenceLink = ({ children, href }) => (
 );
 
 
+export const AuthorityTooltip = ({ img, title, description }) => (
+	<>
+		<h3>
+			<img src={img} title={title} style={{ width: "24px", "vertical-align": "middle", "margin-right": "5px" }} /> {title}
+		</h3>
+		{description}
+	</>
+);
+
+export const AssetPathToolTip = ({ label, description }) => (
+	<>
+		<h3>
+			{label}
+		</h3>
+		<span dangerouslySetInnerHTML={{ __html: description }}></span>
+	</>
+);
+
+export const ClassToolTip = ({ class_name, description }) => (
+	<>
+		<h3>
+			{class_name} Class
+		</h3>
+		<span dangerouslySetInnerHTML={{ __html: description }}></span>
+	</>
+);
+
+export const StructToolTip = ({ struct_name, description }) => (
+	<>
+		<h3>
+			{struct_name} Struct
+		</h3>
+		<span dangerouslySetInnerHTML={{ __html: description }}></span>
+	</>
+);
+
+export const EnumToolTip = ({ enum_name }) => (
+	<EnumDeclaration enum_name={ enum_name } enum_data={ EnumsData[enum_name] } is_tooltip={true} />
+);
+
 <!-- Generic Base Authority component -->
-export const BaseAuthority = (img, title) => (
-	<a class="authority-availability" href={`${getActiveVersionPath()}/core-concepts/scripting/authority-concepts#methods-and-events-availability`}>
-		<img src={img} title={title} />
-	</a>
+export const BaseAuthority = (img, title, description) => (
+	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} />}>
+		<Link class="authority-availability" to={`${getActiveVersionPath()}/core-concepts/scripting/authority-concepts#methods-and-events-availability`}>
+			<img src={img} title={title} />
+		</Link>
+	</Tippy>
 );
 
 <!-- Generic Basic Type component -->
@@ -40,37 +145,48 @@ export const BaseType = (label) => (
 );
 
 <!-- Generic Struct Type component -->
-export const BaseStruct = (label, path) => (
-	<a href={`${getActiveVersionPath()}/scripting-reference/utility-classes/${path ? path : label.toLowerCase()}`}>{label}</a>
+export const BaseStruct = (label, path, description) => (
+	<Tippy interactive={true} maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<StructToolTip struct_name={label} description={description} />}>
+		<Link to={`${getActiveVersionPath()}/scripting-reference/utility-classes/${path ? path : label.toLowerCase()}`}>{label}</Link>
+	</Tippy>
 );
 
 <!-- Generic Struct Type component -->
-export const BaseClass = (label, path) => (
-	<a href={`${getActiveVersionPath()}/scripting-reference/classes/${path ? path : label.toLowerCase()}`}>{label}</a>
+export const BaseClass = (label, emoji, path) => (
+	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"}
+		content={<ClassToolTip class_name={`${emoji} ${label}`} description={ ClassesData[label] ? ClassesData[label].description : "Class not found. Soon™." } />}>
+		<Link to={`${getActiveVersionPath()}/scripting-reference/classes/${path ? path : label.toLowerCase()}`}>{label}</Link>
+	</Tippy>
 );
 
 <!-- Define Enum component -->
 export const Enums = ({ children }) => (
-	<a href={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${children.toLowerCase()}`} title={`${children} Enum (number)`}>{children}</a>
+	<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={<EnumToolTip enum_name={ children } />}>
+		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${children.toLowerCase()}`} >{children}</Link>
+	</Tippy>
 );
 
 <!-- Define Asset Path component -->
-export const BaseAssetPath = (label) => (
-	<a href={`${getActiveVersionPath()}/core-concepts/assets#referencing-assets-in-scripting`} title="Asset Path (string)">{label}</a>
+export const BaseAssetPath = (type, label, description) => (
+	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AssetPathToolTip label={label} description={description} />}>
+		<Link to={`${getActiveVersionPath()}/core-concepts/assets#referencing-assets-in-scripting`}>{label}</Link>
+	</Tippy>
 );
 
 <!-- Define Special Path component -->
-export const SpecialPath = (label) => (
-	<a href={`${getActiveVersionPath()}/scripting-reference/glossary/basic-types#specialpath`} title="Special Path (string)">{label}</a>
+export const SpecialPath = (type, label, description) => (
+	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AssetPathToolTip label={label} description={description} />}>
+		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/basic-types#specialpath`}>{label}</Link>
+	</Tippy>
 );
 
 
 <!-- Defines Authority Types components -->
 export const AuthorityType = {
-	AuthorityOnly: () => BaseAuthority("/img/scripting/authority-only.svg", "authority-only - this can be called only on the side which spawned it!"),
-	ServerOnly: () => BaseAuthority("/img/scripting/server-only.svg", "server-only - this can be called only on server side!"),
-	ClientOnly: () => BaseAuthority("/img/scripting/client-only.svg", "client-only - this can be called only on client side!"),
-	Both: () => BaseAuthority("/img/scripting/both.png", "both-sides - this can be called on any side!"),
+	AuthorityOnly: () => BaseAuthority("/img/scripting/authority-only.svg", "Authority Only", "This can be called only on the side which spawned it!"),
+	ServerOnly: () => BaseAuthority("/img/scripting/server-only.svg", "Server Only", "This can be called only on server side!"),
+	ClientOnly: () => BaseAuthority("/img/scripting/client-only.svg", "Client Only", "This can be called only on client side!"),
+	Both: () => BaseAuthority("/img/scripting/both.png", "Both Sides", "This can be called on any side!"),
 };
 
 <!-- Defines Basic Types components -->
@@ -87,51 +203,52 @@ export const BasicType = {
 
 <!-- Defines Struct Types components -->
 export const Structs = {
-	Vector: () => BaseStruct("Vector"),
-	Rotator: () => BaseStruct("Rotator"),
-	Color: () => BaseStruct("Color"),
-	Quat: () => BaseStruct("Quat", "quaternion"),
-	Vector2D: () => BaseStruct("Vector2D", "vectortwod"),
+	Vector: () => BaseStruct("Vector", "", "A vector composed of components (X, Y, Z) with floating point precision."),
+	Rotator: () => BaseStruct("Rotator", "", "A container for rotation information (Pitch, Yaw, Roll). All rotation values are stored in degrees."),
+	Color: () => BaseStruct("Color", "", "A color composed of components (R, G, B, A) with floating point precision."),
+	Quat: () => BaseStruct("Quat", "quaternion", "Floating point Quaternion (X, Y, Z, W) that can represent a rotation about an axis in 3-D space."),
+	Vector2D: () => BaseStruct("Vector2D", "vectortwod", "A Vector2D composed of components (X, Y) with floating point precision. Used mainly for HUD and Drawing on screen."),
 };
 
 <!-- Defines Classes components -->
 export const Classes = {
-	Actor: () => BaseClass("Actor", "base-classes/actor"),
-	Paintable: () => BaseClass("Paintable", "base-classes/paintable"),
-	Pickable: () => BaseClass("Pickable", "base-classes/pickable"),
-	Billboard: () => BaseClass("Billboard"),
-	Blueprint: () => BaseClass("Blueprint"),
-	Canvas: () => BaseClass("Canvas"),
-	Cable: () => BaseClass("Cable"),
-	Character: () => BaseClass("Character"),
-	Database: () => BaseClass("Database"),
-	File: () => BaseClass("File"),
-	Grenade: () => BaseClass("Grenade"),
-	Melee: () => BaseClass("Melee"),
-	Light: () => BaseClass("Light"),
-	Particle: () => BaseClass("Particle"),
-	Player: () => BaseClass("Player"),
-	Prop: () => BaseClass("Prop"),
-	Sound: () => BaseClass("Sound"),
-	SceneCapture: () => BaseClass("SceneCapture", "scene-capture"),
-	StaticMesh: () => BaseClass("StaticMesh", "static-mesh"),
-	TextRender: () => BaseClass("TextRender", "text-render"),
-	Trigger: () => BaseClass("Trigger"),
-	Vehicle: () => BaseClass("Vehicle"),
-	Weapon: () => BaseClass("Weapon"),
-	WebUI: () => BaseClass("WebUI"),
+	Actor: () => BaseClass("Base Actor", "🎭", "base-classes/actor"),
+	Paintable: () => BaseClass("Base Paintable", "🎨", "base-classes/paintable"),
+	Pickable: () => BaseClass("Base Pickable", "⚔️", "base-classes/pickable"),
+	Billboard: () => BaseClass("Billboard", "🪧"),
+	Blueprint: () => BaseClass("Blueprint", "🔣"),
+	Canvas: () => BaseClass("Canvas", "🖼️"),
+	Cable: () => BaseClass("Cable", "⛓️"),
+	Character: () => BaseClass("Character", "🧑"),
+	Database: () => BaseClass("Database", "💾"),
+	Decal: () => BaseClass("Decal", "🖌️"),
+	File: () => BaseClass("File", "📁"),
+	Grenade: () => BaseClass("Grenade", "💣"),
+	Light: () => BaseClass("Light", "💡"),
+	Melee: () => BaseClass("Melee", "🔪"),
+	Particle: () => BaseClass("Particle", "✨"),
+	Player: () => BaseClass("Player", "👩‍💻"),
+	Prop: () => BaseClass("Prop", "📦"),
+	SceneCapture: () => BaseClass("SceneCapture", "📽️", "scene-capture"),
+	Sound: () => BaseClass("Sound", "🔊"),
+	StaticMesh: () => BaseClass("StaticMesh", "🏠", "static-mesh"),
+	TextRender: () => BaseClass("TextRender", "🆒", "text-render"),
+	Trigger: () => BaseClass("Trigger", "🪤"),
+	Vehicle: () => BaseClass("Vehicle", "🚙"),
+	Weapon: () => BaseClass("Weapon", "🔫"),
+	WebUI: () => BaseClass("WebUI", "🖥️"),
 };
 
 <!-- Defines Assets Path -->
 export const AssetPath = {
-	StaticMesh: () => BaseAssetPath("StaticMesh Asset"),
-	SkeletalMesh: () => BaseAssetPath("SkeletalMesh Asset"),
-	Animation: () => BaseAssetPath("Animation Asset"),
-	Particle: () => BaseAssetPath("Particle Asset"),
-	Material: () => BaseAssetPath("Material Asset"),
-	Map: () => BaseAssetPath("Map Asset"),
-	Blueprint: () => BaseAssetPath("Blueprint Asset"),
-	Sound: () => SpecialPath("Sound Asset or Special Path"),
-	Image: () => SpecialPath("Image Special Path"),
-	HTML: () => SpecialPath("HTML Special Path"),
+	StaticMesh: () => BaseAssetPath("StaticMesh", "StaticMesh Reference", "StaticMesh Asset Reference in the format: <code>asset-pack::SM_MyAsset</code>."),
+	SkeletalMesh: () => BaseAssetPath("SkeletalMesh", "SkeletalMesh Reference", "SkeletalMesh Asset Reference in the format: <code>asset-pack::SM_MyAsset</code>."),
+	Animation: () => BaseAssetPath("Animation", "Animation Reference", "Animation Asset Reference in the format: <code>asset-pack::SM_MyAsset</code>."),
+	Particle: () => BaseAssetPath("Particle", "Particle Reference", "Particle Asset Reference in the format: <code>asset-pack::SM_MyAsset</code>."),
+	Material: () => BaseAssetPath("Material", "Material Reference", "Material Asset Reference in the format: <code>asset-pack::SM_MyAsset</code>."),
+	Map: () => BaseAssetPath("Map", "Map Reference", "Map Asset Reference in the format: <code>asset-pack::SM_MyAsset</code>."),
+	Blueprint: () => BaseAssetPath("Blueprint", "Blueprint Reference", "Blueprint Asset Reference in the format: <code>asset-pack::SM_MyAsset</code>."),
+	Sound: () => SpecialPath("Sound", "Sound Reference", "Sound Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code><br/><br/>Or as Special Path:<br/><code>package://my-package/Client/sound.ogg</code>."),
+	Image: () => SpecialPath("Image", "Image Path", "Image Path as Special Path:<br/><code>package://my-package/Client/sound.ogg</code>."),
+	HTML: () => SpecialPath("HTML", "HTML Path", "HTML Path as Special Path:<br/><code>package://my-package/Client/file.html</code>."),
 };

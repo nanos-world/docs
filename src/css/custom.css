@@ -324,7 +324,7 @@ html[data-theme='dark'] .header-discord-link:before {
   min-width: 18px;
 }
 
-.authority-availability:not(:only-child) {
+:not(td) > .authority-availability {
   margin-right: 10px;
 }
 
@@ -453,4 +453,16 @@ a.card-link:hover img {
 
 .hash-link, .authority-availability {
   user-select: none;
+}
+
+.tippy-box {
+  padding: 10px;
+  color: var(--ifm-font-color-base) !important;
+  background-color: var(--ifm-blockquote-background-color) !important;
+  border: 2px solid var(--ifm-blockquote-border-color);
+}
+
+.tippy-arrow::before {
+  transform: scale(1.5) !important;
+  color: var(--ifm-blockquote-border-color) !important;
 }
