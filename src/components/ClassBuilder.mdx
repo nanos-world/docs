@@ -39,9 +39,16 @@ export function GetElementByType(type) {
 
 <!-- Authority Label Map -->
 export const AuthorityLabels = {
-	client: <>This is a 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a> only class.</>,
-	server: <>This is a 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a> only class.</>,
-	both: <>This class is accessible on both 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a> (if you spawn it on client, it won't be synchronized with other players).</>,
+	client: <>This class can only be spawned on 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a>.</>,
+	server: <>This class can only be spawned on 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a>.</>,
+	both: <>This class can be spawned on both 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a> (if you spawn it on client, it won't be synchronized with other players).</>,
+}
+
+<!-- Authority Label Map for Static Classes -->
+export const AuthorityLabelsStatic = {
+	client: <>This static class can be accessed only on 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a>.</>,
+	server: <>This static class can be accessed only on 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a>.</>,
+	both: <>This static class can be accessed on both 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a>.</>,
 }
 
 <!-- Gets a Parameter name (with ? when optional) -->
@@ -77,14 +84,21 @@ export function GetEventExample(class_name, event_data) {
 }
 
 <!-- Authority Admonition -->
-export const AuthorityAdmonition = ({ authority }) => (
-	<Admonition type="info" icon="💂" title="Authority">{ AuthorityLabels[authority] }</Admonition>
+export const AuthorityAdmonition = ({ authority, is_static }) => (
+	<Admonition type="info" icon="💂" title="Authority">{ is_static ? AuthorityLabelsStatic[authority] : AuthorityLabels[authority] }</Admonition>
 );
 
 <!-- Inheritance Admonition -->
 export const InheritanceAdmonition = ({ inheritance }) => (
 	<Admonition type="info" icon="👪" title="Inheritance">
 		This class inherits from { inheritance.map(inherit => GetElementByType(inherit)).reduce((prev, next) => [prev, ", ", next]) }.
+	</Admonition>
+);
+
+<!-- Static Class Admonition -->
+export const StaticClassAdmonition = () => (
+	<Admonition type="info" icon="🗿" title="Static Class">
+		This is a <b>Static Class</b>. You can access it's methods directly with <code>.</code>. It is not possible to initialize or create new instances.
 	</Admonition>
 );
 
@@ -106,7 +120,8 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 			</code>
 		</h3>
 		<blockquote>
-			{ function_data.description }{ function_data.return ? <><br/><br/>Returns { GetElementByType(function_data.return.type) } ({ function_data.return.description })</> : "" }
+			<span dangerouslySetInnerHTML={{ __html: function_data.description_long ? function_data.description_long : function_data.description }}></span>
+			{ function_data.return ? <><br/><br/>Returns { GetElementByType(function_data.return.type) } ({ <span dangerouslySetInnerHTML={{ __html: function_data.return.description }}></span> })</> : "" }
 		</blockquote>
 		<CodeBlock className="language-lua">
 			{ is_static ? GetStaticFunctionExample(class_name, function_data) : GetFunctionExample(function_data) }
@@ -125,7 +140,7 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 							<td>{ GetElementByType(value.type) }</td>
 							<td><code>{ GetParameterName(value) }</code></td>
 							<td>{ value.default != null ? <code>{value.default}</code> : "" }</td>
-							<td>{ value.description }</td>
+							<td dangerouslySetInnerHTML={{ __html: value.description }}></td>
 						</tr>;
 					})}
 				</tbody>
@@ -162,7 +177,7 @@ export const EventDeclaration = ({ data, class_name }) => (
 						return <tr>
 							<td>{ GetElementByType(value.type) }</td>
 							<td><code>{ value.name }</code></td>
-							<td>{ value.description }</td>
+							<td dangerouslySetInnerHTML={{ __html: value.description }}></td>
 						</tr>;
 					})}
 				</tbody>
@@ -215,7 +230,7 @@ export const EventListDeclaration = ({ class_data }) => (
 );
 
 <!-- Header Block Declaration -->
-export const HeaderDeclaration = ({ class_data, image }) => (
+export const HeaderDeclaration = ({ class_data, image, is_static }) => (
 	<>
 		<p>
 			{ class_data.description }
@@ -226,8 +241,9 @@ export const HeaderDeclaration = ({ class_data, image }) => (
 				<img src={image} />
 			</p>
 		}
-		<AuthorityAdmonition authority={class_data.authority} />
+		<AuthorityAdmonition authority={class_data.authority} is_static={is_static} />
 		{ class_data.inheritance ? <InheritanceAdmonition inheritance={class_data.inheritance} /> : "" }
+		{ is_static ? <StaticClassAdmonition /> : "" }
 	</>
 );
 

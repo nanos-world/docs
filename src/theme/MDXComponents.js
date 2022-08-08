@@ -2,7 +2,7 @@
 import MDXComponents from '@theme-original/MDXComponents';
 
 // Import custom elements
-import { HeaderDeclaration, ConstructorDeclaration, FunctionsDeclaration, StaticFunctionsDeclaration, EventsDeclaration } from '@site/docs/components/_class-builder.mdx';
+import { HeaderDeclaration, ConstructorDeclaration, FunctionsDeclaration, StaticFunctionsDeclaration, EventsDeclaration } from '@site/src/components/ClassBuilder.mdx';
 import { Structs, BasicType, AuthorityType, Classes, ReferenceLink, Enums, CardLink, AssetPath } from '@site/docs/components/_nanos.mdx';
 
 export default {

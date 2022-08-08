@@ -65,7 +65,7 @@ export const SpecialPath = (label) => (
 );
 
 
-<!-- Defines Authority Types componenets -->
+<!-- Defines Authority Types components -->
 export const AuthorityType = {
 	AuthorityOnly: () => BaseAuthority("/img/scripting/authority-only.svg", "authority-only - this can be called only on the side which spawned it!"),
 	ServerOnly: () => BaseAuthority("/img/scripting/server-only.svg", "server-only - this can be called only on server side!"),
@@ -73,7 +73,7 @@ export const AuthorityType = {
 	Both: () => BaseAuthority("/img/scripting/both.png", "both-sides - this can be called on any side!"),
 };
 
-<!-- Defines Basic Types componenets -->
+<!-- Defines Basic Types components -->
 export const BasicType = {
 	Number: () => BaseType("number"),
 	String: () => BaseType("string"),
@@ -85,7 +85,7 @@ export const BasicType = {
 	Nil: () => BaseType("nil"),
 };
 
-<!-- Defines Struct Types componenets -->
+<!-- Defines Struct Types components -->
 export const Structs = {
 	Vector: () => BaseStruct("Vector"),
 	Rotator: () => BaseStruct("Rotator"),
@@ -94,7 +94,7 @@ export const Structs = {
 	Vector2D: () => BaseStruct("Vector2D", "vectortwod"),
 };
 
-<!-- Defines Classes componenets -->
+<!-- Defines Classes components -->
 export const Classes = {
 	Actor: () => BaseClass("Actor", "base-classes/actor"),
 	Paintable: () => BaseClass("Paintable", "base-classes/paintable"),

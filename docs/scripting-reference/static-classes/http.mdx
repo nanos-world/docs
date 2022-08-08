@@ -4,21 +4,13 @@ description: HTTP Requests Interface
 tags: [static-class, server]
 ---
 
-
-HTTP Requests Interface
-
-import { Structs, BasicType, Enums, AuthorityType } from '@site/docs/components/_nanos.mdx';
-
-:::info
-
-🟦 **Authority:** This can be accessed only on [Server](/core-concepts/scripting/authority-concepts.mdx).
-
-🗿 **Static Class:** This is a Static Class. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
-
-:::
+import ClassData from '@site/src/api/StaticClasses/HTTP.json';
 
 
-## Usage
+<HeaderDeclaration class_data={ClassData} is_static={true} />
+
+
+## Example
 
 ```lua title="Server/Index.lua"
 -- Makes an asynchronous HTTP Request
@@ -48,54 +40,9 @@ All requests are thread safe! 🥳
 
 ## Static Functions
 
-| Returns | Name | Description |
-| :--- | :--- | :--- |
-|  | [**`Request`**](http#request) | Makes an asynchronous HTTP Request |
-| <BasicType.Table /> | [**`RequestSync`**](http#requestsync) | Makes a synchronous HTTP Request |
+<StaticFunctionsDeclaration class_data={ClassData} />
 
 
-### `Request`
+## Events
 
-> Makes an asynchronous HTTP Request.
->
-> The request will be made asynchronously and returned safetly in the same thread in the callback provided when it's done.
->
-> **Note:** If a request is still running when unloading packages, the server will freeze until it's finished, then the package will unload.
-
-```lua
-HTTP.Request(uri, endpoint, method, content_type, compress, data, headers, callback)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`uri`** |  | The main URI |
-| <BasicType.String /> | **`endpoint`** | `/` | The endpoint |
-| <BasicType.String /> | **`method`** | `GET` | The [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) to be used |
-| <BasicType.String /> | **`data`** | ` ` | Payload |
-| <BasicType.String /> | **`content_type`** | `application/json` | The [Content Type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) to be used |
-| <BasicType.Boolean /> | **`compress`** | `false` | Whether or not to compress the content with gzip |
-| <BasicType.Table /> | **`headers`** | `{}` | The [Headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) to be used |
-| <BasicType.Function /> | **`callback`** | `nil` | The result will be called in the format `function(status, data)` |
-
-
-### `RequestSync`
-
-> Makes a synchronous HTTP Request.
-> 
-> The request will be made synchronously and will freeze the server until it's done.
-> 
-> Returns a <BasicType.Table /> in the format `{ Status, Data }`
-
-```lua
-HTTP.Request(uri, endpoint, method, content_type, compress, data, headers)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`uri`** |  | The main URI |
-| <BasicType.String /> | **`endpoint`** | `/` | The endpoint |
-| <BasicType.String /> | **`method`** | `GET` | The [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) to be used |
-| <BasicType.String /> | **`data`** | ` ` | Payload |
-| <BasicType.String /> | **`content_type`** | `application/json` | The [Content Type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) to be used |
-| <BasicType.Boolean /> | **`compress`** | `false` | Whether or not to compress the content with gzip |
-| <BasicType.Table /> | **`headers`** | `{}` | The [Headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) to be used |
+<EventsDeclaration class_data={ClassData} />
