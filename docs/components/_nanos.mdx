@@ -34,8 +34,11 @@ import VehicleData from '@site/src/api/Classes/Vehicle.json';
 import WeaponData from '@site/src/api/Classes/Weapon.json';
 import WebUIData from '@site/src/api/Classes/WebUI.json';
 
-import Vector2DData from '@site/src/api/Structs/Vector2D.json';
+import ColorData from '@site/src/api/Structs/Color.json';
+import MatrixData from '@site/src/api/Structs/Matrix.json';
 import QuatData from '@site/src/api/Structs/Quat.json';
+import VectorData from '@site/src/api/Structs/Vector.json';
+import Vector2DData from '@site/src/api/Structs/Vector2D.json';
 
 export const ClassesData = {
 	"Base Actor": ActorData,
@@ -66,8 +69,11 @@ export const ClassesData = {
 };
 
 export const StructsData = {
+	Color: ColorData,
+	Matrix: MatrixData,
+	Quat: QuatData,
+	Vector: VectorData,
 	Vector2D: Vector2DData,
-	Quat: QuatData
 };
 
 <!-- Getter to get the current version path - for links -->
