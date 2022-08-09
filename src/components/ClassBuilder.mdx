@@ -161,9 +161,7 @@ export const EventDeclaration = ({ data, class_name }) => (
 				{data.name}
 			</code>
 		</h3>
-		<blockquote>
-			{data.description}
-		</blockquote>
+		<blockquote dangerouslySetInnerHTML={{ __html: data.description }}></blockquote>
 		<CodeBlock className="language-lua">
 			{ GetEventExample(class_name, data) }
 		</CodeBlock>
@@ -240,16 +238,9 @@ export const EventListDeclaration = ({ class_data }) => (
 <!-- Header Block Declaration -->
 export const HeaderDeclaration = ({ class_data, image, is_static }) => (
 	<>
-		<p>
-			{ class_data.description }
-		</p>
-		{
-			!image ? "" :
-			<p>
-				<img src={image} />
-			</p>
-		}
-		<AuthorityAdmonition authority={class_data.authority} is_static={is_static} />
+		<p>{ class_data.description }</p>
+		{ image ? <p><img src={image} /></p> : "" }
+		{ class_data.authority ? <AuthorityAdmonition authority={class_data.authority} is_static={is_static} /> : "" }
 		{ class_data.inheritance ? <InheritanceAdmonition inheritance={class_data.inheritance} /> : "" }
 		{ is_static ? <StaticClassAdmonition /> : "" }
 	</>
@@ -324,6 +315,33 @@ export const EventsDeclaration = ({ class_data }) => (
 				<EventListDeclaration class_data={class_data} />
 				{ class_data.events.map((value) => <EventDeclaration data={value} class_name={class_data.name} />) }
 			</>
+		}
+	</>
+);
+
+<!-- Block of Properties -->
+export const PropertiesDeclaration = ({ class_data }) => (
+	<>
+		{
+			class_data.properties == null ? <i>This entity doesn't have properties.</i> :
+			<table style={{ width: "100%", display: "table" }}>
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Name</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					{class_data.properties.map(function(value) {
+						return <tr>
+							<td>{ GetElementByType(value.type) }</td>
+							<td><b><code>{ value.name }</code></b></td>
+							<td style={{"word-break": "break-word"}}>{ value.description }</td>
+						</tr>;
+					})}
+				</tbody>
+			</table>
 		}
 	</>
 );

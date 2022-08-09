@@ -34,6 +34,9 @@ import VehicleData from '@site/src/api/Classes/Vehicle.json';
 import WeaponData from '@site/src/api/Classes/Weapon.json';
 import WebUIData from '@site/src/api/Classes/WebUI.json';
 
+import Vector2DData from '@site/src/api/Structs/Vector2D.json';
+import QuatData from '@site/src/api/Structs/Quat.json';
+
 export const ClassesData = {
 	"Base Actor": ActorData,
 	"Base Pickable": PickableData,
@@ -62,6 +65,10 @@ export const ClassesData = {
 	WebUI: WebUIData
 };
 
+export const StructsData = {
+	Vector2D: Vector2DData,
+	Quat: QuatData
+};
 
 <!-- Getter to get the current version path - for links -->
 export const getActiveVersionPath = () => {
@@ -145,8 +152,8 @@ export const BaseType = (label) => (
 );
 
 <!-- Generic Struct Type component -->
-export const BaseStruct = (label, path, description) => (
-	<Tippy interactive={true} maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<StructToolTip struct_name={label} description={description} />}>
+export const BaseStruct = (label, path) => (
+	<Tippy interactive={true} maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<StructToolTip struct_name={label} description={ StructsData[label] ? StructsData[label].description : "Struct not found. Soon™." } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/utility-classes/${path ? path : label.toLowerCase()}`}>{label}</Link>
 	</Tippy>
 );
@@ -203,11 +210,11 @@ export const BasicType = {
 
 <!-- Defines Struct Types components -->
 export const Structs = {
-	Vector: () => BaseStruct("Vector", "", "A vector composed of components (X, Y, Z) with floating point precision."),
-	Rotator: () => BaseStruct("Rotator", "", "A container for rotation information (Pitch, Yaw, Roll). All rotation values are stored in degrees."),
-	Color: () => BaseStruct("Color", "", "A color composed of components (R, G, B, A) with floating point precision."),
-	Quat: () => BaseStruct("Quat", "quaternion", "Floating point Quaternion (X, Y, Z, W) that can represent a rotation about an axis in 3-D space."),
-	Vector2D: () => BaseStruct("Vector2D", "vectortwod", "A Vector2D composed of components (X, Y) with floating point precision. Used mainly for HUD and Drawing on screen."),
+	Vector: () => BaseStruct("Vector", ""),
+	Rotator: () => BaseStruct("Rotator", ""),
+	Color: () => BaseStruct("Color", ""),
+	Quat: () => BaseStruct("Quat", "quaternion"),
+	Vector2D: () => BaseStruct("Vector2D", "vectortwod"),
 };
 
 <!-- Defines Classes components -->
@@ -241,13 +248,13 @@ export const Classes = {
 
 <!-- Defines Assets Path -->
 export const AssetPath = {
-	StaticMesh: () => BaseAssetPath("StaticMesh", "StaticMesh Reference", "StaticMesh Asset Reference in the format: <code>asset-pack::SM_MyAsset</code>."),
-	SkeletalMesh: () => BaseAssetPath("SkeletalMesh", "SkeletalMesh Reference", "SkeletalMesh Asset Reference in the format: <code>asset-pack::SM_MyAsset</code>."),
-	Animation: () => BaseAssetPath("Animation", "Animation Reference", "Animation Asset Reference in the format: <code>asset-pack::SM_MyAsset</code>."),
-	Particle: () => BaseAssetPath("Particle", "Particle Reference", "Particle Asset Reference in the format: <code>asset-pack::SM_MyAsset</code>."),
-	Material: () => BaseAssetPath("Material", "Material Reference", "Material Asset Reference in the format: <code>asset-pack::SM_MyAsset</code>."),
-	Map: () => BaseAssetPath("Map", "Map Reference", "Map Asset Reference in the format: <code>asset-pack::SM_MyAsset</code>."),
-	Blueprint: () => BaseAssetPath("Blueprint", "Blueprint Reference", "Blueprint Asset Reference in the format: <code>asset-pack::SM_MyAsset</code>."),
+	StaticMesh: () => BaseAssetPath("StaticMesh", "StaticMesh Reference", "StaticMesh Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
+	SkeletalMesh: () => BaseAssetPath("SkeletalMesh", "SkeletalMesh Reference", "SkeletalMesh Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
+	Animation: () => BaseAssetPath("Animation", "Animation Reference", "Animation Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
+	Particle: () => BaseAssetPath("Particle", "Particle Reference", "Particle Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
+	Material: () => BaseAssetPath("Material", "Material Reference", "Material Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
+	Map: () => BaseAssetPath("Map", "Map Reference", "Map Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
+	Blueprint: () => BaseAssetPath("Blueprint", "Blueprint Reference", "Blueprint Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
 	Sound: () => SpecialPath("Sound", "Sound Reference", "Sound Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code><br/><br/>Or as Special Path:<br/><code>package://my-package/Client/sound.ogg</code>."),
 	Image: () => SpecialPath("Image", "Image Path", "Image Path as Special Path:<br/><code>package://my-package/Client/sound.ogg</code>."),
 	HTML: () => SpecialPath("HTML", "HTML Path", "HTML Path as Special Path:<br/><code>package://my-package/Client/file.html</code>."),

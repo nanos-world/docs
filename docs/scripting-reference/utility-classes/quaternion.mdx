@@ -4,14 +4,13 @@ description: Floating point Quaternion that can represent a rotation about an ax
 tags: [utility-class]
 ---
 
+import ClassData from '@site/src/api/Structs/Quat.json';
 
-Floating point Quaternion that can represent a rotation about an axis in 3-D space
-
-import { BasicType, Structs } from '@site/docs/components/_nanos.mdx';
+<HeaderDeclaration class_data={ClassData} />
 
 :::tip
 
-This structure is Open Sourced at [https://github.com/nanos-world/nanos-world-lua-lib](https://github.com/nanos-world/nanos-world-lua-lib). Feel free to push merge requests and suggest changes!
+This structure is Open Sourced on [GitHub](https://github.com/nanos-world/nanos-world-lua-lib). Feel free to make pull requests and suggest changes!
 
 :::
 
@@ -21,27 +20,26 @@ This structure supports `*`, `+`, `-` and `tostring` operations.
 
 :::
 
-## Usage
+
+## 🎒 Examples
 
 ```lua
 local new_quaternion = Quat(0.5, 0.5, 1, -1)
 local rotation = new_quaterion:Rotator()
 ```
 
-## Properties
 
-| **Type** | **Name** | **Description** |
-| :--- | :--- | :--- |
-| <BasicType.Number /> | **`X`** | The quaternion's X-component |
-| <BasicType.Number /> | **`Y`** | The quaternion's Y-component |
-| <BasicType.Number /> | **`Z`** | The quaternion's Z-component |
-| <BasicType.Number /> | **`W`** | The quaternion's W-component |
+## 🏗️ Constructor
 
-## Functions
+<ConstructorDeclaration class_data={ClassData} />
 
-| **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- |
-|  | **`Normalize()`** | In place normalize this Quaternion |
-| <Structs.Rotator /> | **`Rotator()`** | Get the Rotator representation of this Quaternion |
-| <Structs.Quat /> | **`Inverse()`** | Returns the inverse of this Quaternion |
+
+## 🧽 Properties
+
+<PropertiesDeclaration class_data={ClassData} />
+
+
+## 🦠 Functions
+
+<FunctionsDeclaration class_data={ClassData} />
 
