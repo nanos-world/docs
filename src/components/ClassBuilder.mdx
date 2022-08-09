@@ -3,12 +3,10 @@ import Admonition from '@theme/Admonition';
 
 import { AuthorityType, BasicType, Classes, Structs, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
 
-import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
-import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-paintable-functions.mdx';
-import BasePickableFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-pickable-functions.mdx';
+import ActorData from '@site/src/api/Classes/BaseActor.json';
+import PickableData from '@site/src/api/Classes/BasePickable.json';
+import PaintableData from '@site/src/api/Classes/BasePaintable.json';
 
-import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
-import BasePickableEvents from '@site/docs/scripting-reference/classes/base-classes/_base-pickable-events.mdx';
 
 <!-- Asset Paths Map -->
 export const AssetPaths = {
@@ -121,7 +119,15 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 		</h3>
 		<blockquote>
 			<span dangerouslySetInnerHTML={{ __html: function_data.description_long ? function_data.description_long : function_data.description }}></span>
-			{ function_data.return ? <><br/><br/>Returns { GetElementByType(function_data.return.type) } ({ <span dangerouslySetInnerHTML={{ __html: function_data.return.description }}></span> })</> : "" }
+			{ !function_data.return ? "" :
+				<>
+					<br/><br/><>Returns </>
+					{ !function_data.return.is_array ? "" : <>a <BasicType.Table /> of </> }
+					{ GetElementByType(function_data.return.type) }
+					{ !function_data.return.description ? "" : <span dangerouslySetInnerHTML={{ __html: ` (${function_data.return.description})` }}></span> }
+					{ !function_data.return.nullable ? "" : <> or <BasicType.Nil /></> }
+				</>
+			}
 		</blockquote>
 		<CodeBlock className="language-lua">
 			{ is_static ? GetStaticFunctionExample(class_name, function_data) : GetFunctionExample(function_data) }
@@ -153,19 +159,19 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 );
 
 <!-- Event Block Declaration -->
-export const EventDeclaration = ({ data, class_name }) => (
+export const EventDeclaration = ({ event_data, class_name }) => (
 	<>
-		<h3 id={data.name.toLowerCase()}>
-			{ GetAuthorityType(data.authority) }
+		<h3 id={event_data.name.toLowerCase()}>
+			{ GetAuthorityType(event_data.authority) }
 			<code>
-				{data.name}
+				{event_data.name}
 			</code>
 		</h3>
-		<blockquote dangerouslySetInnerHTML={{ __html: data.description }}></blockquote>
+		<blockquote dangerouslySetInnerHTML={{ __html: event_data.description_long ? event_data.description_long : event_data.description }}></blockquote>
 		<CodeBlock className="language-lua">
-			{ GetEventExample(class_name, data) }
+			{ GetEventExample(class_name, event_data) }
 		</CodeBlock>
-		{Array.isArray(data.arguments) && data.arguments.length > 0 ?
+		{Array.isArray(event_data.arguments) && event_data.arguments.length > 0 ?
 			<table style={{ width: "100%", display: "table" }}>
 				<thead>
 					<tr>
@@ -175,7 +181,7 @@ export const EventDeclaration = ({ data, class_name }) => (
 					</tr>
 				</thead>
 				<tbody>
-					{data.arguments.map(function(value) {
+					{event_data.arguments.map(function(value) {
 						return <tr>
 							<td>{ GetElementByType(value.type) }</td>
 							<td><code>{ value.name }</code></td>
@@ -204,9 +210,9 @@ export const FunctionListDeclaration = ({ functions_list }) => (
 			{functions_list.map(function(value) {
 				return <tr>
 					<td width="50px">{ GetAuthorityType(value.authority) } </td>
-					<td>{ value.return ? GetElementByType(value.return.type) : "" }</td>
+					<td style={{ "white-space": "nowrap" }}>{ value.return ? GetElementByType(value.return.type) : "" }</td>
 					<td><b><a href={`#${value.name.toLowerCase()}`}><code>{ value.name }</code></a></b></td>
-					<td style={{"word-break": "break-word"}}>{ value.description }</td>
+					<td style={{"word-break": "break-word"}} dangerouslySetInnerHTML={{ __html: value.description }}></td>
 				</tr>;
 			})}
 		</tbody>
@@ -228,7 +234,7 @@ export const EventListDeclaration = ({ class_data }) => (
 				return <tr>
 					<td width="50px">{ GetAuthorityType(value.authority) } </td>
 					<td><b><a href={`#${value.name.toLowerCase()}`}><code>{ value.name }</code></a></b></td>
-					<td style={{"word-break": "break-word"}}>{ value.description }</td>
+					<td style={{"word-break": "break-word"}} dangerouslySetInnerHTML={{ __html: value.description }}></td>
 				</tr>;
 			})}
 		</tbody>
@@ -238,7 +244,7 @@ export const EventListDeclaration = ({ class_data }) => (
 <!-- Header Block Declaration -->
 export const HeaderDeclaration = ({ class_data, image, is_static }) => (
 	<>
-		<p>{ class_data.description }</p>
+		<p dangerouslySetInnerHTML={{ __html: class_data.description }}></p>
 		{ image ? <p><img src={image} /></p> : "" }
 		{ class_data.authority ? <AuthorityAdmonition authority={class_data.authority} is_static={is_static} /> : "" }
 		{ class_data.inheritance ? <InheritanceAdmonition inheritance={class_data.inheritance} /> : "" }
@@ -267,7 +273,7 @@ export const ConstructorDeclaration = ({ class_data }) => (
 						<td>{ GetElementByType(value.type) }</td>
 						<td><b><code>{ value.name }</code></b></td>
 						<td style={{ "white-space": "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : "" }</td>
-						<td style={{"word-break": "break-word"}}>{ value.description }</td>
+						<td style={{"word-break": "break-word"}} dangerouslySetInnerHTML={{ __html: value.description }}></td>
 					</tr>;
 				})}
 			</tbody>
@@ -275,12 +281,57 @@ export const ConstructorDeclaration = ({ class_data }) => (
 	</>
 );
 
+<!-- Base Actor Functions -->
+export const BaseActorFunctions = () => (
+	<details>
+		<summary>Inherited Actor Functions</summary>
+		<ReferenceLink href="scripting-reference/classes/base-classes/actor">Base Actor</ReferenceLink>
+		<FunctionListDeclaration functions_list={ActorData.functions} />
+	</details>
+);
+
+<!-- Base Paintable Functions -->
+export const BasePaintableFunctions = () => (
+	<details>
+		<summary>Inherited Paintable Functions</summary>
+		<ReferenceLink href="scripting-reference/classes/base-classes/paintable">Base Paintable</ReferenceLink>
+		<FunctionListDeclaration functions_list={PaintableData.functions} />
+	</details>
+);
+
+<!-- Base Pickable Functions -->
+export const BasePickableFunctions = () => (
+	<details>
+		<summary>Inherited Pickable Functions</summary>
+		<ReferenceLink href="scripting-reference/classes/base-classes/pickable">Base Pickable</ReferenceLink>
+		<FunctionListDeclaration functions_list={PickableData.functions} />
+	</details>
+);
+
+<!-- Base Actor Events -->
+export const BaseActorEvents = () => (
+	<details>
+		<summary>Inherited Actor Events</summary>
+		<ReferenceLink href="scripting-reference/classes/base-classes/actor">Base Actor</ReferenceLink>
+		<EventListDeclaration class_data={ActorData} />
+	</details>
+);
+
+<!-- Base Pickable Events -->
+export const BasePickableEvents = () => (
+	<details>
+		<summary>Inherited Pickable Events</summary>
+		<ReferenceLink href="scripting-reference/classes/base-classes/pickable">Base Pickable</ReferenceLink>
+		<EventListDeclaration class_data={PickableData} />
+	</details>
+);
+
 <!-- Block of Functions -->
 export const FunctionsDeclaration = ({ class_data }) => (
 	<>
-		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Paintable") ? <details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <details><summary>Inherited Pickable Functions</summary><BasePickableFunctions /></details> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorFunctions /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Paintable") ? <BasePaintableFunctions /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableFunctions /> : "" }
 		{
 			class_data.functions == null ? <i>This entity doesn't have own functions.</i> :
 			<>
@@ -307,13 +358,13 @@ export const StaticFunctionsDeclaration = ({ class_data }) => (
 <!-- Block of Events -->
 export const EventsDeclaration = ({ class_data }) => (
 	<>
-		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <details><summary>Inherited Actor Events</summary><BaseActorEvents /></details> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <details><summary>Inherited Pickable Events</summary><BasePickableEvents /></details> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorEvents /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableEvents /> : "" }
 		{
 			class_data.events == null ? <i>This entity doesn't have own events.</i> :
 			<>
 				<EventListDeclaration class_data={class_data} />
-				{ class_data.events.map((value) => <EventDeclaration data={value} class_name={class_data.name} />) }
+				{ class_data.events.map((value) => <EventDeclaration event_data={value} class_name={class_data.name} />) }
 			</>
 		}
 	</>
@@ -337,7 +388,7 @@ export const PropertiesDeclaration = ({ class_data }) => (
 						return <tr>
 							<td>{ GetElementByType(value.type) }</td>
 							<td><b><code>{ value.name }</code></b></td>
-							<td style={{"word-break": "break-word"}}>{ value.description }</td>
+							<td style={{"word-break": "break-word"}} dangerouslySetInnerHTML={{ __html: value.description }}></td>
 						</tr>;
 					})}
 				</tbody>
