@@ -5,6 +5,8 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
+import { AuthorityTooltip, AssetPathToolTip, ClassToolTip, StructToolTip, FunctionToolTip, EnumToolTip } from '@site/src/components/Tooltips.jsx';
+
 import EnumsData from '@site/src/api/Enums.json';
 
 import ActorData from '@site/src/api/Classes/BaseActor.json';
@@ -102,47 +104,6 @@ export const ReferenceLink = ({ children, href }) => (
 	</a>
 );
 
-
-export const AuthorityTooltip = ({ img, title, description }) => (
-	<>
-		<h3>
-			<img src={img} title={title} style={{ width: "24px", "vertical-align": "middle", "margin-right": "5px" }} /> {title}
-		</h3>
-		{description}
-	</>
-);
-
-export const AssetPathToolTip = ({ label, description }) => (
-	<>
-		<h3>
-			{label}
-		</h3>
-		<span dangerouslySetInnerHTML={{ __html: description }}></span>
-	</>
-);
-
-export const ClassToolTip = ({ class_name, description }) => (
-	<>
-		<h3>
-			{class_name} Class
-		</h3>
-		<span dangerouslySetInnerHTML={{ __html: description }}></span>
-	</>
-);
-
-export const StructToolTip = ({ struct_name, description }) => (
-	<>
-		<h3>
-			{struct_name} Struct
-		</h3>
-		<span dangerouslySetInnerHTML={{ __html: description }}></span>
-	</>
-);
-
-export const EnumToolTip = ({ enum_name }) => (
-	<EnumDeclaration enum_name={ enum_name } enum_data={ EnumsData[enum_name] } is_tooltip={true} />
-);
-
 <!-- Generic Base Authority component -->
 export const BaseAuthority = (img, title, description) => (
 	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} />}>
@@ -174,7 +135,7 @@ export const BaseClass = (label, emoji, path) => (
 
 <!-- Define Enum component -->
 export const Enums = ({ children }) => (
-	<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={<EnumToolTip enum_name={ children } />}>
+	<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={<EnumToolTip enum_name={ children } enum_data={ EnumsData[children] } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${children.toLowerCase()}`} >{children}</Link>
 	</Tippy>
 );

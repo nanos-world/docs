@@ -1,7 +1,13 @@
 import CodeBlock from '@theme/CodeBlock';
 import Admonition from '@theme/Admonition';
+import { Link } from "react-router-dom";
+
+import Tippy from '@tippyjs/react';
+import 'tippy.js/animations/scale-subtle.css';
+import 'tippy.js/dist/tippy.css';
 
 import { AuthorityType, BasicType, Classes, Structs, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
+import { FunctionToolTip, EventToolTip } from '@site/src/components/Tooltips.jsx';
 
 import ActorData from '@site/src/api/Classes/BaseActor.json';
 import PickableData from '@site/src/api/Classes/BasePickable.json';
@@ -24,6 +30,12 @@ export const AssetPaths = {
 
 <!-- Gets an Element by it's string type -->
 export function GetElementByType(type) {
+	const is_optional = type.endsWith("?");
+	if (is_optional)
+		type = type.slice(0, -1);
+	const is_array = type.endsWith("[]");
+	if (is_array)
+		type = type.slice(0, -2);
 	const type_uppercase = type.charAt(0).toUpperCase() + type.slice(1);
 	const TypeElement =
 		BasicType[type_uppercase] ? BasicType[type_uppercase] :
@@ -32,7 +44,11 @@ export function GetElementByType(type) {
 		Structs[type] ? Structs[type] : null;
 	if (!TypeElement)
 		return <Enums>{type}</Enums>;
-	return <TypeElement />;
+	return <>{ is_array ? <><BasicType.Table /> of </> : "" }<TypeElement /> { is_optional ? <>or <BasicType.Nil /></> : "" }</>;
+}
+
+export function GetElementsByTypes(types) {
+	return types.split("|").map((type) => GetElementByType(type)).reduce((prev, next) => [prev, " or ", next])
 }
 
 <!-- Authority Label Map -->
@@ -122,10 +138,8 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 			{ !function_data.return ? "" :
 				<>
 					<br/><br/><>Returns </>
-					{ !function_data.return.is_array ? "" : <>a <BasicType.Table /> of </> }
-					{ GetElementByType(function_data.return.type) }
+					{ GetElementsByTypes(function_data.return.type) }
 					{ !function_data.return.description ? "" : <span dangerouslySetInnerHTML={{ __html: ` (${function_data.return.description})` }}></span> }
-					{ !function_data.return.nullable ? "" : <> or <BasicType.Nil /></> }
 				</>
 			}
 		</blockquote>
@@ -145,7 +159,7 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 				<tbody>
 					{function_data.parameters.map(function(value) {
 						return <tr>
-							<td>{ GetElementByType(value.type) }</td>
+							<td>{ GetElementsByTypes(value.type) }</td>
 							<td><code>{ GetParameterName(value) }</code></td>
 							<td style={{ "white-space": "nowrap" }}>{ value.default != null ? <code>{value.default}</code> : "" }</td>
 							<td style={{ "word-break": "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
@@ -183,7 +197,7 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 				<tbody>
 					{event_data.arguments.map(function(value) {
 						return <tr>
-							<td>{ GetElementByType(value.type) }</td>
+							<td>{ GetElementsByTypes(value.type) }</td>
 							<td><code>{ value.name }</code></td>
 							<td dangerouslySetInnerHTML={{ __html: value.description }} style={{"word-break": "break-word"}}></td>
 						</tr>;
@@ -193,6 +207,26 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 		: <></>}
 		<hr />
 	</>
+);
+
+export const FunctionNameDeclaration = ({ function_data }) => (
+	<Tippy interactive={true} maxWidth={1000} animation={"scale-subtle"} content={<FunctionToolTip function_data={function_data} />}>
+		<b>
+			<Link to={`#${function_data.name.toLowerCase()}`}>
+				<code>{ function_data.name }</code>
+			</Link>
+		</b>
+	</Tippy>
+);
+
+export const EventNameDeclaration = ({ class_name, event_data }) => (
+	<Tippy interactive={true} maxWidth={1000} animation={"scale-subtle"} content={<EventToolTip class_name={class_name} event_data={event_data} />}>
+		<b>
+			<Link to={`#${event_data.name.toLowerCase()}`}>
+				<code>{ event_data.name }</code>
+			</Link>
+		</b>
+	</Tippy>
 );
 
 <!-- Function List Declaration -->
@@ -210,8 +244,8 @@ export const FunctionListDeclaration = ({ functions_list }) => (
 			{functions_list.map(function(value) {
 				return <tr>
 					<td width="50px">{ GetAuthorityType(value.authority) } </td>
-					<td style={{ "white-space": "nowrap" }}>{ value.return ? GetElementByType(value.return.type) : "" }</td>
-					<td><b><a href={`#${value.name.toLowerCase()}`}><code>{ value.name }</code></a></b></td>
+					<td style={{ "white-space": "nowrap" }}>{ value.return ? GetElementsByTypes(value.return.type) : "" }</td>
+					<td><FunctionNameDeclaration function_data={ value } /></td>
 					<td style={{"word-break": "break-word"}} dangerouslySetInnerHTML={{ __html: value.description }}></td>
 				</tr>;
 			})}
@@ -233,7 +267,7 @@ export const EventListDeclaration = ({ class_data }) => (
 			{class_data.events.map(function(value) {
 				return <tr>
 					<td width="50px">{ GetAuthorityType(value.authority) } </td>
-					<td><b><a href={`#${value.name.toLowerCase()}`}><code>{ value.name }</code></a></b></td>
+					<td><EventNameDeclaration class_name={ class_data.name } event_data={ value } /></td>
 					<td style={{"word-break": "break-word"}} dangerouslySetInnerHTML={{ __html: value.description }}></td>
 				</tr>;
 			})}
@@ -270,7 +304,7 @@ export const ConstructorDeclaration = ({ class_data }) => (
 			<tbody>
 				{class_data.constructor.map(function(value) {
 					return <tr>
-						<td>{ GetElementByType(value.type) }</td>
+						<td>{ GetElementsByTypes(value.type) }</td>
 						<td><b><code>{ value.name }</code></b></td>
 						<td style={{ "white-space": "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : "" }</td>
 						<td style={{"word-break": "break-word"}} dangerouslySetInnerHTML={{ __html: value.description }}></td>

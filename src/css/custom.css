@@ -227,13 +227,12 @@ article p img {
   font-size: .875rem;
 }
 
-/* summary/details margin */
-.markdown details div:first-child {
-  margin-top: 1rem !important;
-}
-
 .markdown details a.reference-link:first-child {
   margin-top: 0 !important;
+}
+
+.tippy-box .theme-code-block {
+  margin: 0;
 }
 
 details,

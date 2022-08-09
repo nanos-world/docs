@@ -1,3 +1,4 @@
+import React from 'react';
 import EnumsData from '@site/src/api/Enums.json';
 
 export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
