@@ -5,61 +5,8 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
-import EnumsData from '@site/src/api/Enums.json';
-
-import ActorData from '@site/src/api/Classes/BaseActor.json';
-import PickableData from '@site/src/api/Classes/BasePickable.json';
-import PaintableData from '@site/src/api/Classes/BasePaintable.json';
-
-import BillboardData from '@site/src/api/Classes/Billboard.json';
-import BlueprintData from '@site/src/api/Classes/Blueprint.json';
-import CableData from '@site/src/api/Classes/Cable.json';
-import CanvasData from '@site/src/api/Classes/Canvas.json';
-import CharacterData from '@site/src/api/Classes/Character.json';
-import DatabaseData from '@site/src/api/Classes/Database.json';
-import DecalData from '@site/src/api/Classes/Decal.json';
-import FileData from '@site/src/api/Classes/File.json';
-import GrenadeData from '@site/src/api/Classes/Grenade.json';
-import LightData from '@site/src/api/Classes/Light.json';
-import MeleeData from '@site/src/api/Classes/Melee.json';
-import ParticleData from '@site/src/api/Classes/Particle.json';
-import PlayerData from '@site/src/api/Classes/Player.json';
-import PropData from '@site/src/api/Classes/Prop.json';
-import SceneCaptureData from '@site/src/api/Classes/SceneCapture.json';
-import StaticMeshData from '@site/src/api/Classes/StaticMesh.json';
-import SoundData from '@site/src/api/Classes/Sound.json';
-import TextRenderData from '@site/src/api/Classes/TextRender.json';
-import TriggerData from '@site/src/api/Classes/Trigger.json';
-import VehicleData from '@site/src/api/Classes/Vehicle.json';
-import WeaponData from '@site/src/api/Classes/Weapon.json';
-import WebUIData from '@site/src/api/Classes/WebUI.json';
 
 export const ClassesData = {
-	"Base Actor": ActorData,
-	"Base Pickable": PickableData,
-	"Base Paintable": PaintableData,
-	Billboard: BillboardData,
-	Blueprint: BlueprintData,
-	Cable: CableData,
-	Canvas: CanvasData,
-	Character: CharacterData,
-	Database: DatabaseData,
-	Decal: DecalData,
-	File: FileData,
-	Grenade: GrenadeData,
-	Light: LightData,
-	Melee: MeleeData,
-	Particle: ParticleData,
-	Player: PlayerData,
-	Prop: PropData,
-	SceneCapture: SceneCaptureData,
-	StaticMesh: StaticMeshData,
-	Sound: SoundData,
-	TextRender: TextRenderData,
-	Trigger: TriggerData,
-	Vehicle: VehicleData,
-	Weapon: WeaponData,
-	WebUI: WebUIData
 };
 
 
@@ -127,7 +74,7 @@ export const StructToolTip = ({ struct_name, description }) => (
 );
 
 export const EnumToolTip = ({ enum_name }) => (
-	<EnumDeclaration enum_name={ enum_name } enum_data={ EnumsData[enum_name] } is_tooltip={true} />
+	<EnumDeclaration enum_name={ enum_name } is_tooltip={true} />
 );
 
 <!-- Generic Base Authority component -->
