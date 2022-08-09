@@ -175,17 +175,17 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 <!-- Event Block Declaration -->
 export const EventDeclaration = ({ event_data, class_name }) => (
 	<>
-		<h3 id={event_data.name.toLowerCase()}>
+		<h3 id={ event_data.name.toLowerCase() }>
 			{ GetAuthorityType(event_data.authority) }
 			<code>
-				{event_data.name}
+				{ event_data.name }
 			</code>
 		</h3>
-		<blockquote dangerouslySetInnerHTML={{ __html: event_data.description_long ? event_data.description_long : event_data.description }}></blockquote>
+		<blockquote dangerouslySetInnerHTML={{ __html: `${ event_data.description_long ? event_data.description_long : event_data.description }${ event_data.return ? "<br/><br/>" + event_data.return.description : ""}` }}></blockquote>
 		<CodeBlock className="language-lua">
 			{ GetEventExample(class_name, event_data) }
 		</CodeBlock>
-		{Array.isArray(event_data.arguments) && event_data.arguments.length > 0 ?
+		{ Array.isArray(event_data.arguments) && event_data.arguments.length > 0 ?
 			<table style={{ width: "100%", display: "table" }}>
 				<thead>
 					<tr>
@@ -204,13 +204,13 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 					})}
 				</tbody>
 			</table>
-		: <></>}
+		: <></> }
 		<hr />
 	</>
 );
 
 export const FunctionNameDeclaration = ({ function_data }) => (
-	<Tippy interactive={true} maxWidth={1000} animation={"scale-subtle"} content={<FunctionToolTip function_data={function_data} />}>
+	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<FunctionToolTip function_data={function_data} />}>
 		<b>
 			<Link to={`#${function_data.name.toLowerCase()}`}>
 				<code>{ function_data.name }</code>
@@ -220,7 +220,7 @@ export const FunctionNameDeclaration = ({ function_data }) => (
 );
 
 export const EventNameDeclaration = ({ class_name, event_data }) => (
-	<Tippy interactive={true} maxWidth={1000} animation={"scale-subtle"} content={<EventToolTip class_name={class_name} event_data={event_data} />}>
+	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<EventToolTip class_name={class_name} event_data={event_data} />}>
 		<b>
 			<Link to={`#${event_data.name.toLowerCase()}`}>
 				<code>{ event_data.name }</code>
@@ -244,7 +244,7 @@ export const FunctionListDeclaration = ({ functions_list }) => (
 			{functions_list.map(function(value) {
 				return <tr>
 					<td width="50px">{ GetAuthorityType(value.authority) } </td>
-					<td style={{ "white-space": "nowrap" }}>{ value.return ? GetElementsByTypes(value.return.type) : "" }</td>
+					<td>{ value.return ? GetElementsByTypes(value.return.type) : "" }</td>
 					<td><FunctionNameDeclaration function_data={ value } /></td>
 					<td style={{"word-break": "break-word"}} dangerouslySetInnerHTML={{ __html: value.description }}></td>
 				</tr>;
