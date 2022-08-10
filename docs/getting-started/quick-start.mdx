@@ -8,6 +8,7 @@ tags: [scripting]
 
 Start your Server and first Package in under 10 minutes!
 
+import { Classes } from '@site/docs/components/_nanos.mdx';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { ReferenceLink } from '@site/docs/components/_nanos.mdx';
@@ -55,7 +56,7 @@ After that, you will end up with a new folder inside `Packages/` called `my-awes
 
 ## Step 3: Adding Script functionalities
 
-Open the file `my-awesome-package/Server/Index.lua` in your preferred editor (we recommend using [VSCode](https://code.visualstudio.com/download)), and let's edit our first script:
+Open the file `my-awesome-package/Server/Index.lua` in your preferred editor (we recommend using [VSCode](https://code.visualstudio.com/download)), and let's edit our first script. Let's spawn some <Classes.Prop />s!
 
 ```lua title="Packages/my-awesome-package/Server/Index.lua"
 -- Let's print to Console a friendly message
@@ -124,7 +125,7 @@ After connecting, you will be a flying pawn and will be able to see the props sp
 
 You may have noticed you are just a wandering soul flying around, let's give you some flesh! For that, we will need to interact with some **Events**.
 
-Let's append some code in your `Index.lua`:
+Let's append some code in your `Index.lua`, to spawn a <Classes.Character /> when the <Classes.Player /> join the server:
 
 ```lua title="my-package/Server/Index.lua"
 -- Function to spawn a Character to a player
@@ -153,7 +154,7 @@ To apply your changes, run the command in the server console: `package reload al
 
 ### Destroying the Character when the Player leaves the Server
 
-Note that Characters aren't destroyed automatically if the Player disconnects. For that, we will need to Subscribe for when the Player leaves the server (`Destroy` event) and manually destroying the Character.
+Note that the <Classes.Character /> isn't destroyed automatically when the <Classes.Player /> disconnects. For that, we will need to Subscribe for when the Player leaves the server (`Destroy` event) and manually destroying the Character.
 
 Append this code:
 

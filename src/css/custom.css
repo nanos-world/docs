@@ -465,3 +465,13 @@ a.card-link:hover img {
   transform: scale(1.5) !important;
   color: var(--ifm-blockquote-border-color) !important;
 }
+
+a.hover-link {
+  text-decoration: underline dashed 2px #5f9fff42;
+  text-underline-offset: 2px;
+}
+
+span.comma-separator::after {
+  content: ", ";
+  margin-left: -4px;
+}

@@ -121,7 +121,7 @@ export const BaseType = (label) => (
 <!-- Generic Struct Type component -->
 export const BaseStruct = (label, path) => (
 	<Tippy interactive={true} maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<StructToolTip struct_name={label} description={ StructsData[label] ? StructsData[label].description : "Struct not found. Soon™." } />}>
-		<Link to={`${getActiveVersionPath()}/scripting-reference/utility-classes/${path ? path : label.toLowerCase()}`}>{label}</Link>
+		<Link to={`${getActiveVersionPath()}/scripting-reference/utility-classes/${path ? path : label.toLowerCase()}`} className={"hover-link"}>{label}</Link>
 	</Tippy>
 );
 
@@ -129,28 +129,28 @@ export const BaseStruct = (label, path) => (
 export const BaseClass = (label, emoji, path) => (
 	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"}
 		content={<ClassToolTip class_name={`${emoji} ${label}`} description={ ClassesData[label] ? ClassesData[label].description : "Class not found. Soon™." } />}>
-		<Link to={`${getActiveVersionPath()}/scripting-reference/classes/${path ? path : label.toLowerCase()}`}>{label}</Link>
+		<Link to={`${getActiveVersionPath()}/scripting-reference/classes/${path ? path : label.toLowerCase()}`} className={"hover-link"}>{label}</Link>
 	</Tippy>
 );
 
 <!-- Define Enum component -->
 export const Enums = ({ children }) => (
 	<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={<EnumToolTip enum_name={ children } enum_data={ EnumsData[children] } />}>
-		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${children.toLowerCase()}`} >{children}</Link>
+		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${children.toLowerCase()}`} className={"hover-link"}>{children}</Link>
 	</Tippy>
 );
 
 <!-- Define Asset Path component -->
 export const BaseAssetPath = (type, label, description) => (
 	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AssetPathToolTip label={label} description={description} />}>
-		<Link to={`${getActiveVersionPath()}/core-concepts/assets#referencing-assets-in-scripting`}>{label}</Link>
+		<Link to={`${getActiveVersionPath()}/core-concepts/assets#referencing-assets-in-scripting`} className={"hover-link"}>{label}</Link>
 	</Tippy>
 );
 
 <!-- Define Special Path component -->
 export const SpecialPath = (type, label, description) => (
 	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AssetPathToolTip label={label} description={description} />}>
-		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/basic-types#specialpath`}>{label}</Link>
+		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/basic-types#specialpath`} className={"hover-link"}>{label}</Link>
 	</Tippy>
 );
 

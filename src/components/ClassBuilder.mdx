@@ -47,8 +47,12 @@ export function GetElementByType(type) {
 	return <>{ is_array ? <><BasicType.Table /> of </> : "" }<TypeElement /> { is_optional ? <>or <BasicType.Nil /></> : "" }</>;
 }
 
-export function GetElementsByTypes(types) {
+export function SplitTypesByOr(types) {
 	return types.split("|").map((type) => GetElementByType(type)).reduce((prev, next) => [prev, " or ", next])
+}
+
+export function GetElementsByTypes(types) {
+	return types.split(",").map((type) => GetElementByType(type)).reduce((prev, next) => [prev, <span className="comma-separator"></span>, next])
 }
 
 <!-- Authority Label Map -->
@@ -80,16 +84,24 @@ export function GetConstructorExample(class_data) {
 	return `local my_entity = ${class_data.name}(${GetParametersList(class_data.constructor)})`;
 }
 
+<!-- Generates the local ret = Part of the function -->
+export function GetReturnPart(function_data) {
+	if (!function_data.return)
+		return "";
+	const commas = function_data.return.type.split(",");
+	if (commas.length == 1)
+		return "local ret = ";
+	return `local${commas.map((value, i) => " ret_0" + (i + 1))} = `;
+}
+
 <!-- Generates Function Example Codeblock -->
 export function GetFunctionExample(function_data) {
-	const return_part = !function_data.return ? "" : "local ret = ";
-	return `${return_part}my_entity:${function_data.name}(${GetParametersList(function_data.parameters)})`;
+	return `${GetReturnPart(function_data)}my_entity:${function_data.name}(${GetParametersList(function_data.parameters)})`;
 }
 
 <!-- Generates Function Example Codeblock -->
 export function GetStaticFunctionExample(class_name, function_data) {
-	const return_part = !function_data.return ? "" : "local ret = ";
-	return `${return_part}${class_name}.${function_data.name}(${GetParametersList(function_data.parameters)})`;
+	return `${GetReturnPart(function_data)}${class_name}.${function_data.name}(${GetParametersList(function_data.parameters)})`;
 }
 
 <!-- Generates Event Example Codeblock -->
@@ -212,7 +224,7 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 export const FunctionNameDeclaration = ({ function_data }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<FunctionToolTip function_data={function_data} />}>
 		<b>
-			<Link to={`#${function_data.name.toLowerCase()}`}>
+			<Link to={`#${function_data.name.toLowerCase()}`} className={"hover-link"}>
 				<code>{ function_data.name }</code>
 			</Link>
 		</b>
@@ -222,7 +234,7 @@ export const FunctionNameDeclaration = ({ function_data }) => (
 export const EventNameDeclaration = ({ class_name, event_data }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<EventToolTip class_name={class_name} event_data={event_data} />}>
 		<b>
-			<Link to={`#${event_data.name.toLowerCase()}`}>
+			<Link to={`#${event_data.name.toLowerCase()}`} className={"hover-link"}>
 				<code>{ event_data.name }</code>
 			</Link>
 		</b>
