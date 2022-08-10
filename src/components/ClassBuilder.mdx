@@ -52,7 +52,7 @@ export function SplitTypesByOr(types) {
 }
 
 export function GetElementsByTypes(types) {
-	return types.split(",").map((type) => GetElementByType(type)).reduce((prev, next) => [prev, <span className="comma-separator"></span>, next])
+	return types.split(",").map((type) => GetElementByType(type)).reduce((prev, next) => [prev, <CommaSeparator />, next])
 }
 
 <!-- Authority Label Map -->
@@ -114,10 +114,14 @@ export const AuthorityAdmonition = ({ authority, is_static }) => (
 	<Admonition type="info" icon="💂" title="Authority">{ is_static ? AuthorityLabelsStatic[authority] : AuthorityLabels[authority] }</Admonition>
 );
 
+export const CommaSeparator = () => (
+	<span className="comma-separator"></span>
+)
+
 <!-- Inheritance Admonition -->
 export const InheritanceAdmonition = ({ inheritance }) => (
 	<Admonition type="info" icon="👪" title="Inheritance">
-		This class inherits from { inheritance.map(inherit => GetElementByType(inherit)).reduce((prev, next) => [prev, ", ", next]) }.
+		This class inherits from { inheritance.map(inherit => GetElementByType(inherit)).reduce((prev, next) => [prev, <CommaSeparator />, next]) }.
 	</Admonition>
 );
 
