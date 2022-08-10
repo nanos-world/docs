@@ -47,12 +47,22 @@ export function GetElementByType(type) {
 	return <>{ is_array ? <><BasicType.Table /> of </> : "" }<TypeElement /> { is_optional ? <>or <BasicType.Nil /></> : "" }</>;
 }
 
+<!-- Splits a value if it has | -->
 export function SplitTypesByOr(types) {
 	return types.split("|").map((type) => GetElementByType(type)).reduce((prev, next) => [prev, " or ", next])
 }
 
-export function GetElementsByTypes(types) {
-	return types.split(",").map((type) => GetElementByType(type)).reduce((prev, next) => [prev, <CommaSeparator />, next])
+<!-- Gets a list of Returns elements -->
+export function GetReturnList(return_list) {
+	return return_list.map((return_data) => SplitTypesByOr(return_data.type)).reduce((prev, next) => [prev, <CommaSeparator />, next]);
+}
+
+<!-- Gets a list of return descriptions surrounded by () -->
+export function GetReturnDescriptionList(return_list) {
+	const return_list_plain = return_list.map((return_data) => return_data.description).reduce((prev, next) => [prev, ", ", next]);
+	if (!return_list_plain)
+		return "";
+	return <>{"("}{ return_list_plain }{")"}</>;
 }
 
 <!-- Authority Label Map -->
@@ -81,17 +91,16 @@ export function GetParametersList(list) {
 
 <!-- Generates Constructor Example Codeblock -->
 export function GetConstructorExample(class_data) {
-	return `local my_entity = ${class_data.name}(${GetParametersList(class_data.constructor)})`;
+	return `local my_${class_data.name.toLowerCase()} = ${class_data.name}(${GetParametersList(class_data.constructor)})`;
 }
 
 <!-- Generates the local ret = Part of the function -->
 export function GetReturnPart(function_data) {
 	if (!function_data.return)
 		return "";
-	const commas = function_data.return.type.split(",");
-	if (commas.length == 1)
+	if (function_data.return.length == 1)
 		return "local ret = ";
-	return `local${commas.map((value, i) => " ret_0" + (i + 1))} = `;
+	return `local${function_data.return.map((value, i) => " ret_0" + (i + 1))} = `;
 }
 
 <!-- Generates Function Example Codeblock -->
@@ -154,8 +163,8 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 			{ !function_data.return ? "" :
 				<>
 					<br/><br/><>Returns </>
-					{ GetElementsByTypes(function_data.return.type) }
-					{ !function_data.return.description ? "" : <span dangerouslySetInnerHTML={{ __html: ` (${function_data.return.description})` }}></span> }
+					{ GetReturnList(function_data.return) }
+					{ GetReturnDescriptionList(function_data.return) }
 				</>
 			}
 		</blockquote>
@@ -175,7 +184,7 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 				<tbody>
 					{function_data.parameters.map(function(value) {
 						return <tr>
-							<td>{ GetElementsByTypes(value.type) }</td>
+							<td>{ SplitTypesByOr(value.type) }</td>
 							<td><code>{ GetParameterName(value) }</code></td>
 							<td style={{ "white-space": "nowrap" }}>{ value.default != null ? <code>{value.default}</code> : "" }</td>
 							<td style={{ "word-break": "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
@@ -197,7 +206,7 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 				{ event_data.name }
 			</code>
 		</h3>
-		<blockquote dangerouslySetInnerHTML={{ __html: `${ event_data.description_long ? event_data.description_long : event_data.description }${ event_data.return ? "<br/><br/>" + event_data.return.description : ""}` }}></blockquote>
+		<blockquote dangerouslySetInnerHTML={{ __html: `${ event_data.description_long ? event_data.description_long : event_data.description }${ event_data.return ? "<br/><br/>" + event_data.return[0].description : ""}` }}></blockquote>
 		<CodeBlock className="language-lua">
 			{ GetEventExample(class_name, event_data) }
 		</CodeBlock>
@@ -213,7 +222,7 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 				<tbody>
 					{event_data.arguments.map(function(value) {
 						return <tr>
-							<td>{ GetElementsByTypes(value.type) }</td>
+							<td>{ SplitTypesByOr(value.type) }</td>
 							<td><code>{ value.name }</code></td>
 							<td dangerouslySetInnerHTML={{ __html: value.description }} style={{"word-break": "break-word"}}></td>
 						</tr>;
@@ -260,7 +269,7 @@ export const FunctionListDeclaration = ({ functions_list }) => (
 			{functions_list.map(function(value) {
 				return <tr>
 					<td width="50px">{ GetAuthorityType(value.authority) } </td>
-					<td>{ value.return ? GetElementsByTypes(value.return.type) : "" }</td>
+					<td>{ value.return ? GetReturnList(value.return) : "" }</td>
 					<td><FunctionNameDeclaration function_data={ value } /></td>
 					<td style={{"word-break": "break-word"}} dangerouslySetInnerHTML={{ __html: value.description }}></td>
 				</tr>;
@@ -320,7 +329,7 @@ export const ConstructorDeclaration = ({ class_data }) => (
 			<tbody>
 				{class_data.constructor.map(function(value) {
 					return <tr>
-						<td>{ GetElementsByTypes(value.type) }</td>
+						<td>{ SplitTypesByOr(value.type) }</td>
 						<td><b><code>{ value.name }</code></b></td>
 						<td style={{ "white-space": "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : "" }</td>
 						<td style={{"word-break": "break-word"}} dangerouslySetInnerHTML={{ __html: value.description }}></td>

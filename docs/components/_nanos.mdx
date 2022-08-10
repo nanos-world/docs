@@ -106,7 +106,7 @@ export const ReferenceLink = ({ children, href }) => (
 
 <!-- Generic Base Authority component -->
 export const BaseAuthority = (img, title, description) => (
-	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} />}>
+	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} />}>
 		<Link class="authority-availability" to={`${getActiveVersionPath()}/core-concepts/scripting/authority-concepts#methods-and-events-availability`}>
 			<img src={img} title={title} />
 		</Link>
@@ -120,14 +120,14 @@ export const BaseType = (label) => (
 
 <!-- Generic Struct Type component -->
 export const BaseStruct = (label, path) => (
-	<Tippy interactive={true} maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<StructToolTip struct_name={label} description={ StructsData[label] ? StructsData[label].description : "Struct not found. Soon™." } />}>
+	<Tippy maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<StructToolTip struct_name={label} description={ StructsData[label] ? StructsData[label].description : "Struct not found. Soon™." } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/utility-classes/${path ? path : label.toLowerCase()}`} className={"hover-link"}>{label}</Link>
 	</Tippy>
 );
 
 <!-- Generic Struct Type component -->
 export const BaseClass = (label, emoji, path) => (
-	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"}
+	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"}
 		content={<ClassToolTip class_name={`${emoji} ${label}`} description={ ClassesData[label] ? ClassesData[label].description : "Class not found. Soon™." } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/classes/${path ? path : label.toLowerCase()}`} className={"hover-link"}>{label}</Link>
 	</Tippy>
