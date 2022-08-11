@@ -131,8 +131,8 @@ This will load the file Index.lua from PackageOne into the VM of PackageOne wher
 
 Also the Required Package will be sent to the clients, then you can `RequirePackage` in the client side too.
 
-:::note
+:::tip
 
-To be able to `RequirePackage` in the Client, you must first `RequirePackage` it in the Server, so it can be loaded and sent to Clients.
+It's recommended to set your Required Packages as `library` and load it as requirement in the Package.toml, this way the package is sent to the clients too.
 
 :::
