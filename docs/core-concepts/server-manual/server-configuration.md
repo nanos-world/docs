@@ -59,7 +59,7 @@ nanos world counts on (for now) 4 built-in maps: `nanos-world::BlankMap`, `nanos
 
 ## Server Console
 
-![](/img/docs/server.jpg)
+![](/img/docs/server.webp)
 
 
 ### Built-in Commands
