@@ -50,7 +50,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 
 ## Map & Level
 
-![](/img/docs/server-map.jpg)
+![](/img/docs/server-map.webp)
 
 The Map (or Level) is defined in the Server’s config file, this level will be loaded when the player joins the server and the Path is supposed for be or a built-in asset or an asset which is located at `Assets/` folder.
 
