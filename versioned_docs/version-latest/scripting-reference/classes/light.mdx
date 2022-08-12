@@ -5,25 +5,13 @@ sidebar_position: 0
 tags: [class]
 ---
 
-
-A Light represents a Lighting source.
-
-import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/components/_nanos.mdx';
-
-![](/img/docs/light.webp)
-
-:::info
-
-🟦🟧 **Authority:** This class can be spawned on both [Client](/core-concepts/scripting/authority-concepts.mdx) and [Server](/core-concepts/scripting/authority-concepts.mdx) (if you spawn it on client, it won't be synchronized with other players).
-
-⏬ **Inheritance:** This class inherits from <Classes.Actor />.
-
-:::
-
-nanos world provides 3 types of lights: **Spot**, **Point** and **Rect**. All lights are Dynamic and because of that, very expensive! Keep that in mind before spawning 1000 lights 😉.
+import ClassData from '@site/src/api/Classes/Light.json';
 
 
-## Usage
+<HeaderDeclaration class_data={ClassData} image="/img/docs/light.webp" />
+
+
+## 🎒 Examples
 
 ```lua
 local my_light = Light(
@@ -42,122 +30,28 @@ local my_light = Light(
 )
 ```
 
-## Constructor Parameters
+## 🏗️ Constructor
 
-| **Type** | **Name** | **Default** | Description |
-| :--- | :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |  |
-| <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` | Relevant only for Rect and Spot LightTypes |
-| <Structs.Color /> | **`color`** | `Color(1, 1, 1)` |  |
-| <Enums>LightType</Enums> | **`light_type`** | `LightType.Point` |  |
-| <BasicType.Number /> | **`intensity`** | `30` |  |
-| <BasicType.Number /> | **`attenuation_radius`** | `250` |  |
-| <BasicType.Number /> | **`cone_angle`** | `44` | Relevant only for Spot LightType |
-| <BasicType.Number /> | **`inner_cone_angle_percent`** | `0` | Inner Cone Angle Percent (Relevant only for Spot LightType) (0-1) |
-| <BasicType.Number /> | **`max_daw_distance`** | `5000` | Max Draw Distance (Good for performance - 0 for infinite |
-| <BasicType.Boolean /> | **`use_inverse_squared_falloff`** | `true` | Whether to use physically based inverse squared distance falloff, where Attenuation Radius is only clamping the light's contribution. (Spot and Point types only) |
-| <BasicType.Boolean /> | **`cast_shadows`** | `true` |  |
-| <BasicType.Boolean /> | **`visible`** | `true` |  |
+<ConstructorDeclaration class_data={ClassData} />
 
-## Functions
+:::tip
 
-import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
+nanos world provides 3 types of lights: **Spot**, **Point** and **Rect**. All lights are Dynamic and because of that, very expensive! Keep that in mind before spawning 1000 lights 😉.
 
-<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
-
-|  | **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- | :--- |
-| <AuthorityType.Both /> |  | [**`SetColor`**](light#setcolor) | Sets the light color |
-| <AuthorityType.Both /> |  | [**`SetTextureLightProfile`**](light#settexturelightprofile) | Sets the light texture profile |
-| <AuthorityType.Both /> |  | [**`SetEnabled`**](light#setenabled) | Enables/Disables the light |
-| <AuthorityType.Both /> |  | [**`SetCastShadows`**](light#setcastshadows) | Enables/Disables the shadows |
-| <AuthorityType.Both /> |  | [**`SetIntensity`**](light#setintensity) | Sets the intensity |
-| <AuthorityType.Both /> |  | [**`SetAttenuationRadius`**](light#setattenuationradius) | Sets the Attenuation Radius |
-| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`IsEnabled`**](light#isenabled) |  |
-| <AuthorityType.Both /> | <BasicType.Boolean /> | [**`GetCastShadows`**](light#getcastshadows) |  |
-| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetIntensity`**](light#getintensity) |  |
-| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetAttenuationRadius`**](light#getattenuationradius) |  |
-| <AuthorityType.Both /> | <Structs.Color /> | [**`GetColor`**](light#getcolor) |  |
+:::
 
 
-### <AuthorityType.Both />`SetColor`
+## 🦠 Functions
 
-> Sets the light color
-
-```lua
-my_light:SetColor(color)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <Structs.Color /> | **`color`** |  | The light color |
+<FunctionsDeclaration class_data={ClassData} />
 
 
-### <AuthorityType.Both />`SetTextureLightProfile`
+## 🚀 Events
 
-> Sets the light Texture Profile
-
-```lua
-my_light:SetTextureLightProfile(light_profile)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <Enums>LightProfile</Enums> | **`light_profile`** |  | The Light Profile to use |
+<EventsDeclaration class_data={ClassData} />
 
 
-### <AuthorityType.Both />`SetEnabled`
-
-```lua
-my_light:SetEnabled(is_enabled)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`is_enabled`** |  |  |
-
-
-### <AuthorityType.Both />`SetCastShadows`
-
-```lua
-my_light:SetCastShadows(is_shadows_enabled)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`is_shadows_enabled`** |  |  |
-
-
-### <AuthorityType.Both />`SetIntensity`
-
-```lua
-my_light:SetIntensity(intensity)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`intensity`** |  |  |
-
-
-### <AuthorityType.Both />`SetAttenuationRadius`
-
-```lua
-my_light:SetAttenuationRadius(attenuation_radius)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`attenuation_radius`** |  |  |
-
-
-## Events
-
-import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
-
-<details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
-
-
-## Light Profiles
+## 💡 Light Profiles
 
 Light Profiles are texture files which describes a light's distribution from a light source using real world measured data.
 

@@ -5,46 +5,27 @@ sidebar_position: 0
 tags: [class]
 ---
 
-
-Chad Grenade
-
-import { Structs, BasicType, AuthorityType, AssetPath, Enums, Classes } from '@site/docs/components/_nanos.mdx';
-
-![](/img/docs/grenade.webp)
-
-:::info
-
-🟦 **Authority:** This class can only be spawned on [Server](/core-concepts/scripting/authority-concepts.mdx).
-
-⏬ **Inheritance:** This class inherits from <Classes.Actor />, <Classes.Paintable /> and <Classes.Pickable />.
-
-:::
+import ClassData from '@site/src/api/Classes/Grenade.json';
 
 
-## Usage
+<HeaderDeclaration class_data={ClassData} image="/img/docs/grenade.webp" />
 
+
+## 🎒 Examples
 
 ```lua
 local new_grenade = Grenade(
-  Vector(-900, 185, 215),
-  Rotator(0, 90, 90),
-  "nanos-world::SM_Grenade_G67",
-  "nanos-world::P_Grenade_Special",
-  "nanos-world::A_Explosion_Large"
+	Vector(-900, 185, 215),
+	Rotator(0, 90, 90),
+	"nanos-world::SM_Grenade_G67",
+	"nanos-world::P_Grenade_Special",
+	"nanos-world::A_Explosion_Large"
 )
 ```
 
-## Constructor Parameters
+## 🏗️ Constructor
 
-| **Type** | **Name** | **Default** |
-| :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
-| <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <AssetPath.StaticMesh /> | **`static_mesh_asset`** | `"nanos-world::SM_Grenade_G67"` |
-| <AssetPath.Particle /> | **`explosion_particles`** | `"nanos-world::P_Grenade_Special"` |
-| <AssetPath.Sound /> | **`explosion_sound`** | `"nanos-world::A_Explosion_Large"` |
-| <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
-| <BasicType.Boolean /> | **`gravity_enabled`** | `true` |
+<ConstructorDeclaration class_data={ClassData} />
 
 :::tip
 
@@ -54,96 +35,12 @@ nanos world provides a special _Particle*_ called `nanos-world::P_Grenade_Specia
 
 :::
 
-## Functions
 
-import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
-import BasePickableFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-pickable-functions.mdx';
-import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-paintable-functions.mdx';
+## 🦠 Functions
 
-<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
-<details><summary>Inherited Pickable Functions</summary><BasePickableFunctions /></details>
-<details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
-
-|  | **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- | :--- |
-| <AuthorityType.ServerOnly /> |  | [**`Explode`**](grenade#explode) | Forces this grenade to Explode |
-| <AuthorityType.ServerOnly /> |  | [**`SetDamage`**](grenade#setdamage) | Sets Damage parameters of this Grenade |
-| <AuthorityType.ServerOnly /> |  | [**`SetTimeToExplode`**](grenade#settimetoexplode) | Set Time until Explosion after thrown |
-| <AuthorityType.ServerOnly /> |  | [**`SetThrowForce`**](grenade#setthrowforce) | Set Impulse applied when throwing |
-|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetBaseDamage`**](grenade#getbasedamage) | Damage at Inner Radius |
-|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetDamageFalloff`**](grenade#getdamagefalloff) | Radius which BaseDamage will apply proportionally |
-|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetDamageInnerRadius`**](grenade#getdamageinnerradius) | Radius which MinimumDamage will apply |
-|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetDamageOuterRadius`**](grenade#getdamageouterradius) | Radius which BaseDamage will apply |
-|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetMinimumDamage`**](grenade#getminimumdamage) | Damage at Outer Radius |
-|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetTimeToExplode`**](grenade#gettimetoexplode) | Time until Explosion |
-|  <AuthorityType.Both /> | <BasicType.Number /> | [**`GetThrowForce`**](grenade#getthrowforce) | Impulse applied when throwing |
-
-### <AuthorityType.ServerOnly />**`Explode`**
-
-> Forces this grenade to Explode
-
-```lua
-my_grenade:Explode()
-```
-
-### <AuthorityType.ServerOnly />**`SetDamage`**
-
-> Sets Damage parameters of this Grenade
-
-```lua
-my_grenade:SetDamage(base_damage, minimum_damage, damage_inner_radius, damage_outer_radius, damage_falloff)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`base_damage`** | `90` | Max damage when inner radius |
-| <BasicType.Number /> | **`minimum_damage`** | `0` | Min damage when outer radius |
-| <BasicType.Number /> | **`damage_inner_radius`** | `200` | Radius which damage will be 100% |
-| <BasicType.Number /> | **`damage_outer_radius`** | `1000` | Radius which damage will be interpoled through `falloff` |
-| <BasicType.Number /> | **`damage_falloff`** | `1` | Lerp function between Max and Min damage |
+<FunctionsDeclaration class_data={ClassData} />
 
 
-## Events
+## 🚀 Events
 
-import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
-import BasePickableEvents from '@site/docs/scripting-reference/classes/base-classes/_base-pickable-events.mdx';
-
-<details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
-<details><summary>Inherited Pickable Events</summary><BasePickableEvents /></details>
-
-| **Name** | **Description** |
-| :--- | :--- |
-| **`Explode`** | `Grenade` has exploded |
-| **`Throw`** | `Grenade` has been thrown |
-
-
-### `Explode`
-
-> Triggered when the has exploded
-
-```lua
-Grenade.Subscribe("Explode", function(self)
-    -- called when a grenade explodes
-end)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| [Grenade](grenade) | `self` | The grenade which exploded |
-
-
-### **`Throw`**
-
-> Triggered when the has been thrown
-
-```lua
-Grenade.Subscribe("Throw", function(self, handler)
-    -- called when a grenade is thrown
-end)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| [Grenade](grenade) | `self` | The grenade which has been thrown |
-| <Classes.Character /> | `handler` | The Character which has thrown |
-
+<EventsDeclaration class_data={ClassData} />

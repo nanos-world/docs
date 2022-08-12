@@ -1,24 +1,14 @@
 ---
 title: ✨ Particle
-description: Particle Entity
+description: Class to spawn Particle Systems used to create effects in the world.
 sidebar_position: 0
 tags: [class]
 ---
 
+import ClassData from '@site/src/api/Classes/Particle.json';
 
-Particle Entity.
 
-import { Structs, BasicType, AuthorityType, AssetPath, Classes } from '@site/docs/components/_nanos.mdx';
-
-![](/img/docs/particle.webp)
-
-:::info
-
-🟦🟧 **Authority:** This class can be spawned on both [Client](/core-concepts/scripting/authority-concepts.mdx) and [Server](/core-concepts/scripting/authority-concepts.mdx) (if you spawn it on client, it won't be synchronized with other players).
-
-⏬ **Inheritance:** This class inherits from <Classes.Actor />.
-
-:::
+<HeaderDeclaration class_data={ClassData} image="/img/docs/particle.webp" />
 
 :::tip
 
@@ -27,8 +17,7 @@ Both **Cascade** and **Niagara** Particle Systems are supported!
 :::
 
 
-## Usage
-
+## 🎒 Examples
 
 ```lua
 local my_particle = Particle(
@@ -40,15 +29,10 @@ local my_particle = Particle(
 )
 ```
 
-## Constructor Parameters
 
-| **Type** | **Name** | **Default** |
-| :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
-| <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <AssetPath.Particle /> | **`asset`** | ` ` |
-| <BasicType.Boolean /> | **`auto_destroy`** | `true` |
-| <BasicType.Boolean /> | **`auto_activate`** | `true` |
+## 🏗️ Constructor
+
+<ConstructorDeclaration class_data={ClassData} />
 
 :::info Note
 
@@ -56,183 +40,11 @@ local my_particle = Particle(
 
 :::
 
-## Functions
+## 🦠 Functions
 
-import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
-
-<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
-
-| **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- |
-| <AuthorityType.Both /> | [`Activate`](particle#activate) | Activates the Emitter |
-| <AuthorityType.Both /> | [`Deactivate`](particle#deactivate) | Deactivates the Emitter |
-| <AuthorityType.Both /> | [`SetParameterFloat`](particle#setparameterfloat) | Sets a **Float** parameter in this Particle System |
-| <AuthorityType.Both /> | [`SetParameterInt`](particle#setparameterint) | Sets an **Integer** parameter in this Particle System |
-| <AuthorityType.Both /> | [`SetParameterBool`](particle#setparameterbool) | Sets a **Boolean** parameter in this Particle System |
-| <AuthorityType.Both /> | [`SetParameterVector`](particle#setparametervector) | Sets a **Vector** parameter in this Particle System |
-| <AuthorityType.Both /> | [`SetParameterColor`](particle#setparametercolor) | Sets a **Color** parameter in this Particle System |
-| <AuthorityType.Both /> | [`SetParameterMaterial`](particle#setparametermaterial) | Sets a **Material** parameter in this Particle System |
-| <AuthorityType.Both /> | [`SetParameterMaterialFromTexture`](particle#setparametermaterialfromtexture) | Sets a **Material** parameter from a Texture in this Particle System |
-| <AuthorityType.ClientOnly /> | [`SetParameterMaterialFromCanvas`](particle#setparametermaterialfromcanvas) | Sets a **Material** parameter from a <Classes.Canvas /> in this Particle System |
-| <AuthorityType.ClientOnly /> | [`SetParameterMaterialFromWebUI`](particle#setparametermaterialfromcanvas) | Sets a **Material** parameter from a <Classes.WebUI /> in this Particle System |
+<FunctionsDeclaration class_data={ClassData} />
 
 
-### <AuthorityType.Both />`Activate`
+## 🚀 Events
 
-> Activates the Emitter
-
-```lua
-my_particle:Activate(should_reset)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Boolean /> | **`should_reset`** | If should reset |
-
-
-### <AuthorityType.Both />`Deactivate`
-
-> Deactivate the Emitter
-
-```lua
-my_particle:Deactivate()
-```
-
-
-### <AuthorityType.Both />`SetParameterFloat`
-
-> Sets a float parameter in this Particle System
-
-```lua
-my_particle:SetParameterFloat(parameter, value)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`parameter`** | The parameter name |
-| <BasicType.Number /> | **`value`** | The float value |
-
-
-### <AuthorityType.Both />`SetParameterInt`
-
-> Sets an integer parameter in this Particle System
-
-```lua
-my_particle:SetParameterInt(parameter, value)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`parameter`** | The parameter name |
-| <BasicType.Number /> | **`value`** | The int value |
-
-
-### <AuthorityType.Both />`SetParameterBool`
-
-> Sets a boolean parameter in this Particle System
-
-```lua
-my_particle:SetParameterBool(parameter, value)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`parameter`** | The parameter name |
-| <BasicType.Boolean /> | **`value`** | The boolean value |
-
-
-### <AuthorityType.Both />`SetParameterVector`
-
-> Sets a float parameter in this Particle System
-
-```lua
-my_particle:SetParameterVector(parameter, value)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`parameter`** | The parameter name |
-| <Structs.Vector /> | **`value`** | The Vector value |
-
-
-### <AuthorityType.Both />`SetParameterColor`
-
-> Sets a Color parameter in this Particle System
-
-```lua
-my_particle:SetParameterColor(parameter, value)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`parameter`** | The parameter name |
-| <Structs.Color /> | **`value`** | The Color value |
-
-
-### <AuthorityType.Both />`SetParameterMaterial`
-
-> Sets a Material parameter in this Particle System
-
-```lua
-my_particle:SetParameterMaterial(parameter, value)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`parameter`** | The parameter name |
-| <AssetPath.Material /> | **`value`** | The Material value |
-
-
-### <AuthorityType.ClientOnly />`SetParameterMaterialFromTexture`
-
-> Sets a Material from a Texture parameter in this Particle System
-> 
-> This will create a Material and set this Texture as it's parameter internally, then set the Material into the Particle parameter
-
-```lua
-my_particle:SetParameterMaterialFromTexture(parameter, value)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`parameter`** | The parameter name |
-| <AssetPath.Image /> | **`value`** | The Texture value |
-
-
-### <AuthorityType.ClientOnly />`SetParameterMaterialFromCanvas`
-
-> Sets a Material from a Canvas parameter in this Particle System
-> 
-> This will create a Material and set this Canvas as it's parameter internally, then set the Material into the Particle parameter
-
-```lua
-my_particle:SetParameterMaterialFromCanvas(parameter, value)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`parameter`** | The parameter name |
-| <Classes.Canvas /> | **`value`** | The Canvas entity |
-
-
-### <AuthorityType.ClientOnly />`SetParameterMaterialFromWebUI`
-
-> Sets a Material from a Canvas parameter in this Particle System
-> 
-> This will create a Material and set this WebUI as it's parameter internally, then set the Material into the Particle parameter
-
-```lua
-my_particle:SetParameterMaterialFromWebUI(parameter, value)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`parameter`** | The parameter name |
-| <Classes.WebUI /> | **`value`** | The WebUI entity |
-
-
-## Events
-
-import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
-
-<details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
+<EventsDeclaration class_data={ClassData} />

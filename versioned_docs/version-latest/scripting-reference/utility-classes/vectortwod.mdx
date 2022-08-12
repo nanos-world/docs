@@ -4,34 +4,34 @@ description: A Vector2D composed of components (X, Y) with floating point precis
 tags: [utility-class]
 ---
 
+import ClassData from '@site/src/api/Structs/Vector2D.json';
 
-A Vector2D composed of components (X, Y) with floating point precision. Used mainly for HUD and Drawing on screen
+<HeaderDeclaration class_data={ClassData} is_open_sourced={true} />
 
-import { BasicType, Structs } from '@site/docs/components/_nanos.mdx';
+
+## 🎒 Examples
+
+```lua
+local new_vector = Vector2D(1452.5, 512)
+```
+
+
+## 🏗️ Constructor
+
+<ConstructorDeclaration class_data={ClassData} />
+
+
+## 🧽 Properties
+
+<PropertiesDeclaration class_data={ClassData} />
+
+
+## 🦠 Functions
 
 :::info
 
-**Tip:** This structure is Open Sourced at [https://github.com/nanos-world/nanos-world-lua-lib](https://github.com/nanos-world/nanos-world-lua-lib). Feel free to push merge requests and suggest changes!
+This structure supports `+`, `-`, `*`, `/`, `==` and `tostring` operations.
 
 :::
 
-:::tip
-
-**Note:** This structure supports `+`, `-`, `*`, `/`, `==` and `tostring` operations.
-
-:::
-
-## Usage
-
-
-```lua
-local new_vector2D = Vector2D(1452.5, 512)
-```
-
-## Properties
-
-| **Type** | **Name** | **Description** |
-| :--- | :--- | :--- |
-| <BasicType.Number /> | **`X`** | X Coordinate |
-| <BasicType.Number /> | **`Y`** | Y Coordinate |
-
+<FunctionsDeclaration class_data={ClassData} />

@@ -1,49 +1,44 @@
 ---
 title: Assets Development Kit
 description: nanos world Assets Development Kit - ADK
-sidebar_position: 2
+sidebar_position: 1
 tags: [assets]
 keywords: [SDK, ADK, assets, kit, unreal]
 ---
 
+How to use the nanos world Assets Development Kit - ADK
 
-nanos world Assets Development Kit - ADK
 
-nanos world provides a fully configurable and ready **Unreal Project** called Assets Development Kit (ADK) to help you integrating and exporting Assets and Maps much faster. This project contains **Placeholders**, **Tools** and **Correct References** that must be used in order to create **Characters** and make proper **Physical Materials**, for example.
+nanos world provides a fully configurable and ready **Unreal Project** called Assets Development Kit (ADK) to help you integrating and exporting Assets and Maps much faster.
 
-:::caution Note
+This project contains **Placeholders**, **Tools** and **Correct References** that must be used in order to create **Characters** or set proper **Physical Materials** for example.
 
-To be able to use the **ADK**, you will need to have [Unreal Engine](#installing-unreal-engine-5) installed.
 
-:::
+## Downloading Assets Development Kit
 
-## Downloading nanos world Assets Development Kit - ADK
+Our ADK is uploaded on [GitHub](https://github.com/nanos-world/assets-development-kit/), please download it's latest version and extract it in your computer.
 
-Our ADK is uploaded in [GitHub](https://github.com/nanos-world/assets-development-kit/), please download it latest version and extract it in your computer.
 
-## Opening the Assets Development Kit Project
+## Opening the Project
 
-You will find a file `NanosWorldADK.uproject` in there, just open it with Unreal Engine and you are set!
+You will find a file `NanosWorldADK.uproject` in there, just open it with Unreal Engine (make sure you have [Set Up Unreal Engine](setting-up-ue.md) before proceeding).
 
-You will notice we have two folders in the root directory: `NanosWorld/` and `MyAssetPack/`:
+The first time opening it may take some time as the initial shaders must be compiled.
 
-![ADK Folders](/img/docs/adk-folders.jpg)
 
-:::tip
+After it finishes compiling all shaders, you can proceed to the [next step to import an asset](importing-assets.md) or take a look below in all available tools.
 
-You can delete or rename `MyAssetPack` to anything you want to be your Asset Pack.
 
-:::
+## Special Attention
 
-:::caution
-
-Please do not **MODIFY**, **DELETE**, **CREATE** or **COPY** any file inside `NanosWorld/` folder, otherwise the ADK will not work properly. Also make sure you DO NOT modify them unintentionally! If asked to save any modified file in there, cancel it! All references must use `NanosWorld/` where they are.
+Please do not **MODIFY**, **DELETE**, **CREATE** or **COPY** any file inside `NanosWorld/` folder, otherwise the ADK will not work properly. Also make sure you DO NOT modify them unintentionally! If asked to save any modified file in there, cancel it! All references must use `NanosWorld/` the way they are.
 
 `NanosWorld/` folder has some Assets which you can use to reference **your** assets and make the export keep the correct references when using them in-game.
 
-:::
 
 ## Tools available in the ADK project
+
+Here's a list of all tools and blueprints which you can use to speed up and help creating assets:
 
 * [Placeholder Blueprints `NanosWorld/Blueprints/Placeholders/`](adk-assets-development-kit#placeholder-blueprints)
 * [Lua Code Generator `NanosWorld/Blueprints/Utility/WBP_LuaCodeGenerator`](adk-assets-development-kit#lua-code-generator)

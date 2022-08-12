@@ -4,23 +4,18 @@ description: A table containing useful and aux functions
 tags: [utility-class]
 ---
 
+import ClassData from '@site/src/api/UtilityClasses/NanosUtils.json';
 
-A table containing useful and aux functions
 
-import { BasicType, Structs } from '@site/docs/components/_nanos.mdx';
+<HeaderDeclaration class_data={ClassData} is_static={true} is_open_sourced={true} />
 
-:::info
 
-**Tip:** This structure is Open Sourced at [https://github.com/nanos-world/nanos-world-lua-lib](https://github.com/nanos-world/nanos-world-lua-lib). Feel free to push merge requests and suggest changes!
-
-:::
-
-## Usage
+## 🎒 Examples
 
 ```lua
 local table = {
-    "my_key" = 123,
-    [2] = "my_value"
+	"my_key" = 123,
+	[2] = "my_value"
 }
 
 local dump_text = NanosUtils.Dump(table)
@@ -30,8 +25,8 @@ Package.Log(dump_text)
 -- Outputs Text
 --[[
 {
-    "my_key": 123,
-    2 = "my_value"
+	"my_key": 123,
+	2 = "my_value"
 }
 --]]
 ```
@@ -43,73 +38,19 @@ NanosUtils.IsA(my_variable, Character) -- true
 NanosUtils.IsA(my_variable, Vehicle) -- false
 ```
 
-## Static Functions
-
-| Returns | Name | Description |
-| :--- | :--- | :--- |
-| <BasicType.Boolean /> | **`IsA`** | Returns if an object is a type |
-| <BasicType.String /> | **`Dump`** | Dumps a table into a readable text |
-|  | **`Benchmark`** | Benchmarks a function performance |
-
-
-### `IsA`
-
-> Returns if an object is a type
->
-> Returns <BasicType.Boolean />
-
 ```lua
-NanosUtils.IsA(object, type)
+local arg1 = math.random()
+local arg2 = math.random()
+
+NanosUtils.Benchmark("My Heavy Operation", 1000, function(param1, param2)
+    -- Do some heavy operations here
+    local result = param1 * param2
+end, arg1, arg2)
+
+-- Outputs Text: 'Benchmark 'My Heavy Operation' (x1000) took 1.5ms.'
 ```
 
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Any /> | **`object`** | Object to verify |
-| <BasicType.Any /> | **`type`** | Type to verify |
 
+## 🗿 Static Functions
 
-### **`Dump`**
-
-> Dumps a table into a readable text
->
-> Returns <BasicType.String />
-
-```lua
-NanosUtils.Dump(table)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Table /> | **`table`** | Table to dump |
-
-
-### **`Benchmark`**
-
-> Benchmarks a function performance, outputs in the console the elapsed time
-
-```lua
-NanosUtils.Benchmark(name, amount, func, args...)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`name`** | Benchmark name to output |
-| <BasicType.Number /> | **`amount`** | Amount of times to loop |
-| <BasicType.Function /> | **`func`** | The function to call |
-| <BasicType.Any /> | **`args...`** | The arguments of the function to call |
-
-
-### **`FormatString`**
-
-> A better string.format, replace `{num}` by the corresponding vararg in a string
->
-> Example: `NanosUtils.FormatString("Hello {2} I'm {1}", "a noob", "world!") -- "Hello world! I'm a noob"`
-
-```lua
-NanosUtils.FormatString(text, args...)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`text`** | Text to format |
-| <BasicType.Any /> | **`args...`** | The arguments to replace |
+<StaticFunctionsDeclaration class_data={ClassData} />

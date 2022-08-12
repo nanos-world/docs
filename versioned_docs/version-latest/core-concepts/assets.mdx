@@ -1,30 +1,33 @@
 ---
-title: Assets
+title: Assets Guide
 description: All you need to know about Assets
 tags: [assets]
 ---
 
+import { ReferenceLink } from '@site/docs/components/_nanos.mdx';
 
 All you need to know about Assets
 
-**Assets** in nanos world are all objects or content which come from Unreal Engine, i.e. _Maps_, _StaticMeshes_, _SkeletalMeshes_, _Sounds_, _Particles_, etc are all **Assets**.
+**Assets** in nanos world are all objects or content which come from Unreal Engine. For example _Maps_, _StaticMeshes_, _SkeletalMeshes_, _Sounds_, _Particles_, _Blueprints_ etc are all types of **Assets**.
 
-In order to use custom Assets in your servers, you must have or create an **Asset Pack**. Asset Packs are a set of Assets that were exported together from Unreal.
+In order to use custom Assets in your servers, for example to spawn a Prop, or a custom Weapon you must have an **Asset Pack**. Asset Packs are a set of Assets that were exported together from Unreal.
 
 
 ## Folder Structure
 
 All Asset Packs go under `Server/Assets/` folder. Each Asset Pack is a folder under that.
 
-:::info
+:::info Note
 
-**Note:** Asset Packs downloaded when connecting to servers will be stored in `Server/Assets/` folder as well!
+Asset Packs downloaded when connecting to servers or downloaded from the vault will be stored in `Server/Assets/` folder as well!
 
 :::
 
+This is an example of a server Assets folder:
+
 ```text title="Server Folder"
 NanosWorldServer.exe
-Packages/
+Assets/
 ├── my-asset-pack-01/
 │   ├── MyAsset_01.uasset
 │   ├── MyAsset_02.uasset
@@ -35,7 +38,7 @@ Packages/
 │   ├── BigFuckingGun.uasset
 │   │   ...
 │   └── Assets.toml
-Assets/
+Packages/
 Config.toml
 ```
 
@@ -50,13 +53,15 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Assets.toml
 
 ### Settings Detailed
 
+See a description of what each setting does:
+
 | Setting | Description |
 | :--- | :--- |
 | **`name`** | Friendly name of the Asset Pack |
-| **`author`** | Author\(s\) of the Asset Pack |
+| **`author`** | Author(s) of the Asset Pack |
 | **`version`** | Version of the Asset Pack - please refer to [SemVer](https://semver.org/) |
 | **`image`** | Image URL to be displayed in the Vault |
-| **`unreal_folder`** | Name of the root folder in the Unreal Project which exported this Assets. This is important so the Assets can keep the relative references correct. |
+| **`unreal_folder`** | Name of the root folder in the Unreal Project which exported this Assets. This is important so the Assets can keep the relative references correctly |
 | **`assets.maps`** | List of Maps in this Asset Pack |
 | **`assets.static_meshes`** | List of Static Meshes in this Asset Pack |
 | **`assets.skeletal_meshes`** | List of Skeletal Meshes in this Asset Pack |
@@ -70,28 +75,32 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Assets.toml
 
 ## Referencing Assets in Scripting
 
-To be able to use Assets through scripting, you will first have to ensure that the Asset Pack is loaded, an Asset Pack is loaded if:
+To be able to use Assets in your code, first you have to ensure that the Asset Pack is loaded. An Asset Pack is loaded when:
 
-1. Set the Map to be loaded (this will make it's Asset Pack to be loaded automatically)
-2. Manually set in `Server.toml` the `assets` to load
-3. Manually set in any loaded package, in `Package.toml` the `asset_requirements`
+1. A map is loaded (this will make it's Asset Pack to be loaded automatically).
+2. A package with it configured in `assets_requirements` is loaded.
+3. It is manually set in Server's `Config.toml` at `assets` to load.
 
-With that, you can refer to it's assets using the following pattern: 
+With the Asset Pack loaded, you can refer to it's assets using the following pattern: 
 
-`"ASSET_PACK_PATH::ASSET_KEY"`
+`"[ASSET_PACK_PATH]::[ASSET_KEY]"`
 
 Example:
 
 `"my-asset-pack-01::SM_Cube"`
 
-:::tip
+:::info note
 
-`ASSET_PACK_PATH` is the Asset Pack folder name and `ASSET_KEY` is the key defined in the `Assets.toml`.
+`[ASSET_PACK_PATH]` is the folder name and `[ASSET_KEY]` is the key defined in the `Assets.toml`.
 
 :::
 
 
 ## Types of Assets
+
+Some scripting methods require some specific Type of Assets to load. Attempting to load an invalid or wrong type will cause an Error. E.g.: `Character:SetMesh()` requires an Asset of type `Skeletal Mesh`.
+
+Here's a list of all supported Asset types:
 
 | Type | Description |
 | :--- | :--- |
@@ -104,20 +113,16 @@ Example:
 | **Material** | Unreal Materials can be used for customizing meshes surfaces and used as Post Process |
 | **Blueprint** | Unreal Actor Blueprints can be used for spawning Blueprint entities |
 
-:::info Note
 
-Some methods require some specific Type of Assets to load, attempting to load an invalid or wrong type will cause an Error. E.g.: `Character:SetMesh()` requires an Asset of type `Skeletal Mesh`.
+## Creating your own Assets
 
-:::
+To create your own Asset Pack, please refer to Importing Custom Assets Guide.
 
-
-## nanos world Default Asset Pack
-
-nanos world provides a default  Asset Pack which is already included in the base game. Please refer to [nanos world Default Asset Pack](/assets-modding/default-asset-pack/default-asset-pack.md) for more information.
+<ReferenceLink href="assets-modding/creating-assets/setting-up-ue">📦 Importing Custom Assets</ReferenceLink>
 
 
-:::tip
+## Default Asset Pack
 
-To create your own Asset Pack, please refer to [Importing Assets](/assets-modding/creating-assets/importing-assets.md)
+nanos world provides a default  Asset Pack which is already included in the base game. Please refer to the Default Asset Pack page for more information.
 
-:::
+<ReferenceLink href="assets-modding/default-asset-pack/default-assets-list">📦 Default Asset Pack</ReferenceLink>

@@ -4,41 +4,40 @@ description: 'A color composed of components (R, G, B, A) with floating point pr
 tags: [utility-class]
 ---
 
+import ClassData from '@site/src/api/Structs/Color.json';
 
-A color composed of components (R, G, B, A) with floating point precision.
+<HeaderDeclaration class_data={ClassData} is_open_sourced={true} />
 
-import { Structs, BasicType } from '@site/docs/components/_nanos.mdx';
 
-:::info
-
-**Tip:** This structure is Open Sourced at [https://github.com/nanos-world/nanos-world-lua-lib](https://github.com/nanos-world/nanos-world-lua-lib). Feel free to push merge requests and suggest changes!
-
-:::
-
-:::tip
-
-**Note:** This structure supports `+`, `-`, `*`, `/`, `==`, and `tostring` operations.
-
-:::
-
-## Usage
+## 🎒 Examples
 
 ```lua
 local grey_color = Color(0.5, 0.5, 0.5, 1)
 ```
 
-## Properties
 
-| **Value** | **Name** | **Description** |
-| --------- | -------- | --------------- |
-| <BasicType.Number /> | **`R`** | Red color percentage (0-1) |
-| <BasicType.Number /> | **`G`** | Green color percentage (0-1) |
-| <BasicType.Number /> | **`B`** | Blue color percentage (0-1) |
-| <BasicType.Number /> | **`A`** | Alpha transparency percentage (0-1) |
+## 🏗️ Constructor
+
+<ConstructorDeclaration class_data={ClassData} />
 
 
+## 🧽 Properties
 
-## Static Properties
+<PropertiesDeclaration class_data={ClassData} />
+
+
+## 🦠 Functions
+
+:::info
+
+This structure supports `+`, `-`, `*`, `/`, `==`, and `tostring` operations.
+
+:::
+
+<FunctionsDeclaration class_data={ClassData} />
+
+
+## 🗼 Static Properties
 
 | **Value** | **Name** |
 | :--- | :--- |
@@ -59,21 +58,6 @@ local grey_color = Color(0.5, 0.5, 0.5, 1)
 | `Color(1, 0, 0.5)` | **`Color.ROSE`** |
 
 
-## Static Functions
+## 🗿 Static Functions
 
-| **Returns**    | **Name**                                                     | **Description**                             |
-| -------------- | ------------------------------------------------------------ | ------------------------------------------- |
-| [Color](color) | **`Color.RandomPalette(includes_black = true)`**             | Returns a random color from Color Palette   |
-| [Color](color) | **`Color.Random()`**                                         | Returns a random color from all color scope |
-| [Color](color) | **`Color.FromRGBA(number r, number g, number b, number a)`** | Returns the color from 0-255 range values   |
-| [Color](color) | **`Color.FromCYMK(number c, number y, number m, number k, number a)`** | Returns a color from the CYMK format |
-| [Color](color) | **`Color.FromHSL(number h, number s, number l)`**            | Returns a color from the HSL format         |
-| [Color](color) | **`Color.FromHSV(number h, number s, number v)`**            | Returns a color from the HSV format         |
-| [Color](color) | **`Color.FromHEX(string hex)`**                              | Returns a color from the Hexadecimal format |
-
-
-## Functions
-
-| **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`ToHEX()`** | Gets the Hexadecimal representation of this Color |
+<StaticFunctionsDeclaration class_data={ClassData} />

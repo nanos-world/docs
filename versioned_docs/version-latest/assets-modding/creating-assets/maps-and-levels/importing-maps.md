@@ -182,7 +182,7 @@ And paste it inside your server’s `Assets/` folder:
 
 ![](/img/docs/custom-maps-33.jpg)
 
-Open the folder you copied and create a `Assets.toml` file in it, \(you can paste the content located at [Assets Configuration File](/core-concepts/assets.md#assets-pack-configuration) into this file. 
+Open the folder you copied and create a `Assets.toml` file in it, \(you can paste the content located at [Assets Configuration File](/core-concepts/assets.mdx#assets-pack-configuration) into this file. 
 
 ![](/img/docs/custom-maps-34.jpg)
 
