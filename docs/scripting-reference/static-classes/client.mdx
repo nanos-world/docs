@@ -4,10 +4,7 @@ description: Static Class present on Client side
 tags: [static-class]
 ---
 
-import ClassData from '@site/src/api/StaticClasses/Client.json';
-
-
-<HeaderDeclaration class_data={ClassData} is_static={true} />
+<HeaderDeclaration type="StaticClass" name="Client" is_static />
 
 <!-- 
 ## 🎒 Examples
@@ -19,12 +16,12 @@ import ClassData from '@site/src/api/StaticClasses/Client.json';
 
 ## 🗿 Static Functions
 
-<StaticFunctionsDeclaration class_data={ClassData} />
+<StaticFunctionsDeclaration type="StaticClass" name="Client" />
 
 
 ## 🚀 Events
 
-<EventsDeclaration class_data={ClassData} />
+<EventsDeclaration type="StaticClass" name="Client" />
 
 
 ## ⌨️ Key Names
