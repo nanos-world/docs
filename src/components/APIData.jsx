@@ -34,7 +34,7 @@ import VectorData from '@site/src/api/Structs/Vector.json';
 import Vector2DData from '@site/src/api/Structs/Vector2D.json';
 
 import AssetsData from '@site/src/api/StaticClasses/Assets.json';
-import ClientData from '@site/src/api/StaticClasses/Assets.json';
+import ClientData from '@site/src/api/StaticClasses/Client.json';
 import EventsData from '@site/src/api/StaticClasses/Events.json';
 import HTTPData from '@site/src/api/StaticClasses/HTTP.json';
 import InputData from '@site/src/api/StaticClasses/Input.json';
@@ -84,7 +84,7 @@ import VectorDataStable from '@site/src/api/Stable/Structs/Vector.json';
 import Vector2DDataStable from '@site/src/api/Stable/Structs/Vector2D.json';
 
 import AssetsDataStable from '@site/src/api/Stable/StaticClasses/Assets.json';
-import ClientDataStable from '@site/src/api/Stable/StaticClasses/Assets.json';
+import ClientDataStable from '@site/src/api/Stable/StaticClasses/Client.json';
 import EventsDataStable from '@site/src/api/Stable/StaticClasses/Events.json';
 import HTTPDataStable from '@site/src/api/Stable/StaticClasses/HTTP.json';
 import InputDataStable from '@site/src/api/Stable/StaticClasses/Input.json';
