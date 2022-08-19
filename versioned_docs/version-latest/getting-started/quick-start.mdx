@@ -51,7 +51,25 @@ For that, open a terminal in your server folder and run the following command:
   </TabItem>
 </Tabs>
 
-After that, you will end up with a new folder inside `Packages/` called `my-awesome-package/`. Inside that there will be 3 other folders: `Server/`, `Client/` and `Shared/`, and a config file `Config.toml`.
+During first-time startup, you will be prompted with several questions:
+
+```shell
+[display] Please enter the Package Name: (my-awesome-package)
+
+[display] Please enter the Package Author: ()
+
+[display] Please enter the Package Version: (0.0.1)
+
+[display] Please enter the Package Image URL: ()
+
+[display] Please enter the Package Author: ()
+
+[display] Please enter the Package Type: (game-mode)
+```
+
+After that, you will end up with a new folder inside `Packages/` called `my-awesome-package/`. Inside that there will be 3 other folders: `Server/`, `Client/` and `Shared/`, and a package file `Package.toml`.
+
+ Additionally, it will also create a `Config.toml` file at the root of the NanosWorld folder (the same folder as your `NanosWorld.exe` or `NanosWorld.sh` executables).
 
 
 ## Step 3: Adding Script functionalities
