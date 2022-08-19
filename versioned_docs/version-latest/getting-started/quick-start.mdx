@@ -51,7 +51,24 @@ For that, open a terminal in your server folder and run the following command:
   </TabItem>
 </Tabs>
 
-After that, you will end up with a new folder inside `Packages/` called `my-awesome-package/`. Inside that there will be 3 other folders: `Server/`, `Client/` and `Shared/`, and a config file `Config.toml`.
+This command will run the CLI to interactively create your new package:
+```shell
+[display] Please enter the Package Name: (my-awesome-package)
+
+[display] Please enter the Package Author: ()
+
+[display] Please enter the Package Version: (0.0.1)
+
+[display] Please enter the Package Image URL: ()
+
+[display] Please enter the Package Author: ()
+
+[display] Please enter the Package Type: (game-mode)
+```
+
+After that, you will end up with a new folder inside `Packages/` called `my-awesome-package/`. Inside that there will be 3 other folders: `Server/`, `Client/` and `Shared/`, and a package file `Package.toml`.
+
+Additionally, if this was the first time running the CLI, it will also create a `Config.toml` file at the root of the server folder executable. This is the server configuration file!
 
 
 ## Step 3: Adding Script functionalities
