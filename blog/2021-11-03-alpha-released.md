@@ -193,7 +193,7 @@ Now we have a proper standalone class for making HTTP requests. Is also features
 
 We have worked hard on performance techniques for Alpha update. Here's the highlights:
 
-* Now Basic Structs [Vector](/docs/scripting-reference/utility-classes/vector) and [Rotator](/docs/scripting-reference/utility-classes/rotator) are automatically compressed when sending through the Network. Reducing it's size up to 90% in the best case! This was a great gain for network use.
+* Now Basic Structs [Vector](/docs/scripting-reference/structs/vector) and [Rotator](/docs/scripting-reference/structs/rotator) are automatically compressed when sending through the Network. Reducing it's size up to 90% in the best case! This was a great gain for network use.
 * A new setting was added `Profiling` which you can enable with `--profiling` on server and in Settings on Client. This will log all the time elapsed to run operations/scripting events and some other stuff in the Console.
 * Now HTTP requests (a.k.a. downloading files when joining a server) are automatically compressed, which may reduce the network usage when downloading big files!
 * Now Actors which are very far or not on screen will be synchronized/updated half the time to improve performance. We still want to tweak it and make it more aggressive on some cases.
@@ -290,8 +290,8 @@ The default Packages `NanosWorldWeapons` and `NanosWorldVehicles` were renamed t
 * [Pickables](/docs/scripting-reference/classes/base-classes/pickable) got new events: `ReleaseUse`, `PullUse` when Character pulls or releases its usage (i.e. trigger for weapons)
 * Improved the way the interact trigger enables for [Pickables](/docs/scripting-reference/classes/base-classes/pickable) and [Props](/docs/scripting-reference/classes/prop).
 * [Trigger](/docs/scripting-reference/classes/trigger) got new method: `:ForceOverlapChecking()` which will checks for overlaps in the game thread and immediately dispatch events.
-* Added new methods for [Quaternions](/docs/scripting-reference/utility-classes/quaternion) (+, -, Normalize).
-* Added new method for generating a random [Rotator](/docs/scripting-reference/utility-classes/rotator): `Rotator.Random()`.
+* Added new methods for [Quaternions](/docs/scripting-reference/structs/quat) (+, -, Normalize).
+* Added new method for generating a random [Rotator](/docs/scripting-reference/structs/rotator): `Rotator.Random()`.
 * Added lots of new Sounds, Animations, Props, Meshes in the Default Asset Pack.
 * Added Steam Login.
 * All .config files had it's `tabs` replaced with `spaces`.

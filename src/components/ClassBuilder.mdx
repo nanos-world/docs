@@ -55,9 +55,17 @@ export function GetReturnList(return_list) {
 	return return_list.map((return_data) => SplitTypesByOr(return_data.type)).reduce((prev, next) => [prev, <CommaSeparator />, next]);
 }
 
+export function GetReturnTableDescriptionList(return_data) {
+	if (return_data.table_properties) {
+		const table_return_list = return_data.table_properties.map((property) => " " + property.name + ": " + property.type);
+		return "in the format <code>{ " + table_return_list + " }</code>";
+	}
+	return return_data.description;
+}
+
 <!-- Gets a list of return descriptions surrounded by () -->
 export function GetReturnDescriptionList(return_list) {
-	const return_list_plain = return_list.map((return_data) => <span dangerouslySetInnerHTML={{ __html: return_data.description }} />).reduce((prev, next) => [prev, ", ", next]);
+	const return_list_plain = return_list.map((return_data) => <span dangerouslySetInnerHTML={{ __html: GetReturnTableDescriptionList(return_data) }} />).reduce((prev, next) => [prev, ", ", next]);
 	if (!return_list_plain)
 		return "";
 	return <>{"("}{ return_list_plain }{")"}</>;

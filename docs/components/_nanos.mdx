@@ -123,7 +123,7 @@ export const BaseType = (label) => (
 <!-- Generic Struct Type component -->
 export const BaseStruct = (label, path) => (
 	<Tippy maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<StructToolTip struct_name={label} description={ StructsData[label] ? StructsData[label].description : "Struct not found. Soon™." } />}>
-		<Link to={`${getActiveVersionPath()}/scripting-reference/utility-classes/${path ? path : label.toLowerCase()}`} className={"hover-link"}>{label}</Link>
+		<Link to={`${getActiveVersionPath()}/scripting-reference/structs/${path ? path : label.toLowerCase()}`} className={"hover-link"}>{label}</Link>
 	</Tippy>
 );
 
@@ -179,11 +179,11 @@ export const BasicType = {
 
 <!-- Defines Struct Types components -->
 export const Structs = {
-	Vector: () => BaseStruct("Vector", ""),
-	Rotator: () => BaseStruct("Rotator", ""),
-	Color: () => BaseStruct("Color", ""),
-	Quat: () => BaseStruct("Quat", "quaternion"),
-	Vector2D: () => BaseStruct("Vector2D", "vectortwod"),
+	Vector: () => BaseStruct("Vector"),
+	Rotator: () => BaseStruct("Rotator"),
+	Color: () => BaseStruct("Color"),
+	Quat: () => BaseStruct("Quat"),
+	Vector2D: () => BaseStruct("Vector2D"),
 };
 
 <!-- Defines Classes components -->

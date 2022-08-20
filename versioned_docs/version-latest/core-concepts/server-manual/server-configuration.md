@@ -113,6 +113,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--auto_download` | 0 or 1 | Automatically downloads Packages and Assets from Vault if needed |
 | `--dedicated_server` | 0 or 1 | If to start as a Dedicated Server or P2P |
 | `--async_log` | 0 or 1 | If to use async or sync logs (async provides better performance) - default is 1 |
+| `--log_level` | 1, 2 or 3 | If to use Normal, Debug or Verbose logs |
 
 
 ### One-liner Server Configuration
