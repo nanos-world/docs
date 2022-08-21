@@ -47,9 +47,9 @@ export const EventToolTip = ({ class_name, event_data }) => (
 	</CodeBlock>
 );
 
-export const FunctionToolTip = ({ function_data }) => (
+export const FunctionToolTip = ({ class_name, function_data }) => (
 	<CodeBlock className="language-lua">
-		{ GetFunctionExample(function_data) }
+		{ GetFunctionExample(class_name, function_data) }
 	</CodeBlock>
 );
 

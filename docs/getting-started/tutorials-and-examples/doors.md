@@ -10,7 +10,7 @@ How to create a simple and automatic door when Characters move in.
 ### Final result
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/docs/tutorials/doors-01.webm" />
+    <source src="/videos/docs/tutorials/doors-01.mp4" />
 </video>
 
 <video controls="true" allowfullscreen="true">

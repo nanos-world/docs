@@ -12,7 +12,7 @@ How to create a rain effect with Props (boxes) falling from sky once a Character
 ### Final result
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/docs/tutorials/prop-rain.webm" />
+    <source src="/videos/docs/tutorials/prop-rain.mp4" />
 </video>
 
 

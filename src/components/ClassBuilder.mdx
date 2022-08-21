@@ -110,8 +110,8 @@ export function GetReturnPart(function_data) {
 }
 
 <!-- Generates Function Example Codeblock -->
-export function GetFunctionExample(function_data) {
-	return `${GetReturnPart(function_data)}my_entity:${function_data.name}(${GetParametersList(function_data.parameters)})`;
+export function GetFunctionExample(class_name, function_data) {
+	return `${GetReturnPart(function_data)}my_${class_name.toLowerCase()}:${function_data.name}(${GetParametersList(function_data.parameters)})`;
 }
 
 <!-- Generates Function Example Codeblock -->
@@ -182,7 +182,7 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 			}
 		</blockquote>
 		<CodeBlock className="language-lua">
-			{ is_static ? GetStaticFunctionExample(class_name, function_data) : GetFunctionExample(function_data) }
+			{ is_static ? GetStaticFunctionExample(class_name, function_data) : GetFunctionExample(class_name, function_data) }
 		</CodeBlock>
 		{Array.isArray(function_data.parameters) && function_data.parameters.length > 0 ?
 			<table style={{ width: "100%", display: "table" }}>
@@ -247,20 +247,20 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 	</>
 );
 
-export const FunctionNameDeclaration = ({ function_data }) => (
-	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<FunctionToolTip function_data={function_data} />}>
+export const FunctionNameDeclaration = ({ class_name, function_data, base_class }) => (
+	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<FunctionToolTip class_name={class_name} function_data={function_data} />}>
 		<b>
-			<Link to={`#${function_data.name.toLowerCase()}`} className={"hover-link"}>
+			<Link to={`${base_class ? `/docs/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#${function_data.name.toLowerCase()}`} className={"hover-link"}>
 				<code>{ function_data.name }</code>
 			</Link>
 		</b>
 	</Tippy>
 );
 
-export const EventNameDeclaration = ({ class_name, event_data }) => (
+export const EventNameDeclaration = ({ class_name, event_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<EventToolTip class_name={class_name} event_data={event_data} />}>
 		<b>
-			<Link to={`#${event_data.name.toLowerCase()}`} className={"hover-link"}>
+			<Link to={`${base_class ? `/docs/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#${event_data.name.toLowerCase()}`} className={"hover-link"}>
 				<code>{ event_data.name }</code>
 			</Link>
 		</b>
@@ -268,7 +268,7 @@ export const EventNameDeclaration = ({ class_name, event_data }) => (
 );
 
 <!-- Function List Declaration -->
-export const FunctionListDeclaration = ({ functions_list }) => (
+export const FunctionListDeclaration = ({ class_name, functions_list, base_class }) => (
 	<table style={{ width: "100%", display: "table" }}>
 		<thead>
 			<tr>
@@ -283,7 +283,7 @@ export const FunctionListDeclaration = ({ functions_list }) => (
 				return <tr>
 					<td width="50px">{ GetAuthorityType(value.authority) } </td>
 					<td>{ value.return ? GetReturnList(value.return) : "" }</td>
-					<td><FunctionNameDeclaration function_data={ value } /></td>
+					<td><FunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
 					<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
 				</tr>;
 			})}
@@ -292,7 +292,7 @@ export const FunctionListDeclaration = ({ functions_list }) => (
 );
 
 <!-- Events List Declaration -->
-export const EventListDeclaration = ({ type, name }) => {
+export const EventListDeclaration = ({ type, name, inherited_class_name, base_class }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
 		<table style={{ width: "100%", display: "table" }}>
@@ -307,7 +307,7 @@ export const EventListDeclaration = ({ type, name }) => {
 				{class_data.events.map(function(value) {
 					return <tr>
 						<td width="50px">{ GetAuthorityType(value.authority) } </td>
-						<td><EventNameDeclaration class_name={ class_data.name } event_data={ value } /></td>
+						<td><EventNameDeclaration class_name={ inherited_class_name } base_class={ base_class } event_data={ value } /></td>
 						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
 					</tr>;
 				})}
@@ -365,59 +365,59 @@ export const ConstructorDeclaration = ({ type, name }) => {
 };
 
 <!-- Base Actor Functions -->
-export const BaseActorFunctions = () => {
+export const BaseActorFunctions = ({ inherited_class_name} ) => {
 	const class_data = GetClassData("Class", "Actor");
 	return (<>
 		<details>
 			<summary>Inherited Actor Functions</summary>
 			<ReferenceLink href="scripting-reference/classes/base-classes/actor">Base Actor</ReferenceLink>
-			<FunctionListDeclaration functions_list={class_data.functions} />
+			<FunctionListDeclaration class_name={inherited_class_name} base_class={"Actor"} functions_list={class_data.functions} />
 		</details>
 	</>);
 };
 
 <!-- Base Paintable Functions -->
-export const BasePaintableFunctions = () => {
+export const BasePaintableFunctions = ({ inherited_class_name }) => {
 	const class_data = GetClassData("Class", "Paintable");
 	return (<>
 		<details>
 			<summary>Inherited Paintable Functions</summary>
 			<ReferenceLink href="scripting-reference/classes/base-classes/paintable">Base Paintable</ReferenceLink>
-			<FunctionListDeclaration functions_list={class_data.functions} />
+			<FunctionListDeclaration class_name={inherited_class_name} base_class={"Paintable"} functions_list={class_data.functions} />
 		</details>
 	</>);
 };
 
 <!-- Base Pickable Functions -->
-export const BasePickableFunctions = () => {
+export const BasePickableFunctions = ({ inherited_class_name }) => {
 	const class_data = GetClassData("Class", "Pickable");
 	return (<>
 		<details>
 			<summary>Inherited Pickable Functions</summary>
 			<ReferenceLink href="scripting-reference/classes/base-classes/pickable">Base Pickable</ReferenceLink>
-			<FunctionListDeclaration functions_list={class_data.functions} />
+			<FunctionListDeclaration class_name={inherited_class_name} base_class={"Pickable"} functions_list={class_data.functions} />
 		</details>
 	</>)
 };
 
 <!-- Base Actor Events -->
-export const BaseActorEvents = () => {
+export const BaseActorEvents = ({ inherited_class_name }) => {
 	const class_data = GetClassData("Class", "Actor");
 	return (<>
 		<details>
 			<summary>Inherited Actor Events</summary>
 			<ReferenceLink href="scripting-reference/classes/base-classes/actor">Base Actor</ReferenceLink>
-			<EventListDeclaration type="Class" name="Actor" />
+			<EventListDeclaration type="Class" name="Actor" inherited_class_name={inherited_class_name} base_class={"Actor"} />
 		</details>
 	</>);
 };
 
 <!-- Base Pickable Events -->
-export const BasePickableEvents = () => (
+export const BasePickableEvents = ({ inherited_class_name }) => (
 	<details>
 		<summary>Inherited Pickable Events</summary>
 		<ReferenceLink href="scripting-reference/classes/base-classes/pickable">Base Pickable</ReferenceLink>
-		<EventListDeclaration type="Class" name="Pickable" />
+		<EventListDeclaration type="Class" name="Pickable" inherited_class_name={inherited_class_name} base_class={"Pickable"} />
 	</details>
 );
 
@@ -425,14 +425,14 @@ export const BasePickableEvents = () => (
 export const FunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
-		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorFunctions /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Paintable") ? <BasePaintableFunctions /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableFunctions /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorFunctions inherited_class_name={name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Paintable") ? <BasePaintableFunctions inherited_class_name={name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableFunctions inherited_class_name={name} /> : "" }
 		{
 			class_data.functions == null ? <i>This entity doesn't have own functions.</i> :
 			<>
-				<FunctionListDeclaration functions_list={class_data.functions} />
-				{ class_data.functions.map((value) => <FunctionDeclaration function_data={value} />) }
+				<FunctionListDeclaration class_name={name} functions_list={class_data.functions} />
+				{ class_data.functions.map((value) => <FunctionDeclaration function_data={value} class_name={name} />) }
 			</>
 		}
 	</>);
@@ -445,7 +445,7 @@ export const StaticFunctionsDeclaration = ({ type, name }) => {
 		{
 			class_data.static_functions == null ? <i>This entity doesn't have own static functions.</i> :
 			<>
-				<FunctionListDeclaration functions_list={class_data.static_functions} />
+				<FunctionListDeclaration class_name={name} functions_list={class_data.static_functions} />
 				{ class_data.static_functions.map((value) => <FunctionDeclaration function_data={value} is_static class_name={class_data.name} />) }
 			</>
 		}
@@ -456,12 +456,12 @@ export const StaticFunctionsDeclaration = ({ type, name }) => {
 export const EventsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
-		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorEvents /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableEvents /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorEvents inherited_class_name={name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableEvents inherited_class_name={name} /> : "" }
 		{
 			class_data.events == null ? <i>This entity doesn't have own events.</i> :
 			<>
-				<EventListDeclaration type={type} name={name} />
+				<EventListDeclaration type={type} name={name} inherited_class_name={name} />
 				{ class_data.events.map((value) => <EventDeclaration event_data={value} class_name={class_data.name} />) }
 			</>
 		}

@@ -12,7 +12,7 @@ How to simulate a Prop possessing using a Character. This can be used for Prop H
 ### Final result
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/docs/tutorials/play-as-prop.webm" />
+    <source src="/videos/docs/tutorials/play-as-prop.mp4" />
 </video>
 
 ### Code Snippet
