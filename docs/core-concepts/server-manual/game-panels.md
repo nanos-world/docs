@@ -34,7 +34,7 @@ Once the panel is installed, download the file `egg-nanos-world-server.json` loc
 
 Then, go to your panel on the category `SERVICE MANAGEMENT` and click on `NESTS`.
 
-You will need to create a new Nest by pressing the `Create New` button.
+You can create a new `NEST` by clicking the create button or click on a current nest.
 
 After the nest is created, go back to the `NESTS` and click on the button `Import EGG`, select the .json file you downloaded earlier and on the dropdown menu, select the nest you created earlier.
 
@@ -64,12 +64,18 @@ Once the panel is installed, shutdown the ADS instance, you can do it on Linux b
 ampinstmgr -q ADS01
 ```
 
+:::info Note
+
+To run `ampinstmgr` commands, you need to run them as the user `amp`, you can switch to this user using this command : `sudo su -l amp`
+
+:::
+
 After, go to your server files inside the folder
 ```text
-/home/amp/.ampdata/instances/ADS01/Plugins/ADSModile/GenericTemplates
+/home/amp/.ampdata/instances/ADS01/Plugins/ADSModule/DeploymentTemplates/CubeCoders-AMPTemplates
 ```
 
-Then download the files on GitHub inside the folder `amp-generic` and put them on your server inside the `GenericTemplates` folder.
+Then download the files on GitHub inside the folder `amp-generic` (.kvp & .json) and put them on your server.
 
 You can start the panel again by typing:
 ```bash
