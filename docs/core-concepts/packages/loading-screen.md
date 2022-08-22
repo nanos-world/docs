@@ -9,7 +9,7 @@ keywords: [loading, screen, package, html, webui]
 
 In nanos world it is possible to add a customized and dynamic Loading Screen to your Server using [WebUI](/scripting-reference/classes/webui.mdx).
 
-![](/img/docs/loading-screen.jpg)
+![](/img/docs/loading-screen.webp)
 
 
 ## Creating a Loading Screen

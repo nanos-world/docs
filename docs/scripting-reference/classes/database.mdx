@@ -5,18 +5,7 @@ sidebar_position: 0
 tags: [class]
 ---
 
-
-The Database entity provides programmers a way to access SQL databases easily through scripting.
-
-![](/img/docs/db.png)
-
-import { Structs, BasicType, AuthorityType, Enums } from '@site/docs/components/_nanos.mdx';
-
-:::info
-
-🟦 **Authority:** This class can only be spawned on [Server](/core-concepts/scripting/authority-concepts.mdx).
-
-:::
+<HeaderDeclaration type="Class" name="Database" image="/img/docs/db.webp" />
 
 :::tip
 
@@ -25,9 +14,9 @@ Currently nanos world supports `SQLite`, `MySQL` and `PostgreSQL` out of the box
 :::
 
 
-## Example
+## 🎒 Examples
 
-```lua
+```lua Server/Index.lua
 -- Creates a SQLite connection, using a local file called 'database_filename.db'
 local sqlite_db = Database(DatabaseEngine.SQLite, "db=database_filename.db timeout=2")
 
@@ -65,106 +54,17 @@ All requests are thread safe! 🥳
 :::
 
 
-## Constructor Parameters
+## 🏗️ Constructor
 
-| Type | Name | Default | Description |
-| :--- | :--- | :--- | :--- |
-| <Enums>DatabaseEngine</Enums> | **`database_engine`** |  | Database Engine |
-| <BasicType.String /> | **`connection_string`** |  | [Connection String](database#connection-string) used to create and connect to the database |
-| <BasicType.Number /> | **`pool_size`** | `10` | Size of the connection pool when calling several queries simultaneously |
+<ConstructorDeclaration type="Class" name="Database" />
 
 
-## Functions
+## 🦠 Functions
 
-| **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- |
-|  | [**`Close`**](database#close) | Closes the Database |
-|  | [**`Execute`**](database#execute) | Execute a query asyncronously |
-|  | [**`ExecuteSync`**](database#executesync) | Execute a query syncronously |
-|  | [**`Select`**](database#select) | Execute a select query asyncronously |
-|  | [**`SelectSync`**](database#selectsync) | Execute a select query syncronously |
+<FunctionsDeclaration type="Class" name="Database" />
 
 
-### `Close`
-
-> Closes the Database
-
-```lua
-my_database:Close()
-```
-
-
-### `Execute`
-
-> Execute a query asyncronously
-> 
-> Callback will be in the format (rows_affected)
-
-```lua
-my_database:Execute(query, function(rows_affected)
-    -- Do Something...
-end, parameters...)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`query`** |  | Query to execute |
-| <BasicType.Function /> | **`callback`** | `nil` | Callback to call when finishes |
-| <BasicType.Any /> | **`parameters...`** | `nil` | Sequence of parameters to escape into the Query |
-
-
-### `ExecuteSync`
-
-> Execute a query syncronously
-> 
-> Returns a <BasicType.Number /> of `affected_rows`
-
-```lua
-local affected_rows = my_database:ExecuteSync(query, parameters...)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`query`** |  | Query to execute |
-| <BasicType.Any /> | **`parameters...`** | `nil` | Sequence of parameters to escape into the Query |
-
-
-### `Select`
-
-> Execute a select query asyncronously
-> 
-> Callback will be in the format (rows)
-
-```lua
-my_database:Select(query, function(rows)
-    -- Do something
-end, parameters...)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`query`** |  | Query to select |
-| <BasicType.Function /> | **`callback`** | `nil` | Callback to call when finishes |
-| <BasicType.Any /> | **`parameters...`** | `nil` | Sequence of parameters to escape into the Query |
-
-
-### `SelectedSync`
-
-> Selects a query syncronously
-> 
-> Returns a <BasicType.Table /> of <BasicType.Table />s contains the rows fetched
-
-```lua
-local rows = my_database:SelectedSync(query, parameters...)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`query`** |  | Query to select |
-| <BasicType.Any /> | **`parameters...`** | `nil` | Sequence of parameters to escape into the Query |
-
-
-## Connection String
+## 🧵 Connection String
 
 Each **Database Engine** has it's own parameters which can be used on the `connection_string` constructor. Those parameters are defined and backend-dependent by the Engine, being passed directly to the Backend when creating the connection.
 
@@ -177,7 +77,7 @@ Usually you don't need to explicitly define all (or most) of the parameters desc
 :::
 
 
-### SQLite
+### ▶️ SQLite
 
 :::tip
 
@@ -195,7 +95,7 @@ There is a special **connection_string** for SQLite: `:memory:`. This will creat
 | **`vfs`** | | set the SQLite VFS used to as OS interface. The VFS should be registered before opening the connection, see the [documentation](https://www.sqlite.org/vfs.html) |
 
 
-### MySQL
+### ▶️ MySQL
 
 | Parameter | Default Value | Description |
 | :--- | :--- | :--- |
@@ -215,7 +115,7 @@ There is a special **connection_string** for SQLite: `:memory:`. This will creat
 | **`write_timeout`** |  | should be positive integer value that means seconds corresponding to `MYSQL_OPT_WRITE_TIMEOUT` |
 
 
-### PostgreSQL
+### ▶️ PostgreSQL
 
 More parameters and complete information can be found at the [PostgreSQL Official Documentation](https://www.postgresql.org/docs/8.3/libpq-connect.html).
 

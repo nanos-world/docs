@@ -12,7 +12,7 @@ Lot's of improvements on Sandbox game-mode has been made in the past month, here
 We thought a lot about how to make the experience of sandbox game-mode even better. And with that we made several improvements, including the addition of categories in the sidebar, new tabs and even new stuff to spawn! Not to mention several bug fixes and the overall usability has been improved! No more movement blocked when opening the Spawn Menu!
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/sandbox-improvements/new-sandbox-ui.mp4" type="video/mp4" />
+    <source src="/videos/blog/sandbox-improvements/new-sandbox-ui.webm" />
 </video>
 
 
@@ -32,7 +32,7 @@ It's been in there for some time, but we'd like to highlight it! On Spawn Menu n
 Those NPCs has some basic functionality defined in Lua, they walk around randomly and even run away when they are threatened! Insane!
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/sandbox-improvements/npcs.mp4" type="video/mp4" />
+    <source src="/videos/blog/sandbox-improvements/npcs.webm" />
 </video>
 
 ## New Weapons  🔫
@@ -42,7 +42,7 @@ This is not strictly related to Sandbox game-mode, but besides the new Props, we
 This includes a P90, UMP-45, M1911 Pistol and many other!
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/sandbox-improvements/new-weapons.mp4" type="video/mp4" />
+    <source src="/videos/blog/sandbox-improvements/new-weapons.webm" />
 </video>
 
 
@@ -59,7 +59,7 @@ Besides the categories in the left-side, we are starting to add a new section to
 You can change and select any pattern from the hundreds included in the game to be applied in your weapon (it is synchronized with other players as well)! It's is really easy to add your own `.jpg` as pattern in the menu!
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/sandbox-improvements/weapons-pattern.mp4" type="video/mp4" />
+    <source src="/videos/blog/sandbox-improvements/weapons-pattern.webm" />
 </video>
 
 
@@ -68,7 +68,7 @@ You can change and select any pattern from the hundreds included in the game to 
 This is an awesome feature which I've been working in the last weeks, it's something 100% scripting side, I'm not sure yet if this should become a built-in thing.
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/sandbox-improvements/breakable-watermelon.mp4" type="video/mp4" />
+    <source src="/videos/blog/sandbox-improvements/breakable-watermelon.webm" />
 </video>
 
 But now on Sandbox we can configure Props to break when Hit or TakeDamage! It is also possible to easily configure which debris will be generated, it's randomness and much more, see an example:
@@ -91,15 +91,15 @@ And voila every time a Watermelon spawns through the Spawn Menu, it will be brea
 In a sub-category as Breakable Props, we can have Explosive ones! Which will not only break if they take damage or get Hit, but will also EXPLODE! Causing damage, and even start a chain reaction of explosions!
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/sandbox-improvements/chain-explosions.mp4" type="video/mp4" />
+    <source src="/videos/blog/sandbox-improvements/chain-explosions.webm" />
 </video>
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/sandbox-improvements/gas-house-explosion.mp4" type="video/mp4" />
+    <source src="/videos/blog/sandbox-improvements/gas-house-explosion.webm" />
 </video>
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/sandbox-improvements/gas-explosion-danger.mp4" type="video/mp4" />
+    <source src="/videos/blog/sandbox-improvements/gas-explosion-danger.webm" />
 </video>
 
 As you can see it can be very dangerous to play with fire! 😅
@@ -114,5 +114,5 @@ We've also implemented a LOT of new content for modding & scripting that will st
 That's all for this blog! Thank you so much for all your support! 🥰
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/sandbox-improvements/watch-teaser.mp4" type="video/mp4" />
+    <source src="/videos/blog/sandbox-improvements/watch-teaser.webm" />
 </video>

@@ -1,28 +1,14 @@
 ---
 title: 🔪 Melee
-description: A Melee represents an Entity which can be Pickable by a Character, doesn't have any special action unless holding it with hands with pre-defined handling modes.
+description: A Melee represents an Entity which can be Pickable by a Character and can be used to melee attack, Charactes can hold it with hands with pre-defined handling modes.
 sidebar_position: 0
 tags: [class]
 ---
 
-
-A Melee represents an Entity which can be Pickable by a Character and can be used to melee attack, Charactes can hold it with hands with pre-defined handling modes.
-
-import { Structs, BasicType, AuthorityType, Classes, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
-
-![](/img/docs/torch.png)
-
-:::info
-
-🟦 **Authority:** This class can only be spawned on [Server](/core-concepts/scripting/authority-concepts.mdx).
-
-⏬ **Inheritance:** This class inherits from <Classes.Actor />, <Classes.Paintable /> and <Classes.Pickable />.
-
-:::
+<HeaderDeclaration type="Class" name="Melee" image="/img/docs/torch.webp" />
 
 
-## Usage
-
+## 🎒 Examples
 
 ```lua
 local crowbar = Melee(
@@ -38,167 +24,34 @@ local crowbar = Melee(
 crowbar:SetScale(Vector(1.5, 1.5, 1.5))
 crowbar:SetAnimationCharacterUse("nanos-world::AM_Mannequin_Melee_Slash_Attack")
 crowbar:SetDamageSettings(0.3, 0.5)
-crowbar:SetCooldown(0.5)
+crowbar:SetCooldown(1.0)
 crowbar:SetBaseDamage(40)
 ```
 
 
-## Constructor Parameters
+## 🏗️ Constructor
 
-| **Type** | **Name** | **Default** |
-| :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** | Vector(0, 0, 0) |
-| <Structs.Rotator /> | **`rotation`** | Rotator(0, 0, 0) |
-| <AssetPath.StaticMesh /> | `asset` | ` ` |
-| <Enums>CollisionType</Enums> | **`collision_type`** | CollisionType.Normal |
-| <BasicType.Boolean /> | **`gravity_enabled`** | true |
-| <Enums>HandlingMode</Enums> | **`handling_mode`** | HandlingMode.Torch |
-| <AssetPath.Material /> | **`crosshair_material`** | ` ` |
+<ConstructorDeclaration type="Class" name="Melee" />
 
+:::tip
 
-## Functions
+nanos world provides a special _Particle*_ called `nanos-world::P_Grenade_Special` which spawns different particles depending on the surface it explodes, and also if is underwater.
 
-import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
-import BasePickableFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-pickable-functions.mdx';
-import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-paintable-functions.mdx';
+**This "Particle" is just a special identifier which can only be used on Grenades!*
 
-<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
-<details><summary>Inherited Pickable Functions</summary><BasePickableFunctions /></details>
-<details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
-
-|  | **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- | :--- |
-| <AuthorityType.ServerOnly /> |  | [**`SetAnimationCharacterUse`**](melee#setanimationcharacteruse) | Sets the Animation when attacking |
-| <AuthorityType.ServerOnly /> |  | [**`SetSoundUse`**](melee#setsounduse) | Sets the Sound when attacking |
-| <AuthorityType.ServerOnly /> |  | [**`SetBaseDamage`**](melee#setbasedamage) | Sets the Base Damge |
-| <AuthorityType.ServerOnly /> |  | [**`SetDamageSettings`**](melee#setdamagesettings) | Sets the Damage Settings (activation damage time/duration) |
-| <AuthorityType.ServerOnly /> |  | [**`SetCooldown`**](melee#setcooldown) | Sets the Cooldown between attacks |
-| <AuthorityType.Both /> | <BasicType.String /> | [**`GetAnimationCharacterUse`**](melee#getanimationcharacteruse) | Gets the attack Animation |
-| <AuthorityType.Both /> | <BasicType.String /> | [**`GetSoundUse`**](melee#getsounduse) | Gets the Attacking Sound |
-| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetBaseDamage`**](melee#getbasedamage) | Gets the Base Damage |
-| <AuthorityType.Both /> | <BasicType.Number /> | [**`GetCooldown`**](melee#getcooldown) | Gets the Cooldown |
+:::
 
 
-### <AuthorityType.ServerOnly />`SetAnimationCharacterUse`
+## 🦠 Functions
 
-> Sets the Animation when attacking
-
-```lua
-my_melee:SetAnimationCharacterUse(asset_path)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <AssetPath.Animation />  | **`asset_path`** |  | The Animation used when attacking |
+<FunctionsDeclaration type="Class" name="Melee" />
 
 
-### <AuthorityType.ServerOnly />`SetSoundUse`
+## 🚀 Events
 
-> Sets the Sound when attacking
-
-```lua
-my_melee:SetSoundUse(asset_path)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <AssetPath.Sound />  | **`asset_path`** |  | The Sound used when attacking |
-
-
-### <AuthorityType.ServerOnly />`SetBaseDamage`
-
-> Sets the Base Damage
-
-```lua
-my_melee:SetBaseDamage(damage)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number />  | **`damage`** |  | The Base Damage value |
-
-
-### <AuthorityType.ServerOnly />`SetDamageSettings`
-
-> Sets the times when to start applying damage and when to end. During this time the collision of the melee will be enabled and the damage will be applied if it hits something
-
-```lua
-my_melee:SetDamageSettings(damage_start_time, damage_duration_time)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number />  | **`damage_start_time`** |  | The initial time to start applying damage |
-| <BasicType.Number />  | **`damage_duration_time`** |  | The duration time to stop applying damage |
-
-
-### <AuthorityType.ServerOnly />`SetCooldown`
-
-> Sets the cooldown between attacking
-
-```lua
-my_melee:SetCooldown(cooldown)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number />  | **`cooldown`** |  |  |
-
-
-### `GetAnimationCharacterUse`
-
-> Gets the animation asset
->
-> Returns <BasicType.String />
-
-```lua
-my_melee:GetAnimationCharacterUse()
-```
-
-
-### `GetSoundUse`
-
-> Gets the sound asset
->
-> Returns <BasicType.String />
-
-```lua
-my_melee:GetSoundUse()
-```
-
-
-### `GetBaseDamage`
-
-> Gets the base damage
->
-> Returns <BasicType.Number />
-
-```lua
-my_melee:GetBaseDamage()
-```
-
-
-### `GetCooldown`
-
-> Gets the cooldown
->
-> Returns <BasicType.Number />
-
-```lua
-my_melee:GetCooldown()
-```
-
-
-## Events
-
-import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
-import BasePickableEvents from '@site/docs/scripting-reference/classes/base-classes/_base-pickable-events.mdx';
-
-<details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
-<details><summary>Inherited Pickable Events</summary><BasePickableEvents /></details>
+<EventsDeclaration type="Class" name="Melee" />
 
 
 <!-- ## WIP: HandlingModes -->
 
 <!-- TODO: Add Handling Modes images -->
-

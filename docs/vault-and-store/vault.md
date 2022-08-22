@@ -9,6 +9,7 @@ nanos world **Vault** is in-game interface to download and manage installed Asse
 
 ![](/img/docs/vault-01.jpg)
 
+
 ## About the Vault
 
 Within the game, we have a menu tab called **Vault**, where you will be able to **download**, **update** and **manage** the Packages/Assets you have in your account or installed locally, as well as  browse the whole store!

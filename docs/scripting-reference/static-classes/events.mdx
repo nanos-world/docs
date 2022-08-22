@@ -4,125 +4,22 @@ description: Subscribe for user-defined Events
 tags: [static-class]
 ---
 
+import { Classes } from '@site/docs/components/_nanos.mdx';
 
-Subscribe for user-defined Events
 
-import { Structs, BasicType, AuthorityType, Classes, ReferenceLink } from '@site/docs/components/_nanos.mdx';
+<HeaderDeclaration type="StaticClass" name="Events" is_static />
+
+
+## 🎒 Examples
 
 :::info
 
-🟦🟧 **Authority:** This can be accessed on both [Client](/core-concepts/scripting/authority-concepts.mdx) and [Server](/core-concepts/scripting/authority-concepts.mdx).
-
-🗿 **Static Class:** This is a Static Class. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
+_Remote_ means the other side, e.g.: if I'm the **Client**, the remote is the Server. If I'm the **Server**, the remote is the Client.
 
 :::
 
 
-<ReferenceLink href="core-concepts/scripting/events-guide">Events Guide</ReferenceLink>
-
-## Static Functions
-
-|  | Returns | Name | Description |
-| :--- | :--- | :--- | :--- |
-| <AuthorityType.Both /> |  | [**`Call`**](events#call) | Calls an Event which will be triggered in all Local Packages |
-| <AuthorityType.ClientOnly /> |  | [**`CallRemote`**](events#callremote) | Calls an Event if on Client which will be triggered in all Server Packages |
-| <AuthorityType.ServerOnly /> |  | [**`CallRemote`**](events#callremote) | Calls an Event if on Server which will be triggered in all Client's Packages of a specific Player |
-| <AuthorityType.ServerOnly /> |  | [**`BroadcastRemote`**](events#broadcastremote) | Calls an Event on Server which will be triggered in all Client's Packages |
-| <AuthorityType.Both /> | <BasicType.Function /> | [**`Subscribe`**](events#subscribe) | Subscribes for an user-created event which will be triggered for both local or _remote\*_ called events |
-| <AuthorityType.Both /> |  | [**`Unsubscribe`**](events#unsubscribe) | Unsubscribes from all subscribed events in this Package with that event name, optionally passing the function to unsubscribe only that callback |
-
-:::info
-
-_Remote\*_ means the other side, e.g.: if I’m the **Client**, the remote is the Server. If I’m the **Server**, the remote is the Client.
-
-:::
-
-#### `Call`
-
-> Calls an Event which will be triggered in all Local Packages
-
-```lua
-Events.Call(event_name, args...)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`event_name`** | The Event Name to trigger the event |
-| <BasicType.Any /> | **`args...`** | Arguments to pass to the event |
-
-#### <AuthorityType.ClientOnly />`CallRemote`
-
-> Calls an Event on Client which will be triggered in all Server Packages
-
-```lua
-Events.CallRemote(event_name, args...)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`event_name`** | The Event Name to trigger the event |
-| <BasicType.Any /> | **`args...`** | Arguments to pass to the event |
-
-#### <AuthorityType.ServerOnly />`CallRemote`
-
-> Calls an Event on Server which will be triggered in all Client's Packages of `Player`
-
-```lua
-Events.CallRemote(event_name, player, args...)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`event_name`** | The Event Name to trigger the event |
-| <Classes.Player /> | **`player`** | The remote player to send this event |
-| <BasicType.Any /> | **`args...`** | Arguments to pass to the event |
-
-#### <AuthorityType.ServerOnly />`BroadcastRemote`
-
-> Calls an Event on Server which will be triggered in all Client's Packages
-
-```lua
-Events.BroadcastRemote(event_name, args...)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`event_name`** | The Event Name to trigger the event |
-| <Classes.Player /> | **`player`** | The remote player to send this event |
-| <BasicType.Any /> | **`args...`** | Arguments to pass to the event |
-
-#### `Subscribe`
-
-> Subscribes for an user-created event which will be triggered for both local or remote called events
-> 
-> Returns the <BasicType.Function /> callback itself
-
-```lua
-Events.Subscribe(event_name, function()
-
-end)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`event_name`** | The Event Name to Subscribe for an event |
-| <BasicType.Function /> | **`callback`** | The callback function to execute |
-
-#### `Unsubscribe`
-
-> Unsubscribes from all subscribed events in this Package with that event name, optionally passing the function to unsubscribe only that callback
-
-```lua
-Events.Unsubscribe(event_name, callback)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`event_name`** |  | The Event Name to Unsubscribe |
-| <BasicType.Function /> | **`callback`** | `nil` | The callback function to unsubscribe |
-
-## Examples
-
+### Basic Usage
 
 ```lua title="Client/Index.lua"
 -- register for a local Event (local = client only)
@@ -144,13 +41,11 @@ end)
 Events.CallRemote("MyServerEvent", "hello nanos world!")
 ```
 
-
 :::info
 
 On **Server**, registering for remote events has an addition parameter: <Classes.Player />, which is the client who sent the event.
 
 :::
-
 
 ```lua title="Server/Index.lua"
 -- register for a local Event (local = server only)
@@ -167,7 +62,7 @@ Events.Subscribe("MyServerEvent", function(player, my_text)
     Package.Log(player:GetName() .. " sent an event from client! " .. my_text)
     -- outputs "Syed sent an event from client! hello nanos world!"
 
-            -- sends an "answer" to the player which sent this event
+    -- sends an "answer" to the player which sent this event
     Events.CallRemote("MyClientEvent", player, "hello nanos world! message only for you!")
 end)
 
@@ -177,7 +72,6 @@ Events.BroadcastRemote("MyClientEvent", "hello nanos world!")
 
 
 ### Passing entities through Events
-
 
 ```lua
 -- register for an Event (remote or local)
@@ -196,3 +90,16 @@ Events.Call("MyEvent", "hello nanos world!", Vector(123, 123, 123), my_temp_char
 Events.CallRemote("MyEvent", "hello nanos world!", Vector(123, 123, 123), my_temp_character, 456)
 ```
 
+
+:::tip
+
+You can find more examples and a compreensive guide at the Events Guide page.
+
+:::
+
+<ReferenceLink href="core-concepts/scripting/events-guide">Events Guide</ReferenceLink>
+
+
+## 🗿 Static Functions
+
+<StaticFunctionsDeclaration type="StaticClass" name="Events" />

@@ -8,11 +8,13 @@ tags: [scripting]
 
 All you need to know about Events.
 
+
 ## Classes Events
 
 In nanos world, all actions performed by Players or Entities can be obtained through **events**.
 
 The most basic event to bring an example is the **`Spawn`**. Every time an entity is spawned, the event `Spawn` will be triggered.
+
 
 ### Subscribing for Class Events
 
@@ -30,6 +32,7 @@ Most events are triggered on both Client and Server sides, only a few rare excep
 
 :::
 
+
 ### Unsubscribing of Class Events
 
 Currently there is two ways of unsubscribing from events:
@@ -40,12 +43,14 @@ Currently there is two ways of unsubscribing from events:
 
 :::
 
+
 #### Unsubscribing from all Events
 
 ```lua
 -- This will unregister from all "Spawn" events of Player registered in this Package
 Player.Unsubscribe("Spawn")
 ```
+
 
 #### Unsubscribing from a specific Event Callback
 
@@ -70,9 +75,11 @@ Player.Unsubscribe("Spawn", OnSpawnPlayer)
 -- "player has joined" anymore
 ```
 
+
 ## Entity Events
 
 In nanos world it is possible to register for events on specific Entities as well, this way the callback will only be triggered if that specific entity is the event reason.
+
 
 ### Subscribing for Entity Events
 
@@ -91,6 +98,7 @@ Note that once the entity is destroyed, all events registered for it will be unr
 
 :::
 
+
 ### Unsubscribing of Entity Events
 
 Currently there is two ways of unsubscribing from events:
@@ -108,6 +116,7 @@ Currently there is two ways of unsubscribing from events:
 -- registered in this Package
 my_character:Unsubscribe("EnterVehicle")
 ```
+
 
 #### Unsubscribing from a specific Entity Event Callback
 
@@ -129,13 +138,9 @@ end)
 my_character:Unsubscribe("EnterVehicle", OnCharacterEnteredVehicle)
 ```
 
+
 ## Custom Events
 
-In nanos world, it is possible to define and call Custom Events. For that, please refer to [Events](/scripting-reference/static-classes/events.mdx) Static Class:
+In nanos world, it is possible to define and call Custom Events. Please refer to [Events](/scripting-reference/static-classes/events.mdx) Static Class for the technical documentation.
 
-:::info
-
-Custom Events will be always called and triggered in all Packages.
-
-:::
-
+Custom events are user-created events which you can subscribe or call to all other Packages.

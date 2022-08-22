@@ -5,20 +5,7 @@ sidebar_position: 0
 tags: [class]
 ---
 
-
-Class for playing in-game 2D and 3D sounds
-
-import { Structs, BasicType, AuthorityType, Enums, AssetPath, Classes } from '@site/docs/components/_nanos.mdx';
-
-![](/img/docs/sound.png)
-
-:::info
-
-🟧 **Authority:** This class can only be spawned on [Client](/core-concepts/scripting/authority-concepts.mdx).
-
-⏬ **Inheritance:** This class inherits from <Classes.Actor />.
-
-:::
+<HeaderDeclaration type="Class" name="Sound" image="/img/docs/sound.webp" />
 
 :::tip
 
@@ -26,7 +13,8 @@ You can also load raw `.ogg` files from disk! Please check [SpecialPath](/script
 
 :::
 
-## Usage
+
+## 🎒 Examples
 
 ```lua
 local my_sound = Sound(
@@ -40,324 +28,62 @@ local my_sound = Sound(
 )
 ```
 
-## Constructor Parameters
-
-| **Type** | **Name** | **Default** | Description |
-| :--- | :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` | 3D only |
-| <AssetPath.Sound /> | **`asset`** | ` ` | The Sound Asset or Special Path |
-| <BasicType.Boolean /> | **`is_2D_sound`** | `false` |  |
-| <BasicType.Boolean /> | **`auto_destroy`** | `true` | If to destroy after finished playing |
-| <Enums>SoundType</Enums> | **`sound_type`** | `SoundType.SFX` | Used to apply user's volume settings |
-| <BasicType.Number /> | **`volume`** | `1` |  |
-| <BasicType.Number /> | **`pitch`** | `1` |  |
-| <BasicType.Number /> | **`inner_radius`** | `400` | 3D only |
-| <BasicType.Number /> | **`falloff_distance`** | `3600` | 3D only |
-| <Enums>AttenuationFunction</Enums> | **`attenuation_function`** | `Linear` | 3D only |
-| <BasicType.Boolean /> | **`keep_playing_when_silent`** | `false` | 3D only - Whether to keep playing this sound when it's not audible - Use with caution, it may cause performance issues! |
-| <Enums>SoundLoopMode</Enums> | **`loop_mode`** | `Default` | Loop Mode (if should force sound to loop) |
-
-
-## Functions
-
-import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
-
-<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
-
-| **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- |
-|  | [**`FadeIn`**](sound#fadein) | Plays the sound with a fade effect |
-|  | [**`FadeOut`**](sound#fadeout) | Stops the sound with a fade effect |
-|  | [**`Play`**](sound#play) | Starts the sound |
-|  | [**`SetFalloffDistance`**](sound#setfalloffdistance) | If a 3D Sound, sets the distance which the sound is inaudible |
-|  | [**`SetInnerRadius`**](sound#setinnerradius) | If a 3D Sound, sets the distance within the volume is 100% |
-|  | [**`SetLowPassFilter`**](sound#setlowpassfilter) | Sets lowpass filter frequency. Sets 0 to disable it. |
-|  | [**`SetPaused`**](sound#setpaused) | Pauses the sound |
-|  | [**`SetPitch`**](sound#setpitch) | Sets the Sound's pitch |
-|  | [**`SetVolume`**](sound#setvolume) | Sets the Sound's volume (0 - 1) |
-|  | [**`Stop`**](sound#stop) | Stops the sound |
-|  | [**`StopDelayed`**](sound#stopdelayed) | Stops the sound after the provided delay |
-| <BasicType.Boolean /> | [**`Is2D`**](sound#is2d) | Returns if the sound is 2D |
-| <BasicType.Boolean /> | [**`IsPlaying`**](sound#isplaying) | Returns if the sound is playing |
-| <BasicType.Number /> | [**`GetDuration`**](sound#getduration) | Returns the duration of sound |
-| <BasicType.Number /> | [**`GetPitch`**](sound#getpitch) | Returns the pitch |
-| <BasicType.Number /> | [**`GetVolume`**](sound#getvolume) | Returns the volume |
-| <BasicType.Number /> | [**`GetLowPassFilter`**](sound#getlowpassfilter) | Returns the Low Pass Filter Frequency |
-| <BasicType.Number /> | [**`GetInnerRadius`**](sound#getinnerradius) | Returns the Attenuation Inner Radius |
-| <BasicType.Number /> | [**`GetFalloffDistance`**](sound#getfalloffdistance) | Returns the Attenuation Falloff Distance |
-| <Enums>SoundType</Enums> | [**`GetSoundType`**](sound#getsoundtype) | Returns the Sound Type |
-
-
-## Events
-
-import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
-
-<details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
-
-### `FadeIn`
-
-> Plays the sound with a fade effect
-
 ```lua
-my_sound:FadeIn(fade_in_duration, fade_volume_level, start_time)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`fade_in_duration`** |  |  |
-| <BasicType.Number /> | **`fade_volume_level`** | `1` |  |
-| <BasicType.Number /> | **`start_time`** | `0` |  |
-
-### `FadeOut`
-
-> Stops the sound with a fade effect
-
-```lua
-my_sound:FadeOut(fade_out_duration, fade_volume_level, destroy_after_fadeout)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`fade_out_duration`** |  |  |
-| <BasicType.Number /> | **`fade_volume_level`** | `0` |  |
-| <BasicType.Boolean /> | **`destroy_after_fadeout`** | `false` |  |
-
-### `Play`
-
-> Starts the sound
-
-```lua
-my_sound:Play(start_time)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`start_time`** | `0` |  |
-
-### `SetFalloffDistance`
-
-> If a 3D Sound, sets the distance which the sound is inaudible
-
-```lua
-my_sound:SetFalloffDistance(falloff_distance)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Number /> | **`falloff_distance`** |  |
-
-### `SetInnerRadius`
-
-> If a 3D Sound, sets the distance within the volume is 100%
-
-```lua
-my_sound:SetInnerRadius(inner_radius)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Number /> | **`inner_radius`** |  |
-
-### `SetLowPassFilter`
-
-> Sets lowpass filter frequency. Sets 0 to disable it.
-
-```lua
-my_sound:SetLowPassFilter(frequency)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Number /> | **`frequency`** |  |
-
-### `SetPaused`
-
-> Pauses the sound
-
-```lua
-my_sound:SetPaused(pause)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Boolean /> | **`pause`** | `true` |  |
-
-### `SetPitch`
-
-> Sets the Sound's pitch
-
-```lua
-my_sound:SetPitch(new_pitch)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Number /> | **`new_pitch`** |  |
-
-### `SetVolume`
-
-> Sets the Sound's volume \(0 - 1\)
-
-```lua
-my_sound:SetVolume(new_volume)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Number /> | **`new_volume`** |  |
-
-
-### `Stop`
-
-> Stops the sound
-
-```lua
-my_sound:Stop()
+-- Spawning a ogg sound located in a Package
+local ogg_sound = Sound(Vector(), "package://my-package/Client/awesome_beep.ogg", true)
 ```
 
 
-### `StopDelayed`
+## 🏗️ Constructor
 
-> Stops the sound after the provided delay
+<ConstructorDeclaration type="Class" name="Sound" />
 
-```lua
-my_sound:StopDelayed(delay)
-```
+:::info Note
 
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Number /> | **`delay`** |  |
+**`auto_destroy`** means the Entity will be immediately destroyed after spawned, losing references to the _Particle System_ spawned in-game. So if the _Particle System_ itself loops indefinitely, it will keep playing until the Player reconnects.
 
+:::
 
-### `Is2D`
+## 🦠 Functions
 
-> Gets if the sound is 2D
->
-> Returns <BasicType.Boolean />
-
-```lua
-my_sound:Is2D()
-```
+<FunctionsDeclaration type="Class" name="Sound" />
 
 
-### `IsPlaying`
+## 🚀 Events
 
-> Gets if the sound is playing
->
-> Returns <BasicType.Boolean />
-
-```lua
-my_sound:IsPlaying()
-```
+<EventsDeclaration type="Class" name="Sound" />
 
 
-### `GetDuration`
-
-> Gets the duration of the Sound.
->
-> Returns <BasicType.Number />
-
-```lua
-my_sound:GetDuration()
-```
-
-### `GetPitch`
-
-> 
->
-> Returns <BasicType.Number />
-
-```lua
-my_sound:GetPitch()
-```
-
-
-### `GetVolume`
-
-> 
->
-> Returns <BasicType.Number />
-
-```lua
-my_sound:GetVolume()
-```
-
-
-### `GetLowPassFilter`
-
-> 
->
-> Returns <BasicType.Number />
-
-```lua
-my_sound:GetLowPassFilter()
-```
-
-
-### `GetInnerRadius`
-
-> 
->
-> Returns <BasicType.Number />
-
-```lua
-my_sound:GetInnerRadius()
-```
-
-
-### `GetFalloffDistance`
-
-> 
->
-> Returns <BasicType.Number />
-
-```lua
-my_sound:GetFalloffDistance()
-```
-
-
-### `GetSoundType`
-
-> 
->
-> Returns <BasicType.Number />
-
-```lua
-my_sound:GetSoundType()
-```
-
-
-## Sound Attenuation
+## 🔊 Sound Attenuation
 
 This property defines the function that determines the rate of attenuation over distance. There are a number of different functions to choose from:
 
-### Linear
+### 🔈 Linear
 
-![](/img/docs/sounds-linear.jpg)
+![](/img/docs/sounds-linear.webp)
 
-This is the default function. When using this function the volume will attenuate linearly and so the changes in volume are constant as the listener moves towards and away from the source. This function is good for crossfading between large background-type sounds that don’t need tightly focussed 3D spatial falloff settings.
+This is the default function. When using this function the volume will attenuate linearly and so the changes in volume are constant as the listener moves towards and away from the source. This function is good for crossfading between large background-type sounds that don't need tightly focussed 3D spatial falloff settings.
 
-### Logarithmic
+### 🔈 Logarithmic
 
-![](/img/docs/sounds-log.jpg)
+![](/img/docs/sounds-log.webp)
 
 When using this function the volume attenuates such that the changes in volume are greater at close distances, and lesser at far distances. This function is good for spot sounds that need good 3D positioning, while still being audible at reasonable distances.
 
-### Inverse
+### 🔈 Inverse
 
-![](/img/docs/sounds-inverse.jpg)
+![](/img/docs/sounds-inverse.webp)
 
 When using this function, the changes in volume are similar to that of the logarithmic curve, but are more exaggerated. This function is good for sounds that only need to be just audible at far distances, but that gets significantly louder as the listener gets quite close to the source.
 
-### Log Reverse
+### 🔈 Log Reverse
 
-![](/img/docs/sounds-log-reverse.jpg)
+![](/img/docs/sounds-log-reverse.webp)
 
 When using this function, the changes in volume are lesser at close distances, with more dramatic differences at far distances. This function is good for sounds that need to be loud across larger distances.
 
-### Natural Sound
+### 🔈 Natural Sound
 
-![](/img/docs/sounds-natural.jpg)
+![](/img/docs/sounds-natural.webp)
 
-This function attempts to model a more ‘naturalistic’ falloff behavior to produce behaviors that closer match reality. This function is a kind of ‘middle ground’ between the Logarithmic and Inverse functions.
-
+This function attempts to model a more 'naturalistic' falloff behavior to produce behaviors that closer match reality. This function is a kind of 'middle ground' between the Logarithmic and Inverse functions.

@@ -7,7 +7,7 @@ tags: [scripting, migration]
 
 There have been no significant changes from version 0.73 to Alpha 1.0, however this guide remains for those coming from older versions.
 
-![THE DAY THE API STOOD STEADY update](/img/blog/updates/devastation.jpg)
+![THE DAY THE API STOOD STEADY update](/img/blog/updates/devastation.webp)
 
 ## Migration Notes
 

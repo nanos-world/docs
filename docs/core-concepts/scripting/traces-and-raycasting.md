@@ -30,8 +30,14 @@ Timer.SetInterval(function()
     local start_location = viewport_3D.Position
     local end_location = viewport_3D.Position + viewport_3D.Direction * trace_max_distance
 
+    -- Determine at which object we will be tracing for (WorldStatic - StaticMeshes - and PhysicsBody - Props)
+    local collision_trace = CollisionChannel.WorldStatic | CollisionChannel.PhysicsBody
+
+    -- Sets the trace modes (we want it to return Entity and Draws a Debug line)
+    local trace_mode = TraceMode.ReturnEntity | TraceMode.DrawDebug
+
     -- Last parameter as true means it will draw a Debug Line in the traced segment
-    local trace_result = Client.Trace(start_location, end_location, CollisionChannel.WorldStatic | CollisionChannel.PhysicsBody, false, true, false, {}, true)
+    local trace_result = Client.TraceLineSingle(start_location, end_location, collision_trace, trace_mode)
 
     -- If hit something draws a Debug Point at the location
     if (trace_result.Success) then
@@ -54,7 +60,7 @@ end, 100)
 
 :::tip
 
-As you could see, we can pass bit-wise operators to Trace for more than one [CollisionChannel](/scripting-reference/glossary/enums.md#collisionchannel) at once! Use `|` between the **CollisionChannels** to achieve that.
+As you could see, we can pass bit-wise operators to Trace for more than one [CollisionChannel](/scripting-reference/glossary/enums.mdx#collisionchannel) at once! Use `|` between the **CollisionChannels** to achieve that.
 
 :::
 

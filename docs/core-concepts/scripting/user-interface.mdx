@@ -34,7 +34,7 @@ This sample code shows how to add a basic page using HTML+JavaScript with the We
 
 ```lua title="Client/Index.lua"
 -- Spawns a WebUI with the HTML file you just created
-MyUI = WebUI("My UI", "file:///UI/index.html")
+MyUI = WebUI("My UI", "file://UI/index.html")
 
 -- When the HTML is ready, triggers an Event in there
 MyUI:Subscribe("Ready", function()

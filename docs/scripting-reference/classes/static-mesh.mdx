@@ -1,38 +1,14 @@
 ---
 title: 🏠 StaticMesh
-description: >-
-  A StaticMesh entity represents a Mesh which can be spawned in the world, can't move and is more optimized for using in decorating the world
+description: A StaticMesh entity represents a Mesh which can be spawned in the world, can't move and is more optimized for using in decorating the world.
 sidebar_position: 0
 tags: [class]
 ---
 
-
-A StaticMesh entity represents a Mesh which can be spawned in the world, can't move and is more optimized for using in decorating the world.
-
-import { Structs, BasicType, AuthorityType, Classes, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
-
-![](/img/docs/static-mesh.jpg)
-
-Static Meshes are like <Classes.Prop />s, but with fewer interaction options. Static Meshes are aimed to offer better performance on spawning Static "objects" in the world than Props.
-
-:::info
-
-🟦🟧 **Authority:** This class can be spawned on both [Client](/core-concepts/scripting/authority-concepts.mdx) and [Server](/core-concepts/scripting/authority-concepts.mdx) (if you spawn it on client, it won't be synchronized with other players).
-
-⏬ **Inheritance:** This class inherits from <Classes.Actor /> and <Classes.Paintable />.
-
-:::
+<HeaderDeclaration type="Class" name="StaticMesh" image="/img/docs/static-mesh.webp" />
 
 
-## Usage
-
-```lua
-local static_mesh = StaticMesh(
-  Vector(-900, 185, 215),
-  Rotator(0, 90, 90),
-  "nanos-world::SM_Crate_07"
-)
-```
+Static Meshes are like Props, but with fewer interaction options. Static Meshes are aimed to offer better performance on spawning Static "objects" in the world than Props.
 
 :::tip
 
@@ -41,57 +17,16 @@ Automatically all StaticMeshActors present in the Level will be loaded as a Stat
 :::
 
 
-## Constructor Parameters
+## 🏗️ Constructor
 
-| **Type** | **Name** | **Default** |
-| :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |
-| <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |
-| <AssetPath.StaticMesh /> | **`asset`** | ` ` |
-| <Enums>CollisionType</Enums> | **`collision_type`** | `CollisionType.Normal` |
+<ConstructorDeclaration type="Class" name="StaticMesh" />
 
 
-## Functions
+## 🦠 Functions
 
-import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
-import BasePaintableFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-paintable-functions.mdx';
-
-<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
-<details><summary>Inherited Paintable Functions</summary><BasePaintableFunctions /></details>
-
-|  | **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- | :--- |
-| <AuthorityType.Both /> | <BasicType.String /> | **`GetMesh`** | Gets the Asset name |
-| <AuthorityType.ClientOnly /> | <BasicType.Boolean /> | **`IsFromLevel`** | If this StaticMesh is from the Level |
+<FunctionsDeclaration type="Class" name="StaticMesh" />
 
 
-## Events
+## 🚀 Events
 
-import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
-
-<details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
-
-|  | **Name** | **Description** |
-| :--- | :--- | :--- |
-|  | [**`TakeDamage`**](static-mesh#takedamage) | When a StaticMesh takes Damage |
-
-
-### `TakeDamage`
-
-> When a StaticMesh takes Damage
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| [StaticMesh](static-mesh) | **`self`** |  |
-| <BasicType.Number /> | **`damage`** |  |
-| <BasicType.String /> | **`bone`** | Damaged bone |
-| <Enums>DamageType</Enums> | **`type`** | Damage Type |
-| <Structs.Vector /> | **`from_direction`** | Direction of the damage relative to the damaged actor |
-| <Classes.Player /> | **`instigator`** | The player which caused the damage |
-| <BasicType.Any /> | **`causer`** | The object which caused the damage |
-
-```lua
-StaticMesh.Subscribe("TakeDamage", function(self, damage, bone, type, from_direction, instigator, causer)
-
-end)
-```
+<EventsDeclaration type="Class" name="StaticMesh" />

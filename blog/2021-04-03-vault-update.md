@@ -6,4 +6,4 @@ tags: [updates]
 ---
 
 
-![](/img/blog/updates/vault.jpg)
+![](/img/blog/updates/vault.webp)

@@ -10,7 +10,7 @@ How to create a simple Gravity Gun to move Props around.
 ### Final result
 
 <video controls="true" allowfullscreen="true">
-    <source src="/videos/docs/tutorials/gravity-gun.mp4" type="video/mp4" />
+    <source src="/videos/docs/tutorials/gravity-gun.webm" />
 </video>
 
 :::tip
@@ -81,8 +81,11 @@ Client.Subscribe("MouseUp", function(key_name)
         -- Determine at which object we will be tracing for (WorldStatic - StaticMeshes - and PhysicsBody - Props)
         local collision_trace = CollisionChannel.WorldStatic | CollisionChannel.PhysicsBody
 
+        -- Sets the trace modes (we want it to return Entity and Draws a Debug line)
+        local trace_mode = TraceMode.ReturnEntity | TraceMode.DrawDebug
+
         -- Do the Trace
-        local trace_result = Client.Trace(start_location, end_location, collision_trace, false, true, false, {}, true)
+        local trace_result = Client.TraceLineSingle(start_location, end_location, collision_trace, trace_mode)
 
         -- If hit something and hit an Entity
         if (trace_result.Success and trace_result.Entity) then

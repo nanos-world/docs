@@ -1,0 +1,497 @@
+import CodeBlock from '@theme/CodeBlock';
+import Admonition from '@theme/Admonition';
+import { Link } from "react-router-dom";
+import { useActiveVersion } from '@docusaurus/plugin-content-docs/client';
+
+import Tippy from '@tippyjs/react';
+import 'tippy.js/animations/scale-subtle.css';
+import 'tippy.js/dist/tippy.css';
+
+import { AuthorityType, BasicType, Classes, Structs, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
+import { FunctionToolTip, EventToolTip } from '@site/src/components/Tooltips.jsx';
+
+import APIData from '@site/src/components/APIData.jsx';
+
+<!-- Asset Paths Map -->
+export const AssetPaths = {
+	StaticMeshPath: AssetPath.StaticMesh,
+	SkeletalMeshPath: AssetPath.SkeletalMesh,
+	AnimationPath: AssetPath.Animation,
+	ParticlePath: AssetPath.Particle,
+	MaterialPath: AssetPath.Material,
+	MapPath: AssetPath.Map,
+	BlueprintPath: AssetPath.Blueprint,
+	SoundPath: AssetPath.Sound,
+	ImagePath: AssetPath.Image,
+	HTMLPath: AssetPath.HTML,
+}
+
+<!-- Gets an Element by it's string type -->
+export function GetElementByType(type) {
+	const is_optional = type.endsWith("?");
+	if (is_optional)
+		type = type.slice(0, -1);
+	const is_array = type.endsWith("[]");
+	if (is_array)
+		type = type.slice(0, -2);
+	const type_uppercase = type.charAt(0).toUpperCase() + type.slice(1);
+	const TypeElement =
+		BasicType[type_uppercase] ? BasicType[type_uppercase] :
+		Classes[type] ? Classes[type] :
+		AssetPaths[type] ? AssetPaths[type] :
+		Structs[type] ? Structs[type] : null;
+	if (!TypeElement)
+		return <Enums>{type}</Enums>;
+	return <>{ is_array ? <><BasicType.Table /> of </> : "" }<TypeElement /> { is_optional ? <>or <BasicType.Nil /></> : "" }</>;
+}
+
+<!-- Splits a value if it has | -->
+export function SplitTypesByOr(types) {
+	return types.split("|").map((type) => GetElementByType(type)).reduce((prev, next) => [prev, " or ", next])
+}
+
+<!-- Gets a list of Returns elements -->
+export function GetReturnList(return_list) {
+	return return_list.map((return_data) => SplitTypesByOr(return_data.type)).reduce((prev, next) => [prev, <CommaSeparator />, next]);
+}
+
+export function GetReturnTableDescriptionList(return_data) {
+	if (return_data.table_properties) {
+		const table_return_list = return_data.table_properties.map((property) => " " + property.name + ": " + property.type);
+		return "in the format <code>{ " + table_return_list + " }</code>";
+	}
+	return return_data.description;
+}
+
+<!-- Gets a list of return descriptions surrounded by () -->
+export function GetReturnDescriptionList(return_list) {
+	const return_list_plain = return_list.map((return_data) => <span dangerouslySetInnerHTML={{ __html: GetReturnTableDescriptionList(return_data) }} />).reduce((prev, next) => [prev, ", ", next]);
+	if (!return_list_plain)
+		return "";
+	return <>{"("}{ return_list_plain }{")"}</>;
+}
+
+<!-- Authority Label Map -->
+export const AuthorityLabels = {
+	client: <>This class can only be spawned on 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a>.</>,
+	server: <>This class can only be spawned on 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a>.</>,
+	both: <>This class can be spawned on both 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a> (if you spawn it on client, it won't be synchronized with other players).</>,
+}
+
+<!-- Authority Label Map for Static Classes -->
+export const AuthorityLabelsStatic = {
+	client: <>This static class can be accessed only on 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a>.</>,
+	server: <>This static class can be accessed only on 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a>.</>,
+	both: <>This static class can be accessed on both 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a>.</>,
+}
+
+<!-- Gets a Parameter name (with ? when optional) -->
+export function GetParameterName(parameter_data) {
+	return `${parameter_data.name}${parameter_data.default != null ? "?" : ""}`;
+}
+
+<!-- Gets a list of parameters separated by comma -->
+export function GetParametersList(list) {
+	return !list ? "" : list.map((value) => GetParameterName(value)).join(", ");
+}
+
+<!-- Generates Constructor Example Codeblock -->
+export function GetConstructorExample(class_data) {
+	return `local my_${class_data.name.toLowerCase()} = ${class_data.name}(${GetParametersList(class_data.constructor)})`;
+}
+
+<!-- Generates the local ret = Part of the function -->
+export function GetReturnPart(function_data) {
+	if (!function_data.return)
+		return "";
+	if (function_data.return.length == 1)
+		return "local ret = ";
+	return `local${function_data.return.map((value, i) => " ret_0" + (i + 1))} = `;
+}
+
+<!-- Generates Function Example Codeblock -->
+export function GetFunctionExample(class_name, function_data) {
+	return `${GetReturnPart(function_data)}my_${class_name.toLowerCase()}:${function_data.name}(${GetParametersList(function_data.parameters)})`;
+}
+
+<!-- Generates Function Example Codeblock -->
+export function GetStaticFunctionExample(class_name, function_data) {
+	return `${GetReturnPart(function_data)}${class_name}.${function_data.name}(${GetParametersList(function_data.parameters)})`;
+}
+
+<!-- Generates Event Example Codeblock -->
+export function GetEventExample(class_name, event_data) {
+	return `${class_name}.Subscribe("${event_data.name}", function(${GetParametersList(event_data.arguments)})\n\nend)`;
+}
+
+<!-- Authority Admonition -->
+export const AuthorityAdmonition = ({ authority, is_static }) => (
+	<Admonition type="info" icon="💂" title="Authority">{ is_static ? AuthorityLabelsStatic[authority] : AuthorityLabels[authority] }</Admonition>
+);
+
+export const CommaSeparator = () => (
+	<span className="comma-separator"></span>
+)
+
+<!-- Open Source Admonition -->
+export const OpenSourceAdmonition = () => (
+	<Admonition type="tip" icon="👐" title="Open Source">
+		This structure is Open Sourced on <Link to="https://github.com/nanos-world/nanos-world-lua-lib">GitHub</Link>. Feel free to make pull requests and suggest changes!
+	</Admonition>
+);
+
+<!-- Inheritance Admonition -->
+export const InheritanceAdmonition = ({ inheritance }) => (
+	<Admonition type="info" icon="👪" title="Inheritance">
+		This class inherits from { inheritance.map(inherit => GetElementByType(inherit)).reduce((prev, next) => [prev, <CommaSeparator />, next]) }.
+	</Admonition>
+);
+
+<!-- Static Class Admonition -->
+export const StaticClassAdmonition = () => (
+	<Admonition type="info" icon="🗿" title="Static Class">
+		This is a <b>Static Class</b>. You can access it's methods directly with <code>.</code>. It is not possible to initialize or create new instances.
+	</Admonition>
+);
+
+<!-- Gets Authority Element by string -->
+export function GetAuthorityType(authority) {
+	return authority == "server" ? <AuthorityType.ServerOnly /> :
+	authority == "client" ? <AuthorityType.ClientOnly /> :
+	authority == "authority" ? <AuthorityType.AuthorityOnly /> :
+	authority == "both" ? <AuthorityType.Both /> : "";
+};
+
+<!-- Function Block Declaration -->
+export const FunctionDeclaration = ({ function_data, is_static, class_name }) => (
+	<>
+		<h3 id={ function_data.name.toLowerCase() }>
+			{ GetAuthorityType(function_data.authority) }
+			<code>
+				{ function_data.name }
+			</code>
+		</h3>
+		<blockquote>
+			<span dangerouslySetInnerHTML={{ __html: function_data.description_long ? function_data.description_long : function_data.description }}></span>
+			{ !function_data.return ? "" :
+				<>
+					<br/><br/><>Returns </>
+					{ GetReturnList(function_data.return) }
+					{ GetReturnDescriptionList(function_data.return) }
+				</>
+			}
+		</blockquote>
+		<CodeBlock className="language-lua">
+			{ is_static ? GetStaticFunctionExample(class_name, function_data) : GetFunctionExample(class_name, function_data) }
+		</CodeBlock>
+		{Array.isArray(function_data.parameters) && function_data.parameters.length > 0 ?
+			<table style={{ width: "100%", display: "table" }}>
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Parameter</th>
+						<th>Default</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					{function_data.parameters.map(function(value) {
+						return <tr>
+							<td>{ SplitTypesByOr(value.type) }</td>
+							<td><code>{ GetParameterName(value) }</code></td>
+							<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{value.default}</code> : "" }</td>
+							<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+						</tr>;
+					})}
+				</tbody>
+			</table>
+		: <></>}
+		<hr />
+	</>
+);
+
+<!-- Event Block Declaration -->
+export const EventDeclaration = ({ event_data, class_name }) => (
+	<>
+		<h3 id={ event_data.name.toLowerCase() }>
+			{ GetAuthorityType(event_data.authority) }
+			<code>
+				{ event_data.name }
+			</code>
+		</h3>
+		<blockquote dangerouslySetInnerHTML={{ __html: `${ event_data.description_long ? event_data.description_long : event_data.description }${ event_data.return ? "<br/><br/>" + event_data.return[0].description : ""}` }}></blockquote>
+		<CodeBlock className="language-lua">
+			{ GetEventExample(class_name, event_data) }
+		</CodeBlock>
+		{ Array.isArray(event_data.arguments) && event_data.arguments.length > 0 ?
+			<table style={{ width: "100%", display: "table" }}>
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Argument</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					{event_data.arguments.map(function(value) {
+						return <tr>
+							<td>{ SplitTypesByOr(value.type) }</td>
+							<td><code>{ value.name }</code></td>
+							<td dangerouslySetInnerHTML={{ __html: value.description }} style={{ wordBreak: "break-word" }}></td>
+						</tr>;
+					})}
+				</tbody>
+			</table>
+		: <></> }
+		<hr />
+	</>
+);
+
+export const FunctionNameDeclaration = ({ class_name, function_data, base_class }) => (
+	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<FunctionToolTip class_name={class_name} function_data={function_data} />}>
+		<b>
+			<Link to={`${base_class ? `/docs/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#${function_data.name.toLowerCase()}`} className={"hover-link"}>
+				<code>{ function_data.name }</code>
+			</Link>
+		</b>
+	</Tippy>
+);
+
+export const EventNameDeclaration = ({ class_name, event_data, base_class }) => (
+	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<EventToolTip class_name={class_name} event_data={event_data} />}>
+		<b>
+			<Link to={`${base_class ? `/docs/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#${event_data.name.toLowerCase()}`} className={"hover-link"}>
+				<code>{ event_data.name }</code>
+			</Link>
+		</b>
+	</Tippy>
+);
+
+<!-- Function List Declaration -->
+export const FunctionListDeclaration = ({ class_name, functions_list, base_class }) => (
+	<table style={{ width: "100%", display: "table" }}>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Returns</th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			{functions_list.map(function(value) {
+				return <tr>
+					<td width="50px">{ GetAuthorityType(value.authority) } </td>
+					<td>{ value.return ? GetReturnList(value.return) : "" }</td>
+					<td><FunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
+					<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+				</tr>;
+			})}
+		</tbody>
+	</table>
+);
+
+<!-- Events List Declaration -->
+export const EventListDeclaration = ({ type, name, inherited_class_name, base_class }) => {
+	const class_data = GetClassData(type, name);
+	return (<>
+		<table style={{ width: "100%", display: "table" }}>
+			<thead>
+				<tr>
+					<th></th>
+					<th>Name</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				{class_data.events.map(function(value) {
+					return <tr>
+						<td width="50px">{ GetAuthorityType(value.authority) } </td>
+						<td><EventNameDeclaration class_name={ inherited_class_name } base_class={ base_class } event_data={ value } /></td>
+						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+					</tr>;
+				})}
+			</tbody>
+		</table>
+	</>);
+};
+
+export const GetClassData = (type, name) => {
+	const is_bleeding_edge = useActiveVersion().name == "current";
+	return APIData[is_bleeding_edge ? "BleedingEdge" : "Stable"][type][name];
+}
+
+<!-- Header Block Declaration -->
+export const HeaderDeclaration = ({ type, name, image, is_static, is_open_source }) => {
+	const class_data = GetClassData(type, name);
+	return (<>
+		<p dangerouslySetInnerHTML={{ __html: class_data.description }}></p>
+		{ image ? <p><img src={image} /></p> : "" }
+		{ is_open_source ? <OpenSourceAdmonition /> : "" }
+		{ class_data.authority ? <AuthorityAdmonition authority={class_data.authority} is_static={is_static} /> : "" }
+		{ class_data.inheritance ? <InheritanceAdmonition inheritance={class_data.inheritance} /> : "" }
+		{ is_static ? <StaticClassAdmonition /> : "" }
+	</>);
+};
+
+<!-- Block of Constructor -->
+export const ConstructorDeclaration = ({ type, name }) => {
+	const class_data = GetClassData(type, name);
+	return (<>
+		<CodeBlock className="language-lua">
+			{ GetConstructorExample(class_data) }
+		</CodeBlock>
+		<table style={{ width: "100%", display: "table" }}>
+			<thead>
+				<tr>
+					<th>Type</th>
+					<th>Name</th>
+					<th>Default</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				{class_data.constructor.map(function(value) {
+					return <tr>
+						<td>{ SplitTypesByOr(value.type) }</td>
+						<td><b><code>{ value.name }</code></b></td>
+						<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : "" }</td>
+						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+					</tr>;
+				})}
+			</tbody>
+		</table>
+	</>);
+};
+
+<!-- Base Actor Functions -->
+export const BaseActorFunctions = ({ inherited_class_name} ) => {
+	const class_data = GetClassData("Class", "Actor");
+	return (<>
+		<details>
+			<summary>Inherited Actor Functions</summary>
+			<ReferenceLink href="scripting-reference/classes/base-classes/actor">Base Actor</ReferenceLink>
+			<FunctionListDeclaration class_name={inherited_class_name} base_class={"Actor"} functions_list={class_data.functions} />
+		</details>
+	</>);
+};
+
+<!-- Base Paintable Functions -->
+export const BasePaintableFunctions = ({ inherited_class_name }) => {
+	const class_data = GetClassData("Class", "Paintable");
+	return (<>
+		<details>
+			<summary>Inherited Paintable Functions</summary>
+			<ReferenceLink href="scripting-reference/classes/base-classes/paintable">Base Paintable</ReferenceLink>
+			<FunctionListDeclaration class_name={inherited_class_name} base_class={"Paintable"} functions_list={class_data.functions} />
+		</details>
+	</>);
+};
+
+<!-- Base Pickable Functions -->
+export const BasePickableFunctions = ({ inherited_class_name }) => {
+	const class_data = GetClassData("Class", "Pickable");
+	return (<>
+		<details>
+			<summary>Inherited Pickable Functions</summary>
+			<ReferenceLink href="scripting-reference/classes/base-classes/pickable">Base Pickable</ReferenceLink>
+			<FunctionListDeclaration class_name={inherited_class_name} base_class={"Pickable"} functions_list={class_data.functions} />
+		</details>
+	</>)
+};
+
+<!-- Base Actor Events -->
+export const BaseActorEvents = ({ inherited_class_name }) => {
+	const class_data = GetClassData("Class", "Actor");
+	return (<>
+		<details>
+			<summary>Inherited Actor Events</summary>
+			<ReferenceLink href="scripting-reference/classes/base-classes/actor">Base Actor</ReferenceLink>
+			<EventListDeclaration type="Class" name="Actor" inherited_class_name={inherited_class_name} base_class={"Actor"} />
+		</details>
+	</>);
+};
+
+<!-- Base Pickable Events -->
+export const BasePickableEvents = ({ inherited_class_name }) => (
+	<details>
+		<summary>Inherited Pickable Events</summary>
+		<ReferenceLink href="scripting-reference/classes/base-classes/pickable">Base Pickable</ReferenceLink>
+		<EventListDeclaration type="Class" name="Pickable" inherited_class_name={inherited_class_name} base_class={"Pickable"} />
+	</details>
+);
+
+<!-- Block of Functions -->
+export const FunctionsDeclaration = ({ type, name }) => {
+	const class_data = GetClassData(type, name);
+	return (<>
+		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorFunctions inherited_class_name={name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Paintable") ? <BasePaintableFunctions inherited_class_name={name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableFunctions inherited_class_name={name} /> : "" }
+		{
+			class_data.functions == null ? <i>This entity doesn't have own functions.</i> :
+			<>
+				<FunctionListDeclaration class_name={name} functions_list={class_data.functions} />
+				{ class_data.functions.map((value) => <FunctionDeclaration function_data={value} class_name={name} />) }
+			</>
+		}
+	</>);
+};
+
+<!-- Block of Static Functions -->
+export const StaticFunctionsDeclaration = ({ type, name }) => {
+	const class_data = GetClassData(type, name);
+	return (<>
+		{
+			class_data.static_functions == null ? <i>This entity doesn't have own static functions.</i> :
+			<>
+				<FunctionListDeclaration class_name={name} functions_list={class_data.static_functions} />
+				{ class_data.static_functions.map((value) => <FunctionDeclaration function_data={value} is_static class_name={class_data.name} />) }
+			</>
+		}
+	</>);
+};
+
+<!-- Block of Events -->
+export const EventsDeclaration = ({ type, name }) => {
+	const class_data = GetClassData(type, name);
+	return (<>
+		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorEvents inherited_class_name={name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableEvents inherited_class_name={name} /> : "" }
+		{
+			class_data.events == null ? <i>This entity doesn't have own events.</i> :
+			<>
+				<EventListDeclaration type={type} name={name} inherited_class_name={name} />
+				{ class_data.events.map((value) => <EventDeclaration event_data={value} class_name={class_data.name} />) }
+			</>
+		}
+	</>);
+};
+
+<!-- Block of Properties -->
+export const PropertiesDeclaration = ({ type, name }) => {
+	const class_data = GetClassData(type, name);
+	return (<>
+		{
+			class_data.properties == null ? <i>This entity doesn't have properties.</i> :
+			<table style={{ width: "100%", display: "table" }}>
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Name</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					{class_data.properties.map(function(value) {
+						return <tr>
+							<td>{ GetElementByType(value.type) }</td>
+							<td><b><code>{ value.name }</code></b></td>
+							<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+						</tr>;
+					})}
+				</tbody>
+			</table>
+		}
+	</>);
+};

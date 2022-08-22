@@ -1,23 +1,10 @@
 ---
 title: ⏱️ Timer
-description: Execute of code at specified time intervals
+description: Execute of code at specified time intervals.
 tags: [static-class]
 ---
 
-
-Execute of code at specified time intervals
-
-import { Structs, BasicType, AuthorityType, Classes } from '@site/docs/components/_nanos.mdx';
-
-![](/img/docs/stopwatch.png)
-
-:::info
-
-🟦🟧 **Authority:** This can be accessed on both [Client](/core-concepts/scripting/authority-concepts.mdx) and [Server](/core-concepts/scripting/authority-concepts.mdx).
-
-🗿 **Static Class:** This is a Static Class. You can access it’s methods directly with `.`. It is not possible to initialize or create new instances.
-
-:::
+<HeaderDeclaration type="StaticClass" name="Timer" is_static image={"/img/docs/stopwatch.webp"} />
 
 :::info
 
@@ -25,200 +12,17 @@ The shortest interval possible is equal to the local Tick Rate - usually at 33ms
 
 :::
 
-## Static Functions
 
-| Returns | Name | Description |
-| :--- | :--- | :--- |
-| <BasicType.Number /> | [**`SetTimeout`**](timer#settimeout) | Executes a function, after waiting a specified number of milliseconds |
-| <BasicType.Number /> | [**`SetInterval`**](timer#setinterval) | Same as SetTimeout(), but repeats the execution of the function continuously |
-|  | [**`ClearTimeout`**](timer#cleartimeout) | Stops the execution of the function specified in SetTimeout() |
-|  | [**`ClearInterval`**](timer#clearinterval) | Stops the execution of the function specified in SetInterval() |
-|  | [**`Bind`**](timer#bind) | Binds a Timer to any Actor. The timer will be automatically cleared when the Actor is destroyed |
-|  | [**`IsValid`**](timer#isvalid) | Checks if a Timer is currently active or waiting to be triggered |
-| <BasicType.Number /> | [**`GetElapsedTime`**](timer#getelapsedtime) | Returns the time elapsed since the last tick |
-| <BasicType.Number /> | [**`GetRemainingTime`**](timer#getremainingtime) | Returns the time remaining to the next tick |
-|  | [**`Pause`**](timer#pause) | Pauses the Timer |
-|  | [**`Resume`**](timer#resume) | Resumes the Timer |
-
-
-### `SetTimeout`
-
-> Executes a function, after waiting a specified number of milliseconds
->
-> Returns the timeout_id
-
+## 🎒 Examples
 
 ```lua
-Timer.SetTimeout(function(param1, param2)
-    Package.Log("Timeout after 3 seconds! Param1: " .. param1 .. ". Param2: " .. param2)
-end, 3000, "hello", 123)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Function /> | **`callback`** |  | The callback that will be executed |
-| <BasicType.Number /> | **`milliseconds`** | **`0`** | The time in milliseconds to wait before executing the function |
-| <BasicType.Any /> | **`parameters...`** |  | Additional parameters to pass to the function |
-
-
-### `SetInterval`
-
-> Same as SetTimeout(), but repeats the execution of the function continuously
->
-> Returns the interval_id
-
-
-```lua
-Timer.SetInterval(function(param1, param2)
+-- creates a Interval to call a function at every 2 seconds
+local my_interval = Timer.SetInterval(function(param1, param2)
     Package.Log("Triggered each 2 seconds! Param1: " .. param1 .. ". Param2: " .. param2)
-end, 2000, "world", 456)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Function /> | **`callback`** |  | The callback that will be executed |
-| <BasicType.Number /> | **`milliseconds`** | **`0`** | The time in milliseconds the timer should delay in between executions of the specified function |
-| <BasicType.Any /> | **`parameters...`** |  | Additional parameters to pass to the function |
-
-
-### `ClearTimeout`
-
-> Stops the execution of the function specified in SetTimeout()
-
-
-```lua
--- Creates the Timeout
-local my_timeout = Timer.SetTimeout(function() end, 3000)
-
--- Stops the Timeout
-Timer.ClearTimeout(my_timeout)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`interval_id`** |  | The ID value returned by SetTimeout() is used as the parameter for this method |
-
-
-### `ClearInterval`
-
-> Stops the execution of the function specified in SetInterval()
-
-
-```lua
--- Creates the Interval
-local my_interval = Timer.SetInterval(function() end, 3000)
-
--- Stops the Interval
-Timer.ClearInterval(my_interval)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`interval_id`** |  | The ID value returned by SetInterval() is used as the parameter for this method |
-
-
-### `Bind`
-
-> Binds a Timer to any Actor.
-> The timer will be automatically cleared when the Actor is destroyed
-
-```lua
-local character = Character(...)
-
-my_timer = Timer.SetTimeout(function(_character)
-    -- Do something with _character
-    -- Ex: Destroy the character after 10 seconds
-    _character:Destroy()
-end, 10000, character)
-
--- Binds the Timer to the Character
-Timer.Bind(my_timer, character)
-
--- This will ensure it will never trigger if the character is destroyed before it
--- With this you don't need to validate if the '_character' parameter is valid
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`timer_id`** |  | The Timer ID |
-| <Classes.Actor /> | **`actor`** |  | Actor to be bound |
-
-
-### `IsValid`
-
-> Checks if a Timer is currently active or waiting to be triggered
-
-```lua
-Timer.IsValid(timer_id)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`timer_id`** |  | The Timer ID |
-
-
-### `GetElapsedTime`
-
-> Returns the time elapsed since the last tick
-
-```lua
-local elapsed_time = Timer.GetElapsedTime(timer_id)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`timer_id`** |  | The Timer ID |
-
-
-### `GetRemainingTime`
-
-> Returns the time remaining to the next tick
-
-```lua
-local remaining_time = Timer.GetRemainingTime(timer_id)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`timer_id`** |  | The Timer ID |
-
-
-### `Pause`
-
-> Pauses the Timer
-
-```lua
-Timer.Pause(timer_id)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`timer_id`** |  | The Timer ID |
-
-
-### `Resume`
-
-> Resumes the Timer
-
-```lua
-Timer.Resume(timer_id)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.Number /> | **`timer_id`** |  | The Timer ID |
-
-
-## Examples
-
-```lua
--- creates a Interval to call a function at every 1 second
-local my_interval = Timer.SetInterval(1000, function()
-    Package.Log("Tick 1 second!")
-end)
+end, 2000, "awesome param 1", 456)
 
 -- cancels the Interval
-Timer.ClearInterval(my_id)
+Timer.ClearInterval(my_interval)
 
 -- creates a Timeout to call my_function in 5 seconds, once - passing a parameter
 Timer.SetTimeout(function(my_param)
@@ -226,3 +30,27 @@ Timer.SetTimeout(function(my_param)
 end, 5000, "world")
 ```
 
+```lua
+local character = Character(...)
+
+local my_timer = Timer.SetTimeout(function(_character)
+    -- Do something with _character
+    -- Ex: Destroy the character after 10 seconds
+    _character:Destroy()
+end, 10000, character)
+
+-- Binds the Timer to the Character
+-- This will ensure it will never trigger if the character is destroyed before it
+-- With this you don't need to validate if the '_character' parameter is valid
+Timer.Bind(my_timer, character)
+```
+
+
+## 🗿 Static Functions
+
+<StaticFunctionsDeclaration type="StaticClass" name="Timer" />
+
+
+## 🚀 Events
+
+<EventsDeclaration type="StaticClass" name="Timer" />

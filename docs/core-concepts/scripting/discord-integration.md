@@ -21,7 +21,7 @@ We made the process very simple, we have one method for changing the Player's Ac
 local state = "Working as Truck Driver"
 local details = "Awesome Roleplay"
 local large_text = "Honk!"
-local large_image = "screenshot_191"
+local large_image = "nanos-world-full-world"
 
 Client.SetDiscordActivity(state, details, large_image, large_text)
 ```

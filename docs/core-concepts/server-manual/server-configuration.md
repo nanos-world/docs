@@ -11,14 +11,13 @@ All you need to know to Configure your server!
 
 ## Server Configuration File
 
+The server Configuration file `Config.toml` is generated automatically when the server is launched for the first time. This file will always be overridden with the proper pattern after the server is loaded.
+
 :::tip
 
 nanos world Config files use **TOML** (Tom’s Obvious, Minimal Language), please refer to [https://github.com/toml-lang/toml](https://github.com/toml-lang/toml) for more information and syntax.
 
 :::
-
-The server Configuration file `Config.toml` is generated automatically when the server is launched for the first time. This file will always be overridden with the proper pattern after the server is loaded.
-
 
 ```toml reference
 https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
@@ -46,12 +45,12 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | **`assets`** | Additional assets to force to load |
 | **`map`** | Which map to load |
 | **`token`** | Server Token used for authorize downloads through CLI |
-| **`banned_ips`** | List of banned IPs |
+| **`banned_ids`** | List of banned nanos account IDs |
 
 
 ## Map & Level
 
-![](/img/docs/server-map.jpg)
+![](/img/docs/server-map.webp)
 
 The Map (or Level) is defined in the Server’s config file, this level will be loaded when the player joins the server and the Path is supposed for be or a built-in asset or an asset which is located at `Assets/` folder.
 
@@ -60,7 +59,7 @@ nanos world counts on (for now) 4 built-in maps: `nanos-world::BlankMap`, `nanos
 
 ## Server Console
 
-![](/img/docs/server.jpg)
+![](/img/docs/server.webp)
 
 
 ### Built-in Commands
@@ -112,6 +111,9 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--save` | 0 or 1 | If to save the parameters in Config.toml |
 | `--profiling` | 0 or 1 | Enables Performance Profiling Logs for debugging |
 | `--auto_download` | 0 or 1 | Automatically downloads Packages and Assets from Vault if needed |
+| `--dedicated_server` | 0 or 1 | If to start as a Dedicated Server or P2P |
+| `--async_log` | 0 or 1 | If to use async or sync logs (async provides better performance) - default is 1 |
+| `--log_level` | 1, 2 or 3 | If to use Normal, Debug or Verbose logs |
 
 
 ### One-liner Server Configuration

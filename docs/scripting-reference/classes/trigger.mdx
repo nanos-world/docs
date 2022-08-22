@@ -5,23 +5,10 @@ sidebar_position: 0
 tags: [class]
 ---
 
-
-A Trigger class is a utility class to trigger events when any Entity enters an Area.
-
-import { Structs, BasicType, AuthorityType, Classes, Enums } from '@site/docs/components/_nanos.mdx';
-
-![](/img/docs/trigger.jpg)
-
-:::info
-
-🟦 **Authority:** This class can only be spawned on [Server](/core-concepts/scripting/authority-concepts.mdx).
-
-⏬ **Inheritance:** This class inherits from <Classes.Actor />.
-
-:::
+<HeaderDeclaration type="Class" name="Trigger" image="/img/docs/trigger.webp" />
 
 
-## Usage
+## 🎒 Examples
 
 ```lua
 local sphere_trigger = Trigger(Vector(-200, 100, 500), Rotator(), Vector(100), TriggerType.Sphere, true, Color(1, 0, 0))
@@ -41,89 +28,17 @@ box_trigger:Subscribe("EndOverlap", function(trigger, actor_triggering)
 end)
 ```
 
-## Constructor Parameters
 
-| **Type** | **Name** | **Default** |  |
-| :--- | :--- | :--- | :--- |
-| <Structs.Vector /> | **`location`** | `Vector(0, 0, 0)` |  |
-| <Structs.Rotator /> | **`rotation`** | `Rotator(0, 0, 0)` |  |
-| <Structs.Vector /> | **`extent`** | `Vector(0, 0, 0)` | Size of the Trigger. If using Sphere, only the **X** is used |
-| <Enums>TriggerType</Enums> | **`trigger_type`** | `TriggerType.Sphere` | Currently supports **Sphere** of **Box** |
-| <BasicType.Boolean /> | **`is_visible`** | `false` | Useful for debugging |
-| <Structs.Color /> | **`color`** | `Color.RED` | Color to paint the Trigger bounds - if Visible |
+## 🏗️ Constructor
 
-## Functions
-
-import BaseActorFunctions from '@site/docs/scripting-reference/classes/base-classes/_base-actor-functions.mdx';
-
-<details><summary>Inherited Actor Functions</summary><BaseActorFunctions /></details>
-
-|  | **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- | :--- |
-| <AuthorityType.ServerOnly /> |  | [**`ForceOverlapChecking`**](trigger#forceoverlapchecking) | Forces a Overlap check to occur |
-| <AuthorityType.ServerOnly /> |  | [**`SetExtent`**](trigger#setextent) | Sets the extent size of this trigger |
-
-### <AuthorityType.ServerOnly />`ForceOverlapChecking`
-
-> Forces a Overlap checking to occur, will immediately trigger overlaps
-
-```lua
-my_trigger:ForceOverlapChecking()
-```
-
-### <AuthorityType.ServerOnly />`SetExtent`
-
-> Sets the extent size of this trigger \(sphere triggers will use only the .X component for radius\)
-
-```lua
-my_trigger:SetExtent(extent)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <Structs.Vector /> | **`extent`** | Sphere triggers will use only the .X component for radius |
+<ConstructorDeclaration type="Class" name="Trigger" />
 
 
-## Events
+## 🦠 Functions
 
-import BaseActorEvents from '@site/docs/scripting-reference/classes/base-classes/_base-actor-events.mdx';
+<FunctionsDeclaration type="Class" name="Trigger" />
 
-<details><summary>Inherited Actor Events</summary><BaseActorEvents /></details>
 
-|  | **Name** | **Description** |
-| :--- | :--- | :--- |
-| <AuthorityType.ServerOnly /> | [**`BeginOverlap`**](trigger#beginoverlap) | Triggered when something overlaps this Trigger |
-| <AuthorityType.ServerOnly /> | [**`EndOverlap`**](trigger#endoverlap) | Triggered when something leaves this Trigger |
+## 🚀 Events
 
-### <AuthorityType.ServerOnly />`BeginOverlap`
-
-> Triggered when something overlaps this Trigger
-
-```lua
-Trigger.Subscribe("BeginOverlap", function(self, entity)
-
-end)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| [Trigger](trigger) | `self` | The Trigger entity |
-| <Classes.Actor /> | `entity` | Any Actor which overlaps |
-
-### <AuthorityType.ServerOnly />`EndOverlap`
-
-> Triggered when something leaves this Trigger
-
-```lua
-Trigger.Subscribe("EndOverlap", function(self, entity)
-
-end)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| [Trigger](trigger) | `self` | The Trigger entity |
-| <Classes.Actor /> | `entity` | Any Actor which left the Trigger |
-
-## 
-
+<EventsDeclaration type="Class" name="Trigger" />

@@ -6,4 +6,4 @@ tags: [updates]
 ---
 
 
-![](/img/blog/updates/halloween.jpg)
+![](/img/blog/updates/halloween.webp)

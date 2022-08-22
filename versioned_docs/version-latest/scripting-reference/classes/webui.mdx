@@ -5,69 +5,45 @@ sidebar_position: 0
 tags: [scripting, ui]
 ---
 
-
-Class for spawning a web browser in the screen.
-
-import { Structs, BasicType, AuthorityType, ReferenceLink, AssetPath } from '@site/docs/components/_nanos.mdx';
-
-![](/img/docs/webui.jpg)
-
-:::info
-
-🟧 **Authority:** This class can only be spawned on [Client](/core-concepts/scripting/authority-concepts.mdx).
-
-:::
+<HeaderDeclaration type="Class" name="WebUI" image="/img/docs/webui.webp" />
 
 :::tip
 
-This HTML implementation is built upon same core as WebKit/Safari using [Ultralight](https://ultralig.ht) library, a next-generation HTML Renderer.
-
-:::
-
-:::caution
-
-We are using a beta build of Ultralight, which now supports Audio and Video. Although it is still very unstable and some crashes may happen! Also the Audio currently plays only in 2D.
+Our WebUI implementation is built using the last versions of [Chromium Embedded Framework](https://bitbucket.org/chromiumembedded/cef).
 
 :::
 
 
-<ReferenceLink href="core-concepts/scripting/user-interface">User Interface</ReferenceLink>
-<ReferenceLink href="getting-started/tutorials-and-examples/basic-hud-html">Basic HUD (HTML)</ReferenceLink>
-
-## Usage
-
+## 🎒 Examples
 
 ```lua title="Client/Index.lua"
--- Using a local file
-my_ui = WebUI(
+-- Loading a local file
+local my_ui = WebUI(
     "Awesome UI",            -- Name
-    "file:///UI/index.html", -- Path relative to this package (Client/)
+    "file://UI/index.html",  -- Path relative to this package (Client/)
     true,                    -- Is Visible
 )
 
--- Using a Web URL
-my_browser = WebUI(
-    "Awesome Site",       -- Name
-    "http://nanos.world", -- Web's URL
-    true,                 -- Is Visible
+-- Loading a Web URL
+local my_browser = WebUI(
+    "Awesome Site",        -- Name
+    "https://nanos.world", -- Web's URL
+    true,                  -- Is Visible
 )
 
--- Using a local file from another package folder
-my_ui = WebUI(
-    "Awesome UI from Another Package", -- Name
-    "file:///UI/index.html",           -- Path relative to this package (Client/)
-    true,                              -- Is Visible
-    true,
-    true,
-    0,
-    0
+-- Loading a local file from other package
+local my_ui = WebUI(
+    "Awesome Other UI",      -- Name
+    "file://other-package/Client/UI/index.html",
+    true,                    -- Is Visible
 )
 ```
+
 
 #### Communicating between Lua and JS (WebUI)
 
 ```lua title="Client/Index.lua"
-my_ui = WebUI("Awesome UI", "file:///UI/index.html")
+local my_ui = WebUI("Awesome UI", "file://UI/index.html")
 
 local param1 = 123
 local param2 = "hello"
@@ -93,18 +69,35 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 })
 ```
 
-## Constructor Parameters
 
-| **Type** | **Name** | **Default** | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`name`** | ` ` | *Currently not used* |
-| <BasicType.String /> | **`path`** | ` ` | URL or `file:///my_file.html` or <AssetPath.HTML /> |
-| <BasicType.Boolean /> | **`is_visible`** | `true` | if WebUI is visible by default |
-| <BasicType.Boolean /> | **`is_transparent`** | `true` | if WebUI background is transparent |
-| <BasicType.Boolean /> | **`auto_resize`** | `true` | if should auto resize when screen changes it's size (useful OFF when you are painting meshes with WebUI) |
-| <BasicType.Number /> | **`width`** | `0` | size of the WebUI when you are not using auto_resize |
-| <BasicType.Number /> | **`height`** | `0` | size of the WebUI when you are not using auto_resize |
+#### Pretty Scroll Bar
 
+Since we migrated from Webkit to CEF, some scrollbars got ugly. Here's a small CSS snippet to make them almost like the Webkit ones:
+
+```css
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #494949;
+}
+
+body {
+    scrollbar-gutter: stable both-edges;
+}
+```
+
+More related examples:
+
+<ReferenceLink href="core-concepts/scripting/user-interface">User Interface</ReferenceLink>
+<ReferenceLink href="getting-started/tutorials-and-examples/basic-hud-html">Basic HUD (HTML)</ReferenceLink>
+
+
+## 🏗️ Constructor
+
+<ConstructorDeclaration type="Class" name="WebUI" />
 
 :::tip
 
@@ -116,194 +109,15 @@ Loading a .html file supports the following searchers, which are looked in the f
 
 :::
 
-## Functions
 
-| **Returns** | **Name** | **Description** |
-| :--- | :--- | :--- |
-|  | [**`BringToFront`**](webui#bringtofront) | Puts this WebUI in the front of all WebUIs |
-|  | [**`CallEvent`**](webui#callevent) | Calls an Event on the Browser’s JavaScript |
-|  | [**`Destroy`**](webui#destroy) | Destroys this Browser |
-|  | [**`LoadURL`**](webui#loadurl) | Loads a new File/URL in this Browser |
-|  | [**`SetFocus`**](webui#setfocus) | Forces Focus on this Browser |
-|  | [**`SetFreeze`**](webui#setfreeze) | Freezes the WebUI Rendering to the surface |
-|  | [**`SetVisible`**](webui#setvisible) | Toggles the visibility |
-| <BasicType.Boolean /> | [**`IsValid`**](webui#isvalid) | Returns if this entity is Valid |
-| <BasicType.Number /> | [**`GetID`**](webui#getid) | Gets the network ID of this entity |
-| <BasicType.String /> | [**`GetType`**](webui#gettype) | Returns the type of this Entity |
-| <BasicType.Boolean /> | [**`IsVisible`**](webui#isvisible) | Returns if this WebUI is currently visible |
-| <BasicType.Function /> | [**`Subscribe`**](webui#subscribe) | Subscribes for an Event |
-|  | [**`Unsubscribe`**](webui#unsubscribe) | Unsubscribes from all subscribed Events in this Entity and in this Package |
+## 🦠 Functions
 
-### `BringToFront`
+<FunctionsDeclaration type="Class" name="WebUI" />
 
-> Puts this WebUI in the front of all WebUIs
 
-```lua
-my_webui:BringToFront()
-```
+## 🚀 Events
 
-### `CallEvent`
+<EventsDeclaration type="Class" name="WebUI" />
 
-> Calls an Event on the Browser's JavaScript
 
-```lua
-my_webui:CallEvent(event_name, arguments...)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`event_name`** |  |
-| <BasicType.Any /> | **`arguments...`** |  |
-
-### `Destroy`
-
-> Destroys this Browser
-
-```lua
-my_webui:Destroy()
-```
-
-### `LoadURL`
-
-> Loads a new File/URL in this Browser
->
-> Returns
-
-```lua
-my_webui:LoadURL(url)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.String /> | **`url`** |  |
-
-### `SetFocus`
-
-> Enables the focus on this browser (i.e. can receive Keyboard input). You must call it when you want to enable Keyboard Input on WebUIs (after disabling Client's Input)
-> 
-> Note: Only one browser can have focus per time.
-
-```lua
-my_webui:SetFocus()
-```
-
-### `SetFreeze`
-
-> Freezes the WebUI Rendering to the surface (it will still execute the JS under the hood)
-
-```lua
-my_webui:SetFreeze()
-```
-
-### `SetVisible`
-
-> Toggles the visibility
-
-```lua
-my_webui:SetVisible(is_visible)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Boolean /> | **`is_visible`** |  |
-
-### `IsValid`
-
-> Gets if this entity is Valid
->
-> Returns <BasicType.Boolean />
-
-```lua
-my_webui:IsValid()
-```
-
-### `GetID`
-
-> Gets the network ID of this entity
->
-> Returns <BasicType.Number />
-
-```lua
-my_webui:GetID()
-```
-
-### `GetType`
-
-> Returns the type of this Entity
->
-> Returns <BasicType.String />
-
-```lua
-my_webui:GetType()
-```
-
-### `IsVisible`
-
-> Returns if this WebUI is currently visible
->
-> Returns <BasicType.Boolean />
-
-```lua
-my_webui:IsVisible()
-```
-
-### `Subscribe`
-
-> Subscribes for an Event
-> 
-> Returns the <BasicType.Function /> callback itself
-
-```lua
-my_webui:Subscribe(event_name, callback)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`event_name`** |  |  |
-| <BasicType.Function /> | **`function`** |  |  |
-
-### `Unsubscribe`
-
-> Unsubscribes from all subscribed Events in this Entity and in this Package, optionally passing the function to unsubscribe only that callback
-
-```lua
-my_webui:Unsubscribe(event_name, callback)
-```
-
-| Type | Parameter | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| <BasicType.String /> | **`event_name`** |  |  |
-| <BasicType.Function /> | **`function`** | `nil` |  |
-
-## Events
-
-| **Name** | **Description** |
-| :--- | :--- |
-| [**`Failed`**](webui#failed) | When this page fails to load |
-| [**`Ready`**](webui#ready) | When this page is fully loaded \(DOM and JavaScript\) |
-
-### `Failed`
-
-> Triggered when this page fails to load
-
-```lua
-my_webui:Subscribe("Failed", function(error_code, message)
-    -- Load failed
-end)
-```
-
-| Type | Parameter | Description |
-| :--- | :--- | :--- |
-| <BasicType.Number /> | **`error_code`** |  |
-| <BasicType.String /> | **`message`** |  |
-
-### `Ready`
-
-> Triggered when this page is fully loaded
-
-```lua
-my_webui:Subscribe("Ready", function()
-    -- When this page is fully loaded \(DOM and JavaScript\)
-end)
-```
-
+import { Structs, Classes, Enums, BasicType, AuthorityType, ReferenceLink, AssetPath } from '@site/docs/components/_nanos.mdx';

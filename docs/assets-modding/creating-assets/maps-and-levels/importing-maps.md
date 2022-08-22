@@ -5,8 +5,9 @@ tags: [assets]
 keywords: [map, level, unreal]
 ---
 
+How to create and export maps from Unreal to nanos world
 
-Maps and Levels are quite the most straightforward asset that you can create and import. In Unreal, Maps are called `Levels`, usually these levels are filled with a Landscape component to make the terrain, some Lights and some Static Meshes \(Trees, Houses, etc\).
+Maps and Levels are quite the most straightforward asset that you can create and import. In Unreal, maps are called `Levels`, usually these levels are filled with a Landscape component to make the terrain, some Lights and some Static Meshes (Trees, Houses, etc).
 
 :::info
 
@@ -14,40 +15,35 @@ Please refer to [Unreal’s Official tutorial - Working with Levels](https://doc
 
 :::
 
-## Rules for creating a Map/Level for nanos world
+:::caution
 
-1. Do not spawn/place **Dynamic Meshes** (with Physics), as they will not be synced in-game. You need to spawn them as a [Prop](/scripting-reference/classes/prop.mdx) on the scripting.
+Attention! This page is old and this tutorial may be outdated! The images here reference to Unreal Engine 4 and may have changed. A new updated tutorial will come soon™!
+
+:::
+
+
+## Rules for creating a Map/Level
+
+1. Do not spawn/place **Dynamic Meshes** (with Physics), as they will not be synced in-game. You need to spawn them as a [Prop](/scripting-reference/classes/prop.mdx) through the scripting.
 2. Add a “**Sun**” actor-tag to all Lighting/Sky/Sun related actors (**DirectionalLight**, **SkyLight**, **DomeMesh**, **SkyAtmosphere** or **SunSky**), this will allow, if wanted, to your light to be overridden by scripters to use, instead, the Official nanos world Sun through `World.SpawnDefaultSun()`, which allows in-game light/sun customization.
-3. If you are creating a Map, please remember to nullify (set to None) all references it has for Unreal **GameModes** Override in the World Settings.
+3. If you are creating a Map, please remember to nullify (set to None) all references it has for Unreal **GameModes** Override in the World Settings:
 
 ![GameMode Overrides nullified](/img/docs/custom-maps-01.jpg)
 
-:::info
 
-Most of [World](/scripting-reference/static-classes/world.mdx) functions rely on our own assets and code, so it is not (yet) possible to change the lighting or weather in your custom Map with World scripting functions.
+## Getting Started
 
-:::
+:::tip Prerequisites
 
-After exporting your project (refer to [Creating Assets](/assets-modding/creating-assets/importing-assets.md#exporting-and-cooking-your-assets), you can just reference your map in your server config like `MyPack::MyLevel`.
-
-
-## Creating a Map in Unreal Engine 4 from Scratch
-
-:::caution
-
-Attention! This page is old and this tutorial may be outdated! Please refer to [ADK](/assets-modding/creating-assets/adk-assets-development-kit.md) for a modern approach.
+Before proceeding, please make sure you read [Creating & Importing Assets](/assets-modding/creating-assets/importing-assets.md) Guide.
 
 :::
 
-### Video Tutorial by EinfachMax
+The first step is to create a folder inside the `Content/` folder, _this step is very important_. Name this folder as you wish.
 
-<iframe width="760" height="425" src="https://www.youtube-nocookie.com/embed/2FGkWdn9JP4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-The first step is to create a folder inside the `Content/` folder, _this step is very important_. Rename this folder with the Asset Pack name you desire
-
-1. Expand the tab
-2. Right click on Content
-3. Create a New Folder
+1. Expand the tab.
+2. Right click on Content.
+3. Create a New Folder.
 
 ![](/img/docs/custom-maps-02.jpg)
 
@@ -55,14 +51,17 @@ The first step is to create a folder inside the `Content/` folder, _this step is
 
 Now let’s create the Map itself, in Unreal maps are called [Levels](https://docs.unrealengine.com/en-US/Engine/Levels/index.html), to do so:
 
-1. Right click on the Content space
-2. Create a new Level
+1. Right click on the Content space.
+2. Create a new Level.
 
 ![](/img/docs/custom-maps-04.jpg)
 
 Rename it with the map name you desire, save it and open it up. You will notice the Viewport got black, this is because the Map you just opened doesn’t have anything, let’s add some stuff into it: 
 
 ![](/img/docs/custom-maps-05.jpg)
+
+
+## Adding Objects
 
 First let’s add a floor, for that just drag-and-drop a Plane from Place Actors -> Basic window into the Viewport:
 
@@ -92,8 +91,8 @@ Use CTRL+C + CTRL+V to copy the assets into your folder:
 
 Now let’s replace the plane mesh we were using to our copied mesh, for that, just 
 
-1. Select the copied Plane mesh
-2. Press the arrow on your Plane Actor to replace it’s Static Mesh \(alternatively you can just Delete the spawned Plane and drag and drop the new Plane from your assets pack’s folder\): 
+1. Select the copied Plane mesh.
+2. Press the arrow on your Plane Actor to replace it’s Static Mesh (alternatively you can just Delete the spawned Plane and drag and drop the new Plane from your assets pack’s folder):
 
 ![](/img/docs/custom-maps-13.jpg)
 
@@ -105,10 +104,13 @@ We can also add some lights, for that, just drag and drop a **Directional Light*
 
 ![](/img/docs/custom-maps-15.jpg)
 
+
+## Adding Materials
+
 Great job, now we can see the stuff! Now let’s add some color to it, applying color and textures in Unreal are made through [Materials](https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/index.html), for that, let’s just create a Material
 
-1. Right Click
-2. Create new Material
+1. Right Click.
+2. Create new Material.
 
 ![](/img/docs/custom-maps-16.jpg)
 
@@ -150,53 +152,41 @@ If you \(1.\) select the Directional Light, you can change it’s \(2.\) Rotatio
 
 ![](/img/docs/custom-maps-25.jpg)
 
-When you are fine with it, move your camera to see the whole map and take a screenshot of it, we will use that for a Thumbnail afterwards \(save it anywhere with the same name as your Map as .jpg, in our case: `MyAwesomeMap.jpg`\): 
+When you are fine with it, move your camera to see the whole map and take a screenshot of it, we will use that for a Thumbnail afterwards (save it anywhere with the same name as your Map as .jpg, in our case: `MyAwesomeMap.jpg`): 
 
 ![](/img/docs/custom-maps-26.jpg)
 
-And we are done! Save everything and let’s export it: 
+And we are done! Save everything and let’s export it!
 
-![](/img/docs/custom-maps-27.jpg)
 
-Select any folder in your computer and wait it to finish:  
+## Exporting the Map
 
-![](/img/docs/custom-maps-28.jpg)
+After you completed all steps, you can export them into nanos world! Please refer to [Exporting & Cooking your Assets](/assets-modding/creating-assets/importing-assets.md#exporting--cooking-your-assets) docs page before proceeding.
 
-![](/img/docs/custom-maps-29.jpg)
 
-## Importing your Map into your Server
+## Configuring the Asset Pack
 
-Open your Packaged folder and you will have something like this: 
+After you cooked your assets and copied the generated folder into your `Server/Assets/`. It's time to configure the Asset Pack! For that please refer to [Configuring your Assets.toml](/assets-modding/creating-assets/importing-assets.md#configuring-your-assetstoml) docs page before proceeding.
 
-![](/img/docs/custom-maps-30.jpg)
+Now that you created your Assets.toml and configured the unreal settings, make sure you set up your Static Meshes properly in the `[assets.maps]` category, like that:
 
-Copy the Thumbnail to the same folder as your Level (should be in `MyAwesomeAssetPack/Content/MyAwesomeAssetPack`): 
+```toml
+# maps
+[assets.maps]
+    MyAwesomeMap = "MyAwesomeMap"
+```
+
+This way we can load it through `Config.toml`!
+
+
+## Adding a Thumbnail
+
+To add a thumbnail to your map, copy the `.jpg` image into the same folder as your map `.umap` file.
+
+In our case, our `.umap` is at the root, so we just drag it there:
 
 ![](/img/docs/custom-maps-31.jpg)
 
-Now jump to the (1.) `Content/` folder and (2/3.) copy your whole `MyAwesomeAssetPack/` folder: 
-
-![](/img/docs/custom-maps-32.jpg)
-
-And paste it inside your server’s `Assets/` folder: 
-
-![](/img/docs/custom-maps-33.jpg)
-
-Open the folder you copied and create a `Assets.toml` file in it, \(you can paste the content located at [Assets Configuration File](/core-concepts/assets.md#assets-pack-configuration) into this file. 
-
-![](/img/docs/custom-maps-34.jpg)
-
-You will end up with something like that, remember to add an Entry to `assets.maps` list with the **MapKeyName** = **MapPath** pattern, the Map Key Name can be whatever you want, as our map is in the root of our Asset Pack, the Path is just `MyAwesomeMap` and we gave the key the name `MyAwesomeMap` as well: 
-
-![](/img/docs/custom-maps-35.jpg)
-
-Now you can add your map to your Server’s `Config.toml` settings: 
-
-![](/img/docs/custom-maps-36.jpg)
-
-Or just open the game and \(if you are using the built-in nanos world Server\), you will find your new map in the `New Game` screen like that with your thumbnail: 
-
-![](/img/docs/custom-maps-37.jpg)
 
 :::tip
 
@@ -209,6 +199,4 @@ You can now just start the New Game with the `Sandbox` package selected and VOIL
 
 ## Configuring your Map
 
-Also it is possible to add a Image, a Configuration File, Custom Data and even a exclusive Package (scripting) for your map.
-
-After importing your map, please refer to [Map Script and Configuration](/assets-modding/creating-assets/maps-and-levels/map-script-and-data.md)
+Also it is possible to add a Configuration File, Custom Data and even an exclusive Package (scripting) for your map! Please refer to [Map Script and Configuration](/assets-modding/creating-assets/maps-and-levels/map-script-and-data.md) for more information!

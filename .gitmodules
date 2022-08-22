@@ -1,0 +1,4 @@
+[submodule "src/api"]
+	path = src/api
+	url = https://github.com/nanos-world/api.git
+	branch = main

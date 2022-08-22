@@ -128,7 +128,7 @@ Finally, in your Package’s Index.lua, let’s spawn the WebUI:
 
 ```lua title="Client/Index.lua"
 -- Spawns a WebUI with the HTML file you just created
-main_hud = WebUI("Main HUD", "file:///UI/index.html")
+main_hud = WebUI("Main HUD", "file://UI/index.html")
 ```
 
 Result:
@@ -173,7 +173,7 @@ Now that our UI is done, let’s finish our Lua code to handle that whole thing!
 
 ```lua title="Client/Index.lua"
 -- Spawns a WebUI with the HTML file you just created
-main_hud = WebUI("Main HUD", "file:///UI/index.html")
+main_hud = WebUI("Main HUD", "file://UI/index.html")
 
 
 -- When LocalPlayer spawns, sets an event on it to trigger when we possesses a new character, to store the local controlled character locally. This event is only called once, see Package:Subscribe("Load") to load it when reloading a package

@@ -120,7 +120,7 @@ local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "nanos-world:
 my_cube:SetMaterial("nanos-world::M_NanosMasked")
 
 -- applies a custom texture to a parameter called "Texture"
-my_cube:SetMaterialTextureParameter("Texture", "package///testing/Client/syed.jpg")
+my_cube:SetMaterialTextureParameter("Texture", "package://testing/Client/syed.jpg")
 ```
 
 ![](/img/docs/tutorials/painting-meshes-07.jpg)

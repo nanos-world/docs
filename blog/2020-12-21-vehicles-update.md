@@ -6,4 +6,4 @@ tags: [updates]
 ---
 
 
-![](/img/blog/updates/transformers.jpg)
+![](/img/blog/updates/transformers.webp)

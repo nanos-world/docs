@@ -181,7 +181,7 @@ Let’s copy it into our `Server/Assets/`:
 
 ![](/img/docs/character-meshes-18.jpg)
 
-And the last step is to generate an `Assets.toml` file! For our luck, the ADK comes with a [Tool](https://docs.nanos.world/modding/AssetsDevelopmentKit.html#assets-toml-generator-nanosworld-blueprints-utility-wbp-assetstomlgenerator) which generates an `Assets.toml` configuration automatically for us!
+And the last step is to generate an `Assets.toml` file! For our luck, the ADK comes with a [Tool](/docs/assets-modding/creating-assets/adk-assets-development-kit.md#assetstoml-generator) which generates an `Assets.toml` configuration automatically for us!
 
 We just need to put the AssetPack/ folder name in there and press _GENERATE_: 
 
