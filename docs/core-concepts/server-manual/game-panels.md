@@ -66,7 +66,7 @@ ampinstmgr -q ADS01
 
 :::info Note
 
-To run `ampinstmgr` commands, you need to run them as the user `amp`, you can switch to this user using this command : `sudo su -l amp`
+To run `ampinstmgr` commands, you need to run them as the user `amp`, you can switch to this user using the command: `sudo su -l amp`.
 
 :::
 
