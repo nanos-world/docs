@@ -4,6 +4,14 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
 
 ## Installation
 
+Before running, make sure you have updated all submodules as well:
+
+```console
+git submodule update --init --recursive
+```
+
+Then you can install the requirements
+
 ```console
 yarn install
 ```
