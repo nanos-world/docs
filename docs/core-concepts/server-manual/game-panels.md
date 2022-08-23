@@ -34,7 +34,7 @@ Once the panel is installed, download the file `egg-nanos-world-server.json` loc
 
 Then, go to your panel on the category `SERVICE MANAGEMENT` and click on `NESTS`.
 
-You can create a new `NEST` by clicking the create button or click on a current nest.
+You can create a new `NEST` by clicking the create button or selecting an existing nest.
 
 After the nest is created, go back to the `NESTS` and click on the button `Import EGG`, select the .json file you downloaded earlier and on the dropdown menu, select the nest you created earlier.
 
