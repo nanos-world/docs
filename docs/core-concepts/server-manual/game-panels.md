@@ -18,7 +18,7 @@ Currently nanos world is supported on 2 games panel: https://pterodactyl.io and 
 
 :::tip
 
-Installation files are open source at Falaxir GitHub: https://github.com/Falaxir/nanos-world_yolks-game-panels. You can also check wich features is supported.
+Installation files are open source at Falaxir GitHub: https://github.com/Falaxir/nanos-world_yolks-game-panels. You can also check which features are supported.
 
 :::
 
