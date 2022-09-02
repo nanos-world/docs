@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs_docusaurus=self.webpackChunkdocs_docusaurus||[]).push([[4443],{90068:function(s){s.exports=JSON.parse('{"permalink":"/de/blog/tags/updates","page":1,"postsPerPage":10,"totalPages":2,"totalCount":18,"nextPage":"/de/blog/tags/updates/page/2","blogDescription":"All official news from nanos world!","blogTitle":"nanos world news!"}')}}]);
