@@ -59,6 +59,8 @@ Events.Subscribe("UpdateScreen", function(message, message_secondary, progress_s
 });
 ```
 
+### Player Information
+
 Also, it is possible to fetch Player’s information by accessing a global variable called LoadingScreen:
 
 ```javascript
@@ -71,6 +73,16 @@ var LoadingScreen = {
   player_nanos_username
 };
 ```
+
+
+### Stop Menu Music
+
+It is possible to turn off the built-in menu music by calling an event from Loading Screen JS:
+
+```javascript
+Events.Call("StopMenuMusic")
+```
+
 
 ## Configuring your server to use the Loading Screen
 
