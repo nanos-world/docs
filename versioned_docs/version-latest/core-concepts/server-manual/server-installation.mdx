@@ -6,6 +6,9 @@ tags: [hosting]
 ---
 
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Creating servers in nanos world is very simple and straightforward, just a few steps and you have your server up and ready!
 
 ## System Requirements
@@ -90,15 +93,52 @@ Steam> app_update 1936830 -beta bleeding-edge
 
 An easier way to install or update nanos world server is using an one-liner command to run SteamCMD:
 
-```bash
+<Tabs
+  defaultValue="windows"
+  values={[
+    {label: 'Windows', value: 'windows'},
+    {label: 'Linux', value: 'linux'},
+  ]}>
+  <TabItem value="windows">
+
+```shell
 steamcmd.exe +login anonymous +app_update 1936830 validate +quit
 ```
 
+  </TabItem>
+  <TabItem value="linux">
+
+```shell
+steamcmd +login anonymous +app_update 1936830 validate +quit
+```
+
+  </TabItem>
+</Tabs>
+
 or on bleeding-edge:
 
-```bash
-steamcmd.exe +login anonymous +app_update "1936830 -beta bleeding-edge" validate +quit
+<Tabs
+  defaultValue="windows"
+  values={[
+    {label: 'Windows', value: 'windows'},
+    {label: 'Linux', value: 'linux'},
+  ]}>
+  <TabItem value="windows">
+
+```shell
+steamcmd.exe +login anonymous +app_update 1936830 -beta bleeding-edge validate +quit
 ```
+
+  </TabItem>
+  <TabItem value="linux">
+
+```shell
+steamcmd +login anonymous +app_update "1936830 -beta bleeding-edge" validate +quit
+```
+
+  </TabItem>
+</Tabs>
+
 
 :::tip
 

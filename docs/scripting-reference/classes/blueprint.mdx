@@ -13,11 +13,34 @@ If your Actor Blueprint was spawned on the Server, it will be automatically sync
 
 :::
 
-:::note
 
-Currently it is only possible to communicate in one-way with the Blueprint (Scripting -> Blueprint). We didn't find a way to have the inverse communication *(hopefully)* yet.
+## 🎒 Examples
 
-:::
+### Calling Blueprint Events from lua
+
+```lua Client/index.lua
+-- Spawns the Blueprint
+local blueprint = Blueprint("my-asset-pack::BP_MyBlueprint", Vector(), Rotator())
+
+local param1 = 123
+local param2 = "hello there!"
+
+-- Calls the event, passing any parameters
+blueprint:CallBlueprintEvent("MyBlueprintCustomEvent", param1, param2)
+```
+
+
+### Binding Blueprint Event Dispatchers
+
+```lua Client/index.lua
+-- Spawns the Blueprint
+local blueprint = Blueprint("my-asset-pack::BP_MyBlueprint", Vector(), Rotator())
+
+-- Subscribes to a Blueprint Event Dispatcher
+blueprint:BindBlueprintEventDispatcher("MyBlueprintDispatcher", function(arg1, arg2)
+    Package.Log("Called from Blueprint!", arg1, arg2)
+end)
+```
 
 
 ## 🏗️ Constructor

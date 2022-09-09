@@ -3,6 +3,7 @@ title: Importing Mixamo Animations
 description: How to import Mixamo animations into nanos world
 tags: [assets, animations]
 keywords: [mixamo, animation, mannequin, unreal]
+sidebar_position: 3
 ---
 
 

@@ -40,6 +40,20 @@ local my_ui = WebUI(
 ```
 
 
+#### Using a WebUI as Mesh Material
+
+```lua title="Client/Index.lua"
+-- Spawns a WebUI with is_visible = false, is_transparent = false, auto_resize = false and size of 500x500
+local my_ui = WebUI("Awesome Site", "https://nanos.world", false, false, false, 500, 500)
+
+-- Spawns a StaticMesh (can be any mesh)
+local static_mesh = StaticMesh(Vector(0, 0, 100), Rotator(), "nanos-world::SM_Cube")
+
+-- Sets the mesh material to use the WebUI
+static_mesh:SetMaterialFromWebUI(my_ui)
+```
+
+
 #### Communicating between Lua and JS (WebUI)
 
 ```lua title="Client/Index.lua"
@@ -58,7 +72,7 @@ my_ui:Subscribe("MyAnswer", function(param1)
 end)
 ```
 
-```javascript
+```javascript title="script.js"
 // Register for "MyEvent" from Lua
 Events.Subscribe("MyEvent", function(param1, param2) {
     console.log("Triggered! " + param1 + " " + param2);
@@ -94,6 +108,11 @@ More related examples:
 <ReferenceLink href="core-concepts/scripting/user-interface">User Interface</ReferenceLink>
 <ReferenceLink href="getting-started/tutorials-and-examples/basic-hud-html">Basic HUD (HTML)</ReferenceLink>
 
+:::tip
+
+You can use the output Texture from a Canvas with [:SetMaterialFromWebUI()](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialfromwebui) method!
+
+:::
 
 ## 🏗️ Constructor
 
