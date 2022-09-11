@@ -44,7 +44,7 @@ On Lua, you can spawn your blueprint as usual, and call `CallBlueprintEvent` on 
 
 ```lua Client/index.lua
 -- Spawns the Blueprint
-local blueprint = Blueprint("my-asset-pack::BP_AwesomeBlueprint", Vector(), Rotator())
+local blueprint = Blueprint(Vector(), Rotator(), "my-asset-pack::BP_AwesomeBlueprint")
 
 local param1 = true -- bool parameter
 local param2 = 123 -- integer parameter
@@ -89,7 +89,7 @@ You can **Bind** Blueprint Event Dispatchers directly from Lua! For that, spawn 
 
 ```lua Client/index.lua
 -- Spawns the Blueprint
-local blueprint = Blueprint("my-asset-pack::BP_AwesomeBlueprint", Vector(), Rotator())
+local blueprint = Blueprint(Vector(), Rotator(), "my-asset-pack::BP_AwesomeBlueprint",)
 
 -- Subscribes to a Blueprint Event Dispatcher
 blueprint:BindBlueprintEventDispatcher("GorgeousDispatcher", function(self, arg1, arg2)
