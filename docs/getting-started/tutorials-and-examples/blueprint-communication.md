@@ -92,7 +92,7 @@ You can **Bind** Blueprint Event Dispatchers directly from Lua! For that, spawn 
 local blueprint = Blueprint("my-asset-pack::BP_AwesomeBlueprint", Vector(), Rotator())
 
 -- Subscribes to a Blueprint Event Dispatcher
-blueprint:BindBlueprintEventDispatcher("GorgeousDispatcher", function(arg1, arg2)
+blueprint:BindBlueprintEventDispatcher("GorgeousDispatcher", function(self, arg1, arg2)
     -- arg1 is a string and arg2 is an integer
     Package.Log("Called from Blueprint!", arg1, arg2)
 end)
