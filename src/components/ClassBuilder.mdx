@@ -159,6 +159,7 @@ export function GetAuthorityType(authority) {
 	return authority == "server" ? <AuthorityType.ServerOnly /> :
 	authority == "client" ? <AuthorityType.ClientOnly /> :
 	authority == "authority" ? <AuthorityType.AuthorityOnly /> :
+	authority == "network-authority" ? <AuthorityType.NetworkAuthority /> :
 	authority == "both" ? <AuthorityType.Both /> : "";
 };
 
