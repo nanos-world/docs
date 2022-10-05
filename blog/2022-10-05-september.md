@@ -1,6 +1,6 @@
 ---
 slug: september-2022
-title: "September: API, Auto Docs & More!"
+title: "September: Dimensions!"
 authors: gtnardy
 tags: [updates]
 ---
