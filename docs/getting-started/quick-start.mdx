@@ -148,7 +148,7 @@ Let's append some code in your `Index.lua`, to spawn a <Classes.Character /> whe
 -- Function to spawn a Character to a player
 function SpawnCharacter(player)
     -- Spawns a Character at position 0, 0, 0 with default's constructor parameters
-    local new_character = Character(Vector(0, 0, 0))
+    local new_character = Character(Vector(0, 0, 0), Rotator(0, 0, 0), "nanos-world::SK_Male")
 
     -- Possess the new Character
     player:Possess(new_character)
