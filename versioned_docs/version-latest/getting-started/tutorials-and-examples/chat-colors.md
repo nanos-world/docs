@@ -4,6 +4,7 @@ description: Learn how to use and print colored messages to the built-in chat
 tags: [tutorial-example]
 ---
 
+Learn how to use and print colored messages to the built-in chat
 
 ![](/img/docs/tutorials/chat-colors.jpg)
 

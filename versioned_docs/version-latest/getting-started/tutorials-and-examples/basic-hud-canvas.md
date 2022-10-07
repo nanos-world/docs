@@ -1,13 +1,12 @@
 ---
 title: Basic HUD (Canvas)
-description: >-
-  How to add a basic HUD using Render’s Canvas features, to display the
-  character’s Health and Ammo
+description: How to add a basic HUD using Render's Canvas features, to display the character's Health and Ammo
+  character's Health and Ammo
 tags: [tutorial-example, scripting, ui]
 ---
 
 
-How to add a basic HUD using Render’s Canvas features, to display the character’s Health and Ammo.
+How to add a basic HUD using Render's Canvas features, to display the character's Health and Ammo.
 
 :::tip
 
