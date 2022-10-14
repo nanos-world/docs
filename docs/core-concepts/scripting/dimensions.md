@@ -43,5 +43,5 @@ By sending an entity, their "children" will be moved to that dimension too, for 
 
 - When sending an **Actor**, all the other attached **Actors** will move as well.
 - When sending a **Player**, the **Character** will move too.
-- When sending a **Character**, the **Player** is not moved together, but the **Weapons** or **Props** (and **attached**) will.
-- When sending a **Vehicle**, all passengers will move too.
+- When sending a **Character**, the **Player** is not moved together, but the grabbing **Weapons** or **Props** (and attached **Actors**) will.
+- When sending a **Vehicle**, all **Characters** will leave the vehicle (this will be improved soon™).
