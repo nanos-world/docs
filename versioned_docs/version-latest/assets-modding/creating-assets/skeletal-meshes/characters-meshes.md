@@ -150,53 +150,18 @@ After it’s converted, save everything and you can delete the old Skeleton \(wh
 #### Deleting old useless Skeleton
 ![Deleting old useless Skeleton](/img/docs/character-meshes-13.jpg)
 
-### Exporting / Packaging / Cooking the Assets to nanos world
 
-Cooking/Packaging Unreal Engine Projects is very straightforward \(this is the same as ‘generating’ your game’s .exe if you are making a game in UE4\).
+## Exporting the Assets
 
-Before we export it, let’s say to UE4 to only export our AssetPack folder, otherwise it will compile and export all folders in the Project. You can skip this step if you don’t care, but will increase the packaging time.
+The Exporting process follows the usual process of exporting assets to nanos world. Please follow the [Importing Custom Assets](/assets-modding/creating-assets/importing-assets.md) Guide.
 
-For that, open the Project Settings ➡ Packaging \(or search for _Directories to never Cook_\), and let’s add a blacklist of directories to skip cooking \(exporting\), I’m selecting the one from which we imported: `SCK_Casual01/` which we don’t want exported together because we had already copied the files we want to our AssetPack/ folder: 
-
-#### Selecting which folders to Cook
-![Selecting which folders to Cook](/img/docs/character-meshes-14.jpg)
-
-And now we just need to Package the Project! File ➡ Package Project ➡ Windows \(64-bit\), and select a folder in your PC to save it: 
-
-#### Packaging the Project
-![Packaging the Project](/img/docs/character-meshes-15.jpg)
-
-### Getting the Files & Generating Assets.toml
-
-We are almost finished! Now, let’s copy all cooked files into our `Server/Assets/` folder! For that, find and open the folder which you just Packaged from UE4, you will have something like this: 
-
-#### Packaged the Project
-![Packaged the Project](/img/docs/character-meshes-16.jpg)
-
-The folder we want is inside `Content/YourAssetFolder`: 
-
-![](/img/docs/character-meshes-17.jpg)
-
-Let’s copy it into our `Server/Assets/`: 
-
-![](/img/docs/character-meshes-18.jpg)
-
-And the last step is to generate an `Assets.toml` file! For our luck, the ADK comes with a [Tool](/docs/assets-modding/creating-assets/adk-assets-development-kit.md#assetstoml-generator) which generates an `Assets.toml` configuration automatically for us!
-
-We just need to put the AssetPack/ folder name in there and press _GENERATE_: 
-
-![](/img/docs/character-meshes-19.jpg)
-
-Now you just need to create an `Assets.toml` file inside your `Server/Assets/MyAssetPack/` folder and paste the generated configuration inside of it: 
-
-![](/img/docs/character-meshes-20.jpg)
 
 ### Using the Skeletal Mesh in a Character through Scripting
 
-The last step is to use it! For that, you just need to use it’s Key `MyAssetPack::MESH_PC_00`! E.g.:
+After exporting and configuring your Assets.toml correctly, the last step is to use it! For that, you just need to use it’s Key you configured in the Assets.toml in the last step (e.g. `my-asset-pack::MESH_PC_00`):
 
 ```lua title="Server/Index.lua"
-local char = Character(Vector(0, 300, 100), Rotator(), "MyAssetPack::MESH_PC_00")
+local char = Character(Vector(0, 300, 100), Rotator(), "my-asset-pack::MESH_PC_00")
 ```
 
 ![](/img/docs/character-meshes-21.jpg)
