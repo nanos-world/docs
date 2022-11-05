@@ -1,29 +1,46 @@
 ---
-title: Linux Debian 10 & ARM
-description: Special cases for Debian 10 & ARM
+title: Linux & ARM Server installation
+description: Special cases for some Linux os & ARM platform
 sidebar_position: 5
 tags: [hosting]
 ---
 
-Special cases for Debian 10 & ARM server installation.
+Special cases for some linux os & ARM platform server installation.
 
 
 :::caution
 
-The installation on Debian 10 or ARM systems is not officially supported and currently maintained by the community! The following steps are WIP and may change at any time!
+The installation on versions on and below Debian 11, Ubuntu 20 and ARM systems is not officially supported and currently maintained by the community! The following steps are WIP and may change at any time!
 
 :::
 
 
-## Linux Debian 10 Installation
+## Linux Debian 11 Installation
+
+:::warning
+
+Please be carefull of the scripts and commands you will run!
+
+:::
+
+If you are running debian 10 or older, please upgrade to debian 11 or change your operating system to at least Ubuntu 22.04.1 LTS
 
 :::tip
 
-Follow this part if you have this kind of problem: `version GLIBCXX 3.4.26 not found`
+This will fix this type of error: `version GLIBCXX 3.4.30 not found` or/and `version GLIBC 2.34 not found`
 
 :::
 
-For this distribution, some extra steps are required. Since nanos world use `gcc 9`, we will need to upgrade one of our package to the testing repository.
+Since nanos world use `gcc 11`, we will need to upgrade one of our package to the testing repository.
+
+### With a Script
+
+You can run this script to install the required libraries, but please look at the script code to see what the script will do. (make sure you run it as root!)
+```bash
+wget -O - https://raw.githubusercontent.com/Falaxir/nanos-world_yolks-game-panels/master/docker-oses/debian/fixglibcxx.sh | bash
+```
+
+### Manually
 
 First, update your `sources.list` file (located in: `/etc/apt/sources.list`), you will need to add the testing repo source, you can add theses lines below to your sources:
 
@@ -37,11 +54,11 @@ After that, we will need to create a `preferences` file that will tell our syste
 ```text
 Package: *
 Pin: release a=stable
-Pin-Priority: 700
+Pin-Priority: 900
 
 Package: *
 Pin: release a=testing
-Pin-Priority: 650
+Pin-Priority: 400
 ```
 
 Now, update your server to make sure that your system can find testing repositories with this command:
@@ -62,6 +79,13 @@ Finished! You can now proceed to the next steps to configure your nanos world se
 
 :::
 
+## Linux Ubuntu 20
+
+Ubuntu 20 doesn't have the latest libraries, and so, nanos world is not supported for this and older ubuntu operating systems.
+
+It will be easier to upgrade your server to ubuntu 22 than to make the nanos world server work on ubuntu 20
+
+There is a lot of guides like [this one](https://jumpcloud.com/blog/how-to-upgrade-ubuntu-20-04-to-ubuntu-22-04) for the steps of how to upgrade your server.
 
 ## Linux ARM (raspberry & more)
 
@@ -72,6 +96,12 @@ EXPERIMENTAL: Use at your own risk!
 :::
 
 Nanos world server is not officially supported on Arm, but if you really really really want your server to be running on arm platform such as a raspberry, rockpro64, ... then you can!
+
+:::caution
+
+This guide on ARM has been tested and partially working on older nanos world server (before the migration from gcc 9 to gcc 11 on november 2022) and is probably outdated!
+
+:::
 
 We will need 2 emulators:
 
