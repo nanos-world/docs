@@ -19,7 +19,7 @@ The installation on versions on and below Debian 11, Ubuntu 20 and ARM systems i
 
 :::warning
 
-Please be carefull of the scripts and commands you will run!
+Please be careful with scripts and commands, do it at your own risk!
 
 :::
 
@@ -36,6 +36,7 @@ Since nanos world use `gcc 11`, we will need to upgrade one of our package to th
 ### With a Script
 
 You can run this script to install the required libraries, but please look at the script code to see what the script will do. (make sure you run it as root!)
+
 ```bash
 wget -O - https://raw.githubusercontent.com/Falaxir/nanos-world_yolks-game-panels/master/docker-oses/debian/fixglibcxx.sh | bash
 ```
