@@ -15,9 +15,36 @@ There is no secret to import a Vehicle Skeletal Mesh to nanos world. Any Skeleta
 
 Take a look on one of the default nanos world Vehicles Skeleton:
 
-![](/img/docs/tutorials/import-vehicles-01.jpg)
+![](/img/docs/tutorials/import-vehicles-01.webp)
 
 It has only 4 bones behind the root, for each Wheel: `Wheel_Front_Left`, `Wheel_Front_Right`, `Wheel_Rear_Left` and `Wheel_Rear_Right`. Yours don't need to follow this naming, as the Wheel Bone names are set through Lua.
+
+
+## Adding Dynamic Head & Tail Lights
+
+It is possible to configure your Vehicle Materials to use the built-in Headlights and Taillights system from nanos world:
+
+![](/img/docs/tutorials/import-vehicles-03.webp)
+
+For that, you will need to setup 4 parameters in your Vehicle's Material:
+
+| Type | Parameter Name | Description |
+| :--- | :--- | :--- |
+| `Scalar` | **`LightsEnabled`** | A scalar which will be toggled `0` and `1` to turn ALL lights ON and OFF (e.g. when Vehicle Engine is ON/OFF) |
+| `Vector` | **`HeadLightsColor`** | The Head Lights color |
+| `Vector` | **`BrakeLightsColor`** | The Brake Lights color |
+| `Vector` | **`ReverseLightsColor`** | The Reverse Lights color |
+
+You should multiply/lerp all Colors with your texture mask and sum them into the Emissive pin. Use the LightsEnabled to do a final multiply on the result, like this:
+
+![](/img/docs/tutorials/import-vehicles-02.webp)
+
+
+:::tip
+
+In this example I multiplied the final result to 30 to give a bigger glow effect.
+
+:::
 
 
 ## Exporting the Vehicle

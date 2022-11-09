@@ -17,8 +17,8 @@
   },
   "dependencies": {
     "@crowdin/cli": "^3.7.10",
-    "@docusaurus/core": "^2.1.0",
-    "@docusaurus/preset-classic": "^2.1.0",
+    "@docusaurus/core": "^2.2.0",
+    "@docusaurus/preset-classic": "^2.2.0",
     "@saucelabs/theme-github-codeblock": "^0.1.1",
     "@tippyjs/react": "^4.2.6",
     "node-polyfill-webpack-plugin": "^2.0.1",

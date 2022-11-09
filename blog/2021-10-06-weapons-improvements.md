@@ -1,6 +1,6 @@
 ---
 slug: weapons-improvements
-title: Weapons Improvements
+title: "Bonus Blog: Weapons Improvements!"
 authors: gtnardy
 tags: [updates]
 ---

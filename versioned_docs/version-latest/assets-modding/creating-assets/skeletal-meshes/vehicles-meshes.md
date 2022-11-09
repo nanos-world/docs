@@ -15,7 +15,7 @@ There is no secret to import a Vehicle Skeletal Mesh to nanos world. Any Skeleta
 
 Take a look on one of the default nanos world Vehicles Skeleton:
 
-![](/img/docs/tutorials/import-vehicles-01.jpg)
+![](/img/docs/tutorials/import-vehicles-01.webp)
 
 It has only 4 bones behind the root, for each Wheel: `Wheel_Front_Left`, `Wheel_Front_Right`, `Wheel_Rear_Left` and `Wheel_Rear_Right`. Yours don't need to follow this naming, as the Wheel Bone names are set through Lua.
 

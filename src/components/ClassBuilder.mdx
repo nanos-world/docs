@@ -8,7 +8,7 @@ import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
 import { AuthorityType, BasicType, Classes, Structs, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
-import { FunctionToolTip, EventToolTip } from '@site/src/components/Tooltips.jsx';
+import { FunctionToolTip, StaticFunctionToolTip, EventToolTip } from '@site/src/components/Tooltips.jsx';
 
 import APIData from '@site/src/components/APIData.jsx';
 
@@ -249,6 +249,16 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 	</>
 );
 
+export const StaticFunctionNameDeclaration = ({ class_name, function_data, base_class }) => (
+	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<StaticFunctionToolTip class_name={class_name} function_data={function_data} />}>
+		<b>
+			<Link to={`${base_class ? `/docs/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#${function_data.name.toLowerCase()}`} className={"hover-link"}>
+				<code>{ function_data.name }</code>
+			</Link>
+		</b>
+	</Tippy>
+);
+
 export const FunctionNameDeclaration = ({ class_name, function_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<FunctionToolTip class_name={class_name} function_data={function_data} />}>
 		<b>
@@ -267,6 +277,30 @@ export const EventNameDeclaration = ({ class_name, event_data, base_class }) => 
 			</Link>
 		</b>
 	</Tippy>
+);
+
+<!-- Static Function List Declaration -->
+export const StaticFunctionListDeclaration = ({ class_name, functions_list, base_class }) => (
+	<table style={{ width: "100%", display: "table" }}>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Returns</th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			{functions_list.map(function(value) {
+				return <tr>
+					<td width="50px">{ GetAuthorityType(value.authority) } </td>
+					<td>{ value.return ? GetReturnList(value.return) : "" }</td>
+					<td><StaticFunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
+					<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+				</tr>;
+			})}
+		</tbody>
+	</table>
 );
 
 <!-- Function List Declaration -->
@@ -366,6 +400,18 @@ export const ConstructorDeclaration = ({ type, name }) => {
 	</>);
 };
 
+<!-- Base Actor Static Functions -->
+export const BaseActorStaticFunctions = ({ inherited_class_name} ) => {
+	const class_data = GetClassData("Class", "Actor");
+	return (<>
+		<details>
+			<summary>Inherited Actor Static Functions</summary>
+			<ReferenceLink href="scripting-reference/classes/base-classes/actor">Base Actor</ReferenceLink>
+			<StaticFunctionListDeclaration class_name={inherited_class_name} base_class={"Actor"} functions_list={class_data.static_functions} />
+		</details>
+	</>);
+};
+
 <!-- Base Actor Functions -->
 export const BaseActorFunctions = ({ inherited_class_name} ) => {
 	const class_data = GetClassData("Class", "Actor");
@@ -444,10 +490,11 @@ export const FunctionsDeclaration = ({ type, name }) => {
 export const StaticFunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
+		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorStaticFunctions inherited_class_name={name} /> : "" }
 		{
 			class_data.static_functions == null ? <i>This entity doesn't have own static functions.</i> :
 			<>
-				<FunctionListDeclaration class_name={name} functions_list={class_data.static_functions} />
+				<StaticFunctionListDeclaration class_name={name} functions_list={class_data.static_functions} />
 				{ class_data.static_functions.map((value) => <FunctionDeclaration function_data={value} is_static class_name={class_data.name} />) }
 			</>
 		}
