@@ -62,6 +62,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Package.toml
 | **`type`** | Type of the Package - please refer to [Package Types](#package-types) |
 | **`force_no_map_script`** | Enabling this will force the map-script (if any) to do NOT load |
 | **`auto_cleanup`** | Enabling this will destroy all entities spawned by this Package when it unloads |
+| **`compatibility_version`** | The game version (major.minor) at the time this package was created, for granting the package keeps working between breaking changes |
 | **`packages_requirements`** | List of Packages which need to be loaded first |
 | **`assets_requirements`** | List of Asset Packs to be loaded when this package loads |
 | **`compatible_maps`** | List of Maps compatible/recommended to work with this Package |
