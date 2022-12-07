@@ -136,7 +136,7 @@ module.exports = {
               label: 'bleeding-edge 🩸',
             },
             latest: {
-              label: 'latest - a1.19.x ⚖️',
+              label: 'latest - a1.21.x ⚖️',
             }
           },
         },

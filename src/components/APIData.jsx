@@ -98,111 +98,127 @@ import NanosMathDataStable from '@site/src/api/Stable/UtilityClasses/NanosMath.j
 import NanosUtilsDataStable from '@site/src/api/Stable/UtilityClasses/NanosUtils.json';
 
 
-export default {
-    Stable: {
-        Class: {
-            Actor: ActorDataStable,
-            Pickable: PickableDataStable,
-            Paintable: PaintableDataStable,
-            Billboard: BillboardDataStable,
-            Blueprint: BlueprintDataStable,
-            Cable: CableDataStable,
-            Canvas: CanvasDataStable,
-            Character: CharacterDataStable,
-            Database: DatabaseDataStable,
-            Decal: DecalDataStable,
-            File: FileDataStable,
-            Grenade: GrenadeDataStable,
-            Light: LightDataStable,
-            Melee: MeleeDataStable,
-            Particle: ParticleDataStable,
-            Player: PlayerDataStable,
-            Prop: PropDataStable,
-            SceneCapture: SceneCaptureDataStable,
-            StaticMesh: StaticMeshDataStable,
-            Sound: SoundDataStable,
-            TextRender: TextRenderDataStable,
-            Trigger: TriggerDataStable,
-            Vehicle: VehicleDataStable,
-            Weapon: WeaponDataStable,
-            WebUI: WebUIDataStable,
-        },
-        Struct: {
-            Color: ColorDataStable,
-            Matrix: MatrixDataStable,
-            Quat: QuatDataStable,
-            Rotator: RotatorDataStable,
-            Vector: VectorDataStable,
-            Vector2D: Vector2DDataStable,
-        },
-        StaticClass: {
-            Assets: AssetsDataStable,
-            Client: ClientDataStable,
-            Events: EventsDataStable,
-            HTTP: HTTPDataStable,
-            Input: InputDataStable,
-            Package: PackageDataStable,
-            Server: ServerDataStable,
-            Timer: TimerDataStable,
-            World: WorldDataStable,
-        },
-        UtilityClass: {
-            JSON: JSONDataStable,
-            NanosMath: NanosMathDataStable,
-            NanosUtils: NanosUtilsDataStable,        
-        }
-    },
-    BleedingEdge: {
-        Class: {
-            Actor: ActorData,
-            Pickable: PickableData,
-            Paintable: PaintableData,
-            Billboard: BillboardData,
-            Blueprint: BlueprintData,
-            Cable: CableData,
-            Canvas: CanvasData,
-            Character: CharacterData,
-            Database: DatabaseData,
-            Decal: DecalData,
-            File: FileData,
-            Grenade: GrenadeData,
-            Light: LightData,
-            Melee: MeleeData,
-            Particle: ParticleData,
-            Player: PlayerData,
-            Prop: PropData,
-            SceneCapture: SceneCaptureData,
-            StaticMesh: StaticMeshData,
-            Sound: SoundData,
-            TextRender: TextRenderData,
-            Trigger: TriggerData,
-            Vehicle: VehicleData,
-            Weapon: WeaponData,
-            WebUI: WebUIData,
-        },
-        Struct: {
-            Color: ColorData,
-            Matrix: MatrixData,
-            Quat: QuatData,
-            Rotator: RotatorData,
-            Vector: VectorData,
-            Vector2D: Vector2DData,
-        },
-        StaticClass: {
-            Assets: AssetsData,
-            Client: ClientData,
-            Events: EventsData,
-            HTTP: HTTPData,
-            Input: InputData,
-            Package: PackageData,
-            Server: ServerData,
-            Timer: TimerData,
-            World: WorldData,
-        },
-        UtilityClass: {
-            JSON: JSONData,
-            NanosMath: NanosMathData,
-            NanosUtils: NanosUtilsData,        
-        }
-    }
+const APIData = {
+	Stable: {
+		Class: {
+			Actor: ActorDataStable,
+			Pickable: PickableDataStable,
+			Paintable: PaintableDataStable,
+			Billboard: BillboardDataStable,
+			Blueprint: BlueprintDataStable,
+			Cable: CableDataStable,
+			Canvas: CanvasDataStable,
+			Character: CharacterDataStable,
+			Database: DatabaseDataStable,
+			Decal: DecalDataStable,
+			File: FileDataStable,
+			Grenade: GrenadeDataStable,
+			Light: LightDataStable,
+			Melee: MeleeDataStable,
+			Particle: ParticleDataStable,
+			Player: PlayerDataStable,
+			Prop: PropDataStable,
+			SceneCapture: SceneCaptureDataStable,
+			StaticMesh: StaticMeshDataStable,
+			Sound: SoundDataStable,
+			TextRender: TextRenderDataStable,
+			Trigger: TriggerDataStable,
+			Vehicle: VehicleDataStable,
+			Weapon: WeaponDataStable,
+			WebUI: WebUIDataStable,
+		},
+		Struct: {
+			Color: ColorDataStable,
+			Matrix: MatrixDataStable,
+			Quat: QuatDataStable,
+			Rotator: RotatorDataStable,
+			Vector: VectorDataStable,
+			Vector2D: Vector2DDataStable,
+		},
+		StaticClass: {
+			Assets: AssetsDataStable,
+			Client: ClientDataStable,
+			Events: EventsDataStable,
+			HTTP: HTTPDataStable,
+			Input: InputDataStable,
+			Package: PackageDataStable,
+			Server: ServerDataStable,
+			Timer: TimerDataStable,
+			World: WorldDataStable,
+		},
+		UtilityClass: {
+			JSON: JSONDataStable,
+			NanosMath: NanosMathDataStable,
+			NanosUtils: NanosUtilsDataStable,
+		}
+	},
+	BleedingEdge: {
+		Class: {
+			Actor: ActorData,
+			Pickable: PickableData,
+			Paintable: PaintableData,
+			Billboard: BillboardData,
+			Blueprint: BlueprintData,
+			Cable: CableData,
+			Canvas: CanvasData,
+			Character: CharacterData,
+			Database: DatabaseData,
+			Decal: DecalData,
+			File: FileData,
+			Grenade: GrenadeData,
+			Light: LightData,
+			Melee: MeleeData,
+			Particle: ParticleData,
+			Player: PlayerData,
+			Prop: PropData,
+			SceneCapture: SceneCaptureData,
+			StaticMesh: StaticMeshData,
+			Sound: SoundData,
+			TextRender: TextRenderData,
+			Trigger: TriggerData,
+			Vehicle: VehicleData,
+			Weapon: WeaponData,
+			WebUI: WebUIData,
+		},
+		Struct: {
+			Color: ColorData,
+			Matrix: MatrixData,
+			Quat: QuatData,
+			Rotator: RotatorData,
+			Vector: VectorData,
+			Vector2D: Vector2DData,
+		},
+		StaticClass: {
+			Assets: AssetsData,
+			Client: ClientData,
+			Events: EventsData,
+			HTTP: HTTPData,
+			Input: InputData,
+			Package: PackageData,
+			Server: ServerData,
+			Timer: TimerData,
+			World: WorldData,
+		},
+		UtilityClass: {
+			JSON: JSONData,
+			NanosMath: NanosMathData,
+			NanosUtils: NanosUtilsData,
+		}
+	}
 };
+
+// Reordenate data
+for (const [_, _version] of Object.entries(APIData)) {
+	for (const [_, _class] of Object.entries(_version.Class)) {
+		if (_class.functions)
+			_class.functions.sort((a, b) => { return a.name > b.name; });
+
+		if (_class.static_functions)
+			_class.static_functions.sort((a, b) => { return a.name > b.name; });
+
+		if (_class.events)
+			_class.events.sort((a, b) => { return a.name > b.name; });
+	}
+}
+
+export default APIData;
