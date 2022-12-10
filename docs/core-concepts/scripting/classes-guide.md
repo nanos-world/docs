@@ -16,6 +16,7 @@ In nanos world we have 3 types of Classes (or structures): `Classes`, `Static Cl
 
 :::
 
+
 ## Classes
 
 If you read our [Quick Start](/getting-started/quick-start.mdx) guide, you noticed we were spawning entities in the following format:
@@ -36,15 +37,17 @@ Access to **Entities / Spawned Objects** **Methods** are made with **`:`**.
 
 This is how **OOP** works! You create objects and call functions/catch events on that object. Unlike other scripting games which have tons of global functions and events to interact with entities, nanos world scripting is a **modern approach** to **modern programming**.
 
-### Classes Inheritance
 
-Under the hood, nanos world Classes follow an [Inheritance Pattern](https://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29), which means we have base parent classes, and it’s children which inherits all functions, events and properties from them. You will notice that all Classes that can be spawned in the world are [Actors](/scripting-reference/classes/base-classes/actor.mdx), for example in Character and [Prop](/scripting-reference/classes/prop.mdx) \(which are Actors\) it is possible to call the function: `:SetLocation(Vector)`.
+### Base Classes
+
+Under the hood, nanos world Classes follow an [Inheritance Pattern](https://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29), which means we have base parent classes, and it's children which "inherits" all functions, events and properties from them. You will notice that all Classes that can be spawned in the world are [Actors](/scripting-reference/classes/base-classes/actor.mdx), for example in [Character](/scripting-reference/classes/character.mdx) and [Prop](/scripting-reference/classes/prop.mdx) it is possible to call the function: `:SetLocation(Vector)`.
 
 :::info
 
 The [Base Class Actor](/scripting-reference/classes/base-classes/actor.mdx) is a very important class in nanos world. It contains the most of methods which are shared through all Classes we have, and also **Static Methods** to get and retrieve entities directly.
 
 :::
+
 
 ### Spawning Entities
 
@@ -68,6 +71,7 @@ Keep in mind that some Classes can only be spawned in the **Server**, others can
 
 :::
 
+
 ### Destroying Entities
 
 All classes \(but Player\) allow you to destroy them with the method `Destroy()`:
@@ -83,6 +87,7 @@ Destroying an Entity will trigger the event `Destroy` and also will automaticall
 **If you attached entities with `auto_destroy_when_detached` parameter, all attached entities will be destroyed as well 😉*.
 
 :::
+
 
 ## Static Classes
 
@@ -100,6 +105,7 @@ World.SetTime(9, 25)
 Access to **Static Classes / Static Methods** are made with **`.`**.
 
 :::
+
 
 ## Utility Classes
 
