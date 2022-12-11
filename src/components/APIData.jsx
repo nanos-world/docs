@@ -1,4 +1,5 @@
 // Bleeding-Edge Imports
+import EntityData from '@site/src/api/Classes/BaseEntity.json';
 import ActorData from '@site/src/api/Classes/BaseActor.json';
 import PickableData from '@site/src/api/Classes/BasePickable.json';
 import PaintableData from '@site/src/api/Classes/BasePaintable.json';
@@ -49,6 +50,7 @@ import NanosUtilsData from '@site/src/api/UtilityClasses/NanosUtils.json';
 
 
 // Stable Imports
+// import EntityDataStable from '@site/src/api/Stable/Classes/BaseEntity.json';
 import ActorDataStable from '@site/src/api/Stable/Classes/BaseActor.json';
 import PickableDataStable from '@site/src/api/Stable/Classes/BasePickable.json';
 import PaintableDataStable from '@site/src/api/Stable/Classes/BasePaintable.json';
@@ -101,6 +103,7 @@ import NanosUtilsDataStable from '@site/src/api/Stable/UtilityClasses/NanosUtils
 const APIData = {
 	Stable: {
 		Class: {
+			// Entity: EntityDataStable,
 			Actor: ActorDataStable,
 			Pickable: PickableDataStable,
 			Paintable: PaintableDataStable,
@@ -154,6 +157,7 @@ const APIData = {
 	},
 	BleedingEdge: {
 		Class: {
+			Entity: EntityData,
 			Actor: ActorData,
 			Pickable: PickableData,
 			Paintable: PaintableData,

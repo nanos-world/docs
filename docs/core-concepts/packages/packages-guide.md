@@ -90,6 +90,32 @@ If you are creating an unique and complete **Game** with several functionalities
 :::
 
 
+### Compatibility Version
+
+This setting deserves a special attention. It is meant to assure your packages will not break in future breaking changes updates.
+
+It works by forcing that package to run code in a compatibility mode, meaning that breaking changes will keep working as the way it was before. Example:
+
+Let's say you have this code running right now:
+
+```lua
+-- Make an asynchronous HTTP request
+HTTP.Request("https://api.nanos.world/", "store/v1/packages/halloween", "GET", "", "application/json", false, {}, function(status, data)
+    -- Do something with my data
+end)
+```
+
+And then, in the hypothetical update 9.99 the API changes and make `HTTP.RequestSync` to become `HTTP.Request` and `HTTP.Request` to become `HTTP.RequestAsync`. I.e. you need to update your code to use `HTTP.RequestAsync` now, this is a breaking change as the new functions uses the same name as before.
+
+With compatibility version, your code can keep working as it was before this update, for that, in your Package.toml you just need to make sure it's `compatibility_version` is set to a version lower than `9.99` (i.e. `9.98`).
+
+:::tip
+
+The Compatibility Mode is a feature that aims to keep old and unmaintained packages/game-modes to keep working for a longer time. But from time to time (major versions) all the deprecated compatibility modes will be removed from the codebase. So always keep your packages up-to-date!
+
+:::
+
+
 ## Ignoring Client Folders
 
 Sometimes you want to ignore some folders from being sent to the clients (e.g. auto generated folders from Node.js HTML ones).

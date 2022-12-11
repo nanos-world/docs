@@ -143,7 +143,7 @@ export const OpenSourceAdmonition = () => (
 <!-- Inheritance Admonition -->
 export const InheritanceAdmonition = ({ inheritance }) => (
 	<Admonition type="info" icon="👪" title="Inheritance">
-		This class inherits from { inheritance.map(inherit => GetElementByType(inherit)).reduce((prev, next) => [prev, <CommaSeparator />, next]) }.
+		This class shares methods and events from { inheritance.map(inherit => GetElementByType(inherit)).reduce((prev, next) => [prev, <CommaSeparator />, next]) }.
 	</Admonition>
 );
 
@@ -400,6 +400,42 @@ export const ConstructorDeclaration = ({ type, name }) => {
 	</>);
 };
 
+<!-- Base Entity Static Functions -->
+export const BaseEntityStaticFunctions = ({ inherited_class_name} ) => {
+	const class_data = GetClassData("Class", "Entity");
+	return (<>
+		<details>
+			<summary>Inherited Entity Static Functions</summary>
+			<ReferenceLink href="scripting-reference/classes/base-classes/entity">Base Entity</ReferenceLink>
+			<StaticFunctionListDeclaration class_name={inherited_class_name} base_class={"Entity"} functions_list={class_data.static_functions} />
+		</details>
+	</>);
+};
+
+<!-- Base Entity Functions -->
+export const BaseEntityFunctions = ({ inherited_class_name} ) => {
+	const class_data = GetClassData("Class", "Entity");
+	return (<>
+		<details>
+			<summary>Inherited Entity Functions</summary>
+			<ReferenceLink href="scripting-reference/classes/base-classes/Entity">Base Entity</ReferenceLink>
+			<FunctionListDeclaration class_name={inherited_class_name} base_class={"Entity"} functions_list={class_data.functions} />
+		</details>
+	</>);
+};
+
+<!-- Base Entity Events -->
+export const BaseEntityEvents = ({ inherited_class_name }) => {
+	const class_data = GetClassData("Class", "Entity");
+	return (<>
+		<details>
+			<summary>Inherited Entity Events</summary>
+			<ReferenceLink href="scripting-reference/classes/base-classes/Entity">Base Entity</ReferenceLink>
+			<EventListDeclaration type="Class" name="Entity" inherited_class_name={inherited_class_name} base_class={"Entity"} />
+		</details>
+	</>);
+};
+
 <!-- Base Actor Static Functions -->
 export const BaseActorStaticFunctions = ({ inherited_class_name} ) => {
 	const class_data = GetClassData("Class", "Actor");
@@ -473,6 +509,7 @@ export const BasePickableEvents = ({ inherited_class_name }) => (
 export const FunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
+		{ class_data.inheritance && class_data.inheritance.includes("Entity") ? <BaseEntityFunctions inherited_class_name={name} /> : "" }
 		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorFunctions inherited_class_name={name} /> : "" }
 		{ class_data.inheritance && class_data.inheritance.includes("Paintable") ? <BasePaintableFunctions inherited_class_name={name} /> : "" }
 		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableFunctions inherited_class_name={name} /> : "" }
@@ -490,7 +527,8 @@ export const FunctionsDeclaration = ({ type, name }) => {
 export const StaticFunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
-		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorStaticFunctions inherited_class_name={name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Entity") ? <BaseEntityStaticFunctions inherited_class_name={name} /> : "" }
+		{/* { class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorStaticFunctions inherited_class_name={name} /> : "" } */}
 		{
 			class_data.static_functions == null ? <i>This entity doesn't have own static functions.</i> :
 			<>
@@ -505,6 +543,7 @@ export const StaticFunctionsDeclaration = ({ type, name }) => {
 export const EventsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
+		{ class_data.inheritance && class_data.inheritance.includes("Entity") ? <BaseEntityEvents inherited_class_name={name} /> : "" }
 		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorEvents inherited_class_name={name} /> : "" }
 		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableEvents inherited_class_name={name} /> : "" }
 		{
