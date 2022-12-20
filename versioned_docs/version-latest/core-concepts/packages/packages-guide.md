@@ -62,6 +62,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Package.toml
 | **`type`** | Type of the Package - please refer to [Package Types](#package-types) |
 | **`force_no_map_script`** | Enabling this will force the map-script (if any) to do NOT load |
 | **`auto_cleanup`** | Enabling this will destroy all entities spawned by this Package when it unloads |
+| **`compatibility_version`** | The game version (major.minor) at the time this package was created, for granting the package keeps working between breaking changes |
 | **`packages_requirements`** | List of Packages which need to be loaded first |
 | **`assets_requirements`** | List of Asset Packs to be loaded when this package loads |
 | **`compatible_maps`** | List of Maps compatible/recommended to work with this Package |
@@ -85,6 +86,32 @@ If you are creating a **Tool** or some **Addon** package, make it **`script`**!
 If you are creating a **Library**, a **Framework** or some **Utility** package, make it **`library`**!
 
 If you are creating an unique and complete **Game** with several functionalities which you don't want to be messed if someone load two full games, make it **`game-mode`**!
+
+:::
+
+
+### Compatibility Version
+
+This setting deserves a special attention. It is meant to assure your packages will not break in future breaking changes updates.
+
+It works by forcing that package to run code in a compatibility mode, meaning that breaking changes will keep working as the way it was before. Example:
+
+Let's say you have this code running right now:
+
+```lua
+-- Make an asynchronous HTTP request
+HTTP.Request("https://api.nanos.world/", "store/v1/packages/halloween", "GET", "", "application/json", false, {}, function(status, data)
+    -- Do something with my data
+end)
+```
+
+And then, in the hypothetical update 9.99 the API changes and make `HTTP.RequestSync` to become `HTTP.Request` and `HTTP.Request` to become `HTTP.RequestAsync`. I.e. you need to update your code to use `HTTP.RequestAsync` now, this is a breaking change as the new functions uses the same name as before.
+
+With compatibility version, your code can keep working as it was before this update, for that, in your Package.toml you just need to make sure it's `compatibility_version` is set to a version lower than `9.99` (i.e. `9.98`).
+
+:::tip
+
+The Compatibility Mode is a feature that aims to keep old and unmaintained packages/game-modes to keep working for a longer time. But from time to time (major versions) all the deprecated compatibility modes will be removed from the codebase. So always keep your packages up-to-date!
 
 :::
 

@@ -6,17 +6,11 @@ tags: [utility-class]
 
 <HeaderDeclaration type="UtilityClass" name="JSON" is_static is_open_source />
 
-:::tip
-
-nanos world implements a lightweight JSON library from [https://github.com/rxi/json.lua](https://github.com/rxi/json.lua).
-
-:::
-
 
 ## 🎒 Examples
 
 ```lua
-local encoded_value = JSON.stringify({ 1, 2, 3, { x = 10 } })
+local encoded_value = JSON.stringify({ 1, 2, 3, { x = 10, y = Vector(1, 2, 3) }, "hehe" })
 -- Returns '[1,2,3,{"x":10}]'
 
 local decoded_value = JSON.parse('[1,2,3,{"x":10}]')
@@ -24,9 +18,11 @@ local decoded_value = JSON.parse('[1,2,3,{"x":10}]')
 ```
 
 
-:::caution
+:::note
 
-Note that custom classes (e.g. **Vehicle**, **Vector**, **Character**… etc) aren't stringified with this functions and stringifying them will cause unknown behavior.
+Note that custom classes (e.g. **Vehicle**, **Character**, **Prop**... etc) or **functions** are not supported to be stringified and will be nulified.
+
+Structs (e.g. **Vector**, **Rotator**, **Color**... etc) are supported and will be parsed/stringified properly!
 
 :::
 

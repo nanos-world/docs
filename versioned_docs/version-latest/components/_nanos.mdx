@@ -9,6 +9,7 @@ import { AuthorityTooltip, AssetPathToolTip, ClassToolTip, StructToolTip, Functi
 
 import EnumsData from '@site/src/api/Enums.json';
 
+import EntityData from '@site/src/api/Classes/BaseEntity.json';
 import ActorData from '@site/src/api/Classes/BaseActor.json';
 import PickableData from '@site/src/api/Classes/BasePickable.json';
 import PaintableData from '@site/src/api/Classes/BasePaintable.json';
@@ -44,6 +45,7 @@ import VectorData from '@site/src/api/Structs/Vector.json';
 import Vector2DData from '@site/src/api/Structs/Vector2D.json';
 
 export const ClassesData = {
+	"Base Entity": EntityData,
 	"Base Actor": ActorData,
 	"Base Pickable": PickableData,
 	"Base Paintable": PaintableData,
@@ -189,6 +191,7 @@ export const Structs = {
 
 <!-- Defines Classes components -->
 export const Classes = {
+	Entity: () => BaseClass("Base Entity", "🧩", "base-classes/entity"),
 	Actor: () => BaseClass("Base Actor", "🎭", "base-classes/actor"),
 	Paintable: () => BaseClass("Base Paintable", "🎨", "base-classes/paintable"),
 	Pickable: () => BaseClass("Base Pickable", "⚔️", "base-classes/pickable"),

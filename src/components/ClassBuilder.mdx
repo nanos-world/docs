@@ -65,7 +65,7 @@ export function GetReturnTableDescriptionList(return_data) {
 
 <!-- Gets a list of return descriptions surrounded by () -->
 export function GetReturnDescriptionList(return_list) {
-	const return_list_plain = return_list.map((return_data) => <span dangerouslySetInnerHTML={{ __html: GetReturnTableDescriptionList(return_data) }} />).reduce((prev, next) => [prev, ", ", next]);
+	const return_list_plain = return_list.map((return_data) => return_data.description ? <span dangerouslySetInnerHTML={{ __html: GetReturnTableDescriptionList(return_data) }} /> : null ).reduce((prev, next) => [prev, ", ", next]);
 	if (!return_list_plain)
 		return "";
 	return <>{"("}{ return_list_plain }{")"}</>;

@@ -28,6 +28,9 @@ Methods or Events which can only be called in the **Client** side.
 #### <AuthorityType.AuthorityOnly />**`Authority Side`**
 Methods or Events which can only be called in the side which spawned it.
 
+#### <AuthorityType.NetworkAuthority />**`Network Authority Side`**
+Methods or Events which can be called in the **Server** and also in the **Client** if the Local Player is the Network Authority of that entity.
+
 #### <AuthorityType.Both />**`Both Sides`**
 Methods or Events which can only be called in any side.
 
@@ -59,9 +62,18 @@ In all this cases, the Player will be automatically assigned to be the **Network
 
 It is possible to override the current Network Authority of a specific entity by using the method `:SetNetworkAuthority()`.
 
+:::tip
+
+Under certain circumstances, actors may not be in **Distributed Network Authority** mode. This means they cannot have their current network authority changed. Example: if a player is driving a Vehicle or using a Weapon, mandatorily he is the the Vehicle and Weapons's Network Authority, and this cannot be overwritten through scripting. To validate if an Actor can have it overridden, you can use the method `:IsNetworkDistributed()`.
+
+:::
+
+
+You can also prevent it from being automatically distributed to other Players by calling `:SetNetworkAuthorityAutoDistributed(false)`.
+
 :::caution
 
-**Note:** Some actors aren't **Network Distributed**. This means they will not be automatically assigned neither be able to have it's Network Authority changed. You can check if an entity is Network Distributed with the method `:IsNetworkDistributed()`.
+Always remember to restore the automatic **Network Authority Distribution** by calling `:SetNetworkAuthorityAutoDistributed(true)`. Otherwise that entity may behave completely weird.
 
 :::
 

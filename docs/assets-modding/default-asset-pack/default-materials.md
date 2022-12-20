@@ -113,6 +113,7 @@ You also can create your own Physical Materials and use them in-game! Just remem
 | **PM_Plastic** | `0.7` | `0.7` | `1.0` | `SurfaceType.Plastic` |
 | **PM_Rock** | `0.9` | `0.3` | `1.0` | `SurfaceType.Rock` |
 | **PM_Rubber** | `0.7` | `1.0` | `1.0` | `SurfaceType.Rubber` |
+| **PM_RubberBouncy** | `0.05` | `0.9` | `1.0` | `SurfaceType.Rubber` |
 | **PM_Sand** | `0.6` | `0.3` | `1.0` | `SurfaceType.Sand` |
 | **PM_Water** | `0.7` | `0.3` | `1.0` | `SurfaceType.Water` |
 | **PM_Wood** | `0.7` | `0.3` | `0.5` | `SurfaceType.WoodLight` |
