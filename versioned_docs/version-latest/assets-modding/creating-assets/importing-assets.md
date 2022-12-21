@@ -98,7 +98,7 @@ Open the Asset.toml in a text editor and make sure you configured `unreal_folder
     # unreal engine folder - the name of the root folder (the one inside UnrealProject/Content/) which the assets will have references to each other
     unreal_folder =     "MyAssetPack"
     # unreal engine version - unreal version this asset pack was compiled on
-    unreal_version =    "5.0.3"
+    unreal_version =    "5.1.0"
 ```
 
 Another important section to configure is the `[assets]` one, in which you define the list of exported assets to be referenced through scripting.
