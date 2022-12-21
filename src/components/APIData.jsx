@@ -212,8 +212,10 @@ const APIData = {
 };
 
 // Reordenate data
-for (const [_, _version] of Object.entries(APIData)) {
-	for (const [_, _class] of Object.entries(_version.Class)) {
+for (const vKey in APIData) {
+	for (const cKey in APIData[vKey].Class) {
+		let _class = APIData[vKey].Class[cKey];
+
 		if (_class.functions)
 			_class.functions.sort((a, b) => { return a.name > b.name; });
 
