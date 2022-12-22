@@ -33,6 +33,26 @@ On Windows, the download of Unreal Engine must be done from inside [Epic Games L
 6. Select an installation folder and press `Install`.
 
 
+### Prerequisites
+
+Since newer versions of Unreal, it's required to install some SDKs to be able to cook assets on it. You can install them directly by downloading from Microsoft websites, or using Visual Studio Installer if you already have it installed.
+
+#### .NET Core 3.1
+
+Install [.NET Core 3.1](https://dotnet.microsoft.com/en-us/download/dotnet/3.1) directly from Microsoft website.
+
+
+#### Windows 10 SDK
+
+- (recommended) If you have [Visual Studio](https://visualstudio.microsoft.com/downloads/) installed, you can use Visual Studio Installer to install Windows 10 SDK through there. Just open the **Individual components** tab and install `Windows 10 SDK (10.0.20348.0)`:
+
+![Windows 10 SDK Installation](/img/docs/windows-10-sdk-vs.webp)
+
+- Otherwise, you can install Windows 10 SDK directly from [Microsoft website](https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/) and select `Windows SDK for Desktop C++ amd64 Apps`:
+
+![Windows 10 SDK Installation](/img/docs/windows-10-sdk.webp)
+
+
 ## On Linux
 
 If you are on Linux, Epic Games is releasing standalone binaries which can be downloaded directly from their site. Download the latest Unreal Engine version [here](https://www.unrealengine.com/en-US/linux).
