@@ -159,11 +159,11 @@ Player.Subscribe("Spawn", SpawnCharacter)
 
 -- Iterates for all already connected players and give them a Character as well
 -- This will make sure you also get a Character when you reload the package
-Package.Subscribe("Load", function())
+Package.Subscribe("Load", function()
 	for k, player in pairs(Player.GetAll()) do
 		SpawnCharacter(player)
 	end
-end
+end)
 ```
 
 To apply your changes, run the command in the server console: `package reload all`. This will also live reload the packages and apply the changes immediatelly.
