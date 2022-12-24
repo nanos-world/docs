@@ -159,8 +159,10 @@ Player.Subscribe("Spawn", SpawnCharacter)
 
 -- Iterates for all already connected players and give them a Character as well
 -- This will make sure you also get a Character when you reload the package
-for k, player in pairs(Player.GetAll()) do
-    SpawnCharacter(player)
+Package.Subscribe("Load", function())
+	for k, player in pairs(Player.GetAll()) do
+		SpawnCharacter(player)
+	end
 end
 ```
 
