@@ -94,6 +94,6 @@ local blueprint = Blueprint(Vector(), Rotator(), "my-asset-pack::BP_AwesomeBluep
 -- Subscribes to a Blueprint Event Dispatcher
 blueprint:BindBlueprintEventDispatcher("GorgeousDispatcher", function(self, arg1, arg2)
     -- arg1 is a string and arg2 is an integer
-    Package.Log("Called from Blueprint!", arg1, arg2)
+    Console.Log("Called from Blueprint!", arg1, arg2)
 end)
 ```

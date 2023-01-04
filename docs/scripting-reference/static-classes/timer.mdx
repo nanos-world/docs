@@ -18,7 +18,7 @@ The shortest interval possible is equal to the local Tick Rate - usually at 33ms
 ```lua
 -- creates a Interval to call a function at every 2 seconds
 local my_interval = Timer.SetInterval(function(param1, param2)
-    Package.Log("Triggered each 2 seconds! Param1: " .. param1 .. ". Param2: " .. param2)
+    Console.Log("Triggered each 2 seconds! Param1: " .. param1 .. ". Param2: " .. param2)
 end, 2000, "awesome param 1", 456)
 
 -- cancels the Interval
@@ -26,7 +26,7 @@ Timer.ClearInterval(my_interval)
 
 -- creates a Timeout to call my_function in 5 seconds, once - passing a parameter
 Timer.SetTimeout(function(my_param)
-    Package.Log("nanos " .. my_param)
+    Console.Log("nanos " .. my_param)
 end, 5000, "world")
 ```
 

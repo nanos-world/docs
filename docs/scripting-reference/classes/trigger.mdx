@@ -14,17 +14,17 @@ tags: [class]
 local sphere_trigger = Trigger(Vector(-200, 100, 500), Rotator(), Vector(100), TriggerType.Sphere, true, Color(1, 0, 0))
 
 sphere_trigger:Subscribe("BeginOverlap", function(trigger, actor_triggering)
-    Package.Log("Something entered my Sphere Trigger")
+    Console.Log("Something entered my Sphere Trigger")
 end)
 
 local box_trigger = Trigger(Vector(300, 200, 500), Rotator(0, 45, 0), Vector(150, 150, 150), TriggerType.Box, true, Color(0, 1, 0))
 
 box_trigger:Subscribe("BeginOverlap", function(trigger, actor_triggering)
-    Package.Log("Something entered my Box Trigger")
+    Console.Log("Something entered my Box Trigger")
 end)
 
 box_trigger:Subscribe("EndOverlap", function(trigger, actor_triggering)
-    Package.Log("Something left my Box Trigger")
+    Console.Log("Something left my Box Trigger")
 end)
 ```
 

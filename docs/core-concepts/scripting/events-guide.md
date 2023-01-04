@@ -22,7 +22,7 @@ Registering for events is very easy and straightforward using the method `Subscr
 
 ```lua
 Player.Subscribe("Spawn", function(player)
-    Package.Log(player:GetName() .. " has joined!")
+    Console.Log(player:GetName() .. " has joined!")
 end)
 ```
 
@@ -57,7 +57,7 @@ Player.Unsubscribe("Spawn")
 ```lua
 -- Declares the Callback beforehand
 function OnSpawnPlayer(player)
-    Package.Log(player:GetName() .. " has joined!")
+    Console.Log(player:GetName() .. " has joined!")
 end
 
 -- Subscribes the event, passing the Callback
@@ -65,7 +65,7 @@ Player.Subscribe("Spawn", OnSpawnPlayer)
 
 -- Subscribes for the same event, twice
 Player.Subscribe("Spawn", function(player)
-    Package.Log(player:GetName() .. " has joined again!")
+    Console.Log(player:GetName() .. " has joined again!")
 end)
 
 -- Unsubscribes only from the first Callback

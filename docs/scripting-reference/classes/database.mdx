@@ -30,19 +30,19 @@ sqlite_db:Execute([[
 
 -- Executes a Query
 sqlite_db:Execute("INSERT INTO test VALUES (1, 'amazing')", function(affected_rows)
-	Package.Log("Affected Rows: " .. tostring(affected_rows))
+	Console.Log("Affected Rows: " .. tostring(affected_rows))
     -- Will output: 1
 end)
 
 -- Selects the data
 sqlite_db:Select("SELECT * FROM test", function(rows)
-	Package.Log(NanosUtils.Dump(rows))
+	Console.Log(NanosUtils.Dump(rows))
     -- Will output a table with all data from 'test'
 end)
 
 -- Selects the data with filter
 sqlite_db:Select("SELECT * FROM test WHERE name = :0", function(rows)
-	Package.Log(NanosUtils.Dump(rows))
+	Console.Log(NanosUtils.Dump(rows))
     -- Will output a table with all data from 'test' where name matches 'amazing'
 end, 'amazing')
 ```

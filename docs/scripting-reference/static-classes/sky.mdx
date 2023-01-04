@@ -6,15 +6,20 @@ tags: [static-class]
 
 <HeaderDeclaration type="StaticClass" name="Sky" is_static image={"/img/docs/sky.webp"} />
 
-nanos world integrates and exposes the [Ultra Dynamic Sky](https://www.youtube.com/watch?v=b52npy-XUdQ) systems natively in the game.
+nanos world natively integrates [Ultra Dynamic Sky](https://www.unrealengine.com/marketplace/en-US/product/ultra-dynamic-sky/), one of best Unreal Marketplace Asset Packs, it provides a dynamic sky and weather solution for games!
+
+Through the `Sky` class, we expose it's methods to allow customizing it's parameters in real time!
 
 
-<!--
 ## 🎒 Examples
 
 ```lua title="Client/Index.lua"
+-- Spawns a new Ultra Dynamic Sky actor
+Sky.Spawn()
 
-``` -->
+-- Sets the time to 16:30
+Sky.SetTimeOfDay(16, 30)
+```
 
 
 ## 🗿 Static Functions

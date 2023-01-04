@@ -24,7 +24,7 @@ _Remote_ means the other side, e.g.: if I'm the **Client**, the remote is the Se
 ```lua title="Client/Index.lua"
 -- register for a local Event (local = client only)
 Events.Subscribe("MyLocalEvent", function(my_text)
-    Package.Log("Event received locally! " .. my_text)
+    Console.Log("Event received locally! " .. my_text)
     -- outputs "Event received locally! hello nanos world!"
 end)
 
@@ -33,7 +33,7 @@ Events.Call("MyLocalEvent", "hello nanos world!")
 
 -- register for a server Event (remote = server)
 Events.SubscribeRemote("MyClientEvent", function(my_text)
-    Package.Log("Event received from server! " .. my_text)
+    Console.Log("Event received from server! " .. my_text)
     -- outputs "Event received from server! hello nanos world!"
 end)
 
@@ -50,7 +50,7 @@ On **Server**, registering for remote events has an addition parameter: <Classes
 ```lua title="Server/Index.lua"
 -- register for a local Event (local = server only)
 Events.Subscribe("MyLocalEvent", function(my_text)
-    Package.Log("Event received locally! " .. my_text)
+    Console.Log("Event received locally! " .. my_text)
     -- outputs "Event received locally! hello nanos world!"
 end)
 
@@ -59,7 +59,7 @@ Events.Call("MyLocalEvent", "hello nanos world!")
 
 -- register for a client Event (remote = client)
 Events.SubscribeRemote("MyServerEvent", function(player, my_text)
-    Package.Log(player:GetName() .. " sent an event from client! " .. my_text)
+    Console.Log(player:GetName() .. " sent an event from client! " .. my_text)
     -- outputs "Syed sent an event from client! hello nanos world!"
 
     -- sends an "answer" to the player which sent this event
@@ -76,7 +76,7 @@ Events.BroadcastRemote("MyClientEvent", "hello nanos world!")
 ```lua
 -- register for an Event (remote or local)
 Events.Subscribe("MyAnotherEvent", function(my_text, my_vector, my_character, my_number)
-    Package.Log("Event received! " .. my_text .. " " .. my_vector.X .. " " .. my_character:GetViewMode() .. " " .. my_number)
+    Console.Log("Event received! " .. my_text .. " " .. my_vector.X .. " " .. my_character:GetViewMode() .. " " .. my_number)
     -- outputs "Event received! hello nanos world! 123 1 456"
 end)
 

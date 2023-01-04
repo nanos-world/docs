@@ -86,7 +86,7 @@ All (non built-in) commands will be sent into an event to the scripting/server-s
 
 ```lua title="Server/Index.lua"
 Server.Subscribe("Console", function(my_input)
-    Package.Log("Console command received: " .. my_input)
+    Console.Log("Console command received: " .. my_input)
 end)
 ```
 

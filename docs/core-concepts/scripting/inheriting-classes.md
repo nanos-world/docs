@@ -20,7 +20,7 @@ This feature is still **experimental**, you can try it out and provide feedback 
 Inheriting a nanos world Class is really easy, for that you just need to use the `Inherit` static method on the Class you want to inherit:
 
 ```lua
--- Creates a new Class called "MyNewClass" inheriting from Prop 
+-- Creates a new Class called "MyNewClass" inheriting from Prop
 -- and stores it in the variable MyNewClass
 MyNewClass = Prop.Inherit("MyNewClass")
 
@@ -34,7 +34,7 @@ local my_new_class_instance = MyNewClass(Vector(), Rotator(), "nanos-world::SM_C
 You can also inherit from other inherited classes:
 
 ```lua
--- Creates a new Class called "MyNewSubClass" inheriting from MyNewClass 
+-- Creates a new Class called "MyNewSubClass" inheriting from MyNewClass
 MyNewSubClass = MyNewClass.Inherit("MyNewSubClass")
 
 -- Spawn it using the default constructor
@@ -205,7 +205,7 @@ The method name must be `newindex` and not `__newindex` as `__newindex` is the n
 
 ```lua
 function MyNewClass:newindex(key, value)
-	Package.Log("Setting a %s value: %s = %s", tostring(self), key, tostring(value))
+	Console.Log("Setting a %s value: %s = %s", tostring(self), key, tostring(value))
 end
 ```
 
@@ -240,7 +240,7 @@ The method name must be `index` and not `__index` as `__index` is the native met
 
 ```lua
 function MyNewClass:index(key)
-	Package.Log("Getting %s value: %s", tostring(self), key)
+	Console.Log("Getting %s value: %s", tostring(self), key)
     -- ... do something
     return some_value
 end
@@ -250,7 +250,7 @@ You can also use `__index` to return a method:
 
 ```lua
 function MyNewClass:index(key)
-	Package.Log("%s key not found: %s", tostring(self), key)
+	Console.Log("%s key not found: %s", tostring(self), key)
 
     -- inside the redirected method you will have all the parameters passed originally
     return function(self, param1, param2...)
@@ -295,11 +295,11 @@ All events which are triggered on an inherited Class will only trigger in that C
 
 ```lua
 Prop.Subscribe("Spawn", function(self)
-    Package.Log("Spawned Prop: %s", tostring(self))
+    Console.Log("Spawned Prop: %s", tostring(self))
 end)
 
 MyNewClass.Subscribe("Spawn", function(self)
-    Package.Log("Spawned MyNewClass: %s", tostring(self))
+    Console.Log("Spawned MyNewClass: %s", tostring(self))
 end)
 
 local my_entity = MyNewClass()
@@ -318,7 +318,7 @@ Another way of subscribing is separating the definition and the subscription, th
 ```lua
 function MyNewClass:OnSpawn()
     -- self is present is this context automatically
-    Package.Log("Spawned MyNewClass: %s", tostring(self))
+    Console.Log("Spawned MyNewClass: %s", tostring(self))
 end
 
 MyNewClass.Subscribe("Spawn", MyNewClass.OnSpawn)
@@ -333,19 +333,19 @@ MyNewSubClass = MyNewClass.Inherit("MyNewSubClass")
 MyNewOtherSubClass = MyNewClass.Inherit("MyNewOtherSubClass")
 
 Prop.Subscribe("Spawn", function(self)
-    Package.Log("Spawned Prop: %s", tostring(self))
+    Console.Log("Spawned Prop: %s", tostring(self))
 end)
 
 MyNewClass.Subscribe("Spawn", function(self)
-    Package.Log("Spawned MyNewClass: %s", tostring(self))
+    Console.Log("Spawned MyNewClass: %s", tostring(self))
 end)
 
 MyNewSubClass.Subscribe("Spawn", function(self)
-    Package.Log("Spawned MyNewSubClass: %s", tostring(self))
+    Console.Log("Spawned MyNewSubClass: %s", tostring(self))
 end)
 
 MyNewOtherSubClass.Subscribe("Spawn", function(self)
-    Package.Log("Spawned MyNewOtherSubClass: %s", tostring(self))
+    Console.Log("Spawned MyNewOtherSubClass: %s", tostring(self))
 end)
 
 local my_entity = MyNewSubClass()
@@ -371,7 +371,7 @@ If you define your entities on both Client and Server side, they will behave pro
 MyNewClass = Prop.Inherit("MyNewClass")
 
 MyNewClass.Subscribe("Spawn", function(self)
-    Package.Log("Spawned MyNewClass: %s", tostring(self))
+    Console.Log("Spawned MyNewClass: %s", tostring(self))
 end)
 
 local my_entity = MyNewClass()
@@ -385,7 +385,7 @@ MyNewClass = Prop.Inherit("MyNewClass")
 
 MyNewClass.Subscribe("Spawn", function(self)
     -- It was spawned on server and will spawn on Client as a MyNewClass properly
-    Package.Log("Spawned MyNewClass: %s", tostring(self))
+    Console.Log("Spawned MyNewClass: %s", tostring(self))
 end)
 
 -- Will output:
@@ -403,7 +403,7 @@ MyNewClass = Prop.Inherit("MyNewClass")
 
 -- defines a custom method
 function MyNewClass:OnMyCustomRemoteEvent(a, b)
-    Package.Log("OnMyCustomRemoteEvent!", tostring(self), a, b)
+    Console.Log("OnMyCustomRemoteEvent!", tostring(self), a, b)
     self:CallRemoteEvent("AnotherRemoteEvent", 456, "def")
 end
 
@@ -417,7 +417,7 @@ MyNewClass = Prop.Inherit("MyNewClass")
 
 -- Note that server-side received remote events have the 'player as first parameter
 function MyNewClass:OnAnotherRemoteEvent(player, a, b)
-    Package.Log("OnAnotherRemoteEvent!", tostring(self), tostring(player), a, b)
+    Console.Log("OnAnotherRemoteEvent!", tostring(self), tostring(player), a, b)
 end
 
 -- subscribes for a custom remote event
@@ -426,4 +426,42 @@ MyNewClass.SubscribeRemote("AnotherRemoteEvent", MyNewClass.OnAnotherRemoteEvent
 -- spawns an entity and calls the custom remote event on that entity
 local p = MyNewClass(...)
 p:BroadcastRemoteEvent("MyCustomRemoteEvent", 123, "abc")
+```
+
+
+### Class Custom Default Values
+
+It is possible to set a list of default values to the Inherited Class when creating it, just pass it as the 2nd parameter to `Inherit`:
+
+```lua
+-- inherits the Class
+MyNewClass = Prop.Inherit("MyNewClass", {
+	name = "My Name",
+	category = "breakable",
+	my_custom_param = 123
+})
+
+Console.Log(MyNewClass.category)
+-- outputs "breakable"
+```
+
+
+### Class Register Event
+
+When you inherit a new class, the event `ClassRegister` will be triggered on the parents classes, allowing Packages to know when a new Class is registered.
+
+```lua
+Prop.Subscribe("ClassRegister", function(class)
+	-- here we see an useful case for the default values
+	-- as we can access it here
+	Console.Log(MyNewClass.name) -- outputs "My Name
+	-- now we can do something (add to spawn menu?)
+end)
+
+-- inherits the Class
+MyNewClass = Prop.Inherit("MyNewClass", {
+	name = "My Name",
+	category = "breakable",
+	my_custom_param = 123
+})
 ```

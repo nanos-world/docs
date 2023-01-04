@@ -38,7 +38,7 @@ local blueprint = Blueprint(Vector(), Rotator(), "my-asset-pack::BP_MyBlueprint"
 
 -- Subscribes to a Blueprint Event Dispatcher
 blueprint:BindBlueprintEventDispatcher("MyBlueprintDispatcher", function(self, arg1, arg2)
-    Package.Log("Called from Blueprint!", arg1, arg2)
+    Console.Log("Called from Blueprint!", arg1, arg2)
 end)
 ```
 

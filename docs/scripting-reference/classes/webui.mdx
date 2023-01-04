@@ -73,7 +73,7 @@ my_ui:CallEvent("MyEvent", param1, param2)
 
 -- Subscribes to receive JS events
 my_ui:Subscribe("MyAnswer", function(param1)
-    Package.Log("Received back! %s", param1)
+    Console.Log("Received back! %s", param1)
     -- Will output 'Received back! Hey there!'
 end)
 ```
