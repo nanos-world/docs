@@ -51,25 +51,25 @@ Here's a list of all tools and blueprints which you can use to speed up and help
 ### Placeholder Blueprints
 #### `NanosWorld/Blueprints/Placeholders/`
 
-![Placeholder Blueprints overview](/img/docs/adk-01.jpg)
+![Placeholder Blueprints overview](/img/docs/adk-01.webp)
 
 You can use the **Placeholder Blueprints** to set Spawn Positions of **Vehicles**, **Weapons**, **Characters** and **Props**. This works only to help you generating a Lua code with spawn positions after all. These Blueprints aren’t cooked with the map. Use the [Lua Code Generator](adk-assets-development-kit#lua-code-generator) to generate the Lua script with all spawn locations.
 
 ### Lua Code Generator
 #### `NanosWorld/Blueprints/Utility/WBP_LuaCodeGenerator`
 
-![Lua Code Generator Widget](/img/docs/adk-02.jpg)
+![Lua Code Generator Widget](/img/docs/adk-02.webp)
 
 **Lua Code Generator** is an **Editor Utility Widget** which scans the map which is currently loaded in your Unreal and generate a list of spawn code with exact Location and Rotation for every [Placeholder Blueprint ](adk-assets-development-kit#placeholder-blueprints)you had spawned.
 
 To open it, right click on it and press **Run Editor Utility Widget**:
 
-![](/img/docs/adk-03.jpg)
+![](/img/docs/adk-03.webp)
 
 ### Assets.toml Generator
 #### `NanosWorld/Blueprints/Utility/WBP_AssetsTomlGenerator`
 
-![](/img/docs/adk-04.jpg)
+![](/img/docs/adk-04.webp)
 
 This is an **Editor Utility Widget** which scans a folder (determined by the TextBox) and generates the configuration for an Assets.toml with all Assets in the folder \(which can be used in nanos world\).
 
@@ -89,7 +89,7 @@ Example: Light Intensity, Color, Post Process and other configuration will be lo
 ### Physical Materials
 #### `NanosWorld/MaterialLibrary/PhysicalMaterials/`
 
-![](/img/docs/adk-05.jpg)
+![](/img/docs/adk-05.webp)
 
 If you are creating a **Material**, you can \(and should\) use these **Physical Materials** do integrate better with nanos world. Using these Physical Materials will allow nanos world recognize which type of surface your Prop/Object is, giving it the proper auto-generated Hit or Footstep sound.
 
@@ -106,7 +106,7 @@ To be able to create Skeletal \(Character\) Meshes which work with our [Characte
 
 To change a Skeletal Mesh’s Skeleton: right click on it &gt;&gt; Skeleton &gt;&gt; Assign Skeleton and change it to our `SKEL_Mannequin`.
 
-![](/img/docs/adk-06.jpg)
+![](/img/docs/adk-06.webp)
 
 ### Thumbnail Generator
 #### `NanosWorld/Blueprints/Utility/ThumbnailGenerator`
@@ -121,5 +121,5 @@ It is also recommended to generate the Thumbnails twice, so you grant they will 
 
 :::
 
-![](/img/docs/adk-07.jpg)
+![](/img/docs/adk-07.webp)
 

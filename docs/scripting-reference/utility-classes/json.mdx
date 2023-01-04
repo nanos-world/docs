@@ -4,17 +4,17 @@ description: JSON library, useful for sending data from Client's Package to WebU
 tags: [utility-class]
 ---
 
-<HeaderDeclaration type="UtilityClass" name="JSON" is_static is_open_source />
+<HeaderDeclaration type="UtilityClass" name="JSON" is_static />
 
 
-## 🎒 Examples
+## 🎒 Examples
 
 ```lua
-local encoded_value = JSON.stringify({ 1, 2, 3, { x = 10, y = Vector(1, 2, 3) }, "hehe" })
--- Returns '[1,2,3,{"x":10}]'
+local encoded_value = JSON.stringify({ 1, 2, 3, { x = 10, y = Vector(1, 2, 3) }, "he" })
+-- Returns '[1,2,3,{"x":10},"he"]'
 
-local decoded_value = JSON.parse('[1,2,3,{"x":10}]')
--- Returns { 1, 2, 3, { x = 10 } }
+local decoded_value = JSON.parse('[1,2,3,{"x":10},"he"]')
+-- Returns { 1, 2, 3, { x = 10 }, "he" }
 ```
 
 
@@ -27,6 +27,6 @@ Structs (e.g. **Vector**, **Rotator**, **Color**... etc) are supported and will 
 :::
 
 
-## 🗿 Static Functions
+## 🗿 Static Functions
 
 <StaticFunctionsDeclaration type="UtilityClass" name="JSON" />

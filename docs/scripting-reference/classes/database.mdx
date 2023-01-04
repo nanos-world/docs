@@ -9,12 +9,12 @@ tags: [class]
 
 :::tip
 
-Currently nanos world supports `SQLite`, `MySQL` and `PostgreSQL` out of the box. 
+Currently nanos world supports `SQLite`, `MySQL` and `PostgreSQL` out of the box.
 
 :::
 
 
-## 🎒 Examples
+## 🎒 Examples
 
 ```lua Server/Index.lua
 -- Creates a SQLite connection, using a local file called 'database_filename.db'
@@ -54,22 +54,22 @@ All requests are thread safe! 🥳
 :::
 
 
-## 🏗️ Constructor
+## 🛠 Constructor
 
 <ConstructorDeclaration type="Class" name="Database" />
 
 
-## 🗿 Static Functions
+## 🗿 Static Functions
 
 <StaticFunctionsDeclaration type="Class" name="Database" />
 
 
-## 🦠 Functions
+## 🦠 Functions
 
 <FunctionsDeclaration type="Class" name="Database" />
 
 
-## 🧵 Connection String
+## 🧵 Connection String
 
 Each **Database Engine** has it's own parameters which can be used on the `connection_string` constructor. Those parameters are defined and backend-dependent by the Engine, being passed directly to the Backend when creating the connection.
 
@@ -82,7 +82,7 @@ Usually you don't need to explicitly define all (or most) of the parameters desc
 :::
 
 
-### ▶️ SQLite
+### ▶️ SQLite
 
 :::tip
 
@@ -100,7 +100,7 @@ There is a special **connection_string** for SQLite: `:memory:`. This will creat
 | **`vfs`** | | set the SQLite VFS used to as OS interface. The VFS should be registered before opening the connection, see the [documentation](https://www.sqlite.org/vfs.html) |
 
 
-### ▶️ MySQL
+### ▶️ MySQL
 
 | Parameter | Default Value | Description |
 | :--- | :--- | :--- |
@@ -120,7 +120,7 @@ There is a special **connection_string** for SQLite: `:memory:`. This will creat
 | **`write_timeout`** |  | should be positive integer value that means seconds corresponding to `MYSQL_OPT_WRITE_TIMEOUT` |
 
 
-### ▶️ PostgreSQL
+### ▶️ PostgreSQL
 
 More parameters and complete information can be found at the [PostgreSQL Official Documentation](https://www.postgresql.org/docs/8.3/libpq-connect.html).
 

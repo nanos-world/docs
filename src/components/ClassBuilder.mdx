@@ -166,7 +166,7 @@ export function GetAuthorityType(authority) {
 <!-- Function Block Declaration -->
 export const FunctionDeclaration = ({ function_data, is_static, class_name }) => (
 	<>
-		<h3 id={ function_data.name.toLowerCase() }>
+		<h3 id={ `${is_static ? "static-function" : "function"}-${function_data.name.toLowerCase()}` }>
 			{ GetAuthorityType(function_data.authority) }
 			<code>
 				{ function_data.name }
@@ -215,7 +215,7 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 <!-- Event Block Declaration -->
 export const EventDeclaration = ({ event_data, class_name }) => (
 	<>
-		<h3 id={ event_data.name.toLowerCase() }>
+		<h3 id={ `event-${event_data.name.toLowerCase()}` }>
 			{ GetAuthorityType(event_data.authority) }
 			<code>
 				{ event_data.name }
@@ -252,7 +252,7 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 export const StaticFunctionNameDeclaration = ({ class_name, function_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<StaticFunctionToolTip class_name={class_name} function_data={function_data} />}>
 		<b>
-			<Link to={`${base_class ? `/docs/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#${function_data.name.toLowerCase()}`} className={"hover-link"}>
+			<Link to={`${base_class ? `/docs/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#static-function-${function_data.name.toLowerCase()}`} className={"hover-link"}>
 				<code>{ function_data.name }</code>
 			</Link>
 		</b>
@@ -262,7 +262,7 @@ export const StaticFunctionNameDeclaration = ({ class_name, function_data, base_
 export const FunctionNameDeclaration = ({ class_name, function_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<FunctionToolTip class_name={class_name} function_data={function_data} />}>
 		<b>
-			<Link to={`${base_class ? `/docs/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#${function_data.name.toLowerCase()}`} className={"hover-link"}>
+			<Link to={`${base_class ? `/docs/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#function-${function_data.name.toLowerCase()}`} className={"hover-link"}>
 				<code>{ function_data.name }</code>
 			</Link>
 		</b>
@@ -272,7 +272,7 @@ export const FunctionNameDeclaration = ({ class_name, function_data, base_class 
 export const EventNameDeclaration = ({ class_name, event_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<EventToolTip class_name={class_name} event_data={event_data} />}>
 		<b>
-			<Link to={`${base_class ? `/docs/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#${event_data.name.toLowerCase()}`} className={"hover-link"}>
+			<Link to={`${base_class ? `/docs/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#event-${event_data.name.toLowerCase()}`} className={"hover-link"}>
 				<code>{ event_data.name }</code>
 			</Link>
 		</b>

@@ -7,16 +7,14 @@ keywords: [packages, scripting, lua]
 ---
 
 
-**Packages** are pieces/components of your server which will execute Lua scripts to interact to the game. 
+**Packages** are pieces/components of your server which will execute Lua scripts to interact to the game.
 
 ![](/img/docs/packages-01.jpg)
-
-Each Package is isolated and have it's own Lua Virtual Machine, this means that each has its own global scope and cannot access others data directly.
 
 
 ## Folder Structure
 
-All Packages must go under `Server/Packages/` folder, each Package is a folder under that.
+All Packages must go under `Server/Packages/` folder. Each Package is a folder under that.
 
 They can contain the following folders: `Server`, `Client` and `Shared`. Only **Client** and **Shared** folders will be sent and loaded by the clients when they connect.
 
@@ -25,7 +23,7 @@ Each **Package** must have a file called `Index.lua` inside **Server**, **Client
 ```text title="Server Folder"
 NanosWorldServer.exe
 Packages/
-├── My_Package_01/
+├── my-package-01/
 │	├── Server/
 │	│   ├── Index.lua
 │	│   └── *.lua
@@ -34,7 +32,7 @@ Packages/
 │	├── Shared/
 │	│   └── *.lua
 │	└── Package.toml
-├── My_Package_02/
+├── my-package-02/
 │	├── Package.toml
 │	└── ...
 Assets/
@@ -44,50 +42,68 @@ Config.toml
 
 ## Package Configuration
 
-Packages have a configuration file in the root of the package folder, called `Package.toml`, in this file we can setup all pertinent settings related to the Package:
+Packages have a configuration file in the root of the package folder, called `Package.toml`, in this file we can setup all pertinent settings related to the Package. Each [Package Type](#package-types) has it's own configuration file format.
+
+They all share the same header `[meta]`, which contains the following settings:
 
 ```toml reference
-https://github.com/nanos-world/nanos-world-server/blob/main/Package.toml
+https://github.com/nanos-world/nanos-world-server/blob/main/_meta.toml
 ```
-
-
-### Settings Detailed
 
 | Setting | Description |
 | :--- | :--- |
-| **`name`** | Friendly name of the Package |
-| **`author`** | Author(s) of the Package |
-| **`version`** | Version of the Package - please refer to [SemVer](https://semver.org/) |
-| **`image`** | Image URL to be displayed in the Vault |
-| **`type`** | Type of the Package - please refer to [Package Types](#package-types) |
-| **`force_no_map_script`** | Enabling this will force the map-script (if any) to do NOT load |
-| **`auto_cleanup`** | Enabling this will destroy all entities spawned by this Package when it unloads |
-| **`compatibility_version`** | The game version (major.minor) at the time this package was created, for granting the package keeps working between breaking changes |
-| **`packages_requirements`** | List of Packages which need to be loaded first |
-| **`assets_requirements`** | List of Asset Packs to be loaded when this package loads |
-| **`compatible_maps`** | List of Maps compatible/recommended to work with this Package |
+| **`title`** | Friendly name |
+| **`author`** | Contributor(s) |
+| **`version`** | Version - in the [SemVer](https://semver.org/) format `X.Y.Z` |
 
 
-### Package Types
+## Package Types
 
-In nanos world we have 4 kind of packages: **script**, **game-mode**, **library** and **loading-screen**, each one with with a specific functionality and an unique purpose.
+We have 3 types of packages: [script](#script), [game-mode](#game-mode) and [loading-screen](#loading-screen), each one with with a specific functionality and an unique purpose:
 
-| Type | Description |
-| :--- | :--- |
-| **`script`** | Normal Package, will execute it's scripts and start a new **Lua VM** when started. |
-| **`game-mode`** | Like `script` but you can only load one `game-mode` package at once.<br />Useful when you are creating full games which cannot be loaded with other full games packages. |
-| **`library`** | It will not load a **Lua VM**. Should be loaded through `Package.RequirePackage` from other Packages.<br />Useful when you are creating a library or framework and want it being loaded on clients as well, or when you need to set this as dependency of other packages. |
-| **`loading-screen`** | Special Package which will be loaded during player's loading screen.<br />Those packages must have an `Index.html` in the root.<br />Please refer to [Loading Screen](/core-concepts/packages/loading-screen.md) for more information. |
 
-:::tip
+### `script`
 
-If you are creating a **Tool** or some **Addon** package, make it **`script`**!
+Script is a normal Package, you can load as many as you want.
 
-If you are creating a **Library**, a **Framework** or some **Utility** package, make it **`library`**!
+```toml title="Package.toml" reference
+https://github.com/nanos-world/nanos-world-server/blob/main/_script_.toml
+```
 
-If you are creating an unique and complete **Game** with several functionalities which you don't want to be messed if someone load two full games, make it **`game-mode`**!
 
-:::
+### `game-mode`
+
+GameModes are Like `script` but you can only load one `game-mode` package at once.
+
+They are used when you are creating full games which cannot be loaded with other full games packages.
+
+```toml title="Package.toml" reference
+https://github.com/nanos-world/nanos-world-server/blob/main/_game_mode_.toml
+```
+
+
+### `loading-screen`
+
+Loading Screen is a special Package which will be loaded during player's loading screen.
+
+It must have an `index.html` in the root. Please refer to [Loading Screen](/core-concepts/packages/loading-screen.md) for more information.
+
+```toml title="Package.toml" reference
+https://github.com/nanos-world/nanos-world-server/blob/main/_loading_screen_.toml
+```
+
+
+## Settings Detailed
+
+| Setting | Package Types | Description |
+| :--- | :--- | :--- |
+| **`force_no_map_package`** | `script`<br/>`game-mode` | Enabling this will force the map package (if any) to do NOT load |
+| **`auto_cleanup`** | `script`<br/>`game-mode` | Enabling this will destroy all entities spawned by this Package when it unloads |
+| **`compatibility_version`** | `script`<br/>`game-mode` | The game version (`major.minor`) at the time this package was created, for granting backwards compatibility between breaking changes. See more [here](#compatibility-version) |
+| **`packages_requirements`** | `script`<br/>`game-mode` | List of Packages dependencies used by this Package which need to be loaded first |
+| **`assets_requirements`** | `script`<br/>`game-mode` | List of Asset Packs to be loaded when this package loads |
+| **`compatible_maps`** | `game-mode` | List of Maps compatible/recommended to work with this Game Mode |
+| **`custom_settings`** | `game-mode` | List of Custom Settings which can be set when starting a new game or passed through command line to the server. See more [here](#custom-settings) |
 
 
 ### Compatibility Version
@@ -111,9 +127,25 @@ With compatibility version, your code can keep working as it was before this upd
 
 :::tip
 
-The Compatibility Mode is a feature that aims to keep old and unmaintained packages/game-modes to keep working for a longer time. But from time to time (major versions) all the deprecated compatibility modes will be removed from the codebase. So always keep your packages up-to-date!
+The Compatibility Mode is a feature that aims to keep old and unmaintained packages/game-modes to keep working for a longer time. But from time to time all the deprecated compatibility modes will be removed from the codebase. So always keep your packages up-to-date!
 
 :::
+
+
+### Custom Settings
+
+GameModes can define Custom Settings in the `[custom_settings]` section to be set when creating a new game through main menu, or set when starting the server with the command `--custom_settings "var1 = value1, var2 = value2, ..."`
+
+The values defined can be accessed through the method [Server.GetCustomSettings()](https://docs.nanos.world/docs/next/scripting-reference/static-classes/server#getcustomsettings).
+
+#### List of Types
+
+| Type | Description |
+| :--- | :--- |
+| `boolean` | A toggleable checkbox |
+| `integer` | Integer numeric values |
+| `floating` | Floating numeric values |
+| `text` | Text Box |
 
 
 ## Ignoring Client Folders
@@ -121,3 +153,8 @@ The Compatibility Mode is a feature that aims to keep old and unmaintained packa
 Sometimes you want to ignore some folders from being sent to the clients (e.g. auto generated folders from Node.js HTML ones).
 
 So, to make the server ignore it you just need to add an `.ignore` file in the root of that folder. Simple as that 😉.
+
+
+## Logo Image
+
+It is possible to have a custom image to be displayed in the Vault. For that, add a file called `Package.jpg` besides the Package.toml with the image you wish. The recommended size is `300x150`.

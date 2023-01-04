@@ -35,14 +35,24 @@ import VectorData from '@site/src/api/Structs/Vector.json';
 import Vector2DData from '@site/src/api/Structs/Vector2D.json';
 
 import AssetsData from '@site/src/api/StaticClasses/Assets.json';
+import ChatData from '@site/src/api/StaticClasses/Chat.json';
 import ClientData from '@site/src/api/StaticClasses/Client.json';
+import ConsoleData from '@site/src/api/StaticClasses/Console.json';
+import DebugData from '@site/src/api/StaticClasses/Debug.json';
+import DiscordData from '@site/src/api/StaticClasses/Discord.json';
 import EventsData from '@site/src/api/StaticClasses/Events.json';
 import HTTPData from '@site/src/api/StaticClasses/HTTP.json';
 import InputData from '@site/src/api/StaticClasses/Input.json';
+import LevelData from '@site/src/api/StaticClasses/Level.json';
+import NavigationData from '@site/src/api/StaticClasses/Navigation.json';
 import PackageData from '@site/src/api/StaticClasses/Package.json';
+import PostProcessData from '@site/src/api/StaticClasses/PostProcess.json';
 import ServerData from '@site/src/api/StaticClasses/Server.json';
+import SkyData from '@site/src/api/StaticClasses/Sky.json';
+import SteamData from '@site/src/api/StaticClasses/Steam.json';
 import TimerData from '@site/src/api/StaticClasses/Timer.json';
-import WorldData from '@site/src/api/StaticClasses/World.json';
+import TraceData from '@site/src/api/StaticClasses/Trace.json';
+import ViewportData from '@site/src/api/StaticClasses/Viewport.json';
 
 import JSONData from '@site/src/api/UtilityClasses/JSON.json';
 import NanosMathData from '@site/src/api/UtilityClasses/NanosMath.json';
@@ -194,14 +204,24 @@ const APIData = {
 		},
 		StaticClass: {
 			Assets: AssetsData,
+			Chat: ChatData,
 			Client: ClientData,
+			Console: ConsoleData,
+			Debug: DebugData,
+			Discord: DiscordData,
 			Events: EventsData,
 			HTTP: HTTPData,
 			Input: InputData,
+			Level: LevelData,
+			Navigation: NavigationData,
 			Package: PackageData,
+			PostProcess: PostProcessData,
 			Server: ServerData,
+			Sky: SkyData,
+			Steam: SteamData,
 			Timer: TimerData,
-			World: WorldData,
+			Trace: TraceData,
+			Viewport: ViewportData,
 		},
 		UtilityClass: {
 			JSON: JSONData,

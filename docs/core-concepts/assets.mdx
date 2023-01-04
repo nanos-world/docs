@@ -57,11 +57,12 @@ See a description of what each setting does:
 
 | Setting | Description |
 | :--- | :--- |
-| **`name`** | Friendly name of the Asset Pack |
-| **`author`** | Author(s) of the Asset Pack |
-| **`version`** | Version of the Asset Pack - please refer to [SemVer](https://semver.org/) |
-| **`image`** | Image URL to be displayed in the Vault |
-| **`unreal_folder`** | Name of the root folder in the Unreal Project which exported this Assets. This is important so the Assets can keep the relative references correctly |
+| **`title`** | Friendly name |
+| **`author`** | Contributor(s) |
+| **`version`** | Version - in the [SemVer](https://semver.org/) format `X.Y.Z` |
+| **`unreal.unreal_folder`** | Name of the root folder in the Unreal Project which exported this Assets. This is important so the Assets can keep the relative references correctly |
+| **`unreal.unreal_version`** | Version at which this Asset Pack was created |
+| **`unreal.is_plugin_content`** | If this Asset Pack is Plugin Content |
 | **`assets.maps`** | List of Maps in this Asset Pack |
 | **`assets.static_meshes`** | List of Static Meshes in this Asset Pack |
 | **`assets.skeletal_meshes`** | List of Skeletal Meshes in this Asset Pack |
@@ -73,6 +74,11 @@ See a description of what each setting does:
 | **`assets.others`** | List of other Assets in this Asset Pack |
 
 
+## Logo Image
+
+It is possible to have a custom image to be displayed in the Vault. For that, add a file called `Assets.jpg` besides the Assets.toml with the image you wish. The recommended size is `300x150`.
+
+
 ## Referencing Assets in Scripting
 
 To be able to use Assets in your code, first you have to ensure that the Asset Pack is loaded. An Asset Pack is loaded when:
@@ -81,7 +87,7 @@ To be able to use Assets in your code, first you have to ensure that the Asset P
 2. A package with it configured in `assets_requirements` is loaded.
 3. It is manually set in Server's `Config.toml` at `assets` to load.
 
-With the Asset Pack loaded, you can refer to it's assets using the following pattern: 
+With the Asset Pack loaded, you can refer to it's assets using the following pattern:
 
 `"[ASSET_PACK_PATH]::[ASSET_KEY]"`
 

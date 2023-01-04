@@ -30,7 +30,6 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | :--- | :--- |
 | **`name`** | Name of the Server |
 | **`description`** | Description of the Server |
-| **`logo`** | Image URL to be displayed in the Server List |
 | **`max_players`** | Max amount of players allowed to join |
 | **`password`** | Password to be able to connect |
 | **`ip`** | Server IP. We recommend leaving it blank |
@@ -46,6 +45,11 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | **`map`** | Which map to load |
 | **`token`** | Server Token used for authorize downloads through CLI |
 | **`banned_ids`** | List of banned nanos account IDs |
+
+
+## Logo Image
+
+It is possible to have a custom image to be displayed in the server list. For that, add a file called `Server.jpg` besides the server executable with the logo you wish. The recommended size is `300x150`.
 
 
 ## Map & Level
@@ -114,6 +118,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--dedicated_server` | 0 or 1 | If to start as a Dedicated Server or P2P |
 | `--async_log` | 0 or 1 | If to use async or sync logs (async provides better performance) - default is 1 |
 | `--log_level` | 1, 2 or 3 | If to use Normal, Debug or Verbose logs |
+| `--custom_settings` | string | A list of [Custom Settings](/core-concepts/packages/packages-guide#custom-settings) to be passed to scripting |
 
 
 ### One-liner Server Configuration
