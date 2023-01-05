@@ -118,14 +118,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Nanos Store Action
-        uses: nanos-world/nanos-store-action@v1.0
+        uses: nanos-world/nanos-store-action@v2.0
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           # folder which contains the asset/package - if it's on root, leave it blank
           folder: ''
           # name of the asset/package
           name: 'name-of-the-package-or-asset'
-          # changelog of the release - can be edited on the store before it gets published
-          changelog: 'built through actions'
           # API token - generate at https://store.nanos.world/settings/tokens/ and set under Settings -> Secrets -> Actions with name STORE_SECRET
           token: ${{ secrets.STORE_SECRET }}
 ```

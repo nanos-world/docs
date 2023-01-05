@@ -112,13 +112,19 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--assets` | string list | Server assets |
 | `--token` | string | Server authorization token |
 | `--max_players` | number | Max allowed players |
-| `--save` | 0 or 1 | If to save the parameters in Config.toml |
-| `--profiling` | 0 or 1 | Enables Performance Profiling Logs for debugging |
-| `--auto_download` | 0 or 1 | Automatically downloads Packages and Assets from Vault if needed |
 | `--dedicated_server` | 0 or 1 | If to start as a Dedicated Server or P2P |
 | `--async_log` | 0 or 1 | If to use async or sync logs (async provides better performance) - default is 1 |
 | `--log_level` | 1, 2 or 3 | If to use Normal, Debug or Verbose logs |
 | `--custom_settings` | string | A list of [Custom Settings](/core-concepts/packages/packages-guide#custom-settings) to be passed to scripting |
+| `--save` | *flag* | If to save the parameters in Config.toml |
+| `--profiling` | *flag* | Enables Performance Profiling Logs for debugging |
+| `--auto_download` | *flag* | Automatically downloads Packages and Assets from Vault if needed |
+
+:::tip
+
+**Flag** Value Types don't require any argument, just pass the parameter like `--parameter`.
+
+:::
 
 
 ### One-liner Server Configuration
