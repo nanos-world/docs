@@ -115,7 +115,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--dedicated_server` | 0 or 1 | If to start as a Dedicated Server or P2P |
 | `--async_log` | 0 or 1 | If to use async or sync logs (async provides better performance) - default is 1 |
 | `--log_level` | 1, 2 or 3 | If to use Normal, Debug or Verbose logs |
-| `--custom_settings` | string | A list of [Custom Settings](/core-concepts/packages/packages-guide#custom-settings) to be passed to scripting |
+| `--custom_settings` | string | A list of [Custom Settings](/core-concepts/packages/packages-guide.md#custom-settings) to be passed to scripting |
 | `--save` | *flag* | If to save the parameters in Config.toml |
 | `--profiling` | *flag* | Enables Performance Profiling Logs for debugging |
 | `--auto_download` | *flag* | Automatically downloads Packages and Assets from Vault if needed |

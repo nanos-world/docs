@@ -239,8 +239,43 @@ There are some **Engine Content** which are allowed to use, but only from the fo
 
 ## Troubleshooting
 
-Common problems when importing assets and possible solutions.
+### Common Fixes
 
-### Assets without Materials/Textures
+Most of the problems can be easily fixed by trying the following steps:
 
-If you loaded the assets in-game and they don't have material (they are gray). It can be two problems: you didn't set `unreal_folder` in your Assets.toml correctly, or you modified/moved/copied the files wrongly from the Cooked folder.
+#### 1. Make sure you are not copying Project Assets instead of Cooked Assets
+
+> Unreal Project files are not meant to work in runtime, they must be compiled/cooked to load in-game. The cooked assets usually have the extensions: `.uasset`, `.uexport` and `.ubulk`. [See more here](#exporting--cooking-your-assets).
+
+#### 2. Make sure your [ADK is updated](adk-assets-development-kit.md#updating-to-a-newer-adk-version)
+
+> Cooking your assets with old ADK can cause incompatibilities between the Game and your Assets.
+
+#### 3. Delete `Saved/`, `Intermediate/` and `DerivedDataCache/` from your Project folder
+
+> Sometimes it's good to try a full recook, as the Cooked assets can get corrupted by old Unreal versions.
+
+#### 4. Create one Asset Pack for each cooked assets folder
+
+> If you are trying to load a map and specified that in the Project Settings to *cook only that map*, probably it generated one or more folders inside your `Saved/Cooked/` folder. This means that **ALL** these folders and files are needed to make the map to load. So you **MUST** create one Asset Pack for each folder in there. (of course you shouldn't create an Asset Pack for the NanosWorld/ folder).
+
+
+### Common Problems
+
+Common problems when importing assets and possible solutions:
+
+#### Assets without Materials/Textures
+
+> If you loaded the assets in-game and they don't have material (they are gray). It can be two problems: you didn't set `unreal_folder` in your Assets.toml correctly, or you modified/moved/copied the files wrongly from the Cooked folder.
+
+#### Corrupt data found, please verify your installation
+
+> If you see this error as a Popup, please make sure to retry all steps listed [here](#troubleshooting).
+
+#### Game Crash during/after loading a custom map or custom assets
+
+> This usually happen because of corrupted or bad created assets, please make sure to retry all steps listed [here](#troubleshooting).
+
+#### Disconnected. Failed to Load Map! Canceled or Failed!
+
+> This error usually happens when it couldn't find your map to load. This can be because of badly configured [Assets.toml](/core-concepts/assets.mdx#assets-pack-configuration) `unreal_folder` setting or because you copied Unreal Project files instead of Cooked files into your Asset Pack.
