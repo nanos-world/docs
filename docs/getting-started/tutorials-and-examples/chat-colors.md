@@ -6,7 +6,7 @@ tags: [tutorial-example]
 
 Learn how to use and print colored messages to the built-in chat
 
-![](/img/docs/tutorials/chat-colors.jpg)
+![](/img/docs/tutorials/chat-colors.webp)
 
 To stylize a text, just circumvent a piece of text with a style tag: `<TAG>my awesome text</>`.
 

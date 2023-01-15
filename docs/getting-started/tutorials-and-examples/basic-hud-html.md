@@ -11,27 +11,27 @@ How to add a basic HUD using HTML + JavaScript + CSS to display the character’
 
 :::tip
 
-The following example is deprecated and you can find an updated HTML UI in our [Sandbox Official Repository](https://github.com/nanos-world/nanos-world-sandbox). 
+The following example is deprecated and you can find an updated HTML UI in our [Sandbox Official Repository](https://github.com/nanos-world/nanos-world-sandbox).
 
 :::
 
-![](/img/docs/tutorials/html-01.jpg)
+![](/img/docs/tutorials/html-01.webp)
 
 ## Creating the UI
 
-Inside your Package’s Client folder, create a new folder \(optional\) called `UI/` to separate the UI files from the Scripting \(lua\) files: 
+Inside your Package’s Client folder, create a new folder \(optional\) called `UI/` to separate the UI files from the Scripting \(lua\) files:
 
-![](/img/docs/tutorials/html-02.jpg)
+![](/img/docs/tutorials/html-02.webp)
 
 Inside `UI/` let’s create the following files: `index.html`, `style.cs` and `index.js`:
 
 :::info
 
-In this UI we will be using [JQuery](https://jquery.com/), please download [the latest version](https://code.jquery.com/jquery-3.5.1.min.js) and place it inside `UI/` folder. 
+In this UI we will be using [JQuery](https://jquery.com/), please download [the latest version](https://code.jquery.com/jquery-3.5.1.min.js) and place it inside `UI/` folder.
 
 :::
 
-![](/img/docs/tutorials/html-03.jpg)
+![](/img/docs/tutorials/html-03.webp)
 
 ```html title="Client/UI/index.html"
 <html>
@@ -133,7 +133,7 @@ main_hud = WebUI("Main HUD", "file://UI/index.html")
 
 Result:
 
-![](/img/docs/tutorials/html-04.jpg)
+![](/img/docs/tutorials/html-04.webp)
 
 This is just static texts! Let’s now make it dynamic and display actual values!
 

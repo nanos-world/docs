@@ -14,7 +14,7 @@ You can also create complete and complex UIs using HTML + JavaScript + CSS, chec
 
 :::
 
-![](/img/docs/tutorials/canvas.jpg)
+![](/img/docs/tutorials/canvas.webp)
 
 A Canvas is a painting fabric which can be drawn to. The following code shows how to add a basic UI using Canvas:
 

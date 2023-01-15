@@ -17,7 +17,7 @@ We now have a **Fireworks Tools** Package available to download in the Vault whi
 
 First you will need to download the Asset Pack **Fireworks Particle Effects** from our Vault!
 
-![](/img/docs/tutorials/fireworks-01.jpg)
+![](/img/docs/tutorials/fireworks-01.webp)
 
 ### Configuring the Asset Pack
 
@@ -33,7 +33,7 @@ After that you will need to add the requirement of this **Asset Pack** into your
     # Version
     version =               "1.0.0"
     # Image URL
-    image =                 "https://i.imgur.com/tQXi0xt.jpg"
+    image =                 "https://i.imgur.com/tQXi0xt.webp"
     # Package Type: 'executable' (normal package) | 'library' (doesn't run - useful for code library)
     type =                  "executable"
     # Whether to force the Custom Map Script to do NOT load

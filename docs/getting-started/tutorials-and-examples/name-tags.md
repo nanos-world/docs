@@ -7,7 +7,7 @@ tags: [tutorial-example, scripting]
 
 How to add Name Tags to Characters.
 
-![](/img/docs/tutorials/nametag.jpg)
+![](/img/docs/tutorials/nametag.webp)
 
 
 ```lua title="Client/Index.lua"

@@ -7,7 +7,7 @@ tags: [tutorial-example, scripting, assets]
 
 How to create a Monster Truck using the Vehicle system.
 
-![](/img/docs/tutorials/monster-truck.jpg)
+![](/img/docs/tutorials/monster-truck.webp)
 
 
 ```lua title="Server/Index.lua"

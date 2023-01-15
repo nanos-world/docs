@@ -9,7 +9,7 @@ tags: [tutorial-example, scripting, assets]
 
 This sample code shows how to attach custom sights meshes into a Weapon and work as real scopes.
 
-![](/img/docs/tutorials/weapon-scope.jpg)
+![](/img/docs/tutorials/weapon-scope.webp)
 
 
 ```lua title="Server/Index.lua"

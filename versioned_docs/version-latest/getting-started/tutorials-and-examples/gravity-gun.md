@@ -52,7 +52,7 @@ distance = 200
 Client.SetHighlightColor(Color(0, 20, 20, 1.5), 1, HighlightMode.OnlyVisible)
 
 -- When Player clicks
-Client.Subscribe("MouseUp", function(key_name)
+Input.Subscribe("MouseUp", function(key_name)
 
     -- If mouse was left button
     if (key_name == "LeftMouseButton") then
@@ -70,8 +70,8 @@ Client.Subscribe("MouseUp", function(key_name)
         end
 
         -- Get the camera location in 3D World Space
-        local viewport_2D_center = Client.GetViewportSize() / 2
-        local viewport_3D = Client.DeprojectScreenToWorld(viewport_2D_center)
+        local viewport_2D_center = Viewport.GetViewportSize() / 2
+        local viewport_3D = Viewport.DeprojectScreenToWorld(viewport_2D_center)
         local start_location = viewport_3D.Position
 
         -- Gets the end location of the trace (5000 units ahead)
@@ -85,7 +85,7 @@ Client.Subscribe("MouseUp", function(key_name)
         local trace_mode = TraceMode.ReturnEntity | TraceMode.DrawDebug
 
         -- Do the Trace
-        local trace_result = Client.TraceLineSingle(start_location, end_location, collision_trace, trace_mode)
+        local trace_result = Trace.LineSingle(start_location, end_location, collision_trace, trace_mode)
 
         -- If hit something and hit an Entity
         if (trace_result.Success and trace_result.Entity) then
@@ -123,8 +123,8 @@ Client.Subscribe("Tick", function(delta_time)
     if (player == nil) then return end
 
     -- Get the camera location in 3D World Space
-    local viewport_2D_center = Client.GetViewportSize() / 2
-    local viewport_3D = Client.DeprojectScreenToWorld(viewport_2D_center)
+    local viewport_2D_center = Viewport.GetViewportSize() / 2
+    local viewport_3D = Viewport.DeprojectScreenToWorld(viewport_2D_center)
     local start_location = viewport_3D.Position
 
     -- Gets the new object location

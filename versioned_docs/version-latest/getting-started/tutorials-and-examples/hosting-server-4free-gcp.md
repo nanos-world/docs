@@ -23,7 +23,7 @@ The following guide was based and had several excerpts taken from [https://linux
 
 ## What Is Google Cloud?
 
-![](/img/docs/tutorials/hosting-4free-01.jpg)
+![](/img/docs/tutorials/hosting-4free-01.webp)
 
 Launched in 2008, Google Cloud is a comprehensive cloud computing suite running on the same powerful global infrastructure Google uses for its central products, including Google Search and YouTube.
 
@@ -41,45 +41,45 @@ Google has made it very easy to set a new Google Cloud server from scratch, and 
 
 ### Step 1: Sign In to Google Cloud
 
-At [https://console.cloud.google.com](https://console.cloud.google.com), click on **Get started for free** located in the upper-right of the screen: 
+At [https://console.cloud.google.com](https://console.cloud.google.com), click on **Get started for free** located in the upper-right of the screen:
 
-![](/img/docs/tutorials/hosting-4free-02.jpg)
+![](/img/docs/tutorials/hosting-4free-02.webp)
 
-If you haven’t provided your credit card details to Google before, you will be asked to do so now. Don’t worry: Google won’t start charging you until you spend the $300 bonus, which you can do within a year. Furthermore, you have to manually upgrade to a paid account for Google to start charging you. 
+If you haven’t provided your credit card details to Google before, you will be asked to do so now. Don’t worry: Google won’t start charging you until you spend the $300 bonus, which you can do within a year. Furthermore, you have to manually upgrade to a paid account for Google to start charging you.
 
-![](/img/docs/tutorials/hosting-4free-03.jpg)
+![](/img/docs/tutorials/hosting-4free-03.webp)
 
 ### Step 2: Create a New Google Cloud Server
 
-To create a new VM, select ‘Compute Engine’ and then ‘VM Instances’ 
+To create a new VM, select ‘Compute Engine’ and then ‘VM Instances’
 
-![](/img/docs/tutorials/hosting-4free-04.jpg)
+![](/img/docs/tutorials/hosting-4free-04.webp)
 
-If it is not enabled yet, enable it and wait about 1-2 minutes to finish: 
+If it is not enabled yet, enable it and wait about 1-2 minutes to finish:
 
-![](/img/docs/tutorials/hosting-4free-05.jpg)
+![](/img/docs/tutorials/hosting-4free-05.webp)
 
-After that, you will be able to create a new Instance: 
+After that, you will be able to create a new Instance:
 
-![](/img/docs/tutorials/hosting-4free-06.jpg)
+![](/img/docs/tutorials/hosting-4free-06.webp)
 
-Give it a **Name** and select under Machine Configuration the Series **N1** and Machine Type _f1-micro_ - this part is important as only f1-micro is under Free Tier. Also it is required that you select one of the following regions to be eligible for Free Tier: **Oregon: us-west1**, **Iowa: us-central1** or **South Carolina: us-east1**. 
+Give it a **Name** and select under Machine Configuration the Series **N1** and Machine Type _f1-micro_ - this part is important as only f1-micro is under Free Tier. Also it is required that you select one of the following regions to be eligible for Free Tier: **Oregon: us-west1**, **Iowa: us-central1** or **South Carolina: us-east1**.
 
-![](/img/docs/tutorials/hosting-4free-07.jpg)
+![](/img/docs/tutorials/hosting-4free-07.webp)
 
-Under **Boot Disk**, for this guide we recommend selecting **Ubuntu 20.04 LTS**: 
+Under **Boot Disk**, for this guide we recommend selecting **Ubuntu 20.04 LTS**:
 
-![](/img/docs/tutorials/hosting-4free-08.jpg)
+![](/img/docs/tutorials/hosting-4free-08.webp)
 
-Under **Firewall** select to allow **HTTP** and **HTTPS** traffic, as well in **Security** tab add your public **SSH Key** to it, if you don’t have a key yet please [create one](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). Only with a **SSH Key** you will be able to connect to your instance from your computer. 
+Under **Firewall** select to allow **HTTP** and **HTTPS** traffic, as well in **Security** tab add your public **SSH Key** to it, if you don’t have a key yet please [create one](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). Only with a **SSH Key** you will be able to connect to your instance from your computer.
 
-![](/img/docs/tutorials/hosting-4free-09.jpg)
+![](/img/docs/tutorials/hosting-4free-09.webp)
 
 Once you have everything configured to your liking, click the ‘Create’ button on the bottom of the page.
 
 ### Step 3: Use your Google Cloud Server
 
-![](/img/docs/tutorials/hosting-4free-10.jpg)
+![](/img/docs/tutorials/hosting-4free-10.webp)
 
 The next step is to connect into your Virtual Machine, for that launch your prompt \(shell or cmd\) and type:
 
@@ -87,11 +87,11 @@ The next step is to connect into your Virtual Machine, for that launch your prom
 ssh [YOUR_VM_EXTERNAL_IP]
 ```
 
-![](/img/docs/tutorials/hosting-4free-11.jpg)
+![](/img/docs/tutorials/hosting-4free-11.webp)
 
-Type **yes** if asked, and you will be in! 
+Type **yes** if asked, and you will be in!
 
-![](/img/docs/tutorials/hosting-4free-12.jpg)
+![](/img/docs/tutorials/hosting-4free-12.webp)
 
 :::tip
 
@@ -109,7 +109,7 @@ For that, you should use SteamCMD. Install it by doing:
 sudo add-apt-repository multiverse
 sudo dpkg --add-architecture i386
 sudo apt update
-sudo apt install lib32gcc1 steamcmd 
+sudo apt install lib32gcc1 steamcmd
 ```
 
 Then, launch SteamCMD by running `steamcmd`.
@@ -139,7 +139,7 @@ chmod +x ./NanosWorldServer.sh
 ./NanosWorldServer.sh
 ```
 
-![](/img/docs/tutorials/hosting-4free-13.jpg)
+![](/img/docs/tutorials/hosting-4free-13.webp)
 
 :::tip
 
@@ -153,19 +153,19 @@ Note that your server failed to communicate with the **Master Server**, this is 
 
 To be able to communicate with Master Server or for other players to be able to connect to your server, you must forward your server ports. By default nanos world use ports 7777 (UDP and TCP) and 7778 (UDP).
 
-First go to the left menu bar and select **VPC network** and **Firewall**: 
+First go to the left menu bar and select **VPC network** and **Firewall**:
 
-![](/img/docs/tutorials/hosting-4free-14.jpg)
+![](/img/docs/tutorials/hosting-4free-14.webp)
 
-In that, you will be able to create a new **Firewall Rule**, add the name you want to it, set it to **Ingress**, set source IP: **0.0.0.0/0** and select **Specified protocol and ports**: **tcp: 7777** and **udp: 7777-7778**, and create it.  
+In that, you will be able to create a new **Firewall Rule**, add the name you want to it, set it to **Ingress**, set source IP: **0.0.0.0/0** and select **Specified protocol and ports**: **tcp: 7777** and **udp: 7777-7778**, and create it.
 
-![](/img/docs/tutorials/hosting-4free-15.jpg)
+![](/img/docs/tutorials/hosting-4free-15.webp)
 
-![](/img/docs/tutorials/hosting-4free-16.jpg)
+![](/img/docs/tutorials/hosting-4free-16.webp)
 
-Now you can restart your server and you will see it will communicate properly with Master Server \(no warnings anymore\): 
+Now you can restart your server and you will see it will communicate properly with Master Server \(no warnings anymore\):
 
-![](/img/docs/tutorials/hosting-4free-17.jpg)
+![](/img/docs/tutorials/hosting-4free-17.webp)
 
 :::tip success!
 
@@ -173,7 +173,7 @@ And now you can find it in the **Find Servers** menu!
 
 :::
 
-![](/img/docs/tutorials/hosting-4free-18.jpg)
+![](/img/docs/tutorials/hosting-4free-18.webp)
 
 ### Conclusion
 

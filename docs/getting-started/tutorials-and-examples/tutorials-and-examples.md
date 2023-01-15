@@ -14,98 +14,98 @@ import { CardLink } from '@site/docs/components/_nanos.mdx';
 <CardLink
 	title="Basic HUD (Canvas)"
 	description="How to add a basic HUD using Render’s Canvas features, to display the character’s Health and Ammo."
-	image_src="/img/docs/tutorials/canvas.jpg"
+	image_src="/img/docs/tutorials/canvas.webp"
 	href="getting-started/tutorials-and-examples/basic-hud-canvas"
 />
 
 <CardLink
 	title="Basic HUD (HTML)"
 	description="How to add a basic HUD using HTML + JavaScript + CSS to display the character’s Health and Ammo based on CS:GO HUD."
-	image_src="/img/docs/tutorials/html-01.jpg"
+	image_src="/img/docs/tutorials/html-01.webp"
 	href="getting-started/tutorials-and-examples/basic-hud-html"
 />
 
 <CardLink
 	title="Chat Colors"
 	description="How to customize chat messages."
-	image_src="/img/docs/tutorials/chat-colors.jpg"
+	image_src="/img/docs/tutorials/chat-colors.webp"
 	href="getting-started/tutorials-and-examples/chat-colors"
 />
 
 <CardLink
 	title="Doors"
 	description="How to create a simple and automatic door when Characters move in."
-	image_src="/img/docs/tutorials/doors.jpg"
+	image_src="/img/docs/tutorials/doors.webp"
 	href="getting-started/tutorials-and-examples/doors"
 />
 
 <CardLink
 	title="Fireworks"
 	description="How to create a Firework-shooter weapon using the Fireworks Particle Effects Asset Pack from our Vault!"
-	image_src="/img/docs/tutorials/fireworks-01.jpg"
+	image_src="/img/docs/tutorials/fireworks-01.webp"
 	href="getting-started/tutorials-and-examples/fireworks"
 />
 
 <CardLink
 	title="Gravity Gun"
 	description="How to create a simple Gravity Gun to move Props around."
-	image_src="/img/docs/tutorials/gravity-gun.jpg"
+	image_src="/img/docs/tutorials/gravity-gun.webp"
 	href="getting-started/tutorials-and-examples/gravity-gun"
 />
 
 <CardLink
 	title="Hosting Server 4Free - Google Cloud"
 	description="How to create a Linux virtual machine instance on Compute Engine using the Google Cloud Console within the Free Tier."
-	image_src="/img/docs/tutorials/hosting-4free-01.jpg"
+	image_src="/img/docs/tutorials/hosting-4free-01.webp"
 	href="getting-started/tutorials-and-examples/hosting-server-4free-gcp"
 />
 
 <CardLink
 	title="Monster Truck"
 	description="How to create a Monster Truck using the Vehicle system."
-	image_src="/img/docs/tutorials/monster-truck.jpg"
+	image_src="/img/docs/tutorials/monster-truck.webp"
 	href="getting-started/tutorials-and-examples/monster-truck"
 />
 
 <CardLink
 	title="Nametags"
 	description="How to add Name Tags to Characters."
-	image_src="/img/docs/tutorials/nametag.jpg"
+	image_src="/img/docs/tutorials/nametag.webp"
 	href="getting-started/tutorials-and-examples/name-tags"
 />
 
 <CardLink
 	title="Painting Meshes"
 	description="How to use the new Material customization methods available to use."
-	image_src="/img/docs/tutorials/painting-meshes-01.jpg"
+	image_src="/img/docs/tutorials/painting-meshes-01.webp"
 	href="getting-started/tutorials-and-examples/painting-meshes"
 />
 
 <CardLink
 	title="Play as Prop"
 	description="How to simulate a Prop possessing using a Character. This can be used for Prop Hunt game-modes!"
-	image_src="/img/docs/tutorials/play-as-prop.jpg"
+	image_src="/img/docs/tutorials/play-as-prop.webp"
 	href="getting-started/tutorials-and-examples/play-as-prop"
 />
 
 <CardLink
 	title="Weapon Flashlight"
 	description="This sample code attaches a Light to a Weapon to make a Flashlight attachment."
-	image_src="/img/docs/tutorials/weapon-flashlight.jpg"
+	image_src="/img/docs/tutorials/weapon-flashlight.webp"
 	href="getting-started/tutorials-and-examples/weapon-flashlight"
 />
 
 <CardLink
 	title="Weapon Scope"
 	description="This sample code shows how to attach custom sights meshes into a Weapon and work as real scopes."
-	image_src="/img/docs/tutorials/weapon-scope.jpg"
+	image_src="/img/docs/tutorials/weapon-scope.webp"
 	href="getting-started/tutorials-and-examples/weapon-scope"
 />
 
 <CardLink
 	title="X-Ray & Highlight"
 	description="This sample code shows how to set Actors to be highlighted when behind walls, or always highlighted!"
-	image_src="/img/docs/tutorials/xray.jpg"
+	image_src="/img/docs/tutorials/xray.webp"
 	href="getting-started/tutorials-and-examples/x-ray-and-highlight"
 />
 

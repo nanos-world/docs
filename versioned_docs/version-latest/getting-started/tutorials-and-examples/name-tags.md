@@ -7,7 +7,7 @@ tags: [tutorial-example, scripting]
 
 How to add Name Tags to Characters.
 
-![](/img/docs/tutorials/nametag.jpg)
+![](/img/docs/tutorials/nametag.webp)
 
 
 ```lua title="Client/Index.lua"
@@ -53,12 +53,12 @@ function RemoveNametag(player, character)
 end
 
 -- Adds a new Nametag to a character which was possessed
-Character.Subscribe("Possessed", function(character, player)
+Character.Subscribe("Possess", function(character, player)
     AddNametag(player, character)
 end)
 
 -- Removes the Nametag from a character which was unpossessed
-Character.Subscribe("UnPossessed", function(character, player)
+Character.Subscribe("UnPossess", function(character, player)
     RemoveNametag(player, character)
 end)
 

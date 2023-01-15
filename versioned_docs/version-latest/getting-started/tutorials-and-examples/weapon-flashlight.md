@@ -7,7 +7,7 @@ tags: [tutorial-example, scripting]
 
 This sample code attaches a Light to a Weapon to make a Flashlight attachment.
 
-![](/img/docs/tutorials/weapon-flashlight.jpg)
+![](/img/docs/tutorials/weapon-flashlight.webp)
 
 
 ```lua title="Server/Index.lua"

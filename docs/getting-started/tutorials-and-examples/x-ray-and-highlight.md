@@ -9,7 +9,7 @@ tags: [tutorial-example, scripting]
 
 This sample code shows how to set Actors to be highlighted when behind walls, or always highlighted!
 
-![](/img/docs/tutorials/xray.jpg)
+![](/img/docs/tutorials/xray.webp)
 
 :::tip
 

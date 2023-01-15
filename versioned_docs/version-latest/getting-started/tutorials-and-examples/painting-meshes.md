@@ -7,7 +7,7 @@ tags: [tutorial-example, scripting, assets]
 
 How to use the new Material customization methods available to use.
 
-![](/img/docs/tutorials/painting-meshes-01.jpg)
+![](/img/docs/tutorials/painting-meshes-01.webp)
 
 In Unreal Engine, a [Material](https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/index.html) is an asset that can be applied to a mesh to control the visual look of the scene. At a high level, it is probably easiest to think of a Material as the “paint” that is applied to an object. You can define its color, how shiny it is, whether you can see through the object, and much more.
 
@@ -35,7 +35,7 @@ my_cube:SetMaterial("nanos-world::M_NanosMasked")
 ```
 
 Blank Cube with Default Masked Material
-![](/img/docs/tutorials/painting-meshes-02.jpg)
+![](/img/docs/tutorials/painting-meshes-02.webp)
 
 
 ## Painting a Mesh with Red Tint
@@ -55,7 +55,7 @@ my_cube:SetMaterialColorParameter("Tint", Color(1, 0, 0))
 
 Cube with Default Masked Material with Red parameter
 
-![](/img/docs/tutorials/painting-meshes-03.jpg)
+![](/img/docs/tutorials/painting-meshes-03.webp)
 
 ## Making a Mesh Metallic
 
@@ -80,7 +80,7 @@ my_cube:SetMaterialScalarParameter("Roughness", 0)
 
 Cube with Default Masked Material with Red and Metallic parameters
 
-![](/img/docs/tutorials/painting-meshes-04.jpg)
+![](/img/docs/tutorials/painting-meshes-04.webp)
 
 ## Making a Mirror
 
@@ -101,13 +101,13 @@ my_cube:SetMaterialScalarParameter("Roughness", 0)
 
 Cube with Default Masked Material with Metallic and Roughness parameters
 
-![](/img/docs/tutorials/painting-meshes-05.jpg)
+![](/img/docs/tutorials/painting-meshes-05.webp)
 
 ## Loading a Texture into a Mesh
 
-It is even possible to load images \(.jpg, .png, etc\) from disk and apply to the mesh! For that you will need to have an image inside an Asset Pack or a Package \(in the `Client/` folder\). We gonna use [this \(imgur\)](https://i.imgur.com/67CGqHb.jpg) with the name `syed.jpg` and we will place it inside our Package `Client/` folder.
+It is even possible to load images \(.jpg, .png, etc\) from disk and apply to the mesh! For that you will need to have an image inside an Asset Pack or a Package \(in the `Client/` folder\). We gonna use [this \(imgur\)](https://i.imgur.com/67CGqHb.webp) with the name `syed.jpg` and we will place it inside our Package `Client/` folder.
 
-![](/img/docs/tutorials/painting-meshes-06.jpg)
+![](/img/docs/tutorials/painting-meshes-06.webp)
 
 And now you can set it like that:
 
@@ -123,7 +123,7 @@ my_cube:SetMaterial("nanos-world::M_NanosMasked")
 my_cube:SetMaterialTextureParameter("Texture", "package://testing/Client/syed.jpg")
 ```
 
-![](/img/docs/tutorials/painting-meshes-07.jpg)
+![](/img/docs/tutorials/painting-meshes-07.webp)
 
 :::tip
 
