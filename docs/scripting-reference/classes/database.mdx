@@ -58,6 +58,18 @@ All requests are thread safe! 🥳
 
 <ConstructorDeclaration type="Class" name="Database" />
 
+:::caution note
+
+The initial connection to the Database (when it's being constructed) is made on the main thread, so expect the server hanging for a few seconds during that.
+
+:::
+
+:::info
+
+If the Database fails to connect, it will spit an error on console and will return `nil`.
+
+:::
+
 
 ## 🗿 Static Functions
 

@@ -1,12 +1,13 @@
 ---
 title: Default Materials
-description: Default nanos world Materials and it's Parameters
+description: Default Materials and it's Parameters
 tags: [assets]
 keywords: [assets, materials, built-in, default]
 ---
 
 
-Default nanos world Materials and it's Parameters.
+Default Materials and it's Parameters.
+
 
 ## Template Materials
 
@@ -26,7 +27,8 @@ For more information regarding **Material Types** and **Blend Modes**, please re
 
 :::
 
-#### Parameters Supported by nanos Default Materials
+
+#### Parameters Supported by Default Materials
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
@@ -34,7 +36,7 @@ For more information regarding **Material Types** and **Blend Modes**, please re
 | [Texture](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialtextureparameter) | **`Texture`** | White Texture | Image which multiplies with **Tint** to generate the final color |
 | [Texture](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialtextureparameter) | **`Normal`** | UP Normal Map `Vector(0.5, 0.5, 1)` | Image which affects how Light reflects on the object |
 | [​​​Color​](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialcolorparameter) | **`Emissive`** | `Color.BLACK` | Affects `Emissive` input, high values will cause bloom effect |
-| [Scalar​](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Metallic`** | `0` | Affects `Metallic `input - goes from 0 to 1 |
+| [Scalar​](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Metallic`** | `0` | Affects `Metallic` input - goes from 0 to 1 |
 | [Scalar](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Specular`** | `0.5` | Affects `Specular` input - goes from 0 to 1 |
 | [Scalar](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Roughness`** | `0.65` | Affects `Roughness` input - goes from 0 to 1 |
 | [Scalar](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialscalarparameter) | **`Opacity`** | `0` | Affects `Opacity` and `Opacity Mask` inputs - goes from 0 to 1 <br />**Opacity** multiplies with **Texture** Alpha Channel to generate the final opacity |
@@ -45,43 +47,87 @@ For more information regarding how each Parameter affects the final visual, plea
 
 :::
 
-### **`M_NanosMasked`**
 
-Masked is the default Material Type in nanos world. Masked Materials are the most efficient one and supports **Opacity Mask** only. It means the **Opacity** input accepts only `0` or `1`.
+### **`M_Default_Masked_Lit`**
 
-### **`M_NanosTranslucent`**
+**Masked** and **Lit** Material.
 
-Translucent Materials are the heavier ones to render, and cause a lot of overdraw \(and performance issues\) if used incorrectly. It supports **Opacity** but does not support **Normal**, **Metallic,** **Specular** and **Roughness** inputs for optimization reasons.
 
-### **`M_NanosTranslucent_Depth`**
+### **`M_Default_Masked_Unlit`**
 
-Is the same as Translucent but will be always visible in the screen, even behind walls or other objects.
+**Masked** and **Unlit** Material.
 
-### **`M_NanosDecal`**
 
-Translucent Material which renders objects as Deferred Decals to be used in Decals.
+### **`M_Default_Translucent_Lit`**
 
-### **`M_NanosWireframe`**
+**Translucent** and **Lit** Material.
 
-Material which renders objects as Wireframe. Supported parameter: **Tint** and **Emissive**.
+
+### **`M_Default_Translucent_Lit_Depth`**
+
+**Translucent**, **Lit** with `Disable Depth Test` enabled. Is the same as Translucent but will be always visible in the screen, even behind walls or other objects.
+
+
+### **`M_Default_Translucent_Lit_Decal`**
+
+**Translucent**, **Lit** with `Deferred Decal` Material Domain, to be used in [Decals](/docs/next/scripting-reference/classes/decal).
+
+
+## Special Utils Materials
+
+### **`M_Noise`**
+
+**Opaque**, **Lit** with a `Noise` node to produce a noise effect. Also provides `Speed` (Vector) and `Scale` (Scalar) parameters.
+
+
+### **`M_Wireframe`**
+
+**Translucent**, **Lit** with `Wireframe` enabled, meaning it renders objects as Wireframe.
+
 
 :::tip
 
-**Note**: All those Materials in this page are already included in the base game in the [Default nanos world Asset Pack](/assets-modding/default-asset-pack/default-assets-list.md), you can reference them like that: **`nanos-world::M_NanosMasked`.**
+**Note**: All those Materials in this page are already included in the base game in the [Default nanos world Asset Pack](/assets-modding/default-asset-pack/default-assets-list.md), you can reference them like that: **`nanos-world::M_Default_Masked_Lit`.**
 
 :::
 
-#### Supported Parameters in each Material
+
+#### Materials Summary
+
+|  | Domain | Blend Mode | Shading Model |
+| :--- | :--- | :--- | :--- |
+| **M_Default_Masked_Lit** | Surface | Masked | Default Lit |
+| **M_Default_Masked_Unlit** | Surface | Masked | Unlit |
+| **M_Default_Translucent_Lit** | Surface | Translucent | Default Lit |
+| **M_Default_Translucent_Lit_Depth** | Surface | Translucent | Default Lit |
+| **M_Default_Translucent_Lit_Decal** | Deferred Decal | Translucent | Default Lit |
+| **M_Noise** | Surface | Opaque | Default Lit |
+| **M_Wireframe** | Surface | Translucent | Default Lit |
+
+:::tip
+
+**Opaque** are the most efficient ones but doesn't support **Opacity** or **Opacity Mask**.
+
+**Masked** are the most common ones and supports **Opacity Mask** only. It means the **Opacity** parameter accepts only `0` or `1`.
+
+**Translucent** are the heavier ones to render, and cause a lot of overdraw (and performance issues) if used incorrectly. It supports **Opacity** but does not support **Normal**, **Metallic,** **Specular** and **Roughness** inputs by default for optimization reasons.
+
+:::
+
+
+#### Supported Common Parameters in each Material
 
 |  | Tint | Texture | Normal | Emissive | Metallic | Specular | Roughness | Opacity |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Masked** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `true*` |
-| **Translucent** | `true` | `true` | `false` | `true` | `false` | `false` | `false` | `true` |
-| **Translucent Depth** | `true` | `true` | `false` | `true` | `false` | `false` | `false` | `true` |
-| **Decal** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `true` |
-| **Wireframe** | `true` | `false` | `false` | `true` | `false` | `false` | `false` | `false` |
+| **M_Default_Masked_Lit** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `true*` |
+| **M_Default_Masked_Unlit** | `false` | `true` | `false` | `true` | `false` | `false` | `false` | `true*` |
+| **M_Default_Translucent_Lit** | `true` | `true` | `false` | `true` | `false` | `false` | `false` | `true` |
+| **M_Default_Translucent_Lit_Depth** | `true` | `true` | `false` | `true` | `false` | `false` | `false` | `true` |
+| **M_Default_Translucent_Lit_Decal** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `true` |
+| **M_Noise** | `false` | `false` | `false` | `true` | `true` | `true` | `true` | `false` |
+| **M_Wireframe** | `true` | `false` | `false` | `true` | `false` | `false` | `false` | `false` |
 
-> *Masked Material's Opacity supports only Opacity Mask: `0` or `1`
+> **Masked Material's Opacity supports only Opacity Mask: `0` or `1`*
 
 
 ## Physical Materials
