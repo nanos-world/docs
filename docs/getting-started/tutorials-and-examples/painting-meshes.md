@@ -105,7 +105,7 @@ Cube with Default Masked Material with Metallic and Roughness parameters
 
 ## Loading a Texture into a Mesh
 
-It is even possible to load images \(.jpg, .png, etc\) from disk and apply to the mesh! For that you will need to have an image inside an Asset Pack or a Package \(in the `Client/` folder\). We gonna use [this \(imgur\)](https://i.imgur.com/67CGqHb.webp) with the name `syed.jpg` and we will place it inside our Package `Client/` folder.
+It is even possible to load images \(.jpg, .png, etc\) from disk and apply to the mesh! For that you will need to have an image inside an Asset Pack or a Package \(in the `Client/` folder\). We gonna use [this \(imgur\)](https://i.imgur.com/67CGqHb.jpf) with the name `syed.jpg` and we will place it inside our Package `Client/` folder.
 
 ![](/img/docs/tutorials/painting-meshes-06.webp)
 

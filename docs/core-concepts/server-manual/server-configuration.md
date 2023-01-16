@@ -51,6 +51,12 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 
 It is possible to have a custom image to be displayed in the server list. For that, add a file called `Server.jpg` besides the server executable with the logo you wish. The recommended size is `300x150`.
 
+:::tip
+
+You can pass a JPG image URL to `--logo` parameter to automatically download it as the Server.jpg image!
+
+:::
+
 
 ## Map & Level
 
@@ -99,7 +105,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | :--- | :--- | :--- |
 | `--name` | string | Server name |
 | `--description` | string | Server description |
-| `--logo` | string | Server Logo |
+| `--logo` | string | Server Logo (downloads the image locally as a Server.jpg file) |
 | `--password` | string | Server password |
 | `--ip` | string | Server IP |
 | `--map` | string | Map to load |
