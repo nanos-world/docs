@@ -91,7 +91,7 @@ export const getActiveVersionPath = () => {
 
 <!-- Square Card Link -->
 export const CardLink = ({ title, description, href, image_src }) => (
-	<a class="card-link" href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`} > 
+	<a class="card-link" href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`} >
 		<img src={image_src ? image_src : '/img/docs/nanos-world-background.jpg'} />
 		<h4>{title}</h4>
 		<p>{description}</p>
@@ -229,6 +229,6 @@ export const AssetPath = {
 	Map: () => BaseAssetPath("Map", "Map Reference", "Map Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
 	Blueprint: () => BaseAssetPath("Blueprint", "Blueprint Reference", "Blueprint Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
 	Sound: () => SpecialPath("Sound", "Sound Reference", "Sound Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code><br/><br/>Or as Special Path:<br/><code>package://my-package/Client/sound.ogg</code>."),
-	Image: () => SpecialPath("Image", "Image Path", "Image Path as Special Path:<br/><code>package://my-package/Client/sound.ogg</code>."),
+	Image: () => SpecialPath("Image", "Image Path", "Image Path as Special Path:<br/><code>package://my-package/Client/image.png</code>."),
 	HTML: () => SpecialPath("HTML", "HTML Path", "HTML Path as Special Path:<br/><code>package://my-package/Client/file.html</code>."),
 };
