@@ -128,7 +128,12 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/nanos-world/docs/edit/master/',
+          editUrl: ({ locale, versionDocsDirPath, docPath }) => {
+            if (locale !== 'en') {
+              return `https://crowdin.com/project/nanos-world-docs/${locale}`;
+            }
+            return `https://github.com/nanos-world/docs/edit/master/${versionDocsDirPath}/${docPath}`;
+          },
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           versions: {
@@ -136,13 +141,18 @@ module.exports = {
               label: 'bleeding-edge 🩸',
             },
             latest: {
-              label: 'latest - a1.25.x ⚖️',
+              label: 'latest - a1.26.x ⚖️',
             }
           },
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/nanos-world/docs/edit/master/',
+          editUrl: ({ locale, blogDirPath, blogPath }) => {
+            if (locale !== 'en') {
+              return `https://crowdin.com/project/nanos-world-docs/${locale}`;
+            }
+            return `https://github.com/nanos-world/docs/edit/master/${blogDirPath}/${blogPath}`;
+          },
           blogTitle: 'nanos world news!',
           blogDescription: 'All official news from nanos world!',
           blogSidebarTitle: 'nanos world news',
