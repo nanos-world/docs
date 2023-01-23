@@ -96,14 +96,24 @@ import VectorDataStable from '@site/src/api/Stable/Structs/Vector.json';
 import Vector2DDataStable from '@site/src/api/Stable/Structs/Vector2D.json';
 
 import AssetsDataStable from '@site/src/api/Stable/StaticClasses/Assets.json';
+import ChatDataStable from '@site/src/api/Stable/StaticClasses/Chat.json';
 import ClientDataStable from '@site/src/api/Stable/StaticClasses/Client.json';
+import ConsoleDataStable from '@site/src/api/Stable/StaticClasses/Console.json';
+import DebugDataStable from '@site/src/api/Stable/StaticClasses/Debug.json';
+import DiscordDataStable from '@site/src/api/Stable/StaticClasses/Discord.json';
 import EventsDataStable from '@site/src/api/Stable/StaticClasses/Events.json';
 import HTTPDataStable from '@site/src/api/Stable/StaticClasses/HTTP.json';
 import InputDataStable from '@site/src/api/Stable/StaticClasses/Input.json';
+import LevelDataStable from '@site/src/api/Stable/StaticClasses/Level.json';
+import NavigationDataStable from '@site/src/api/Stable/StaticClasses/Navigation.json';
 import PackageDataStable from '@site/src/api/Stable/StaticClasses/Package.json';
+import PostProcessDataStable from '@site/src/api/Stable/StaticClasses/PostProcess.json';
 import ServerDataStable from '@site/src/api/Stable/StaticClasses/Server.json';
+import SkyDataStable from '@site/src/api/Stable/StaticClasses/Sky.json';
+import SteamDataStable from '@site/src/api/Stable/StaticClasses/Steam.json';
 import TimerDataStable from '@site/src/api/Stable/StaticClasses/Timer.json';
-import WorldDataStable from '@site/src/api/Stable/StaticClasses/World.json';
+import TraceDataStable from '@site/src/api/Stable/StaticClasses/Trace.json';
+import ViewportDataStable from '@site/src/api/Stable/StaticClasses/Viewport.json';
 
 import JSONDataStable from '@site/src/api/Stable/UtilityClasses/JSON.json';
 import NanosMathDataStable from '@site/src/api/Stable/UtilityClasses/NanosMath.json';
@@ -150,14 +160,24 @@ const APIData = {
 		},
 		StaticClass: {
 			Assets: AssetsDataStable,
+			Chat: ChatDataStable,
 			Client: ClientDataStable,
+			Console: ConsoleDataStable,
+			Debug: DebugDataStable,
+			Discord: DiscordDataStable,
 			Events: EventsDataStable,
 			HTTP: HTTPDataStable,
 			Input: InputDataStable,
+			Level: LevelDataStable,
+			Navigation: NavigationDataStable,
 			Package: PackageDataStable,
+			PostProcess: PostProcessDataStable,
 			Server: ServerDataStable,
+			Sky: SkyDataStable,
+			Steam: SteamDataStable,
 			Timer: TimerDataStable,
-			World: WorldDataStable,
+			Trace: TraceDataStable,
+			Viewport: ViewportDataStable,
 		},
 		UtilityClass: {
 			JSON: JSONDataStable,
