@@ -10,7 +10,7 @@ Default nanos world Weapons and it's Parameters.
 
 ![](/img/docs/weapons-pack.jpg)
 
-nanos world provides a bunch of built-in Weapons Meshes ready to use! They are all configured in our [nanos-world-weapons](https://github.com/nanos-world/nanos-world-weapons) Package!
+nanos world provides a bunch of built-in Weapons Meshes ready to use! They are all configured in our [default-weapons](https://store.nanos.world/packages/default-weapons/) Package!
 
 ![](/img/docs/default-weapons-01.jpg)
 

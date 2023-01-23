@@ -25,22 +25,65 @@ The first step to start creating your own Assets is opening the ADK project. Onc
 
 As stated before, do not modify any file inside `NanosWorld/` as any change will not be exported neither imported into nanos world.
 
+:::tip
 
-## Organizing your Asset Pack
+There are two ways to create asset packs: by [Plugin Content](#using-plugin-content) or by [Game Content](#using-game-content). The newer and recommended way is using **Plugin Content**.
 
-Then, you can delete or rename `MyAssetPack`/ to anything you want to be your Asset Pack. All assets you create or import must be contained inside this folder. Feel free to create sub-folders and organize the way you want. But all files must be inside the root `Content/MyAssetPack/` folder!
+:::
+
+
+## Option A: Using Plugin Content
+
+By using Content plugin, you ensure your Asset Pack will not have a name collision with other Asset Packs, and it's the **recommended** way to organize the Asset packs you create.
+
+The first step is to create a plugin, so open the plugin tab at **Edit ⬇️ Plugins**:
+
+![](/img/docs/importing-assets/plugin-tab.webp)
+
+And in the upper left corner, tighten `+ Add`:
+
+![](/img/docs/importing-assets/new-plugin.webp)
+
+Fill in the name of the folder to create the plugin, no other field is required:
+
+![](/img/docs/importing-assets/create-plugin.webp)
+
+After created, enable the option to `Show Plugin Content` in the Content Drawer settings:
+
+![](/img/docs/importing-assets/show-plugin.webp)
+
+Then in the left side, you will find the plugin folder you just created, this folder will be your Asset Pack folder:
+
+![](/img/docs/importing-assets/plugin-content.webp)
+
+Now you can skip to [Importing external Assets](#importing-external-assets) to proceed.
+
+
+## Option B: Using Game Content
+
+If you can't create a plugin, you can still use the Game Content way of creating Assets.
+
+For Game Content, you just need to create a folder inside `Content/` to be your Asset Pack. You can delete or rename `Content/MyAssetPack`/ to anything you want.
+
+:::caution
+
+Using Game Content to create Asset Packs is **not** recommended anymore as it can cause naming collision problems if other Asset Packs use the same Game Content folder name as you.
+
+:::
 
 
 ## Importing external Assets
 
-You can drag'n drop any file from your computer inside that folder, e.g. FBX meshes or WAV sounds.
+All assets you create or import must be contained inside the folder you just created (the Plugin Content folder `Plugins/MyAwesomeAssetPack Content/` or the Game Content folder `Content/MyAssetPack/`. Feel free to create sub-folders and organize the way you want. But all files must be inside that folder!
+
+You can drag'n drop any file from your computer inside that folder, e.g. FBX meshes or WAV sounds for example.
 
 The next pages of the docs will have examples on how to import specific assets (Skeletal Meshes, Maps, etc). You can check them and then back here to finish the exportation.
 
 
 ## Exporting & Cooking your Assets
 
-After you created your Assets, exporting them from Unreal Engine is very easy.
+After you imported and created your Assets, exporting them from Unreal Engine is very easy.
 
 For that, select **Platforms ⬇️ Windows/Linux ➡ Cook Content**:
 
@@ -52,7 +95,9 @@ This will start the Cooking & Packing process, which may take a while depending 
 
 After finishing, go for the Cooked folder of your ADK project:
 
-`assets-development-kit/Saved/Cooked/Windows/NanosWorldADK/Content/MyAssetPack/`
+`assets-development-kit/Saved/Cooked/Windows/NanosWorldADK/`
+
+Inside this folder, you can find the folder `Content/` (if you are using Game Content) and `Plugin/` (if you are using Plugin Content). Open the one you are using, inside of them there will be the folder you created as your Asset Pack.
 
 You may end up with a folder like that, with all your assets in the cooked version:
 
@@ -90,7 +135,7 @@ NanosWorldServer.exe
 
 After you created your Assets.toml in the root folder of your Asset Pack. There are some important configuration to be set.
 
-Open the Asset.toml in a text editor and make sure you configured `unreal_folder` and `unreal_version` to the correct values.
+Open the Asset.toml in a text editor and make sure you configured `unreal_folder`, `unreal_version` and `is_plugin_content` to the correct values.
 
 ```toml
 # unreal engine configurations
@@ -98,7 +143,9 @@ Open the Asset.toml in a text editor and make sure you configured `unreal_folder
     # unreal engine folder - the name of the root folder (the one inside UnrealProject/Content/) which the assets will have references to each other
     unreal_folder =     "MyAssetPack"
     # unreal engine version - unreal version this asset pack was compiled on
-    unreal_version =    "5.1.0"
+    unreal_version =    "5.0.3"
+    # whether this asset pack was created as a plugin content
+    is_plugin_content = false
 ```
 
 Another important section to configure is the `[assets]` one, in which you define the list of exported assets to be referenced through scripting.
@@ -134,7 +181,7 @@ You can use the [ADK Assets.toml Generator Tool](adk-assets-development-kit.md##
 
 :::caution
 
-After cooking and copying your folder, **do not** rename or delete any file/folder inside your Asset Pack folder! It will break all internal references used by your assets.
+After cooking and copying your folder, **do not** rename or delete any file/folder inside your Cooked Asset Pack folder! It will break all internal references used by your assets and may cause they appear without materials/textures.
 
 :::
 
@@ -188,3 +235,47 @@ There are some **Engine Content** which are allowed to use, but only from the fo
 * `/Engine/EngineMaterials`
 
 :::
+
+
+## Troubleshooting
+
+### Common Fixes
+
+Most of the problems can be easily fixed by trying the following steps:
+
+#### 1. Make sure you are not copying Project Assets instead of Cooked Assets
+
+> Unreal Project files are not meant to work in runtime, they must be compiled/cooked to load in-game. The cooked assets usually have the extensions: `.uasset`, `.uexport` and `.ubulk`. [See more here](#exporting--cooking-your-assets).
+
+#### 2. Make sure your [ADK is updated](adk-assets-development-kit.md#updating-to-a-newer-adk-version)
+
+> Cooking your assets with old ADK can cause incompatibilities between the Game and your Assets.
+
+#### 3. Delete `Saved/`, `Intermediate/` and `DerivedDataCache/` from your Project folder
+
+> Sometimes it's good to try a full recook, as the Cooked assets can get corrupted by old Unreal versions.
+
+#### 4. Create one Asset Pack for each cooked assets folder
+
+> If you are trying to load a map and specified that in the Project Settings to *cook only that map*, probably it generated one or more folders inside your `Saved/Cooked/` folder. This means that **ALL** these folders and files are needed to make the map to load. So you **MUST** create one Asset Pack for each folder in there. (of course you shouldn't create an Asset Pack for the NanosWorld/ folder).
+
+
+### Common Problems
+
+Common problems when importing assets and possible solutions:
+
+#### Assets without Materials/Textures
+
+> If you loaded the assets in-game and they don't have material (they are gray). It can be two problems: you didn't set `unreal_folder` in your Assets.toml correctly, or you modified/moved/copied the files wrongly from the Cooked folder.
+
+#### Corrupt data found, please verify your installation
+
+> If you see this error as a Popup, please make sure to retry all steps listed [here](#troubleshooting).
+
+#### Game Crash during/after loading a custom map or custom assets
+
+> This usually happen because of corrupted or bad created assets, please make sure to retry all steps listed [here](#troubleshooting).
+
+#### Disconnected. Failed to Load Map! Canceled or Failed!
+
+> This error usually happens when it couldn't find your map to load. This can be because of badly configured [Assets.toml](/core-concepts/assets.mdx#assets-pack-configuration) `unreal_folder` setting or because you copied Unreal Project files instead of Cooked files into your Asset Pack.

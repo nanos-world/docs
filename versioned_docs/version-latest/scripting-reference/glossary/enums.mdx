@@ -11,9 +11,9 @@ Instead of passing numbers to methods or comparing numbers in Events callbacks, 
 -- Using Enums to figure out which StanceMode the Character is
 Character.Subscribe("StanceModeChanged", function(character, old_stance, new_stance)
    if (new_stance == StanceMode.Standing) then
-      Package.Log("I'm Standing!")
+      Console.Log("I'm Standing!")
    else if (new_stance == StanceMode.Crouching) then
-      Package.Log("I'm Crouching!")
+      Console.Log("I'm Crouching!")
    end
 end)
 

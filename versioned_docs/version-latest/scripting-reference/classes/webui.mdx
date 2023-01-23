@@ -73,7 +73,7 @@ my_ui:CallEvent("MyEvent", param1, param2)
 
 -- Subscribes to receive JS events
 my_ui:Subscribe("MyAnswer", function(param1)
-    Package.Log("Received back! %s", param1)
+    Console.Log("Received back! %s", param1)
     -- Will output 'Received back! Hey there!'
 end)
 ```
@@ -121,19 +121,19 @@ You can use the output Texture from a Canvas with [:SetMaterialFromWebUI()](/scr
 :::
 
 
-## 🛠 Constructor
+## 🛠 Constructors
 
 <ConstructorDeclaration type="Class" name="WebUI" />
 
-:::tip
+
+## 🔍 HTML Path Searchers
 
 Loading a .html file supports the following searchers, which are looked in the following order:
+
 1. Relative to `current-file-path/`
 2. Relative to `current-package/Client/`
 3. Relative to `current-package/`
 4. Relative to `Packages/`
-
-:::
 
 
 ## 🗿 Static Functions
@@ -149,6 +149,3 @@ Loading a .html file supports the following searchers, which are looked in the f
 ## 🚀 Events
 
 <EventsDeclaration type="Class" name="WebUI" />
-
-
-import { Structs, Classes, Enums, BasicType, AuthorityType, ReferenceLink, AssetPath } from '@site/docs/components/_nanos.mdx';

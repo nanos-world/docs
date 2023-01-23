@@ -8,21 +8,16 @@ tags: [scripting]
 
 All you need to know to communicate between different Packages
 
-In nanos world there are 3 main ways which you can interact with other **Packages**. In this page we will explain in details how to do so.
+In nanos world there are 2 main ways which you can interact with other **Packages**. In this page we will explain in details how to do so.
+
 
 ## Custom Events
 
-:::tip
-
-For more information and examples about using Custom Events, please refer to Events.
-
-:::
-
 ### Communicating with Packages in the same Side
 
-Custom Events are the easier way to send data or information to other packages:
+Custom Events are the easier way to send or receive generic data or information to other packages:
 
-```lua title="PackageOne/Server/Index.lua"
+```lua title="package-one/Server/Index.lua"
 local my_parameter1 = 123
 local my_parameter2 = "hello there"
 local my_parameter3 = { important_stuff = "omg!" }
@@ -30,19 +25,14 @@ local my_parameter3 = { important_stuff = "omg!" }
 Events.Call("MyAwesomeEvent", my_parameter1, my_parameter2, my_parameter3)
 ```
 
-```lua title="PackageTwo/Server/Index.lua"
+```lua title="package-two/Server/Index.lua"
 Events.Subscribe("MyAwesomeEvent", function(parameter1, parameter2, parameter3)
-    Package.Log("Received " .. parameter1) -- Received 123
-    Package.Log("Received " .. parameter2) -- Received hello there
-    Package.Log("Received " .. parameter3) -- Received table
+    Console.Log("Received " .. parameter1) -- Received 123
+    Console.Log("Received " .. parameter2) -- Received hello there
+    Console.Log("Received " .. parameter3) -- Received table
 end)
 ```
 
-:::info
-
-**Note:** Calling events will trigger the event in all Packages.
-
-:::
 
 ### Sending data through the network
 
@@ -62,77 +52,70 @@ Events.CallRemote("GetThisFromServer", player_02, my_parameter1)
 
 ```lua title="Client/Index.lua"
 Events.Subscribe("GetThisFromServer", function(parameter1, parameter2, parameter3)
-    Package.Log("Received " .. parameter1) -- Received cool data from network
+    Console.Log("Received " .. parameter1) -- Received cool data from network
 end)
 ```
 
-:::info
+:::tip
 
-**Note:** Calling network events will trigger the event in all Packages from the other side.
+For more information and examples about using Custom Events, please refer to [Events](/scripting-reference/static-classes/events.mdx).
 
 :::
 
-## Packages Exported Functions
 
-Another way of communicating is using Exported Functions. With Exported Functions you can define functions in your Package which can be called by any other Package and have a value returned.
+## Exporting Variables Globally
+
+Another way of communicating is using `Package.Export()` method, it allows exposing variables (tables, functions, etc) globally so all other Packages can access it directly.
 
 :::info
 
-Unlike events, exported functions can return values to the caller. But you can only call Exported Functions from the same side \(Server or Client\).
+Unlike events, exported functions can return values to the caller. But exported functions are only available to the same side (Server or Client).
 
 :::
 
 ### Exporting a Function
 
-For exporting functions, use `Package.Export()` method:
+With that, you can export functions for example, like that:
 
-```lua title="PackageOne/Server/Index.lua"
+```lua title="package-one/Server/Index.lua"
 -- Defines a function which you want to export
 function SpawnCoolWeapon(location, rotation)
     local cool_weapon = Weapon(location or Vector(), rotation or Rotator(), ...)
     return cool_weapon
 end
 
--- Exports the function to be called by other Packages 
+-- Exports the function to be called by other Packages
 Package.Export("SpawnCoolWeapon", SpawnCoolWeapon)
 ```
 
+You can even export a whole table containing functions for example, to work as a library:
+
+```lua title="package-one/Server/Index.lua"
+-- Defines a table with functions which you want to export
+MyAwesomeLibrary = {
+	CoolMethod = function(a, b)
+		return a + b
+	end,
+	AnotherAwesomeImportantMethod = function(c, d)
+		return c * d
+	end
+}
+
+-- Exports the table to be accessed by other Packages
+Package.Export("MyAwesomeLibrary", MyAwesomeLibrary)
+```
+
+
 ### Calling an Exported Function from another Package
 
-For calling a function exported by another Package, use `Package.Call()` method:
+Now you can access that directly from other packages:
 
-```lua title="PackageTwo/Server/Index.lua"
+```lua title="package-two/Server/Index.lua"
 -- Calls the exported function
-local cool_weapon = Package.Call("PackageOne","SpawnCoolWeapon", Vector(), Rotator())
+local cool_weapon = SpawnCoolWeapon(Vector(), Rotator())
 ```
 
-## Using Package's RequirePackage
-
-The last way of communicating between Packages is by loading other Packages inside the current Package:
-
-```lua title="PackageOne/Server/Index.lua"
-Package.Log("Hello from Package One!")
+```lua title="package-two/Server/Index.lua"
+-- Calls the exported table
+local awesome_result = MyAwesomeLibrary.CoolMethod(123, 456)
 ```
-
-```lua title="PackageTwo/Server/Index.lua"
-Package.RequirePackage("PackageOne")
-
-Package.Log("Hello from Package Two!")
-```
-
-#### Output
-
-```text
-Hello from Package One!
-Hello from Package Two!
-```
-
-This will load the file Index.lua from PackageOne into the VM of PackageOne where you called `Package.RequirePackage()`.
-
-Also the Required Package will be sent to the clients, then you can `RequirePackage` in the client side too.
-
-:::tip
-
-It's recommended to set your Required Packages as `library` and load it as requirement in the Package.toml, this way the package is sent to the clients too.
-
-:::

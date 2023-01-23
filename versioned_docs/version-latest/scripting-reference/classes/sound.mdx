@@ -34,7 +34,7 @@ local ogg_sound = Sound(Vector(), "package://my-package/Client/awesome_beep.ogg"
 ```
 
 
-## 🛠 Constructor
+## 🛠 Constructors
 
 <ConstructorDeclaration type="Class" name="Sound" />
 
@@ -60,35 +60,35 @@ local ogg_sound = Sound(Vector(), "package://my-package/Client/awesome_beep.ogg"
 <EventsDeclaration type="Class" name="Sound" />
 
 
-## 🔊 Sound Attenuation
+## 🔊 Sound Attenuation
 
 This property defines the function that determines the rate of attenuation over distance. There are a number of different functions to choose from:
 
-### 🔈 Linear
+### 🔈 Linear
 
 ![](/img/docs/sounds-linear.webp)
 
 This is the default function. When using this function the volume will attenuate linearly and so the changes in volume are constant as the listener moves towards and away from the source. This function is good for crossfading between large background-type sounds that don't need tightly focussed 3D spatial falloff settings.
 
-### 🔈 Logarithmic
+### 🔈 Logarithmic
 
 ![](/img/docs/sounds-log.webp)
 
 When using this function the volume attenuates such that the changes in volume are greater at close distances, and lesser at far distances. This function is good for spot sounds that need good 3D positioning, while still being audible at reasonable distances.
 
-### 🔈 Inverse
+### 🔈 Inverse
 
 ![](/img/docs/sounds-inverse.webp)
 
 When using this function, the changes in volume are similar to that of the logarithmic curve, but are more exaggerated. This function is good for sounds that only need to be just audible at far distances, but that gets significantly louder as the listener gets quite close to the source.
 
-### 🔈 Log Reverse
+### 🔈 Log Reverse
 
 ![](/img/docs/sounds-log-reverse.webp)
 
 When using this function, the changes in volume are lesser at close distances, with more dramatic differences at far distances. This function is good for sounds that need to be loud across larger distances.
 
-### 🔈 Natural Sound
+### 🔈 Natural Sound
 
 ![](/img/docs/sounds-natural.webp)
 

@@ -30,33 +30,45 @@ sqlite_db:Execute([[
 
 -- Executes a Query
 sqlite_db:Execute("INSERT INTO test VALUES (1, 'amazing')", function(affected_rows)
-	Package.Log("Affected Rows: " .. tostring(affected_rows))
+	Console.Log("Affected Rows: " .. tostring(affected_rows))
     -- Will output: 1
 end)
 
 -- Selects the data
 sqlite_db:Select("SELECT * FROM test", function(rows)
-	Package.Log(NanosUtils.Dump(rows))
+	Console.Log(NanosUtils.Dump(rows))
     -- Will output a table with all data from 'test'
 end)
 
 -- Selects the data with filter
 sqlite_db:Select("SELECT * FROM test WHERE name = :0", function(rows)
-	Package.Log(NanosUtils.Dump(rows))
+	Console.Log(NanosUtils.Dump(rows))
     -- Will output a table with all data from 'test' where name matches 'amazing'
 end, 'amazing')
 ```
 
 :::tip
 
-All requests are thread safe! 🥳 This means that callbacks are returned on the main thread!
+All requests are thread safe! 🥳
 
 :::
 
 
-## 🛠 Constructor
+## 🛠 Constructors
 
 <ConstructorDeclaration type="Class" name="Database" />
+
+:::caution note
+
+The initial connection to the Database (when it's being constructed) is made on the main thread, so expect the server hanging for a few seconds during that.
+
+:::
+
+:::info
+
+If the Database fails to connect, it will spit an error on console and will return `nil`.
+
+:::
 
 
 ## 🗿 Static Functions
@@ -69,7 +81,7 @@ All requests are thread safe! 🥳 This means that callbacks are returned on the
 <FunctionsDeclaration type="Class" name="Database" />
 
 
-## 🧵 Connection String
+## 🧵 Connection String
 
 Each **Database Engine** has it's own parameters which can be used on the `connection_string` constructor. Those parameters are defined and backend-dependent by the Engine, being passed directly to the Backend when creating the connection.
 
@@ -82,7 +94,7 @@ Usually you don't need to explicitly define all (or most) of the parameters desc
 :::
 
 
-### ▶️ SQLite
+### ▶ SQLite
 
 :::tip
 
@@ -100,7 +112,7 @@ There is a special **connection_string** for SQLite: `:memory:`. This will creat
 | **`vfs`** | | set the SQLite VFS used to as OS interface. The VFS should be registered before opening the connection, see the [documentation](https://www.sqlite.org/vfs.html) |
 
 
-### ▶️ MySQL
+### ▶ MySQL
 
 | Parameter | Default Value | Description |
 | :--- | :--- | :--- |
@@ -120,7 +132,7 @@ There is a special **connection_string** for SQLite: `:memory:`. This will creat
 | **`write_timeout`** |  | should be positive integer value that means seconds corresponding to `MYSQL_OPT_WRITE_TIMEOUT` |
 
 
-### ▶️ PostgreSQL
+### ▶ PostgreSQL
 
 More parameters and complete information can be found at the [PostgreSQL Official Documentation](https://www.postgresql.org/docs/8.3/libpq-connect.html).
 

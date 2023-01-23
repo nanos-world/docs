@@ -30,7 +30,6 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | :--- | :--- |
 | **`name`** | Name of the Server |
 | **`description`** | Description of the Server |
-| **`logo`** | Image URL to be displayed in the Server List |
 | **`max_players`** | Max amount of players allowed to join |
 | **`password`** | Password to be able to connect |
 | **`ip`** | Server IP. We recommend leaving it blank |
@@ -46,6 +45,17 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | **`map`** | Which map to load |
 | **`token`** | Server Token used for authorize downloads through CLI |
 | **`banned_ids`** | List of banned nanos account IDs |
+
+
+## Logo Image
+
+It is possible to have a custom image to be displayed in the server list. For that, add a file called `Server.jpg` besides the server executable with the logo you wish. The recommended size is `300x150`.
+
+:::tip
+
+You can pass a JPG image URL to `--logo` parameter to automatically download it as the Server.jpg image!
+
+:::
 
 
 ## Map & Level
@@ -82,7 +92,7 @@ All (non built-in) commands will be sent into an event to the scripting/server-s
 
 ```lua title="Server/Index.lua"
 Server.Subscribe("Console", function(my_input)
-    Package.Log("Console command received: " .. my_input)
+    Console.Log("Console command received: " .. my_input)
 end)
 ```
 
@@ -95,7 +105,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | :--- | :--- | :--- |
 | `--name` | string | Server name |
 | `--description` | string | Server description |
-| `--logo` | string | Server Logo |
+| `--logo` | string | Server Logo (downloads the image locally as a Server.jpg file) |
 | `--password` | string | Server password |
 | `--ip` | string | Server IP |
 | `--map` | string | Map to load |
@@ -108,12 +118,19 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--assets` | string list | Server assets |
 | `--token` | string | Server authorization token |
 | `--max_players` | number | Max allowed players |
-| `--save` | 0 or 1 | If to save the parameters in Config.toml |
-| `--profiling` | 0 or 1 | Enables Performance Profiling Logs for debugging |
-| `--auto_download` | 0 or 1 | Automatically downloads Packages and Assets from Vault if needed |
 | `--dedicated_server` | 0 or 1 | If to start as a Dedicated Server or P2P |
 | `--async_log` | 0 or 1 | If to use async or sync logs (async provides better performance) - default is 1 |
 | `--log_level` | 1, 2 or 3 | If to use Normal, Debug or Verbose logs |
+| `--custom_settings` | string | A list of [Custom Settings](/core-concepts/packages/packages-guide.md#custom-settings) to be passed to scripting |
+| `--save` | *flag* | If to save the parameters in Config.toml |
+| `--profiling` | *flag* | Enables Performance Profiling Logs for debugging |
+| `--auto_download` | *flag* | Automatically downloads Packages and Assets from Vault if needed |
+
+:::tip
+
+**Flag** Value Types don't require any argument, just pass the parameter like `--parameter`.
+
+:::
 
 
 ### One-liner Server Configuration

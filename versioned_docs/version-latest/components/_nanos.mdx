@@ -158,6 +158,13 @@ export const SpecialPath = (type, label, description) => (
 	</Tippy>
 );
 
+<!-- Define Tippy Generic Link component -->
+export const TippyLink = (type, label, description, url) => (
+	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AssetPathToolTip label={label} description={description} />}>
+		<Link to={`${getActiveVersionPath()}/${url}`} className={"hover-link"}>{label}</Link>
+	</Tippy>
+);
+
 
 <!-- Defines Authority Types components -->
 export const AuthorityType = {
@@ -171,6 +178,8 @@ export const AuthorityType = {
 <!-- Defines Basic Types components -->
 export const BasicType = {
 	Number: () => BaseType("number"),
+	Integer: () => BaseType("integer"),
+	Float: () => BaseType("float"),
 	String: () => BaseType("string"),
 	Boolean: () => BaseType("boolean"),
 	Table: () => BaseType("table"),
@@ -229,6 +238,6 @@ export const AssetPath = {
 	Map: () => BaseAssetPath("Map", "Map Reference", "Map Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
 	Blueprint: () => BaseAssetPath("Blueprint", "Blueprint Reference", "Blueprint Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
 	Sound: () => SpecialPath("Sound", "Sound Reference", "Sound Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code><br/><br/>Or as Special Path:<br/><code>package://my-package/Client/sound.ogg</code>."),
-	Image: () => SpecialPath("Image", "Image Path", "Image Path as Special Path:<br/><code>package://my-package/Client/image.png</code>."),
-	HTML: () => SpecialPath("HTML", "HTML Path", "HTML Path as Special Path:<br/><code>package://my-package/Client/file.html</code>."),
+	Image: () => SpecialPath("Image", "Image Path", "Image Path as Special Path:<br/><code>package://my-package/Client/sound.ogg</code>."),
+	HTML: () => TippyLink("HTML", "HTML Path", "Web URL or HTML File Path:<br/><code>file://UI/index.html</code>.", "scripting-reference/classes/webui#html-path-searchers"),
 };

@@ -36,6 +36,17 @@ Please do not **MODIFY**, **DELETE**, **CREATE** or **COPY** any file inside `Na
 `NanosWorld/` folder has some Assets which you can use to reference **your** assets and make the export keep the correct references when using them in-game.
 
 
+## Updating to a newer ADK version
+
+To update your Unreal project to a newer Assets Development Kit version, you just need to download the newest version from GitHub and extract/paste it over the existing project, overriding **all** files.
+
+:::caution
+
+It is recommended to backup your settings at `Config/` folder because they will be overridden in cases you modified it. Usually it's better to manually reapply your modified settings into the new Project settings after the updates.
+
+:::
+
+
 ## Tools available in the ADK project
 
 Here's a list of all tools and blueprints which you can use to speed up and help creating assets:

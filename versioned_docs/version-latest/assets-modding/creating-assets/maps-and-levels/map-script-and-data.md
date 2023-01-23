@@ -55,6 +55,9 @@ All nanos structs (Vectors, Rotators, Vector2D, etc) are automatically parsed fr
 
 Inside this folder you can create all folders related to the Package: `Server/`, `Client/` and `Shared/` and create your scripts as usual. This will be loaded as a normal Package when your Map loads. Usually these scripts should have map specific spawn props/weapons and pertinent stuff.
 
+The Package.toml is not loaded for Map Packages, instead all Package configuration must be done in the settings of Map.toml file.
+
+
 :::note
 
 If at least one of the loaded packages enable the setting `force_no_map_script` then this Package will not load.

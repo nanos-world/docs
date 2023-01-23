@@ -24,34 +24,25 @@ First you will need to download the Asset Pack **Fireworks Particle Effects** fr
 After that you will need to add the requirement of this **Asset Pack** into your Package `Config.toml`:
 
 ```toml title="Config.toml"
-# vault configurations
-[meta]
-    # friendly name
-    title =                 "My Awesome Firework Package"
-    # contributors
+# Package Configurations
+[package]
+    # Package Name
+    name =                  "My Awesome Firework Package"
+    # Contributors
     author =                "SyedMuhammad"
-    # version
+    # Version
     version =               "1.0.0"
-
-# script configurations
-[script]
-    # whether to force the custom map package to do not load
-    force_no_map_package =  false
-    # auto destroy all entities spawned by this package when it unloads
+    # Image URL
+    image =                 "https://i.imgur.com/tQXi0xt.webp"
+    # Package Type: 'executable' (normal package) | 'library' (doesn't run - useful for code library)
+    type =                  "executable"
+    # Whether to force the Custom Map Script to do NOT load
+    force_no_map_script =   false
+    # Auto Destroy all entities spawned by this package when it unloads
     auto_cleanup =          true
-    # the game version (major.minor) at the time this package was created, for granting compatibility between breaking changes
-    compatibility_version = "1.21"
-    # packages requirements
-    packages_requirements = [
-
-    ]
-    # asset packs requirements
+    # Asset Packs Requirements
     assets_requirements = [
         "ts-fireworks",
-    ]
-    # compatible game modes
-    compatible_game_modes = [
-
     ]
 ```
 

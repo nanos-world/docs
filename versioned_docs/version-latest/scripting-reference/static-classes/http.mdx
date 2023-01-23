@@ -12,8 +12,8 @@ tags: [static-class, server]
 ```lua title="Server/Index.lua"
 -- Makes an asynchronous HTTP Request
 HTTP.Request("localhost:7777", "/", "GET", "", "application/json", false, {}, function(status, data)
-    Package.Log(status) -- 200
-    Package.Log(data) -- nanos world server
+    Console.Log(status) -- 200
+    Console.Log(data) -- nanos world server
 
 	-- TIP: You can parse it if it's a json return as well
     local json_ret = JSON.parse(data)
@@ -24,8 +24,8 @@ end)
 -- Makes a synchronous HTTP Request
 local ret = HTTP.RequestSync("localhost:7777", "/", "GET", "", "application/json", false, {})
 
-Package.Log(ret.Status) -- 200
-Package.Log(ret.Data) -- nanos world server
+Console.Log(ret.Status) -- 200
+Console.Log(ret.Data) -- nanos world server
 ```
 
 :::tip

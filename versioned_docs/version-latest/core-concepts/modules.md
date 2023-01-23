@@ -67,5 +67,5 @@ local example = require('example')
 
 -- Calls the module function 'test'
 -- Will print 'Hello World' on console
-Package.Log(example.test())
+Console.Log(example.test())
 ```

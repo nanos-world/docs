@@ -38,12 +38,12 @@ local blueprint = Blueprint(Vector(), Rotator(), "my-asset-pack::BP_MyBlueprint"
 
 -- Subscribes to a Blueprint Event Dispatcher
 blueprint:BindBlueprintEventDispatcher("MyBlueprintDispatcher", function(self, arg1, arg2)
-    Package.Log("Called from Blueprint!", arg1, arg2)
+    Console.Log("Called from Blueprint!", arg1, arg2)
 end)
 ```
 
 
-## 🛠 Constructor
+## 🛠 Constructors
 
 <ConstructorDeclaration type="Class" name="Blueprint" />
 
@@ -79,6 +79,7 @@ List of all supported parameters which can be passed between Lua <-> Blueprint:
 | **`Enum`** | ✅ |
 | **`Name`** | ✅ |
 | **`Text`** | ✅ |
+| **`Vector2D`** | ✅ |
 | **`Vector`** | ✅ |
 | **`Rotator`** | ✅ |
 | **`Color`** | ✅ |
@@ -88,6 +89,13 @@ List of all supported parameters which can be passed between Lua <-> Blueprint:
 | **`Player`** | ❌ |
 | **`Transform`** | ❌ |
 | **`Structs`** | ❌ |
+
+
+:::tip
+
+Passing `Maps`, `Arrays` and `Sets` is also supported! As long their values/keys are in the list above.
+
+:::
 
 :::tip
 

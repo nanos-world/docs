@@ -96,8 +96,8 @@ export function GetParametersList(list) {
 }
 
 <!-- Generates Constructor Example Codeblock -->
-export function GetConstructorExample(class_data) {
-	return `local my_${class_data.name.toLowerCase()} = ${class_data.name}(${GetParametersList(class_data.constructor)})`;
+export function GetConstructorExample(class_data, constructor_index) {
+	return `local my_${class_data.name.toLowerCase()} = ${class_data.name}(${GetParametersList(class_data.constructors[constructor_index].parameters)})`;
 }
 
 <!-- Generates the local ret = Part of the function -->
@@ -166,6 +166,7 @@ export function GetAuthorityType(authority) {
 <!-- Function Block Declaration -->
 export const FunctionDeclaration = ({ function_data, is_static, class_name }) => (
 	<>
+		<hr />
 		<h3 id={ `${is_static ? "static-function" : "function"}-${function_data.name.toLowerCase()}` }>
 			{ GetAuthorityType(function_data.authority) }
 			<code>
@@ -187,34 +188,36 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 			{ is_static ? GetStaticFunctionExample(class_name, function_data) : GetFunctionExample(class_name, function_data) }
 		</CodeBlock>
 		{Array.isArray(function_data.parameters) && function_data.parameters.length > 0 ?
-			<table style={{ width: "100%", display: "table" }}>
-				<thead>
-					<tr>
-						<th>Type</th>
-						<th>Parameter</th>
-						<th>Default</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					{function_data.parameters.map(function(value) {
-						return <tr>
-							<td>{ SplitTypesByOr(value.type) }</td>
-							<td><code>{ GetParameterName(value) }</code></td>
-							<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{value.default}</code> : "" }</td>
-							<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
-						</tr>;
-					})}
-				</tbody>
-			</table>
+			<div class="table-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>Type</th>
+							<th>Parameter</th>
+							<th>Default</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						{function_data.parameters.map(function(value) {
+							return <tr>
+								<td>{ SplitTypesByOr(value.type) }</td>
+								<td><code>{ GetParameterName(value) }</code></td>
+								<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{value.default}</code> : "" }</td>
+								<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+							</tr>;
+						})}
+					</tbody>
+				</table>
+			</div>
 		: <></>}
-		<hr />
 	</>
 );
 
 <!-- Event Block Declaration -->
 export const EventDeclaration = ({ event_data, class_name }) => (
 	<>
+		<hr />
 		<h3 id={ `event-${event_data.name.toLowerCase()}` }>
 			{ GetAuthorityType(event_data.authority) }
 			<code>
@@ -226,26 +229,27 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 			{ GetEventExample(class_name, event_data) }
 		</CodeBlock>
 		{ Array.isArray(event_data.arguments) && event_data.arguments.length > 0 ?
-			<table style={{ width: "100%", display: "table" }}>
-				<thead>
-					<tr>
-						<th>Type</th>
-						<th>Argument</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					{event_data.arguments.map(function(value) {
-						return <tr>
-							<td>{ SplitTypesByOr(value.type) }</td>
-							<td><code>{ value.name }</code></td>
-							<td dangerouslySetInnerHTML={{ __html: value.description }} style={{ wordBreak: "break-word" }}></td>
-						</tr>;
-					})}
-				</tbody>
-			</table>
+			<div class="table-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>Type</th>
+							<th>Argument</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						{event_data.arguments.map(function(value) {
+							return <tr>
+								<td>{ SplitTypesByOr(value.type) }</td>
+								<td><code>{ value.name }</code></td>
+								<td dangerouslySetInnerHTML={{ __html: value.description }} style={{ wordBreak: "break-word" }}></td>
+							</tr>;
+						})}
+					</tbody>
+				</table>
+			</div>
 		: <></> }
-		<hr />
 	</>
 );
 
@@ -281,75 +285,81 @@ export const EventNameDeclaration = ({ class_name, event_data, base_class }) => 
 
 <!-- Static Function List Declaration -->
 export const StaticFunctionListDeclaration = ({ class_name, functions_list, base_class }) => (
-	<table style={{ width: "100%", display: "table" }}>
-		<thead>
-			<tr>
-				<th></th>
-				<th>Returns</th>
-				<th>Name</th>
-				<th>Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			{functions_list.map(function(value) {
-				return <tr>
-					<td width="50px">{ GetAuthorityType(value.authority) } </td>
-					<td>{ value.return ? GetReturnList(value.return) : "" }</td>
-					<td><StaticFunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
-					<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
-				</tr>;
-			})}
-		</tbody>
-	</table>
-);
-
-<!-- Function List Declaration -->
-export const FunctionListDeclaration = ({ class_name, functions_list, base_class }) => (
-	<table style={{ width: "100%", display: "table" }}>
-		<thead>
-			<tr>
-				<th></th>
-				<th>Returns</th>
-				<th>Name</th>
-				<th>Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			{functions_list.map(function(value) {
-				return <tr>
-					<td width="50px">{ GetAuthorityType(value.authority) } </td>
-					<td>{ value.return ? GetReturnList(value.return) : "" }</td>
-					<td><FunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
-					<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
-				</tr>;
-			})}
-		</tbody>
-	</table>
-);
-
-<!-- Events List Declaration -->
-export const EventListDeclaration = ({ type, name, inherited_class_name, base_class }) => {
-	const class_data = GetClassData(type, name);
-	return (<>
-		<table style={{ width: "100%", display: "table" }}>
+	<div class="table-wrapper">
+		<table>
 			<thead>
 				<tr>
 					<th></th>
+					<th>Returns</th>
 					<th>Name</th>
 					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
-				{class_data.events.map(function(value) {
+				{functions_list.map(function(value) {
 					return <tr>
 						<td width="50px">{ GetAuthorityType(value.authority) } </td>
-						<td><EventNameDeclaration class_name={ inherited_class_name } base_class={ base_class } event_data={ value } /></td>
+						<td>{ value.return ? GetReturnList(value.return) : "" }</td>
+						<td><StaticFunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
 						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
 					</tr>;
 				})}
 			</tbody>
 		</table>
-	</>);
+	</div>
+);
+
+<!-- Function List Declaration -->
+export const FunctionListDeclaration = ({ class_name, functions_list, base_class }) => (
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>Returns</th>
+					<th>Name</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				{functions_list.map(function(value) {
+					return <tr>
+						<td width="50px">{ GetAuthorityType(value.authority) } </td>
+						<td>{ value.return ? GetReturnList(value.return) : "" }</td>
+						<td><FunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
+						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+					</tr>;
+				})}
+			</tbody>
+		</table>
+	</div>
+);
+
+<!-- Events List Declaration -->
+export const EventListDeclaration = ({ type, name, inherited_class_name, base_class }) => {
+	const class_data = GetClassData(type, name);
+	return (
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Name</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					{class_data.events.map(function(value) {
+						return <tr>
+							<td width="50px">{ GetAuthorityType(value.authority) } </td>
+							<td><EventNameDeclaration class_name={ inherited_class_name } base_class={ base_class } event_data={ value } /></td>
+							<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+						</tr>;
+					})}
+				</tbody>
+			</table>
+		</div>
+	);
 };
 
 export const GetClassData = (type, name) => {
@@ -373,31 +383,36 @@ export const HeaderDeclaration = ({ type, name, image, is_static, is_open_source
 <!-- Block of Constructor -->
 export const ConstructorDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
-	return (<>
-		<CodeBlock className="language-lua">
-			{ GetConstructorExample(class_data) }
-		</CodeBlock>
-		<table style={{ width: "100%", display: "table" }}>
-			<thead>
-				<tr>
-					<th>Type</th>
-					<th>Name</th>
-					<th>Default</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				{class_data.constructor.map(function(value) {
-					return <tr>
-						<td>{ SplitTypesByOr(value.type) }</td>
-						<td><b><code>{ value.name }</code></b></td>
-						<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : "" }</td>
-						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
-					</tr>;
-				})}
-			</tbody>
-		</table>
-	</>);
+	return class_data.constructors.map((constructor) =>
+		<>
+			<h4 id={ `constructor-${ constructor.description.toLowerCase().replace(' ', '-') }` }>{ constructor.description }</h4>
+			<CodeBlock className="language-lua">
+				{ GetConstructorExample(class_data, 0) }
+			</CodeBlock>
+			<div class="table-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>Type</th>
+							<th>Name</th>
+							<th>Default</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						{ constructor.parameters.map(function(value) {
+							return <tr>
+								<td>{ SplitTypesByOr(value.type) }</td>
+								<td><b><code>{ value.name }</code></b></td>
+								<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : "" }</td>
+								<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+							</tr>;
+						} )}
+					</tbody>
+				</table>
+			</div>
+		</>
+	);
 };
 
 <!-- Base Entity Static Functions -->
@@ -562,24 +577,26 @@ export const PropertiesDeclaration = ({ type, name }) => {
 	return (<>
 		{
 			class_data.properties == null ? <i>This entity doesn't have properties.</i> :
-			<table style={{ width: "100%", display: "table" }}>
-				<thead>
-					<tr>
-						<th>Type</th>
-						<th>Name</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					{class_data.properties.map(function(value) {
-						return <tr>
-							<td>{ GetElementByType(value.type) }</td>
-							<td><b><code>{ value.name }</code></b></td>
-							<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
-						</tr>;
-					})}
-				</tbody>
-			</table>
+			<div class="table-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>Type</th>
+							<th>Name</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						{class_data.properties.map(function(value) {
+							return <tr>
+								<td>{ GetElementByType(value.type) }</td>
+								<td><b><code>{ value.name }</code></b></td>
+								<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+							</tr>;
+						})}
+					</tbody>
+				</table>
+			</div>
 		}
 	</>);
 };

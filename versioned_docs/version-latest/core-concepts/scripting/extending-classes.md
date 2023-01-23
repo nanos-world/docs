@@ -85,7 +85,7 @@ For that, we just add a custom method called **`newindex`**:
 
 ```lua
 function Player:newindex(key, value)
-	Package.Log("Setting a %s value: %s = %s", tostring(self), key, tostring(value))
+	Console.Log("Setting a %s value: %s = %s", tostring(self), key, tostring(value))
 end
 ```
 
@@ -113,7 +113,7 @@ For that, we just add a custom method called **`index`**:
 
 ```lua
 function Player:index(key)
-	Package.Log("Getting %s value: %s", tostring(self), key)
+	Console.Log("Getting %s value: %s", tostring(self), key)
     -- ... do something
     return some_value
 end
