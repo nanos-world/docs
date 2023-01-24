@@ -90,6 +90,23 @@ The `items` parameter is a list of tables with the format for each `type`:
 ```
 
 
+### `select`
+
+```lua
+{
+	id = "id-of-item",
+	type = "select",
+	label = "select the option",
+	callback_event = "SelectDropDownOption",
+	selected = "id-opt-1",
+	options = {
+		{ id = "id-opt-01", name = "Opt 01" },
+		{ id = "id-opt-02", name = "Opt 02" },
+	}
+}
+```
+
+
 ### `color`
 
 ```lua
