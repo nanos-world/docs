@@ -67,7 +67,7 @@ We have 3 types of packages: [script](#script), [game-mode](#game-mode) and [loa
 Script is a normal Package, you can load as many as you want.
 
 ```toml title="Package.toml" reference
-https://github.com/nanos-world/nanos-world-server/blob/main/_script_.toml
+https://github.com/nanos-world/nanos-world-server/blob/main/_script.toml
 ```
 
 
@@ -78,7 +78,7 @@ GameModes are Like `script` but you can only load one `game-mode` package at onc
 They are used when you are creating full games which cannot be loaded with other full games packages.
 
 ```toml title="Package.toml" reference
-https://github.com/nanos-world/nanos-world-server/blob/main/_game_mode_.toml
+https://github.com/nanos-world/nanos-world-server/blob/main/_game_mode.toml
 ```
 
 
@@ -89,7 +89,7 @@ Loading Screen is a special Package which will be loaded during player's loading
 It must have an `index.html` in the root. Please refer to [Loading Screen](/core-concepts/packages/loading-screen.md) for more information.
 
 ```toml title="Package.toml" reference
-https://github.com/nanos-world/nanos-world-server/blob/main/_loading_screen_.toml
+https://github.com/nanos-world/nanos-world-server/blob/main/_loading_screen.toml
 ```
 
 
