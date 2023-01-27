@@ -19,6 +19,7 @@ First you will need to download the Asset Pack **Fireworks Particle Effects** fr
 
 ![](/img/docs/tutorials/fireworks-01.webp)
 
+
 ### Configuring the Asset Pack
 
 After that you will need to add the requirement of this **Asset Pack** into your Package `Config.toml`:
@@ -46,14 +47,20 @@ After that you will need to add the requirement of this **Asset Pack** into your
     ]
 ```
 
+
 ### Code Snippet
 
-```lua title="Server/Index.lua"
--- For convenience, we will use the default weapons of the NanosWorldWeapons library to be our Firework-shooter weapon
-Package.RequirePackage("nanos-world-weapons")
+```shell title="Terminal"
+# install the default-weapons package
+./NanosWorldServer.exe --cli install package default-weapons
+```
 
--- Let's spawn a Glock and set it to give no damage, this also avoids it from spawning a trail particle
-local weapon = NanosWorldWeapons.Glock()
+```lua title="Server/Index.lua"
+-- Loads the default-weapons (note: it's recommended to add it to your Package's packages_requirements instead)
+Server.LoadPackage("default-weapons")
+
+-- Let's spawn a Glock from default-weapons package and set it to give no damage, this also avoids it from spawning a trail particle
+local weapon = Glock()
 weapon:SetDamage(0)
 
 -- Let's subscribe for 'Fire' event from this weapon, this will be triggered for every fire it shoots

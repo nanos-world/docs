@@ -14,10 +14,17 @@ This sample code modifies a Weapon to make it shoot Props instead of normal bull
 </video>
 
 
-```lua title="Server/Index.lua"
-Package.RequirePackage("nanos-world-weapons")
+```shell title="Terminal"
+# install the default-weapons package
+./NanosWorldServer.exe --cli install package default-weapons
+```
 
-local my_weap = NanosWorldWeapons.AR4(Vector(-2250, 9153, 192), Rotator(0, 90, 90))
+```lua title="Server/Index.lua"
+-- Loads the default-weapons (note: it's recommended to add it to your Package's packages_requirements instead)
+Server.LoadPackage("default-weapons")
+
+-- Spawns a Weapon from default-weapons package
+local my_weap = AR4(Vector(-2250, 9153, 192), Rotator(0, 90, 90))
 my_weap:SetDamage(0)
 
 my_weap:Subscribe("Fire", function(weapon, shooter)
