@@ -68,6 +68,8 @@ After that, you will end up with a new folder inside `Packages/` called `my-awes
 
 Additionally, if this was the first time running the CLI, it will also create a `Config.toml` file at the root of the server folder executable. This is the server configuration file!
 
+After the Package was created, you need to tell the server to load it when it starts. For that, open the `Config.toml` file which was just generated and look for the `packages = []` section on it. Now you just need to add your package name `"my-awesome-package"` in that list!
+
 
 ## Step 3: Adding Script functionalities
 
@@ -125,7 +127,7 @@ After starting it, your console will display something like this:
 You can see it loaded your package and outputted the text "Loading some Props =D" on it.
 
 
-## Step 4: Join your server
+## Step 5: Join your server
 
 Now let's see the results in-game! Open nanos world and connect to localhost at `127.0.0.1:7777`.
 
