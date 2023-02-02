@@ -6,12 +6,15 @@ tags: [static-class]
 
 <HeaderDeclaration type="StaticClass" name="Console" is_static />
 
-<!--
+
 ## 🎒 Examples
 
-```lua title="Client/Index.lua"
-
-``` -->
+```lua
+Console.RegisterCommand("hello", function(text)
+	Console.Log("Sending a 'Hello " .. text .. "' to everyone!")
+	Chat.BroadcastMessage("Hello " .. text)
+end, "says a message to everyone", { "my_text" })
+```
 
 
 ## 🗿 Static Functions

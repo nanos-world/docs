@@ -126,6 +126,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--save` | *flag* | If to save the parameters in Config.toml |
 | `--profiling` | *flag* | Enables Performance Profiling Logs for debugging |
 | `--auto_download` | *flag* | Automatically downloads Packages and Assets from Vault if needed |
+| `--log_show_thread` | *flag* | Shows the current running thread of each outputted log |
 
 :::tip
 

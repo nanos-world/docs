@@ -524,15 +524,15 @@ export const BasePickableEvents = ({ inherited_class_name }) => (
 export const FunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
-		{ class_data.inheritance && class_data.inheritance.includes("Entity") ? <BaseEntityFunctions inherited_class_name={name} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorFunctions inherited_class_name={name} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Paintable") ? <BasePaintableFunctions inherited_class_name={name} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableFunctions inherited_class_name={name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Entity") ? <BaseEntityFunctions inherited_class_name={class_data.name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorFunctions inherited_class_name={class_data.name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Paintable") ? <BasePaintableFunctions inherited_class_name={class_data.name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableFunctions inherited_class_name={class_data.name} /> : "" }
 		{
 			class_data.functions == null ? <i>This entity doesn't have own functions.</i> :
 			<>
-				<FunctionListDeclaration class_name={name} functions_list={class_data.functions} />
-				{ class_data.functions.map((value) => <FunctionDeclaration function_data={value} class_name={name} />) }
+				<FunctionListDeclaration class_name={class_data.name} functions_list={class_data.functions} />
+				{ class_data.functions.map((value) => <FunctionDeclaration function_data={value} class_name={class_data.name} />) }
 			</>
 		}
 	</>);
@@ -542,12 +542,12 @@ export const FunctionsDeclaration = ({ type, name }) => {
 export const StaticFunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
-		{ class_data.inheritance && class_data.inheritance.includes("Entity") ? <BaseEntityStaticFunctions inherited_class_name={name} /> : "" }
-		{/* { class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorStaticFunctions inherited_class_name={name} /> : "" } */}
+		{ class_data.inheritance && class_data.inheritance.includes("Entity") ? <BaseEntityStaticFunctions inherited_class_name={class_data.name} /> : "" }
+		{/* { class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorStaticFunctions inherited_class_name={class_data.name} /> : "" } */}
 		{
 			class_data.static_functions == null ? <i>This entity doesn't have own static functions.</i> :
 			<>
-				<StaticFunctionListDeclaration class_name={name} functions_list={class_data.static_functions} />
+				<StaticFunctionListDeclaration class_name={class_data.name} functions_list={class_data.static_functions} />
 				{ class_data.static_functions.map((value) => <FunctionDeclaration function_data={value} is_static class_name={class_data.name} />) }
 			</>
 		}
@@ -558,13 +558,13 @@ export const StaticFunctionsDeclaration = ({ type, name }) => {
 export const EventsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
-		{ class_data.inheritance && class_data.inheritance.includes("Entity") ? <BaseEntityEvents inherited_class_name={name} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorEvents inherited_class_name={name} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableEvents inherited_class_name={name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Entity") ? <BaseEntityEvents inherited_class_name={class_data.name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorEvents inherited_class_name={class_data.name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableEvents inherited_class_name={class_data.name} /> : "" }
 		{
 			class_data.events == null ? <i>This entity doesn't have own events.</i> :
 			<>
-				<EventListDeclaration type={type} name={name} inherited_class_name={name} />
+				<EventListDeclaration type={type} name={class_data.name} inherited_class_name={class_data.name} />
 				{ class_data.events.map((value) => <EventDeclaration event_data={value} class_name={class_data.name} />) }
 			</>
 		}

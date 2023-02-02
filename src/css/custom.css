@@ -258,7 +258,7 @@ blockquote {
 /* First items / Categories Sidebar */
 
 .menu__link:not([href]) {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   color: #888;
   font-weight: bold;
@@ -270,9 +270,8 @@ blockquote {
   user-select: none;
 }
 
-/* Docusaurus sidebar bug keeps showing dropdown button */
-.menu__link:not([href])::after {
-  opacity: 0;
+.theme-doc-sidebar-item-category-level-1 {
+	margin-top: 2rem !important;
 }
 
 
