@@ -59,6 +59,11 @@ module.exports = {
           position: 'left'
         },
         {
+          to: '/changelog/',
+          label: 'changelog',
+          position: 'left'
+        },
+        {
           to: '/feedback/',
           label: 'feedback',
           position: 'left'
