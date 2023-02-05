@@ -22,9 +22,11 @@ const Changelog = () => {
 				{changelogs.length > 0 && (
 					changelogs.map(changelog => (
 						<div key={changelog.name} className={clsx("update", styles.update)}>
-							<span className={clsx("version", styles.version)}>
-								{changelog.name}
-							</span>
+							<a id={changelog.name} href={`#${changelog.name}`}>
+								<h1 className={clsx("version", styles.version)}>
+									{changelog.name}
+								</h1>
+							</a>
 							<span className={clsx("releasedat", styles.releasedat)}>
 								{new Date(changelog.releasedAt).toLocaleString()}
 							</span>
