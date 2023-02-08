@@ -14,17 +14,17 @@ To stylize a text, just circumvent a piece of text with a style tag: `<TAG>my aw
 
 
 ```lua title="Server/Index.lua"
-Server.BroadcastChatMessage("Hello with Normal text message!")
-Server.BroadcastChatMessage("Hello with <cyan>Cyan</> text message!")
-Server.BroadcastChatMessage("Hello with <green>Green</> text message!")
-Server.BroadcastChatMessage("Hello with <blue>Blue</> text message!")
-Server.BroadcastChatMessage("Hello with <marengo>Marengo</> text message!")
-Server.BroadcastChatMessage("Hello with <yellow>Yellow</> text message!")
-Server.BroadcastChatMessage("Hello with <orange>Orange</> text message!")
-Server.BroadcastChatMessage("Hello with <red>Red</> text message!")
-Server.BroadcastChatMessage("Hello with <grey>Grey</> text message!")
-Server.BroadcastChatMessage("Hello with <bold>Bold</> text message!")
-Server.BroadcastChatMessage("Hello with <italic>Italic</> text message!")
+Chat.BroadcastMessage("Hello with Normal text message!")
+Chat.BroadcastMessage("Hello with <cyan>Cyan</> text message!")
+Chat.BroadcastMessage("Hello with <green>Green</> text message!")
+Chat.BroadcastMessage("Hello with <blue>Blue</> text message!")
+Chat.BroadcastMessage("Hello with <marengo>Marengo</> text message!")
+Chat.BroadcastMessage("Hello with <yellow>Yellow</> text message!")
+Chat.BroadcastMessage("Hello with <orange>Orange</> text message!")
+Chat.BroadcastMessage("Hello with <red>Red</> text message!")
+Chat.BroadcastMessage("Hello with <grey>Grey</> text message!")
+Chat.BroadcastMessage("Hello with <bold>Bold</> text message!")
+Chat.BroadcastMessage("Hello with <italic>Italic</> text message!")
 ```
 
 

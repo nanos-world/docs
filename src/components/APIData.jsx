@@ -9,6 +9,7 @@ import BlueprintData from '@site/src/api/Classes/Blueprint.json';
 import CableData from '@site/src/api/Classes/Cable.json';
 import CanvasData from '@site/src/api/Classes/Canvas.json';
 import CharacterData from '@site/src/api/Classes/Character.json';
+import CharacterSimpleData from '@site/src/api/Classes/CharacterSimple.json';
 import DatabaseData from '@site/src/api/Classes/Database.json';
 import DecalData from '@site/src/api/Classes/Decal.json';
 import FileData from '@site/src/api/Classes/File.json';
@@ -196,6 +197,7 @@ const APIData = {
 			Cable: CableData,
 			Canvas: CanvasData,
 			Character: CharacterData,
+			CharacterSimple: CharacterSimpleData,
 			Database: DatabaseData,
 			Decal: DecalData,
 			File: FileData,
