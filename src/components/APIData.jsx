@@ -71,6 +71,7 @@ import BlueprintDataStable from '@site/src/api/Stable/Classes/Blueprint.json';
 import CableDataStable from '@site/src/api/Stable/Classes/Cable.json';
 import CanvasDataStable from '@site/src/api/Stable/Classes/Canvas.json';
 import CharacterDataStable from '@site/src/api/Stable/Classes/Character.json';
+import CharacterSimpleDataStable from '@site/src/api/Stable/Classes/CharacterSimple.json';
 import DatabaseDataStable from '@site/src/api/Stable/Classes/Database.json';
 import DecalDataStable from '@site/src/api/Stable/Classes/Decal.json';
 import FileDataStable from '@site/src/api/Stable/Classes/File.json';
@@ -133,6 +134,7 @@ const APIData = {
 			Cable: CableDataStable,
 			Canvas: CanvasDataStable,
 			Character: CharacterDataStable,
+			CharacterSimple: CharacterSimpleDataStable,
 			Database: DatabaseDataStable,
 			Decal: DecalDataStable,
 			File: FileDataStable,
