@@ -76,14 +76,17 @@ nanos world counts on (for now) 4 built-in maps: `nanos-world::BlankMap`, `nanos
 
 | Command | Description |
 | :--- | :--- |
-| `chat [message]` | Sends a chat message |
-| `map [map_path]` | Changes the Map, reloads all Packages and reconnect all Players |
+| `chat <message>` | Sends a chat message |
+| `kick <player_d> <reason>` | Sends a chat message |
+| `map <map_path>` | Changes the Map, reloads all Packages and reconnect all Players |
 | `stop` | Stops the server |
-| `package run [package_name] [lua_code]` | Runs a code in a package |
-| `package reload [package_name]` | Reloads a package |
-| `package reload all` | Reloads all packages |
-| `package unload [package_name]` | Unloads a package |
-| `package load [package_name]` | Loads a package |
+| `players` | lists all players connected |
+| `package run <package_name> <lua_code>` | Runs a code in a package |
+| `package reload <package_name>` | Reloads a package |
+| `package hotreload <package_name>` | Hot-reloads a package (reloads all files but keeps the memory as is) |
+| `package reload all` | Reloads all packages and restarts the Lua Virtual Machine |
+| `package unload <package_name>` | Unloads a package |
+| `package load <package_name>` | Loads a package |
 
 
 ### Custom Commands
@@ -122,9 +125,11 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--async_log` | 0 or 1 | If to use async or sync logs (async provides better performance) - default is 1 |
 | `--log_level` | 1, 2 or 3 | If to use Normal, Debug or Verbose logs |
 | `--custom_settings` | string | A list of [Custom Settings](/core-concepts/packages/packages-guide.md#custom-settings) to be passed to scripting |
+| `--compression` | 0-9 | Sets the compression level to use in some networking operations - 0 disables it, 1 is the fastest and 9 is the slower but highest compression ratio |
 | `--save` | *flag* | If to save the parameters in Config.toml |
 | `--profiling` | *flag* | Enables Performance Profiling Logs for debugging |
 | `--auto_download` | *flag* | Automatically downloads Packages and Assets from Vault if needed |
+| `--log_show_thread` | *flag* | Shows the current running thread of each outputted log |
 
 :::tip
 

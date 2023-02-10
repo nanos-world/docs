@@ -10,11 +10,17 @@ This sample code attaches a Light to a Weapon to make a Flashlight attachment.
 ![](/img/docs/tutorials/weapon-flashlight.webp)
 
 
-```lua title="Server/Index.lua"
-Package.RequirePackage("nanos-world-weapons")
+```shell title="Terminal"
+# install the default-weapons package
+./NanosWorldServer.exe --cli install package default-weapons
+```
 
--- Spawns a Weapon
-my_weapon = NanosWorldWeapons.AR4(Vector(), Rotator())
+```lua title="Server/Index.lua"
+-- Loads the default-weapons (note: it's recommended to add it to your Package's packages_requirements instead)
+Server.LoadPackage("default-weapons")
+
+-- Spawns a Weapon from default-weapons package
+my_weapon = AR4(Vector(), Rotator())
 
 -- Spawns a Spot Light (with color Black, to be turned on only when someone picks up it)
 my_light = Light(Vector(), Rotator(), Color(0, 0, 0), 1, 1000, 1000, 35)

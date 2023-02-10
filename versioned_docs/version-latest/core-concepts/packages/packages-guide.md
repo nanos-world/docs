@@ -99,37 +99,11 @@ https://github.com/nanos-world/nanos-world-server/blob/main/_loading_screen.toml
 | :--- | :--- | :--- |
 | **`force_no_map_package`** | `script`<br/>`game-mode` | Enabling this will force the map package (if any) to do NOT load |
 | **`auto_cleanup`** | `script`<br/>`game-mode` | Enabling this will destroy all entities spawned by this Package when it unloads |
-| **`compatibility_version`** | `script`<br/>`game-mode` | The game version (`major.minor`) at the time this package was created, for granting backwards compatibility between breaking changes. See more [here](#compatibility-version) |
+| **`compatibility_version`** | `script`<br/>`game-mode` | The game version (`major.minor`) at the time this package was created, for granting backwards compatibility between breaking changes. See more [here](/docs/next/core-concepts/packages/compatibility-versions) |
 | **`packages_requirements`** | `script`<br/>`game-mode` | List of Packages dependencies used by this Package which need to be loaded first |
 | **`assets_requirements`** | `script`<br/>`game-mode` | List of Asset Packs to be loaded when this package loads |
 | **`compatible_maps`** | `game-mode` | List of Maps compatible/recommended to work with this Game Mode |
 | **`custom_settings`** | `game-mode` | List of Custom Settings which can be set when starting a new game or passed through command line to the server. See more [here](#custom-settings) |
-
-
-### Compatibility Version
-
-This setting deserves a special attention. It is meant to assure your packages will not break in future breaking changes updates.
-
-It works by forcing that package to run code in a compatibility mode, meaning that breaking changes will keep working as the way it was before. Example:
-
-Let's say you have this code running right now:
-
-```lua
--- Make an asynchronous HTTP request
-HTTP.Request("https://api.nanos.world/", "store/v1/packages/halloween", "GET", "", "application/json", false, {}, function(status, data)
-    -- Do something with my data
-end)
-```
-
-And then, in the hypothetical update 9.99 the API changes and make `HTTP.RequestSync` to become `HTTP.Request` and `HTTP.Request` to become `HTTP.RequestAsync`. I.e. you need to update your code to use `HTTP.RequestAsync` now, this is a breaking change as the new functions uses the same name as before.
-
-With compatibility version, your code can keep working as it was before this update, for that, in your Package.toml you just need to make sure it's `compatibility_version` is set to a version lower than `9.99` (i.e. `9.98`).
-
-:::tip
-
-The Compatibility Mode is a feature that aims to keep old and unmaintained packages/game-modes to keep working for a longer time. But from time to time all the deprecated compatibility modes will be removed from the codebase. So always keep your packages up-to-date!
-
-:::
 
 
 ### Custom Settings

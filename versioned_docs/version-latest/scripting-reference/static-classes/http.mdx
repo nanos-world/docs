@@ -11,7 +11,7 @@ tags: [static-class, server]
 
 ```lua title="Server/Index.lua"
 -- Makes an asynchronous HTTP Request
-HTTP.Request("localhost:7777", "/", "GET", "", "application/json", false, {}, function(status, data)
+HTTP.RequestAsync("localhost:7777", "/", "GET", "", "application/json", false, {}, function(status, data)
     Console.Log(status) -- 200
     Console.Log(data) -- nanos world server
 
@@ -22,7 +22,7 @@ end)
 
 ```lua title="Server/Index.lua"
 -- Makes a synchronous HTTP Request
-local ret = HTTP.RequestSync("localhost:7777", "/", "GET", "", "application/json", false, {})
+local ret = HTTP.Request("localhost:7777", "/", "GET", "", "application/json", false, {})
 
 Console.Log(ret.Status) -- 200
 Console.Log(ret.Data) -- nanos world server

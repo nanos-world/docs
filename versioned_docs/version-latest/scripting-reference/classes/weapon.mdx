@@ -6,14 +6,6 @@ tags: [class]
 
 <HeaderDeclaration type="Class" name="Weapon" image="/img/docs/weapon.webp" />
 
-:::tip
-
-Please take a look at our Default's Weapon package with all built-in Weapons already properly configured and ready to use: [https://github.com/nanos-world/nanos-world-weapons](https://github.com/nanos-world/nanos-world-weapons).
-
-This Package is already included in the base game, you just need to `Package.RequirePackage("nanos-world-weapons")` and use it!
-
-:::
-
 
 ## 🎒 Examples
 
@@ -65,15 +57,19 @@ new_weapon:SetMagazineMesh("nanos-world::SM_AK47_Mag_Empty")
 new_weapon:SetCrosshairMaterial("nanos-world::MI_Crosshair_Regular")
 ```
 
-Using our Default Weapons Package [https://github.com/nanos-world/nanos-world-weapons](https://github.com/nanos-world/nanos-world-weapons) to spawn an AK47:
+Using the [default-weapons](https://github.com/nanos-world/nanos-world-weapons) Package to spawn an AK47:
+
+```shell title="Terminal"
+# install the default-weapons package
+./NanosWorldServer.exe --cli install package default-weapons
+```
 
 ```lua title="Server/Index.lua"
--- Includes the nanos world Default Weapons Package in your Package
--- (you don't need to download it, just include it!)
-Package.RequirePackage("nanos-world-weapons")
+-- Loads the default-weapons (note: it's recommended to add it to your Package's packages_requirements instead)
+Server.LoadPackage("default-weapons")
 
--- Spawning the AK47
-local my_ak47 = NanosWorldWeapons.AK47(Vector(1035, 154, 300), Rotator())
+-- Spawning the AK47 from default-weapons package
+local my_ak47 = AK47(Vector(1035, 154, 300), Rotator())
 
 -- Giving the Weapon to a Character
 my_character:PickUp(my_ak47)

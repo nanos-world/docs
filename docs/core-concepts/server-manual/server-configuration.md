@@ -76,14 +76,17 @@ nanos world counts on (for now) 4 built-in maps: `nanos-world::BlankMap`, `nanos
 
 | Command | Description |
 | :--- | :--- |
-| `chat [message]` | Sends a chat message |
-| `map [map_path]` | Changes the Map, reloads all Packages and reconnect all Players |
+| `chat <message>` | Sends a chat message |
+| `kick <player_d> <reason>` | Sends a chat message |
+| `map <map_path>` | Changes the Map, reloads all Packages and reconnect all Players |
 | `stop` | Stops the server |
-| `package run [package_name] [lua_code]` | Runs a code in a package |
-| `package reload [package_name]` | Reloads a package |
-| `package reload all` | Reloads all packages |
-| `package unload [package_name]` | Unloads a package |
-| `package load [package_name]` | Loads a package |
+| `players` | lists all players connected |
+| `package run <package_name> <lua_code>` | Runs a code in a package |
+| `package reload <package_name>` | Reloads a package |
+| `package hotreload <package_name>` | Hot-reloads a package (reloads all files but keeps the memory as is) |
+| `package reload all` | Reloads all packages and restarts the Lua Virtual Machine |
+| `package unload <package_name>` | Unloads a package |
+| `package load <package_name>` | Loads a package |
 
 
 ### Custom Commands
