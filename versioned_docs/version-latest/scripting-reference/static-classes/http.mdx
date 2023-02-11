@@ -11,9 +11,9 @@ tags: [static-class, server]
 
 ```lua title="Server/Index.lua"
 -- Makes an asynchronous HTTP Request
-HTTP.RequestAsync("localhost:7777", "/", "GET", "", "application/json", false, {}, function(status, data)
+HTTP.RequestAsync("127.0.0.1:7777", "/", "GET", "", "application/json", false, {}, function(status, data)
     Console.Log(status) -- 200
-    Console.Log(data) -- nanos world server
+    Console.Log(data) -- "{"players_count":0,"server_name":"nanos world server"}"
 
 	-- TIP: You can parse it if it's a json return as well
     local json_ret = JSON.parse(data)
@@ -22,10 +22,10 @@ end)
 
 ```lua title="Server/Index.lua"
 -- Makes a synchronous HTTP Request
-local ret = HTTP.Request("localhost:7777", "/", "GET", "", "application/json", false, {})
+local ret = HTTP.Request("127.0.0.1:7777", "/", "GET", "", "application/json", false, {})
 
 Console.Log(ret.Status) -- 200
-Console.Log(ret.Data) -- nanos world server
+Console.Log(ret.Data) -- "{"players_count":0,"server_name":"nanos world server"}"
 ```
 
 :::tip
