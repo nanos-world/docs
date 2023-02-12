@@ -255,13 +255,46 @@ const APIData = {
 	}
 };
 
-// Reordenate data
-for (const vKey in APIData) {
-	for (const cKey in APIData[vKey].Class) {
-		let _class = APIData[vKey].Class[cKey];
+// Finds relations automatically
+function FindsGetSetRelationsAutomatically(functions) {
+	// TODO: This algorithm is O(n²) BOOM
+	// Which doesn't matter as the page build is static
+	for (const functionKey in functions) {
+		let _function = functions[functionKey];
 
-		if (_class.functions)
+		const isGetter = _function.name.startsWith("Get")
+		const isSetter = _function.name.startsWith("Set");
+
+		if (isSetter || isGetter) {
+			const otherName = _function.name.replace(isGetter ? 'G' : 'S', isGetter ? 'S' : 'G');
+
+			for (const functionKey2 in functions) {
+				let _function2 = functions[functionKey2];
+
+				if (_function2.name == otherName) {
+					if (!_function.relations)
+						_function.relations = {};
+
+					if (!_function.relations.functions)
+						_function.relations.functions = [];
+
+					if (!_function.relations.functions.includes(otherName))
+						_function.relations.functions.push(otherName);
+				}
+			}
+		}
+	}
+}
+
+// Reordenate data
+for (const versionKey in APIData) {
+	for (const classKey in APIData[versionKey].Class) {
+		let _class = APIData[versionKey].Class[classKey];
+
+		if (_class.functions) {
 			_class.functions.sort((a, b) => { return a.name > b.name; });
+			FindsGetSetRelationsAutomatically(_class.functions);
+		}
 
 		if (_class.static_functions)
 			_class.static_functions.sort((a, b) => { return a.name > b.name; });

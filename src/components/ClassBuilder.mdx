@@ -163,6 +163,22 @@ export function GetAuthorityType(authority) {
 	authority == "both" ? <AuthorityType.Both /> : "";
 };
 
+export function GetRelations(relations) {
+	const functions = relations.functions ? relations.functions.map(function(value) {
+			return <a href={`#function-${value.toLowerCase()}`}>{value}</a>;
+		}) : [];
+	const static_functions = relations.static_functions ? relations.static_functions.map(function(value) {
+			return <a href={`#static-function-${value.toLowerCase()}`}>{value}</a>;
+		}) : [];
+	const events = relations.events ? relations.events.map(function(value) {
+			return <a href={`#event-${value.toLowerCase()}`}>{value}</a>;
+		}) : [];
+	const etc = relations.etc ? relations.etc.map(function(value) {
+			return <a href={`${value.url}`}>{value.label}</a>;
+		}) : [];
+	return [...functions, ...static_functions, ...events, ...etc].reduce((prev, next) => [prev, ", ", next]);
+};
+
 <!-- Function Block Declaration -->
 export const FunctionDeclaration = ({ function_data, is_static, class_name }) => (
 	<>
@@ -177,7 +193,8 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 			<span dangerouslySetInnerHTML={{ __html: function_data.description_long ? function_data.description_long : function_data.description }}></span>
 			{ !function_data.return ? "" :
 				<>
-					<br/><br/><>Returns </>
+					{ (function_data.description_long || function_data.description) ? <><br/><br/></> : <></> }
+					<>Returns </>
 					{ GetReturnList(function_data.return) }
 					{" "}
 					{ GetReturnDescriptionList(function_data.return) }
@@ -210,6 +227,13 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 					</tbody>
 				</table>
 			</div>
+		: <></>}
+		{function_data.relations ?
+			<span style={{ fontStyle: "italic", fontSize: "85%", opacity: "0.8" }}>
+				{"See also "}
+				{ GetRelations(function_data.relations) }
+				{"."}
+			</span>
 		: <></>}
 	</>
 );
