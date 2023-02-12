@@ -229,7 +229,7 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 			</div>
 		: <></>}
 		{function_data.relations ?
-			<span style={{ fontStyle: "italic", fontSize: "85%", opacity: "0.8" }}>
+			<span className={"relations"}>
 				{"See also "}
 				{ GetRelations(function_data.relations) }
 				{"."}
@@ -274,6 +274,13 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 				</table>
 			</div>
 		: <></> }
+		{event_data.relations ?
+			<span className={"relations"}>
+				{"See also "}
+				{ GetRelations(event_data.relations) }
+				{"."}
+			</span>
+		: <></>}
 	</>
 );
 

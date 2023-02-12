@@ -256,7 +256,7 @@ const APIData = {
 };
 
 // Finds relations automatically
-function FindsGetSetRelationsAutomatically(functions) {
+function FindsGetSetRelationsAutomatically(functions, table) {
 	// TODO: This algorithm is O(n²) BOOM
 	// Which doesn't matter as the page build is static
 	for (const functionKey in functions) {
@@ -275,32 +275,44 @@ function FindsGetSetRelationsAutomatically(functions) {
 					if (!_function.relations)
 						_function.relations = {};
 
-					if (!_function.relations.functions)
-						_function.relations.functions = [];
+					if (!_function.relations[table])
+						_function.relations[table] = [];
 
-					if (!_function.relations.functions.includes(otherName))
-						_function.relations.functions.push(otherName);
+					if (!_function.relations[table].includes(otherName))
+						_function.relations[table].push(otherName);
 				}
 			}
 		}
 	}
 }
 
-// Reordenate data
+// Sort and Process a Class
+function ProcessClass(_class) {
+	if (_class.functions) {
+		_class.functions.sort((a, b) => { return a.name > b.name; });
+		FindsGetSetRelationsAutomatically(_class.functions, "functions");
+	}
+
+	if (_class.static_functions)
+	{
+		_class.static_functions.sort((a, b) => { return a.name > b.name; });
+		FindsGetSetRelationsAutomatically(_class.static_functions, "static_functions");
+	}
+
+	if (_class.events)
+		_class.events.sort((a, b) => { return a.name > b.name; });
+}
+
+// Process all Classes
 for (const versionKey in APIData) {
+	// Class
 	for (const classKey in APIData[versionKey].Class) {
-		let _class = APIData[versionKey].Class[classKey];
+		ProcessClass(APIData[versionKey].Class[classKey]);
+	}
 
-		if (_class.functions) {
-			_class.functions.sort((a, b) => { return a.name > b.name; });
-			FindsGetSetRelationsAutomatically(_class.functions);
-		}
-
-		if (_class.static_functions)
-			_class.static_functions.sort((a, b) => { return a.name > b.name; });
-
-		if (_class.events)
-			_class.events.sort((a, b) => { return a.name > b.name; });
+	// Static Class
+	for (const staticClassKey in APIData[versionKey].StaticClass) {
+		ProcessClass(APIData[versionKey].StaticClass[staticClassKey]);
 	}
 }
 

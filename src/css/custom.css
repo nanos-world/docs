@@ -488,3 +488,9 @@ span.comma-separator::after {
   content: ", ";
   margin-left: -4px;
 }
+
+span.relations {
+	font-style: italic;
+	font-size: 85%;
+	opacity: 0.8;
+}
