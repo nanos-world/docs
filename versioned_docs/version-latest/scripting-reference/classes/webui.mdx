@@ -27,21 +27,21 @@ Proprietary Codecs like **MP3** and **AAC** are not supported on public CEF buil
 local my_ui = WebUI(
     "Awesome UI",            -- Name
     "file://UI/index.html",  -- Path relative to this package (Client/)
-    true,                    -- Is Visible
+    WebUIVisibility.Visible  -- Is Visible on Screen
 )
 
 -- Loading a Web URL
 local my_browser = WebUI(
-    "Awesome Site",        -- Name
-    "https://nanos.world", -- Web's URL
-    true,                  -- Is Visible
+    "Awesome Site",          -- Name
+    "https://nanos.world",   -- Web's URL
+    WebUIVisibility.Visible  -- Is Visible on Screen
 )
 
 -- Loading a local file from other package
 local my_ui = WebUI(
     "Awesome Other UI",      -- Name
     "file://other-package/Client/UI/index.html",
-    true,                    -- Is Visible
+    WebUIVisibility.Visible  -- Is Visible on Screen
 )
 ```
 
