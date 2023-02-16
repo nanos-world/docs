@@ -119,6 +119,7 @@ The values defined can be accessed through the method [Server.GetCustomSettings(
 | `boolean` | A toggleable checkbox |
 | `integer` | Integer numeric values |
 | `floating` | Floating numeric values |
+| `select` | List of string values displayed as a Dropdown |
 | `text` | Text Box |
 
 
