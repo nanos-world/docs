@@ -130,13 +130,17 @@ jobs:
           token: ${{ secrets.STORE_SECRET }}
 ```
 
+:::tip
 
-#### Usage
+The `folder` must be filled if in your repository the Package/Assets.toml is located inside a subfolder.
 
-1. The `folder` must be filled if in your repository the Package/Assets.toml is located inside a subfolder.
-2. The `name` should be set to your Package or Asset Pack folder name.
-3. The `token` should be generated at https://store.nanos.world/settings/tokens/ and set under your *GitHub Settings -> Secrets -> Actions* with name `STORE_SECRET`.
+The `name` should be set to your Package or Asset Pack folder name.
 
+The `changelog` can be left with a default value for now as it's a required field.
+
+The `token` should be generated at https://store.nanos.world/settings/tokens/ and set under your *GitHub Settings -> Secrets -> Actions* with name `STORE_SECRET`.
+
+:::
 
 Then, on every **release** on your GitHub, it will trigger and publish the new version as **draft**.
 

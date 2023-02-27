@@ -10,19 +10,37 @@ tags: [class]
 
 ## 🎒 Examples
 
-```lua
--- Client Side
+```lua title="Client/Index.lua"
 local scene_capture = SceneCapture(
-  Vector(-900, 185, 215),
-  Rotator(0, 90, 90),
+  Vector(0, 0, 200),
+  Rotator(-15, 0, 0),
   256,
   256,
-  0.033,
+  0,
   5000,
   100
 )
 
+-- Paints the Prop with the SceneCapture output
+local my_prop = Prop(Vector(200, 200, 100), Rotator(), "nanos-world::SM_Cube")
 my_prop:SetMaterialFromSceneCapture(scene_capture)
+```
+
+```lua title="Client/Index.lua"
+local scene_capture = SceneCapture(
+  Vector(0, 0, 200),
+  Rotator(-15, 0, 0),
+  256,
+  256,
+  0,
+  5000,
+  100
+)
+
+-- Make a SceneCapture to only render a specific actor
+local my_prop = Prop(Vector(200, 200, 100), Rotator(), "nanos-world::SM_Cube")
+scene_capture:AddRenderActor(my_prop)
+scene_capture:SetShowFlag("Atmosphere", false)
 ```
 
 :::tip

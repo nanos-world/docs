@@ -97,21 +97,22 @@ After finishing, go for the Cooked folder of your ADK project:
 
 `assets-development-kit/Saved/Cooked/Windows/NanosWorldADK/`
 
-Inside this folder, you can find the folder `Content/` (if you are using Game Content) and `Plugin/` (if you are using Plugin Content). Open the one you are using, inside of them there will be the folder you created as your Asset Pack.
-
-You may end up with a folder like that, with all your assets in the cooked version:
-
-![](/img/docs/importing-assets-05.jpg)
-
 :::caution
 
 Please don't confuse the Cooked assets folder with the ADK project files. Make sure you are in the `Saved/Cooked/` one!
 
 :::
 
-After cooking your assets, we will manually copy the cooked folder from it, the one we are looking for is the one you added your assets (`MyAssetPack/` in our case). This folder will become our [Asset Pack](/core-concepts/assets.mdx).
+- Using **Game Content**: you can find the folder `Content/<MyAssetPack>/` inside.
+- Using **Plugin Content**: you can find the folder `Plugins/<MyAwesomeAssetPack>/Content/` inside.
 
-Now just copy it into your `Server/Assets/` and create a `Assets.toml` in the root. Please refer to [Assets Pack Configuration](/core-concepts/assets.mdx#assets-pack-configuration) which you can copy and paste a new version of the file.
+Inside this folder, you can find all your cooked assets. Example of a Game Content result:
+
+![](/img/docs/importing-assets-05.jpg)
+
+After finding the Cooked folder with your assets, we will manually copy it as it will become our [Asset Pack](/core-concepts/assets.mdx).
+
+So just copy the folder into your `Server/Assets/` and create a `Assets.toml` inside of it. Please refer to [Assets Pack Configuration](/core-concepts/assets.mdx#assets-pack-configuration) which you can copy and paste a new version of the file.
 
 After copied, rename your Asset Pack folder to a `kebab-case` as it's a mandatory standard for nanos world Assets & Packages names.
 

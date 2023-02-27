@@ -140,7 +140,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 
 ### One-liner Server Configuration
 
-With Command Line Parameters and [Command Line Interface (CLI)](/core-concepts/server-manual/command-line-interface.mdx), it is also possible to automate the full server installation, here's an example:
+With Command Line Parameters and [Command Line Interface (CLI)](/core-concepts/server-manual/nanos-world-cli.mdx), it is also possible to automate the full server installation, here's an example:
 
 ```shell title="Shell/Linux"
 # Installs/Updates the server through SteamCMD
