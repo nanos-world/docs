@@ -1,0 +1,101 @@
+---
+title: Command Line Interface - CLI
+description: How to use theCommand Line Interface to install packages and update the server.
+sidebar_position: 3
+tags: [hosting]
+---
+
+
+How to use the Command Line Interface to install packages and update the server.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+The Server provides a CLI (Command Line Interface) to help creating, updating and downloading Packages and Assets from the Store.
+
+It can work in two different modes: Interactive or Direct by running a command directly when starting it.
+
+
+## Starting the CLI in Interactive mode
+
+To run the cli, start the server with `--cli` argument, this will start the Interactive CLI:
+
+<Tabs
+  defaultValue="cmd"
+  values={[
+    {label: 'Windows', value: 'cmd'},
+    {label: 'Linux', value: 'linux'},
+  ]}>
+  <TabItem value="cmd">
+
+```shell
+./NanosWorldServer.exe --cli
+```
+
+  </TabItem>
+  <TabItem value="linux">
+
+```shell
+./NanosWorldServer.sh --cli
+```
+
+  </TabItem>
+</Tabs>
+
+After started, if you type `help` you can see all the available commands:
+
+![](/img/docs/cli-01.jpg)
+
+
+## All CLI Commands
+
+| Commands | Description |
+| :--- | :--- |
+| `install package [PACKAGE_NAMES...]` | Install Packages from the Store |
+| `update package [PACKAGE_NAMES...]` | Update Packages from the Store |
+| `install assets [ASSET_NAMES...]` | Install Asset Packs from the Store |
+| `update assets [ASSET_NAMES...]` | Update Asset Packs from the Store |
+| `add package [PACKAGE_PATH]` | Creates a new local Package in a interactive way |
+| `add assets [ASSET_PATH]` | Creates a new local Asset Pack in a interactive way |
+| `check` | Check for Updates |
+| `help` | Display all Commands |
+| `stop` | Stops the CLI |
+
+
+## Running the CLI in One-Liner/Direct mode
+
+It is also possible to run the CLI in a direct mode, just run the command together after the `--cli`. Example:
+
+
+<Tabs
+  defaultValue="cmd"
+  values={[
+    {label: 'Windows', value: 'cmd'},
+    {label: 'Linux', value: 'linux'},
+  ]}>
+  <TabItem value="cmd">
+
+```shell
+./NanosWorldServer.exe --cli update package sandbox
+```
+
+  </TabItem>
+  <TabItem value="linux">
+
+```shell
+./NanosWorldServer.sh --cli update package sandbox
+```
+
+  </TabItem>
+</Tabs>
+
+
+:::tip
+
+You can also install/update several Packages/Assets in a single command, separating them by spaces:
+
+```shell
+install package sandbox battlefield-kill-ui
+```
+
+:::

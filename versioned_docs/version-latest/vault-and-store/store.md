@@ -12,7 +12,7 @@ nanos world [**Store**](https://store.nanos.world) is the platform on which you 
 
 ## About the Store
 
-In the Store, you can upload your Assets, Packages, release new versions, create Teams and much more! It is 100% integrated with [Vault](vault) and the [CLI](/core-concepts/server-manual/nanos-world-cli.mdx)!
+In the Store, you can upload your Assets, Packages, release new versions, create Teams and much more! It is 100% integrated with [Vault](vault) and the [CLI](/core-concepts/server-manual/command-line-interface.mdx)!
 
 :::info
 
@@ -130,17 +130,13 @@ jobs:
           token: ${{ secrets.STORE_SECRET }}
 ```
 
-:::tip
 
-The `folder` must be filled if in your repository the Package/Assets.toml is located inside a subfolder.
+#### Usage
 
-The `name` should be set to your Package or Asset Pack folder name.
+1. The `folder` must be filled if in your repository the Package/Assets.toml is located inside a subfolder.
+2. The `name` should be set to your Package or Asset Pack folder name.
+3. The `token` should be generated at https://store.nanos.world/settings/tokens/ and set under your *GitHub Settings -> Secrets -> Actions* with name `STORE_SECRET`.
 
-The `changelog` can be left with a default value for now as it's a required field.
-
-The `token` should be generated at https://store.nanos.world/settings/tokens/ and set under your *GitHub Settings -> Secrets -> Actions* with name `STORE_SECRET`.
-
-:::
 
 Then, on every **release** on your GitHub, it will trigger and publish the new version as **draft**.
 

@@ -12,7 +12,7 @@ nanos world [**Store**](https://store.nanos.world) is the platform on which you 
 
 ## About the Store
 
-In the Store, you can upload your Assets, Packages, release new versions, create Teams and much more! It is 100% integrated with [Vault](vault) and the [CLI](/core-concepts/server-manual/nanos-world-cli.mdx)!
+In the Store, you can upload your Assets, Packages, release new versions, create Teams and much more! It is 100% integrated with [Vault](vault) and the [CLI](/core-concepts/server-manual/command-line-interface.mdx)!
 
 :::info
 

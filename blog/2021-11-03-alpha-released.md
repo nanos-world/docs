@@ -250,7 +250,7 @@ New additions to [Timer](/docs/scripting-reference/static-classes/timer):
 
 ## CLI
 
-* Now it is possible to download multiple Assets/Packages at once with [CLI](/docs/core-concepts/server-manual/nanos-world-cli), just separate them by spaces, e.g.: `cli assets install quaternius city-park`.
+* Now it is possible to download multiple Assets/Packages at once with [CLI](/docs/core-concepts/server-manual/command-line-interface), just separate them by spaces, e.g.: `cli assets install quaternius city-park`.
 
 
 ## Steam Achievements
