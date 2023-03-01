@@ -30,4 +30,14 @@ files: [
       ],
       languages_mapping: *languages_mapping,
     },
+    # Docs Old versions
+    {
+      source: '/versioned_docs/**/*',
+      translation: '/i18n/%two_letters_code%/docusaurus-plugin-content-docs/**/%original_file_name%',
+      ignore: [
+        '/versioned_docs/components/**/*',
+        '/versioned_docs/**/*.yml',
+      ],
+      languages_mapping: *languages_mapping,
+    }
   ]
