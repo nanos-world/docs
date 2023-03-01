@@ -16,7 +16,7 @@
     "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download"
   },
   "dependencies": {
-    "@crowdin/cli": "^3.7.10",
+    "@crowdin/cli": "^3.10.0",
     "@docusaurus/core": "^2.3.1",
     "@docusaurus/preset-classic": "^2.3.1",
     "@saucelabs/theme-github-codeblock": "^0.1.1",
