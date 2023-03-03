@@ -3,6 +3,7 @@ import EntityData from '@site/src/api/Classes/BaseEntity.json';
 import ActorData from '@site/src/api/Classes/BaseActor.json';
 import PickableData from '@site/src/api/Classes/BasePickable.json';
 import PaintableData from '@site/src/api/Classes/BasePaintable.json';
+import DamageableData from '@site/src/api/Classes/BaseDamageable.json';
 
 import BillboardData from '@site/src/api/Classes/Billboard.json';
 import BlueprintData from '@site/src/api/Classes/Blueprint.json';
@@ -65,6 +66,7 @@ import EntityDataStable from '@site/src/api/Stable/Classes/BaseEntity.json';
 import ActorDataStable from '@site/src/api/Stable/Classes/BaseActor.json';
 import PickableDataStable from '@site/src/api/Stable/Classes/BasePickable.json';
 import PaintableDataStable from '@site/src/api/Stable/Classes/BasePaintable.json';
+// import DamageableDataStable from '@site/src/api/Stable/Classes/BaseDamageable.json';
 
 import BillboardDataStable from '@site/src/api/Stable/Classes/Billboard.json';
 import BlueprintDataStable from '@site/src/api/Stable/Classes/Blueprint.json';
@@ -129,6 +131,7 @@ const APIData = {
 			Actor: ActorDataStable,
 			Pickable: PickableDataStable,
 			Paintable: PaintableDataStable,
+			// Damageable: DamageableDataStable,
 			Billboard: BillboardDataStable,
 			Blueprint: BlueprintDataStable,
 			Cable: CableDataStable,
@@ -194,6 +197,7 @@ const APIData = {
 			Actor: ActorData,
 			Pickable: PickableData,
 			Paintable: PaintableData,
+			Damageable: DamageableData,
 			Billboard: BillboardData,
 			Blueprint: BlueprintData,
 			Cable: CableData,

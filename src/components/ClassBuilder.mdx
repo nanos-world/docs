@@ -73,16 +73,16 @@ export function GetReturnDescriptionList(return_list) {
 
 <!-- Authority Label Map -->
 export const AuthorityLabels = {
-	client: <>This class can only be spawned on 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a>.</>,
-	server: <>This class can only be spawned on 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a>.</>,
-	both: <>This class can be spawned on both 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a> (if you spawn it on client, it won't be synchronized with other players).</>,
+	client: <>This class can only be spawned on 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a>.</>,
+	server: <>This class can only be spawned on 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a>.</>,
+	both: <>This class can be spawned on both 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a> (if you spawn it on client, it won't be synchronized with other players).</>,
 }
 
 <!-- Authority Label Map for Static Classes -->
 export const AuthorityLabelsStatic = {
-	client: <>This static class can be accessed only on 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a>.</>,
-	server: <>This static class can be accessed only on 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a>.</>,
-	both: <>This static class can be accessed on both 🟧 <a href="/docs/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/core-concepts/scripting/authority-concepts">Server</a>.</>,
+	client: <>This static class can be accessed only on 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a>.</>,
+	server: <>This static class can be accessed only on 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a>.</>,
+	both: <>This static class can be accessed on both 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a>.</>,
 }
 
 <!-- Gets a Parameter name (with ? when optional) -->
@@ -287,7 +287,7 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 export const StaticFunctionNameDeclaration = ({ class_name, function_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<StaticFunctionToolTip class_name={class_name} function_data={function_data} />}>
 		<b>
-			<Link to={`${base_class ? `/docs/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#static-function-${function_data.name.toLowerCase()}`} className={"hover-link"}>
+			<Link to={`${base_class ? `/docs/next/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#static-function-${function_data.name.toLowerCase()}`} className={"hover-link"}>
 				<code>{ function_data.name }</code>
 			</Link>
 		</b>
@@ -297,7 +297,7 @@ export const StaticFunctionNameDeclaration = ({ class_name, function_data, base_
 export const FunctionNameDeclaration = ({ class_name, function_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<FunctionToolTip class_name={class_name} function_data={function_data} />}>
 		<b>
-			<Link to={`${base_class ? `/docs/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#function-${function_data.name.toLowerCase()}`} className={"hover-link"}>
+			<Link to={`${base_class ? `/docs/next/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#function-${function_data.name.toLowerCase()}`} className={"hover-link"}>
 				<code>{ function_data.name }</code>
 			</Link>
 		</b>
@@ -307,7 +307,7 @@ export const FunctionNameDeclaration = ({ class_name, function_data, base_class 
 export const EventNameDeclaration = ({ class_name, event_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<EventToolTip class_name={class_name} event_data={event_data} />}>
 		<b>
-			<Link to={`${base_class ? `/docs/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#event-${event_data.name.toLowerCase()}`} className={"hover-link"}>
+			<Link to={`${base_class ? `/docs/next/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#event-${event_data.name.toLowerCase()}`} className={"hover-link"}>
 				<code>{ event_data.name }</code>
 			</Link>
 		</b>
@@ -446,119 +446,44 @@ export const ConstructorDeclaration = ({ type, name }) => {
 	);
 };
 
-<!-- Base Entity Static Functions -->
-export const BaseEntityStaticFunctions = ({ inherited_class_name} ) => {
-	const class_data = GetClassData("Class", "Entity");
+<!-- Base Class Functions -->
+export const InheritedClassFunctions = ({ inherited_class_name, parent_class_name, is_static } ) => {
+	const class_data = GetClassData("Class", parent_class_name);
 	return (<>
 		<details>
-			<summary>Inherited Entity Static Functions</summary>
-			<ReferenceLink href="scripting-reference/classes/base-classes/entity">Base Entity</ReferenceLink>
-			<StaticFunctionListDeclaration class_name={inherited_class_name} base_class={"Entity"} functions_list={class_data.static_functions} />
+			<summary>Inherited {parent_class_name} {is_static ? "Static " : ""}Functions</summary>
+			<ReferenceLink href={`scripting-reference/classes/base-classes/${parent_class_name}`}>Base {parent_class_name}</ReferenceLink>
+			<FunctionListDeclaration class_name={inherited_class_name} base_class={parent_class_name} functions_list={is_static ? class_data.static_functions : class_data.functions} />
 		</details>
 	</>);
 };
 
-<!-- Base Entity Functions -->
-export const BaseEntityFunctions = ({ inherited_class_name} ) => {
-	const class_data = GetClassData("Class", "Entity");
+<!-- Base Class Events -->
+export const InheritedClassEvents = ({ inherited_class_name, parent_class_name } ) => {
+	const class_data = GetClassData("Class", parent_class_name);
 	return (<>
 		<details>
-			<summary>Inherited Entity Functions</summary>
-			<ReferenceLink href="scripting-reference/classes/base-classes/Entity">Base Entity</ReferenceLink>
-			<FunctionListDeclaration class_name={inherited_class_name} base_class={"Entity"} functions_list={class_data.functions} />
+			<summary>Inherited {parent_class_name} Events</summary>
+			<ReferenceLink href={`scripting-reference/classes/base-classes/${parent_class_name}`}>Base {parent_class_name}</ReferenceLink>
+			<EventListDeclaration type="Class" name="Entity" inherited_class_name={inherited_class_name} base_class={parent_class_name} />
 		</details>
 	</>);
 };
-
-<!-- Base Entity Events -->
-export const BaseEntityEvents = ({ inherited_class_name }) => {
-	const class_data = GetClassData("Class", "Entity");
-	return (<>
-		<details>
-			<summary>Inherited Entity Events</summary>
-			<ReferenceLink href="scripting-reference/classes/base-classes/Entity">Base Entity</ReferenceLink>
-			<EventListDeclaration type="Class" name="Entity" inherited_class_name={inherited_class_name} base_class={"Entity"} />
-		</details>
-	</>);
-};
-
-<!-- Base Actor Static Functions -->
-export const BaseActorStaticFunctions = ({ inherited_class_name} ) => {
-	const class_data = GetClassData("Class", "Actor");
-	return (<>
-		<details>
-			<summary>Inherited Actor Static Functions</summary>
-			<ReferenceLink href="scripting-reference/classes/base-classes/actor">Base Actor</ReferenceLink>
-			<StaticFunctionListDeclaration class_name={inherited_class_name} base_class={"Actor"} functions_list={class_data.static_functions} />
-		</details>
-	</>);
-};
-
-<!-- Base Actor Functions -->
-export const BaseActorFunctions = ({ inherited_class_name} ) => {
-	const class_data = GetClassData("Class", "Actor");
-	return (<>
-		<details>
-			<summary>Inherited Actor Functions</summary>
-			<ReferenceLink href="scripting-reference/classes/base-classes/actor">Base Actor</ReferenceLink>
-			<FunctionListDeclaration class_name={inherited_class_name} base_class={"Actor"} functions_list={class_data.functions} />
-		</details>
-	</>);
-};
-
-<!-- Base Paintable Functions -->
-export const BasePaintableFunctions = ({ inherited_class_name }) => {
-	const class_data = GetClassData("Class", "Paintable");
-	return (<>
-		<details>
-			<summary>Inherited Paintable Functions</summary>
-			<ReferenceLink href="scripting-reference/classes/base-classes/paintable">Base Paintable</ReferenceLink>
-			<FunctionListDeclaration class_name={inherited_class_name} base_class={"Paintable"} functions_list={class_data.functions} />
-		</details>
-	</>);
-};
-
-<!-- Base Pickable Functions -->
-export const BasePickableFunctions = ({ inherited_class_name }) => {
-	const class_data = GetClassData("Class", "Pickable");
-	return (<>
-		<details>
-			<summary>Inherited Pickable Functions</summary>
-			<ReferenceLink href="scripting-reference/classes/base-classes/pickable">Base Pickable</ReferenceLink>
-			<FunctionListDeclaration class_name={inherited_class_name} base_class={"Pickable"} functions_list={class_data.functions} />
-		</details>
-	</>)
-};
-
-<!-- Base Actor Events -->
-export const BaseActorEvents = ({ inherited_class_name }) => {
-	const class_data = GetClassData("Class", "Actor");
-	return (<>
-		<details>
-			<summary>Inherited Actor Events</summary>
-			<ReferenceLink href="scripting-reference/classes/base-classes/actor">Base Actor</ReferenceLink>
-			<EventListDeclaration type="Class" name="Actor" inherited_class_name={inherited_class_name} base_class={"Actor"} />
-		</details>
-	</>);
-};
-
-<!-- Base Pickable Events -->
-export const BasePickableEvents = ({ inherited_class_name }) => (
-	<details>
-		<summary>Inherited Pickable Events</summary>
-		<ReferenceLink href="scripting-reference/classes/base-classes/pickable">Base Pickable</ReferenceLink>
-		<EventListDeclaration type="Class" name="Pickable" inherited_class_name={inherited_class_name} base_class={"Pickable"} />
-	</details>
-);
 
 <!-- Block of Functions -->
 export const FunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
-		{ class_data.inheritance && class_data.inheritance.includes("Entity") ? <BaseEntityFunctions inherited_class_name={class_data.name} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorFunctions inherited_class_name={class_data.name} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Paintable") ? <BasePaintableFunctions inherited_class_name={class_data.name} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableFunctions inherited_class_name={class_data.name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Entity") ?
+			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Entity"} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Actor") ?
+			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Actor"} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Paintable") ?
+			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Paintable"} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Damageable") ?
+			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Damageable"} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ?
+			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Pickable"} /> : "" }
 		{
 			class_data.functions == null ? <i>This entity doesn't have own functions.</i> :
 			<>
@@ -573,8 +498,10 @@ export const FunctionsDeclaration = ({ type, name }) => {
 export const StaticFunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
-		{ class_data.inheritance && class_data.inheritance.includes("Entity") ? <BaseEntityStaticFunctions inherited_class_name={class_data.name} /> : "" }
-		{/* { class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorStaticFunctions inherited_class_name={class_data.name} /> : "" } */}
+		{ class_data.inheritance && class_data.inheritance.includes("Entity") ?
+			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Entity"} is_static={true} /> : "" }
+		{/* { class_data.inheritance && class_data.inheritance.includes("Actor") ?
+			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Actor"} is_static={true} /> : "" } */}
 		{
 			class_data.static_functions == null ? <i>This entity doesn't have own static functions.</i> :
 			<>
@@ -589,9 +516,14 @@ export const StaticFunctionsDeclaration = ({ type, name }) => {
 export const EventsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
-		{ class_data.inheritance && class_data.inheritance.includes("Entity") ? <BaseEntityEvents inherited_class_name={class_data.name} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Actor") ? <BaseActorEvents inherited_class_name={class_data.name} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ? <BasePickableEvents inherited_class_name={class_data.name} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Entity") ?
+			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Entity"} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Actor") ?
+			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Actor"} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ?
+			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Pickable"} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Damageable") ?
+			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Damageable"} /> : "" }
 		{
 			class_data.events == null ? <i>This entity doesn't have own events.</i> :
 			<>
