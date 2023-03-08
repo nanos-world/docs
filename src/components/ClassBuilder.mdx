@@ -414,11 +414,11 @@ export const HeaderDeclaration = ({ type, name, image, is_static, is_open_source
 <!-- Block of Constructor -->
 export const ConstructorDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
-	return class_data.constructors.map((constructor) =>
+	return class_data.constructors.map((constructor, index) =>
 		<>
 			<h4 id={ `constructor-${ constructor.description.toLowerCase().replace(' ', '-') }` }>{ constructor.description }</h4>
 			<CodeBlock className="language-lua">
-				{ GetConstructorExample(class_data, 0) }
+				{ GetConstructorExample(class_data, index) }
 			</CodeBlock>
 			<div class="table-wrapper">
 				<table>

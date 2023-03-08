@@ -1,0 +1,134 @@
+---
+title: 🪟 Widget
+description: Class for spawning Unreal Widgets in the screen
+sidebar_position: 0
+tags: [scripting, ui]
+---
+
+<HeaderDeclaration type="Class" name="Widget" image="/img/docs/widget.webp" />
+
+The **Widget** class allows a very versatile way to create and use Unreal widgets as UI within the game.
+
+:::tip Note
+
+Most parameters are not exposed in the Widget class, and should be called using the method `CallBlueprintEvent()`, which will call the specific underlying Widget method.
+
+:::
+
+
+## 🎒 Examples
+
+#### Creating a Simple a Native Text and adding it to screen
+
+```lua title="Client/Index.lua"
+local my_text = Widget(NativeWidget.Text)
+my_text:CallBlueprintEvent("SetText", "Hello World!")
+my_text:AddToViewport()
+```
+
+:::tip
+
+`SetText` is a method from [UTextBlock](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UTextBlock/), the Widget associated to `NativeWidget.Text`.
+
+:::
+
+
+#### Creating a Widgets with Childs
+
+```lua title="Client/Index.lua"
+local my_vertical_box = Widget(NativeWidget.VerticalBox)
+my_vertical_box:AddToViewport()
+
+local my_text = Widget(NativeWidget.Text)
+my_text:CallBlueprintEvent("SetText", "Hello World!")
+
+local my_button = Widget(NativeWidget.Button)
+
+my_vertical_box:AddChild(my_text)
+my_vertical_box:AddChild(my_button)
+```
+
+
+#### Using a WebUI as Image Brush
+
+```lua title="Client/Index.lua"
+local webui = WebUI("mywebui", "https://google.com", WidgetVisibility.Hidden)
+
+local my_image = Widget(NativeWidget.Image)
+my_image:CallBlueprintEvent("SetBrushFromMaterial", webui)
+my_image:AddToViewport()
+```
+
+:::tip
+
+`SetBrushFromMaterial` is a method from [UImage](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UImage/), and expects a `MaterialInstance` as parameter. Passing **WebUI**, **SceneCapture** or **Canvas** converts it to it's internal Material automatically when being passed as parameter!
+
+:::
+
+
+#### Subscribing for a Dispatcher
+
+```lua title="Client/Index.lua"
+local my_button = Widget(NativeWidget.Button)
+
+-- Puts a text inside of it
+local my_text = Widget(NativeWidget.Text)
+my_text:CallBlueprintEvent("SetText", "Press Me!")
+my_button:AddChild(my_text)
+
+-- Binds the native OnClicked dispatcher
+my_button:BindBlueprintEventDispatcher("OnClicked", function()
+	Console.Log("clicked!")
+end)
+
+-- Adds the button to viewport (will fill the whole screen)
+my_button:AddToViewport()
+```
+
+
+## 🛠 Constructors
+
+<ConstructorDeclaration type="Class" name="Widget" />
+
+
+## 🦠 Functions
+
+<FunctionsDeclaration type="Class" name="Widget" />
+
+
+## 🚀 Events
+
+<EventsDeclaration type="Class" name="Widget" />
+
+
+## NativeWidgets to Unreal Widgets Relation
+
+List of the relation **Unreal Widgets** ↔ <Enums>NativeWidget</Enums>:
+
+| Enum | Unreal Class |
+| :--- | :--- |
+| **`NativeWidget.Border`** | [Border](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UBorder/) |
+| **`NativeWidget.Button`** | [Button](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UButton/) |
+| **`NativeWidget.CheckBox`** | [CheckBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UCheckBox/) |
+| **`NativeWidget.Image`** | [Image](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UImage/) |
+| **`NativeWidget.ProgressBar`** | [ProgressBar](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UProgressBar/) |
+| **`NativeWidget.RichTextBlock`** | [RichTextBlock](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/URichTextBlock/) |
+| **`NativeWidget.Slider`** | [Slider](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/USlider/) |
+| **`NativeWidget.Text`** | [TextBlock](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UTextBlock/) |
+| **`NativeWidget.ComboBox`** | [ComboBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UComboBox/) |
+| **`NativeWidget.EditableText`** | [EditableText](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UEditableText/) |
+| **`NativeWidget.EditableTextMultiLine`** | [MultiLineEditableText](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UMultiLineEditableText/) |
+| **`NativeWidget.SpinBox`** | [SpinBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/USpinBox/) |
+| **`NativeWidget.TextBox`** | [EditableTextBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UEditableTextBox/) |
+| **`NativeWidget.TextBoxMultiLine`** | [MultiLineEditableTextBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UMultiLineEditableTextBox/) |
+| **`NativeWidget.CanvasPanel`** | [CanvasPanel](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UCanvasPanel/) |
+| **`NativeWidget.GridPanel`** | [GridPanel](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UGridPanel/) |
+| **`NativeWidget.HorizontalBox`** | [HorizontalBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UHorizontalBox/) |
+| **`NativeWidget.Overlay`** | [Overlay](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UOverlay/) |
+| **`NativeWidget.ScaleBox`** | [ScaleBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UScaleBox/) |
+| **`NativeWidget.ScrollBox`** | [ScrollBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UScrollBox/) |
+| **`NativeWidget.SizeBox`** | [SizeBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/USizeBox/) |
+| **`NativeWidget.UniformGridPanel`** | [UniformGridPanel](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UUniformGridPanel/) |
+| **`NativeWidget.VerticalBox`** | [VerticalBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UVerticalBox/) |
+| **`NativeWidget.WrapBox`** | [WrapBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UWrapBox/) |
+| **`NativeWidget.BackgroundBlur`** | [BackgroundBlur](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UBackgroundBlur/) |

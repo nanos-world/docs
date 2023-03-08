@@ -28,6 +28,7 @@ import TriggerData from '@site/src/api/Classes/Trigger.json';
 import VehicleData from '@site/src/api/Classes/Vehicle.json';
 import WeaponData from '@site/src/api/Classes/Weapon.json';
 import WebUIData from '@site/src/api/Classes/WebUI.json';
+import WidgetData from '@site/src/api/Classes/Widget.json';
 
 import ColorData from '@site/src/api/Structs/Color.json';
 import MatrixData from '@site/src/api/Structs/Matrix.json';
@@ -91,6 +92,7 @@ import TriggerDataStable from '@site/src/api/Stable/Classes/Trigger.json';
 import VehicleDataStable from '@site/src/api/Stable/Classes/Vehicle.json';
 import WeaponDataStable from '@site/src/api/Stable/Classes/Weapon.json';
 import WebUIDataStable from '@site/src/api/Stable/Classes/WebUI.json';
+// import WidgetDataStable from '@site/src/api/Stable/Classes/Widget.json';
 
 import ColorDataStable from '@site/src/api/Stable/Structs/Color.json';
 import MatrixDataStable from '@site/src/api/Stable/Structs/Matrix.json';
@@ -155,6 +157,7 @@ const APIData = {
 			Vehicle: VehicleDataStable,
 			Weapon: WeaponDataStable,
 			WebUI: WebUIDataStable,
+			// Widget: WidgetDataStable,
 		},
 		Struct: {
 			Color: ColorDataStable,
@@ -221,6 +224,7 @@ const APIData = {
 			Vehicle: VehicleData,
 			Weapon: WeaponData,
 			WebUI: WebUIData,
+			Widget: WidgetData,
 		},
 		Struct: {
 			Color: ColorData,
