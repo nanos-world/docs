@@ -28,7 +28,7 @@ my_text:AddToViewport()
 
 :::tip
 
-`SetText` is a method from [UTextBlock](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UTextBlock/), the Widget associated to `NativeWidget.Text`.
+`SetText` is a method from [UTextBlock](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UTextBlock/), the Widget associated to `NativeWidget.Text`.
 
 :::
 
@@ -61,7 +61,7 @@ my_image:AddToViewport()
 
 :::tip
 
-`SetBrushFromMaterial` is a method from [UImage](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UImage/), and expects a `MaterialInstance` as parameter. Passing **WebUI**, **SceneCapture** or **Canvas** converts it to it's internal Material automatically when being passed as parameter!
+`SetBrushFromMaterial` is a method from [UImage](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UImage/), and expects a `MaterialInstance` as parameter. Passing **WebUI**, **SceneCapture** or **Canvas** converts it to it's internal Material automatically when being passed as parameter!
 
 :::
 
@@ -103,35 +103,35 @@ my_button:AddToViewport()
 
 ## ✅ NativeWidgets to Unreal Widgets Relation
 
-List of the relation **Unreal Widgets** ↔ <Enums>NativeWidget</Enums>:
+List of the relation Unreal native [Widgets](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UWidget/) ↔ <Enums>NativeWidget</Enums> Enums:
 
-| Enum | Unreal Class |
-| :--- | :--- |
-| **`NativeWidget.Border`** | [Border](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UBorder/) |
-| **`NativeWidget.Button`** | [Button](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UButton/) |
-| **`NativeWidget.CheckBox`** | [CheckBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UCheckBox/) |
-| **`NativeWidget.Image`** | [Image](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UImage/) |
-| **`NativeWidget.ProgressBar`** | [ProgressBar](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UProgressBar/) |
-| **`NativeWidget.RichTextBlock`** | [RichTextBlock](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/URichTextBlock/) |
-| **`NativeWidget.Slider`** | [Slider](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/USlider/) |
-| **`NativeWidget.Text`** | [TextBlock](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UTextBlock/) |
-| **`NativeWidget.ComboBox`** | [ComboBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UComboBox/) |
-| **`NativeWidget.EditableText`** | [EditableText](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UEditableText/) |
-| **`NativeWidget.EditableTextMultiLine`** | [MultiLineEditableText](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UMultiLineEditableText/) |
-| **`NativeWidget.SpinBox`** | [SpinBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/USpinBox/) |
-| **`NativeWidget.TextBox`** | [EditableTextBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UEditableTextBox/) |
-| **`NativeWidget.TextBoxMultiLine`** | [MultiLineEditableTextBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UMultiLineEditableTextBox/) |
-| **`NativeWidget.CanvasPanel`** | [CanvasPanel](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UCanvasPanel/) |
-| **`NativeWidget.GridPanel`** | [GridPanel](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UGridPanel/) |
-| **`NativeWidget.HorizontalBox`** | [HorizontalBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UHorizontalBox/) |
-| **`NativeWidget.Overlay`** | [Overlay](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UOverlay/) |
-| **`NativeWidget.ScaleBox`** | [ScaleBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UScaleBox/) |
-| **`NativeWidget.ScrollBox`** | [ScrollBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UScrollBox/) |
-| **`NativeWidget.SizeBox`** | [SizeBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/USizeBox/) |
-| **`NativeWidget.UniformGridPanel`** | [UniformGridPanel](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UUniformGridPanel/) |
-| **`NativeWidget.VerticalBox`** | [VerticalBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UVerticalBox/) |
-| **`NativeWidget.WrapBox`** | [WrapBox](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UWrapBox/) |
-| **`NativeWidget.BackgroundBlur`** | [BackgroundBlur](https://docs.unrealengine.com/5.0/en-US/API/Runtime/UMG/Components/UBackgroundBlur/) |
+| Enum | Unreal Class | Is Panel |
+| :--- | :--- | :--- |
+| **`NativeWidget.Border`** | [Border](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UBorder/) | ✅ |
+| **`NativeWidget.Button`** | [Button](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UButton/) | ✅ |
+| **`NativeWidget.CheckBox`** | [CheckBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UCheckBox/) | ✅ |
+| **`NativeWidget.Image`** | [Image](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UImage/) | ❌ |
+| **`NativeWidget.ProgressBar`** | [ProgressBar](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UProgressBar/) | ❌ |
+| **`NativeWidget.RichTextBlock`** | [RichTextBlock](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/URichTextBlock/) | ❌ |
+| **`NativeWidget.Slider`** | [Slider](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/USlider/) | ❌ |
+| **`NativeWidget.Text`** | [TextBlock](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UTextBlock/) | ❌ |
+| **`NativeWidget.ComboBox`** | [ComboBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UComboBox/) | ❌ |
+| **`NativeWidget.EditableText`** | [EditableText](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UEditableText/) | ❌ |
+| **`NativeWidget.EditableTextMultiLine`** | [MultiLineEditableText](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UMultiLineEditableText/) | ❌ |
+| **`NativeWidget.SpinBox`** | [SpinBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/USpinBox/) | ❌ |
+| **`NativeWidget.TextBox`** | [EditableTextBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UEditableTextBox/) | ❌ |
+| **`NativeWidget.TextBoxMultiLine`** | [MultiLineEditableTextBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UMultiLineEditableTextBox/) | ❌ |
+| **`NativeWidget.CanvasPanel`** | [CanvasPanel](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UCanvasPanel/) | ✅ |
+| **`NativeWidget.GridPanel`** | [GridPanel](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UGridPanel/) | ✅ |
+| **`NativeWidget.HorizontalBox`** | [HorizontalBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UHorizontalBox/) | ✅ |
+| **`NativeWidget.Overlay`** | [Overlay](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UOverlay/) | ✅ |
+| **`NativeWidget.ScaleBox`** | [ScaleBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UScaleBox/) | ✅ |
+| **`NativeWidget.ScrollBox`** | [ScrollBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UScrollBox/) | ✅ |
+| **`NativeWidget.SizeBox`** | [SizeBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/USizeBox/) | ✅ |
+| **`NativeWidget.UniformGridPanel`** | [UniformGridPanel](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UUniformGridPanel/) | ✅ |
+| **`NativeWidget.VerticalBox`** | [VerticalBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UVerticalBox/) | ✅ |
+| **`NativeWidget.WrapBox`** | [WrapBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UWrapBox/) | ✅ |
+| **`NativeWidget.BackgroundBlur`** | [BackgroundBlur](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UBackgroundBlur/) | ✅ |
 
 
 ## ✅ List of Supported Parameter Types
