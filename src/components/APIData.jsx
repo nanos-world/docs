@@ -125,6 +125,7 @@ import JSONDataStable from '@site/src/api/Stable/UtilityClasses/JSON.json';
 import NanosMathDataStable from '@site/src/api/Stable/UtilityClasses/NanosMath.json';
 import NanosUtilsDataStable from '@site/src/api/Stable/UtilityClasses/NanosUtils.json';
 
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
 const APIData = {
 	Stable: {
@@ -311,17 +312,24 @@ function ProcessClass(_class) {
 		_class.events.sort((a, b) => { return a.name > b.name; });
 }
 
-// Process all Classes
-for (const versionKey in APIData) {
-	// Class
-	for (const classKey in APIData[versionKey].Class) {
-		ProcessClass(APIData[versionKey].Class[classKey]);
-	}
+function SortClasses() {
+	if (!ExecutionEnvironment.canUseDOM)
+		return;
 
-	// Static Class
-	for (const staticClassKey in APIData[versionKey].StaticClass) {
-		ProcessClass(APIData[versionKey].StaticClass[staticClassKey]);
+	// Process all Classes
+	for (const versionKey in APIData) {
+		// Class
+		for (const classKey in APIData[versionKey].Class) {
+			ProcessClass(APIData[versionKey].Class[classKey]);
+		}
+
+		// Static Class
+		for (const staticClassKey in APIData[versionKey].StaticClass) {
+			ProcessClass(APIData[versionKey].StaticClass[staticClassKey]);
+		}
 	}
 }
+
+SortClasses();
 
 export default APIData;
