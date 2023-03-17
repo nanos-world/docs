@@ -7,7 +7,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
-import { AuthorityType, BasicType, Classes, Structs, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
+import { AuthorityType, NativeType, BasicType, Classes, Structs, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
 import { FunctionToolTip, StaticFunctionToolTip, EventToolTip } from '@site/src/components/Tooltips.jsx';
 
 import APIData from '@site/src/components/APIData.jsx';
@@ -31,6 +31,9 @@ export function GetElementByType(type) {
 	const is_optional = type.endsWith("?");
 	if (is_optional)
 		type = type.slice(0, -1);
+	const is_variadic = type.endsWith("...");
+	if (is_variadic)
+		type = type.slice(0, -3);
 	const is_array = type.endsWith("[]");
 	if (is_array)
 		type = type.slice(0, -2);
@@ -42,7 +45,12 @@ export function GetElementByType(type) {
 		Structs[type] ? Structs[type] : null;
 	if (!TypeElement)
 		return <Enums>{type}</Enums>;
-	return <>{ is_array ? <><BasicType.Table /> of </> : "" }<TypeElement /> { is_optional ? <>or <BasicType.Nil /></> : "" }</>;
+	return <>
+			{ is_array ? <><BasicType.Table /> of </> : "" }
+			{ is_variadic ? <><BasicType.VarArgs /> of </> : "" }
+			<TypeElement />
+			{ is_optional ? <> or <BasicType.Nil /></> : "" }
+		</>;
 }
 
 <!-- Splits a value if it has | -->
@@ -68,7 +76,7 @@ export function GetReturnDescriptionList(return_list) {
 	const return_list_plain = return_list.map((return_data) => return_data.description || return_data.table_properties ? <span dangerouslySetInnerHTML={{ __html: GetReturnTableDescriptionList(return_data) }} /> : null ).reduce((prev, next) => [prev, ", ", next]);
 	if (!return_list_plain)
 		return "";
-	return <>{"("}{ return_list_plain }{")"}</>;
+	return <>{" ("}{ return_list_plain }{")"}</>;
 }
 
 <!-- Authority Label Map -->
@@ -87,7 +95,7 @@ export const AuthorityLabelsStatic = {
 
 <!-- Gets a Parameter name (with ? when optional) -->
 export function GetParameterName(parameter_data) {
-	return `${parameter_data.name}${parameter_data.default != null ? "?" : ""}`;
+	return `${parameter_data.name}${parameter_data.default != null ? "?" : ""}${parameter_data.type.endsWith("...") ? "..." : ""}`;
 }
 
 <!-- Gets a list of parameters separated by comma -->
@@ -105,7 +113,11 @@ export function GetReturnPart(function_data) {
 	if (!function_data.return)
 		return "";
 	if (function_data.return.length == 1)
+	{
+		if (function_data.return[0].type && function_data.return[0].type.endsWith("..."))
+			return "local ret_01, ret_02, ... = ";
 		return "local ret = ";
+	}
 	return `local${function_data.return.map((value, i) => " ret_0" + (i + 1))} = `;
 }
 
@@ -156,11 +168,26 @@ export const StaticClassAdmonition = () => (
 
 <!-- Gets Authority Element by string -->
 export function GetAuthorityType(authority) {
-	return authority == "server" ? <AuthorityType.ServerOnly /> :
-	authority == "client" ? <AuthorityType.ClientOnly /> :
-	authority == "authority" ? <AuthorityType.AuthorityOnly /> :
-	authority == "network-authority" ? <AuthorityType.NetworkAuthority /> :
-	authority == "both" ? <AuthorityType.Both /> : "";
+	if (authority == "server")
+		return <AuthorityType.ServerOnly />;
+	if (authority == "client")
+		return <AuthorityType.ClientOnly />;
+	if (authority == "authority")
+		return <AuthorityType.AuthorityOnly />;
+	if (authority == "network-authority")
+		return <AuthorityType.NetworkAuthority />;
+	if (authority == "both")
+		return <AuthorityType.Both />;
+	return "";
+};
+
+<!-- Gets Native Element -->
+export function GetNative(is_native) {
+	if (is_native === true)
+		return <NativeType.Native />;
+	if (is_native === false)
+		return <NativeType.NotNative />;
+	return null;
 };
 
 export function GetRelations(relations) {
@@ -185,22 +212,24 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 		<hr />
 		<h3 id={ `${is_static ? "static-function" : "function"}-${function_data.name.toLowerCase()}` }>
 			{ GetAuthorityType(function_data.authority) }
+			{ GetNative(function_data.is_native) }
 			<code>
 				{ function_data.name }
 			</code>
 		</h3>
 		<blockquote>
 			<span dangerouslySetInnerHTML={{ __html: function_data.description_long ? function_data.description_long : function_data.description }}></span>
+		</blockquote>
+		<p class="function-return">
 			{ !function_data.return ? "" :
 				<>
-					{ (function_data.description_long || function_data.description) ? <><br/><br/></> : <></> }
-					<>Returns </>
+					<>— Returns </>
 					{ GetReturnList(function_data.return) }
-					{" "}
 					{ GetReturnDescriptionList(function_data.return) }
+					{"."}
 				</>
 			}
-		</blockquote>
+		</p>
 		<CodeBlock className="language-lua">
 			{ is_static ? GetStaticFunctionExample(class_name, function_data) : GetFunctionExample(class_name, function_data) }
 		</CodeBlock>
@@ -229,11 +258,11 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 			</div>
 		: <></>}
 		{function_data.relations ?
-			<span className={"relations"}>
+			<p className={"relations"}>
 				{"See also "}
 				{ GetRelations(function_data.relations) }
 				{"."}
-			</span>
+			</p>
 		: <></>}
 	</>
 );
@@ -244,6 +273,7 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 		<hr />
 		<h3 id={ `event-${event_data.name.toLowerCase()}` }>
 			{ GetAuthorityType(event_data.authority) }
+			{ GetNative(event_data.is_native) }
 			<code>
 				{ event_data.name }
 			</code>
@@ -329,7 +359,7 @@ export const StaticFunctionListDeclaration = ({ class_name, functions_list, base
 			<tbody>
 				{functions_list.map(function(value) {
 					return <tr>
-						<td width="50px">{ GetAuthorityType(value.authority) } </td>
+						<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 						<td>{ value.return ? GetReturnList(value.return) : "" }</td>
 						<td><StaticFunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
 						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
@@ -355,7 +385,7 @@ export const FunctionListDeclaration = ({ class_name, functions_list, base_class
 			<tbody>
 				{functions_list.map(function(value) {
 					return <tr>
-						<td width="50px">{ GetAuthorityType(value.authority) } </td>
+						<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 						<td>{ value.return ? GetReturnList(value.return) : "" }</td>
 						<td><FunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
 						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
@@ -382,7 +412,7 @@ export const EventListDeclaration = ({ type, name, inherited_class_name, base_cl
 				<tbody>
 					{class_data.events.map(function(value) {
 						return <tr>
-							<td width="50px">{ GetAuthorityType(value.authority) } </td>
+							<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 							<td><EventNameDeclaration class_name={ inherited_class_name } base_class={ base_class } event_data={ value } /></td>
 							<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
 						</tr>;

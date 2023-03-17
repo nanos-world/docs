@@ -162,6 +162,7 @@ module.exports = {
           blogDescription: 'All official news from nanos world!',
           blogSidebarTitle: 'nanos world news',
           blogSidebarCount: 'ALL',
+          postsPerPage: 5,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

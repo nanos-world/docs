@@ -60,6 +60,7 @@ import ViewportData from '@site/src/api/StaticClasses/Viewport.json';
 import JSONData from '@site/src/api/UtilityClasses/JSON.json';
 import NanosMathData from '@site/src/api/UtilityClasses/NanosMath.json';
 import NanosUtilsData from '@site/src/api/UtilityClasses/NanosUtils.json';
+import StringData from '@site/src/api/UtilityClasses/string.json';
 
 
 // Stable Imports
@@ -260,6 +261,7 @@ const APIData = {
 			JSON: JSONData,
 			NanosMath: NanosMathData,
 			NanosUtils: NanosUtilsData,
+			string: StringData,
 		}
 	}
 };
@@ -267,7 +269,7 @@ const APIData = {
 // Finds relations automatically
 function FindsGetSetRelationsAutomatically(functions, table) {
 	// TODO: This algorithm is O(n²) BOOM
-	// Which doesn't matter as the page build is static
+	// Which doesn't matter as the page build is static, I guess
 	for (const functionKey in functions) {
 		let _function = functions[functionKey];
 
@@ -302,8 +304,7 @@ function ProcessClass(_class) {
 		FindsGetSetRelationsAutomatically(_class.functions, "functions");
 	}
 
-	if (_class.static_functions)
-	{
+	if (_class.static_functions) {
 		_class.static_functions.sort((a, b) => { return a.name > b.name; });
 		FindsGetSetRelationsAutomatically(_class.static_functions, "static_functions");
 	}

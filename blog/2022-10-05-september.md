@@ -10,6 +10,7 @@ image: /img/blog/2022-september/september-news.webp
 
 ![](/img/blog/2022-september/september-news.webp)
 
+<!--truncate-->
 
 ## Dimensions 🌌
 

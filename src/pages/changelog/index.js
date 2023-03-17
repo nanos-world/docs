@@ -19,7 +19,7 @@ const Changelog = () => {
 	return (
 		<Layout title="Changelog" description="nanos world Changelog">
 			<div className={clsx('container', 'margin-vert--lg', styles.header)}>
-				{changelogs.length > 0 && (
+				{changelogs.length > 0 ? (
 					changelogs.map(changelog => (
 						<div key={changelog.name} className={clsx("update", styles.update)}>
 							<a id={changelog.name} href={`#${changelog.name}`}>
@@ -35,7 +35,7 @@ const Changelog = () => {
 							</div>
 						</div>
 					))
-				)}
+				) : "Loading..."}
 			</div>
 		</Layout>
 	);

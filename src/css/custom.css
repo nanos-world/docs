@@ -329,19 +329,33 @@ html[data-theme='dark'] .header-discord-link:before {
 
 /* Scripting Components */
 
-.authority-availability {
+.authority-availability, .native-type {
   vertical-align: middle;
   display: inline-block;
   max-width: 24px;
   min-width: 18px;
 }
 
-:not(td) > .authority-availability {
+:not(td) > .authority-availability,
+:not(td) > .native-type {
   margin-right: 10px;
 }
 
-.authority-availability img {
+.authority-availability img,
+.native-type img {
   display: flex;
+  pointer-events: none;
+}
+
+.native-type {
+  cursor: default;
+}
+
+.function-return {
+	margin-left: 2px;
+	font-size: 90%;
+	color: var(--ifm-blockquote-color);
+	opacity: 0.9;
 }
 
 /* Bug? Announcement bar affecting it somehow? */
@@ -463,7 +477,9 @@ a.card-link:hover img {
   width: 100%;
 }
 
-.hash-link, .authority-availability {
+.hash-link,
+.authority-availability,
+.native-type {
   user-select: none;
 }
 
@@ -489,7 +505,7 @@ span.comma-separator::after {
   margin-left: -4px;
 }
 
-span.relations {
+p.relations {
 	font-style: italic;
 	font-size: 85%;
 	opacity: 0.8;
