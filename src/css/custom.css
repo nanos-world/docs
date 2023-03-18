@@ -502,7 +502,6 @@ a.hover-link {
 
 span.comma-separator::after {
   content: ", ";
-  margin-left: -4px;
 }
 
 p.relations {
