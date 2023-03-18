@@ -53,7 +53,7 @@ It is possible to have a custom image to be displayed in the server list. For th
 
 :::tip
 
-You can pass a JPG image URL to `--logo` parameter to automatically download it as the Server.jpg image!
+You can pass a JPG image URL to `--logo` parameter to download and use a image from the web instead of placing it physically in the folder.
 
 :::
 
@@ -108,7 +108,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | :--- | :--- | :--- |
 | `--name` | string | Server name |
 | `--description` | string | Server description |
-| `--logo` | string | Server Logo (downloads the image locally as a Server.jpg file) |
+| `--logo` | string | Server Logo (downloads the image in-memory) |
 | `--password` | string | Server password |
 | `--ip` | string | Server IP |
 | `--map` | string | Map to load |
@@ -150,14 +150,14 @@ steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_updat
 ./NanosWorldServer.sh --cli install package sandbox battlefield-kill-ui ts-fireworks-tools
 
 # Starts the server with all configs set
-./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --gamemode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/U1rZp5v.png"
+./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --gamemode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/vnB8CB5.jpg"
 ```
 
 Another shorter example:
 
 ```shell title="Shell/Linux"
 # Starts the server with all configs set and auto downloads the packages and assets if needed
-./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --gamemode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download 1 --logo "https://i.imgur.com/U1rZp5v.png"
+./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --gamemode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download 1 --logo "https://i.imgur.com/vnB8CB5.jpg"
 ```
 
 ## Common Console Messages and Errors
