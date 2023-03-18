@@ -60,9 +60,10 @@ import ViewportData from '@site/src/api/StaticClasses/Viewport.json';
 import JSONData from '@site/src/api/UtilityClasses/JSON.json';
 import NanosMathData from '@site/src/api/UtilityClasses/NanosMath.json';
 import NanosUtilsData from '@site/src/api/UtilityClasses/NanosUtils.json';
-import StringData from '@site/src/api/UtilityClasses/string.json';
-import TableData from '@site/src/api/UtilityClasses/table.json';
-import MathData from '@site/src/api/UtilityClasses/math.json';
+
+import StringData from '@site/src/api/StandardLibraries/string.json';
+import TableData from '@site/src/api/StandardLibraries/table.json';
+import MathData from '@site/src/api/StandardLibraries/math.json';
 
 
 // Stable Imports
@@ -127,9 +128,10 @@ import ViewportDataStable from '@site/src/api/Stable/StaticClasses/Viewport.json
 import JSONDataStable from '@site/src/api/Stable/UtilityClasses/JSON.json';
 import NanosMathDataStable from '@site/src/api/Stable/UtilityClasses/NanosMath.json';
 import NanosUtilsDataStable from '@site/src/api/Stable/UtilityClasses/NanosUtils.json';
-// import StringDataStable from '@site/src/api/Stable/UtilityClasses/string.json';
-// import TableDataStable from '@site/src/api/Stable/UtilityClasses/table.json';
-// import MathDataStable from '@site/src/api/Stable/UtilityClasses/math.json';
+
+// import StringDataStable from '@site/src/api/Stable/StandardLibraries/string.json';
+// import TableDataStable from '@site/src/api/Stable/StandardLibraries/table.json';
+// import MathDataStable from '@site/src/api/Stable/StandardLibraries/math.json';
 
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
@@ -199,10 +201,12 @@ const APIData = {
 			JSON: JSONDataStable,
 			NanosMath: NanosMathDataStable,
 			NanosUtils: NanosUtilsDataStable,
+		},
+		// StandardLibrary: {
 			// string: StringDataStable,
 			// math: MathDataStable,
 			// table: TableDataStable,
-		}
+		// }
 	},
 	BleedingEdge: {
 		Class: {
@@ -269,6 +273,8 @@ const APIData = {
 			JSON: JSONData,
 			NanosMath: NanosMathData,
 			NanosUtils: NanosUtilsData,
+		},
+		StandardLibrary: {
 			string: StringData,
 			math: MathData,
 			table: TableData,
