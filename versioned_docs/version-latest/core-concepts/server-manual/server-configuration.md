@@ -64,7 +64,7 @@ You can pass a JPG image URL to `--logo` parameter to automatically download it 
 
 The Map (or Level) is defined in the Server’s config file, this level will be loaded when the player joins the server and the Path is supposed for be or a built-in asset or an asset which is located at `Assets/` folder.
 
-nanos world counts on (for now) 4 built-in maps: `nanos-world::BlankMap`, `nanos-world::EmptyMap`, `nanos-world::OceanMap` and `nanos-world::TestingMap` which can be used in your server without needing to download any Asset Pack.
+nanos world counts on (for now) 4 built-in maps: `default-blank-map`, `default-empty-map`, `default-ocean-map` and `default-testing-map` which can be used in your server without needing to download any Asset Pack.
 
 
 ## Server Console
