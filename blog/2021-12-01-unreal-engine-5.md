@@ -1,6 +1,6 @@
 ---
 slug: november-2021
-title: "2021 November: Unreal Engine 5?"
+title: "2021 Nov: Unreal Engine 5?"
 authors: gtnardy
 tags: [updates]
 ---

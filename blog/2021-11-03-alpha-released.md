@@ -1,6 +1,6 @@
 ---
 slug: alpha-released
-title: "2021 October: Alpha released!"
+title: "2021 Oct: Alpha released!"
 authors: gtnardy
 tags: [updates]
 ---

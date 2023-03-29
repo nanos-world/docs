@@ -2,22 +2,41 @@ import Layout from '@theme/Layout';
 import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
+import { useColorMode } from '@docusaurus/theme-common';
 
 const BoardToken = '1aaa5ced-939b-8115-81d5-129a3244a3f1';
 
-const Feedback = () => {
+const CannyInternal = () => {
+  const { colorMode } = useColorMode();
+
   useEffect(() => {
+    // Destroys if it already exists
+    const canny_iframe = document.getElementById("canny-iframe");
+
+    if (canny_iframe)
+      canny_iframe.remove();
+
     (function(w,d,i,s){function l(){if(!d.getElementById(i)){var f=d.getElementsByTagName(s)[0],e=d.createElement(s);e.type="text/javascript",e.async=!0,e.src="https://canny.io/sdk.js",f.parentNode.insertBefore(e,f)}}if("function"!=typeof w.Canny){var c=function(){c.q.push(arguments)};c.q=[],w.Canny=c,"complete"===d.readyState?l():w.attachEvent?w.attachEvent("onload",l):w.addEventListener("load",l,!1)}})(window,document,"canny-jssdk","script");
 
     Canny('render', {
       boardToken: BoardToken,
       basePath: "/feedback",
       ssoToken: null,
+      theme: colorMode
     });
-  }, []);
+  }, [colorMode]);
 
   return (
-    <Layout title="Feedback" description="nanos world Feedback Page" style={{"background-color": "red"}}>
+    <main
+      className={clsx('container', 'margin-vert--lg', "canny-stuff", styles.main)}
+      data-canny
+    />
+  );
+};
+
+const Feedback = () => {
+  return (
+    <Layout title="Feedback" description="nanos world Feedback Page">
       <div
         className={clsx('container', 'margin-vert--lg', styles.header)}
       >
@@ -25,13 +44,9 @@ const Feedback = () => {
         <p>
           You can also check out our standalone <a href="https://roadmap.nanos.world" target="_blank">Roadmap & Ideas page</a>, with all ideas accepted into the game.
           <br/>
-          <span className={clsx(styles.sorry)}>Sorry it doesn't support Dark Mode yet</span>
         </p>
       </div>
-      <main
-        className={clsx('container', 'margin-vert--lg', styles.main)}
-        data-canny
-      />
+      <CannyInternal />
     </Layout>
   );
 }

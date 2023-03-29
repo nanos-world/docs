@@ -1,6 +1,6 @@
 ---
 slug: sandbox-improvements
-title: "2021 September: Sandbox Improvements!"
+title: "2021 Sep: Sandbox Improvements!"
 authors: gtnardy
 tags: [updates]
 ---

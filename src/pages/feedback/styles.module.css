@@ -1,21 +1,10 @@
 .main {
 	padding: var(--ifm-spacing-horizontal);
 	border-radius: 4px;
-	background: var(--site-color-feedback-background);
 	min-height: 500px;
 }
 
 .header {
 	padding: var(--ifm-spacing-horizontal);
 	border-radius: 4px;
-}
-
-html[data-theme="dark"] .sorry {
-	color: #686868;
-}
-
-.sorry {
-	color: white;
-	font-style: italic;
-	user-select: none;
 }
