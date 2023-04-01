@@ -100,8 +100,16 @@ Map is a special Package which defines the configuration of a Map entry. They ar
 It contains all functionalities from a `script`, being able to execute scripts as well. With the addition it is used to load a map, having the options to have custom data and spawn points defined on its Package.toml natively.
 
 ```toml title="Package.toml" reference
-https://github.com/nanos-world/nanos-world-server/blob/main/_map_.toml
+https://github.com/nanos-world/nanos-world-server/blob/main/_map.toml
 ```
+
+:::tip
+
+As nanos world server is not aware of Unreal or it's Assets, we need to somehow say to the server where are the scriptable part of the map, such as Spawn Points, Props locations, Weapon locations and so on.
+
+It is a recommended approach to implement all Props, Weapons and Vehicles spawn locations in your Map Package `Server/Index.lua` and define all Player's Spawn points in the `Package.toml` file.
+
+:::
 
 
 ## Settings Detailed
@@ -117,7 +125,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/_map_.toml
 | **`compatible_maps`** | `game-mode` | List of Maps compatible/recommended to work with this Game Mode |
 | **`custom_settings`** | `game-mode` | List of Custom Settings which can be set when starting a new game or passed through command line to the server. See more [here](#custom-settings) |
 | **`map_asset`** | `map` | Asset Path to the Map Asset in the format `[ASSET_PACK]::[ASSET_KEY]` |
-| **`spawn_points`** | `map` | List of Spawn Points in the format `{ location = "Vector()", rotation = "Rotator()" }, ...` |
+| **`spawn_points`** | `map` | List of Spawn Points in the format `{ location = "Vector()", rotation = "Rotator()" }, ...` which can be accessed through [Server.GetMapSpawnPoints()](https://docs.nanos.world/docs/next/scripting-reference/static-classes/server#static-function-getmapspawnpoints) |
 | **`custom_data`** | `map` | List of Custom Data which can be accessed when this Map is loaded. See more [here](#custom-data) |
 
 

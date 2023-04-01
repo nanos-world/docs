@@ -199,4 +199,4 @@ You can now just start the New Game with the `Sandbox` package selected and VOIL
 
 ## Configuring your Map
 
-Also it is possible to add a Configuration File, Custom Data and even an exclusive Package (scripting) for your map! Please refer to [Map Script and Configuration](/assets-modding/creating-assets/maps-and-levels/map-script-and-data.md) for more information!
+Also it is possible to add a Configuration File, Custom Data and even an exclusive Package (scripting) for your map! Please refer to [Map Script and Configuration](/core-concepts/packages/packages-guide.md#map) for more information!
