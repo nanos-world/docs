@@ -55,4 +55,5 @@ jobs:
           else
             npm i
           fi
+          npm run crowdin:sync
           npm run deploy
