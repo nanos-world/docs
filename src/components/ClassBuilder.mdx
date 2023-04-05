@@ -257,6 +257,15 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 				</table>
 			</div>
 		: <></>}
+		{Array.isArray(function_data.examples) && function_data.examples.length > 0 ?
+			<>
+				{function_data.examples.map(function(example, index) {
+					return <CodeBlock className="language-lua" title={`Example: ${example.title}` }>
+						{ example.content }
+					</CodeBlock>
+				})}
+			</>
+		: <></>}
 		{function_data.relations ?
 			<p className={"relations"}>
 				{"See also "}
