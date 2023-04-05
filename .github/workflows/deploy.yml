@@ -22,6 +22,10 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Sync Crowdin
+        run: yarn crowdin:sync
+
       - name: Build website
         run: yarn build
 
