@@ -118,7 +118,15 @@ module.exports = {
         'toml',
       ],
     },
-    zoomSelector: '.markdown :not(.authority-availability) > img',
+    zoom: {
+      selector: '.markdown :not(em) > img',
+      background: {
+        light: 'rgb(255, 255, 255)',
+        dark: 'rgb(50, 50, 50)'
+      },
+      // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+      config: {}
+    },
     algolia: {
       appId: '2O07FIGQII',
       apiKey: 'b53f482139534494c9253752259660ed',
@@ -174,7 +182,7 @@ module.exports = {
     '@saucelabs/theme-github-codeblock',
   ],
   plugins: [
-    'plugin-image-zoom',
+    require.resolve('docusaurus-plugin-image-zoom'),
   ],
   scripts: [
     {
