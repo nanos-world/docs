@@ -71,7 +71,7 @@ import EntityDataStable from '@site/src/api/Stable/Classes/BaseEntity.json';
 import ActorDataStable from '@site/src/api/Stable/Classes/BaseActor.json';
 import PickableDataStable from '@site/src/api/Stable/Classes/BasePickable.json';
 import PaintableDataStable from '@site/src/api/Stable/Classes/BasePaintable.json';
-// import DamageableDataStable from '@site/src/api/Stable/Classes/BaseDamageable.json';
+import DamageableDataStable from '@site/src/api/Stable/Classes/BaseDamageable.json';
 
 import BillboardDataStable from '@site/src/api/Stable/Classes/Billboard.json';
 import BlueprintDataStable from '@site/src/api/Stable/Classes/Blueprint.json';
@@ -96,7 +96,7 @@ import TriggerDataStable from '@site/src/api/Stable/Classes/Trigger.json';
 import VehicleDataStable from '@site/src/api/Stable/Classes/Vehicle.json';
 import WeaponDataStable from '@site/src/api/Stable/Classes/Weapon.json';
 import WebUIDataStable from '@site/src/api/Stable/Classes/WebUI.json';
-// import WidgetDataStable from '@site/src/api/Stable/Classes/Widget.json';
+import WidgetDataStable from '@site/src/api/Stable/Classes/Widget.json';
 
 import ColorDataStable from '@site/src/api/Stable/Structs/Color.json';
 import MatrixDataStable from '@site/src/api/Stable/Structs/Matrix.json';
@@ -129,9 +129,9 @@ import JSONDataStable from '@site/src/api/Stable/UtilityClasses/JSON.json';
 import NanosMathDataStable from '@site/src/api/Stable/UtilityClasses/NanosMath.json';
 import NanosUtilsDataStable from '@site/src/api/Stable/UtilityClasses/NanosUtils.json';
 
-// import StringDataStable from '@site/src/api/Stable/StandardLibraries/string.json';
-// import TableDataStable from '@site/src/api/Stable/StandardLibraries/table.json';
-// import MathDataStable from '@site/src/api/Stable/StandardLibraries/math.json';
+import StringDataStable from '@site/src/api/Stable/StandardLibraries/string.json';
+import TableDataStable from '@site/src/api/Stable/StandardLibraries/table.json';
+import MathDataStable from '@site/src/api/Stable/StandardLibraries/math.json';
 
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
@@ -142,7 +142,7 @@ const APIData = {
 			Actor: ActorDataStable,
 			Pickable: PickableDataStable,
 			Paintable: PaintableDataStable,
-			// Damageable: DamageableDataStable,
+			Damageable: DamageableDataStable,
 			Billboard: BillboardDataStable,
 			Blueprint: BlueprintDataStable,
 			Cable: CableDataStable,
@@ -166,7 +166,7 @@ const APIData = {
 			Vehicle: VehicleDataStable,
 			Weapon: WeaponDataStable,
 			WebUI: WebUIDataStable,
-			// Widget: WidgetDataStable,
+			Widget: WidgetDataStable,
 		},
 		Struct: {
 			Color: ColorDataStable,
@@ -202,11 +202,11 @@ const APIData = {
 			NanosMath: NanosMathDataStable,
 			NanosUtils: NanosUtilsDataStable,
 		},
-		// StandardLibrary: {
-			// string: StringDataStable,
-			// math: MathDataStable,
-			// table: TableDataStable,
-		// }
+		StandardLibrary: {
+			string: StringDataStable,
+			math: MathDataStable,
+			table: TableDataStable,
+		}
 	},
 	BleedingEdge: {
 		Class: {
