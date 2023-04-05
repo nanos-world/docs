@@ -53,6 +53,11 @@ Iterator allows you to traverse elements of a table with `for k, v in ipairs()`.
 We use any here in the Docs to represent that any Type can be used.
 
 
+### `varargs`
+
+Variadic list of values.
+
+
 ## Numeric Types
 
 Besides the Lua Types, some methods on the API have specific numeric types, those are converted and treated differently internally.

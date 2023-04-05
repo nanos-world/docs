@@ -64,7 +64,7 @@ end)
 <EventsDeclaration type="Class" name="Blueprint" />
 
 
-## ✅ List of Supported Parameter Types
+## ✅ List of Supported Parameter Types
 
 List of all supported parameters which can be passed between Lua ↔ Blueprint:
 
@@ -79,6 +79,9 @@ List of all supported parameters which can be passed between Lua ↔ Blueprint:
 | **`string`** | **`String`** | ✅ | ✅ |
 | **`string`** | **`Name`** | ✅ | ✅ |
 | **`string`** | **`Text`** | ✅ | ✅ |
+| **`Quat`** | **`Quat`** | ✅ | ❌ |
+| **`table`** | **`Margin`** | ✅ | ❌ |
+| **`table`** | **`Vector4`** | ✅ | ❌ |
 | **`Vector2D`** | **`Vector2D`** | ✅ | ✅ |
 | **`Vector`** | **`Vector`** | ✅ | ✅ |
 | **`Rotator`** | **`Rotator`** | ✅ | ✅ |
@@ -98,8 +101,10 @@ List of all supported parameters which can be passed between Lua ↔ Blueprint:
 | **`WebUI`** | **`MaterialInstanceDynamic`** | ✅ | ❌ |
 | **`SceneCapture`** | **`MaterialInstanceDynamic`** | ✅ | ❌ |
 | **`Blueprint`** | **`Actor`** | ✅ | ✅ |
+| **`Widget`** | **`Widget`** | ✅ | ❌ |
 | **`BaseActor`** | **`Actor`** | ✅ | ✅ |
 | **`Player`** | **`PlayerController`** | ✅ | ❌ |
+| **`SpecialPath`** | **`Texture2D`** | ✅ | ❌ |
 |  | **`Transform`** | ❌ | ❌ |
 |  | **`Structs`** | ❌ | ❌ |
 

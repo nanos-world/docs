@@ -108,6 +108,15 @@ export const ReferenceLink = ({ children, href }) => (
 	</a>
 );
 
+<!-- Generic Base Native component -->
+export const BaseNative = (img, title, description) => (
+	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} />}>
+		<Link class="native-type">
+			<img src={img} title={title} />
+		</Link>
+	</Tippy>
+);
+
 <!-- Generic Base Authority component -->
 export const BaseAuthority = (img, title, description) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} />}>
@@ -117,9 +126,20 @@ export const BaseAuthority = (img, title, description) => (
 	</Tippy>
 );
 
-<!-- Generic Basic Type component -->
-export const BaseType = (label) => (
-	<a href={`${getActiveVersionPath()}/scripting-reference/glossary/basic-types#${label.toLowerCase()}`}>{label}</a>
+<!-- Generic Base Basic Type component -->
+export const BaseBasicType = (label, description) => (
+	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={
+		<>
+			<h3>
+				{label}
+			</h3>
+			<span dangerouslySetInnerHTML={{ __html: description }}></span>
+		</>
+	}>
+		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/basic-types#${label.toLowerCase()}`}>
+			{label}
+		</Link>
+	</Tippy>
 );
 
 <!-- Generic Struct Type component -->
@@ -175,18 +195,25 @@ export const AuthorityType = {
 	NetworkAuthority: () => BaseAuthority("/img/scripting/network-authority.png", "Network Authority", "This can be called on <strong>Server</strong> and on <strong>Client's</strong> current Network Authority of this entity!<br/><br/><strong>TIP</strong>: You can validate if the current Local Player has Network Authority on this entity by calling <code>entity:HasNetworkAuthority()</code>."),
 };
 
+<!-- Defines Native Types components -->
+export const NativeType = {
+	Native: () => BaseNative("/img/scripting/native.svg", "Native Function", "This is a native and built-in function from Lua."),
+	NotNative: () => BaseNative("/img/scripting/not-native.svg", "Custom Function", "This is a custom function added to the native lua library!"),
+};
+
 <!-- Defines Basic Types components -->
 export const BasicType = {
-	Number: () => BaseType("number"),
-	Integer: () => BaseType("integer"),
-	Float: () => BaseType("float"),
-	String: () => BaseType("string"),
-	Boolean: () => BaseType("boolean"),
-	Table: () => BaseType("table"),
-	Iterator: () => BaseType("iterator"),
-	Any: () => BaseType("any"),
-	Function: () => BaseType("function"),
-	Nil: () => BaseType("nil"),
+	Number: () => BaseBasicType("number", "The number type represents real (double-precision floating-point) numbers."),
+	Integer: () => BaseBasicType("integer", "Whole numbers without any fractional parts."),
+	Float: () => BaseBasicType("float", "Floating-point type with decimal points."),
+	String: () => BaseBasicType("string", "Strings have the usual meaning: a sequence of characters."),
+	Boolean: () => BaseBasicType("boolean", "The boolean type has two values, false and true, which represent the traditional boolean values."),
+	Table: () => BaseBasicType("table", "The table type implements associative arrays."),
+	Iterator: () => BaseBasicType("iterator", "Iterator allows you to traverse elements of a table with <code>for k, v in ipairs()</code>."),
+	Any: () => BaseBasicType("any", "We use any here in the Docs to represent that any Type can be used."),
+	Function: () => BaseBasicType("function", "Function type."),
+	Nil: () => BaseBasicType("nil", "Nil is a type with a single value, nil, whose main property is to be different from any other value."),
+	VarArgs: () => BaseBasicType("varargs", "Variadic list of values."),
 };
 
 <!-- Defines Struct Types components -->

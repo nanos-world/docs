@@ -64,7 +64,7 @@ We have 3 types of packages: [script](#script), [game-mode](#game-mode) and [loa
 
 ### `script`
 
-Script is a normal Package, you can load as many as you want.
+Script is a normal Package, you can load as many as you want. They are defined in the `packages` entry of Config.toml.
 
 ```toml title="Package.toml" reference
 https://github.com/nanos-world/nanos-world-server/blob/main/_script.toml
@@ -73,7 +73,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/_script.toml
 
 ### `game-mode`
 
-GameModes are Like `script` but you can only load one `game-mode` package at once.
+GameModes are Like `script` but you can only load one `game-mode` package at once. They are defined in the `game_mode` entry of Config.toml.
 
 They are used when you are creating full games which cannot be loaded with other full games packages.
 
@@ -84,7 +84,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/_game_mode.toml
 
 ### `loading-screen`
 
-Loading Screen is a special Package which will be loaded during player's loading screen.
+Loading Screen is a special Package which will be loaded during player's loading screen. They are defined in the `loading_screen` entry of Config.toml.
 
 It must have an `index.html` in the root. Please refer to [Loading Screen](/core-concepts/packages/loading-screen.md) for more information.
 
@@ -93,24 +93,47 @@ https://github.com/nanos-world/nanos-world-server/blob/main/_loading_screen.toml
 ```
 
 
+### `map`
+
+Map is a special Package which defines the configuration of a Map entry. They are defined in the `map` entry of Config.toml.
+
+It contains all functionalities from a `script`, being able to execute scripts as well. With the addition it is used to load a map, having the options to have custom data and spawn points defined on its Package.toml natively.
+
+```toml title="Package.toml" reference
+https://github.com/nanos-world/nanos-world-server/blob/main/_map.toml
+```
+
+:::tip
+
+As nanos world server is not aware of Unreal or it's Assets, we need to somehow say to the server where are the scriptable part of the map, such as Spawn Points, Props locations, Weapon locations and so on.
+
+It is a recommended approach to implement all Props, Weapons and Vehicles spawn locations in your Map Package `Server/Index.lua` and define all Player's Spawn points in the `Package.toml` file.
+
+:::
+
+
 ## Settings Detailed
 
 | Setting | Package Types | Description |
 | :--- | :--- | :--- |
 | **`force_no_map_package`** | `script`<br/>`game-mode` | Enabling this will force the map package (if any) to do NOT load |
-| **`auto_cleanup`** | `script`<br/>`game-mode` | Enabling this will destroy all entities spawned by this Package when it unloads |
-| **`compatibility_version`** | `script`<br/>`game-mode` | The game version (`major.minor`) at the time this package was created, for granting backwards compatibility between breaking changes. See more [here](/docs/next/core-concepts/packages/compatibility-versions) |
-| **`packages_requirements`** | `script`<br/>`game-mode` | List of Packages dependencies used by this Package which need to be loaded first |
-| **`assets_requirements`** | `script`<br/>`game-mode` | List of Asset Packs to be loaded when this package loads |
+| **`auto_cleanup`** | `script`<br/>`game-mode`<br/>`map` | Enabling this will destroy all entities spawned by this Package when it unloads |
+| **`compatibility_version`** | `script`<br/>`game-mode`<br/>`map` | The game version (`major.minor`) at the time this package was created, for granting backwards compatibility between breaking changes. See more [here](/docs/next/core-concepts/packages/compatibility-versions) |
+| **`packages_requirements`** | `script`<br/>`game-mode`<br/>`map` | List of Packages dependencies used by this Package which need to be loaded first |
+| **`assets_requirements`** | `script`<br/>`game-mode`<br/>`map` | List of Asset Packs to be loaded when this package loads |
+| **`compatible_game_modes`** | `script`<br/>`map` | List of Game Modes compatible/recommended to work with this Package |
 | **`compatible_maps`** | `game-mode` | List of Maps compatible/recommended to work with this Game Mode |
 | **`custom_settings`** | `game-mode` | List of Custom Settings which can be set when starting a new game or passed through command line to the server. See more [here](#custom-settings) |
+| **`map_asset`** | `map` | Asset Path to the Map Asset in the format `[ASSET_PACK]::[ASSET_KEY]` |
+| **`spawn_points`** | `map` | List of Spawn Points in the format `{ location = "Vector()", rotation = "Rotator()" }, ...` which can be accessed through [Server.GetMapSpawnPoints()](https://docs.nanos.world/docs/next/scripting-reference/static-classes/server#static-function-getmapspawnpoints) |
+| **`custom_data`** | `map` | List of Custom Data which can be accessed when this Map is loaded. See more [here](#custom-data) |
 
 
 ### Custom Settings
 
 GameModes can define Custom Settings in the `[custom_settings]` section to be set when creating a new game through main menu, or set when starting the server with the command `--custom_settings "var1 = value1, var2 = value2, ..."`
 
-The values defined can be accessed through the method [Server.GetCustomSettings()](https://docs.nanos.world/docs/next/scripting-reference/static-classes/server#getcustomsettings).
+The values defined can be accessed through the method [Server.GetCustomSettings()](https://docs.nanos.world/docs/next/scripting-reference/static-classes/server#static-function-getcustomsettings).
 
 #### List of Types
 
@@ -121,6 +144,22 @@ The values defined can be accessed through the method [Server.GetCustomSettings(
 | `floating` | Floating numeric values |
 | `select` | List of string values displayed as a Dropdown |
 | `text` | Text Box |
+
+
+### Custom Data
+
+Maps can define Custom Data in the `[custom_data]` section.
+
+The values defined are loaded when this Map Package is loaded and can be accessed through the method [Server.GetMapConfig()](https://docs.nanos.world/docs/next/scripting-reference/static-classes/server#static-function-getmapconfig).
+
+#### Usage Example
+
+```toml
+[custom_data]
+	my_key = 123
+	my_another_key = "hello world!"
+	my_array = [ "whoa", "yeah", 123 ]
+```
 
 
 ## Ignoring Client Folders

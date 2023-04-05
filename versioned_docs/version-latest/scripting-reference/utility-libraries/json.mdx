@@ -2,6 +2,7 @@
 title: JSON
 description: JSON library, useful for sending data from Client's Package to WebUI environment
 tags: [utility-class]
+sidebar_position: 1
 ---
 
 <HeaderDeclaration type="UtilityClass" name="JSON" is_static />
@@ -11,10 +12,10 @@ tags: [utility-class]
 
 ```lua
 local encoded_value = JSON.stringify({ 1, 2, 3, { x = 10, y = Vector(1, 2, 3) }, "he" })
--- Returns '[1,2,3,{"x":10},"he"]'
+-- Returns '[1,2,3,{"x":10,"y":"Vector(1.0, 2.0, 3.0)"},"he"]'
 
-local decoded_value = JSON.parse('[1,2,3,{"x":10},"he"]')
--- Returns { 1, 2, 3, { x = 10 }, "he" }
+local decoded_value = JSON.parse('[1,2,3,{"x":10,"y":"Vector(1.0, 2.0, 3.0)"},"he"]')
+-- Returns { 1, 2, 3, { x = 10, y = Vector(1, 2, 3) }, "he" }
 ```
 
 
