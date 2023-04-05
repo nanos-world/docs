@@ -11,6 +11,16 @@ files: [
       translation: '/i18n/%two_letters_code%/**/%original_file_name%',
       languages_mapping: *languages_mapping,
     },
+    # API
+    {
+      source: '/src/api/**/*',
+      translation: '/i18n/%two_letters_code%/api/**/%original_file_name%',
+      ignore: [
+        'README.md',
+        '.gitignore'
+      ],
+      languages_mapping: *languages_mapping,
+    },
     # Docs Markdown files
     {
       source: '/docs/**/*',
