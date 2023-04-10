@@ -80,8 +80,8 @@ List of all supported parameters which can be passed between Lua ↔ Blueprint:
 | **`string`** | **`Name`** | ✅ | ✅ |
 | **`string`** | **`Text`** | ✅ | ✅ |
 | **`Quat`** | **`Quat`** | ✅ | ❌ |
-| **`table`** | **`Margin`** | ✅ | ❌ |
-| **`table`** | **`Vector4`** | ✅ | ❌ |
+| **`table`** | [**`Margin`**](#margin) | ✅ | ❌ |
+| **`table`** | [**`Vector4`**](#vector4) | ✅ | ❌ |
 | **`Vector2D`** | **`Vector2D`** | ✅ | ✅ |
 | **`Vector`** | **`Vector`** | ✅ | ✅ |
 | **`Rotator`** | **`Rotator`** | ✅ | ✅ |
@@ -105,9 +105,45 @@ List of all supported parameters which can be passed between Lua ↔ Blueprint:
 | **`BaseActor`** | **`Actor`** | ✅ | ✅ |
 | **`Player`** | **`PlayerController`** | ✅ | ❌ |
 | **`SpecialPath`** | **`Texture2D`** | ✅ | ❌ |
-|  | **`Transform`** | ❌ | ❌ |
+| **`table`** | [**`Transform`**](#transform) | ✅ | ❌ |
 |  | **`Structs`** | ❌ | ❌ |
 
+
+### Special Structs Cases
+
+Those structs aren't defined as a Lua Class but can be passed as a **table** with the following properties:
+
+#### Transform
+
+```lua
+{
+	["Translation"] = Vector(),
+	["Rotation"] = Rotator(),
+	["Scale"] = Vector()
+}
+```
+
+#### Margin
+
+```lua
+{
+	["Bottom"] = 0.0,
+	["Left"] = 0.0,
+	["Right"] = 0.0,
+	["Top"] = 0.0
+}
+```
+
+#### Vector4
+
+```lua
+{
+	["W"] = 0.0,
+	["X"] = 0.0,
+	["Y"] = 0.0,
+	["Z"] = 0.0
+}
+```
 
 :::caution Note
 
