@@ -57,11 +57,14 @@ Before, `Package.GetPackages(only_loaded)` returned a list of strings containing
 local packages = Package.GetPackages(only_loaded, package_type_filter)
 --[[
 	{
-		{ ["title"] = "Awesome Package" },
-		{ ["name"] = "awesome-package" },
-		{ ["type"] = PackageType.Script },
-		{ ["version"] = "1.0.0" },
-		{ ["author"] = "Myself" },
+		{
+			["title"] = "Awesome Package",
+			["name"] = "awesome-package",
+			["type"] = PackageType.Script,
+			["version"] = "1.0.0",
+			["author"] = "Myself",
+		},
+		...
 	}
 --]]
 ```
