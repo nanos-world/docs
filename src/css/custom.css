@@ -115,7 +115,6 @@ header + p::after {
   display: block;
   background-color: var(--ifm-color-emphasis-200);
   margin-top: 2rem;
-  margin-bottom: 4rem;
 }
 
 .docusaurus-highlight-code-line {

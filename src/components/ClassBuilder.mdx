@@ -145,10 +145,19 @@ export const CommaSeparator = () => (
 	<span className="comma-separator"></span>
 )
 
+export const TypeToAPIFolder = { StandardLibrary: "StandardLibraries", Struct: "Structs", Class: "Classes", StaticClass: "StaticClasses", UtilityClass: "UtilityClasses", UtilityClasses: "UtilityClass",  };
+
+<!-- API Source URL -->
+export const APISourceURL = ({ type, class_name }) => (
+	<Admonition type="note" icon="🧑‍💻" title="API Source">
+		The methods and events descriptions from this page are defined in our <a href={`https://github.com/nanos-world/api/blob/main/${TypeToAPIFolder[type]}/${class_name}.json`}>API Repository on GitHub</a>!
+	</Admonition>
+);
+
 <!-- Open Source Admonition -->
-export const OpenSourceAdmonition = () => (
+export const OpenSourceAdmonition = ({ url }) => (
 	<Admonition type="tip" icon="👐" title="Open Source">
-		This structure is Open Sourced on <a href="https://github.com/nanos-world/nanos-world-lua-lib">GitHub</a>. Feel free to make pull requests and suggest changes!
+		This library implementation is Open Sourced on <a href={`https://github.com/nanos-world/nanos-world-lua-lib${url ? `/blob/master/${url}` : ""}`}>GitHub</a>!
 	</Admonition>
 );
 
@@ -438,15 +447,17 @@ export const GetClassData = (type, name) => {
 }
 
 <!-- Header Block Declaration -->
-export const HeaderDeclaration = ({ type, name, image, is_static, is_open_source }) => {
+export const HeaderDeclaration = ({ type, name, image, is_static, open_source_url }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
 		<p dangerouslySetInnerHTML={{ __html: class_data.description }}></p>
-		{ image ? <p><img src={image} /></p> : "" }
-		{ is_open_source ? <OpenSourceAdmonition /> : "" }
+		{ image ? <p><img src={image} /><hr /></p> : "" }
+		{ is_static ? <StaticClassAdmonition /> : "" }
 		{ class_data.authority ? <AuthorityAdmonition authority={class_data.authority} is_static={is_static} /> : "" }
 		{ class_data.inheritance ? <InheritanceAdmonition inheritance={class_data.inheritance} /> : "" }
-		{ is_static ? <StaticClassAdmonition /> : "" }
+		{ open_source_url ? <OpenSourceAdmonition url={open_source_url} /> : "" }
+		<APISourceURL type={type} class_name={name} />
+		<hr />
 	</>);
 };
 

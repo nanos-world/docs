@@ -1,0 +1,35 @@
+---
+title: NanosTable
+description: A table containing useful and aux table functions
+tags: [utility-class]
+sidebar_position: 3
+---
+
+<HeaderDeclaration type="UtilityClass" name="NanosTable" open_source_url="NanosTable.lua" is_static />
+
+
+## 🎒 Examples
+
+```lua
+local table = {
+	"my_key" = 123,
+	[2] = "my_value"
+}
+
+local dump_text = NanosTable.Dump(table)
+
+Console.Log(dump_text)
+
+-- Outputs Text
+--[[
+{
+	"my_key": 123,
+	2 = "my_value"
+}
+--]]
+```
+
+
+## 🗿 Static Functions
+
+<StaticFunctionsDeclaration type="UtilityClass" name="NanosTable" />

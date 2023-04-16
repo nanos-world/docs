@@ -60,6 +60,7 @@ import ViewportData from '@site/src/api/StaticClasses/Viewport.json';
 import JSONData from '@site/src/api/UtilityClasses/JSON.json';
 import NanosMathData from '@site/src/api/UtilityClasses/NanosMath.json';
 import NanosUtilsData from '@site/src/api/UtilityClasses/NanosUtils.json';
+import NanosTableData from '@site/src/api/UtilityClasses/NanosTable.json';
 
 import StringData from '@site/src/api/StandardLibraries/string.json';
 import TableData from '@site/src/api/StandardLibraries/table.json';
@@ -128,6 +129,8 @@ import ViewportDataStable from '@site/src/api/Stable/StaticClasses/Viewport.json
 import JSONDataStable from '@site/src/api/Stable/UtilityClasses/JSON.json';
 import NanosMathDataStable from '@site/src/api/Stable/UtilityClasses/NanosMath.json';
 import NanosUtilsDataStable from '@site/src/api/Stable/UtilityClasses/NanosUtils.json';
+// import NanosTableDataStable from '@site/src/api/Stable/UtilityClasses/NanosTable.json';
+import NanosTableDataStable from '@site/src/api/UtilityClasses/NanosTable.json';
 
 import StringDataStable from '@site/src/api/Stable/StandardLibraries/string.json';
 import TableDataStable from '@site/src/api/Stable/StandardLibraries/table.json';
@@ -201,6 +204,7 @@ const APIData = {
 			JSON: JSONDataStable,
 			NanosMath: NanosMathDataStable,
 			NanosUtils: NanosUtilsDataStable,
+			NanosTable: NanosTableDataStable,
 		},
 		StandardLibrary: {
 			string: StringDataStable,
@@ -273,6 +277,7 @@ const APIData = {
 			JSON: JSONData,
 			NanosMath: NanosMathData,
 			NanosUtils: NanosUtilsData,
+			NanosTable: NanosTableData,
 		},
 		StandardLibrary: {
 			string: StringData,
