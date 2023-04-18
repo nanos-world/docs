@@ -145,12 +145,12 @@ export const CommaSeparator = () => (
 	<span className="comma-separator"></span>
 )
 
-export const TypeToAPIFolder = { StandardLibrary: "StandardLibraries", Struct: "Structs", Class: "Classes", StaticClass: "StaticClasses", UtilityClass: "UtilityClasses", UtilityClasses: "UtilityClass",  };
+export const TypeToAPIFolder = { StandardLibrary: "StandardLibraries/", Struct: "Structs/", Class: "Classes/", StaticClass: "StaticClasses/", UtilityClass: "UtilityClasses/", UtilityClasses: "UtilityClass/", Enums: "" };
 
 <!-- API Source URL -->
 export const APISourceURL = ({ type, class_name }) => (
 	<Admonition type="note" icon="🧑‍💻" title="API Source">
-		The methods and events descriptions from this page are defined in our <a href={`https://github.com/nanos-world/api/blob/main/${TypeToAPIFolder[type]}/${class_name}.json`}>API Repository on GitHub</a>!
+		The methods, properties and events descriptions from this page are defined in our <a href={`https://github.com/nanos-world/api/blob/main/${TypeToAPIFolder[type]}${class_name}.json`}>GitHub API Repository</a>!
 	</Admonition>
 );
 

@@ -79,9 +79,6 @@ List of all supported parameters which can be passed between Lua ↔ Blueprint:
 | **`string`** | **`String`** | ✅ | ✅ |
 | **`string`** | **`Name`** | ✅ | ✅ |
 | **`string`** | **`Text`** | ✅ | ✅ |
-| **`Quat`** | **`Quat`** | ✅ | ❌ |
-| **`table`** | [**`Margin`**](#margin) | ✅ | ❌ |
-| **`table`** | [**`Vector4`**](#vector4) | ✅ | ❌ |
 | **`Vector2D`** | **`Vector2D`** | ✅ | ✅ |
 | **`Vector`** | **`Vector`** | ✅ | ✅ |
 | **`Rotator`** | **`Rotator`** | ✅ | ✅ |
@@ -105,15 +102,27 @@ List of all supported parameters which can be passed between Lua ↔ Blueprint:
 | **`BaseActor`** | **`Actor`** | ✅ | ✅ |
 | **`Player`** | **`PlayerController`** | ✅ | ❌ |
 | **`SpecialPath`** | **`Texture2D`** | ✅ | ❌ |
-| **`table`** | [**`Transform`**](#transform) | ✅ | ❌ |
-|  | **`Structs`** | ❌ | ❌ |
+| **`table`** | [**`Any Struct`**](#any-struct) | ✅ | ✅ |
 
 
-### Special Structs Cases
+:::caution Note
 
-Those structs aren't defined as a Lua Class but can be passed as a **table** with the following properties:
+It is only possible to pass Actors from Blueprint → Lua if the Actor is a Spawned Entity. It is not possible to pass newly spawned Actors in Blueprints to Lua.
 
-#### Transform
+:::
+
+:::tip
+
+Passing `Maps`, `Arrays` and `Sets` is also supported! As long their keys/values are in the list above.
+
+:::
+
+
+### Any Struct
+
+Custom Structs can also be passed and retrieved, just pass an object with the same properties as the Unreal Struct, examples:
+
+#### FTransform
 
 ```lua
 {
@@ -123,7 +132,7 @@ Those structs aren't defined as a Lua Class but can be passed as a **table** wit
 }
 ```
 
-#### Margin
+#### FMargin
 
 ```lua
 {
@@ -134,7 +143,7 @@ Those structs aren't defined as a Lua Class but can be passed as a **table** wit
 }
 ```
 
-#### Vector4
+#### FVector4
 
 ```lua
 {
@@ -144,22 +153,3 @@ Those structs aren't defined as a Lua Class but can be passed as a **table** wit
 	["Z"] = 0.0
 }
 ```
-
-:::caution Note
-
-It is only possible to pass Actors from Blueprint → Lua if the Actor is a Spawned Entity. It is not possible to pass newly spawned Actors in Blueprints to Lua.
-
-:::
-
-
-:::tip
-
-Passing `Maps`, `Arrays` and `Sets` is also supported! As long their keys/values are in the list above.
-
-:::
-
-:::tip
-
-Other built-in **Structs** can be requested to be supported. If you feel the real need please add an idea to our [Feedback Hub](https://feedback.nanos.world).
-
-:::
