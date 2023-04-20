@@ -8,7 +8,7 @@ import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
 import { AuthorityType, NativeType, BasicType, Classes, Structs, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
-import { FunctionToolTip, StaticFunctionToolTip, EventToolTip } from '@site/src/components/Tooltips.jsx';
+import { FunctionToolTip, StaticFunctionToolTip, InlineFunctionToolTip, EventToolTip } from '@site/src/components/Tooltips.jsx';
 
 import APIData from '@site/src/components/APIData.jsx';
 
@@ -96,6 +96,15 @@ export const AuthorityLabelsStatic = {
 <!-- Gets a Parameter name (with ? when optional) -->
 export function GetParameterName(parameter_data) {
 	return `${parameter_data.name}${parameter_data.default != null ? "?" : ""}${parameter_data.type.endsWith("...") ? "..." : ""}`;
+}
+
+<!-- Gets a Parameter description -->
+export function GetParameterDescription(parameter_data) {
+	return <>
+		<span style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: parameter_data.description }}></span>
+		<> </>
+		{ parameter_data.type == "function" && parameter_data.function_parameters ? <InlineFunctionNameDeclaration function_parameters={parameter_data.function_parameters} /> : "" }
+	</>;
 }
 
 <!-- Gets a list of parameters separated by comma -->
@@ -215,6 +224,36 @@ export function GetRelations(relations) {
 	return [...functions, ...static_functions, ...events, ...etc].reduce((prev, next) => [prev, ", ", next]);
 };
 
+<!-- Function Parameters Declaration -->
+export const FunctionParametersDeclaration = ({ parameters, include_default = true }) => (
+	<>
+		{Array.isArray(parameters) && parameters.length > 0 ?
+			<div class="table-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>Type</th>
+							<th>Parameter</th>
+							{ include_default ? <th>Default</th> : null }
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						{parameters.map(function(value) {
+							return <tr>
+								<td>{ SplitTypesByOr(value.type) }</td>
+								<td><code>{ GetParameterName(value) }</code></td>
+								{ include_default ? <td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{value.default}</code> : "" }</td> : null }
+								<td>{ GetParameterDescription(value) }</td>
+							</tr>;
+						})}
+					</tbody>
+				</table>
+			</div>
+		: <></>}
+	</>
+);
+
 <!-- Function Block Declaration -->
 export const FunctionDeclaration = ({ function_data, is_static, class_name }) => (
 	<>
@@ -242,30 +281,7 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 		<CodeBlock className="language-lua">
 			{ is_static ? GetStaticFunctionExample(class_name, function_data) : GetFunctionExample(class_name, function_data) }
 		</CodeBlock>
-		{Array.isArray(function_data.parameters) && function_data.parameters.length > 0 ?
-			<div class="table-wrapper">
-				<table>
-					<thead>
-						<tr>
-							<th>Type</th>
-							<th>Parameter</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						{function_data.parameters.map(function(value) {
-							return <tr>
-								<td>{ SplitTypesByOr(value.type) }</td>
-								<td><code>{ GetParameterName(value) }</code></td>
-								<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{value.default}</code> : "" }</td>
-								<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
-							</tr>;
-						})}
-					</tbody>
-				</table>
-			</div>
-		: <></>}
+		<FunctionParametersDeclaration parameters={function_data.parameters} />
 		{Array.isArray(function_data.examples) && function_data.examples.length > 0 ?
 			<>
 				{function_data.examples.map(function(example, index) {
@@ -349,6 +365,12 @@ export const FunctionNameDeclaration = ({ class_name, function_data, base_class 
 				<code>{ function_data.name }</code>
 			</Link>
 		</b>
+	</Tippy>
+);
+
+export const InlineFunctionNameDeclaration = ({ function_parameters }) => (
+	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<InlineFunctionToolTip function_parameters={function_parameters} />}>
+		<Link className={"hover-link"}>with this format</Link>
 	</Tippy>
 );
 
