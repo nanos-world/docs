@@ -59,7 +59,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/_meta.toml
 
 ## Package Types
 
-We have 3 types of packages: [script](#script), [game-mode](#game-mode) and [loading-screen](#loading-screen), each one with with a specific functionality and an unique purpose:
+We have 4 types of packages: [script](#script), [game-mode](#game-mode), [map](#map) and [loading-screen](#loading-screen), each one with with a specific functionality and an unique purpose:
 
 
 ### `script`

@@ -6,28 +6,44 @@ tags: [scripting]
 ---
 
 
-Start your Server and first Package in under 10 minutes!
+Start a server and create your first Package in less than 10 minutes!
 
 import { Classes } from '@site/docs/components/_nanos.mdx';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import { ReferenceLink } from '@site/docs/components/_nanos.mdx';
+
+
+## Introduction
+
+Welcome to the nanos world **Quick Start** guide! After going through this guide, you will learn:
+
+1. How to setup and join your **Server**
+2. How to create a simple **Package** with basic scripts
+3. How to **Spawn Props** and **Entities** through scripting
+4. How to subscribe to **Game Events**
+5. How to Possess a Character
+
+:::tip
+
+This tutorial is for those who have never used nanos world server before and want to get started quickly!
+
+:::
 
 
 ## Step 1: Download the Server
 
-You have **three** options for downloading nanos world server:
+To start, you need to download the Nanos World server. There are **three** options to do so:
 
-1. Use the executable (*.exe*) already located at `nanos-world/Server/NanosWorldServer.exe` (if you downloaded the base game).
+1. Use the executable at `nanos-world/Server/NanosWorldServer.exe` *(in the base game installation folder)*.
 2. Use SteamCMD to [download nanos world™ Dedicated Server](/docs/core-concepts/server-manual/server-installation).
-3. Or download **nanos world™ Dedicated Server** tool from Steam Client.
+3. Download the **nanos world™ Dedicated Server** tool from Steam Client.
 
 
 ## Step 2: Creating a Basic Package
 
-After downloading the server, let's create a basic Package. We will use the handy CLI tool to speed up the proccess:
+After downloading the server, let's create a basic **Package**. A Package is a collection of Lua scripts that are executed on Client or Server to interact with the game.
 
-For that, open a terminal in your server folder and run the following command:
+To create a new Package, lets use the handy CLI tool to speed up the process. Open a terminal in your server folder and run the following command:
 
 <Tabs
   defaultValue="cmd"
@@ -37,58 +53,63 @@ For that, open a terminal in your server folder and run the following command:
   ]}>
   <TabItem value="cmd">
 
-```shell
+```bash
 ./NanosWorldServer.exe --cli add package my-awesome-package
 ```
 
   </TabItem>
   <TabItem value="linux">
 
-```shell
+```bash
 ./NanosWorldServer.sh --cli add package my-awesome-package
 ```
 
   </TabItem>
 </Tabs>
 
-This command will run the CLI to interactively create your new package:
-```shell
-[display] Please enter the Package Name: (my-awesome-package)
+This command will run the nanos world command-line interface (CLI) to interactively create your new Package. You will be prompted to provide some information about your Package, such as its name, author, version, and type.
 
-[display] Please enter the Package Author: ()
-
-[display] Please enter the Package Version: (0.0.1)
-
-[display] Please enter the Package Author: ()
-
-[display] Please enter the Package Type: (game-mode)
+```nanos-console
+INFO  Please enter the Package Title: (my-awesome-package)
+INFO  Please enter the Package Author: ()
+INFO  Please enter the Package Type: (game-mode)
 ```
 
-After that, you will end up with a new folder inside `Packages/` called `my-awesome-package/`. Inside that there will be 3 other folders: `Server/`, `Client/` and `Shared/`, and a package file `Package.toml`.
+Once you finish creating your Package, you will find a new folder named `my-awesome-package/` inside the `Packages/` folder. This folder contains three other folders: `Server/`, `Client/`, and `Shared/`, and a configuration file called `Package.toml`.
 
-Additionally, if this was the first time running the CLI, it will also create a `Config.toml` file at the root of the server folder executable. This is the server configuration file!
+Next, you need to tell the server to load your Package when it starts. To do that, open the `Config.toml` file located in the server folder and find the `packages = []` section.
 
-After the Package was created, you need to tell the server to load it when it starts. For that, open the `Config.toml` file which was just generated and look for the `packages = []` section on it. Now you just need to add your package name `"my-awesome-package"` in that list!
+Add your package name (`"my-awesome-package"`) to the list of Packages that should be loaded.
 
 
 ## Step 3: Adding Script functionalities
 
-Open the file `my-awesome-package/Server/Index.lua` in your preferred editor (we recommend using [VSCode](https://code.visualstudio.com/download)), and let's edit our first script. Let's spawn some <Classes.Prop />s!
+Now that you have a Package, it's time to add some script functionalities to it. Scripts are pieces of code that can be executed by the server/client to add custom game logic.
+
+To add your first script, open the file `my-awesome-package/Server/Index.lua` in your preferred editor. This file is the entry point for server-side scripts in your Package.
+
+:::tip
+
+We recommend using [VSCode](https://code.visualstudio.com/download) editor, as it contains a [nanos world Extension](https://marketplace.visualstudio.com/items?itemName=Derpius.nanosworld) to help while coding!
+
+:::
+
+For this example, let's add some code to spawn some <Classes.Prop />s in the game world:
 
 ```lua title="Packages/my-awesome-package/Server/Index.lua"
--- Let's print to Console a friendly message
+-- Print a message to the server console
 Console.Log("Loading some Props =D")
 
--- Let's spawn some props
-prop_table = Prop(Vector(200, 0, 0), Rotator(0, 0, 0), "nanos-world::SM_WoodenTable")
-prop_chair = Prop(Vector(400, 200, 0), Rotator(0, 0, 0), "nanos-world::SM_WoodenChair")
-prop_tire = Prop(Vector(600, 0, 0), Rotator(0, 0, 0), "nanos-world::SM_TireLarge")
+-- Spawn some props in the game world
+local prop_table = Prop(Vector(200, 0, 0), Rotator(0, 0, 0), "nanos-world::SM_WoodenTable")
+local prop_chair = Prop(Vector(400, 200, 0), Rotator(0, 0, 0), "nanos-world::SM_WoodenChair")
+local prop_tire = Prop(Vector(600, 0, 0), Rotator(0, 0, 0), "nanos-world::SM_TireLarge")
 ```
 
 
 ## Step 4: Starting the server
 
-Now let's start the server with the package you just created! For that, simply double click or launch the server from the terminal:
+Now let's start the server with the package you just created! For that, simply double click the server executable or launch it from the terminal:
 
 <Tabs
   defaultValue="cmd"
@@ -98,14 +119,14 @@ Now let's start the server with the package you just created! For that, simply d
   ]}>
   <TabItem value="cmd">
 
-```shell
+```bash
 ./NanosWorldServer.exe
 ```
 
   </TabItem>
   <TabItem value="linux">
 
-```shell
+```bash
 ./NanosWorldServer.sh
 ```
 
@@ -114,14 +135,14 @@ Now let's start the server with the package you just created! For that, simply d
 
 After starting it, your console will display something like this:
 
-```
-[display]  nanos world (C) Copyright nanos. All Rights Reserved.
-[display]  Starting Server at Port: 7777. Version: 0.0.0. Map: 'nanos-world::TestingMap'.
-[display]  Loading Package 'my-awesome-package'...
-[script]   Loading some Props =D
-[display]  Package 'my-awesome-package' loaded.
-[display]  Loading Package 'map-package'...
-[display]  Package 'map-package' loaded.
+```nanos-console title="NanosWorldServer"
+  INFO  nanos world (C) Copyright nanos. All Rights Reserved.
+  INFO  Starting Server at Port: 7777. Version: 0.0.0. Map: 'default-blank-map'.
+  INFO  Loading Package 'my-awesome-package'...
+SCRIPT  Loading some Props =D
+  INFO  Package 'my-awesome-package' loaded.
+  INFO  Loading Package 'default-blank-map'...
+  INFO  Package 'default-blank-map' loaded.
 ```
 
 You can see it loaded your package and outputted the text "Loading some Props =D" on it.
@@ -138,26 +159,28 @@ After connecting, you will be a flying pawn and will be able to see the props sp
 
 ## Extra Step: Spawning Characters
 
+You may have noticed you are just a wandering soul flying around, let's give you some flesh! For that, we will need to interact with some **Game Events**.
+
 ### Spawning a Character for the Player
 
-You may have noticed you are just a wandering soul flying around, let's give you some flesh! For that, we will need to interact with some **Events**.
+Let's append some code in your `Server/Index.lua`, to spawn a <Classes.Character /> when a <Classes.Player /> joins the server:
 
-Let's append some code in your `Index.lua`, to spawn a <Classes.Character /> when the <Classes.Player /> join the server:
-
-```lua title="my-package/Server/Index.lua"
--- Function to spawn a Character to a player
+```lua title="my-awesome-package/Server/Index.lua"
+-- Function to spawn a Character and possess it to a Player
 function SpawnCharacter(player)
-    -- Spawns a Character at position 0, 0, 0 with default's constructor parameters
+    -- Spawns a Character at position X=0, Y=0, Z=0 with default constructor parameters
     local new_character = Character(Vector(0, 0, 0), Rotator(0, 0, 0), "nanos-world::SK_Male")
 
     -- Possess the new Character
     player:Possess(new_character)
 end
 
--- Subscribes to an Event which is triggered when Players join the server (i.e. Spawn)
+-- Subscribes to an Event which is triggered when Players join the server
+-- (i.e. Player entity spawns)
 Player.Subscribe("Spawn", SpawnCharacter)
 
--- Iterates for all already connected players and give them a Character as well
+-- When this Package loads, we don't have any Character spawned and possessed, so
+-- iterates for all already connected Players and give them a Character as well.
 -- This will make sure you also get a Character when you reload the package
 Package.Subscribe("Load", function()
 	for k, player in pairs(Player.GetAll()) do
@@ -166,19 +189,21 @@ Package.Subscribe("Load", function()
 end)
 ```
 
-To apply your changes, run the command in the server console: `package reload all`. This will also live reload the packages and apply the changes immediatelly.
+To apply your changes, run the command in the server console: `package reload all`. This will live reload the Packages and apply the changes immediately to all Players connected.
 
 ![](/img/docs/quick-start-02.webp)
+
+Now you are possessed and can walk around and interact with the Props!
 
 
 ### Destroying the Character when the Player leaves the Server
 
-Note that the <Classes.Character /> isn't destroyed automatically when the <Classes.Player /> disconnects. For that, we will need to Subscribe for when the Player leaves the server (`Destroy` event) and manually destroying the Character.
+Note that the <Classes.Character /> isn't destroyed automatically when the <Classes.Player /> disconnects. For that, we will need to Subscribe for when the Player leaves the server (`Destroy` event) then manually destroy the Character.
 
 Append this code:
 
-```lua title="my-package/Server/Index.lua"
--- When Player leaves the server, destroy it's Character
+```lua title="my-awesome-package/Server/Index.lua"
+-- When Player leaves the server, destroy it's possessing Character
 Player.Subscribe("Destroy", function(player)
     local character = player:GetControlledCharacter()
     if (character) then
@@ -192,18 +217,12 @@ To apply your changes, run the command in the server console: `package reload al
 
 ## Conclusion
 
-:::tip Congratulations! You have finished your first basic Script and learned:
+Congratulations! You have finished your first basic Package and learn a lot!
 
-* How to setup your Server
-* How to setup a simple Package
-* Basic interaction with entity Events
-* Spawning Props
-* Spawning & Destroying Characters
+You can find more and detailed information about each topic mentioned in this guide in the following links:
 
-:::
-
-
-#### Recommended next step
-
+<ReferenceLink href="core-concepts/server-manual/server-configuration">Server Configuration</ReferenceLink>
+<ReferenceLink href="core-concepts/server-manual/command-line-interface">Command-line Interface (CLI)</ReferenceLink>
+<ReferenceLink href="core-concepts/packages/packages-guide">Packages Guide</ReferenceLink>
 <ReferenceLink href="core-concepts/scripting/classes-guide">Classes Guide</ReferenceLink>
-
+<ReferenceLink href="core-concepts/scripting/events-guide">Events Guide</ReferenceLink>

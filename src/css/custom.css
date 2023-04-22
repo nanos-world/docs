@@ -508,3 +508,72 @@ p.relations {
 	font-size: 85%;
 	opacity: 0.8;
 }
+
+.api-examples:not(:last-child) {
+	margin-bottom: 15px !important;
+}
+
+/* Prism Code */
+pre {
+	tab-size: 4 !important;
+}
+
+.language-nanos-console
+.token-line {
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+.language-nanos-console
+.token-line::marker {
+	content: "";
+}
+
+html[data-theme="dark"]
+.language-nanos-console
+.token.plain {
+	color: #dcdfe4;
+}
+
+html[data-theme="dark"]
+.language-nanos-console
+.token.log-type-warning {
+	color: #e5c07b;
+}
+
+html[data-theme="dark"]
+.language-nanos-console
+.token.log-type-info {
+	color: #61afef;
+}
+
+html[data-theme="dark"]
+.language-nanos-console
+.token.log-type-script {
+	color: #56b6c2;
+}
+
+html[data-theme="dark"]
+.language-nanos-console
+.token.log-type-error {
+	color: #bd5f69;
+}
+.language-nanos-console
+.token.log-type-warning {
+	color: #f0a721;
+}
+
+.language-nanos-console
+.token.log-type-info {
+	color: #0f8cf1;
+}
+
+.language-nanos-console
+.token.log-type-script {
+	color: #12aabe;
+}
+
+.language-nanos-console
+.token.log-type-error {
+	color: #df2d3f;
+}

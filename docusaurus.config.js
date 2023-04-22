@@ -116,6 +116,7 @@ module.exports = {
       additionalLanguages: [
         'lua',
         'toml',
+        'bash'
       ],
     },
     zoom: {

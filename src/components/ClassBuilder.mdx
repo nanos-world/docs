@@ -81,16 +81,16 @@ export function GetReturnDescriptionList(return_list) {
 
 <!-- Authority Label Map -->
 export const AuthorityLabels = {
-	client: <>This class can only be spawned on 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a>.</>,
-	server: <>This class can only be spawned on 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a>.</>,
-	both: <>This class can be spawned on both 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a> (if you spawn it on client, it won't be synchronized with other players).</>,
+	client: <>This class can only be spawned on 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a> side.</>,
+	server: <>This class can only be spawned on 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a> side.</>,
+	both: <>This class can be spawned on both 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a> side (if you spawn it on client, it won't be synchronized with other players).</>,
 }
 
 <!-- Authority Label Map for Static Classes -->
 export const AuthorityLabelsStatic = {
-	client: <>This static class can be accessed only on 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a>.</>,
-	server: <>This static class can be accessed only on 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a>.</>,
-	both: <>This static class can be accessed on both 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a>.</>,
+	client: <>This static class can be accessed only on 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a> side.</>,
+	server: <>This static class can be accessed only on 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a> side.</>,
+	both: <>This static class can be accessed on both 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a> side.</>,
 }
 
 <!-- Gets a Parameter name (with ? when optional) -->
@@ -130,19 +130,32 @@ export function GetReturnPart(function_data) {
 	return `local${function_data.return.map((value, i) => " ret_0" + (i + 1))} = `;
 }
 
-<!-- Generates Function Example Codeblock -->
-export function GetFunctionExample(class_name, function_data) {
-	return `${GetReturnPart(function_data)}my_${class_name.toLowerCase()}:${function_data.name}(${GetParametersList(function_data.parameters)})`;
-}
-
-<!-- Generates Function Example Codeblock -->
-export function GetStaticFunctionExample(class_name, function_data) {
-	return `${GetReturnPart(function_data)}${class_name}.${function_data.name}(${GetParametersList(function_data.parameters)})`;
+<!-- Generates Generic Example Codeblock -->
+export function GetGenericExample(example, context) {
+	return <CodeBlock className="language-lua api-examples" title={ `${context ? `(${context}) ` : ""}${example.title}` }>
+		{ example.content }
+		{ example.output ? `\n-- Outputs \"${ example.output }\"` : "" }
+	</CodeBlock>;
 }
 
 <!-- Generates Event Example Codeblock -->
-export function GetEventExample(class_name, event_data) {
-	return `${class_name}.Subscribe("${event_data.name}", function(${GetParametersList(event_data.arguments)})\n\nend)`;
+export function GetEventExample(class_name, event_data, example, context) {
+	return GetGenericExample({ content: GetEventSignature(class_name, event_data, `\t${example.content.replaceAll('\n', "\n\t")}`), title: example.title }, context);
+}
+
+<!-- Generates Function Signature Codeblock -->
+export function GetFunctionSignature(class_name, function_data) {
+	return `${GetReturnPart(function_data)}my_${class_name.toLowerCase()}:${function_data.name}(${GetParametersList(function_data.parameters)})`;
+}
+
+<!-- Generates Static Function Signature Codeblock -->
+export function GetStaticFunctionSignature(class_name, function_data) {
+	return `${GetReturnPart(function_data)}${class_name}.${function_data.name}(${GetParametersList(function_data.parameters)})`;
+}
+
+<!-- Generates Event Signature Codeblock -->
+export function GetEventSignature(class_name, event_data, content) {
+	return `${class_name}.Subscribe("${event_data.name}", function(${GetParametersList(event_data.arguments)})\n${ content ? content : `\t-- ${event_data.name} was called` }\nend)`;
 }
 
 <!-- Authority Admonition -->
@@ -180,7 +193,7 @@ export const InheritanceAdmonition = ({ inheritance }) => (
 <!-- Static Class Admonition -->
 export const StaticClassAdmonition = () => (
 	<Admonition type="info" icon="🗿" title="Static Class">
-		This is a <b>Static Class</b>. You can access it's methods directly with <code>.</code>. It is not possible to initialize or create new instances.
+		This is a <b>Static Class</b>. Access it's methods directly with <code>.</code>. It's not possible to spawn new instances.
 	</Admonition>
 );
 
@@ -279,17 +292,18 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 			}
 		</p>
 		<CodeBlock className="language-lua">
-			{ is_static ? GetStaticFunctionExample(class_name, function_data) : GetFunctionExample(class_name, function_data) }
+			{ is_static ? GetStaticFunctionSignature(class_name, function_data) : GetFunctionSignature(class_name, function_data) }
 		</CodeBlock>
 		<FunctionParametersDeclaration parameters={function_data.parameters} />
 		{Array.isArray(function_data.examples) && function_data.examples.length > 0 ?
-			<>
+			<details>
+				<summary>{ is_static ? `${class_name}.${function_data.name}` : `my_${class_name.toLowerCase()}:${function_data.name}` } Examples</summary>
 				{function_data.examples.map(function(example, index) {
-					return <CodeBlock className="language-lua" title={`Example: ${example.title}` }>
-						{ example.content }
-					</CodeBlock>
+					return <>
+						{ GetGenericExample(example) }
+					</>
 				})}
-			</>
+			</details>
 		: <></>}
 		{function_data.relations ?
 			<p className={"relations"}>
@@ -314,7 +328,7 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 		</h3>
 		<blockquote dangerouslySetInnerHTML={{ __html: `${ event_data.description_long ? event_data.description_long : event_data.description }${ event_data.return ? "<br/><br/>" + event_data.return[0].description : ""}` }}></blockquote>
 		<CodeBlock className="language-lua">
-			{ GetEventExample(class_name, event_data) }
+			{ GetEventSignature(class_name, event_data) }
 		</CodeBlock>
 		{ Array.isArray(event_data.arguments) && event_data.arguments.length > 0 ?
 			<div class="table-wrapper">
@@ -338,6 +352,14 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 				</table>
 			</div>
 		: <></> }
+		{Array.isArray(event_data.examples) && event_data.examples.length > 0 ?
+			<details>
+				<summary>{ `${class_name} "${event_data.name}"` } Event Examples</summary>
+				{event_data.examples.map(function(example, index) {
+					return GetEventExample(class_name, event_data, example)
+				})}
+			</details>
+		: <></>}
 		{event_data.relations ?
 			<span className={"relations"}>
 				{"See also "}
@@ -582,6 +604,22 @@ export const StaticFunctionsDeclaration = ({ type, name }) => {
 			</>
 		}
 	</>);
+};
+
+<!-- Block of Examples -->
+export const ExamplesDeclaration = ({ type, name }) => {
+	const class_data = GetClassData(type, name);
+	return <>
+		{ class_data.static_functions && class_data.static_functions.map((value) =>
+			value.examples && value.examples.map((example) => GetGenericExample(example, `${ name }.${ value.name }`))
+		)}
+		{ class_data.functions && class_data.functions.map((value) =>
+			value.examples && value.examples.map((example) => GetGenericExample(example, `my_${ name.toLowerCase() }:${ value.name }`))
+		)}
+		{ class_data.events && class_data.events.map((value) =>
+			value.examples && value.examples.map((example) => GetEventExample(name, class_data, example, `${ name } "${ value.name }" Event`))
+		)}
+	</>;
 };
 
 <!-- Block of Events -->

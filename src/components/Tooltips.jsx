@@ -2,7 +2,7 @@ import React from 'react';
 import CodeBlock from '@theme/CodeBlock';
 
 import { EnumDeclaration } from '@site/src/components/EnumDeclaration';
-import { GetFunctionExample, GetStaticFunctionExample, GetEventExample, GetParametersList, FunctionParametersDeclaration } from '@site/src/components/ClassBuilder.mdx';
+import { GetFunctionSignature, GetStaticFunctionSignature, GetEventSignature, GetParametersList, FunctionParametersDeclaration } from '@site/src/components/ClassBuilder.mdx';
 
 
 export const AuthorityTooltip = ({ img, title, description }) => (
@@ -43,19 +43,19 @@ export const StructToolTip = ({ struct_name, description }) => (
 
 export const EventToolTip = ({ class_name, event_data }) => (
 	<CodeBlock className="language-lua">
-		{ GetEventExample(class_name, event_data) }
+		{ GetEventSignature(class_name, event_data) }
 	</CodeBlock>
 );
 
 export const StaticFunctionToolTip = ({ class_name, function_data }) => (
 	<CodeBlock className="language-lua">
-		{ GetStaticFunctionExample(class_name, function_data) }
+		{ GetStaticFunctionSignature(class_name, function_data) }
 	</CodeBlock>
 );
 
 export const FunctionToolTip = ({ class_name, function_data }) => (
 	<CodeBlock className="language-lua">
-		{ GetFunctionExample(class_name, function_data) }
+		{ GetFunctionSignature(class_name, function_data) }
 	</CodeBlock>
 );
 
