@@ -255,14 +255,13 @@ blockquote {
 
 
 /* First items / Categories Sidebar */
-
-.menu__link:not([href]) {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+.theme-doc-sidebar-item-category-level-1 >
+.menu__list-item-collapsible:first-child {
   color: #888;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 90%;
+  font-size: .85rem;
+  pointer-events: none;
 }
 
 .menu__link {
@@ -518,12 +517,16 @@ pre {
 	tab-size: 4 !important;
 }
 
+.language-folder-structure
+.token-line,
 .language-nanos-console
 .token-line {
 	margin-left: 0px;
 	padding-left: 0px;
 }
 
+.language-folder-structure
+.token-line::marker,
 .language-nanos-console
 .token-line::marker {
 	content: "";

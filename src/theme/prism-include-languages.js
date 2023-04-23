@@ -16,6 +16,7 @@ export default function prismIncludeLanguages(PrismObject) {
     require(`prismjs/components/prism-${lang}`);
   });
 
+  require('./folder-structure');
   require('./nanos-console');
 
   delete globalThis.Prism;

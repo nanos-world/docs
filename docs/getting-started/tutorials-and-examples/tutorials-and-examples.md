@@ -26,13 +26,6 @@ import { CardLink } from '@site/docs/components/_nanos.mdx';
 />
 
 <CardLink
-	title="Chat Colors"
-	description="How to customize chat messages."
-	image_src="/img/docs/tutorials/chat-colors.webp"
-	href="getting-started/tutorials-and-examples/chat-colors"
-/>
-
-<CardLink
 	title="Doors"
 	description="How to create a simple and automatic door when Characters move in."
 	image_src="/img/docs/tutorials/doors.webp"

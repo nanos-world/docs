@@ -16,7 +16,7 @@ In nanos world it is possible to add a customized and dynamic Loading Screen to 
 
 For that, you will need to create a new Package of type [loading-screen](#package-types), and add your HTML/CSS/JS files into the Package's root folder. Your primary HTML file should be called `index.html`. It will look like that:
 
-```text
+```folder-structure
 Packages/
 └── my-loading-screen/
     ├── Package.toml
@@ -41,9 +41,15 @@ To be able to display dynamic information in the screen, you can listen to the E
 | **`progress_total`** | Max progress value |
 | **`current_stage`** | The current stage of the load \(`loading`, `downloading`\) |
 
+```javascript title="Packages/my-loading-screen/index.js"
+Events.Subscribe("UpdateScreen", function(message, message_secondary, progress_small, progress_small_total, progress, progress_total, current_stage) {
+    // Update your HTML here
+});
+```
+
 :::tip
 
-**TIP**: You can use **`progress`** and **`progress_total`** for filling up the main loading bar, and **`progress_small`** for a small/sub loading bar.
+You can use **`progress`** and **`progress_total`** for filling up the main loading bar, and **`progress_small`** for a small/sub loading bar.
 
 :::
 
@@ -53,11 +59,6 @@ Always use `progress / progress_total` for getting the current `%` percentage, a
 
 :::
 
-```javascript title="Packages/my-loading-screen/index.js"
-Events.Subscribe("UpdateScreen", function(message, message_secondary, progress_small, progress_small_total, progress, progress_total, current_stage) {
-    // Update your HTML here
-});
-```
 
 ### Player Information
 
@@ -79,7 +80,7 @@ var LoadingScreen = {
 
 It is possible to turn off the built-in menu music by calling an event from Loading Screen JS:
 
-```javascript
+```javascript title="Packages/my-loading-screen/index.js"
 Events.Call("StopMenuMusic")
 ```
 
@@ -88,10 +89,9 @@ Events.Call("StopMenuMusic")
 
 After creating your loading-screen package, you will need to configure your server to load it in your [Config.toml](/core-concepts/server-manual/server-configuration.md#server-configuration-file). Just set the setting `loading_screen` to your Package's folder name.
 
-```toml
+```toml title="Server/Config.toml"
 # loading-screen package to load (the loading screen will be displayed when players join your server)
 loading_screen = "my-loading-screen"
 ```
 
-
-
+Or start it with `--loading_screen "my-loading-screen"`.
