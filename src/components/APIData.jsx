@@ -137,6 +137,7 @@ import TableDataStable from '@site/src/api/Stable/StandardLibraries/table.json';
 import MathDataStable from '@site/src/api/Stable/StandardLibraries/math.json';
 
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import EnumsData from '@site/src/api/Enums.json';
 
 const APIData = {
 	Stable: {
@@ -287,8 +288,79 @@ const APIData = {
 	}
 };
 
+function AddUsedEnum(type, table, _classKey, _classType, name) {
+	let _enum = EnumsData[type];
+
+	if (!_enum)
+		return;
+
+	if (!_enum.relations)
+		_enum.relations = {};
+
+	if (!_enum.relations.etc)
+		_enum.relations.etc = [];
+
+	let url;
+	let base_url;
+	let label;
+
+	if (_classType == "Class")
+		base_url = "/docs/next/scripting-reference/classes";
+	else if (_classType == "StaticClass")
+		base_url = "/docs/next/scripting-reference/static-classes";
+
+	if (table == "functions")
+	{
+		url = `${base_url}/${_classKey.toLowerCase()}#function-${name.toLowerCase()}`;
+		label = `${_classKey}.${name}`;
+	}
+	else if (table == "static_functions")
+	{
+		url = `${base_url}/${_classKey.toLowerCase()}#static-function-${name.toLowerCase()}`;
+		label = `${_classKey}.${name}`;
+	}
+	else if (table == "events")
+	{
+		url = `${base_url}/${_classKey.toLowerCase()}#event-${name.toLowerCase()}`;
+		label = `${_classKey} ${name} Event`;
+	}
+	else if (table == "constructors")
+	{
+		url = `${base_url}/${_classKey.toLowerCase()}#constructor-${name.toLowerCase()}`;
+		label = `${_classKey} ${name}`;
+	}
+
+	_enum.relations.etc.push({ url, label });
+}
+
+function CheckUsedEnum(func, name, table, _classKey, _classType) {
+	if (func.parameters)
+	{
+		for (const parameterKey in func.parameters) {
+			const parameter = func.parameters[parameterKey];
+			AddUsedEnum(parameter.type, table, _classKey, _classType, name);
+		}
+	}
+
+	if (func.arguments)
+	{
+		for (const argumentKey in func.arguments) {
+			const argument = func.arguments[argumentKey];
+			AddUsedEnum(argument.type, table, _classKey, _classType, name);
+		}
+	}
+
+	if (func.return)
+	{
+		for (const returnKey in func.return) {
+			const ret = func.return[returnKey];
+			AddUsedEnum(ret.type, table, _classKey, _classType, name);
+		}
+	}
+}
+
 // Finds relations automatically
-function FindsGetSetRelationsAutomatically(functions, table) {
+function FindsGetSetRelationsAutomatically(functions, table, _versionKey, _classKey, _classType) {
 	// TODO: This algorithm is O(n²) BOOM
 	// Which doesn't matter as the page build is static, I guess
 	for (const functionKey in functions) {
@@ -296,6 +368,10 @@ function FindsGetSetRelationsAutomatically(functions, table) {
 
 		const isGetter = _function.name.startsWith("Get")
 		const isSetter = _function.name.startsWith("Set");
+
+		// Only gets enum once
+		if (_versionKey == "BleedingEdge")
+			CheckUsedEnum(_function, _function.name, table, _classKey, _classType);
 
 		if (isSetter || isGetter) {
 			const otherName = _function.name.replace(isGetter ? 'G' : 'S', isGetter ? 'S' : 'G');
@@ -319,15 +395,33 @@ function FindsGetSetRelationsAutomatically(functions, table) {
 }
 
 // Sort and Process a Class
-function ProcessClass(_class) {
+function ProcessClass(_class, _versionKey, _classKey, _classType) {
 	if (_class.functions) {
 		_class.functions.sort((a, b) => { return a.name > b.name; });
-		FindsGetSetRelationsAutomatically(_class.functions, "functions");
+		FindsGetSetRelationsAutomatically(_class.functions, "functions", _versionKey, _classKey, _classType);
 	}
 
 	if (_class.static_functions) {
 		_class.static_functions.sort((a, b) => { return a.name > b.name; });
-		FindsGetSetRelationsAutomatically(_class.static_functions, "static_functions");
+		FindsGetSetRelationsAutomatically(_class.static_functions, "static_functions", _versionKey, _classKey, _classType);
+	}
+
+	// Only gets enum once
+	if (_versionKey == "BleedingEdge")
+	{
+		// Check for constructors
+		if (_class.constructors)
+		{
+			for (const constructorKey in _class.constructors)
+				CheckUsedEnum(_class.constructors[constructorKey], _class.constructors[constructorKey].description, "constructors", _classKey, _classType);
+		}
+
+		// Check for events
+		if (_class.events)
+		{
+			for (const eventKey in _class.events)
+				CheckUsedEnum(_class.events[eventKey], _class.events[eventKey].name, "events", _classKey, _classType);
+		}
 	}
 
 	if (_class.events)
@@ -342,12 +436,12 @@ function SortClasses() {
 	for (const versionKey in APIData) {
 		// Class
 		for (const classKey in APIData[versionKey].Class) {
-			ProcessClass(APIData[versionKey].Class[classKey]);
+			ProcessClass(APIData[versionKey].Class[classKey], versionKey, classKey, "Class");
 		}
 
 		// Static Class
 		for (const staticClassKey in APIData[versionKey].StaticClass) {
-			ProcessClass(APIData[versionKey].StaticClass[staticClassKey]);
+			ProcessClass(APIData[versionKey].StaticClass[staticClassKey], versionKey, staticClassKey, "StaticClass");
 		}
 	}
 }

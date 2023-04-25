@@ -9,7 +9,7 @@ List of Tutorials, Snippets and Examples to create Packages and game-modes for n
 
 import { CardLink } from '@site/docs/components/_nanos.mdx';
 
-<div class="card-links">
+<div className="card-links">
 
 <CardLink
 	title="Basic HUD (Canvas)"

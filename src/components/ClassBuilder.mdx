@@ -27,7 +27,7 @@ export const AssetPaths = {
 }
 
 <!-- Gets an Element by it's string type -->
-export function GetElementByType(type) {
+export function GetElementByType(type, index) {
 	const is_optional = type.endsWith("?");
 	if (is_optional)
 		type = type.slice(0, -1);
@@ -45,22 +45,22 @@ export function GetElementByType(type) {
 		Structs[type] ? Structs[type] : null;
 	if (!TypeElement)
 		return <Enums>{type}</Enums>;
-	return <>
-			{ is_array ? <><BasicType.Table /> of </> : "" }
-			{ is_variadic ? <><BasicType.VarArgs /> of </> : "" }
-			<TypeElement />
-			{ is_optional ? <> or <BasicType.Nil /></> : "" }
-		</>;
+	return <span key={`${type}-${index}`}>
+		{ is_array ? <><BasicType.Table /> of </> : "" }
+		{ is_variadic ? <><BasicType.VarArgs /> of </> : "" }
+		<TypeElement />
+		{ is_optional ? <> or <BasicType.Nil /></> : "" }
+	</span>;
 }
 
 <!-- Splits a value if it has | -->
 export function SplitTypesByOr(types) {
-	return types.split("|").map((type) => GetElementByType(type)).reduce((prev, next) => [prev, " or ", next])
+	return types.split("|").map((type, index) => GetElementByType(type, index)).reduce((prev, next) => [prev, " or ", next])
 }
 
 <!-- Gets a list of Returns elements -->
 export function GetReturnList(return_list) {
-	return return_list.map((return_data) => SplitTypesByOr(return_data.type)).reduce((prev, next) => [prev, <CommaSeparator />, next]);
+	return return_list.map((return_data) => SplitTypesByOr(return_data.type)).reduce((prev, next) => [prev, ", ", next]);
 }
 
 export function GetReturnTableDescriptionList(return_data) {
@@ -130,17 +130,22 @@ export function GetReturnPart(function_data) {
 	return `local${function_data.return.map((value, i) => " ret_0" + (i + 1))} = `;
 }
 
+<!-- Gets Multiline Code or a single line -->
+export function GetCodeExampleParsed(content) {
+	return (Array.isArray(content) ? content.join("\n") : content).replaceAll("    ", "\t");
+}
+
 <!-- Generates Generic Example Codeblock -->
 export function GetGenericExample(example, context) {
-	return <CodeBlock className="language-lua api-examples" title={ `${context ? `(${context}) ` : ""}${example.title}` }>
-		{ example.content }
+	return <CodeBlock key={example.title} className="language-lua api-examples" title={ `${context ? `(${context}) ` : ""}${example.title}` }>
+		{ GetCodeExampleParsed(example.content) }
 		{ example.output ? `\n-- Outputs \"${ example.output }\"` : "" }
 	</CodeBlock>;
 }
 
 <!-- Generates Event Example Codeblock -->
 export function GetEventExample(class_name, event_data, example, context) {
-	return GetGenericExample({ content: GetEventSignature(class_name, event_data, `\t${example.content.replaceAll('\n', "\n\t")}`), title: example.title }, context);
+	return GetGenericExample({ content: GetEventSignature(class_name, event_data, `\t${ GetCodeExampleParsed(example.content).replaceAll('\n', "\n\t") }`), title: example.title }, context);
 }
 
 <!-- Generates Function Signature Codeblock -->
@@ -163,10 +168,6 @@ export const AuthorityAdmonition = ({ authority, is_static }) => (
 	<Admonition type="info" icon="💂" title="Authority">{ is_static ? AuthorityLabelsStatic[authority] : AuthorityLabels[authority] }</Admonition>
 );
 
-export const CommaSeparator = () => (
-	<span className="comma-separator"></span>
-)
-
 export const TypeToAPIFolder = { StandardLibrary: "StandardLibraries/", Struct: "Structs/", Class: "Classes/", StaticClass: "StaticClasses/", UtilityClass: "UtilityClasses/", UtilityClasses: "UtilityClass/", Enums: "" };
 
 <!-- API Source URL -->
@@ -186,7 +187,7 @@ export const OpenSourceAdmonition = ({ url }) => (
 <!-- Inheritance Admonition -->
 export const InheritanceAdmonition = ({ inheritance }) => (
 	<Admonition type="info" icon="👪" title="Inheritance">
-		This class shares methods and events from { inheritance.map(inherit => GetElementByType(inherit)).reduce((prev, next) => [prev, <CommaSeparator />, next]) }.
+		This class shares methods and events from { inheritance.map((inherit, index) => GetElementByType(inherit, index)).reduce((prev, next) => [prev, ", ", next]) }.
 	</Admonition>
 );
 
@@ -222,17 +223,17 @@ export function GetNative(is_native) {
 };
 
 export function GetRelations(relations) {
-	const functions = relations.functions ? relations.functions.map(function(value) {
-			return <a href={`#function-${value.toLowerCase()}`}>{value}</a>;
+	const functions = relations.functions ? relations.functions.map(function(value, index) {
+			return <Link key={ `${value.name}-${index}` } to={`#function-${value.toLowerCase()}`}>{value}</Link>;
 		}) : [];
-	const static_functions = relations.static_functions ? relations.static_functions.map(function(value) {
-			return <a href={`#static-function-${value.toLowerCase()}`}>{value}</a>;
+	const static_functions = relations.static_functions ? relations.static_functions.map(function(value, index) {
+			return <Link key={ `${value.name}-${index}` } to={`#static-function-${value.toLowerCase()}`}>{value}</Link>;
 		}) : [];
-	const events = relations.events ? relations.events.map(function(value) {
-			return <a href={`#event-${value.toLowerCase()}`}>{value}</a>;
+	const events = relations.events ? relations.events.map(function(value, index) {
+			return <Link key={ `${value.name}-${index}` } to={`#event-${value.toLowerCase()}`}>{value}</Link>;
 		}) : [];
-	const etc = relations.etc ? relations.etc.map(function(value) {
-			return <a href={`${value.url}`}>{value.label}</a>;
+	const etc = relations.etc ? relations.etc.map(function(value, index) {
+			return <Link key={ `${value.name}-${index}` } to={`${value.url}`}>{value.label}</Link>;
 		}) : [];
 	return [...functions, ...static_functions, ...events, ...etc].reduce((prev, next) => [prev, ", ", next]);
 };
@@ -241,7 +242,7 @@ export function GetRelations(relations) {
 export const FunctionParametersDeclaration = ({ parameters, include_default = true }) => (
 	<>
 		{Array.isArray(parameters) && parameters.length > 0 ?
-			<div class="table-wrapper">
+			<div className="table-wrapper">
 				<table>
 					<thead>
 						<tr>
@@ -252,8 +253,8 @@ export const FunctionParametersDeclaration = ({ parameters, include_default = tr
 						</tr>
 					</thead>
 					<tbody>
-						{parameters.map(function(value) {
-							return <tr>
+						{parameters.map(function(value, index) {
+							return <tr key={ `${value.name}-${index}` }>
 								<td>{ SplitTypesByOr(value.type) }</td>
 								<td><code>{ GetParameterName(value) }</code></td>
 								{ include_default ? <td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{value.default}</code> : "" }</td> : null }
@@ -281,7 +282,7 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 		<blockquote>
 			<span dangerouslySetInnerHTML={{ __html: function_data.description_long ? function_data.description_long : function_data.description }}></span>
 		</blockquote>
-		<p class="function-return">
+		<p className="function-return">
 			{ !function_data.return ? "" :
 				<>
 					<>— Returns </>
@@ -297,11 +298,9 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 		<FunctionParametersDeclaration parameters={function_data.parameters} />
 		{Array.isArray(function_data.examples) && function_data.examples.length > 0 ?
 			<details>
-				<summary>{ is_static ? `${class_name}.${function_data.name}` : `my_${class_name.toLowerCase()}:${function_data.name}` } Examples</summary>
+				<summary>{ `${class_name}.${function_data.name} Examples` }</summary>
 				{function_data.examples.map(function(example, index) {
-					return <>
-						{ GetGenericExample(example) }
-					</>
+					return GetGenericExample(example)
 				})}
 			</details>
 		: <></>}
@@ -331,7 +330,7 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 			{ GetEventSignature(class_name, event_data) }
 		</CodeBlock>
 		{ Array.isArray(event_data.arguments) && event_data.arguments.length > 0 ?
-			<div class="table-wrapper">
+			<div className="table-wrapper">
 				<table>
 					<thead>
 						<tr>
@@ -341,8 +340,8 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 						</tr>
 					</thead>
 					<tbody>
-						{event_data.arguments.map(function(value) {
-							return <tr>
+						{event_data.arguments.map(function(value, index) {
+							return <tr key={ `${value.name}-${index}` }>
 								<td>{ SplitTypesByOr(value.type) }</td>
 								<td><code>{ value.name }</code></td>
 								<td dangerouslySetInnerHTML={{ __html: value.description }} style={{ wordBreak: "break-word" }}></td>
@@ -392,7 +391,7 @@ export const FunctionNameDeclaration = ({ class_name, function_data, base_class 
 
 export const InlineFunctionNameDeclaration = ({ function_parameters }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<InlineFunctionToolTip function_parameters={function_parameters} />}>
-		<Link className={"hover-link"}>with this format</Link>
+		<span className={"hover-link"}>with this format</span>
 	</Tippy>
 );
 
@@ -408,7 +407,7 @@ export const EventNameDeclaration = ({ class_name, event_data, base_class }) => 
 
 <!-- Static Function List Declaration -->
 export const StaticFunctionListDeclaration = ({ class_name, functions_list, base_class }) => (
-	<div class="table-wrapper">
+	<div className="table-wrapper">
 		<table>
 			<thead>
 				<tr>
@@ -419,8 +418,8 @@ export const StaticFunctionListDeclaration = ({ class_name, functions_list, base
 				</tr>
 			</thead>
 			<tbody>
-				{functions_list.map(function(value) {
-					return <tr>
+				{functions_list.map(function(value, index) {
+					return <tr key={ `${value.name}-${index}` }>
 						<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 						<td>{ value.return ? GetReturnList(value.return) : "" }</td>
 						<td><StaticFunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
@@ -434,7 +433,7 @@ export const StaticFunctionListDeclaration = ({ class_name, functions_list, base
 
 <!-- Function List Declaration -->
 export const FunctionListDeclaration = ({ class_name, functions_list, base_class }) => (
-	<div class="table-wrapper">
+	<div className="table-wrapper">
 		<table>
 			<thead>
 				<tr>
@@ -445,8 +444,8 @@ export const FunctionListDeclaration = ({ class_name, functions_list, base_class
 				</tr>
 			</thead>
 			<tbody>
-				{functions_list.map(function(value) {
-					return <tr>
+				{functions_list.map(function(value, index) {
+					return <tr key={ `${value.name}-${index}` }>
 						<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 						<td>{ value.return ? GetReturnList(value.return) : "" }</td>
 						<td><FunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
@@ -462,7 +461,7 @@ export const FunctionListDeclaration = ({ class_name, functions_list, base_class
 export const EventListDeclaration = ({ type, name, inherited_class_name, base_class }) => {
 	const class_data = GetClassData(type, name);
 	return (
-		<div class="table-wrapper">
+		<div className="table-wrapper">
 			<table>
 				<thead>
 					<tr>
@@ -472,8 +471,8 @@ export const EventListDeclaration = ({ type, name, inherited_class_name, base_cl
 					</tr>
 				</thead>
 				<tbody>
-					{class_data.events.map(function(value) {
-						return <tr>
+					{class_data.events.map(function(value, index) {
+						return <tr key={ `${value.name}-${index}` }>
 							<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 							<td><EventNameDeclaration class_name={ inherited_class_name } base_class={ base_class } event_data={ value } /></td>
 							<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
@@ -495,7 +494,7 @@ export const HeaderDeclaration = ({ type, name, image, is_static, open_source_ur
 	const class_data = GetClassData(type, name);
 	return (<>
 		<p dangerouslySetInnerHTML={{ __html: class_data.description }}></p>
-		{ image ? <p><img src={image} /><hr /></p> : "" }
+		{ image ? <><p><img src={image} /></p><hr /></> : "" }
 		{ is_static ? <StaticClassAdmonition /> : "" }
 		{ class_data.authority ? <AuthorityAdmonition authority={class_data.authority} is_static={is_static} /> : "" }
 		{ class_data.inheritance ? <InheritanceAdmonition inheritance={class_data.inheritance} /> : "" }
@@ -514,7 +513,7 @@ export const ConstructorDeclaration = ({ type, name }) => {
 			<CodeBlock className="language-lua">
 				{ GetConstructorExample(class_data, index) }
 			</CodeBlock>
-			<div class="table-wrapper">
+			<div className="table-wrapper">
 				<table>
 					<thead>
 						<tr>
@@ -525,8 +524,8 @@ export const ConstructorDeclaration = ({ type, name }) => {
 						</tr>
 					</thead>
 					<tbody>
-						{ constructor.parameters.map(function(value) {
-							return <tr>
+						{ constructor.parameters.map(function(value, index) {
+							return <tr key={ `${value.name}-${index}` }>
 								<td>{ SplitTypesByOr(value.type) }</td>
 								<td><b><code>{ value.name }</code></b></td>
 								<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : "" }</td>
@@ -582,7 +581,7 @@ export const FunctionsDeclaration = ({ type, name }) => {
 			class_data.functions == null ? <i>This entity doesn't have own functions.</i> :
 			<>
 				<FunctionListDeclaration class_name={class_data.name} functions_list={class_data.functions} />
-				{ class_data.functions.map((value) => <FunctionDeclaration function_data={value} class_name={class_data.name} />) }
+				{ class_data.functions.map((value, index) => <FunctionDeclaration key={ `${value.name}-${index}` } function_data={value} class_name={class_data.name} />) }
 			</>
 		}
 	</>);
@@ -600,7 +599,7 @@ export const StaticFunctionsDeclaration = ({ type, name }) => {
 			class_data.static_functions == null ? <i>This entity doesn't have own static functions.</i> :
 			<>
 				<StaticFunctionListDeclaration class_name={class_data.name} functions_list={class_data.static_functions} />
-				{ class_data.static_functions.map((value) => <FunctionDeclaration function_data={value} is_static class_name={class_data.name} />) }
+				{ class_data.static_functions.map((value, index) => <FunctionDeclaration key={ `${value.name}-${index}` } function_data={value} is_static class_name={class_data.name} />) }
 			</>
 		}
 	</>);
@@ -614,7 +613,7 @@ export const ExamplesDeclaration = ({ type, name }) => {
 			value.examples && value.examples.map((example) => GetGenericExample(example, `${ name }.${ value.name }`))
 		)}
 		{ class_data.functions && class_data.functions.map((value) =>
-			value.examples && value.examples.map((example) => GetGenericExample(example, `my_${ name.toLowerCase() }:${ value.name }`))
+			value.examples && value.examples.map((example) => GetGenericExample(example, `${ name }.${ value.name }`))
 		)}
 		{ class_data.events && class_data.events.map((value) =>
 			value.examples && value.examples.map((example) => GetEventExample(name, class_data, example, `${ name } "${ value.name }" Event`))
@@ -638,7 +637,7 @@ export const EventsDeclaration = ({ type, name }) => {
 			class_data.events == null ? <i>This entity doesn't have own events.</i> :
 			<>
 				<EventListDeclaration type={type} name={class_data.name} inherited_class_name={class_data.name} />
-				{ class_data.events.map((value) => <EventDeclaration event_data={value} class_name={class_data.name} />) }
+				{ class_data.events.map((value, index) => <EventDeclaration key={ `${value.name}-${index}` } event_data={value} class_name={class_data.name} />) }
 			</>
 		}
 	</>);
@@ -650,7 +649,7 @@ export const PropertiesDeclaration = ({ type, name }) => {
 	return (<>
 		{
 			class_data.properties == null ? <i>This entity doesn't have properties.</i> :
-			<div class="table-wrapper">
+			<div className="table-wrapper">
 				<table>
 					<thead>
 						<tr>
@@ -660,8 +659,8 @@ export const PropertiesDeclaration = ({ type, name }) => {
 						</tr>
 					</thead>
 					<tbody>
-						{class_data.properties.map(function(value) {
-							return <tr>
+						{class_data.properties.map(function(value, index) {
+							return <tr key={ `${value.name}-${index}` }>
 								<td>{ GetElementByType(value.type) }</td>
 								<td><b><code>{ value.name }</code></b></td>
 								<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>

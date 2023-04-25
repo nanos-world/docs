@@ -8,7 +8,7 @@ import { GetFunctionSignature, GetStaticFunctionSignature, GetEventSignature, Ge
 export const AuthorityTooltip = ({ img, title, description }) => (
 	<>
 		<h3>
-			<img src={img} title={title} style={{ width: "24px", "vertical-align": "middle", "margin-right": "5px" }} /> {title}
+			<img src={img} title={title} style={{ width: "24px", verticalAlign: "middle", marginRight: "5px" }} /> {title}
 		</h3>
 		<span dangerouslySetInnerHTML={{ __html: description }}></span>
 	</>
