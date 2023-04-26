@@ -360,11 +360,11 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 			</details>
 		: <></>}
 		{event_data.relations ?
-			<span className={"relations"}>
+			<p className={"relations"}>
 				{"See also "}
 				{ GetRelations(event_data.relations) }
 				{"."}
-			</span>
+			</p>
 		: <></>}
 	</>
 );
