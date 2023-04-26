@@ -1,34 +1,34 @@
 // Bleeding-Edge Imports
-import EntityData from '@site/src/api/Classes/BaseEntity.json';
-import ActorData from '@site/src/api/Classes/BaseActor.json';
-import PickableData from '@site/src/api/Classes/BasePickable.json';
-import PaintableData from '@site/src/api/Classes/BasePaintable.json';
-import DamageableData from '@site/src/api/Classes/BaseDamageable.json';
+import EntityData from '@site/src/api/.generated/Classes/BaseEntity.json';
+import ActorData from '@site/src/api/.generated/Classes/BaseActor.json';
+import PickableData from '@site/src/api/.generated/Classes/BasePickable.json';
+import PaintableData from '@site/src/api/.generated/Classes/BasePaintable.json';
+import DamageableData from '@site/src/api/.generated/Classes/BaseDamageable.json';
 
-import BillboardData from '@site/src/api/Classes/Billboard.json';
-import BlueprintData from '@site/src/api/Classes/Blueprint.json';
-import CableData from '@site/src/api/Classes/Cable.json';
-import CanvasData from '@site/src/api/Classes/Canvas.json';
-import CharacterData from '@site/src/api/Classes/Character.json';
-import CharacterSimpleData from '@site/src/api/Classes/CharacterSimple.json';
-import DatabaseData from '@site/src/api/Classes/Database.json';
-import DecalData from '@site/src/api/Classes/Decal.json';
-import FileData from '@site/src/api/Classes/File.json';
-import GrenadeData from '@site/src/api/Classes/Grenade.json';
-import LightData from '@site/src/api/Classes/Light.json';
-import MeleeData from '@site/src/api/Classes/Melee.json';
-import ParticleData from '@site/src/api/Classes/Particle.json';
-import PlayerData from '@site/src/api/Classes/Player.json';
-import PropData from '@site/src/api/Classes/Prop.json';
-import SceneCaptureData from '@site/src/api/Classes/SceneCapture.json';
-import StaticMeshData from '@site/src/api/Classes/StaticMesh.json';
-import SoundData from '@site/src/api/Classes/Sound.json';
-import TextRenderData from '@site/src/api/Classes/TextRender.json';
-import TriggerData from '@site/src/api/Classes/Trigger.json';
-import VehicleData from '@site/src/api/Classes/Vehicle.json';
-import WeaponData from '@site/src/api/Classes/Weapon.json';
-import WebUIData from '@site/src/api/Classes/WebUI.json';
-import WidgetData from '@site/src/api/Classes/Widget.json';
+import BillboardData from '@site/src/api/.generated/Classes/Billboard.json';
+import BlueprintData from '@site/src/api/.generated/Classes/Blueprint.json';
+import CableData from '@site/src/api/.generated/Classes/Cable.json';
+import CanvasData from '@site/src/api/.generated/Classes/Canvas.json';
+import CharacterData from '@site/src/api/.generated/Classes/Character.json';
+import CharacterSimpleData from '@site/src/api/.generated/Classes/CharacterSimple.json';
+import DatabaseData from '@site/src/api/.generated/Classes/Database.json';
+import DecalData from '@site/src/api/.generated/Classes/Decal.json';
+import FileData from '@site/src/api/.generated/Classes/File.json';
+import GrenadeData from '@site/src/api/.generated/Classes/Grenade.json';
+import LightData from '@site/src/api/.generated/Classes/Light.json';
+import MeleeData from '@site/src/api/.generated/Classes/Melee.json';
+import ParticleData from '@site/src/api/.generated/Classes/Particle.json';
+import PlayerData from '@site/src/api/.generated/Classes/Player.json';
+import PropData from '@site/src/api/.generated/Classes/Prop.json';
+import SceneCaptureData from '@site/src/api/.generated/Classes/SceneCapture.json';
+import StaticMeshData from '@site/src/api/.generated/Classes/StaticMesh.json';
+import SoundData from '@site/src/api/.generated/Classes/Sound.json';
+import TextRenderData from '@site/src/api/.generated/Classes/TextRender.json';
+import TriggerData from '@site/src/api/.generated/Classes/Trigger.json';
+import VehicleData from '@site/src/api/.generated/Classes/Vehicle.json';
+import WeaponData from '@site/src/api/.generated/Classes/Weapon.json';
+import WebUIData from '@site/src/api/.generated/Classes/WebUI.json';
+import WidgetData from '@site/src/api/.generated/Classes/Widget.json';
 
 import ColorData from '@site/src/api/Structs/Color.json';
 import MatrixData from '@site/src/api/Structs/Matrix.json';
@@ -37,25 +37,25 @@ import QuatData from '@site/src/api/Structs/Quat.json';
 import VectorData from '@site/src/api/Structs/Vector.json';
 import Vector2DData from '@site/src/api/Structs/Vector2D.json';
 
-import AssetsData from '@site/src/api/StaticClasses/Assets.json';
-import ChatData from '@site/src/api/StaticClasses/Chat.json';
-import ClientData from '@site/src/api/StaticClasses/Client.json';
-import ConsoleData from '@site/src/api/StaticClasses/Console.json';
-import DebugData from '@site/src/api/StaticClasses/Debug.json';
-import DiscordData from '@site/src/api/StaticClasses/Discord.json';
-import EventsData from '@site/src/api/StaticClasses/Events.json';
-import HTTPData from '@site/src/api/StaticClasses/HTTP.json';
-import InputData from '@site/src/api/StaticClasses/Input.json';
-import LevelData from '@site/src/api/StaticClasses/Level.json';
-import NavigationData from '@site/src/api/StaticClasses/Navigation.json';
-import PackageData from '@site/src/api/StaticClasses/Package.json';
-import PostProcessData from '@site/src/api/StaticClasses/PostProcess.json';
-import ServerData from '@site/src/api/StaticClasses/Server.json';
-import SkyData from '@site/src/api/StaticClasses/Sky.json';
-import SteamData from '@site/src/api/StaticClasses/Steam.json';
-import TimerData from '@site/src/api/StaticClasses/Timer.json';
-import TraceData from '@site/src/api/StaticClasses/Trace.json';
-import ViewportData from '@site/src/api/StaticClasses/Viewport.json';
+import AssetsData from '@site/src/api/.generated/StaticClasses/Assets.json';
+import ChatData from '@site/src/api/.generated/StaticClasses/Chat.json';
+import ClientData from '@site/src/api/.generated/StaticClasses/Client.json';
+import ConsoleData from '@site/src/api/.generated/StaticClasses/Console.json';
+import DebugData from '@site/src/api/.generated/StaticClasses/Debug.json';
+import DiscordData from '@site/src/api/.generated/StaticClasses/Discord.json';
+import EventsData from '@site/src/api/.generated/StaticClasses/Events.json';
+import HTTPData from '@site/src/api/.generated/StaticClasses/HTTP.json';
+import InputData from '@site/src/api/.generated/StaticClasses/Input.json';
+import LevelData from '@site/src/api/.generated/StaticClasses/Level.json';
+import NavigationData from '@site/src/api/.generated/StaticClasses/Navigation.json';
+import PackageData from '@site/src/api/.generated/StaticClasses/Package.json';
+import PostProcessData from '@site/src/api/.generated/StaticClasses/PostProcess.json';
+import ServerData from '@site/src/api/.generated/StaticClasses/Server.json';
+import SkyData from '@site/src/api/.generated/StaticClasses/Sky.json';
+import SteamData from '@site/src/api/.generated/StaticClasses/Steam.json';
+import TimerData from '@site/src/api/.generated/StaticClasses/Timer.json';
+import TraceData from '@site/src/api/.generated/StaticClasses/Trace.json';
+import ViewportData from '@site/src/api/.generated/StaticClasses/Viewport.json';
 
 import JSONData from '@site/src/api/UtilityClasses/JSON.json';
 import NanosMathData from '@site/src/api/UtilityClasses/NanosMath.json';
@@ -68,36 +68,36 @@ import MathData from '@site/src/api/StandardLibraries/math.json';
 
 
 // Stable Imports
-import EntityDataStable from '@site/src/api/Stable/Classes/BaseEntity.json';
-import ActorDataStable from '@site/src/api/Stable/Classes/BaseActor.json';
-import PickableDataStable from '@site/src/api/Stable/Classes/BasePickable.json';
-import PaintableDataStable from '@site/src/api/Stable/Classes/BasePaintable.json';
-import DamageableDataStable from '@site/src/api/Stable/Classes/BaseDamageable.json';
+import EntityDataStable from '@site/src/api/.generated/Stable/Classes/BaseEntity.json';
+import ActorDataStable from '@site/src/api/.generated/Stable/Classes/BaseActor.json';
+import PickableDataStable from '@site/src/api/.generated/Stable/Classes/BasePickable.json';
+import PaintableDataStable from '@site/src/api/.generated/Stable/Classes/BasePaintable.json';
+import DamageableDataStable from '@site/src/api/.generated/Stable/Classes/BaseDamageable.json';
 
-import BillboardDataStable from '@site/src/api/Stable/Classes/Billboard.json';
-import BlueprintDataStable from '@site/src/api/Stable/Classes/Blueprint.json';
-import CableDataStable from '@site/src/api/Stable/Classes/Cable.json';
-import CanvasDataStable from '@site/src/api/Stable/Classes/Canvas.json';
-import CharacterDataStable from '@site/src/api/Stable/Classes/Character.json';
-import CharacterSimpleDataStable from '@site/src/api/Stable/Classes/CharacterSimple.json';
-import DatabaseDataStable from '@site/src/api/Stable/Classes/Database.json';
-import DecalDataStable from '@site/src/api/Stable/Classes/Decal.json';
-import FileDataStable from '@site/src/api/Stable/Classes/File.json';
-import GrenadeDataStable from '@site/src/api/Stable/Classes/Grenade.json';
-import LightDataStable from '@site/src/api/Stable/Classes/Light.json';
-import MeleeDataStable from '@site/src/api/Stable/Classes/Melee.json';
-import ParticleDataStable from '@site/src/api/Stable/Classes/Particle.json';
-import PlayerDataStable from '@site/src/api/Stable/Classes/Player.json';
-import PropDataStable from '@site/src/api/Stable/Classes/Prop.json';
-import SceneCaptureDataStable from '@site/src/api/Stable/Classes/SceneCapture.json';
-import StaticMeshDataStable from '@site/src/api/Stable/Classes/StaticMesh.json';
-import SoundDataStable from '@site/src/api/Stable/Classes/Sound.json';
-import TextRenderDataStable from '@site/src/api/Stable/Classes/TextRender.json';
-import TriggerDataStable from '@site/src/api/Stable/Classes/Trigger.json';
-import VehicleDataStable from '@site/src/api/Stable/Classes/Vehicle.json';
-import WeaponDataStable from '@site/src/api/Stable/Classes/Weapon.json';
-import WebUIDataStable from '@site/src/api/Stable/Classes/WebUI.json';
-import WidgetDataStable from '@site/src/api/Stable/Classes/Widget.json';
+import BillboardDataStable from '@site/src/api/.generated/Stable/Classes/Billboard.json';
+import BlueprintDataStable from '@site/src/api/.generated/Stable/Classes/Blueprint.json';
+import CableDataStable from '@site/src/api/.generated/Stable/Classes/Cable.json';
+import CanvasDataStable from '@site/src/api/.generated/Stable/Classes/Canvas.json';
+import CharacterDataStable from '@site/src/api/.generated/Stable/Classes/Character.json';
+import CharacterSimpleDataStable from '@site/src/api/.generated/Stable/Classes/CharacterSimple.json';
+import DatabaseDataStable from '@site/src/api/.generated/Stable/Classes/Database.json';
+import DecalDataStable from '@site/src/api/.generated/Stable/Classes/Decal.json';
+import FileDataStable from '@site/src/api/.generated/Stable/Classes/File.json';
+import GrenadeDataStable from '@site/src/api/.generated/Stable/Classes/Grenade.json';
+import LightDataStable from '@site/src/api/.generated/Stable/Classes/Light.json';
+import MeleeDataStable from '@site/src/api/.generated/Stable/Classes/Melee.json';
+import ParticleDataStable from '@site/src/api/.generated/Stable/Classes/Particle.json';
+import PlayerDataStable from '@site/src/api/.generated/Stable/Classes/Player.json';
+import PropDataStable from '@site/src/api/.generated/Stable/Classes/Prop.json';
+import SceneCaptureDataStable from '@site/src/api/.generated/Stable/Classes/SceneCapture.json';
+import StaticMeshDataStable from '@site/src/api/.generated/Stable/Classes/StaticMesh.json';
+import SoundDataStable from '@site/src/api/.generated/Stable/Classes/Sound.json';
+import TextRenderDataStable from '@site/src/api/.generated/Stable/Classes/TextRender.json';
+import TriggerDataStable from '@site/src/api/.generated/Stable/Classes/Trigger.json';
+import VehicleDataStable from '@site/src/api/.generated/Stable/Classes/Vehicle.json';
+import WeaponDataStable from '@site/src/api/.generated/Stable/Classes/Weapon.json';
+import WebUIDataStable from '@site/src/api/.generated/Stable/Classes/WebUI.json';
+import WidgetDataStable from '@site/src/api/.generated/Stable/Classes/Widget.json';
 
 import ColorDataStable from '@site/src/api/Stable/Structs/Color.json';
 import MatrixDataStable from '@site/src/api/Stable/Structs/Matrix.json';
@@ -106,25 +106,25 @@ import QuatDataStable from '@site/src/api/Stable/Structs/Quat.json';
 import VectorDataStable from '@site/src/api/Stable/Structs/Vector.json';
 import Vector2DDataStable from '@site/src/api/Stable/Structs/Vector2D.json';
 
-import AssetsDataStable from '@site/src/api/Stable/StaticClasses/Assets.json';
-import ChatDataStable from '@site/src/api/Stable/StaticClasses/Chat.json';
-import ClientDataStable from '@site/src/api/Stable/StaticClasses/Client.json';
-import ConsoleDataStable from '@site/src/api/Stable/StaticClasses/Console.json';
-import DebugDataStable from '@site/src/api/Stable/StaticClasses/Debug.json';
-import DiscordDataStable from '@site/src/api/Stable/StaticClasses/Discord.json';
-import EventsDataStable from '@site/src/api/Stable/StaticClasses/Events.json';
-import HTTPDataStable from '@site/src/api/Stable/StaticClasses/HTTP.json';
-import InputDataStable from '@site/src/api/Stable/StaticClasses/Input.json';
-import LevelDataStable from '@site/src/api/Stable/StaticClasses/Level.json';
-import NavigationDataStable from '@site/src/api/Stable/StaticClasses/Navigation.json';
-import PackageDataStable from '@site/src/api/Stable/StaticClasses/Package.json';
-import PostProcessDataStable from '@site/src/api/Stable/StaticClasses/PostProcess.json';
-import ServerDataStable from '@site/src/api/Stable/StaticClasses/Server.json';
-import SkyDataStable from '@site/src/api/Stable/StaticClasses/Sky.json';
-import SteamDataStable from '@site/src/api/Stable/StaticClasses/Steam.json';
-import TimerDataStable from '@site/src/api/Stable/StaticClasses/Timer.json';
-import TraceDataStable from '@site/src/api/Stable/StaticClasses/Trace.json';
-import ViewportDataStable from '@site/src/api/Stable/StaticClasses/Viewport.json';
+import AssetsDataStable from '@site/src/api/.generated/Stable/StaticClasses/Assets.json';
+import ChatDataStable from '@site/src/api/.generated/Stable/StaticClasses/Chat.json';
+import ClientDataStable from '@site/src/api/.generated/Stable/StaticClasses/Client.json';
+import ConsoleDataStable from '@site/src/api/.generated/Stable/StaticClasses/Console.json';
+import DebugDataStable from '@site/src/api/.generated/Stable/StaticClasses/Debug.json';
+import DiscordDataStable from '@site/src/api/.generated/Stable/StaticClasses/Discord.json';
+import EventsDataStable from '@site/src/api/.generated/Stable/StaticClasses/Events.json';
+import HTTPDataStable from '@site/src/api/.generated/Stable/StaticClasses/HTTP.json';
+import InputDataStable from '@site/src/api/.generated/Stable/StaticClasses/Input.json';
+import LevelDataStable from '@site/src/api/.generated/Stable/StaticClasses/Level.json';
+import NavigationDataStable from '@site/src/api/.generated/Stable/StaticClasses/Navigation.json';
+import PackageDataStable from '@site/src/api/.generated/Stable/StaticClasses/Package.json';
+import PostProcessDataStable from '@site/src/api/.generated/Stable/StaticClasses/PostProcess.json';
+import ServerDataStable from '@site/src/api/.generated/Stable/StaticClasses/Server.json';
+import SkyDataStable from '@site/src/api/.generated/Stable/StaticClasses/Sky.json';
+import SteamDataStable from '@site/src/api/.generated/Stable/StaticClasses/Steam.json';
+import TimerDataStable from '@site/src/api/.generated/Stable/StaticClasses/Timer.json';
+import TraceDataStable from '@site/src/api/.generated/Stable/StaticClasses/Trace.json';
+import ViewportDataStable from '@site/src/api/.generated/Stable/StaticClasses/Viewport.json';
 
 import JSONDataStable from '@site/src/api/Stable/UtilityClasses/JSON.json';
 import NanosMathDataStable from '@site/src/api/Stable/UtilityClasses/NanosMath.json';
@@ -136,8 +136,6 @@ import StringDataStable from '@site/src/api/Stable/StandardLibraries/string.json
 import TableDataStable from '@site/src/api/Stable/StandardLibraries/table.json';
 import MathDataStable from '@site/src/api/Stable/StandardLibraries/math.json';
 
-import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
-import EnumsData from '@site/src/api/Enums.json';
 
 const APIData = {
 	Stable: {
@@ -287,165 +285,5 @@ const APIData = {
 		}
 	}
 };
-
-function AddUsedEnum(type, table, _classKey, _classType, name) {
-	let _enum = EnumsData[type];
-
-	if (!_enum)
-		return;
-
-	if (!_enum.relations)
-		_enum.relations = {};
-
-	if (!_enum.relations.etc)
-		_enum.relations.etc = [];
-
-	let url;
-	let base_url;
-	let label;
-
-	if (_classType == "Class")
-		base_url = "/docs/next/scripting-reference/classes";
-	else if (_classType == "StaticClass")
-		base_url = "/docs/next/scripting-reference/static-classes";
-
-	if (table == "functions")
-	{
-		url = `${base_url}/${_classKey.toLowerCase()}#function-${name.toLowerCase()}`;
-		label = `${_classKey}.${name}`;
-	}
-	else if (table == "static_functions")
-	{
-		url = `${base_url}/${_classKey.toLowerCase()}#static-function-${name.toLowerCase()}`;
-		label = `${_classKey}.${name}`;
-	}
-	else if (table == "events")
-	{
-		url = `${base_url}/${_classKey.toLowerCase()}#event-${name.toLowerCase()}`;
-		label = `${_classKey} ${name} Event`;
-	}
-	else if (table == "constructors")
-	{
-		url = `${base_url}/${_classKey.toLowerCase()}#constructor-${name.toLowerCase()}`;
-		label = `${_classKey} ${name}`;
-	}
-
-	_enum.relations.etc.push({ url, label });
-}
-
-function CheckUsedEnum(func, name, table, _classKey, _classType) {
-	if (func.parameters)
-	{
-		for (const parameterKey in func.parameters) {
-			const parameter = func.parameters[parameterKey];
-			AddUsedEnum(parameter.type, table, _classKey, _classType, name);
-		}
-	}
-
-	if (func.arguments)
-	{
-		for (const argumentKey in func.arguments) {
-			const argument = func.arguments[argumentKey];
-			AddUsedEnum(argument.type, table, _classKey, _classType, name);
-		}
-	}
-
-	if (func.return)
-	{
-		for (const returnKey in func.return) {
-			const ret = func.return[returnKey];
-			AddUsedEnum(ret.type, table, _classKey, _classType, name);
-		}
-	}
-}
-
-// Finds relations automatically
-function FindsGetSetRelationsAutomatically(functions, table, _versionKey, _classKey, _classType) {
-	// TODO: This algorithm is O(n²) BOOM
-	// Which doesn't matter as the page build is static, I guess
-	for (const functionKey in functions) {
-		let _function = functions[functionKey];
-
-		const isGetter = _function.name.startsWith("Get")
-		const isSetter = _function.name.startsWith("Set");
-
-		// Only gets enum once
-		if (_versionKey == "BleedingEdge")
-			CheckUsedEnum(_function, _function.name, table, _classKey, _classType);
-
-		if (isSetter || isGetter) {
-			const otherName = _function.name.replace(isGetter ? 'G' : 'S', isGetter ? 'S' : 'G');
-
-			for (const functionKey2 in functions) {
-				let _function2 = functions[functionKey2];
-
-				if (_function2.name == otherName) {
-					if (!_function.relations)
-						_function.relations = {};
-
-					if (!_function.relations[table])
-						_function.relations[table] = [];
-
-					if (!_function.relations[table].includes(otherName))
-						_function.relations[table].push(otherName);
-				}
-			}
-		}
-	}
-}
-
-// Sort and Process a Class
-function ProcessClass(_class, _versionKey, _classKey, _classType) {
-	if (_class.functions) {
-		_class.functions.sort((a, b) => { return a.name > b.name; });
-		FindsGetSetRelationsAutomatically(_class.functions, "functions", _versionKey, _classKey, _classType);
-	}
-
-	if (_class.static_functions) {
-		_class.static_functions.sort((a, b) => { return a.name > b.name; });
-		FindsGetSetRelationsAutomatically(_class.static_functions, "static_functions", _versionKey, _classKey, _classType);
-	}
-
-	// Only gets enum once
-	if (_versionKey == "BleedingEdge")
-	{
-		// Check for constructors
-		if (_class.constructors)
-		{
-			for (const constructorKey in _class.constructors)
-				CheckUsedEnum(_class.constructors[constructorKey], _class.constructors[constructorKey].description, "constructors", _classKey, _classType);
-		}
-
-		// Check for events
-		if (_class.events)
-		{
-			for (const eventKey in _class.events)
-				CheckUsedEnum(_class.events[eventKey], _class.events[eventKey].name, "events", _classKey, _classType);
-		}
-	}
-
-	if (_class.events)
-		_class.events.sort((a, b) => { return a.name > b.name; });
-}
-
-function SortClasses() {
-	if (!ExecutionEnvironment.canUseDOM)
-		return;
-
-	// Process all Classes
-	for (const versionKey in APIData) {
-		// Class
-		for (const classKey in APIData[versionKey].Class) {
-			ProcessClass(APIData[versionKey].Class[classKey], versionKey, classKey, "Class");
-		}
-
-		// Static Class
-		for (const staticClassKey in APIData[versionKey].StaticClass) {
-			ProcessClass(APIData[versionKey].StaticClass[staticClassKey], versionKey, staticClassKey, "StaticClass");
-		}
-	}
-}
-
-SortClasses();
 
 export default APIData;

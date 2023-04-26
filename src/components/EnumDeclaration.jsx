@@ -11,7 +11,7 @@ export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
 			<p className={"relations"}>
 				Used by { GetRelations(enum_data.relations) }.
 			</p>
-		: <></>}
+		: null}
 		<table style={{ width: "100%", display: "table", marginBottom: "0" }}>
 			<thead>
 				<tr>
@@ -21,7 +21,7 @@ export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
 				</tr>
 			</thead>
 			<tbody>
-				{!enum_data ? "" : enum_data.map((value) =>
+				{!enum_data ? null : enum_data.map((value) =>
 					<tr key={value.key}>
 						<td style={{ whiteSpace: "nowrap" }}><code>{ enum_name }.{ value.key }</code></td>
 						<td style={{ whiteSpace: "nowrap" }}><code>{ value.value }</code></td>

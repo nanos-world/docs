@@ -31,7 +31,7 @@ Besides new animations, we added a subtle detail: **Bullet Shells Drop SFX**. An
 
 Check out a complete before and after comparison of some of the weapons, you can notice all the improvements in detail!
 
-<iframe width="620" height="347" src="https://www.youtube-nocookie.com/embed/ln4AUntcyLM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="620" height="347" src="https://www.youtube-nocookie.com/embed/ln4AUntcyLM" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <br />
 <br />
