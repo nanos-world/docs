@@ -334,8 +334,10 @@ html[data-theme='dark'] .header-discord-link:before {
 	min-width: 18px;
 }
 
-:not(td) > .authority-availability,
-:not(td) > .native-type {
+h4 > .authority-availability,
+h3 > .authority-availability,
+h4 > .native-type,
+h3 > .native-type {
 	margin-right: 10px;
 }
 
@@ -347,6 +349,12 @@ html[data-theme='dark'] .header-discord-link:before {
 
 .native-type {
 	cursor: help;
+}
+
+.path-center {
+	display: block;
+	text-align: center;
+	margin-top: 0.5em;
 }
 
 .function-return {

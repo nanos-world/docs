@@ -1,5 +1,5 @@
 import React from 'react';
-import EnumsData from '@site/src/api/Enums.json';
+import APIData from '@site/src/components/APIData.jsx';
 import { GetRelations } from '@site/src/components/ClassBuilder.mdx';
 
 export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
@@ -7,6 +7,9 @@ export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
 		<h3 id={ is_tooltip ? "" : enum_name.toLowerCase() }>
 			{ is_tooltip ? <>Enum { enum_name }</> : <code>{ enum_name }</code> }
 		</h3>
+		<blockquote>
+			<span dangerouslySetInnerHTML={{ __html: enum_data ? enum_data.description : null }}></span>
+		</blockquote>
 		{enum_data && enum_data.relations ?
 			<p className={"relations"}>
 				Used by { GetRelations(enum_data.relations) }.
@@ -21,13 +24,13 @@ export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
 				</tr>
 			</thead>
 			<tbody>
-				{!enum_data ? null : enum_data.map((value) =>
+				{enum_data && enum_data.enums ? enum_data.enums.map((value) =>
 					<tr key={value.key}>
 						<td style={{ whiteSpace: "nowrap" }}><code>{ enum_name }.{ value.key }</code></td>
 						<td style={{ whiteSpace: "nowrap" }}><code>{ value.value }</code></td>
 						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
 					</tr>
-				)}
+				) : null}
 			</tbody>
 		</table>
 		{ is_tooltip ? "" : <hr /> }
@@ -35,5 +38,5 @@ export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
 );
 
 export const EnumsDeclaration = () => (
-	Object.keys(EnumsData).map((enum_name) => <EnumDeclaration key={enum_name} enum_name={enum_name} enum_data={EnumsData[enum_name]} /> )
+	Object.keys(APIData.BleedingEdge.Enums).map((enum_name) => <EnumDeclaration key={enum_name} enum_name={enum_name} enum_data={APIData.BleedingEdge.Enums[enum_name]} /> )
 );

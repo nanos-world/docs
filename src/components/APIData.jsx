@@ -66,6 +66,8 @@ import StringData from '@site/src/api/StandardLibraries/string.json';
 import TableData from '@site/src/api/StandardLibraries/table.json';
 import MathData from '@site/src/api/StandardLibraries/math.json';
 
+import EnumsData from '@site/src/api/.generated/Enums.json';
+
 
 // Stable Imports
 import EntityDataStable from '@site/src/api/.generated/Stable/Classes/BaseEntity.json';
@@ -135,6 +137,8 @@ import NanosTableDataStable from '@site/src/api/UtilityClasses/NanosTable.json';
 import StringDataStable from '@site/src/api/Stable/StandardLibraries/string.json';
 import TableDataStable from '@site/src/api/Stable/StandardLibraries/table.json';
 import MathDataStable from '@site/src/api/Stable/StandardLibraries/math.json';
+
+import EnumsDataStable from '@site/src/api/.generated/Stable/Enums.json';
 
 
 const APIData = {
@@ -209,7 +213,8 @@ const APIData = {
 			string: StringDataStable,
 			math: MathDataStable,
 			table: TableDataStable,
-		}
+		},
+		Enums: EnumsDataStable
 	},
 	BleedingEdge: {
 		Class: {
@@ -282,7 +287,8 @@ const APIData = {
 			string: StringData,
 			math: MathData,
 			table: TableData,
-		}
+		},
+		Enums: EnumsData
 	}
 };
 

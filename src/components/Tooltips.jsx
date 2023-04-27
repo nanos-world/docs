@@ -23,10 +23,10 @@ export const AssetPathToolTip = ({ label, description }) => (
 	</>
 );
 
-export const ClassToolTip = ({ class_name, description }) => (
+export const ClassToolTip = ({ class_name, description, append_title }) => (
 	<>
 		<h3>
-			{class_name} Class
+			{class_name} {append_title}
 		</h3>
 		<span dangerouslySetInnerHTML={{ __html: description }}></span>
 	</>
