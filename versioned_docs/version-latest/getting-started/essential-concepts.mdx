@@ -1,0 +1,325 @@
+---
+title: Essential Concepts
+description: Fundamental Concepts on how everything works
+sidebar_position: 0
+tags: [scripting]
+---
+
+
+This guide is intended for beginners who want to learn the essential concepts to get started with modding and scripting on nanos world.
+
+import { Classes, StaticClasses, AssetPath, AuthorityType } from '@site/docs/components/_nanos.mdx';
+
+
+## Introduction
+
+Welcome to nanos world! A sandbox multiplayer game that allows you to create your own game modes, import custom assets, maps and completely extend it's functionalities with Lua scripts.
+
+Before diving into modding and scripting, it's important to understand the essential concepts of how everything works in nanos world. This page will give you a brief explanation of everything you need to know and links to learn more about each topic!
+
+After reading through this Guide, you will be ready to start programming, modding and creating content!
+
+
+## Asset Packs
+
+Asset Packs are the way for modders to import custom assets into the game, such as new models, textures, sounds, and more. They can be created using Unreal Engine, exported and then added to the `Server/Assets/` directory in nanos world server as an Asset Pack!
+
+Each Asset Pack has a configuration file called `Assets.toml`. This configuration is used to list all the assets included in the pack, their paths, and other metadata such as their types, categories, and tags. This file is used by the game to load the assets and make them available for use in Lua scripts through Entities.
+
+Through Lua Scripting, some Entities require an Asset as parameter. For example the entity <Classes.Prop /> asks for a <AssetPath.StaticMesh /> in the third constructor parameter.
+
+This way we spawn a Prop like this, using the Asset reference:
+
+```lua title="my-package/Server/Index.lua"
+-- Using the default 'nanos-world' Asset Pack, which is already natively included in the game
+local my_prop = Prop(Vector(), Rotator(), "nanos-world::SM_Cube")
+```
+
+Asset Packs are a powerful tool for extending the game and adding new features, and they are essential for modders who want to create unique and exciting experiences for players. Read more about Asset Packs in our Assets Guide:
+
+<ReferenceLink href="core-concepts/assets">Assets Guide</ReferenceLink>
+
+
+## Packages
+
+**Packages** are the core building blocks of nanos world, as they provide a way for scripters to create custom content and features for the game.
+
+There are different types of Packages, each type with a different ability, including executing Lua **scripts**, creating **game-modes**, defining **maps**, and even creating custom **loading-screens**!
+
+[Script](/docs/core-concepts/packages/packages-guide#script) is the most common type of Package, it allow scripters to run Lua code on both the client and server which can listen to events, interact with game classes, and modify game behavior in various ways.
+
+:::tip
+
+Packages can be loaded/unloaded dynamically while the server is running with `package reload all`!
+
+:::
+
+Each Package is a folder under `Server/Packages/` with a [configuration file](/docs/core-concepts/packages/packages-guide#package-configuration) `Package.toml` inside, on which we define the type of the package and it's relevant settings.
+
+Packages can also have dependencies on other Packages and Asset Packs, which allows scripters to reuse code and assets across multiple Packages. This can help to reduce duplication and improve organization, especially for larger scripts or game-modes.
+
+:::tip
+
+If we want a Package to be loaded, we must define them in our Server's [Config.toml](/docs/core-concepts/server-manual/server-configuration), we have a section for each package type (`game_mode`, `loading_screen`, `map` and `packages`), which we must list the Package names we want the server to load!
+
+:::
+
+Overall, Packages are an essential concept in nanos world modding, and they provide a powerful and flexible way to create custom content and functionality for the game. Read more about them in our Packages Guide:
+
+<ReferenceLink href="core-concepts/packages/packages-guide">Packages Guide</ReferenceLink>
+
+
+## Scripting
+
+Scripting is a powerful way to program and customize nanos world. It allows us to listen to game events, spawn, interact, and change entities at will.
+
+All Lua code are executed through Packages, it is possible to have scripts that run only on the server, on the client or that run on both.
+
+
+### Learning
+
+:::tip
+
+If you're new to programming, YouTube or any Courses website are great places to start learning the basics of coding in various programming languages.
+
+:::
+
+For Lua scripting, the official [Lua Manual](https://www.lua.org/manual/5.4/) provides a comprehensive tutorial on the basics of the language.
+
+Also, our documentation is a great resource for learning about everything available in nanos world. You can explore our [Game-Modes and Packages](/docs/explore/game-modes-and-packages) category to find real examples!
+
+The **🎓 CORE CONCEPTS** section provides guides and great information whilst **👨‍💻 SCRIPTING REFERENCE** provides technical details of the usage of our API!
+
+Also, our [Official Discord](https://discord.nanos.world) is an active community where you can ask questions, get help, and connect with other scripters!
+
+
+### Events
+
+In nanos world, our API is based on Events, which are similar to Hooks in other games. Everything in the API comes through events, such as when a Player spawns, a Character enters a vehicle or takes damage. You can listen to these events using Lua scripting and perform actions accordingly.
+
+For example we can listen when a Player joins the server or an Entity is spawned:
+
+```lua title="my-package/Server/Index.lua"
+-- Subscribes when a Player joins the server
+Player.Subscribe("Spawn", function(player)
+	Console.Log("The player %s has joined the server!", player:GetName())
+end)
+
+-- Subscribes when a Prop is spawned
+Prop.Subscribe("Spawn", function(prop)
+	Console.Log("A prop just spawned!")
+end)
+```
+
+Read more about Events in the Events Guide:
+
+<ReferenceLink href="core-concepts/scripting/events-guide">Events Guide</ReferenceLink>
+
+
+### Classes
+
+Classes are entities that can be spawned, interacted with, and changed as you wish. We can easily spawn entities like this:
+
+```lua title="my-package/Server/Index.lua"
+local my_light = Light(Vector(0, 100, 100), Rotator(), Color.RED)
+local my_static_mesh = StaticMesh(Vector(0, 0, 100), Rotator(), "nanos-world::SM_Cube_VR_01")
+```
+
+Or even interact and change the existing ones the way we want:
+
+```lua title="my-package/Server/Index.lua"
+local some_prop = Prop.GetByIndex(1)
+some_prop:SetMesh("nanos-world::SM_Pyramid_VR")
+```
+
+Read more about Classes in the Classes Guide:
+
+<ReferenceLink href="core-concepts/scripting/classes-guide">Classes Guide</ReferenceLink>
+
+
+### Static Classes
+
+Besides Classes we also have the Static Classes, which are just Lua libraries with functions which can be called without needing to spawn an entity or have an instance.
+
+For example we can send a Chat message using the <StaticClasses.Chat /> Static Class:
+
+```lua title="my-package/Server/Index.lua"
+Chat.BroadcastMessage("Hello world!")
+```
+
+
+### Package Folder Structure
+
+The folder structure of a scripting Package includes `Server/`, `Client/`, and `Shared/` folders. You can put `.lua` files in each folder to execute code on the server, client, or both (Shared):
+
+```folder-structure
+my-package/
+├── Server/
+│   ├── Index.lua
+│   └── *.lua
+├── Client/
+│   ├── Index.lua
+│   └── *.lua
+├── Shared/
+│   ├── Index.lua
+│   └── *.lua
+└── Package.toml
+```
+
+:::tip
+
+Only the Packages of type `script`, `game-mode` and `map` will have this structure, as those are the only ones which run Lua scripts.
+
+:::
+
+The Package only loads the `Index.lua` file of each base folder (`Server/`, `Client/` or `Shared/`), this file is responsible for importing other scripting files.
+
+You can find several guides for scripting under **`🎓 CORE CONCEPTS / Scripting`** section in the left sidebar.
+
+
+## Maps
+
+Maps (or Levels in Unreal) are the entry point of the game, this is where the world is loaded and the entities are spawned in the client side.
+
+To configure a Map, we create a Package of type [map](/docs/core-concepts/packages/packages-guide#map), this type is like `script`, but it's `Package.toml` has additional settings to configure the map, e.g. we have `map_asset = "my-asset-pack::MyLevel"` which we need to define which Map Asset this Package will load.
+
+We can configure which map the server will run in the `Config.toml`, under `map = "my-map-package"` setting.
+
+:::tip
+
+We provide 4 built-in Maps which can be loaded without any additional Package or Asset Pack: `default-blank-map`, `default-empty-map`, `default-ocean-map` and `default-testing-map`.
+
+:::
+
+Also, in the map's Package.toml, we can configure `spawn_points` and `custom_data`, which can be accessed through scripting by any Package:
+
+```lua title="my-package/Server/Index.lua"
+local spawn_points = Server.GetMapSpawnPoints()
+local custom_data = Server.GetMapConfig()
+```
+
+As you could notice, by loading a Map you are also loading a Package with scripts, so you can have custom scripts running per-map. Which can be useful to add custom behaviors such like interactable environments or doors.
+
+
+## Game Modes
+
+[Game-Modes](/docs/core-concepts/packages/packages-guide#game-mode) are a type of Package which behave exactly like `scripts`, with the exception we can just have **one** game-mode loaded at once, while we can have as many as scripts running as we want.
+
+They should be used to create unique and self-contained game experiences.
+
+Players can select and start servers easily by choosing a game-mode in the New Game section on Main Menu.
+
+
+## Networking
+
+Our client-server architecture has been designed thinking about the ease and simplicity of everything related to networking and synchronization. Leaving the scripter to worry only with the creative part!
+
+All entities that are spawned on the server are also automatically spawned and synchronized on the client.
+
+When calling a function on an entity in the server side, this function is also automatically called on the same entity on every client connected. Making everyone always to be synchronized with all changes!
+
+For example, if we spawn a <Classes.Character />, and set it's location, all Clients will have it's location updated as well:
+
+```lua title="my-package/Server/Index.lua"
+-- Spawns a Character (on server side)
+local my_character = Character(Vector(0, 0, 0), Rotator(), "nanos-world::SK_Male")
+
+-- Sets it's location
+my_character:SetLocation(Vector(100, 100, 100))
+```
+
+Some Classes can only be spawned on server, others only on client. The same for some functions of them. This way, if you spawn an entity in the client side, it will only exist for that client.
+
+:::tip
+
+Through this docs, you will find [Authority](/docs/core-concepts/scripting/authority-concepts#authority) tooltips telling whether a function can be called on server <AuthorityType.ServerOnly />, on client <AuthorityType.ClientOnly />, on both <AuthorityType.Both /> or only on the side which spawned it <AuthorityType.AuthorityOnly />!
+
+:::
+
+
+### Communication Between Sides
+
+To be able to send information from the server to client or vice versa, we exposed some especial methods in our <StaticClasses.Events /> Static Class to allow that!
+
+
+```lua title="my-package/Client/Index.lua"
+-- Subscribes to a Remote Event on client side
+Events.SubscribeRemote("MyClientEvent", function(my_text)
+    Console.Log("Event received from server! " .. my_text)
+    -- outputs "Event received from server! hello nanos world!"
+end)
+```
+
+```lua title="my-package/Server/Index.lua"
+-- Sends a remote Event to all Players in all Client Packages
+Events.BroadcastRemote("MyClientEvent", "hello nanos world!")
+```
+
+Read more about Networked Events in our Communicating Between Packages Guide:
+
+<ReferenceLink href="core-concepts/scripting/communicating-between-packages#sending-data-through-the-network">Communicating Between Packages</ReferenceLink>
+
+
+### Synchronized Values
+
+Besides sending data through Events, which is a dynamic thing, we also have the possibility to bind/set custom values to entities, or even globally in the Server/Client.
+
+For example we can set a value on any entity, which can be accessed by any Package:
+
+```lua
+-- Sets a 'my_value' value to a Prop
+my_prop:SetValue("my_value", 100)
+
+-- Later on, get the value again
+local my_value = my_prop:GetValue("my_value")
+```
+
+This will make `my_value` to be set on this entity globally in this side (client or server).
+
+But we also have the ability to send a *synchronized* value on an entity (if we are on server side)! For that we just append the `true` parameter, telling it to be sent and synchronized to all clients too!
+
+```lua title="my-package/Server/Index.lua"
+-- Sets a synchronized 'my_value' value to a Prop
+my_prop:SetValue("my_value", 100, true)
+```
+
+Those values are accessible by any Package and are a great way to synchronize custom values!
+
+Read more about Entity Values in our Entity Values Guide:
+
+<ReferenceLink href="core-concepts/scripting/entity-values">Entity Values</ReferenceLink>
+
+
+## UI
+
+User Interface is an essential aspect of the game, we provide several flexible ways to create UI!
+
+### WebUI
+
+The most direct way is with <Classes.WebUI />, which allows you to create and integrate UIs using HTML/CSS/JavaScript, having absolute freedom to create and customize as you want.
+
+It is possible to communicate between Lua and JavaScript using events!
+
+For more information refer to our WebUI tutorial:
+
+<ReferenceLink href="getting-started/tutorials-and-examples/basic-hud-html">Basic HUD (HTML)</ReferenceLink>
+
+
+### Widget
+
+Another new and more advanced way to create UI is using Unreal <Classes.Widget />! With them you can have all access to the powerful widgets and even create your own through Unreal Engine and import them in-game, providing a seamless User Experience!
+
+For more information refer to our Widget tutorial:
+
+<ReferenceLink href="getting-started/tutorials-and-examples/basic-hud-widget">Basic HUD (Widget)</ReferenceLink>
+
+
+## Conclusion
+
+In this guide, we have covered some of the essential concepts of nanos world scripting and modding. These concepts are important to understand as they form the foundation of building any game-mode or script. We hope you can now start creating content and bringing life to your ideas!
+
+If you have any question, don't hesitate in asking questions on our [Discord](https://discord.nanos.world)! Our community is amazing and very friendly, we will be glad to help you!
+
+Now we suggest starting by our Quick Start Guide to create your first package!
+
+<ReferenceLink href="getting-started/quick-start">Quick Start</ReferenceLink>

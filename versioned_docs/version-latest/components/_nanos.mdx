@@ -7,80 +7,8 @@ import 'tippy.js/dist/tippy.css';
 
 import { AuthorityTooltip, AssetPathToolTip, ClassToolTip, StructToolTip, FunctionToolTip, EnumToolTip } from '@site/src/components/Tooltips.jsx';
 
-import EnumsData from '@site/src/api/Enums.json';
+import APIData from '@site/src/components/APIData.jsx';
 
-import EntityData from '@site/src/api/Classes/BaseEntity.json';
-import ActorData from '@site/src/api/Classes/BaseActor.json';
-import PickableData from '@site/src/api/Classes/BasePickable.json';
-import PaintableData from '@site/src/api/Classes/BasePaintable.json';
-
-import BillboardData from '@site/src/api/Classes/Billboard.json';
-import BlueprintData from '@site/src/api/Classes/Blueprint.json';
-import CableData from '@site/src/api/Classes/Cable.json';
-import CanvasData from '@site/src/api/Classes/Canvas.json';
-import CharacterData from '@site/src/api/Classes/Character.json';
-import DatabaseData from '@site/src/api/Classes/Database.json';
-import DecalData from '@site/src/api/Classes/Decal.json';
-import FileData from '@site/src/api/Classes/File.json';
-import GrenadeData from '@site/src/api/Classes/Grenade.json';
-import LightData from '@site/src/api/Classes/Light.json';
-import MeleeData from '@site/src/api/Classes/Melee.json';
-import ParticleData from '@site/src/api/Classes/Particle.json';
-import PlayerData from '@site/src/api/Classes/Player.json';
-import PropData from '@site/src/api/Classes/Prop.json';
-import SceneCaptureData from '@site/src/api/Classes/SceneCapture.json';
-import StaticMeshData from '@site/src/api/Classes/StaticMesh.json';
-import SoundData from '@site/src/api/Classes/Sound.json';
-import TextRenderData from '@site/src/api/Classes/TextRender.json';
-import TriggerData from '@site/src/api/Classes/Trigger.json';
-import VehicleData from '@site/src/api/Classes/Vehicle.json';
-import WeaponData from '@site/src/api/Classes/Weapon.json';
-import WebUIData from '@site/src/api/Classes/WebUI.json';
-
-import ColorData from '@site/src/api/Structs/Color.json';
-import MatrixData from '@site/src/api/Structs/Matrix.json';
-import RotatorData from '@site/src/api/Structs/Rotator.json';
-import QuatData from '@site/src/api/Structs/Quat.json';
-import VectorData from '@site/src/api/Structs/Vector.json';
-import Vector2DData from '@site/src/api/Structs/Vector2D.json';
-
-export const ClassesData = {
-	"Base Entity": EntityData,
-	"Base Actor": ActorData,
-	"Base Pickable": PickableData,
-	"Base Paintable": PaintableData,
-	Billboard: BillboardData,
-	Blueprint: BlueprintData,
-	Cable: CableData,
-	Canvas: CanvasData,
-	Character: CharacterData,
-	Database: DatabaseData,
-	Decal: DecalData,
-	File: FileData,
-	Grenade: GrenadeData,
-	Light: LightData,
-	Melee: MeleeData,
-	Particle: ParticleData,
-	Player: PlayerData,
-	Prop: PropData,
-	SceneCapture: SceneCaptureData,
-	StaticMesh: StaticMeshData,
-	Sound: SoundData,
-	TextRender: TextRenderData,
-	Trigger: TriggerData,
-	Vehicle: VehicleData,
-	Weapon: WeaponData,
-	WebUI: WebUIData
-};
-
-export const StructsData = {
-	Color: ColorData,
-	Matrix: MatrixData,
-	Quat: QuatData,
-	Rotator: RotatorData,
-	Vector: VectorData,
-	Vector2D: Vector2DData,
-};
 
 <!-- Getter to get the current version path - for links -->
 export const getActiveVersionPath = () => {
@@ -91,7 +19,7 @@ export const getActiveVersionPath = () => {
 
 <!-- Square Card Link -->
 export const CardLink = ({ title, description, href, image_src }) => (
-	<a class="card-link" href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`} >
+	<a className="card-link" href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`} >
 		<img src={image_src ? image_src : '/img/docs/nanos-world-background.jpg'} />
 		<h4>{title}</h4>
 		<p>{description}</p>
@@ -100,10 +28,10 @@ export const CardLink = ({ title, description, href, image_src }) => (
 
 <!-- Rectangular Reference Link -->
 export const ReferenceLink = ({ children, href }) => (
-	<a class="reference-link" href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`}>
+	<a className="reference-link" href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`}>
 		{children}
 		<span>
-			{href}
+			{ href.split('#')[0] }
 		</span>
 	</a>
 );
@@ -111,16 +39,16 @@ export const ReferenceLink = ({ children, href }) => (
 <!-- Generic Base Native component -->
 export const BaseNative = (img, title, description) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} />}>
-		<Link class="native-type">
+		<span className="native-type">
 			<img src={img} title={title} />
-		</Link>
+		</span>
 	</Tippy>
 );
 
 <!-- Generic Base Authority component -->
 export const BaseAuthority = (img, title, description) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} />}>
-		<Link class="authority-availability" to={`${getActiveVersionPath()}/core-concepts/scripting/authority-concepts#methods-and-events-availability`}>
+		<Link className="authority-availability" to={`${getActiveVersionPath()}/core-concepts/scripting/authority-concepts#methods-and-events-availability`}>
 			<img src={img} title={title} />
 		</Link>
 	</Tippy>
@@ -143,23 +71,31 @@ export const BaseBasicType = (label, description) => (
 );
 
 <!-- Generic Struct Type component -->
-export const BaseStruct = (label, path) => (
-	<Tippy maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<StructToolTip struct_name={label} description={ StructsData[label] ? StructsData[label].description : "Struct not found. Soon™." } />}>
-		<Link to={`${getActiveVersionPath()}/scripting-reference/structs/${path ? path : label.toLowerCase()}`} className={"hover-link"}>{label}</Link>
+export const BaseStruct = (name, path) => (
+	<Tippy maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<StructToolTip struct_name={name} description={ APIData.BleedingEdge.Struct[name] ? APIData.BleedingEdge.Struct[name].description : "Struct not found. Soon™." } />}>
+		<Link to={`${getActiveVersionPath()}/scripting-reference/structs/${path ? path : name.toLowerCase()}`} className={"hover-link"}>{name}</Link>
 	</Tippy>
 );
 
-<!-- Generic Struct Type component -->
-export const BaseClass = (label, emoji, path) => (
+<!-- Generic Class Type component -->
+export const BaseClass = (name, emoji, label = name, path = null) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"}
-		content={<ClassToolTip class_name={`${emoji} ${label}`} description={ ClassesData[label] ? ClassesData[label].description : "Class not found. Soon™." } />}>
+		content={<ClassToolTip class_name={`${emoji} ${label}`} append_title="Class" description={ APIData.BleedingEdge.Class[name] ? APIData.BleedingEdge.Class[name].description : "Class not found. Soon™." } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/classes/${path ? path : label.toLowerCase()}`} className={"hover-link"}>{label}</Link>
+	</Tippy>
+);
+
+<!-- Generic StaticClass Type component -->
+export const BaseStaticClass = (name, emoji, path) => (
+	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"}
+		content={<ClassToolTip class_name={`${emoji} ${name}`} append_title="Static Class" description={ APIData.BleedingEdge.StaticClass[name] ? APIData.BleedingEdge.StaticClass[name].description : "Static Class not found. Soon™." } />}>
+		<Link to={`${getActiveVersionPath()}/scripting-reference/static-classes/${path ? path : name.toLowerCase()}`} className={"hover-link"}>{name}</Link>
 	</Tippy>
 );
 
 <!-- Define Enum component -->
 export const Enums = ({ children }) => (
-	<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={<EnumToolTip enum_name={ children } enum_data={ EnumsData[children] } />}>
+	<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={<EnumToolTip enum_name={ children } enum_data={ APIData.BleedingEdge.Enums[children] } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${children.toLowerCase()}`} className={"hover-link"}>{children}</Link>
 	</Tippy>
 );
@@ -227,15 +163,16 @@ export const Structs = {
 
 <!-- Defines Classes components -->
 export const Classes = {
-	Entity: () => BaseClass("Base Entity", "🧩", "base-classes/entity"),
-	Actor: () => BaseClass("Base Actor", "🎭", "base-classes/actor"),
-	Paintable: () => BaseClass("Base Paintable", "🎨", "base-classes/paintable"),
-	Pickable: () => BaseClass("Base Pickable", "⚔️", "base-classes/pickable"),
+	Entity: () => BaseClass("Entity", "🧩", "Base Entity", "base-classes/entity"),
+	Actor: () => BaseClass("Actor", "🎭", "Base Actor", "base-classes/actor"),
+	Paintable: () => BaseClass("Paintable", "🎨", "Base Paintable", "base-classes/paintable"),
+	Pickable: () => BaseClass("Pickable", "⚔️", "Base Pickable", "base-classes/pickable"),
 	Billboard: () => BaseClass("Billboard", "🪧"),
 	Blueprint: () => BaseClass("Blueprint", "🔣"),
-	Canvas: () => BaseClass("Canvas", "🖼️"),
 	Cable: () => BaseClass("Cable", "⛓️"),
+	Canvas: () => BaseClass("Canvas", "🖼️"),
 	Character: () => BaseClass("Character", "🧑"),
+	CharacterSimple: () => BaseClass("CharacterSimple", "🧑‍🦲"),
 	Database: () => BaseClass("Database", "💾"),
 	Decal: () => BaseClass("Decal", "🖌️"),
 	File: () => BaseClass("File", "📁"),
@@ -245,26 +182,50 @@ export const Classes = {
 	Particle: () => BaseClass("Particle", "✨"),
 	Player: () => BaseClass("Player", "👩‍💻"),
 	Prop: () => BaseClass("Prop", "📦"),
-	SceneCapture: () => BaseClass("SceneCapture", "📽️", "scene-capture"),
+	SceneCapture: () => BaseClass("SceneCapture", "📽️", "SceneCapture", "scene-capture"),
 	Sound: () => BaseClass("Sound", "🔊"),
-	StaticMesh: () => BaseClass("StaticMesh", "🏠", "static-mesh"),
-	TextRender: () => BaseClass("TextRender", "🆒", "text-render"),
+	StaticMesh: () => BaseClass("StaticMesh", "🏠", "StaticMesh", "static-mesh"),
+	TextRender: () => BaseClass("TextRender", "🆒", "TextRender", "text-render"),
 	Trigger: () => BaseClass("Trigger", "🪤"),
 	Vehicle: () => BaseClass("Vehicle", "🚙"),
 	Weapon: () => BaseClass("Weapon", "🔫"),
 	WebUI: () => BaseClass("WebUI", "🖥️"),
+	Widget: () => BaseClass("Widget", "🪟"),
+};
+
+<!-- Defines StaticClasses components -->
+export const StaticClasses = {
+	Assets: () => BaseStaticClass("Assets", "🍀"),
+	Chat: () => BaseStaticClass("Chat", "💬"),
+	Client: () => BaseStaticClass("Client", "⌨️"),
+	Console: () => BaseStaticClass("Console", "🔤"),
+	Debug: () => BaseStaticClass("Debug", "🐛"),
+	Discord: () => BaseStaticClass("Discord", "☎️"),
+	Events: () => BaseStaticClass("Events", "🚩"),
+	HTTP: () => BaseStaticClass("HTTP", "🌐"),
+	Input: () => BaseStaticClass("Input", "🕹️"),
+	Level: () => BaseStaticClass("Level", "🏝️"),
+	Navigation: () => BaseStaticClass("Navigation", "🚢"),
+	Package: () => BaseStaticClass("Package", "📦"),
+	PostProcess: () => BaseStaticClass("PostProcess", "🖼️"),
+	Server: () => BaseStaticClass("Server", "💻"),
+	Sky: () => BaseStaticClass("Sky", "🌅"),
+	Steam: () => BaseStaticClass("Steam", "🎮"),
+	Timer: () => BaseStaticClass("Timer", "⏱️"),
+	Trace: () => BaseStaticClass("Trace", "🔍"),
+	Viewport: () => BaseStaticClass("Viewport", "📺"),
 };
 
 <!-- Defines Assets Path -->
 export const AssetPath = {
-	StaticMesh: () => BaseAssetPath("StaticMesh", "StaticMesh Reference", "StaticMesh Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
-	SkeletalMesh: () => BaseAssetPath("SkeletalMesh", "SkeletalMesh Reference", "SkeletalMesh Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
-	Animation: () => BaseAssetPath("Animation", "Animation Reference", "Animation Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
-	Particle: () => BaseAssetPath("Particle", "Particle Reference", "Particle Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
-	Material: () => BaseAssetPath("Material", "Material Reference", "Material Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
-	Map: () => BaseAssetPath("Map", "Map Reference", "Map Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
-	Blueprint: () => BaseAssetPath("Blueprint", "Blueprint Reference", "Blueprint Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code>."),
-	Sound: () => SpecialPath("Sound", "Sound Reference", "Sound Asset Reference in the format:<br/><code>asset-pack::SM_MyAsset</code><br/><br/>Or as Special Path:<br/><code>package://my-package/Client/sound.ogg</code>."),
-	Image: () => SpecialPath("Image", "Image Path", "Image Path as Special Path:<br/><code>package://my-package/Client/sound.ogg</code>."),
-	HTML: () => TippyLink("HTML", "HTML Path", "Web URL or HTML File Path:<br/><code>file://UI/index.html</code>.", "scripting-reference/classes/webui#html-path-searchers"),
+	StaticMesh: () => BaseAssetPath("StaticMesh", "StaticMesh Reference", "StaticMesh Asset Reference in the format:<br/><code class='path-center'>asset-pack::SM_MyAsset</code>"),
+	SkeletalMesh: () => BaseAssetPath("SkeletalMesh", "SkeletalMesh Reference", "SkeletalMesh Asset Reference in the format:<br/><code class='path-center'>asset-pack::SM_MyAsset</code>"),
+	Animation: () => BaseAssetPath("Animation", "Animation Reference", "Animation Asset Reference in the format:<br/><code class='path-center'>asset-pack::SM_MyAsset</code>"),
+	Particle: () => BaseAssetPath("Particle", "Particle Reference", "Particle Asset Reference in the format:<br/><code class='path-center'>asset-pack::SM_MyAsset</code>"),
+	Material: () => BaseAssetPath("Material", "Material Reference", "Material Asset Reference in the format:<br/><code class='path-center'>asset-pack::SM_MyAsset</code>"),
+	Map: () => BaseAssetPath("Map", "Map Reference", "Map Asset Reference in the format:<br/><code class='path-center'>asset-pack::SM_MyAsset</code>"),
+	Blueprint: () => BaseAssetPath("Blueprint", "Blueprint Reference", "Blueprint Asset Reference in the format:<br/><code class='path-center'>asset-pack::SM_MyAsset</code>"),
+	Sound: () => SpecialPath("Sound", "Sound Reference", "Sound Asset Reference in the format:<br/><code class='path-center'>asset-pack::SM_MyAsset</code><br/>Or as Special Path:<br/><code class='path-center'>package://my-package/Client/sound.ogg</code>"),
+	Image: () => SpecialPath("Image", "Image Path", "Image Path as Special Path:<br/><code class='path-center'>package://my-package/Client/sound.ogg</code>"),
+	HTML: () => TippyLink("HTML", "HTML Path", "Web URL or HTML File Path:<br/><code class='path-center'>file://UI/index.html</code>", "scripting-reference/classes/webui#html-path-searchers"),
 };

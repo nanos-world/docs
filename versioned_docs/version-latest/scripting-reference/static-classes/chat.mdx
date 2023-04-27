@@ -9,10 +9,30 @@ tags: [static-class]
 
 ## 🎒 Examples
 
+<ExamplesDeclaration type="StaticClass" name="Chat" />
+
+#### Colors in Chat
+
+It is also possible to send colored messages in the Chat! For that, just circumvent a piece of text with a style tag: `<TAG>my awesome text</>`.
+
+![](/img/docs/tutorials/chat-colors.webp)
+
+
+
 ```lua title="Server/Index.lua"
--- sends a chat message to everyone
-Chat.BroadcastMessage("Welcome to the server!")
+Chat.BroadcastMessage("Hello with <cyan>Cyan</> text message!")
 ```
+
+
+All supported text styles/tags:
+
+`<cyan>` `<green>` `<blue>` `<purple>` `<marengo>` `<yellow>` `<orange>` `<red>` `<grey>` `<bold>` `<italic>`
+
+:::caution note
+
+It is NOT possible to combine two or more styles together (e.g. `<bold>` + `<red>`).
+
+:::
 
 
 ## 🗿 Static Functions

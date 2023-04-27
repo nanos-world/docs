@@ -9,7 +9,7 @@ List of Tutorials, Snippets and Examples to create Packages and game-modes for n
 
 import { CardLink } from '@site/docs/components/_nanos.mdx';
 
-<div class="card-links">
+<div className="card-links">
 
 <CardLink
 	title="Basic HUD (Canvas)"
@@ -23,13 +23,6 @@ import { CardLink } from '@site/docs/components/_nanos.mdx';
 	description="How to add a basic HUD using HTML + JavaScript + CSS to display the character’s Health and Ammo based on CS:GO HUD."
 	image_src="/img/docs/tutorials/html-01.webp"
 	href="getting-started/tutorials-and-examples/basic-hud-html"
-/>
-
-<CardLink
-	title="Chat Colors"
-	description="How to customize chat messages."
-	image_src="/img/docs/tutorials/chat-colors.webp"
-	href="getting-started/tutorials-and-examples/chat-colors"
 />
 
 <CardLink

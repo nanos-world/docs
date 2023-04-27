@@ -79,9 +79,6 @@ List of all supported parameters which can be passed between Lua ↔ Blueprint:
 | **`string`** | **`String`** | ✅ | ✅ |
 | **`string`** | **`Name`** | ✅ | ✅ |
 | **`string`** | **`Text`** | ✅ | ✅ |
-| **`Quat`** | **`Quat`** | ✅ | ❌ |
-| **`table`** | **`Margin`** | ✅ | ❌ |
-| **`table`** | **`Vector4`** | ✅ | ❌ |
 | **`Vector2D`** | **`Vector2D`** | ✅ | ✅ |
 | **`Vector`** | **`Vector`** | ✅ | ✅ |
 | **`Rotator`** | **`Rotator`** | ✅ | ✅ |
@@ -105,8 +102,7 @@ List of all supported parameters which can be passed between Lua ↔ Blueprint:
 | **`BaseActor`** | **`Actor`** | ✅ | ✅ |
 | **`Player`** | **`PlayerController`** | ✅ | ❌ |
 | **`SpecialPath`** | **`Texture2D`** | ✅ | ❌ |
-|  | **`Transform`** | ❌ | ❌ |
-|  | **`Structs`** | ❌ | ❌ |
+| **`table`** | [**`Any Struct`**](#any-struct) | ✅ | ✅ |
 
 
 :::caution Note
@@ -115,15 +111,45 @@ It is only possible to pass Actors from Blueprint → Lua if the Actor is a Spaw
 
 :::
 
-
 :::tip
 
 Passing `Maps`, `Arrays` and `Sets` is also supported! As long their keys/values are in the list above.
 
 :::
 
-:::tip
 
-Other built-in **Structs** can be requested to be supported. If you feel the real need please add an idea to our [Feedback Hub](https://feedback.nanos.world).
+### Any Struct
 
-:::
+Custom Structs can also be passed and retrieved, just pass an object with the same properties as the Unreal Struct, examples:
+
+#### FTransform
+
+```lua
+{
+	["Translation"] = Vector(),
+	["Rotation"] = Rotator(),
+	["Scale"] = Vector()
+}
+```
+
+#### FMargin
+
+```lua
+{
+	["Bottom"] = 0.0,
+	["Left"] = 0.0,
+	["Right"] = 0.0,
+	["Top"] = 0.0
+}
+```
+
+#### FVector4
+
+```lua
+{
+	["W"] = 0.0,
+	["X"] = 0.0,
+	["Y"] = 0.0,
+	["Z"] = 0.0
+}
+```

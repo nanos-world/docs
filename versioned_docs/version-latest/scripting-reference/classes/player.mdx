@@ -19,16 +19,16 @@ tags: [class]
 ```lua
 -- Spawns and possess a Character when a Player joins the server
 Player.Subscribe("Spawn", function(player)
-	local new_char = Character()
+	local new_char = Character(Vector(), Rotator(), "nanos-world::SK_Male")
 	player:Possess(new_char)
 end)
 
 -- Destroys the Character when the Player leaves the server
 Player.Subscribe("Destroy", function(player)
-		local character = player:GetControlledCharacter()
-		if (character) then
-				character:Destroy()
-		end
+	local character = player:GetControlledCharacter()
+	if (character) then
+		character:Destroy()
+	end
 end)
 ```
 

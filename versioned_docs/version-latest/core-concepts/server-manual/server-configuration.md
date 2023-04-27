@@ -38,11 +38,11 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | **`announce`** | Whether to announce or not in the Server List |
 | **`tick_rate`** | Server Tick in ms. We recommend leaving it 33 |
 | **`log_level`** | Which Log level to output |
-| **`game_mode`** | [game-mode](/core-concepts/packages/packages-guide.md#package-types) package to load -  you can only load one game-mode at once. |
-| **`loading_screen`** | [loading-screen](/core-concepts/packages/loading-screen.md) package to load - you can only load one loading-screen at once. |
-| **`packages`** | [script](/core-concepts/packages/packages-guide.md#package-types) packages to load |
+| **`game_mode`** | [game-mode](/docs/core-concepts/packages/packages-guide.md#game-mode) package to load -  you can only load one game-mode at once. |
+| **`loading_screen`** | [loading-screen](/docs/core-concepts/packages/loading-screen.md) package to load - you can only load one loading-screen at once. |
+| **`packages`** | [script](/docs/core-concepts/packages/packages-guide.md#script) packages to load |
+| **`map`** | [map](/docs/core-concepts/packages/packages-guide.md#map) package to load |
 | **`assets`** | Additional assets to force to load |
-| **`map`** | Which map to load |
 | **`token`** | Server Token used for authorize downloads through CLI |
 | **`banned_ids`** | List of banned nanos account IDs |
 
@@ -62,9 +62,11 @@ You can pass a JPG image URL to `--logo` parameter to download and use a image f
 
 ![](/img/docs/server-map.webp)
 
-The Map (or Level) is defined in the Server’s config file, this level will be loaded when the player joins the server and the Path is supposed for be or a built-in asset or an asset which is located at `Assets/` folder.
+The Map (or Level) is defined in the Server's config file, this map will be loaded when the player joins the server in the client side.
 
-nanos world counts on (for now) 4 built-in maps: `nanos-world::BlankMap`, `nanos-world::EmptyMap`, `nanos-world::OceanMap` and `nanos-world::TestingMap` which can be used in your server without needing to download any Asset Pack.
+To configure a map, please refer to [Packages Guide](/docs/core-concepts/packages/packages-guide.md#map) to create a Map Package pointing to the correct Asset.
+
+nanos world counts on (for now) 4 built-in maps: `default-blank-map`, `default-empty-map`, `default-ocean-map` and `default-testing-map` which can be used in your server without needing to download any Package/Asset Pack.
 
 
 ## Server Console
@@ -91,18 +93,12 @@ nanos world counts on (for now) 4 built-in maps: `nanos-world::BlankMap`, `nanos
 
 ### Custom Commands
 
-All (non built-in) commands will be sent into an event to the scripting/server-side:
-
-```lua title="Server/Index.lua"
-Server.Subscribe("Console", function(my_input)
-    Console.Log("Console command received: " .. my_input)
-end)
-```
+It is possible to define custom commands as well, for that please refer to [Console.RegisterCommand()](/docs/scripting-reference/static-classes/console.mdx#static-function-registercommand).
 
 
 ## Command Line Parameters
 
-It is possible to override the Server Configuration with Command Line Parameters. Note: this will not write to the Config file.
+It is possible to override the Server Configuration with Command Line Parameters.
 
 | Parameter | Value Type | Description |
 | :--- | :--- | :--- |
@@ -126,7 +122,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--log_level` | 1, 2 or 3 | If to use Normal, Debug or Verbose logs |
 | `--custom_settings` | toml string | A list of [Custom Settings](/core-concepts/packages/packages-guide.md#custom-settings) to be passed to scripting in toml format |
 | `--compression` | 0-9 | Sets the compression level to use in some networking operations - 0 disables it, 1 is the fastest and 9 is the slower but highest compression ratio |
-| `--save` | *flag* | If to save the parameters in Config.toml |
+| `--save` | *flag* | If to save the passed parameters in Config.toml |
 | `--profiling` | *flag* | Enables Performance Profiling Logs for debugging |
 | `--auto_download` | *flag* | Automatically downloads Packages and Assets from Vault if needed |
 | `--log_show_thread` | *flag* | Shows the current running thread of each outputted log |
@@ -150,21 +146,21 @@ steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_updat
 ./NanosWorldServer.sh --cli install package sandbox battlefield-kill-ui ts-fireworks-tools
 
 # Starts the server with all configs set
-./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --gamemode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/vnB8CB5.jpg"
+./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/vnB8CB5.jpg"
 ```
 
 Another shorter example:
 
 ```shell title="Shell/Linux"
 # Starts the server with all configs set and auto downloads the packages and assets if needed
-./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --gamemode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download 1 --logo "https://i.imgur.com/vnB8CB5.jpg"
+./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download 1 --logo "https://i.imgur.com/vnB8CB5.jpg"
 ```
 
 ## Common Console Messages and Errors
 
 #### `Server Tick too/extreme high! Verify the server performance! Server got stuck for Xms...`
 
-It means the server got **stuck** for X milliseconds. The warning (_yellow_) is not something to worry about, but too many messages in _red_) could mean your server infrastructure is not that good or your scripting code is not that optimized.
+It means the server got **stuck** for X milliseconds. The warning (_yellow_) is not something to worry about, but too many messages in _red_ could mean your server infrastructure is not that good or your scripting code is not that optimized.
 
 Usually the server runs at 33 ticks per second (or the value configured at Config.toml), the server runs in an infinite loop in that frequency, and inside that loop all server operations are executed, such as receiving and sending network packets, triggering lua events, executing functions or callbacks, and so on.
 
@@ -177,11 +173,11 @@ In some shared VPS, this warning may appear up more frequently due how the VPS h
 :::
 
 
-#### `Assertion Failed: [...] problem (5002) We don't have cert, and self-signed certs not allowed...`
-
-This is an internal problem from Steam Library when you attempt to connect to a server too fast (when it has just started). The server automatically fixes it by retrying the connection, there is **nothing to worry about**.
-
-
 #### `Lua Stack Error: Should be X, is Y...`
 
 This is an internal error and **should not supposed to happen**. Those are guards set around our Lua Scripting implementation to prevent bad things from happening. If this error appears it means a implementation bug happened. Please communicate immediately with the devs, and if possible how to reproduce that!
+
+
+#### `...Was it supposed to happen?`
+
+Those FATAL errors usually shouldn't happen, if you experience any, please let us know.

@@ -131,8 +131,7 @@ import ViewportDataStable from '@site/src/api/.generated/Stable/StaticClasses/Vi
 import JSONDataStable from '@site/src/api/Stable/UtilityClasses/JSON.json';
 import NanosMathDataStable from '@site/src/api/Stable/UtilityClasses/NanosMath.json';
 import NanosUtilsDataStable from '@site/src/api/Stable/UtilityClasses/NanosUtils.json';
-// import NanosTableDataStable from '@site/src/api/Stable/UtilityClasses/NanosTable.json';
-import NanosTableDataStable from '@site/src/api/UtilityClasses/NanosTable.json';
+import NanosTableDataStable from '@site/src/api/Stable/UtilityClasses/NanosTable.json';
 
 import StringDataStable from '@site/src/api/Stable/StandardLibraries/string.json';
 import TableDataStable from '@site/src/api/Stable/StandardLibraries/table.json';

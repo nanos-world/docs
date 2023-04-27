@@ -2,44 +2,15 @@
 title: NanosUtils
 description: A table containing useful and aux functions
 tags: [utility-class]
-sidebar_position: 3
+sidebar_position: 4
 ---
 
-<HeaderDeclaration type="UtilityClass" name="NanosUtils" is_static is_open_source />
+<HeaderDeclaration type="UtilityClass" name="NanosUtils" open_source_url="NanosUtils.lua" is_static />
 
 
 ## 🎒 Examples
 
-```lua
-local table = {
-	"my_key" = 123,
-	[2] = "my_value"
-}
-
-local dump_text = NanosUtils.Dump(table)
-
-Console.Log(dump_text)
-
--- Outputs Text
---[[
-{
-	"my_key": 123,
-	2 = "my_value"
-}
---]]
-```
-
-```lua
-local arg1 = math.random()
-local arg2 = math.random()
-
-NanosUtils.Benchmark("My Heavy Operation", 1000, function(param1, param2)
-    -- Do some heavy operations here
-    local result = param1 * param2
-end, arg1, arg2)
-
--- Outputs Text: 'Benchmark 'My Heavy Operation' (x1000) took 1.5ms.'
-```
+<ExamplesDeclaration type="UtilityClass" name="NanosUtils" />
 
 
 ## 🗿 Static Functions
