@@ -1,5 +1,6 @@
 import React from 'react';
 import APIData from '@site/src/components/APIData.jsx';
+import Admonition from '@theme/Admonition';
 import { GetRelations } from '@site/src/components/ClassBuilder.mdx';
 
 export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
@@ -10,6 +11,11 @@ export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
 		<blockquote>
 			<span dangerouslySetInnerHTML={{ __html: enum_data ? enum_data.description : null }}></span>
 		</blockquote>
+		{enum_data && enum_data.supports_bitwise ?
+			<Admonition type="tip" icon="💡" title="TIP">
+				This Enum supports <a href="https://www.lua.org/manual/5.4/manual.html#3.4.2">Bitwise Operations</a>!
+			</Admonition>
+		: null}
 		{enum_data && enum_data.relations ?
 			<p className={"relations"}>
 				Used by { GetRelations(enum_data.relations) }.

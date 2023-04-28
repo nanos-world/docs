@@ -69,6 +69,26 @@ export const InlineFunctionToolTip = ({ function_parameters }) => (
 	</>
 );
 
+
+export function GetReturnTableDescriptionList(table_properties) {
+	const table_return_list = table_properties.map((property) => " " + property.name + ": " + property.type);
+	return "in the format <code>{ " + table_return_list + " }</code>";
+}
+
+export const TablePropertiesToolTip = ({ table_properties, table_properties_custom }) => (
+	<>
+		<CodeBlock className="language-lua">
+			{`{`}
+			{
+				table_properties ?
+					table_properties.map((property) => `\n\t${property.name}: ${property.type}`)
+				: table_properties_custom
+			}
+			{`\n}`}
+		</CodeBlock>
+	</>
+);
+
 export const EnumToolTip = ({ enum_name, enum_data }) => (
 	<EnumDeclaration enum_name={ enum_name } enum_data={ enum_data } is_tooltip={true} />
 );

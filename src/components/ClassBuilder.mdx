@@ -8,7 +8,7 @@ import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
 import { AuthorityType, NativeType, BasicType, Classes, Structs, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
-import { FunctionToolTip, StaticFunctionToolTip, InlineFunctionToolTip, EventToolTip } from '@site/src/components/Tooltips.jsx';
+import { FunctionToolTip, StaticFunctionToolTip, InlineFunctionToolTip, TablePropertiesToolTip, EventToolTip } from '@site/src/components/Tooltips.jsx';
 
 import APIData from '@site/src/components/APIData.jsx';
 
@@ -63,20 +63,19 @@ export function GetReturnList(return_list) {
 	return return_list.map((return_data) => SplitTypesByOr(return_data.type)).reduce((prev, next) => [prev, ", ", next]);
 }
 
-export function GetReturnTableDescriptionList(return_data) {
-	if (return_data.table_properties) {
-		const table_return_list = return_data.table_properties.map((property) => " " + property.name + ": " + property.type);
-		return "in the format <code>{ " + table_return_list + " }</code>";
-	}
-	return return_data.description;
-}
-
 <!-- Gets a list of return descriptions surrounded by () -->
 export function GetReturnDescriptionList(return_list) {
-	const return_list_plain = return_list.map((return_data) => return_data.description || return_data.table_properties ? <span dangerouslySetInnerHTML={{ __html: GetReturnTableDescriptionList(return_data) }} /> : null ).reduce((prev, next) => [prev, ", ", next]);
-	if (!return_list_plain)
-		return "";
-	return <>{" ("}{ return_list_plain }{")"}</>;
+	const ret = return_list.map((return_data) =>
+		return_data.description || return_data.table_properties || return_data.table_properties_custom ?
+			<>
+				{ return_data.description }
+				{ return_data.description && (return_data.table_properties || return_data.table_properties_custom) ? <> </> : null }
+				{ return_data.table_properties ? <InlineTablePropertiesDeclaration table_properties={return_data.table_properties} /> : null }
+				{ return_data.table_properties_custom ? <InlineTablePropertiesDeclaration table_properties_custom={return_data.table_properties_custom} /> : null }
+			</>
+		: null
+	).reduce((prev, next) => [prev, ", ", next]);
+	return ret ? <>{" ("}{ ret }{")"}</> : "";
 }
 
 <!-- Authority Label Map -->
@@ -391,6 +390,12 @@ export const FunctionNameDeclaration = ({ class_name, function_data, base_class 
 
 export const InlineFunctionNameDeclaration = ({ function_parameters }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<InlineFunctionToolTip function_parameters={function_parameters} />}>
+		<span className={"hover-link"}>with this format</span>
+	</Tippy>
+);
+
+export const InlineTablePropertiesDeclaration = ({ table_properties, table_properties_custom }) => (
+	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<TablePropertiesToolTip table_properties={table_properties} table_properties_custom={table_properties_custom} />}>
 		<span className={"hover-link"}>with this format</span>
 	</Tippy>
 );

@@ -360,8 +360,7 @@ h3 > .native-type {
 .function-return {
 	margin-left: 2px;
 	font-size: 90%;
-	color: var(--ifm-blockquote-color);
-	opacity: 0.9;
+	color: var(--ifm-color-emphasis-700);
 }
 
 /* Bug? Announcement bar affecting it somehow? */
