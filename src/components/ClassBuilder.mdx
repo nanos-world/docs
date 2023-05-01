@@ -7,7 +7,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
-import { AuthorityType, NativeType, BasicType, Classes, Structs, Enums, AssetPath } from '@site/docs/components/_nanos.mdx';
+import { AuthorityType, NativeType, BasicType, Classes, Structs, Enums, AssetPath, LinkActiveVersion } from '@site/docs/components/_nanos.mdx';
 import { FunctionToolTip, StaticFunctionToolTip, InlineFunctionToolTip, TablePropertiesToolTip, EventToolTip } from '@site/src/components/Tooltips.jsx';
 
 import APIData from '@site/src/components/APIData.jsx';
@@ -80,16 +80,16 @@ export function GetReturnDescriptionList(return_list) {
 
 <!-- Authority Label Map -->
 export const AuthorityLabels = {
-	client: <>This class can only be spawned on 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a> side.</>,
-	server: <>This class can only be spawned on 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a> side.</>,
-	both: <>This class can be spawned on both 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a> side (if you spawn it on client, it won't be synchronized with other players).</>,
+	client: <>This class can only be spawned on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Client</LinkActiveVersion> side.</>,
+	server: <>This class can only be spawned on 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Server</LinkActiveVersion> side.</>,
+	both: <>This class can be spawned on both 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Client</LinkActiveVersion> and 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Server</LinkActiveVersion> side (if you spawn it on client, it won't be synchronized with other players).</>,
 }
 
 <!-- Authority Label Map for Static Classes -->
 export const AuthorityLabelsStatic = {
-	client: <>This static class can be accessed only on 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a> side.</>,
-	server: <>This static class can be accessed only on 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a> side.</>,
-	both: <>This static class can be accessed on both 🟧 <a href="/docs/next/core-concepts/scripting/authority-concepts">Client</a> and 🟦 <a href="/docs/next/core-concepts/scripting/authority-concepts">Server</a> side.</>,
+	client: <>This static class can be accessed only on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Client</LinkActiveVersion> side.</>,
+	server: <>This static class can be accessed only on 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Server</LinkActiveVersion> side.</>,
+	both: <>This static class can be accessed on both 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Client</LinkActiveVersion> and 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Server</LinkActiveVersion> side.</>,
 }
 
 <!-- Gets a Parameter name (with ? when optional) -->
@@ -368,23 +368,29 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 	</>
 );
 
+export const GetLinkElement = ({ base_class, append_url, content }) => (
+	<b>
+		{ base_class ?
+			<LinkActiveVersion to={`${`scripting-reference/classes/base-classes/${base_class.toLowerCase()}`}${append_url}`} className={"hover-link"}>
+				<code>{ content }</code>
+			</LinkActiveVersion>
+		:
+			<Link to={append_url} className={"hover-link"}>
+				<code>{ content }</code>
+			</Link>
+		}
+	</b>
+);
+
 export const StaticFunctionNameDeclaration = ({ class_name, function_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<StaticFunctionToolTip class_name={class_name} function_data={function_data} />}>
-		<b>
-			<Link to={`${base_class ? `/docs/next/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#static-function-${function_data.name.toLowerCase()}`} className={"hover-link"}>
-				<code>{ function_data.name }</code>
-			</Link>
-		</b>
+		<GetLinkElement base_class={base_class} append_url={`#static-function-${function_data.name.toLowerCase()}`} content={function_data.name} />
 	</Tippy>
 );
 
 export const FunctionNameDeclaration = ({ class_name, function_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<FunctionToolTip class_name={class_name} function_data={function_data} />}>
-		<b>
-			<Link to={`${base_class ? `/docs/next/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#function-${function_data.name.toLowerCase()}`} className={"hover-link"}>
-				<code>{ function_data.name }</code>
-			</Link>
-		</b>
+		<GetLinkElement base_class={base_class} append_url={`#function-${function_data.name.toLowerCase()}`} content={function_data.name} />
 	</Tippy>
 );
 
@@ -402,11 +408,7 @@ export const InlineTablePropertiesDeclaration = ({ table_properties, table_prope
 
 export const EventNameDeclaration = ({ class_name, event_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<EventToolTip class_name={class_name} event_data={event_data} />}>
-		<b>
-			<Link to={`${base_class ? `/docs/next/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : ""}#event-${event_data.name.toLowerCase()}`} className={"hover-link"}>
-				<code>{ event_data.name }</code>
-			</Link>
-		</b>
+		<GetLinkElement base_class={base_class} append_url={`#event-${event_data.name.toLowerCase()}`} content={event_data.name} />
 	</Tippy>
 );
 
@@ -551,7 +553,10 @@ export const InheritedClassFunctions = ({ inherited_class_name, parent_class_nam
 		<details>
 			<summary>Inherited {parent_class_name} {is_static ? "Static " : ""}Functions</summary>
 			<ReferenceLink href={`scripting-reference/classes/base-classes/${parent_class_name}`}>Base {parent_class_name}</ReferenceLink>
-			<FunctionListDeclaration class_name={inherited_class_name} base_class={parent_class_name} functions_list={is_static ? class_data.static_functions : class_data.functions} />
+			{ is_static ?
+				<StaticFunctionListDeclaration class_name={inherited_class_name} base_class={parent_class_name} functions_list={class_data.static_functions} />
+				: <FunctionListDeclaration class_name={inherited_class_name} base_class={parent_class_name} functions_list={class_data.functions} />
+			}
 		</details>
 	</>);
 };
