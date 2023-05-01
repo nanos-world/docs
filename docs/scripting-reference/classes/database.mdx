@@ -16,7 +16,7 @@ Currently nanos world supports `SQLite`, `MySQL` and `PostgreSQL` out of the box
 
 ## 🎒 Examples
 
-```lua Server/Index.lua
+```lua title="Server/Index.lua"
 -- Creates a SQLite connection, using a local file called 'database_filename.db'
 local sqlite_db = Database(DatabaseEngine.SQLite, "db=database_filename.db timeout=2")
 
@@ -28,24 +28,23 @@ sqlite_db:Execute([[
 	)
 ]])
 
--- Executes a Query
-sqlite_db:Execute("INSERT INTO test VALUES (1, 'amazing')", function(affected_rows)
-	Console.Log("Affected Rows: " .. tostring(affected_rows))
-    -- Will output: 1
-end)
+-- Insert values in the table
+local affected_rows = sqlite_db:Execute("INSERT INTO test VALUES (1, 'amazing')")
+Console.Log("Affected Rows: " .. tostring(affected_rows))
+-- Will output: 1
 
 -- Selects the data
-sqlite_db:Select("SELECT * FROM test", function(rows)
-	Console.Log(NanosUtils.Dump(rows))
-    -- Will output a table with all data from 'test'
-end)
+local rows = sqlite_db:Select("SELECT * FROM test")
+Console.Log(NanosTable.Dump(rows))
+-- Will output a table with all data from 'test'
 
 -- Selects the data with filter
-sqlite_db:Select("SELECT * FROM test WHERE name = :0", function(rows)
-	Console.Log(NanosUtils.Dump(rows))
-    -- Will output a table with all data from 'test' where name matches 'amazing'
-end, 'amazing')
+local rows_filter = sqlite_db:Select("SELECT * FROM test WHERE name = :0", "amazing")
+Console.Log(NanosTable.Dump(rows_filter))
+-- Will output a table with all data from 'test' where name matches 'amazing'
 ```
+
+<ExamplesDeclaration type="Class" name="Database" />
 
 :::tip
 

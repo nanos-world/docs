@@ -82,7 +82,7 @@ Our Blueprint functionalities got boosted!
 
 It is now possible to bind to Blueprint Event Dispatchers from Lua! Making the communication from Blueprint to Lua now possible!
 
-```lua Client/index.lua
+```lua title=Client/Index.lua
 -- Spawns the Blueprint
 local blueprint = Blueprint(Vector(), Rotator(), "my-asset-pack::BP_AwesomeBlueprint",)
 

@@ -18,7 +18,7 @@ If your Actor Blueprint was spawned on the Server, it will be automatically sync
 
 ### Calling Blueprint Events from lua
 
-```lua Client/index.lua
+```lua title=Client/Index.lua
 -- Spawns the Blueprint
 local blueprint = Blueprint(Vector(), Rotator(), "my-asset-pack::BP_MyBlueprint")
 
@@ -32,7 +32,7 @@ blueprint:CallBlueprintEvent("MyBlueprintCustomEvent", param1, param2)
 
 ### Binding Blueprint Event Dispatchers
 
-```lua Client/index.lua
+```lua title=Client/Index.lua
 -- Spawns the Blueprint
 local blueprint = Blueprint(Vector(), Rotator(), "my-asset-pack::BP_MyBlueprint")
 
