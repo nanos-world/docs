@@ -368,23 +368,23 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 	</>
 );
 
-export const GetLinkElement = ({ base_class, append_url, content }) => (
-	<b>
-		<Link to={`${ base_class ? `${getActiveVersionPath()}/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : "" }${append_url}`} className={"hover-link"}>
-			<code>{ content }</code>
-		</Link>
-	</b>
-);
-
 export const StaticFunctionNameDeclaration = ({ class_name, function_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<StaticFunctionToolTip class_name={class_name} function_data={function_data} />}>
-		<GetLinkElement base_class={base_class} append_url={`#static-function-${function_data.name.toLowerCase()}`} content={function_data.name} />
+		<b>
+			<Link to={`${ base_class ? `${getActiveVersionPath()}/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : "" }${`#static-function-${function_data.name.toLowerCase()}`}`} className={"hover-link"}>
+				<code>{ function_data.name }</code>
+			</Link>
+		</b>
 	</Tippy>
 );
 
 export const FunctionNameDeclaration = ({ class_name, function_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<FunctionToolTip class_name={class_name} function_data={function_data} />}>
-		<GetLinkElement base_class={base_class} append_url={`#function-${function_data.name.toLowerCase()}`} content={function_data.name} />
+		<b>
+			<Link to={`${ base_class ? `${getActiveVersionPath()}/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : "" }${`#function-${function_data.name.toLowerCase()}`}`} className={"hover-link"}>
+				<code>{ function_data.name }</code>
+			</Link>
+		</b>
 	</Tippy>
 );
 
@@ -402,7 +402,11 @@ export const InlineTablePropertiesDeclaration = ({ table_properties, table_prope
 
 export const EventNameDeclaration = ({ class_name, event_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<EventToolTip class_name={class_name} event_data={event_data} />}>
-		<GetLinkElement base_class={base_class} append_url={`#event-${event_data.name.toLowerCase()}`} content={event_data.name} />
+		<b>
+			<Link to={`${ base_class ? `${getActiveVersionPath()}/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : "" }${`#event-${event_data.name.toLowerCase()}`}`} className={"hover-link"}>
+				<code>{ event_data.name }</code>
+			</Link>
+		</b>
 	</Tippy>
 );
 
