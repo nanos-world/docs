@@ -370,15 +370,9 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 
 export const GetLinkElement = ({ base_class, append_url, content }) => (
 	<b>
-		{ base_class ?
-			<LinkActiveVersion to={`${`scripting-reference/classes/base-classes/${base_class.toLowerCase()}`}${append_url}`} className={"hover-link"}>
-				<code>{ content }</code>
-			</LinkActiveVersion>
-		:
-			<Link to={append_url} className={"hover-link"}>
-				<code>{ content }</code>
-			</Link>
-		}
+		<Link to={`${ base_class ? `${getActiveVersionPath()}/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : "" }${append_url}`} className={"hover-link"}>
+			<code>{ content }</code>
+		</Link>
 	</b>
 );
 
