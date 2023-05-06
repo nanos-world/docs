@@ -240,10 +240,6 @@ article p img {
 	font-size: .875rem;
 }
 
-.markdown details a.reference-link:first-child {
-	margin-top: 0 !important;
-}
-
 .tippy-box .theme-code-block {
 	margin: 0;
 }
@@ -369,24 +365,44 @@ h3 > .native-type {
 }
 
 /* Reference Link */
+.markdown details a.reference-link:first-child {
+	margin-top: 0 !important;
+}
+
+html[data-theme="dark"]
+a.reference-link {
+	border-color: var(--ifm-color-emphasis-200);
+}
+
+html[data-theme="dark"]
+a.reference-link span {
+	color: var(--ifm-color-emphasis-400);
+}
+
+html[data-theme="dark"]
+a.reference-link:hover {
+	border-color: var(--ifm-color-emphasis-300);
+}
+
 a.reference-link {
 	text-decoration: none;
 	display: block;
 	padding: 1.25rem 1rem;
 	font-weight: var(--ifm-font-weight-bold);
 
-	border-color: var(--ifm-color-emphasis-200);
+	border-color: var(--ifm-color-emphasis-500);
 	border-radius: var(--ifm-alert-border-radius);
 	border-style: solid;
 	border-width: var(--ifm-alert-border-width);
 
 	margin: 1rem 0;
 	position: relative;
+
+	transition: border-color .15s cubic-bezier(.4,0,.2,1);
 }
 
 a.reference-link:hover {
-	border-color: var(--ifm-color-emphasis-300);
-	transition: border-color .15s cubic-bezier(.4,0,.2,1);
+	border-color: var(--ifm-color-emphasis-800);
 }
 
 a.reference-link:before {
@@ -399,7 +415,7 @@ a.reference-link:before {
 }
 
 a.reference-link span {
-	color: var(--ifm-color-emphasis-400);
+	color: var(--ifm-color-emphasis-600);
 	font-weight: var(--ifm-font-weight-normal);
 	font-size: .8125rem;
 	position: absolute;
@@ -410,7 +426,7 @@ a.reference-link span {
 /* Hides in specific screen sizes */
 @media screen and (min-width: 995px) and (max-width: 1300px), (max-width: 800px) {
 	a.reference-link span {
-	display: none;
+		display: none;
 	}
 }
 
