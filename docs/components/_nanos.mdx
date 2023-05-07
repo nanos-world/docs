@@ -5,7 +5,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
-import { AuthorityTooltip, AssetPathToolTip, ClassToolTip, StructToolTip, FunctionToolTip, EnumToolTip } from '@site/src/components/Tooltips.jsx';
+import { AuthorityTooltip, AssetPathToolTip, ClassToolTip, FunctionToolTip, EnumToolTip } from '@site/src/components/Tooltips.jsx';
 
 import APIData from '@site/src/components/APIData.jsx';
 
@@ -42,7 +42,7 @@ export const ReferenceLink = ({ children, href }) => (
 
 <!-- Generic Base Native component -->
 export const BaseNative = (img, title, description) => (
-	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} />}>
+	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} subtitle={"Nativity"} />}>
 		<span className="native-type">
 			<img src={img} title={title} />
 		</span>
@@ -51,7 +51,7 @@ export const BaseNative = (img, title, description) => (
 
 <!-- Generic Base Authority component -->
 export const BaseAuthority = (img, title, description) => (
-	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} />}>
+	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} subtitle={"Authority Side"} />}>
 		<Link className="authority-availability" to={`${getActiveVersionPath()}/core-concepts/scripting/authority-concepts#methods-and-events-availability`}>
 			<img src={img} title={title} />
 		</Link>
@@ -60,10 +60,14 @@ export const BaseAuthority = (img, title, description) => (
 
 <!-- Generic Base Basic Type component -->
 export const BaseBasicType = (label, description) => (
-	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={
+	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={
 		<>
-			<h3>
-				{label}
+			<h3 className={"tooltip-header"}>
+				<img src={"/img/scripting/lua.webp"} title={"Lua"} className={"tooltip-img"} />
+				<span className={"tooltip-span"}>
+					<div>{label}</div>
+					<div className={"tooltip-sub"}>Basic Type</div>
+				</span>
 			</h3>
 			<span dangerouslySetInnerHTML={{ __html: description }}></span>
 		</>
@@ -75,15 +79,15 @@ export const BaseBasicType = (label, description) => (
 );
 
 <!-- Generic Struct Type component -->
-export const BaseStruct = (name, path) => (
-	<Tippy maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<StructToolTip struct_name={name} description={ APIData.BleedingEdge.Struct[name] ? APIData.BleedingEdge.Struct[name].description : "Struct not found. Soon™." } />}>
+export const BaseStruct = (name, emoji, path) => (
+	<Tippy maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<ClassToolTip class_name={name} emoji={emoji} append_title="Struct" description={ APIData.BleedingEdge.Struct[name] ? APIData.BleedingEdge.Struct[name].description : "Struct not found. Soon™." } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/structs/${path ? path : name.toLowerCase()}`} className={"hover-link"}>{name}</Link>
 	</Tippy>
 );
 
 <!-- Generic Utility Class Type component -->
 export const BaseUtilityClass = (name, path) => (
-	<Tippy maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<StructToolTip struct_name={name} description={ APIData.BleedingEdge.UtilityClass[name] ? APIData.BleedingEdge.UtilityClass[name].description : "Utility Class not found. Soon™." } />}>
+	<Tippy maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<ClassToolTip class_name={name} emoji={"💡"} append_title="Utility Class" description={ APIData.BleedingEdge.UtilityClass[name] ? APIData.BleedingEdge.UtilityClass[name].description : "Utility Class not found. Soon™." } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/utility-libraries/${path ? path : name.toLowerCase()}`} className={"hover-link"}>
 			<b>{ name }</b>
 		</Link>
@@ -93,7 +97,7 @@ export const BaseUtilityClass = (name, path) => (
 <!-- Generic Class Type component -->
 export const BaseClass = (name, emoji, label = name, path = null) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"}
-		content={<ClassToolTip class_name={`${emoji} ${label}`} append_title="Class" description={ APIData.BleedingEdge.Class[name] ? APIData.BleedingEdge.Class[name].description : "Class not found. Soon™." } />}>
+		content={<ClassToolTip class_name={label} emoji={emoji} append_title="Class" description={ APIData.BleedingEdge.Class[name] ? APIData.BleedingEdge.Class[name].description : "Class not found. Soon™." } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/classes/${path ? path : label.toLowerCase()}`} className={"hover-link"}>
 			<b>{ label }</b>
 		</Link>
@@ -171,11 +175,11 @@ export const BasicType = {
 
 <!-- Defines Struct Types components -->
 export const Structs = {
-	Vector: () => BaseStruct("Vector"),
-	Rotator: () => BaseStruct("Rotator"),
-	Color: () => BaseStruct("Color"),
-	Quat: () => BaseStruct("Quat"),
-	Vector2D: () => BaseStruct("Vector2D"),
+	Vector: () => BaseStruct("Vector", "📐"),
+	Rotator: () => BaseStruct("Rotator", "🧭"),
+	Color: () => BaseStruct("Color", "🎨"),
+	Quat: () => BaseStruct("Quat", "🔢"),
+	Vector2D: () => BaseStruct("Vector2D", "📏"),
 };
 
 <!-- Defines Struct Types components -->

@@ -359,6 +359,27 @@ h3 > .native-type {
 	color: var(--ifm-color-emphasis-700);
 }
 
+.tooltip-header {
+	display:flex;
+	align-items:center;
+}
+
+.tooltip-img {
+	width: 24px;
+	margin: auto 10px auto 0;
+	display: inline-block;
+}
+
+.tooltip-span {
+	display: inline-block;
+}
+
+.tooltip-span .tooltip-sub {
+	font-size: 11px;
+	font-weight: normal;
+	opacity: 50%;
+}
+
 /* Bug? Announcement bar affecting it somehow? */
 .menu.thin-scrollbar {
 	margin-bottom: 0 !important;

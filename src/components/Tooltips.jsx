@@ -5,10 +5,14 @@ import { EnumDeclaration } from '@site/src/components/EnumDeclaration';
 import { GetFunctionSignature, GetStaticFunctionSignature, GetEventSignature, GetParametersList, FunctionParametersDeclaration } from '@site/src/components/ClassBuilder.mdx';
 
 
-export const AuthorityTooltip = ({ img, title, description }) => (
+export const AuthorityTooltip = ({ img, title, subtitle, description }) => (
 	<>
-		<h3>
-			<img src={img} title={title} style={{ width: "24px", verticalAlign: "middle", marginRight: "5px" }} /> {title}
+		<h3 className={"tooltip-header"}>
+			<img src={img} title={title} className={"tooltip-img"} />
+			<span className={"tooltip-span"}>
+				<div>{title}</div>
+				<div className={"tooltip-sub"}>{subtitle}</div>
+			</span>
 		</h3>
 		<span dangerouslySetInnerHTML={{ __html: description }}></span>
 	</>
@@ -16,26 +20,26 @@ export const AuthorityTooltip = ({ img, title, description }) => (
 
 export const AssetPathToolTip = ({ label, description }) => (
 	<>
-		<h3>
-			{label}
+		<h3 className={"tooltip-header"}>
+			<span className={"tooltip-span"}>
+				<div>{label}</div>
+				<div className={"tooltip-sub"}>Asset Path Reference</div>
+			</span>
 		</h3>
 		<span dangerouslySetInnerHTML={{ __html: description }}></span>
 	</>
 );
 
-export const ClassToolTip = ({ class_name, description, append_title }) => (
+export const ClassToolTip = ({ class_name, emoji, description, append_title }) => (
 	<>
-		<h3>
-			{class_name} {append_title}
-		</h3>
-		<span dangerouslySetInnerHTML={{ __html: description }}></span>
-	</>
-);
-
-export const StructToolTip = ({ struct_name, description }) => (
-	<>
-		<h3>
-			{struct_name} Struct
+		<h3 className={"tooltip-header"}>
+			<span className={"tooltip-img"}>
+				{emoji}
+			</span>
+			<span className={"tooltip-span"}>
+				<div>{class_name}</div>
+				<div className={"tooltip-sub"}>{append_title}</div>
+			</span>
 		</h3>
 		<span dangerouslySetInnerHTML={{ __html: description }}></span>
 	</>

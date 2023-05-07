@@ -5,9 +5,19 @@ import { GetRelations } from '@site/src/components/ClassBuilder.mdx';
 
 export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
 	<>
-		<h3 id={ is_tooltip ? "" : enum_name.toLowerCase() }>
-			{ is_tooltip ? <>Enum { enum_name }</> : <code>{ enum_name }</code> }
-		</h3>
+		{
+			is_tooltip ? <h3>
+				<img src={"/img/scripting/lua.webp"} title={"Lua"} className={"tooltip-img"} />
+				<span className={"tooltip-span"}>
+					<div>{enum_name}</div>
+					<div className={"tooltip-sub"}>Enum</div>
+				</span>
+			</h3> :
+			<h3 id={ enum_name.toLowerCase() }>
+				<code>{ enum_name }</code>
+				<a className={"hash-link"} href={`#${enum_name.toLowerCase()}`}></a>
+			</h3>
+		}
 		<blockquote>
 			<span dangerouslySetInnerHTML={{ __html: enum_data ? enum_data.description : null }}></span>
 		</blockquote>
