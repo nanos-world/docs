@@ -79,16 +79,16 @@ nanos world counts on (for now) 4 built-in maps: `default-blank-map`, `default-e
 | Command | Description |
 | :--- | :--- |
 | `chat <message>` | Sends a chat message |
-| `kick <player_d> <reason>` | Sends a chat message |
-| `map <map_path>` | Changes the Map, reloads all Packages and reconnect all Players |
+| `kick <player_id> <reason>` | Kicks a player by it's ID |
+| `map <map_path>` | Reloads all Packages and reconnect the Players in new Map |
 | `stop` | Stops the server |
-| `players` | lists all players connected |
-| `package run <package_name> <lua_code>` | Runs a code in a package |
-| `package reload <package_name>` | Reloads a package |
-| `package hotreload <package_name>` | Hot-reloads a package (reloads all files but keeps the memory as is) |
-| `package reload all` | Reloads all packages and restarts the Lua Virtual Machine |
-| `package unload <package_name>` | Unloads a package |
-| `package load <package_name>` | Loads a package |
+| `players` | Lists all Players connected |
+| `package run <package_name> <lua_code>` | Runs a code in a Package |
+| `package reload all` | Reloads all Packages and restarts the Lua Virtual Machine |
+| `package reload <package_names...>` | Reloads Packages |
+| `package unload <package_names...>` | Unloads Packages |
+| `package load <package_names...>` | Loads Packages |
+| `package hotreload <package_names...>` | Reloads all files but keeps the memory as is |
 
 
 ### Custom Commands
