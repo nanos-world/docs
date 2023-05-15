@@ -107,7 +107,7 @@ export const BaseClass = (name, emoji, label = name, path = null) => (
 <!-- Generic StaticClass Type component -->
 export const BaseStaticClass = (name, emoji, path) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"}
-		content={<ClassToolTip class_name={`${emoji} ${name}`} append_title="Static Class" description={ APIData.BleedingEdge.StaticClass[name] ? APIData.BleedingEdge.StaticClass[name].description : "Static Class not found. Soon™." } />}>
+		content={<ClassToolTip class_name={name} emoji={emoji} append_title="Static Class" description={ APIData.BleedingEdge.StaticClass[name] ? APIData.BleedingEdge.StaticClass[name].description : "Static Class not found. Soon™." } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/static-classes/${path ? path : name.toLowerCase()}`} className={"hover-link"}>
 			<b>{ name }</b>
 		</Link>

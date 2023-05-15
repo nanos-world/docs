@@ -23,7 +23,7 @@ export const AssetPathToolTip = ({ label, description }) => (
 		<h3 className={"tooltip-header"}>
 			<span className={"tooltip-span"}>
 				<div>{label}</div>
-				<div className={"tooltip-sub"}>Asset Path Reference</div>
+				<div className={"tooltip-sub"}>Asset Path Reference (string)</div>
 			</span>
 		</h3>
 		<span dangerouslySetInnerHTML={{ __html: description }}></span>

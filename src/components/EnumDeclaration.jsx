@@ -10,7 +10,7 @@ export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
 				<img src={"/img/scripting/lua.webp"} title={"Lua"} className={"tooltip-img"} />
 				<span className={"tooltip-span"}>
 					<div>{enum_name}</div>
-					<div className={"tooltip-sub"}>Enum</div>
+					<div className={"tooltip-sub"}>Enum (integer)</div>
 				</span>
 			</h3> :
 			<h3 id={ enum_name.toLowerCase() }>

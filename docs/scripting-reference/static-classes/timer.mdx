@@ -30,20 +30,7 @@ Timer.SetTimeout(function(my_param)
 end, 5000, "world")
 ```
 
-```lua
-local character = Character(...)
-
-local my_timer = Timer.SetTimeout(function(_character)
-    -- Do something with _character
-    -- Ex: Destroy the character after 10 seconds
-    _character:Destroy()
-end, 10000, character)
-
--- Binds the Timer to the Character
--- This will ensure it will never trigger if the character is destroyed before it
--- With this you don't need to validate if the '_character' parameter is valid
-Timer.Bind(my_timer, character)
-```
+<ExamplesDeclaration type="StaticClass" name="Timer" />
 
 
 ## 🗿 Static Functions
