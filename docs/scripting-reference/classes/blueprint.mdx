@@ -102,8 +102,10 @@ List of all supported parameters which can be passed between Lua ↔ Blueprint:
 | **`BaseActor`** | **`Actor`** | ✅ | ✅ |
 | **`Player`** | **`PlayerController`** | ✅ | ❌ |
 | **`SpecialPath`** | **`Texture2D`** | ✅ | ❌ |
+| **`string`** | **`Class`** | ✅ | ❌ |
 | **`table`** | [**`Transform`**](#ftransform) | ✅ | ✅ |
 | **`table`** | [**`SlateBrush`**](#fslatebrush) | ✅ | ✅ |
+| **`table`** | [**`SlateFontInfo`**](#fslatefontinfo) | ✅ | ✅ |
 | **`table`** | [**`Any Struct`**](#any-struct) | ✅ | ✅ |
 
 
@@ -143,9 +145,23 @@ Custom Structs can also be passed and retrieved, just pass an object with the sa
 	["Mirroring"] = 0, -- ESlateBrushMirrorType
 	["ImageSize"] = Vector2D(),
 	["Tint"] = Color(),
-	["Image"] = "package://sandbox/Client/my_image.jpg", -- Or Canvas, WebUI, SceneCapture
+	["Image"] = "package://sandbox/Client/my_image.jpg", -- Special Path, or Canvas, WebUI, SceneCapture
 	["Margin"] = {}, -- FMargin
 	["OutlineSettings"] = {} -- FSlateBrushOutlineSettings
+}
+```
+
+#### FSlateFontInfo
+
+```lua
+{
+	["FontFamily"] = "package://my-package/Client/my_font.ttf", -- Special Path
+	["FontMaterial"] = "my-asset-pack::M_MyMaterial", -- Material Path
+	["OutlineSettings"] = {} -- FSlateBrushOutlineSettings
+	["Typeface"] = "", -- string
+	["Size"] = 24,
+	["LetterSpacing"] = 0,
+	["SkewAmount"] = 0.0
 }
 ```
 
