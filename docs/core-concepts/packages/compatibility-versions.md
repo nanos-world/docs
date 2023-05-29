@@ -36,6 +36,19 @@ The Compatibility Mode is a feature that aims to keep old and unmaintained packa
 To use the following features, you must update your Package's `compatibility_version` setting in the Package.toml to at least that version (exact that version or bigger).
 
 
+### Version `1.54`
+
+
+#### [Level.CallLevelBlueprintEvent()](/scripting-reference/static-classes/level.mdx#static-function-calllevelblueprintevent)
+
+Before, `Level.CallLevelBlueprintEvent()` expected a string with the function name and parameters concatenated together separated by spaces. Now it uses the new approach of receiving a variadic amount of parameters and also returns the function return value.
+
+
+#### [Client.GetPackages()](/scripting-reference/static-classes/client.mdx#static-function-getpackages)
+
+Before, `Client.GetPackages()` returned all packages that the server was running on client side. Now it behaves exactly like [Server.GetPackages()](/scripting-reference/static-classes/server.mdx#static-function-getpackages), having a filter as parameter and providing more information on return.
+
+
 ### Version `1.49`
 
 
