@@ -96,6 +96,10 @@ nanos world supports a special type of Path when loading **Textures (.jpg, .png)
 
 `package://sandbox/Client/my_awesome_audio.ogg`
 
+#### Example accessing a _.ttf sound_ from `my-fonts` Package:
+
+`package://my-fonts/Client/Roboto.ttf`
+
 :::tip
 
 SpecialPath input also supports relative and traditional paths!

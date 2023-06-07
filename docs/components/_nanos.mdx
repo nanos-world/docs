@@ -40,6 +40,13 @@ export const ReferenceLink = ({ children, href }) => (
 	</a>
 );
 
+<!-- Media Legend -->
+export const MediaLegend = ({ children }) => (
+	<p className="media-legend">
+	{ children }
+	</p>
+)
+
 <!-- Generic Base Native component -->
 export const BaseNative = (img, title, description) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} subtitle={"Nativity"} />}>
@@ -123,21 +130,21 @@ export const Enums = ({ children }) => (
 
 <!-- Define Asset Path component -->
 export const BaseAssetPath = (type, label, description) => (
-	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AssetPathToolTip label={label} description={description} />}>
+	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AssetPathToolTip label={label} description={description} subtitle="Asset Path Reference (string)" />}>
 		<Link to={`${getActiveVersionPath()}/core-concepts/assets#referencing-assets-in-scripting`} className={"hover-link"}>{label}</Link>
 	</Tippy>
 );
 
 <!-- Define Special Path component -->
 export const SpecialPath = (type, label, description) => (
-	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AssetPathToolTip label={label} description={description} />}>
+	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AssetPathToolTip label={label} description={description} subtitle="File Path Reference (string)" />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/basic-types#specialpath`} className={"hover-link"}>{label}</Link>
 	</Tippy>
 );
 
 <!-- Define Tippy Generic Link component -->
 export const TippyLink = (type, label, description, url) => (
-	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AssetPathToolTip label={label} description={description} />}>
+	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AssetPathToolTip label={label} description={description} subtitle="File Path Reference (string)" />}>
 		<Link to={`${getActiveVersionPath()}/${url}`} className={"hover-link"}>{label}</Link>
 	</Tippy>
 );
@@ -220,6 +227,7 @@ export const Classes = {
 	Weapon: () => BaseClass("Weapon", "🔫"),
 	WebUI: () => BaseClass("WebUI", "🖥️"),
 	Widget: () => BaseClass("Widget", "🪟"),
+	Widget3D: () => BaseClass("Widget3D", "🪟"),
 };
 
 <!-- Defines StaticClasses components -->
@@ -256,5 +264,6 @@ export const AssetPath = {
 	Blueprint: () => BaseAssetPath("Blueprint", "Blueprint Reference", "Blueprint Asset Reference in the format:<br/><code class='path-center'>asset-pack::SM_MyAsset</code>"),
 	Sound: () => SpecialPath("Sound", "Sound Reference", "Sound Asset Reference in the format:<br/><code class='path-center'>asset-pack::SM_MyAsset</code><br/>Or as Special Path:<br/><code class='path-center'>package://my-package/Client/sound.ogg</code>"),
 	Image: () => SpecialPath("Image", "Image Path", "Image Path as Special Path:<br/><code class='path-center'>package://my-package/Client/sound.ogg</code>"),
+	Font: () => SpecialPath("Font", "Font TTF Path", "TTF Font Path as Special Path:<br/><code class='path-center'>package://my-package/Client/Roboto.ttf</code>"),
 	HTML: () => TippyLink("HTML", "HTML Path", "Web URL or HTML File Path:<br/><code class='path-center'>file://UI/index.html</code>", "scripting-reference/classes/webui#html-path-searchers"),
 };

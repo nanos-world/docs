@@ -52,6 +52,7 @@ INFO  Available commands:
 	- help
 	- update [package|assets] NAME1, NAME2...
 	- install [package|assets] NAME1, NAME2...
+	- upload [package|assets] NAME
 	- add [package|assets] NAME
 	- check
 
@@ -67,8 +68,10 @@ nanos world cli>
 | `update package [PACKAGE_NAMES...]` | Update Packages from the Store |
 | `install assets [ASSET_NAMES...]` | Install Asset Packs from the Store |
 | `update assets [ASSET_NAMES...]` | Update Asset Packs from the Store |
-| `add package [PACKAGE_PATH]` | Creates a new local Package in a interactive way |
-| `add assets [ASSET_PATH]` | Creates a new local Asset Pack in a interactive way |
+| `add package [PACKAGE_NAME]` | Creates a new local Package in a interactive way |
+| `add assets [ASSET_NAME]` | Creates a new local Asset Pack in a interactive way |
+| `upload package [PACKAGE_NAME]` | Uploads a Package new version to the store |
+| `upload assets [ASSET_NAME]` | Uploads an Asset Pack new version to the store |
 | `check` | Check for Updates |
 | `help` | Display all Commands |
 | `stop` | Stops the CLI |

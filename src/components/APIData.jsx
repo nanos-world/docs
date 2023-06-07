@@ -29,6 +29,7 @@ import VehicleData from '@site/src/api/.generated/Classes/Vehicle.json';
 import WeaponData from '@site/src/api/.generated/Classes/Weapon.json';
 import WebUIData from '@site/src/api/.generated/Classes/WebUI.json';
 import WidgetData from '@site/src/api/.generated/Classes/Widget.json';
+import Widget3DData from '@site/src/api/.generated/Classes/Widget3D.json';
 
 import ColorData from '@site/src/api/Structs/Color.json';
 import MatrixData from '@site/src/api/Structs/Matrix.json';
@@ -100,6 +101,8 @@ import VehicleDataStable from '@site/src/api/.generated/Stable/Classes/Vehicle.j
 import WeaponDataStable from '@site/src/api/.generated/Stable/Classes/Weapon.json';
 import WebUIDataStable from '@site/src/api/.generated/Stable/Classes/WebUI.json';
 import WidgetDataStable from '@site/src/api/.generated/Stable/Classes/Widget.json';
+// import Widget3DDataStable from '@site/src/api/.generated/Stable/Classes/Widget3D.json';
+import Widget3DDataStable from '@site/src/api/.generated/Classes/Widget3D.json';
 
 import ColorDataStable from '@site/src/api/Stable/Structs/Color.json';
 import MatrixDataStable from '@site/src/api/Stable/Structs/Matrix.json';
@@ -172,6 +175,7 @@ const APIData = {
 			Weapon: WeaponDataStable,
 			WebUI: WebUIDataStable,
 			Widget: WidgetDataStable,
+			Widget3D: Widget3DDataStable,
 		},
 		Struct: {
 			Color: ColorDataStable,
@@ -246,6 +250,7 @@ const APIData = {
 			Weapon: WeaponData,
 			WebUI: WebUIData,
 			Widget: WidgetData,
+			Widget3D: Widget3DData,
 		},
 		Struct: {
 			Color: ColorData,

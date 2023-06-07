@@ -18,12 +18,12 @@ export const AuthorityTooltip = ({ img, title, subtitle, description }) => (
 	</>
 );
 
-export const AssetPathToolTip = ({ label, description }) => (
+export const AssetPathToolTip = ({ label, description, subtitle }) => (
 	<>
 		<h3 className={"tooltip-header"}>
 			<span className={"tooltip-span"}>
 				<div>{label}</div>
-				<div className={"tooltip-sub"}>Asset Path Reference (string)</div>
+				<div className={"tooltip-sub"}>{subtitle}</div>
 			</span>
 		</h3>
 		<span dangerouslySetInnerHTML={{ __html: description }}></span>

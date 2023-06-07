@@ -126,7 +126,7 @@ header + p::after {
 
 video {
 	width: 100%;
-	margin-bottom: 2rem;
+	margin-bottom: var(--ifm-leading);
 }
 
 /* Headers */
@@ -624,4 +624,15 @@ html[data-theme="dark"]
 .language-nanos-console
 .token.log-type-error {
 	color: #df2d3f;
+}
+
+.media-legend {
+	margin-top: -20px;
+	text-align: center;
+	font-size: 0.85em;
+	opacity: 0.5;
+}
+
+video + .media-legend {
+	margin-top: -25px;
 }
