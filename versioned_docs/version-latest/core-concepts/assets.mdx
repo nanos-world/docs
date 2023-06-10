@@ -74,6 +74,37 @@ See a description of what each setting does:
 | **`assets.others`** | List of other Assets in this Asset Pack |
 
 
+### Asset Meta Data
+
+It is possible to define custom Meta Data for each individual Asset!
+
+Besides defining the Asset Path by string, like this:
+
+```toml title="Assets.toml"
+[assets.static_meshes]
+	SM_Flower_01 = "MyFolder/SM_Awesome_Flower_01"
+	SM_Rock_01 = "MyFolder/SM_Rock_01"
+	SM_MyAsset_01 = "MyFolder/SM_MyAsset_01"
+	# ...
+```
+
+We can also define them as a table, allowing custom values - which can be accessed through scripting:
+
+```toml title="Assets.toml"
+[assets.static_meshes]
+	SM_Flower_01 = { path = "MyFolder/SM_Awesome_Flower_01", my_tag = "Wonderful", something = 123, thumbnail = "Thumbnails/SM_Flower_01.jpg" }
+	SM_Rock_01 = { path = "MyFolder/SM_Rock_01", my_tag = "Wonderful", something = 123, thumbnail = "Thumbnails/SM_Rock_01.jpg" }
+	SM_MyAsset_01 = { path = "MyFolder/SM_MyAsset_01", my_tag = "Wonderful", something = 123, thumbnail = "Thumbnails/SM_MyAsset_01.jpg" }
+	# ...
+```
+
+:::tip
+
+The `path` key is required, all other values are optional and customizable, use as you wish!
+
+:::
+
+
 ## Logo Image
 
 It is possible to have a custom image to be displayed in the Vault. For that, add a file called `Assets.jpg` besides the Assets.toml with the image you wish. The recommended size is `300x150`.

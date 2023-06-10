@@ -8,10 +8,12 @@ keywords: [assets, materials, built-in, default]
 
 Default Materials and it's Parameters.
 
+import { Classes } from '@site/docs/components/_nanos.mdx';
+
 
 ## Template Materials
 
-nanos world provides several built-in template materials which can be easily used and customized with [Paintable](/scripting-reference/classes/base-classes/paintable.mdx) methods.
+nanos world provides several built-in template materials which can be easily used and customized with <Classes.Paintable /> methods.
 
 :::info
 

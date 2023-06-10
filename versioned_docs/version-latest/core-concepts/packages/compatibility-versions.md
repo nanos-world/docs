@@ -36,6 +36,42 @@ The Compatibility Mode is a feature that aims to keep old and unmaintained packa
 To use the following features, you must update your Package's `compatibility_version` setting in the Package.toml to at least that version (exact that version or bigger).
 
 
+### Version `1.55`
+
+
+#### [Assets.GetX()](/scripting-reference/static-classes/assets.mdx)
+
+Before, any `Assets.GetX()` method returned an array of strings. Now it returns an array of tables, containing at least the `path` field on it. See more about this change in the [Assets Meta Data page](/core-concepts/assets.mdx#asset-meta-data).
+
+```lua title="Before"
+for _, asset in pairs(Assets.GetStaticMeshes("nanos-world")) do
+	local path = asset
+end
+```
+
+```lua title="After"
+for _, asset in pairs(Assets.GetStaticMeshes("nanos-world")) do
+	local path = asset.path
+	local my_meta_data = asset.my_meta_data
+	local my_random_value = asset.my_random_value
+	...
+end
+```
+
+
+### Version `1.54`
+
+
+#### [Level.CallLevelBlueprintEvent()](/scripting-reference/static-classes/level.mdx#static-function-calllevelblueprintevent)
+
+Before, `Level.CallLevelBlueprintEvent()` expected a string with the function name and parameters concatenated together separated by spaces. Now it uses the new approach of receiving a variadic amount of parameters and also returns the function return value.
+
+
+#### [Client.GetPackages()](/scripting-reference/static-classes/client.mdx#static-function-getpackages)
+
+Before, `Client.GetPackages()` returned all packages that the server was running on client side. Now it behaves exactly like [Server.GetPackages()](/scripting-reference/static-classes/server.mdx#static-function-getpackages), having a filter as parameter and providing more information on return.
+
+
 ### Version `1.49`
 
 

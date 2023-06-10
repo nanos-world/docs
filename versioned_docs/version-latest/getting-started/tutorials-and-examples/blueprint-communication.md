@@ -42,7 +42,7 @@ And that's it for creating it! You can add any logic you want from now on!
 
 On Lua, you can spawn your blueprint as usual, and call `CallBlueprintEvent` on it to trigger the blueprint event.
 
-```lua Client/index.lua
+```lua title=Client/Index.lua
 -- Spawns the Blueprint
 local blueprint = Blueprint(Vector(), Rotator(), "my-asset-pack::BP_AwesomeBlueprint")
 
@@ -87,7 +87,7 @@ And then you can plug any logic on it to trigger it, any other Blueprint or Lua 
 
 You can **Bind** Blueprint Event Dispatchers directly from Lua! For that, spawn your Blueprint, and call `BindBlueprintEventDispatcher()` on it to bind the Dispatcher:
 
-```lua Client/index.lua
+```lua title=Client/Index.lua
 -- Spawns the Blueprint
 local blueprint = Blueprint(Vector(), Rotator(), "my-asset-pack::BP_AwesomeBlueprint",)
 

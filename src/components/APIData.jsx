@@ -101,8 +101,7 @@ import VehicleDataStable from '@site/src/api/.generated/Stable/Classes/Vehicle.j
 import WeaponDataStable from '@site/src/api/.generated/Stable/Classes/Weapon.json';
 import WebUIDataStable from '@site/src/api/.generated/Stable/Classes/WebUI.json';
 import WidgetDataStable from '@site/src/api/.generated/Stable/Classes/Widget.json';
-// import Widget3DDataStable from '@site/src/api/.generated/Stable/Classes/Widget3D.json';
-import Widget3DDataStable from '@site/src/api/.generated/Classes/Widget3D.json';
+import Widget3DDataStable from '@site/src/api/.generated/Stable/Classes/Widget3D.json';
 
 import ColorDataStable from '@site/src/api/Stable/Structs/Color.json';
 import MatrixDataStable from '@site/src/api/Stable/Structs/Matrix.json';
