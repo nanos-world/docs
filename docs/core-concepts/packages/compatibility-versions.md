@@ -41,17 +41,17 @@ To use the following features, you must update your Package's `compatibility_ver
 
 #### [Assets.GetX()](/scripting-reference/static-classes/assets.mdx)
 
-Before, any `Assets.GetX()` method returned an array of strings. Now it returns an array of tables, containing at least the `path` field on it. See more about this change in the [Assets Meta Data page](/core-concepts/assets.mdx#asset-meta-data).
+Before, any `Assets.GetX()` method returned an array of strings. Now it returns an array of tables, containing at least the `key` field on it. See more about this change in the [Assets Meta Data page](/core-concepts/assets.mdx#asset-meta-data).
 
 ```lua title="Before"
 for _, asset in pairs(Assets.GetStaticMeshes("nanos-world")) do
-	local path = asset
+	local key = asset
 end
 ```
 
 ```lua title="After"
 for _, asset in pairs(Assets.GetStaticMeshes("nanos-world")) do
-	local path = asset.path
+	local key = asset.key
 	local my_meta_data = asset.my_meta_data
 	local my_random_value = asset.my_random_value
 	...
