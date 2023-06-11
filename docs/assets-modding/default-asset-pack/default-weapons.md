@@ -8,7 +8,7 @@ keywords: [assets, weapons, built-in, default]
 
 Default nanos world Weapons and it's Parameters.
 
-![](/img/docs/weapons-pack.jpg)
+![](/img/docs/weapons-pack.webp)
 
 nanos world provides a bunch of built-in Weapons Meshes ready to use! They are all configured in our [default-weapons](https://store.nanos.world/packages/default-weapons/) Package!
 

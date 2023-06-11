@@ -8,7 +8,7 @@ keywords: [map, level, water, unreal, physics]
 
 How to add Unreal Water in your Level and seamlessly integrate it with nanos world
 
-![](/img/docs/water.jpg)
+![](/img/docs/water.webp)
 
 Since Unreal Engine 4.26, it is possible to use an amazing and beautiful [Water System](https://docs.unrealengine.com/4.27/en-US/BuildingWorlds/Water/) in your Maps. And nanos world managed to integrate this system seamlessly in our game.
 
@@ -25,7 +25,7 @@ In [Unreal Engine Documentation](https://docs.unrealengine.com/4.27/en-US/Buildi
 
 ## How Objects react to Water
 
-![](/img/docs/water-boat.jpg)
+![](/img/docs/water-boat.webp)
 
 Unreal Water has the concept of Buoyance Spheres, each sphere represents a Buoyance element which will make the object float.
 

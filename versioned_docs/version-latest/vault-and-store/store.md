@@ -1,13 +1,13 @@
 ---
 title: Store
 description: 'Vault & Store: share your content with others!'
-image: /img/docs/store.jpg
+image: /img/docs/store.webp
 ---
 
 
 nanos world [**Store**](https://store.nanos.world) is the platform on which you are invited to share your **Game-Modes**, **Packages** and **Assets** with the nanos world community!
 
-![](/img/docs/store.jpg)
+![](/img/docs/store.webp)
 
 
 ## About the Store
@@ -32,19 +32,19 @@ This token is used to authenticate your user and the rights to download the Asse
 
 To generate a new token, go to the Store, under your **Profile Name**, then on **Settings**, or click on [this link](https://store.nanos.world/settings/tokens/).
 
-![](/img/docs/store-02.jpg)
+![](/img/docs/store-02.webp)
 
 In that page, you can manage your active tokens and create new ones.
 
-![](/img/docs/store-03.jpg)
+![](/img/docs/store-03.webp)
 
 When creating a new one, you can specify a label (only you will see it) and an expiration time. The maximum time is 2 years.
 
-![](/img/docs/store-04.jpg)
+![](/img/docs/store-04.webp)
 
 Once you create it, copy the token as save it, you won't be able to restore it if you lose it.
 
-![](/img/docs/store-05.jpg)
+![](/img/docs/store-05.webp)
 
 And you are done! Now just copy and paste your token into your `Config.toml` and you are authenticated to run CLI commands!
 
@@ -55,18 +55,18 @@ Teams are group of users and are the "holders" of the Resources (Assets/Packages
 
 Currently they can only be created during the Upload of a new Resource.
 
-![](/img/docs/store-06.jpg)
+![](/img/docs/store-06.webp)
 
 Once created, they can be modified under your Profile/Teams tab or at [this link](https://store.nanos.world/teams/). You can add more members, check all uploaded resources and edit it's information.
 
-![](/img/docs/store-07.jpg)
+![](/img/docs/store-07.webp)
 
 
 ## Releases & Versions
 
 nanos world Store counts on a Release/Version system, which you can upload new versions of your Resource. You can upload versions as Private, Beta, Alpha and Stable and also add a Changelog to it.
 
-![](/img/docs/store-08.jpg)
+![](/img/docs/store-08.webp)
 
 
 ## Uploading new Resources

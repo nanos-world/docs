@@ -456,17 +456,16 @@ a.reference-link span {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	gap: 15px;
 }
 
 a.card-link {
 	display: flex;
-	flex-grow: 1;
+	flex: 1 1 min-content;
 	min-height: 250px;
 	min-width: 250px;
-	width: 250px;
 
 	position: relative;
-	margin: 0 0.5rem 1rem;
 	overflow: hidden;
 	cursor: pointer !important;
 
@@ -512,6 +511,22 @@ a.card-link:hover img {
 	padding: 25px;
 	width: 100%;
 	font-size: 90%;
+}
+
+a.card-link-lean {
+	min-height: 135px;
+}
+
+a.card-link-lean:only-child {
+	flex: initial;
+}
+
+.card-link-lean img {
+	height: 70px;
+}
+
+.card-link-lean p {
+	top: 55px;
 }
 
 .steam-widget {

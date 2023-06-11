@@ -21,7 +21,7 @@ You can create and access your own Materials Parameters if you have a Mesh which
 
 :::
 
-![](/img/docs/default-materials-01.jpg)
+![](/img/docs/default-materials-01.webp)
 
 :::tip
 

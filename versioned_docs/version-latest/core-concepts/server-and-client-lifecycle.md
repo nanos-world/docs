@@ -7,5 +7,5 @@ tags: [hosting]
 
 How nanos world framework works
 
-![](/img/docs/client-server-lifecycle.jpg)
+![](/img/docs/client-server-lifecycle.webp)
 

@@ -28,7 +28,7 @@ Attention! This page is old and this tutorial may be outdated! The images here r
 2. Add a “**Sun**” actor-tag to all Lighting/Sky/Sun related actors (**DirectionalLight**, **SkyLight**, **DomeMesh**, **SkyAtmosphere** or **SunSky**), this will allow, if wanted, to your light to be overridden by scripters to use, instead, the Official nanos world Sun through `World.SpawnDefaultSun()`, which allows in-game light/sun customization.
 3. If you are creating a Map, please remember to nullify (set to None) all references it has for Unreal **GameModes** Override in the World Settings:
 
-![GameMode Overrides nullified](/img/docs/custom-maps-01.jpg)
+![GameMode Overrides nullified](/img/docs/custom-maps-01.webp)
 
 
 ## Getting Started
@@ -45,64 +45,64 @@ The first step is to create a folder inside the `Content/` folder, _this step is
 2. Right click on Content.
 3. Create a New Folder.
 
-![](/img/docs/custom-maps-02.jpg)
+![](/img/docs/custom-maps-02.webp)
 
-![](/img/docs/custom-maps-03.jpg)
+![](/img/docs/custom-maps-03.webp)
 
 Now let’s create the Map itself, in Unreal maps are called [Levels](https://docs.unrealengine.com/en-US/Engine/Levels/index.html), to do so:
 
 1. Right click on the Content space.
 2. Create a new Level.
 
-![](/img/docs/custom-maps-04.jpg)
+![](/img/docs/custom-maps-04.webp)
 
 Rename it with the map name you desire, save it and open it up. You will notice the Viewport got black, this is because the Map you just opened doesn’t have anything, let’s add some stuff into it:
 
-![](/img/docs/custom-maps-05.jpg)
+![](/img/docs/custom-maps-05.webp)
 
 
 ## Adding Objects
 
 First let’s add a floor, for that just drag-and-drop a Plane from Place Actors -> Basic window into the Viewport:
 
-![](/img/docs/custom-maps-06.jpg)
+![](/img/docs/custom-maps-06.webp)
 
-![](/img/docs/custom-maps-07.jpg)
+![](/img/docs/custom-maps-07.webp)
 
 With the plane selected, you will notice it is a simple Static Mesh, this Static Mesh is a model already included in the Engine, so it is important that you copy this Mesh to your `Content/YourAssetPack/` folder to avoid any further export problem:
 
-![](/img/docs/custom-maps-08.jpg)
+![](/img/docs/custom-maps-08.webp)
 
 To find where your Mesh is located, press the magnifying glass at the right of the Static Mesh item at the right of the screen:
 
-![](/img/docs/custom-maps-09.jpg)
+![](/img/docs/custom-maps-09.webp)
 
 This will open the Engine’s folder which contains some Basic meshes which come with the Engine:
 
-![](/img/docs/custom-maps-10.jpg)
+![](/img/docs/custom-maps-10.webp)
 
 Let’s copy some Basic Meshes into our AssetsPack folder to be used later, including the Plane:
 
-![](/img/docs/custom-maps-11.jpg)
+![](/img/docs/custom-maps-11.webp)
 
 Use CTRL+C + CTRL+V to copy the assets into your folder:
 
-![](/img/docs/custom-maps-12.jpg)
+![](/img/docs/custom-maps-12.webp)
 
 Now let’s replace the plane mesh we were using to our copied mesh, for that, just
 
 1. Select the copied Plane mesh.
 2. Press the arrow on your Plane Actor to replace it’s Static Mesh (alternatively you can just Delete the spawned Plane and drag and drop the new Plane from your assets pack’s folder):
 
-![](/img/docs/custom-maps-13.jpg)
+![](/img/docs/custom-maps-13.webp)
 
 After that, with your Plane \(floor\) selected, let’s just scale it to `X = 10, Y = 10, Z = 10` and centralize it on `X = 0, X = 0, X = 0`:
 
-![](/img/docs/custom-maps-14.jpg)
+![](/img/docs/custom-maps-14.webp)
 
 We can also add some lights, for that, just drag and drop a **Directional Light** \(Sun Light/Shadows\) and a **Sky Light** \(Shadow’s Color\) into your level \(you can fly around with Right Click + WASD in the viewport, or press F to centralize the Plane - if selected\):
 
-![](/img/docs/custom-maps-15.jpg)
+![](/img/docs/custom-maps-15.webp)
 
 
 ## Adding Materials
@@ -112,49 +112,49 @@ Great job, now we can see the stuff! Now let’s add some color to it, applying 
 1. Right Click.
 2. Create new Material.
 
-![](/img/docs/custom-maps-16.jpg)
+![](/img/docs/custom-maps-16.webp)
 
 Rename it to `M_Plane` and open it up:
 
-![](/img/docs/custom-maps-17.jpg)
+![](/img/docs/custom-maps-17.webp)
 
 We won’t cover all aspects of Materials in this tutorial, for now let’s just pin a Vector3 node with a color into Base Color input, for that Right Click on the screen and search for `Constant3Vector`:
 
-![](/img/docs/custom-maps-18.jpg)
+![](/img/docs/custom-maps-18.webp)
 
 After that, pin it into Base Color input:
 
-![](/img/docs/custom-maps-19.jpg)
+![](/img/docs/custom-maps-19.webp)
 
 Select the Vector3 node and select a color for it:
 
-![](/img/docs/custom-maps-20.jpg)
+![](/img/docs/custom-maps-20.webp)
 
 Now save and close this Material window, and you are able to drag and drop your material into the Mesh you want, let’s do it for the Plane:
 
-![](/img/docs/custom-maps-21.jpg)
+![](/img/docs/custom-maps-21.webp)
 
 And voila, it gets greenish (or the color you selected in the Plane’s Material screen)!
 
-![](/img/docs/custom-maps-22.jpg)
+![](/img/docs/custom-maps-22.webp)
 
 Now let’s drag’n drop other Meshes into our Level, like so:
 
-![](/img/docs/custom-maps-23.jpg)
+![](/img/docs/custom-maps-23.webp)
 
 Also, the ADK project provides a built-in Sun & SkyBox Actor \(to fill up the sky with color and clouds\), to add it, just look into `NanosWorld/Blueprints/World/` for `BP_SunSky` and drag it to the viewport.
 
 You can create a new Material and use it to paint these meshes as well:
 
-![](/img/docs/custom-maps-24.jpg)
+![](/img/docs/custom-maps-24.webp)
 
 If you \(1.\) select the Directional Light, you can change it’s \(2.\) Rotation, also, remember to set it to \(3.\) Movable, so it’s shadows work in Real Time, feel free to tweak the light as you want, including it’s Color and intensity:
 
-![](/img/docs/custom-maps-25.jpg)
+![](/img/docs/custom-maps-25.webp)
 
-When you are fine with it, move your camera to see the whole map and take a screenshot of it, we will use that for a Thumbnail afterwards (save it anywhere with the same name as your Map as .jpg, in our case: `MyAwesomeMap.jpg`):
+When you are fine with it, move your camera to see the whole map and take a screenshot of it, we will use that for a Thumbnail afterwards (save it anywhere with the same name as your Map as .webp, in our case: `MyAwesomeMap.webp`):
 
-![](/img/docs/custom-maps-26.jpg)
+![](/img/docs/custom-maps-26.webp)
 
 And we are done! Save everything and let’s export it!
 
@@ -181,11 +181,11 @@ This way we can load it through `Config.toml`!
 
 ## Adding a Thumbnail
 
-To add a thumbnail to your map, copy the `.jpg` image into the same folder as your map `.umap` file.
+To add a thumbnail to your map, copy the `.webp` image into the same folder as your map `.umap` file.
 
 In our case, our `.umap` is at the root, so we just drag it there:
 
-![](/img/docs/custom-maps-31.jpg)
+![](/img/docs/custom-maps-31.webp)
 
 
 :::tip
@@ -194,7 +194,7 @@ You can now just start the New Game with the `Sandbox` package selected and VOIL
 
 :::
 
-![](/img/docs/custom-maps-38.jpg)
+![](/img/docs/custom-maps-38.webp)
 
 
 ## Configuring your Map

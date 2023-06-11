@@ -10,27 +10,27 @@ How to create custom Weapon Reload Animations.
 
 Now it is possible to create custom reload animations for nanos world! To make it work you just need to setup some Notifies at the position you want the reload event occurs.
 
-![](/img/docs/weapon-animations-01.jpg)
+![](/img/docs/weapon-animations-01.webp)
 
 
 ## Step 1: Create an Animation Montage with your Animation
 
-![](/img/docs/weapon-animations-02.jpg)
+![](/img/docs/weapon-animations-02.webp)
 
 For that, you can just right click any Animation Sequence and Create a new Animation Montage like this:
 
-![](/img/docs/weapon-animations-04.jpg)
+![](/img/docs/weapon-animations-04.webp)
 
 
 ## Step 2: Add Montage Notifies to the Montage
 
 At the bottom (where the timeline is) it is possible to add new Animation Notifies, these are events that trigger special codes to handle the reload.
 
-![](/img/docs/weapon-animations-03.jpg)
+![](/img/docs/weapon-animations-03.webp)
 
 After adding a notify, you can move it to where you want, note you can set the Name of it in the top right corner:
 
-![](/img/docs/weapon-animations-05.jpg)
+![](/img/docs/weapon-animations-05.webp)
 
 
 ## Step 3: Define the correct Name

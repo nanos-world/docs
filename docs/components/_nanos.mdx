@@ -22,8 +22,8 @@ export const LinkActiveVersion = (props) => (
 );
 
 <!-- Square Card Link -->
-export const CardLink = ({ title, description, href, image_src }) => (
-	<a className="card-link" href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`} >
+export const CardLink = ({ title, description, href, image_src, is_lean }) => (
+	<a className={`card-link ${is_lean ? "card-link-lean" : ""}`} href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`} >
 		<img src={image_src ? image_src : '/img/docs/nanos-world-background.jpg'} />
 		<h4>{title}</h4>
 		<p>{description}</p>
