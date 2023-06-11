@@ -21,7 +21,7 @@ It is also recommended to have read the [Assets Guide](/core-concepts/assets.mdx
 
 The first step to start creating your own Assets is opening the ADK project. Once you do that, you will notice we have two folders in the root Content/ directory: `NanosWorld/` and `MyAssetPack/`:
 
-![ADK Folders](/img/docs/adk-folders.jpg)
+![ADK Folders](/img/docs/adk-folders.webp)
 
 As stated before, do not modify any file inside `NanosWorld/` as any change will not be exported neither imported into nanos world.
 
@@ -87,11 +87,11 @@ After you imported and created your Assets, exporting them from Unreal Engine is
 
 For that, select **Platforms ⬇️ Windows/Linux ➡ Cook Content**:
 
-![](/img/docs/importing-assets-03.jpg)
+![](/img/docs/importing-assets-03.webp)
 
 This will start the Cooking & Packing process, which may take a while depending if the Assets were already loaded. It usually is only longer at the first time.
 
-![](/img/docs/importing-assets-04.jpg)
+![](/img/docs/importing-assets-04.webp)
 
 After finishing, go for the Cooked folder of your ADK project:
 
@@ -108,7 +108,7 @@ Please don't confuse the Cooked assets folder with the ADK project files. Make s
 
 Inside this folder, you can find all your cooked assets. Example of a Game Content result:
 
-![](/img/docs/importing-assets-05.jpg)
+![](/img/docs/importing-assets-05.webp)
 
 After finding the Cooked folder with your assets, we will manually copy it as it will become our [Asset Pack](/core-concepts/assets.mdx).
 

@@ -9,7 +9,7 @@ tags: [scripting]
 
 How to use nanos world Discord methods to create a nice integration for your server.
 
-![](/img/docs/discord.jpg)
+![](/img/docs/discord.webp)
 
 Integrating your server with Discord is really easy! We provide a built-in integration which is ready to use, but you can also add your own Discord Application ID and use your own application!
 
@@ -26,7 +26,7 @@ local large_image = "nanos-world-full-world"
 Client.SetDiscordActivity(state, details, large_image, large_text)
 ```
 
-![How it will look like](/img/docs/discord-integration-01.jpg)
+![How it will look like](/img/docs/discord-integration-01.webp)
 
 :::info
 
@@ -38,7 +38,7 @@ You can use your own Application ID to upload your own Images!
 
 Using your own Application ID brings the advantage of being able to configure it the way you want, and even uploading your own images to be displayed in the Rich Presence.
 
-![How it will look like](/img/docs/discord-integration-02.jpg)
+![How it will look like](/img/docs/discord-integration-02.webp)
 
 Initializing your own Application ID is extremely easy, just execute the following code on the Client side:
 

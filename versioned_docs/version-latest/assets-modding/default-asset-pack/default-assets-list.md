@@ -7,7 +7,7 @@ keywords: [assets, built-in, default]
 
 nanos world provides a default Asset Pack already included in the base game, feel free to use the assets the way you want!
 
-![](/img/docs/nanos-world-asset-pack.jpg)
+![](/img/docs/nanos-world-asset-pack.webp)
 
 
 In order to use those assets, you need to use the key `nanos-world`. E.g.: `nanos-world::SM_Cube`.

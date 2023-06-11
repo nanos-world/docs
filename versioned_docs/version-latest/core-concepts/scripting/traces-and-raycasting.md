@@ -10,7 +10,7 @@ tags: [scripting]
 
 **Traces** offer a method for reaching out in your maps and getting feedback on what is present along a line segment. You use them by providing two end points (a start and end location) and the physics system “traces” a line segment between those points, reporting any Actors that it hits. Traces are essentially the same as **Raycasts** or **Raytraces** in other software packages.
 
-![](/img/docs/traces-raycasting.jpg)
+![](/img/docs/traces-raycasting.webp)
 
 The following example will show you how to get what and where the player is looking at.
 
