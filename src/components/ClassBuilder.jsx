@@ -1,3 +1,4 @@
+import React from 'react';
 import CodeBlock from '@theme/CodeBlock';
 import Admonition from '@theme/Admonition';
 import { Link } from "react-router-dom";
@@ -7,12 +8,12 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
-import { AuthorityType, NativeType, BasicType, Classes, Structs, Enums, AssetPath, LinkActiveVersion, getActiveVersionPath } from '@site/docs/components/_nanos.mdx';
-import { FunctionToolTip, StaticFunctionToolTip, InlineFunctionToolTip, TablePropertiesToolTip, EventToolTip } from '@site/src/components/Tooltips.jsx';
+import { AuthorityType, NativeType, BasicType, Classes, Structs, Enums, AssetPath, LinkActiveVersion, getActiveVersionPath, ReferenceLink } from '@site/src/components/_nanos';
+import { FunctionToolTip, StaticFunctionToolTip, InlineFunctionToolTip, TablePropertiesToolTip, EventToolTip } from '@site/src/components/Tooltips';
 
-import APIData from '@site/src/components/APIData.jsx';
+import APIData from '@site/src/components/APIData';
 
-<!-- Asset Paths Map -->
+// Asset Paths Map
 export const AssetPaths = {
 	StaticMeshPath: AssetPath.StaticMesh,
 	SkeletalMeshPath: AssetPath.SkeletalMesh,
@@ -26,7 +27,7 @@ export const AssetPaths = {
 	HTMLPath: AssetPath.HTML,
 }
 
-<!-- Gets an Element by it's string type -->
+// Gets an Element by it's string type
 export function GetElementByType(type, index) {
 	const is_optional = type.endsWith("?");
 	if (is_optional)
@@ -53,17 +54,17 @@ export function GetElementByType(type, index) {
 	</span>;
 }
 
-<!-- Splits a value if it has | -->
+// Splits a value if it has |
 export function SplitTypesByOr(types) {
 	return types.split("|").map((type, index) => GetElementByType(type, index)).reduce((prev, next) => [prev, " or ", next])
 }
 
-<!-- Gets a list of Returns elements -->
+// Gets a list of Returns elements
 export function GetReturnList(return_list) {
 	return return_list.map((return_data) => SplitTypesByOr(return_data.type)).reduce((prev, next) => [prev, ", ", next]);
 }
 
-<!-- Gets a list of return descriptions surrounded by () -->
+// Gets a list of return descriptions surrounded by ()
 export function GetReturnDescriptionList(return_list) {
 	const ret = return_list.map((return_data) =>
 		return_data.description || return_data.table_properties || return_data.table_properties_custom ?
@@ -78,26 +79,26 @@ export function GetReturnDescriptionList(return_list) {
 	return ret ? <>{" ("}{ ret }{")"}</> : "";
 }
 
-<!-- Authority Label Map -->
+// Authority Label Map
 export const AuthorityLabels = {
 	client: <>This class can only be spawned on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Client</LinkActiveVersion> side.</>,
 	server: <>This class can only be spawned on 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Server</LinkActiveVersion> side.</>,
 	both: <>This class can be spawned on both 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Client</LinkActiveVersion> and 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Server</LinkActiveVersion> side (if you spawn it on client, it won't be synchronized with other players).</>,
 }
 
-<!-- Authority Label Map for Static Classes -->
+// Authority Label Map for Static Classes
 export const AuthorityLabelsStatic = {
 	client: <>This static class can be accessed only on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Client</LinkActiveVersion> side.</>,
 	server: <>This static class can be accessed only on 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Server</LinkActiveVersion> side.</>,
 	both: <>This static class can be accessed on both 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Client</LinkActiveVersion> and 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Server</LinkActiveVersion> side.</>,
 }
 
-<!-- Gets a Parameter name (with ? when optional) -->
+// Gets a Parameter name (with ? when optional)
 export function GetParameterName(parameter_data) {
 	return `${parameter_data.name}${parameter_data.default != null ? "?" : ""}${parameter_data.type.endsWith("...") ? "..." : ""}`;
 }
 
-<!-- Gets a Parameter description -->
+// Gets a Parameter description
 export function GetParameterDescription(parameter_data) {
 	return <>
 		<span style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: parameter_data.description }}></span>
@@ -106,17 +107,17 @@ export function GetParameterDescription(parameter_data) {
 	</>;
 }
 
-<!-- Gets a list of parameters separated by comma -->
+// Gets a list of parameters separated by comma
 export function GetParametersList(list) {
 	return !list ? "" : list.map((value) => GetParameterName(value)).join(", ");
 }
 
-<!-- Generates Constructor Example Codeblock -->
+// Generates Constructor Example Codeblock
 export function GetConstructorExample(class_data, constructor_index) {
 	return `local my_${class_data.name.toLowerCase()} = ${class_data.name}(${GetParametersList(class_data.constructors[constructor_index].parameters)})`;
 }
 
-<!-- Generates the local ret = Part of the function -->
+// Generates the local ret = Part of the function
 export function GetReturnPart(function_data) {
 	if (!function_data.return)
 		return "";
@@ -129,12 +130,12 @@ export function GetReturnPart(function_data) {
 	return `local${function_data.return.map((value, i) => " ret_0" + (i + 1))} = `;
 }
 
-<!-- Gets Multiline Code or a single line -->
+// Gets Multiline Code or a single line
 export function GetCodeExampleParsed(content) {
 	return (Array.isArray(content) ? content.join("\n") : content).replaceAll("    ", "\t");
 }
 
-<!-- Generates Generic Example Codeblock -->
+// Generates Generic Example Codeblock
 export function GetGenericExample(example, context) {
 	return <CodeBlock key={example.title} className="language-lua api-examples" title={ `${context ? `(${context}) ` : ""}${example.title}` }>
 		{ GetCodeExampleParsed(example.content) }
@@ -142,62 +143,62 @@ export function GetGenericExample(example, context) {
 	</CodeBlock>;
 }
 
-<!-- Generates Event Example Codeblock -->
+// Generates Event Example Codeblock
 export function GetEventExample(class_name, event_data, example, context) {
 	return GetGenericExample({ content: GetEventSignature(class_name, event_data, `\t${ GetCodeExampleParsed(example.content).replaceAll('\n', "\n\t") }`), title: example.title }, context);
 }
 
-<!-- Generates Function Signature Codeblock -->
+// Generates Function Signature Codeblock
 export function GetFunctionSignature(class_name, function_data) {
 	return `${GetReturnPart(function_data)}my_${class_name.toLowerCase()}:${function_data.name}(${GetParametersList(function_data.parameters)})`;
 }
 
-<!-- Generates Static Function Signature Codeblock -->
+// Generates Static Function Signature Codeblock
 export function GetStaticFunctionSignature(class_name, function_data) {
 	return `${GetReturnPart(function_data)}${class_name}.${function_data.name}(${GetParametersList(function_data.parameters)})`;
 }
 
-<!-- Generates Event Signature Codeblock -->
+// Generates Event Signature Codeblock
 export function GetEventSignature(class_name, event_data, content) {
 	return `${class_name}.Subscribe("${event_data.name}", function(${GetParametersList(event_data.arguments)})\n${ content ? content : `\t-- ${event_data.name} was called` }\nend)`;
 }
 
-<!-- Authority Admonition -->
+// Authority Admonition
 export const AuthorityAdmonition = ({ authority, is_static }) => (
 	<Admonition type="info" icon="💂" title="Authority">{ is_static ? AuthorityLabelsStatic[authority] : AuthorityLabels[authority] }</Admonition>
 );
 
 export const TypeToAPIFolder = { StandardLibrary: "StandardLibraries/", Struct: "Structs/", Class: "Classes/", StaticClass: "StaticClasses/", UtilityClass: "UtilityClasses/", UtilityClasses: "UtilityClass/", Enums: "" };
 
-<!-- API Source URL -->
+// API Source URL
 export const APISourceURL = ({ type, class_name }) => (
 	<Admonition type="note" icon="🧑‍💻" title="API Source">
 		The methods, properties and events descriptions from this page are defined in our <a href={`https://github.com/nanos-world/api/blob/main/${TypeToAPIFolder[type]}${class_name}.json`}>GitHub API Repository</a>!
 	</Admonition>
 );
 
-<!-- Open Source Admonition -->
+// Open Source Admonition
 export const OpenSourceAdmonition = ({ url }) => (
 	<Admonition type="tip" icon="👐" title="Open Source">
 		This library implementation is Open Sourced on <a href={`https://github.com/nanos-world/nanos-world-lua-lib${url ? `/blob/master/${url}` : ""}`}>GitHub</a>!
 	</Admonition>
 );
 
-<!-- Inheritance Admonition -->
+// Inheritance Admonition
 export const InheritanceAdmonition = ({ inheritance }) => (
 	<Admonition type="info" icon="👪" title="Inheritance">
 		This class shares methods and events from { inheritance.map((inherit, index) => GetElementByType(inherit, index)).reduce((prev, next) => [prev, ", ", next]) }.
 	</Admonition>
 );
 
-<!-- Static Class Admonition -->
+// Static Class Admonition
 export const StaticClassAdmonition = () => (
 	<Admonition type="info" icon="🗿" title="Static Class">
 		This is a <b>Static Class</b>. Access it's methods directly with <code>.</code>. It's not possible to spawn new instances.
 	</Admonition>
 );
 
-<!-- Gets Authority Element by string -->
+// Gets Authority Element by string
 export function GetAuthorityType(authority) {
 	if (authority == "server")
 		return <AuthorityType.ServerOnly />;
@@ -212,7 +213,7 @@ export function GetAuthorityType(authority) {
 	return "";
 };
 
-<!-- Gets Native Element -->
+// Gets Native Element
 export function GetNative(is_native) {
 	if (is_native === true)
 		return <NativeType.Native />;
@@ -237,7 +238,7 @@ export function GetRelations(relations) {
 	return [...functions, ...static_functions, ...events, ...etc].reduce((prev, next) => [prev, ", ", next]);
 };
 
-<!-- Function Parameters Declaration -->
+// Function Parameters Declaration
 export const FunctionParametersDeclaration = ({ parameters, include_default = true }) => (
 	<>
 		{Array.isArray(parameters) && parameters.length > 0 ?
@@ -267,7 +268,7 @@ export const FunctionParametersDeclaration = ({ parameters, include_default = tr
 	</>
 );
 
-<!-- Function Block Declaration -->
+// Function Block Declaration
 export const FunctionDeclaration = ({ function_data, is_static, class_name }) => (
 	<>
 		<hr />
@@ -313,7 +314,7 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 	</>
 );
 
-<!-- Event Block Declaration -->
+// Event Block Declaration
 export const EventDeclaration = ({ event_data, class_name }) => (
 	<>
 		<hr />
@@ -410,7 +411,7 @@ export const EventNameDeclaration = ({ class_name, event_data, base_class }) => 
 	</Tippy>
 );
 
-<!-- Static Function List Declaration -->
+// Static Function List Declaration
 export const StaticFunctionListDeclaration = ({ class_name, functions_list, base_class }) => (
 	<div className="table-wrapper">
 		<table>
@@ -436,7 +437,7 @@ export const StaticFunctionListDeclaration = ({ class_name, functions_list, base
 	</div>
 );
 
-<!-- Function List Declaration -->
+// Function List Declaration
 export const FunctionListDeclaration = ({ class_name, functions_list, base_class }) => (
 	<div className="table-wrapper">
 		<table>
@@ -462,7 +463,7 @@ export const FunctionListDeclaration = ({ class_name, functions_list, base_class
 	</div>
 );
 
-<!-- Events List Declaration -->
+// Events List Declaration
 export const EventListDeclaration = ({ type, name, inherited_class_name, base_class }) => {
 	const class_data = GetClassData(type, name);
 	return (
@@ -494,7 +495,7 @@ export const GetClassData = (type, name) => {
 	return APIData[is_bleeding_edge ? "BleedingEdge" : "Stable"][type][name];
 }
 
-<!-- Header Block Declaration -->
+// Header Block Declaration
 export const HeaderDeclaration = ({ type, name, image, is_static, open_source_url }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
@@ -509,7 +510,7 @@ export const HeaderDeclaration = ({ type, name, image, is_static, open_source_ur
 	</>);
 };
 
-<!-- Block of Constructor -->
+// Block of Constructor
 export const ConstructorDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return class_data.constructors.map((constructor, index) =>
@@ -544,7 +545,7 @@ export const ConstructorDeclaration = ({ type, name }) => {
 	);
 };
 
-<!-- Base Class Functions -->
+// Base Class Functions
 export const InheritedClassFunctions = ({ inherited_class_name, parent_class_name, is_static } ) => {
 	const class_data = GetClassData("Class", parent_class_name);
 	return (<>
@@ -559,7 +560,7 @@ export const InheritedClassFunctions = ({ inherited_class_name, parent_class_nam
 	</>);
 };
 
-<!-- Base Class Events -->
+// Base Class Events
 export const InheritedClassEvents = ({ inherited_class_name, parent_class_name } ) => {
 	const class_data = GetClassData("Class", parent_class_name);
 	return (<>
@@ -571,7 +572,7 @@ export const InheritedClassEvents = ({ inherited_class_name, parent_class_name }
 	</>);
 };
 
-<!-- Block of Functions -->
+// Block of Functions
 export const FunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
@@ -595,7 +596,7 @@ export const FunctionsDeclaration = ({ type, name }) => {
 	</>);
 };
 
-<!-- Block of Static Functions -->
+// Block of Static Functions
 export const StaticFunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
@@ -613,7 +614,7 @@ export const StaticFunctionsDeclaration = ({ type, name }) => {
 	</>);
 };
 
-<!-- Block of Examples -->
+// Block of Examples
 export const ExamplesDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return <>
@@ -629,7 +630,7 @@ export const ExamplesDeclaration = ({ type, name }) => {
 	</>;
 };
 
-<!-- Block of Events -->
+// Block of Events
 export const EventsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
@@ -651,7 +652,7 @@ export const EventsDeclaration = ({ type, name }) => {
 	</>);
 };
 
-<!-- Block of Properties -->
+// Block of Properties
 export const PropertiesDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>

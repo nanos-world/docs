@@ -31,6 +31,13 @@ export const CardLink = ({ title, description, href, image_src, is_lean }) => (
 	</a>
 );
 
+// External Video from Github
+export const VideoExternal = ({ path }) => (
+	<video controls={true} allowFullScreen={true}>
+		<source src={`${ process.env.NODE_ENV === 'development' ? "/videos" : "https://github.com/nanos-world/docs/raw/master/external/videos"}${path}`} />
+	</video>
+)
+
 // Rectangular Reference Link
 export const ReferenceLink = ({ children, href }) => (
 	<a className="reference-link" href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`}>

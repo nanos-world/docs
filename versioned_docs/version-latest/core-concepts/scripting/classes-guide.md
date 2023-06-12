@@ -6,7 +6,7 @@ tags: [scripting]
 ---
 
 
-import { Classes, StaticClasses } from '@site/docs/components/_nanos.mdx';
+import { Classes, StaticClasses } from '@site/src/components/_nanos';
 
 All you need to know about Classes
 

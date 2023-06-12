@@ -11,9 +11,7 @@ How to create a rain effect with Props (boxes) falling from sky once a Character
 
 ### Final result
 
-<video controls="true" allowfullscreen="true">
-    <source src="/videos/docs/tutorials/prop-rain.mp4" />
-</video>
+<VideoExternal path="/docs/tutorials/prop-rain.mp4" />
 
 
 ```lua title="Server/Index.lua"

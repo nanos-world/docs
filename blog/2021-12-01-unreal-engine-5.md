@@ -5,6 +5,9 @@ authors: gtnardy
 tags: [updates]
 ---
 
+
+import { VideoExternal } from '@site/src/components/_nanos';
+
 New Classes, Unreal Engine 5 Experiments and Scripting Improvements!
 
 
@@ -36,9 +39,7 @@ We are getting a brand new very-requested class: **Melee**! The Melee is coming 
 
 The results are quite fun, the hit/damage also affects the environment dynamically 😊
 
-<video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/november/melee.webm" />
-</video>
+<VideoExternal path="/blog/november/melee.webm" />
 
 
 ## Scripting Improvements
@@ -103,9 +104,7 @@ nanos world becomes a completely different game, the mouse is now a crosshair wh
 
 It also is possible to dynamically change the view mode and switch between them during game-play and also tweak settings such as camera distance and so on.
 
-<video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/november/top-down.webm" />
-</video>
+<VideoExternal path="/blog/november/top-down.webm" />
 
 
 ## New Camera Methods

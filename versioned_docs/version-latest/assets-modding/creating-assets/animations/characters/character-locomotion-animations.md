@@ -25,9 +25,7 @@ In Unreal, [BlendSpaces](https://docs.unrealengine.com/5.0/en-US/blend-spaces-in
 
 In our case our inputs are `SpeedY` (Horizontal Axis) and `SpeedX` (Vertical Axis), meaning forward and right speed, respectively.
 
-<video controls="true" allowfullscreen="true">
-    <source src="/videos/docs/assets-modding/character-locomotion-01.webm" />
-</video>
+<VideoExternal path="/docs/assets-modding/character-locomotion-01.webm" />
 
 :::tip
 

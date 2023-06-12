@@ -2,9 +2,8 @@
 import MDXComponents from '@theme-original/MDXComponents';
 
 // Import custom elements
-import { HeaderDeclaration, ConstructorDeclaration, FunctionsDeclaration, StaticFunctionsDeclaration, ExamplesDeclaration, EventsDeclaration, PropertiesDeclaration, APISourceURL } from '@site/src/components/ClassBuilder.mdx';
-import { EnumsDeclaration, EnumDeclaration } from '@site/src/components/EnumDeclaration';
-import { Structs, BasicType, AuthorityType, Classes, UtilityClasses, ReferenceLink, Enums, CardLink, AssetPath } from '@site/docs/components/_nanos.mdx';
+import { HeaderDeclaration, ConstructorDeclaration, FunctionsDeclaration, StaticFunctionsDeclaration, ExamplesDeclaration, EventsDeclaration, PropertiesDeclaration, APISourceURL } from '@site/src/components/ClassBuilder';
+import { Classes, Structs, BasicType, AuthorityType, UtilityClasses, ReferenceLink, Enums, CardLink, AssetPath, VideoExternal } from '@site/src/components/_nanos';
 
 export default {
 	// Re-use the default mapping
@@ -18,9 +17,7 @@ export default {
 	PropertiesDeclaration,
 	EventsDeclaration,
 	ExamplesDeclaration,
-	EnumsDeclaration,
 	APISourceURL,
-	EnumDeclaration,
 	UtilityClasses,
 	Structs,
 	BasicType,
@@ -29,5 +26,6 @@ export default {
 	ReferenceLink,
 	Enums,
 	CardLink,
-	AssetPath
+	AssetPath,
+	VideoExternal
 };

@@ -5,6 +5,8 @@ authors: gtnardy
 tags: [updates]
 ---
 
+import { VideoExternal } from '@site/src/components/_nanos';
+
 One of our main focus for nanos world is having fun, and we believe that the small details are the big support for the experience to be complete. In the past weeks, we've been working on improving and adding small features to common actions such as firing, picking up objects and even how you perceive them happening. Here's the highlights!
 
 
@@ -12,22 +14,16 @@ One of our main focus for nanos world is having fun, and we believe that the sma
 
 Since the beginning, our weapons were stiff when shooting giving an impression of rigidity and lack of fluidity. With the simple improvement of adding firing animations to that, look how it looks better:
 
-<video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/weapons-improvements/m1911.webm" />
-</video>
+<VideoExternal path="/blog/weapons-improvements/m1911.webm" />
 
-<video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/weapons-improvements/makarov.webm" />
-</video>
+<VideoExternal path="/blog/weapons-improvements/makarov.webm" />
 
 
 ## New effects for Bullet Shells
 
 Besides new animations, we added a subtle detail: **Bullet Shells Drop SFX**. And not that simple! The sound is precisely played in the location and moment the shells hit the ground or any surface, listen:
 
-<video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/weapons-improvements/bullet-shell-drop.webm" />
-</video>
+<VideoExternal path="/blog/weapons-improvements/bullet-shell-drop.webm" />
 
 Check out a complete before and after comparison of some of the weapons, you can notice all the improvements in detail!
 
@@ -43,9 +39,7 @@ Note that nanos world weapons animations and aiming are completely generated pro
 
 A subtle sound detail added when you grab and drop a Weapon, and also now the object is slightly thrown to forward:
 
-<video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/weapons-improvements/picking-up.webm" />
-</video>
+<VideoExternal path="/blog/weapons-improvements/picking-up.webm" />
 
 
 ## Scopes
@@ -63,9 +57,7 @@ weapon:AddStaticMeshAttached("sight", "nanos-world::SM_Scope_25x56", "", Vector(
 weapon:SetSightTransform(Vector(-15, 0, -4.6), Rotator(0, 0, 0))
 ```
 
-<video controls="true" allowfullscreen="true">
-    <source src="/videos/blog/weapons-improvements/sniper-scope.webm" />
-</video>
+<VideoExternal path="/blog/weapons-improvements/sniper-scope.webm" />
 
 This is completely procedural, it also uses the 3D Mesh scope materials!
 

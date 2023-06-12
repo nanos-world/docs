@@ -30,6 +30,8 @@ module.exports = {
       },
     }
   },
+  // Hacky solution, dev uses external, which is not included in the build
+  staticDirectories: isDev ? ['external', 'public', 'static'] : ['public', 'static'],
   themeConfig: {
     // announcementBar: {
     //   id: 'support_us', // Any value that will identify this message.

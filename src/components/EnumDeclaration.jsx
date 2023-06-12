@@ -1,7 +1,7 @@
 import React from 'react';
 import APIData from '@site/src/components/APIData.jsx';
 import Admonition from '@theme/Admonition';
-import { GetRelations } from '@site/src/components/ClassBuilder.mdx';
+import { GetRelations } from '@site/src/components/ClassBuilder';
 
 export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
 	<>

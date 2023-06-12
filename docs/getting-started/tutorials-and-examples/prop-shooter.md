@@ -9,9 +9,7 @@ tags: [tutorial-example, scripting]
 
 This sample code modifies a Weapon to make it shoot Props instead of normal bullets
 
-<video controls="true" allowfullscreen="true">
-    <source src="/videos/docs/tutorials/prop-shooter.mp4" />
-</video>
+<VideoExternal path="/docs/tutorials/prop-shooter.mp4" />
 
 
 ```shell title="Terminal"

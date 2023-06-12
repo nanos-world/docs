@@ -7,7 +7,7 @@ sidebar_position: 0
 
 List of Tutorials, Snippets and Examples to create Packages and game-modes for nanos world.
 
-import { CardLink } from '@site/docs/components/_nanos.mdx';
+import { CardLink } from '@site/src/components/_nanos';
 
 <div className="card-links">
 

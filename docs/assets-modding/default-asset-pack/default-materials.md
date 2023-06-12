@@ -8,7 +8,7 @@ keywords: [assets, materials, built-in, default]
 
 Default Materials and it's Parameters.
 
-import { Classes } from '@site/docs/components/_nanos.mdx';
+import { Classes } from '@site/src/components/_nanos';
 
 
 ## Template Materials

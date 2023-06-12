@@ -2,7 +2,7 @@ import React from 'react';
 import CodeBlock from '@theme/CodeBlock';
 
 import { EnumDeclaration } from '@site/src/components/EnumDeclaration';
-import { GetFunctionSignature, GetStaticFunctionSignature, GetEventSignature, GetParametersList, FunctionParametersDeclaration } from '@site/src/components/ClassBuilder.mdx';
+import { GetFunctionSignature, GetStaticFunctionSignature, GetEventSignature, GetParametersList, FunctionParametersDeclaration } from '@site/src/components/ClassBuilder';
 
 
 export const AuthorityTooltip = ({ img, title, subtitle, description }) => (
