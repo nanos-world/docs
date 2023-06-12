@@ -1,3 +1,4 @@
+import React from 'react';
 import { useActiveVersion } from '@docusaurus/plugin-content-docs/client';
 import { Link } from "react-router-dom";
 
@@ -10,18 +11,18 @@ import { AuthorityTooltip, AssetPathToolTip, ClassToolTip, FunctionToolTip, Enum
 import APIData from '@site/src/components/APIData.jsx';
 
 
-<!-- Getter to get the current version path - for links -->
+// Getter to get the current version path - for links
 export const getActiveVersionPath = () => {
 	const activeVersion = useActiveVersion();
 	return activeVersion ? activeVersion.path : "/docs";
 };
 
-<!-- Getter to get the current version path - for links -->
+// Getter to get the current version path - for links
 export const LinkActiveVersion = (props) => (
 	<Link { ...props } to={`${getActiveVersionPath()}/${props.to}`} />
 );
 
-<!-- Square Card Link -->
+// Square Card Link
 export const CardLink = ({ title, description, href, image_src, is_lean }) => (
 	<a className={`card-link ${is_lean ? "card-link-lean" : ""}`} href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`} >
 		<img src={image_src ? image_src : '/img/docs/nanos-world-background.webp'} />
@@ -30,7 +31,7 @@ export const CardLink = ({ title, description, href, image_src, is_lean }) => (
 	</a>
 );
 
-<!-- Rectangular Reference Link -->
+// Rectangular Reference Link
 export const ReferenceLink = ({ children, href }) => (
 	<a className="reference-link" href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`}>
 		{children}
@@ -40,14 +41,14 @@ export const ReferenceLink = ({ children, href }) => (
 	</a>
 );
 
-<!-- Media Legend -->
+// Media Legend
 export const MediaLegend = ({ children }) => (
 	<p className="media-legend">
 	{ children }
 	</p>
 )
 
-<!-- Generic Base Native component -->
+// Generic Base Native component
 export const BaseNative = (img, title, description) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} subtitle={"Nativity"} />}>
 		<span className="native-type">
@@ -56,7 +57,7 @@ export const BaseNative = (img, title, description) => (
 	</Tippy>
 );
 
-<!-- Generic Base Authority component -->
+// Generic Base Authority component
 export const BaseAuthority = (img, title, description) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} subtitle={"Authority Side"} />}>
 		<Link className="authority-availability" to={`${getActiveVersionPath()}/core-concepts/scripting/authority-concepts#methods-and-events-availability`}>
@@ -65,7 +66,7 @@ export const BaseAuthority = (img, title, description) => (
 	</Tippy>
 );
 
-<!-- Generic Base Basic Type component -->
+// Generic Base Basic Type component
 export const BaseBasicType = (label, description) => (
 	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={
 		<>
@@ -85,14 +86,14 @@ export const BaseBasicType = (label, description) => (
 	</Tippy>
 );
 
-<!-- Generic Struct Type component -->
+// Generic Struct Type component
 export const BaseStruct = (name, emoji, path) => (
 	<Tippy maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<ClassToolTip class_name={name} emoji={emoji} append_title="Struct" description={ APIData.BleedingEdge.Struct[name] ? APIData.BleedingEdge.Struct[name].description : "Struct not found. Soon™." } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/structs/${path ? path : name.toLowerCase()}`} className={"hover-link"}>{name}</Link>
 	</Tippy>
 );
 
-<!-- Generic Utility Class Type component -->
+// Generic Utility Class Type component
 export const BaseUtilityClass = (name, path) => (
 	<Tippy maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<ClassToolTip class_name={name} emoji={"💡"} append_title="Utility Class" description={ APIData.BleedingEdge.UtilityClass[name] ? APIData.BleedingEdge.UtilityClass[name].description : "Utility Class not found. Soon™." } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/utility-libraries/${path ? path : name.toLowerCase()}`} className={"hover-link"}>
@@ -101,7 +102,7 @@ export const BaseUtilityClass = (name, path) => (
 	</Tippy>
 );
 
-<!-- Generic Class Type component -->
+// Generic Class Type component
 export const BaseClass = (name, emoji, label = name, path = null) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"}
 		content={<ClassToolTip class_name={label} emoji={emoji} append_title="Class" description={ APIData.BleedingEdge.Class[name] ? APIData.BleedingEdge.Class[name].description : "Class not found. Soon™." } />}>
@@ -111,7 +112,7 @@ export const BaseClass = (name, emoji, label = name, path = null) => (
 	</Tippy>
 );
 
-<!-- Generic StaticClass Type component -->
+// Generic StaticClass Type component
 export const BaseStaticClass = (name, emoji, path) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"}
 		content={<ClassToolTip class_name={name} emoji={emoji} append_title="Static Class" description={ APIData.BleedingEdge.StaticClass[name] ? APIData.BleedingEdge.StaticClass[name].description : "Static Class not found. Soon™." } />}>
@@ -121,28 +122,28 @@ export const BaseStaticClass = (name, emoji, path) => (
 	</Tippy>
 );
 
-<!-- Define Enum component -->
+// Define Enum component
 export const Enums = ({ children }) => (
 	<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={<EnumToolTip enum_name={ children } enum_data={ APIData.BleedingEdge.Enums[children] } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${children.toLowerCase()}`} className={"hover-link"}>{children}</Link>
 	</Tippy>
 );
 
-<!-- Define Asset Path component -->
+// Define Asset Path component
 export const BaseAssetPath = (type, label, description) => (
 	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AssetPathToolTip label={label} description={description} subtitle="Asset Path Reference (string)" />}>
 		<Link to={`${getActiveVersionPath()}/core-concepts/assets#referencing-assets-in-scripting`} className={"hover-link"}>{label}</Link>
 	</Tippy>
 );
 
-<!-- Define Special Path component -->
+// Define Special Path component
 export const SpecialPath = (type, label, description) => (
 	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AssetPathToolTip label={label} description={description} subtitle="File Path Reference (string)" />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/basic-types#specialpath`} className={"hover-link"}>{label}</Link>
 	</Tippy>
 );
 
-<!-- Define Tippy Generic Link component -->
+// Define Tippy Generic Link component
 export const TippyLink = (type, label, description, url) => (
 	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AssetPathToolTip label={label} description={description} subtitle="File Path Reference (string)" />}>
 		<Link to={`${getActiveVersionPath()}/${url}`} className={"hover-link"}>{label}</Link>
@@ -150,7 +151,7 @@ export const TippyLink = (type, label, description, url) => (
 );
 
 
-<!-- Defines Authority Types components -->
+// Defines Authority Types components
 export const AuthorityType = {
 	AuthorityOnly: () => BaseAuthority("/img/scripting/authority-only.svg", "Authority Only", "This can be only called on the side it was spawned on!"),
 	ServerOnly: () => BaseAuthority("/img/scripting/server-only.svg", "Server Only", "This can be only called on <strong>Server</strong> side!"),
@@ -159,13 +160,13 @@ export const AuthorityType = {
 	NetworkAuthority: () => BaseAuthority("/img/scripting/network-authority.png", "Network Authority", "This can be called on <strong>Server</strong> and on <strong>Client's</strong> current Network Authority of this entity!<br/><br/><strong>TIP</strong>: You can validate if the current Local Player has Network Authority on this entity by calling <code>entity:HasNetworkAuthority()</code>."),
 };
 
-<!-- Defines Native Types components -->
+// Defines Native Types components
 export const NativeType = {
 	Native: () => BaseNative("/img/scripting/native.svg", "Native Function", "This is a native and built-in function from Lua."),
 	NotNative: () => BaseNative("/img/scripting/not-native.svg", "Custom Function", "This is a custom function added to the native lua library!"),
 };
 
-<!-- Defines Basic Types components -->
+// Defines Basic Types components
 export const BasicType = {
 	Number: () => BaseBasicType("number", "The number type represents real (double-precision floating-point) numbers."),
 	Integer: () => BaseBasicType("integer", "Whole numbers without any fractional parts."),
@@ -180,7 +181,7 @@ export const BasicType = {
 	VarArgs: () => BaseBasicType("varargs", "Variadic list of values."),
 };
 
-<!-- Defines Struct Types components -->
+// Defines Struct Types components
 export const Structs = {
 	Vector: () => BaseStruct("Vector", "📐"),
 	Rotator: () => BaseStruct("Rotator", "🧭"),
@@ -189,7 +190,7 @@ export const Structs = {
 	Vector2D: () => BaseStruct("Vector2D", "📏"),
 };
 
-<!-- Defines Struct Types components -->
+// Defines Struct Types components
 export const UtilityClasses = {
 	JSON: () => BaseUtilityClass("JSON"),
 	NanosMath: () => BaseUtilityClass("NanosMath"),
@@ -197,7 +198,7 @@ export const UtilityClasses = {
 	NanosUtils: () => BaseUtilityClass("NanosUtils"),
 };
 
-<!-- Defines Classes components -->
+// Defines Classes components
 export const Classes = {
 	Entity: () => BaseClass("Entity", "🧩", "Base Entity", "base-classes/entity"),
 	Actor: () => BaseClass("Actor", "🎭", "Base Actor", "base-classes/actor"),
@@ -230,7 +231,7 @@ export const Classes = {
 	Widget3D: () => BaseClass("Widget3D", "🪟"),
 };
 
-<!-- Defines StaticClasses components -->
+// Defines StaticClasses components
 export const StaticClasses = {
 	Assets: () => BaseStaticClass("Assets", "🍀"),
 	Chat: () => BaseStaticClass("Chat", "💬"),
@@ -253,7 +254,7 @@ export const StaticClasses = {
 	Viewport: () => BaseStaticClass("Viewport", "📺"),
 };
 
-<!-- Defines Assets Path -->
+// Defines Assets Path
 export const AssetPath = {
 	StaticMesh: () => BaseAssetPath("StaticMesh", "StaticMesh Reference", "StaticMesh Asset Reference in the format:<br/><code class='path-center'>asset-pack::SM_MyAsset</code>"),
 	SkeletalMesh: () => BaseAssetPath("SkeletalMesh", "SkeletalMesh Reference", "SkeletalMesh Asset Reference in the format:<br/><code class='path-center'>asset-pack::SM_MyAsset</code>"),
