@@ -210,6 +210,7 @@ export const Classes = {
 	Entity: () => BaseClass("Entity", "🧩", "Base Entity", "base-classes/entity"),
 	Actor: () => BaseClass("Actor", "🎭", "Base Actor", "base-classes/actor"),
 	Paintable: () => BaseClass("Paintable", "🎨", "Base Paintable", "base-classes/paintable"),
+	Damageable: () => BaseClass("Damageable", "🩼", "Base Damageable", "base-classes/damageable"),
 	Pickable: () => BaseClass("Pickable", "⚔️", "Base Pickable", "base-classes/pickable"),
 	Billboard: () => BaseClass("Billboard", "🪧"),
 	Blueprint: () => BaseClass("Blueprint", "🔣"),

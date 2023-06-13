@@ -10,6 +10,7 @@ import 'tippy.js/dist/tippy.css';
 
 import { AuthorityType, NativeType, BasicType, Classes, Structs, Enums, AssetPath, LinkActiveVersion, getActiveVersionPath, ReferenceLink } from '@site/src/components/_nanos';
 import { FunctionToolTip, StaticFunctionToolTip, InlineFunctionToolTip, TablePropertiesToolTip, EventToolTip } from '@site/src/components/Tooltips';
+import { Details } from '@site/src/components/MarkdownUtils.mdx';
 
 import APIData from '@site/src/components/APIData';
 
@@ -297,12 +298,11 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 		</CodeBlock>
 		<FunctionParametersDeclaration parameters={function_data.parameters} />
 		{Array.isArray(function_data.examples) && function_data.examples.length > 0 ?
-			<details>
-				<summary>{ `${class_name}.${function_data.name} Examples` }</summary>
+			<Details summary={`${class_name}.${function_data.name} Examples`}>
 				{function_data.examples.map(function(example, index) {
 					return GetGenericExample(example)
 				})}
-			</details>
+			</Details>
 		: <></>}
 		{function_data.relations ?
 			<p className={"relations"}>
@@ -352,12 +352,11 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 			</div>
 		: <></> }
 		{Array.isArray(event_data.examples) && event_data.examples.length > 0 ?
-			<details>
-				<summary>{ `${class_name} "${event_data.name}"` } Event Examples</summary>
+			<Details summary={ `${class_name} "${event_data.name}" Event Examples`}>
 				{event_data.examples.map(function(example, index) {
 					return GetEventExample(class_name, event_data, example)
 				})}
-			</details>
+			</Details>
 		: <></>}
 		{event_data.relations ?
 			<p className={"relations"}>
@@ -549,28 +548,23 @@ export const ConstructorDeclaration = ({ type, name }) => {
 export const InheritedClassFunctions = ({ inherited_class_name, parent_class_name, is_static } ) => {
 	const class_data = GetClassData("Class", parent_class_name);
 	return (<>
-		<details>
-			<summary>Inherited {parent_class_name} {is_static ? "Static " : ""}Functions</summary>
+		<Details summary={`Inherited ${parent_class_name} ${is_static ? "Static " : ""}Functions`}>
 			<ReferenceLink href={`scripting-reference/classes/base-classes/${parent_class_name}`}>Base {parent_class_name}</ReferenceLink>
 			{ is_static ?
 				<StaticFunctionListDeclaration class_name={inherited_class_name} base_class={parent_class_name} functions_list={class_data.static_functions} />
 				: <FunctionListDeclaration class_name={inherited_class_name} base_class={parent_class_name} functions_list={class_data.functions} />
 			}
-		</details>
+		</Details>
 	</>);
 };
 
 // Base Class Events
-export const InheritedClassEvents = ({ inherited_class_name, parent_class_name } ) => {
-	const class_data = GetClassData("Class", parent_class_name);
-	return (<>
-		<details>
-			<summary>Inherited {parent_class_name} Events</summary>
-			<ReferenceLink href={`scripting-reference/classes/base-classes/${parent_class_name}`}>Base {parent_class_name}</ReferenceLink>
-			<EventListDeclaration type="Class" name="Entity" inherited_class_name={inherited_class_name} base_class={parent_class_name} />
-		</details>
-	</>);
-};
+export const InheritedClassEvents = ({ inherited_class_name, parent_class_name }) => (
+	<Details summary={`Inherited ${parent_class_name} Events`}>
+		<ReferenceLink href={`scripting-reference/classes/base-classes/${parent_class_name}`}>Base {parent_class_name}</ReferenceLink>
+		<EventListDeclaration type="Class" name="Entity" inherited_class_name={inherited_class_name} base_class={parent_class_name} />
+	</Details>
+);
 
 // Block of Functions
 export const FunctionsDeclaration = ({ type, name }) => {
