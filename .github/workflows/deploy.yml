@@ -30,6 +30,9 @@ jobs:
         run: yarn crowdin:sync
 
       - name: Build website
+        env:
+          # FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+          NODE_OPTIONS: "--max_old_space_size=4096"
         run: yarn build
 
       # Popular action to deploy to GitHub Pages:
