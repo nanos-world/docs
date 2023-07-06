@@ -19,19 +19,19 @@ In this Tutorial we'll be using [React](https://react.dev/), please download and
 
 :::info
 
-This tutorial will not teach you how to use React. A basic knowledge of the framework is required to understand the tutorial. You can find some documentation and tutorials [here](https://react.dev/learn)
+This tutorial will not teach you how to use React. A basic knowledge of the framework is required to understand the tutorial. You can find some documentation and tutorials [here](https://react.dev/learn).
 
 :::
 
 In the folder of your choice, create a new React Application that will be used to create our UI. To do so, execute the following command in your terminal:
 
-```bash title="Terminal" 
+```bash title="Terminal"
 npx create-react-app basic-hud
 ```
 
-Once finished, you should see the following message appears in your terminal: 
+Once finished, you should see the following message appears in your terminal:
 
-```bash title="Terminal" 
+```bash title="Terminal"
 Success! Created basic-hud at F:\Nanos\Documentation\basic-hud
 Inside that directory, you can run several commands:
 
@@ -56,15 +56,15 @@ npm start
 Happy hacking!
 ```
 
-Your App folder should look like this : 
+Your App folder should look like this:
 
 ![](/img/docs/tutorials/react-01.webp)
 
 ## Basic Configuration of your App
 
-Before starting to add some code, there's a few things to configure to be sure that your App will be compatible with NanosWorld:
+Before starting to add some code, there's a few things to configure to be sure that your App will be compatible with nanos world:
 
-- ### Changing the homepage path of your app 
+- ### Changing the homepage path of your app
 
 Once compiled your App may not work properly if you don't set the homepage path properly. To avoid any path related issue, edit your `package.json` file and add the following line:
 
@@ -72,9 +72,9 @@ Once compiled your App may not work properly if you don't set the homepage path 
 "homepage": "./"
 ```
 
-- ### Adding the NanosWorld Events handling 
+- ### Adding the nanos world Events handling
 
-By default, your react App will not be able to handle the native NanosWorld Events. To fix that add the following code in a new file named `Events.js` in the `src` directory of your App: 
+By default, your react App will not be able to handle the native nanos world Events. To fix that add the following code in a new file named `Events.js` in the `src` directory of your App:
 
 ```js title="./src/Events.js"
 const Events = {};
@@ -94,7 +94,7 @@ export default Events;
 
 :::info
 
-Don't forget to import this file in your components that needs to Call/Subscribe to NanosWorld Events
+Don't forget to import this file in your components that needs to Call/Subscribe to nanos world Events
 
 :::
 
@@ -118,13 +118,13 @@ Don't forget to remove the references of the deleted files and functions in your
 
 :::
 
-Once cleaned your App should be like this : 
+Once cleaned your App should be like this:
 
 ![](/img/docs/tutorials/react-02.webp)
 
 ## Creating the UI
 
-Now that our App is ready and compatible with NanosWorld, we are ready to add our code into it. Since this UI is very simple, we will use the default `App.js` components available in the `src` folder
+Now that our App is ready and compatible with nanos world, we are ready to add our code into it. Since this UI is very simple, we will use the default `App.js` components available in the `src` folder
 
 ```js title="./basic-hud/src/App.js"
 import './App.css';
@@ -152,7 +152,7 @@ export default App;
 
 :::info
 
-If you noticed we are using an image `health.png`, you can download it here [https://i.imgur.com/0BmQJVZ.png](https://i.imgur.com/0BmQJVZ.png) and place it inside the `./public/img` folder of your App. 
+If you noticed we are using an image `health.png`, you can download it here [https://i.imgur.com/0BmQJVZ.png](https://i.imgur.com/0BmQJVZ.png) and place it inside the `./public/img` folder of your App.
 
 :::
 
@@ -221,24 +221,24 @@ body {
 }
 ```
 
-To make sure that your App works, you can simply start the application and see the end result in your web browser? To do so use the following command : 
+To make sure that your App works, you can simply start the application and see the end result in your web browser? To do so use the following command:
 
 
 ```bash title="Terminal"
 npm start
 ```
 
-:::info 
+:::info
 
-You can see the running App at the following address : `http://localhost:3000`
+You can see the running App at the following address: `http://localhost:3000`.
 
 :::
 
-Once started you should see something like this in your web browser :
+Once started you should see something like this in your web browser:
 
 ![](/img/docs/tutorials/react-03.webp)
 
-## Adding Events handling into your App 
+## Adding Events handling into your App
 
 Now that we have all the base of our App set, we can start to implement the Events handling. For this, edit your `App.js`:
 
@@ -249,7 +249,7 @@ import { useState } from 'react';
 
 
 function App() {
-  
+
   // Use React State to store the health and ammo values
   // The values are updated by the events from the server
   const [health, setHealth] = useState(100);
@@ -257,14 +257,14 @@ function App() {
   const [weaponBag, setWeaponBag] = useState(1000);
   const [displayAmmo, setDisplayAmmo] = useState(false);
 
-  // Subscribe to the events ralated to the Ammo and visibility of the Ammo container
+  // Subscribe to the events related to the Ammo and visibility of the Ammo container
   Events.Subscribe("UpdateWeaponAmmo",(enable, clip, bag) => {
     setDisplayAmmo(enable);
     setWeaponAmmo(clip);
     setWeaponBag(bag);
   });
 
-  // Subscribe to the events ralated to the Health
+  // Subscribe to the events related to the Health
   Events.Subscribe("UpdateHealth", (health) => {
     setHealth(health);
   });
@@ -278,7 +278,7 @@ function App() {
         </div>
 
         {/* Weapon Ammo container (black background) */}
-        {displayAmmo && 
+        {displayAmmo &&
           <div id="weapon_ammo_container">
             <span id="weapon_ammo_clip">{weaponAmmo}</span> {/* Ammo Clip value */}
             <span id="weapon_ammo_bag">/ {weaponBag}</span> {/* Ammo Bag value */}
@@ -291,13 +291,13 @@ function App() {
 export default App;
 ```
 
-Now that coding part for the UI is done, you can `build` it to add it to your NanosWorld Package!
+Now that coding part for the UI is done, you can `build` it to add it to your nanos world Package!
 
 ## Building your React Application
 
-Once finished with the development of the web part, you'll need to build the App. In the root folder of your app, execute the following command: 
+Once finished with the development of the web part, you'll need to build the App. In the root folder of your app, execute the following command:
 
-```bash title="Terminal
+```bash title="Terminal"
 npm run build
 ```
 
@@ -309,9 +309,9 @@ Inside your Package’s Client folder, create a new folder (optional) called UI/
 
 ![](/img/docs/tutorials/react-04.webp)
 
-After that copy all the files present in the `./build` folder of your react app (except the `asset-manifets.json`) into the `/UI` folder of your NanosWorld Package.
+After that copy all the files present in the `./build` folder of your react app (except the `assets-manifest.json`) into the `/UI` folder of your nanos world Package.
 
-Finally, in your Package’s `Index.lua`, let’s add all the required code to spawn and update the UI : 
+Finally, in your Package’s `Index.lua`, let’s add all the required code to spawn and update the UI:
 
 ```lua title="Client/Index.lua"
 -- Spawns a WebUI with the HTML file you just created
@@ -394,8 +394,8 @@ function UpdateHealth(health)
 end
 ```
 
-Et voilà! Your app should now be ready to be used into NanosWorld. To test it simply run your Server and contemplate your hard work
+Et voilà! Your app should now be ready to be used into nanos world. To test it simply run your Server and contemplate your hard work
 
 ![](/img/docs/tutorials/react-05.webp)
 
-That's It ! Your React Web Ui is now integrated into NanosWorld and ready to use. Feel free to use this exemple in your own project :\)
+That's it! Your React Web UI is now integrated into nanos world and ready to use. Feel free to use this example in your own project :\)
