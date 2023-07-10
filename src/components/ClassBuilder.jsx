@@ -518,28 +518,33 @@ export const ConstructorDeclaration = ({ type, name }) => {
 			<CodeBlock className="language-lua">
 				{ GetConstructorExample(class_data, index) }
 			</CodeBlock>
-			<div className="table-wrapper">
-				<table>
-					<thead>
-						<tr>
-							<th>Type</th>
-							<th>Name</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						{ constructor.parameters.map(function(value, index) {
-							return <tr key={ `${value.name}-${index}` }>
-								<td>{ SplitTypesByOr(value.type) }</td>
-								<td><b><code>{ value.name }</code></b></td>
-								<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : "" }</td>
-								<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
-							</tr>;
-						} )}
-					</tbody>
-				</table>
-			</div>
+			{
+				constructor.parameters.length == 0 ? <i>This constructor doesn't have parameters.</i> :
+				<>
+					<div className="table-wrapper">
+						<table>
+							<thead>
+								<tr>
+									<th>Type</th>
+									<th>Name</th>
+									<th>Default</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								{ constructor.parameters.map(function(value, index) {
+									return <tr key={ `${value.name}-${index}` }>
+										<td>{ SplitTypesByOr(value.type) }</td>
+										<td><b><code>{ value.name }</code></b></td>
+										<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : "" }</td>
+										<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+									</tr>;
+								} )}
+							</tbody>
+						</table>
+					</div>
+				</>
+			}
 		</>
 	);
 };
