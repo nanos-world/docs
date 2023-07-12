@@ -14,7 +14,7 @@ module.exports = {
   trailingSlash: false,
   i18n: {
     defaultLocale: 'en',
-    locales: isDev ? ['en'] : ['en', 'pt-BR', 'de', 'fr'],
+    locales: 'en',
     localeConfigs: {
       en: {
         label: '🇬🇧 English'
