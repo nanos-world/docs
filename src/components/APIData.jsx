@@ -25,7 +25,8 @@ import StaticMeshData from '@site/src/api/.generated/Classes/StaticMesh.json';
 import SoundData from '@site/src/api/.generated/Classes/Sound.json';
 import TextRenderData from '@site/src/api/.generated/Classes/TextRender.json';
 import TriggerData from '@site/src/api/.generated/Classes/Trigger.json';
-import VehicleData from '@site/src/api/.generated/Classes/Vehicle.json';
+import VehicleWheeledData from '@site/src/api/.generated/Classes/VehicleWheeled.json';
+import VehicleWaterData from '@site/src/api/.generated/Classes/VehicleWater.json';
 import WeaponData from '@site/src/api/.generated/Classes/Weapon.json';
 import WebUIData from '@site/src/api/.generated/Classes/WebUI.json';
 import WidgetData from '@site/src/api/.generated/Classes/Widget.json';
@@ -97,7 +98,10 @@ import StaticMeshDataStable from '@site/src/api/.generated/Stable/Classes/Static
 import SoundDataStable from '@site/src/api/.generated/Stable/Classes/Sound.json';
 import TextRenderDataStable from '@site/src/api/.generated/Stable/Classes/TextRender.json';
 import TriggerDataStable from '@site/src/api/.generated/Stable/Classes/Trigger.json';
-import VehicleDataStable from '@site/src/api/.generated/Stable/Classes/Vehicle.json';
+import VehicleWheeledDataStable from '@site/src/api/.generated/Classes/VehicleWheeled.json';
+// import VehicleWheeledDataStable from '@site/src/api/.generated/Stable/Classes/VehicleWheeled.json';
+import VehicleWaterDataStable from '@site/src/api/.generated/Classes/VehicleWater.json';
+// import VehicleWaterDataStable from '@site/src/api/.generated/Stable/Classes/VehicleWater.json';
 import WeaponDataStable from '@site/src/api/.generated/Stable/Classes/Weapon.json';
 import WebUIDataStable from '@site/src/api/.generated/Stable/Classes/WebUI.json';
 import WidgetDataStable from '@site/src/api/.generated/Stable/Classes/Widget.json';
@@ -170,7 +174,8 @@ const APIData = {
 			Sound: SoundDataStable,
 			TextRender: TextRenderDataStable,
 			Trigger: TriggerDataStable,
-			Vehicle: VehicleDataStable,
+			VehicleWheeled: VehicleWheeledDataStable,
+			VehicleWater: VehicleWaterDataStable,
 			Weapon: WeaponDataStable,
 			WebUI: WebUIDataStable,
 			Widget: WidgetDataStable,
@@ -245,7 +250,8 @@ const APIData = {
 			Sound: SoundData,
 			TextRender: TextRenderData,
 			Trigger: TriggerData,
-			Vehicle: VehicleData,
+			VehicleWheeled: VehicleWheeledData,
+			VehicleWater: VehicleWaterData,
 			Weapon: WeaponData,
 			WebUI: WebUIData,
 			Widget: WidgetData,
