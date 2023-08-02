@@ -81,6 +81,7 @@ nanos world counts on (for now) 4 built-in maps: `default-blank-map`, `default-e
 | `chat <message>` | Sends a chat message |
 | `kick <player_id> <reason>` | Kicks a player by it's ID |
 | `map <map_path>` | Reloads all Packages and reconnect the Players in new Map |
+| `restart` | Restarts the server, reloading all Packages and reconnecting the Players |
 | `stop` | Stops the server |
 | `players` | Lists all Players connected |
 | `package run <package_name> <lua_code>` | Runs a code in a Package |
