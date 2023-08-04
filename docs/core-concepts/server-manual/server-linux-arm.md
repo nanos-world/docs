@@ -114,7 +114,7 @@ box86 is optional if you don't want to use steamcmd to download & update the ser
 
 Follow CAREFULLY the instructions on the emulators repository, commands are different in function of the board.
 
-Example :
+Example:
 * RK3399 is for Pine64, RockPro64, Orange Pi, ...
 
 :::caution

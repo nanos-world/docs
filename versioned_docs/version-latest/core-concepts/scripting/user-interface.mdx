@@ -1,39 +1,25 @@
 ---
 title: User Interface
-description: How to display information in the Screen for the Player
+description: How to display information on the Screen to the Player
 sidebar_position: 5
 tags: [scripting, ui]
 ---
 
 
-import { ReferenceLink } from '@site/src/components/_nanos';
+import { ReferenceLink, Classes } from '@site/src/components/_nanos';
 
-How to display information in the Screen for the Player.
+How to display information on the Screen to the Player.
 
-In nanos world there are 2 official ways of plotting screen data: **WebUI** and **Canvas**.
-
-:::caution
-
-We highly recommend using **WebUI** instead of **Canvas** to create your UIs 😉.
-
-:::
+In nanos world there are 3 official ways of plotting screen data: [WebUI](#webui), [Widget](#widget) and [Canvas](#canvas).
 
 
 ## WebUI
 
-With WebUI you can load HTML pages which integrate with your Packages in Lua using Events.
+With <Classes.WebUI /> you can load HTML pages which integrate with your Packages in Lua using Events.
 
-### Basic WebUI Setup
+This sample code shows how to add a basic page using HTML+JavaScript with the WebUI Class:
 
-This sample code shows how to add a basic page using HTML+JavaScript with the WebUI class.
-
-:::info
-
-**Note:** All WebUI code runs on Client side!
-
-:::
-
-```lua title="Client/Index.lua"
+```lua title="my-package/Client/Index.lua"
 -- Spawns a WebUI with the HTML file you just created
 MyUI = WebUI("My UI", "file://UI/index.html")
 
@@ -47,10 +33,18 @@ MyUI:Subscribe("MyAwesomeAnswer", function(param1)
 end)
 ```
 
-```html title="Client/UI/index.html"
+```html title="my-package/Client/UI/index.html"
 <html>
     <head>
-        <script src="index.js"></script>
+        <script>
+			// Register for "MyAwesomeEvent" from Lua
+			Events.Subscribe("MyAwesomeEvent", function(param1) {
+				console.log("Triggered! " + param1);
+
+				// Triggers "MyAwesomeAnswer" on Lua
+				Events.Call("MyAwesomeAnswer", "Hey there!");
+			})
+		</script>
     </head>
     <body>
         Hello World!
@@ -58,28 +52,33 @@ end)
 </html>
 ```
 
-```javascript title="Client/UI/index.js"
-// Register for "MyAwesomeEvent" from Lua
-Events.Subscribe("MyAwesomeEvent", function(param1) {
-    console.log("Triggered! " + param1);
-
-    // Triggers "MyAwesomeAnswer" on Lua
-    Events.Call("MyAwesomeAnswer", "Hey there!");
-})
-```
+It will output on screen:
 
 ![WebUI results](/img/docs/user-interface.webp)
 
-This will output:
+And also output on the console:
 
 ```text
 [WebUI]  Triggered! Hello! You are ready!
 [Script] Received an answer! Message: Hey there!
 ```
 
+See a full example at:
+
 <ReferenceLink href="getting-started/tutorials-and-examples/basic-hud-html">Basic HUD (HTML)</ReferenceLink>
+
+
+## Widget
+
+Another very flexible way of creating UIs is using the new <Classes.Widget /> Class! With them you can have all access to the powerful Widgets and even create your own through Unreal Engine and import them in-game, providing a seamless User Experience!
+
+For more information refer to our Widget class page:
+
+<ReferenceLink href="scripting-reference/classes/widget">Widget Class</ReferenceLink>
+
 
 ## Canvas
 
-<ReferenceLink href="getting-started/tutorials-and-examples/basic-hud-canvas">Basic HUD (Canvas)</ReferenceLink>
+One last way to plot data on the screen is to use the <Classes.Canvas /> Class:
 
+<ReferenceLink href="getting-started/tutorials-and-examples/basic-hud-canvas">Basic HUD (Canvas)</ReferenceLink>

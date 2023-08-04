@@ -1,0 +1,52 @@
+---
+title: 🛥️ VehicleWater
+description: VehicleWater are entities which Characters can possesses and drive over the water with dynamic physics.
+sidebar_position: 0
+tags: [class]
+---
+
+<HeaderDeclaration type="Class" name="VehicleWater" image="/img/docs/vehicle-water.webp" />
+
+
+## 🎒 Examples
+
+```lua title="Server/Index.lua"
+Boat = VehicleWater.Inherit("Boat")
+Boat.name = "Boat"
+Boat.image = "assets://nanos-world/Thumbnails/SK_Motorboat.jpg"
+Boat.category = "water"
+
+function Boat:Constructor(location, rotation)
+	self.Super:Constructor(location or Vector(), rotation or Rotator(), "nanos-world::SK_Motorboat")
+
+	self:SetDoor(0, Vector(0, 0, 0), Vector(-120, 0, 55), Rotator(-10, 0, 0), 200, -100)
+end
+```
+
+<ExamplesDeclaration type="Class" name="VehicleWater" />
+
+
+## 🛠 Constructors
+
+<ConstructorDeclaration type="Class" name="VehicleWater" />
+
+:::tip
+
+Please take a look at our Default's Vehicle package with all built-in Vehicles already properly configured and ready to use: [https://github.com/nanos-world/nanos-world-vehicles](https://github.com/nanos-world/nanos-world-vehicles).
+
+:::
+
+
+## 🗿 Static Functions
+
+<StaticFunctionsDeclaration type="Class" name="VehicleWater" />
+
+
+## 🦠 Functions
+
+<FunctionsDeclaration type="Class" name="VehicleWater" />
+
+
+## 🚀 Events
+
+<EventsDeclaration type="Class" name="VehicleWater" />

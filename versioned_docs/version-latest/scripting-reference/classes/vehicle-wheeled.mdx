@@ -1,5 +1,5 @@
 ---
-title: 🚙 Vehicle
+title: 🚙 VehicleWheeled
 description: Vehicles are wheeled entities which Characters can possesses and drive.
 sidebar_position: 0
 tags: [class]
@@ -14,7 +14,7 @@ Any Skeletal Mesh can be used to create a Vehicle, although only Skeletal Meshes
 
 ```lua title="Server/Index.lua"
 -- Spawns a Pickup Vehicle
-local vehicle = Vehicle(location or Vector(), rotation or Rotator(), "nanos-world::SK_Pickup", CollisionType.Normal, true, false, true, "nanos-world::A_Vehicle_Engine_10")
+local vehicle = VehicleWheeled(location or Vector(), rotation or Rotator(), "nanos-world::SK_Pickup", CollisionType.Normal, true, false, true, "nanos-world::A_Vehicle_Engine_10")
 
 -- Configure it's Engine power and Aerodynamics
 vehicle:SetEngineSetup(700, 5000)
