@@ -14,6 +14,7 @@ import CharacterSimpleData from '@site/src/api/.generated/Classes/CharacterSimpl
 import DatabaseData from '@site/src/api/.generated/Classes/Database.json';
 import DecalData from '@site/src/api/.generated/Classes/Decal.json';
 import FileData from '@site/src/api/.generated/Classes/File.json';
+import GizmoData from '@site/src/api/.generated/Classes/Gizmo.json';
 import GrenadeData from '@site/src/api/.generated/Classes/Grenade.json';
 import LightData from '@site/src/api/.generated/Classes/Light.json';
 import MeleeData from '@site/src/api/.generated/Classes/Melee.json';
@@ -87,6 +88,8 @@ import CharacterSimpleDataStable from '@site/src/api/.generated/Stable/Classes/C
 import DatabaseDataStable from '@site/src/api/.generated/Stable/Classes/Database.json';
 import DecalDataStable from '@site/src/api/.generated/Stable/Classes/Decal.json';
 import FileDataStable from '@site/src/api/.generated/Stable/Classes/File.json';
+import GizmoDataStable from '@site/src/api/.generated/Classes/Gizmo.json';
+// import GizmoDataStable from '@site/src/api/.generated/Stable/Classes/Gizmo.json';
 import GrenadeDataStable from '@site/src/api/.generated/Stable/Classes/Grenade.json';
 import LightDataStable from '@site/src/api/.generated/Stable/Classes/Light.json';
 import MeleeDataStable from '@site/src/api/.generated/Stable/Classes/Melee.json';
@@ -163,6 +166,7 @@ const APIData = {
 			Database: DatabaseDataStable,
 			Decal: DecalDataStable,
 			File: FileDataStable,
+			Gizmo: GizmoDataStable,
 			Grenade: GrenadeDataStable,
 			Light: LightDataStable,
 			Melee: MeleeDataStable,
@@ -239,6 +243,7 @@ const APIData = {
 			Database: DatabaseData,
 			Decal: DecalData,
 			File: FileData,
+			Gizmo: GizmoData,
 			Grenade: GrenadeData,
 			Light: LightData,
 			Melee: MeleeData,
