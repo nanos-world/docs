@@ -14,7 +14,7 @@ import APIData from '@site/src/components/APIData.jsx';
 // Getter to get the current version path - for links
 export const getActiveVersionPath = () => {
 	const activeVersion = useActiveVersion();
-	return activeVersion ? activeVersion.path : "/docs";
+	return activeVersion ? activeVersion.path : "/docs/next";
 };
 
 // Getter to get the current version path - for links

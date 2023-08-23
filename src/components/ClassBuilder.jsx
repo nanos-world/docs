@@ -192,6 +192,16 @@ export const InheritanceAdmonition = ({ inheritance }) => (
 	</Admonition>
 );
 
+// Base Class Admonition
+export const BaseClassAdmonition = ({ inherited }) => (
+	<Admonition type="info" icon="👪" title="Base Class">
+		This is a Base Class. Base Classes are abstract definitions used to share common methods and events between related child classes, thus you cannot spawn it directly.
+		<br />
+		<br />
+		Classes that share methods and events from this Base Class: { inherited.map((inherit, index) => GetElementByType(inherit, index)).reduce((prev, next) => [prev, ", ", next]) }.
+	</Admonition>
+);
+
 // Static Class Admonition
 export const StaticClassAdmonition = () => (
 	<Admonition type="info" icon="🗿" title="Static Class">
@@ -505,6 +515,7 @@ export const HeaderDeclaration = ({ type, name, image, is_static, open_source_ur
 		{ class_data.inheritance ? <InheritanceAdmonition inheritance={class_data.inheritance} /> : "" }
 		{ open_source_url ? <OpenSourceAdmonition url={open_source_url} /> : "" }
 		<APISourceURL type={type} class_name={name} />
+		{ class_data.is_base ? <BaseClassAdmonition inherited={class_data.inheritance_children} /> : "" }
 		<hr />
 	</>);
 };
