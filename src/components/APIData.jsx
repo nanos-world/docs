@@ -4,6 +4,8 @@ import ActorData from '@site/src/api/.generated/Classes/BaseActor.json';
 import PickableData from '@site/src/api/.generated/Classes/BasePickable.json';
 import PaintableData from '@site/src/api/.generated/Classes/BasePaintable.json';
 import DamageableData from '@site/src/api/.generated/Classes/BaseDamageable.json';
+import VehicleData from '@site/src/api/.generated/Classes/BaseVehicle.json';
+import PawnData from '@site/src/api/.generated/Classes/BasePawn.json';
 
 import BillboardData from '@site/src/api/.generated/Classes/Billboard.json';
 import BlueprintData from '@site/src/api/.generated/Classes/Blueprint.json';
@@ -78,6 +80,10 @@ import ActorDataStable from '@site/src/api/.generated/Stable/Classes/BaseActor.j
 import PickableDataStable from '@site/src/api/.generated/Stable/Classes/BasePickable.json';
 import PaintableDataStable from '@site/src/api/.generated/Stable/Classes/BasePaintable.json';
 import DamageableDataStable from '@site/src/api/.generated/Stable/Classes/BaseDamageable.json';
+import VehicleDataStable from '@site/src/api/.generated/Classes/BaseVehicle.json';
+// import VehicleDataStable from '@site/src/api/.generated/Stable/Classes/BaseVehicle.json';
+import PawnDataStable from '@site/src/api/.generated/Classes/BasePawn.json';
+// import PawnDataStable from '@site/src/api/.generated/Stable/Classes/BasePawn.json';
 
 import BillboardDataStable from '@site/src/api/.generated/Stable/Classes/Billboard.json';
 import BlueprintDataStable from '@site/src/api/.generated/Stable/Classes/Blueprint.json';
@@ -157,6 +163,8 @@ const APIData = {
 			Pickable: PickableDataStable,
 			Paintable: PaintableDataStable,
 			Damageable: DamageableDataStable,
+			Vehicle: VehicleDataStable,
+			Pawn: PawnDataStable,
 			Billboard: BillboardDataStable,
 			Blueprint: BlueprintDataStable,
 			Cable: CableDataStable,
@@ -234,6 +242,8 @@ const APIData = {
 			Pickable: PickableData,
 			Paintable: PaintableData,
 			Damageable: DamageableData,
+			Vehicle: VehicleData,
+			Pawn: PawnData,
 			Billboard: BillboardData,
 			Blueprint: BlueprintData,
 			Cable: CableData,

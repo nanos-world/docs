@@ -565,6 +565,10 @@ export const InheritedClassFunctions = ({ inherited_class_name, parent_class_nam
 	const class_data = GetClassData("Class", parent_class_name);
 	return (<>
 		<Details summary={`Inherited ${parent_class_name} ${is_static ? "Static " : ""}Functions`}>
+			<i>
+				{ `${inherited_class_name} inherits from Base ${parent_class_name} Class, sharing it's methods and functions:` }
+			</i>
+			<br/>
 			<ReferenceLink href={`scripting-reference/classes/base-classes/${parent_class_name}`}>Base {parent_class_name}</ReferenceLink>
 			{ is_static ?
 				<StaticFunctionListDeclaration class_name={inherited_class_name} base_class={parent_class_name} functions_list={class_data.static_functions} />
@@ -577,8 +581,12 @@ export const InheritedClassFunctions = ({ inherited_class_name, parent_class_nam
 // Base Class Events
 export const InheritedClassEvents = ({ inherited_class_name, parent_class_name }) => (
 	<Details summary={`Inherited ${parent_class_name} Events`}>
+	<i>
+		{ `${inherited_class_name} inherits from Base ${parent_class_name} Class, sharing it's events:` }
+	</i>
+	<br/>
 		<ReferenceLink href={`scripting-reference/classes/base-classes/${parent_class_name}`}>Base {parent_class_name}</ReferenceLink>
-		<EventListDeclaration type="Class" name="Entity" inherited_class_name={inherited_class_name} base_class={parent_class_name} />
+		<EventListDeclaration type="Class" name={parent_class_name} inherited_class_name={inherited_class_name} base_class={parent_class_name} />
 	</Details>
 );
 
@@ -596,6 +604,10 @@ export const FunctionsDeclaration = ({ type, name }) => {
 			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Damageable"} /> : "" }
 		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ?
 			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Pickable"} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Vehicle") ?
+			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Vehicle"} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Pawn") ?
+			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Pawn"} /> : "" }
 		{
 			class_data.functions == null || class_data.functions.length == 0 ? <i>This class doesn't have own functions.</i> :
 			<>
@@ -652,6 +664,10 @@ export const EventsDeclaration = ({ type, name }) => {
 			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Pickable"} /> : "" }
 		{ class_data.inheritance && class_data.inheritance.includes("Damageable") ?
 			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Damageable"} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Vehicle") ?
+			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Vehicle"} /> : "" }
+		{ class_data.inheritance && class_data.inheritance.includes("Pawn") ?
+			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Pawn"} /> : "" }
 		{
 			class_data.events == null || class_data.events.length == 0 ? <i>This class doesn't have own events.</i> :
 			<>
