@@ -12,6 +12,7 @@ image: /img/blog/2022-september/september-news.webp
 
 <!--truncate-->
 
+
 ## Dimensions 🌌
 
 ![](/img/blog/2022-september/dimensions.webp)
@@ -58,13 +59,9 @@ I've reworked the way weapons get blocked when facing obstacles. Before it was s
 
 Now the weapon will bend procedurally and the AimMode won't change, improving a lot the game-play!
 
-<video controls="true" allowfullscreen="true">
-		<source src="/videos/blog/2022-september/aim-bend-01.webm" />
-</video>
+<VideoExternal path="/blog/2022-september/aim-bend-01.webm" />
 
-<video controls="true" allowfullscreen="true">
-		<source src="/videos/blog/2022-september/aim-bend-02.webm" />
-</video>
+<VideoExternal path="/blog/2022-september/aim-bend-02.webm" />
 
 
 ## Server Sync Values
@@ -173,9 +170,7 @@ The error handling has been improved as well, before we didn't get feedback of e
 
 Now it is possible to import custom Locomotion Blend Spaces to your Characters. You can override Standing, Crouching and Proning animations. And also set the transition animation between them!
 
-<video controls="true" allowfullscreen="true">
-		<source src="/videos/docs/assets-modding/character-locomotion-01.webm" />
-</video>
+<VideoExternal path="/docs/assets-modding/character-locomotion-01.webm" />
 
 We've got new API methods for that:
 
