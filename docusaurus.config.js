@@ -71,6 +71,11 @@ module.exports = {
           position: 'left'
         },
         {
+          to: '/2023-contest/',
+          label: 'halloween contest',
+          position: 'left'
+        },
+        {
           href: 'https://issues.nanos.world',
           label: 'bugs',
           position: 'left'
