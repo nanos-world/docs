@@ -73,7 +73,7 @@ Through scripting you can set the Transition Animations using 2 methods:
 - `Character.SetAnimationsTransitionStandingCrouching(anim_standing_to_crouching, anim_crouching_to_standing)`
 - `Character.SetAnimationsTransitionCrouchingProning(anim_crouching_to_proning, anim_proning_to_crouching)`
 
-In each method you can set the transition between 2 states (Standing <-> Crouching or Proning <-> Crouching).
+In each method you can set the transition between 2 states (Standing \<\-\> Crouching or Proning \<-\> Crouching).
 
 
 ## Custom Animation Notifies
