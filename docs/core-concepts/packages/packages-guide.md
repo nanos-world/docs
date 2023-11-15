@@ -63,7 +63,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/_meta.toml
 
 ## Package Types
 
-We have 4 types of packages: [script](#script), [game-mode](#game-mode), [map](#map) and [loading-screen](#loading-screen), each one with with a specific functionality and an unique purpose:
+We have 5 types of packages: [script](#script), [game-mode](#game-mode), [map](#map), [loading-screen](#loading-screen) and [c-module](#c-module), each one with with a specific functionality and an unique purpose:
 
 
 ### `script`
@@ -116,6 +116,17 @@ As nanos world server is not aware of Unreal or it's Assets, we need to somehow 
 It is a recommended approach to implement all Props, Weapons and Vehicles spawn locations in your Map Package `Server/Index.lua` and define all Player's Spawn points in the `Package.toml` file.
 
 :::
+
+
+### `c-module`
+
+C Module is another special Package that is capable of loading binary C modules in the Lua VM.
+
+ Please refer to [C Module](/docs/core-concepts/packages/c-module.md) for more information.
+
+```toml title="Package.toml" reference
+https://github.com/nanos-world/nanos-world-server/blob/main/_c_module.toml
+```
 
 
 ## Settings Detailed
