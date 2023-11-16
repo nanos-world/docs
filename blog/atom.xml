@@ -23,7 +23,7 @@
 <p>Now we have a totally dedicated Package type for this, so it is no longer necessary to explicitly use Package.Require to load the DLLs, we can now just load the Module's Package, which will be configured with the list of DLLs, being automatically loaded when the package load.</p>
 <p>Also, so it is possible to upload those Module packages to the Vault, integrating everything!</p>
 <p>See more information in the dedicated C Module page:</p>
-<a class="reference-link" href="https://docs.nanos.world/docs/next/next/core-concepts/packages/c-module">C Module Package<span>next/core-concepts/packages/c-module</span></a>
+<a class="reference-link" href="https://docs.nanos.world/docs/next/core-concepts/packages/c-module">C Module Package<span>core-concepts/packages/c-module</span></a>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="unreal-engine-53">Unreal Engine 5.3<a href="https://docs.nanos.world/blog/october-2023#unreal-engine-53" class="hash-link" aria-label="Direct link to Unreal Engine 5.3" title="Direct link to Unreal Engine 5.3">​</a></h2>
 <p><img loading="lazy" src="https://docs.nanos.world/assets/images/ue53-4307f823567a3fa50c7f6f3f232738e6.webp" width="1200" height="369" class="img_ev3q"></p>
 <p>We finally updated nanos world Unreal Engine version to the latest 5.3! We also are already on the latest hotfix 5.3.2.</p>
