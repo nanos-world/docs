@@ -80,10 +80,8 @@ import ActorDataStable from '@site/src/api/.generated/Stable/Classes/BaseActor.j
 import PickableDataStable from '@site/src/api/.generated/Stable/Classes/BasePickable.json';
 import PaintableDataStable from '@site/src/api/.generated/Stable/Classes/BasePaintable.json';
 import DamageableDataStable from '@site/src/api/.generated/Stable/Classes/BaseDamageable.json';
-import VehicleDataStable from '@site/src/api/.generated/Classes/BaseVehicle.json';
-// import VehicleDataStable from '@site/src/api/.generated/Stable/Classes/BaseVehicle.json';
-import PawnDataStable from '@site/src/api/.generated/Classes/BasePawn.json';
-// import PawnDataStable from '@site/src/api/.generated/Stable/Classes/BasePawn.json';
+import VehicleDataStable from '@site/src/api/.generated/Stable/Classes/BaseVehicle.json';
+import PawnDataStable from '@site/src/api/.generated/Stable/Classes/BasePawn.json';
 
 import BillboardDataStable from '@site/src/api/.generated/Stable/Classes/Billboard.json';
 import BlueprintDataStable from '@site/src/api/.generated/Stable/Classes/Blueprint.json';
@@ -94,8 +92,7 @@ import CharacterSimpleDataStable from '@site/src/api/.generated/Stable/Classes/C
 import DatabaseDataStable from '@site/src/api/.generated/Stable/Classes/Database.json';
 import DecalDataStable from '@site/src/api/.generated/Stable/Classes/Decal.json';
 import FileDataStable from '@site/src/api/.generated/Stable/Classes/File.json';
-import GizmoDataStable from '@site/src/api/.generated/Classes/Gizmo.json';
-// import GizmoDataStable from '@site/src/api/.generated/Stable/Classes/Gizmo.json';
+import GizmoDataStable from '@site/src/api/.generated/Stable/Classes/Gizmo.json';
 import GrenadeDataStable from '@site/src/api/.generated/Stable/Classes/Grenade.json';
 import LightDataStable from '@site/src/api/.generated/Stable/Classes/Light.json';
 import MeleeDataStable from '@site/src/api/.generated/Stable/Classes/Melee.json';
@@ -107,10 +104,8 @@ import StaticMeshDataStable from '@site/src/api/.generated/Stable/Classes/Static
 import SoundDataStable from '@site/src/api/.generated/Stable/Classes/Sound.json';
 import TextRenderDataStable from '@site/src/api/.generated/Stable/Classes/TextRender.json';
 import TriggerDataStable from '@site/src/api/.generated/Stable/Classes/Trigger.json';
-import VehicleWheeledDataStable from '@site/src/api/.generated/Classes/VehicleWheeled.json';
-// import VehicleWheeledDataStable from '@site/src/api/.generated/Stable/Classes/VehicleWheeled.json';
-import VehicleWaterDataStable from '@site/src/api/.generated/Classes/VehicleWater.json';
-// import VehicleWaterDataStable from '@site/src/api/.generated/Stable/Classes/VehicleWater.json';
+import VehicleWheeledDataStable from '@site/src/api/.generated/Stable/Classes/VehicleWheeled.json';
+import VehicleWaterDataStable from '@site/src/api/.generated/Stable/Classes/VehicleWater.json';
 import WeaponDataStable from '@site/src/api/.generated/Stable/Classes/Weapon.json';
 import WebUIDataStable from '@site/src/api/.generated/Stable/Classes/WebUI.json';
 import WidgetDataStable from '@site/src/api/.generated/Stable/Classes/Widget.json';

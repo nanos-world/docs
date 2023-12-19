@@ -19,8 +19,35 @@ It is not possible to open files from outside the server folder. All path must b
 ```lua
 local configuration_file = File("my_awesome_configuration.json")
 
-local configuration_file_json = JSON.parse(configuration_file:Read(configuration_file:Size()))
+local configuration_file_json = JSON.parse(configuration_file:Read())
 ```
+
+
+## 📂 File Access & Sandboxing
+
+Access to files is sandboxed. Only certain directories and files are allowed to be written or read from.
+
+
+#### Server Side
+
+On Server side, it's only allowed to access files inside the server folder itself (where server executable is located). Also, accessing the Config.toml is not allowed.
+
+The default directory is where the server executable is located.
+
+Example accessing a file from a Package: `Packages/My-Package/Server/MyFile.json`.
+
+
+#### Client Side
+
+On the client side, we have the concept of the `.transient/` folder which is a folder automatically generated inside the client's cached `Packages/` folder, where files can be created in a more persistent way.
+
+It's not allowed to access files outside the client's cache folder `Packages/`, and write access is only permitted inside the `.transient/` folder itself.
+
+The default directory is in the client's cached `Packages/.transient/` folder.
+
+Example accessing a file from a Package (with ready-only access): `../my-package/Client/MyFile.json`.
+
+Example accessing a transient file (with write access): `MyFile.json`.
 
 
 ## 🛠 Constructors

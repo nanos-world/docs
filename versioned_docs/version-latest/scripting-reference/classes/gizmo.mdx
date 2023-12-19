@@ -1,0 +1,66 @@
+---
+title: 🧭 Gizmo
+description: A tool to transform objects at runtime
+sidebar_position: 0
+tags: [class]
+---
+
+<HeaderDeclaration type="Class" name="Gizmo" image="/img/docs/gizmo.webp" />
+
+
+## 🎒 Examples
+
+```lua
+-- Disable input and enable mouse cursor
+Input.SetInputEnabled(false)
+Input.SetMouseEnabled(true)
+
+-- Spawn a mesh to interact with
+local my_entity = StaticMesh(Vector(0, 0, 100), Rotator(), "nanos-world::SM_Cube")
+
+-- Spawn the gizmo
+local my_gizmo = Gizmo()
+
+-- Activate the gizmo, at the location of the mesh
+my_gizmo:Activate(my_entity:GetLocation(), my_entity:GetRotation(), my_entity:GetScale())
+
+-- Subscribes on Gizmo updates
+my_gizmo:Subscribe("Transform", function(self, location, rotation, scale)
+	my_entity:TranslateTo(location, 0.02)
+	my_entity:RotateTo(rotation, 0.02)
+	my_entity:SetScale(scale)
+end)
+
+-- When Mouse click, trigger Gizmo inputs
+Input.Subscribe("MouseDown", function(key)
+	if (key == "LeftMouseButton") then
+		my_gizmo:PressPointer()
+	end
+end)
+
+-- When Mouse release, trigger Gizmo inputs
+Input.Subscribe("MouseUp", function (key, b, c)
+	if (key == "LeftMouseButton") then
+		my_gizmo:ReleasePointer()
+	end
+end)
+```
+
+## 🛠 Constructors
+
+<ConstructorDeclaration type="Class" name="Gizmo" />
+
+
+## 🗿 Static Functions
+
+<StaticFunctionsDeclaration type="Class" name="Gizmo" />
+
+
+## 🦠 Functions
+
+<FunctionsDeclaration type="Class" name="Gizmo" />
+
+
+## 🚀 Events
+
+<EventsDeclaration type="Class" name="Gizmo" />

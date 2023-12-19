@@ -128,6 +128,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--auto_download` | *flag* | Automatically downloads Packages and Assets from Vault if needed |
 | `--use_vault_assets_lean` | *flag* | Only downloads the Asset Pack's .toml configuration files from Vault |
 | `--log_show_thread` | *flag* | Shows the current running thread of each outputted log |
+| `--enable_unsafe_libs` | *flag* | Enables executing the methods `os.execute`, `os.rename`, `os.remove`, `os.exit`, `os.getenv`, `os.tmpname`, `os.setlocale`, `dofile`, `loadfile` and all `io.*` on server side (**Caution**: those methods may allow malicious operations to run on your server, make sure you know what you are doing) |
 
 :::tip
 

@@ -1,12 +1,14 @@
 ---
-title: Modules
-description: Extending the functionalities of nanos world Scripting API
+title: C Module
+description: Custom Lua C Binaries Libraries
+sidebar_position: 1
+tags: [scripting, packages]
+keywords: [c, module, library, binary, package]
 ---
 
+C Module is a Package type that allows extending the functionalities of nanos world Scripting API
 
-Extending the functionalities of nanos world Scripting API
-
-Modules allows you to extend the functionality of the nanos world scripting API on the server side. Currently only C modules are supported.
+C Modules allows you to extend the functionality of the nanos world scripting API on the server side. Currently only C modules are supported.
 
 :::caution
 
@@ -14,17 +16,14 @@ Be aware that this part of the scripting API is currently work in progress and m
 
 :::
 
-
-## Creating your own C module
-
-It is also possible to you create your own C/C++ module and call it's functions from nanos world.
-
 :::caution
 
 This is an advanced procedure so instabilities and even crashes may occur.
 
 :::
 
+
+## Creating your C Module binaries
 
 To create your own module, fist make sure you have **Visual Studio** installed with **Desktop development with C++** (and **CMake**) or any other C compiler on Linux.
 
@@ -43,7 +42,7 @@ https://github.com/nanos-world-modules/module-example/blob/main/src/example.cpp
 ```
 
 
-### Compiling your C module
+### Compiling your C Module
 
 To compile the example, follow the steps:
 
@@ -55,16 +54,37 @@ To compile the example, follow the steps:
 And now you will have the dlls/libs in `build/Release` folder.
 
 
-### Using your C module
+## Creating a C Module Package
 
-Now copy the `.dll` file into your nanos world `Server/Modules` folder.
+First of all, create a new Package of type [c-module](packages-guide#c-module), and add your .dll and .so files into the Package's root folder. It will look like that:
+
+```folder-structure
+Packages/
+└── my-module/
+    ├── Package.toml
+    ├── example.dll
+    └── ...
+```
+
+Then make sure to add `example` (or the name of your dll file) to the Package.toml configuration section:
+
+```toml
+# c module configurations
+[c_module]
+    # list of binaries paths to load (without extension)
+    binaries = [
+                            "example",
+    ]
+```
+
+
+## Loading and Using your C Module
+
+Now you can load the package you created as usual, by adding it to the Config.toml's list of Packages requirement or by adding it to another Package's Package.toml as dependency as well.
 
 And in your Package, you can load and use it like:
 
 ```lua
--- Loads the module 'example'
-local example = require('example')
-
 -- Calls the module function 'test'
 -- Will print 'Hello World' on console
 Console.Log(example.test())
