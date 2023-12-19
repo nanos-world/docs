@@ -8,14 +8,14 @@
     <subtitle>nanos world Blog</subtitle>
     <icon>https://docs.nanos.world/fr/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[2023 October: C Module Package & UE 5.3]]></title>
+        <title type="html"><![CDATA[2023 Oct: C Module Package & UE 5.3!]]></title>
         <id>https://docs.nanos.world/fr/blog/october-2023</id>
         <link href="https://docs.nanos.world/fr/blog/october-2023"/>
         <updated>2023-11-15T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[C Module Package & Unreal Engine 5.3 Update!]]></summary>
         <content type="html"><![CDATA[<p><strong>C Module Package &amp; Unreal Engine 5.3 Update!</strong></p>
 <p><img loading="lazy" src="https://docs.nanos.world/fr/assets/images/october-news-bf15512ba34f70aad174686272b867fc.webp" width="800" height="320" class="img_ev3q"></p>
-<p>Tune if for a roundup of the latest updates from October!</p>
+<p>Tune in for a roundup of the latest updates from October!</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="new-package-type-c-module">New Package Type: C Module<a href="https://docs.nanos.world/fr/blog/october-2023#new-package-type-c-module" class="hash-link" aria-label="Direct link to New Package Type: C Module" title="Direct link to New Package Type: C Module">​</a></h2>
 <p>We are introducing a new Package type: <strong>C Module</strong>!</p>
 <p>In the last Blog News I talked about the refactoring I was making in the Modules and the DLLs loading system, so far we had the <code>Modules/</code> root folder we could load .dlls and .so pre-compiled binaries to be executed by the Lua, as they could then be loaded with <code>Package.Require()</code>.</p>
@@ -61,14 +61,14 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2023 August: Modules, Requires & Safety!]]></title>
+        <title type="html"><![CDATA[2023 Aug: Modules, Requires & Safety!]]></title>
         <id>https://docs.nanos.world/fr/blog/august-2023</id>
         <link href="https://docs.nanos.world/fr/blog/august-2023"/>
         <updated>2023-09-06T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Package Require, Modules, Safety, Docs++ and more!]]></summary>
         <content type="html"><![CDATA[<p><strong>Package Require, Modules, Safety, Docs++ and more!</strong></p>
 <p><img loading="lazy" src="https://docs.nanos.world/fr/assets/images/august-news-915450d5ef42605e5dfa31f9601a0010.webp" width="800" height="320" class="img_ev3q"></p>
-<p>Tune if for a roundup of the latest updates from August!</p>
+<p>Tune in for a roundup of the latest updates from August!</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="async-operations-improvs">Async Operations Improvs<a href="https://docs.nanos.world/fr/blog/august-2023#async-operations-improvs" class="hash-link" aria-label="Direct link to Async Operations Improvs" title="Direct link to Async Operations Improvs">​</a></h2>
 <p>In nanos world we have a bunch of operations and methods that run on background, including core/internal and scripting operations (like <code>HTTP.RequestAsync</code>, <code>File.ReadAsync</code>, <code>SceneCapture.EncodeToBase64Async</code>, etc), when executed, those methods start a new thread to be executed asynchronously.</p>
 <p>The trickiest part is keeping control of them, i.e. we can't fully destroy a <strong>File</strong> entity until it's async operations are finished, this is why the server could freeze for some seconds if we attempt to destroy a File that has is performing async reads executing (or when reloading a package that has a bunch of them).</p>
@@ -124,14 +124,14 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2023 July: Gizmo & Unreal Engine 5.3!]]></title>
+        <title type="html"><![CDATA[2023 Jul: Gizmo & Unreal Engine 5.3!]]></title>
         <id>https://docs.nanos.world/fr/blog/july-2023</id>
         <link href="https://docs.nanos.world/fr/blog/july-2023"/>
         <updated>2023-08-16T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[New Gizmo Class, Improved HTTP Class, Lua Updated, Unreal Engine 5.3 and more!]]></summary>
         <content type="html"><![CDATA[<p><strong>New Gizmo Class, Improved HTTP Class, Lua Updated, Unreal Engine 5.3 and more!</strong></p>
 <p><img loading="lazy" src="https://docs.nanos.world/fr/assets/images/july-news-2cc05e3a59ba8902e4aed4b2fe9958cb.webp" width="800" height="320" class="img_ev3q"></p>
-<p>Tune if for a roundup of the latest updates from July!</p>
+<p>Tune in for a roundup of the latest updates from July!</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="new-class-gizmo">New Class: Gizmo<a href="https://docs.nanos.world/fr/blog/july-2023#new-class-gizmo" class="hash-link" aria-label="Direct link to New Class: Gizmo" title="Direct link to New Class: Gizmo">​</a></h2>
 <p>I am happy to introduce a new wonderful class: <a class="hover-link" href="https://docs.nanos.world/docs/next/scripting-reference/classes/gizmo"><b>Gizmo</b></a>!</p>
 <p><img loading="lazy" src="https://docs.nanos.world/fr/assets/images/gizmo-211113dc85e254bee474c40800b9c7ec.webp" width="426" height="240" class="img_ev3q"></p>
@@ -181,14 +181,14 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2023 June: VehicleWater, Smooth Net Sync!]]></title>
+        <title type="html"><![CDATA[2023 Jun: VehicleWater, Smooth Net Sync!]]></title>
         <id>https://docs.nanos.world/fr/blog/june-2023</id>
         <link href="https://docs.nanos.world/fr/blog/june-2023"/>
         <updated>2023-07-12T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[VehicleWater, Smooth Network Sync, CEF Updated, Assets.toml Generator and more!]]></summary>
         <content type="html"><![CDATA[<p><strong>VehicleWater, Smooth Network Sync, CEF Updated, Assets.toml Generator and more!</strong></p>
 <p><img loading="lazy" src="https://docs.nanos.world/fr/assets/images/june-news-64c1cd44cc2cdfd3dcc431f5c3e1205c.webp" width="800" height="320" class="img_ev3q"></p>
-<p>Tune if for a roundup of the latest updates from June!</p>
+<p>Tune in for a roundup of the latest updates from June!</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="new-class-vehiclewater">New Class: VehicleWater<a href="https://docs.nanos.world/fr/blog/june-2023#new-class-vehiclewater" class="hash-link" aria-label="Direct link to New Class: VehicleWater" title="Direct link to New Class: VehicleWater">​</a></h2>
 <p>We are proud to introduce our new Class: <a class="hover-link" href="https://docs.nanos.world/docs/next/scripting-reference/classes/vehicle-water"><b>VehicleWater</b></a>! this is still a bare minimum concept class, but with the main feature working: Driving over Water with all the usual Vehicle capabilities!</p>
 <p>This new VehicleWater class works like the Vehicle class, supporting adding custom doors, tweaking it's power and having Characters entering doors and attaching to a specific position for each door. All Vehicle events of characters entering/leaving work as well!</p>
@@ -256,7 +256,7 @@
         <summary type="html"><![CDATA[Widget 3D, Asset Meta Data, Vault Upload, Client Side Trigger & more!]]></summary>
         <content type="html"><![CDATA[<p><strong>Widget 3D, Asset Meta Data, Vault Upload, Client Side Trigger &amp; more!</strong></p>
 <p><img loading="lazy" src="https://docs.nanos.world/fr/assets/images/may-news-76b62d6201a4db0c016f7e7bf92cd746.webp" width="800" height="320" class="img_ev3q"></p>
-<p>Tune if for a roundup of the latest updates from May!</p>
+<p>Tune in for a roundup of the latest updates from May!</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="easier-upload-to-vault">Easier Upload to Vault<a href="https://docs.nanos.world/fr/blog/may-2023#easier-upload-to-vault" class="hash-link" aria-label="Direct link to Easier Upload to Vault" title="Direct link to Easier Upload to Vault">​</a></h2>
 <p>We're excited to announce new easier ways to upload new versions of your Packages and Asset Packs to the Vault!</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="upload-through-cli">Upload through CLI<a href="https://docs.nanos.world/fr/blog/may-2023#upload-through-cli" class="hash-link" aria-label="Direct link to Upload through CLI" title="Direct link to Upload through CLI">​</a></h3>
@@ -338,14 +338,14 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2023 April: Vehicle Health, Docs++!]]></title>
+        <title type="html"><![CDATA[2023 Apr: Vehicle Health, Docs++!]]></title>
         <id>https://docs.nanos.world/fr/blog/april-2023</id>
         <link href="https://docs.nanos.world/fr/blog/april-2023"/>
         <updated>2023-05-10T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Vehicle Health, Docs++, Lean Assets, Utility Classes & more!]]></summary>
         <content type="html"><![CDATA[<p><strong>Vehicle Health, Docs++, Lean Assets, Utility Classes &amp; more!</strong></p>
 <p><img loading="lazy" src="https://docs.nanos.world/fr/assets/images/april-news-aeb58fec5c7c1c3825164c3b8aa6e5ab.webp" width="800" height="320" class="img_ev3q"></p>
-<p>Tune if for a roundup of the latest updates from April!</p>
+<p>Tune in for a roundup of the latest updates from April!</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="vehicle-damage-system">Vehicle Damage System<a href="https://docs.nanos.world/fr/blog/april-2023#vehicle-damage-system" class="hash-link" aria-label="Direct link to Vehicle Damage System" title="Direct link to Vehicle Damage System">​</a></h2>
 <p>This update is one of the most coolest addition we are getting! Now <a class="hover-link" href="https://docs.nanos.world/docs/next/scripting-reference/classes/vehicle-wheeled"><b>VehicleWheeled</b></a>s have a new Damage &amp; Health system, they can be damaged, and if the health reaches zero, the vehicle explodes, losing its tires and turning into burnt!</p>
 <video controls="" allowfullscreen=""><source src="https://github.com/nanos-world/docs/raw/master/external/videos/blog/2023-april/vehicle-explosion.webm"></video>
