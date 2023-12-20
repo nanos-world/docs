@@ -200,6 +200,7 @@ export const Structs = {
 // Defines Struct Types components
 export const UtilityClasses = {
 	JSON: () => BaseUtilityClass("JSON"),
+	TOML: () => BaseUtilityClass("TOML"),
 	NanosMath: () => BaseUtilityClass("NanosMath"),
 	NanosTable: () => BaseUtilityClass("NanosTable"),
 	NanosUtils: () => BaseUtilityClass("NanosUtils"),
