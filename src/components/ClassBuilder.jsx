@@ -102,7 +102,7 @@ export function GetParameterName(parameter_data) {
 // Gets a Parameter description
 export function GetParameterDescription(parameter_data) {
 	return <>
-		<span style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: parameter_data.description }}></span>
+		<span style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: parameter_data.description ? parameter_data.description : "<span class='subtle-description'>No description provided</span>" }}></span>
 		<> </>
 		{ parameter_data.type == "function" && parameter_data.function_parameters ? <InlineFunctionNameDeclaration function_parameters={parameter_data.function_parameters} /> : "" }
 	</>;
@@ -268,7 +268,7 @@ export const FunctionParametersDeclaration = ({ parameters, include_default = tr
 							return <tr key={ `${value.name}-${index}` }>
 								<td>{ SplitTypesByOr(value.type) }</td>
 								<td><code>{ GetParameterName(value) }</code></td>
-								{ include_default ? <td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{value.default}</code> : "" }</td> : null }
+								{ include_default ? <td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : <span class="subtle-description"> {"Required parameter"} </span> }</td> : null }
 								<td>{ GetParameterDescription(value) }</td>
 							</tr>;
 						})}
@@ -335,7 +335,7 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 				{ event_data.name }
 			</code>
 		</h3>
-		<blockquote dangerouslySetInnerHTML={{ __html: `${ event_data.description_long ? event_data.description_long : event_data.description }${ event_data.return ? "<br/><br/>" + event_data.return[0].description : ""}` }}></blockquote>
+		<blockquote dangerouslySetInnerHTML={{ __html: `${ event_data.description_long ? event_data.description_long : (event_data.description ? event_data.description : "<span class='subtle-description'>No description provided</span>") }${ event_data.return ? "<br/><br/>" + event_data.return[0].description : ""}` }}></blockquote>
 		<CodeBlock className="language-lua">
 			{ GetEventSignature(class_name, event_data) }
 		</CodeBlock>
@@ -354,7 +354,7 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 							return <tr key={ `${value.name}-${index}` }>
 								<td>{ SplitTypesByOr(value.type) }</td>
 								<td><code>{ value.name }</code></td>
-								<td dangerouslySetInnerHTML={{ __html: value.description }} style={{ wordBreak: "break-word" }}></td>
+								<td dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }} style={{ wordBreak: "break-word" }}></td>
 							</tr>;
 						})}
 					</tbody>
@@ -438,7 +438,7 @@ export const StaticFunctionListDeclaration = ({ class_name, functions_list, base
 						<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 						<td>{ value.return ? GetReturnList(value.return) : "" }</td>
 						<td><StaticFunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
-						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
 					</tr>;
 				})}
 			</tbody>
@@ -464,7 +464,7 @@ export const FunctionListDeclaration = ({ class_name, functions_list, base_class
 						<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 						<td>{ value.return ? GetReturnList(value.return) : "" }</td>
 						<td><FunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
-						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
 					</tr>;
 				})}
 			</tbody>
@@ -490,7 +490,7 @@ export const EventListDeclaration = ({ type, name, inherited_class_name, base_cl
 						return <tr key={ `${value.name}-${index}` }>
 							<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 							<td><EventNameDeclaration class_name={ inherited_class_name } base_class={ base_class } event_data={ value } /></td>
-							<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+							<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
 						</tr>;
 					})}
 				</tbody>
@@ -514,7 +514,7 @@ export const HeaderDeclaration = ({ type, name, image, is_static, open_source_ur
 		{ class_data.authority ? <AuthorityAdmonition authority={class_data.authority} is_static={is_static} /> : "" }
 		{ class_data.inheritance ? <InheritanceAdmonition inheritance={class_data.inheritance} /> : "" }
 		{ open_source_url ? <OpenSourceAdmonition url={open_source_url} /> : "" }
-		<APISourceURL type={type} class_name={name} />
+		<APISourceURL type={type} class_name={ class_data.is_base ? "Base" + name : name} />
 		{ class_data.is_base ? <BaseClassAdmonition inherited={class_data.inheritance_children} /> : "" }
 		<hr />
 	</>);
@@ -547,8 +547,8 @@ export const ConstructorDeclaration = ({ type, name }) => {
 									return <tr key={ `${value.name}-${index}` }>
 										<td>{ SplitTypesByOr(value.type) }</td>
 										<td><b><code>{ value.name }</code></b></td>
-										<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : "" }</td>
-										<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+										<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : <span class="subtle-description"> {"Required parameter"} </span> }</td>
+										<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
 									</tr>;
 								} )}
 							</tbody>
@@ -698,7 +698,7 @@ export const PropertiesDeclaration = ({ type, name }) => {
 							return <tr key={ `${value.name}-${index}` }>
 								<td>{ GetElementByType(value.type) }</td>
 								<td><b><code>{ value.name }</code></b></td>
-								<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description }}></td>
+								<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
 							</tr>;
 						})}
 					</tbody>

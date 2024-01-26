@@ -651,3 +651,9 @@ html[data-theme="dark"]
 video + .media-legend {
 	margin-top: -25px;
 }
+
+.subtle-description {
+	font-size: 85%;
+	font-style: italic;
+	opacity: 50%;
+}
