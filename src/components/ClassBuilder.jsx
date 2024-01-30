@@ -174,7 +174,7 @@ export const TypeToAPIFolder = { StandardLibrary: "StandardLibraries/", Struct: 
 // API Source URL
 export const APISourceURL = ({ type, class_name }) => (
 	<Admonition type="note" icon="🧑‍💻" title="API Source">
-		The methods, properties and events descriptions from this page are defined in our <a href={`https://github.com/nanos-world/api/blob/main/${TypeToAPIFolder[type]}${class_name}.json`}>GitHub API Repository</a>!
+		This page is auto-generated! The Functions, Properties and Events described here are defined in our <a href={`https://github.com/nanos-world/api/blob/main/${TypeToAPIFolder[type]}${class_name}.json`}>GitHub's API Repository</a>! Feel free to commit suggestions and changes to the source .json API files!
 	</Admonition>
 );
 
