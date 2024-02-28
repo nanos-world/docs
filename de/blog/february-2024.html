@@ -12,7 +12,7 @@
 
 
 <script src="https://pac.nanos.io/js/script.js" async data-domain="docs.nanos.world"></script><link rel="stylesheet" href="/de/assets/css/styles.cc9da150.css">
-<script src="/de/assets/js/runtime~main.6001a7b9.js" defer="defer"></script>
+<script src="/de/assets/js/runtime~main.e3c923c9.js" defer="defer"></script>
 <script src="/de/assets/js/main.8e9887f3.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -43,16 +43,17 @@
 <p>Also, we will be looking to integrate <a href="https://www.unrealengine.com/marketplace/en-US/product/fidelityfx-super-res-3" target="_blank" rel="noopener noreferrer">AMD&#x27;s FidelityFX Super Resolution</a> plugin to have AMD&#x27;s users happy as well to in a future update 😉.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="static-lighting">Static Lighting<a href="#static-lighting" class="hash-link" aria-label="Direct link to Static Lighting" title="Direct link to Static Lighting">​</a></h2>
 <p><img decoding="async" loading="lazy" src="data:image/webp;base64,UklGRvwCAABXRUJQVlA4IPACAACwFwCdASqcAh4APpFIn0slpKKhppHoQLASCWlu4XHS8AN4wyIhe+M3WA7wZQP4DzT7injXfj3+I8+PnuZxfon2DejN+yvs4DVcAWRJqUCUD5jP6J3uJNUa/x4v2XpkZfEYP4wZptAhRHw78Pqji8kbCbkbCbkbCbkVNTNpVtTp7E7Atw8ptVj4RLbn4axJzyk47ZrlJVDs7+6Wi+Tx0j3zztdDsb1WCmHw+qOLyRsJuRsJuRsJuRsFHX8T2N4+4SkySrUG7dgA/v4SGSD6L3kcnITnY7sDXk2H5zl/QujPjpropy9xrf3P/cxEnkitB5jijZfJinokwMmy/UjRtgkV5PSpSox3ISUAT0FeAOzAWdV4WYY9k3Q9Xz56CwfQ8yYeSxKZhxkXCPZaUnbHuj81NesJGl2+KCvhBFIxmDF/R9D7pkTOf4ZbwOFFnseGuXBh1bRg+k4myy44m6uqIj4Z631dCDmw+60CTuOlPNbOXmXJBzwy0oSxXgP/2VE7Mtkv6f1P50rTUPklcg4Fofx8RyEc/rAIm7ohfGTABv+hMj1SgPV7IpPes30a+ysAJxGt+mbU6bGhdDnVMBdT0H8p6CyAW0Bkw09ZpcHRaoIBHo8tHsiL/xRsZGxGNPBtKsGFwZ1dQlYNeJDIk1SLMnJKKrGiwiOJjBkRCqLbCSUqpWLVMF3D2OSscG9VBbJLM7bfdKx2zI0KTpmfaunEd5MVKQmjDcXqfApeVKhzaKLtv2T9TQgSMYFYXMQ0qj+EJdv2pSQ9ioqnVLqewfZLzsjDNEsjZKIIrRCoupLTQbmyZo9vTOilyxdPEQSK+ZsJa3Q/ym7ghB8+mbXB/xePix0+eIXmB4UJDH06TNkrdTp3kM0P8sW4o3lPgtaXBMjoECupNEVwma7Yi1MAjyxzFfRutAwyNrYpRCvhQAcmOoYubDdTqT1POLqCthBMCkaCjS7TnZY6QjsROAyfVQU9Ixd5GBDaLqJ2LWRAXuNxAAAAAA==" width="668" height="30" class="img_ev3q"></p>
-<p>nanos world agora suporta Static Lighting em seus mapas! Após alguns testes, não quebrou compatibility com assets já cookados anteriormente!</p>
+<p>nanos world now supports Static Lighting on your maps!</p>
 <p><img decoding="async" loading="lazy" src="/de/assets/images/static-light-subway-8249c26fd3da0406b743c8794f4beeff.webp" width="1920" height="1079" class="img_ev3q"></p>
 <p class="media-legend">City Subway Train Modular Map (with baked Static Lights and 300 FPS)</p>
+<p>And good news: after some tests, it didn&#x27;t break compatibility with previously cooked assets and maps!</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="awful-network--sync-bug">Awful Network &amp; Sync Bug<a href="#awful-network--sync-bug" class="hash-link" aria-label="Direct link to Awful Network &amp; Sync Bug" title="Direct link to Awful Network &amp; Sync Bug">​</a></h2>
 <p>We finally managed to find and fix a terrible bug that was haunting us for several years, it was very rare but when the whole game happened was crazy and inconsistent.</p>
 <p>This was a problem where the clients were sending network packets all in Unreliable mode, always. This caused some network packets to be lost or discarded, or even arrive in wrong order. It was completely breaking the sync and the consistency of the server, because we need to make sure they arrive in order (and arrive indeed).</p>
 <p>It was hard to debug because it mainly happened in extreme cases such as bad connection or when the network wire was completely full.</p>
 <p>One of the non-obvious consequences of this bug was the massive &quot;safe called methods warning&quot; (reported on this <a href="https://github.com/nanos-world/issues/issues/970" target="_blank" rel="noopener noreferrer">issue</a>), which was how we managed to reproduce and find the bug!</p>
 <p>Many likely many other strange bugs, sync issues and inconsistencies will were solved with this fix as well 🙏.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="miscellaneous">Miscellaneous<a href="#miscellaneous" class="hash-link" aria-label="Direct link to Miscellaneous" title="Direct link to Miscellaneous">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="miscellaneous">Miscellaneous<a href="#miscellaneous" class="hash-link" aria-label="Direct link to Miscellaneous" title="Direct link to Miscellaneous">  ​</a></h2>
 <p>Some other minor things we added.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="console-password">Console Password<a href="#console-password" class="hash-link" aria-label="Direct link to Console Password" title="Direct link to Console Password">​</a></h3>
 <p>We added a new server console command: <code>password</code> allowing it to be easily changed in runtime!</p>
