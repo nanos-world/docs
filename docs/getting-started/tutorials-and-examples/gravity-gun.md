@@ -28,13 +28,13 @@ local sm_cube = StaticMesh(Vector(100, 0, 200), Rotator(), "nanos-world::SM_Cube
 local sm_cylinder = StaticMesh(Vector(300, 0, 200), Rotator(), "nanos-world::SM_Cylinder")
 
 -- Subscribe for Client's custom event, for when the object is grabbed/dropped
-Events.Subscribe("PickUp", function(player, object, is_grabbing)
+Events.SubscribeRemote("PickUp", function(player, object, is_grabbing)
     object:SetGravityEnabled(not is_grabbing)
     object:TranslateTo(object:GetLocation(), 0)
 end)
 
 -- Subscribe for Client's custom event, to update the position of the object he is grabbing
-Events.Subscribe("UpdateObjectPosition", function(player, object, location)
+Events.SubscribeRemote("UpdateObjectPosition", function(player, object, location)
     object:TranslateTo(location, 0.1)
 end)
 ```
