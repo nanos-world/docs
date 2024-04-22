@@ -729,7 +729,7 @@ export const StaticPropertiesDeclaration = ({ type, name }) => {
 								<td><code>{property.value}</code></td>
 								<td>
 									<b>
-										<code>{property.name}</code>
+										<code>{name + "." + property.name}</code>
 									</b>
 								</td>
 							</tr>
