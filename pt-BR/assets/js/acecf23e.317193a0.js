@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs_docusaurus=self.webpackChunkdocs_docusaurus||[]).push([[7393],{81838:s=>{s.exports=JSON.parse('{"blogBasePath":"/pt-BR/blog","blogTitle":"nanos world news!"}')}}]);
