@@ -707,3 +707,36 @@ export const PropertiesDeclaration = ({ type, name }) => {
 		}
 	</>);
 };
+
+// Block of Static Properties
+export const StaticPropertiesDeclaration = ({ type, name }) => {
+	const class_data = GetClassData(type, name);
+
+	return (<>
+		{
+			class_data.static_properties == null || class_data.static_properties.length === 0 ? <i>This class doesn't have static properties.</i> :
+			<div className="table-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>Value</th>
+							<th>Name</th>
+						</tr>
+					</thead>
+					<tbody>
+						{class_data.static_properties.map((property, index) => (
+							<tr key={`${property.name}-${index}`}>
+								<td><code>{property.value}</code></td>
+								<td>
+									<b>
+										<code>{name + "." + property.name}</code>
+									</b>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+		}
+	</>);
+};
