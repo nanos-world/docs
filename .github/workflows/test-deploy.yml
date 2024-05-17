@@ -23,4 +23,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Test build website
+        env:
+          # FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
+          NODE_OPTIONS: "--max_old_space_size=4096"
         run: yarn build
