@@ -112,7 +112,7 @@ Inside this folder, you can find all your cooked assets. Example of a Game Conte
 
 After finding the Cooked folder with your assets, we will manually copy it as it will become our [Asset Pack](/core-concepts/assets.mdx).
 
-So just copy the folder into your `Server/Assets/` and create a `Assets.toml` inside of it. Please refer to [Assets Pack Configuration](/core-concepts/assets.mdx#assets-pack-configuration) which you can copy and paste a new version of the file.
+Then just copy the folder into your server's `Assets/` directory and create a file named `Assets.toml` inside of it. Please refer to [Assets Pack Configuration](/core-concepts/assets.mdx#assets-pack-configuration) which you can copy and paste a new version of the file.
 
 After copied, rename your Asset Pack folder to a `kebab-case` as it's a mandatory standard for nanos world Assets & Packages names.
 

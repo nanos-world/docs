@@ -166,7 +166,7 @@ After you completed all steps, you can export them into nanos world! Please refe
 
 ## Configuring the Asset Pack
 
-After you cooked your assets and copied the generated folder into your `Server/Assets/`. It's time to configure the Asset Pack! For that please refer to [Configuring your Assets.toml](/assets-modding/creating-assets/importing-assets.md#configuring-your-assetstoml) docs page before proceeding.
+After you cooked your assets and copied the generated folder into your server's `Assets/` directory. It's time to configure the Asset Pack! For that please refer to [Configuring your Assets.toml](/assets-modding/creating-assets/importing-assets.md#configuring-your-assetstoml) docs page before proceeding.
 
 Now that you created your Assets.toml and configured the unreal settings, make sure you set up your Static Meshes properly in the `[assets.maps]` category, like that:
 

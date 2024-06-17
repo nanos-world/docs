@@ -14,7 +14,7 @@ keywords: [packages, scripting, lua]
 
 ## Folder Structure
 
-All Packages must go under `Server/Packages/` folder. Each Package is a folder under that.
+All Packages must go under server's `Packages/` directory. Each Package is a folder under that.
 
 They can contain the following folders: `Server`, `Client` and `Shared`. Only **Client** and **Shared** folders will be sent and loaded by the clients when they connect.
 
