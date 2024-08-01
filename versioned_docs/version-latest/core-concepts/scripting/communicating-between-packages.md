@@ -51,7 +51,7 @@ Events.CallRemote("GetThisFromServer", player_02, my_parameter1)
 ```
 
 ```lua title="Client/Index.lua"
-Events.Subscribe("GetThisFromServer", function(parameter1, parameter2, parameter3)
+Events.SubscribeRemote("GetThisFromServer", function(parameter1, parameter2, parameter3)
     Console.Log("Received " .. parameter1) -- Received cool data from network
 end)
 ```

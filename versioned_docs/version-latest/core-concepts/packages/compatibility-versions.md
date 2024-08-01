@@ -36,6 +36,16 @@ The Compatibility Mode is a feature that aims to keep old and unmaintained packa
 To use the following features, you must update your Package's `compatibility_version` setting in the Package.toml to at least that version (exact that version or bigger).
 
 
+### Version `1.65`
+
+
+#### [Events.Unsubscribe()](/scripting-reference/static-classes/events.mdx#static-function-unsubscribe)
+
+`Events.Unsubscribe` now only unsubscribes to local events (ones subscribed with **Events.Subscribe**). If you want to unsubscribe to remote events (ones subscribed as **Events.SubscribeRemote**), please use [Events.UnsubscribeRemote()](/scripting-reference/static-classes/events.mdx#static-function-unsubscriberemote)
+
+In compatibility mode (i.e. setting it to `1.64` or below) `Events.Unsubscribe` still unsubscribes for both Local and Remote events.
+
+
 ### Version `1.55`
 
 

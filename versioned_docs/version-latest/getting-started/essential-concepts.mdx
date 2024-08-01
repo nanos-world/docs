@@ -22,7 +22,7 @@ After reading through this Guide, you will be ready to start programming, moddin
 
 ## Asset Packs
 
-Asset Packs are the way for modders to import custom assets into the game, such as new models, textures, sounds, and more. They can be created using Unreal Engine, exported and then added to the `Server/Assets/` directory in nanos world server as an Asset Pack!
+Asset Packs are the way for modders to import custom assets into the game, such as new models, textures, sounds, and more. They can be created using Unreal Engine, exported and then added to the server's `Assets/` directory in nanos world server as an Asset Pack!
 
 Each Asset Pack has a configuration file called `Assets.toml`. This configuration is used to list all the assets included in the pack, their paths, and other metadata such as their types, categories, and tags. This file is used by the game to load the assets and make them available for use in Lua scripts through Entities.
 
@@ -54,7 +54,7 @@ Packages can be loaded/unloaded dynamically while the server is running with `pa
 
 :::
 
-Each Package is a folder under `Server/Packages/` with a [configuration file](/docs/core-concepts/packages/packages-guide#package-configuration) `Package.toml` inside, on which we define the type of the package and it's relevant settings.
+Each Package is a folder under server's `Packages/` directory with a [configuration file](/docs/core-concepts/packages/packages-guide#package-configuration) `Package.toml` inside, on which we define the type of the package and it's relevant settings.
 
 Packages can also have dependencies on other Packages and Asset Packs, which allows scripters to reuse code and assets across multiple Packages. This can help to reduce duplication and improve organization, especially for larger scripts or game-modes.
 

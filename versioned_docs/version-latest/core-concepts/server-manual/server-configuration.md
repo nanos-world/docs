@@ -84,6 +84,7 @@ nanos world counts on (for now) 4 built-in maps: `default-blank-map`, `default-e
 | `restart` | Restarts the server, reloading all Packages and reconnecting the Players |
 | `stop` | Stops the server |
 | `players` | Lists all Players connected |
+| `password <new_password>` | Changes the server password |
 | `package run <package_name> <lua_code>` | Runs a code in a Package |
 | `package reload all` | Reloads all Packages and restarts the Lua Virtual Machine |
 | `package reload <package_names...>` | Reloads Packages |

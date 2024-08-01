@@ -92,7 +92,10 @@ Events.Subscribe("MyEvent", function(param1, param2) {
 
     // Triggers "MyAnswer" on Lua
     Events.Call("MyAnswer", "Hey there!");
-})
+});
+
+// It is also possible to unsubscribe from an event to make it stop triggering
+Events.Unsubscribe("MyEvent");
 ```
 
 
