@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs_docusaurus=self.webpackChunkdocs_docusaurus||[]).push([[2644],{89441:e=>{e.exports=JSON.parse('{"authors":[{"name":"Gabriel T. Nardy","title":"nanos world developer (SyedMuhammad)","url":"https://twitter.com/gtnardy","imageURL":"/img/blog/gtnardy.jpg","key":"gtnardy","page":null,"count":34}]}')}}]);
