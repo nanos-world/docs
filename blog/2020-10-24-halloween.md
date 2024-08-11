@@ -7,3 +7,5 @@ tags: [updates]
 
 
 ![](/img/blog/updates/halloween.webp)
+
+<!--truncate-->

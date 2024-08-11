@@ -9,6 +9,9 @@ import { VideoExternal } from '@site/src/components/_nanos';
 
 Lot's of improvements on Sandbox game-mode has been made in the past month, here's the highlights!
 
+<!--truncate-->
+
+
 ## Reworked Spawn Menu UI & UX
 
 We thought a lot about how to make the experience of sandbox game-mode even better. And with that we made several improvements, including the addition of categories in the sidebar, new tabs and even new stuff to spawn! Not to mention several bug fixes and the overall usability has been improved! No more movement blocked when opening the Spawn Menu!

@@ -12,6 +12,9 @@ We proudly present...
 
 ...The big long list of Alpha updates!
 
+<!--truncate-->
+
+
 
 ## Initial Thoughts
 
