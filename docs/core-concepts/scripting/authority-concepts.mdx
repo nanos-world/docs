@@ -90,6 +90,7 @@ We've added a new option in the settings to **Draw Network Debug** information i
 
 ![](/img/docs/debug-visualizer.webp)
 
+
 #### Entity Square Colors Meaning
 
 The Square in the entities represent the state in the Network Authority and it's health.
@@ -98,14 +99,15 @@ The Square in the entities represent the state in the Network Authority and it's
 | :--- | :--- |
 | **<span style={{"color": "#306CCE"}}>BLUE</span>** | You **are the current Network Authority** of that entity. <br/>You are sharing sync data to the other players. |
 | **WHITE** | You **are not the Network Authority** and the entity is sleeping. <br/>The current Network Authority is not sending sync data because the entity is sleeping. |
+| **BLACK** | You **are the Authority** of that entity. <br/>The entity was spawned on client side then you are not sending sync data. |
 | **<span style={{"color": "#00A400"}}>GREEN</span>** | You **are not the Network Authority** and the entity is being synced in a **good** cadence (no lag). |
 | **<span style={{"color": "#FFA500"}}>ORANGE</span>** | You **are not the Network Authority** and the entity is being synced in an **ok** cadence (small lag - < 100ms). |
 | **<span style={{"color": "#FF0000"}}>RED</span>** | You **are not the Network Authority** and the entity is being synced in an **bad** cadence (big lag - > 100ms, maybe even with packet loss). |
 
 
-#### Entity Trace Colors Meaning
+#### Entity Arrow Traces Colors Meaning
 
-The Traces in the entities represent the network data received from the server. If you are the network authority you won't see the traces. The arrow points from where the entity is currently in your machine and where it should be accordingly to the network authority.
+The Arrow Traces in the entities represent the network data received from the server. If you are the network authority you won't see the arrow traces. The arrow points from where the entity is currently in your machine and where it should be accordingly to the network authority.
 
 | Color | Meaning |
 | :--- | :--- |
