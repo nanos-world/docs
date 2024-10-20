@@ -8,7 +8,7 @@
     <subtitle>nanos world Blog</subtitle>
     <icon>https://docs.nanos.world/de/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[2024 Feb: DLSS & Static Lighting!]]></title>
+        <title type="html"><![CDATA[Feb: DLSS & Static Lighting!]]></title>
         <id>https://docs.nanos.world/de/blog/february-2024</id>
         <link href="https://docs.nanos.world/de/blog/february-2024"/>
         <updated>2024-02-28T00:00:00.000Z</updated>
@@ -70,7 +70,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2023 Nov: TOML Class & Password Flow!]]></title>
+        <title type="html"><![CDATA[Nov: TOML Class & Password Flow!]]></title>
         <id>https://docs.nanos.world/de/blog/november-2023</id>
         <link href="https://docs.nanos.world/de/blog/november-2023"/>
         <updated>2023-12-20T00:00:00.000Z</updated>
@@ -79,7 +79,7 @@
 <p><img decoding="async" loading="lazy" src="https://docs.nanos.world/de/assets/images/november-news-1f58334dc00c2d88d7044343f8331a65.webp" width="800" height="320" class="img_ev3q"></p>
 <p>Tune in for a roundup of the latest updates from November!</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="new-class-toml">New Class: TOML<a href="https://docs.nanos.world/de/blog/november-2023#new-class-toml" class="hash-link" aria-label="Direct link to New Class: TOML" title="Direct link to New Class: TOML">​</a></h2>
-<p>We are introducing a new class: &lt;UtilityClasses.TOML /&gt;.</p>
+<p>We are introducing a new class: <a class="hover-link" href="https://docs.nanos.world/docs/next/scripting-reference/utility-libraries/toml"><b>TOML</b></a>.</p>
 <p>This is a new utility class aiming to help manipulating TOML files and structures.</p>
 <p>It exposes methods such as to provide serialization and deserialization to TOML content, allowing them to be easily converted to Lua structure.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="password-flow">Password Flow<a href="https://docs.nanos.world/de/blog/november-2023#password-flow" class="hash-link" aria-label="Direct link to Password Flow" title="Direct link to Password Flow">​</a></h2>
@@ -93,7 +93,7 @@
 <p>We've automated the theming of the game UI, now when we come close to Christmas or Halloween, the main menu UI will change automatically to the proper theme!</p>
 <p>With this improvement, it's easier to add new themes for other holidays as well! Which will be adding when the time comes!</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="file-class-access">File Class Access<a href="https://docs.nanos.world/de/blog/november-2023#file-class-access" class="hash-link" aria-label="Direct link to File Class Access" title="Direct link to File Class Access">​</a></h2>
-<p>We implemented a new internal access system for &lt;Classes.File /&gt; Class that changes how the scripting can access files in the File System.</p>
+<p>We implemented a new internal access system for <a class="hover-link" href="https://docs.nanos.world/docs/next/scripting-reference/classes/file"><b>File</b></a> Class that changes how the scripting can access files in the File System.</p>
 <p>Now on Client side, it's allowed to <strong>read</strong> any file from the <code>Packages/</code> folder, but <strong>write</strong> is still only allowed to the default <code>.transient/</code> folder.</p>
 <p>This expands the permissions of files access on client side, as until then it was only allowed inside the .transient/ folder.</p>
 <p>On the server the rule keeps the same: it's possible to read and write to any file from inside the server directory (except Config.toml itself).</p>
@@ -106,7 +106,7 @@
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="inputunbind">Input.Unbind<a href="https://docs.nanos.world/de/blog/november-2023#inputunbind" class="hash-link" aria-label="Direct link to Input.Unbind" title="Direct link to Input.Unbind">​</a></h3>
 <p>We added a new parameter to <a href="https://docs.nanos.world/docs/next/scripting-reference/static-classes/input#static-function-unbind" target="_blank" rel="noopener noreferrer">Input.Unbind()</a>: <code>callback</code>, so now it's possible to unbind a specific function (like how Events.Unsubscribe works).</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="player-methods">Player Methods<a href="https://docs.nanos.world/de/blog/november-2023#player-methods" class="hash-link" aria-label="Direct link to Player Methods" title="Direct link to Player Methods">​</a></h3>
-<p>We added two new methods to &lt;Classes.Player /&gt;: <a href="https://docs.nanos.world/docs/next/scripting-reference/classes/player#function-setcamerafov" target="_blank" rel="noopener noreferrer">SetCameraFOV()</a> and <a href="https://docs.nanos.world/docs/next/scripting-reference/classes/player#function-setcameraspeedsettings" target="_blank" rel="noopener noreferrer">SetCameraSpeedSettings()</a>, which allows customizing the FOV and the speed of the floating pawn when not possessing a Character!</p>
+<p>We added two new methods to <a class="hover-link" href="https://docs.nanos.world/docs/next/scripting-reference/classes/player"><b>Player</b></a>: <a href="https://docs.nanos.world/docs/next/scripting-reference/classes/player#function-setcamerafov" target="_blank" rel="noopener noreferrer">SetCameraFOV()</a> and <a href="https://docs.nanos.world/docs/next/scripting-reference/classes/player#function-setcameraspeedsettings" target="_blank" rel="noopener noreferrer">SetCameraSpeedSettings()</a>, which allows customizing the FOV and the speed of the floating pawn when not possessing a Character!</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="enabled-pcg-plugin">Enabled PCG Plugin<a href="https://docs.nanos.world/de/blog/november-2023#enabled-pcg-plugin" class="hash-link" aria-label="Direct link to Enabled PCG Plugin" title="Direct link to Enabled PCG Plugin">​</a></h3>
 <p>We enabled the PCG Plugin in the base game, so it's now possible to you to use the new Unreal Engine 5's PCG features in your maps!</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="several-bug-fixes">Several Bug Fixes<a href="https://docs.nanos.world/de/blog/november-2023#several-bug-fixes" class="hash-link" aria-label="Direct link to Several Bug Fixes" title="Direct link to Several Bug Fixes">​</a></h3>
@@ -132,7 +132,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2023 Oct: C Module Package & UE 5.3!]]></title>
+        <title type="html"><![CDATA[Oct: C Module Package & UE 5.3!]]></title>
         <id>https://docs.nanos.world/de/blog/october-2023</id>
         <link href="https://docs.nanos.world/de/blog/october-2023"/>
         <updated>2023-11-15T00:00:00.000Z</updated>
@@ -185,7 +185,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2023 Aug: Modules, Requires & Safety!]]></title>
+        <title type="html"><![CDATA[Aug: Modules, Requires & Safety!]]></title>
         <id>https://docs.nanos.world/de/blog/august-2023</id>
         <link href="https://docs.nanos.world/de/blog/august-2023"/>
         <updated>2023-09-06T00:00:00.000Z</updated>
@@ -248,7 +248,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2023 Jul: Gizmo & Unreal Engine 5.3!]]></title>
+        <title type="html"><![CDATA[Jul: Gizmo & Unreal Engine 5.3!]]></title>
         <id>https://docs.nanos.world/de/blog/july-2023</id>
         <link href="https://docs.nanos.world/de/blog/july-2023"/>
         <updated>2023-08-16T00:00:00.000Z</updated>
@@ -305,7 +305,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2023 Jun: VehicleWater, Smooth Net Sync!]]></title>
+        <title type="html"><![CDATA[Jun: VehicleWater, Smooth Net Sync!]]></title>
         <id>https://docs.nanos.world/de/blog/june-2023</id>
         <link href="https://docs.nanos.world/de/blog/june-2023"/>
         <updated>2023-07-12T00:00:00.000Z</updated>
@@ -373,7 +373,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2023 May: Widget 3D, Asset Meta Data!]]></title>
+        <title type="html"><![CDATA[May: Widget 3D, Asset Meta Data!]]></title>
         <id>https://docs.nanos.world/de/blog/may-2023</id>
         <link href="https://docs.nanos.world/de/blog/may-2023"/>
         <updated>2023-06-07T00:00:00.000Z</updated>
@@ -462,7 +462,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2023 Apr: Vehicle Health, Docs++!]]></title>
+        <title type="html"><![CDATA[Apr: Vehicle Health, Docs++!]]></title>
         <id>https://docs.nanos.world/de/blog/april-2023</id>
         <link href="https://docs.nanos.world/de/blog/april-2023"/>
         <updated>2023-05-10T00:00:00.000Z</updated>
@@ -566,7 +566,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2023 Mar: File Transfer, Map Package!]]></title>
+        <title type="html"><![CDATA[Mar: File Transfer, Map Package!]]></title>
         <id>https://docs.nanos.world/de/blog/march-2023</id>
         <link href="https://docs.nanos.world/de/blog/march-2023"/>
         <updated>2023-04-05T00:00:00.000Z</updated>
@@ -702,7 +702,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2023 Feb: Widgets & Notifications!]]></title>
+        <title type="html"><![CDATA[Feb: Widgets & Notifications!]]></title>
         <id>https://docs.nanos.world/de/blog/february-2023</id>
         <link href="https://docs.nanos.world/de/blog/february-2023"/>
         <updated>2023-03-08T00:00:00.000Z</updated>
@@ -792,7 +792,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2023 Jan: Character, Weather, Console!]]></title>
+        <title type="html"><![CDATA[Jan: Character, Weather, Console!]]></title>
         <id>https://docs.nanos.world/de/blog/january-2023</id>
         <link href="https://docs.nanos.world/de/blog/january-2023"/>
         <updated>2023-02-01T00:00:00.000Z</updated>
@@ -887,10 +887,10 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2022 Dec: One VM to Rule Them All!]]></title>
+        <title type="html"><![CDATA[Dec: One VM to Rule Them All!]]></title>
         <id>https://docs.nanos.world/de/blog/december-2022</id>
         <link href="https://docs.nanos.world/de/blog/december-2022"/>
-        <updated>2023-01-04T00:00:00.000Z</updated>
+        <updated>2022-12-31T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[One Lua Virtual Machine to Rule Them All!]]></summary>
         <content type="html"><![CDATA[<p><strong>One Lua Virtual Machine to Rule Them All!</strong></p>
 <p><img decoding="async" loading="lazy" src="https://docs.nanos.world/de/assets/images/december-news-d3aff08ec5aef08f0426ecb558a5de57.webp" width="800" height="320" class="img_ev3q"></p>
@@ -908,14 +908,14 @@
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="call--export">Call &amp; Export<a href="https://docs.nanos.world/de/blog/december-2022#call--export" class="hash-link" aria-label="Direct link to Call &amp; Export" title="Direct link to Call &amp; Export">​</a></h3>
 <p><code>Package.Call</code> and <code>Package.Export</code> are not necessary in the traditional way anymore. As now we can share the global environment, we can define methods and expose them to be called directly, without the need to <code>Package.Call</code> them.</p>
 <p>The <code>Package.Export</code> will still exist and work similarly. But now it will be possible to "expose" any value to the global scope! Example:</p>
-<div class="language-lua codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-lua codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#000000"><span class="token keyword" style="color:rgb(0, 0, 255)">local</span><span class="token plain"> my_table </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">{</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">123</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">456</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token keyword" style="color:rgb(0, 0, 255)">function</span><span class="token plain"> </span><span class="token function" style="color:rgb(0, 0, 255)">DoSomething</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">var1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">    </span><span class="token keyword" style="color:rgb(0, 0, 255)">return</span><span class="token plain"> var1 </span><span class="token operator" style="color:rgb(0, 0, 0)">+</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">123</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token keyword" style="color:rgb(0, 0, 255)">end</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">Package</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">Export</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token string" style="color:rgb(163, 21, 21)">"MyTable"</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> my_table</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">Package</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">Export</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token string" style="color:rgb(163, 21, 21)">"DoSomething"</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> DoSomething</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="language-lua codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-lua codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#000000"><span class="token keyword" style="color:rgb(0, 0, 255)">local</span><span class="token plain"> my_table </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">{</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">123</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">456</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token keyword" style="color:rgb(0, 0, 255)">function</span><span class="token plain"> </span><span class="token function" style="color:rgb(0, 0, 255)">DoSomething</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">var1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">	</span><span class="token keyword" style="color:rgb(0, 0, 255)">return</span><span class="token plain"> var1 </span><span class="token operator" style="color:rgb(0, 0, 0)">+</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">123</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token keyword" style="color:rgb(0, 0, 255)">end</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">Package</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">Export</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token string" style="color:rgb(163, 21, 21)">"MyTable"</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> my_table</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">Package</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">Export</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token string" style="color:rgb(163, 21, 21)">"DoSomething"</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> DoSomething</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <div class="language-lua codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-lua codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#000000"><span class="token plain">Console</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">Log</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">MyTable</span><span class="token punctuation" style="color:rgb(4, 81, 165)">[</span><span class="token number" style="color:rgb(9, 134, 88)">1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">]</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)">-- 123</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">Console</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">Log</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token function" style="color:rgb(0, 0, 255)">DoSomething</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token number" style="color:rgb(9, 134, 88)">456</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)">-- 579</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="inherited-classes">Inherited Classes<a href="https://docs.nanos.world/de/blog/december-2022#inherited-classes" class="hash-link" aria-label="Direct link to Inherited Classes" title="Direct link to Inherited Classes">​</a></h3>
 <p>Now all Inherited Classes will be available to all Packages, as they will be created and exposed to the Global scope automatically.</p>
 <p>The first parameter of it will now be used as the variable name to set the class in the global scope. Also, it just got a new optional 2nd parameter to define a custom table contained custom values to be set in the class table before it's created:</p>
-<div class="language-lua codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-lua codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#000000"><span class="token comment" style="color:rgb(0, 128, 0)">-- Note we are assigning the return of Inherit to a variable called</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)">-- MyPropClassLocal, but also MyPropClass will be defined globally</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)">-- as being our class, both variables points to the same Class table</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">MyPropClassLocal </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> Prop</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">Inherit</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token string" style="color:rgb(163, 21, 21)">"MyPropClass"</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">    </span><span class="token string" style="color:rgb(163, 21, 21)">"my_custom_value"</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">123</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">    </span><span class="token string" style="color:rgb(163, 21, 21)">"my_another_value"</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">"hello"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token punctuation" style="color:rgb(4, 81, 165)">}</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token keyword" style="color:rgb(0, 0, 255)">local</span><span class="token plain"> val </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> MyPropClass</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token plain">my_custom_value</span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)">-- val == 123</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="language-lua codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-lua codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#000000"><span class="token comment" style="color:rgb(0, 128, 0)">-- Note we are assigning the return of Inherit to a variable called</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)">-- MyPropClassLocal, but also MyPropClass will be defined globally</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)">-- as being our class, both variables points to the same Class table</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">MyPropClassLocal </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> Prop</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">Inherit</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token string" style="color:rgb(163, 21, 21)">"MyPropClass"</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">	</span><span class="token string" style="color:rgb(163, 21, 21)">"my_custom_value"</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">123</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">	</span><span class="token string" style="color:rgb(163, 21, 21)">"my_another_value"</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">"hello"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token punctuation" style="color:rgb(4, 81, 165)">}</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token keyword" style="color:rgb(0, 0, 255)">local</span><span class="token plain"> val </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> MyPropClass</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token plain">my_custom_value</span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)">-- val == 123</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>We've also added a new static event for getting when a new Inherited Class is registered: <code>ClassRegister</code>:</p>
-<div class="language-lua codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-lua codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#000000"><span class="token plain">Prop</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">Subscribe</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token string" style="color:rgb(163, 21, 21)">"ClassRegister"</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(0, 0, 255)">function</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">class</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">    </span><span class="token comment" style="color:rgb(0, 128, 0)">-- Do something with the new class</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token keyword" style="color:rgb(0, 0, 255)">end</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="language-lua codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-lua codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#000000"><span class="token plain">Prop</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">Subscribe</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token string" style="color:rgb(163, 21, 21)">"ClassRegister"</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(0, 0, 255)">function</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">class</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain">	</span><span class="token comment" style="color:rgb(0, 128, 0)">-- Do something with the new class</span><span class="token plain"></span><br></span><span class="token-line" style="color:#000000"><span class="token plain"></span><span class="token keyword" style="color:rgb(0, 0, 255)">end</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="library-package-type">Library Package Type<a href="https://docs.nanos.world/de/blog/december-2022#library-package-type" class="hash-link" aria-label="Direct link to Library Package Type" title="Direct link to Library Package Type">​</a></h3>
 <p>With this new way Package work, <code>library</code> types are no longer needed. As now we can communicate directly with other packages with exposed global methods, we can just define the methods to be exported with <code>Package.Export</code> and use them whenever we want.</p>
 <p>In this way we will only have two types of "lua script" Packages: <code>game-mode</code> and <code>script</code>. All existing <code>library</code> packages will be automatically converted to <code>script</code> when loaded.</p>
@@ -985,7 +985,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2022 Nov: Entity System, UDS & UE5.1!]]></title>
+        <title type="html"><![CDATA[Nov: Entity System, UDS & UE5.1!]]></title>
         <id>https://docs.nanos.world/de/blog/november-2022</id>
         <link href="https://docs.nanos.world/de/blog/november-2022"/>
         <updated>2022-12-07T00:00:00.000Z</updated>
@@ -1076,7 +1076,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2022 Oct: Playtest & Big API Refactor!]]></title>
+        <title type="html"><![CDATA[Oct: Playtest & Big API Refactor!]]></title>
         <id>https://docs.nanos.world/de/blog/october-2022</id>
         <link href="https://docs.nanos.world/de/blog/october-2022"/>
         <updated>2022-11-09T00:00:00.000Z</updated>
@@ -1155,7 +1155,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2022 Sep: Dimensions!]]></title>
+        <title type="html"><![CDATA[Sep: Dimensions!]]></title>
         <id>https://docs.nanos.world/de/blog/september-2022</id>
         <link href="https://docs.nanos.world/de/blog/september-2022"/>
         <updated>2022-10-05T00:00:00.000Z</updated>
@@ -1279,7 +1279,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2022 Aug: API, Auto Docs & More!]]></title>
+        <title type="html"><![CDATA[Aug: API, Auto Docs & More!]]></title>
         <id>https://docs.nanos.world/de/blog/august-2022</id>
         <link href="https://docs.nanos.world/de/blog/august-2022"/>
         <updated>2022-09-02T00:00:00.000Z</updated>
@@ -1362,7 +1362,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2022 Jul: CEF, Settings Menu & Improvs!]]></title>
+        <title type="html"><![CDATA[Jul: CEF, Settings Menu & Improvs!]]></title>
         <id>https://docs.nanos.world/de/blog/july-2022</id>
         <link href="https://docs.nanos.world/de/blog/july-2022"/>
         <updated>2022-08-03T00:00:00.000Z</updated>
@@ -1454,7 +1454,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2022 Jun: Birthday, Rebrand & UI Redesign!]]></title>
+        <title type="html"><![CDATA[Jun: Birthday, Rebrand & UI Redesign!]]></title>
         <id>https://docs.nanos.world/de/blog/june-2022</id>
         <link href="https://docs.nanos.world/de/blog/june-2022"/>
         <updated>2022-07-07T00:00:00.000Z</updated>
@@ -1581,7 +1581,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2022 May: 666 Bugs Fixed & P2P!]]></title>
+        <title type="html"><![CDATA[May: 666 Bugs Fixed & P2P!]]></title>
         <id>https://docs.nanos.world/de/blog/may-2022</id>
         <link href="https://docs.nanos.world/de/blog/may-2022"/>
         <updated>2022-06-01T00:00:00.000Z</updated>
@@ -1661,7 +1661,7 @@
         <category label="updates" term="updates"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2022 Apr: Now on Unreal Engine 5!]]></title>
+        <title type="html"><![CDATA[Apr: Now on Unreal Engine 5!]]></title>
         <id>https://docs.nanos.world/de/blog/april-2022</id>
         <link href="https://docs.nanos.world/de/blog/april-2022"/>
         <updated>2022-05-04T00:00:00.000Z</updated>

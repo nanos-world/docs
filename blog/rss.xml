@@ -9,7 +9,7 @@
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
-            <title><![CDATA[2024 Feb: DLSS & Static Lighting!]]></title>
+            <title><![CDATA[Feb: DLSS & Static Lighting!]]></title>
             <link>https://docs.nanos.world/blog/february-2024</link>
             <guid>https://docs.nanos.world/blog/february-2024</guid>
             <pubDate>Wed, 28 Feb 2024 00:00:00 GMT</pubDate>
@@ -67,7 +67,7 @@
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2023 Nov: TOML Class & Password Flow!]]></title>
+            <title><![CDATA[Nov: TOML Class & Password Flow!]]></title>
             <link>https://docs.nanos.world/blog/november-2023</link>
             <guid>https://docs.nanos.world/blog/november-2023</guid>
             <pubDate>Wed, 20 Dec 2023 00:00:00 GMT</pubDate>
@@ -125,7 +125,7 @@
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2023 Oct: C Module Package & UE 5.3!]]></title>
+            <title><![CDATA[Oct: C Module Package & UE 5.3!]]></title>
             <link>https://docs.nanos.world/blog/october-2023</link>
             <guid>https://docs.nanos.world/blog/october-2023</guid>
             <pubDate>Wed, 15 Nov 2023 00:00:00 GMT</pubDate>
@@ -174,7 +174,7 @@
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2023 Aug: Modules, Requires & Safety!]]></title>
+            <title><![CDATA[Aug: Modules, Requires & Safety!]]></title>
             <link>https://docs.nanos.world/blog/august-2023</link>
             <guid>https://docs.nanos.world/blog/august-2023</guid>
             <pubDate>Wed, 06 Sep 2023 00:00:00 GMT</pubDate>
@@ -233,7 +233,7 @@
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2023 Jul: Gizmo & Unreal Engine 5.3!]]></title>
+            <title><![CDATA[Jul: Gizmo & Unreal Engine 5.3!]]></title>
             <link>https://docs.nanos.world/blog/july-2023</link>
             <guid>https://docs.nanos.world/blog/july-2023</guid>
             <pubDate>Wed, 16 Aug 2023 00:00:00 GMT</pubDate>
@@ -286,7 +286,7 @@
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2023 Jun: VehicleWater, Smooth Net Sync!]]></title>
+            <title><![CDATA[Jun: VehicleWater, Smooth Net Sync!]]></title>
             <link>https://docs.nanos.world/blog/june-2023</link>
             <guid>https://docs.nanos.world/blog/june-2023</guid>
             <pubDate>Wed, 12 Jul 2023 00:00:00 GMT</pubDate>
@@ -350,7 +350,7 @@
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2023 May: Widget 3D, Asset Meta Data!]]></title>
+            <title><![CDATA[May: Widget 3D, Asset Meta Data!]]></title>
             <link>https://docs.nanos.world/blog/may-2023</link>
             <guid>https://docs.nanos.world/blog/may-2023</guid>
             <pubDate>Wed, 07 Jun 2023 00:00:00 GMT</pubDate>
@@ -435,7 +435,7 @@
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2023 Apr: Vehicle Health, Docs++!]]></title>
+            <title><![CDATA[Apr: Vehicle Health, Docs++!]]></title>
             <link>https://docs.nanos.world/blog/april-2023</link>
             <guid>https://docs.nanos.world/blog/april-2023</guid>
             <pubDate>Wed, 10 May 2023 00:00:00 GMT</pubDate>
@@ -535,7 +535,7 @@
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2023 Mar: File Transfer, Map Package!]]></title>
+            <title><![CDATA[Mar: File Transfer, Map Package!]]></title>
             <link>https://docs.nanos.world/blog/march-2023</link>
             <guid>https://docs.nanos.world/blog/march-2023</guid>
             <pubDate>Wed, 05 Apr 2023 00:00:00 GMT</pubDate>
@@ -667,7 +667,7 @@
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2023 Feb: Widgets & Notifications!]]></title>
+            <title><![CDATA[Feb: Widgets & Notifications!]]></title>
             <link>https://docs.nanos.world/blog/february-2023</link>
             <guid>https://docs.nanos.world/blog/february-2023</guid>
             <pubDate>Wed, 08 Mar 2023 00:00:00 GMT</pubDate>
@@ -753,7 +753,7 @@
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2023 Jan: Character, Weather, Console!]]></title>
+            <title><![CDATA[Jan: Character, Weather, Console!]]></title>
             <link>https://docs.nanos.world/blog/january-2023</link>
             <guid>https://docs.nanos.world/blog/january-2023</guid>
             <pubDate>Wed, 01 Feb 2023 00:00:00 GMT</pubDate>
@@ -844,10 +844,10 @@
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2022 Dec: One VM to Rule Them All!]]></title>
+            <title><![CDATA[Dec: One VM to Rule Them All!]]></title>
             <link>https://docs.nanos.world/blog/december-2022</link>
             <guid>https://docs.nanos.world/blog/december-2022</guid>
-            <pubDate>Wed, 04 Jan 2023 00:00:00 GMT</pubDate>
+            <pubDate>Sat, 31 Dec 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[One Lua Virtual Machine to Rule Them All!]]></description>
             <content:encoded><![CDATA[<p><strong>One Lua Virtual Machine to Rule Them All!</strong></p>
 <p><img decoding="async" loading="lazy" src="https://docs.nanos.world/assets/images/december-news-d3aff08ec5aef08f0426ecb558a5de57.webp" width="800" height="320" class="img_ev3q"></p>
@@ -938,7 +938,7 @@
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2022 Nov: Entity System, UDS & UE5.1!]]></title>
+            <title><![CDATA[Nov: Entity System, UDS & UE5.1!]]></title>
             <link>https://docs.nanos.world/blog/november-2022</link>
             <guid>https://docs.nanos.world/blog/november-2022</guid>
             <pubDate>Wed, 07 Dec 2022 00:00:00 GMT</pubDate>
@@ -1025,7 +1025,7 @@
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2022 Oct: Playtest & Big API Refactor!]]></title>
+            <title><![CDATA[Oct: Playtest & Big API Refactor!]]></title>
             <link>https://docs.nanos.world/blog/october-2022</link>
             <guid>https://docs.nanos.world/blog/october-2022</guid>
             <pubDate>Wed, 09 Nov 2022 00:00:00 GMT</pubDate>
@@ -1101,7 +1101,7 @@ Once this get finished, I will get more comfortable on adding new things and cla
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2022 Sep: Dimensions!]]></title>
+            <title><![CDATA[Sep: Dimensions!]]></title>
             <link>https://docs.nanos.world/blog/september-2022</link>
             <guid>https://docs.nanos.world/blog/september-2022</guid>
             <pubDate>Wed, 05 Oct 2022 00:00:00 GMT</pubDate>
@@ -1221,7 +1221,7 @@ Once this get finished, I will get more comfortable on adding new things and cla
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2022 Aug: API, Auto Docs & More!]]></title>
+            <title><![CDATA[Aug: API, Auto Docs & More!]]></title>
             <link>https://docs.nanos.world/blog/august-2022</link>
             <guid>https://docs.nanos.world/blog/august-2022</guid>
             <pubDate>Fri, 02 Sep 2022 00:00:00 GMT</pubDate>
@@ -1300,7 +1300,7 @@ Once this get finished, I will get more comfortable on adding new things and cla
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2022 Jul: CEF, Settings Menu & Improvs!]]></title>
+            <title><![CDATA[Jul: CEF, Settings Menu & Improvs!]]></title>
             <link>https://docs.nanos.world/blog/july-2022</link>
             <guid>https://docs.nanos.world/blog/july-2022</guid>
             <pubDate>Wed, 03 Aug 2022 00:00:00 GMT</pubDate>
@@ -1388,7 +1388,7 @@ Once this get finished, I will get more comfortable on adding new things and cla
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2022 Jun: Birthday, Rebrand & UI Redesign!]]></title>
+            <title><![CDATA[Jun: Birthday, Rebrand & UI Redesign!]]></title>
             <link>https://docs.nanos.world/blog/june-2022</link>
             <guid>https://docs.nanos.world/blog/june-2022</guid>
             <pubDate>Thu, 07 Jul 2022 00:00:00 GMT</pubDate>
@@ -1511,7 +1511,7 @@ Once this get finished, I will get more comfortable on adding new things and cla
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2022 May: 666 Bugs Fixed & P2P!]]></title>
+            <title><![CDATA[May: 666 Bugs Fixed & P2P!]]></title>
             <link>https://docs.nanos.world/blog/may-2022</link>
             <guid>https://docs.nanos.world/blog/may-2022</guid>
             <pubDate>Wed, 01 Jun 2022 00:00:00 GMT</pubDate>
@@ -1587,7 +1587,7 @@ Once this get finished, I will get more comfortable on adding new things and cla
             <category>updates</category>
         </item>
         <item>
-            <title><![CDATA[2022 Apr: Now on Unreal Engine 5!]]></title>
+            <title><![CDATA[Apr: Now on Unreal Engine 5!]]></title>
             <link>https://docs.nanos.world/blog/april-2022</link>
             <guid>https://docs.nanos.world/blog/april-2022</guid>
             <pubDate>Wed, 04 May 2022 00:00:00 GMT</pubDate>
