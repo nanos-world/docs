@@ -1,6 +1,6 @@
 ---
 slug: september-2022
-title: "2022 Sep: Dimensions!"
+title: "Sep: Dimensions!"
 authors: gtnardy
 tags: [updates]
 image: /img/blog/2022-september/september-news.webp
