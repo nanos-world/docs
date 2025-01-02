@@ -23,7 +23,7 @@ Inside your Package’s Client folder, create a new folder \(optional\) called `
 
 ![](/img/docs/tutorials/html-02.webp)
 
-Inside `UI/` let’s create the following files: `index.html`, `style.cs` and `index.js`:
+Inside `UI/` let’s create the following files: `index.html`, `style.css` and `index.js`:
 
 :::info
 
