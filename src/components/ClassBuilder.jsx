@@ -525,12 +525,13 @@ export const ConstructorDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return class_data.constructors.map((constructor, index) =>
 		<>
-			<h4 id={ `constructor-${ constructor.description.toLowerCase().replace(' ', '-') }` }>{ constructor.description }</h4>
+			<h3 id={ `constructor-${ constructor.name.toLowerCase().replace(' ', '-') }` }>{ constructor.name }</h3>
+			<p class="subtle-description" style={{ marginTop: "-20px" }}>{ constructor.description || "No description provided" }</p>
 			<CodeBlock className="language-lua">
 				{ GetConstructorExample(class_data, index) }
 			</CodeBlock>
 			{
-				constructor.parameters.length == 0 ? <i>This constructor doesn't have parameters.</i> :
+				constructor.parameters.length == 0 ? <p class="subtle-description">This constructor doesn't have parameters.</p> :
 				<>
 					<div className="table-wrapper">
 						<table>
@@ -609,7 +610,7 @@ export const FunctionsDeclaration = ({ type, name }) => {
 		{ class_data.inheritance && class_data.inheritance.includes("Pawn") ?
 			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Pawn"} /> : "" }
 		{
-			class_data.functions == null || class_data.functions.length == 0 ? <i>This class doesn't have own functions.</i> :
+			class_data.functions == null || class_data.functions.length == 0 ? <p class="subtle-description">This class doesn't have own functions.</p> :
 			<>
 				<FunctionListDeclaration class_name={class_data.name} functions_list={class_data.functions} />
 				{ class_data.functions.map((value, index) => <FunctionDeclaration key={ `${value.name}-${index}` } function_data={value} class_name={class_data.name} />) }
@@ -627,7 +628,7 @@ export const StaticFunctionsDeclaration = ({ type, name }) => {
 		{/* { class_data.inheritance && class_data.inheritance.includes("Actor") ?
 			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Actor"} is_static={true} /> : "" } */}
 		{
-			class_data.static_functions == null || class_data.static_functions.length == 0 ? <i>This class doesn't have own static functions.</i> :
+			class_data.static_functions == null || class_data.static_functions.length == 0 ? <p class="subtle-description">This class doesn't have own static functions.</p> :
 			<>
 				<StaticFunctionListDeclaration class_name={class_data.name} functions_list={class_data.static_functions} />
 				{ class_data.static_functions.map((value, index) => <FunctionDeclaration key={ `${value.name}-${index}` } function_data={value} is_static class_name={class_data.name} />) }
@@ -669,7 +670,7 @@ export const EventsDeclaration = ({ type, name }) => {
 		{ class_data.inheritance && class_data.inheritance.includes("Pawn") ?
 			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Pawn"} /> : "" }
 		{
-			class_data.events == null || class_data.events.length == 0 ? <i>This class doesn't have own events.</i> :
+			class_data.events == null || class_data.events.length == 0 ? <p class="subtle-description">This class doesn't have own events.</p> :
 			<>
 				<EventListDeclaration type={type} name={class_data.name} inherited_class_name={class_data.name} />
 				{ class_data.events.map((value, index) => <EventDeclaration key={ `${value.name}-${index}` } event_data={value} class_name={class_data.name} />) }
@@ -683,7 +684,7 @@ export const PropertiesDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
 		{
-			class_data.properties == null || class_data.properties.length == 0 ? <i>This class doesn't have properties.</i> :
+			class_data.properties == null || class_data.properties.length == 0 ? <p class="subtle-description">This class doesn't have properties.</p> :
 			<div className="table-wrapper">
 				<table>
 					<thead>
@@ -714,7 +715,7 @@ export const StaticPropertiesDeclaration = ({ type, name }) => {
 
 	return (<>
 		{
-			class_data.static_properties == null || class_data.static_properties.length === 0 ? <i>This class doesn't have static properties.</i> :
+			class_data.static_properties == null || class_data.static_properties.length === 0 ? <p class="subtle-description">This class doesn't have static properties.</p> :
 			<div className="table-wrapper">
 				<table>
 					<thead>

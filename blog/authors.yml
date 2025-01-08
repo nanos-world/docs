@@ -1,5 +1,9 @@
 gtnardy:
-  name: Gabriel T. Nardy
-  title: nanos world developer (SyedMuhammad)
-  url: https://twitter.com/gtnardy
+  name: Gabriel • SyedMuhammad
+  title: lead developer™
+  page: true
+  description: 'nanos world Lead Developer.'
   image_url: /img/blog/gtnardy.jpg
+  socials:
+    x: gtnardy
+    github: gtnardy

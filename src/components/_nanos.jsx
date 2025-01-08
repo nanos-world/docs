@@ -32,8 +32,8 @@ export const CardLink = ({ title, description, href, image_src, is_lean }) => (
 );
 
 // External Video from Github
-export const VideoExternal = ({ path }) => (
-	<video controls={true} allowFullScreen={true}>
+export const VideoExternal = ({ path, noplay }) => (
+	<video controls={true} allowFullScreen={true} autoPlay={!noplay} loop={!noplay} muted={!noplay}>
 		<source src={`${ process.env.NODE_ENV === 'development' ? "/videos" : "https://github.com/nanos-world/docs/raw/master/external/videos"}${path}`} />
 	</video>
 )
@@ -110,9 +110,9 @@ export const BaseUtilityClass = (name, path) => (
 );
 
 // Generic Class Type component
-export const BaseClass = (name, emoji, label = name, path = null) => (
-	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"}
-		content={<ClassToolTip class_name={label} emoji={emoji} append_title="Class" description={ APIData.BleedingEdge.Class[name] ? APIData.BleedingEdge.Class[name].description : "Class not found. Soon™." } />}>
+export const BaseClass = (name, emoji, label = name, path = null, is_base = false) => (
+	<Tippy interactive={ is_base } maxWidth={400} animation={"scale-subtle"} placement={"left"}
+		content={<ClassToolTip class_name={label} emoji={emoji} append_title= { is_base ? "Base Class" : "Class" } description={ APIData.BleedingEdge.Class[name] ? APIData.BleedingEdge.Class[name].description : "Class not found. Soon™." } inheritance_children={ APIData.BleedingEdge.Class[name] ? APIData.BleedingEdge.Class[name].inheritance_children : nil } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/classes/${path ? path : label.toLowerCase()}`} className={"hover-link"}>
 			<b>{ label }</b>
 		</Link>
@@ -208,13 +208,13 @@ export const UtilityClasses = {
 
 // Defines Classes components
 export const Classes = {
-	Entity: () => BaseClass("Entity", "🧩", "Base Entity", "base-classes/entity"),
-	Actor: () => BaseClass("Actor", "🎭", "Base Actor", "base-classes/actor"),
-	Paintable: () => BaseClass("Paintable", "🎨", "Base Paintable", "base-classes/paintable"),
-	Damageable: () => BaseClass("Damageable", "🩼", "Base Damageable", "base-classes/damageable"),
-	Pickable: () => BaseClass("Pickable", "⚔️", "Base Pickable", "base-classes/pickable"),
-	Vehicle: () => BaseClass("Vehicle", "🛞", "Base Vehicle", "base-classes/vehicle"),
-	Pawn: () => BaseClass("Pawn", "♟️", "Base Pawn", "base-classes/pawn"),
+	Entity: () => BaseClass("Entity", "🧩", "Base Entity", "base-classes/entity", true),
+	Actor: () => BaseClass("Actor", "🎭", "Base Actor", "base-classes/actor", true),
+	Paintable: () => BaseClass("Paintable", "🎨", "Base Paintable", "base-classes/paintable", true),
+	Damageable: () => BaseClass("Damageable", "🩼", "Base Damageable", "base-classes/damageable", true),
+	Pickable: () => BaseClass("Pickable", "⚔️", "Base Pickable", "base-classes/pickable", true),
+	Vehicle: () => BaseClass("Vehicle", "🛞", "Base Vehicle", "base-classes/vehicle", true),
+	Pawn: () => BaseClass("Pawn", "♟️", "Base Pawn", "base-classes/pawn", true),
 	Billboard: () => BaseClass("Billboard", "🪧"),
 	Blueprint: () => BaseClass("Blueprint", "🔣"),
 	Cable: () => BaseClass("Cable", "⛓️"),

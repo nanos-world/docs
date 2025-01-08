@@ -25,6 +25,18 @@ Input.Bind("SpawnMenu", InputEvent.Released, function()
 end)
 ```
 
+```lua title="Client/Index.lua"
+-- Subscribes for native Bindings
+Input.Bind("MoveForward", InputEvent.Pressed, function(delta)
+	-- Pressed MoveForward key (usually W)
+end)
+
+-- Subscribes for native Bindings
+Input.Bind("MoveBackward", InputEvent.Pressed, function(delta)
+	-- Pressed MoveBackward key (usually S)
+end)
+```
+
 <ExamplesDeclaration type="StaticClass" name="Input" />
 
 

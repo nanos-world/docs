@@ -148,7 +148,8 @@ module.exports = {
             if (locale !== 'en') {
               return `https://crowdin.com/project/nanos-world-docs/${locale}`;
             }
-            return `https://github.com/nanos-world/docs/edit/master/${versionDocsDirPath}/${docPath}`;
+			// forces bleeding-edge version
+            return `https://github.com/nanos-world/docs/edit/master/docs/${docPath}`;
           },
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
@@ -157,7 +158,7 @@ module.exports = {
               label: 'bleeding-edge 🩸',
             },
             latest: {
-              label: 'latest - a1.65.x ⚖️',
+              label: 'latest - a1.66.x ⚖️',
             }
           },
         },

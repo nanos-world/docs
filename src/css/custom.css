@@ -46,6 +46,9 @@
 
 	/* Horizontal Line */
 	--ifm-hr-background-color: #dfdfdf;
+
+	/* Highlight line */
+	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
 html[data-theme="dark"] {
@@ -73,10 +76,9 @@ html[data-theme="dark"] {
 
 	/* Horizontal Line */
 	--ifm-hr-background-color: #424242;
-}
 
-html[data-theme='dark'] .docusaurus-highlight-code-line {
-	background-color: rgba(0, 0, 0, 0.3);
+	/* Highlight line */
+	--docusaurus-highlighted-code-line-bg: rgba(66, 66, 66, .35);
 }
 
 html[data-theme='dark']	.alert {
@@ -231,6 +233,7 @@ table {
 article p img {
 	display: block;
 	margin: 0 auto;
+	border-radius: 0.4rem;
 }
 
 /* Sidebar */
