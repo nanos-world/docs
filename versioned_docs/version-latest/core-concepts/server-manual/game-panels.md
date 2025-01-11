@@ -22,6 +22,8 @@ Sources and installation files are open source at Falaxir GitHub: https://github
 
 Configuration and installation of this panel can be quite complex, we recommand you read the instructions fully before proceeding.
 
+More information can be read at [their website](https://pterodactyl.io/)
+
 ### Requirements
 
 - Latest linux OS
@@ -67,7 +69,7 @@ You can change avoid that by removing the parameter on the startup command insid
 
 ## AMP Installation
 
-Installation and use of this panel is one of the easiest. 
+Information about this panel can be read at [the cubecoders website](https://cubecoders.com/AMP)
 
 ### Requirements
 
