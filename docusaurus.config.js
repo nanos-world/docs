@@ -163,6 +163,9 @@ module.exports = {
           },
         },
         blog: {
+		  feedOptions: {
+			type: 'json'
+		  },
           showReadingTime: true,
           editUrl: ({ locale, blogDirPath, blogPath }) => {
             if (locale !== 'en') {
