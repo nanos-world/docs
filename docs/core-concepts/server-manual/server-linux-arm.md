@@ -10,7 +10,7 @@ Special cases for some linux os & ARM platform server installation.
 
 :::caution
 
-The installation on versions on and below Debian 11, Ubuntu 20 and ARM systems is not officially supported and currently maintained by the community! The following steps are WIP and may change at any time!
+The installation on versions on and below Debian 12, Ubuntu 22 and ARM systems is not officially supported and currently maintained by the community! The following steps are WIP and may change at any time!
 
 :::
 
@@ -23,7 +23,7 @@ Please be careful with scripts and commands, do it at your own risk!
 
 :::
 
-If you are running debian 10 or older, please upgrade to debian 11 or change your operating system to at least Ubuntu 22.04.1 LTS
+If you are running debian 11 or older, please upgrade to debian 12 or change your operating system to at least Ubuntu 22.04.1 LTS
 
 :::tip
 

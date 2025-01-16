@@ -13,7 +13,7 @@ Creating servers in nanos world is very simple and straightforward, just a few s
 
 ## Minimum System Requirements
 
-* **OS**: Windows or Linux
+* **OS**: [Windows](#windows) or [Linux*](#linux)
 * **Processor**: `2x 1.0 GHz` (faster cores is better than many cores)
 * **Memory**: `50 MB` (grows if having too many Players or spawned Entities)
 * **Storage**: `30 MB` (+ Assets & Packages size)
@@ -32,6 +32,20 @@ On Windows, you have **three** options for downloading nanos world server:
 
 ## Linux
 
+:::info Recommended and Tested Distros
+
+Our Linux servers are current compiled in a **Ubuntu 22.04** machine (with [glibc](https://sourceware.org/glibc/wiki/Glibc%20Timeline) version **2.35**).
+
+The following Distros are currently granted to be supported out of the box:
+
+- `Ubuntu 22.04`
+- `Debian 12.0`
+
+You can see a community created page with instructions on how to install the server on other distros and versions [here](server-linux-arm).
+
+:::
+
+
 On Linux, the only way to download the server is through SteamCMD. If you are on Ubuntu/Debian, you can easily install it like that:
 
 ```shell
@@ -41,13 +55,8 @@ sudo apt update
 sudo apt install lib32gcc1 steamcmd
 ```
 
-Note: on Linux, you must start the server using the Shell Script `./NanosWorldServer.sh`, which will configure proper paths and needed dynamic libraries which need to be loaded!
+**Note**: on Linux, you must start the server using the Shell Script `./NanosWorldServer.sh`, which will configure proper paths and needed dynamic libraries which need to be loaded!
 
-:::tip
-
-You should probably look into `Linux & ARM Server installation` to see if your operating system is entirely supported!
-
-:::
 
 ## Downloading using SteamCMD
 
