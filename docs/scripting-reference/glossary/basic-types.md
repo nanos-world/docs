@@ -105,3 +105,14 @@ nanos world supports a special type of Path when loading **Textures (.jpg, .png)
 SpecialPath input also supports relative and traditional paths!
 
 :::
+
+
+### `Steam Avatar`
+
+Steam Avatar is a special URL which can load Steam Avatars as images on WebUIs and Widgets.
+
+`steam-avatar://player_steam_id`
+
+This URL can be automatically retrieved with [Player:GetAccountIconURL()](/docs/scripting-reference/classes/player#function-getaccounticonurl).
+
+![](/img/blog/2023-january/scoreboard.webp)
