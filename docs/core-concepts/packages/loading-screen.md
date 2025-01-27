@@ -87,6 +87,14 @@ Events.Call("StopMenuMusic")
 
 ## Configuring your server to use the Loading Screen
 
+:::warning Note
+
+Currently Loading Screens only work in **Dedicated Servers**.<br/>
+Make sure you configure your server's Config.toml as `dedicated_server = true`.
+
+:::
+
+
 After creating your loading-screen package, you will need to configure your server to load it in your [Config.toml](/core-concepts/server-manual/server-configuration.md#server-configuration-file). Just set the setting `loading_screen` to your Package's folder name.
 
 ```toml title="Server/Config.toml"
