@@ -23,7 +23,7 @@ In nanos world we have 3 types of Classes (or structures): `Classes`, `Static Cl
 
 If you read our [Quick Start](/getting-started/quick-start.mdx) guide, you noticed we were spawning entities in the following format:
 
-```lua
+```lua showLineNumbers
 -- Spawning an entity with a Constructor
 local my_entity = Entity()
 

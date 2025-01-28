@@ -9,7 +9,7 @@ import { EnumsDeclaration } from '@site/src/components/EnumDeclaration';
 
 Instead of passing numbers to methods or comparing numbers in Events callbacks, you can use the following **Enums** to do so. Examples:
 
-```lua
+```lua showLineNumbers
 -- Using Enums to figure out which StanceMode the Character is
 Character.Subscribe("StanceModeChange", function(character, old_stance, new_stance)
 	if (new_stance == StanceMode.Standing) then

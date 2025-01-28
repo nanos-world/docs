@@ -12,7 +12,7 @@ This sample code shows how to attach custom sights meshes into a Weapon and work
 ![](/img/docs/tutorials/weapon-scope.webp)
 
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- Spawning the AK47
 local my_ak47 = NanosWorldWeapons.AK47(Vector(1035, 154, 300), Rotator())
 

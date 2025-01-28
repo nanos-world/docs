@@ -20,7 +20,7 @@ The most basic event to bring an example is the **`Spawn`**. Every time an entit
 
 Registering for events is very easy and straightforward using the method `Subscribe`, let's say we want to know where a Player has joined the server:
 
-```lua
+```lua showLineNumbers
 Player.Subscribe("Spawn", function(player)
     Console.Log(player:GetName() .. " has joined!")
 end)
@@ -46,7 +46,7 @@ Currently there is two ways of unsubscribing from events:
 
 #### Unsubscribing from all Events
 
-```lua
+```lua showLineNumbers
 -- This will unregister from all "Spawn" events of Player registered in this Package
 Player.Unsubscribe("Spawn")
 ```
@@ -83,7 +83,7 @@ In nanos world it is possible to register for events on specific Entities as wel
 
 ### Subscribing for Entity Events
 
-```lua
+```lua showLineNumbers
 -- Spawns a Character
 local my_character = Character()
 
@@ -111,7 +111,7 @@ Currently there is two ways of unsubscribing from events:
 
 #### Unsubscribing from all Entity Events
 
-```lua
+```lua showLineNumbers
 -- This will unregister from all "EnterVehicle" events of this specific Character
 -- registered in this Package
 my_character:Unsubscribe("EnterVehicle")
@@ -120,7 +120,7 @@ my_character:Unsubscribe("EnterVehicle")
 
 #### Unsubscribing from a specific Entity Event Callback
 
-```lua
+```lua showLineNumbers
 -- Declares the Callback beforehand
 function OnCharacterEnteredVehicle(character, vehicle)
     -- Entered vehicle!

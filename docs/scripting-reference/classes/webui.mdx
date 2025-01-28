@@ -28,7 +28,7 @@ Proprietary Codecs like **MP3** and **AAC** are not supported on public CEF buil
 
 ## 🎒 Examples
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 -- Loading a local file
 local my_ui = WebUI(
     "Awesome UI",            -- Name
@@ -54,7 +54,7 @@ local my_ui = WebUI(
 
 #### Using a WebUI as Mesh Material
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 -- Spawns a WebUI with is_visible = false, is_transparent = false, auto_resize = false and size of 500x500
 local my_ui = WebUI("Awesome Site", "https://nanos.world", false, false, false, 500, 500)
 
@@ -68,7 +68,7 @@ static_mesh:SetMaterialFromWebUI(my_ui)
 
 #### Communicating between Lua and JS (WebUI)
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 local my_ui = WebUI("Awesome UI", "file://UI/index.html")
 
 local param1 = 123
@@ -84,7 +84,7 @@ my_ui:Subscribe("MyAnswer", function(param1)
 end)
 ```
 
-```javascript title="script.js"
+```javascript title="script.js" showLineNumbers
 // Register for "MyEvent" from Lua
 Events.Subscribe("MyEvent", function(param1, param2) {
     console.log("Triggered! " + param1 + " " + param2);
@@ -103,7 +103,7 @@ Events.Unsubscribe("MyEvent");
 
 Since we migrated from Webkit to CEF, some scrollbars got ugly. Here's a small CSS snippet to make them almost like the Webkit ones:
 
-```css
+```css showLineNumbers
 ::-webkit-scrollbar {
     width: 6px;
 }

@@ -104,7 +104,7 @@ If your Package or Asset Pack is uploaded to the GitHub, you can make use of our
 
 For that, first create a `.yml` file inside your repository at `.github/workflows/`. E.g.: `./github/workflows/nanos-world-store.yml` with the content:
 
-```yml
+```yml showLineNumbers
 name: nanos world Store Publish
 
 on:

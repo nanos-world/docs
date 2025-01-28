@@ -19,7 +19,7 @@ In <Classes.Entity /> page we can find the definitions of `:SetValue()` and `:Ge
 
 In any entity, you can use the method `:SetValue(key, value, sync)` to set any kind of value on that entity. Example:
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- Sets a synchronized 'my_value' value
 my_player:SetValue("my_value", 100, true)
 ```
@@ -43,7 +43,7 @@ If you pass `sync` as true, that value will be automatically synchronized with a
 
 After set, you can access any value from any entity using `:GetValue(key, fallback)` on any entity you want. If you set the value to be synchronized on Clients, you will be able to get the values on the Client side as well. You can pass an aditional parameter `fallback` which will be returned if the key doesn't exist!
 
-```lua
+```lua showLineNumbers
 -- Gets 'my_value' value, or returns '0' if no value is set
 local my_value = my_player:GetValue("my_value", 0)
 ```

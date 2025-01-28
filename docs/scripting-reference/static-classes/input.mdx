@@ -9,7 +9,7 @@ tags: [static-class, client]
 
 ## 🎒 Examples
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 -- Registers the binding_name 'SpawnMenu' with default key 'Q'
 -- This will add 'SpawnMenu' to user KeyBinding Settings automatically
 Input.Register("SpawnMenu", "Q")
@@ -25,7 +25,7 @@ Input.Bind("SpawnMenu", InputEvent.Released, function()
 end)
 ```
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 -- Subscribes for native Bindings
 Input.Bind("MoveForward", InputEvent.Pressed, function(delta)
 	-- Pressed MoveForward key (usually W)

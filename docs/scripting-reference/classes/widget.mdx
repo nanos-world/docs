@@ -22,7 +22,7 @@ Most parameters are not exposed in the Widget class, and should be called using 
 
 #### Creating a Simple a Native Text and adding it to screen
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 local my_text = Widget(NativeWidget.Text)
 my_text:CallBlueprintEvent("SetText", "Hello World!")
 my_text:AddToViewport()
@@ -37,7 +37,7 @@ my_text:AddToViewport()
 
 #### Creating a Widgets with Childs
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 local my_vertical_box = Widget(NativeWidget.VerticalBox)
 my_vertical_box:AddToViewport()
 
@@ -53,7 +53,7 @@ my_vertical_box:AddChild(my_button)
 
 #### Using a WebUI as Image Brush
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 local webui = WebUI("mywebui", "https://google.com", WidgetVisibility.Hidden)
 
 local my_image = Widget(NativeWidget.Image)
@@ -70,7 +70,7 @@ my_image:AddToViewport()
 
 #### Subscribing for a Dispatcher
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 local my_button = Widget(NativeWidget.Button)
 
 -- Puts a text inside of it

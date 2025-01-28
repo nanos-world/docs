@@ -65,7 +65,7 @@ If you noticed we are using an image `health.png`, you can download it here [htt
 
 Now let’s add the style to it, for that, edit your `style.css` and add the following `CSS` code:
 
-```css title="Client/UI/style.css"
+```css title="Client/UI/style.css" showLineNumbers
 body {
     font-family: Tahoma, sans-serif;
     font-size: 14px;
@@ -126,7 +126,7 @@ body {
 Finally, in your Package’s Index.lua, let’s spawn the WebUI:
 
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 -- Spawns a WebUI with the HTML file you just created
 main_hud = WebUI("Main HUD", "file://UI/index.html")
 ```
@@ -141,7 +141,7 @@ This is just static texts! Let’s now make it dynamic and display actual values
 
 In your `index.js`, add the following JavaScript code:
 
-```javascript title="Client/UI/index.js"
+```javascript title="Client/UI/index.js" showLineNumbers
 // Register for UpdateWeaponAmmo custom event (from Lua)
 Events.Subscribe("UpdateWeaponAmmo", function(enable, clip, bag) {
     if (enable)
@@ -171,7 +171,7 @@ Events.Subscribe("UpdateHealth", function(health) {
 Now that our UI is done, let’s finish our Lua code to handle that whole thing!
 
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 -- Spawns a WebUI with the HTML file you just created
 main_hud = WebUI("Main HUD", "file://UI/index.html")
 

@@ -10,7 +10,7 @@ How to add Name Tags to Characters.
 ![](/img/docs/tutorials/nametag.webp)
 
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 -- Function to add a Nametag to a Player
 function AddNametag(player, character)
     -- Try to get it's character

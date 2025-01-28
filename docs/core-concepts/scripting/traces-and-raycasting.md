@@ -14,7 +14,7 @@ tags: [scripting]
 
 The following example will show you how to get what and where the player is looking at.
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 -- Traces at each 100ms
 Timer.SetInterval(function()
     -- Gets the middle of the screen

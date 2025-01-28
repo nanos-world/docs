@@ -162,13 +162,15 @@ code {
 }
 
 html[data-theme='dark'] .prism-code,
-html[data-theme='dark'] div[class^='codeBlockTitle'] {
+html[data-theme='dark'] div[class^='codeBlockTitle'],
+html[data-theme='dark'] span[class^='codeLineNumber'] {
 	background-color: #222 !important;
 	color: #9e9e9e !important;
 }
 
 .prism-code,
-div[class^='codeBlockTitle'] {
+div[class^='codeBlockTitle'],
+span[class^='codeLineNumber'] {
 	background-color: #f6f8fa !important;
 	color: #575757 !important;
 	font-size: 14px;
@@ -178,23 +180,6 @@ div[class^='codeBlockTitle'] {
 /* Disable Language Icon */
 svg[class^='iconLanguage'] {
 	display: none;
-}
-
-/* Code line counter */
-.prism-code {
-	counter-reset: line-number;
-}
-
-.prism-code .token-line::marker {
-	color: var(--ifm-color-gray-700);
-	content: counter(line-number);
-}
-
-.prism-code .token-line {
-	counter-increment: line-number;
-	display: list-item;
-	padding-left: var(--ifm-pre-padding);
-	margin-left: var(--ifm-global-spacing);
 }
 
 /* Main content */

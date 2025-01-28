@@ -76,7 +76,7 @@ Once compiled your App may not work properly if you don't set the homepage path 
 
 By default, your react App will not be able to handle the native nanos world Events. To fix that add the following code in a new file named `Events.js` in the `src` directory of your App:
 
-```js title="./src/Events.js"
+```js title="./src/Events.js" showLineNumbers
 const Events = {};
 
 Events.Call = function (sEventName, ...args) {
@@ -126,7 +126,7 @@ Once cleaned your App should be like this:
 
 Now that our App is ready and compatible with nanos world, we are ready to add our code into it. Since this UI is very simple, we will use the default `App.js` components available in the `src` folder
 
-```js title="./basic-hud/src/App.js"
+```js title="./basic-hud/src/App.js" showLineNumbers
 import './App.css';
 
 function App() {
@@ -164,7 +164,7 @@ When you're referencing stuff stored in the public folder you don't need to add 
 
 Now let's add the style to it, for that, edit your `App.css` file and add the following `CSS` code:
 
-```css title="./src/App.css"
+```css title="./src/App.css" showLineNumbers
 body {
     font-family: Tahoma, sans-serif;
     font-size: 14px;
@@ -242,7 +242,7 @@ Once started you should see something like this in your web browser:
 
 Now that we have all the base of our App set, we can start to implement the Events handling. For this, edit your `App.js`:
 
-```js title="./src/App.js"
+```js title="./src/App.js" showLineNumbers
 import './App.css';
 import Events from './Events.js';
 import { useState } from 'react';
@@ -313,7 +313,7 @@ After that copy all the files present in the `./build` folder of your react app 
 
 Finally, in your Package’s `Index.lua`, let’s add all the required code to spawn and update the UI:
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 -- Spawns a WebUI with the HTML file you just created
 main_hud = WebUI("Main HUD", "file://UI/index.html", 1)
 

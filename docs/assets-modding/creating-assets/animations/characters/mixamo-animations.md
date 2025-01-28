@@ -151,7 +151,7 @@ We are not going to cover all aspects of creating Asset Packs here for avoiding 
 
 After exported and created your Asset Pack, you will be able to use them in code like that!
 
-```lua
+```lua showLineNumbers
 local my_character = Character()
 my_character:PlayAnimation("awesome-mixamo-animations::HipHopDancing4UE4")
 ```

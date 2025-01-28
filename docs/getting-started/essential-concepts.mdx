@@ -30,7 +30,7 @@ Through Lua Scripting, some Entities require an Asset as parameter. For example 
 
 This way we spawn a Prop like this, using the Asset reference:
 
-```lua title="my-package/Server/Index.lua"
+```lua title="my-package/Server/Index.lua" showLineNumbers
 -- Using the default 'nanos-world' Asset Pack, which is already natively included in the game
 local my_prop = Prop(Vector(), Rotator(), "nanos-world::SM_Cube")
 ```
@@ -99,7 +99,7 @@ In nanos world, our API is based on Events, which are similar to Hooks in other 
 
 For example we can listen when a Player joins the server or an Entity is spawned:
 
-```lua title="my-package/Server/Index.lua"
+```lua title="my-package/Server/Index.lua" showLineNumbers
 -- Subscribes when a Player joins the server
 Player.Subscribe("Spawn", function(player)
 	Console.Log("The player %s has joined the server!", player:GetName())
@@ -120,14 +120,14 @@ Read more about Events in the Events Guide:
 
 Classes are entities that can be spawned, interacted with, and changed as you wish. We can easily spawn entities like this:
 
-```lua title="my-package/Server/Index.lua"
+```lua title="my-package/Server/Index.lua" showLineNumbers
 local my_light = Light(Vector(0, 100, 100), Rotator(), Color.RED)
 local my_static_mesh = StaticMesh(Vector(0, 0, 100), Rotator(), "nanos-world::SM_Cube_VR_01")
 ```
 
 Or even interact and change the existing ones the way we want:
 
-```lua title="my-package/Server/Index.lua"
+```lua title="my-package/Server/Index.lua" showLineNumbers
 local some_prop = Prop.GetByIndex(1)
 some_prop:SetMesh("nanos-world::SM_Pyramid_VR")
 ```
@@ -143,7 +143,7 @@ Besides Classes we also have the Static Classes, which are just Lua libraries wi
 
 For example we can send a Chat message using the <StaticClasses.Chat /> Static Class:
 
-```lua title="my-package/Server/Index.lua"
+```lua title="my-package/Server/Index.lua" showLineNumbers
 Chat.BroadcastMessage("Hello world!")
 ```
 
@@ -193,7 +193,7 @@ We provide 4 built-in Maps which can be loaded without any additional Package or
 
 Also, in the map's Package.toml, we can configure `spawn_points` and `custom_data`, which can be accessed through scripting by any Package:
 
-```lua title="my-package/Server/Index.lua"
+```lua title="my-package/Server/Index.lua" showLineNumbers
 local spawn_points = Server.GetMapSpawnPoints()
 local custom_data = Server.GetMapConfig()
 ```
@@ -220,7 +220,7 @@ When calling a function on an entity in the server side, this function is also a
 
 For example, if we spawn a <Classes.Character />, and set it's location, all Clients will have it's location updated as well:
 
-```lua title="my-package/Server/Index.lua"
+```lua title="my-package/Server/Index.lua" showLineNumbers
 -- Spawns a Character (on server side)
 local my_character = Character(Vector(0, 0, 0), Rotator(), "nanos-world::SK_Male")
 
@@ -242,7 +242,7 @@ Through this docs, you will find [Authority](/docs/core-concepts/scripting/autho
 To be able to send information from the server to client or vice versa, we exposed some especial methods in our <StaticClasses.Events /> Static Class to allow that!
 
 
-```lua title="my-package/Client/Index.lua"
+```lua title="my-package/Client/Index.lua" showLineNumbers
 -- Subscribes to a Remote Event on client side
 Events.SubscribeRemote("MyClientEvent", function(my_text)
     Console.Log("Event received from server! " .. my_text)
@@ -250,7 +250,7 @@ Events.SubscribeRemote("MyClientEvent", function(my_text)
 end)
 ```
 
-```lua title="my-package/Server/Index.lua"
+```lua title="my-package/Server/Index.lua" showLineNumbers
 -- Sends a remote Event to all Players in all Client Packages
 Events.BroadcastRemote("MyClientEvent", "hello nanos world!")
 ```
@@ -266,7 +266,7 @@ Besides sending data through Events, which is a dynamic thing, we also have the 
 
 For example we can set a value on any entity, which can be accessed by any Package:
 
-```lua
+```lua showLineNumbers
 -- Sets a 'my_value' value to a Prop
 my_prop:SetValue("my_value", 100)
 
@@ -278,7 +278,7 @@ This will make `my_value` to be set on this entity globally in this side (client
 
 But we also have the ability to send a *synchronized* value on an entity (if we are on server side)! For that we just append the `true` parameter, telling it to be sent and synchronized to all clients too!
 
-```lua title="my-package/Server/Index.lua"
+```lua title="my-package/Server/Index.lua" showLineNumbers
 -- Sets a synchronized 'my_value' value to a Prop
 my_prop:SetValue("my_value", 100, true)
 ```

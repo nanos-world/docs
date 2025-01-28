@@ -41,7 +41,7 @@ To be able to display dynamic information in the screen, you can listen to the E
 | **`progress_total`** | Max progress value |
 | **`current_stage`** | The current stage of the load \(`loading`, `downloading`\) |
 
-```javascript title="Packages/my-loading-screen/index.js"
+```javascript title="Packages/my-loading-screen/index.js" showLineNumbers
 Events.Subscribe("UpdateScreen", function(message, message_secondary, progress_small, progress_small_total, progress, progress_total, current_stage) {
     // Update your HTML here
 });
@@ -80,7 +80,7 @@ var LoadingScreen = {
 
 It is possible to turn off the built-in menu music by calling an event from Loading Screen JS:
 
-```javascript title="Packages/my-loading-screen/index.js"
+```javascript title="Packages/my-loading-screen/index.js" showLineNumbers
 Events.Call("StopMenuMusic")
 ```
 

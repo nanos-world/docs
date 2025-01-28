@@ -84,7 +84,7 @@ Now you can load the package you created as usual, by adding it to the Config.to
 
 And in your Package, you can load and use it like:
 
-```lua
+```lua showLineNumbers
 -- Calls the module function 'test'
 -- Will print 'Hello World' on console
 Console.Log(example.test())

@@ -29,7 +29,7 @@ For storing data you will need to pass a `key` value, which will store <BasicTyp
 
 ## Examples
 
-```lua
+```lua showLineNumbers
 local my_table = {
     my_id = 123,
     my_data_02 = "data"
@@ -41,7 +41,7 @@ Package.SetPersistentData("awesome_table", my_table)
 -- awesome_table = {my_id = 123, my_data_02 = "data"}
 ```
 
-```lua
+```lua showLineNumbers
 local my_table = Package.GetPersistentData().awesome_table
 
 Console.Log(my_table.my_id)

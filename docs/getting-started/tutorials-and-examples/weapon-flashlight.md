@@ -15,7 +15,7 @@ This sample code attaches a Light to a Weapon to make a Flashlight attachment.
 ./NanosWorldServer.exe --cli install package default-weapons
 ```
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- Loads the default-weapons (note: it's recommended to add it to your Package's packages_requirements instead)
 Server.LoadPackage("default-weapons")
 

@@ -16,7 +16,7 @@ How to create a simple and automatic door when Characters move in.
 
 ### Code Snippet
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- Let's spawn a SM_Plane to be our door, and an empty (SM_None) StaticMesh to be our Hinge.
 -- As the SM_Plane has it's pivot at the center of the mesh, we need to have a Hinge to make it rotate properly.
 -- This is not needed if your Door Mesh already has the pivot at the correct Hinge location.

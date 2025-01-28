@@ -55,7 +55,7 @@ After that you will need to add the requirement of this **Asset Pack** into your
 ./NanosWorldServer.exe --cli install package default-weapons
 ```
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- Loads the default-weapons (note: it's recommended to add it to your Package's packages_requirements instead)
 Server.LoadPackage("default-weapons")
 
@@ -120,7 +120,7 @@ end)
 
 
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 -- Subscribes to spawn and attach the Firework launch sound
 Events.Subscribe("SpawnFireworkSound", function(firework)
     local sound = Sound(Vector(), "ts-fireworks::A_Firework_Launch", false, true, SoundType.SFX, 1, 1, 400, 100000)

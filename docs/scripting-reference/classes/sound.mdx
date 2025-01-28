@@ -16,7 +16,7 @@ You can also load raw `.ogg` files from disk! Please check [SpecialPath](/script
 
 ## 🎒 Examples
 
-```lua
+```lua showLineNumbers
 local my_sound = Sound(
     Vector(-510, 145, 63), -- Location (if a 3D sound)
     "nanos-world::A_VR_Confirm", -- Asset Path
@@ -28,7 +28,7 @@ local my_sound = Sound(
 )
 ```
 
-```lua
+```lua showLineNumbers
 -- Spawning a ogg sound located in a Package
 local ogg_sound = Sound(Vector(), "package://my-package/Client/awesome_beep.ogg", true)
 ```
