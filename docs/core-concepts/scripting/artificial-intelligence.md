@@ -15,13 +15,13 @@ How AI works in nanos world
 
 :::
 
-Every [Character](/scripting-reference/classes/character.mdx) spawned without a [Player](/scripting-reference/classes/player.mdx) possessing it will automatically be possessed by an **AI** Controller. Which means you can use Character methods such as `:MoveTo()` and `:LookAt()`.
+Every <Classes.Character /> or <Classes.CharacterSimple /> spawned without a <Classes.Player /> possessing it will automatically be possessed by an **AI** Controller. Which means you can use Character methods such as <MethodReference type="Class" class_name="Pawn" method="MoveTo" is_base /> and <MethodReference type="Class" class_name="Character" method="LookAt" />.
 
 In nanos world, AI as well as Physics are things distributed through Clients to be calculated and shared with the other Players \(please refer to [Network Authority](/core-concepts/scripting/authority-concepts.mdx#network-authority)\), which means the **AI** will only work if there is a Player connected to the server.
 
 :::info
 
-If you input a NPC to `:MoveTo()` somewhere and there is no Player connected, he will only start walking once a Player joins the server.
+If you input a NPC to <MethodReference type="Class" class_name="Entity" method="IsValid" is_base /> somewhere and there is no Player connected, he will only start walking once a Player joins the server.
 
 :::
 

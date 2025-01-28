@@ -71,28 +71,28 @@ In all this cases, the Player will be automatically assigned to be the **Network
 
 ### Overriding the current Network Authority
 
-It is possible to override the current Network Authority of a specific entity by using the method `:SetNetworkAuthority()`.
+It is possible to override the current Network Authority of a specific entity by using the method <MethodReference type="Class" class_name="Actor" method="SetNetworkAuthority" is_base />.
 
 :::tip
 
-Under certain circumstances, actors may not be in **Distributed Network Authority** mode. This means they cannot have their current network authority changed. Example: if a player is driving a Vehicle or using a Weapon, mandatorily he is the the Vehicle and Weapons's Network Authority, and this cannot be overwritten through scripting. To validate if an Actor can have it overridden, you can use the method `:IsNetworkDistributed()`.
+Under certain circumstances, actors may not be in **Distributed Network Authority** mode. This means they cannot have their current network authority changed. Example: if a player is driving a Vehicle or using a Weapon, mandatorily he is the the Vehicle and Weapons's Network Authority, and this cannot be overwritten through scripting. To validate if an Actor can have it overridden, you can use the method <MethodReference type="Class" class_name="Actor" method="IsNetworkDistributed" is_base />.
 
 :::
 
 
-You can also prevent it from being automatically distributed to other Players by calling `:SetNetworkAuthorityAutoDistributed(false)`.
+You can also prevent it from being automatically distributed to other Players by calling <MethodReference type="Class" class_name="Actor" method="SetNetworkAuthorityAutoDistributed" is_base params={"false"} />.
 
 :::caution
 
-Always remember to restore the automatic **Network Authority Distribution** by calling `:SetNetworkAuthorityAutoDistributed(true)`. Otherwise that entity may behave completely weird.
+Always remember to restore the automatic **Network Authority Distribution** by calling <MethodReference type="Class" class_name="Actor" method="SetNetworkAuthorityAutoDistributed" is_base params={"true"} />. Otherwise that entity may behave completely weird.
 
 :::
 
 
 #### Examples of actions that are only executed by the Network Authority of that Actor
 
-* Objects Physics sync (including when calling `:SetForce()`).
-* NPCs walking with `:MoveTo()` or `:Follow()`.
+* Objects Physics sync (including when calling <MethodReference type="Class" class_name="Actor" method="SetForce" is_base />).
+* NPCs walking with <MethodReference type="Class" class_name="Pawn" method="MoveTo" is_base /> or <MethodReference type="Class" class_name="Pawn" method="Follow" is_base />.
 
 
 ### Debugging Network & Network Authority

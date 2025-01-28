@@ -280,9 +280,9 @@ export const FunctionParametersDeclaration = ({ parameters, include_default = tr
 );
 
 // Function Block Declaration
-export const FunctionDeclaration = ({ function_data, is_static, class_name }) => (
+export const FunctionDeclaration = ({ function_data, is_static, class_name, show_lean_declaration = false }) => (
 	<>
-		<hr />
+		{ !show_lean_declaration ? <hr /> : null }
 		<h3 id={ `${is_static ? "static-function" : "function"}-${function_data.name.toLowerCase()}` }>
 			{ GetAuthorityType(function_data.authority) }
 			{ GetNative(function_data.is_native) }
@@ -291,7 +291,7 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 			</code>
 		</h3>
 		<blockquote>
-			<span dangerouslySetInnerHTML={{ __html: function_data.description_long ? function_data.description_long : function_data.description }}></span>
+			<span dangerouslySetInnerHTML={{ __html: !show_lean_declaration && function_data.description_long ? function_data.description_long : function_data.description }}></span>
 		</blockquote>
 		<p className="function-return">
 			{ !function_data.return ? "" :
@@ -306,7 +306,7 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 		<CodeBlock className="language-lua">
 			{ is_static ? GetStaticFunctionSignature(class_name, function_data) : GetFunctionSignature(class_name, function_data) }
 		</CodeBlock>
-		<FunctionParametersDeclaration parameters={function_data.parameters} />
+		{ !show_lean_declaration ? <FunctionParametersDeclaration parameters={function_data.parameters} /> : null }
 		{Array.isArray(function_data.examples) && function_data.examples.length > 0 ?
 			<Details summary={`${class_name}.${function_data.name} Examples`}>
 				{function_data.examples.map(function(example, index) {
@@ -314,7 +314,7 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 				})}
 			</Details>
 		: <></>}
-		{function_data.relations ?
+		{ !show_lean_declaration && function_data.relations ?
 			<p className={"relations"}>
 				{"See also "}
 				{ GetRelations(function_data.relations) }
@@ -325,9 +325,9 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name }) =>
 );
 
 // Event Block Declaration
-export const EventDeclaration = ({ event_data, class_name }) => (
+export const EventDeclaration = ({ event_data, class_name, show_lean_declaration = false }) => (
 	<>
-		<hr />
+		{ !show_lean_declaration ? <hr /> : null }
 		<h3 id={ `event-${event_data.name.toLowerCase()}` }>
 			{ GetAuthorityType(event_data.authority) }
 			{ GetNative(event_data.is_native) }
@@ -335,11 +335,11 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 				{ event_data.name }
 			</code>
 		</h3>
-		<blockquote dangerouslySetInnerHTML={{ __html: `${ event_data.description_long ? event_data.description_long : (event_data.description ? event_data.description : "<span class='subtle-description'>No description provided</span>") }${ event_data.return ? "<br/><br/>" + event_data.return[0].description : ""}` }}></blockquote>
+		<blockquote dangerouslySetInnerHTML={{ __html: `${ !show_lean_declaration && event_data.description_long ? event_data.description_long : (event_data.description ? event_data.description : "<span class='subtle-description'>No description provided</span>") }${ event_data.return ? "<br/><br/>" + event_data.return[0].description : ""}` }}></blockquote>
 		<CodeBlock className="language-lua">
 			{ GetEventSignature(class_name, event_data) }
 		</CodeBlock>
-		{ Array.isArray(event_data.arguments) && event_data.arguments.length > 0 ?
+		{ !show_lean_declaration && Array.isArray(event_data.arguments) && event_data.arguments.length > 0 ?
 			<div className="table-wrapper">
 				<table>
 					<thead>
@@ -361,14 +361,14 @@ export const EventDeclaration = ({ event_data, class_name }) => (
 				</table>
 			</div>
 		: <></> }
-		{Array.isArray(event_data.examples) && event_data.examples.length > 0 ?
+		{ !show_lean_declaration && Array.isArray(event_data.examples) && event_data.examples.length > 0 ?
 			<Details summary={ `${class_name} "${event_data.name}" Event Examples`}>
 				{event_data.examples.map(function(example, index) {
 					return GetEventExample(class_name, event_data, example)
 				})}
 			</Details>
 		: <></>}
-		{event_data.relations ?
+		{ !show_lean_declaration && event_data.relations ?
 			<p className={"relations"}>
 				{"See also "}
 				{ GetRelations(event_data.relations) }

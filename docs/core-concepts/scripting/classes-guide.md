@@ -42,7 +42,7 @@ This is how **OOP** works! You create objects and call functions/catch events on
 
 ### Base Classes
 
-Under the hood, nanos world Classes follow an [Inheritance Pattern](https://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29), which means we have base parent classes, and it's children which "inherits" all functions, events and properties from them. You will notice that all Classes that can be spawned in the world are <Classes.Actor />, for example in <Classes.Character /> and <Classes.Prop /> it is possible to call the function: [`:SetLocation(Vector)`](/scripting-reference/classes/base-classes/actor.mdx#function-setlocation).
+Under the hood, nanos world Classes follow an [Inheritance Pattern](https://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29), which means we have base parent classes, and it's children which "inherits" all functions, events and properties from them. You will notice that all Classes that can be spawned in the world are <Classes.Actor />, for example in <Classes.Character /> and <Classes.Prop /> it is possible to call the function: <MethodReference type="Class" class_name="Actor" method="SetLocation" is_base />.
 
 :::info
 
@@ -76,7 +76,7 @@ Keep in mind that some Classes can only be spawned in the **Server**, others can
 
 ### Destroying Entities
 
-All classes (but Player) allow you to destroy them with the method [`:Destroy()`](/scripting-reference/classes/base-classes/actor.mdx#function-destroy):
+All classes (but Player) allow you to destroy them with the method <MethodReference type="Class" class_name="Entity" method="Destroy" is_base />:
 
 ```lua title="Server/Index.lua"
 my_character:Destroy()
@@ -84,7 +84,7 @@ my_character:Destroy()
 
 :::info
 
-Destroying an Entity will trigger the event [`Destroy`](/scripting-reference/classes/base-classes/entity.mdx#event-destroy) and also will automatically detach all attached entities it had attached with [`:AttachTo()`](/scripting-reference/classes/base-classes/actor.mdx#function-attachto)¹.
+Destroying an Entity will trigger the event <EventReference type="Class" class_name="Entity" event="Destroy" is_base /> and also will automatically detach all attached entities it had attached with <MethodReference type="Class" class_name="Actor" method="AttachTo" is_base />¹.
 
 ¹*If you attached entities with `lifespan_when_detached` parameter other than `-1`, all attached entities will be destroyed as well 😉*.
 

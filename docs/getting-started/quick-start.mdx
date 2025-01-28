@@ -198,7 +198,7 @@ Now you are possessed and can walk around and interact with the Props!
 
 ### Destroying the Character when the Player leaves the Server
 
-Note that the <Classes.Character /> isn't destroyed automatically when the <Classes.Player /> disconnects. For that, we will need to Subscribe for when the Player leaves the server (`Destroy` event) then manually destroy the Character.
+Note that the <Classes.Character /> isn't destroyed automatically when the <Classes.Player /> disconnects. For that, we will need to Subscribe for when the Player leaves the server (<EventReference type="Class" class_name="Entity" event="Destroy" is_base /> event) then manually destroy the Character.
 
 Append this code:
 

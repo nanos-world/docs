@@ -7,6 +7,7 @@ import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
 import { AuthorityTooltip, AssetPathToolTip, ClassToolTip, FunctionToolTip, EnumToolTip } from '@site/src/components/Tooltips.jsx';
+import { GetClassData, FunctionDeclaration, EventDeclaration } from '@site/src/components/ClassBuilder';
 
 import APIData from '@site/src/components/APIData.jsx';
 
@@ -135,6 +136,32 @@ export const Enums = ({ children }) => (
 		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${children.toLowerCase()}`} className={"hover-link"}>{children}</Link>
 	</Tippy>
 );
+
+// Define Class Method component
+export const MethodReference = ({ type, class_name, method, params, is_base = false, is_static = false, show_class_name = false }) => {
+	const class_data = GetClassData(type, class_name);
+	const function_data = (is_static ? class_data.static_functions : class_data.functions).find(({ name }) => name === method);
+	return (
+		<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={
+			<FunctionDeclaration class_name={class_name} function_data={function_data} is_static={is_static} show_lean_declaration={true} />
+		}>
+			<Link to={`${getActiveVersionPath()}/scripting-reference/${is_static ? "static-classes" : "classes"}/${is_base ? "base-classes/" : ""}${class_name.toLowerCase()}#${is_static ? "static-function" : "function"}-${method.toLowerCase()}`} className={"hover-link"}><code>{show_class_name ? class_name : ""}{is_static ? "." : ":"}{method}({params})</code></Link>
+		</Tippy>
+	);
+};
+
+// Define Class Event component
+export const EventReference = ({ type, class_name, event, is_base = false, is_static = false }) => {
+	const class_data = GetClassData(type, class_name);
+	const event_data = class_data.events.find(({ name }) => name === event);
+	return (
+		<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={
+			<EventDeclaration class_name={class_name} event_data={event_data} show_lean_declaration={true} />
+		}>
+			<Link to={`${getActiveVersionPath()}/scripting-reference/${is_static ? "static-classes" : "classes"}/${is_base ? "base-classes/" : ""}${class_name.toLowerCase()}#event-${event.toLowerCase()}`} className={"hover-link"}><code>{event}</code></Link>
+		</Tippy>
+	);
+};
 
 // Define Asset Path component
 export const BaseAssetPath = (type, label, description) => (

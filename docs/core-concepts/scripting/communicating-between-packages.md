@@ -65,7 +65,7 @@ For more information and examples about using Custom Events, please refer to [Ev
 
 ## Exporting Variables Globally
 
-Another way of communicating is using `Package.Export()` method, it allows exposing variables (tables, functions, etc) globally so all other Packages can access it directly.
+Another way of communicating is using <MethodReference type="StaticClass" class_name="Package" method="Export" is_static show_class_name /> method, it allows exposing variables (tables, functions, etc) globally so all other Packages can access it directly.
 
 :::info
 
