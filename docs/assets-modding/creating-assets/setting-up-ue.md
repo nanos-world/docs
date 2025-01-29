@@ -28,7 +28,7 @@ On Windows, the download of Unreal Engine must be done from inside [Epic Games L
 1. Open Epic Games Launcher.
 2. Access **Unreal Engine** tab.
 3. Open **Library** tab.
-4. Press **`+`** and select the correct **Unreal Engine** version (currently nanos world is on **`5.4.X`**).
+4. Press **`+`** and select the correct **Unreal Engine** version (currently nanos world is on **`5.5.X`**).
 5. Press `Install` and a Popup will appear.
 6. Select an installation folder and press `Install`.
 
