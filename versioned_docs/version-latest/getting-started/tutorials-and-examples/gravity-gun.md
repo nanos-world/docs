@@ -19,7 +19,7 @@ You can now find a fully working Gravity Gun in the [Sandbox](https://github.com
 
 ### Code Snippet
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- Spawns some Props and Static Meshes
 -- (note: Static Meshes don't have physics so they will freeze where released automatically)
 local p_sphere = Prop(Vector(200, 0, 200), Rotator(), "nanos-world::SM_Sphere")
@@ -40,7 +40,7 @@ end)
 ```
 
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 -- Global Variables
 picking_object = nil
 distance_trace_object = nil

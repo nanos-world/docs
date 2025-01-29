@@ -9,7 +9,7 @@ tags: [static-class, server]
 
 ## 🎒 Examples
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- Makes an asynchronous HTTP Request
 HTTP.RequestAsync("127.0.0.1:7777", "/", HTTPMethod.GET, "", "application/json", false, {}, function(status, data)
     Console.Log(status) -- 200
@@ -20,7 +20,7 @@ HTTP.RequestAsync("127.0.0.1:7777", "/", HTTPMethod.GET, "", "application/json",
 end)
 ```
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- Makes a synchronous HTTP Request
 local ret = HTTP.Request("127.0.0.1:7777", "/", HTTPMethod.GET, "", "application/json", false, {})
 

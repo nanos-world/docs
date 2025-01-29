@@ -10,7 +10,7 @@ How to create a Monster Truck using the Vehicle system.
 ![](/img/docs/tutorials/monster-truck.webp)
 
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- Spawns a Pickup
 local vehicle = Vehicle(Vector(0, 0, 100), Rotator(), "nanos-world::SK_Pickup", 0, true, false, true, "nanos-world::A_Vehicle_Engine_10")
 

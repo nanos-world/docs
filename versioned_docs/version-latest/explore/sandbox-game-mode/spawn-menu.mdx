@@ -38,7 +38,7 @@ The Spawn Menu iterates all inherited Classes registered and adds them to it aut
 
 You just need to add the following properties to your Class when Inheriting it to make it display properly on Spawn Menu: `name`, `image` and `category`:
 
-```lua title="Client/Index.lua"
+```lua showLineNumbers title="Client/Index.lua"
 -- Inherits from Weapon defining custom values which will be read from Spawn Menu
 Weapon.Inherit("AwesomeGun", {
 	name = "Awesome Gun",
@@ -82,7 +82,7 @@ function SpawnMenu.AddItem(tab_id, id, name, image, category_id?)
 
 Example:
 
-```lua title=your-package/Client/Index.lua
+```lua title="your-package/Client/Index.lua" showLineNumbers
 -- Example adding an Incredible Tool to spawn Menu (client side)
 SpawnMenu.AddItem(
     "tools",			-- tab id
@@ -108,7 +108,7 @@ function SpawnMenu.AddItem(tab, id, spawn_function)
 
 Example:
 
-```lua title=your-package/Server/Index.lua
+```lua title="your-package/Server/Index.lua" showLineNumbers
 -- Function which spawns an entity
 -- The parameters location, rotation, tab and id will be automatically
 -- passed by the Spawn Menu
@@ -179,7 +179,7 @@ function SpawnMenu.AddTab(id, name, image_active, image_inactive)
 
 Example:
 
-```lua title=your-package/Client/Index.lua
+```lua showLineNumbers title="your-package/Client/Index.lua"
 Package.Subscribe("Load", function()
     -- Adds a new tab
     SpawnMenu.AddTab(
@@ -217,7 +217,7 @@ function SpawnMenu.AddCategory(tab_id, id, label, image_active, image_inactive)
 
 Example:
 
-```lua title=your-package/Client/Index.lua
+```lua showLineNumbers title="your-package/Client/Index.lua"
 Package.Subscribe("Load", function()
     -- Adds a new category to Props tab
     SpawnMenu.AddCategory(

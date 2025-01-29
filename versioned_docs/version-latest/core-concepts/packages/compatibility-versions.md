@@ -13,7 +13,7 @@ It works by forcing that package to run code in a compatibility mode, meaning th
 
 Let's say you have this code running right now:
 
-```lua
+```lua showLineNumbers
 -- Make an asynchronous HTTP request
 HTTP.Request("https://api.nanos.world/", "store/v1/packages/halloween", "GET", "", "application/json", false, {}, function(status, data)
     -- Do something with my data
@@ -53,13 +53,13 @@ In compatibility mode (i.e. setting it to `1.64` or below) `Events.Unsubscribe` 
 
 Before, any `Assets.GetX()` method returned an array of strings. Now it returns an array of tables, containing at least the `key` field on it. See more about this change in the [Assets Meta Data page](/core-concepts/assets.mdx#asset-meta-data).
 
-```lua title="Before"
+```lua title="Before" showLineNumbers
 for _, asset in pairs(Assets.GetStaticMeshes("nanos-world")) do
 	local key = asset
 end
 ```
 
-```lua title="After"
+```lua title="After" showLineNumbers
 for _, asset in pairs(Assets.GetStaticMeshes("nanos-world")) do
 	local key = asset.key
 	local my_meta_data = asset.my_meta_data
@@ -99,7 +99,7 @@ Before, `Server.GetMap()` was returning the map asset defined in Config.toml. No
 
 Before, `Package.GetPackages(only_loaded)` returned a list of strings containing all the package names. Now it has a new parameter (`package_type_filter`) and returns a list of table with the Packages information:
 
-```lua
+```lua showLineNumbers
 local packages = Package.GetPackages(only_loaded, package_type_filter)
 --[[
 	{

@@ -20,19 +20,30 @@ Some Classes can only be spawned on the Server, others can only be spawned in th
 Some methods and events in the API are only available on a specific side \(Client or Server\), others are only available in the side which spawned it Authority side\):
 
 #### <AuthorityType.ServerOnly />**`Server Side`**
-Method or Events which can only be called in the **Server** side.
+
+- **Methods:** can be called only in the **Server** side.
+- **Events**: will be triggered only in the **Server** side.
 
 #### <AuthorityType.ClientOnly />**`Client Side`**
-Methods or Events which can only be called in the **Client** side.
+
+- **Methods:** can be called only in the **Client** side.
+- **Events**: will be triggered only in the **Client** side.
 
 #### <AuthorityType.AuthorityOnly />**`Authority Side`**
-Methods or Events which can only be called in the side which spawned it.
+
+- **Methods:** can be called only in the side which spawned this entity.
+- **Events**: will be triggered only in the side which spawned this entity.
 
 #### <AuthorityType.NetworkAuthority />**`Network Authority Side`**
-Methods or Events which can be called in the **Server** and also in the **Client** if the Local Player is the Network Authority of that entity.
+
+- **Methods:** can be called only in the **Server** side and also in the **Client** if the Local Player is the [Network Authority](#network-authority) of this entity.
+- **Events**: will be triggered only in the **Server** side and also in the **Client** if the Local Player is the [Network Authority](#network-authority) of this entity.
 
 #### <AuthorityType.Both />**`Both Sides`**
-Methods or Events which can only be called in any side.
+
+- **Methods:** can be called in both **Server** and **Client** side.
+- **Events**: will be triggered in both **Server** and **Client** side.
+
 
 :::tip
 
@@ -52,36 +63,36 @@ The Player assigned is automatically calculated by the server and takes some thi
 * The **distance** from the Character to the object
 * If the Character is **grabbing** a <Classes.Prop />
 * If the Character is **handling** a <Classes.Pickable />
-* If the Character is **driving** a Vehicle
-* If the Character has just **shot** something
+* If the Character is **driving** a <Classes.Vehicle />
+* If the Character has just **shot** an entity (e.g. <Classes.Prop />, <Classes.Weapon />, <Classes.Vehicle />, etc)
 
 In all this cases, the Player will be automatically assigned to be the **Network Authority** of that Object.
 
 
 ### Overriding the current Network Authority
 
-It is possible to override the current Network Authority of a specific entity by using the method `:SetNetworkAuthority()`.
+It is possible to override the current Network Authority of a specific entity by using the method <MethodReference type="Class" class_name="Actor" method="SetNetworkAuthority" is_base />.
 
 :::tip
 
-Under certain circumstances, actors may not be in **Distributed Network Authority** mode. This means they cannot have their current network authority changed. Example: if a player is driving a Vehicle or using a Weapon, mandatorily he is the the Vehicle and Weapons's Network Authority, and this cannot be overwritten through scripting. To validate if an Actor can have it overridden, you can use the method `:IsNetworkDistributed()`.
+Under certain circumstances, actors may not be in **Distributed Network Authority** mode. This means they cannot have their current network authority changed. Example: if a player is driving a Vehicle or using a Weapon, mandatorily he is the the Vehicle and Weapons's Network Authority, and this cannot be overwritten through scripting. To validate if an Actor can have it overridden, you can use the method <MethodReference type="Class" class_name="Actor" method="IsNetworkDistributed" is_base />.
 
 :::
 
 
-You can also prevent it from being automatically distributed to other Players by calling `:SetNetworkAuthorityAutoDistributed(false)`.
+You can also prevent it from being automatically distributed to other Players by calling <MethodReference type="Class" class_name="Actor" method="SetNetworkAuthorityAutoDistributed" is_base params={"false"} />.
 
 :::caution
 
-Always remember to restore the automatic **Network Authority Distribution** by calling `:SetNetworkAuthorityAutoDistributed(true)`. Otherwise that entity may behave completely weird.
+Always remember to restore the automatic **Network Authority Distribution** by calling <MethodReference type="Class" class_name="Actor" method="SetNetworkAuthorityAutoDistributed" is_base params={"true"} />. Otherwise that entity may behave completely weird.
 
 :::
 
 
 #### Examples of actions that are only executed by the Network Authority of that Actor
 
-* Objects Physics sync (including when calling `:SetForce()`).
-* NPCs walking with `:MoveTo()` or `:Follow()`.
+* Objects Physics sync (including when calling <MethodReference type="Class" class_name="Actor" method="SetForce" is_base />).
+* NPCs walking with <MethodReference type="Class" class_name="Pawn" method="MoveTo" is_base /> or <MethodReference type="Class" class_name="Pawn" method="Follow" is_base />.
 
 
 ### Debugging Network & Network Authority
@@ -90,6 +101,7 @@ We've added a new option in the settings to **Draw Network Debug** information i
 
 ![](/img/docs/debug-visualizer.webp)
 
+
 #### Entity Square Colors Meaning
 
 The Square in the entities represent the state in the Network Authority and it's health.
@@ -97,15 +109,16 @@ The Square in the entities represent the state in the Network Authority and it's
 | Color | Meaning |
 | :--- | :--- |
 | **<span style={{"color": "#306CCE"}}>BLUE</span>** | You **are the current Network Authority** of that entity. <br/>You are sharing sync data to the other players. |
-| **WHITE** | You **are not the Network Authority** and the entity is sleeping. <br/>The current Network Authority is not sending sync data because the entity is sleeping. |
+| **<span style={{"color": "#AAAAAA"}}>WHITE</span>** | You **are not the Network Authority** and the entity is sleeping. <br/>The current Network Authority is not sending sync data because the entity is sleeping. |
+| **BLACK** | You **are the Authority** of that entity. <br/>The entity was spawned on client side then you are not sending sync data. |
 | **<span style={{"color": "#00A400"}}>GREEN</span>** | You **are not the Network Authority** and the entity is being synced in a **good** cadence (no lag). |
 | **<span style={{"color": "#FFA500"}}>ORANGE</span>** | You **are not the Network Authority** and the entity is being synced in an **ok** cadence (small lag - < 100ms). |
 | **<span style={{"color": "#FF0000"}}>RED</span>** | You **are not the Network Authority** and the entity is being synced in an **bad** cadence (big lag - > 100ms, maybe even with packet loss). |
 
 
-#### Entity Trace Colors Meaning
+#### Entity Arrow Traces Colors Meaning
 
-The Traces in the entities represent the network data received from the server. If you are the network authority you won't see the traces. The arrow points from where the entity is currently in your machine and where it should be accordingly to the network authority.
+The Arrow Traces in the entities represent the network data received from the server. If you are the network authority you won't see the arrow traces. The arrow points from where the entity is currently in your machine and where it should be accordingly to the network authority.
 
 | Color | Meaning |
 | :--- | :--- |

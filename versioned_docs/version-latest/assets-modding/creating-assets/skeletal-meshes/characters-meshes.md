@@ -160,7 +160,7 @@ The Exporting process follows the usual process of exporting assets to nanos wor
 
 After exporting and configuring your Assets.toml correctly, the last step is to use it! For that, you just need to use it’s Key you configured in the Assets.toml in the last step (e.g. `my-asset-pack::MESH_PC_00`):
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 local char = Character(Vector(0, 300, 100), Rotator(), "my-asset-pack::MESH_PC_00")
 ```
 

@@ -26,7 +26,7 @@ Please read [Base Paintable](/scripting-reference/classes/base-classes/paintable
 To illustrate, let’s spawn a Cube and change it’s Material using Lua:
 
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- spawns a static mesh cube
 local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "nanos-world::SM_Cube")
 
@@ -43,7 +43,7 @@ Blank Cube with Default Masked Material
 Now let’s set it’s material to red! To be able to do that, we must set the Color parameter named **Tint** as we’ve seen above is the name of parameters which is connected to Base Color of the Material.
 
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- spawns a static mesh cube
 local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "nanos-world::SM_Cube")
 -- replaces it's materials with the nanos default Masked one
@@ -62,7 +62,7 @@ Cube with Default Masked Material with Red parameter
 Now let’s give it a metallic style! You can learn more about [Physically Based Materials](https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/PhysicallyBased/index.html) to know about how each input affects the final representation of a surface!
 
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- spawns a static mesh cube
 local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "nanos-world::SM_Cube")
 -- replaces it's materials with the nanos default one
@@ -87,7 +87,7 @@ Cube with Default Masked Material with Red and Metallic parameters
 A fun thing to do is to make a material fully reflective, like a mirror:
 
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- spawns a static mesh cube
 local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "nanos-world::SM_Cube")
 
@@ -112,7 +112,7 @@ It is even possible to load images \(.jpg, .png, etc\) from disk and apply to th
 And now you can set it like that:
 
 
-```lua
+```lua showLineNumbers
 -- spawns a static mesh cube
 local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "nanos-world::SM_Cube")
 

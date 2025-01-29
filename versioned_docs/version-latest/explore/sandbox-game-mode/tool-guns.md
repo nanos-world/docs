@@ -23,7 +23,7 @@ The sandbox game-mode defines a `ToolGun` class (see on GitHub: [Server](https:/
 
 To create your own Tool based on Sandbox's `ToolGun`, you need to create a new Class inheriting from it passing some custom parameters to the Class, like that:
 
-```lua
+```lua showLineNumbers
 MyToolGun = ToolGun.Inherit("MyToolGun", {
 	-- Spawn Menu
 	name = "My Tool Gun",
@@ -66,7 +66,7 @@ The ToolGun have some methods on **Client Side** which you can override to imple
 
 You can just override them in your custom Tool Gun class to implement them:
 
-```lua title=Client/Index.lua
+```lua title="Client/Index.lua" showLineNumbers
 -- Called when you Fire with it
 function MyToolGun:OnLocalPlayerFire(character)
 	-- Do something

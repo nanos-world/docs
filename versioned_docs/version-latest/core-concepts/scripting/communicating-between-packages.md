@@ -17,7 +17,7 @@ In nanos world there are 2 main ways which you can interact with other **Package
 
 Custom Events are the easier way to send or receive generic data or information to other packages:
 
-```lua title="package-one/Server/Index.lua"
+```lua title="package-one/Server/Index.lua" showLineNumbers
 local my_parameter1 = 123
 local my_parameter2 = "hello there"
 local my_parameter3 = { important_stuff = "omg!" }
@@ -25,7 +25,7 @@ local my_parameter3 = { important_stuff = "omg!" }
 Events.Call("MyAwesomeEvent", my_parameter1, my_parameter2, my_parameter3)
 ```
 
-```lua title="package-two/Server/Index.lua"
+```lua title="package-two/Server/Index.lua" showLineNumbers
 Events.Subscribe("MyAwesomeEvent", function(parameter1, parameter2, parameter3)
     Console.Log("Received " .. parameter1) -- Received 123
     Console.Log("Received " .. parameter2) -- Received hello there
@@ -38,7 +38,7 @@ end)
 
 Sending information through the network is not different from sending in the same side:
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 local my_parameter1 = "cool data from network"
 
 -- Call this event to all Players
@@ -50,7 +50,7 @@ local player_02 = GetPlayerSomehow()
 Events.CallRemote("GetThisFromServer", player_02, my_parameter1)
 ```
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 Events.SubscribeRemote("GetThisFromServer", function(parameter1, parameter2, parameter3)
     Console.Log("Received " .. parameter1) -- Received cool data from network
 end)
@@ -65,7 +65,7 @@ For more information and examples about using Custom Events, please refer to [Ev
 
 ## Exporting Variables Globally
 
-Another way of communicating is using `Package.Export()` method, it allows exposing variables (tables, functions, etc) globally so all other Packages can access it directly.
+Another way of communicating is using <MethodReference type="StaticClass" class_name="Package" method="Export" is_static show_class_name /> method, it allows exposing variables (tables, functions, etc) globally so all other Packages can access it directly.
 
 :::info
 
@@ -77,7 +77,7 @@ Unlike events, exported functions can return values to the caller. But exported 
 
 With that, you can export functions for example, like that:
 
-```lua title="package-one/Server/Index.lua"
+```lua title="package-one/Server/Index.lua" showLineNumbers
 -- Defines a function which you want to export
 function SpawnCoolWeapon(location, rotation)
     local cool_weapon = Weapon(location or Vector(), rotation or Rotator(), ...)
@@ -90,7 +90,7 @@ Package.Export("SpawnCoolWeapon", SpawnCoolWeapon)
 
 You can even export a whole table containing functions for example, to work as a library:
 
-```lua title="package-one/Server/Index.lua"
+```lua title="package-one/Server/Index.lua" showLineNumbers
 -- Defines a table with functions which you want to export
 MyAwesomeLibrary = {
 	CoolMethod = function(a, b)
@@ -110,12 +110,12 @@ Package.Export("MyAwesomeLibrary", MyAwesomeLibrary)
 
 Now you can access that directly from other packages:
 
-```lua title="package-two/Server/Index.lua"
+```lua title="package-two/Server/Index.lua" showLineNumbers
 -- Calls the exported function
 local cool_weapon = SpawnCoolWeapon(Vector(), Rotator())
 ```
 
-```lua title="package-two/Server/Index.lua"
+```lua title="package-two/Server/Index.lua" showLineNumbers
 -- Calls the exported table
 local awesome_result = MyAwesomeLibrary.CoolMethod(123, 456)
 ```

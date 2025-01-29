@@ -96,7 +96,7 @@ We recommend using [VSCode](https://code.visualstudio.com/download) editor, as i
 
 For this example, let's add some code to spawn some <Classes.Prop />s in the game world:
 
-```lua title="Packages/my-awesome-package/Server/Index.lua"
+```lua title="Packages/my-awesome-package/Server/Index.lua" showLineNumbers
 -- Print a message to the server console
 Console.Log("Loading some Props =D")
 
@@ -165,7 +165,7 @@ You may have noticed you are just a wandering soul flying around, let's give you
 
 Let's append some code in your `Server/Index.lua`, to spawn a <Classes.Character /> when a <Classes.Player /> joins the server:
 
-```lua title="my-awesome-package/Server/Index.lua"
+```lua title="my-awesome-package/Server/Index.lua" showLineNumbers
 -- Function to spawn a Character and possess it to a Player
 function SpawnCharacter(player)
     -- Spawns a Character at position X=0, Y=0, Z=0 with default constructor parameters
@@ -198,11 +198,11 @@ Now you are possessed and can walk around and interact with the Props!
 
 ### Destroying the Character when the Player leaves the Server
 
-Note that the <Classes.Character /> isn't destroyed automatically when the <Classes.Player /> disconnects. For that, we will need to Subscribe for when the Player leaves the server (`Destroy` event) then manually destroy the Character.
+Note that the <Classes.Character /> isn't destroyed automatically when the <Classes.Player /> disconnects. For that, we will need to Subscribe for when the Player leaves the server (<EventReference type="Class" class_name="Entity" event="Destroy" is_base /> event) then manually destroy the Character.
 
 Append this code:
 
-```lua title="my-awesome-package/Server/Index.lua"
+```lua title="my-awesome-package/Server/Index.lua" showLineNumbers
 -- When Player leaves the server, destroy it's possessing Character
 Player.Subscribe("Destroy", function(player)
     local character = player:GetControlledCharacter()

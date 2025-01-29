@@ -21,7 +21,7 @@ _Remote_ means the other side, e.g.: if I'm the **Client**, the remote is the Se
 
 ### Basic Usage
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 -- register for a local Event (local = client only)
 Events.Subscribe("MyLocalEvent", function(my_text)
     Console.Log("Event received locally! " .. my_text)
@@ -47,7 +47,7 @@ On **Server**, registering for remote events has an addition parameter: <Classes
 
 :::
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- register for a local Event (local = server only)
 Events.Subscribe("MyLocalEvent", function(my_text)
     Console.Log("Event received locally! " .. my_text)
@@ -73,7 +73,7 @@ Events.BroadcastRemote("MyClientEvent", "hello nanos world!")
 
 ### Passing entities through Events
 
-```lua
+```lua showLineNumbers
 -- register for an Event (remote or local)
 Events.Subscribe("MyAnotherEvent", function(my_text, my_vector, my_character, my_number)
     Console.Log("Event received! " .. my_text .. " " .. my_vector.X .. " " .. my_character:GetViewMode() .. " " .. my_number)

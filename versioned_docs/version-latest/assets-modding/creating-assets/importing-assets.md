@@ -167,7 +167,7 @@ For example if you export a StaticMesh `SM_Cube` in a sub-folder, define them li
 
 This way scripters can spawn your Cube Mesh like that:
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 Prop(Vector(0, 0, 0), Rotator(0, 0, 0), "my-asset-pack::SM_Cube")
 ```
 

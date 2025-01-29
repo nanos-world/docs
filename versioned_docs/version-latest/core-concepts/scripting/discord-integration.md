@@ -17,7 +17,7 @@ Integrating your server with Discord is really easy! We provide a built-in integ
 
 We made the process very simple, we have one method for changing the Player's Activity:
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 local state = "Working as Truck Driver"
 local details = "Awesome Roleplay"
 local large_text = "Honk!"

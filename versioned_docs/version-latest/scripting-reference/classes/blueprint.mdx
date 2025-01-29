@@ -18,7 +18,7 @@ If your Actor Blueprint was spawned on the Server, it will be automatically sync
 
 ### Calling Blueprint Events from lua
 
-```lua title=Client/Index.lua
+```lua title="Client/Index.lua" showLineNumbers
 -- Spawns the Blueprint
 local blueprint = Blueprint(Vector(), Rotator(), "my-asset-pack::BP_MyBlueprint")
 
@@ -32,7 +32,7 @@ blueprint:CallBlueprintEvent("MyBlueprintCustomEvent", param1, param2)
 
 ### Binding Blueprint Event Dispatchers
 
-```lua title=Client/Index.lua
+```lua title="Client/Index.lua" showLineNumbers
 -- Spawns the Blueprint
 local blueprint = Blueprint(Vector(), Rotator(), "my-asset-pack::BP_MyBlueprint")
 
@@ -70,43 +70,44 @@ List of all supported parameters which can be passed between Lua ↔ Blueprint:
 
 | Lua Type | Blueprint Type | Lua → BP | BP → Lua |
 | :--- | :--- | :---: | :---: |
-| **`boolean`** | **`Boolean`** | ✅ | ✅ |
-| **`number`** | **`Byte`** | ✅ | ✅ |
-| **`number`** | **`Integer`** | ✅ | ✅ |
-| **`number`** | **`Integer64`** | ✅ | ✅ |
-| **`number`** | **`Float`** | ✅ | ✅ |
-| **`number`** | **`Enum`** | ✅ | ✅ |
-| **`string`** | **`String`** | ✅ | ✅ |
-| **`string`** | **`Name`** | ✅ | ✅ |
-| **`string`** | **`Text`** | ✅ | ✅ |
-| **`Vector2D`** | **`Vector2D`** | ✅ | ✅ |
-| **`Vector`** | **`Vector`** | ✅ | ✅ |
-| **`Rotator`** | **`Rotator`** | ✅ | ✅ |
-| **`Color`** | **`Color`** | ✅ | ✅ |
-| **`Color`** | **`LinearColor`** | ✅ | ✅ |
-| **`StaticMesh`** | **`StaticMeshActor`** | ✅ | ✅ |
-| **`Prop`** | **`StaticMeshActor`** | ✅ | ✅ |
-| **`Weapon`** | **`SkeletalMeshActor`** | ✅ | ✅ |
-| **`Vehicle`** | **`WheeledVehiclePawn`** | ✅ | ✅ |
-| **`Grenade`** | **`StaticMeshActor`** | ✅ | ✅ |
-| **`Melee`** | **`StaticMeshActor`** | ✅ | ✅ |
-| **`Light`** | **`Light`** | ✅ | ✅ |
-| **`Decal`** | **`DecalActor`** | ✅ | ✅ |
-| **`TextRender`** | **`WorldText3D`** | ✅ | ✅ |
-| **`Sound`** | **`AmbientSound`** | ✅ | ✅ |
-| **`Canvas`** | **`MaterialInstanceDynamic`** | ✅ | ❌ |
-| **`WebUI`** | **`MaterialInstanceDynamic`** | ✅ | ❌ |
-| **`SceneCapture`** | **`MaterialInstanceDynamic`** | ✅ | ❌ |
-| **`Blueprint`** | **`Actor`** | ✅ | ✅ |
-| **`Widget`** | **`Widget`** | ✅ | ❌ |
-| **`BaseActor`** | **`Actor`** | ✅ | ✅ |
-| **`Player`** | **`PlayerController`** | ✅ | ❌ |
-| **`SpecialPath`** | **`Texture2D`** | ✅ | ❌ |
-| **`string`** | **`Class`** | ✅ | ❌ |
-| **`table`** | [**`Transform`**](#ftransform) | ✅ | ✅ |
-| **`table`** | [**`SlateBrush`**](#fslatebrush) | ✅ | ✅ |
-| **`table`** | [**`SlateFontInfo`**](#fslatefontinfo) | ✅ | ✅ |
-| **`table`** | [**`Any Struct`**](#any-struct) | ✅ | ✅ |
+| <BasicType.Boolean /> | **`Boolean`** | ✅ | ✅ |
+| <BasicType.Number /> | **`Byte`** | ✅ | ✅ |
+| <BasicType.Number /> | **`Integer`** | ✅ | ✅ |
+| <BasicType.Number /> | **`Integer64`** | ✅ | ✅ |
+| <BasicType.Number /> | **`Float`** | ✅ | ✅ |
+| <BasicType.Number /> | **`Enum`** | ✅ | ✅ |
+| <BasicType.String /> | **`String`** | ✅ | ✅ |
+| <BasicType.String /> | **`Name`** | ✅ | ✅ |
+| <BasicType.String /> | **`Text`** | ✅ | ✅ |
+| <Structs.Vector2D /> | **`Vector2D`** | ✅ | ✅ |
+| <Structs.Vector /> | **`Vector`** | ✅ | ✅ |
+| <Structs.Rotator /> | **`Rotator`** | ✅ | ✅ |
+| <Structs.Color /> | **`Color`** | ✅ | ✅ |
+| <Structs.Color /> | **`LinearColor`** | ✅ | ✅ |
+| <Classes.StaticMesh /> | **`StaticMeshActor`** | ✅ | ✅ |
+| <Classes.Prop /> | **`StaticMeshActor`** | ✅ | ✅ |
+| <Classes.Weapon /> | **`SkeletalMeshActor`** | ✅ | ✅ |
+| <Classes.Vehicle /> | **`WheeledVehiclePawn`** | ✅ | ✅ |
+| <Classes.Grenade /> | **`StaticMeshActor`** | ✅ | ✅ |
+| <Classes.Melee /> | **`StaticMeshActor`** | ✅ | ✅ |
+| <Classes.Light /> | **`SpotLight`**, **`SpotLight`** or **`RectLight`** | ✅ | ✅ |
+| <Classes.Decal /> | **`DecalActor`** | ✅ | ✅ |
+| <Classes.TextRender /> | **`WorldText3D`** | ✅ | ✅ |
+| <Classes.Sound /> | **`AmbientSound`** | ✅ | ✅ |
+| <Classes.Canvas /> | **`MaterialInstanceDynamic`** | ✅ | ❌ |
+| <Classes.WebUI /> | **`MaterialInstanceDynamic`** | ✅ | ❌ |
+| <Classes.SceneCapture /> | **`MaterialInstanceDynamic`** | ✅ | ❌ |
+| <Classes.Blueprint /> | **`Actor`** | ✅ | ✅ |
+| <Classes.Widget /> | **`Widget`** | ✅ | ❌ |
+| <Classes.Actor /> | **`Actor`** | ✅ | ✅ |
+| <Classes.Player /> | **`PlayerController`** | ✅ | ❌ |
+| <AssetPath.Image /> | **`Texture2D`** | ✅ | ❌ |
+| <BasicType.String /> | **`Class`** | ✅ | ❌ |
+| [**`steam-avatar://`**](/docs/next/scripting-reference/glossary/basic-types#steam-avatar) | **`MaterialInstanceDynamic`** | ✅ | ❌ |
+| <BasicType.Table /> | [**`Transform`**](#ftransform) | ✅ | ✅ |
+| <BasicType.Table /> | [**`SlateBrush`**](#fslatebrush) | ✅ | ✅ |
+| <BasicType.Table /> | [**`SlateFontInfo`**](#fslatefontinfo) | ✅ | ✅ |
+| <BasicType.Table /> | [**`Any Struct`**](#any-struct) | ✅ | ✅ |
 
 
 :::caution Note
@@ -161,7 +162,9 @@ Custom Structs can also be passed and retrieved, just pass an object with the sa
 	["Typeface"] = "", -- string
 	["Size"] = 24,
 	["LetterSpacing"] = 0,
-	["SkewAmount"] = 0.0
+	["SkewAmount"] = 0.0,
+	["Monospacing"] = false,
+	["MonospacedWidth"] = 1.0
 }
 ```
 

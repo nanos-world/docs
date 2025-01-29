@@ -41,7 +41,7 @@ To be able to display dynamic information in the screen, you can listen to the E
 | **`progress_total`** | Max progress value |
 | **`current_stage`** | The current stage of the load \(`loading`, `downloading`\) |
 
-```javascript title="Packages/my-loading-screen/index.js"
+```javascript title="Packages/my-loading-screen/index.js" showLineNumbers
 Events.Subscribe("UpdateScreen", function(message, message_secondary, progress_small, progress_small_total, progress, progress_total, current_stage) {
     // Update your HTML here
 });
@@ -80,12 +80,20 @@ var LoadingScreen = {
 
 It is possible to turn off the built-in menu music by calling an event from Loading Screen JS:
 
-```javascript title="Packages/my-loading-screen/index.js"
+```javascript title="Packages/my-loading-screen/index.js" showLineNumbers
 Events.Call("StopMenuMusic")
 ```
 
 
 ## Configuring your server to use the Loading Screen
+
+:::warning Note
+
+Currently Loading Screens only work in **Dedicated Servers**.<br/>
+Make sure you configure your server's Config.toml as `dedicated_server = true`.
+
+:::
+
 
 After creating your loading-screen package, you will need to configure your server to load it in your [Config.toml](/core-concepts/server-manual/server-configuration.md#server-configuration-file). Just set the setting `loading_screen` to your Package's folder name.
 

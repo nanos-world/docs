@@ -15,7 +15,7 @@ How to simulate a Prop possessing using a Character. This can be used for Prop H
 
 ### Code Snippet
 
-```lua title="Server/Index.lua"
+```lua title="Server/Index.lua" showLineNumbers
 -- Spawns a Character using SK_None mesh (an invisible mesh)
 local new_char = Character(Vector(0, 0, 0), Rotator(), "nanos-world::SK_None")
 

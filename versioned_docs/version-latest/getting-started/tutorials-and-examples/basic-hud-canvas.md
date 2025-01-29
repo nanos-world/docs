@@ -19,7 +19,7 @@ You can also create complete and complex UIs using HTML + JavaScript + CSS, chec
 A Canvas is a painting fabric which can be drawn to. The following code shows how to add a basic UI using Canvas:
 
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 -- Spawns the Canvas
 HUDCanvas = Canvas(true, Color.TRANSPARENT, 0, true)
 
@@ -51,7 +51,7 @@ end)
 
 The example above re-renders and updates all health/ammo information ever tick, which could be bad for performance. Gladly we can fast improve it by limiting the auto repaint rate by changing it in the constructor:
 
-```lua
+```lua showLineNumbers
 -- Instead of 0 in the auto_repaint_rate parameter
 HUDCanvas = Canvas(true, Color.TRANSPARENT, 0, true)
 
@@ -63,7 +63,7 @@ HUDCanvas = Canvas(true, Color.TRANSPARENT, 0.033, true)
 
 Another further optimization is to only update when needed, for this case we will need to implement some additional code. In this case, we set `auto_repaint_rate` to -1 to disable it from being auto repainted:
 
-```lua
+```lua showLineNumbers
 -- We set -1 to never auto repaint
 HUDCanvas = Canvas(true, Color.TRANSPARENT, -1, true)
 

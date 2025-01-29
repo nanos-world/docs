@@ -34,7 +34,7 @@ Valid indexes are **`0`**, **`1`** and **`2`**.
 :::
 
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 -- Sets the Global desired Highlight color
 -- Higher color values make it glow (e.g. Color(100, 0, 0))
 local highlight_color = Color(10, 2.5, 0)

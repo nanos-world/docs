@@ -19,7 +19,7 @@ This feature is still **experimental**, you can try it out and provide feedback 
 
 Inheriting a nanos world Class is really easy, for that you just need to use the `Inherit` static method on the Class you want to inherit:
 
-```lua
+```lua showLineNumbers
 -- Creates a new Class called "MyNewClass" inheriting from Prop
 -- and stores it in the variable MyNewClass
 MyNewClass = Prop.Inherit("MyNewClass")
@@ -33,7 +33,7 @@ local my_new_class_instance = MyNewClass(Vector(), Rotator(), "nanos-world::SM_C
 
 You can also inherit from other inherited classes:
 
-```lua
+```lua showLineNumbers
 -- Creates a new Class called "MyNewSubClass" inheriting from MyNewClass
 MyNewSubClass = MyNewClass.Inherit("MyNewSubClass")
 
@@ -46,7 +46,7 @@ local instance = MyNewSubClass(Vector(), Rotator(), "nanos-world::SM_Cube")
 
 You can create your own Constructor for your entities, for that you need to define the `Constructor` method:
 
-```lua
+```lua showLineNumbers
 -- Defines my constructor with any parameters you desire
 function MyNewClass:Constructor(location, rotation)
     -- Do any kind of logic here
@@ -78,7 +78,7 @@ Inside the constructor, the entity is not fully spawned yet, so you cannot call 
 
 Through the parent class, we can get a list of all children classes of that class, having a global registry of all existing classes!
 
-```lua
+```lua showLineNumbers
 local children_classes = ToolGun.GetInheritedClasses()
 for _, class in pairs(children_classes) do
     -- 'class' is a custom inherited class! we can spawn it
@@ -91,7 +91,7 @@ end
 
 Adding new methods for new classes is very straightforward, let's say we want to add a new method for **MyNewClass**, we just do that:
 
-```lua
+```lua showLineNumbers
 function MyNewClass:Explode()
     -- Spawns a particle
     Particle(self:GetLocation(), Rotator(), "nanos-world::P_Explosion")
@@ -109,7 +109,7 @@ Within your methods, you can access the called entity instance with `self`.
 
 And then you are able to call it as usual:
 
-```lua
+```lua showLineNumbers
 my_new_class_instance:Explode()
 ```
 
@@ -118,7 +118,7 @@ my_new_class_instance:Explode()
 
 Besides creating new methods, it's possible to override existing ones, for that just redefine them:
 
-```lua
+```lua showLineNumbers
 function MyNewClass:SetLocation(new_location)
     -- Do any kind of logic here
     new_location = new_location + Vector(0, 0, 100)
@@ -133,7 +133,7 @@ end
 
 To call native Class methods, you can use the special variable `self.Super`, which will allow you accessing the native and original methods directly:
 
-```lua
+```lua showLineNumbers
 function MyNewClass:GetRotation()
     -- Calls original GetRotation and adds 90 to yaw
     return self.Super:GetRotation() + Rotator(0, 90, 0)
@@ -153,7 +153,7 @@ In Lua, passing a value as the first parameter to a method while calling it with
 
 :::
 
-```lua
+```lua showLineNumbers
 -- Inherits Prop
 MyNewClass = Prop.Inherit("MyNewClass")
 
@@ -203,7 +203,7 @@ The method name must be `newindex` and not `__newindex` as `__newindex` is the n
 :::
 
 
-```lua
+```lua showLineNumbers
 function MyNewClass:newindex(key, value)
 	Console.Log("Setting a %s value: %s = %s", tostring(self), key, tostring(value))
 end
@@ -211,7 +211,7 @@ end
 
 An useful way of using `__newindex` is overriding it to `SetValue` automatically:
 
-```lua
+```lua showLineNumbers
 function MyNewClass:newindex(key, value)
     self:SetValue(key, value)
 end
@@ -238,7 +238,7 @@ The method name must be `index` and not `__index` as `__index` is the native met
 
 :::
 
-```lua
+```lua showLineNumbers
 function MyNewClass:index(key)
 	Console.Log("Getting %s value: %s", tostring(self), key)
     -- ... do something
@@ -248,7 +248,7 @@ end
 
 You can also use `__index` to return a method:
 
-```lua
+```lua showLineNumbers
 function MyNewClass:index(key)
 	Console.Log("%s key not found: %s", tostring(self), key)
 
@@ -268,7 +268,7 @@ my_entity:NonExistentMethod(123, "456")
 
 An useful way of using `__index` is overriding it to `GetValue` automatically:
 
-```lua
+```lua showLineNumbers
 function MyNewClass:index(key)
     return self:GetValue(key)
 end
@@ -282,7 +282,7 @@ local amazing_value = my_entity.amazing_value
 
 You can override `__tostring` as well as usual:
 
-```lua
+```lua showLineNumbers
 function MyNewClass:__tostring()
 	return "My Incredible Class!"
 end
@@ -293,7 +293,7 @@ end
 
 All events which are triggered on an inherited Class will only trigger in that Class and it's parents, also the parameter passed is the custom entity itself, example:
 
-```lua
+```lua showLineNumbers
 Prop.Subscribe("Spawn", function(self)
     Console.Log("Spawned Prop: %s", tostring(self))
 end)
@@ -315,7 +315,7 @@ local my_other_entity_inherited_from_prop = MyOtherClass()
 
 Another way of subscribing is separating the definition and the subscription, this way you don't need the first `self` parameter anymore:
 
-```lua
+```lua showLineNumbers
 function MyNewClass:OnSpawn()
     -- self is present is this context automatically
     Console.Log("Spawned MyNewClass: %s", tostring(self))
@@ -327,7 +327,7 @@ MyNewClass.Subscribe("Spawn", MyNewClass.OnSpawn)
 
 #### Multiple Parents Example:
 
-```lua
+```lua showLineNumbers
 MyNewClass = Prop.Inherit("MyNewClass")
 MyNewSubClass = MyNewClass.Inherit("MyNewSubClass")
 MyNewOtherSubClass = MyNewClass.Inherit("MyNewOtherSubClass")
@@ -367,7 +367,7 @@ Note that **Prop** and all **parent** Classes will still trigger events for all 
 
 If you define your entities on both Client and Server side, they will behave properly and in a synchronized way! Example:
 
-```lua title=Server/Index.lua
+```lua "title=Server/Index.lua" showLineNumbers
 MyNewClass = Prop.Inherit("MyNewClass")
 
 MyNewClass.Subscribe("Spawn", function(self)
@@ -380,7 +380,7 @@ local my_entity = MyNewClass()
 --  Spawned MyNewClass: MyNewClass
 ```
 
-```lua title=Client/Index.lua
+```lua "title=Client/Index.lua" showLineNumbers
 MyNewClass = Prop.Inherit("MyNewClass")
 
 MyNewClass.Subscribe("Spawn", function(self)
@@ -397,7 +397,7 @@ end)
 
 It is also possible to trigger custom events on remote instances of your Class, using the methods `CallRemoteEvent` or `BroadcastRemoteEvent`, it works like the `Events` class:
 
-```lua title=Client/Index.lua
+```lua title="Client/Index.lua" showLineNumbers
 -- inherits the Class
 MyNewClass = Prop.Inherit("MyNewClass")
 
@@ -411,7 +411,7 @@ end
 MyNewClass.SubscribeRemote("MyCustomRemoteEvent", MyNewClass.OnMyCustomRemoteEvent)
 ```
 
-```lua title=Server/Index.lua
+```lua title="Server/Index.lua" showLineNumbers
 -- inherits the Class
 MyNewClass = Prop.Inherit("MyNewClass")
 
@@ -433,7 +433,7 @@ p:BroadcastRemoteEvent("MyCustomRemoteEvent", 123, "abc")
 
 It is possible to set a list of default values to the Inherited Class when creating it, just pass it as the 2nd parameter to `Inherit`:
 
-```lua
+```lua showLineNumbers
 -- inherits the Class
 MyNewClass = Prop.Inherit("MyNewClass", {
 	name = "My Name",
@@ -450,7 +450,7 @@ Console.Log(MyNewClass.category)
 
 When you inherit a new class, the event `ClassRegister` will be triggered on the parents classes, allowing Packages to know when a new Class is registered.
 
-```lua
+```lua showLineNumbers
 Prop.Subscribe("ClassRegister", function(class)
 	-- here we see an useful case for the default values
 	-- as we can access it here

@@ -42,7 +42,7 @@ We will create 4 custom classes:
     - `WeaponIndicator` - A class inherited from `Indicator` to display the character's weapon ammo.
     - `HUD` - A class to display the Health and Weapon indicators.
 
-```lua title="Client/Indicator.lua"
+```lua title="Client/Indicator.lua" showLineNumbers
 ---@class Indicator : SizeBox
 Indicator = SizeBox.Inherit("Indicator")
 
@@ -71,7 +71,7 @@ function Indicator:Constructor()
 end
 ```
 
-```lua title="Client/HealthIndicator.lua"
+```lua title="Client/HealthIndicator.lua" showLineNumbers
 ---@class HealthIndicator : Indicator
 HealthIndicator = Indicator.Inherit("HealthIndicator")
 
@@ -107,7 +107,7 @@ end
     If you noticed we are using an image `health-icon.png`, you can download it from here [https://i.imgur.com/0BmQJVZ.png](https://i.imgur.com/0BmQJVZ.png) and place it inside your `Client/` package folder.
 :::
 
-```lua title="Client/WeaponIndicator.lua"
+```lua title="Client/WeaponIndicator.lua" showLineNumbers
 ---@class WeaponIndicator : Indicator
 WeaponIndicator = Indicator.Inherit("WeaponIndicator")
 
@@ -142,7 +142,7 @@ function WeaponIndicator:SetAmmo(Ammo, AmmoBag)
 end
 ```
 
-```lua title="Client/HUD.lua"
+```lua title="Client/HUD.lua" showLineNumbers
 Package.Require("Indicator.lua")
 Package.Require("HealthIndicator.lua")
 Package.Require("WeaponIndicator.lua")
@@ -194,7 +194,7 @@ end
 ## Adding Events and Callbacks to handle the HUD
 Now that we have our UI, we need to add some events and callbacks to handle the HUD.
 
-```lua title="Client/Index.lua"
+```lua title="Client/Index.lua" showLineNumbers
 Package.Require("Client/HUD.lua")
 
 -- Spawns the HUD
