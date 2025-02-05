@@ -500,7 +500,8 @@ export const EventListDeclaration = ({ type, name, inherited_class_name, base_cl
 };
 
 export const GetClassData = (type, name) => {
-	const is_bleeding_edge = useActiveVersion().name == "current";
+	const activeVersion = useActiveVersion();
+	const is_bleeding_edge = activeVersion ? (activeVersion.name == "current") : true;
 	return APIData[is_bleeding_edge ? "BleedingEdge" : "Stable"][type][name];
 }
 
