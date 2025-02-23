@@ -14,7 +14,15 @@
 }
 
 .description {
-	white-space: pre-wrap;
+	all: revert;
+}
+
+.description a {
+	padding: revert;
+}
+
+.description p {
+	margin: 0 0 5px;
 }
 
 .update {

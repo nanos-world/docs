@@ -1,5 +1,4 @@
 import React from 'react';
-import { useActiveVersion } from '@docusaurus/plugin-content-docs/client';
 import { Link } from "react-router-dom";
 
 import Tippy from '@tippyjs/react';
@@ -7,21 +6,11 @@ import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
 import { AuthorityTooltip, AssetPathToolTip, ClassToolTip, FunctionToolTip, EnumToolTip } from '@site/src/components/Tooltips.jsx';
+import { getActiveVersionPath } from '@site/src/components/Utils.jsx';
 import { GetClassData, FunctionDeclaration, EventDeclaration } from '@site/src/components/ClassBuilder';
 
 import APIData from '@site/src/components/APIData.jsx';
 
-
-// Getter to get the current version path - for links
-export const getActiveVersionPath = () => {
-	const activeVersion = useActiveVersion();
-	return activeVersion ? activeVersion.path : "/docs/next";
-};
-
-// Getter to get the current version path - for links
-export const LinkActiveVersion = (props) => (
-	<Link { ...props } to={`${getActiveVersionPath()}/${props.to}`} />
-);
 
 // Square Card Link
 export const CardLink = ({ title, description, href, image_src, is_lean }) => (
@@ -32,12 +21,6 @@ export const CardLink = ({ title, description, href, image_src, is_lean }) => (
 	</a>
 );
 
-// External Video from Github
-export const VideoExternal = ({ path, noplay }) => (
-	<video controls={true} allowFullScreen={true} autoPlay={!noplay} loop={!noplay} muted={!noplay}>
-		<source src={`${ process.env.NODE_ENV === 'development' ? "/videos" : "https://github.com/nanos-world/docs/raw/master/external/videos"}${path}`} />
-	</video>
-)
 
 // Rectangular Reference Link
 export const ReferenceLink = ({ children, href }) => (

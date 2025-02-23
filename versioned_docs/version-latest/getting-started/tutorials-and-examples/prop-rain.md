@@ -6,8 +6,6 @@ description: >-
 tags: [tutorial-example, scripting]
 ---
 
-import { VideoExternal } from '@site/src/components/_nanos';
-
 
 How to create a rain effect with Props (boxes) falling from sky once a Character enters a Trigger.
 

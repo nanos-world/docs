@@ -2,6 +2,7 @@ import Layout from '@theme/Layout';
 import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
+import Markdown from 'react-markdown'
 
 const Changelog = () => {
 	const [changelogs, setChangelogs] = useState([])
@@ -19,6 +20,14 @@ const Changelog = () => {
 	return (
 		<Layout title="Changelog" description="nanos world Changelog">
 			<div className={clsx('container', 'margin-vert--lg', styles.header)}>
+				<h1>
+					📃 changelog
+				</h1>
+				<p>
+					You can find all updates and changes to the game here.
+				</p>
+			</div>
+			<div className={clsx('container', 'margin-vert--lg', styles.header)}>
 				{changelogs.length > 0 ? (
 					changelogs.map(changelog => (
 						<div key={changelog.name} className={clsx("update", styles.update)}>
@@ -31,7 +40,7 @@ const Changelog = () => {
 								{new Date(changelog.releasedAt).toLocaleString()}
 							</span>
 							<div className={clsx("description", styles.description)}>
-								{changelog.description.replace(/\*|`/g, "")}
+								<Markdown>{ changelog.description }</Markdown>
 							</div>
 						</div>
 					))

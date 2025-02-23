@@ -5,7 +5,6 @@ authors: gtnardy
 tags: [updates]
 ---
 
-import { VideoExternal } from '@site/src/components/_nanos';
 
 One of our main focus for nanos world is having fun, and we believe that the small details are the big support for the experience to be complete. In the past weeks, we've been working on improving and adding small features to common actions such as firing, picking up objects and even how you perceive them happening. Here's the highlights!
 

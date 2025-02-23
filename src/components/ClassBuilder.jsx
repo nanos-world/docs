@@ -8,7 +8,8 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
-import { AuthorityType, NativeType, BasicType, Classes, Structs, Enums, AssetPath, LinkActiveVersion, getActiveVersionPath, ReferenceLink } from '@site/src/components/_nanos';
+import { AuthorityType, NativeType, BasicType, Classes, Structs, Enums, AssetPath, ReferenceLink } from '@site/src/components/_nanos';
+import { getActiveVersionPath, LinkActiveVersion } from '@site/src/components/Utils.jsx';
 import { FunctionToolTip, StaticFunctionToolTip, InlineFunctionToolTip, TablePropertiesToolTip, EventToolTip } from '@site/src/components/Tooltips';
 import { Details } from '@site/src/components/MarkdownUtils.mdx';
 

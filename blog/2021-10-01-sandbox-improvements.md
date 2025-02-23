@@ -5,7 +5,6 @@ authors: gtnardy
 tags: [updates]
 ---
 
-import { VideoExternal } from '@site/src/components/_nanos';
 
 Lot's of improvements on Sandbox game-mode has been made in the past month, here's the highlights!
 

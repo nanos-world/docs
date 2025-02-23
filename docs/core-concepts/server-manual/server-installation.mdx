@@ -33,7 +33,7 @@ On Windows, you have **three** options for downloading nanos world server:
 
 1. Use the executable (*.exe*) already located at `nanos-world/Server/NanosWorldServer.exe` (if you downloaded the base game).
 2. Or download **nanos world™ Dedicated Server** tool from Steam Client.
-3. Use [SteamCMD](#steamcmd).
+3. Use [SteamCMD](#downloading-using-steamcmd).
 
 
 ## Linux
@@ -78,7 +78,7 @@ Steam>
 #### 2. You can optionally define an installation folder to install nanos world server:
 
 ```bash
-Steam> force_install_dir c:/nanos-world-server/
+Steam> force_install_dir C:/nanos-world-server/
 ```
 
 #### 3. The next step is to login on SteamCMD, you can login anonymously with:
@@ -122,14 +122,14 @@ An easier way to install or update nanos world server is using an one-liner comm
   <TabItem value="windows">
 
 ```shell
-steamcmd.exe +login anonymous +app_update 1936830 validate +quit
+steamcmd.exe +force_install_dir C:/nanos-world-server +login anonymous +app_update 1936830 validate +quit
 ```
 
   </TabItem>
   <TabItem value="linux">
 
 ```shell
-steamcmd +login anonymous +app_update 1936830 validate +quit
+steamcmd +force_install_dir ~/nanos-world-server +login anonymous +app_update 1936830 validate +quit
 ```
 
   </TabItem>
@@ -146,14 +146,14 @@ or on bleeding-edge:
   <TabItem value="windows">
 
 ```shell
-steamcmd.exe +login anonymous +app_update 1936830 -beta bleeding-edge validate +quit
+steamcmd.exe +force_install_dir C:/nanos-world-server +login anonymous +app_update 1936830 -beta bleeding-edge validate +quit
 ```
 
   </TabItem>
   <TabItem value="linux">
 
 ```shell
-steamcmd +login anonymous +app_update "1936830 -beta bleeding-edge" validate +quit
+steamcmd +force_install_dir ~/nanos-world-server +login anonymous +app_update "1936830 -beta bleeding-edge" validate +quit
 ```
 
   </TabItem>

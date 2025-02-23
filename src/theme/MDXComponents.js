@@ -3,7 +3,8 @@ import MDXComponents from '@theme-original/MDXComponents';
 
 // Import custom elements
 import { HeaderDeclaration, ConstructorDeclaration, FunctionsDeclaration, StaticFunctionsDeclaration, ExamplesDeclaration, EventsDeclaration, PropertiesDeclaration, StaticPropertiesDeclaration, APISourceURL } from '@site/src/components/ClassBuilder';
-import { Classes, Structs, BasicType, AuthorityType, UtilityClasses, ReferenceLink, Enums, MethodReference, EventReference, CardLink, AssetPath, VideoExternal } from '@site/src/components/_nanos';
+import { Classes, Structs, BasicType, AuthorityType, UtilityClasses, ReferenceLink, Enums, MethodReference, EventReference, CardLink, AssetPath, MediaLegend, NativeType, StaticClasses } from '@site/src/components/_nanos';
+import { VideoExternal } from '@site/src/components/Utils';
 
 export default {
 	// Re-use the default mapping
@@ -30,5 +31,8 @@ export default {
 	EventReference,
 	CardLink,
 	AssetPath,
-	VideoExternal
+	VideoExternal,
+	MediaLegend,
+	NativeType,
+	StaticClasses
 };

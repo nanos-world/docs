@@ -6,8 +6,6 @@ tags: [updates]
 ---
 
 
-import { VideoExternal } from '@site/src/components/_nanos';
-
 New Classes, Unreal Engine 5 Experiments and Scripting Improvements!
 
 <!--truncate-->
