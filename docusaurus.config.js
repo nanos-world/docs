@@ -66,19 +66,38 @@ module.exports = {
           position: 'left'
         },
         {
+          to: '/roadmap/',
+          label: 'roadmap',
+          position: 'left'
+        },
+        {
           to: '/feedback/',
           label: 'feedback',
           position: 'left'
         },
         {
-          href: 'https://issues.nanos.world',
-          label: 'bugs',
-          position: 'left'
+          href: 'https://auth.nanos.io',
+          position: 'right',
+          className: 'header-account-link',
+          'aria-label': 'Account',
         },
         {
-          href: 'https://auth.nanos.io',
-          label: 'account',
-          position: 'left'
+          href: 'https://discord.nanos.world',
+          position: 'right',
+          className: 'header-discord-link',
+          'aria-label': 'Discord',
+        },
+        {
+          href: 'https://github.com/nanos-world',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
+        },
+        {
+          href: 'https://issues.nanos.world',
+          position: 'right',
+          className: 'header-bugs-link',
+          'aria-label': 'Bugs',
         },
         {
           type: 'docsVersionDropdown',
@@ -93,18 +112,6 @@ module.exports = {
               label: 'Help Us Translate',
             },
           ],
-        },
-        {
-          href: 'https://discord.nanos.world',
-          position: 'right',
-          className: 'header-discord-link',
-          'aria-label': 'Discord',
-        },
-        {
-          href: 'https://github.com/nanos-world',
-          position: 'right',
-          className: 'header-github-link',
-          'aria-label': 'GitHub repository',
         },
         {
           type: 'search',
@@ -174,7 +181,7 @@ module.exports = {
             }
             return `https://github.com/nanos-world/docs/edit/master/${blogDirPath}/${blogPath}`;
           },
-          blogTitle: 'nanos world news!',
+          blogTitle: 'news',
           blogDescription: 'All official news from nanos world!',
           blogSidebarTitle: 'nanos world news',
           blogSidebarCount: 'ALL',
@@ -197,6 +204,14 @@ module.exports = {
       src: 'https://pac.nanos.io/js/script.js',
       async: true,
       "data-domain": "docs.nanos.world"
-    }
+    },
+	{
+		src: 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js',
+		async: true,
+	},
+	{
+		src: '/js/Kofi.js',
+		async: true,
+	}
   ]
 };
