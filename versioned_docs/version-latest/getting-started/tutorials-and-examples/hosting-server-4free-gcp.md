@@ -17,7 +17,7 @@ We are not responsible for charges or improper configurations in your Google Clo
 
 :::info
 
-The following guide was based and had several excerpts taken from [https://linuxhint.com/setup\_google\_cloud\_server](https://linuxhint.com/setup_google_cloud_server).
+The following guide was based and had several excerpts taken from [https://linuxhint.com/setup\_google\_cloud\_server](https://web.archive.org/web/20220702175847/https://linuxhint.com/setup_google_cloud_server/).
 
 :::
 
