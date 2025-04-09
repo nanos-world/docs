@@ -155,7 +155,7 @@ module.exports = {
             if (locale !== 'en') {
               return `https://crowdin.com/project/nanos-world-docs/${locale}`;
             }
-			// forces bleeding-edge version
+            // forces bleeding-edge version
             return `https://github.com/nanos-world/docs/edit/master/docs/${docPath}`;
           },
           showLastUpdateAuthor: true,
@@ -170,10 +170,10 @@ module.exports = {
           },
         },
         blog: {
-		  feedOptions: {
-			type: 'json',
-			limit: 2
-		  },
+          feedOptions: {
+            type: 'json',
+            limit: 2
+          },
           showReadingTime: true,
           editUrl: ({ locale, blogDirPath, blogPath }) => {
             if (locale !== 'en') {
@@ -205,13 +205,17 @@ module.exports = {
       async: true,
       "data-domain": "docs.nanos.world"
     },
-	{
-		src: 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js',
-		async: true,
-	},
-	{
-		src: '/js/Kofi.js',
-		async: true,
-	}
+    {
+      src: 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js',
+      async: true,
+    },
+    {
+      src: '/js/Kofi.js',
+      async: true,
+    },
+    {
+      src: '/js/img-comparison-slider.js',
+      async: true,
+    }
   ]
 };
