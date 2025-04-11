@@ -60,7 +60,7 @@ const Roadmap = () => {
 	const [item, setItem] = useState([]);
 
 	const Item = ({ title, image, video, description, labels, external_link, external_link_title }) => (
-		<div key={title} className={clsx("item", styles.item)} onClick={function() {
+		<button key={title} className={clsx("item", styles.item)} onClick={function() {
 				document.getElementById("popup").classList.add(styles["popup-container-visible"]);
 				setItem({ title, image, video, description, labels, external_link, external_link_title });
 			}}>
@@ -72,15 +72,15 @@ const Roadmap = () => {
 					{ GetLabels(labels) }
 				</div>
 			</div>
-		</div>
+		</button>
 	);
 
 	return (
 		<>
 			<div id="popup" className={clsx("popup-container", styles["popup-container"])}>
-				<div className={clsx("popup-background", styles["popup-background"])} onClick={ function() {
+				<button className={clsx("popup-background", styles["popup-background"])} onClick={ function() {
 					document.getElementById("popup").classList.remove(styles["popup-container-visible"]);
-				} }></div>
+				} }></button>
 				<div className={clsx("popup-content", styles["popup-content"])}>
 					{ item.image ? <ImageExternal className={clsx("popup-image", styles["popup-image"])} path={item.image} /> : null }
 					{ item.video ? <VideoExternal controls={false} path={item.video} noplay={false} className={clsx("popup-image", styles["popup-image"])} /> : null }
@@ -92,9 +92,9 @@ const Roadmap = () => {
 					</span>
 					<span id="popup-labels" className={clsx("popup-labels", styles["popup-labels"])}>{ GetLabels(item.labels) }</span>
 				</div>
-				<div className={clsx("popup-close", styles["popup-close"])} onClick={ function() {
+				<button className={clsx("popup-close", styles["popup-close"])} onClick={ function() {
 					document.getElementById("popup").classList.remove(styles["popup-container-visible"]);
-				} }>x</div>
+				} }>x</button>
 			</div>
 			<Layout title="Roadmap" description="nanos world Roadmap">
 				<div className={clsx('container', 'margin-vert--lg', styles.header)}>
