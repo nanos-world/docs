@@ -211,11 +211,11 @@ module.exports = {
     },
     {
       src: '/js/Kofi.js',
-      async: true,
+      async: false,
     },
     {
       src: '/js/img-comparison-slider.js',
-      async: true,
+      async: false,
     }
   ]
 };
