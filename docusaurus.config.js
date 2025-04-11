@@ -207,7 +207,7 @@ module.exports = {
     },
     {
       src: 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js',
-      async: true,
+      async: false,
     },
     {
       src: '/js/Kofi.js',
