@@ -1,6 +1,5 @@
 import { useActiveVersion } from '@docusaurus/plugin-content-docs/client';
 import { Link } from "react-router-dom";
-import { MediaLegend } from '@site/src/components/_nanos';
 import ThemedImage from '@theme/ThemedImage'
 
 export const GetExternalPath = () => {
@@ -29,6 +28,13 @@ export const getActiveVersionPath = () => {
 export const LinkActiveVersion = (props) => (
 	<Link { ...props } to={`${getActiveVersionPath()}/${props.to}`} />
 );
+
+// Media Legend
+export const MediaLegend = ({ children }) => (
+	<p className="media-legend">
+		{ children }
+	</p>
+)
 
 export const ComparisonSlider = ({ img_left, label_left, img_right, label_right, legend, max_width = "100%", enable_zoom = true, zoom_direction = "top left", caption_on_bottom = true }) => (
 	<>

@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import Tippy from '@tippyjs/react';
-import { VideoExternal } from '@site/src/components/Utils';
-import { ImageExternal } from '../../components/Utils';
+import { VideoExternal, ImageExternal } from '@site/src/components/Utils';
 
 
 const Category = ({ title, children, description }) => (
