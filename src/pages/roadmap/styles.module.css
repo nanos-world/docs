@@ -137,6 +137,7 @@ html[data-theme='light'] .label-text {
 	display: block;
 	font-weight: bold;
 	font-size: 0.9em;
+	text-align: left;
 }
 
 .popup-image {
