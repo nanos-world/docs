@@ -106,6 +106,11 @@ export function GetParameterDescription(parameter_data) {
 		<span style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: parameter_data.description ? parameter_data.description : "<span class='subtle-description'>No description provided</span>" }}></span>
 		<> </>
 		{ parameter_data.type == "function" && parameter_data.function_parameters ? <InlineFunctionNameDeclaration function_parameters={parameter_data.function_parameters} /> : "" }
+		<> </>
+		{ parameter_data.type == "table" ? <>
+			{ parameter_data.table_properties ? <InlineTablePropertiesDeclaration table_properties={parameter_data.table_properties} /> : null }
+			{ parameter_data.table_properties_custom ? <InlineTablePropertiesDeclaration table_properties_custom={parameter_data.table_properties_custom} /> : null }
+		</> : "" }
 	</>;
 }
 
