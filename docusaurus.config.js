@@ -76,12 +76,6 @@ module.exports = {
           position: 'left'
         },
         {
-          href: 'https://auth.nanos.io',
-          position: 'right',
-          className: 'header-account-link',
-          'aria-label': 'Account',
-        },
-        {
           href: 'https://discord.nanos.world',
           position: 'right',
           className: 'header-discord-link',

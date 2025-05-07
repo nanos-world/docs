@@ -44,6 +44,11 @@ Some methods and events in the API are only available on a specific side \(Clien
 - **Methods:** can be called in both **Server** and **Client** side.
 - **Events**: will be triggered in both **Server** and **Client** side.
 
+#### <AuthorityType.BothNetAuthorityFirst />**`Both Sides (Network. Authority First)`**
+
+- **Methods:** *Does only apply to Events*.
+- **Events**: will be triggered in both **Server** and **Client** side. But will be called in the [Network Authority](#network-authority) **Client** first (before sending to the Server). I.e. you don't need to wait for the Server to call it on all the clients, as it will be immediately called on the Client that is the Network Authority of that entity.
+
 
 :::tip
 

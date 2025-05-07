@@ -139,8 +139,9 @@ export const AuthorityType = {
 	AuthorityOnly: () => BaseAuthority("/img/scripting/authority-only.svg", "Authority Only", "This can be only called on the side it was spawned on!"),
 	ServerOnly: () => BaseAuthority("/img/scripting/server-only.svg", "Server Only", "This can be only called on <strong>Server</strong> side!"),
 	ClientOnly: () => BaseAuthority("/img/scripting/client-only.svg", "Client Only", "This can be only called on <strong>Client</strong> side!"),
-	Both: () => BaseAuthority("/img/scripting/both.png", "Both Sides", "This can be called on any side (<strong>Server</strong> or <strong>Client</strong>)!"),
-	NetworkAuthority: () => BaseAuthority("/img/scripting/network-authority.png", "Network Authority", "This can be called on <strong>Server</strong> and on <strong>Client's</strong> current Network Authority of this entity!<br/><br/><strong>TIP</strong>: You can validate if the current Local Player has Network Authority on this entity by calling <code>entity:HasNetworkAuthority()</code>."),
+	Both: () => BaseAuthority("/img/scripting/both.svg", "Both Sides", "This can be called on any side (<strong>Server</strong> or <strong>Client</strong>)!"),
+	BothNetAuthorityFirst: () => BaseAuthority("/img/scripting/both-net-auth-first.svg", "Both Sides (Net. Authority First)", "This can be called on any side (<strong>Server</strong> or <strong>Client</strong>)! But if this event comes from a client action, it will be called on the client side first if the Local Player has <strong>Network Authority</strong>!"),
+	NetworkAuthority: () => BaseAuthority("/img/scripting/network-authority.svg", "Network Authority", "This can be called on <strong>Server</strong> and on <strong>Client's</strong> current Network Authority of this entity!<br/><br/><strong>TIP</strong>: You can validate if the current Local Player has Network Authority on this entity by calling <code>entity:HasNetworkAuthority()</code>."),
 };
 
 // Defines Native Types components

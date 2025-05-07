@@ -194,14 +194,14 @@ svg[class^='iconLanguage'] {
 @media screen and (min-width: 1600px) {
 	/* Center page TODO: only fullscreen */
 	.navbar__inner, .main-wrapper {
-	width: 80%;
-	margin: 0 auto;
+		width: 80%;
+		margin: 0 auto;
 	}
 
 	article,
 	.pagination-nav,
 	.alert.alert--warning:not(.theme-admonition) {
-	margin: 1rem 2rem;
+		margin: 1rem 2rem;
 	}
 }
 
@@ -376,6 +376,13 @@ h3 > .native-type {
 .native-type img {
 	display: flex;
 	pointer-events: none;
+	border-radius: 50%;
+}
+
+.tooltip-header .tooltip-img {
+	border-radius: 50%;
+	width: 42px;
+	font-size: 32px;
 }
 
 .native-type {
@@ -681,10 +688,6 @@ html[data-theme="dark"]
 	text-align: center;
 	font-size: 0.85em;
 	opacity: 0.5;
-}
-
-video + .media-legend {
-	margin-top: -25px;
 }
 
 .subtle-description {

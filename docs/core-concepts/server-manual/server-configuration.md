@@ -57,6 +57,12 @@ You can pass a JPG image URL to `--logo` parameter to download and use a image f
 
 :::
 
+:::note
+
+Server Logo feature is only available for for Dedicated Servers.
+
+:::
+
 
 ## Map & Level
 
