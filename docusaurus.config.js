@@ -195,9 +195,13 @@ module.exports = {
   ],
   scripts: [
     {
-      src: 'https://pac.nanos.io/js/script.js',
-      async: true,
+      src: 'https://plausible.nanos-world.com/js/script.hash.outbound-links.pageview-props.tagged-events.js',
+      defer: true,
       "data-domain": "docs.nanos.world"
+    },
+    {
+      src: '/js/Plausible.js',
+      async: false,
     },
     {
       src: 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js',
