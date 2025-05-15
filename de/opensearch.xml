@@ -4,8 +4,8 @@
   <ShortName>nanos world</ShortName>
   <Description>Search nanos world</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://docs.nanos.world/de/img/favicon.ico</Image>
-  <Url type="text/html" method="get" template="https://docs.nanos.world/de/search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://docs.nanos.world/de/opensearch.xml" />
-  <moz:SearchForm>https://docs.nanos.world/de/</moz:SearchForm>
+  <Image width="16" height="16" type="image/x-icon">https://docs.nanos-world.com/de/img/favicon.ico</Image>
+  <Url type="text/html" method="get" template="https://docs.nanos-world.com/de/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://docs.nanos-world.com/de/opensearch.xml" />
+  <moz:SearchForm>https://docs.nanos-world.com/de/</moz:SearchForm>
 </OpenSearchDescription>
