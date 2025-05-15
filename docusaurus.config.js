@@ -4,7 +4,7 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
   title: 'nanos world',
   tagline: 'nanos world',
-  url: 'https://docs.nanos.world/',
+  url: 'https://docs.nanos-world.com/',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -197,7 +197,7 @@ module.exports = {
     {
       src: 'https://plausible.nanos-world.com/js/script.hash.outbound-links.pageview-props.tagged-events.js',
       defer: true,
-      "data-domain": "docs.nanos.world"
+      "data-domain": "docs.nanos-world.com"
     },
     {
       src: '/js/Plausible.js',
