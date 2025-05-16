@@ -70,6 +70,7 @@ The Player assigned is automatically calculated by the server and takes some thi
 * If the Character is **handling** a <Classes.Pickable />
 * If the Character is **driving** a <Classes.Vehicle />
 * If the Character has just **shot** an entity (e.g. <Classes.Prop />, <Classes.Weapon />, <Classes.Vehicle />, etc)
+* If the Character has just **roamed** a <Classes.Character /> with a Vehicle
 
 In all this cases, the Player will be automatically assigned to be the **Network Authority** of that Object.
 
@@ -107,27 +108,30 @@ We've added a new option in the settings to **Draw Network Debug** information i
 ![](/img/docs/debug-visualizer.webp)
 
 
-#### Entity Square Colors Meaning
+#### Entity Square ■ Colors Meaning
 
 The Square in the entities represent the state in the Network Authority and it's health.
 
-| Color | Meaning |
-| :--- | :--- |
-| **<span style={{"color": "#306CCE"}}>BLUE</span>** | You **are the current Network Authority** of that entity. <br/>You are sharing sync data to the other players. |
-| **<span style={{"color": "#30c7ce"}}>CYAN</span>** | You **are the current Network Authority** and the entity is sleeping. <br/>You are sharing sync data to the other players. |
-| **<span style={{"color": "#AAAAAA"}}>WHITE</span>** | You **are not the Network Authority** and the entity is sleeping or attached. <br/>The current Network Authority is not sending sync data because the entity is sleeping or attached. |
-| **<span style={{"color": "#FF00FF"}}>MAGENTA</span>** | You **are the Authority** of that entity. <br/>The entity was spawned on client side then you are not sending sync data. |
-| **<span style={{"color": "#00A400"}}>GREEN</span>** | You **are not the Network Authority** and the entity is being synced in a **good** cadence (no lag - < 100ms). |
-| **<span style={{"color": "#FFA500"}}>ORANGE</span>** | You **are not the Network Authority** and the entity is being synced in an **ok** cadence (small lag - < 450ms). |
-| **<span style={{"color": "#FF0000"}}>RED</span>** | You **are not the Network Authority** and the entity is being synced in an **bad** cadence (big lag - > 450ms, maybe even with packet loss). |
+|  | Color | Meaning |
+| :--- | :--- | :--- |
+| **<span style={{"color": "#306CCE"}}>■</span>** | **<span style={{"color": "#306CCE"}}>BLUE</span>** | You **are the current Network Authority** of that entity and the entity is sleeping. <br/>You are sharing sync data to the other players. |
+| **<span style={{"color": "#30c7ce"}}>■</span>** | **<span style={{"color": "#30c7ce"}}>CYAN</span>** | You **are the current Network Authority** of that entity and the you are currently transmitting data. <br/>You are sharing sync data to the other players. |
+| **<span style={{"color": "#FF00FF"}}>■</span>** | **<span style={{"color": "#FF00FF"}}>MAGENTA</span>** | You **are the Authority** of that entity. <br/>The entity was spawned on client side then you are not sending sync data. |
+| **<span style={{"color": "#FFFFFF"}}>■</span>** | **WHITE** | You **are not the Network Authority** and the entity is sleeping or attached. <br/>The current Network Authority is not sending sync data because the entity is sleeping or attached. |
+| **<span style={{"color": "#00A400"}}>■</span>** | **<span style={{"color": "#00A400"}}>GREEN</span>** | You **are not the Network Authority** and the entity is being synced in a **perfect** cadence (no lag - less than 2 frames - < 66ms). |
+| **<span style={{"color": "#FFDA03"}}>■</span>** | **<span style={{"color": "#FFDA03"}}>YELLOW</span>** | You **are not the Network Authority** and the entity is being synced in an **good** cadence (small lag - less than 4 frames - < 132ms). |
+| **<span style={{"color": "#FFA500"}}>■</span>** | **<span style={{"color": "#FFA500"}}>ORANGE</span>** | You **are not the Network Authority** and the entity is being synced in an **ok** cadence (average lag - less than 6 frames - < 198ms). |
+| **<span style={{"color": "#FF0000"}}>■</span>** | **<span style={{"color": "#FF0000"}}>RED</span>** | You **are not the Network Authority** and the entity is being synced in an **bad** cadence (big lag - more than 6 frames - > 198ms, maybe even with packet loss). |
+| **<span style={{"color": "#000000"}}>■</span>** | **BLACK** | You **are not the Network Authority** and the entity is skipping packets received from the network, due they are coming in wrong order (cause of bad connection - maybe even with packet loss). |
 
 
-#### Entity Arrow Traces Colors Meaning
+#### Entity Arrow → Traces Colors Meaning
 
 The Arrow Traces in the entities represent the network data received from the server. If you are the network authority you won't see the arrow traces. The arrow points from where the entity is currently in your machine and where it should be accordingly to the network authority.
 
 | Color | Meaning |
 | :--- | :--- |
-| **<span style={{"color": "#00A400"}}>GREEN</span>** | The entity is being synced in a **good** cadence (no lag). |
-| **<span style={{"color": "#FFA500"}}>ORANGE</span>** | The entity is being synced in an **ok** cadence (small lag - < 100ms). |
-| **<span style={{"color": "#FF0000"}}>RED</span>** | The entity is being synced in an **bad** cadence (big lag - > 100ms, maybe even with packet loss). |
+| **<span style={{"color": "#00A400"}}>GREEN</span>** | The entity is receiving packets in a **perfect** cadence (no more than 2 frames delay). |
+| **<span style={{"color": "#FFDA03"}}>YELLOW</span>** | The entity does not receive any packet for more than 2 and less than 4 frames. |
+| **<span style={{"color": "#FFA500"}}>ORANGE</span>** | The entity does not receive any packet for more than 4 and less than 6 frames. |
+| **<span style={{"color": "#FF0000"}}>RED</span>** | The entity does not receive any packet for more than 6 frames. |
