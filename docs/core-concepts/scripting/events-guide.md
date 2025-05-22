@@ -18,7 +18,7 @@ The most basic event to bring an example is the **`Spawn`**. Every time an entit
 
 ### Subscribing for Class Events
 
-Registering for events is very easy and straightforward using the method <MethodReference type="Class" class_name="Entity" method="Subscribe" is_base />, let's say we want to know where a Player has joined the server:
+Registering for events is very easy and straightforward using the method <MethodReference type="Class" class_name="Entity" method="Subscribe" is_base />, let's say we want to know when a Player has joined the server:
 
 ```lua showLineNumbers
 Player.Subscribe("Spawn", function(player)
