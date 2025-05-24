@@ -111,7 +111,7 @@ There is a special **connection_string** for SQLite: `:memory:`. This will creat
 
 | Parameter | Default Value | Description |
 | :--- | :--- | :--- |
-| **`db/dbname`** |  | The database name |
+| **`db/dbname`** |  | The database name (if the *.db file doesn't exist, it will be automatically created)  |
 | **`timeout`** | `0` | set sqlite busy timeout (in seconds) ([link](http://www.sqlite.org/c3ref/busy_timeout.html)) |
 | **`readonly`** | `false` | open database in read-only mode instead of the default read-write (note that the database file must already exist in this case, see the [documentation](https://www.sqlite.org/c3ref/open.html)) |
 | **`synchronous`** | | set the pragma synchronous flag ([link](http://www.sqlite.org/pragma.html#pragma_synchronous)) |
