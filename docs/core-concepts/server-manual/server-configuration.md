@@ -36,7 +36,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | **`port`** | Server main Port and HTTP Port (UDP/TCP) |
 | **`query_port`** | Server query Port (UDP) |
 | **`announce`** | Whether to announce or not in the Server List |
-| **`tick_rate`** | Server Tick in ms. We recommend leaving it 33 |
+| **`max_tick_rate`** | Server Tick in Hz. How much the server will tick per second. We recommend leaving it 30 |
 | **`log_level`** | Which Log level to output |
 | **`game_mode`** | [game-mode](/docs/core-concepts/packages/packages-guide.md#game-mode) package to load -  you can only load one game-mode at once. |
 | **`loading_screen`** | [loading-screen](/docs/core-concepts/packages/loading-screen.md) package to load - you can only load one loading-screen at once. |
