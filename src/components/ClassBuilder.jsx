@@ -11,7 +11,7 @@ import 'tippy.js/dist/tippy.css';
 import { AuthorityType, NativeType, BasicType, Classes, Structs, Enums, AssetPath, ReferenceLink } from '@site/src/components/_nanos';
 import { getActiveVersionPath, LinkActiveVersion } from '@site/src/components/Utils.jsx';
 import { FunctionToolTip, StaticFunctionToolTip, InlineFunctionToolTip, TablePropertiesToolTip, EventToolTip } from '@site/src/components/Tooltips';
-import { Details } from '@site/src/components/MarkdownUtils.mdx';
+import Details from '@theme/Details';
 
 import APIData from '@site/src/components/APIData';
 

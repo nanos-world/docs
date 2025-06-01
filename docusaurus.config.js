@@ -114,8 +114,8 @@ module.exports = {
       ],
     },
     prism: {
-      theme: require('prism-react-renderer/themes/vsLight'),
-      darkTheme: require('prism-react-renderer/themes/vsDark'),
+      theme: require('prism-react-renderer').themes.vsLight,
+      darkTheme: require('prism-react-renderer').themes.vsDark,
       additionalLanguages: [
         'lua',
         'toml',
