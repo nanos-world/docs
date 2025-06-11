@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "@crowdin/cli": "^4.7.0",
-    "@docusaurus/core": "^3.8.0",
-    "@docusaurus/preset-classic": "^3.8.0",
+    "@docusaurus/core": "^3.8.1",
+    "@docusaurus/preset-classic": "^3.8.1",
     "@saucelabs/theme-github-codeblock": "^0.3.0",
     "@tippyjs/react": "^4.2.6",
     "docusaurus-plugin-image-zoom": "^3.0.1",
@@ -27,7 +27,8 @@
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-markdown": "^10.1.0"
+    "react-markdown": "^10.1.0",
+    "webpack": "^5.95.0"
   },
   "browserslist": {
     "production": [

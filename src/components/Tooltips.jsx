@@ -77,19 +77,13 @@ export const InlineFunctionToolTip = ({ function_parameters }) => (
 	</>
 );
 
-
-export function GetReturnTableDescriptionList(table_properties) {
-	const table_return_list = table_properties.map((property) => " " + property.name + ": " + property.type);
-	return "in the format <code>{ " + table_return_list + " }</code>";
-}
-
 export const TablePropertiesToolTip = ({ table_properties, table_properties_custom }) => (
 	<>
 		<CodeBlock className="language-lua">
 			{`{`}
 			{
 				table_properties ?
-					table_properties.map((property) => `\n\t${property.name}: ${property.type}`)
+					table_properties.map((property) => `\n\t["${property.name}"] = ${property.type},${property.description ? ` -- ${property.description}` : ""}`).join('')
 				: table_properties_custom
 			}
 			{`\n}`}
