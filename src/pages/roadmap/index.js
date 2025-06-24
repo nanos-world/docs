@@ -463,7 +463,7 @@ const Roadmap = () => {
 							image="/roadmap/dimensions.webp"
 							description="We've introduced the Dimension system, allowing scripters to create and manage multiple isolated game spaces within the same server. Players and entities in different dimensions won't be able to interact with each other. This is perfect for instancing, private areas, or parallel worlds."
 							labels={ ["released", "scripting", "community"] }
-							external_link={"https://docs.nanos.world/docs/core-concepts/scripting/dimensions"}
+							external_link={"/docs/core-concepts/scripting/dimensions"}
 							external_link_title={"Dimensions"}
 						/>
 						<Item
@@ -487,14 +487,14 @@ const Roadmap = () => {
 							image="/roadmap/menu.webp"
 							description="We've completely reworked the game's menus and UI as part of a full rebrand. Every interface has been redesigned to be more modern, intuitive, and visually appealing. This update improves navigation, enhances the overall user experience, and aligns with our vision for the game. The new UI has set a fresh foundation for future updates and features."
 							labels={ ["released", "ui"] }
-							external_link={"https://docs.nanos.world/blog/june-2022"}
+							external_link={"/blog/june-2022"}
 							external_link_title={"June 2022 News Blog"}
 						/>
 						<Item
 							title="🫂 P2P Servers"
 							image="/roadmap/p2p.webp"
 							description="We've integrated Steam's P2P (Peer-to-Peer) servers, allowing players to host their own servers without the need for a dedicated server or to open ports in the router."
-							external_link={"https://docs.nanos.world/blog/may-2022#p2p-servers"}
+							external_link={"/blog/may-2022#p2p-servers"}
 							external_link_title={"May 2022 News Blog"}
 							labels={ ["released", "hosting"] }
 						/>
@@ -593,7 +593,7 @@ const Roadmap = () => {
 							title="🌐 New Web Page"
 							image="/roadmap/webpage.webp"
 							description="We've launched a new website for nanos world, featuring a fresh design, improved navigation, and updated content marketing the game."
-							external_link="https://nanos.world"
+							external_link="https://nanos-world.com"
 							external_link_title="nanos world"
 							labels={ ["released", "scripting"] }
 						/>

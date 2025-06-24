@@ -62,18 +62,29 @@ Always use `progress / progress_total` for getting the current `%` percentage, a
 
 ### Player Information
 
-Also, it is possible to fetch Player’s information by accessing a global variable called LoadingScreen:
+Also, it is possible to fetch Player’s information by accessing a global variable called `LoadingScreen`:
 
 ```javascript
 var LoadingScreen = {
-  server_ip,
-  server_name,
-  server_description,
-  server_port,
-  player_nanos_id,
-  player_nanos_username
-};
+	server: {
+		ip,
+		port,
+		name,
+		description,
+	},
+	player: {
+		nanos_id,
+		nanos_username,
+		steam_id,
+	}
+}
 ```
+
+:::tip
+
+The `LoadingScreen` var is only available a few frames after the Loading Screen browser is created.
+
+:::
 
 
 ### Stop Menu Music

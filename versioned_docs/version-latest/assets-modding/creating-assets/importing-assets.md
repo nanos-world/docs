@@ -260,6 +260,10 @@ Most of the problems can be easily fixed by trying the following steps:
 
 > If you are trying to load a map and specified that in the Project Settings to *cook only that map*, probably it generated one or more folders inside your `Saved/Cooked/` folder. This means that **ALL** these folders and files are needed to make the map to load. So you **MUST** create one Asset Pack for each folder in there. (of course you shouldn't create an Asset Pack for the NanosWorld/ folder).
 
+#### 5. If you use Git, make sure LFS was enabled
+
+> If you use Git (with LFS) to upload your cooked assets and clone them in a VPS (*not a great solution*), make sure you also enabled [LFS](https://git-lfs.com/) in the VPS machine, so it clones the LFS assets locally correctly.
+
 
 ### Common Problems
 

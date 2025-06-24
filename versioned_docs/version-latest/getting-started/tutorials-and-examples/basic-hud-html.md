@@ -213,13 +213,13 @@ function UpdateLocalCharacter(character)
     local current_picked_item = character:GetPicked()
 
     -- If so, update the UI
-    if (current_picked_item and current_picked_item:GetType() == "Weapon") then
+    if (current_picked_item and current_picked_item:IsA(Weapon)) then
         UpdateAmmo(true, current_picked_item:GetAmmoClip(), current_picked_item:GetAmmoBag())
     end
 
     -- Sets on character an event to update his grabbing weapon (to show ammo on UI)
     character:Subscribe("PickUp", function(charac, object)
-        if (object:GetType() == "Weapon") then
+        if (object:IsA(Weapon)) then
             UpdateAmmo(true, object:GetAmmoClip(), object:GetAmmoBag())
         end
     end)

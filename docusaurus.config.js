@@ -46,7 +46,7 @@ module.exports = {
       logo: {
         alt: 'nanos world',
         src: 'img/nanos-world.png',
-        href: 'https://nanos.world/'
+        href: 'https://nanos-world.com/'
       },
       items: [
         {
@@ -76,7 +76,7 @@ module.exports = {
           position: 'left'
         },
         {
-          href: 'https://discord.nanos.world',
+          href: 'https://discord.nanos-world.com',
           position: 'right',
           className: 'header-discord-link',
           'aria-label': 'Discord',
@@ -88,7 +88,7 @@ module.exports = {
           'aria-label': 'GitHub repository',
         },
         {
-          href: 'https://issues.nanos.world',
+          href: 'https://issues.nanos-world.com',
           position: 'right',
           className: 'header-bugs-link',
           'aria-label': 'Bugs',
@@ -159,7 +159,7 @@ module.exports = {
               label: 'bleeding-edge 🩸',
             },
             latest: {
-              label: 'latest - a1.73.x ⚖️',
+              label: 'latest - a1.80.x ⚖️',
             }
           },
         },

@@ -53,7 +53,7 @@ The main purpose is fun and engagement, but to make it more fun, we will create 
 
 - **Discord Role**: Winners will receive an exclusive Discord role ("2023 game-mode contest"), allowing them to flaunt their victory!
 - **In-Game Recognition**: The winner(s)'s name(s) and game-mode will be featured permanently in the nanos world's Hall of Fame page!
-- **Community Spotlight**: Winners will also be featured in a publication on https://docs.nanos.world/.
+- **Community Spotlight**: Winners will also be featured in a publication on https://docs.nanos-world.com/.
 - **Game Mode Highlight**: The game-mode will get a special highlight on Vault showing it was one of the winners of the Halloween contest!
 
 Get started to dive into nanos world™ and let your creativity shine!

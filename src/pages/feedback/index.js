@@ -43,7 +43,7 @@ const Feedback = () => {
 				<p>
 					Welcome to the official nanos world Feedback Hub!
 					<br />
-					You can also check out our standalone <a href="https://feedback.nanos.world" target="_blank">Ideas</a> page, with all ideas accepted into the game.
+					You can also check out our standalone <a href="https://feedback.nanos-world.com" target="_blank">Ideas</a> page, with all ideas accepted into the game.
 				</p>
 			</div>
 			<CannyInternal />

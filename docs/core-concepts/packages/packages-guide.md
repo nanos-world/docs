@@ -167,7 +167,7 @@ The values defined can be accessed through the method [Server.GetCustomSettings(
 
 Maps can define Custom Data in the `[custom_data]` section.
 
-The values defined are loaded when this Map Package is loaded and can be accessed through the method [Server.GetMapConfig()](https://docs.nanos.world/docs/next/scripting-reference/static-classes/server#static-function-getmapconfig).
+The values defined are loaded when this Map Package is loaded and can be accessed through the method [Server.GetMapConfig()](/docs/next/scripting-reference/static-classes/server#static-function-getmapconfig).
 
 #### Usage Example
 

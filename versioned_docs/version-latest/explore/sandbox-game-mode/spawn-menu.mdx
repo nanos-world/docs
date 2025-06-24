@@ -172,9 +172,8 @@ It is possible to add custom tabs to the Spawn Menu, for that just call this **c
 ```lua
 ---@param id string                Unique ID used to identify the tab
 ---@param name string              Label of the tab
----@param image_active string      Image path when the tab is selected
----@param image_inactive string    Image path when the tab is not selected
-function SpawnMenu.AddTab(id, name, image_active, image_inactive)
+---@param image_active string      Image path when the tab
+function SpawnMenu.AddTab(id, name, image_active)
 ```
 
 Example:
@@ -185,8 +184,7 @@ Package.Subscribe("Load", function()
     SpawnMenu.AddTab(
         "consumables",
         "consumables",
-        "package://your-package/food.png",
-        "package://your-package/food_inactive.png"
+        "package://your-package/food.png"
     )
 end)
 ```
@@ -210,9 +208,8 @@ It is possible to add custom categories to the Spawn Menu tabs, for that just ca
 ---@param tab_id string                Tab ID
 ---@param id string                    Unique ID used to identify the category
 ---@param label string                 Label of the tab
----@param image_active string          Image path when the category is selected
----@param image_inactive string        Image path when the category is not selected
-function SpawnMenu.AddCategory(tab_id, id, label, image_active, image_inactive)
+---@param image_active string          Image path when the category
+function SpawnMenu.AddCategory(tab_id, id, label, image_active)
 ```
 
 Example:
@@ -224,8 +221,7 @@ Package.Subscribe("Load", function()
         "props",
         "low-poly",
         "low poly",
-        "package://your-package/low-poly.png",
-        "package://your-package/low-poly_inactive.png"
+        "package://your-package/low-poly.png"
     )
 
     -- Adds a new category to Weapons tab
@@ -233,8 +229,7 @@ Package.Subscribe("Load", function()
         "weapons",
         "world-war",
         "world war",
-        "package://your-package/ww.png",
-        "package://your-package/ww_inactive.png"
+        "package://your-package/ww.png"
     )
 end)
 ```
