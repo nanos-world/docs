@@ -106,7 +106,7 @@ Make sure you configure your server's Config.toml as `dedicated_server = true`.
 :::
 
 
-After creating your loading-screen package, you will need to configure your server to load it in your [Config.toml](/core-concepts/server-manual/server-configuration.md#server-configuration-file). Just set the setting `loading_screen` to your Package's folder name.
+After creating your loading-screen package, you will need to configure your server to load it in your [Config.toml](/core-concepts/server-manual/server-configuration.mdx#server-configuration-file). Just set the setting `loading_screen` to your Package's folder name.
 
 ```toml title="Server/Config.toml"
 # loading-screen package to load (the loading screen will be displayed when players join your server)
