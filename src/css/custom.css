@@ -185,6 +185,26 @@ span[class^='codeLineNumber'] {
 	line-height: 1.6;
 }
 
+pre.prism-code.language-shell code span.token-line::before,
+pre.prism-code.language-steamcmd code span.token-line::before {
+	color: #4d7a45;
+	margin-right: 1em;
+	user-select: none;
+}
+
+pre.prism-code.language-steamcmd code span.token-line::before {
+	content: "Steam>";
+}
+
+pre.prism-code.language-shell code span.token-line::before {
+	content: "$";
+}
+
+html[data-theme='dark'] pre.prism-code.language-shell code span.token-line::before,
+html[data-theme='dark'] pre.prism-code.language-steamcmd code span.token-line::before {
+	color: #6a9955;
+}
+
 /* Disable Language Icon */
 svg[class^='iconLanguage'] {
 	display: none;

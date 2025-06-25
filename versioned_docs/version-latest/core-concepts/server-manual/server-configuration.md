@@ -5,6 +5,9 @@ sidebar_position: 2
 tags: [hosting]
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 
 All you need to know to Configure your server!
 
@@ -148,23 +151,49 @@ It is possible to override the Server Configuration with Command Line Parameters
 
 With Command Line Parameters and [Command Line Interface (CLI)](/core-concepts/server-manual/command-line-interface.mdx), it is also possible to automate the full server installation, here's an example:
 
-```shell title="Shell/Linux"
-# Installs/Updates the server through SteamCMD
-steamcmd +force_install_dir /home/nanos-world-server +login anonymous +app_update "1936830 -beta bleeding-edge" validate +quit
+<Tabs groupId="operating-systems"
+	values={[
+		{label: 'Windows', value: 'windows'},
+		{label: 'Linux', value: 'linux'},
+	]}>
+	<TabItem value="windows">
 
-# Installs all needed Packages (this will install needed Assets as well)
+Installs all needed Packages (this will install needed Assets as well), then starts the server with all configs set:
+
+```shell
+./NanosWorldServer.exe --cli install package sandbox battlefield-kill-ui ts-fireworks-tools
+```
+```shell
+./NanosWorldServer.exe --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/vnB8CB5.jpg"
+```
+
+Or, just start the server passing with all configs set and auto downloads the packages and assets if needed:
+
+```shell
+./NanosWorldServer.exe --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download 1 --logo "https://i.imgur.com/vnB8CB5.jpg"
+```
+
+	</TabItem>
+	<TabItem value="linux">
+
+Installs all needed Packages (this will install needed Assets as well), then starts the server with all configs set:
+
+```shell
 ./NanosWorldServer.sh --cli install package sandbox battlefield-kill-ui ts-fireworks-tools
-
-# Starts the server with all configs set
+```
+```shell
 ./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/vnB8CB5.jpg"
 ```
 
-Another shorter example:
+Or, just start the server passing with all configs set and auto downloads the packages and assets if needed:
 
-```shell title="Shell/Linux"
-# Starts the server with all configs set and auto downloads the packages and assets if needed
+```shell
 ./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "nanos-world::TestingMap" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download 1 --logo "https://i.imgur.com/vnB8CB5.jpg"
 ```
+
+	</TabItem>
+</Tabs>
+
 
 ## Common Console Messages and Errors
 
