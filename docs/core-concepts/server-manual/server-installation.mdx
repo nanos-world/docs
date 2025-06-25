@@ -55,11 +55,11 @@ You can see a community created page with instructions on how to install the ser
 On Linux, the only way to download the server is through [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_SteamCMD). If you are on Ubuntu/Debian, you can easily install SteamCMD like that:
 
 <Tabs groupId="operating-systems"
-	values={[
-		{label: 'Ubuntu', value: 'ubuntu'},
-		{label: 'Debian', value: 'debian'},
-	]}>
-	<TabItem value="ubuntu">
+  values={[
+    {label: 'Ubuntu', value: 'ubuntu'},
+    {label: 'Debian', value: 'debian'},
+  ]}>
+  <TabItem value="ubuntu">
 
 To install SteamCMD on Ubuntu, the multiverse repository and x86 packages must be enabled:
 
@@ -67,8 +67,8 @@ To install SteamCMD on Ubuntu, the multiverse repository and x86 packages must b
 sudo add-apt-repository multiverse; sudo dpkg --add-architecture i386; sudo apt update
 ```
 
-	</TabItem>
-	<TabItem value="debian">
+  </TabItem>
+  <TabItem value="debian">
 
 To install SteamCMD on Debian, add the non-free repository and x86 packages must be enabled:
 
@@ -76,7 +76,7 @@ To install SteamCMD on Debian, add the non-free repository and x86 packages must
 sudo apt update; sudo apt install software-properties-common; sudo apt-add-repository non-free; sudo dpkg --add-architecture i386; sudo apt update
 ```
 
-	</TabItem>
+  </TabItem>
 </Tabs>
 
 Then you can install SteamCMD using the following command:
@@ -109,24 +109,24 @@ To download the server through SteamCMD (a command line version of Steam) please
 #### 2. You can optionally define an installation folder to install nanos world server:
 
 <Tabs groupId="operating-systems"
-	values={[
-		{label: 'Windows', value: 'windows'},
-		{label: 'Linux', value: 'linux'},
-	]}>
-	<TabItem value="windows">
+  values={[
+    {label: 'Windows', value: 'windows'},
+    {label: 'Linux', value: 'linux'},
+  ]}>
+  <TabItem value="windows">
 
 ```steamcmd
 force_install_dir C:/nanos-world-server/
 ```
 
-	</TabItem>
-	<TabItem value="linux">
+  </TabItem>
+  <TabItem value="linux">
 
 ```steamcmd
 force_install_dir /home/<YOUR_USERNAME>/nanos-world-server/
 ```
 
-	</TabItem>
+  </TabItem>
 </Tabs>
 
 #### 3. The next step is to login on SteamCMD, you can login anonymously with:
@@ -165,47 +165,47 @@ To revert to default branch, install it forcing the public branch: `app_update 1
 An easier way to install or update nanos world server is using an one-liner command to run SteamCMD:
 
 <Tabs groupId="operating-systems"
-	values={[
-		{label: 'Windows', value: 'windows'},
-		{label: 'Linux', value: 'linux'},
-	]}>
-	<TabItem value="windows">
+  values={[
+    {label: 'Windows', value: 'windows'},
+    {label: 'Linux', value: 'linux'},
+  ]}>
+  <TabItem value="windows">
 
 ```shell
 steamcmd.exe +force_install_dir C:/nanos-world-server +login anonymous "+app_update 1936830 -beta public" validate +quit
 ```
 
-	</TabItem>
-	<TabItem value="linux">
+  </TabItem>
+  <TabItem value="linux">
 
 ```shell
 steamcmd +force_install_dir ~/nanos-world-server +login anonymous "+app_update 1936830 -beta public" validate +quit
 ```
 
-	</TabItem>
+  </TabItem>
 </Tabs>
 
 or on `bleeding-edge`:
 
 <Tabs groupId="operating-systems"
-	values={[
-		{label: 'Windows', value: 'windows'},
-		{label: 'Linux', value: 'linux'},
-	]}>
-	<TabItem value="windows">
+  values={[
+    {label: 'Windows', value: 'windows'},
+    {label: 'Linux', value: 'linux'},
+  ]}>
+  <TabItem value="windows">
 
 ```shell
 steamcmd.exe +force_install_dir C:/nanos-world-server +login anonymous "+app_update 1936830 -beta bleeding-edge" validate +quit
 ```
 
-	</TabItem>
-	<TabItem value="linux">
+  </TabItem>
+  <TabItem value="linux">
 
 ```shell
 steamcmd +force_install_dir ~/nanos-world-server +login anonymous "+app_update 1936830 -beta bleeding-edge" validate +quit
 ```
 
-	</TabItem>
+  </TabItem>
 </Tabs>
 
 
