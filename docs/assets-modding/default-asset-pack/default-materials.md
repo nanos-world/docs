@@ -72,7 +72,7 @@ For more information regarding how each Parameter affects the final visual, plea
 
 ### **`M_Default_Translucent_Lit_Decal`**
 
-**Translucent**, **Lit** with `Deferred Decal` Material Domain, to be used in [Decals](/docs/next/scripting-reference/classes/decal).
+**Translucent**, **Lit** with `Deferred Decal` Material Domain, to be used in <Classes.Decal />.
 
 
 ## Special Utils Materials

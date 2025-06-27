@@ -122,7 +122,7 @@ It is a recommended approach to implement all Props, Weapons and Vehicles spawn 
 
 C Module is another special Package that is capable of loading binary C modules in the Lua VM.
 
- Please refer to [C Module](/docs/core-concepts/packages/c-module.md) for more information.
+Please refer to [C Module](/core-concepts/packages/c-module.md) for more information.
 
 ```toml title="Package.toml" reference
 https://github.com/nanos-world/nanos-world-server/blob/main/_c_module.toml
@@ -135,14 +135,14 @@ https://github.com/nanos-world/nanos-world-server/blob/main/_c_module.toml
 | :--- | :--- | :--- |
 | **`force_no_map_package`** | `script`<br/>`game-mode` | Enabling this will force the map package (if any) to do NOT load |
 | **`auto_cleanup`** | `script`<br/>`game-mode`<br/>`map` | Enabling this will destroy all entities spawned by this Package when it unloads |
-| **`compatibility_version`** | `script`<br/>`game-mode`<br/>`map` | The game version (`major.minor`) at the time this package was created, for granting backwards compatibility between breaking changes. See more [here](/docs/core-concepts/packages/compatibility-versions.md) |
+| **`compatibility_version`** | `script`<br/>`game-mode`<br/>`map` | The game version (`major.minor`) at the time this package was created, for granting backwards compatibility between breaking changes. See more [here](/core-concepts/packages/compatibility-versions.md) |
 | **`packages_requirements`** | `script`<br/>`game-mode`<br/>`map` | List of Packages dependencies used by this Package which need to be loaded first |
 | **`assets_requirements`** | `script`<br/>`game-mode`<br/>`map` | List of Asset Packs to be loaded when this package loads |
 | **`compatible_game_modes`** | `script`<br/>`map` | List of Game Modes compatible/recommended to work with this Package |
 | **`compatible_maps`** | `game-mode` | List of Maps compatible/recommended to work with this Game Mode |
 | **`custom_settings`** | `game-mode` | List of Custom Settings which can be set when starting a new game or passed through command line to the server. See more [here](#custom-settings) |
 | **`map_asset`** | `map` | Asset Path to the Map Asset in the format `[ASSET_PACK]::[ASSET_KEY]` |
-| **`spawn_points`** | `map` | List of Spawn Points in the format `{ location = "Vector()", rotation = "Rotator()" }, ...` which can be accessed through [Server.GetMapSpawnPoints()](/docs/scripting-reference/static-classes/server.mdx#static-function-getmapspawnpoints) |
+| **`spawn_points`** | `map` | List of Spawn Points in the format `{ location = "Vector()", rotation = "Rotator()" }, ...` which can be accessed through [Server.GetMapSpawnPoints()](/scripting-reference/static-classes/server.mdx#static-function-getmapspawnpoints) |
 | **`custom_data`** | `map` | List of Custom Data which can be accessed when this Map is loaded. See more [here](#custom-data) |
 
 
@@ -150,7 +150,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/_c_module.toml
 
 GameModes can define Custom Settings in the `[custom_settings]` section to be set when creating a new game through main menu, or set when starting the server with the command `--custom_settings "var1 = value1, var2 = value2, ..."`
 
-The values defined can be accessed through the method [Server.GetCustomSettings()](/docs/scripting-reference/static-classes/server.mdx#static-function-getcustomsettings).
+The values defined can be accessed through the method <MethodReference type="StaticClass" class_name="Server" method="GetCustomSettings" is_static show_class_name />.
 
 #### List of Types
 
@@ -167,7 +167,7 @@ The values defined can be accessed through the method [Server.GetCustomSettings(
 
 Maps can define Custom Data in the `[custom_data]` section.
 
-The values defined are loaded when this Map Package is loaded and can be accessed through the method [Server.GetMapConfig()](/docs/next/scripting-reference/static-classes/server#static-function-getmapconfig).
+The values defined are loaded when this Map Package is loaded and can be accessed through the method <MethodReference type="StaticClass" class_name="Server" method="GetMapConfig" is_static show_class_name />.
 
 #### Usage Example
 
