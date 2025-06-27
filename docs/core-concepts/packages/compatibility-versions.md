@@ -159,7 +159,7 @@ Before `Database:Execute` was an async method, and since 1.29 it works as a Sync
 
 ### Version `1.22`
 
-In version 1.22 we introduced the concept of [Compatibility Version](/core-concepts/packages/packages-guide.mdx#compatibility-version). Besides that, we've got just one breaking change:
+In version 1.22 we introduced the concept of [Compatibility Version](/core-concepts/packages/packages-guide.md#compatibility-version). Besides that, we've got just one breaking change:
 
 
 #### [Events.Subscribe()](/scripting-reference/static-classes/events.mdx#static-function-subscribe)
