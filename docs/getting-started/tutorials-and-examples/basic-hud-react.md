@@ -25,13 +25,13 @@ This tutorial will not teach you how to use React. A basic knowledge of the fram
 
 In the folder of your choice, create a new React Application that will be used to create our UI. To do so, execute the following command in your terminal:
 
-```bash title="Terminal"
+```shell title="Terminal"
 npx create-react-app basic-hud
 ```
 
 Once finished, you should see the following message appears in your terminal:
 
-```bash title="Terminal"
+```shell title="Terminal"
 Success! Created basic-hud at F:\Nanos\Documentation\basic-hud
 Inside that directory, you can run several commands:
 
@@ -224,7 +224,7 @@ body {
 To make sure that your App works, you can simply start the application and see the end result in your web browser? To do so use the following command:
 
 
-```bash title="Terminal"
+```shell title="Terminal"
 npm start
 ```
 
@@ -297,7 +297,7 @@ Now that coding part for the UI is done, you can `build` it to add it to your na
 
 Once finished with the development of the web part, you'll need to build the App. In the root folder of your app, execute the following command:
 
-```bash title="Terminal"
+```shell title="Terminal"
 npm run build
 ```
 

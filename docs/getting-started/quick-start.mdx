@@ -35,7 +35,7 @@ This tutorial is for those who have never used nanos world server before and wan
 To start, you need to download the nanos world server. There are **three** options to do so:
 
 1. Use the executable at `nanos-world/Server/NanosWorldServer.exe` *(in the base game installation folder)*.
-2. Use SteamCMD to [download nanos world™ Dedicated Server](/docs/core-concepts/server-manual/server-installation).
+2. Use SteamCMD to [download nanos world™ Dedicated Server](/core-concepts/server-manual/server-installation).
 3. Download the **nanos world™ Dedicated Server** tool from Steam Client.
 
 
@@ -43,7 +43,7 @@ To start, you need to download the nanos world server. There are **three** optio
 
 After downloading the server, let's create a basic **Package**. A Package is a collection of Lua scripts that are executed on Client or Server to interact with the game.
 
-To create a new Package, lets use the handy CLI tool to speed up the process. Open a terminal in your server folder and run the following command:
+To create a new Package, lets use the handy [CLI](/core-concepts/server-manual/command-line-interface) tool to speed up the process. Open a terminal in your server folder and run the following command:
 
 <Tabs
   defaultValue="cmd"
@@ -53,14 +53,14 @@ To create a new Package, lets use the handy CLI tool to speed up the process. Op
   ]}>
   <TabItem value="cmd">
 
-```bash
+```shell
 ./NanosWorldServer.exe --cli add package my-awesome-package
 ```
 
   </TabItem>
   <TabItem value="linux">
 
-```bash
+```shell
 ./NanosWorldServer.sh --cli add package my-awesome-package
 ```
 
@@ -119,14 +119,14 @@ Now let's start the server with the package you just created! For that, simply d
   ]}>
   <TabItem value="cmd">
 
-```bash
+```shell
 ./NanosWorldServer.exe
 ```
 
   </TabItem>
   <TabItem value="linux">
 
-```bash
+```shell
 ./NanosWorldServer.sh
 ```
 

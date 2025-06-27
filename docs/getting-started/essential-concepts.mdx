@@ -46,7 +46,7 @@ Asset Packs are a powerful tool for extending the game and adding new features, 
 
 There are different types of Packages, each type with a different ability, including executing Lua **scripts**, creating **game-modes**, defining **maps**, and even creating custom **loading-screens**!
 
-[Script](/docs/core-concepts/packages/packages-guide#script) is the most common type of Package, it allow scripters to run Lua code on both the client and server which can listen to events, interact with game classes, and modify game behavior in various ways.
+[Script](/core-concepts/packages/packages-guide.md#script) is the most common type of Package, it allow scripters to run Lua code on both the client and server which can listen to events, interact with game classes, and modify game behavior in various ways.
 
 :::tip
 
@@ -54,13 +54,13 @@ Packages can be loaded/unloaded dynamically while the server is running with `pa
 
 :::
 
-Each Package is a folder under server's `Packages/` directory with a [configuration file](/docs/core-concepts/packages/packages-guide#package-configuration) `Package.toml` inside, on which we define the type of the package and it's relevant settings.
+Each Package is a folder under server's `Packages/` directory with a [configuration file](/core-concepts/packages/packages-guide.md#package-configuration) `Package.toml` inside, on which we define the type of the package and it's relevant settings.
 
 Packages can also have dependencies on other Packages and Asset Packs, which allows scripters to reuse code and assets across multiple Packages. This can help to reduce duplication and improve organization, especially for larger scripts or game-modes.
 
 :::tip
 
-If we want a Package to be loaded, we must define them in our Server's [Config.toml](/docs/core-concepts/server-manual/server-configuration), we have a section for each package type (`game_mode`, `loading_screen`, `map` and `packages`), which we must list the Package names we want the server to load!
+If we want a Package to be loaded, we must define them in our Server's [Config.toml](/core-concepts/server-manual/server-configuration), we have a section for each package type (`game_mode`, `loading_screen`, `map` and `packages`), which we must list the Package names we want the server to load!
 
 :::
 
@@ -86,7 +86,7 @@ If you're new to programming, YouTube or any Courses website are great places to
 
 For Lua scripting, the official [Lua Manual](https://www.lua.org/manual/5.4/) provides a comprehensive tutorial on the basics of the language.
 
-Also, our documentation is a great resource for learning about everything available in nanos world. You can explore our [Game-Modes and Packages](/docs/explore/game-modes-and-packages) category to find real examples!
+Also, our documentation is a great resource for learning about everything available in nanos world. You can explore our [Game-Modes and Packages](/explore/game-modes-and-packages.mdx) category to find real examples!
 
 The **🎓 CORE CONCEPTS** section provides guides and great information whilst **👨‍💻 SCRIPTING REFERENCE** provides technical details of the usage of our API!
 
@@ -181,7 +181,7 @@ You can find several guides for scripting under **`🎓 CORE CONCEPTS / Scriptin
 
 Maps (or Levels in Unreal) are the entry point of the game, this is where the world is loaded and the entities are spawned in the client side.
 
-To configure a Map, we create a Package of type [map](/docs/core-concepts/packages/packages-guide#map), this type is like `script`, but it's `Package.toml` has additional settings to configure the map, e.g. we have `map_asset = "my-asset-pack::MyLevel"` which we need to define which Map Asset this Package will load.
+To configure a Map, we create a Package of type [map](/core-concepts/packages/packages-guide.md#map), this type is like `script`, but it's `Package.toml` has additional settings to configure the map, e.g. we have `map_asset = "my-asset-pack::MyLevel"` which we need to define which Map Asset this Package will load.
 
 We can configure which map the server will run in the `Config.toml`, under `map = "my-map-package"` setting.
 
@@ -203,7 +203,7 @@ As you could notice, by loading a Map you are also loading a Package with script
 
 ## Game Modes
 
-[Game-Modes](/docs/core-concepts/packages/packages-guide#game-mode) are a type of Package which behave exactly like `scripts`, with the exception we can just have **one** game-mode loaded at once, while we can have as many as scripts running as we want.
+[Game-Modes](/core-concepts/packages/packages-guide.md#game-mode) are a type of Package which behave exactly like `scripts`, with the exception we can just have **one** game-mode loaded at once, while we can have as many as scripts running as we want.
 
 They should be used to create unique and self-contained game experiences.
 
@@ -232,7 +232,7 @@ Some Classes can only be spawned on server, others only on client. The same for 
 
 :::tip
 
-Through this docs, you will find [Authority](/docs/core-concepts/scripting/authority-concepts#authority) tooltips telling whether a function can be called on server <AuthorityType.ServerOnly />, on client <AuthorityType.ClientOnly />, on both <AuthorityType.Both /> or only on the side which spawned it <AuthorityType.AuthorityOnly />!
+Through this docs, you will find [Authority](/core-concepts/scripting/authority-concepts.mdx#authority) tooltips telling whether a function can be called on server <AuthorityType.ServerOnly />, on client <AuthorityType.ClientOnly />, on both <AuthorityType.Both /> or only on the side which spawned it <AuthorityType.AuthorityOnly />!
 
 :::
 

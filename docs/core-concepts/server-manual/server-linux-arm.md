@@ -37,7 +37,7 @@ Since nanos world use `gcc 11`, we will need to upgrade one of our package to th
 
 You can run this script to install the required libraries, but please look at the script code to see what the script will do. (make sure you run it as root!)
 
-```bash
+```shell
 wget -O - https://raw.githubusercontent.com/Falaxir/nanos-world_yolks-game-panels/master/docker-oses/debian/fixglibcxx.sh | bash
 ```
 
@@ -64,13 +64,13 @@ Pin-Priority: 400
 
 Now, update your server to make sure that your system can find testing repositories with this command:
 
-```bash
+```shell
 sudo apt update
 ```
 
 We will install `libstdc++6` testing package to the server, it will allow the server to start correctly. You can type the command below to install it:
 
-```bash
+```shell
 sudo apt-get --target-release testing install libstdc++6
 ```
 

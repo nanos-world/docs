@@ -56,7 +56,7 @@ The real **Hot Reloading** is an amazing feature which allows you loading new sc
 
 Currently it works by manually triggering it in the console:
 
-```bash
+```shell
 package hotreload [PACKAGE_NAME|all]
 ```
 
