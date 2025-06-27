@@ -16,7 +16,7 @@
 <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
 <script src="/js/Kofi.js"></script>
 <script src="/js/img-comparison-slider.js"></script><link rel="stylesheet" href="/de/assets/css/styles.ff62408d.css">
-<script src="/de/assets/js/runtime~main.1d8f4d75.js" defer="defer"></script>
+<script src="/de/assets/js/runtime~main.fe854c77.js" defer="defer"></script>
 <script src="/de/assets/js/main.cb9225b7.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -45,7 +45,7 @@
 <p>After several requests, we&#x27;ve started implementing a real Hot Reload feature!</p>
 <p>The real <strong>Hot Reloading</strong> is an amazing feature which allows you loading new scripting code without needing to lose all the current memory state of your Packages. It works by loading the scripting files over the current running Lua VM.</p>
 <p>Currently it works by manually triggering it in the console:</p>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#000000"><span class="token plain">package hotreload </span><span class="token punctuation" style="color:rgb(4, 81, 165)">[</span><span class="token plain">PACKAGE_NAME</span><span class="token operator" style="color:rgb(0, 0, 0)">|</span><span class="token plain">all</span><span class="token punctuation" style="color:rgb(4, 81, 165)">]</span><br></span></code></pre></div></div>
+<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#000000"><span class="token plain">package hotreload </span><span class="token punctuation" style="color:rgb(4, 81, 165)">[</span><span class="token plain">PACKAGE_NAME</span><span class="token operator" style="color:rgb(0, 0, 0)">|</span><span class="token plain">all</span><span class="token punctuation" style="color:rgb(4, 81, 165)">]</span><br></span></code></pre></div></div>
 <p>This will update the clients with the newer files version and load the <code>Index.lua</code> files from the packages. It will keep the current memory state of the packages as it is. It will also unsubscribe from all registered Events in that package.</p>
 <p>In the future, it would be possible to add a real-time checker to automatically update the modified files after saving them.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="extending-classes">Extending Classes<a href="#extending-classes" class="hash-link" aria-label="Direct link to Extending Classes" title="Direct link to Extending Classes">​</a></h3>
