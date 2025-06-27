@@ -683,6 +683,7 @@ html[data-theme="dark"]
 .token.log-type-error {
 	color: #bd5f69;
 }
+
 .language-nanos-console
 .token.log-type-warning {
 	color: #f0a721;
@@ -701,6 +702,11 @@ html[data-theme="dark"]
 .language-nanos-console
 .token.log-type-error {
 	color: #df2d3f;
+}
+
+.language-nanos-console
+.token.log-user-input {
+  color: #c456a1;
 }
 
 .media-legend {

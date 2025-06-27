@@ -3,4 +3,5 @@ Prism.languages["nanos-console"] = {
 	'log-type-script': /@|\bSCRIPT\b/,
 	'log-type-warning': /@|\bWARNING\b/,
 	'log-type-error': /@|\bERROR\b/,
+	'log-user-input': /^[^\s].*$/m
 };

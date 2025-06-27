@@ -69,10 +69,13 @@ To create a new Package, lets use the handy [CLI](/core-concepts/server-manual/c
 
 This command will run the nanos world command-line interface (CLI) to interactively create your new Package. You will be prompted to provide some information about your Package, such as its name, author, version, and type.
 
-```nanos-console
+```nanos-console title="NanosWorldServer"
 INFO  Please enter the Package Title: (my-awesome-package)
+my-awesome-package
 INFO  Please enter the Package Author: ()
+myself
 INFO  Please enter the Package Type: (game-mode)
+script
 ```
 
 Once you finish creating your Package, you will find a new folder named `my-awesome-package/` inside the `Packages/` folder. This folder contains three other folders: `Server/`, `Client/`, and `Shared/`, and a configuration file called `Package.toml`.
