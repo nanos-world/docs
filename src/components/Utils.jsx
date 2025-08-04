@@ -56,9 +56,9 @@ export const ComparisonSlider = ({ img_left, label_left, img_right, label_right,
 	</>
 );
 
-export const KofiButton = () => (
+export const KofiButton = ({ username = "gtnardy" }) => (
 	<div style={{ textAlign: "center" }}>
-		<a href="https://ko-fi.com/I2I3537D1" target="_blank" style={{ display: "inline-block" }}>
+		<a href={`https://ko-fi.com/${username}`} target="_blank" style={{ display: "inline-block" }}>
 			<ThemedImage
 				alt="Ko-fi"
 				sources={{
