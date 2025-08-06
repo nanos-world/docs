@@ -24,6 +24,11 @@ export const getActiveVersionPath = () => {
 	return activeVersion ? activeVersion.path : "/docs/next";
 };
 
+// Function to convert PascalCase string to kebab-case
+export const getKebabFromPascal = (str) => {
+  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+};
+
 // Getter to get the current version path - for links
 export const LinkActiveVersion = (props) => (
 	<Link { ...props } to={`${getActiveVersionPath()}/${props.to}`} />
@@ -56,7 +61,7 @@ export const ComparisonSlider = ({ img_left, label_left, img_right, label_right,
 	</>
 );
 
-export const KofiButton = ({ username = "gtnardy" }) => (
+export const KofiButton = ({ username = "I2I3537D1" }) => (
 	<div style={{ textAlign: "center" }}>
 		<a href={`https://ko-fi.com/${username}`} target="_blank" style={{ display: "inline-block" }}>
 			<ThemedImage

@@ -13,22 +13,22 @@ import APIData from '@site/src/components/APIData.jsx';
 
 // Square Card Link
 export const CardLink = ({ title, description, href, image_src, is_lean }) => (
-	<a className={`card-link ${is_lean ? "card-link-lean" : ""}`} href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`} >
+	<Link className={`card-link ${is_lean ? "card-link-lean" : ""}`} to={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`} >
 		<img src={image_src ? image_src : '/img/docs/nanos-world-background.webp'} />
 		<h4>{title}</h4>
 		<p>{description}</p>
-	</a>
+	</Link>
 );
 
 
 // Rectangular Reference Link
 export const ReferenceLink = ({ children, href }) => (
-	<a className="reference-link" href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`}>
+	<Link className="reference-link" to={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`}>
 		{children}
 		<span>
 			{ href.split('#')[0] }
 		</span>
-	</a>
+	</Link>
 );
 
 // Generic Base Native component
@@ -106,9 +106,11 @@ export const BaseStaticClass = (name, emoji, path) => (
 );
 
 // Define Enum component
-export const Enums = ({ children }) => (
+export const Enums = ({ children, short }) => (
 	<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={<EnumToolTip enum_name={ children } enum_data={ APIData.BleedingEdge.Enums[children] } />}>
-		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${children.toLowerCase()}`} className={"hover-link"}>{children}</Link>
+		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${children.toLowerCase()}`} className={"hover-link"}>
+			{short ? children.replace(/([A-Z])/g, ' $1').trim() : children}
+		</Link>
 	</Tippy>
 );
 

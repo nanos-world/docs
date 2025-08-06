@@ -1,5 +1,6 @@
 import Layout from '@theme/Layout';
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import Markdown from 'react-markdown'
@@ -10,10 +11,10 @@ const Changelog = () => {
 	useEffect(() => {
 		fetch("https://api.nanos-world.com/game/changelog")
 		.then(response => {
-			return response.json()
+			return response.json();
 		})
 		.then(data => {
-			setChangelogs(data)
+			setChangelogs(data.payload);
 		})
 	}, [])
 
@@ -31,11 +32,11 @@ const Changelog = () => {
 				{changelogs.length > 0 ? (
 					changelogs.map(changelog => (
 						<div key={changelog.name} className={clsx("update", styles.update)}>
-							<a id={changelog.name} href={`#${changelog.name}`}>
+							<Link id={changelog.name} to={`#${changelog.name}`}>
 								<h1 className={clsx("version", styles.version)}>
 									{changelog.name}
 								</h1>
-							</a>
+							</Link>
 							<span className={clsx("releasedat", styles.releasedat)}>
 								{new Date(changelog.releasedAt).toLocaleString()}
 							</span>

@@ -9,7 +9,7 @@ import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
 import { AuthorityType, NativeType, BasicType, Classes, Structs, Enums, AssetPath, ReferenceLink } from '@site/src/components/_nanos';
-import { getActiveVersionPath, LinkActiveVersion } from '@site/src/components/Utils.jsx';
+import { getActiveVersionPath, LinkActiveVersion, getKebabFromPascal } from '@site/src/components/Utils.jsx';
 import { FunctionToolTip, StaticFunctionToolTip, InlineFunctionToolTip, TablePropertiesToolTip, EventToolTip } from '@site/src/components/Tooltips';
 import Details from '@theme/Details';
 
@@ -47,7 +47,7 @@ export function GetElementByType(type, index) {
 		AssetPaths[type] ? AssetPaths[type] :
 		Structs[type] ? Structs[type] : null;
 	if (!TypeElement)
-		return <Enums>{type}</Enums>;
+		return <Enums short={true}>{type}</Enums>;
 	return <span key={`${type}-${index}`}>
 		{ is_array ? <><BasicType.Table /> of </> : "" }
 		{ is_variadic ? <><BasicType.VarArgs /> of </> : "" }
@@ -579,7 +579,7 @@ export const InheritedClassFunctions = ({ inherited_class_name, parent_class_nam
 				{ `${inherited_class_name} inherits from Base ${parent_class_name} Class, sharing it's methods and functions:` }
 			</i>
 			<br/>
-			<ReferenceLink href={`scripting-reference/classes/base-classes/${parent_class_name}`}>Base {parent_class_name}</ReferenceLink>
+			<ReferenceLink href={`scripting-reference/classes/base-classes/${parent_class_name.toLowerCase()}`}>Base {parent_class_name}</ReferenceLink>
 			{ is_static ?
 				<StaticFunctionListDeclaration class_name={inherited_class_name} base_class={parent_class_name} functions_list={class_data.static_functions} />
 				: <FunctionListDeclaration class_name={inherited_class_name} base_class={parent_class_name} functions_list={class_data.functions} />
@@ -595,7 +595,7 @@ export const InheritedClassEvents = ({ inherited_class_name, parent_class_name }
 		{ `${inherited_class_name} inherits from Base ${parent_class_name} Class, sharing it's events:` }
 	</i>
 	<br/>
-		<ReferenceLink href={`scripting-reference/classes/base-classes/${parent_class_name}`}>Base {parent_class_name}</ReferenceLink>
+		<ReferenceLink href={`scripting-reference/classes/base-classes/${parent_class_name.toLowerCase()}`}>Base {parent_class_name}</ReferenceLink>
 		<EventListDeclaration type="Class" name={parent_class_name} inherited_class_name={inherited_class_name} base_class={parent_class_name} />
 	</Details>
 );
@@ -759,7 +759,7 @@ export const MethodReference = ({ type, class_name, method, params, is_base = fa
 		<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={
 			<FunctionDeclaration class_name={class_name} function_data={function_data} is_static={is_static} show_lean_declaration={true} />
 		}>
-			<Link to={`${getActiveVersionPath()}/scripting-reference/${is_static ? "static-classes" : "classes"}/${is_base ? "base-classes/" : ""}${class_name.toLowerCase()}#${is_static ? "static-function" : "function"}-${method.toLowerCase()}`} className={"hover-link"}><code>{show_class_name ? class_name : ""}{is_static ? "." : ":"}{method}({params})</code></Link>
+			<Link to={`${getActiveVersionPath()}/scripting-reference/${is_static ? "static-classes" : "classes"}/${is_base ? "base-classes/" : ""}${getKebabFromPascal(class_name)}#${is_static ? "static-function" : "function"}-${method.toLowerCase()}`} className={"hover-link"}><code>{show_class_name ? class_name : ""}{is_static ? "." : ":"}{method}({params})</code></Link>
 		</Tippy>
 	);
 };
@@ -772,7 +772,7 @@ export const EventReference = ({ type, class_name, event, is_base = false, is_st
 		<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={
 			<EventDeclaration class_name={class_name} event_data={event_data} show_lean_declaration={true} />
 		}>
-			<Link to={`${getActiveVersionPath()}/scripting-reference/${is_static ? "static-classes" : "classes"}/${is_base ? "base-classes/" : ""}${class_name.toLowerCase()}#event-${event.toLowerCase()}`} className={"hover-link"}><code>{event}{show_class_name ? ` (${class_name})` : ""}</code></Link>
+			<Link to={`${getActiveVersionPath()}/scripting-reference/${is_static ? "static-classes" : "classes"}/${is_base ? "base-classes/" : ""}${getKebabFromPascal(class_name)}#event-${event.toLowerCase()}`} className={"hover-link"}><code>{event}{show_class_name ? ` (${class_name})` : ""}</code></Link>
 		</Tippy>
 	);
 };
