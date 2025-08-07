@@ -16,8 +16,8 @@
 <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
 <script src="/js/Kofi.js"></script>
 <script src="/js/img-comparison-slider.js"></script><link rel="stylesheet" href="/fr/assets/css/styles.e4142093.css">
-<script src="/fr/assets/js/runtime~main.a8923873.js" defer="defer"></script>
-<script src="/fr/assets/js/main.778d9554.js" defer="defer"></script>
+<script src="/fr/assets/js/runtime~main.13759a79.js" defer="defer"></script>
+<script src="/fr/assets/js/main.aee55967.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -41,10 +41,10 @@
 <p>Certaines méthodes existantes sont en train de subir une refonte en raison de, par ex. <a href="/fr/docs/scripting-reference/classes/base-classes/pickable">Les Pickables</a> ont obtenu une nouvelle méthode <code>:SetCrosshairMaterial()</code>, pour que vous puissiez définir le Crosshair à partir d&#x27;un matériau (et non à partir d&#x27;une liste prédéfinie), aussi tous les vieux Crosshair ont été convertis en matériaux que vous pouvez trouver <a href="/fr/docs/scripting-reference/classes/base-classes/pickable#list-of-crosshairs-materials-included-in-default-asset-pack">ici</a>.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="interface-web-améliorée">Interface Web améliorée<a href="#interface-web-améliorée" class="hash-link" aria-label="Lien direct vers Interface Web améliorée" title="Lien direct vers Interface Web améliorée">​</a></h2>
 <p><img decoding="async" loading="lazy" src="/fr/assets/images/webui-8f0a37eda666096f976172491bfed69f.jpg" width="1914" height="350" class="img_ev3q"></p>
-<p><a href="/fr/docs/scripting-reference/classes/webui">L&#x27;interface WEB (WebUI)</a> à récemment reçu plusieurs améliorations, incluant la possibilité de lancer un audio ou une vidéo HTML5 ! 📽</p>
+<p>The <a href="/fr/docs/scripting-reference/classes/web-ui">WebUI</a> received several improvements, including the ability to run HTML5 Audio and Videos! 📽</p>
 <div class="theme-admonition theme-admonition-caution admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>attention</div><div class="admonitionContent_BuS1"><p>Nous utilisons une version bêta d&#x27;Ultralight, qui prend en charge Audio et Vidéo, des plantages <strong>se produiront</strong>, aussi l&#x27;Audio est actuellement en 2D seulement. Ultralight travaille sur une solution pour que je puisse implémenter l&#x27;audio 3D.</p></div></div>
 <p>Le constructeur <strong>WebUI</strong> a reçu de nouveaux paramètres : <strong>is_transparent</strong>, <strong>auto_resize</strong>, <strong>width</strong> et <strong>height</strong>. La largeur et la hauteur ne seront utilisées que si le redimensionnement automatique est <strong>OFF</strong>, ceci est utile si vous voulez faire apparaître une interface WebUI pour l&#x27;utiliser comme Material sur n&#x27;importe quelle surface (et ne pas vouloir que ce soit la taille de l&#x27;écran).</p>
-<p>Il a également reçu de nouvelles méthodes : <a href="/fr/docs/scripting-reference/classes/webui#setfreeze">:SetFreeze<!-- -->()</a>, <a href="/fr/docs/scripting-reference/classes/webui#resize">:Resize<!-- -->()</a> et <a href="/fr/docs/scripting-reference/classes/webui#setautoresize">:SetAutoResize<!-- -->()</a>.</p>
+<p>Also it received new methods: <a href="/fr/docs/scripting-reference/classes/web-ui#setfreeze">:SetFreeze<!-- -->()</a>, <a href="/fr/docs/scripting-reference/classes/web-ui#resize">:Resize<!-- -->()</a> and <a href="/fr/docs/scripting-reference/classes/web-ui#setautoresize">:SetAutoResize<!-- -->()</a>.</p>
 <p>Un nouveau moteur de recherche a été ajouté, améliorant la façon dont il peut charger vos fichiers .html, ils sont maintenant consultés dans l&#x27;ordre suivant :</p>
 <ol>
 <li>Relatif à <code>dossier-courant/</code></li>

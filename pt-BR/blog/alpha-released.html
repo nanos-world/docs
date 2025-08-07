@@ -16,8 +16,8 @@
 <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
 <script src="/js/Kofi.js"></script>
 <script src="/js/img-comparison-slider.js"></script><link rel="stylesheet" href="/pt-BR/assets/css/styles.e4142093.css">
-<script src="/pt-BR/assets/js/runtime~main.5c48edf2.js" defer="defer"></script>
-<script src="/pt-BR/assets/js/main.661b197e.js" defer="defer"></script>
+<script src="/pt-BR/assets/js/runtime~main.bdc4b18c.js" defer="defer"></script>
+<script src="/pt-BR/assets/js/main.c0e37582.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
@@ -41,10 +41,10 @@
 <p>Some existing methods are suffering a rework due that, e.g. <a href="/pt-BR/docs/scripting-reference/classes/base-classes/pickable">Pickables</a> got a new method <code>:SetCrosshairMaterial()</code>, so you can set the Crosshair from a Material (and not from a predefined list anymore), also all old Crosshair have been converted into materials which you can find <a href="/pt-BR/docs/scripting-reference/classes/base-classes/pickable#list-of-crosshairs-materials-included-in-default-asset-pack">here</a>.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="improved-webui">Improved WebUI<a href="#improved-webui" class="hash-link" aria-label="Direct link to Improved WebUI" title="Direct link to Improved WebUI">​</a></h2>
 <p><img decoding="async" loading="lazy" src="/pt-BR/assets/images/webui-8f0a37eda666096f976172491bfed69f.jpg" width="1914" height="350" class="img_ev3q"></p>
-<p>The <a href="/pt-BR/docs/scripting-reference/classes/webui">WebUI</a> received several improvements, including the ability to run HTML5 Audio and Videos! 📽</p>
+<p>The <a href="/pt-BR/docs/scripting-reference/classes/web-ui">WebUI</a> received several improvements, including the ability to run HTML5 Audio and Videos! 📽</p>
 <div class="theme-admonition theme-admonition-caution admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>caution</div><div class="admonitionContent_BuS1"><p>We are using a Beta version of Ultralight, which supports Audio and Video, crashes <strong>WILL</strong> happen, also the Audio is currently 2D only. Ultralight is working on a solution so I can implement 3D audio.</p></div></div>
 <p>The <strong>WebUI</strong> constructor received some new parameters: <strong>is_transparent</strong>, <strong>auto_resize</strong>, <strong>width</strong> and <strong>height</strong>. Width and Height will only be used if Auto Resize is <strong>OFF</strong>, this is useful if you want to spawn a WebUI to use as Material to any surface (and don&#x27;t want it to be the size of the screen).</p>
-<p>Also it received new methods: <a href="/pt-BR/docs/scripting-reference/classes/webui#setfreeze">:SetFreeze<!-- -->()</a>, <a href="/pt-BR/docs/scripting-reference/classes/webui#resize">:Resize<!-- -->()</a> and <a href="/pt-BR/docs/scripting-reference/classes/webui#setautoresize">:SetAutoResize<!-- -->()</a>.</p>
+<p>Also it received new methods: <a href="/pt-BR/docs/scripting-reference/classes/web-ui#setfreeze">:SetFreeze<!-- -->()</a>, <a href="/pt-BR/docs/scripting-reference/classes/web-ui#resize">:Resize<!-- -->()</a> and <a href="/pt-BR/docs/scripting-reference/classes/web-ui#setautoresize">:SetAutoResize<!-- -->()</a>.</p>
 <p>A new Searcher has been added onto it, improving how it can load your .html files, they are now looked in the following order:</p>
 <ol>
 <li>Relative to <code>current-file-path/</code></li>
