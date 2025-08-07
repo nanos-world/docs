@@ -258,5 +258,5 @@ export const AssetPath = {
 	Sound: () => SpecialPath("Sound", "Sound Reference", "Sound Asset Reference in the format:<br/><code class='path-center'>asset-pack::A_MySound</code><br/>Or as Special Path:<br/><code class='path-center'>package://my-package/Client/sound.ogg</code>"),
 	Image: () => SpecialPath("Image", "Image Path", "Image Path as Special Path:<br/><code class='path-center'>package://my-package/Client/sound.ogg</code>"),
 	Font: () => SpecialPath("Font", "Font TTF Path", "TTF Font Path as Special Path:<br/><code class='path-center'>package://my-package/Client/Roboto.ttf</code>"),
-	HTML: () => TippyLink("HTML", "HTML Path", "Web URL or HTML File Path:<br/><code class='path-center'>file://UI/index.html</code>", "scripting-reference/classes/webui#html-path-searchers"),
+	HTML: () => TippyLink("HTML", "HTML Path", "Web URL or HTML File Path:<br/><code class='path-center'>file://UI/index.html</code>", "scripting-reference/classes/web-ui#html-path-searchers"),
 };

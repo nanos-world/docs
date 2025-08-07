@@ -327,20 +327,18 @@ const Roadmap = () => {
 							</>}
 							labels={ ["scripting", "optimization", "community"] }
 						/>
+					</Category>
+					<Category title="✅ all released features" description="completed features that are already available in the game">
 						<Item
 							title="⏩ WebUI Hardware Acceleration"
 							image="/roadmap/accelerated.webp"
 							description={<>
-								Currently our CEF (Chromium Embedded Framework) implementation doesn't support Hardware Acceleration (or Composition), which can lead to performance issues, especially when rendering complex UIs with CSS animations.
+								This feature allows the CEF (Chromium Embedded Framework) to utilize your GPU for rendering, significantly improving performance and reducing CPU usage, especially for complex UIs with CSS animations.
 								<br/><br/>
-								Implementing it will require a significant amount of effort, as it involves integrating the underlying graphics API (DirectX) to existing Unreal Engine Textures.
-								<br/><br/>
-								We're planning to investigate this feature further and see if it's feasible to implement it in the future, as it would greatly improve the performance of WebUIs in the game and reduce CPU usage.
+								This integration required substantial effort, including adapting the underlying graphics API (DirectX) to work seamlessly with Unreal Engine Textures. The result is smoother animations and a more responsive UI experience for players.
 							</>}
-							labels={ ["ui", "ux", "optimization"] }
+							labels={ ["released", "ui", "ux", "optimization"] }
 						/>
-					</Category>
-					<Category title="✅ all released features" description="completed features that are already available in the game">
 						<Item
 							title="🕹️ Enhanced Input System"
 							image="/roadmap/eis.webp"
@@ -471,14 +469,14 @@ const Roadmap = () => {
 							video="/blog/2022-july/cinema.webm"
 							description="With the new methods added to the WebUI entity, you can take the WebUI material and apply it to any 3D 'paintable' entity in the game! This means you can create interactive TVs, cinemas, in-game screens, or even complex 3D user interfaces."
 							labels={ ["released", "scripting"] }
-							external_link={"/docs/next/scripting-reference/classes/webui#using-a-webui-as-mesh-material"}
+							external_link={"/docs/next/scripting-reference/classes/web-ui#using-a-webui-as-mesh-material"}
 							external_link_title="WebUI SetMaterialFromWebUI"
 						/>
 						<Item
 							title="🌐 WebUI CEF Based"
 							image="/roadmap/webui.webp"
 							description="We've integrated the Chromium Embedded Framework (CEF), enabling scripters to create custom user interfaces using web technologies like HTML, CSS, and JavaScript."
-							external_link="/docs/next/scripting-reference/classes/webui"
+							external_link="/docs/next/scripting-reference/classes/web-ui"
 							external_link_title="WebUI"
 							labels={ ["released", "scripting", "ui"] }
 						/>

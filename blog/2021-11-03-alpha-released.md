@@ -53,7 +53,7 @@ Some existing methods are suffering a rework due that, e.g. [Pickables](/docs/sc
 
 ![](/img/blog/alpha/webui.jpg)
 
-The [WebUI](/docs/scripting-reference/classes/webui) received several improvements, including the ability to run HTML5 Audio and Videos! 📽
+The [WebUI](/docs/scripting-reference/classes/web-ui) received several improvements, including the ability to run HTML5 Audio and Videos! 📽
 
 :::caution
 
@@ -63,7 +63,7 @@ We are using a Beta version of Ultralight, which supports Audio and Video, crash
 
 The **WebUI** constructor received some new parameters: **is_transparent**, **auto_resize**, **width** and **height**. Width and Height will only be used if Auto Resize is **OFF**, this is useful if you want to spawn a WebUI to use as Material to any surface (and don't want it to be the size of the screen).
 
-Also it received new methods: [:SetFreeze()](/docs/scripting-reference/classes/webui#setfreeze), [:Resize()](/docs/scripting-reference/classes/webui#resize) and [:SetAutoResize()](/docs/scripting-reference/classes/webui#setautoresize).
+Also it received new methods: [:SetFreeze()](/docs/scripting-reference/classes/web-ui#setfreeze), [:Resize()](/docs/scripting-reference/classes/web-ui#resize) and [:SetAutoResize()](/docs/scripting-reference/classes/web-ui#setautoresize).
 
 A new Searcher has been added onto it, improving how it can load your .html files, they are now looked in the following order:
 1. Relative to `current-file-path/`
