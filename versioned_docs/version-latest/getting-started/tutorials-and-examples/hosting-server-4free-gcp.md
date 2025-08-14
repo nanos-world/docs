@@ -83,7 +83,7 @@ Once you have everything configured to your liking, click the ‘Create’ butto
 
 The next step is to connect into your Virtual Machine, for that launch your prompt \(shell or cmd\) and type:
 
-```bash
+```shell
 ssh [YOUR_VM_EXTERNAL_IP]
 ```
 
@@ -105,7 +105,7 @@ Now you must download nanos world server in your VM.
 
 For that, you should use SteamCMD. Install it by doing:
 
-```bash
+```shell
 sudo add-apt-repository multiverse
 sudo dpkg --add-architecture i386
 sudo apt update
@@ -116,25 +116,25 @@ Then, launch SteamCMD by running `steamcmd`.
 
 Select a directory for your server:
 
-```bash
+```shell
 Steam> force_install_dir ./nanos-world-server
 ```
 
 Then login anonymously:
 
-```bash
+```shell
 Steam> login anonymous
 ```
 
 Install nanos world server by using this command:
 
-```bash
+```shell
 Steam> app_update 1936830
 ```
 
 This will download the server. After downloading, navigate to your server folder and start your server like:
 
-```bash
+```shell
 chmod +x ./NanosWorldServer.sh
 ./NanosWorldServer.sh
 ```

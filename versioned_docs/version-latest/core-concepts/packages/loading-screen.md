@@ -19,10 +19,10 @@ For that, you will need to create a new Package of type [loading-screen](#packag
 ```folder-structure
 Packages/
 └── my-loading-screen/
-	├── Package.toml
-	├── index.html
-	├── style.css
-	└── ...
+    ├── Package.toml
+    ├── index.html
+    ├── style.css
+    └── ...
 ```
 
 ### Getting Load/Download Progress
@@ -43,7 +43,7 @@ To be able to display dynamic information in the screen, you can listen to the E
 
 ```javascript title="Packages/my-loading-screen/index.js" showLineNumbers
 Events.Subscribe("UpdateScreen", function(message, message_secondary, progress_small, progress_small_total, progress, progress_total, current_stage) {
-	// Update your HTML here
+    // Update your HTML here
 });
 ```
 

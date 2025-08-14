@@ -113,6 +113,6 @@ Steam Avatar is a special URL which can load Steam Avatars as images on WebUIs a
 
 `steam-avatar://player_steam_id`
 
-This URL can be automatically retrieved with [Player:GetAccountIconURL()](/docs/scripting-reference/classes/player#function-getaccounticonurl).
+This URL can be automatically retrieved with <MethodReference type="Class" class_name="Player" method="GetAccountIconURL" show_class_name />.
 
 ![](/img/blog/2023-january/scoreboard.webp)
