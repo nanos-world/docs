@@ -13,22 +13,22 @@ import APIData from '@site/src/components/APIData.jsx';
 
 // Square Card Link
 export const CardLink = ({ title, description, href, image_src, is_lean }) => (
-	<Link className={`card-link ${is_lean ? "card-link-lean" : ""}`} to={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`} >
+	<a className={`card-link ${is_lean ? "card-link-lean" : ""}`} href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`} target="_blank">
 		<img src={image_src ? image_src : '/img/docs/nanos-world-background.webp'} />
 		<h4>{title}</h4>
 		<p>{description}</p>
-	</Link>
+	</a>
 );
 
 
 // Rectangular Reference Link
 export const ReferenceLink = ({ children, href }) => (
-	<Link className="reference-link" to={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`}>
+	<a className="reference-link" href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`}>
 		{children}
 		<span>
 			{ href.split('#')[0] }
 		</span>
-	</Link>
+	</a>
 );
 
 // Generic Base Native component
