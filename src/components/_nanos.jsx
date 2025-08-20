@@ -109,7 +109,9 @@ export const BaseStaticClass = (name, emoji, path) => (
 export const Enums = ({ children, short }) => (
 	<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={<EnumToolTip enum_name={ children } enum_data={ APIData.BleedingEdge.Enums[children] } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${children.toLowerCase()}`} className={"hover-link"}>
-			{short ? children.replace(/([A-Z])/g, ' $1').trim() : children}
+			{short ? children.replace(/([A-Z])/g, ' $1').trim().split(' ').map(e => (
+				<span style={{ wordBreak: 'normal', display: 'inline-block', textDecoration: 'inherit' }}>{e}</span>
+			)) : children}
 		</Link>
 	</Tippy>
 );
