@@ -1,0 +1,64 @@
+---
+title: Voice over IP (VOIP)
+description: How VOIP system works in nanos world
+sidebar_position: 8
+tags: [scripting, voip, audio]
+---
+
+
+# Voice over IP (VOIP)
+
+How VOIP works in nanos world and how to use it.
+
+nanos world provides a built-in Voice over IP (VOIP) system using Steam's native implementation that allows players to communicate with each other in-game through voice. The VOIP system is highly customizable and can be configured to use local/proximity chat, global channels, or both.
+
+
+## VOIP Audio Types
+
+The VOIP system is based on two main types: **local/proximity** and **global**.
+
+
+### Local/Proximity
+
+Local VOIP simulates uses a 3D spatialized audio to output the Player's voice. Usually this is attached to the possessing Player's Character and simulates a realistic audio environment where players can only hear each other if they are close by.
+
+You can enable or disable local chat for a player using <MethodReference type="Class" class_name="Player" method="SetVOIPLocalSetting" show_class_name />. The volume of the local chat can be adjusted with <MethodReference type="Class" class_name="Player" method="SetVOIPLocalVolume" show_class_name />.
+
+
+### Global
+
+Global VOIP allows players to communicate with each other regardless of their location in the game world. There are 31 global channels available (1-31). Players can be configured to listen or speak on specific channels.
+
+
+
+You can configure a player's settings for a specific global channel using <MethodReference type="Class" class_name="Player" method="SetVOIPGlobalChannelSetting" show_class_name /> or for all channels at once with <MethodReference type="Class" class_name="Player" method="SetVOIPGlobalAllChannelsSetting" show_class_name />. Also the volume of the global chat can be adjusted with <MethodReference type="Class" class_name="Player" method="SetVOIPLocalVolume" show_class_name />.
+
+
+## High/Low Pass filters
+
+In the Global Channels, it is possible to set filters on the Global audio with the methods <MethodReference type="Class" class_name="Player" method="SetVOIPGlobalHighPassFilter" show_class_name /> and <MethodReference type="Class" class_name="Player" method="SetVOIPGlobalLowPassFilter" show_class_name />.
+
+We can simulate a **Radio Effect** by setting a High Pass filter like `player:SetVOIPGlobalHighPassFilter(8000)`.
+
+:::note
+
+High/Low Pass filters are only available in the Global Channels.
+
+:::
+
+
+## VOIP Settings
+
+The VOIP settings for both local and global channels are configured using the <Enums>VOIPSetting</Enums> enum. It is possible to define if the player will just listen, speak or both on each Local Global Channels!
+
+
+## Muting
+
+It is possible to mute a certain player using the <MethodReference type="Class" class_name="Player" method="SetVOIPMuted" show_class_name /> method. If this is called on Server side, the Player will be muted for everyone, but it can also be called on client side for a local mute.
+
+
+## Configuring Microphone
+
+As we use Steam implementation, you can configure your microphone in the Steam's settings, which can be accessed through the Steam client or Shift+Tab Overlay. This allows you to adjust your microphone volume, test your microphone, and set other audio preferences.
+
+![WebUI results](/img/docs/voip.webp)
