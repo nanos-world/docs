@@ -23,7 +23,7 @@ local details = "Awesome Roleplay"
 local large_text = "Honk!"
 local large_image = "nanos-world-full-world"
 
-Client.SetDiscordActivity(state, details, large_image, large_text)
+<MethodReference type="StaticClass" class_name="Discord" method="SetActivity" is_static show_class_name />
 ```
 
 ![How it will look like](/img/docs/discord-integration-01.webp)
@@ -36,18 +36,18 @@ You can use your own Application ID to upload your own Images!
 
 ## Using your own Application ID
 
-Using your own Application ID brings the advantage of being able to configure it the way you want, and even uploading your own images to be displayed in the Rich Presence.
+Using your own [Application ID](https://discord.com/developers/applications/) brings the advantage of being able to configure it the way you want, and even uploading your own images to be displayed in the Rich Presence.
 
 ![How it will look like](/img/docs/discord-integration-02.webp)
 
 Initializing your own Application ID is extremely easy, just execute the following code on the Client side:
 
 ```lua title="Client/Index.lua"
-Client.InitializeDiscord(client_id)
+<MethodReference type="StaticClass" class_name="Discord" method="Initialize" is_static show_class_name />
 ```
 
 :::tip
 
-And you are done! Now you can use the `Client.SetDiscordActivity()`method!
+And you are done! Now you can use the <MethodReference type="StaticClass" class_name="Discord" method="SetActivity" is_static show_class_name /> method!
 
 :::
