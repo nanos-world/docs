@@ -13,7 +13,7 @@ How to use nanos world Discord methods to create a nice integration for your ser
 
 Integrating your server with Discord is really easy! We provide a built-in integration which is ready to use, but you can also add your own Discord Application ID and use your own application!
 
-## Updating the Player Discord Activity \(Rich Presence\)
+## Updating the Player Discord Activity (Rich Presence)
 
 We made the process very simple, we have one method for changing the Player's Activity:
 
@@ -23,7 +23,7 @@ local details = "Awesome Roleplay"
 local large_text = "Honk!"
 local large_image = "nanos-world-full-world"
 
-<MethodReference type="StaticClass" class_name="Discord" method="SetActivity" is_static show_class_name />
+Discord.SetActivity(state, details, large_image, large_text)
 ```
 
 ![How it will look like](/img/docs/discord-integration-01.webp)
@@ -43,7 +43,7 @@ Using your own [Application ID](https://discord.com/developers/applications/) br
 Initializing your own Application ID is extremely easy, just execute the following code on the Client side:
 
 ```lua title="Client/Index.lua"
-<MethodReference type="StaticClass" class_name="Discord" method="Initialize" is_static show_class_name />
+Discord.Initialize(client_id)
 ```
 
 :::tip
