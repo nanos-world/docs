@@ -24,11 +24,18 @@ For that, you can just right click any Animation Sequence and Create a new Anima
 
 ## Step 2: Add Montage Notifies to the Montage
 
-At the bottom (where the timeline is) it is possible to add new Animation Notifies, these are events that trigger special codes to handle the reload.
+At the bottom (where the timeline is) it is possible to add new **Montage Notifies**, these are events that trigger special codes to handle the reload:
+
+:::warning note
+
+Make sure you add a `Montage Notify` (`UAnimNotify_PlayMontageNotify`) from the notifies list, other notifies types will not work.
+
+:::
+
 
 ![](/img/docs/weapon-animations-03.webp)
 
-After adding a notify, you can move it to where you want, note you can set the Name of it in the top right corner:
+After adding a montage notify, you can move it to where you want, note you can set the Name of it in the top right corner:
 
 ![](/img/docs/weapon-animations-05.webp)
 
