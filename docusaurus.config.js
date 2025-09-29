@@ -7,7 +7,6 @@ module.exports = {
   url: 'https://docs.nanos-world.com/',
   baseUrl: '/',
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'nanos-world',
   projectName: 'docs',
@@ -189,7 +188,14 @@ module.exports = {
   ],
   themes: [
     '@saucelabs/theme-github-codeblock',
+    '@docusaurus/theme-mermaid',
   ],
+   markdown: {
+    mermaid: true,
+	hooks: {
+      onBrokenMarkdownLinks: 'warn',
+	}
+  },
   plugins: [
     require.resolve('docusaurus-plugin-image-zoom'),
   ],

@@ -24,6 +24,7 @@ export const AssetPaths = {
 	MaterialPath: AssetPath.Material,
 	MapPath: AssetPath.Map,
 	BlueprintPath: AssetPath.Blueprint,
+	OtherPath: AssetPath.Other,
 	SoundPath: AssetPath.Sound,
 	ImagePath: AssetPath.Image,
 	HTMLPath: AssetPath.HTML,

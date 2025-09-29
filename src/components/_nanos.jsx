@@ -257,6 +257,7 @@ export const AssetPath = {
 	Material: () => BaseAssetPath("Material", "Material Reference", "Material Asset Reference in the format:<br/><code class='path-center'>asset-pack::M_MyMaterial</code>"),
 	Map: () => BaseAssetPath("Map", "Map Reference", "Map Asset Reference in the format:<br/><code class='path-center'>asset-pack::MyMap</code>"),
 	Blueprint: () => BaseAssetPath("Blueprint", "Blueprint Reference", "Blueprint Asset Reference in the format:<br/><code class='path-center'>asset-pack::BP_MyBlueprint</code>"),
+	Other: () => BaseAssetPath("Other", "Other Asset Reference", "Other Asset Reference in the format:<br/><code class='path-center'>asset-pack::A_MySomething</code>"),
 	Sound: () => SpecialPath("Sound", "Sound Reference", "Sound Asset Reference in the format:<br/><code class='path-center'>asset-pack::A_MySound</code><br/>Or as Special Path:<br/><code class='path-center'>package://my-package/Client/sound.ogg</code>"),
 	Image: () => SpecialPath("Image", "Image Path", "Image Path as Special Path:<br/><code class='path-center'>package://my-package/Client/sound.ogg</code>"),
 	Font: () => SpecialPath("Font", "Font TTF Path", "TTF Font Path as Special Path:<br/><code class='path-center'>package://my-package/Client/Roboto.ttf</code>"),
