@@ -4,7 +4,7 @@ import MDXComponents from '@theme-original/MDXComponents';
 // Import custom elements
 import { HeaderDeclaration, ConstructorDeclaration, FunctionsDeclaration, StaticFunctionsDeclaration, ExamplesDeclaration, EventsDeclaration, PropertiesDeclaration, StaticPropertiesDeclaration, APISourceURL, MethodReference, EventReference } from '@site/src/components/ClassBuilder';
 import { Classes, Structs, BasicType, AuthorityType, UtilityClasses, ReferenceLink, Enums, CardLink, AssetPath, NativeType, StaticClasses } from '@site/src/components/_nanos';
-import { VideoExternal, ImageExternal, ComparisonSlider, KofiButton, MediaLegend } from '@site/src/components/Utils';
+import { VideoExternal, ImageExternal, ComparisonSlider, KofiButton, MediaLegend, MediaGallery } from '@site/src/components/Utils';
 
 export default {
 	// Re-use the default mapping
@@ -34,6 +34,7 @@ export default {
 	VideoExternal,
 	ImageExternal,
 	MediaLegend,
+	MediaGallery,
 	NativeType,
 	StaticClasses,
 	ComparisonSlider,

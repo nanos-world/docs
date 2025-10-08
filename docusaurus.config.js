@@ -128,7 +128,9 @@ module.exports = {
         dark: 'rgb(50, 50, 50)'
       },
       // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
-      config: {}
+      config: {
+        margin: 70,
+      }
     },
     algolia: {
       appId: '2O07FIGQII',

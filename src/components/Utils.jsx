@@ -41,6 +41,13 @@ export const MediaLegend = ({ children }) => (
 	</p>
 )
 
+// Media Gallery
+export const MediaGallery = ({ children }) => (
+	<p className="media-gallery">
+		{ children }
+	</p>
+)
+
 export const ComparisonSlider = ({ img_left, label_left, img_right, label_right, legend, max_width = "100%", enable_zoom = true, zoom_direction = "top left", caption_on_bottom = true }) => (
 	<>
 		<img-comparison-slider class={ enable_zoom ? "img-comparison-slider-zoomable" : "" } style = {{ maxWidth: max_width }} >

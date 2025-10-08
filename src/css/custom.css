@@ -716,6 +716,19 @@ html[data-theme="dark"]
 	opacity: 0.5;
 }
 
+.media-gallery {
+	gap: 15px 0;
+	display: flex;
+	flex-wrap: wrap;
+  	justify-content: space-between;
+}
+
+.media-gallery p,
+.media-gallery img {
+	margin: 0;
+	flex-basis: 49%;
+}
+
 .subtle-description {
 	font-size: 85%;
 	font-style: italic;
