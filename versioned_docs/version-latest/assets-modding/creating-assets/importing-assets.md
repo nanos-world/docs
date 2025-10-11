@@ -264,6 +264,10 @@ Most of the problems can be easily fixed by trying the following steps:
 
 > If you use Git (with LFS) to upload your cooked assets and clone them in a VPS (*not a great solution*), make sure you also enabled [LFS](https://git-lfs.com/) in the VPS machine, so it clones the LFS assets locally correctly.
 
+#### 6. Verify your Unreal Engine Installation
+
+> It is possible you accidentally modified an Engine asset, which can cause incompatibilities with the game's cooked assets because the project will expect a different version. Verify your Unreal Engine installation in the Epic Games Launcher to ensure it is valid, then try cooking again.
+
 
 ### Common Problems
 

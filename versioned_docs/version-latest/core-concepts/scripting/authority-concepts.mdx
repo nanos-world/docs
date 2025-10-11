@@ -61,18 +61,21 @@ In the same way, entities spawned in the **Client** will only exist for that Cli
 
 ## Network Authority
 
-Another important concept in nanos world is the **Network Authority**. We have a _"distributed network authority"_ concept, which means the work of calculating physics and AI (for example) are automatically assigned and distributed to the clients. In general, if a <Classes.Actor /> is near an in-game Character, it's physics will be calculated by that player's device. The Player that is responsible for calculating and sharing the results is called **Network Authority**.
+Another important concept in nanos world is the **Network Authority**. We have a _"distributed network authority"_ concept, which means the work of calculating physics are automatically assigned and distributed to the clients.
 
-The Player assigned is automatically calculated by the server and takes some things into consideration, this calculation is only made if the Player is possessing a Character:
+In general, if a <Classes.Actor /> is near an in-game Character, it's physics will be calculated by that player's computer. The Player that is responsible for calculating and sharing the results is called **Network Authority**.
 
-* The **distance** from the Character to the object
-* If the Character is **grabbing** a <Classes.Prop />
-* If the Character is **handling** a <Classes.Pickable />
-* If the Character is **driving** a <Classes.Vehicle />
-* If the Character has just **shot** an entity (e.g. <Classes.Prop />, <Classes.Weapon />, <Classes.Vehicle />, etc)
-* If the Character has just **roamed** a <Classes.Character /> with a Vehicle
+The Player assigned is automatically calculated by the server and takes some things into consideration:
 
-In all this cases, the Player will be automatically assigned to be the **Network Authority** of that Object.
+* The **distance** from the Character to the entity.
+* If the Player is **possessing** a <Classes.Pawn />.
+* If the Character is **grabbing** a <Classes.Prop />.
+* If the Character is **handling** a <Classes.Pickable />.
+* If the Character is **driving** a <Classes.Vehicle />.
+* If the Character has just **shot** an entity (e.g. <Classes.Prop />, <Classes.Pickable />, <Classes.Vehicle />, etc).
+* If the Character has just **roamed** a <Classes.Character /> with a Vehicle.
+
+In all this cases, the Player will be automatically assigned to be the **Network Authority** of that Object. Note that this calculation is only made if the Player is possessing a Character.
 
 
 ### Overriding the current Network Authority
@@ -93,12 +96,6 @@ You can also prevent it from being automatically distributed to other Players by
 Always remember to restore the automatic **Network Authority Distribution** by calling <MethodReference type="Class" class_name="Actor" method="SetNetworkAuthorityAutoDistributed" is_base params={"true"} />. Otherwise that entity may behave completely weird.
 
 :::
-
-
-#### Examples of actions that are only executed by the Network Authority of that Actor
-
-* Objects Physics sync (including when calling <MethodReference type="Class" class_name="Actor" method="SetForce" is_base />).
-* NPCs walking with <MethodReference type="Class" class_name="Pawn" method="MoveTo" is_base /> or <MethodReference type="Class" class_name="Pawn" method="Follow" is_base />.
 
 
 ### Debugging Network & Network Authority
