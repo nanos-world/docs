@@ -82,6 +82,13 @@ export function GetReturnDescriptionList(return_list) {
 	return ret ? <>{" ("}{ ret }{")"}</> : "";
 }
 
+// Network Authority Label Map
+export const NetworkAuthorityDistributionLabels = {
+	enabled: <>This class have the <LinkActiveVersion to="core-concepts/scripting/authority-concepts#network-authority">Network Authority</LinkActiveVersion> distribution <strong>enabled</strong> and automatically handled by the server. You can <LinkActiveVersion to="scripting-reference/classes/base-classes/actor#function-setnetworkauthority">override</LinkActiveVersion> the Network Authority or <LinkActiveVersion to="scripting-reference/classes/base-classes/actor#function-setnetworkauthorityautodistributed">disable it</LinkActiveVersion> from automatically distributing.</>,
+	disabled: <>This class have the <LinkActiveVersion to="core-concepts/scripting/authority-concepts#network-authority">Network Authority</LinkActiveVersion> auto distribution <strong>disabled</strong> by default. But you can <LinkActiveVersion to="scripting-reference/classes/base-classes/actor#function-setnetworkauthorityautodistributed">enable it</LinkActiveVersion>.</>,
+	none: <>This class can't be <LinkActiveVersion to="core-concepts/scripting/authority-concepts#network-authority">Network Authority</LinkActiveVersion> distributed.</>,
+}
+
 // Authority Label Map
 export const AuthorityLabels = {
 	client: <>This class can only be spawned on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Client</LinkActiveVersion> side.</>,
@@ -171,6 +178,10 @@ export function GetEventSignature(class_name, event_data, content) {
 	return `${class_name}.Subscribe("${event_data.name}", function(${GetParametersList(event_data.arguments)})\n${ content ? content : `\t-- ${event_data.name} was called` }\nend)`;
 }
 
+// Network Authority Distribution Admonition
+export const NetAuthorityDistributionAdmonition = ({ network_distribution }) => (
+	<Admonition type="info" icon="🔁" title="Network Authority Distribution">{ NetworkAuthorityDistributionLabels[network_distribution] }</Admonition>
+);
 // Authority Admonition
 export const AuthorityAdmonition = ({ authority, is_static }) => (
 	<Admonition type="info" icon="💂" title="Authority">{ is_static ? AuthorityLabelsStatic[authority] : AuthorityLabels[authority] }</Admonition>
@@ -522,6 +533,7 @@ export const HeaderDeclaration = ({ type, name, image, is_static, open_source_ur
 		{ image ? <><p><img src={image} /></p><hr /></> : "" }
 		{ is_static ? <StaticClassAdmonition /> : "" }
 		{ class_data.authority ? <AuthorityAdmonition authority={class_data.authority} is_static={is_static} /> : "" }
+		{ class_data.network_distribution ? <NetAuthorityDistributionAdmonition network_distribution={class_data.network_distribution} /> : "" }
 		{ class_data.inheritance ? <InheritanceAdmonition inheritance={class_data.inheritance} /> : "" }
 		{ open_source_url ? <OpenSourceAdmonition url={open_source_url} /> : "" }
 		<APISourceURL type={type} class_name={ class_data.is_base ? "Base" + name : name} />
