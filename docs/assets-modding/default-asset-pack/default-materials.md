@@ -55,6 +55,11 @@ For more information regarding how each Parameter affects the final visual, plea
 **Masked** and **Lit** Material.
 
 
+### **`M_Default_Masked_Lit_WorldAligned`**
+
+**Masked** and **Lit** Material, with `WorldAlignedTexture` node, scaled with `TextureSize` scalar parameter.
+
+
 ### **`M_Default_Masked_Unlit`**
 
 **Masked** and **Unlit** Material.
@@ -99,6 +104,7 @@ For more information regarding how each Parameter affects the final visual, plea
 |  | Domain | Blend Mode | Shading Model |
 | :--- | :--- | :--- | :--- |
 | **M_Default_Masked_Lit** | Surface | Masked | Default Lit |
+| **M_Default_Masked_Lit_WorldAligned** | Surface | Masked | Default Lit |
 | **M_Default_Masked_Unlit** | Surface | Masked | Unlit |
 | **M_Default_Translucent_Lit** | Surface | Translucent | Default Lit |
 | **M_Default_Translucent_Lit_Depth** | Surface | Translucent | Default Lit |
@@ -119,15 +125,16 @@ For more information regarding how each Parameter affects the final visual, plea
 
 #### Supported Common Parameters in each Material
 
-|  | Tint | Texture | Normal | Emissive | Metallic | Specular | Roughness | Opacity |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **M_Default_Masked_Lit** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `true*` |
-| **M_Default_Masked_Unlit** | `false` | `true` | `false` | `true` | `false` | `false` | `false` | `true*` |
-| **M_Default_Translucent_Lit** | `true` | `true` | `false` | `true` | `false` | `false` | `false` | `true` |
-| **M_Default_Translucent_Lit_Depth** | `true` | `true` | `false` | `true` | `false` | `false` | `false` | `true` |
-| **M_Default_Translucent_Lit_Decal** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `true` |
-| **M_Noise** | `false` | `false` | `false` | `true` | `true` | `true` | `true` | `false` |
-| **M_Wireframe** | `true` | `false` | `false` | `true` | `false` | `false` | `false` | `false` |
+|  | Tint | Texture | Normal | Emissive | Metallic | Specular | Roughness | Opacity | VTiling | UTiling | TextureSize |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **M_Default_Masked_Lit** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `true*` | `true` | `true` | `false` |
+| **M_Default_Masked_Lit_WorldAligned** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `true*` | `true` | `true` | `true` |
+| **M_Default_Masked_Unlit** | `false` | `true` | `false` | `true` | `false` | `false` | `false` | `true*` | `true` | `true` | `false` |
+| **M_Default_Translucent_Lit** | `true` | `true` | `false` | `true` | `false` | `false` | `false` | `true` | `false` | `false` | `false` |
+| **M_Default_Translucent_Lit_Depth** | `true` | `true` | `false` | `true` | `false` | `false` | `false` | `true` | `false` | `false` | `false` |
+| **M_Default_Translucent_Lit_Decal** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `false` | `false` | `false` |
+| **M_Noise** | `false` | `false` | `false` | `true` | `true` | `true` | `true` | `false` | `false` | `false` | `false` |
+| **M_Wireframe** | `true` | `false` | `false` | `true` | `false` | `false` | `false` | `false` | `false` | `false` | `false` |
 
 > **Masked Material's Opacity supports only Opacity Mask: `0` or `1`*
 
