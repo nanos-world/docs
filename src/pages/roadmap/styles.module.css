@@ -96,7 +96,8 @@ html[data-theme='light'] .label-text {
 
 .item {
 	width: 305px;
-	display: inline-block;
+	display: flex;
+	flex-direction: column;
 	background: var(--ifm-color-info-contrast-background);
 	border-radius: 6px;
 	box-shadow: 0 1px 2px #00000030;
