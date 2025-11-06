@@ -40,6 +40,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | **`query_port`** | Server query Port (UDP) |
 | **`announce`** | Whether to announce or not in the Server List |
 | **`max_tick_rate`** | Server Tick in Hz. How much the server will tick per second. We recommend leaving it 30 |
+| **`max_send_rate`** | Server send rate per client in MB/s. Limits bandwidth for each connected player |
 | **`log_level`** | Which Log level to output |
 | **`game_mode`** | [game-mode](/core-concepts/packages/packages-guide.md#game-mode) package to load -  you can only load one game-mode at once. |
 | **`loading_screen`** | [loading-screen](/core-concepts/packages/loading-screen.md) package to load - you can only load one loading-screen at once. |
@@ -138,6 +139,8 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--auto_download` | *flag* | Automatically downloads Packages and Assets from Vault if needed |
 | `--use_vault_assets_lean` | *flag* | Only downloads the Asset Pack's .toml configuration files from Vault |
 | `--log_show_thread` | *flag* | Shows the current running thread of each outputted log |
+| `--max_tick_rate` | 15-120 | Sets the server max tick rate in Hz (ticks per second) |
+| `--max_send_rate` | 1-64 | Sets the server max send rate per client in MB/s |
 | `--enable_unsafe_libs` | *flag* | Enables executing the methods `os.execute`, `os.rename`, `os.remove`, `os.exit`, `os.getenv`, `os.tmpname`, `os.setlocale`, `dofile`, `loadfile` and all `io.*` on server side (**Caution**: those methods may allow malicious operations to run on your server, make sure you know what you are doing) |
 
 :::tip
