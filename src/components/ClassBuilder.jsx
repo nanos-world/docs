@@ -70,16 +70,17 @@ export function GetReturnList(return_list) {
 // Gets a list of return descriptions surrounded by ()
 export function GetReturnDescriptionList(return_list) {
 	const ret = return_list.map((return_data) =>
-		return_data.description || return_data.table_properties || return_data.table_properties_custom ?
+		return_data.name || return_data.description || return_data.table_properties || return_data.table_properties_custom ?
 			<>
-				{ return_data.description }
-				{ return_data.description && (return_data.table_properties || return_data.table_properties_custom) ? <> </> : null }
+				{ return_data.description || return_data.name }
 				{ return_data.table_properties ? <InlineTablePropertiesDeclaration table_properties={return_data.table_properties} /> : null }
 				{ return_data.table_properties_custom ? <InlineTablePropertiesDeclaration table_properties_custom={return_data.table_properties_custom} /> : null }
 			</>
 		: null
-	).reduce((prev, next) => [prev, ", ", next]);
-	return ret ? <>{" ("}{ ret }{")"}</> : "";
+	).filter((value) => value != null);
+	if (ret.length == 0)
+		return "";
+	return <>{" ("}{ret.reduce((prev, next) => [prev, ", ", next])}{")"}</>;
 }
 
 // Network Authority Label Map
@@ -138,11 +139,12 @@ export function GetReturnPart(function_data) {
 		return "";
 	if (function_data.return.length == 1)
 	{
+		const return_name = function_data.return[0].name || "ret";
 		if (function_data.return[0].type && function_data.return[0].type.endsWith("..."))
-			return "local ret_01, ret_02, ... = ";
-		return "local ret = ";
+			return `local ${return_name}_01, ${return_name}_02, ... = `;
+		return `local ${return_name} = `;
 	}
-	return `local${function_data.return.map((value, i) => " ret_0" + (i + 1))} = `;
+	return `local ${function_data.return.map((value, i) => value.name || `ret_${i + 1}`).join(", ")} = `;
 }
 
 // Gets Multiline Code or a single line
