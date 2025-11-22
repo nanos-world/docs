@@ -18,9 +18,9 @@
   },
   "dependencies": {
     "@crowdin/cli": "^4.11.0",
-    "@docusaurus/core": "^3.9.1",
-    "@docusaurus/preset-classic": "^3.9.1",
-    "@docusaurus/theme-mermaid": "^3.9.1",
+    "@docusaurus/core": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.9.2",
+    "@docusaurus/theme-mermaid": "^3.9.2",
     "@saucelabs/theme-github-codeblock": "^0.3.0",
     "@tippyjs/react": "^4.2.6",
     "docusaurus-plugin-image-zoom": "^3.0.1",
