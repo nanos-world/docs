@@ -13,16 +13,13 @@ module.exports = {
   trailingSlash: false,
   i18n: {
     defaultLocale: 'en',
-    locales: isDev ? ['en'] : ['en', 'pt-BR', 'de', 'fr'],
+    locales: isDev ? ['en'] : ['en', 'fr', 'pt-BR'],
     localeConfigs: {
       en: {
         label: '🇬🇧 English'
       },
       'pt-BR': {
         label: '🇧🇷 Português (Brasil)'
-      },
-      de: {
-        label: '🇩🇪 Deutsch'
       },
       fr: {
         label: '🇫🇷 Français'
@@ -77,20 +74,26 @@ module.exports = {
         {
           href: 'https://discord.nanos-world.com',
           position: 'right',
-          className: 'header-discord-link',
+          className: 'header-right-link header-discord-link',
           'aria-label': 'Discord',
         },
         {
           href: 'https://github.com/nanos-world',
           position: 'right',
-          className: 'header-github-link',
+          className: 'header-right-link header-github-link',
           'aria-label': 'GitHub repository',
         },
         {
           href: 'https://issues.nanos-world.com',
           position: 'right',
-          className: 'header-bugs-link',
+          className: 'header-right-link header-bugs-link',
           'aria-label': 'Bugs',
+        },
+        {
+          href: 'https://status.nanos-world.com',
+          position: 'right',
+          className: 'header-right-link header-status-link',
+          'aria-label': 'Status',
         },
         {
           type: 'docsVersionDropdown',

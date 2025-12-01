@@ -315,32 +315,23 @@ html[data-theme="dark"] .medium-zoom-overlay {
 	margin-left: 1rem;
 }
 
-.header-github-link:hover,
-.header-discord-link:hover,
-.header-bugs-link:hover,
-.header-account-link:hover {
+.header-right-link:hover {
 	opacity: 0.7;
 }
 
-.header-github-link:before,
-.header-discord-link:before,
-.header-bugs-link:before,
-.header-account-link:before {
+.header-right-link:before {
 	content: '';
 	display: flex;
 	width: 26px;
 	height: 28px;
 }
 
-.header-github-link,
-.header-discord-link,
-.header-bugs-link,
-.header-account-link {
+.header-right-link {
 	padding: 0 0.4rem;
 }
 
 /* Last item resets to original padding */
-.header-bugs-link {
+.header-right-link:last-child {
 	padding-right: var(--ifm-navbar-item-padding-horizontal);
 }
 
@@ -366,6 +357,14 @@ html[data-theme='dark'] .header-discord-link:before {
 
 html[data-theme='dark'] .header-bugs-link:before {
 	background: no-repeat center/26px url("/img/social/bugs-white.svg");
+}
+
+.header-status-link:before {
+	background: no-repeat center/20px 28px url("/img/social/status-color.png");
+}
+
+html[data-theme='dark'] .header-status-link:before {
+	background: no-repeat center/20px 28px url("/img/social/status-white.png");
 }
 
 .header-account-link:before {

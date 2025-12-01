@@ -18,6 +18,22 @@ export const ImageExternal = ({ path, className }) => (
 	<img src={`${ GetExternalPath() }/images${ path }`} className={className} decoding="async" loading="lazy" />
 )
 
+// Image that changes based on the dark/light theme
+// Note: image-zoom doesn't work
+export const ImageDarkLight = ({ dark_img, light_img, legend }) => (
+	<>
+		<p>
+			<ThemedImage
+				sources={{
+					light: light_img,
+					dark: dark_img,
+				}}
+			/>
+		</p>
+		<MediaLegend>{ legend }</MediaLegend>
+	</>
+);
+
 // Getter to get the current version path - for links
 export const getActiveVersionPath = () => {
 	const activeVersion = useActiveVersion();
