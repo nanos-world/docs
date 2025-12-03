@@ -38,13 +38,19 @@
           "title": "🎮 Ready to go Game-Modes",
           "image": "/roadmap/deathmatch.webp",
           "description": "Game-modes are the core of the game. Without them, there's nothing for players to really dive into. That's why we're making sure we have solid, long-term game modes ready before launch. These will be the key to attracting real players and keeping the community engaged.\n\nUntil then, we'll keep working with modders and scripters to create content and expand what's possible. We want to give the community the tools to experiment and help shape the game first.\n\nOnce we have game-modes and content that are polished and fun, we'll start building hype and bringing in streamers and players to showcase the experience. The goal is to launch with exciting and replayable modes that keep players coming back for more.",
-          "labels": ["gameplay"]
+          "labels": ["gameplay", "scripting", "modding"]
         },
         {
           "title": "🏪 Better Vault",
           "image": "/roadmap/vault.webp",
           "description": "The Vault is our in-game system for managing and sharing community-created content. We're planning significant improvements to make it easier to use, more reliable, and offer better organization and discovery of assets.\n\nAlthough we already have a functional in-game Vault system that allows players to share and download custom content, we recognize its current implementation has limitations, particularly when it comes to backend implementation and integration.\n\nOur goal with this rework is to significantly improve the Vault's backend services and associated web pages. Making the process of uploading new content, managing versions and details much easier for creators to share their work with the community.",
           "labels": ["ui", "ux", "integration", "optimization"]
+        },
+        {
+          "title": "📜 ToS & Privacy Policy",
+          "image": "/roadmap/tos.webp",
+          "description": "Before the official release, we need to establish comprehensive Terms of Service (ToS) and Privacy Policy documents. These legal documents are essential for protecting both the development team and the player community, clearly defining the rights, responsibilities, and acceptable use of the platform.\n\nThey will cover important aspects such as intellectual property rights, user-generated content policies, monetization, moderation guidelines, privacy policies, and liability limitations. We're working to ensure these documents are clear, fair, and transparent while providing the necessary legal framework for operating the game and its services.",
+          "labels": ["organizational"]
         }
       ]
     },
@@ -65,12 +71,6 @@
           "labels": ["scripting", "community"]
         },
         {
-          "title": "🛠️ Robust Assets Development Kit",
-          "image": "/roadmap/adk.webp",
-          "description": "Our current ADK solution is a bit limited, it is simply an Unreal Project with the same settings and definitions from our base game that allows you to cook your assets and use them in-game.\n\nWe're planning to improve this system by providing a more robust and user-friendly tool that will allow you to create, cook, copy and even upload your assets directly from the Unreal Editor. This will make the process of creating and sharing custom content much easier and more accessible to everyone.",
-          "labels": ["modding", "ux", "integration"]
-        },
-        {
           "title": "🎭 Parties and Lobbies",
           "image": "/roadmap/lobbies.webp",
           "description": "Parties and Lobbies are all about making it easier to play with friends. The idea is to integrate Steam's SDK to allow players to create lobbies, invite their friends, and join servers together. Instead of everyone having to find and join a server separately, you'll be able to squad up and jump in as a group.\n\nThis feature would improve the social aspect of the game, making multiplayer sessions more fun and accessible. We'll be looking into how best to implement it while ensuring it works smoothly with our existing systems.",
@@ -89,10 +89,22 @@
           "labels": ["scripting"]
         },
         {
+          "title": "🛠️ Robust Assets Development Kit",
+          "image": "/roadmap/adk.webp",
+          "description": "Our current ADK solution is a bit limited, it is simply an Unreal Project with the same settings and definitions from our base game that allows you to cook your assets and use them in-game.\n\nWe're planning to improve this system by providing a more robust and user-friendly tool that will allow you to create, cook, copy and even upload your assets directly from the Unreal Editor. This will make the process of creating and sharing custom content much easier and more accessible to everyone.",
+          "labels": ["modding", "ux", "integration"]
+        },
+        {
           "title": "💥 Breakable Entities with Chaos Destruction",
           "video": "/roadmap/chaos-destruction.webm",
           "description": "We're planning to introduce breakable entities using Unreal Engine's Chaos Destruction system. We already had some experiments with it in the past, but we're looking to expand it further and make it a core feature of the game.\n\nA challenge we will face is achieving reliable network replication of destruction events in multiplayer. Synchronizing dynamic destruction across all clients is complex and requires careful consideration. We need to ensure that all players experience the same destruction events simultaneously, and also synchronized after players reconnecting to the server.\n\nAnother challenge is to seamlessly incorporate this system with our existing entities, making sure they are cohesive with other existing entities such as Props.",
           "labels": ["gameplay", "modding"]
+        },
+        {
+          "title": "🛍️ Store Marketplace",
+          "image": "/roadmap/marketplace.webp",
+          "description": "A dedicated Store Marketplace where scripters and creators can list, buy and sell scripts, packages and assets. The marketplace will support pricing, licensing options, previews, ratings, and secure transactions.",
+          "labels": ["modding", "integration", "hosting"]
         },
         {
           "title": "🌊 Drowning System",
@@ -111,6 +123,24 @@
           "image": "/roadmap/fsr.webp",
           "description": "We're planning to integrate AMD's FidelityFX Super Resolution (FSR) technology into the game, allowing AMD GPU players to use this feature.",
           "labels": ["integration", "optimization"]
+        },
+        {
+          "title": "🛡️ Anti-Cheat",
+          "image": "/roadmap/eac.webp",
+          "description": "Implementing a robust anti-cheat system is crucial for maintaining fair gameplay and protecting the integrity of multiplayer matches.\n\nWe're planning to integrate several anti-cheat measures that will detect and prevent common exploits, cheats, and malicious modifications. And also we are considering integrating a third-party tool (such as EAC) on client to protect the game.\n\nOur goal is to create a secure gaming environment where players can enjoy the game without worrying about unfair advantages, while still maintaining the flexibility that makes nanos world great for modding and customization.",
+          "labels": ["gameplay"]
+        },
+        {
+          "title": "💰 Monetization Tools",
+          "image": "/roadmap/monetization.webp",
+          "description": "We're planning to implement an integrated official monetization tool that will allow server owners to sustainably operate their communities and servers. This tool would provide flexible options for implementing in-game purchases, donations, premium memberships, and other revenue models.\n\nThe system would include secure payment processing integration, customizable shop interfaces, subscription management, and detailed analytics to help server owners track their revenue and player engagement.\n\nThis tool would be optional and configurable, allowing each community to choose the monetization approach that best fits their needs.",
+          "labels": ["hosting", "integration", "ui"]
+        },
+        {
+          "title": "🎥 Culling/Streaming System",
+          "image": "/roadmap/culling.webp",
+          "description": "To improve performance, especially on servers with many entities, we're planning to implement a culling/streaming system.\n\nThis system will manage which entities are actively streamed for each player based on their location and relevance. Entities that are far away from the player will not be streamed.\n\nScripters will have control over culling behavior, allowing them to specify which entities should always remain active or define custom culling rules based on gameplay needs.",
+          "labels": ["optimization", "scripting"]
         },
         {
           "title": "❔ More to come...",
@@ -152,6 +182,18 @@
       "title": "✅ all released features",
       "description": "completed features that are already available in the game",
       "items": [
+        {
+          "title": "🌟 Badge System",
+          "image": "/roadmap/badges.webp",
+          "description": "We've introduced a Badge System to recognize and reward players for their participation in events. Badges are displayed on your profile and serve as a testament to your contributions to the community. This system allows us to grant special unique badges for testers, content creators, and event special players.",
+          "labels": ["released", "integration", "ui"]
+        },
+        {
+          "title": "🔐 Client Scripting Files Encryption",
+          "image": "/roadmap/encryption.webp",
+          "description": "We've implemented an encryption system for client-side downloaded scripting files, providing an additional layer of protection for intellectual property and custom code, meaning no script file can be read from clients.",
+          "labels": ["released", "scripting", "hosting"]
+        },
         {
           "title": "⏩ WebUI Hardware Acceleration",
           "image": "/roadmap/accelerated.webp",

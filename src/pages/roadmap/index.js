@@ -50,6 +50,7 @@ const GetLabels = (labels) => (
 			case "ux": return <Label emoji="🧑‍💻" title="ux" tooltip="user experience" color="#e84393" />
 			case "integration": return <Label emoji="🖇️" title="integration" tooltip="integration with external services" color="#00cec9" />
 			case "optimization": return <Label emoji="🚀" title="optimization" tooltip="optimization feature to improve performance" color="#6ec7fd" />
+			case "organizational": return <Label emoji="📜" title="organizational" tooltip="bureaucratic or administrative must-have" color="#424242" />
 			default:
 				return <Label title={ label } />
 		}

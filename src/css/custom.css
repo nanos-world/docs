@@ -51,6 +51,11 @@
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
+html.blog-wrapper {
+	/* Blog Width */
+	--ifm-container-width-xl: 100%;
+}
+
 html[data-theme="dark"] {
 	--ifm-font-color-base: #bdbdbd;
 	--ifm-color-content-secondary: #bdbdbd;
