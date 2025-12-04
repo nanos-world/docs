@@ -13,13 +13,16 @@ module.exports = {
   trailingSlash: false,
   i18n: {
     defaultLocale: 'en',
-    locales: isDev ? ['en'] : ['en', 'fr', 'pt-BR'],
+    locales: isDev ? ['en'] : ['en', 'fr', 'pt-BR', 'de'],
     localeConfigs: {
       en: {
         label: '🇬🇧 English'
       },
       'pt-BR': {
         label: '🇧🇷 Português (Brasil)'
+      },
+      de: {
+        label: '🇩🇪 Deutsch'
       },
       fr: {
         label: '🇫🇷 Français'
@@ -107,6 +110,11 @@ module.exports = {
               href: 'https://crowdin.com/project/nanos-world-docs/',
               label: 'Help Us Translate',
             },
+            {
+              type: 'html',
+              className: 'crowdin-progress-item',
+              value: '<a title="Help Us Translate" target="_blank" href="https://crowdin.com/project/nanos-world-docs/"><img src="https://badges.crowdin.net/nanos-world-docs/localized.svg"></a>'
+            }
           ],
         },
         {
@@ -163,7 +171,7 @@ module.exports = {
               label: 'bleeding-edge 🩸',
             },
             latest: {
-              label: 'latest - a1.91.x ⚖️',
+              label: 'latest - a1.98.x ⚖️',
             }
           },
         },
@@ -197,9 +205,9 @@ module.exports = {
   ],
    markdown: {
     mermaid: true,
-	hooks: {
+    hooks: {
       onBrokenMarkdownLinks: 'warn',
-	}
+    }
   },
   plugins: [
     require.resolve('docusaurus-plugin-image-zoom'),

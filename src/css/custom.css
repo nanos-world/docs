@@ -790,3 +790,8 @@ img-comparison-slider .before figcaption {
 img-comparison-slider .after figcaption {
 	right: 10px;
 }
+
+.crowdin-progress-item {
+	text-align: center;
+	margin: 5px 0 0 0;
+}

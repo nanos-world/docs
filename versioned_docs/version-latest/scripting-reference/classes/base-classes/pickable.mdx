@@ -4,9 +4,6 @@ description: Base class for all Pickables
 tags: [base-class]
 ---
 
-import { Classes } from '@site/src/components/_nanos';
-import ThemedImage from '@theme/ThemedImage';
-
 <HeaderDeclaration type="Class" name="Pickable" />
 
 They have special methods and events and are highlighted when looked at by a Character.
@@ -26,15 +23,11 @@ They have special methods and events and are highlighted when looked at by a Cha
 
 nanos world provides a bunch of crosshair materials which can be used in Weapons/Pickables. You can of course create your own crosshair material and use those instead!
 
-````mdx-code-block
-<ThemedImage
-    alt="All available Crosshairs"
-    sources={{
-        light: '/img/docs/crosshairs_light.webp',
-        dark: '/img/docs/crosshairs_dark.webp',
-    }}
+<ImageDarkLight
+	light_img="/img/docs/crosshairs_light.webp"
+	dark_img="/img/docs/crosshairs_dark.webp"
+	legend="All available Crosshairs"
 />
-````
 
 
 #### List of crosshair materials included in the default asset pack

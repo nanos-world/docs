@@ -279,7 +279,7 @@ Common problems when importing assets and possible solutions:
 
 #### Corrupt data found, please verify your installation
 
-> If you see this error as a Popup, please make sure to retry all steps listed [here](#troubleshooting).
+> If you see this error as a Popup, please make sure to retry all steps listed [here](#troubleshooting) or try cleaning up your local `NanosWorld/Server/Assets/` folder and re-downloading the files from the server.
 
 #### Game Crash during/after loading a custom map or custom assets
 
