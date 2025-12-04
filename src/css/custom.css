@@ -84,6 +84,9 @@ html[data-theme="dark"] {
 
 	/* Highlight line */
 	--docusaurus-highlighted-code-line-bg: rgba(66, 66, 66, .35);
+
+	/* Footer */
+	--ifm-footer-background-color: var(--ifm-navbar-background-color);
 }
 
 html[data-theme='dark']	.alert {

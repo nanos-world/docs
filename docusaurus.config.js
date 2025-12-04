@@ -123,6 +123,16 @@ module.exports = {
         },
       ],
     },
+    footer: {
+      copyright: `© ${new Date().getFullYear()} Go Horse Studios.`,
+      style: 'light',
+      links: [
+        {
+          label: 'Imprint',
+          href: 'https://gohorsestudios.com/imprint',
+        }
+      ]
+    },
     prism: {
       theme: require('prism-react-renderer').themes.vsLight,
       darkTheme: require('prism-react-renderer').themes.vsDark,
