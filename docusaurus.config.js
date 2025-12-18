@@ -128,6 +128,14 @@ module.exports = {
       style: 'light',
       links: [
         {
+          label: 'Terms of Service',
+          href: 'https://gohorsestudios.com/tos',
+        },
+        {
+          label: 'Privacy',
+          href: 'https://gohorsestudios.com/privacy',
+        },
+        {
           label: 'Imprint',
           href: 'https://gohorsestudios.com/imprint',
         }

@@ -8,6 +8,10 @@ button {
 	outline: inherit;
 }
 
+:global(html.roadmap-popup-open) {
+	overflow: hidden;
+}
+
 .item-labels {
 	display: flex;
 	flex-wrap: wrap;
@@ -187,6 +191,7 @@ html[data-theme='light'] .label-text {
 	box-sizing: border-box;
 	justify-content: center;
 	overflow: auto;
+	overscroll-behavior: contain;
 	background: rgba(15, 15, 15, 0.85);
 	z-index: 20000;
 }

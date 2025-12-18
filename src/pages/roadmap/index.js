@@ -60,9 +60,14 @@ const GetLabels = (labels) => (
 const Roadmap = () => {
 	const [item, setItem] = useState([]);
 
+	const setPopupOpen = (open) => {
+		document.getElementById("popup")?.classList.toggle(styles["popup-container-visible"], open);
+		document.documentElement.classList.toggle('roadmap-popup-open', open);
+	};
+
 	const Item = ({ title, image, video, description, labels, external_link, external_link_title }) => (
 		<button key={title} className={clsx("item", styles.item)} onClick={function() {
-				document.getElementById("popup").classList.add(styles["popup-container-visible"]);
+				setPopupOpen(true);
 				setItem({ title, image, video, description, labels, external_link, external_link_title });
 			}}>
 			{ image ? <ImageExternal path={image} /> : null }
@@ -94,7 +99,7 @@ const Roadmap = () => {
 		<>
 			<div id="popup" className={clsx("popup-container", styles["popup-container"])}>
 				<button className={clsx("popup-background", styles["popup-background"])} onClick={ function() {
-					document.getElementById("popup").classList.remove(styles["popup-container-visible"]);
+					setPopupOpen(false);
 				} }></button>
 				<div className={clsx("popup-content", styles["popup-content"])}>
 					{ item.image ? <ImageExternal className={clsx("popup-image", styles["popup-image"])} path={item.image} /> : null }
@@ -108,7 +113,7 @@ const Roadmap = () => {
 					<span id="popup-labels" className={clsx("popup-labels", styles["popup-labels"])}>{ GetLabels(item.labels) }</span>
 				</div>
 				<button className={clsx("popup-close", styles["popup-close"])} onClick={ function() {
-					document.getElementById("popup").classList.remove(styles["popup-container-visible"]);
+					setPopupOpen(false);
 				} }>x</button>
 			</div>
 			<Layout title="Roadmap" description="nanos world Roadmap">
