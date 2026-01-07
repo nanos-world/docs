@@ -129,6 +129,13 @@ This is a powerful tab as it automatically handles zipping, uploading and releas
 <MediaLegend>Manage Versions Tab</MediaLegend>
 
 
+See how easy is uploading a new version, adding changelog and releasing it through the Vault:
+
+<VideoExternal path="/docs/vault/modifying-uploading-releasing.webm" />
+
+<MediaLegend>Full workflow uploading a new Version</MediaLegend>
+
+
 #### Modifying the Version Number
 
 To be able to upload a new version of your Resource, you must first modify the existing version number to a new one (following [Semantic Versioning](https://semver.org/)).
