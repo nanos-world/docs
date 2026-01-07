@@ -7,7 +7,7 @@ image: /img/docs/vault-01.webp
 
 nanos world **Vault** is in-game interface to download and manage installed Asset Packs & Packages.
 
-![](/img/docs/vault-01.webp)
+![](/img/docs/vault/vault-01.webp)
 
 
 ## About the Vault
@@ -20,4 +20,4 @@ The Store and the Vault are still under development. We are launching small usab
 
 :::
 
-![](/img/docs/vault-02.webp)
+![](/img/docs/vault/vault-02.webp)

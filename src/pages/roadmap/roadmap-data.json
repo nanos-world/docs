@@ -39,18 +39,6 @@
           "image": "/roadmap/deathmatch.webp",
           "description": "Game-modes are the core of the game. Without them, there's nothing for players to really dive into. That's why we're making sure we have solid, long-term game modes ready before launch. These will be the key to attracting real players and keeping the community engaged.\n\nUntil then, we'll keep working with modders and scripters to create content and expand what's possible. We want to give the community the tools to experiment and help shape the game first.\n\nOnce we have game-modes and content that are polished and fun, we'll start building hype and bringing in streamers and players to showcase the experience. The goal is to launch with exciting and replayable modes that keep players coming back for more.",
           "labels": ["gameplay", "scripting", "modding"]
-        },
-        {
-          "title": "🏪 Better Vault",
-          "image": "/roadmap/vault.webp",
-          "description": "The Vault is our in-game system for managing and sharing community-created content. We're planning significant improvements to make it easier to use, more reliable, and offer better organization and discovery of assets.\n\nAlthough we already have a functional in-game Vault system that allows players to share and download custom content, we recognize its current implementation has limitations, particularly when it comes to backend implementation and integration.\n\nOur goal with this rework is to significantly improve the Vault's backend services and associated web pages. Making the process of uploading new content, managing versions and details much easier for creators to share their work with the community.",
-          "labels": ["ui", "ux", "integration", "optimization"]
-        },
-        {
-          "title": "📜 ToS & Privacy Policy",
-          "image": "/roadmap/tos.webp",
-          "description": "Before the official release, we need to establish comprehensive Terms of Service (ToS) and Privacy Policy documents. These legal documents are essential for protecting both the development team and the player community, clearly defining the rights, responsibilities, and acceptable use of the platform.\n\nThey will cover important aspects such as intellectual property rights, user-generated content policies, monetization, moderation guidelines, privacy policies, and liability limitations. We're working to ensure these documents are clear, fair, and transparent while providing the necessary legal framework for operating the game and its services.",
-          "labels": ["organizational"]
         }
       ]
     },
@@ -182,6 +170,22 @@
       "title": "✅ all released features",
       "description": "completed features that are already available in the game",
       "items": [
+        {
+          "title": "🏪 Better Vault",
+          "image": "/roadmap/vault.webp",
+          "description": "The Vault is our in-game system for managing and sharing community-created content. We're planning significant improvements to make it easier to use, more reliable, and offer better organization and discovery of assets.\n\nAlthough we already have a functional in-game Vault system that allows players to share and download custom content, we recognize its current implementation has limitations, particularly when it comes to backend implementation and integration.\n\nOur goal with this rework is to significantly improve the Vault's backend services and associated web pages. Making the process of uploading new content, managing versions and details much easier for creators to share their work with the community.",
+          "labels": ["ui", "ux", "integration", "optimization"]
+        },
+        {
+          "type": "date",
+          "title": "2025"
+        },
+        {
+          "title": "📜 ToS & Privacy Policy",
+          "image": "/roadmap/tos.webp",
+          "description": "Before the official release, we need to establish comprehensive Terms of Service (ToS) and Privacy Policy documents. These legal documents are essential for protecting both the development team and the player community, clearly defining the rights, responsibilities, and acceptable use of the platform.\n\nThey will cover important aspects such as intellectual property rights, user-generated content policies, monetization, moderation guidelines, privacy policies, and liability limitations. We're working to ensure these documents are clear, fair, and transparent while providing the necessary legal framework for operating the game and its services.",
+          "labels": ["organizational"]
+        },
         {
           "title": "🌟 Badge System",
           "image": "/roadmap/badges.webp",
