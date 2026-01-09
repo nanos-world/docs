@@ -29,11 +29,12 @@ The Windows server needs the latest [**Microsoft Visual C++ Redistributable**](h
 
 :::
 
-On Windows, you have **three** options for downloading nanos world server:
+On **Windows**, you have *four* options for downloading nanos world server:
 
-1. Use the executable (*.exe*) already located at `nanos-world/Server/NanosWorldServer.exe` (if you downloaded the base game).
-2. Or download **nanos world™ Dedicated Server** tool from Steam Client.
-3. Use [SteamCMD](#downloading-using-steamcmd).
+1. Use the executable (*.exe*) already located at the game's folder `nanos-world/Server/NanosWorldServer.exe` (recommended).
+2. Download `nanos world™ Dedicated Server` tool from Steam Client.
+3. Download through [SteamCMD](#downloading-with-steamcmd).
+4. Using [Docker](server-docker) (maintained by the community).
 
 
 ## Linux
@@ -48,13 +49,21 @@ The following Distros are granted to be supported out of the box:
 - `Ubuntu 22.04`
 - `Debian 12`
 
-For other distributions or an easier setup, consider using [Docker](#docker) which handles all dependencies automatically.
-
-You can see a community created page with instructions on how to install the server on other distros and versions [here](server-linux-arm).
+You can see a community created page with instructions on how to install the server on other distros and versions [here](server-linux-arm). Alternatively, for other distributions or an easier setup, consider using the community maintained [**Docker**](server-docker), which handles all dependencies automatically.
 
 :::
 
-On Linux, you can download the server through [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_SteamCMD) or use [Docker](#docker) (recommended). If you are on Ubuntu/Debian, you can easily install SteamCMD like that:
+On **Linux**, you have *two* options for downloading nanos world server:
+
+1. Download through [SteamCMD](#installing-steamcmd-on-linux) (officially supported).
+2. Using [Docker](server-docker) (maintained by the community).
+
+**Note**: on Linux, you must start the server using the Shell Script `./NanosWorldServer.sh`, which will configure proper paths and needed dynamic libraries which need to be loaded!
+
+
+### Installing SteamCMD on Linux
+
+If you are on Ubuntu/Debian, you can easily install **SteamCMD** like that:
 
 <Tabs groupId="operating-systems"
   values={[
@@ -93,12 +102,10 @@ See the SteamCMD [official installation instructions](https://developer.valvesof
 
 :::
 
-**Note**: on Linux, you must start the server using the Shell Script `./NanosWorldServer.sh`, which will configure proper paths and needed dynamic libraries which need to be loaded!
 
+## Downloading with SteamCMD
 
-## Downloading Using SteamCMD
-
-To download the server through SteamCMD (a command line version of Steam) please [download it](https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_SteamCMD) before proceeding.
+To download the server through **SteamCMD** (a command line version of Steam) please [download it](https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_SteamCMD) from the Steam official website before proceeding.
 
 ### Manual Installation
 
@@ -214,99 +221,5 @@ steamcmd +force_install_dir ~/nanos-world-server +login anonymous "+app_update 1
 :::tip
 
 Finished! You can now proceed to the next steps to configure your nanos world server.
-
-:::
-
-## Docker
-
-:::tip Recommended for Linux
-
-Using Docker is the easiest way to run a nanos world server on Linux, as it handles all dependencies automatically and works across different distributions.
-
-:::
-
-You can run nanos world server in a containerized environment using Docker. This method works on any system that supports Docker (Linux, Windows, macOS).
-
-### Prerequisites
-
-* Docker (version 20.10 or higher)
-* Docker Compose (version 2.0 or higher)
-* At least 100MB of free disk space
-
-### Quick Start with Docker Compose
-
-1. Create a `docker-compose.yml` file:
-
-```yaml
-services:
-  nanos-world-server:
-    image: olivatooo/nanos-world-server:latest
-    restart: unless-stopped
-    # Uncomment to always have the latest version
-    # pull_policy: always
-    ports:
-      - "7777:7777/udp"
-      - "7777:7777/tcp"
-    volumes:
-      - ./Packages:/app/Packages
-      - ./Assets:/app/Assets
-    # Uncomment and modify to pass parameters to the server
-    # command: ["--port", "7777", "--map", "MyMap"]
-```
-
-2. Start the server:
-
-```shell
-docker-compose up -d
-```
-
-3. View logs:
-
-```shell
-docker-compose logs -f
-```
-
-4. Stop the server:
-
-```shell
-docker-compose down
-```
-
-### Using Docker CLI
-
-Alternatively, you can run the server directly with Docker:
-
-```shell
-docker run olivatooo/nanos-world-server
-```
-
-### Configuration
-
-You can pass server parameters by modifying the `command` section in `docker-compose.yml`:
-
-```yaml
-command: ["--max-players", "32", "--announce"]
-```
-
-### Persistent Data
-
-The Docker configuration mounts a volume to `/app` inside the container. This allows you to:
-- Persist server configuration files
-- Add custom packages and assets
-- Access server logs
-- Maintain saved data between container restarts
-
-### Updating the Server
-
-To update to the latest version:
-
-```shell
-docker-compose pull
-docker-compose up -d
-```
-
-:::info Community Resource
-
-The Docker setup is maintained by the community. For more details, visit the [nanos-world-server Docker repository](https://github.com/olivatooo/nanos-world-server).
 
 :::
