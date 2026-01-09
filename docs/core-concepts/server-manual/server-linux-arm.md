@@ -1,7 +1,7 @@
 ---
 title: Linux & ARM Server installation
 description: Special cases for some Linux os & ARM platform
-sidebar_position: 5
+sidebar_position: 6
 tags: [hosting]
 ---
 
