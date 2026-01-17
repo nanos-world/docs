@@ -302,15 +302,18 @@ export const FunctionParametersDeclaration = ({ parameters, include_default = tr
 );
 
 // Function Block Declaration
-export const FunctionDeclaration = ({ function_data, is_static, class_name, show_lean_declaration = false }) => (
-	<>
+export const FunctionDeclaration = ({ function_data, is_static, class_name, show_lean_declaration = false }) => {
+	const id = `${is_static ? "static-function" : "function"}-${function_data.name.toLowerCase()}`;
+	const hash_link = `Direct Link to ${function_data.name}`;
+	return <>
 		{ !show_lean_declaration ? <hr /> : null }
-		<h3 id={ `${is_static ? "static-function" : "function"}-${function_data.name.toLowerCase()}` }>
+		<h3 id={ id } className="custom-anchor">
 			{ GetAuthorityType(function_data.authority) }
 			{ GetNative(function_data.is_native) }
 			<code>
 				{ function_data.name }
 			</code>
+			<a className="hash-link" href={ `#${id}` } aria-label={ hash_link } title={ hash_link } translate="no"></a>
 		</h3>
 		<blockquote>
 			<span dangerouslySetInnerHTML={{ __html: !show_lean_declaration && function_data.description_long ? function_data.description_long : function_data.description }}></span>
@@ -344,18 +347,21 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name, show
 			</p>
 		: <></>}
 	</>
-);
+};
 
 // Event Block Declaration
-export const EventDeclaration = ({ event_data, class_name, show_lean_declaration = false }) => (
-	<>
+export const EventDeclaration = ({ event_data, class_name, show_lean_declaration = false }) => {
+	const id = `event-${event_data.name.toLowerCase()}`;
+	const hash_link = `Direct Link to ${event_data.name}`;
+	return <>
 		{ !show_lean_declaration ? <hr /> : null }
-		<h3 id={ `event-${event_data.name.toLowerCase()}` }>
+		<h3 id={ id } className="custom-anchor">
 			{ GetAuthorityType(event_data.authority) }
 			{ GetNative(event_data.is_native) }
 			<code>
 				{ event_data.name }
 			</code>
+			<a className="hash-link" href={ `#${id}` } aria-label={ hash_link } title={ hash_link } translate="no"></a>
 		</h3>
 		<blockquote dangerouslySetInnerHTML={{ __html: `${ !show_lean_declaration && event_data.description_long ? event_data.description_long : (event_data.description ? event_data.description : "<span class='subtle-description'>No description provided</span>") }${ event_data.return ? "<br/><br/>" + event_data.return[0].description : ""}` }}></blockquote>
 		<CodeBlock className="language-lua">
@@ -398,7 +404,7 @@ export const EventDeclaration = ({ event_data, class_name, show_lean_declaration
 			</p>
 		: <></>}
 	</>
-);
+};
 
 export const StaticFunctionNameDeclaration = ({ class_name, function_data, base_class }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<StaticFunctionToolTip class_name={class_name} function_data={function_data} />}>
@@ -547,9 +553,14 @@ export const HeaderDeclaration = ({ type, name, image, is_static, open_source_ur
 // Block of Constructor
 export const ConstructorDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
-	return class_data.constructors.map((constructor, index) =>
-		<>
-			<h3 id={ `constructor-${ constructor.name.toLowerCase().replace(' ', '-') }` }>{ constructor.name }</h3>
+	return class_data.constructors.map((constructor, index) => {
+		const id = `constructor-${constructor.name.toLowerCase().replace(' ', '-')}`;
+		const hash_link = `Direct Link to ${constructor.name}`;
+		return <>
+			<h3 id={ id } className="custom-anchor">
+				{ constructor.name }
+				<a className="hash-link" href={ `#${id}` } aria-label={ hash_link } title={ hash_link } translate="no"></a>
+			</h3>
 			<p class="subtle-description" style={{ marginTop: "-20px" }}>{ constructor.description || "No description provided" }</p>
 			<CodeBlock className="language-lua">
 				{ GetConstructorExample(class_data, index) }
@@ -582,7 +593,7 @@ export const ConstructorDeclaration = ({ type, name }) => {
 				</>
 			}
 		</>
-	);
+	});
 };
 
 // Base Class Functions

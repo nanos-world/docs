@@ -177,6 +177,15 @@ code {
 	color: var(--ifm-color-emphasis-900);
 }
 
+h3 code {
+	vertical-align: initial;
+}
+
+/* Custom Anchor tag to fix offset */
+.custom-anchor {
+	scroll-margin-top: calc(var(--ifm-navbar-height) + 2rem);
+}
+
 html[data-theme='dark'] .prism-code,
 html[data-theme='dark'] div[class^='codeBlockTitle'],
 html[data-theme='dark'] span[class^='codeLineNumber'] {
