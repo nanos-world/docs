@@ -8,7 +8,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
-import { AuthorityType, NativeType, BasicType, Classes, Structs, Enums, AssetPath, ReferenceLink } from '@site/src/components/_nanos';
+import { AuthorityType, NativeType, EfficiencyType, BasicType, Classes, Structs, Enums, AssetPath, ReferenceLink } from '@site/src/components/_nanos';
 import { getActiveVersionPath, LinkActiveVersion, getKebabFromPascal } from '@site/src/components/Utils.jsx';
 import { FunctionToolTip, StaticFunctionToolTip, InlineFunctionToolTip, TablePropertiesToolTip, EventToolTip } from '@site/src/components/Tooltips';
 import Details from '@theme/Details';
@@ -255,6 +255,19 @@ export function GetNative(is_native) {
 	return null;
 };
 
+// Gets Efficiency Element
+export function GetEfficiency(efficiency) {
+	if (efficiency === "fast")
+		return <EfficiencyType.Fast />;
+	if (efficiency === "moderate")
+		return <EfficiencyType.Moderate />;
+	if (efficiency === "slow")
+		return <EfficiencyType.Slow />;
+	if (efficiency === "blocking")
+		return <EfficiencyType.Blocking />;
+	return null;
+};
+
 export function GetRelations(relations) {
 	const functions = relations.functions ? relations.functions.map(function(value, index) {
 			return <Link key={ `${value.name}-${index}` } to={`#function-${value.toLowerCase()}`}>{value}</Link>;
@@ -314,6 +327,7 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name, show
 				{ function_data.name }
 			</code>
 			<a className="hash-link" href={ `#${id}` } aria-label={ hash_link } title={ hash_link } translate="no"></a>
+			{ GetEfficiency(function_data.efficiency) }
 		</h3>
 		<blockquote>
 			<span dangerouslySetInnerHTML={{ __html: !show_lean_declaration && function_data.description_long ? function_data.description_long : function_data.description }}></span>

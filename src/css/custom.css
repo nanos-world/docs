@@ -170,6 +170,8 @@ h2 {
 
 h3 {
 	font-size: 1.2rem !important;
+	display: flex;
+	align-items: center;
 }
 
 /* Code Blocks */
@@ -394,7 +396,8 @@ html[data-theme='dark'] .header-account-link:before {
 
 /* Scripting Components */
 
-.authority-availability, .native-type {
+.authority-availability,
+.native-type {
 	vertical-align: middle;
 	display: inline-block;
 	max-width: 24px;
@@ -409,7 +412,8 @@ h3 > .native-type {
 }
 
 .authority-availability img,
-.native-type img {
+.native-type img,
+.efficiency-type img {
 	display: flex;
 	pointer-events: none;
 	border-radius: 50%;
@@ -421,8 +425,15 @@ h3 > .native-type {
 	font-size: 32px;
 }
 
-.native-type {
+.native-type,
+.efficiency-type {
 	cursor: help;
+}
+
+.efficiency-type {
+	max-width: 20px;
+	margin-left: auto;
+	opacity: 0.9;
 }
 
 .path-center {
@@ -614,7 +625,8 @@ a.card-link-lean:only-child {
 
 .hash-link,
 .authority-availability,
-.native-type {
+.native-type,
+.efficiency-type {
 	user-select: none;
 }
 

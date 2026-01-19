@@ -40,6 +40,15 @@ export const BaseNative = (img, title, description) => (
 	</Tippy>
 );
 
+// Generic Base Efficiency component
+export const BaseEfficiency = (img, title, description) => (
+	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} subtitle={"Method Efficiency"} />}>
+		<span className="efficiency-type">
+			<img src={img} title={title} />
+		</span>
+	</Tippy>
+);
+
 // Generic Base Authority component
 export const BaseAuthority = (img, title, description) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} subtitle={"Authority Side"} />}>
@@ -152,6 +161,14 @@ export const AuthorityType = {
 export const NativeType = {
 	Native: () => BaseNative("/img/scripting/native.svg", "Native Function", "This is a native and built-in function from Lua."),
 	NotNative: () => BaseNative("/img/scripting/not-native.svg", "Custom Function", "This is a custom function added to the native lua library!"),
+};
+
+// Defines Efficiency Types components
+export const EfficiencyType = {
+	Fast: () => BaseEfficiency("/img/scripting/efficiency-fast.png", "Optimal", "Low-overhead method. Safe to call frequently without measurable impact on performance."),
+	Moderate: () => BaseEfficiency("/img/scripting/efficiency-moderate.png", "Moderate", "Method with average execution time."),
+	Slow: () => BaseEfficiency("/img/scripting/efficiency-slow.png", "Slow", "Method with significant resource and performance cost. Recommend caching results and not calling frequently."),
+	Blocking: () => BaseEfficiency("/img/scripting/efficiency-block.png", "Blocking", "Method with a blocking operation. This may freeze the game thread for a long period. Recommend only calling it on initialization or in extreme cases."),
 };
 
 // Defines Basic Types components
