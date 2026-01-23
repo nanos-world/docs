@@ -100,49 +100,189 @@ You can download, upload and edit your resources through HTTPS requests, check i
 
 ## Automate GitHub Releases
 
-If your Package or Asset Pack is uploaded to the GitHub, you can make use of our [Official Action](https://github.com/marketplace/actions/nanos-store-action) to automate the upload of new releases!
+If your Package or Asset Pack is uploaded to GitHub, you can use the [Nanos World Store Publisher Action](https://github.com/olivatooo/nanos-world-store-action) to automate the upload of new releases!
 
-For that, first create a `.yml` file inside your repository at `.github/workflows/`. E.g.: `./github/workflows/nanos-world-store.yml` with the content:
+This action automatically handles version validation, package zipping, and uploading to the Nanos World Store.
+
+### Setup in 3 Steps
+
+#### 1. Add Your Token as a Secret
+
+1. Go to your repository **Settings** → **Secrets and variables** → **Actions**
+2. Click **New repository secret**
+3. Name: `NANOS_STORE_TOKEN`
+4. Value: Your Nanos World Store Personal Access Token (generate at https://store.nanos.world/settings/tokens/)
+5. Click **Add secret**
+
+#### 2. Create Workflow File
+
+Create a `.yml` file inside your repository at `.github/workflows/`. E.g.: `.github/workflows/publish.yml` with the content:
 
 ```yml showLineNumbers
-name: nanos world Store Publish
+name: Publish to Nanos World Store
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'  # Publishes when you push a version tag
+  workflow_dispatch:  # Allows manual trigger
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
-    name: Publish package
     steps:
-      - uses: actions/checkout@v2
-      - name: Nanos Store Action
-        uses: nanos-world/nanos-store-action@v2.0
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+      - uses: actions/checkout@v4
+      
+      - uses: nanos-world/store-action@v1
         with:
-          # folder which contains the asset/package - if it's on root, leave it blank
-          folder: ''
-          # name of the asset/package
-          name: 'name-of-the-package-or-asset'
-          # API token - generate at https://store.nanos.world/settings/tokens/ and set under Settings -> Secrets -> Actions with name STORE_SECRET
-          token: ${{ secrets.STORE_SECRET }}
+          NANOS_PERSONAL_ACCESS_TOKEN: ${{ secrets.NANOS_STORE_TOKEN }}
+          NANOS_PACKAGE_NAME: 'your-package-name'  # Replace with your package name
 ```
+
+#### 3. Prepare Your Package
+
+Ensure your `Package.toml` has a version in the `[meta]` section:
+
+```toml
+[meta]
+    title = "My Awesome Package"
+    author = "Your Name"
+    version = "1.0.0"
+```
+
+### Publishing a New Version
+
+To publish a new version:
+
+1. **Update version in Package.toml:**
+   ```toml
+   [meta]
+       version = "1.0.1"  # Increment from previous
+   ```
+
+2. **Commit, tag and push:**
+   ```bash
+   git add Package.toml
+   git commit -m "Bump version to 1.0.1"
+   git tag v1.0.1
+   git push origin main --tags
+   ```
+
+The action will automatically publish your package when you push the tag!
 
 :::tip
 
-The `folder` must be filled if in your repository the Package/Assets.toml is located inside a subfolder.
+**Version Management:** The action automatically reads the version from your `Package.toml` file and compares it with the store version. Your local version must be greater than the store version for the upload to succeed.
 
-The `name` should be set to your Package or Asset Pack folder name.
+**Multiple Packages:** If you have multiple packages in your repository, you can publish them all at once using the `EXTRA_PACKAGE_PATHS` input with a JSON array format:
 
-The `changelog` can be left with a default value for now as it's a required field.
+```yml
+EXTRA_PACKAGE_PATHS: '["path/to/package1", "path/to/package2"]'
+```
 
-The `token` should be generated at https://store.nanos.world/settings/tokens/ and set under your *GitHub Settings -> Secrets -> Actions* with name `STORE_SECRET`.
+**Manual Trigger:** You can also manually trigger the workflow from the **Actions** tab in your repository using the `workflow_dispatch` event.
 
 :::
 
-Then, on every **release** on your GitHub, it will trigger and publish the new version as **draft**.
+For more advanced configuration options and troubleshooting, visit the [action repository](https://github.com/olivatooo/nanos-world-store-action).
 
-So after that, go to your Releases page of your resource: https://store.nanos.world/, edit the changelog and publish it.
+
+## Automatic Version Incrementing with Git Hooks
+
+To improve your development workflow, you can set up a Git pre-commit hook that automatically increments the patch version in your `Package.toml` file every time you commit changes. This ensures you never forget to update the version number before publishing.
+
+### Setting Up the Pre-Commit Hook
+
+1. **Create the hook file:**
+   
+   In your repository root, create or edit the file `.git/hooks/pre-commit`:
+
+   ```bash
+   touch .git/hooks/pre-commit
+   chmod +x .git/hooks/pre-commit
+   ```
+
+2. **Add the following script to the file:**
+
+```bash showLineNumbers
+#!/bin/bash
+
+# Pre-commit hook to increment patch version in Package.toml
+
+PACKAGE_TOML="Package.toml"
+
+# Check if Package.toml exists
+if [ ! -f "$PACKAGE_TOML" ]; then
+    echo "Warning: $PACKAGE_TOML not found. Skipping version increment."
+    exit 0
+fi
+
+# Extract current version from Package.toml
+# Looks for line like: version = "0.0.1"
+CURRENT_VERSION=$(grep -E '^\s*version\s*=' "$PACKAGE_TOML" | sed -E 's/.*version\s*=\s*"([^"]+)".*/\1/')
+
+if [ -z "$CURRENT_VERSION" ]; then
+    echo "Warning: Could not find version in $PACKAGE_TOML. Skipping version increment."
+    exit 0
+fi
+
+# Parse version components (assumes semver format: major.minor.patch)
+IFS='.' read -ra VERSION_PARTS <<< "$CURRENT_VERSION"
+MAJOR=${VERSION_PARTS[0]:-0}
+MINOR=${VERSION_PARTS[1]:-0}
+PATCH=${VERSION_PARTS[2]:-0}
+
+# Increment patch version only
+NEW_PATCH=$((PATCH + 1))
+NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
+
+# Update Package.toml with new version
+# This handles the version line with proper whitespace preservation
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS sed requires different syntax
+    sed -i '' "s/\(^\s*version\s*=\s*\"\)$CURRENT_VERSION\(\".*\)/\1$NEW_VERSION\2/" "$PACKAGE_TOML"
+else
+    # Linux sed
+    sed -i "s/\(^\s*version\s*=\s*\"\)$CURRENT_VERSION\(\".*\)/\1$NEW_VERSION\2/" "$PACKAGE_TOML"
+fi
+
+# Stage the updated Package.toml
+git add "$PACKAGE_TOML"
+
+echo "Version incremented: $CURRENT_VERSION -> $NEW_VERSION in $PACKAGE_TOML"
+
+exit 0
+```
+
+3. **Make the hook executable:**
+
+   ```bash
+   chmod +x .git/hooks/pre-commit
+   ```
+
+### How It Works
+
+Every time you run `git commit`, the hook will:
+
+1. ✅ Find your `Package.toml` file
+2. ✅ Read the current version (e.g., `1.2.3`)
+3. ✅ Increment the patch number (e.g., `1.2.3` → `1.2.4`)
+4. ✅ Update the `Package.toml` file
+5. ✅ Stage the updated file automatically
+6. ✅ Display the version change
+
+:::tip
+
+**Version Format:** This hook increments only the **patch** version (the third number in semantic versioning). If you want to increment the minor or major version, you'll need to manually edit `Package.toml` before committing.
+
+**Manual Control:** If you need to set a specific version (e.g., for a major release), simply edit `Package.toml` manually before committing. The hook will increment from whatever version is currently in the file.
+
+**Skipping the Hook:** If you need to commit without incrementing the version, use:
+```bash
+git commit --no-verify -m "Your commit message"
+```
+
+:::
+
+This combination provides a fully automated release pipeline from development to publication!
 
