@@ -568,8 +568,8 @@
           "title": "🔤 3D Text Entity",
           "image": "/roadmap/3dtext.webp",
           "description": "This entity allows for the creation of 3D text rendered within the game world.",
-          "external_link": "/docs/next/scripting-reference/classes/text-render",
-          "external_link_title": "TextRender",
+          "external_link": "/docs/next/scripting-reference/classes/text-3d",
+          "external_link_title": "Text3D",
           "labels": ["released", "scripting"]
         },
         {

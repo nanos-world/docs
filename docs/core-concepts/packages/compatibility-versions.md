@@ -36,6 +36,16 @@ The Compatibility Mode is a feature that aims to keep old and unmaintained packa
 To use the following features, you must update your Package's `compatibility_version` setting in the Package.toml to at least that version (exact that version or bigger).
 
 
+### Version `1.103`
+
+
+#### [TextRender](/scripting-reference/classes/text-render.mdx)
+
+`TextRender` was renamed to [Text3D](/scripting-reference/classes/text-3d.mdx). And a new entity `TextRender` was created. To use the new TextRender entity, you must update your `compatibility_version` to at least `1.103`.
+
+In compatibility mode (i.e. setting it to `1.102` or below) `TextRender` will still point to the old `TextRender` class (i.e. to the new `Text3D` class).
+
+
 ### Version `1.65`
 
 

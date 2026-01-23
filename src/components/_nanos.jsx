@@ -232,6 +232,7 @@ export const Classes = {
 	SceneCapture: () => BaseClass("SceneCapture", "📽️", "SceneCapture", "scene-capture"),
 	Sound: () => BaseClass("Sound", "🔊"),
 	StaticMesh: () => BaseClass("StaticMesh", "🏠", "StaticMesh", "static-mesh"),
+	Text3D: () => BaseClass("Text3D", "🆒", "Text3D", "text-3d"),
 	TextRender: () => BaseClass("TextRender", "🆒", "TextRender", "text-render"),
 	Trigger: () => BaseClass("Trigger", "🪤"),
 	VehicleWheeled: () => BaseClass("VehicleWheeled", "🚙", "VehicleWheeled", "vehicle-wheeled"),

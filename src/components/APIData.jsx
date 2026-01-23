@@ -27,6 +27,7 @@ import SceneCaptureData from '@site/src/api/.generated/Classes/SceneCapture.json
 import StaticMeshData from '@site/src/api/.generated/Classes/StaticMesh.json';
 import SoundData from '@site/src/api/.generated/Classes/Sound.json';
 import TextRenderData from '@site/src/api/.generated/Classes/TextRender.json';
+import Text3DData from '@site/src/api/.generated/Classes/Text3D.json';
 import TriggerData from '@site/src/api/.generated/Classes/Trigger.json';
 import VehicleWheeledData from '@site/src/api/.generated/Classes/VehicleWheeled.json';
 import VehicleWaterData from '@site/src/api/.generated/Classes/VehicleWater.json';
@@ -104,6 +105,7 @@ import SceneCaptureDataStable from '@site/src/api/.generated/Stable/Classes/Scen
 import StaticMeshDataStable from '@site/src/api/.generated/Stable/Classes/StaticMesh.json';
 import SoundDataStable from '@site/src/api/.generated/Stable/Classes/Sound.json';
 import TextRenderDataStable from '@site/src/api/.generated/Stable/Classes/TextRender.json';
+import Text3DDataStable from '@site/src/api/.generated/Stable/Classes/Text3D.json';
 import TriggerDataStable from '@site/src/api/.generated/Stable/Classes/Trigger.json';
 import VehicleWheeledDataStable from '@site/src/api/.generated/Stable/Classes/VehicleWheeled.json';
 import VehicleWaterDataStable from '@site/src/api/.generated/Stable/Classes/VehicleWater.json';
@@ -181,6 +183,7 @@ const APIData = {
 			SceneCapture: SceneCaptureDataStable,
 			StaticMesh: StaticMeshDataStable,
 			Sound: SoundDataStable,
+			Text3D: Text3DDataStable,
 			TextRender: TextRenderDataStable,
 			Trigger: TriggerDataStable,
 			VehicleWheeled: VehicleWheeledDataStable,
@@ -261,6 +264,7 @@ const APIData = {
 			SceneCapture: SceneCaptureData,
 			StaticMesh: StaticMeshData,
 			Sound: SoundData,
+			Text3D: Text3DData,
 			TextRender: TextRenderData,
 			Trigger: TriggerData,
 			VehicleWheeled: VehicleWheeledData,

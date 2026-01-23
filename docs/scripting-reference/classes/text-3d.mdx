@@ -1,0 +1,59 @@
+---
+title: 🆒 Text3D
+description: Class to create 3D Text with advanced options
+sidebar_position: 0
+tags: [class]
+---
+
+<HeaderDeclaration type="Class" name="Text3D" image="/img/docs/text-3d.webp" />
+
+:::warning
+
+**Text3D** is experimental and may have some limitations. It generates meshes dynamically in runtime, thus it is more performance heavy. Consider using <Classes.TextRender /> if you don't need the extra features.
+
+:::
+
+
+## 🎒 Examples
+
+```lua showLineNumbers
+local my_text_3d = Text3D(
+    Vector(-100, 200, 300),
+    Rotator(),
+    "My Awesome Text",
+    Vector(1, 1, 1), -- Scale
+    Color(1, 0, 0), -- Red Color
+    FontType.OpenSans,
+    Text3DAlignCamera.FaceCamera
+)
+```
+
+:::info
+
+If you desire your **Text3D** to be visible through walls, replace it's material with the nanos Default TranslucentDepth one!
+
+`SetMaterial("nanos-world::M_Default_Translucent_Unlit_Depth")`.
+
+You can also tweak it's color and other properties using the Material methods.
+
+:::
+
+
+## 🛠 Constructors
+
+<ConstructorDeclaration type="Class" name="Text3D" />
+
+
+## 🗿 Static Functions
+
+<StaticFunctionsDeclaration type="Class" name="Text3D" />
+
+
+## 🦠 Functions
+
+<FunctionsDeclaration type="Class" name="Text3D" />
+
+
+## 🚀 Events
+
+<EventsDeclaration type="Class" name="Text3D" />

@@ -22,12 +22,9 @@ function AddNametag(player, character)
     -- Spawns the Nametag (TextRender),
     local nametag = TextRender(
         Vector(),               -- Any Location
-        Rotator(),              -- Any Rotation
         player:GetName(),       -- Player Name
-        Vector(0.5, 0.5, 0.5),  -- 50% Scale
-        Color(1, 1, 1),         -- White
-        FontType.Roboto,        -- Roboto Font
-        TextRenderAlignCamera.AlignCameraRotation -- Follow Camera Rotation
+        30,                     -- Text Size
+        Color.WHITE         	-- White Color
     )
 
     -- Attaches it to the character and saves it to the player's values
