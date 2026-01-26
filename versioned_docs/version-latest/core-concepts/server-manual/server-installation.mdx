@@ -29,11 +29,12 @@ The Windows server needs the latest [**Microsoft Visual C++ Redistributable**](h
 
 :::
 
-On Windows, you have **three** options for downloading nanos world server:
+On **Windows**, you have *four* options for downloading nanos world server:
 
-1. Use the executable (*.exe*) already located at `nanos-world/Server/NanosWorldServer.exe` (if you downloaded the base game).
-2. Or download **nanos world™ Dedicated Server** tool from Steam Client.
-3. Use [SteamCMD](#downloading-using-steamcmd).
+1. Use the executable (*.exe*) already located at the game's folder `nanos-world/Server/NanosWorldServer.exe` (recommended).
+2. Download `nanos world™ Dedicated Server` tool from Steam Client.
+3. Download through [SteamCMD](#downloading-with-steamcmd).
+4. Using [Docker](server-docker) (maintained by the community).
 
 
 ## Linux
@@ -48,11 +49,21 @@ The following Distros are granted to be supported out of the box:
 - `Ubuntu 22.04`
 - `Debian 12`
 
-You can see a community created page with instructions on how to install the server on other distros and versions [here](server-linux-arm).
+You can see a community created page with instructions on how to install the server on other distros and versions [here](server-linux-arm). Alternatively, for other distributions or an easier setup, consider using the community maintained [**Docker**](server-docker), which handles all dependencies automatically.
 
 :::
 
-On Linux, the only way to download the server is through [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_SteamCMD). If you are on Ubuntu/Debian, you can easily install SteamCMD like that:
+On **Linux**, you have *two* options for downloading nanos world server:
+
+1. Download through [SteamCMD](#installing-steamcmd-on-linux) (officially supported).
+2. Using [Docker](server-docker) (maintained by the community).
+
+**Note**: on Linux, you must start the server using the Shell Script `./NanosWorldServer.sh`, which will configure proper paths and needed dynamic libraries which need to be loaded!
+
+
+### Installing SteamCMD on Linux
+
+If you are on Ubuntu/Debian, you can easily install **SteamCMD** like that:
 
 <Tabs groupId="operating-systems"
   values={[
@@ -91,12 +102,10 @@ See the SteamCMD [official installation instructions](https://developer.valvesof
 
 :::
 
-**Note**: on Linux, you must start the server using the Shell Script `./NanosWorldServer.sh`, which will configure proper paths and needed dynamic libraries which need to be loaded!
 
+## Downloading with SteamCMD
 
-## Downloading Using SteamCMD
-
-To download the server through SteamCMD (a command line version of Steam) please [download it](https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_SteamCMD) before proceeding.
+To download the server through **SteamCMD** (a command line version of Steam) please [download it](https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_SteamCMD) from the Steam official website before proceeding.
 
 ### Manual Installation
 
