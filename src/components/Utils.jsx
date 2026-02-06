@@ -1,17 +1,71 @@
 import { useActiveVersion } from '@docusaurus/plugin-content-docs/client';
 import { Link } from "react-router-dom";
 import ThemedImage from '@theme/ThemedImage'
+import { useRef, useEffect, useState } from 'react';
 
 export const GetExternalPath = () => {
 	return process.env.NODE_ENV === 'development' ? "" : "https://github.com/nanos-world/docs/raw/master/external";
 }
 
-// External Video from Github
-export const VideoExternal = ({ path, noplay, controls = true, className, style }) => (
-	<video key={path} controls={controls} allowFullScreen={true} preload={"none"} autoPlay={!noplay} loop={!noplay} muted={!noplay} className={className} style={style}>
-		<source src={`${ GetExternalPath() }/videos${ path }`} />
-	</video>
-)
+// External Video from Github (with lazy load)
+export const VideoExternal = ({ path, noplay, controls = true, className, style }) => {
+	const videoRef = useRef(null);
+	const [isVisible, setIsVisible] = useState(false);
+	const src = `${ GetExternalPath() }/videos${ path }`;
+
+	useEffect(() => {
+		// Create an Intersection Observer
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				// If the video is intersecting with the viewport
+				if (entry.isIntersecting) {
+					setIsVisible(true);
+					observer.disconnect(); // Stop observing once visible
+				}
+			},
+			{
+				root: null, // observe against the viewport
+				rootMargin: '0px',
+				threshold: 0.1, // trigger when 10% of the video is visible
+			}
+		);
+
+		if (videoRef.current) {
+			observer.observe(videoRef.current);
+		}
+
+		// Cleanup function
+		return () => {
+			if (videoRef.current && observer) {
+				observer.unobserve(videoRef.current);
+			}
+		};
+	}, []);
+
+	useEffect(() => {
+		if (isVisible && videoRef.current) {
+			// Set the source and load the video
+			videoRef.current.src = src;
+			videoRef.current.play();
+		}
+	}, [isVisible, src]);
+
+	return (
+		<video
+			ref={videoRef}
+			loop={!noplay}
+			autoPlay={!noplay}
+			muted={!noplay}
+			className={className}
+			style={style}
+			controls={controls}
+			allowFullScreen={true}
+			playsInline
+		>
+			Your browser does not support the video tag.
+		</video>
+	);
+};
 
 // External Image from Github
 export const ImageExternal = ({ path, className }) => (
@@ -42,7 +96,7 @@ export const getActiveVersionPath = () => {
 
 // Function to convert PascalCase string to kebab-case
 export const getKebabFromPascal = (str) => {
-  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+	return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 };
 
 // Getter to get the current version path - for links

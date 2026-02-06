@@ -7,7 +7,7 @@ export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
 	<>
 		{
 			is_tooltip ? <h3>
-				<img src={"/img/scripting/lua.webp"} title={"Lua"} className={"tooltip-img"} />
+				<img src={"/img/scripting/lua.webp"} title={"Lua"} className={"tooltip-img"} loading={"lazy"} />
 				<span className={"tooltip-span"}>
 					<div>{enum_name}</div>
 					<div className={"tooltip-sub"}>Enum (integer)</div>

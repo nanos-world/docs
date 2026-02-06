@@ -8,7 +8,7 @@ import { GetFunctionSignature, GetStaticFunctionSignature, GetEventSignature, Ge
 export const AuthorityTooltip = ({ img, title, subtitle, description }) => (
 	<>
 		<h3 className={"tooltip-header"}>
-			<img src={img} title={title} className={"tooltip-img"} />
+			<img src={img} title={title} className={"tooltip-img"} loading={"lazy"} />
 			<span className={"tooltip-span"}>
 				<div>{title}</div>
 				<div className={"tooltip-sub"}>{subtitle}</div>

@@ -552,7 +552,7 @@ export const HeaderDeclaration = ({ type, name, image, is_static, open_source_ur
 	const class_data = GetClassData(type, name);
 	return (<>
 		<p dangerouslySetInnerHTML={{ __html: class_data.description }}></p>
-		{ image ? <><p><img src={image} /></p><hr /></> : "" }
+		{ image ? <><p><img src={image} loading={"lazy"} /></p><hr /></> : "" }
 		{ is_static ? <StaticClassAdmonition /> : "" }
 		{ class_data.authority ? <AuthorityAdmonition authority={class_data.authority} is_static={is_static} /> : "" }
 		{ class_data.network_distribution ? <NetAuthorityDistributionAdmonition network_distribution={class_data.network_distribution} /> : "" }

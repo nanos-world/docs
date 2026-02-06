@@ -14,7 +14,7 @@ import APIData from '@site/src/components/APIData.jsx';
 // Square Card Link
 export const CardLink = ({ title, description, href, image_src, is_lean }) => (
 	<a className={`card-link ${is_lean ? "card-link-lean" : ""}`} href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`} target="_blank">
-		<img src={image_src ? image_src : '/img/docs/nanos-world-background.webp'} />
+		<img src={image_src ? image_src : '/img/docs/nanos-world-background.webp'} loading={"lazy"} />
 		<h4>{title}</h4>
 		<p>{description}</p>
 	</a>
@@ -35,7 +35,7 @@ export const ReferenceLink = ({ children, href }) => (
 export const BaseNative = (img, title, description) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} subtitle={"Nativity"} />}>
 		<span className="native-type">
-			<img src={img} title={title} />
+			<img src={img} title={title} loading={"lazy"} />
 		</span>
 	</Tippy>
 );
@@ -44,7 +44,7 @@ export const BaseNative = (img, title, description) => (
 export const BaseEfficiency = (img, title, description) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} subtitle={"Method Efficiency"} />}>
 		<span className="efficiency-type">
-			<img src={img} title={title} />
+			<img src={img} title={title} loading={"lazy"} />
 		</span>
 	</Tippy>
 );
@@ -53,7 +53,7 @@ export const BaseEfficiency = (img, title, description) => (
 export const BaseAuthority = (img, title, description) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} subtitle={"Authority Side"} />}>
 		<Link className="authority-availability" to={`${getActiveVersionPath()}/core-concepts/scripting/authority-concepts#methods-and-events-availability`}>
-			<img src={img} title={title} />
+			<img src={img} title={title} loading={"lazy"} />
 		</Link>
 	</Tippy>
 );
@@ -63,7 +63,7 @@ export const BaseBasicType = (label, description) => (
 	<Tippy interactive={true} maxWidth={400} animation={"scale-subtle"} placement={"left"} content={
 		<>
 			<h3 className={"tooltip-header"}>
-				<img src={"/img/scripting/lua.webp"} title={"Lua"} className={"tooltip-img"} />
+				<img src={"/img/scripting/lua.webp"} title={"Lua"} className={"tooltip-img"} loading={"lazy"} />
 				<span className={"tooltip-span"}>
 					<div>{label}</div>
 					<div className={"tooltip-sub"}>Basic Type</div>
