@@ -71,7 +71,7 @@ module.exports = {
         },
         {
           to: '/feedback/',
-          label: 'feedback',
+          label: 'feedback & bugs',
           position: 'left'
         },
         {
@@ -87,7 +87,7 @@ module.exports = {
           'aria-label': 'GitHub repository',
         },
         {
-          href: 'https://issues.nanos-world.com',
+          href: 'https://feedback.nanos-world.com/b/bugs',
           position: 'right',
           className: 'header-right-link header-bugs-link',
           'aria-label': 'Bugs',

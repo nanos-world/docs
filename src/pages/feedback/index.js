@@ -1,52 +1,41 @@
 import Layout from '@theme/Layout';
-import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import { useColorMode } from '@docusaurus/theme-common';
 
-const BoardToken = '1aaa5ced-939b-8115-81d5-129a3244a3f1';
-
-const CannyInternal = () => {
+const FeatureOSInternal = () => {
 	const { colorMode } = useColorMode();
-
-	useEffect(() => {
-		// Destroys if it already exists
-		const canny_iframe = document.getElementById("canny-iframe");
-
-		if (canny_iframe)
-			canny_iframe.remove();
-
-		(function(w,d,i,s){function l(){if(!d.getElementById(i)){var f=d.getElementsByTagName(s)[0],e=d.createElement(s);e.type="text/javascript",e.async=!0,e.src="https://canny.io/sdk.js",f.parentNode.insertBefore(e,f)}}if("function"!=typeof w.Canny){var c=function(){c.q.push(arguments)};c.q=[],w.Canny=c,"complete"===d.readyState?l():w.attachEvent?w.attachEvent("onload",l):w.addEventListener("load",l,!1)}})(window,document,"canny-jssdk","script");
-
-		Canny('render', {
-			boardToken: BoardToken,
-			basePath: "/feedback",
-			ssoToken: null,
-			theme: colorMode
-		});
-	}, [colorMode]);
+	const src = `https://feedback.nanos-world.com/embed/home?no_header=true&theme=${colorMode}`;
 
 	return (
-		<main
-			className={clsx('container', 'margin-vert--lg', "canny-stuff")}
-			data-canny
+		<iframe
+			key={colorMode}
+			style={{
+				border: 0,
+				width: '100%',
+				height: '100%'
+			}}
+			src={src}
 		/>
 	);
 };
 
 const Feedback = () => {
 	return (
-		<Layout title="Feedback" description="nanos world Feedback Page">
-			<div className={clsx('container', 'margin-vert--lg')}>
-				<h1>
-					📢 feedback hub
-				</h1>
-				<p>
-					Welcome to the official nanos world Feedback Hub!
-					<br />
-					You can also check out our standalone <a href="https://feedback.nanos-world.com" target="_blank">Ideas</a> page, with all ideas accepted into the game.
-				</p>
+		<Layout noFooter title="Feedback" description="nanos world Feedback & Bugs Page">
+			<div className={clsx('container', 'margin-vert--lg')} style={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 120px)'}}>
+				<div style={{ flexShrink: 0 }}>
+					<h1>📢 feedback & bugs hub</h1>
+					<p>
+						Welcome to the official nanos world Feedback Hub!
+						<br />
+						You can also check out our standalone <a href="https://feedback.nanos-world.com" target="_blank" rel="noreferrer">Feedback & Bugs</a> page, with all ideas accepted into the game.
+					</p>
+				</div>
+
+				<div style={{ flexGrow: 1, overflow: 'hidden', borderRadius: '8px' }}>
+					<FeatureOSInternal />
+				</div>
 			</div>
-			<CannyInternal />
 		</Layout>
 	);
 }
