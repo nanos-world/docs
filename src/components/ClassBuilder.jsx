@@ -92,16 +92,16 @@ export const NetworkAuthorityDistributionLabels = {
 
 // Authority Label Map
 export const AuthorityLabels = {
-	client: <>This class can only be spawned on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Client</LinkActiveVersion> side.</>,
-	server: <>This class can only be spawned on 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Server</LinkActiveVersion> side.</>,
-	both: <>This class can be spawned on both 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Client</LinkActiveVersion> and 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Server</LinkActiveVersion> side (if you spawn it on client, it won't be synchronized with other players).</>,
+	client: <>This class can only be spawned on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#client-side">Client</LinkActiveVersion> side.</>,
+	server: <>This class can only be spawned on 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#server-side">Server</LinkActiveVersion> side.</>,
+	both: <>This class can be spawned on both 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#both-sides">Client</LinkActiveVersion> and 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#both-sides">Server</LinkActiveVersion> side.</>,
 }
 
 // Authority Label Map for Static Classes
 export const AuthorityLabelsStatic = {
-	client: <>This static class can be accessed only on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Client</LinkActiveVersion> side.</>,
-	server: <>This static class can be accessed only on 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Server</LinkActiveVersion> side.</>,
-	both: <>This static class can be accessed on both 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Client</LinkActiveVersion> and 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts">Server</LinkActiveVersion> side.</>,
+	client: <>This static class can be accessed only on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#client-side">Client</LinkActiveVersion> side.</>,
+	server: <>This static class can be accessed only on 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#server-side">Server</LinkActiveVersion> side.</>,
+	both: <>This static class can be accessed on both 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#both-sides">Client</LinkActiveVersion> and 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#both-sides">Server</LinkActiveVersion> side.</>,
 }
 
 // Gets a Parameter name (with ? when optional)
@@ -598,7 +598,7 @@ export const ConstructorDeclaration = ({ type, name }) => {
 										<td>{ SplitTypesByOr(value.type) }</td>
 										<td><b><code>{ value.name }</code></b></td>
 										<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : <span class="subtle-description"> {"Required parameter"} </span> }</td>
-										<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
+										<td style={{ wordBreak: "break-word" }}>{ GetParameterDescription(value) }</td>
 									</tr>;
 								} )}
 							</tbody>

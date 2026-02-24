@@ -37,8 +37,6 @@ function Sandbox.Tutorials.Hide()
 
 ## SpawnHistory
 
-![](/img/docs/tutorials/sandbox/undo.webp)
-
 This is a Server side system that keeps track of all the spawned items by each player. It also works by appending information to spawned items, so you can check who (and when) spawned a specific item.
 
 You can all those functions server-side to add an item to a Player's history, so he can undo it by pressing `X`.
@@ -70,7 +68,6 @@ By calling `AddItemToHistory()`, a value `"SpawnedBy"` will be set on the entity
 
 :::
 
-
 ## Notifications
 
 Although we already have a notifications system built-in in game (<MethodReference type="StaticClass" class_name="Client" method="ShowNotification" show_class_name is_static />), the Sandbox provides a more advanced one that allows you to display "tutorials-like" notifications that are only displayed once:
@@ -86,53 +83,3 @@ Although we already have a notifications system built-in in game (<MethodReferen
 ---@param force? boolean			To force it to be displayed regardless if it was already displayed before
 function Sandbox.Notifications.Add(type, id, message, duration, delay, force)
 ```
-
-
-## PersistentConfig
-
-We created a system to help persisting Tool Gun (or any other custom) configs when using them. Our tool guns use them to persist changed configs from Context Menu between sessions:
-
-```lua title="Client/Index.lua"
--- Saves a config
-function PersistentConfigSystem.SaveConfig(class_name, config, value)
-
--- Gets a config
-function PersistentConfigSystem.GetConfig(class_name, config_name)
-```
-
-
-## EntityInput
-
-![](/img/docs/tutorials/sandbox/entity-input-binding.webp)
-
-This is a system used by our Entities to bind custom Inputs to actions on entities:
-
-```lua title="Client/Index.lua"
--- Adds an input binding to an entity
-function EntityInputSystem.AddEntityBinding(entity, name, binding, callback_pressed, callback_released)
-
--- Removes an input binding from an entity
-function EntityInputSystem.RemoveEntityBinding(entity, name)
-```
-
-Internally it works automatically by just defining `input_bindings` to any entity class you want, this will expose to Context Menu when selecting the entity, the input bindings to be set:
-
-```lua title="Client/MyEntity.lua"
--- Input Bindings for this Entity
-Thruster.input_bindings = {
-	{
-		label = "activate / deactivate",
-		callback_pressed = function(entity)
-			entity:CallRemoteEvent("SetActive", true)
-		end,
-		callback_released = function(entity)
-			entity:CallRemoteEvent("SetActive", false)
-		end,
-	},
-	{
-		label = "toggle",
-		callback_pressed = function(entity)
-			entity:CallRemoteEvent("SetActive", not entity:GetValue("Active"))
-		end,
-	},
-}

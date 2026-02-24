@@ -8,7 +8,7 @@ sidebar_position: 3
 How to extend and use Sandbox Context Menu.
 
 
-![](/img/docs/tutorials/context-menu.webp)
+![](/img/docs/tutorials/sandbox/context-menu.webp)
 
 The Context Menu is a menu inside the Sandbox game-mode that provides run-time settings like tweaking the Sun Light or Respawning. It is accessed by the default key `C` and is toggled ON/OFF by pressing.
 
@@ -57,8 +57,8 @@ The `items` parameter is a list of tables with the format for each `type`:
 	label = "slide me!",
 	min = 0,
 	max = 1440,
-	auto_update_label = false,
 	value = 720,
+	step = 1,
 	callback = function(value)
 		Console.Log("Range value changed to: " .. value)
 	end
@@ -138,7 +138,13 @@ The `items` parameter is a list of tables with the format for each `type`:
 
 :::tip
 
-The `value` element can be either a direct value, or a function to be dynamically fetched when the entry is added to the Context Menu!
+The `value` and `options` properties can be either a direct value, or a function to be dynamically fetched when the entry is added to the Context Menu!
+
+:::
+
+:::tip
+
+The `id` property is optional, and can be useful when you want to [update](#updating-entries) the value of an existing item programmatically.
 
 :::
 
@@ -152,11 +158,22 @@ function Sandbox.ContextMenu.RemoveItems(id)
 ```
 
 
+## Updating Entries
+
+```lua title="Client/Index.lua"
+-- Updates an existing Context Menu item value
+---@param id string             Unique ID used to identify this item
+function Sandbox.ContextMenu.SetItemValue(item_id, value)
+```
+
+
 ## Adding Entries to an Entity/Tool Gun
 
 Custom Entities and <Classes.Pickable /> (e.g. <Classes.Weapon />) have the ability to have custom Context Menu entries shown automatically when they are selected or picked up.
 
 ### When selecting an Entity
+
+![](/img/docs/tutorials/sandbox/context-menu-select.webp)
 
 To add entries when an entity is selected, you need to define the `selected_context_menu_items` property on the Class of the Entity, with the same format as the `items` parameter of the `AddItems` function.
 
@@ -181,6 +198,8 @@ MyEntityClass.selected_context_menu_items = {
 
 ### When picking up an Entity
 
+![](/img/docs/tutorials/sandbox/context-menu-picking.webp)
+
 You can also define custom entries for <Classes.Pickable /> classes, that will automatically show when picking up them. To do that, you need to define the `picked_context_menu_items` property on the Class of the Pickable:
 
 ```lua title="Client/CustomPickable.lua"
@@ -191,7 +210,7 @@ MyGun.picked_context_menu_items = {
 		label = "my value",
 		min = 0,
 		max = 100,
-		auto_update_label = true,
+		step = 1,
 		callback = function(value)
 			MyGun.my_value = value
 		end,

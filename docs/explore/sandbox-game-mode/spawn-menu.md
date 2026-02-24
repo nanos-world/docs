@@ -8,7 +8,7 @@ sidebar_position: 1
 How to extend and use Sandbox Spawn Menu.
 
 
-![](/img/docs/tutorials/spawn-menu.webp)
+![](/img/docs/tutorials/sandbox/spawn-menu.webp)
 
 The Spawn Menu is a menu inside the Sandbox game-mode that provides ability to spawn **Props**, **Entities**, **Weapons**, **Tools** & etc in an easy and quick way. It is accessed by the default key `Q` and stays visible while pressed.
 
@@ -133,7 +133,7 @@ end)
 
 ## Tabs
 
-![](/img/docs/tutorials/spawn-menu-tabs.webp)
+![](/img/docs/tutorials/sandbox/spawn-menu-tabs.webp)
 
 The Spawn Menu has the following tabs by default: [`props`](#props), [`entities`](#entities), [`weapons`](#weapons), [`vehicles`](#vehicles), [`tools`](#tools) and [`npcs`](#npcs).
 
@@ -201,7 +201,7 @@ end)
 
 ## Categories
 
-![](/img/docs/tutorials/spawn-menu-categories.webp)
+![](/img/docs/tutorials/sandbox/spawn-menu-categories.webp)
 
 Each [Tab](#tab) has it's own **Categories**. By default they have the following ones:
 

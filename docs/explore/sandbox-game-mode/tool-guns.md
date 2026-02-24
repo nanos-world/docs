@@ -8,7 +8,7 @@ sidebar_position: 2
 How to create new Tool Guns for nanos world
 
 
-![](/img/docs/tutorials/tool-gun.webp)
+![](/img/docs/tutorials/sandbox/tool-guns.webp)
 
 :::info
 
@@ -78,7 +78,10 @@ Those values are only used on **Client Side**!
 :::
 
 
-You can also add custom entries to the **Context Menu** for your Tool Gun by defining a `context_menu_items` table on your Tool Gun class like that:
+You can also add custom entries to the **Context Menu** for your Tool Gun by defining a `picked_context_menu_items` table on your Tool Gun class like that, the configs will appear when you pick up the tool gun and open the Context Menu:
+
+![](/img/docs/tutorials/sandbox/tool-gun-context-menu.webp)
+
 
 ```lua title="Client/Index.lua" showLineNumbers
 -- Defines the initial value for your custom Tool Gun value
@@ -93,7 +96,7 @@ function MyToolGun.SetMyCustomValue(value)
 end
 
 -- Tool Gun Context Menu Entries which will display on Context Menu
-MyToolGun.context_menu_items = {
+MyToolGun.picked_context_menu_items = {
 	{
 		id = "my_tool_gun_custom_value",
 		type = "number",

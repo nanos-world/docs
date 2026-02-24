@@ -7,10 +7,8 @@ sidebar_position: 1
 
 How to extend and use Sandbox Spawn Menu.
 
-import { Classes } from '@site/src/components/_nanos';
 
-
-![](/img/docs/tutorials/spawn-menu.webp)
+![](/img/docs/tutorials/sandbox/spawn-menu.webp)
 
 The Spawn Menu is a menu inside the Sandbox game-mode that provides ability to spawn **Props**, **Entities**, **Weapons**, **Tools** & etc in an easy and quick way. It is accessed by the default key `Q` and stays visible while pressed.
 
@@ -77,14 +75,14 @@ On the Client side, we define how the Item will be displayed in the Spawn Menu, 
 ---@param name string           Display name
 ---@param image string          Image path
 ---@param category_id? string   The category of this item
-function SpawnMenu.AddItem(tab_id, id, name, image, category_id?)
+function Sandbox.SpawnMenu.AddItem(tab_id, id, name, image, category_id?)
 ```
 
 Example:
 
 ```lua title="your-package/Client/Index.lua" showLineNumbers
 -- Example adding an Incredible Tool to spawn Menu (client side)
-SpawnMenu.AddItem(
+Sandbox.SpawnMenu.AddItem(
     "tools",			-- tab id
     "IncredibleTool",	-- unique id of the item
     "Incredible Tool",	-- name/label
@@ -103,7 +101,7 @@ On the Server side, we can define how the item will be spawned, here we can crea
 ---@param tab string                Tab of this item
 ---@param id string                 Unique ID used to identify this item
 ---@param spawn_function function	Spawn function
-function SpawnMenu.AddItem(tab, id, spawn_function)
+function Sandbox.SpawnMenu.AddItem(tab, id, spawn_function)
 ```
 
 Example:
@@ -124,7 +122,7 @@ end
 
 Package.Subscribe("Load", function()
     -- Adds this to spawn Menu (server side)
-   	SpawnMenu.AddItem(
+   	Sandbox.SpawnMenu.AddItem(
 		"tools",				-- tab id
 		"IncredibleEntity",		-- item id
 		SpawnMyIncredibleEntity	-- function which spawns and returns the item
@@ -135,9 +133,9 @@ end)
 
 ## Tabs
 
-![](/img/docs/tutorials/spawn-menu-tabs.webp)
+![](/img/docs/tutorials/sandbox/spawn-menu-tabs.webp)
 
-The Spawn Menu has the following tabs by default: `props`, `entities`, `weapons`, `vehicles`, `tools` and `npcs`.
+The Spawn Menu has the following tabs by default: [`props`](#props), [`entities`](#entities), [`weapons`](#weapons), [`vehicles`](#vehicles), [`tools`](#tools) and [`npcs`](#npcs).
 
 
 ### `props`
@@ -145,14 +143,25 @@ The Spawn Menu has the following tabs by default: `props`, `entities`, `weapons`
 By default, all StaticMeshes defined in the loaded Asset Packs will automatically appear on this tab and it's thumbnails will be loaded from the `Thumbnails/` folder at the root of the Asset Pack, if it exists.
 
 
+### `entities`
+
+All Classes inherited from <Classes.Prop /> will appear in the entities tab by default.
+
+:::note
+
+We mostly use Prop as default as it's a common base class to entities, but you can create any entity inherited from any class and add to the Spawn Menu manually as explained in [Adding Items Manually](#adding-items-manually) section.
+
+:::
+
+
 ### `weapons`
 
-All Classes inherited from <Classes.Weapon /> will appear in the weapons tab by default.
+All Classes inherited from <Classes.Weapon />, <Classes.Grenade /> and <Classes.Melee /> will appear in the weapons tab by default.
 
 
 ### `vehicles`
 
-All Classes inherited from <Classes.VehicleWheeled /> will appear in the vehicles tab by default.
+All Classes inherited from <Classes.VehicleWheeled /> and <Classes.VehicleWater /> will appear in the vehicles tab by default.
 
 
 ### `tools`
@@ -162,7 +171,7 @@ All Classes inherited from `ToolGun` will appear in the tools tab by default. Se
 
 ### `npcs`
 
-All Classes inherited from <Classes.Character /> will appear in the character tab by default.
+All Classes inherited from <Classes.Character /> and <Classes.CharacterSimple /> will appear in the character tab by default.
 
 
 ### Adding new Tabs
@@ -170,10 +179,10 @@ All Classes inherited from <Classes.Character /> will appear in the character ta
 It is possible to add custom tabs to the Spawn Menu, for that just call this **client-side** method from your Package:
 
 ```lua
----@param id string                Unique ID used to identify the tab
----@param name string              Label of the tab
----@param image_active string      Image path when the tab
-function SpawnMenu.AddTab(id, name, image_active)
+---@param id string				Unique ID used to identify this tab
+---@param label string			Display text
+---@param image string			Image path of the tab
+function Sandbox.SpawnMenu.AddTab(id, label, image)
 ```
 
 Example:
@@ -181,7 +190,7 @@ Example:
 ```lua showLineNumbers title="your-package/Client/Index.lua"
 Package.Subscribe("Load", function()
     -- Adds a new tab
-    SpawnMenu.AddTab(
+    Sandbox.SpawnMenu.AddTab(
         "consumables",
         "consumables",
         "package://your-package/food.png"
@@ -192,12 +201,18 @@ end)
 
 ## Categories
 
-![](/img/docs/tutorials/spawn-menu-categories.webp)
+![](/img/docs/tutorials/sandbox/spawn-menu-categories.webp)
 
 Each [Tab](#tab) has it's own **Categories**. By default they have the following ones:
 
-- Tab **props**: `basic`, `appliances`, `construction`, `furniture`, `funny`, `tools`, `food`, `street`, `nature` or `uncategorized`.
-- Tab **weapons**: `rifles`, `smgs`, `pistols`, `shotguns`, `sniper-rifles`, `special` or `grenades`.
+- Tab **props**: `basic`, `appliances`, `construction`, `furniture`, `funny`, `tools`, `food`, `street`, `nature`.
+- Tab **entities**: `devices`, `display`, `objects`, `logic`.
+- Tab **weapons**: `rifles`, `smgs`, `pistols`, `shotguns`, `sniper-rifles`, `special`, `vintage`, `grenades`, `melee`.
+- Tab **vehicles**: `wheeled`, `water`.
+- Tab **tools**: `tool-guns`, `spawners`.
+- Tab **npcs**: `npcs`.
+
+If an item is added without a category (or with `nil` category), it will be displayed under `uncategorized`.
 
 
 ### Adding new Categories
@@ -205,11 +220,11 @@ Each [Tab](#tab) has it's own **Categories**. By default they have the following
 It is possible to add custom categories to the Spawn Menu tabs, for that just call this **client-side** method from your Package:
 
 ```lua
----@param tab_id string                Tab ID
----@param id string                    Unique ID used to identify the category
----@param label string                 Label of the tab
----@param image_active string          Image path when the category
-function SpawnMenu.AddCategory(tab_id, id, label, image_active)
+---@param tab_id string			Tab id
+---@param id string				Unique ID used to identify this category
+---@param label string			Display text
+---@param image string			Image path of the category
+function Sandbox.SpawnMenu.AddCategory(tab_id, id, label, image)
 ```
 
 Example:
@@ -217,7 +232,7 @@ Example:
 ```lua showLineNumbers title="your-package/Client/Index.lua"
 Package.Subscribe("Load", function()
     -- Adds a new category to Props tab
-    SpawnMenu.AddCategory(
+    Sandbox.SpawnMenu.AddCategory(
         "props",
         "low-poly",
         "low poly",
@@ -225,11 +240,22 @@ Package.Subscribe("Load", function()
     )
 
     -- Adds a new category to Weapons tab
-    SpawnMenu.AddCategory(
+    Sandbox.SpawnMenu.AddCategory(
         "weapons",
         "world-war",
         "world war",
         "package://your-package/ww.png"
     )
 end)
+```
+
+
+## Opening/Closing
+
+```lua
+-- Opens the Spawn Menu
+function Sandbox.SpawnMenu.Open()
+
+-- Closes the Spawn Menu
+function Sandbox.SpawnMenu.Close()
 ```
