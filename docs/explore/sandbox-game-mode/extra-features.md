@@ -57,11 +57,10 @@ function Sandbox.SpawnHistory.UpdateItemOwnership(player, item)
 
 :::tip
 
-By calling `AddItemToHistory()`, a value `"SpawnedBy"` will be set on the entity, it will be synced with all clients, and contain the following data:
+By calling `SpawnHistory.AddItemToHistory()`, a value `"SpawnedBy"` will be set on the entity, it will be synced with all clients, and contain the following data:
 
 ```lua
 {
-	player, -- Player entity (if it's still playing)
 	player_name, -- Player name
 	player_steam_id, -- Player Steam ID
 	time, -- Time that it was spawned
@@ -74,7 +73,6 @@ By calling `AddItemToHistory()`, a value `"SpawnedBy"` will be set on the entity
 ## Notifications
 
 Although we already have a notifications system built-in in game (<MethodReference type="StaticClass" class_name="Client" method="ShowNotification" show_class_name is_static />), the Sandbox provides a more advanced one that allows you to display "tutorials-like" notifications that are only displayed once:
-
 
 ```lua title="Client/Index.lua"
 -- Adds the Notification on the Screen
