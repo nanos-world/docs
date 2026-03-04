@@ -23,7 +23,7 @@ export const CardLink = ({ title, description, href, image_src, is_lean }) => (
 
 // Rectangular Reference Link
 export const ReferenceLink = ({ children, href }) => (
-	<a className="reference-link" href={href.startsWith("http") ? href : `${getActiveVersionPath()}/${href}`}>
+	<a className="reference-link" href={href.includes(":") ? href : `${getActiveVersionPath()}/${href}`}>
 		{children}
 		<span>
 			{ href.split('#')[0] }
@@ -231,6 +231,7 @@ export const Classes = {
 	File: () => BaseClass("File", "📁"),
 	Gizmo: () => BaseClass("Gizmo", "🧭"),
 	Grenade: () => BaseClass("Grenade", "💣"),
+	InstancedStaticMesh: () => BaseClass("InstancedStaticMesh", "🏘️", "InstancedStaticMesh", "instanced-static-mesh"),
 	Light: () => BaseClass("Light", "💡"),
 	Melee: () => BaseClass("Melee", "🔪"),
 	Particle: () => BaseClass("Particle", "✨"),
@@ -247,7 +248,7 @@ export const Classes = {
 	Weapon: () => BaseClass("Weapon", "🔫"),
 	WebUI: () => BaseClass("WebUI", "🖥️"),
 	Widget: () => BaseClass("Widget", "🪟"),
-	Widget3D: () => BaseClass("Widget3D", "🪟"),
+	Widget3D: () => BaseClass("Widget3D", "🪟", "Widget3D", "widget-3d"),
 };
 
 // Defines StaticClasses components

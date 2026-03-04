@@ -141,6 +141,11 @@ header + p::after {
 	padding: 0 var(--ifm-pre-padding);
 }
 
+.twitter-tweet {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 video {
 	width: 100%;
 	margin-bottom: var(--ifm-leading);

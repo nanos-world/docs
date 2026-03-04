@@ -2,6 +2,7 @@ import { useActiveVersion } from '@docusaurus/plugin-content-docs/client';
 import { Link } from "react-router-dom";
 import ThemedImage from '@theme/ThemedImage'
 import { useRef, useEffect, useState } from 'react';
+import { useColorMode } from '@docusaurus/theme-common';
 
 export const GetExternalPath = () => {
 	return process.env.NODE_ENV === 'development' ? "" : "https://github.com/nanos-world/docs/raw/master/external";
@@ -87,6 +88,33 @@ export const ImageDarkLight = ({ dark_img, light_img, legend }) => (
 		<MediaLegend>{ legend }</MediaLegend>
 	</>
 );
+
+// X Post
+export const XPost = ({ children }) => {
+	const { colorMode } = useColorMode();
+	const containerRef = useRef(null);
+
+	useEffect(() => {
+		if (!window.twttr) {
+			const script = document.createElement('script');
+			script.src = "https://platform.x.com/widgets.js";
+			script.async = true;
+			document.head.appendChild(script);
+		}
+
+		if (window.twttr && window.twttr.widgets) {
+			window.twttr.widgets.load(containerRef.current);
+		}
+	}, [colorMode]);
+
+	return (
+		<div ref={containerRef} key={colorMode}>
+			<blockquote ref={containerRef} key={colorMode} className="twitter-tweet" data-lang="en" data-dnt="true" data-theme={colorMode}>
+				{children}
+			</blockquote>
+		</div>
+	);
+};
 
 // Getter to get the current version path - for links
 export const getActiveVersionPath = () => {

@@ -25,6 +25,7 @@ import PlayerData from '@site/src/api/.generated/Classes/Player.json';
 import PropData from '@site/src/api/.generated/Classes/Prop.json';
 import SceneCaptureData from '@site/src/api/.generated/Classes/SceneCapture.json';
 import StaticMeshData from '@site/src/api/.generated/Classes/StaticMesh.json';
+import InstancedStaticMeshData from '@site/src/api/.generated/Classes/InstancedStaticMesh.json';
 import SoundData from '@site/src/api/.generated/Classes/Sound.json';
 import TextRenderData from '@site/src/api/.generated/Classes/TextRender.json';
 import Text3DData from '@site/src/api/.generated/Classes/Text3D.json';
@@ -103,6 +104,7 @@ import PlayerDataStable from '@site/src/api/.generated/Stable/Classes/Player.jso
 import PropDataStable from '@site/src/api/.generated/Stable/Classes/Prop.json';
 import SceneCaptureDataStable from '@site/src/api/.generated/Stable/Classes/SceneCapture.json';
 import StaticMeshDataStable from '@site/src/api/.generated/Stable/Classes/StaticMesh.json';
+import InstancedStaticMeshDataStable from '@site/src/api/.generated/Stable/Classes/InstancedStaticMesh.json';
 import SoundDataStable from '@site/src/api/.generated/Stable/Classes/Sound.json';
 import TextRenderDataStable from '@site/src/api/.generated/Stable/Classes/TextRender.json';
 import Text3DDataStable from '@site/src/api/.generated/Stable/Classes/Text3D.json';
@@ -182,6 +184,7 @@ const APIData = {
 			Prop: PropDataStable,
 			SceneCapture: SceneCaptureDataStable,
 			StaticMesh: StaticMeshDataStable,
+			InstancedStaticMesh: InstancedStaticMeshDataStable,
 			Sound: SoundDataStable,
 			Text3D: Text3DDataStable,
 			TextRender: TextRenderDataStable,
@@ -263,6 +266,7 @@ const APIData = {
 			Prop: PropData,
 			SceneCapture: SceneCaptureData,
 			StaticMesh: StaticMeshData,
+			InstancedStaticMesh: InstancedStaticMeshData,
 			Sound: SoundData,
 			Text3D: Text3DData,
 			TextRender: TextRenderData,

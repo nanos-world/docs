@@ -556,10 +556,10 @@ export const HeaderDeclaration = ({ type, name, image, is_static, open_source_ur
 		{ is_static ? <StaticClassAdmonition /> : "" }
 		{ class_data.authority ? <AuthorityAdmonition authority={class_data.authority} is_static={is_static} /> : "" }
 		{ class_data.network_distribution ? <NetAuthorityDistributionAdmonition network_distribution={class_data.network_distribution} /> : "" }
-		{ class_data.inheritance ? <InheritanceAdmonition inheritance={class_data.inheritance} /> : "" }
+		{ class_data.inheritance && !class_data.is_base ? <InheritanceAdmonition inheritance={class_data.inheritance} /> : "" }
 		{ open_source_url ? <OpenSourceAdmonition url={open_source_url} /> : "" }
-		<APISourceURL type={type} class_name={ class_data.is_base ? "Base" + name : name} />
 		{ class_data.is_base ? <BaseClassAdmonition inherited={class_data.inheritance_children} /> : "" }
+		<APISourceURL type={type} class_name={ class_data.is_base ? "Base" + name : name} />
 		<hr />
 	</>);
 };
@@ -644,20 +644,22 @@ export const InheritedClassEvents = ({ inherited_class_name, parent_class_name }
 export const FunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
-		{ class_data.inheritance && class_data.inheritance.includes("Entity") ?
-			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Entity"} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Actor") ?
-			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Actor"} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Paintable") ?
-			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Paintable"} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Damageable") ?
-			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Damageable"} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ?
-			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Pickable"} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Vehicle") ?
-			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Vehicle"} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Pawn") ?
-			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Pawn"} /> : "" }
+		{ class_data.inheritance && !class_data.is_base ? <>
+			{ class_data.inheritance.includes("Entity") ?
+				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Entity"} /> : "" }
+			{ class_data.inheritance.includes("Actor") ?
+				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Actor"} /> : "" }
+			{ class_data.inheritance.includes("Paintable") ?
+				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Paintable"} /> : "" }
+			{ class_data.inheritance.includes("Damageable") ?
+				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Damageable"} /> : "" }
+			{ class_data.inheritance.includes("Pickable") ?
+				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Pickable"} /> : "" }
+			{ class_data.inheritance.includes("Vehicle") ?
+				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Vehicle"} /> : "" }
+			{ class_data.inheritance.includes("Pawn") ?
+				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Pawn"} /> : "" }
+		</> : "" }
 		{
 			class_data.functions == null || class_data.functions.length == 0 ? <p class="subtle-description">This class doesn't have own functions.</p> :
 			<>
@@ -672,10 +674,12 @@ export const FunctionsDeclaration = ({ type, name }) => {
 export const StaticFunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
-		{ class_data.inheritance && class_data.inheritance.includes("Entity") ?
-			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Entity"} is_static={true} /> : "" }
-		{/* { class_data.inheritance && class_data.inheritance.includes("Actor") ?
-			<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Actor"} is_static={true} /> : "" } */}
+		{ class_data.inheritance && !class_data.is_base ? <>
+			{ class_data.inheritance.includes("Entity") ?
+				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Entity"} is_static={true} /> : "" }
+			{/* { class_data.inheritance.includes("Actor") ?
+				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Actor"} is_static={true} /> : "" } */}
+		</> : "" }
 		{
 			class_data.static_functions == null || class_data.static_functions.length == 0 ? <p class="subtle-description">This class doesn't have own static functions.</p> :
 			<>
@@ -706,18 +710,20 @@ export const ExamplesDeclaration = ({ type, name }) => {
 export const EventsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 	return (<>
-		{ class_data.inheritance && class_data.inheritance.includes("Entity") ?
-			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Entity"} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Actor") ?
-			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Actor"} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Pickable") ?
-			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Pickable"} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Damageable") ?
-			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Damageable"} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Vehicle") ?
-			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Vehicle"} /> : "" }
-		{ class_data.inheritance && class_data.inheritance.includes("Pawn") ?
-			<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Pawn"} /> : "" }
+		{ class_data.inheritance && !class_data.is_base ? <>
+			{ class_data.inheritance.includes("Entity") ?
+				<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Entity"} /> : "" }
+			{ class_data.inheritance.includes("Actor") ?
+				<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Actor"} /> : "" }
+			{ class_data.inheritance.includes("Pickable") ?
+				<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Pickable"} /> : "" }
+			{ class_data.inheritance.includes("Damageable") ?
+				<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Damageable"} /> : "" }
+			{ class_data.inheritance.includes("Vehicle") ?
+				<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Vehicle"} /> : "" }
+			{ class_data.inheritance.includes("Pawn") ?
+				<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Pawn"} /> : "" }
+		</> : "" }
 		{
 			class_data.events == null || class_data.events.length == 0 ? <p class="subtle-description">This class doesn't have own events.</p> :
 			<>
