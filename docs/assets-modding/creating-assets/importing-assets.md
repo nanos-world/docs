@@ -25,16 +25,36 @@ The first step to start creating your own Assets is opening the ADK project. Onc
 
 As stated before, do not modify any file inside `NanosWorld/` as any change will not be exported neither imported into nanos world.
 
+
+## Game or Plugin Content
+
+Asset Packs can be created from both [Game Content](#option-a-using-game-content) or [Plugin Content](#option-b-using-plugin-content).
+
+Using the **Game Content** means you will create your assets directly in your Unreal Project Content/ folder, this is the most straightforward way of creating assets.
+
+Alternatively, you can create **Content Plugins** to have a better organization and separation of your assets.
+
+It's up to you to decide whether you want to use Game Content or Plugin Content. If you are unsure, start creating your assets using [Game Content](#option-a-using-game-content):
+
+
+### Option A: Using Game Content
+
+For **Game Content**, any folder you create inside the `Content/` folder can be cooked and mounted as an Asset Pack in nanos world.
+
 :::tip
 
-There are two ways to create asset packs: by [Plugin Content](#using-plugin-content) or by [Game Content](#using-game-content). The newer and recommended way is using **Plugin Content**.
+Choose unique names for the folders you create inside `Content/` to avoid name collisions with other Asset Packs.
+
+For example, if you create a folder named `Content/Weapons/`, and another Asset Pack also has a folder named `Content/Weapons/`, they will conflict with each other and will not be able to be loaded together.
 
 :::
 
+In the ADK project, we already have a folder named `Content/MyAssetPack/` as an example of a Game Content folder. Rename it to anything you want or create your own folders besides that.
 
-## Option A: Using Plugin Content
 
-By using Content plugin, you ensure your Asset Pack will not have a name collision with other Asset Packs, and it's the **recommended** way to organize the Asset packs you create.
+### Option B: Using Plugin Content
+
+For **Plugin Content**, you must create a **Plugin** in Unreal Engine and create your assets inside the Plugin's Content folder. This way, you can have better organization and separation of your assets, and also you can easily share your Plugin with other people without sharing the whole Unreal Project.
 
 The first step is to create a plugin, so open the plugin tab at **Edit ⬇️ Plugins**:
 
@@ -56,42 +76,39 @@ Then in the left side, you will find the plugin folder you just created, this fo
 
 ![](/img/docs/importing-assets/plugin-content.webp)
 
-Now you can skip to [Importing external Assets](#importing-external-assets) to proceed.
-
-
-## Option B: Using Game Content
-
-If you can't create a plugin, you can still use the Game Content way of creating Assets.
-
-For Game Content, you just need to create a folder inside `Content/` to be your Asset Pack. You can delete or rename `Content/MyAssetPack`/ to anything you want.
-
-:::caution
-
-Using Game Content to create Asset Packs is **not** recommended anymore as it can cause naming collision problems if other Asset Packs use the same Game Content folder name as you.
-
-:::
-
 
 ## Importing external Assets
 
-All assets you create or import must be contained inside the folder you just created (the Plugin Content folder `Plugins/MyAwesomeAssetPack Content/` or the Game Content folder `Content/MyAssetPack/`. Feel free to create sub-folders and organize the way you want. But all files must be inside that folder!
+All assets you create or import must be contained inside the folders you created (the Plugin Content folder `Plugins/MyAwesomeAssetPack Content/` or the Game Content folders e.g. `Content/MyAssetPack/`). Feel free to create sub-folders and organize the way you want.
 
-You can drag'n drop any file from your computer inside that folder, e.g. FBX meshes or WAV sounds for example.
+You can drag'n drop any file from your computer inside those folders, e.g. FBX meshes or WAV sounds for example.
 
-The next pages of the docs will have examples on how to import specific assets (Skeletal Meshes, Maps, etc). You can check them and then back here to finish the exportation.
+Look at the navigation sidebar for more specific guides and examples on how to import specific assets (Skeletal Meshes, Maps, etc). You can check them and then back here to finish the exportation:
+
+<ReferenceLink href="assets-modding/creating-assets/static-meshes">Importing Static Meshes</ReferenceLink>
+<ReferenceLink href="assets-modding/creating-assets/skeletal-meshes/characters-meshes">Importing Character Meshes</ReferenceLink>
+<ReferenceLink href="assets-modding/creating-assets/skeletal-meshes/vehicles-meshes">Importing Vehicle Meshes</ReferenceLink>
+<ReferenceLink href="assets-modding/creating-assets/skeletal-meshes/weapons-meshes">Importing Weapon Meshes</ReferenceLink>
+<ReferenceLink href="assets-modding/creating-assets/maps-and-levels/importing-maps">Importing Maps</ReferenceLink>
 
 
 ## Exporting & Cooking your Assets
 
 After you imported and created your Assets, exporting them from Unreal Engine is very easy.
 
-For that, select **Platforms ⬇️ Windows/Linux ➡ Cook Content**:
+For that, select **Platforms ➡ Cook Content ➡ Cook Content**:
 
-![](/img/docs/importing-assets-03.webp)
+![](/img/docs/importing-assets/cooking.webp)
 
-This will start the Cooking & Packing process, which may take a while depending if the Assets were already loaded. It usually is only longer at the first time.
+This will start the Cooking & Packaging process, which may take a while depending if the Assets were already loaded. It usually is only longer at the first time.
 
 ![](/img/docs/importing-assets-04.webp)
+
+:::tip
+
+By default, Unreal will cook everything inside your Project. If you have too many assets, you can reduce the cooking time by [selecting only the folders or maps](#cook-only-what-is-needed) you want to cook in the Project Settings.
+
+:::
 
 After finishing, go for the Cooked folder of your ADK project:
 
@@ -99,33 +116,67 @@ After finishing, go for the Cooked folder of your ADK project:
 
 :::caution
 
-Please don't confuse the Cooked assets folder with the ADK project files. Make sure you are in the `Saved/Cooked/` one!
+Please don't confuse the Cooked assets folder with the Content project files. Make sure you are in the `Saved/Cooked/` one!
 
 :::
 
-- Using **Game Content**: you can find the folder `Content/<MyAssetPack>/` inside.
-- Using **Plugin Content**: you can find the folder `Plugins/<MyAwesomeAssetPack>/Content/` inside.
+- Using **Game Content**: you can find the cooked folders inside `Content/`.
+- Using **Plugin Content**: you can find the cooked folders inside  `Plugins/`.
 
 Inside this folder, you can find all your cooked assets. Example of a Game Content result:
 
 ![](/img/docs/importing-assets-05.webp)
 
-After finding the Cooked folder with your assets, we will manually copy it as it will become our [Asset Pack](/core-concepts/assets.mdx).
+After finding the Cooked folders with your assets, we can create our Asset Pack to import them into nanos world in the next section:
 
-Then just copy the folder into your server's `Assets/` directory and create a file named `Assets.toml` inside of it. Please refer to [Assets Pack Configuration](/core-concepts/assets.mdx#assets-pack-configuration) which you can copy and paste a new version of the file.
 
-After copied, rename your Asset Pack folder to a `kebab-case` as it's a mandatory standard for nanos world Assets & Packages names.
+## Creating your Asset Pack
+
+You can create your Asset Pack manually or use the [CLI](/core-concepts/server-manual/command-line-interface.mdx#starting-the-cli-in-interactive-mode) to do that easy and automatically, but we recommend doing it manually the first time to understand how it works:
+
+
+#### Create a new Asset Pack folder
+
+The first step is to create a new folder for your Asset Pack inside your `nanos-world-server/Assets/`.
+
+E.g. `nanos-world-server/Assets/my-asset-pack/`
+
+Note: it must be in `kebab-case`, as it's a mandatory standard for nanos world Assets & Packages names.
+
+
+#### Copy the Cooked Assets
+
+Then copy all the Cooked folders (i.e. the ones inside `Content/` or `Plugins/`) into your new Asset Pack folder.
+
+For example, if you are using **Game Content** and you have two folders in there `Content/MyAssetPack/` and `Content/MyOtherAssetPack/`, copy both of them into your new `my-asset-pack/` folder.
+
+If you are using **Plugin Content**, copy the whole Plugin folder (e.g. `Plugins/MyAwesomeAssetPack/`), you will notice it has a `Content/` folder inside it, which is correct, so just copy the whole Plugin folder into your new `my-asset-pack/` folder.
+
+
+#### Create the Assets.toml file
+
+Lastly, you will create the `Assets.toml` file in the root of your Asset Pack folder, which is the configuration file for your Asset Pack. You can copy and paste the template from [Assets Pack Configuration](/core-concepts/assets.mdx#assets-pack-configuration) and then fill in the correct values in the next section
+
+
+#### Final results
 
 You will end up with a folder like this:
 
-```
+```folder-structure title="Server Folder"
+NanosWorldServer.exe
 Assets/
 ├── my-asset-pack/
-│   ├── SM_Cube.uasset
-│   ├── SM_Cube.uexp
-│   ├── SM_Cube.ubulk
-│   ├── SM_Asset_02.uasset
-│   ├── ...
+│   ├── MyAssetPack/
+│   │   ├── MyAsset_01.uasset
+│   │   ├── MyAsset_01.ubulk
+│   │   ├── MyAsset_01.uexp
+│   │   ├── MyAsset_02.uasset
+│   │   ├── MyBigMap.umap
+│   │   └── ...
+│   ├── MyOtherAssetPack/
+│   │   ├── MyOtherAsset_01.uasset
+│   │   ├── MyOtherAsset_02.uasset
+│   │   └── ...
 │   └── Assets.toml
 Config.toml
 NanosWorldServer.exe
@@ -134,17 +185,20 @@ NanosWorldServer.exe
 
 ## Configuring your Assets.toml
 
-After you created your Assets.toml in the root folder of your Asset Pack. There are some important configuration to be set.
+After you created your `Assets.toml` in the root folder of your Asset Pack. There are some important configuration to be set.
 
-Open the Asset.toml in a text editor and make sure you configured `unreal_folder`, `unreal_version` and `is_plugin_content` to the correct values.
+Open the `Assets.toml` in a text editor and configure `unreal_folders`, `unreal_version` and `is_plugin_content` to the correct values:
 
-```toml
+```toml title="Assets.toml"
 # unreal engine configurations
 [unreal]
-    # unreal engine folder - the name of the root folder (the one inside UnrealProject/Content/) which the assets will have references to each other
-    unreal_folder =     "MyAssetPack"
+    # unreal engine folders to mount - the exact name of the root folders inside Content/ or Plugin/ used in Unreal
+    unreal_folders = [
+        "MyAssetPack",
+        "MyOtherAssetPack"
+    ]
     # unreal engine version - unreal version this asset pack was compiled on
-    unreal_version =    "5.0.3"
+    unreal_version =    "5.7.0"
     # whether this asset pack was created as a plugin content
     is_plugin_content = false
 ```
@@ -153,7 +207,7 @@ Another important section to configure is the `[assets]` one, in which you defin
 
 For example if you export a StaticMesh `SM_Cube` in a sub-folder, define them like that in your Assets.toml:
 
-```toml
+```toml title="Assets.toml"
 # assets files
 [assets]
     # ...
@@ -161,7 +215,7 @@ For example if you export a StaticMesh `SM_Cube` in a sub-folder, define them li
     # static meshes
     [assets.static_meshes]
         # Key = Path
-        SM_Cube = "MySubFolder/SM_Cube"
+        SM_Cube = "MyAssetPack/MySubFolder/SM_Cube"
         # ...
 ```
 
@@ -182,12 +236,27 @@ You can use the [ADK Assets.toml Generator Tool](adk-assets-development-kit.md##
 
 :::caution
 
-After cooking and copying your folder, **do not** rename or delete any file/folder inside your Cooked Asset Pack folder! It will break all internal references used by your assets and may cause they appear without materials/textures.
+After cooking and copying your folder, **do not** rename or delete any file/folder inside your Cooked Asset Pack folder! It will break all internal references used by your assets and may cause them to appear without materials/textures or even cause crashes.
 
 :::
 
 
 ## Additional Tips
+
+### Cook only what is needed
+
+By default, Unreal will cook everything inside your Project. If you have too many assets, you can reduce the cooking time by selecting only the folders or maps you want to cook in the Project Settings.
+
+Enable `Cook only maps` setting and specify the list of maps in `List of maps to include in a packaged build` setting, and only those maps and the assets used by them will be cooked:
+
+![](/img/docs/importing-assets/cook-only-maps.webp)
+
+![](/img/docs/importing-assets/maps-to-cook.webp)
+
+Additionally, you can specify `Additional Asset Directories to Cook` to include other folders you want to cook:
+
+![](/img/docs/importing-assets/directories-to-cook.webp)
+
 
 ### Name your assets properly
 
@@ -256,9 +325,9 @@ Most of the problems can be easily fixed by trying the following steps:
 
 > Sometimes it's good to try a full recook, as the Cooked assets can get corrupted by old Unreal versions.
 
-#### 4. Create one Asset Pack for each cooked assets folder
+#### 4. Copy all used cooked assets folder into your Asset Pack
 
-> If you are trying to load a map and specified that in the Project Settings to *cook only that map*, probably it generated one or more folders inside your `Saved/Cooked/` folder. This means that **ALL** these folders and files are needed to make the map to load. So you **MUST** create one Asset Pack for each folder in there. (of course you shouldn't create an Asset Pack for the NanosWorld/ folder).
+> If you are trying to load a map and specified that in the Project Settings to *cook only that map*, probably it generated one or more folders inside your `Saved/Cooked/` folder. This means that **ALL** these folders and files are needed to make the map to load. So you **MUST** copy each folder in there (of course you shouldn't create an Asset Pack for the NanosWorld/ folder).
 
 #### 5. If you use Git, make sure LFS was enabled
 
@@ -275,7 +344,7 @@ Common problems when importing assets and possible solutions:
 
 #### Assets without Materials/Textures
 
-> If you loaded the assets in-game and they don't have material (they are gray). It can be two problems: you didn't set `unreal_folder` in your Assets.toml correctly, or you modified/moved/copied the files wrongly from the Cooked folder.
+> If you loaded the assets in-game and they don't have material (they are gray). It can be two problems: you didn't set `unreal_folders` in your Assets.toml correctly, or you modified/moved/copied the files wrongly from the Cooked folder.
 
 #### Corrupt data found, please verify your installation
 
@@ -287,4 +356,4 @@ Common problems when importing assets and possible solutions:
 
 #### Disconnected. Failed to Load Map! Canceled or Failed!
 
-> This error usually happens when it couldn't find your map to load. This can be because of badly configured [Assets.toml](/core-concepts/assets.mdx#assets-pack-configuration) `unreal_folder` setting or because you copied Unreal Project files instead of Cooked files into your Asset Pack.
+> This error usually happens when the game couldn't find your map to load. This can be because of badly configured [Assets.toml](/core-concepts/assets.mdx#assets-pack-configuration) `unreal_folders` setting or because you copied Unreal Project files instead of Cooked files into your Asset Pack.
