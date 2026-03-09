@@ -246,7 +246,7 @@ export const Classes = {
 	VehicleWheeled: () => BaseClass("VehicleWheeled", "🚙", "VehicleWheeled", "vehicle-wheeled"),
 	VehicleWater: () => BaseClass("VehicleWater", "🛥️", "VehicleWater", "vehicle-water"),
 	Weapon: () => BaseClass("Weapon", "🔫"),
-	WebUI: () => BaseClass("WebUI", "🖥️"),
+	WebUI: () => BaseClass("WebUI", "🖥️", "WebUI", "web-ui"),
 	Widget: () => BaseClass("Widget", "🪟"),
 	Widget3D: () => BaseClass("Widget3D", "🪟", "Widget3D", "widget-3d"),
 };
