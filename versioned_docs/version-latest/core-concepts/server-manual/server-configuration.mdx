@@ -95,6 +95,9 @@ nanos world counts on (for now) 4 built-in maps: `default-blank-map`, `default-e
 | `stop` | Stops the server |
 | `players` | Lists all Players connected |
 | `password <new_password>` | Changes the server password |
+| `profiling <0-1>` | Enables/Disables Performance Profiling Logs for debugging |
+| `log_level <1-3>` | Changes the log level |
+| `max_file_transfer_rate <1-max_send_rate>` | Changes the max file transfer rate per client |
 | `package run <package_name> <lua_code>` | Runs a code in a Package |
 | `package reload all` | Reloads all Packages and restarts the Lua Virtual Machine |
 | `package reload <package_names...>` | Reloads Packages |
@@ -141,6 +144,8 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--log_show_thread` | *flag* | Shows the current running thread of each outputted log |
 | `--max_tick_rate` | 15-120 | Sets the server max tick rate in Hz (ticks per second) |
 | `--max_send_rate` | 1-64 | Sets the server max send rate per client in MB/s |
+| `--max_file_transfer_rate` | 1-64 | Sets the server max file transfer rate per client in MB/s - this must be smaller than max_send_rate |
+| `--thread_pool_count` | number | Sets the number of threads initialized to execute async operations (e.g. from HTTP, Database, File) - default is 8 (or the number of CPU cores) |
 | `--enable_unsafe_libs` | *flag* | Enables executing the methods `os.execute`, `os.rename`, `os.remove`, `os.exit`, `os.getenv`, `os.tmpname`, `os.setlocale`, `dofile`, `loadfile` and all `io.*` on server side (**Caution**: those methods may allow malicious operations to run on your server, make sure you know what you are doing) |
 
 :::tip

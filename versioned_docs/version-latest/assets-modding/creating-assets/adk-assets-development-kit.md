@@ -64,7 +64,7 @@ Here's a list of all tools and blueprints which you can use to speed up and help
 
 ![Placeholder Blueprints overview](/img/docs/adk-01.webp)
 
-You can use the **Placeholder Blueprints** to set Spawn Positions of **Vehicles**, **Weapons**, **Characters** and **Props**. This works only to help you generating a Lua code with spawn positions after all. These Blueprints aren’t cooked with the map. Use the [Lua Code Generator](adk-assets-development-kit#lua-code-generator) to generate the Lua script with all spawn locations.
+You can use the **Placeholder Blueprints** to set Spawn Positions of **Vehicles**, **Weapons**, **Characters** and **Props**. This works only to help you generating a Lua code with spawn positions after all. These Blueprints aren't cooked with the map. Use the [Lua Code Generator](adk-assets-development-kit#lua-code-generator) to generate the Lua script with all spawn locations.
 
 ### Lua Code Generator
 #### `NanosWorld/Blueprints/Utility/WBP_LuaCodeGenerator`
@@ -113,16 +113,16 @@ DO NOT **modify** or **rename** any Physical Materials, only use by referencing 
 ### Mannequin Skeleton
 #### `NanosWorld/Characters/Common/SKEL_Mannequin`
 
-To be able to create Skeletal \(Character\) Meshes which work with our [Character](/scripting-reference/classes/character.mdx) class, you must set your Skeletal Mesh to use our **Mannequin Skeleton**. This Skeleton is the same as Unreal Engine 5 default Mannequin, so any Skeletal Mesh which uses UE4’s Mannequin Skeleton will work for us!
+To be able to create Skeletal \(Character\) Meshes which work with our [Character](/scripting-reference/classes/character.mdx) class, you must set your Skeletal Mesh to use our **Mannequin Skeleton**. This Skeleton is the same as Unreal Engine 5 default Mannequin, so any Skeletal Mesh which uses UE4's Mannequin Skeleton will work for us!
 
-To change a Skeletal Mesh’s Skeleton: right click on it &gt;&gt; Skeleton &gt;&gt; Assign Skeleton and change it to our `SKEL_Mannequin`.
+To change a Skeletal Mesh's Skeleton: right click on it &gt;&gt; Skeleton &gt;&gt; Assign Skeleton and change it to our `SKEL_Mannequin`.
 
 ![](/img/docs/adk-06.webp)
 
 ### Thumbnail Generator
 #### `NanosWorld/Blueprints/Utility/ThumbnailGenerator`
 
-We’ve shipped a **Thumbnail Generator** tool to help you generating `.jpg` images of your assets. To use that, just open **ThumbnailGenerator** level and hit Play. Then you will be able to define a folder for search the assets \(currently only Static and Skeletal Meshes are supported\) and a folder to save the images \(.jpg\). You can optionally keep the directory hierarchy in the output folder or save all images in the same folder. Once you hit **Generate**, it will start loading all assets and taking a photo from them.
+We've shipped a **Thumbnail Generator** tool to help you generating `.jpg` images of your assets. To use that, just open **ThumbnailGenerator** level and hit Play. Then you will be able to define a folder for search the assets \(currently only Static and Skeletal Meshes are supported\) and a folder to save the images \(.jpg\). You can optionally keep the directory hierarchy in the output folder or save all images in the same folder. Once you hit **Generate**, it will start loading all assets and taking a photo from them.
 
 :::info
 

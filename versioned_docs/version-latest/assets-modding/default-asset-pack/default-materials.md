@@ -148,7 +148,7 @@ For more information regarding how each Parameter affects the final visual, plea
 | **M_Default_Translucent_Unlit** | `false` | `true` | `false` | `false` | `false` | `false` | `false` | `true` | `false` | `false` | `false` |
 | **M_Default_Translucent_Unlit_Depth** | `false` | `true` | `false` | `false` | `false` | `false` | `false` | `true` | `false` | `false` | `false` |
 | **M_Noise** | `false` | `false` | `false` | `true` | `true` | `true` | `true` | `false` | `false` | `false` | `false` |
-| **M_Wireframe** | `true` | `false` | `false` | `true` | `false` | `false` | `false` | `false` | `false` | `false` | `false` |
+| **M_Wireframe** | `true` | `false` | `false` | `true` | `false` | `false` | `false` | `true` | `false` | `false` | `false` |
 
 > **Masked Material's Opacity supports only Opacity Mask: `0` or `1`*
 

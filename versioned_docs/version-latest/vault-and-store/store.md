@@ -124,22 +124,21 @@ Create a `.yml` file inside your repository as  `.github/workflows/publish.yml` 
 name: Publish to nanos world Store
 
 on:
-  push:
-	tags:
-	  - 'v*'  # Publishes when you push a version tag
-  workflow_dispatch:  # Allows manual trigger
+  release:
+    types: [published]
 
 jobs:
-  publish:
-	runs-on: ubuntu-latest
-	steps:
-	  - uses: actions/checkout@v4
+  build:
+    runs-on: ubuntu-latest
+    name: Publish package
+    steps:
+      - uses: actions/checkout@v4
 
-	  - uses: nanos-world/store-action@v1
-		with:
-		  NANOS_PERSONAL_ACCESS_TOKEN: ${{ secrets.NANOS_STORE_TOKEN }}
-		  # highlight-next-line
-		  NANOS_PACKAGE_NAME: 'your-package-name'  # Replace with your package name
+      - uses: nanos-world/store-action@v1
+        with:
+          NANOS_PERSONAL_ACCESS_TOKEN: ${{ secrets.NANOS_STORE_TOKEN }}
+          # highlight-next-line
+          NANOS_PACKAGE_NAME: 'your-package-name'  # Replace with your package name
 ```
 
 
@@ -151,7 +150,7 @@ To publish a new version:
 
 ```toml title="Package.toml"
 [meta]
-	version = "1.0.1"  # Increment from previous
+    version = "1.0.1"  # Increment from previous
 ```
 
 #### Commit, tag and push:
@@ -183,10 +182,10 @@ The action automatically reads the version from your `Package.toml` file and com
 If you have multiple packages in your repository, you can publish them all at once using the `EXTRA_PACKAGE_PATHS` input with a JSON array format:
 
 ```yml title=".github/workflows/publish.yml"
-		with:
-		  ...
-		  # highlight-next-line
-		  EXTRA_PACKAGE_PATHS: '["path/to/package1", "path/to/package2"]'
+        with:
+          ...
+          # highlight-next-line
+          EXTRA_PACKAGE_PATHS: '["path/to/package1", "path/to/package2"]'
 ```
 
 For more advanced configuration options and troubleshooting, visit the [action repository](https://github.com/olivatooo/nanos-world-store-action).

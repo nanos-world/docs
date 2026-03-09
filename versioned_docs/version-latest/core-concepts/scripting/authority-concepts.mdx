@@ -23,11 +23,13 @@ Some methods and events in the API are only available on a specific side \(Clien
 
 - **Methods:** can be called only in the **Server** side.
 - **Events**: will be triggered only in the **Server** side.
+- **Classes**: can only be spawned in the **Server** side.
 
 #### <AuthorityType.ClientOnly />**`Client Side`**
 
 - **Methods:** can be called only in the **Client** side.
 - **Events**: will be triggered only in the **Client** side.
+- **Classes**: can only be spawned in the **Client** side. (It won't be synchronized with other players).
 
 #### <AuthorityType.AuthorityOnly />**`Authority Side`**
 
@@ -43,6 +45,7 @@ Some methods and events in the API are only available on a specific side \(Clien
 
 - **Methods:** can be called in both **Server** and **Client** side.
 - **Events**: will be triggered in both **Server** and **Client** side.
+- **Classes**: can be spawned in both **Server** and **Client** side. If you spawn it on client, it won't be synchronized with other players.
 
 #### <AuthorityType.BothNetAuthorityFirst />**`Both Sides (Network. Authority First)`**
 

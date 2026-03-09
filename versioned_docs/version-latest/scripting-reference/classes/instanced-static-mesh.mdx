@@ -1,0 +1,51 @@
+---
+title: 🏘️ InstancedStaticMesh
+description: An Instanced Static Mesh entity allows spawning a mesh that can have multiple instances efficiently rendered.
+sidebar_position: 0
+tags: [class]
+---
+
+<HeaderDeclaration type="Class" name="InstancedStaticMesh" image="/img/docs/instanced-static-mesh.webp" />
+
+
+Instanced Static Meshes are like StaticMeshes, but instead of being a single instance, it supports rendering a group of identical meshes, way more efficiently.
+
+
+:::tip
+
+If you rely on adding and removing instances dynamically. It can be a good idea to *hide* the instance instead of removing it, as removing an instance will potentially cause all indexes to be reordered.
+
+For that, just set the instance scale to zero as `Vector(0, 0, 0)`:
+
+```lua
+local my_index = 123
+my_instanced_static_mesh:SetInstanceTransform(my_index, nil, nil, Vector(0, 0, 0))
+```
+
+:::
+
+:::note
+
+Any mesh that you want to use with an Instanced Static Mesh must have it's materials set to `Used with Instanced Static Meshes` in the Material Editor.
+
+:::
+
+
+## 🛠 Constructors
+
+<ConstructorDeclaration type="Class" name="InstancedStaticMesh" />
+
+
+## 🗿 Static Functions
+
+<StaticFunctionsDeclaration type="Class" name="InstancedStaticMesh" />
+
+
+## 🦠 Functions
+
+<FunctionsDeclaration type="Class" name="InstancedStaticMesh" />
+
+
+## 🚀 Events
+
+<EventsDeclaration type="Class" name="InstancedStaticMesh" />

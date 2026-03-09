@@ -29,13 +29,16 @@ This is an example of a server Assets folder:
 NanosWorldServer.exe
 Assets/
 ├── my-asset-pack-01/
-│   ├── MyAsset_01.uasset
-│   ├── MyAsset_02.uasset
-│   ├── MyBigMap.umap
+│   ├── MyAssetPack01/
+│   │   ├── MyProp.uasset
+│   │   ├── MyProp.ubulk
+│   │   ├── MyProp.uexp
+│   │   ├── MyBigMap.umap
 │   │    ...
 │   └── Assets.toml
 ├── awesome-weapons/
-│   ├── BigFuckingGun.uasset
+│   ├── MyWeapons/
+│   │   ├── BigFuckingGun.uasset
 │   │   ...
 │   └── Assets.toml
 Packages/
@@ -60,9 +63,9 @@ See a description of what each setting does:
 | **`title`** | Friendly name |
 | **`author`** | Contributor(s) |
 | **`version`** | Version - in the [SemVer](https://semver.org/) format `X.Y.Z` |
-| **`unreal.unreal_folder`** | Name of the root folder in the Unreal Project which exported this Assets. This is important so the Assets can keep the relative references correctly |
+| **`unreal.unreal_folders`** | List of all folders exported by your Unreal Project to be mounted in game. This is important so the Assets can keep the relative references correctly |
 | **`unreal.unreal_version`** | Version at which this Asset Pack was created |
-| **`unreal.is_plugin_content`** | If this Asset Pack is Plugin Content |
+| **`unreal.is_plugin_content`** | If this Asset Pack uses Plugin Content |
 | **`assets.maps`** | List of Maps in this Asset Pack |
 | **`assets.static_meshes`** | List of Static Meshes in this Asset Pack |
 | **`assets.skeletal_meshes`** | List of Skeletal Meshes in this Asset Pack |
