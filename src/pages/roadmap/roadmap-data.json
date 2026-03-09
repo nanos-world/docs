@@ -171,6 +171,22 @@
       "description": "completed features that are already available in the game",
       "items": [
         {
+          "title": "🧱 Instanced Static Mesh Entity",
+          "image": "/roadmap/ism.webp",
+          "description": "We've added the Instanced Static Mesh entity, enabling scripters to spawn and manage large numbers of repeated meshes efficiently with a single entity. This improves rendering performance and is ideal for foliage, props, and modular world building.",
+          "external_link": "/docs/next/scripting-reference/classes/instanced-static-mesh",
+          "external_link_title": "Instanced Static Mesh",
+          "labels": ["released", "scripting", "optimization", "modding"]
+        },
+        {
+          "title": "🧑‍💻 VSCode Extension",
+          "image": "/roadmap/vscode.webp",
+          "description": "We released an official Visual Studio Code extension for nanos world to improve the scripting workflow with language support, snippets, and integrated tooling for package development.",
+          "external_link": "https://marketplace.visualstudio.com/items?itemName=go-horse-studios.nanos-world",
+          "external_link_title": "nanos world VSCode Extension",
+          "labels": ["released", "scripting", "integration", "ux"]
+        },
+        {
           "title": "🏪 Better Vault",
           "image": "/roadmap/vault.webp",
           "description": "The Vault is our in-game system for managing and sharing community-created content. We're planning significant improvements to make it easier to use, more reliable, and offer better organization and discovery of assets.\n\nAlthough we already have a functional in-game Vault system that allows players to share and download custom content, we recognize its current implementation has limitations, particularly when it comes to backend implementation and integration.\n\nOur goal with this rework is to significantly improve the Vault's backend services and associated web pages. Making the process of uploading new content, managing versions and details much easier for creators to share their work with the community.",
