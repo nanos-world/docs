@@ -40,7 +40,9 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | **`query_port`** | Server query Port (UDP) |
 | **`announce`** | Whether to announce or not in the Server List |
 | **`max_tick_rate`** | Server Tick in Hz. How much the server will tick per second. We recommend leaving it 30 |
-| **`max_send_rate`** | Server send rate per client in MB/s. Limits bandwidth for each connected player |
+| **`max_send_rate`** | Server network send rate per client in KB/s. Limits bandwidth for each connected player. Recommended setting to the lowest needed value as higher rates may negatively impact the server performance when having players with bad connections |
+| **`max_file_transfer_rate`** | Changes the max file transfer rate per client |
+| **`distance_optimization`** | Sets the distance optimization level to improve network usage by reducing sync from distant actors |
 | **`log_level`** | Which Log level to output |
 | **`game_mode`** | [game-mode](/core-concepts/packages/packages-guide.md#game-mode) package to load -  you can only load one game-mode at once. |
 | **`loading_screen`** | [loading-screen](/core-concepts/packages/loading-screen.md) package to load - you can only load one loading-screen at once. |
@@ -97,7 +99,9 @@ nanos world counts on (for now) 4 built-in maps: `default-blank-map`, `default-e
 | `password <new_password>` | Changes the server password |
 | `profiling <0-1>` | Enables/Disables Performance Profiling Logs for debugging |
 | `log_level <1-3>` | Changes the log level |
-| `max_file_transfer_rate <1-max_send_rate>` | Changes the max file transfer rate per client |
+| `max_send_rate <128-16384>` | Changes the max send rate per client |
+| `max_file_transfer_rate <128-max_send_rate>` | Changes the max file transfer rate per client |
+| `distance_optimization <0-9>` | Sets the distance optimization level |
 | `package run <package_name> <lua_code>` | Runs a code in a Package |
 | `package reload all` | Reloads all Packages and restarts the Lua Virtual Machine |
 | `package reload <package_names...>` | Reloads Packages |
@@ -143,8 +147,9 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--use_vault_assets_lean` | *flag* | Only downloads the Asset Pack's .toml configuration files from Vault |
 | `--log_show_thread` | *flag* | Shows the current running thread of each outputted log |
 | `--max_tick_rate` | 15-120 | Sets the server max tick rate in Hz (ticks per second) |
-| `--max_send_rate` | 1-64 | Sets the server max send rate per client in MB/s |
-| `--max_file_transfer_rate` | 1-64 | Sets the server max file transfer rate per client in MB/s - this must be smaller than max_send_rate |
+| `--max_send_rate` | 128-16384 | Sets the server max send rate per client in KB/s |
+| `--max_file_transfer_rate` | 128-16384 | Sets the server max file transfer rate per client in KB/s - this must be smaller than max_send_rate |
+| `--distance_optimization` | 0-9 | Sets the distance optimization level to improve network usage by reducing sync from distant actors - 0 disables it, 4 is a good middle term, 9 is the most aggressive |
 | `--thread_pool_count` | number | Sets the number of threads initialized to execute async operations (e.g. from HTTP, Database, File) - default is 8 (or the number of CPU cores) |
 | `--enable_unsafe_libs` | *flag* | Enables executing the methods `os.execute`, `os.rename`, `os.remove`, `os.exit`, `os.getenv`, `os.tmpname`, `os.setlocale`, `dofile`, `loadfile` and all `io.*` on server side (**Caution**: those methods may allow malicious operations to run on your server, make sure you know what you are doing) |
 
