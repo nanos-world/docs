@@ -73,8 +73,8 @@ export function GetReturnDescriptionList(return_list) {
 		return_data.name || return_data.description || return_data.table_properties || return_data.table_properties_custom ?
 			<>
 				{ return_data.description || return_data.name }
-				{ return_data.table_properties ? <InlineTablePropertiesDeclaration table_properties={return_data.table_properties} /> : null }
-				{ return_data.table_properties_custom ? <InlineTablePropertiesDeclaration table_properties_custom={return_data.table_properties_custom} /> : null }
+				{ return_data.table_properties ? <><> </><InlineTablePropertiesDeclaration table_properties={return_data.table_properties} /></> : null }
+				{ return_data.table_properties_custom ? <><> </><InlineTablePropertiesDeclaration table_properties_custom={return_data.table_properties_custom} /></> : null }
 			</>
 		: null
 	).filter((value) => value != null);
