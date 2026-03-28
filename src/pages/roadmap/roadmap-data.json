@@ -53,6 +53,18 @@
           "labels": ["hosting", "community"]
         },
         {
+          "title": "🔌 WebSocket Support",
+          "image": "/roadmap/websocket.webp",
+          "description": "We're planning to add WebSocket support so scripters can keep persistent, bidirectional connections with external services in real time. This will be useful for live dashboards, chat relays, matchmaking backends, and other systems that benefit from instant updates without repeated polling.",
+          "labels": ["scripting", "integration"]
+        },
+        {
+          "title": "🌐 HTTP Server",
+          "image": "/roadmap/http-request.webp",
+          "description": "Add a built-in HTTP server API to allow scripts to expose REST or webhook endpoints directly from a nanos world server instance. This enables easy integration with external dashboards, automation tools, and monitoring systems without relying on separate reverse proxies.",
+          "labels": ["scripting", "integration"]
+        },
+        {
           "title": "🛤️ Spline Entity",
           "image": "/roadmap/spline.webp",
           "description": "The Spline entity will give scripters the ability to create and manipulate splines dynamically within the game world. Splines can be used to define paths for AI, create roads and other curved surfaces, and much more.",
