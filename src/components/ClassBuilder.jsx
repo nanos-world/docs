@@ -701,7 +701,7 @@ export const ExamplesDeclaration = ({ type, name }) => {
 			value.examples && value.examples.map((example) => GetGenericExample(example, `${ name }.${ value.name }`))
 		)}
 		{ class_data.events && class_data.events.map((value) =>
-			value.examples && value.examples.map((example) => GetEventExample(name, class_data, example, `${ name } "${ value.name }" Event`))
+			value.examples && value.examples.map((example) => GetEventExample(name, value, example, `${ name } "${ value.name }" Event`))
 		)}
 	</>;
 };
