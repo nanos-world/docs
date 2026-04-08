@@ -27,19 +27,19 @@ Packages/
 
 ### Getting Load/Download Progress
 
-To be able to display dynamic information in the screen, you can listen to the Event `UpdateScreen` \(which will trigger every few ms\):
+To be able to display dynamic information in the screen, you can listen to the Event `UpdateScreen` (which will trigger every few ms):
 
 #### Event `UpdateScreen`
 
 | Parameter | Description |
 | :--- | :--- |
-| **`message`** | Display the current state \(loading, validating, downloading...\) |
+| **`message`** | Display the current state (loading, validating, downloading...) |
 | **`message_secondary`** | Display the current asset/file being loaded or downloaded |
 | **`progress_small`** | Current small progress |
 | **`progress_small_total`** | Max small progress |
 | **`progress`** | Current progress |
 | **`progress_total`** | Max progress value |
-| **`current_stage`** | The current stage of the load \(`loading`, `downloading`\) |
+| **`current_stage`** | The number value representing the current stage of the load (`0 = None, 1 = Connecting, 2 = Fetching, 3 = Validating, 4 = Downloading, 5 = LoadingAssets, 6 = LoadingLevel, 7 = LoadingEntities, 8 = CompilingShaders, 9 = Finishing`) |
 
 ```javascript title="Packages/my-loading-screen/index.js" showLineNumbers
 Events.Subscribe("UpdateScreen", function(message, message_secondary, progress_small, progress_small_total, progress, progress_total, current_stage) {
