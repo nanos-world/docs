@@ -40,6 +40,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | **`query_port`** | Server query Port (UDP) |
 | **`announce`** | Whether to announce or not in the Server List |
 | **`max_tick_rate`** | Server Tick in Hz. How much the server will tick per second. We recommend leaving it 30 |
+| **`max_sync_rate`** | Max actors sync rate in Hz. How much actors location/rotation/velocity will synchronize per second, limited by `max_tick_rate` |
 | **`max_send_rate`** | Server network send rate per client in KB/s. Limits bandwidth for each connected player. Recommended setting to the lowest needed value as higher rates may negatively impact the server performance when having players with bad connections |
 | **`max_file_transfer_rate`** | Changes the max file transfer rate per client |
 | **`distance_optimization`** | Sets the distance optimization level to improve network usage by reducing sync from distant actors |
@@ -147,6 +148,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--use_vault_assets_lean` | *flag* | Only downloads the Asset Pack's .toml configuration files from Vault |
 | `--log_show_thread` | *flag* | Shows the current running thread of each outputted log |
 | `--max_tick_rate` | 15-120 | Sets the server max tick rate in Hz (ticks per second) |
+| `--max_sync_rate` | 1-30 | Sets the max actors sync rate in Hz (syncs per second), naturally limited by `max_tick_rate` |
 | `--max_send_rate` | 128-16384 | Sets the server max send rate per client in KB/s |
 | `--max_file_transfer_rate` | 128-16384 | Sets the server max file transfer rate per client in KB/s - this must be smaller than max_send_rate |
 | `--distance_optimization` | 0-9 | Sets the distance optimization level to improve network usage by reducing sync from distant actors - 0 disables it, 4 is a good middle term, 9 is the most aggressive |
