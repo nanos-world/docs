@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Preprocess API
+        run: preprocess-api
+
       - name: Sync Crowdin
         env:
           CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}

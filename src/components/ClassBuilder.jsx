@@ -3,6 +3,7 @@ import CodeBlock from '@theme/CodeBlock';
 import Admonition from '@theme/Admonition';
 import { Link } from "react-router-dom";
 import { useActiveVersion } from '@docusaurus/plugin-content-docs/client';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 import Tippy from '@tippyjs/react';
 import 'tippy.js/animations/scale-subtle.css';
@@ -541,10 +542,22 @@ export const EventListDeclaration = ({ type, name, inherited_class_name, base_cl
 	);
 };
 
+// Note: this is generating the whole docs in runtime, isn't it bad for performance?
 export const GetClassData = (type, name) => {
 	const activeVersion = useActiveVersion();
 	const is_bleeding_edge = activeVersion ? (activeVersion.name == "current") : true;
-	return APIData[is_bleeding_edge ? "BleedingEdge" : "Stable"][type][name];
+
+	const { i18n } = useDocusaurusContext();
+	const currentLanguage = i18n.currentLocale;
+
+	// Gets or generate API Data
+	const api_data = APIData();
+
+	// If the current language doesn't have translations, fallback to english.
+	const data_language = api_data[currentLanguage] ? api_data[currentLanguage] : api_data["en"];
+	const data = data_language[is_bleeding_edge ? "BleedingEdge" : "Stable"][type];
+
+	return name ? data[name] : data;
 }
 
 // Header Block Declaration

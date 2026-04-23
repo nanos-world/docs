@@ -7,8 +7,7 @@ import 'tippy.js/dist/tippy.css';
 
 import { AuthorityTooltip, AssetPathToolTip, ClassToolTip, FunctionToolTip, EnumToolTip } from '@site/src/components/Tooltips.jsx';
 import { getActiveVersionPath } from '@site/src/components/Utils.jsx';
-
-import APIData from '@site/src/components/APIData.jsx';
+import { GetClassData } from '@site/src/components/ClassBuilder';
 
 
 // Square Card Link
@@ -79,51 +78,61 @@ export const BaseBasicType = (label, description) => (
 );
 
 // Generic Struct Type component
-export const BaseStruct = (name, emoji, path) => (
-	<Tippy maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<ClassToolTip class_name={name} emoji={emoji} append_title="Struct" description={ APIData.BleedingEdge.Struct[name] ? APIData.BleedingEdge.Struct[name].description : "Struct not found. Soon™." } />}>
+export const BaseStruct = (name, emoji, path) => {
+	const struct_data = GetClassData("Struct", name);
+
+	return <Tippy maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<ClassToolTip class_name={name} emoji={emoji} append_title="Struct" description={ struct_data ? struct_data.description : "Struct not found. Soon™." } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/structs/${path ? path : name.toLowerCase()}`} className={"hover-link"}>{name}</Link>
 	</Tippy>
-);
+};
 
 // Generic Utility Class Type component
-export const BaseUtilityClass = (name, path) => (
-	<Tippy maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<ClassToolTip class_name={name} emoji={"💡"} append_title="Utility Class" description={ APIData.BleedingEdge.UtilityClass[name] ? APIData.BleedingEdge.UtilityClass[name].description : "Utility Class not found. Soon™." } />}>
+export const BaseUtilityClass = (name, path) => {
+	const class_data = GetClassData("UtilityClass", name);
+
+	return <Tippy maxWidth={300} animation={"scale-subtle"} placement={"left"} content={<ClassToolTip class_name={name} emoji={"💡"} append_title="Utility Class" description={ class_data ? class_data.description : "Utility Class not found. Soon™." } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/utility-libraries/${path ? path : name.toLowerCase()}`} className={"hover-link"}>
 			<b>{ name }</b>
 		</Link>
 	</Tippy>
-);
+};
 
 // Generic Class Type component
-export const BaseClass = (name, emoji, label = name, path = null, is_base = false) => (
-	<Tippy interactive={ is_base } maxWidth={400} animation={"scale-subtle"} placement={"left"}
-		content={<ClassToolTip class_name={label} emoji={emoji} append_title= { is_base ? "Base Class" : "Class" } description={ APIData.BleedingEdge.Class[name] ? APIData.BleedingEdge.Class[name].description : "Class not found. Soon™." } inheritance_children={ APIData.BleedingEdge.Class[name] ? APIData.BleedingEdge.Class[name].inheritance_children : nil } />}>
+export const BaseClass = (name, emoji, label = name, path = null, is_base = false) => {
+	const class_data = GetClassData("Class", name);
+
+	return <Tippy interactive={ is_base } maxWidth={400} animation={"scale-subtle"} placement={"left"}
+		content={<ClassToolTip class_name={label} emoji={emoji} append_title= { is_base ? "Base Class" : "Class" } description={ class_data ? class_data.description : "Class not found. Soon™." } inheritance_children={ class_data ? class_data.inheritance_children : null } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/classes/${path ? path : label.toLowerCase()}`} className={"hover-link"}>
 			<b>{ label }</b>
 		</Link>
 	</Tippy>
-);
+};
 
 // Generic StaticClass Type component
-export const BaseStaticClass = (name, emoji, path) => (
-	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"}
-		content={<ClassToolTip class_name={name} emoji={emoji} append_title="Static Class" description={ APIData.BleedingEdge.StaticClass[name] ? APIData.BleedingEdge.StaticClass[name].description : "Static Class not found. Soon™." } />}>
+export const BaseStaticClass = (name, emoji, path) => {
+	const class_data = GetClassData("StaticClass", name);
+
+	return <Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"}
+		content={<ClassToolTip class_name={name} emoji={emoji} append_title="Static Class" description={ class_data ? class_data.description : "Static Class not found. Soon™." } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/static-classes/${path ? path : name.toLowerCase()}`} className={"hover-link"}>
 			<b>{ name }</b>
 		</Link>
 	</Tippy>
-);
+};
 
 // Define Enum component
-export const Enums = ({ children, short }) => (
-	<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={<EnumToolTip enum_name={ children } enum_data={ APIData.BleedingEdge.Enums[children] } />}>
+export const Enums = ({ children, short }) => {
+	const enum_data = GetClassData("Enums", children);
+
+	return <Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={<EnumToolTip enum_name={ children } enum_data={ enum_data } />}>
 		<Link to={`${getActiveVersionPath()}/scripting-reference/glossary/enums#${children.toLowerCase()}`} className={"hover-link"}>
 			{short ? children.replace(/([A-Z])/g, ' $1').trim().split(' ').map(e => (
 				<span style={{ wordBreak: 'normal', display: 'inline-block', textDecoration: 'inherit' }}>{e}</span>
 			)) : children}
 		</Link>
 	</Tippy>
-);
+};
 
 // Define Asset Path component
 export const BaseAssetPath = (type, label, description) => (

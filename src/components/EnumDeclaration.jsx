@@ -1,7 +1,6 @@
 import React from 'react';
-import APIData from '@site/src/components/APIData.jsx';
 import Admonition from '@theme/Admonition';
-import { GetRelations } from '@site/src/components/ClassBuilder';
+import { GetRelations, GetClassData } from '@site/src/components/ClassBuilder';
 
 export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
 	<>
@@ -53,6 +52,7 @@ export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
 	</>
 );
 
-export const EnumsDeclaration = () => (
-	Object.keys(APIData.BleedingEdge.Enums).map((enum_name) => <EnumDeclaration key={enum_name} enum_name={enum_name} enum_data={APIData.BleedingEdge.Enums[enum_name]} /> )
-);
+export const EnumsDeclaration = () => {
+	const enums_data = GetClassData("Enums");
+	return Object.keys(enums_data).map((enum_name) => <EnumDeclaration key={enum_name} enum_name={enum_name} enum_data={enums_data[enum_name]} /> )
+};

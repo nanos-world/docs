@@ -6,7 +6,7 @@
     "preprocess-api": "node ./src/api/Preprocessor.js",
     "docusaurus": "docusaurus",
     "start": "yarn preprocess-api && docusaurus start",
-    "build": "yarn preprocess-api && docusaurus build",
+    "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
