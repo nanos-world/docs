@@ -548,13 +548,13 @@ export const GetClassData = (type, name) => {
 	const is_bleeding_edge = activeVersion ? (activeVersion.name == "current") : true;
 
 	const { i18n } = useDocusaurusContext();
-	const currentLanguage = i18n.currentLocale;
+	const currentLocale = i18n.currentLocale;
 
 	// Gets or generate API Data
 	const api_data = APIData();
 
 	// If the current language doesn't have translations, fallback to english.
-	const data_language = api_data[currentLanguage] ? api_data[currentLanguage] : api_data["en"];
+	const data_language = api_data[currentLocale] ? api_data[currentLocale] : api_data["en"];
 	const data = data_language[is_bleeding_edge ? "BleedingEdge" : "Stable"][type];
 
 	return name ? data[name] : data;
