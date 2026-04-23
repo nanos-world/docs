@@ -26,7 +26,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Preprocess API
-        run: preprocess-api
+        run: yarn preprocess-api
 
       - name: Test build website
         run: yarn build
