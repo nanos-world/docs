@@ -183,6 +183,14 @@
       "description": "completed features that are already available in the game",
       "items": [
         {
+        "title": "🌍 Localization",
+        "image": "/roadmap/crowdin.webp",
+        "description": "The main menu UI is now translated into many languages, making nanos world more accessible to players worldwide. Our community helps keep translations up to date and accurate. You can contribute or check the current progress on our Crowdin page.",
+        "external_link": "https://crowdin.com/project/nanos-world-game",
+        "external_link_title": "nanos world on Crowdin",
+        "labels": ["released", "ui", "community"]
+        },
+        {
           "title": "🧱 Instanced Static Mesh Entity",
           "image": "/roadmap/ism.webp",
           "description": "We've added the Instanced Static Mesh entity, enabling scripters to spawn and manage large numbers of repeated meshes efficiently with a single entity. This improves rendering performance and is ideal for foliage, props, and modular world building.",

@@ -12,7 +12,7 @@ jobs:
     name: Test deployment
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: nschloe/action-cached-lfs-checkout@v1
         with:
           submodules: true
           fetch-depth: 0
