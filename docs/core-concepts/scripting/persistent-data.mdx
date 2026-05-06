@@ -5,8 +5,6 @@ tags: [scripting]
 ---
 
 
-import { Structs, BasicType } from '@site/src/components/_nanos';
-
 How to store and retrieve persistent data from disk using the built-in system.
 
 In nanos world it is possible to store and retrieve data from disk with simple functions.
@@ -17,15 +15,20 @@ It is possible to store Persistent Data in both **Client** and **Server**!
 
 :::
 
+
 ## File Format
 
-The persistent data is automatically stored in the **TOML** format in the file `PersistentData.toml` inside your Package/ folder. This file is only created if you call `Package.SetPersistentData()`.
+The persistent data is automatically stored in the **TOML** format in the file `PersistentData.toml` inside your `Package/.data/` folder (both server and client side).
+
+This file is only created if you call <MethodReference type="StaticClass" class_name="Package" method="SetPersistentData" is_static show_class_name />.
+
 
 ## Storing and Retrieving data
 
-All **PersistentData** files are loaded automatically when the Package loads and stored in memory. You can easily access the whole file with `Package.GetPersistentData()` method.
+All **PersistentData** files are loaded automatically when the Package loads and stored in memory. You can easily access the whole file with <MethodReference type="StaticClass" class_name="Package" method="GetPersistentData" is_static show_class_name />.
 
 For storing data you will need to pass a `key` value, which will store <BasicType.Any /> lua value in that key.
+
 
 ## Examples
 
@@ -38,8 +41,19 @@ local my_table = {
 Package.SetPersistentData("awesome_table", my_table)
 
 -- PersistentData.toml will be:
--- awesome_table = {my_id = 123, my_data_02 = "data"}
+-- awesome_table = { my_id = 123, my_data_02 = "data" }
 ```
+
+You can also set an individual value in the table with the dot notation:
+
+```lua showLineNumbers
+Package.SetPersistentData("awesome_table.my_data_02", "another data")
+
+-- PersistentData.toml will be:
+-- awesome_table = { my_id = 123, my_data_02 = "another data" }
+```
+
+Then retrieving the data:
 
 ```lua showLineNumbers
 local my_table = Package.GetPersistentData().awesome_table

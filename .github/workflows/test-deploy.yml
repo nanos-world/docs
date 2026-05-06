@@ -16,7 +16,6 @@ jobs:
         with:
           submodules: true
           fetch-depth: 0
-          lfs: true
       - uses: actions/setup-node@v4
         with:
           node-version: 20
