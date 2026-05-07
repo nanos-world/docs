@@ -74,7 +74,7 @@ Input.Subscribe("MouseUp", function(key_name)
 
         -- Gets the end location of the trace (5000 units ahead)
         local trace_max_distance = 5000
-        local end_location = viewport_3D.Position + viewport_3D.Direction * trace_max_distance
+        local end_location = start_location + viewport_3D.Direction * trace_max_distance
 
         -- Determine at which object we will be tracing for (WorldStatic - StaticMeshes - and PhysicsBody - Props)
         local collision_trace = CollisionChannel.WorldStatic | CollisionChannel.PhysicsBody
@@ -123,7 +123,6 @@ Client.Subscribe("Tick", function(delta_time)
     -- Get the camera location in 3D World Space
     local viewport_2D_center = Viewport.GetViewportSize() / 2
     local viewport_3D = Viewport.DeprojectScreenToWorld(viewport_2D_center)
-    local start_location = viewport_3D.Position
 
     -- Gets the new object location
     -- (camera direction * 'distance' units ahead + object offset from first Hit to keep it relative)
