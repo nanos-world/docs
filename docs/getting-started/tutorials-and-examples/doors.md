@@ -37,7 +37,7 @@ local trigger = Trigger(Vector(0, 0, 100), Rotator(), 150)
 
 -- Registers the trigger when a Character moves in
 trigger:Subscribe("BeginOverlap", function(trigger, actor)
-    if (actor:GetType() ~= "Character") then return end
+    if (actor:GetClass() ~= Character) then return end
 
     -- Plays an opening door animation on the Character
     actor:PlayAnimation("nanos-world::AM_Mannequin_DoorOpen_01", AnimationSlotType.UpperBody)
@@ -48,7 +48,7 @@ end)
 
 -- Registers the trigger when a Character moves out
 trigger:Subscribe("EndOverlap", function(trigger, actor)
-    if (actor:GetType() ~= "Character") then return end
+    if (actor:GetClass() ~= Character) then return end
 
     -- Rotates the door back to original position, smoothly
     door:RotateTo(Rotator(0, 0, 90), 1)
