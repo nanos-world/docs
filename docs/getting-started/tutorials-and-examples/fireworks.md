@@ -129,7 +129,7 @@ end)
 
 -- Subscribes to spawn the Firework explosion sound
 Events.SubscribeRemote("ExplodeFireworkSound", function(location)
-    Sound(location, "ts-fireworks::A_Firework_Explosion_Fizz_01", false, true, SoundType.SFX, 3, 1, 400, 100000)
+    Sound(location, "ts-fireworks::A_Firework_Explosion_Fizz_Cue", false, true, SoundType.SFX, 3, 1, 400, 100000)
 end)
 ```
 
