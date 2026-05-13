@@ -24,7 +24,7 @@ my_timer = nil
 -- Sets BeginOverlap event
 my_trigger:Subscribe("BeginOverlap", function(trigger, actor_triggering)
     -- Only activates if a Character enters it
-    if (actor_triggering:GetType() ~= "Character") then
+    if (actor_triggering:GetClass() ~= Character) then
         return
     end
 
