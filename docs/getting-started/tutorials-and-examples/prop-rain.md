@@ -48,7 +48,7 @@ my_trigger:Subscribe("EndOverlap", function(trigger, actor_triggering)
 
     -- Stops/Clear the Timer
     if (my_timer ~= nil) then
-        Timer.ClearTimeout(my_timer)
+        Timer.ClearInterval(my_timer)
     end
 end)
 ```
