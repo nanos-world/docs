@@ -16,7 +16,7 @@ How to create a rain effect with Props (boxes) falling from sky once a Character
 
 ```lua title="Server/Index.lua" showLineNumbers
 -- Spawns a Trigger
-my_trigger = Trigger(Vector(200, 200, 0), 200)
+my_trigger = Trigger(Vector(200, 200, 0), Rotator(), 200)
 
 -- Defines my_timer globally to be used to store Timer
 my_timer = nil
