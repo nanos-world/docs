@@ -16,7 +16,7 @@ How to create a rain effect with Props (boxes) falling from sky once a Character
 
 ```lua title="Server/Index.lua" showLineNumbers
 -- Spawns a Trigger
-my_trigger = Trigger(Vector(200, 200, 0), 200)
+my_trigger = Trigger(Vector(200, 200, 0), Rotator(), 200)
 
 -- Defines my_timer globally to be used to store Timer
 my_timer = nil
@@ -24,7 +24,7 @@ my_timer = nil
 -- Sets BeginOverlap event
 my_trigger:Subscribe("BeginOverlap", function(trigger, actor_triggering)
     -- Only activates if a Character enters it
-    if (actor_triggering:GetType() ~= "Character") then
+    if (actor_triggering:GetClass() ~= Character) then
         return
     end
 
