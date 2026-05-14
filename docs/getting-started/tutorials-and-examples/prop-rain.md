@@ -42,7 +42,7 @@ end)
 -- Sets EndOverlap event
 my_trigger:Subscribe("EndOverlap", function(trigger, actor_triggering)
     -- Only deactivates if a Character leaves it
-    if (actor_triggering:GetType() ~= "Character") then
+    if (actor_triggering:GetClass() ~= Character) then
         return
     end
 
