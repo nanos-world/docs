@@ -42,13 +42,13 @@ end)
 -- Sets EndOverlap event
 my_trigger:Subscribe("EndOverlap", function(trigger, actor_triggering)
     -- Only deactivates if a Character leaves it
-    if (actor_triggering:GetType() ~= "Character") then
+    if (actor_triggering:GetClass() ~= Character) then
         return
     end
 
     -- Stops/Clear the Timer
     if (my_timer ~= nil) then
-        Timer.ClearTimeout(my_timer)
+        Timer.ClearInterval(my_timer)
     end
 end)
 ```
