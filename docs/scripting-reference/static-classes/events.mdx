@@ -38,7 +38,7 @@ Events.SubscribeRemote("MyClientEvent", function(my_text)
 end)
 
 -- calls a remote Event in all Server Packages
-Events.CallRemote("MyServerEvent", "hello nanos world!")
+Events.CallRemote("MyServerEvent", Reliability.Reliable, "hello nanos world!")
 ```
 
 :::info
@@ -63,11 +63,11 @@ Events.SubscribeRemote("MyServerEvent", function(player, my_text)
     -- outputs "Syed sent an event from client! hello nanos world!"
 
     -- sends an "answer" to the player which sent this event
-    Events.CallRemote("MyClientEvent", player, "hello nanos world! message only for you!")
+    Events.CallRemote("MyClientEvent", player, Reliability.Reliable, "hello nanos world! message only for you!")
 end)
 
 -- sends a remote Event to all Players in all Client Packages
-Events.BroadcastRemote("MyClientEvent", "hello nanos world!")
+Events.BroadcastRemote("MyClientEvent", Reliability.Reliable, "hello nanos world!")
 ```
 
 
@@ -87,7 +87,7 @@ local my_temp_character = Character()
 Events.Call("MyEvent", "hello nanos world!", Vector(123, 123, 123), my_temp_character, 456)
 
 -- calls a remote Event in all Server Packages
-Events.CallRemote("MyEvent", "hello nanos world!", Vector(123, 123, 123), my_temp_character, 456)
+Events.CallRemote("MyEvent", Reliability.Reliable, "hello nanos world!", Vector(123, 123, 123), my_temp_character, 456)
 ```
 
 
