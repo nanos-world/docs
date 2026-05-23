@@ -27,7 +27,7 @@ actor:SetDimension(number)
 Also we've got a new method to facilitate the use of events, this will be sent to all players in that dimension:
 
 ```lua
-Events.BroadcastRemoteDimension(dimension, event_name, params...)
+Events.BroadcastRemoteDimension(event_name, dimension, Reliability.Reliable, params...)
 ```
 
 :::note

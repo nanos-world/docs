@@ -42,12 +42,12 @@ Sending information through the network is not different from sending in the sam
 local my_parameter1 = "cool data from network"
 
 -- Call this event to all Players
-Events.BroadcastRemote("GetThisFromServer", my_parameter1)
+Events.BroadcastRemote("GetThisFromServer", Reliability.Reliable, my_parameter1)
 
 local player_02 = GetPlayerSomehow()
 
 -- Or call this event to a specific player
-Events.CallRemote("GetThisFromServer", player_02, my_parameter1)
+Events.CallRemote("GetThisFromServer", player_02, Reliability.Reliable, my_parameter1)
 ```
 
 ```lua title="Client/Index.lua" showLineNumbers
