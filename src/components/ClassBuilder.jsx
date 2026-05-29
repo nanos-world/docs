@@ -73,12 +73,14 @@ export function GetReturnDescriptionList(return_list) {
 	const ret = return_list.map((return_data) =>
 		return_data.name || return_data.description || return_data.table_properties || return_data.table_properties_custom ?
 			<>
-				{ return_data.description || return_data.name }
-				{ return_data.table_properties ? <><> </><InlineTablePropertiesDeclaration table_properties={return_data.table_properties} /></> : null }
-				{ return_data.table_properties_custom ? <><> </><InlineTablePropertiesDeclaration table_properties_custom={return_data.table_properties_custom} /></> : null }
+				{[
+					return_data.description || return_data.name,
+					return_data.table_properties ? <InlineTablePropertiesDeclaration table_properties={return_data.table_properties} /> : null,
+					return_data.table_properties_custom ? <InlineTablePropertiesDeclaration table_properties_custom={return_data.table_properties_custom} /> : null,
+				].filter(Boolean).reduce((prev, next) => [prev, " ", next])}
 			</>
 		: null
-	).filter((value) => value != null);
+	).filter(Boolean);
 	if (ret.length == 0)
 		return "";
 	return <>{" ("}{ret.reduce((prev, next) => [prev, ", ", next])}{")"}</>;

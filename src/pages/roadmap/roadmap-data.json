@@ -119,12 +119,6 @@
           "labels": ["gameplay", "scripting"]
         },
         {
-          "title": "🔣 FSR Integration",
-          "image": "/roadmap/fsr.webp",
-          "description": "We're planning to integrate AMD's FidelityFX Super Resolution (FSR) technology into the game, allowing AMD GPU players to use this feature.",
-          "labels": ["integration", "optimization"]
-        },
-        {
           "title": "🛡️ Anti-Cheat",
           "image": "/roadmap/eac.webp",
           "description": "Implementing a robust anti-cheat system is crucial for maintaining fair gameplay and protecting the integrity of multiplayer matches.\n\nWe're planning to integrate several anti-cheat measures that will detect and prevent common exploits, cheats, and malicious modifications. And also we are considering integrating a third-party tool (such as EAC) on client to protect the game.\n\nOur goal is to create a secure gaming environment where players can enjoy the game without worrying about unfair advantages, while still maintaining the flexibility that makes nanos world great for modding and customization.",
@@ -141,6 +135,12 @@
           "image": "/roadmap/culling.webp",
           "description": "To improve performance, especially on servers with many entities, we're planning to implement a culling/streaming system.\n\nThis system will manage which entities are actively streamed for each player based on their location and relevance. Entities that are far away from the player will not be streamed.\n\nScripters will have control over culling behavior, allowing them to specify which entities should always remain active or define custom culling rules based on gameplay needs.",
           "labels": ["optimization", "scripting"]
+        },
+        {
+          "title": "💾 Persistent Server State",
+          "image": "/roadmap/save.webp",
+          "description": "We want to add a built-in save/load system for persistent servers so worlds can be restored across restarts. It would let scripters save gameplay data, entities, and player progress, enabling long-running worlds and server state snapshots.",
+          "labels": ["hosting", "scripting"]
         },
         {
           "title": "❔ More to come...",
@@ -175,6 +175,18 @@
           "image": "/roadmap/async.webp",
           "description": "Asynchronous scripting is indeed a topic frequently discussed and requested by the community. Currently our scripting system is synchronous, meaning that scripts run one after the other in a single thread. This could potentially lead to performance issues if scripts take too long to execute.\n\nAlthough we didn't see any major problems so far, we understand that asynchronous scripting could be beneficial for certain use cases. and in an ideal world, we'd love to have it, but it's a complex feature that requires careful planning and execution.\n\nCurrently our focus is on improving the core game experience and adding new features that will benefit the majority of players. Asynchronous scripting is a more advanced feature that would primarily benefit scripters and hosting performance. We're keeping it in mind for the future, but it's not a priority at the moment.",
           "labels": ["scripting", "optimization", "community"]
+        },
+        {
+          "title": "🎮 Controller Support",
+          "image": "/roadmap/dualsense.webp",
+          "description": "We want to expose Controller native support through Steam Input to make nanos world more comfortable to play across different setups. This would involve reviewing input mapping, UI navigation, gameplay interactions, and how well controller workflows fit both the base game and community-made experiences.\n\nBecause nanos world is highly moddable and supports many different kinds of game modes, we need to make sure any controller support is flexible enough for scripters while still providing a polished default experience for players.",
+          "labels": ["gameplay", "ux", "community"]
+        },
+        {
+          "title": "🥽 VR Support",
+          "image": "/roadmap/vr.webp",
+          "description": "VR is an exciting possibility, but it requires careful analysis due to the amount of gameplay, performance, UI, input, networking, and modding considerations involved.\n\nWe're keeping it under review as a potential future direction, especially as Unreal Engine's VR tooling and hardware support continue to evolve.",
+          "labels": ["gameplay", "integration", "community"]
         }
       ]
     },
@@ -183,12 +195,30 @@
       "description": "completed features that are already available in the game",
       "items": [
         {
-        "title": "🌍 Localization",
-        "image": "/roadmap/crowdin.webp",
-        "description": "The main menu UI is now translated into many languages, making nanos world more accessible to players worldwide. Our community helps keep translations up to date and accurate. You can contribute or check the current progress on our Crowdin page.",
-        "external_link": "https://crowdin.com/project/nanos-world-game",
-        "external_link_title": "nanos world on Crowdin",
-        "labels": ["released", "ui", "community"]
+          "type": "date",
+          "title": "2026"
+        },
+        {
+          "title": "🔣 FSR Integration",
+          "image": "/roadmap/fsr.webp",
+          "description": "We integrated AMD's FidelityFX Super Resolution (FSR) and Frame Generation technology into the game, allowing more players to FG and SR features natively.",
+          "labels": ["integration", "optimization"]
+        },
+        {
+          "title": "📊 Tracy (Real-time Profiler)",
+          "image": "/roadmap/tracy.webp",
+          "description": "We integrated Tracy, a real-time, nanosecond-resolution profiler widely used in game development and high-performance applications. It provides an interactive timeline view where you can inspect exactly what your server is doing during each frame.",
+          "external_link": "https://docs.nanos-world.com/docs/next/core-concepts/scripting/profiling",
+          "external_link_title": "Profiling Docs",
+          "labels": ["released", "optimization", "integration"]
+        },
+        {
+          "title": "🌍 Localization",
+          "image": "/roadmap/crowdin.webp",
+          "description": "The main menu UI is now translated into many languages, making nanos world more accessible to players worldwide. Our community helps keep translations up to date and accurate. You can contribute or check the current progress on our Crowdin page.",
+          "external_link": "https://crowdin.com/project/nanos-world-game",
+          "external_link_title": "nanos world on Crowdin",
+          "labels": ["released", "ui", "community"]
         },
         {
           "title": "🧱 Instanced Static Mesh Entity",

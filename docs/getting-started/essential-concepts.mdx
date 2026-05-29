@@ -93,9 +93,22 @@ The **🎓 CORE CONCEPTS** section provides guides and great information whilst 
 Also, our [Official Discord](https://discord.nanos-world.com) is an active community where you can ask questions, get help, and connect with other scripters!
 
 
+### Logging & Debugging
+
+You can output messages to the console using the <StaticClasses.Console /> Static Class, which provides different log levels such as <MethodReference type="StaticClass" class_name="Console" method="Log" is_static />, <MethodReference type="StaticClass" class_name="Console" method="Debug" is_static />, <MethodReference type="StaticClass" class_name="Console" method="Warn" is_static /> and <MethodReference type="StaticClass" class_name="Console" method="Error" is_static />:
+
+```lua title="my-package/Shared/Index.lua" showLineNumbers
+-- Standard console output
+Console.Log("Normal scripting logs!")
+Console.Debug("Debug message that will only appear if log level is >= debug!")
+Console.Warn("Warning orange message! Will show the stack trace!")
+Console.Error("Error red messages! Will show the stack trace!")
+```
+
+
 ### Events
 
-In nanos world, our API is based on Events, which are similar to Hooks in other games. Everything in the API comes through events, such as when a Player spawns, a Character enters a vehicle or takes damage. You can listen to these events using Lua scripting and perform actions accordingly.
+In nanos world, our API is based on **Events**, which are similar to Hooks in other games. Everything in the API comes through events, such as when a <Classes.Player /> spawns (<EventReference type="Class" class_name="Entity" event="Spawn" is_base />), a <Classes.Character /> enters a vehicle (<EventReference type="Class" class_name="Character" event="EnterVehicle" />) or takes damage (<EventReference type="Class" class_name="Damageable" event="TakeDamage" is_base />). You can listen to these events using Lua scripting and perform actions accordingly.
 
 For example we can listen when a Player joins the server or an Entity is spawned:
 
@@ -252,7 +265,7 @@ end)
 
 ```lua title="my-package/Server/Index.lua" showLineNumbers
 -- Sends a remote Event to all Players in all Client Packages
-Events.BroadcastRemote("MyClientEvent", "hello nanos world!")
+Events.BroadcastRemote("MyClientEvent", Reliability.Reliable, "hello nanos world!")
 ```
 
 Read more about Networked Events in our Communicating Between Packages Guide:

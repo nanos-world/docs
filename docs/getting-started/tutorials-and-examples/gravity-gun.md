@@ -58,7 +58,7 @@ Input.Subscribe("MouseUp", function(key_name)
         -- If is grabbing something, drop it
         if (picking_object) then
             -- Calls server to re-enable gravity (if possible) and update it's last position
-            Events.CallRemote("PickUp", picking_object, false)
+            Events.CallRemote("PickUp", Reliability.Reliable, picking_object, false)
 
             -- Disables the highlight
             picking_object:SetHighlightEnabled(false)
@@ -98,7 +98,7 @@ Input.Subscribe("MouseUp", function(key_name)
             distance = trace_result.Location:Distance(viewport_3D.Position)
 
             -- Calls remote to disable gravity of this object (if has)
-            Events.CallRemote("PickUp", picking_object, true)
+            Events.CallRemote("PickUp", Reliability.Reliable, picking_object, true)
 
             -- Enable Highlighting on index 1
             picking_object:SetHighlightEnabled(true, 1)
@@ -129,7 +129,7 @@ Client.Subscribe("Tick", function(delta_time)
     local end_location = (viewport_3D.Position + viewport_3D.Direction * distance) + distance_trace_object
 
     -- Calls remote to update it's location
-    Events.CallRemote("UpdateObjectPosition", picking_object, end_location)
+    Events.CallRemote("UpdateObjectPosition", Reliability.Reliable, picking_object, end_location)
 end)
 ```
 

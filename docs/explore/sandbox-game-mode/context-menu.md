@@ -187,7 +187,7 @@ MyEntityClass.selected_context_menu_items = {
 		label = "text",
 		placeholder = "enter the text",
 		callback = function(value)
-			Sandbox.ContextMenu.selected_entity:CallRemoteEvent("SetMyValue", value)
+			Sandbox.ContextMenu.selected_entity:CallRemoteEvent("SetMyValue", Reliability.Reliable, value)
 		end,
 		value = function()
 			return Sandbox.ContextMenu.selected_entity:GetValue("MyValue")

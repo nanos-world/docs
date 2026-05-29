@@ -90,12 +90,12 @@ weapon:Subscribe("Fire", function(weap, shooter)
     prop:SetNetworkAuthority(shooter:GetPlayer())
 
     -- Calls the client to spawn the 'Launch' sound
-    Events.BroadcastRemote("SpawnFireworkSound", particle)
+    Events.BroadcastRemote("SpawnFireworkSound", Reliability.Reliable, particle)
 
     -- After 500 miliseconds, explode the firework
     Timer.SetTimeout(function(pr)
         -- Calls the client to spawn the 'Explosion' sound at the projectile location
-        Events.BroadcastRemote("ExplodeFireworkSound", pr:GetLocation())
+        Events.BroadcastRemote("ExplodeFireworkSound", Reliability.Reliable, pr:GetLocation())
 
         -- Spawns the Particle Explosion.
         -- This Asset Pack also contains the following Particles, feel free to try them!
