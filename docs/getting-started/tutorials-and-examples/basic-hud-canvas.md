@@ -38,7 +38,7 @@ HUDCanvas:Subscribe("Update", function(self, width, height)
 
     -- Gets the Local Weapon
     local character_weapon = local_character:GetPicked()
-    if (character_weapon and character_weapon:GetType() == "Weapon") then
+    if (character_weapon and character_weapon:IsA("Weapon")) then
         -- Draws the Ammo Clip
         self:DrawText(tostring(character_weapon:GetAmmoClip()), Vector2D(width - 200, height - 100), FontType.PoiretOne, 25, Color.WHITE)
 
@@ -82,7 +82,7 @@ HUDCanvas:Subscribe("Update", function(self, width, height)
 
     -- Gets the Local Weapon
     local character_weapon = local_character:GetPicked()
-    if (character_weapon and character_weapon:GetType() == "Weapon") then
+    if (character_weapon and character_weapon:IsA("Weapon")) then
         -- Draws the Ammo Clip
         self:DrawText(tostring(character_weapon:GetAmmoClip()), Vector2D(width - 200, height - 100), FontType.PoiretOne, 25, Color.WHITE)
 
@@ -126,7 +126,7 @@ function UpdateLocalCharacter(character)
 
     -- Sets on character an event to update his grabbing weapon (to show ammo on UI)
     character:Subscribe("PickUp", function(charac, object)
-        if (object:GetType() == "Weapon") then
+        if (object:IsA("Weapon")) then
             HUDCanvas:Repaint()
         end
     end)
