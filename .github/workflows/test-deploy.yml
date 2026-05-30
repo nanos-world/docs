@@ -34,4 +34,4 @@ jobs:
       #   run: yarn crowdin download
 
       - name: Test build website
-        run: yarn build
+        run: yarn build --locale en
