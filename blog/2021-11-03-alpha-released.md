@@ -31,7 +31,7 @@ The following changelog contains all features since last officially announced re
 
 :::
 
-<iframe className="steam-widget" src="https://store.steampowered.com/widget/1841660/" frameBorder="0" width="620" height="190" loading="lazy"></iframe>
+<SteamWidget />
 
 
 ## Materials

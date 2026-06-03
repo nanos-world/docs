@@ -9,7 +9,7 @@ const Changelog = () => {
 	const [changelogs, setChangelogs] = useState([])
 
 	useEffect(() => {
-		fetch("https://api.nanos-world.com/game/changelog")
+		fetch("https://api.nanos-world.com/game/changelog?page=0&limit=1000")
 		.then(response => {
 			return response.json();
 		})

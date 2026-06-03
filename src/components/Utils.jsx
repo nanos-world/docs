@@ -180,3 +180,11 @@ export const KofiButton = ({ username = "I2I3537D1" }) => (
 		</a>
 	</div>
 );
+
+export const SteamWidget = () => (
+	<iframe src="https://store.steampowered.com/widget/1841660/" frameBorder="0" height="190" loading="lazy"></iframe>
+)
+
+export const YouTubeEmbed = ({ children }) => (
+	<iframe src={`https://www.youtube.com/embed/${children}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+)

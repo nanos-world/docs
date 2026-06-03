@@ -623,9 +623,10 @@ a.card-link-lean:only-child {
 	top: 55px;
 }
 
-.steam-widget {
+iframe {
 	margin: 1rem auto;
 	width: 100%;
+	aspect-ratio: 16 / 9;
 }
 
 .hash-link,
