@@ -28,6 +28,19 @@ local configuration_file_json = JSON.parse(configuration_file:Read())
 Access to files is sandboxed. Only certain directories and files are allowed to be written or read from.
 
 
+#### Allowed Extensions
+
+Only the following file extensions are allowed to be accessed (read & write):
+
+`.txt` `.dat` `.json` `.toml` `.xml` `.csv` `.log` `.png` `.jpg` `.jpeg` `.webp` `.webm` `.mp3` `.wav` `.ogg` `.mp4`
+
+:::note
+
+If you think that a file extension should be added to the allowed list, please report it in the [Feedback Hub](https://feedback.nanos-world.com).
+
+:::
+
+
 #### Server Side
 
 On Server side, it's only allowed to access files inside the server folder itself (where server executable is located). Also, accessing the Config.toml is not allowed.
