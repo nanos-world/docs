@@ -289,8 +289,8 @@ The default Packages `NanosWorldWeapons` and `NanosWorldVehicles` were renamed t
 ## General Changes
 
 * [Cable](/docs/scripting-reference/classes/cable) got new methods: `:GetAttachedStartTo()` and `:GetAttachedEndTo()` to get if it's attached at any end.
-* [Player](/docs/scripting-reference/classes/player) got new methods: `:SetVOIPVolume()`, `:GetSteamID()`,
-* [Pickables](/docs/scripting-reference/classes/base-classes/pickable) got new events: `ReleaseUse`, `PullUse` when Character pulls or releases its usage (i.e. trigger for weapons)
+* [Player](/docs/scripting-reference/classes/player) got new methods: `:SetVOIPVolume()`, `:GetSteamID()`.
+* [Pickables](/docs/scripting-reference/classes/base-classes/pickable) got new events: `ReleaseUse`, `PullUse` when Character pulls or releases its usage (i.e. trigger for weapons).
 * Improved the way the interact trigger enables for [Pickables](/docs/scripting-reference/classes/base-classes/pickable) and [Props](/docs/scripting-reference/classes/prop).
 * [Trigger](/docs/scripting-reference/classes/trigger) got new method: `:ForceOverlapChecking()` which will checks for overlaps in the game thread and immediately dispatch events.
 * Added new methods for [Quaternions](/docs/scripting-reference/structs/quat) (+, -, Normalize).

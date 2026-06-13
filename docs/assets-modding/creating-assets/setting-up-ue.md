@@ -44,7 +44,7 @@ Since newer versions of Unreal, it's required to install some SDKs to be able to
 
 ![Windows SDK Installation](/img/docs/windows-10-sdk-vs.webp)
 
-- Otherwise, you can install Windows SDK directly from [Microsoft website](https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/) and select `Download the Installer >`:
+- Otherwise, you can install Windows SDK directly from [Microsoft website](https://learn.microsoft.com/en-us/windows/apps/windows-sdk/downloads) and select `Download the Installer >`:
 
 ![Windows SDK Installation](/img/docs/windows-10-sdk.webp)
 
