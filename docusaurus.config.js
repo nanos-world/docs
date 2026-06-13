@@ -28,7 +28,7 @@ module.exports = {
         label: '🇫🇷 Français'
       },
       zh: {
-        label: '🇨🇳 Chinese (Simplified)'
+        label: '🇨🇳 简体中文'
       },
     }
   },
