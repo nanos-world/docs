@@ -130,7 +130,7 @@ For more information regarding how each Parameter affects the final visual, plea
 
 **Masked** are the most common ones and supports **Opacity Mask** only. It means the **Opacity** parameter accepts only `0` or `1`.
 
-**Translucent** are the heavier ones to render, and cause a lot of overdraw (and performance issues) if used incorrectly. It supports **Opacity** but does not support **Normal**, **Metallic,** **Specular** and **Roughness** inputs by default for optimization reasons.
+**Translucent** are the heavier ones to render, and cause a lot of overdraw (and performance issues) if used incorrectly. It supports **Opacity** but does not support **Normal**, **Metallic**, **Specular** and **Roughness** inputs by default for optimization reasons.
 
 :::
 
