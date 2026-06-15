@@ -19,6 +19,7 @@
   "dependencies": {
     "@crowdin/cli": "^4.13.0",
     "@docusaurus/core": "^3.10.1",
+    "@docusaurus/faster": "^3.10.1",
     "@docusaurus/preset-classic": "^3.10.1",
     "@docusaurus/theme-mermaid": "^3.10.1",
     "@saucelabs/theme-github-codeblock": "^0.3.0",

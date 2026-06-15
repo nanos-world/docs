@@ -231,6 +231,12 @@ module.exports = {
       onBrokenMarkdownLinks: 'warn',
     }
   },
+  future: {
+	v4: {
+      removeLegacyPostBuildHeadAttribute: true,
+    },
+    faster: true,
+  },
   plugins: [
     require.resolve('docusaurus-plugin-image-zoom'),
   ],
