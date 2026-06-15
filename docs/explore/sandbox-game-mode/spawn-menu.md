@@ -203,7 +203,7 @@ end)
 
 ![](/img/docs/tutorials/sandbox/spawn-menu-categories.webp)
 
-Each [Tab](#tab) has it's own **Categories**. By default they have the following ones:
+Each [Tab](#tabs) has it's own **Categories**. By default they have the following ones:
 
 - Tab **props**: `basic`, `appliances`, `construction`, `furniture`, `funny`, `tools`, `food`, `street`, `nature`.
 - Tab **entities**: `devices`, `display`, `objects`, `logic`.

@@ -53,8 +53,8 @@ Here's a list of all tools and blueprints which you can use to speed up and help
 
 * [Placeholder Blueprints `NanosWorld/Blueprints/Placeholders/`](adk-assets-development-kit#placeholder-blueprints)
 * [Lua Code Generator `NanosWorld/Blueprints/Utility/WBP_LuaCodeGenerator`](adk-assets-development-kit#lua-code-generator)
-* [Assets.toml Generator `NanosWorld/Blueprints/Utility/WBP_AssetsTomlGenerator`](adk-assets-development-kit#assets-toml-generator)
-* [Sun & Sky Actor `NanosWorld/Blueprints/World/BP_SunSky`](adk-assets-development-kit#sunand-sky-actor)
+* [Assets.toml Generator `NanosWorld/Blueprints/Utility/WBP_AssetsTomlGenerator`](adk-assets-development-kit#assetstoml-generator)
+* [Sun & Sky Actor `NanosWorld/Blueprints/World/BP_SunSky`](adk-assets-development-kit#sun--sky-actor)
 * [Physical Materials `NanosWorld/MaterialLibrary/PhysicalMaterials/`](adk-assets-development-kit#physical-materials)
 * [Mannequin Skeleton `NanosWorld/Characters/Common/SKEL_Mannequin`](adk-assets-development-kit#mannequin-skeleton)
 * [Thumbnail Generator `NanosWorld/Blueprints/Utility/ThumbnailGenerator`](adk-assets-development-kit#thumbnail-generator)

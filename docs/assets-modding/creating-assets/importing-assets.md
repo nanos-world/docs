@@ -227,7 +227,7 @@ Prop(Vector(0, 0, 0), Rotator(0, 0, 0), "my-asset-pack::SM_Cube")
 
 :::tip
 
-You can use the [ADK Assets.toml Generator Tool](adk-assets-development-kit.md##assetstoml-generator) to generate your Assets.toml automatically!
+You can use the [ADK Assets.toml Generator Tool](adk-assets-development-kit.md#assetstoml-generator) to generate your Assets.toml automatically!
 
 :::
 
