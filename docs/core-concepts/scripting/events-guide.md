@@ -87,6 +87,8 @@ In nanos world it is possible to register for events on specific Entities as wel
 -- Spawns a Character
 local my_character = Character()
 
+local my_character = Character(Vector(0, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_Male")
+
 my_character:Subscribe("EnterVehicle", function(self, vehicle)
     -- my_character entered vehicle
 end)
