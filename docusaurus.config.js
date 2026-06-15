@@ -235,7 +235,9 @@ module.exports = {
 	v4: {
       removeLegacyPostBuildHeadAttribute: true,
     },
-    faster: true,
+    faster: {
+      ssgWorkerThreads: true,
+    },
   },
   plugins: [
     require.resolve('docusaurus-plugin-image-zoom'),
