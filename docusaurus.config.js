@@ -1,4 +1,5 @@
 const isDev = process.env.NODE_ENV === 'development';
+const onlyEnglish = process.env.BUILD_EN_ONLY === 'true';
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -13,7 +14,7 @@ module.exports = {
   trailingSlash: false,
   i18n: {
     defaultLocale: 'en',
-    locales: isDev ? ['en'] : ['en', 'fr', 'pt-BR', 'de', 'zh'],
+    locales: (isDev || onlyEnglish) ? ['en'] : ['en', 'fr', 'pt-BR', 'de', 'zh'],
     localeConfigs: {
       en: {
         label: '🇬🇧 English'
