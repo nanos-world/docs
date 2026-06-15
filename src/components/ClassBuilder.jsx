@@ -814,14 +814,14 @@ export const StaticPropertiesDeclaration = ({ type, name }) => {
 };
 
 // Define Class Method component
-export const MethodReference = ({ type, class_name, method, params, is_base = false, is_static = false, show_class_name = false }) => {
+export const MethodReference = ({ type, class_name, method, params, is_base = false, is_static = false, is_method_static = is_static, show_class_name = false }) => {
 	const class_data = GetClassData(type, class_name);
-	const function_data = (is_static ? class_data.static_functions : class_data.functions).find(({ name }) => name === method);
+	const function_data = (is_method_static ? class_data.static_functions : class_data.functions).find(({ name }) => name === method);
 	return (
 		<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={
 			<FunctionDeclaration class_name={class_name} function_data={function_data} is_static={is_static} show_lean_declaration={true} />
 		}>
-			<Link to={`${getActiveVersionPath()}/scripting-reference/${is_static ? "static-classes" : "classes"}/${is_base ? "base-classes/" : ""}${getKebabFromPascal(class_name)}#${is_static ? "static-function" : "function"}-${method.toLowerCase()}`} className={"hover-link"}><code>{show_class_name ? class_name : ""}{is_static ? "." : ":"}{method}({params})</code></Link>
+			<Link to={`${getActiveVersionPath()}/scripting-reference/${is_static ? "static-classes" : "classes"}/${is_base ? "base-classes/" : ""}${getKebabFromPascal(class_name)}#${is_method_static ? "static-function" : "function"}-${method.toLowerCase()}`} className={"hover-link"}><code>{show_class_name ? class_name : ""}{is_method_static ? "." : ":"}{method}({params})</code></Link>
 		</Tippy>
 	);
 };

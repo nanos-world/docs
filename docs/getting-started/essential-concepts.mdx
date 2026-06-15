@@ -93,74 +93,6 @@ The **🎓 CORE CONCEPTS** section provides guides and great information whilst 
 Also, our [Official Discord](https://discord.nanos-world.com) is an active community where you can ask questions, get help, and connect with other scripters!
 
 
-### Logging & Debugging
-
-You can output messages to the console using the <StaticClasses.Console /> Static Class, which provides different log levels such as <MethodReference type="StaticClass" class_name="Console" method="Log" is_static />, <MethodReference type="StaticClass" class_name="Console" method="Debug" is_static />, <MethodReference type="StaticClass" class_name="Console" method="Warn" is_static /> and <MethodReference type="StaticClass" class_name="Console" method="Error" is_static />:
-
-```lua title="my-package/Shared/Index.lua" showLineNumbers
--- Standard console output
-Console.Log("Normal scripting logs!")
-Console.Debug("Debug message that will only appear if log level is >= debug!")
-Console.Warn("Warning orange message! Will show the stack trace!")
-Console.Error("Error red messages! Will show the stack trace!")
-```
-
-
-### Events
-
-In nanos world, our API is based on **Events**, which are similar to Hooks in other games. Everything in the API comes through events, such as when a <Classes.Player /> spawns (<EventReference type="Class" class_name="Entity" event="Spawn" is_base />), a <Classes.Character /> enters a vehicle (<EventReference type="Class" class_name="Character" event="EnterVehicle" />) or takes damage (<EventReference type="Class" class_name="Damageable" event="TakeDamage" is_base />). You can listen to these events using Lua scripting and perform actions accordingly.
-
-For example we can listen when a Player joins the server or an Entity is spawned:
-
-```lua title="my-package/Server/Index.lua" showLineNumbers
--- Subscribes when a Player joins the server
-Player.Subscribe("Spawn", function(player)
-	Console.Log("The player %s has joined the server!", player:GetName())
-end)
-
--- Subscribes when a Prop is spawned
-Prop.Subscribe("Spawn", function(prop)
-	Console.Log("A prop just spawned!")
-end)
-```
-
-Read more about Events in the Events Guide:
-
-<ReferenceLink href="core-concepts/scripting/events-guide">Events Guide</ReferenceLink>
-
-
-### Classes
-
-Classes are entities that can be spawned, interacted with, and changed as you wish. We can easily spawn entities like this:
-
-```lua title="my-package/Server/Index.lua" showLineNumbers
-local my_light = Light(Vector(0, 100, 100), Rotator(), Color.RED)
-local my_static_mesh = StaticMesh(Vector(0, 0, 100), Rotator(), "nanos-world::SM_Cube_VR_01")
-```
-
-Or even interact and change the existing ones the way we want:
-
-```lua title="my-package/Server/Index.lua" showLineNumbers
-local some_prop = Prop.GetByIndex(1)
-some_prop:SetMesh("nanos-world::SM_Pyramid_VR")
-```
-
-Read more about Classes in the Classes Guide:
-
-<ReferenceLink href="core-concepts/scripting/classes-guide">Classes Guide</ReferenceLink>
-
-
-### Static Classes
-
-Besides Classes we also have the Static Classes, which are just Lua libraries with functions which can be called without needing to spawn an entity or have an instance.
-
-For example we can send a Chat message using the <StaticClasses.Chat /> Static Class:
-
-```lua title="my-package/Server/Index.lua" showLineNumbers
-Chat.BroadcastMessage("Hello world!")
-```
-
-
 ### Package Folder Structure
 
 The folder structure of a scripting Package includes `Server/`, `Client/`, and `Shared/` folders. You can put `.lua` files in each folder to execute code on the server, client, or both (Shared):
@@ -190,37 +122,209 @@ The Package only loads the `Index.lua` file of each base folder (`Server/`, `Cli
 You can find several guides for scripting under **`🎓 CORE CONCEPTS / Scripting`** section in the left sidebar.
 
 
-## Maps
+### Unreal Engine Concepts
 
-Maps (or Levels in Unreal) are the entry point of the game, this is where the world is loaded and the entities are spawned in the client side.
+Some concepts that may sound confusing if you are not familiar with Unreal Engine. Since nanos world is built on top of it, we mostly adapt it's own concepts and terminologies.
 
-To configure a Map, we create a Package of type [map](/core-concepts/packages/packages-guide.md#map), this type is like `script`, but it's `Package.toml` has additional settings to configure the map, e.g. we have `map_asset = "my-asset-pack::MyLevel"` which we need to define which Map Asset this Package will load.
 
-We can configure which map the server will run in the `Config.toml`, under `map = "my-map-package"` setting.
+#### Vector, Rotator and Units
 
-:::tip
+In Unreal Engine, the world is represented in a 3D space using a coordinate system. The position of objects in this space is represented using <Structs.Vector />, which are essentially a set of three numbers representing the `X` (Forward), `Y` (Right), and `Z` (Up) coordinates.
 
-We provide 4 built-in Maps which can be loaded without any additional Package or Asset Pack: `default-blank-map`, `default-empty-map`, `default-ocean-map` and `default-testing-map`.
+The orientation of objects is represented using <Structs.Rotator />, which are a set of three numbers representing the `Pitch` (Rotation around the Y-axis), `Yaw` (Rotation around the Z-axis), and `Roll` (Rotation around the X-axis).
 
-:::
+Unreal Engine uses **centimeters** as the default unit of measurement, so when you see a Vector with values `(100, 0, 0)`, it means that the object is 100 centimeters (or 1 meter) forward from the origin point.
 
-Also, in the map's Package.toml, we can configure `spawn_points` and `custom_data`, which can be accessed through scripting by any Package:
 
-```lua title="my-package/Server/Index.lua" showLineNumbers
-local spawn_points = Server.GetMapSpawnPoints()
-local custom_data = Server.GetMapConfig()
+#### Actors
+
+In Unreal Engine, an **Actor** is any object that can be placed in the world. It is the base class for all objects that have a physical representation in the game world, such as <Classes.Character />, <Classes.Prop />, <Classes.Weapon />, and more. They usually can be spawned with a `location` and `rotation`.
+
+
+#### Players vs Characters vs Pawn
+
+An important concept to understand is the difference between <Classes.Player />, <Classes.Character /> and <Classes.Pawn />.
+
+In Unreal Engine, a [**PlayerController**](https://dev.epicgames.com/documentation/unreal-engine/player-controllers-in-unreal-engine) is the entity that represents a connected player in the server, while a [**Pawn**](https://dev.epicgames.com/documentation/unreal-engine/pawn-in-unreal-engine) is the physical representation of a player in the world, which can be controlled. And [**Character**](https://dev.epicgames.com/documentation/unreal-engine/characters-in-unreal-engine) is a type of Pawn that has additional features such as walking, jumping, and more.
+
+For nanos world, we simplified this concept a bit, and we just have a <Classes.Player /> class that represents the player. And a few character classes such as <Classes.Character /> and <Classes.CharacterSimple /> that represent the physical representation of the player in the world.
+
+So when a <Classes.Player /> spawns, it means a real person just connected to the server.
+
+
+### Logging & Debugging
+
+You can output messages to the console using the <StaticClasses.Console /> Static Class, which provides different log levels such as <MethodReference type="StaticClass" class_name="Console" method="Log" is_static />, <MethodReference type="StaticClass" class_name="Console" method="Debug" is_static />, <MethodReference type="StaticClass" class_name="Console" method="Warn" is_static /> and <MethodReference type="StaticClass" class_name="Console" method="Error" is_static />:
+
+```lua title="my-package/Shared/Index.lua" showLineNumbers
+-- Standard console output
+Console.Log("Normal scripting logs!")
+Console.Debug("Debug message that will only appear if log level is >= debug!")
+Console.Warn("Warning orange message! Will show the stack trace!")
+Console.Error("Error red messages! Will show the stack trace!")
 ```
 
-As you could notice, by loading a Map you are also loading a Package with scripts, so you can have custom scripts running per-map. Which can be useful to add custom behaviors such like interactable environments or doors.
+
+### Classes
+
+Classes are entities that can be spawned, interacted with, and changed as you wish. An example spawning a <Classes.Light /> and <Classes.StaticMesh /> would be like this:
+
+```lua title="my-package/Shared/Index.lua" showLineNumbers
+local my_light = Light(Vector(0, 100, 100), Rotator(), Color.RED)
+local my_static_mesh = StaticMesh(Vector(0, 0, 100), Rotator(), "nanos-world::SM_Cube_VR_01")
+```
+
+Or even interact and change the existing ones the way we want, such as with an existing <Classes.Prop />:
+
+```lua title="my-package/Shared/Index.lua" showLineNumbers
+local some_prop = Prop.GetByIndex(1)
+some_prop:SetMesh("nanos-world::SM_Pyramid_VR")
+some_prop:SetLocation(Vector(100, 100, 100))
+
+local prop_rotation = some_prop:GetRotation()
+```
+
+Read more about Classes in the Classes Guide:
+
+<ReferenceLink href="core-concepts/scripting/classes-guide">Classes Guide</ReferenceLink>
 
 
-## Game Modes
+### Static Classes
 
-[Game-Modes](/core-concepts/packages/packages-guide.md#game-mode) are a type of Package which behave exactly like `scripts`, with the exception we can just have **one** game-mode loaded at once, while we can have as many as scripts running as we want.
+Besides Classes we also have the **Static Classes**, which are just Lua libraries with functions which can be called without needing to spawn an entity or have an instance.
 
-They should be used to create unique and self-contained game experiences.
+For example we can send a Chat message using the <StaticClasses.Chat /> Static Class:
 
-Players can select and start servers easily by choosing a game-mode in the New Game section on Main Menu.
+```lua title="my-package/Server/Index.lua" showLineNumbers
+Chat.BroadcastMessage("Hello world!")
+```
+
+Or doing a raycast with the <StaticClasses.Trace /> Static Class on the client side:
+
+```lua title="my-package/Client/Index.lua" showLineNumbers
+local start_location = Vector(0, 0, 100)
+local end_location = Vector(1000, 0, 100)
+local collision_channels = CollisionChannel.WorldStatic
+local trace_mode = TraceMode.DrawDebug | TraceMode.TraceComplex
+
+-- Do the trace
+local trace_result = Trace.LineSingle(start_location, end_location, collision_channels, trace_mode)
+```
+
+
+### Events
+
+In nanos world, everything in the API is based on **Events**, which are similar to **Hooks** in other games.
+
+For example, events are fired when a <Classes.Player /> spawns (<EventReference type="Class" class_name="Entity" event="Spawn" is_base />), a <Classes.Character /> enters a vehicle (<EventReference type="Class" class_name="Character" event="EnterVehicle" />) or takes damage (<EventReference type="Class" class_name="Damageable" event="TakeDamage" is_base />).
+
+You can listen to these events using Lua scripting and perform actions accordingly. For example, this is how you know when a **Player** joins the server or a **Prop** is spawned:
+
+```lua title="my-package/Shared/Index.lua" showLineNumbers
+-- Subscribes when a Player joins the server
+Player.Subscribe("Spawn", function(player)
+	Console.Log("The player %s has joined the server!", player:GetName())
+end)
+
+-- Subscribes when a Prop is spawned
+Prop.Subscribe("Spawn", function(prop)
+	Console.Log("A prop id %d just spawned!", prop:GetID())
+end)
+```
+
+Read more about Events in the Events Guide:
+
+<ReferenceLink href="core-concepts/scripting/events-guide">Events Guide</ReferenceLink>
+
+
+### Timers
+
+With our <StaticClasses.Timer /> Static Class, you can create timers and delays to execute code after a certain amount of time has passed. This is useful for creating timed events, cooldowns, or any situation where you want to delay the execution of some code.
+
+Our Timer API is similar to **JavaScript Timers**, you can use <MethodReference type="StaticClass" class_name="Timer" method="SetTimeout" is_static show_class_name /> to execute a function once after a delay, or <MethodReference type="StaticClass" class_name="Timer" method="SetInterval" is_static show_class_name /> to continuously execute a function repeatedly at a specified interval.
+
+```lua title="my-package/Shared/Index.lua" showLineNumbers
+-- Runs a function every 10 seconds
+Timer.SetInterval(function()
+    Console.Log("Triggered each 10 seconds!")
+end, 10000)
+
+-- Runs a function after 1 minute (once)
+Timer.SetTimeout(function()
+    -- Do Something
+end, 60000)
+```
+
+Read more about Timers in the Timer Page:
+
+<ReferenceLink href="scripting-reference/static-classes/timer">Timer Static Class</ReferenceLink>
+
+
+### Finding Existing Entities
+
+Besides spawning an entity and storing a variable reference to it, or getting it's reference through an Event, sometimes you need to get an already spawned entity.
+
+For example, we can get all spawned entities from a class with their static methods <MethodReference type="Class" class_name="Entity" method="GetAll" is_base is_method_static /> or <MethodReference type="Class" class_name="Entity" method="GetPairs" is_base is_method_static />:
+
+```lua title="my-package/Shared/Index.lua" showLineNumbers
+-- Returns a copy of a table of all Characters spawned
+local all_players = Character.GetAll()
+```
+
+```lua title="my-package/Shared/Index.lua" showLineNumbers
+-- Efficiently iterates over all Players spawned
+for _, player in pairs(Player.GetPairs()) do
+	Console.Log("Player %s is connected!", player:GetName())
+end
+```
+
+Or we can get a reference to an existing <Classes.Prop /> with a specific Index with the method <MethodReference type="Class" class_name="Entity" method="GetByIndex" is_base is_method_static />:
+
+
+```lua title="my-package/Shared/Index.lua" showLineNumbers
+local my_prop = Prop.GetByIndex(10)
+```
+
+Another way is retrieving an entity by it's globally unique ID with the methods <MethodReference type="StaticClass" class_name="Server" method="GetEntityByID" is_static show_class_name /> or <MethodReference type="StaticClass" class_name="Client" method="GetEntityByID" is_static show_class_name />:
+
+```lua title="my-package/Server/Index.lua" showLineNumbers
+local my_character = Character(Vector(), Rotator(), "nanos-world::SK_Male")
+local character_id = my_character:GetID()
+
+-- Later on...
+local my_character = Server.GetEntityByID(character_id)
+```
+
+
+### Retrieving a Player Character
+
+As explained in [Players vs Characters vs Pawn](#players-vs-characters-vs-pawn) section, a <Classes.Player /> represents a connected player in the server, while a <Classes.Character /> is the physical representation of the player in the world.
+
+You can retrieve the Player's possessing Character with the method <MethodReference type="Class" class_name="Player" method="GetControlledCharacter" show_class_name />.
+
+
+#### Retrieving the Local Player on Client Side
+
+On **Client** side, there are some special methods and events to retrieve the local Player: <MethodReference type="StaticClass" class_name="Client" method="GetLocalPlayer" is_static show_class_name /> and <EventReference type="StaticClass" class_name="Client" event="SpawnLocalPlayer" is_static show_class_name />:
+
+```lua title="my-package/Client/Index.lua" showLineNumbers
+local local_player = Client.GetLocalPlayer()
+
+-- Note: the local Player is only available after the Client "SpawnLocalPlayer" event is triggered
+if (local_player) then
+	local local_character = local_player:GetControlledCharacter()
+
+    -- Get my character's location
+    Console.Log("My character is at location %s", local_character:GetLocation())
+end
+```
+
+```lua title="my-package/Client/Index.lua" showLineNumbers
+Client.Subscribe("SpawnLocalPlayer", function(player)
+	Console.Log("My Player just spawned in client side! %s", player:GetName())
+	-- Only now it's possible to access Client.GetLocalPlayer()
+end)
+```
 
 
 ## Networking
@@ -325,6 +429,39 @@ Another new and more advanced way to create UI is using Unreal <Classes.Widget /
 For more information refer to our Widget class page:
 
 <ReferenceLink href="scripting-reference/classes/widget">Widget Class</ReferenceLink>
+
+
+## Maps
+
+Maps (or Levels in Unreal) are the entry point of the game, this is where the world is loaded and the entities are spawned in the client side.
+
+To configure a Map, we create a Package of type [map](/core-concepts/packages/packages-guide.md#map), this type is like `script`, but it's `Package.toml` has additional settings to configure the map, e.g. we have `map_asset = "my-asset-pack::MyLevel"` which we need to define which Map Asset this Package will load.
+
+We can configure which map the server will run in the `Config.toml`, under `map = "my-map-package"` setting.
+
+:::tip
+
+We provide 4 built-in Maps which can be loaded without any additional Package or Asset Pack: `default-blank-map`, `default-empty-map`, `default-ocean-map` and `default-testing-map`.
+
+:::
+
+Also, in the map's Package.toml, we can configure `spawn_points` and `custom_data`, which can be accessed through scripting by any Package:
+
+```lua title="my-package/Server/Index.lua" showLineNumbers
+local spawn_points = Server.GetMapSpawnPoints()
+local custom_data = Server.GetMapConfig()
+```
+
+As you could notice, by loading a Map you are also loading a Package with scripts, so you can have custom scripts running per-map. Which can be useful to add custom behaviors such like interactable environments or doors.
+
+
+## Game Modes
+
+[Game-Modes](/core-concepts/packages/packages-guide.md#game-mode) are a type of Package which behave exactly like `scripts`, with the exception we can just have **one** game-mode loaded at once, while we can have as many as scripts running as we want.
+
+They should be used to create unique and self-contained game experiences.
+
+Players can select and start servers easily by choosing a game-mode in the New Game section on Main Menu.
 
 
 ## Conclusion
