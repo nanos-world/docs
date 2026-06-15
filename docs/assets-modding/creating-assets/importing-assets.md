@@ -121,7 +121,7 @@ Please don't confuse the Cooked assets folder with the Content project files. Ma
 :::
 
 - Using **Game Content**: you can find the cooked folders inside `Content/`.
-- Using **Plugin Content**: you can find the cooked folders inside  `Plugins/`.
+- Using **Plugin Content**: you can find the cooked folders inside `Plugins/`.
 
 Inside this folder, you can find all your cooked assets. Example of a Game Content result:
 
@@ -155,7 +155,7 @@ If you are using **Plugin Content**, copy the whole Plugin folder (e.g. `Plugins
 
 #### Create the Assets.toml file
 
-Lastly, you will create the `Assets.toml` file in the root of your Asset Pack folder, which is the configuration file for your Asset Pack. You can copy and paste the template from [Assets Pack Configuration](/core-concepts/assets.mdx#assets-pack-configuration) and then fill in the correct values in the next section
+Lastly, you will create the `Assets.toml` file in the root of your Asset Pack folder, which is the configuration file for your Asset Pack. You can copy and paste the template from [Assets Pack Configuration](/core-concepts/assets.mdx#assets-pack-configuration) and then fill in the correct values in the next section.
 
 
 #### Final results
