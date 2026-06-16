@@ -91,7 +91,7 @@ This is a pre-configured **Sun & Sky Blueprint** which can be used and easily re
 
 :::info
 
-**Note:** Overriding the Sun through Scripting with `World.SpawnDefaultSun()`, will respawn the Sun actor, which means no configuration did on the Sun & Sky actor will persist
+**Note:** Overriding the Sun through Scripting with `World.SpawnDefaultSun()`, will respawn the Sun actor, which means no configuration did on the Sun & Sky actor will persist.
 
 Example: Light Intensity, Color, Post Process and other configuration will be lost.
 
