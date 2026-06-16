@@ -17,7 +17,7 @@
     "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download"
   },
   "dependencies": {
-    "@crowdin/cli": "^4.13.0",
+    "@crowdin/cli": "^4.14.3",
     "@docusaurus/core": "^3.10.1",
     "@docusaurus/faster": "^3.10.1",
     "@docusaurus/preset-classic": "^3.10.1",
