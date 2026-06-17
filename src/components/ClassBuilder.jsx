@@ -566,6 +566,10 @@ export const GetClassData = (type, name) => {
 // Header Block Declaration
 export const HeaderDeclaration = ({ type, name, image, is_static, open_source_url }) => {
 	const class_data = GetClassData(type, name);
+
+	if (!class_data)
+		return "Failed to load class data.";
+
 	return (<>
 		<p dangerouslySetInnerHTML={{ __html: class_data.description }}></p>
 		{ image ? <><p><img src={image} loading={"lazy"} /></p><hr /></> : "" }
@@ -583,6 +587,10 @@ export const HeaderDeclaration = ({ type, name, image, is_static, open_source_ur
 // Block of Constructor
 export const ConstructorDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
+
+	if (!class_data)
+		return "Failed to load constructor data.";
+
 	return class_data.constructors.map((constructor, index) => {
 		const id = `constructor-${constructor.name.toLowerCase().replace(' ', '-')}`;
 		const hash_link = `Direct Link to ${constructor.name}`;
@@ -629,6 +637,10 @@ export const ConstructorDeclaration = ({ type, name }) => {
 // Base Class Functions
 export const InheritedClassFunctions = ({ inherited_class_name, parent_class_name, is_static } ) => {
 	const class_data = GetClassData("Class", parent_class_name);
+
+	if (!class_data)
+		return "Failed to load class data.";
+
 	return (<>
 		<Details summary={`Inherited ${parent_class_name} ${is_static ? "Static " : ""}Functions`}>
 			<i>
@@ -659,6 +671,10 @@ export const InheritedClassEvents = ({ inherited_class_name, parent_class_name }
 // Block of Functions
 export const FunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
+
+	if (!class_data)
+		return "Failed to load class data.";
+
 	return (<>
 		{ class_data.inheritance && !class_data.is_base ? <>
 			{ class_data.inheritance.includes("Entity") ?
@@ -689,6 +705,10 @@ export const FunctionsDeclaration = ({ type, name }) => {
 // Block of Static Functions
 export const StaticFunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
+
+	if (!class_data)
+		return "Failed to load class data.";
+
 	return (<>
 		{ class_data.inheritance && !class_data.is_base ? <>
 			{ class_data.inheritance.includes("Entity") ?
@@ -709,6 +729,10 @@ export const StaticFunctionsDeclaration = ({ type, name }) => {
 // Block of Examples
 export const ExamplesDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
+
+	if (!class_data)
+		return "Failed to load class data.";
+
 	return <>
 		{ class_data.static_functions && class_data.static_functions.map((value) =>
 			value.examples && value.examples.map((example) => GetGenericExample(example, `${ name }.${ value.name }`))
@@ -725,6 +749,10 @@ export const ExamplesDeclaration = ({ type, name }) => {
 // Block of Events
 export const EventsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
+
+	if (!class_data)
+		return "Failed to load class data.";
+
 	return (<>
 		{ class_data.inheritance && !class_data.is_base ? <>
 			{ class_data.inheritance.includes("Entity") ?
@@ -753,6 +781,10 @@ export const EventsDeclaration = ({ type, name }) => {
 // Block of Properties
 export const PropertiesDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
+
+	if (!class_data)
+		return "Failed to load class data.";
+
 	return (<>
 		{
 			class_data.properties == null || class_data.properties.length == 0 ? <p class="subtle-description">This class doesn't have properties.</p> :
@@ -783,6 +815,9 @@ export const PropertiesDeclaration = ({ type, name }) => {
 // Block of Static Properties
 export const StaticPropertiesDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
+
+	if (!class_data)
+		return "Failed to load class data.";
 
 	return (<>
 		{
@@ -816,7 +851,15 @@ export const StaticPropertiesDeclaration = ({ type, name }) => {
 // Define Class Method component
 export const MethodReference = ({ type, class_name, method, params, is_base = false, is_static = false, is_method_static = is_static, show_class_name = false }) => {
 	const class_data = GetClassData(type, class_name);
+
+	if (!class_data)
+		return "Failed to load method data.";
+
 	const function_data = (is_method_static ? class_data.static_functions : class_data.functions).find(({ name }) => name === method);
+
+	if (!function_data)
+		return "Failed to load function data.";
+
 	return (
 		<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={
 			<FunctionDeclaration class_name={class_name} function_data={function_data} is_static={is_static} show_lean_declaration={true} />
@@ -829,7 +872,15 @@ export const MethodReference = ({ type, class_name, method, params, is_base = fa
 // Define Class Event component
 export const EventReference = ({ type, class_name, event, is_base = false, is_static = false, show_class_name = false }) => {
 	const class_data = GetClassData(type, class_name);
+
+	if (!class_data)
+		return "Failed to load event data.";
+
 	const event_data = class_data.events.find(({ name }) => name === event);
+
+	if (!event_data)
+		return "Failed to load event data.";
+
 	return (
 		<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={
 			<EventDeclaration class_name={class_name} event_data={event_data} show_lean_declaration={true} />

@@ -45,10 +45,10 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | **`max_file_transfer_rate`** | Changes the max file transfer rate per client |
 | **`distance_optimization`** | Sets the distance optimization level to improve network usage by reducing sync from distant actors |
 | **`log_level`** | Which Log level to output |
-| **`game_mode`** | [game-mode](/core-concepts/packages/packages-guide.md#game-mode) package to load -  you can only load one game-mode at once. |
-| **`loading_screen`** | [loading-screen](/core-concepts/packages/loading-screen.md) package to load - you can only load one loading-screen at once. |
-| **`packages`** | [script](/core-concepts/packages/packages-guide.md#script) packages to load |
-| **`map`** | [map](/core-concepts/packages/packages-guide.md#map) package to load |
+| **`game_mode`** | [game-mode](/core-concepts/packages/packages-guide.mdx#game-mode) package to load -  you can only load one game-mode at once. |
+| **`loading_screen`** | [loading-screen](/core-concepts/packages/loading-screen.mdx) package to load - you can only load one loading-screen at once. |
+| **`packages`** | [script](/core-concepts/packages/packages-guide.mdx#script) packages to load |
+| **`map`** | [map](/core-concepts/packages/packages-guide.mdx#map) package to load |
 | **`assets`** | Additional assets to force to load |
 | **`token`** | Server Token used for authorize downloads through CLI |
 | **`banned_ids`** | List of banned nanos account IDs |
@@ -77,7 +77,7 @@ Server Logo feature is only available for for Dedicated Servers.
 
 The Map (or Level) is defined in the Server's config file, this map will be loaded when the player joins the server in the client side.
 
-To configure a map, please refer to [Packages Guide](/core-concepts/packages/packages-guide.md#map) to create a Map Package pointing to the correct Asset.
+To configure a map, please refer to [Packages Guide](/core-concepts/packages/packages-guide.mdx#map) to create a Map Package pointing to the correct Asset.
 
 nanos world counts on (for now) 4 built-in maps: `default-blank-map`, `default-empty-map`, `default-ocean-map` and `default-testing-map` which can be used in your server without needing to download any Package/Asset Pack.
 
@@ -141,7 +141,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | `--dedicated_server` | 0 or 1 | If to start as a Dedicated Server or P2P |
 | `--async_log` | 0 or 1 | If to use async or sync logs (async provides better performance) - default is 1 |
 | `--log_level` | 1, 2 or 3 | If to use Normal, Debug or Verbose logs |
-| `--custom_settings` | toml string | A list of [Custom Settings](/core-concepts/packages/packages-guide.md#custom-settings) to be passed to scripting in toml format |
+| `--custom_settings` | toml string | A list of [Custom Settings](/core-concepts/packages/packages-guide.mdx#custom-settings) to be passed to scripting in toml format |
 | `--compression` | 0-9 | Sets the compression level to use in some networking operations - 0 disables it, 1 is the fastest and 9 is the slower but highest compression ratio |
 | `--save` | *flag* | If to save the passed parameters in Config.toml |
 | `--profiling` | *flag* | Enables Performance Profiling Logs for debugging |
