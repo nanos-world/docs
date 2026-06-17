@@ -336,6 +336,11 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name, show
 		<blockquote>
 			<span dangerouslySetInnerHTML={{ __html: !show_lean_declaration && function_data.description_long ? function_data.description_long : function_data.description }}></span>
 		</blockquote>
+		{ function_data.last_compatibility_version && (
+			<Admonition type="info" icon="🆕" title="Updated Function">
+				This method was recently updated in ver. <b>{ function_data.last_compatibility_version }</b>. See the <Link to={`${getActiveVersionPath()}/core-concepts/packages/compatibility-versions#version-${ function_data.last_compatibility_version.replaceAll('.', '') }`}>Compatibility Versions</Link> page for more information.
+			</Admonition>
+		)}
 		<p className="function-return">
 			{ !function_data.return ? "" :
 				<>
