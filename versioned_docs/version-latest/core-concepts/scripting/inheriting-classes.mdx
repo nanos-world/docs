@@ -395,7 +395,12 @@ end)
 
 ### Custom Remote Events
 
-It is also possible to trigger custom events on remote instances of your Class, using the methods `CallRemoteEvent` or `BroadcastRemoteEvent`, it works like the `Events` class:
+It is also possible to trigger custom events on remote instances of your Class, it works like the <StaticClasses.Events /> class. Use the methods:
+
+- <MethodReference type="Class" class_name="Entity" method="CallRemoteEvent" is_base />
+- <MethodReference type="Class" class_name="Entity" method="CallRemotePlayersEvent" is_base />
+- <MethodReference type="Class" class_name="Entity" method="BroadcastRemoteEvent" is_base />
+- <MethodReference type="Class" class_name="Entity" method="BroadcastRemoteInRadiusEvent" is_base />
 
 ```lua title="Client/Index.lua" showLineNumbers
 -- inherits the Class
@@ -404,7 +409,7 @@ MyNewClass = Prop.Inherit("MyNewClass")
 -- defines a custom method
 function MyNewClass:OnMyCustomRemoteEvent(a, b)
     Console.Log("OnMyCustomRemoteEvent!", tostring(self), a, b)
-    self:CallRemoteEvent("AnotherRemoteEvent", 456, "def")
+    self:CallRemoteEvent("AnotherRemoteEvent", Reliability.Reliable, 456, "def")
 end
 
 -- subscribes for a custom remote event
@@ -425,7 +430,7 @@ MyNewClass.SubscribeRemote("AnotherRemoteEvent", MyNewClass.OnAnotherRemoteEvent
 
 -- spawns an entity and calls the custom remote event on that entity
 local p = MyNewClass(...)
-p:BroadcastRemoteEvent("MyCustomRemoteEvent", 123, "abc")
+p:BroadcastRemoteEvent("MyCustomRemoteEvent", Reliability.Reliable, 123, "abc")
 ```
 
 

@@ -36,6 +36,49 @@ The Compatibility Mode is a feature that aims to keep old and unmaintained packa
 To use the following features, you must update your Package's `compatibility_version` setting in the Package.toml to at least that version (exact that version or bigger).
 
 
+### Version `1.139`
+
+In this version, we are introducing the concept of <Enums>Reliability</Enums> for Remote Events.
+
+Now you can choose if your remote events should be sent as `Reliable` (guaranteed to arrive, in order, as it has always been by default) or `Unreliable` (not guaranteed to arrive and may arrive at different order).
+
+This is specially useful for events that are sent very often and non critical for gameplay, like particles, animations, sounds, where you don't care if some of them get lost.
+
+:::tip
+
+`Unreliable` messages are more efficient to send, as they don't need to be stored, re-ordered and resent until they arrive. `Reliable` messages are guaranteed to arrive, but they can cause performance issues if you are sending too many of them or if the network is bad.
+
+:::
+
+
+#### [Events](/scripting-reference/static-classes/events.mdx)
+
+All the <StaticClasses.Events /> remote functions got a new parameter before `args...`: `reliability` (<Enums>Reliability</Enums>).
+
+- <MethodReference type="StaticClass" class_name="Events" method="CallRemote" is_static show_class_name />
+- <MethodReference type="StaticClass" class_name="Events" method="CallRemotePlayers" is_static show_class_name />
+- <MethodReference type="StaticClass" class_name="Events" method="BroadcastRemote" is_static show_class_name />
+- <MethodReference type="StaticClass" class_name="Events" method="BroadcastRemoteDimension" is_static show_class_name />
+- <MethodReference type="StaticClass" class_name="Events" method="BroadcastRemoteInRadius" is_static show_class_name /> (new method)
+- <MethodReference type="StaticClass" class_name="Events" method="BroadcastRemoteInRadiusDimension" is_static show_class_name /> (new method)
+
+Also, <MethodReference type="StaticClass" class_name="Events" method="BroadcastRemoteDimension" is_static show_class_name /> got the parameter `dimension` moved after `event_name`.
+
+In compatibility mode (i.e. setting it to `1.138` or below), the `Events` remote calls don't have the new `reliability` parameter.
+
+
+#### [Entity Events](/scripting-reference/classes/base-classes/entity.mdx)
+
+All the <Classes.Entity /> remote functions got a new parameter before `args...`: `reliability` (<Enums>Reliability</Enums>) as well.
+
+- <MethodReference type="Class" class_name="Entity" method="CallRemoteEvent" is_base show_class_name />
+- <MethodReference type="Class" class_name="Entity" method="CallRemotePlayersEvent" is_base show_class_name /> (new method)
+- <MethodReference type="Class" class_name="Entity" method="BroadcastRemoteEvent" is_base show_class_name />
+- <MethodReference type="Class" class_name="Entity" method="BroadcastRemoteInRadiusEvent" is_base show_class_name /> (new method)
+
+In compatibility mode (i.e. setting it to `1.138` or below), the `Entity` remote calls don't have the new `reliability` parameter.
+
+
 ### Version `1.103`
 
 

@@ -11,7 +11,11 @@ Vehicles in nanos world implement Unreal's [Wheeled Vehicle](https://docs.unreal
 
 ## Preparing a Skeletal Mesh
 
-There is no secret to import a Vehicle Skeletal Mesh. Any Skeletal Mesh with any Skeleton will work. The only "rule" is to it have 4 wheels bones, so the Vehicle systems can properly rotate them.
+There is no secret to import a Vehicle Skeletal Mesh. Any Skeletal Mesh with any Skeleton will work. Just a few rules:
+
+- It must have one bone for each Wheel, so the Vehicle Animations can properly rotate them.
+- The root bone should be rotated in the X forward, Z up format.
+- The root bone also should be ideally scaled as `1, 1, 1`.
 
 Take a look on one of the default Vehicles Skeleton:
 

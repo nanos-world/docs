@@ -121,16 +121,16 @@ Thruster.input_bindings = {
 	{
 		label = "activate / deactivate",
 		callback_pressed = function(entity)
-			entity:CallRemoteEvent("SetActive", true)
+			entity:CallRemoteEvent("SetActive", Reliability.Reliable, true)
 		end,
 		callback_released = function(entity)
-			entity:CallRemoteEvent("SetActive", false)
+			entity:CallRemoteEvent("SetActive", Reliability.Reliable, false)
 		end,
 	},
 	{
 		label = "toggle",
 		callback_pressed = function(entity)
-			entity:CallRemoteEvent("SetActive", not entity:GetValue("Active"))
+			entity:CallRemoteEvent("SetActive", Reliability.Reliable, not entity:GetValue("Active"))
 		end,
 	},
 }

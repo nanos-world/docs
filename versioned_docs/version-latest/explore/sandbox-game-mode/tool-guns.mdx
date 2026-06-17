@@ -163,7 +163,7 @@ MyToolGun = ToolGunSingleTarget.Inherit("MyToolGun")
 -- Overrides ToolGunSingleTarget method
 function MyToolGun:OnLocalPlayerTarget(location, relative_location, relative_rotation, normal, entity)
 	-- Calls remote to spawn something at that location
-	self:CallRemoteEvent("SpawnSomething", location, relative_location, relative_rotation, normal, entity)
+	self:CallRemoteEvent("SpawnSomething", Reliability.Reliable, location, relative_location, relative_rotation, normal, entity)
 end
 ```
 
@@ -180,7 +180,7 @@ MyToolGun = ToolGunDoubleTarget.Inherit("MyToolGun")
 -- Overrides ToolGunDoubleTarget method
 function MyToolGun:OnLocalPlayerTarget(targeting_first_to, targeting_first_relative_location, targeting_first_relative_rotation, targeting_second_to, targeting_second_location, targeting_second_rotation)
 	-- Calls remote to weld the two entities together
-	self:CallRemoteEvent("Weld", targeting_first_to, targeting_second_to, targeting_second_location)
+	self:CallRemoteEvent("Weld", Reliability.Reliable, targeting_first_to, targeting_second_to, targeting_second_location)
 end
 ```
 

@@ -193,7 +193,7 @@ module.exports = {
               label: 'bleeding-edge 🩸',
             },
             latest: {
-              label: 'latest - a1.133.x ⚖️',
+              label: 'latest - a1.142.x ⚖️',
             }
           },
         },

@@ -143,6 +143,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/_c_module.toml
 | **`custom_settings`** | `game-mode` | List of Custom Settings which can be set when starting a new game or passed through command line to the server. See more [here](#custom-settings) |
 | **`map_asset`** | `map` | Asset Path to the Map Asset in the format `[ASSET_PACK]::[ASSET_KEY]` |
 | **`spawn_points`** | `map` | List of Spawn Points in the format `{ location = "Vector()", rotation = "Rotator()" }, ...` which can be accessed through [Server.GetMapSpawnPoints()](/scripting-reference/static-classes/server.mdx#static-function-getmapspawnpoints) |
+| **`enable_water_buoyancy`** | `map` | Whether to enable water buoyancy components on Actors if you map uses Water Plugin - disable it for additional performance on maps that don't need it |
 | **`custom_data`** | `map` | List of Custom Data which can be accessed when this Map is loaded. See more [here](#custom-data) |
 
 

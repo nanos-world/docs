@@ -89,7 +89,7 @@ You can **Bind** Blueprint Event Dispatchers directly from Lua! For that, spawn 
 
 ```lua title="Client/Index.lua" showLineNumbers
 -- Spawns the Blueprint
-local blueprint = Blueprint(Vector(), Rotator(), "my-asset-pack::BP_AwesomeBlueprint",)
+local blueprint = Blueprint(Vector(), Rotator(), "my-asset-pack::BP_AwesomeBlueprint")
 
 -- Subscribes to a Blueprint Event Dispatcher
 blueprint:BindBlueprintEventDispatcher("GorgeousDispatcher", function(self, arg1, arg2)

@@ -22,6 +22,7 @@ function AddNametag(player, character)
     -- Spawns the Nametag (TextRender),
     local nametag = TextRender(
         Vector(),               -- Any Location
+        Rotator(),              -- Any angles
         player:GetName(),       -- Player Name
         30,                     -- Text Size
         Color.WHITE         	-- White Color

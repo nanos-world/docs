@@ -90,12 +90,12 @@ weapon:Subscribe("Fire", function(weap, shooter)
     prop:SetNetworkAuthority(shooter:GetPlayer())
 
     -- Calls the client to spawn the 'Launch' sound
-    Events.BroadcastRemote("SpawnFireworkSound", particle)
+    Events.BroadcastRemote("SpawnFireworkSound", Reliability.Reliable, particle)
 
     -- After 500 miliseconds, explode the firework
     Timer.SetTimeout(function(pr)
         -- Calls the client to spawn the 'Explosion' sound at the projectile location
-        Events.BroadcastRemote("ExplodeFireworkSound", pr:GetLocation())
+        Events.BroadcastRemote("ExplodeFireworkSound", Reliability.Reliable, pr:GetLocation())
 
         -- Spawns the Particle Explosion.
         -- This Asset Pack also contains the following Particles, feel free to try them!
@@ -122,14 +122,14 @@ end)
 
 ```lua title="Client/Index.lua" showLineNumbers
 -- Subscribes to spawn and attach the Firework launch sound
-Events.Subscribe("SpawnFireworkSound", function(firework)
+Events.SubscribeRemote("SpawnFireworkSound", function(firework)
     local sound = Sound(Vector(), "ts-fireworks::A_Firework_Launch", false, true, SoundType.SFX, 1, 1, 400, 100000)
     sound:AttachTo(firework)
 end)
 
 -- Subscribes to spawn the Firework explosion sound
-Events.Subscribe("ExplodeFireworkSound", function(location)
-    Sound(location, "ts-fireworks::A_Firework_Explosion_Fizz", false, true, SoundType.SFX, 3, 1, 400, 100000)
+Events.SubscribeRemote("ExplodeFireworkSound", function(location)
+    Sound(location, "ts-fireworks::A_Firework_Explosion_Fizz_Cue", false, true, SoundType.SFX, 3, 1, 400, 100000)
 end)
 ```
 

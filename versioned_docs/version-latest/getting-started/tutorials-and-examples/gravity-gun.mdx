@@ -58,7 +58,7 @@ Input.Subscribe("MouseUp", function(key_name)
         -- If is grabbing something, drop it
         if (picking_object) then
             -- Calls server to re-enable gravity (if possible) and update it's last position
-            Events.CallRemote("PickUp", picking_object, false)
+            Events.CallRemote("PickUp", Reliability.Reliable, picking_object, false)
 
             -- Disables the highlight
             picking_object:SetHighlightEnabled(false)
@@ -74,7 +74,7 @@ Input.Subscribe("MouseUp", function(key_name)
 
         -- Gets the end location of the trace (5000 units ahead)
         local trace_max_distance = 5000
-        local end_location = viewport_3D.Position + viewport_3D.Direction * trace_max_distance
+        local end_location = start_location + viewport_3D.Direction * trace_max_distance
 
         -- Determine at which object we will be tracing for (WorldStatic - StaticMeshes - and PhysicsBody - Props)
         local collision_trace = CollisionChannel.WorldStatic | CollisionChannel.PhysicsBody
@@ -98,7 +98,7 @@ Input.Subscribe("MouseUp", function(key_name)
             distance = trace_result.Location:Distance(viewport_3D.Position)
 
             -- Calls remote to disable gravity of this object (if has)
-            Events.CallRemote("PickUp", picking_object, true)
+            Events.CallRemote("PickUp", Reliability.Reliable, picking_object, true)
 
             -- Enable Highlighting on index 1
             picking_object:SetHighlightEnabled(true, 1)
@@ -123,14 +123,13 @@ Client.Subscribe("Tick", function(delta_time)
     -- Get the camera location in 3D World Space
     local viewport_2D_center = Viewport.GetViewportSize() / 2
     local viewport_3D = Viewport.DeprojectScreenToWorld(viewport_2D_center)
-    local start_location = viewport_3D.Position
 
     -- Gets the new object location
     -- (camera direction * 'distance' units ahead + object offset from first Hit to keep it relative)
     local end_location = (viewport_3D.Position + viewport_3D.Direction * distance) + distance_trace_object
 
     -- Calls remote to update it's location
-    Events.CallRemote("UpdateObjectPosition", picking_object, end_location)
+    Events.CallRemote("UpdateObjectPosition", Reliability.Reliable, picking_object, end_location)
 end)
 ```
 
