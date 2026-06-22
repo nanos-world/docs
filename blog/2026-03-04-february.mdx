@@ -157,21 +157,21 @@ We implemented a bunch of new scripting methods this month:
 
 #### New Methods
 
-- Added a new method <MethodReference type="StaticClass" class_name="Viewport" method="SetBrandingBarSettings" is_static show_class_name /> for customizing the "nanos world" bar on screen, now it's possible to set it's position and show less information.
-- <MethodReference type="Class" class_name="Player" method="SetVOIPLocalMaxDistance" show_class_name />
-- <MethodReference type="StaticClass" class_name="Package" method="IsUnloading" is_static show_class_name />
+- Added a new method <MethodReference type="StaticClass" class_name="Viewport" method_name="SetBrandingBarSettings" show_class_name /> for customizing the "nanos world" bar on screen, now it's possible to set it's position and show less information.
+- <MethodReference type="Class" class_name="Player" method_name="SetVOIPLocalMaxDistance" show_class_name />
+- <MethodReference type="StaticClass" class_name="Package" method_name="IsUnloading" show_class_name />
 
 
 #### Improved Methods
 
-- Added a new parameter to <MethodReference type="Class" class_name="Pawn" method="StopMovement" show_class_name is_base />: `stop_velocity`, to also stop it's velocity.
-- Moved <MethodReference type="Class" class_name="Entity" method="IsBeingDestroyed" is_base />, <MethodReference type="Class" class_name="Entity" method="HasAuthority" is_base /> from <Classes.Actor /> to <Classes.Entity />.
-- Moved <MethodReference type="Class" class_name="Damageable" method="GetDamageMultiplier" is_base /> and <MethodReference type="Class" class_name="Damageable" method="SetDamageMultiplier" is_base /> from <Classes.Character /> to <Classes.Damageable />.
+- Added a new parameter to <MethodReference type="Class" class_name="Pawn" method_name="StopMovement" show_class_name />: `stop_velocity`, to also stop it's velocity.
+- Moved <MethodReference type="Class" class_name="Entity" method_name="IsBeingDestroyed" />, <MethodReference type="Class" class_name="Entity" method_name="HasAuthority" /> from <Classes.Actor /> to <Classes.Entity />.
+- Moved <MethodReference type="Class" class_name="Damageable" method_name="GetDamageMultiplier" /> and <MethodReference type="Class" class_name="Damageable" method_name="SetDamageMultiplier" /> from <Classes.Character /> to <Classes.Damageable />.
 
 
 #### Persistent Data keys separated by .
 
-Now <MethodReference type="StaticClass" class_name="Package" method="SetPersistentData" is_static show_class_name /> supports passing keys separated by `.`.
+Now <MethodReference type="StaticClass" class_name="Package" method_name="SetPersistentData" show_class_name /> supports passing keys separated by `.`.
 
 It allows overriding just a child property of an existing table value, e.g.:
 
@@ -196,13 +196,13 @@ Package.SetPersistentData("MyPersistentData.MyAnotherData.Stuff", "New thing")
 
 #### Math
 
-- Added new methods to <Structs.Quat />: <MethodReference type="Struct" class_name="Quat" method="UnrotateVector" />, <MethodReference type="Struct" class_name="Quat" method="RotateVector" />, <MethodReference type="Struct" class_name="Quat" method="GetForwardVector" />, <MethodReference type="Struct" class_name="Quat" method="GetRightVector" /> and <MethodReference type="Struct" class_name="Quat" method="GetUpVector" />.
-- Added new methods to <Structs.Vector />: <MethodReference type="Struct" class_name="Vector" method="ToOrientationQuat" /> and <MethodReference type="Struct" class_name="Vector" method="ToOrientationRotator" /> (renamed from `Rotator()`).
+- Added new methods to <Structs.Quat />: <MethodReference type="Struct" class_name="Quat" method_name="UnrotateVector" />, <MethodReference type="Struct" class_name="Quat" method_name="RotateVector" />, <MethodReference type="Struct" class_name="Quat" method_name="GetForwardVector" />, <MethodReference type="Struct" class_name="Quat" method_name="GetRightVector" /> and <MethodReference type="Struct" class_name="Quat" method_name="GetUpVector" />.
+- Added new methods to <Structs.Vector />: <MethodReference type="Struct" class_name="Vector" method_name="ToOrientationQuat" /> and <MethodReference type="Struct" class_name="Vector" method_name="ToOrientationRotator" /> (renamed from `Rotator()`).
 
 
 #### Rotator Rotate/UnrotateVector() Breaking Change
 
-We had figured out an issue with our <MethodReference type="Struct" class_name="Rotator" method="RotateVector" show_class_name />/<MethodReference type="Struct" class_name="Rotator" method="UnrotateVector" show_class_name /> methods, where they were inverted.
+We had figured out an issue with our <MethodReference type="Struct" class_name="Rotator" method_name="RotateVector" show_class_name />/<MethodReference type="Struct" class_name="Rotator" method_name="UnrotateVector" show_class_name /> methods, where they were inverted.
 
 :::warning Attention
 
@@ -220,7 +220,7 @@ Added a new Return to Trace: <Enums>TraceMode</Enums>: `ReturnItem` which return
 
 Now an error will be thrown if you try to spawn an entity while the Package is unloading, due everything being tearing down. Before it was causing internal issues and even crashes, as those entities cannot be cleaned up properly at that stage anymore.
 
-Use <MethodReference type="StaticClass" class_name="Package" method="IsUnloading" is_static show_class_name /> inside <EventReference type="Class" class_name="Entity" event="Destroy" /> events to prevent the errors.
+Use <MethodReference type="StaticClass" class_name="Package" method_name="IsUnloading" show_class_name /> inside <EventReference type="Class" class_name="Entity" event="Destroy" /> events to prevent the errors.
 
 
 ## Profiling & Debug

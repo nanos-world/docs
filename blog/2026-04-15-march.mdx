@@ -152,25 +152,25 @@ We've added **tons** of new methods, events and improvements to the scripting AP
 
 ### New Methods
 
-- <MethodReference type="StaticClass" class_name="Server" method="SetDefaultPlayerDimension" is_static show_class_name />
-- <MethodReference type="StaticClass" class_name="Server" method="SetDefaultEntityDimension" is_static show_class_name />
-- <MethodReference type="StaticClass" class_name="Server" method="AddMapSpawnPoint" is_static show_class_name />
-- <MethodReference type="StaticClass" class_name="Server" method="GetConnectionCount" is_static show_class_name />
-- <MethodReference type="StaticClass" class_name="Client" method="OpenEscapeMenu" is_static show_class_name />
-- <MethodReference type="Class" class_name="WebUI" method="IsReady" show_class_name />
-- <MethodReference type="Class" class_name="Decal" method="SetSize" show_class_name />
-- <MethodReference type="Class" class_name="Decal" method="SetFadeIn" show_class_name />
-- <MethodReference type="Class" class_name="Decal" method="SetFadeOut" show_class_name />
-- <MethodReference type="StaticClass" class_name="Events" method="CallRemotePlayers" is_static show_class_name />
+- <MethodReference type="StaticClass" class_name="Server" method_name="SetDefaultPlayerDimension" show_class_name />
+- <MethodReference type="StaticClass" class_name="Server" method_name="SetDefaultEntityDimension" show_class_name />
+- <MethodReference type="StaticClass" class_name="Server" method_name="AddMapSpawnPoint" show_class_name />
+- <MethodReference type="StaticClass" class_name="Server" method_name="GetConnectionCount" show_class_name />
+- <MethodReference type="StaticClass" class_name="Client" method_name="OpenEscapeMenu" show_class_name />
+- <MethodReference type="Class" class_name="WebUI" method_name="IsReady" show_class_name />
+- <MethodReference type="Class" class_name="Decal" method_name="SetSize" show_class_name />
+- <MethodReference type="Class" class_name="Decal" method_name="SetFadeIn" show_class_name />
+- <MethodReference type="Class" class_name="Decal" method_name="SetFadeOut" show_class_name />
+- <MethodReference type="StaticClass" class_name="Events" method_name="CallRemotePlayers" show_class_name />
 
 
 ### Improved Methods
 
-- <MethodReference type="Class" class_name="VehicleWheeled" method="SetSteeringSetup" show_class_name /> - New `steering_curve` parameter
-- <MethodReference type="Class" class_name="VehicleWheeled" method="SetTransmissionSetup" show_class_name /> - New `forward_gear_ratios`/`reverse_gear_ratios` parameters
-- <MethodReference type="StaticClass" class_name="Sky" method="SetTimeOfDay" is_static show_class_name /> - New `transition_time` parameter
-- <MethodReference type="Class" class_name="Actor" method="IsNetworkDistributed" is_base show_class_name /> - Now returns if the actor can *ever* distribute authority
-- <MethodReference type="Class" class_name="Entity" method="GetCount" is_static show_class_name /> - Now returns entities from all child classes
+- <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetSteeringSetup" show_class_name /> - New `steering_curve` parameter
+- <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetTransmissionSetup" show_class_name /> - New `forward_gear_ratios`/`reverse_gear_ratios` parameters
+- <MethodReference type="StaticClass" class_name="Sky" method_name="SetTimeOfDay" show_class_name /> - New `transition_time` parameter
+- <MethodReference type="Class" class_name="Actor" method_name="IsNetworkDistributed" show_class_name /> - Now returns if the actor can *ever* distribute authority
+- <MethodReference type="Class" class_name="Entity" method_name="GetCount" show_class_name /> - Now returns entities from all child classes
 
 
 ### New Events
@@ -195,17 +195,17 @@ Now configuring a vehicle's settings will properly affect its handling.
 
 Also, we added new methods to configure the steering and transmission setup of vehicles, allowing for much more control over how they handle and feel when driving:
 
-- <MethodReference type="Class" class_name="VehicleWheeled" method="SetSteeringSetup" show_class_name /> - New `steering_curve` parameter
-- <MethodReference type="Class" class_name="VehicleWheeled" method="SetTransmissionSetup" show_class_name /> - New `forward_gear_ratios`/`reverse_gear_ratios` parameters
+- <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetSteeringSetup" show_class_name /> - New `steering_curve` parameter
+- <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetTransmissionSetup" show_class_name /> - New `forward_gear_ratios`/`reverse_gear_ratios` parameters
 
 
 ## Thread Pool System
 
 We've implemented a new **Thread Pool System** for handling all the asynchronous operations:
 
-- **HTTP Requests** - <MethodReference type="StaticClass" class_name="HTTP" method="RequestAsync" is_static show_class_name />
-- **Database Operations** - <MethodReference type="Class" class_name="Database" method="SelectAsync" show_class_name /> <MethodReference type="Class" class_name="Database" method="ExecuteAsync" show_class_name />
-- **File Operations** - <MethodReference type="Class" class_name="File" method="ReadAsync" show_class_name />
+- **HTTP Requests** - <MethodReference type="StaticClass" class_name="HTTP" method_name="RequestAsync" show_class_name />
+- **Database Operations** - <MethodReference type="Class" class_name="Database" method_name="SelectAsync" show_class_name /> <MethodReference type="Class" class_name="Database" method_name="ExecuteAsync" show_class_name />
+- **File Operations** - <MethodReference type="Class" class_name="File" method_name="ReadAsync" show_class_name />
 
 There's a new command-line parameter `--thread_pool_count` to configure the number of threads initialized for async operations. By default, it will initialize 8 threads or the number of CPU cores available, whichever is higher.
 

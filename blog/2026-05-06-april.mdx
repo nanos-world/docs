@@ -101,7 +101,7 @@ We used AI-generated translations for **Chinese**, **Russian**, **Italian**, **J
 
 And if you'd like to contribute to any other language, we would be happy to add support for it as well. Just send us a message!
 
-Alongside this feature, we also exposed new methods and events so package creators can implement their own localization systems: <MethodReference type="StaticClass" class_name="Client" method="GetLanguage" is_static show_class_name /> and <EventReference type="StaticClass" class_name="Client" event="LanguageChange" is_static show_class_name />.
+Alongside this feature, we also exposed new methods and events so package creators can implement their own localization systems: <MethodReference type="StaticClass" class_name="Client" method_name="GetLanguage" show_class_name /> and <EventReference type="StaticClass" class_name="Client" event="LanguageChange" show_class_name />.
 
 
 ### Docs Localization
@@ -152,7 +152,7 @@ This significantly improves performance for frequently (not used) triggered even
 
 #### Server.SetValue
 
-Now, <MethodReference type="StaticClass" class_name="Server" method="SetValue" is_static show_class_name /> synced values are automatically **cached** and **compressed** before being sent to joining clients.
+Now, <MethodReference type="StaticClass" class_name="Server" method_name="SetValue" show_class_name /> synced values are automatically **cached** and **compressed** before being sent to joining clients.
 
 This makes `Server.SetValue()` a much more efficient option for persistent synchronized data compared to manually sending data through `Events.CallRemote()` when players join.
 
@@ -175,7 +175,7 @@ We also refactored several internal Lua API calls, making them considerably fast
 
 ### Defer Entity Spawn System
 
-We implemented a new **Defer Spawn** system for entities, allowing you to create entities without immediately spawning them on clients until you explicitly call <MethodReference type="Class" class_name="Entity" method="FinishSpawn" is_base show_class_name />.
+We implemented a new **Defer Spawn** system for entities, allowing you to create entities without immediately spawning them on clients until you explicitly call <MethodReference type="Class" class_name="Entity" method_name="FinishSpawn" show_class_name />.
 
 This is extremely useful when configuring multiple properties after creation, avoiding unnecessary intermediate network updates.
 
@@ -251,20 +251,20 @@ All new methods and events related to this month's features and improvements are
 
 #### New Methods
 
-- <MethodReference type="StaticClass" class_name="Client" method="GetLanguage" is_static show_class_name />
-- <MethodReference type="Class" class_name="Entity" method="FinishSpawn" is_base show_class_name />
+- <MethodReference type="StaticClass" class_name="Client" method_name="GetLanguage" show_class_name />
+- <MethodReference type="Class" class_name="Entity" method_name="FinishSpawn" show_class_name />
 
 
 #### New Events
 
-- <EventReference type="StaticClass" class_name="Client" event="LanguageChange" is_static show_class_name />
-- <EventReference type="StaticClass" class_name="Client" event="ValueChange" is_static show_class_name />
-- <EventReference type="StaticClass" class_name="Server" event="ValueChange" is_static show_class_name />
+- <EventReference type="StaticClass" class_name="Client" event="LanguageChange" show_class_name />
+- <EventReference type="StaticClass" class_name="Client" event="ValueChange" show_class_name />
+- <EventReference type="StaticClass" class_name="Server" event="ValueChange" show_class_name />
 
 
 ### Improved APIs
 
-- **VOIP** (e.g. <MethodReference type="Class" class_name="Player" method="SetVOIPGlobalChannelSetting" show_class_name />) now support up to 63 channels instead of 31.
+- **VOIP** (e.g. <MethodReference type="Class" class_name="Player" method_name="SetVOIPGlobalChannelSetting" show_class_name />) now support up to 63 channels instead of 31.
 - Most of entities constructor got a new `defer_spawn` parameter to use the new **Defer Spawn** workflow.
 
 

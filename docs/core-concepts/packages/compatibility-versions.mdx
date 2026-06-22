@@ -55,14 +55,14 @@ This is specially useful for events that are sent very often and non critical fo
 
 All the <StaticClasses.Events /> remote functions got a new parameter before `args...`: `reliability` (<Enums>Reliability</Enums>).
 
-- <MethodReference type="StaticClass" class_name="Events" method="CallRemote" is_static show_class_name />
-- <MethodReference type="StaticClass" class_name="Events" method="CallRemotePlayers" is_static show_class_name />
-- <MethodReference type="StaticClass" class_name="Events" method="BroadcastRemote" is_static show_class_name />
-- <MethodReference type="StaticClass" class_name="Events" method="BroadcastRemoteDimension" is_static show_class_name />
-- <MethodReference type="StaticClass" class_name="Events" method="BroadcastRemoteInRadius" is_static show_class_name /> (new method)
-- <MethodReference type="StaticClass" class_name="Events" method="BroadcastRemoteInRadiusDimension" is_static show_class_name /> (new method)
+- <MethodReference type="StaticClass" class_name="Events" method_name="CallRemote" show_class_name />
+- <MethodReference type="StaticClass" class_name="Events" method_name="CallRemotePlayers" show_class_name />
+- <MethodReference type="StaticClass" class_name="Events" method_name="BroadcastRemote" show_class_name />
+- <MethodReference type="StaticClass" class_name="Events" method_name="BroadcastRemoteDimension" show_class_name />
+- <MethodReference type="StaticClass" class_name="Events" method_name="BroadcastRemoteInRadius" show_class_name /> (new method)
+- <MethodReference type="StaticClass" class_name="Events" method_name="BroadcastRemoteInRadiusDimension" show_class_name /> (new method)
 
-Also, <MethodReference type="StaticClass" class_name="Events" method="BroadcastRemoteDimension" is_static show_class_name /> got the parameter `dimension` moved after `event_name`.
+Also, <MethodReference type="StaticClass" class_name="Events" method_name="BroadcastRemoteDimension" show_class_name /> got the parameter `dimension` moved after `event_name`.
 
 In compatibility mode (i.e. setting it to `1.138` or below), the `Events` remote calls don't have the new `reliability` parameter.
 
@@ -71,10 +71,10 @@ In compatibility mode (i.e. setting it to `1.138` or below), the `Events` remote
 
 All the <Classes.Entity /> remote functions got a new parameter before `args...`: `reliability` (<Enums>Reliability</Enums>) as well.
 
-- <MethodReference type="Class" class_name="Entity" method="CallRemoteEvent" is_base show_class_name />
-- <MethodReference type="Class" class_name="Entity" method="CallRemotePlayersEvent" is_base show_class_name /> (new method)
-- <MethodReference type="Class" class_name="Entity" method="BroadcastRemoteEvent" is_base show_class_name />
-- <MethodReference type="Class" class_name="Entity" method="BroadcastRemoteInRadiusEvent" is_base show_class_name /> (new method)
+- <MethodReference type="Class" class_name="Entity" method_name="CallRemoteEvent" show_class_name />
+- <MethodReference type="Class" class_name="Entity" method_name="CallRemotePlayersEvent" show_class_name /> (new method)
+- <MethodReference type="Class" class_name="Entity" method_name="BroadcastRemoteEvent" show_class_name />
+- <MethodReference type="Class" class_name="Entity" method_name="BroadcastRemoteInRadiusEvent" show_class_name /> (new method)
 
 In compatibility mode (i.e. setting it to `1.138` or below), the `Entity` remote calls don't have the new `reliability` parameter.
 

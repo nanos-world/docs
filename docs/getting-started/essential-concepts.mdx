@@ -154,7 +154,7 @@ So when a <Classes.Player /> spawns, it means a real person just connected to th
 
 ### Logging & Debugging
 
-You can output messages to the console using the <StaticClasses.Console /> Static Class, which provides different log levels such as <MethodReference type="StaticClass" class_name="Console" method="Log" is_static />, <MethodReference type="StaticClass" class_name="Console" method="Debug" is_static />, <MethodReference type="StaticClass" class_name="Console" method="Warn" is_static /> and <MethodReference type="StaticClass" class_name="Console" method="Error" is_static />:
+You can output messages to the console using the <StaticClasses.Console /> Static Class, which provides different log levels such as <MethodReference type="StaticClass" class_name="Console" method_name="Log" />, <MethodReference type="StaticClass" class_name="Console" method_name="Debug" />, <MethodReference type="StaticClass" class_name="Console" method_name="Warn" /> and <MethodReference type="StaticClass" class_name="Console" method_name="Error" />:
 
 ```lua title="my-package/Shared/Index.lua" showLineNumbers
 -- Standard console output
@@ -216,7 +216,7 @@ local trace_result = Trace.LineSingle(start_location, end_location, collision_ch
 
 In nanos world, everything in the API is based on **Events**, which are similar to **Hooks** in other games.
 
-For example, events are fired when a <Classes.Player /> spawns (<EventReference type="Class" class_name="Entity" event="Spawn" is_base />), a <Classes.Character /> enters a vehicle (<EventReference type="Class" class_name="Character" event="EnterVehicle" />) or takes damage (<EventReference type="Class" class_name="Damageable" event="TakeDamage" is_base />).
+For example, events are fired when a <Classes.Player /> spawns (<EventReference type="Class" class_name="Entity" event="Spawn" />), a <Classes.Character /> enters a vehicle (<EventReference type="Class" class_name="Character" event="EnterVehicle" />) or takes damage (<EventReference type="Class" class_name="Damageable" event="TakeDamage" />).
 
 You can listen to these events using Lua scripting and perform actions accordingly. For example, this is how you know when a **Player** joins the server or a **Prop** is spawned:
 
@@ -241,7 +241,7 @@ Read more about Events in the Events Guide:
 
 With our <StaticClasses.Timer /> Static Class, you can create timers and delays to execute code after a certain amount of time has passed. This is useful for creating timed events, cooldowns, or any situation where you want to delay the execution of some code.
 
-Our Timer API is similar to **JavaScript Timers**, you can use <MethodReference type="StaticClass" class_name="Timer" method="SetTimeout" is_static show_class_name /> to execute a function once after a delay, or <MethodReference type="StaticClass" class_name="Timer" method="SetInterval" is_static show_class_name /> to continuously execute a function repeatedly at a specified interval.
+Our Timer API is similar to **JavaScript Timers**, you can use <MethodReference type="StaticClass" class_name="Timer" method_name="SetTimeout" show_class_name /> to execute a function once after a delay, or <MethodReference type="StaticClass" class_name="Timer" method_name="SetInterval" show_class_name /> to continuously execute a function repeatedly at a specified interval.
 
 ```lua title="my-package/Shared/Index.lua" showLineNumbers
 -- Runs a function every 10 seconds
@@ -264,7 +264,7 @@ Read more about Timers in the Timer Page:
 
 Besides spawning an entity and storing a variable reference to it, or getting it's reference through an Event, sometimes you need to get an already spawned entity.
 
-For example, we can get all spawned entities from a class with their static methods <MethodReference type="Class" class_name="Entity" method="GetAll" is_base is_method_static /> or <MethodReference type="Class" class_name="Entity" method="GetPairs" is_base is_method_static />:
+For example, we can get all spawned entities from a class with their static methods <MethodReference type="Class" class_name="Entity" static_method_name="GetAll" /> or <MethodReference type="Class" class_name="Entity" static_method_name="GetPairs" />:
 
 ```lua title="my-package/Shared/Index.lua" showLineNumbers
 -- Returns a copy of a table of all Characters spawned
@@ -278,14 +278,14 @@ for _, player in pairs(Player.GetPairs()) do
 end
 ```
 
-Or we can get a reference to an existing <Classes.Prop /> with a specific Index with the method <MethodReference type="Class" class_name="Entity" method="GetByIndex" is_base is_method_static />:
+Or we can get a reference to an existing <Classes.Prop /> with a specific Index with the method <MethodReference type="Class" class_name="Entity" static_method_name="GetByIndex" />:
 
 
 ```lua title="my-package/Shared/Index.lua" showLineNumbers
 local my_prop = Prop.GetByIndex(10)
 ```
 
-Another way is retrieving an entity by it's globally unique ID with the methods <MethodReference type="StaticClass" class_name="Server" method="GetEntityByID" is_static show_class_name /> or <MethodReference type="StaticClass" class_name="Client" method="GetEntityByID" is_static show_class_name />:
+Another way is retrieving an entity by it's globally unique ID with the methods <MethodReference type="StaticClass" class_name="Server" method_name="GetEntityByID" show_class_name /> or <MethodReference type="StaticClass" class_name="Client" method_name="GetEntityByID" show_class_name />:
 
 ```lua title="my-package/Server/Index.lua" showLineNumbers
 local my_character = Character(Vector(), Rotator(), "nanos-world::SK_Male")
@@ -300,12 +300,12 @@ local my_character = Server.GetEntityByID(character_id)
 
 As explained in [Players vs Characters vs Pawn](#players-vs-characters-vs-pawn) section, a <Classes.Player /> represents a connected player in the server, while a <Classes.Character /> is the physical representation of the player in the world.
 
-You can retrieve the Player's possessing Character with the method <MethodReference type="Class" class_name="Player" method="GetControlledCharacter" show_class_name />.
+You can retrieve the Player's possessing Character with the method <MethodReference type="Class" class_name="Player" method_name="GetControlledCharacter" show_class_name />.
 
 
 #### Retrieving the Local Player on Client Side
 
-On **Client** side, there are some special methods and events to retrieve the local Player: <MethodReference type="StaticClass" class_name="Client" method="GetLocalPlayer" is_static show_class_name /> and <EventReference type="StaticClass" class_name="Client" event="SpawnLocalPlayer" is_static show_class_name />:
+On **Client** side, there are some special methods and events to retrieve the local Player: <MethodReference type="StaticClass" class_name="Client" method_name="GetLocalPlayer" show_class_name /> and <EventReference type="StaticClass" class_name="Client" event="SpawnLocalPlayer" show_class_name />:
 
 ```lua title="my-package/Client/Index.lua" showLineNumbers
 local local_player = Client.GetLocalPlayer()

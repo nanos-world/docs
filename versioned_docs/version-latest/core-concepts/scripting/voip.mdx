@@ -22,7 +22,7 @@ The VOIP system is based on two main types: **local/proximity** and **global**.
 
 Local VOIP simulates uses a 3D spatialized audio to output the Player's voice. Usually this is attached to the possessing Player's Character and simulates a realistic audio environment where players can only hear each other if they are close by.
 
-You can enable or disable local chat for a player using <MethodReference type="Class" class_name="Player" method="SetVOIPLocalSetting" show_class_name />. The volume of the local chat can be adjusted with <MethodReference type="Class" class_name="Player" method="SetVOIPLocalVolume" show_class_name />.
+You can enable or disable local chat for a player using <MethodReference type="Class" class_name="Player" method_name="SetVOIPLocalSetting" show_class_name />. The volume of the local chat can be adjusted with <MethodReference type="Class" class_name="Player" method_name="SetVOIPLocalVolume" show_class_name />.
 
 
 ### Global
@@ -31,12 +31,12 @@ Global VOIP allows players to communicate with each other regardless of their lo
 
 
 
-You can configure a player's settings for a specific global channel using <MethodReference type="Class" class_name="Player" method="SetVOIPGlobalChannelSetting" show_class_name /> or for all channels at once with <MethodReference type="Class" class_name="Player" method="SetVOIPGlobalAllChannelsSetting" show_class_name />. Also the volume of the global chat can be adjusted with <MethodReference type="Class" class_name="Player" method="SetVOIPLocalVolume" show_class_name />.
+You can configure a player's settings for a specific global channel using <MethodReference type="Class" class_name="Player" method_name="SetVOIPGlobalChannelSetting" show_class_name /> or for all channels at once with <MethodReference type="Class" class_name="Player" method_name="SetVOIPGlobalAllChannelsSetting" show_class_name />. Also the volume of the global chat can be adjusted with <MethodReference type="Class" class_name="Player" method_name="SetVOIPLocalVolume" show_class_name />.
 
 
 ## High/Low Pass filters
 
-In the Global Channels, it is possible to set filters on the Global audio with the methods <MethodReference type="Class" class_name="Player" method="SetVOIPGlobalHighPassFilter" show_class_name /> and <MethodReference type="Class" class_name="Player" method="SetVOIPGlobalLowPassFilter" show_class_name />.
+In the Global Channels, it is possible to set filters on the Global audio with the methods <MethodReference type="Class" class_name="Player" method_name="SetVOIPGlobalHighPassFilter" show_class_name /> and <MethodReference type="Class" class_name="Player" method_name="SetVOIPGlobalLowPassFilter" show_class_name />.
 
 We can simulate a **Radio Effect** by setting a High Pass filter like `player:SetVOIPGlobalHighPassFilter(8000)`.
 
@@ -54,7 +54,7 @@ The VOIP settings for both local and global channels are configured using the <E
 
 ## Muting
 
-It is possible to mute a certain player using the <MethodReference type="Class" class_name="Player" method="SetVOIPMuted" show_class_name /> method. If this is called on Server side, the Player will be muted for everyone, but it can also be called on client side for a local mute.
+It is possible to mute a certain player using the <MethodReference type="Class" class_name="Player" method_name="SetVOIPMuted" show_class_name /> method. If this is called on Server side, the Player will be muted for everyone, but it can also be called on client side for a local mute.
 
 
 ## Configuring Microphone

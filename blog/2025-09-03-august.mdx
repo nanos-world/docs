@@ -50,19 +50,19 @@ The **VOIP System** got a full rework with multi-channel support and separation 
 
 We also exposed a bunch of new Player methods to control filters and volumes, both globally and per-channel:
 
-- <MethodReference type="Class" class_name="Player" method="SetVOIPGlobalVolume" show_class_name />
-- <MethodReference type="Class" class_name="Player" method="SetVOIPLocalVolume" show_class_name />
-- <MethodReference type="Class" class_name="Player" method="SetVOIPLocalSetting" show_class_name />
-- <MethodReference type="Class" class_name="Player" method="SetVOIPGlobalChannelSetting" show_class_name />
-- <MethodReference type="Class" class_name="Player" method="SetVOIPGlobalAllChannelsSetting" show_class_name />
-- <MethodReference type="Class" class_name="Player" method="SetVOIPMuted" show_class_name />
+- <MethodReference type="Class" class_name="Player" method_name="SetVOIPGlobalVolume" show_class_name />
+- <MethodReference type="Class" class_name="Player" method_name="SetVOIPLocalVolume" show_class_name />
+- <MethodReference type="Class" class_name="Player" method_name="SetVOIPLocalSetting" show_class_name />
+- <MethodReference type="Class" class_name="Player" method_name="SetVOIPGlobalChannelSetting" show_class_name />
+- <MethodReference type="Class" class_name="Player" method_name="SetVOIPGlobalAllChannelsSetting" show_class_name />
+- <MethodReference type="Class" class_name="Player" method_name="SetVOIPMuted" show_class_name />
 
 *(and respective getters)*.
 
 We've also added the feature to control the High or Low Pass filter (for global channels), which can be set with the new methods, great for creating radio-like effects:
 
-- <MethodReference type="Class" class_name="Player" method="SetVOIPGlobalHighPassFilter" show_class_name />
-- <MethodReference type="Class" class_name="Player" method="SetVOIPGlobalLowPassFilter" show_class_name />
+- <MethodReference type="Class" class_name="Player" method_name="SetVOIPGlobalHighPassFilter" show_class_name />
+- <MethodReference type="Class" class_name="Player" method_name="SetVOIPGlobalLowPassFilter" show_class_name />
 
 We created a new docs page with a better explained guide for VOIP:
 
@@ -123,8 +123,8 @@ We added new client-side events to <Classes.CharacterSimple /> for common locomo
 
 Also, now you can now bind Animation Blueprint Event Dispatchers directly from it:
 
-- <MethodReference type="Class" class_name="CharacterSimple" method="BindAnimationBlueprintEventDispatcher" show_class_name />
-- <MethodReference type="Class" class_name="CharacterSimple" method="UnbindAnimationBlueprintEventDispatcher" show_class_name />
+- <MethodReference type="Class" class_name="CharacterSimple" method_name="BindAnimationBlueprintEventDispatcher" show_class_name />
+- <MethodReference type="Class" class_name="CharacterSimple" method_name="UnbindAnimationBlueprintEventDispatcher" show_class_name />
 
 
 ## Console and Profiling
@@ -133,7 +133,7 @@ Also, now you can now bind Animation Blueprint Event Dispatchers directly from i
 
 <MediaLegend>New Console Log types</MediaLegend>
 
-We added a new scripting method to log in Debug mode: <MethodReference type="StaticClass" class_name="Console" method="Debug" show_class_name is_static />, which means it will only be displayed if the server or client was configured with the log level as Debug or Verbose. It will be displayed as `S_DEBUG` category in the console.
+We added a new scripting method to log in Debug mode: <MethodReference type="StaticClass" class_name="Console" method_name="Debug" show_class_name />, which means it will only be displayed if the server or client was configured with the log level as Debug or Verbose. It will be displayed as `S_DEBUG` category in the console.
 
 There's also a new `PROFIL` log category for profiling or performance entries.
 

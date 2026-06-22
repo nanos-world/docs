@@ -397,10 +397,10 @@ end)
 
 It is also possible to trigger custom events on remote instances of your Class, it works like the <StaticClasses.Events /> class. Use the methods:
 
-- <MethodReference type="Class" class_name="Entity" method="CallRemoteEvent" is_base />
-- <MethodReference type="Class" class_name="Entity" method="CallRemotePlayersEvent" is_base />
-- <MethodReference type="Class" class_name="Entity" method="BroadcastRemoteEvent" is_base />
-- <MethodReference type="Class" class_name="Entity" method="BroadcastRemoteInRadiusEvent" is_base />
+- <MethodReference type="Class" class_name="Entity" method_name="CallRemoteEvent" />
+- <MethodReference type="Class" class_name="Entity" method_name="CallRemotePlayersEvent" />
+- <MethodReference type="Class" class_name="Entity" method_name="BroadcastRemoteEvent" />
+- <MethodReference type="Class" class_name="Entity" method_name="BroadcastRemoteInRadiusEvent" />
 
 ```lua title="Client/Index.lua" showLineNumbers
 -- inherits the Class

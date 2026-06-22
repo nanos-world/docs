@@ -83,20 +83,20 @@ In all this cases, the Player will be automatically assigned to be the **Network
 
 ### Overriding the current Network Authority
 
-It is possible to override the current Network Authority of a specific entity by using the method <MethodReference type="Class" class_name="Actor" method="SetNetworkAuthority" is_base />.
+It is possible to override the current Network Authority of a specific entity by using the method <MethodReference type="Class" class_name="Actor" method_name="SetNetworkAuthority" />.
 
 :::tip
 
-Under certain circumstances, actors may not be in **Distributed Network Authority** mode. This means they cannot have their current network authority changed. Example: if a player is driving a Vehicle or using a Weapon, mandatorily he is the the Vehicle and Weapons's Network Authority, and this cannot be overwritten through scripting. To validate if an Actor can have it overridden, you can use the method <MethodReference type="Class" class_name="Actor" method="IsNetworkDistributed" is_base />.
+Under certain circumstances, actors may not be in **Distributed Network Authority** mode. This means they cannot have their current network authority changed. Example: if a player is driving a Vehicle or using a Weapon, mandatorily he is the the Vehicle and Weapons's Network Authority, and this cannot be overwritten through scripting. To validate if an Actor can have it overridden, you can use the method <MethodReference type="Class" class_name="Actor" method_name="IsNetworkDistributed" />.
 
 :::
 
 
-You can also prevent it from being automatically distributed to other Players by calling <MethodReference type="Class" class_name="Actor" method="SetNetworkAuthorityAutoDistributed" is_base params={"false"} />.
+You can also prevent it from being automatically distributed to other Players by calling <MethodReference type="Class" class_name="Actor" method_name="SetNetworkAuthorityAutoDistributed" params={"false"} />.
 
 :::caution
 
-Always remember to restore the automatic **Network Authority Distribution** by calling <MethodReference type="Class" class_name="Actor" method="SetNetworkAuthorityAutoDistributed" is_base params={"true"} />. Otherwise that entity may behave completely weird.
+Always remember to restore the automatic **Network Authority Distribution** by calling <MethodReference type="Class" class_name="Actor" method_name="SetNetworkAuthorityAutoDistributed" params={"true"} />. Otherwise that entity may behave completely weird.
 
 :::
 

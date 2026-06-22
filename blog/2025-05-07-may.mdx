@@ -54,7 +54,7 @@ But now, after a deep refactor and a ton of under-the-hood improvements, We're p
 
 We've also introduced several other improvements around them. Some highlights:
 
-- Added support for a new parameter to <MethodReference type="Class" class_name="Cable" method="SetCableSettings" show_class_name />: `enable_stiffness`.
+- Added support for a new parameter to <MethodReference type="Class" class_name="Cable" method_name="SetCableSettings" show_class_name />: `enable_stiffness`.
 - Improved error logging, now shows entity names and IDs to make debugging easier.
 - Picking up Pickables will now automatically detach any attached cables, and trying to attach a cable to a non-simulating object will throw an error (since Unreal doesn't like that).
 - Resizing Vehicles or Weapons will not break the Cable Physics anymore.
@@ -66,7 +66,7 @@ Related [Issue#975](https://github.com/nanos-world/issues/issues/975), [Issue#99
 
 ### MoveTo
 
-The <MethodReference type="Class" class_name="Pawn" method="MoveTo" show_class_name /> system was heavily improved to ensure more consistency and reliability, especially regarding event handling.
+The <MethodReference type="Class" class_name="Pawn" method_name="MoveTo" show_class_name /> system was heavily improved to ensure more consistency and reliability, especially regarding event handling.
 
 Previously, we had issues where multiple <EventReference type="Class" class_name="Pawn" event="MoveComplete" show_class_name /> events was being fired for a single MoveTo call, along with desyncs and movement data not persisting properly across sessions.
 
@@ -119,7 +119,7 @@ Related [Issue#711](https://github.com/nanos-world/issues/issues/711).
 
 ## Spectating is back!
 
-Our Spectator Mode (<MethodReference type="Class" class_name="Player" method="Spectate" show_class_name />) had been left on the sidelines for a while, and a few issues started popping in: like the camera attaching incorrectly (it was attaching to the feet while in third person), and in first person the weapon appeared stiff and unresponsive, with no crosshair or blood screen syncing.
+Our Spectator Mode (<MethodReference type="Class" class_name="Player" method_name="Spectate" show_class_name />) had been left on the sidelines for a while, and a few issues started popping in: like the camera attaching incorrectly (it was attaching to the feet while in third person), and in first person the weapon appeared stiff and unresponsive, with no crosshair or blood screen syncing.
 
 We've now fixed all of these problems and also implemented proper syncing for **Crosshairs** and **Blood Screen effects** while spectating!
 

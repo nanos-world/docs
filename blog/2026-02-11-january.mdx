@@ -230,9 +230,9 @@ We added a brand new **Interaction ToolTip** system for <Classes.Prop />, <Class
 
 <MediaLegend>Tooltips on screen when hovering interactable objects</MediaLegend>
 
-For **Props**, you can now change the tooltip text using <MethodReference type="Class" class_name="Prop" method="SetInteractionToolTipText" show_class_name />. This lets you set custom messages like "Open", "Close", or "Press" for interact-only Props.
+For **Props**, you can now change the tooltip text using <MethodReference type="Class" class_name="Prop" method_name="SetInteractionToolTipText" show_class_name />. This lets you set custom messages like "Open", "Close", or "Press" for interact-only Props.
 
-You can disable this system with the new static method <MethodReference type="StaticClass" class_name="Viewport" method="SetInteractionToolTipEnabled" show_class_name is_static />.
+You can disable this system with the new static method <MethodReference type="StaticClass" class_name="Viewport" method_name="SetInteractionToolTipEnabled" show_class_name />.
 
 
 ## Scripting & API
@@ -244,7 +244,7 @@ We already had a **TextRender** class, but it was actually a **Text3D** componen
 
 We then decided to create a new class <Classes.TextRender /> and rename the old TextRender to <Classes.Text3D />. This gives us a new lightweight class for rendering simple 2D text with a font, while keeping **Text3D** separate with its own methods (as before).
 
-This new **TextRender** class also supports custom fonts via <MethodReference type="Class" class_name="TextRender" method="SetFont" show_class_name />.
+This new **TextRender** class also supports custom fonts via <MethodReference type="Class" class_name="TextRender" method_name="SetFont" show_class_name />.
 
 *For this upgrade, we introduced a new [Compatibility Version 1.103](/docs/next/core-concepts/packages/compatibility-versions#version-1103) so we don't break any existing scripts using the old TextRender class.*
 
@@ -257,14 +257,14 @@ Texture parameters got a big flexibility boost: any texture parameter now suppor
 
 <MediaLegend>Custom Web Images loaded as textures in runtime</MediaLegend>
 
-You can directly set the URL/Base64 to materials using the <MethodReference type="Class" class_name="Paintable" method="SetMaterialTextureParameter" show_class_name is_base />!
+You can directly set the URL/Base64 to materials using the <MethodReference type="Class" class_name="Paintable" method_name="SetMaterialTextureParameter" show_class_name />!
 
 
 ### Cables & Constraints
 
 <Classes.Cable /> was heavily improved. "Locked" constraints will **no longer** be created with an automatically calculated offset. A new parameter was added to `Cable.AttachEndTo()`, `constraint_offset`, so you can customize the offset through scripting and have more control over constraints.
 
-We also added a bunch of new methods to customize physics constraint and motor settings, such as <MethodReference type="Class" class_name="Cable" method="SetLinearMotorPositionSettings" /> and <MethodReference type="Class" class_name="Cable" method="SetAngularMotorSLERPOrientationSettings" />. See them all in [the next blog section](#cables-motor--physics-constraint).
+We also added a bunch of new methods to customize physics constraint and motor settings, such as <MethodReference type="Class" class_name="Cable" method_name="SetLinearMotorPositionSettings" /> and <MethodReference type="Class" class_name="Cable" method_name="SetAngularMotorSLERPOrientationSettings" />. See them all in [the next blog section](#cables-motor--physics-constraint).
 
 The Cables spawn performance was also improved: if you use an **All-Free** constraint, the Physics Constraint now stays deactivated (great when you only want visuals). We also made small improvements to stabilize physics jitter.
 
@@ -278,71 +278,71 @@ We implemented a bunch of new scripting methods this month:
 
 You can now add and set Angular Impulse/Force on any actor:
 
-- <MethodReference type="Class" class_name="Actor" method="AddAngularImpulse" show_class_name is_base />
-- <MethodReference type="Class" class_name="Actor" method="SetAngularForce" show_class_name is_base />
-- <MethodReference type="Class" class_name="Actor" method="GetAngularForce" show_class_name is_base />
+- <MethodReference type="Class" class_name="Actor" method_name="AddAngularImpulse" show_class_name />
+- <MethodReference type="Class" class_name="Actor" method_name="SetAngularForce" show_class_name />
+- <MethodReference type="Class" class_name="Actor" method_name="GetAngularForce" show_class_name />
 
 
 #### Override Props Mass
 
-- <MethodReference type="Class" class_name="Prop" method="SetMassOverride" show_class_name />
-- <MethodReference type="Class" class_name="Prop" method="SetMassScale" show_class_name />
+- <MethodReference type="Class" class_name="Prop" method_name="SetMassOverride" show_class_name />
+- <MethodReference type="Class" class_name="Prop" method_name="SetMassScale" show_class_name />
 
 
 #### Cables Motor & Physics Constraint
 
-- <MethodReference type="Class" class_name="Cable" method="SetPhysicsConstraintSettings" show_class_name />
-- <MethodReference type="Class" class_name="Cable" method="SetLinearMotorPositionSettings" show_class_name />
-- <MethodReference type="Class" class_name="Cable" method="SetLinearMotorVelocitySettings" show_class_name />
-- <MethodReference type="Class" class_name="Cable" method="SetAngularMotorSLERPOrientationSettings" show_class_name />
-- <MethodReference type="Class" class_name="Cable" method="SetAngularMotorSLERPVelocitySettings" show_class_name />
-- <MethodReference type="Class" class_name="Cable" method="SetAngularMotorTwistAndSwingOrientationSettings" show_class_name />
-- <MethodReference type="Class" class_name="Cable" method="SetAngularMotorTwistAndSwingVelocitySettings" show_class_name />
+- <MethodReference type="Class" class_name="Cable" method_name="SetPhysicsConstraintSettings" show_class_name />
+- <MethodReference type="Class" class_name="Cable" method_name="SetLinearMotorPositionSettings" show_class_name />
+- <MethodReference type="Class" class_name="Cable" method_name="SetLinearMotorVelocitySettings" show_class_name />
+- <MethodReference type="Class" class_name="Cable" method_name="SetAngularMotorSLERPOrientationSettings" show_class_name />
+- <MethodReference type="Class" class_name="Cable" method_name="SetAngularMotorSLERPVelocitySettings" show_class_name />
+- <MethodReference type="Class" class_name="Cable" method_name="SetAngularMotorTwistAndSwingOrientationSettings" show_class_name />
+- <MethodReference type="Class" class_name="Cable" method_name="SetAngularMotorTwistAndSwingVelocitySettings" show_class_name />
 
 
 #### Paintable Getters
 
-- <MethodReference type="Class" class_name="Paintable" method="GetMaterialVectorParameter" show_class_name is_base />
-- <MethodReference type="Class" class_name="Paintable" method="GetMaterialColorParameter" show_class_name is_base />
-- <MethodReference type="Class" class_name="Paintable" method="GetMaterialTextureParameter" show_class_name is_base />
-- <MethodReference type="Class" class_name="Paintable" method="GetMaterialScalarParameter" show_class_name is_base />
+- <MethodReference type="Class" class_name="Paintable" method_name="GetMaterialVectorParameter" show_class_name />
+- <MethodReference type="Class" class_name="Paintable" method_name="GetMaterialColorParameter" show_class_name />
+- <MethodReference type="Class" class_name="Paintable" method_name="GetMaterialTextureParameter" show_class_name />
+- <MethodReference type="Class" class_name="Paintable" method_name="GetMaterialScalarParameter" show_class_name />
 
 
 #### Actor Render Cull Distance
 
 You can set the render cull distance of any actor now, the distance at which the actor will stop rendering:
 
-- <MethodReference type="Class" class_name="Actor" method="SetRenderCullDistance" show_class_name is_base />
+- <MethodReference type="Class" class_name="Actor" method_name="SetRenderCullDistance" show_class_name />
 
 
 #### Actor Shadows
 
 You can enable/disable shadows on any actor now:
 
-- <MethodReference type="Class" class_name="Actor" method="SetCastShadow" show_class_name is_base />
+- <MethodReference type="Class" class_name="Actor" method_name="SetCastShadow" show_class_name />
 
 
 #### Other New Methods
 
-- <MethodReference type="Class" class_name="VehicleWheeled" method="IsInAir" show_class_name /> (Returns if the vehicle is in air or not)
-- <MethodReference type="Class" class_name="WebUI" method="HasNodeFocus" show_class_name /> (Returns if any WebUI node has focus)
-- <MethodReference type="StaticClass" class_name="Steam" method="TriggerScreenshot" show_class_name is_static /> (Triggers a screenshot in Steam)
-- <MethodReference type="Class" class_name="SceneCapture" method="CaptureScene" show_class_name /> (Forces a Capture)
-- <MethodReference type="Class" class_name="Pawn" method="SetFlyingMode" show_class_name is_base /> (now can be called on CharacterSimple)
-- <MethodReference type="StaticClass" class_name="Viewport" method="SetInteractionToolTipEnabled" show_class_name is_static /> (Enables/Disables Interaction ToolTips globally)
-- <MethodReference type="Class" class_name="Prop" method="SetInteractionToolTipText" show_class_name /> (Sets the Interaction ToolTip text for a Prop)
+- <MethodReference type="Class" class_name="VehicleWheeled" method_name="IsInAir" show_class_name /> (Returns if the vehicle is in air or not)
+- <MethodReference type="Class" class_name="WebUI" method_name="HasNodeFocus" show_class_name /> (Returns if any WebUI node has focus)
+- <MethodReference type="StaticClass" class_name="Steam" method_name="TriggerScreenshot" show_class_name /> (Triggers a screenshot in Steam)
+- <MethodReference type="Class" class_name="SceneCapture" method_name="CaptureScene" show_class_name /> (Forces a Capture)
+- <MethodReference type="Class" class_name="Pawn" method_name="SetFlyingMode" show_class_name /> (now can be called on CharacterSimple)
+- <MethodReference type="StaticClass" class_name="Viewport" method_name="SetInteractionToolTipEnabled" show_class_name /> (Enables/Disables Interaction ToolTips globally)
+- <MethodReference type="Class" class_name="Prop" method_name="SetInteractionToolTipText" show_class_name /> (Sets the Interaction ToolTip text for a Prop)
 
 
 #### Improved Methods
 
-- <MethodReference type="StaticClass" class_name="Client" method="ShowNotification" show_class_name is_static />: new `duration` parameter.
-- <MethodReference type="Class" class_name="CharacterSimple" method="SetSpeedSettings" show_class_name />: new `max_fly_speed` parameter.
-- <MethodReference type="Class" class_name="Actor" method="AttachTo" show_class_name is_base />, <MethodReference type="Class" class_name="Cable" method="AttachStartTo" show_class_name /> and <MethodReference type="Class" class_name="Cable" method="AttachEndTo" show_class_name />: now returns if it was successful.
+- <MethodReference type="StaticClass" class_name="Client" method_name="ShowNotification" show_class_name />: new `duration` parameter.
+- <MethodReference type="Class" class_name="CharacterSimple" method_name="SetSpeedSettings" show_class_name />: new `max_fly_speed` parameter.
+- <MethodReference type="Class" class_name="Actor" method_name="AttachTo" show_class_name />, <MethodReference type="Class" class_name="Cable" method_name="AttachStartTo" show_class_name /> and <MethodReference type="Class" class_name="Cable" method_name="AttachEndTo" show_class_name />: now returns if it was successful.
 
 
 #### Hit Event `other_actor` Parameter
 
-Now the <EventReference type="Class" class_name="Prop" event="Hit" is_base /> Event contains a new `other_actor` parameter, which is the other actor that caused the Hit.
+Now the <EventReference type="Class" class_name="Prop" event="Hit" /> Event contains a new `other_actor` parameter, which is the other actor that caused the Hit.
 
 
 ## Docs
@@ -358,7 +358,7 @@ We added a new `efficiency` label to all methods:
 
 <MediaLegend>Efficiency Label/Popup on all methods</MediaLegend>
 
-For example, if you hover <MethodReference type="StaticClass" class_name="HTTP" method="Request" show_class_name is_static />, you will see a "blocking" label in the top right, meaning it's a blocking operation and will freeze the main thread.
+For example, if you hover <MethodReference type="StaticClass" class_name="HTTP" method_name="Request" show_class_name />, you will see a "blocking" label in the top right, meaning it's a blocking operation and will freeze the main thread.
 
 
 ### Anchor Links
@@ -385,7 +385,7 @@ We got a new community-created tutorial on how to use Docker with nanos world se
 
 ### WebUI Inputs
 
-Besides the new <MethodReference type="Class" class_name="WebUI" method="HasNodeFocus" show_class_name /> method, now pressing Escape while a WebUI node has focus, causes the node to unfocus (instead of opening the escape menu).
+Besides the new <MethodReference type="Class" class_name="WebUI" method_name="HasNodeFocus" show_class_name /> method, now pressing Escape while a WebUI node has focus, causes the node to unfocus (instead of opening the escape menu).
 
 Also, while a WebUI node has focus, **all game input is ignored**. This makes in-game forms and text inputs feel much more "normal", and avoids those annoying cases where the player types into a UI and also triggers gameplay binds.
 

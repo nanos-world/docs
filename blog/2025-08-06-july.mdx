@@ -82,7 +82,7 @@ We're introducing the in-game **Dev Tools**, similar to what you find in browser
 
 Previously, we've had the Remote Debugging feature as our only option for runtime debugging, but it was disabled due to security concerns and issues with Windows Defender blocking it.
 
-Now with the new **Dev Tools** you can debug your WebUI directly in-game using the new methods: <MethodReference type="Class" class_name="WebUI" method="OpenDevTools" show_class_name /> and <MethodReference type="Class" class_name="WebUI" method="CloseDevTools" show_class_name />.
+Now with the new **Dev Tools** you can debug your WebUI directly in-game using the new methods: <MethodReference type="Class" class_name="WebUI" method_name="OpenDevTools" show_class_name /> and <MethodReference type="Class" class_name="WebUI" method_name="CloseDevTools" show_class_name />.
 
 It launches a new window pop-up integrated with the game to inspect and debug the HTML elements from the page!
 
@@ -156,11 +156,11 @@ We've made significant improvements to **Vehicles**, adding missing methods and 
 
 ### Hand Placements
 
-Characters' hands now adapt **procedurally** to the steering wheel's position. To achieve this, you must specify the steering wheel's position when configuring <MethodReference type="Class" class_name="VehicleWheeled" method="SetSteeringWheelSetup" show_class_name />.
+Characters' hands now adapt **procedurally** to the steering wheel's position. To achieve this, you must specify the steering wheel's position when configuring <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetSteeringWheelSetup" show_class_name />.
 
 Previously, we used the character's relative position, which caused inconsistencies across different characters and meshes. With this update, all characters and meshes will behave consistently.
 
-We also added a new parameter to <MethodReference type="Class" class_name="VehicleWheeled" method="SetSteeringWheelSetup" show_class_name />: `rotation`. This refactor ensures that the parameters passed to it are relative to the vehicle's root bone. As a result, all vehicles will need to be reconfigured using this new relative location.
+We also added a new parameter to <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetSteeringWheelSetup" show_class_name />: `rotation`. This refactor ensures that the parameters passed to it are relative to the vehicle's root bone. As a result, all vehicles will need to be reconfigured using this new relative location.
 
 <VideoExternal path="/blog/2025-july/procedural-vehicle-hands.webm" />
 
@@ -169,7 +169,7 @@ We also added a new parameter to <MethodReference type="Class" class_name="Vehic
 
 ### Torque Curve
 
-You can now configure the **Vehicle's Torque Curve**! We added a new parameter to <MethodReference type="Class" class_name="VehicleWheeled" method="SetEngineSetup" show_class_name />: `torque_curve` to allow customizing it through scripting:
+You can now configure the **Vehicle's Torque Curve**! We added a new parameter to <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetEngineSetup" show_class_name />: `torque_curve` to allow customizing it through scripting:
 
 
 ```lua title="Server/Index.lua"
@@ -187,9 +187,9 @@ my_vehicle:SetEngineSetup(600, 5000, 900, 0.2, 5, 600, torque_curve)
 
 ### New Vehicle Methods
 
-We introduced a new method: <MethodReference type="Class" class_name="VehicleWheeled" method="SetDifferentialSetup" show_class_name />. Allowing you to configure the vehicle's differential by passing a custom <Enums>DifferentialType</Enums>.
+We introduced a new method: <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetDifferentialSetup" show_class_name />. Allowing you to configure the vehicle's differential by passing a custom <Enums>DifferentialType</Enums>.
 
-Also, we exposed a new parameter to change the shape used for calculating wheel suspension to <MethodReference type="Class" class_name="VehicleWheeled" method="SetWheel" />: `suspension_sweep_shape` (<Enums>SuspensionSweepShape</Enums>).
+Also, we exposed a new parameter to change the shape used for calculating wheel suspension to <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetWheel" />: `suspension_sweep_shape` (<Enums>SuspensionSweepShape</Enums>).
 
 
 ## Lua Coroutine Fixes

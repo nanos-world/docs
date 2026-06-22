@@ -88,12 +88,12 @@ Although this month had a big focus on organizing our Roadmap, we also had some 
 
 Your requests were listened! This was indeed a common issue in the community, and we got a solution for you:
 
-Previously, when a player attempted to connect, the server only received a basic connection event through <EventReference type="StaticClass" class_name="Server" event="PlayerConnect" is_static />. with the option to return `false` to block them.
+Previously, when a player attempted to connect, the server only received a basic connection event through <EventReference type="StaticClass" class_name="Server" event="PlayerConnect" />. with the option to return `false` to block them.
 
 Now, we're introducing two new methods, that can be called from inside the PlayerConnect event:
 
-- <MethodReference type="StaticClass" class_name="Server" method="KickByAccountID" is_static show_class_name /> to Kick a player by their account ID.
-- <MethodReference type="StaticClass" class_name="Server" method="BanByAccountID" is_static show_class_name /> to Ban a player by their account ID.
+- <MethodReference type="StaticClass" class_name="Server" method_name="KickByAccountID" show_class_name /> to Kick a player by their account ID.
+- <MethodReference type="StaticClass" class_name="Server" method_name="BanByAccountID" show_class_name /> to Ban a player by their account ID.
 
 :::tip
 
@@ -104,7 +104,7 @@ Those new methods can be used anywhere in your code, not just inside that event!
 
 ### IsPackageLoaded()
 
-We are introducing a new method for both Client and Server: <MethodReference type="StaticClass" class_name="Server" method="IsPackageLoaded" is_static /> to retrieve if a package is currently loaded.
+We are introducing a new method for both Client and Server: <MethodReference type="StaticClass" class_name="Server" method_name="IsPackageLoaded" /> to retrieve if a package is currently loaded.
 
 
 ### Merged Methods
@@ -113,14 +113,14 @@ We are getting some improvements on Pawn and Character methods:
 
 #### Actor.GetSocketTransform()
 
-The Character.GetBoneTransform() method is now deprecated in favor of the new Actor method <MethodReference type="Class" class_name="Actor" method="GetSocketTransform" is_base show_class_name />.
+The Character.GetBoneTransform() method is now deprecated in favor of the new Actor method <MethodReference type="Class" class_name="Actor" method_name="GetSocketTransform" show_class_name />.
 
 This method is now available for all <Classes.Actor /> classes that have a mesh (<Classes.Character />, <Classes.CharacterSimple />, <Classes.Vehicle />, <Classes.Weapon />, <Classes.StaticMesh />, <Classes.Prop />, etc)!
 
 
 #### Pawn.GetCapsuleSize()
 
-The method <MethodReference type="Class" class_name="Pawn" method="GetCapsuleSize" is_base show_class_name /> is moving to the Base Pawn entity, making it available for both <Classes.Character /> and <Classes.CharacterSimple /> in a more organized way!
+The method <MethodReference type="Class" class_name="Pawn" method_name="GetCapsuleSize" show_class_name /> is moving to the Base Pawn entity, making it available for both <Classes.Character /> and <Classes.CharacterSimple /> in a more organized way!
 
 
 ## Docs Improvements
