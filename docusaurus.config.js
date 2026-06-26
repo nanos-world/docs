@@ -200,7 +200,7 @@ module.exports = {
         blog: {
           feedOptions: {
             type: 'json',
-            limit: 2
+            limit: 3
           },
           showReadingTime: true,
           editUrl: ({ locale, blogDirPath, blogPath }) => {
