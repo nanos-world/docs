@@ -9,24 +9,8 @@ tags: [static-class, server]
 
 ## 🎒 Examples
 
-```lua title="Server/Index.lua" showLineNumbers
--- Makes an asynchronous HTTP Request
-HTTP.RequestAsync("127.0.0.1:7777", "/", HTTPMethod.GET, "", "application/json", false, {}, function(status, data)
-    Console.Log(status) -- 200
-    Console.Log(data) -- "{"players_count":0,"server_name":"nanos world server"}"
+<ExamplesDeclaration type="StaticClass" name="HTTP" />
 
-	-- TIP: You can parse it if it's a json return as well
-    local json_ret = JSON.parse(data)
-end)
-```
-
-```lua title="Server/Index.lua" showLineNumbers
--- Makes a synchronous HTTP Request
-local ret = HTTP.Request("127.0.0.1:7777", "/", HTTPMethod.GET, "", "application/json", false, {})
-
-Console.Log(ret.Status) -- 200
-Console.Log(ret.Data) -- "{"players_count":0,"server_name":"nanos world server"}"
-```
 
 :::tip
 
