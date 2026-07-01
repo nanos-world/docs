@@ -702,6 +702,12 @@ html[data-theme="dark"]
 
 html[data-theme="dark"]
 .language-nanos-console
+.token.log-type-success {
+	color: #59c468;
+}
+
+html[data-theme="dark"]
+.language-nanos-console
 .token.log-type-info {
 	color: #61afef;
 }
@@ -721,6 +727,11 @@ html[data-theme="dark"]
 .language-nanos-console
 .token.log-type-warning {
 	color: #f0a721;
+}
+
+.language-nanos-console
+.token.log-type-success {
+	color: #44a751;
 }
 
 .language-nanos-console

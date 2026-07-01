@@ -181,7 +181,7 @@ export function GetStaticFunctionSignature(class_name, function_data) {
 
 // Generates Event Signature Codeblock
 export function GetEventSignature(class_name, event_data, content) {
-	return `${class_name}.Subscribe("${event_data.name}", function(${GetParametersList(event_data.arguments)})\n${ content ? content : `\t-- ${event_data.name} was called` }\nend)`;
+	return `${class_name}.Subscribe("${event_data.name}", function(${GetParametersList(event_data.arguments)})\n${ content ? content : `\t-- ${event_data.name} was called` }${ event_data.return ? `\n\treturn ${ (event_data.return[0].type == "boolean") ? "true" : (event_data.return[0].type == "number" ? "1.0" : "") }` : "" }\nend)`;
 }
 
 // Network Authority Distribution Admonition
@@ -330,13 +330,13 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name, show
 			<code>
 				{ function_data.name }
 			</code>
-			<a className="hash-link" href={ `#${id}` } aria-label={ hash_link } title={ hash_link } translate="no"></a>
+			{ !show_lean_declaration ? <a className="hash-link" href={ `#${id}` } aria-label={ hash_link } title={ hash_link } translate="no"></a> : null }
 			{ GetEfficiency(function_data.efficiency) }
 		</h3>
 		<blockquote>
 			<span dangerouslySetInnerHTML={{ __html: !show_lean_declaration && function_data.description_long ? function_data.description_long : function_data.description }}></span>
 		</blockquote>
-		{ function_data.last_compatibility_version && (
+		{ !show_lean_declaration && function_data.last_compatibility_version && (
 			<Admonition type="info" icon="🆕" title="Updated Function">
 				This method was recently updated in ver. <b>{ function_data.last_compatibility_version }</b>. See the <Link to={`${getActiveVersionPath()}/core-concepts/packages/compatibility-versions#version-${ function_data.last_compatibility_version.replaceAll('.', '') }`}>Compatibility Versions</Link> page for more information.
 			</Admonition>
@@ -354,21 +354,25 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name, show
 		<CodeBlock className="language-lua">
 			{ is_static ? GetStaticFunctionSignature(class_name, function_data) : GetFunctionSignature(class_name, function_data) }
 		</CodeBlock>
-		{ !show_lean_declaration ? <FunctionParametersDeclaration parameters={function_data.parameters} /> : null }
-		{Array.isArray(function_data.examples) && function_data.examples.length > 0 ?
-			<Details summary={`${class_name}.${function_data.name} Examples`}>
-				{function_data.examples.map(function(example, index) {
-					return GetGenericExample(example)
-				})}
-			</Details>
-		: <></>}
-		{ !show_lean_declaration && function_data.relations ?
-			<p className={"relations"}>
-				{"See also "}
-				{ GetRelations(function_data.relations) }
-				{"."}
-			</p>
-		: <></>}
+		{ !show_lean_declaration ?
+			<>
+				<FunctionParametersDeclaration parameters={function_data.parameters} />
+				{Array.isArray(function_data.examples) && function_data.examples.length > 0 ?
+					<Details summary={`${class_name}.${function_data.name} Examples`}>
+						{function_data.examples.map(function(example, index) {
+							return GetGenericExample(example)
+						})}
+					</Details>
+				: ""}
+				{ function_data.relations ?
+					<p className={"relations"}>
+						{"See also "}
+						{ GetRelations(function_data.relations) }
+						{"."}
+					</p>
+				: ""}
+			</>
+		: null }
 	</>
 };
 

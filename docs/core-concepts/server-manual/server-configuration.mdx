@@ -89,27 +89,27 @@ nanos world counts on (for now) 4 built-in maps: `default-blank-map`, `default-e
 
 ### Built-in Commands
 
-| Command | Description |
-| :--- | :--- |
-| `chat <message>` | Sends a chat message |
-| `clear` | Clears the console |
-| `kick <player_id> <reason>` | Kicks a player by it's ID |
-| `map <map_path>` | Reloads all Packages and reconnect the Players in new Map |
-| `restart` | Restarts the server, reloading all Packages and reconnecting the Players |
-| `stop` | Stops the server |
-| `players` | Lists all Players connected |
-| `password <new_password>` | Changes the server password |
-| `profiling <0-1>` | Enables/Disables Performance Profiling Logs for debugging |
-| `log_level <1-3>` | Changes the log level |
-| `max_send_rate <128-16384>` | Changes the max send rate per client |
-| `max_file_transfer_rate <128-max_send_rate>` | Changes the max file transfer rate per client |
-| `distance_optimization <0-9>` | Sets the distance optimization level |
-| `package run <package_name> <lua_code>` | Runs a code in a Package |
-| `package reload all` | Reloads all Packages and restarts the Lua Virtual Machine |
-| `package reload <package_names...>` | Reloads Packages |
-| `package unload <package_names...>` | Unloads Packages |
-| `package load <package_names...>` | Loads Packages |
-| `package hotreload <package_names...>` | Reloads all files but keeps the memory as is |
+| Command | Parameters | Description |
+| :--- | :--- | :--- |
+| **`chat`** | `<message>` | Sends a chat message |
+| **`clear`** |  | Clears the console |
+| **`kick`** | `<player_id> <reason>` | Kicks a player by it's ID |
+| **`map`** | `<map_path>` | Reloads all Packages and reconnect the Players in new Map |
+| **`restart`** |  | Restarts the server, reloading all Packages and reconnecting the Players |
+| **`stop`** |  | Stops the server |
+| **`players`** |  | Lists all Players connected |
+| **`password`** | `<new_password>` | Changes the server password |
+| **`profiling`** | `<0-1>` | Enables/Disables Performance Profiling Logs for debugging |
+| **`log_level`** | `<1-3>` | Changes the log level |
+| **`max_send_rate`** | `<128-16384>` | Changes the max send rate per client |
+| **`max_file_transfer_rate`** | `<128-max_send_rate>` | Changes the max file transfer rate per client |
+| **`distance_optimization`** | `<0-9>` | Sets the distance optimization level |
+| **`package run`** | `<package_name> <lua_code>` | Runs a code in a Package |
+| **`package reload all`** |  | Reloads all Packages and restarts the Lua Virtual Machine |
+| **`package reload`** | `<package_names...>`  | Reloads Packages |
+| **`package unload`** | `<package_names...>`  | Unloads Packages |
+| **`package load`** | `<package_names...>` |  Loads Packages |
+| **`package hotreload`** | `<package_names...>`  | Reloads all files but keeps the memory as is |
 
 
 ### Custom Commands
@@ -123,38 +123,39 @@ It is possible to override the Server Configuration with Command Line Parameters
 
 | Parameter | Value Type | Description |
 | :--- | :--- | :--- |
-| `--name` | string | Server name |
-| `--description` | string | Server description |
-| `--logo` | string | Server Logo (downloads the image in-memory) |
-| `--password` | string | Server password |
-| `--ip` | string | Server IP |
-| `--map` | string | Map to load |
-| `--port` | number | Server port |
-| `--query_port` | number | Server Query port |
-| `--announce` | 0 or 1 | If announce in master list |
-| `--game_mode` | string | Server game-mode |
-| `--loading_screen` | string | Server loading-screen |
-| `--packages` | string list | Server packages |
-| `--assets` | string list | Server assets |
-| `--token` | string | Server authorization token |
-| `--max_players` | number | Max allowed players |
-| `--dedicated_server` | 0 or 1 | If to start as a Dedicated Server or P2P |
-| `--async_log` | 0 or 1 | If to use async or sync logs (async provides better performance) - default is 1 |
-| `--log_level` | 1, 2 or 3 | If to use Normal, Debug or Verbose logs |
-| `--custom_settings` | toml string | A list of [Custom Settings](/core-concepts/packages/packages-guide.mdx#custom-settings) to be passed to scripting in toml format |
-| `--compression` | 0-9 | Sets the compression level to use in some networking operations - 0 disables it, 1 is the fastest and 9 is the slower but highest compression ratio |
-| `--save` | *flag* | If to save the passed parameters in Config.toml |
-| `--profiling` | *flag* | Enables Performance Profiling Logs for debugging |
-| `--auto_download` | *flag* | Automatically downloads Packages and Assets from Vault if needed |
-| `--use_vault_assets_lean` | *flag* | Only downloads the Asset Pack's .toml configuration files from Vault |
-| `--log_show_thread` | *flag* | Shows the current running thread of each outputted log |
-| `--max_tick_rate` | 15-120 | Sets the server max tick rate in Hz (ticks per second) |
-| `--max_sync_rate` | 1-30 | Sets the max actors sync rate in Hz (syncs per second), naturally limited by `max_tick_rate` |
-| `--max_send_rate` | 128-16384 | Sets the server max send rate per client in KB/s |
-| `--max_file_transfer_rate` | 128-16384 | Sets the server max file transfer rate per client in KB/s - this must be smaller than max_send_rate |
-| `--distance_optimization` | 0-9 | Sets the distance optimization level to improve network usage by reducing sync from distant actors - 0 disables it, 4 is a good middle term, 9 is the most aggressive |
-| `--thread_pool_count` | number | Sets the number of threads initialized to execute async operations (e.g. from HTTP, Database, File) - default is 8 (or the number of CPU cores) |
-| `--enable_unsafe_libs` | *flag* | Enables executing the methods `os.execute`, `os.rename`, `os.remove`, `os.exit`, `os.getenv`, `os.tmpname`, `os.setlocale`, `dofile`, `loadfile` and all `io.*` on server side (**Caution**: those methods may allow malicious operations to run on your server, make sure you know what you are doing) |
+| **`--name`** | string | Server name |
+| **`--description`** | string | Server description |
+| **`--logo`** | string | Server Logo (downloads the image in-memory) |
+| **`--password`** | string | Server password |
+| **`--ip`** | string | Server IP |
+| **`--playtest`** | flag | Launches the server with the Playtest APPID (so you can play with a Playtest access) |
+| **`--map`** | string | Map to load |
+| **`--port`** | 1024-65535 | Server port |
+| **`--query_port`** | 1024-65535 | Server Query port (must be different than server port) |
+| **`--announce`** | 0 or 1 | If announce in master list |
+| **`--game_mode`** | string | Server game-mode |
+| **`--loading_screen`** | string | Server loading-screen |
+| **`--packages`** | string list | Server packages |
+| **`--assets`** | string list | Server assets |
+| **`--token`** | string | Server authorization token |
+| **`--max_players`** | 1-999 | Max allowed players |
+| **`--dedicated_server`** | 0 or 1 | If to start as a Dedicated Server or P2P |
+| **`--async_log`** | 0 or 1 | If to use async or sync logs (async provides better performance)<br/><br/>Default is <code>1</code> |
+| **`--log_level`** | 1, 2 or 3 | If to use Normal <code>1</code>, Debug <code>2</code> or Verbose <code>3</code> logs |
+| **`--custom_settings`** | toml string | A list of [Custom Settings](/core-concepts/packages/packages-guide.mdx#custom-settings) to be passed to scripting in toml format |
+| **`--compression`** | 0-9 | Sets the compression level to use in some networking operations<br/><br/><code>0</code> disables it, <code>1</code> is the fastest and <code>9</code> is the slower but highest compression ratio |
+| **`--save`** | *flag* | If to save the passed parameters in Config.toml |
+| **`--profiling`** | *flag* | Enables Performance Profiling Logs for debugging |
+| **`--auto_download`** | *flag* | Automatically downloads Packages and Assets from Vault if needed |
+| **`--use_vault_assets_lean`** | *flag* | Only downloads the Asset Pack's .toml configuration files from Vault |
+| **`--log_show_thread`** | *flag* | Shows the current running thread of each outputted log |
+| **`--max_tick_rate`** | 15-120 | Sets the server max tick rate in Hz (ticks per second) |
+| **`--max_sync_rate`** | 1-30 | Sets the max actors sync rate in Hz (syncs per second), naturally limited by `max_tick_rate` |
+| **`--max_send_rate`** | 128-16384 | Sets the server max send rate per client in KB/s |
+| **`--max_file_transfer_rate`** | 128-16384 | Sets the server max file transfer rate per client in KB/s<br/><br/>This must be smaller than <code>max_send_rate</code> |
+| **`--distance_optimization`** | 0-9 | Sets the distance optimization level to improve network usage by reducing sync from distant actors<br/><br/><code>0</code> disables it, <code>4</code> is a good middle term, <code>9</code> is the most aggressive |
+| **`--thread_pool_count`** | 0-any | Sets the number of threads initialized to execute async operations (e.g. from <StaticClasses.HTTP />, <Classes.Database />, <Classes.File />)<br/><br/>Default is <code>8</code> (or the number of CPU cores) and <code>0</code> disables the pool and always start a new thread for each async operation |
+| **`--enable_unsafe_libs`** | *flag* | Enables executing the methods `os.execute`, `os.rename`, `os.remove`, `os.exit`, `os.getenv`, `os.tmpname`, `os.setlocale`, `dofile`, `loadfile` and all `io.*` on server side<br/><br/>**Caution**: those methods may allow malicious operations to run on your server, make sure you know what you are doing |
 
 :::tip
 
