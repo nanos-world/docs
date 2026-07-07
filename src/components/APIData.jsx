@@ -24,8 +24,8 @@ export default function APIData() {
 	// Loads each locale
 	for (const locale of i18n.locales) {
 		CachedAPIData[locale] = {
-			"Stable": {},
-			"BleedingEdge": {}
+			"BleedingEdge": {},
+			"Stable": {}
 		};
 
 		// Loads each category
@@ -38,20 +38,20 @@ export default function APIData() {
 
 			// Loads each file
 			if (is_table) {
-				CachedAPIData[locale]["Stable"][proper_category] = {};
 				CachedAPIData[locale]["BleedingEdge"][proper_category] = {};
+				CachedAPIData[locale]["Stable"][proper_category] = {};
 
 				for (const key in category_files) {
 					const file = category_files[key];
 
-					CachedAPIData[locale]["Stable"][proper_category][key] = require(`@site/src/api/.generated/${locale}/Stable/${category}/${file}`);
 					CachedAPIData[locale]["BleedingEdge"][proper_category][key] = require(`@site/src/api/.generated/${locale}/${category}/${file}`);
+					CachedAPIData[locale]["Stable"][proper_category][key] = require(`@site/src/api/.generated/${locale}/Stable/${category}/${file}`);
 				}
 			// Usually this is only enum
 			} else {
 				const file = category_files;
-				CachedAPIData[locale]["Stable"][proper_category] = require(`@site/src/api/.generated/${locale}/Stable/${file}`);
 				CachedAPIData[locale]["BleedingEdge"][proper_category] = require(`@site/src/api/.generated/${locale}/${file}`);
+				CachedAPIData[locale]["Stable"][proper_category] = require(`@site/src/api/.generated/${locale}/Stable/${file}`);
 			}
 		}
 	}
