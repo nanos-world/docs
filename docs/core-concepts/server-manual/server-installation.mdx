@@ -69,6 +69,7 @@ If you are on Ubuntu/Debian, you can easily install **SteamCMD** like that:
   values={[
     {label: 'Ubuntu', value: 'ubuntu'},
     {label: 'Debian', value: 'debian'},
+    {label: 'curl', value: 'curl'},
   ]}>
   <TabItem value="ubuntu">
 
@@ -76,6 +77,12 @@ To install SteamCMD on Ubuntu, the multiverse repository and x86 packages must b
 
 ```shell
 sudo add-apt-repository multiverse; sudo dpkg --add-architecture i386; sudo apt update
+```
+
+Then you can install SteamCMD using the following command:
+
+```shell
+sudo apt install steamcmd
 ```
 
   </TabItem>
@@ -87,14 +94,23 @@ To install SteamCMD on Debian, add the non-free repository and x86 packages must
 sudo apt update; sudo apt install software-properties-common; sudo apt-add-repository non-free; sudo dpkg --add-architecture i386; sudo apt update
 ```
 
-  </TabItem>
-</Tabs>
-
 Then you can install SteamCMD using the following command:
 
 ```shell
 sudo apt install steamcmd
 ```
+
+  </TabItem>
+
+  <TabItem value="curl">
+
+Install SteamCMD using cURL (this will download and extract steamcmd in the current folder):
+```shell
+curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
+```
+
+  </TabItem>
+</Tabs>
 
 :::tip
 
