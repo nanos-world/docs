@@ -9,7 +9,7 @@ keywords: [vehicle, unreal]
 Vehicles in nanos world implement Unreal's [Wheeled Vehicle](https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/Vehicles/). The base Mesh of a vehicle is a **Skeletal Mesh**.
 
 
-## Preparing a Skeletal Mesh
+## Preparing a Skeletal Mesh {/* #preparing-a-skeletal-mesh */}
 
 There is no secret to import a Vehicle Skeletal Mesh. Any Skeletal Mesh with any Skeleton will work. Just a few rules:
 
@@ -24,7 +24,7 @@ Take a look on one of the default Vehicles Skeleton:
 This vehicle used in the example only has 4 bones below the root, for each Wheel: `Wheel_Front_Left`, `Wheel_Front_Right`, `Wheel_Rear_Left` and `Wheel_Rear_Right`. Yours don't need to follow this naming, as the Wheel Bone names are set through Lua.
 
 
-## Preparing the Physical Asset
+## Preparing the Physical Asset {/* #preparing-the-physical-asset */}
 
 Another important step is setting up the Physics Asset for the Skeletal Mesh. If your Skeletal Mesh doesn't have it yet, you can create and assign a new one by right-clicking on the Skeletal Mesh and creating it:
 
@@ -45,7 +45,7 @@ You will end up like that:
 :::
 
 
-## Adding Dynamic Head & Tail Lights
+## Adding Dynamic Head & Tail Lights {/* #adding-dynamic-head--tail-lights */}
 
 It is possible to configure your Vehicle Materials to use the built-in Headlights and Taillights system:
 
@@ -72,6 +72,6 @@ In this example I multiplied the final result to 30 to give a bigger glow effect
 :::
 
 
-## Exporting the Vehicle
+## Exporting the Vehicle {/* #exporting-the-vehicle */}
 
 The Exporting process follows the usual process of exporting assets to nanos world. Please follow the [Importing Custom Assets](/assets-modding/creating-assets/importing-assets.mdx) Guide.

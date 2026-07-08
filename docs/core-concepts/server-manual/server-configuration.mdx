@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 All you need to know to Configure your server!
 
 
-## Server Configuration File
+## Server Configuration File {/* #server-configuration-file */}
 
 The server Configuration file `Config.toml` is generated automatically when the server is launched for the first time. This file will always be overridden with the proper pattern after the server is loaded.
 
@@ -27,7 +27,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 ```
 
 
-### Settings Detailed
+### Settings Detailed {/* #settings-detailed */}
 
 | Setting | Description |
 | :--- | :--- |
@@ -54,7 +54,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 | **`banned_ids`** | List of banned nanos account IDs |
 
 
-## Logo Image
+## Logo Image {/* #logo-image */}
 
 It is possible to have a custom image to be displayed in the server list. For that, add a file called `Server.jpg` besides the server executable with the logo you wish. The recommended size is `300x150`.
 
@@ -71,7 +71,7 @@ Server Logo feature is only available for for Dedicated Servers.
 :::
 
 
-## Map & Level
+## Map & Level {/* #map--level */}
 
 ![](/img/docs/server-map.webp)
 
@@ -82,12 +82,12 @@ To configure a map, please refer to [Packages Guide](/core-concepts/packages/pac
 nanos world counts on (for now) 4 built-in maps: `default-blank-map`, `default-empty-map`, `default-ocean-map` and `default-testing-map` which can be used in your server without needing to download any Package/Asset Pack.
 
 
-## Server Console
+## Server Console {/* #server-console */}
 
 ![](/img/docs/server.webp)
 
 
-### Built-in Commands
+### Built-in Commands {/* #built-in-commands */}
 
 | Command | Parameters | Description |
 | :--- | :--- | :--- |
@@ -112,12 +112,12 @@ nanos world counts on (for now) 4 built-in maps: `default-blank-map`, `default-e
 | **`package hotreload`** | `<package_names...>`  | Reloads all files but keeps the memory as is |
 
 
-### Custom Commands
+### Custom Commands {/* #custom-commands */}
 
 It is possible to define custom commands as well, for that please refer to [Console.RegisterCommand()](/scripting-reference/static-classes/console.mdx#static-function-registercommand).
 
 
-## Command Line Parameters
+## Command Line Parameters {/* #command-line-parameters */}
 
 It is possible to override the Server Configuration with Command Line Parameters.
 
@@ -164,7 +164,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 :::
 
 
-### One-liner Server Configuration
+### One-liner Server Configuration {/* #one-liner-server-configuration */}
 
 With Command Line Parameters and [Command Line Interface (CLI)](/core-concepts/server-manual/command-line-interface.mdx), it is also possible to automate the full server installation, here's an example:
 
@@ -212,9 +212,9 @@ Or, just start the server passing with all configs set and auto downloads the pa
 </Tabs>
 
 
-## Common Console Messages and Errors
+## Common Console Messages and Errors {/* #common-console-messages-and-errors */}
 
-#### `Server Tick too/extreme high! Verify the server performance! Server got stuck for Xms...`
+#### `Server Tick too/extreme high! Verify the server performance! Server got stuck for Xms...` {/* #server-tick-tooextreme-high-verify-the-server-performance-server-got-stuck-for-xms */}
 
 It means the server got **stuck** for X milliseconds. The warning (_yellow_) is not something to worry about, but too many messages in _red_ could mean your server infrastructure is not that good or your scripting code is not that optimized.
 
@@ -229,11 +229,11 @@ In some shared VPS, this warning may appear up more frequently due how the VPS h
 :::
 
 
-#### `Lua Stack Error: Should be X, is Y...`
+#### `Lua Stack Error: Should be X, is Y...` {/* #lua-stack-error-should-be-x-is-y */}
 
 This is an internal error and **should not supposed to happen**. Those are guards set around our Lua Scripting implementation to prevent bad things from happening. If this error appears it means a implementation bug happened. Please communicate immediately with the devs, and if possible how to reproduce that!
 
 
-#### `...Was it supposed to happen?`
+#### `...Was it supposed to happen?` {/* #was-it-supposed-to-happen */}
 
 Those FATAL errors usually shouldn't happen, if you experience any, please let us know.

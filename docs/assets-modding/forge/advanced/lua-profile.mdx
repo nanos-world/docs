@@ -13,16 +13,16 @@ Lua Profiles are still experimental and may change in future updates. They also 
 
 **Lua Profiles** allow you to define how to format Lua code converted by nanos world Forge. You can customize how structs and objects are exported, whether as tables or constructors, and map properties to specific functions.
 
-## Creating Lua Profiles
+## Creating Lua Profiles {/* #creating-lua-profiles */}
 
 To create a Lua Profile, you need to create a **Data Asset** from the available profile types:
 
 ![](/img/docs/forge-09.webp)
 ![](/img/docs/forge-27.webp)
 
-## Profile Types
+## Profile Types {/* #profile-types */}
 
-### Lua Struct Format Profile
+### Lua Struct Format Profile {/* #lua-struct-format-profile */}
 
 ![](/img/docs/forge-28.webp)
 ![](/img/docs/forge-29.webp)
@@ -35,7 +35,7 @@ To create a Lua Profile, you need to create a **Data Asset** from the available 
 | **`Constructor Arguments`** | Which properties to use as constructor parameters |
 | **`Table Fields`** | Which properties to include in the Lua table format |
 
-#### Example Struct Profile (Vector as Constructor)
+#### Example Struct Profile (Vector as Constructor) {/* #example-struct-profile-vector-as-constructor */}
 
 ![](/img/docs/forge-30.webp)
 
@@ -45,7 +45,7 @@ This exports vectors as:
 Vector(100.0, 200.0, 50.0)
 ```
 
-#### Example Struct Profile (Transform as Table)
+#### Example Struct Profile (Transform as Table) {/* #example-struct-profile-transform-as-table */}
 
 ![](/img/docs/forge-31.webp)
 
@@ -59,7 +59,7 @@ This exports transforms as:
 }
 ```
 
-### Lua Object Format Profile
+### Lua Object Format Profile {/* #lua-object-format-profile */}
 
 ![](/img/docs/forge-32.webp)
 
@@ -70,7 +70,7 @@ This exports transforms as:
 | **`Constructor Arguments`** | Which properties to use as constructor parameters |
 | **`Property to Function Map`** | Maps properties to specific Lua functions for formatting |
 
-#### Example Object Profile (Prop Placeholder)
+#### Example Object Profile (Prop Placeholder) {/* #example-object-profile-prop-placeholder */}
 
 ![](/img/docs/forge-33.webp)
 
@@ -80,7 +80,7 @@ This would export a prop placeholder as:
 Prop(Vector(340, 720, 0), Rotator(0, 0, 0), "my-asset-pack::Cube")
 ```
 
-## Built-in Struct Profiles
+## Built-in Struct Profiles {/* #built-in-struct-profiles */}
 
 nanos world Forge comes with several built-in struct profiles that format common Unreal structs as nanos world Lua types or easy-to-use Lua tables:
 
@@ -92,7 +92,7 @@ nanos world Forge comes with several built-in struct profiles that format common
 | **`VectorProfile`** | Formats FVector as `Vector(x, y, z)` |
 | **`TransformProfile`** | Formats FTransform as table with `Location`, `Rotation`, `Scale` |
 
-## Lua Global Profile
+## Lua Global Profile {/* #lua-global-profile */}
 
 After creating your struct and object profiles, create a **Lua Global Profile Data Asset** to combine them.
 
@@ -100,7 +100,7 @@ By default, it will include all built-in profiles. You can add your custom profi
 
 ![](/img/docs/forge-34.webp)
 
-## Using Profiles in Tools
+## Using Profiles in Tools {/* #using-profiles-in-tools */}
 
 You can use your custom profiles in tools like the **Object2Lua** tool and the **Placeholder Exporter**.
 

@@ -16,7 +16,7 @@ We proudly present...
 
 
 
-## Initial Thoughts
+## Initial Thoughts {/* #initial-thoughts */}
 
 Thank you everyone for all the support this last month! Our community has grown a lot and it's lovely to see how nice and friendly it is becoming 🥰!
 
@@ -34,7 +34,7 @@ The following changelog contains all features since last officially announced re
 <SteamWidget />
 
 
-## Materials
+## Materials {/* #materials */}
 
 ![](/img/blog/alpha/material.jpg)
 
@@ -49,7 +49,7 @@ Also it is now possible to get the WebUI material and set it to any surface (rea
 Some existing methods are suffering a rework due that, e.g. [Pickables](/docs/scripting-reference/classes/base-classes/pickable) got a new method `:SetCrosshairMaterial()`, so you can set the Crosshair from a Material (and not from a predefined list anymore), also all old Crosshair have been converted into materials which you can find [here](/docs/scripting-reference/classes/base-classes/pickable#list-of-crosshairs-materials-included-in-default-asset-pack).
 
 
-## Improved WebUI
+## Improved WebUI {/* #improved-webui */}
 
 ![](/img/blog/alpha/webui.jpg)
 
@@ -74,7 +74,7 @@ A new Searcher has been added onto it, improving how it can load your .html file
 It is now possible to spawn a Material from a WebUI, which renders dynamic and automatically into **any** surface: `:SetMaterialFromWebUI()` (method from Actors).
 
 
-## Actors
+## Actors {/* #actors */}
 
 New additions for [Actors](/docs/scripting-reference/classes/base-classes/actor):
 
@@ -86,7 +86,7 @@ New additions for [Actors](/docs/scripting-reference/classes/base-classes/actor)
 * Now [:SetLocation()](/docs/scripting-reference/classes/base-classes/actor#setlocation) will try to find the better spot to teleport the Actor (to avoid collisions).
 
 
-## Character
+## Character {/* #character */}
 
 ![](/img/blog/alpha/character.jpg)
 
@@ -110,7 +110,7 @@ New additions for [Characters](/docs/scripting-reference/classes/character):
 Some Characters animations have been renamed from `AM_` to `A_` in the Default Asset Pack (as they are not Montages anymore). Also lots of new Animations have been added.
 
 
-## Weapons
+## Weapons {/* #weapons */}
 
 ![](/img/blog/alpha/weapon.jpg)
 
@@ -130,7 +130,7 @@ New additions for [Weapons](/docs/scripting-reference/classes/weapon):
 * Added sounds when picking up or dropping weapons, also it will slightly throw the weapon to the front when dropping it.
 
 
-## Grenades
+## Grenades {/* #grenades */}
 
 ![](/img/blog/alpha/grenade.jpg)
 
@@ -139,7 +139,7 @@ All Properties from [Grenades](/docs/scripting-reference/classes/grenade) have b
 We've added a special Particle for Grenades `nanos-world::P_Grenade_Special` which will explode different particles depending on the ground the grenade is. I.e. will explode a "grass explosion" particle if grenade is over a grass surface, and a "water explosion" particle if it's under water. **Note:** This particle only works for Grenades.
 
 
-## Sounds
+## Sounds {/* #sounds */}
 
 ![](/img/blog/alpha/sound.jpg)
 
@@ -156,7 +156,7 @@ Also, it is possible to pass `.ogg` using the SpecialPath in any Sound parameter
 * Improved [:FadeIn()](/docs/scripting-reference/classes/sound#fadein) and [:FadeOut()](/docs/scripting-reference/classes/sound#fadeout) parameters.
 
 
-## Input
+## Input {/* #input */}
 
 ![](/img/blog/alpha/input.jpg)
 
@@ -181,7 +181,7 @@ end)
 ```
 
 
-## HTTP
+## HTTP {/* #http */}
 
 ![](/img/blog/alpha/http.jpg)
 
@@ -190,7 +190,7 @@ Added a new class: [HTTP](/docs/scripting-reference/static-classes/http)!
 Now we have a proper standalone class for making HTTP requests. Is also features Async HTTP requests (and thread safe!)
 
 
-## Performance Optimization
+## Performance Optimization {/* #performance-optimization */}
 
 ![](/img/blog/alpha/performance.jpg)
 
@@ -206,7 +206,7 @@ We have worked hard on performance techniques for Alpha update. Here's the highl
 * Several improvements were made on our low-level Lua code to boost scripting performance.
 
 
-## Server
+## Server {/* #server */}
 
 New additions to [Server](/docs/scripting-reference/static-classes/server) static class:
 
@@ -214,7 +214,7 @@ New additions to [Server](/docs/scripting-reference/static-classes/server) stati
 * Added new methods [Server.GetVersion()](/docs/scripting-reference/static-classes/server#getversion), [Server.GetIP()](/docs/scripting-reference/static-classes/server#getip), [Server.GetPort()](/docs/scripting-reference/static-classes/server#getport), [Server.GetQueryPort()](/docs/scripting-reference/static-classes/server#getqueryport) and several missing getters.
 
 
-## Client
+## Client {/* #client */}
 
 New additions to [Client](/docs/scripting-reference/static-classes/client) static class:
 
@@ -228,7 +228,7 @@ Now when joining a server, a Progress Bar will be displayed in the Taskbar, and 
 ![](/img/blog/alpha/progress-taskbar.jpg)
 
 
-## In-game Console
+## In-game Console {/* #in-game-console */}
 
 Now it is possible to access Server Console from within the game!
 
@@ -243,7 +243,7 @@ Not all logs will appear in there, only the ones outputted while you are connect
 ![](/img/blog/alpha/console.jpg)
 
 
-## Timer
+## Timer {/* #timer */}
 
 New additions to [Timer](/docs/scripting-reference/static-classes/timer):
 
@@ -251,12 +251,12 @@ New additions to [Timer](/docs/scripting-reference/static-classes/timer):
 * Added new method: [Timer.IsValid(timer_id)](/docs/scripting-reference/static-classes/timer#isvalid).
 
 
-## CLI
+## CLI {/* #cli */}
 
 * Now it is possible to download multiple Assets/Packages at once with [CLI](/docs/core-concepts/server-manual/command-line-interface), just separate them by spaces, e.g.: `cli assets install quaternius city-park`.
 
 
-## Steam Achievements
+## Steam Achievements {/* #steam-achievements */}
 
 ![](/img/blog/alpha/achievements.jpg)
 
@@ -267,7 +267,7 @@ And this includes the **Achievements**! We are counting on the support of a tale
 Little by little we will be creating more achievements and releasing them! We also count on your ideas for more!
 
 
-## Scripting Improvements
+## Scripting Improvements {/* #scripting-improvements */}
 
 * Added new Searchers to [Package.Require()](/docs/scripting-reference/static-classes/package#require), we now currently support 5 searchers, which are looked in the following order:
     1. Relative to `current-file-path/`
@@ -281,12 +281,12 @@ Little by little we will be creating more achievements and releasing them! We al
 * Verbose logs will now display the current thread ID.
 
 
-## Renamed Default Packages
+## Renamed Default Packages {/* #renamed-default-packages */}
 
 The default Packages `NanosWorldWeapons` and `NanosWorldVehicles` were renamed to `nanos-world-weapons` and `nanos-world-vehicles`, following the new correct pattern for Packages and Assets names. Including them now should be made like `Package.RequirePackage("nanos-world-weapons")`, the usage keeps the same (`NanosWorldWeapons.AK47()`).
 
 
-## General Changes
+## General Changes {/* #general-changes */}
 
 * [Cable](/docs/scripting-reference/classes/cable) got new methods: `:GetAttachedStartTo()` and `:GetAttachedEndTo()` to get if it's attached at any end.
 * [Player](/docs/scripting-reference/classes/player) got new methods: `:SetVOIPVolume()`, `:GetSteamID()`.
@@ -306,7 +306,7 @@ The default Packages `NanosWorldWeapons` and `NanosWorldVehicles` were renamed t
 * Probably many other things that were being added and were forgotten 😜.
 
 
-## Bug Fixes
+## Bug Fixes {/* #bug-fixes */}
 
 * Fixed `World.SetFogDensity()` not working.
 * Fixed `Client.SetCameraLocation` not working.

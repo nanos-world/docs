@@ -14,7 +14,7 @@ Currently nanos world supports `SQLite (3.50)`, `MySQL (8.1)` and `PostgreSQL (1
 :::
 
 
-## 🎒 Examples
+## 🎒 Examples {/* #examples */}
 
 ```lua title="Server/Index.lua" showLineNumbers
 -- Creates a SQLite connection, using a local file called 'database_filename.db'
@@ -53,7 +53,7 @@ All requests are thread safe! 🥳
 :::
 
 
-## 🛠 Constructors
+## 🛠 Constructors {/* #constructors */}
 
 <ConstructorDeclaration type="Class" name="Database" />
 
@@ -70,12 +70,12 @@ If the Database fails to connect, it will spit an error on console and will retu
 :::
 
 
-## 🗿 Static Functions
+## 🗿 Static Functions {/* #static-functions */}
 
 <StaticFunctionsDeclaration type="Class" name="Database" />
 
 
-## 🦠 Functions
+## 🦠 Functions {/* #functions */}
 
 <FunctionsDeclaration type="Class" name="Database" />
 
@@ -88,7 +88,7 @@ When passing arguments to a query, use the following syntax: `:?` where ? is the
 For a more in-depth example see [Examples](#examples)
 
 
-## 🧵 Connection String
+## 🧵 Connection String {/* #connection-string */}
 
 Each **Database Engine** has it's own parameters which can be used on the `connection_string` constructor. Those parameters are defined and backend-dependent by the Engine, being passed directly to the Backend when creating the connection.
 
@@ -101,7 +101,7 @@ Usually you don't need to explicitly define all (or most) of the parameters desc
 :::
 
 
-### ▶ SQLite
+### ▶ SQLite {/* #sqlite */}
 
 :::tip
 
@@ -119,7 +119,7 @@ There is a special **connection_string** for SQLite: `:memory:`. This will creat
 | **`vfs`** | | set the SQLite VFS used to as OS interface. The VFS should be registered before opening the connection, see the [documentation](https://www.sqlite.org/vfs.html) |
 
 
-### ▶ MySQL
+### ▶ MySQL {/* #mysql */}
 
 | Parameter | Default Value | Description |
 | :--- | :--- | :--- |
@@ -139,7 +139,7 @@ There is a special **connection_string** for SQLite: `:memory:`. This will creat
 | **`write_timeout`** |  | should be positive integer value that means seconds corresponding to `MYSQL_OPT_WRITE_TIMEOUT` |
 
 
-### ▶ PostgreSQL
+### ▶ PostgreSQL {/* #postgresql */}
 
 More parameters and complete information can be found at the [PostgreSQL Official Documentation](https://www.postgresql.org/docs/8.3/libpq-connect.html).
 

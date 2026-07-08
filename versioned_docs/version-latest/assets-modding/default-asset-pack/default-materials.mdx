@@ -11,7 +11,7 @@ Default Materials and it's Parameters.
 import { Classes } from '@site/src/components/_nanos';
 
 
-## Template Materials
+## Template Materials {/* #template-materials */}
 
 nanos world provides several built-in template materials which can be easily used and customized with <Classes.Paintable /> methods.
 
@@ -30,7 +30,7 @@ For more information regarding **Material Types** and **Blend Modes**, please re
 :::
 
 
-#### Parameters Supported by Default Materials
+#### Parameters Supported by Default Materials {/* #parameters-supported-by-default-materials */}
 
 | Type | Parameter | Default Value | Description |
 | :--- | :--- | :--- | :--- |
@@ -50,54 +50,54 @@ For more information regarding how each Parameter affects the final visual, plea
 :::
 
 
-### **`M_Default_Masked_Lit`**
+### **`M_Default_Masked_Lit`** {/* #m_default_masked_lit */}
 
 **Masked** and **Lit** Material.
 
 
-### **`M_Default_Masked_Lit_WorldAligned`**
+### **`M_Default_Masked_Lit_WorldAligned`** {/* #m_default_masked_lit_worldaligned */}
 
 **Masked** and **Lit** Material, with `WorldAlignedTexture` node, scaled with `TextureSize` scalar parameter.
 
 
-### **`M_Default_Masked_Unlit`**
+### **`M_Default_Masked_Unlit`** {/* #m_default_masked_unlit */}
 
 **Masked** and **Unlit** Material.
 
 
-### **`M_Default_Translucent_Lit`**
+### **`M_Default_Translucent_Lit`** {/* #m_default_translucent_lit */}
 
 **Translucent** and **Lit** Material.
 
 
-### **`M_Default_Translucent_Lit_Depth`**
+### **`M_Default_Translucent_Lit_Depth`** {/* #m_default_translucent_lit_depth */}
 
 **Translucent**, **Lit** with `Disable Depth Test` enabled. Is the same as Translucent but will be always visible in the screen, even behind walls or other objects.
 
 
-### **`M_Default_Translucent_Lit_Decal`**
+### **`M_Default_Translucent_Lit_Decal`** {/* #m_default_translucent_lit_decal */}
 
 **Translucent**, **Lit** with `Deferred Decal` Material Domain, to be used in <Classes.Decal />.
 
 
-### **`M_Default_Translucent_Unlit`**
+### **`M_Default_Translucent_Unlit`** {/* #m_default_translucent_unlit */}
 
 **Translucent** and **Unlit** Material.
 
 
-### **`M_Default_Translucent_Unlit_Depth`**
+### **`M_Default_Translucent_Unlit_Depth`** {/* #m_default_translucent_unlit_depth */}
 
 **Translucent**, **Unlit** with `Disable Depth Test` enabled. Is the same as Translucent but will be always visible in the screen, even behind walls or other objects.
 
 
-## Special Utils Materials
+## Special Utils Materials {/* #special-utils-materials */}
 
-### **`M_Noise`**
+### **`M_Noise`** {/* #m_noise */}
 
 **Opaque**, **Lit** with a `Noise` node to produce a noise effect. Also provides `Speed` (Vector) and `Scale` (Scalar) parameters.
 
 
-### **`M_Wireframe`**
+### **`M_Wireframe`** {/* #m_wireframe */}
 
 **Translucent**, **Lit** with `Wireframe` enabled, meaning it renders objects as Wireframe.
 
@@ -109,7 +109,7 @@ For more information regarding how each Parameter affects the final visual, plea
 :::
 
 
-#### Materials Summary
+#### Materials Summary {/* #materials-summary */}
 
 |  | Domain | Blend Mode | Shading Model |
 | :--- | :--- | :--- | :--- |
@@ -135,7 +135,7 @@ For more information regarding how each Parameter affects the final visual, plea
 :::
 
 
-#### Supported Common Parameters in each Material
+#### Supported Common Parameters in each Material {/* #supported-common-parameters-in-each-material */}
 
 | Material Name | Tint | Texture | Normal | Emissive | Metallic | Specular | Roughness | Opacity | VTiling | UTiling | TextureSize |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -153,7 +153,7 @@ For more information regarding how each Parameter affects the final visual, plea
 > **Masked Material's Opacity supports only Opacity Mask: `0` or `1`*
 
 
-## Physical Materials
+## Physical Materials {/* #physical-materials */}
 
 [Physical Materials](https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/Physics/PhysicalMaterials/) are materials which define Physical properties of an object. With [Paintable.SetPhysicalMaterial()](/scripting-reference/classes/base-classes/paintable.mdx#setphysicalmaterial) you can change the default physical material of an Entity.
 

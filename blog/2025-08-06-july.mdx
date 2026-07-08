@@ -16,14 +16,14 @@ Welcome to our roundup of the latest updates from the past month! This blog come
 {/* truncate */}
 
 
-## CEF Experimental Features
+## CEF Experimental Features {/* #cef-experimental-features */}
 
 ![](/img/blog/2025-july/cef.webp)
 
 We are excited to introduce several new **CEF** features that have been highly requested for a long time. From Hardware Acceleration to new Dev Tools features!
 
 
-### Hardware Acceleration
+### Hardware Acceleration {/* #hardware-acceleration */}
 
 We implemented a ability to enable **Hardware Acceleration** on CEF! This is a feature that allows the WebUI to utilize your GPU for rendering instead of the CPU. Allowing complex animations to run smoothly while offloading work from the CPU.
 
@@ -34,7 +34,7 @@ Even with Hardware Acceleration enabled, avoid using overly complex animations i
 :::
 
 
-### Accelerated Painting
+### Accelerated Painting {/* #accelerated-painting */}
 
 Currently, CEF renders WebUI pages into a buffer, which is then copied to an Unreal texture for on-screen rendering, all handled by the CPU.
 
@@ -49,7 +49,7 @@ For example, if your PC is GPU-bound, enabling Hardware Acceleration and Acceler
 :::
 
 
-### New WebUI Settings
+### New WebUI Settings {/* #new-webui-settings */}
 
 We've exposed several new settings to help you experiment with these new features:
 
@@ -57,22 +57,22 @@ We've exposed several new settings to help you experiment with these new feature
 
 <MediaLegend>New CEF/WebUI Settings</MediaLegend>
 
-#### Hardware Acceleration & Accelerated Painting
+#### Hardware Acceleration & Accelerated Painting {/* #hardware-acceleration--accelerated-painting */}
 
 Allows you enabling those features previously mentioned. Note that Accelerated Painting requires Hardware Accelerated enabled.
 
 
-#### Max Resolution
+#### Max Resolution {/* #max-resolution */}
 
 We've added a setting to limit the maximum WebUI resolution. This can be a performance saver if you run the game at 4K resolution, allowing you to cap WebUI resolution at 1080p, for example.
 
 
-#### Message Loop Schedule
+#### Message Loop Schedule {/* #message-loop-schedule */}
 
 This is an internal CEF setting that may improve the CEF performance by reducing unnecessary CEF loop calls when it's idling.
 
 
-### New Dev Tools
+### New Dev Tools {/* #new-dev-tools */}
 
 We're introducing the in-game **Dev Tools**, similar to what you find in browsers!
 
@@ -87,7 +87,7 @@ Now with the new **Dev Tools** you can debug your WebUI directly in-game using t
 It launches a new window pop-up integrated with the game to inspect and debug the HTML elements from the page!
 
 
-### Other WebUI Improvs
+### Other WebUI Improvs {/* #other-webui-improvs */}
 
 - **DPI Scaling:** WebUI pages now scale properly with the monitor's DPI, fixing issues where Windows resolution scaling affected WebUI resolution.
 - **Smooth Scrolling:** We've implemented native smooth scrolling for WebUIs, replacing the previous simulation.
@@ -95,7 +95,7 @@ It launches a new window pop-up integrated with the game to inspect and debug th
 - **Multi-Instance Fix:** Resolved an issue preventing two game instances from displaying WebUI simultaneously.
 
 
-## Introducing... The Forge!
+## Introducing... The Forge! {/* #introducing-the-forge */}
 
 nanos world Forge is a new **community-made plugin** for Unreal Engine designed to simplify asset creation for nanos world. It comes with built-in **tools** and **cooking automation** to increase your productivity!
 
@@ -114,7 +114,7 @@ Since this is a voluntary project, please consider supporting him and this proje
 :::
 
 
-### Cook Handler
+### Cook Handler {/* #cook-handler */}
 
 The **Cook Handler** is a feature that automatically copies your cooked assets after they are cooked, it moves them to the configured `ServerPath/Assets/` directory, so you don't have to copy them manually every time you cook.
 
@@ -123,7 +123,7 @@ And putting together with the [Asset Pack Auto Reload](/blog/june-2025#asset-pac
 It also generates an **Assets.toml** file in each asset pack folder, listing all its assets automatically.
 
 
-### Other Tools & Features
+### Other Tools & Features {/* #other-tools--features */}
 
 Forge includes a variety of tools to enhance your asset creation experience:
 
@@ -140,7 +140,7 @@ For a detailed list of tools and instructions on how to download it, visit the F
 <ReferenceLink href="assets-modding/forge/setup">Forge Setup</ReferenceLink>
 
 
-### Future Development
+### Future Development {/* #future-development */}
 
 The Forge is still under development, if you have any suggestion or find any bug, don't hesitate to contact us or NegativeName directly!
 
@@ -149,12 +149,12 @@ We are still working together to keep expanding the Forge possibilities, we have
 Also, in the next days, we will be updating our ADK tutorials and the ADK project to reduce the redundant tools and simplify it even more! Stay tuned for updates!
 
 
-## Vehicle Updates
+## Vehicle Updates {/* #vehicle-updates */}
 
 We've made significant improvements to **Vehicles**, adding missing methods and enhancing procedural hand placement on steering wheels.
 
 
-### Hand Placements
+### Hand Placements {/* #hand-placements */}
 
 Characters' hands now adapt **procedurally** to the steering wheel's position. To achieve this, you must specify the steering wheel's position when configuring <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetSteeringWheelSetup" show_class_name />.
 
@@ -167,7 +167,7 @@ We also added a new parameter to <MethodReference type="Class" class_name="Vehic
 <MediaLegend>Characters procedurally adapting their hand positions based on the steering wheel and seat location</MediaLegend>
 
 
-### Torque Curve
+### Torque Curve {/* #torque-curve */}
 
 You can now configure the **Vehicle's Torque Curve**! We added a new parameter to <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetEngineSetup" show_class_name />: `torque_curve` to allow customizing it through scripting:
 
@@ -185,14 +185,14 @@ my_vehicle:SetEngineSetup(600, 5000, 900, 0.2, 5, 600, torque_curve)
 ```
 
 
-### New Vehicle Methods
+### New Vehicle Methods {/* #new-vehicle-methods */}
 
 We introduced a new method: <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetDifferentialSetup" show_class_name />. Allowing you to configure the vehicle's differential by passing a custom <Enums>DifferentialType</Enums>.
 
 Also, we exposed a new parameter to change the shape used for calculating wheel suspension to <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetWheel" />: `suspension_sweep_shape` (<Enums>SuspensionSweepShape</Enums>).
 
 
-## Lua Coroutine Fixes
+## Lua Coroutine Fixes {/* #lua-coroutine-fixes */}
 
 ![](/img/blog/2025-july/lua.webp)
 
@@ -203,7 +203,7 @@ For example, `Package.Require` and async callbacks from <Classes.Database /> or 
 Thanks to all the testers who helped reproduce these bugs and crashes!
 
 
-## Linux Server Requirements
+## Linux Server Requirements {/* #linux-server-requirements */}
 
 We've reviewed the minimum required versions for running a **Linux server**. The officially supported versions are now **Ubuntu 22** and **24**, and **Debian 12**.
 
@@ -214,7 +214,7 @@ For more details, visit the updated Server Installation Guide:
 <ReferenceLink href="core-concepts/server-manual/server-installation">Server Installation Guide</ReferenceLink>
 
 
-## Vault Maintenance
+## Vault Maintenance {/* #vault-maintenance */}
 
 ![](/img/blog/2025-july/store-wip.webp)
 
@@ -225,14 +225,14 @@ Earlier this month, we [announced](https://discord.com/channels/1241079164321136
 While we don't have a release date yet, progress is moving quickly. For now, the game will still provide default packages (`sandbox`, `default-weapons`, and `default-vehicles`) for download via the in-game Vault and CLI.
 
 
-## Account System Migration
+## Account System Migration {/* #account-system-migration */}
 
 In addition to Vault maintenance, we're also improving our account system backends, integrating them with the new Vault system. We've paused new tester invites for a few weeks while we finalize these migrations. We should be ready really soon™.
 
 If you encounter login errors during this transition, please let us know!
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 This was a "2-month" update packed with several exciting features and improvements. The introduction of the community-created **Forge** is the beginning of our vision for a more solid Asset Development Kit (ADK), simplifying the asset creation process. While there is still much to improve, this is a significant first step. Thank you again [@NegativeName](https://ko-fi.com/negativename) for taking this initiative!
 

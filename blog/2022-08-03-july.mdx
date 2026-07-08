@@ -13,7 +13,7 @@ tags: [updates]
 
 After a long time and after innumerous requests (~~and death threats~~), I finally announce the big surprise of the integration with the Framework [CEF (Chromium embedded framework)](https://bitbuccket.org/chromimbedded/cef/)!
 
-## Chromium Embedded Framework
+## Chromium Embedded Framework {/* #chromium-embedded-framework */}
 
 ![](/img/blog/2022-july/cef.webp)
 
@@ -26,7 +26,7 @@ And since we can't be dependent on that, I made the decision to try to integrate
 In the end, I managed to create a totally proper integration, including a build automation to always get the latest CEF safety updates on D+1!
 
 
-### Processes
+### Processes {/* #processes */}
 
 But since not everything is flowers, there are advantages and disadvantages in using CEF. Due to its multi-process characteristics, on the one hand we have everything running in parallel (+++performance), on the other we have the drawback that rendering will always be 1 or 2 frames late, which may cause an "input lag" effect, but in practice it is not a big problem and is almost imperceptible.
 
@@ -39,14 +39,14 @@ Another thing that changed is that we will have several sub-process starting and
 ![](/img/blog/2022-july/cef-subprocess.webp)
 
 
-### Sounds
+### Sounds {/* #sounds */}
 
 Another thing we gained was the Sounds! I have added a new method to the WebUI class: `WebUI:SpawnSound()` that spawns a Sound object (100% customizable as usual). In other words, you can spawn as many 3D sound entities and even set up a 7:1 cinema with them! 😆
 
 <VideoExternal path="/blog/2022-july/cinema.webm" />
 
 
-### Performance
+### Performance {/* #performance */}
 
 As said, we gained a lot of performance. Surely I will continue to improve the implementation and boost it even more over time, but we can already see great improvements! Watch this video of me spawning dozens of WebUIs at the same time and rendering them on 3D objects in the world without a single stutter:
 
@@ -57,29 +57,29 @@ How many videos can it handle at the same time? YES.
 <VideoExternal path="/blog/2022-july/cinema-everywhere.webm" />
 
 
-### Debug Tools
+### Debug Tools {/* #debug-tools */}
 
 It is now possible to inspect your WebUI directly by third party tools, such as Chrome Developer Tools for example! 🥳
 
 ![](/img/blog/2022-july/cef-debug-tools.webp)
 
 
-### Migration
+### Migration {/* #migration */}
 
 Also, another good news: this migration will have 0% breaking changes! No script will need to be updated to keep working with CEF! 💃
 
 Obviously some things have changed, especially in relation to CSS. In WebKit browsers (as it was before) some styles behaved differently from Chromium ones. Some layouts *can* appear ill-adjusted (e.g. different scroll bars) now.
 
 
-## Settings Menu
+## Settings Menu {/* #settings-menu */}
 
 Finally our Settings Menu received the UI Update too! I recreated it from scratch adapting to the new interface style!
 
-#### Video Settings:
+#### Video Settings: {/* #video-settings */}
 
 ![](/img/blog/2022-july/settings-video.webp)
 
-#### KeyBinding Settings:
+#### KeyBinding Settings: {/* #keybinding-settings */}
 
 ![](/img/blog/2022-july/settings-keys.webp)
 
@@ -90,7 +90,7 @@ We got a new setting tab for **House Keeping**, where it will be possible to cle
 We also had the addition of a new setting: **Force no Custom Loading Screen** which disables server's custom Loading Screens.
 
 
-## Stats & Achievements
+## Stats & Achievements {/* #stats--achievements */}
 
 This month I devoted a time to adjust our stats and achievements. And the new **Profile Stats** tab have been implemented:
 
@@ -103,21 +103,21 @@ I created some new Stats such as swimming or driving, and also I created the con
 A great improvement in the notifications of achievements has been made: now they are shown immediately when reached! (Before they were only synchronized once per minute, delaying the notifications).
 
 
-## New Achievements Ideas
+## New Achievements Ideas {/* #new-achievements-ideas */}
 
 I created a new page on Canny to receive suggestions of new Steam Achievements! Please take a look, vote and add new ones! I will always be integrating new ones into the game!
 
 https://feedback.nanos-world.com/achievements
 
 
-## Vault Changelog
+## Vault Changelog {/* #vault-changelog */}
 
 In Vault side, I implemented the **Updates Tab** for the items, where you can see all changes in their updates!
 
 ![](/img/blog/2022-july/vault-changelog.webp)
 
 
-## Caching and Loading
+## Caching and Loading {/* #caching-and-loading */}
 
 A great improvement I made was the refactoring of the caching system. We already had a cache system that cached the loaded assets in the client side, so then the file validation was instantaneous when re-connecting to a server.
 
@@ -128,7 +128,7 @@ In addition, when opening a server, every time the assets were loaded and cached
 This will greatly improve the opening speed of the servers.
 
 
-## Docs Improvements
+## Docs Improvements {/* #docs-improvements */}
 
 I took some time to update some pages here in the docs.
 
@@ -140,12 +140,12 @@ I took some time to update some pages here in the docs.
 I will continue to improve the docs aiming to reduce redundancy and to make it even more simple for modders and scripters to hop in! I see the docs was starting to get a little big confusing due some duplicities and some tutorials in weird places, that will be improved too!
 
 
-## Notable Changes
+## Notable Changes {/* #notable-changes */}
 
 *Some smaller but notable changes.*
 
 
-### WebUI 3D Interaction
+### WebUI 3D Interaction {/* #webui-3d-interaction */}
 
 This is not totally related to CEF but I took the moment to integrate methods which allow injecting events into WebUI and create a Remote Control for it: 😜
 
@@ -154,22 +154,22 @@ This is not totally related to CEF but I took the moment to integrate methods wh
 It uses traces to retrieve the UV location from the hit on the TV mesh, then redirects it as WebUI events.
 
 
-### Packages Maps
+### Packages Maps {/* #packages-maps */}
 
 I added a new setting to Packages: `compatible_maps` to make pair with the map settings: `compatible_game_modes`. Both settings are united to display compatible maps in the New Game popup when starting a new server.
 
 
-### Discord FAQ Channel
+### Discord FAQ Channel {/* #discord-faq-channel */}
 
 Our Discord got a new FAQ channel, which contains the most common question about the nanos world. More will be added as the time goes!
 
 
-### Unreal 5.0.3
+### Unreal 5.0.3 {/* #unreal-503 */}
 
 I've updated the game Unreal Engine version to the last patch 5.0.3 containing lots of engine bug fixes. This update had no breaking change.
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 This was a month of great advances, several bug fixes and structural improvements in nanos world. We further evolved our IU and solved the WebUI problem that had been haunting us for a long time.
 

@@ -14,9 +14,9 @@ If your Actor Blueprint was spawned on the Server, it will be automatically sync
 :::
 
 
-## 🎒 Examples
+## 🎒 Examples {/* #examples */}
 
-### Calling Blueprint Events from lua
+### Calling Blueprint Events from lua {/* #calling-blueprint-events-from-lua */}
 
 ```lua title="Client/Index.lua" showLineNumbers
 -- Spawns the Blueprint
@@ -30,7 +30,7 @@ blueprint:CallBlueprintEvent("MyBlueprintCustomEvent", param1, param2)
 ```
 
 
-### Binding Blueprint Event Dispatchers
+### Binding Blueprint Event Dispatchers {/* #binding-blueprint-event-dispatchers */}
 
 ```lua title="Client/Index.lua" showLineNumbers
 -- Spawns the Blueprint
@@ -43,28 +43,28 @@ end)
 ```
 
 
-## 🛠 Constructors
+## 🛠 Constructors {/* #constructors */}
 
 <ConstructorDeclaration type="Class" name="Blueprint" />
 
 
-## 🗿 Static Functions
+## 🗿 Static Functions {/* #static-functions */}
 
 <StaticFunctionsDeclaration type="Class" name="Blueprint" />
 
 
 
-## 🦠 Functions
+## 🦠 Functions {/* #functions */}
 
 <FunctionsDeclaration type="Class" name="Blueprint" />
 
 
-## 🚀 Events
+## 🚀 Events {/* #events */}
 
 <EventsDeclaration type="Class" name="Blueprint" />
 
 
-## ✅ List of Supported Parameter Types
+## ✅ List of Supported Parameter Types {/* #list-of-supported-parameter-types */}
 
 List of all supported parameters which can be passed between Lua ↔ Blueprint:
 
@@ -123,11 +123,11 @@ Passing `Maps`, `Arrays` and `Sets` is also supported! As long their keys/values
 :::
 
 
-### Any Struct
+### Any Struct {/* #any-struct */}
 
 Custom Structs can also be passed and retrieved, just pass an object with the same properties as the Unreal Struct, examples:
 
-#### FTransform
+#### FTransform {/* #ftransform */}
 
 ```lua
 {
@@ -137,7 +137,7 @@ Custom Structs can also be passed and retrieved, just pass an object with the sa
 }
 ```
 
-#### FSlateBrush
+#### FSlateBrush {/* #fslatebrush */}
 
 ```lua
 {
@@ -152,7 +152,7 @@ Custom Structs can also be passed and retrieved, just pass an object with the sa
 }
 ```
 
-#### FSlateFontInfo
+#### FSlateFontInfo {/* #fslatefontinfo */}
 
 ```lua
 {
@@ -168,7 +168,7 @@ Custom Structs can also be passed and retrieved, just pass an object with the sa
 }
 ```
 
-#### FMargin
+#### FMargin {/* #fmargin */}
 
 ```lua
 {
@@ -179,7 +179,7 @@ Custom Structs can also be passed and retrieved, just pass an object with the sa
 }
 ```
 
-#### FVector4
+#### FVector4 {/* #fvector4 */}
 
 ```lua
 {

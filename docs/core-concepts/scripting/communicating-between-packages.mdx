@@ -11,9 +11,9 @@ All you need to know to communicate between different Packages
 In nanos world there are 2 main ways which you can interact with other **Packages**. In this page we will explain in details how to do so.
 
 
-## Custom Events
+## Custom Events {/* #custom-events */}
 
-### Communicating with Packages in the same Side
+### Communicating with Packages in the same Side {/* #communicating-with-packages-in-the-same-side */}
 
 Custom Events are the easier way to send or receive generic data or information to other packages:
 
@@ -34,7 +34,7 @@ end)
 ```
 
 
-### Sending data through the network
+### Sending data through the network {/* #sending-data-through-the-network */}
 
 Sending information through the network is not different from sending in the same side:
 
@@ -63,7 +63,7 @@ For more information and examples about using Custom Events, please refer to [Ev
 :::
 
 
-## Exporting Variables Globally
+## Exporting Variables Globally {/* #exporting-variables-globally */}
 
 Another way of communicating is using <MethodReference type="StaticClass" class_name="Package" method_name="Export" show_class_name /> method, it allows exposing variables (tables, functions, etc) globally so all other Packages can access it directly.
 
@@ -73,7 +73,7 @@ Unlike events, exported functions can return values to the caller. But exported 
 
 :::
 
-### Exporting a Function
+### Exporting a Function {/* #exporting-a-function */}
 
 With that, you can export functions for example, like that:
 
@@ -106,7 +106,7 @@ Package.Export("MyAwesomeLibrary", MyAwesomeLibrary)
 ```
 
 
-### Calling an Exported Function from another Package
+### Calling an Exported Function from another Package {/* #calling-an-exported-function-from-another-package */}
 
 Now you can access that directly from other packages:
 

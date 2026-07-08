@@ -13,7 +13,7 @@ image: /img/blog/2023-january/january-news.webp
 
 {/* truncate */}
 
-## New Character Class
+## New Character Class {/* #new-character-class */}
 
 This month we worked hard on refactoring our internal Player/Character implementations and all things that it interacts to (Weapon, Props, Vehicles). Our internal code was still very strongly linked to the main Character entity, everything having direct references to it. So we worked hard to modularizing them, which allowed new "Sub" Character classes to be added.
 
@@ -32,50 +32,50 @@ We will be studying the ability to add more features to this class (e.g. Drive V
 Read more in the [CharacterSimple](/docs/next/scripting-reference/classes/character-simple) class page.
 
 
-## Docs Improvements
+## Docs Improvements {/* #docs-improvements */}
 
 A summary of important changes in the docs.
 
-### Sandbox Section
+### Sandbox Section {/* #sandbox-section */}
 
 I added a new [section](/docs/explore/sandbox-game-mode/spawn-menu) just for the Sandbox game-mode. This has examples on how the **Spawn Menu**, **Context Menu** and the **Tool Guns** work, and teaches how you can create scripts to extend or create new features which integrate with it! It is a great new Quick Start we have!
 
 
-### Changelog
+### Changelog {/* #changelog */}
 
 We've got a new [Changelog](/changelog) tab with the most recent updates of nanos world!
 
 
-### Compatibility Version
+### Compatibility Version {/* #compatibility-version */}
 
 I moved the [Compatibility Version](/docs/next/core-concepts/packages/compatibility-versions) pages to a new single page under `Core Concepts / Packages` section. Now all Compatibility Versions changes and the it's guide will be centralized there.
 
 
-### Improved CSS
+### Improved CSS {/* #improved-css */}
 
 We've got some improvements on the docs layout and CSS. The Mobile visualization was improved and we got new dividers between API definitions, making all look neat!
 
 
-### Troubleshoot Assets
+### Troubleshoot Assets {/* #troubleshoot-assets */}
 
 I added a new section of [Troubleshooting for Assets](/docs/next/assets-modding/creating-assets/importing-assets#troubleshooting) with the most common problems and their fixes.
 
 
-## ADK is on Steam
+## ADK is on Steam {/* #adk-is-on-steam */}
 
 Now it is possible to download and use the [Assets Development Kit](https://github.com/nanos-world/assets-development-kit) through Steam directly! This new Steam Tool Entry for nanos world makes the ADK to be always updated! It launches the Unreal Editor automatically.
 
 ![](/img/blog/2023-january/adk.webp)
 
 
-## New Console Colors
+## New Console Colors {/* #new-console-colors */}
 
 We reworked our Console Layout and now it is more colorful and pretty! It got much more robust and modern! Hope you like it!
 
 ![](/img/blog/2023-january/console-layout.webp)
 
 
-## Console Commands
+## Console Commands {/* #console-commands */}
 
 We've introduced the official **Console Commands** system. This new system allows adding custom console commands to both **Server** and **Client** consoles, and integrates it with the **Available commands** list when typing `help` on it.
 
@@ -96,14 +96,14 @@ Console.RegisterCommand("myawesomecommand",
 Read more in the [Console.RegisterCommand](/docs/next/scripting-reference/static-classes/console#static-function-registercommand) method page.
 
 
-## Steam Avatar
+## Steam Avatar {/* #steam-avatar */}
 
 Now it is possible to retrieve the Player's Steam Avatar! We've added a new method `Player:GetPlayerIconURL()` which returns a special URL which can be load the Steam Avatar on WebUIs:
 
 ![](/img/blog/2023-january/scoreboard.webp)
 
 
-## Sky & Weather
+## Sky & Weather {/* #sky--weather */}
 
 We integrated the Weather system from Ultra Dynamic Sky into the Sky class! Now it is possible to change the current weather through `Sky.ChangeWeather()` and even have it integrated in your maps by using Ultra Dynamic Sky Material Functions from it's Assets Content if you have the UDS!
 
@@ -118,7 +118,7 @@ We've added a new dropdown to Context Menu to allow you changing the Weather fro
 Also the [Sandbox Context Menu](https://github.com/nanos-world/nanos-world-sandbox/blob/master/Server/Sky.lua) has a new section only for controlling Weather & Sky, and also an automatic Weather change system which synchronizes the current Weather with all connected players!
 
 
-## New Config.toml Format
+## New Config.toml Format {/* #new-configtoml-format */}
 
 The Server configuration file was completely reworked. Now we have several different sections and many more settings available to set through that. Almost all settings available through command line parameters now can be defined there persistently.
 
@@ -127,7 +127,7 @@ The Server configuration file was completely reworked. Now we have several diffe
 See the full configuration file schema [here](/docs/next/core-concepts/server-manual/server-configuration#server-configuration-file).
 
 
-## Compression
+## Compression {/* #compression */}
 
 A new setting which has been added is the `compression`, which allows you configuring the amount of compression (0 is none, 9 is extreme) applied to some network operations. For now we are testing this new compression system for small files transfer and server requirements manifest, we managed to see up to **90%** reduction of the size of those files when having it enabled!
 
@@ -138,7 +138,7 @@ Using high level of compression affects the server and client performance as we 
 :::
 
 
-## Level Entities Settings
+## Level Entities Settings {/* #level-entities-settings */}
 
 Now it is possible to toggle in the Package.toml if you wish to load Level Entities, a.k.a. loading Level StaticMeshes as entities. This setting acts as a global `OR` setting which if we have at least one Package which enabled it, the setting will be enabled globally.
 
@@ -147,31 +147,31 @@ Now it is possible to toggle in the Package.toml if you wish to load Level Entit
 This setting allows we skipping a lot of processing and runtime performance loss if we don't need to use or reference level's StaticMeshes through scripting.
 
 
-## New Settings to Map.toml
+## New Settings to Map.toml {/* #new-settings-to-maptoml */}
 
 We added two new settings to Map.toml: `package_requirements` and `compatibility_version`, allowing Map Packages to work better on their own.
 
 ![](/img/blog/2023-january/map-toml.webp)
 
 
-## Level Streaming Support
+## Level Streaming Support {/* #level-streaming-support */}
 
 We implemented the full support to Level Streaming and World Partition. Before they weren't properly integrated into our [Level](/docs/next/scripting-reference/static-classes/level) class but now the events are triggered for auto-streaming and chunks from World Partition being loaded/unloaded as well! Also it is now integrated with Level Entities making the Level StaticMeshes to load/unload as entities on demand as well!
 
 
-## Large World Coordinates
+## Large World Coordinates {/* #large-world-coordinates */}
 
 Our Vector structs were refactored and now we have support for double-precision to Vector struct! Meaning huge Levels are now possible in nanos world! Read more about it in the [Unreal Official Documentation page](https://docs.unrealengine.com/5.1/en-US/large-world-coordinates-in-unreal-engine-5/).
 
 
-## WebUI Layout
+## WebUI Layout {/* #webui-layout */}
 
 We added a new method to WebUI which although seems simple, it expands a lot the possibilities and modularity with UIs. Now it is possible to change the WebUI Canvas layout through [WebUI:SetLayout](/docs/next/scripting-reference/classes/web-ui#function-setlayout).
 
 This method allows changing the Canvas Layout (anchors, offset, alignment) of it, meaning we can have WebUIs working just as small popups, allowing you clicking on background WebUIs while having others small ones in the front of the screen!
 
 
-## WebUI ExecuteJavaScript
+## WebUI ExecuteJavaScript {/* #webui-executejavascript */}
 
 We added a new *experimental* method to WebUI: [WebUI:ExecuteJavaScript](/docs/next/scripting-reference/classes/web-ui#function-executejavascript). This allows executing arbitrary JavaScript code in your WebUI.
 
@@ -182,31 +182,31 @@ This method only works on local WebUIs.
 :::
 
 
-## Auto Download Logo
+## Auto Download Logo {/* #auto-download-logo */}
 
 In the last month we removed the `logo` settings from Config, Package and Asset Packs, as now they all must be locally-placed jpg images. But now we added back the `--logo` command line parameter to the server allowing it to auto download it as the `Server.jpg` image! Allowing you to easily setup a remote server and add a logo to it.
 
 
-## New Graphic Settings
+## New Graphic Settings {/* #new-graphic-settings */}
 
 We've added a new setting allowing to change the Shadow Map method to use the new experimental [Virtual Shadow Maps](https://docs.unrealengine.com/5.1/en-US/virtual-shadow-maps-in-unreal-engine/) method!
 
 ![](/img/blog/2023-january/shadow-map.webp)
 
 
-## CEF Framerate
+## CEF Framerate {/* #cef-framerate */}
 
 We've improved our CEF implementation by dynamically configuring it's render/update rate, and now it refreshes at the same rate as the game improving a lot the perception of fluidity.
 
 
-## HTTP & Database Renames
+## HTTP & Database Renames {/* #http--database-renames */}
 
 We've renamed HTTP and Database methods to follow the correct standard of names.
 
 E.g. We've changed `HTTP:Select` to become a synchronous method and added a new `HTTP:SelectAsync` method which is the new async. See more information about this new Compatibility Version in the official [Documentation Page](/docs/next/core-concepts/packages/compatibility-versions#version-129).
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 Since a few months now, we have had major significant changes internally in codebase (which until now were only served to add random bugs to the game 😜), but finally we can start to see the good results of that, being able to extend the API by having new classes coming up, such as the new **CharacterSimple**!
 

@@ -21,7 +21,7 @@ You can see the source code of the Context Menu in the Sandbox [GitHub](https://
 :::
 
 
-## Adding new Entries
+## Adding new Entries {/* #adding-new-entries */}
 
 ```lua title="Client/Index.lua"
 -- Adds new items to the Context Menu
@@ -34,7 +34,7 @@ function Sandbox.ContextMenu.AddItems(id, title, items)
 
 The `items` parameter is a list of tables with the format for each `type`:
 
-### `checkbox`
+### `checkbox` {/* #checkbox */}
 
 ```lua
 {
@@ -48,7 +48,7 @@ The `items` parameter is a list of tables with the format for each `type`:
 ```
 
 
-### `range`
+### `range` {/* #range */}
 
 ```lua
 {
@@ -66,7 +66,7 @@ The `items` parameter is a list of tables with the format for each `type`:
 ```
 
 
-### `button`
+### `button` {/* #button */}
 
 ```lua
 {
@@ -80,7 +80,7 @@ The `items` parameter is a list of tables with the format for each `type`:
 ```
 
 
-### `select_image`
+### `select_image` {/* #select_image */}
 
 ```lua
 {
@@ -101,7 +101,7 @@ The `items` parameter is a list of tables with the format for each `type`:
 ```
 
 
-### `select`
+### `select` {/* #select */}
 
 ```lua
 {
@@ -120,7 +120,7 @@ The `items` parameter is a list of tables with the format for each `type`:
 ```
 
 
-### `color`
+### `color` {/* #color */}
 
 ```lua
 {
@@ -149,7 +149,7 @@ The `id` property is optional, and can be useful when you want to [update](#upda
 :::
 
 
-## Removing Entries
+## Removing Entries {/* #removing-entries */}
 
 ```lua title="Client/Index.lua"
 -- Removes the items from the Context Menu
@@ -158,7 +158,7 @@ function Sandbox.ContextMenu.RemoveItems(id)
 ```
 
 
-## Updating Entries
+## Updating Entries {/* #updating-entries */}
 
 ```lua title="Client/Index.lua"
 -- Updates an existing Context Menu item value
@@ -167,11 +167,11 @@ function Sandbox.ContextMenu.SetItemValue(item_id, value)
 ```
 
 
-## Adding Entries to an Entity/Tool Gun
+## Adding Entries to an Entity/Tool Gun {/* #adding-entries-to-an-entitytool-gun */}
 
 Custom Entities and <Classes.Pickable /> (e.g. <Classes.Weapon />) have the ability to have custom Context Menu entries shown automatically when they are selected or picked up.
 
-### When selecting an Entity
+### When selecting an Entity {/* #when-selecting-an-entity */}
 
 ![](/img/docs/tutorials/sandbox/context-menu-select.webp)
 
@@ -196,7 +196,7 @@ MyEntityClass.selected_context_menu_items = {
 }
 ```
 
-### When picking up an Entity
+### When picking up an Entity {/* #when-picking-up-an-entity */}
 
 ![](/img/docs/tutorials/sandbox/context-menu-picking.webp)
 
@@ -222,7 +222,7 @@ MyGun.picked_context_menu_items = {
 ```
 
 
-## Opening/Closing
+## Opening/Closing {/* #openingclosing */}
 
 ```lua title="Client/Index.lua"
 -- Opens the Context Menu
@@ -233,7 +233,7 @@ function Sandbox.ContextMenu.Close()
 ```
 
 
-## Examples
+## Examples {/* #examples */}
 
 You can find examples and how it works deeply at the [ContextMenu.lua](https://github.com/nanos-world/nanos-world-sandbox/blob/master/Client/ContextMenu.lua) file.
 

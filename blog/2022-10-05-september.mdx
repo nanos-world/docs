@@ -13,7 +13,7 @@ image: /img/blog/2022-september/september-news.webp
 {/* truncate */}
 
 
-## Dimensions 🌌
+## Dimensions 🌌 {/* #dimensions- */}
 
 ![](/img/blog/2022-september/dimensions.webp)
 
@@ -53,7 +53,7 @@ This event will be sent to all players in that dimension.
 If you send an entity through remote events that is not in the same dimension as the Player, the argument will be replaced by `nil` and a warning will show up.
 
 
-## New Aim Block Animations
+## New Aim Block Animations {/* #new-aim-block-animations */}
 
 I've reworked the way weapons get blocked when facing obstacles. Before it was switching the AimMode to unaimed causing a really bad effect and even moving the crosshair a little.
 
@@ -64,16 +64,16 @@ Now the weapon will bend procedurally and the AimMode won't change, improving a 
 <VideoExternal path="/blog/2022-september/aim-bend-02.webm" />
 
 
-## Server Sync Values
+## Server Sync Values {/* #server-sync-values */}
 
 Now it is possible to have global synced Values between Server and Client using `Server.SetValue()` method, with a new bool parameter `sync_on_clients`. Those values will exist on all clients through `Client.GetValue()` as usual.
 
 
-## Blueprint Improvements
+## Blueprint Improvements {/* #blueprint-improvements */}
 
 Our Blueprint functionalities got boosted!
 
-### Event Dispatchers
+### Event Dispatchers {/* #event-dispatchers */}
 
 ![](/img/blog/2022-september/dispatcher.webp)
 
@@ -93,22 +93,22 @@ end)
 You can find more examples at our new documentation page: [Blueprint Communication](/docs/next/getting-started/tutorials-and-examples/blueprint-communication)!
 
 
-### Function Return Values
+### Function Return Values {/* #function-return-values */}
 
 It is also now possible to retrieve return values in Lua from Blueprint Functions!
 
 
-### Passing Actors through
+### Passing Actors through {/* #passing-actors-through */}
 
 And we can pass actors through parameters into and from Blueprints calls, they will be properly parsed into the correct entity when receiving or sending from Lua! E.g. You can create a Blueprint event which receives a `Character` or `Actor` as parameter, and pass it through Lua, it will be automatically parsed and marshalled to the correct Blueprint variable type!
 
 
-## Scripting Events Variables
+## Scripting Events Variables {/* #scripting-events-variables */}
 
 Now our internal variables use 8 bytes for passing floats and integers, allowing higher values from being passed through events (network ones too)!
 
 
-## Tick Performance Boost
+## Tick Performance Boost {/* #tick-performance-boost */}
 
 ![](/img/blog/2022-september/tick-performance.webp)
 
@@ -117,7 +117,7 @@ I managed to improve a lot the performance when having thousands of entities spa
 This improved the CPU usage in almost 10x in some cases!
 
 
-## Client Side Network Authority
+## Client Side Network Authority {/* #client-side-network-authority */}
 
 An experimental feature which has been added is the ability to allow methods of being called in the client-side if the player is the network authority of that entity.
 
@@ -126,12 +126,12 @@ For example now it is possible to call `TranslateTo`, `RotateTo`, `SetForce`, `A
 ![](/img/blog/2022-september/physics-gun.webp)
 
 
-## WebUI Native Tables
+## WebUI Native Tables {/* #webui-native-tables */}
 
 Now you don't need to `JSON.stringify()` tables to pass to WebUI events anymore! You can pass them directly as the arguments and it will be natively parsed, which means much more performance when passing big tables around, and also you don't need to worry about stringifying or parsing them anymore as they already come as native table as the parameter!
 
 
-## File JSON Parser
+## File JSON Parser {/* #file-json-parser */}
 
 Our File entity got a new method to natively load a JSON file and get it's table into Lua:
 
@@ -149,9 +149,9 @@ Parsing it with Native JSON parser: took 1057ms.
 ```
 
 
-## CEF Improvements
+## CEF Improvements {/* #cef-improvements */}
 
-### Loading Screen
+### Loading Screen {/* #loading-screen */}
 
 I finished integrating CEF into the Loading Screen and now Ultralight has been completely removed from nanos world.
 
@@ -161,12 +161,12 @@ Also we got a new feature for Loading Screen: the ability to stop the Main Menu 
 Events.Call("StopMenuMusic");
 ```
 
-### Better Error Handling
+### Better Error Handling {/* #better-error-handling */}
 
 The error handling has been improved as well, before we didn't get feedback of errors when loading invalid files and now we have.
 
 
-## Character Blend Spaces
+## Character Blend Spaces {/* #character-blend-spaces */}
 
 Now it is possible to import custom Locomotion Blend Spaces to your Characters. You can override Standing, Crouching and Proning animations. And also set the transition animation between them!
 
@@ -186,7 +186,7 @@ Character.SetAnimationsTransitionCrouchingProning(anim_crouching_to_proning, ani
 You can find more examples at our new documentation page: [Character Locomotion Animations](/docs/next/assets-modding/creating-assets/animations/characters/character-locomotion-animations)!
 
 
-## Precaching Assets
+## Precaching Assets {/* #precaching-assets */}
 
 Now it is possible to precache assets to make them load in Loading Screen (avoiding FPS spikes during game), for that you can just call:
 
@@ -201,7 +201,7 @@ All Assets are already precached automatically once referenced, so this new meth
 :::
 
 
-## Better Wallbang
+## Better Wallbang {/* #better-wallbang */}
 
 Our firing wallbangs were not working properly and I decided to rework it. Now wallbanging water reaches 10x further and causes more damage (before it was not possible to penetrate Water with bullets).
 
@@ -210,26 +210,26 @@ We've also got a new Debug settings to draw Weapon's bullet traces in the world,
 ![](/img/blog/2022-september/wallbang.webp)
 
 
-## Menu Improvements
+## Menu Improvements {/* #menu-improvements */}
 
-### Framerate
+### Framerate {/* #framerate */}
 
 Our Main Menu got some improvements, we FPS limit has been hardcoded increased to 120 (was 60) and during loading to 60 (was 30), it is still not great as I want to limit it to monitor refresh rate automatically.
 
 
-### Labels
+### Labels {/* #labels */}
 
 Our tabs got new labels to improve the User Experience, mainly when creating a New Game. Now it is possible to know how many dependencies you have selected without needing to enter that menus:
 
 
-### New Game
+### New Game {/* #new-game */}
 
 Also in the New Game menu, now all configuration (including dependencies) are loaded from disk's Config.toml file. So we don't need to keep reconfiguring it every time when starting a server!
 
 ![](/img/blog/2022-september/new-game.webp)
 
 
-## Debug Settings
+## Debug Settings {/* #debug-settings */}
 
 We got 3 new debug settings:
 
@@ -240,7 +240,7 @@ We got 3 new debug settings:
 ![](/img/blog/2022-september/character-capsule.webp)
 
 
-## Miscellaneous Improvements
+## Miscellaneous Improvements {/* #miscellaneous-improvements */}
 
 Some other improvements and small new features we've got during this month:
 
@@ -253,7 +253,7 @@ Some other improvements and small new features we've got during this month:
 - All Character interaction (grab Prop, pickup Weapons, enter vehicles) were reworked, and now the traces are 100% precise when interacting with big objects. Also I striped the extra components needed for that, which will improve performance with too many interactable objects spawned.
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 We had many significant advances this month! Blueprint improvements were a great achievement for me because I had to do a monstrous reverse engineering on Unreal and several memory magic to intercept events.
 

@@ -16,7 +16,7 @@ Welcome to our roundup of the latest updates from the last months!
 {/* truncate */}
 
 
-## Introducing... Go Horse Studios!
+## Introducing... Go Horse Studios! {/* #introducing-go-horse-studios */}
 
 It's with great joy that we announce the new team brand behind nanos world: **Go Horse Studios**!
 
@@ -27,7 +27,7 @@ It's with great joy that we announce the new team brand behind nanos world: **Go
 />
 
 
-### What changes?
+### What changes? {/* #what-changes */}
 
 Practically, nothing! It's still us, but under a proper name. This is a step forward in becoming a more solid and professional studio!
 
@@ -38,7 +38,7 @@ We established a simple landing page where you will be able to find all the offi
 <ReferenceLink href="https://gohorsestudios.com">🐴 Go Horse Studios</ReferenceLink>
 
 
-## Halloween Playtest Recap
+## Halloween Playtest Recap {/* #halloween-playtest-recap */}
 
 ![](/img/blog/2025-november/halloween.webp)
 
@@ -49,7 +49,7 @@ The data and insights gathered during this playtest helped us a lot finding seve
 Again, a huge **thank you** to everyone who jumped in, tested, and reported issues! And stay tuned that we will be hosting more events like this in the future! 🎃
 
 
-### Community Creators
+### Community Creators {/* #community-creators */}
 
 We also want to highlight the amazing creators who built the game-modes we played: **NegativeName**, **Wast3d**, **Antho**, **Voltaism**, **Ayanokoji**, and **olivato**.
 
@@ -60,12 +60,12 @@ To celebrate your contribution, you have all been awarded the **Halloween 2025 B
 <MediaLegend>Halloween 2025 In-Game Badge</MediaLegend>
 
 
-### Screenshot Highlights
+### Screenshot Highlights {/* #screenshot-highlights */}
 
 Check out the screenshots and highlights in our [Discord channel](https://discord.com/channels/124107916432113666/693815562538582086/1434984697016094832).
 
 
-## Unreal Engine 5.7
+## Unreal Engine 5.7 {/* #unreal-engine-57 */}
 
 ![](/img/blog/2025-november/ue-57-banner.webp)
 
@@ -78,14 +78,14 @@ We were previously on version 5.5, so this update brings a lot of rendering and 
 ~~We are currently waiting for the first hotfix to release before we push the new nanos world version.~~ At the time of writing, Unreal Engine **5.7.1** has been just released! We will be testing and pushing the update in the next days!
 
 
-### New Video Settings
+### New Video Settings {/* #new-video-settings */}
 
 ![](/img/blog/2025-november/megalights.webp)
 
 With Unreal **5.7**, we are also exposing new settings to control new rendering features, such as `MegaLights` and the new Anti-Aliasing `SMAA`.
 
 
-## File Validator Rework
+## File Validator Rework {/* #file-validator-rework */}
 
 ![](/img/blog/2025-november/validating.webp)
 
@@ -96,14 +96,14 @@ Our **Files Validator** has been completely reworked. It now validates local fil
 Additionally, it now properly removes any **outdated files** that were deleted on the server (for both Packages and Assets). This fixes crashes caused by leftover, old assets persisting on the client side.
 
 
-## Unified Package Cache
+## Unified Package Cache {/* #unified-package-cache */}
 
 The client's **Packages Cache** folder is now unified across all servers. This means if you connect to another server using the same package, it will **reuse** the existing cache. No more unnecessary re-downloads!
 
 This also greatly improves the experience for **P2P** servers. Previously, these servers had to re-download all scripting files every time the server started (as they generated random fake IPs to connect).
 
 
-## File Transfer Rework
+## File Transfer Rework {/* #file-transfer-rework */}
 
 The **File Transfer System** has been completely overhauled to be far more robust and stable utilizing the inline networking sockets system.
 
@@ -114,7 +114,7 @@ Furthermore, we can now transmit files of **any size** (the old 256 MB limit has
 To be able to broadly test this new system, this is now the default system for file transmission. The HTTP transfer method can still be used but must be manually enabled in the settings.
 
 
-## New Status Page
+## New Status Page {/* #new-status-page */}
 
 ![](/img/blog/2025-november/status.webp)
 
@@ -125,14 +125,14 @@ We've created a new **Status Page** that monitors the uptime of all our services
 <ReferenceLink href="https://status.nanos-world.com">🕑 Status Page Dashboard</ReferenceLink>
 
 
-## Performance++
+## Performance++ {/* #performance */}
 
 We are always working hard to make nanos world as efficient as possible. This month, we focused on greatly improving our **Network Authority** algorithm, making it much more efficient by iterating only the Network Authority Distributed list on every tick.
 
 We also optimized many **UIs** on both the main menu and the escape menu, making them far more rendering-efficient, and reducing hitches when opening/loading them.
 
 
-## Profile Badges
+## Profile Badges {/* #profile-badges */}
 
 ![](/img/blog/2025-november/badges.webp)
 
@@ -153,7 +153,7 @@ You can also check all your Earned Badges on your Account Profile:
 <ReferenceLink href="https://nanos-world.com/account/badges">🙍 Account Profile - Badges</ReferenceLink>
 
 
-## In-Game Notifications!
+## In-Game Notifications! {/* #in-game-notifications */}
 
 ![](/img/blog/2025-november/notifications.webp)
 
@@ -166,9 +166,9 @@ It is now possible to programmatically show notifications to players via the int
 It will also display **FATAL** and **ERROR** logs that may occur during gameplay.
 
 
-## Debug Improvements
+## Debug Improvements {/* #debug-improvements */}
 
-### Profiling Stack
+### Profiling Stack {/* #profiling-stack */}
 
 Our **Profiling List** now shows the **Stack Hierarchy** of all calls, allowing for better debugging of what is causing any performance issues.
 
@@ -177,7 +177,7 @@ Our **Profiling List** now shows the **Stack Hierarchy** of all calls, allowing 
 <MediaLegend>Profiling List</MediaLegend>
 
 
-### Profiling Entities Network
+### Profiling Entities Network {/* #profiling-entities-network */}
 
 Our **Entities Network Stats Information** profiling now shows how many entities are spawned for each Class, and whether they are actively transmitting data or inactive.
 
@@ -186,19 +186,19 @@ Our **Entities Network Stats Information** profiling now shows how many entities
 <MediaLegend>Entities Network Stats Information profiling section</MediaLegend>
 
 
-## Misc
+## Misc {/* #misc */}
 
-### VOIP/Fire Events
+### VOIP/Fire Events {/* #voipfire-events */}
 
 We've changed the behavior of <EventReference type="Class" class_name="Player" event="VOIP" /> and <EventReference type="Class" class_name="Weapon" event="Fire" /> events. They now trigger on the client first. This allows for better handling of the client-side actions triggering those events, allowing listening to those calls before they are sent to the server.
 
 
-### New `max_send_rate` Setting
+### New `max_send_rate` Setting {/* #new-max_send_rate-setting */}
 
 We added a new `Config.toml` setting: [`max_send_rate`](/docs/next/core-concepts/server-manual/server-configuration#settings-detailed). This allows server owners to control the **maximum network bandwidth** per connected player, effectively limiting download speeds if necessary.
 
 
-### Suggest/Report Button
+### Suggest/Report Button {/* #suggestreport-button */}
 
 ![](/img/blog/2025-november/report-button.webp)
 
@@ -211,24 +211,24 @@ We've added a new button that lets you rapidly submit a message to our backend. 
 <MediaLegend>Report Popup</MediaLegend>
 
 
-### HUB Server
+### HUB Server {/* #hub-server */}
 
 We added a new *experimental* section on the Main Menu to display a **"HUB"** server that you can rapidly connect to. In the future, this server will host a custom, simple game-mode that allows players to join and socialize while waiting for other servers to start.
 
 
-### Updated Roadmap
+### Updated Roadmap {/* #updated-roadmap */}
 
 We have updated our public Roadmap and added a bunch of new features, to mention a few: **Anti-Cheat**, **Monetization Tools**, **Culling System**, and more that we already released! Check it out:
 
 <ReferenceLink href="https://docs.nanos-world.com/roadmap">🛣️ Roadmap</ReferenceLink>
 
 
-### Steam SDK update
+### Steam SDK update {/* #steam-sdk-update */}
 
 We've updated the Steam SDK to the latest 1.62 version.
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 Since we skipped October's blog to focus on Halloween, this blog wraps up the last two months!
 

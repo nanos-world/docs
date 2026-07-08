@@ -26,7 +26,7 @@ Proprietary Codecs like **MPEG-4** (.mp4), **H.264**, **H.265** and **AAC** are 
 :::
 
 
-## 🎒 Examples
+## 🎒 Examples {/* #examples */}
 
 ```lua title="Client/Index.lua" showLineNumbers
 -- Loading a local file
@@ -52,7 +52,7 @@ local my_ui = WebUI(
 ```
 
 
-#### Using a WebUI as Mesh Material
+#### Using a WebUI as Mesh Material {/* #using-a-webui-as-mesh-material */}
 
 ```lua title="Client/Index.lua" showLineNumbers
 -- Spawns a WebUI with is_visible = false, is_transparent = false, auto_resize = false and size of 500x500
@@ -66,7 +66,7 @@ static_mesh:SetMaterialFromWebUI(my_ui)
 ```
 
 
-#### Communicating between Lua and JS (WebUI)
+#### Communicating between Lua and JS (WebUI) {/* #communicating-between-lua-and-js-webui */}
 
 ```lua title="Client/Index.lua" showLineNumbers
 local my_ui = WebUI("Awesome UI", "file://UI/index.html")
@@ -99,7 +99,7 @@ Events.Unsubscribe("MyEvent");
 ```
 
 
-#### Pretty Scroll Bar
+#### Pretty Scroll Bar {/* #pretty-scroll-bar */}
 
 Since we migrated from Webkit to CEF, some scrollbars got ugly. Here's a small CSS snippet to make them almost like the Webkit ones:
 
@@ -130,7 +130,7 @@ You can use the output Texture from a Canvas with [:SetMaterialFromWebUI()](/scr
 :::
 
 
-## 📚 Libraries & Frameworks
+## 📚 Libraries & Frameworks {/* #libraries--frameworks */}
 
 Here a list of Community Created Libraries & Frameworks making use of WebUIs expanding it's possibilities:
 
@@ -164,12 +164,12 @@ Here a list of Community Created Libraries & Frameworks making use of WebUIs exp
 </div>
 
 
-## 🛠 Constructors
+## 🛠 Constructors {/* #constructors */}
 
 <ConstructorDeclaration type="Class" name="WebUI" />
 
 
-## 🔍 HTML Path Searchers
+## 🔍 HTML Path Searchers {/* #html-path-searchers */}
 
 Loading a .html file supports the following searchers, which are looked in the following order:
 
@@ -179,16 +179,16 @@ Loading a .html file supports the following searchers, which are looked in the f
 4. Relative to `Packages/`
 
 
-## 🗿 Static Functions
+## 🗿 Static Functions {/* #static-functions */}
 
 <StaticFunctionsDeclaration type="Class" name="WebUI" />
 
 
-## 🦠 Functions
+## 🦠 Functions {/* #functions */}
 
 <FunctionsDeclaration type="Class" name="WebUI" />
 
 
-## 🚀 Events
+## 🚀 Events {/* #events */}
 
 <EventsDeclaration type="Class" name="WebUI" />

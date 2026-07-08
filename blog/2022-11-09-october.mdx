@@ -13,7 +13,7 @@ image: /img/blog/2022-october/october-news.webp
 
 {/* truncate */}
 
-## Halloween Playtest
+## Halloween Playtest {/* #halloween-playtest */}
 
 This month we had our annual Halloween 🎃 event! As always, it has always been a moment of great evolution for nanos world! I would like to thank everyone who participated playing and the testers who participated creating content and game-modes for this event!
 
@@ -26,37 +26,37 @@ Due to the event, we halted the updates for two weeks to focus only on bug corre
 ![](/img/blog/2022-october/playtest-02.webp)
 
 
-## Vehicle Improvements
+## Vehicle Improvements {/* #vehicle-improvements */}
 
 I did several improvements on the Vehicle class, allowing bigger customization on them.
 
-### New Default Vehicles
+### New Default Vehicles {/* #new-default-vehicles */}
 
 We've added a new Vehicle Pack to the default nanos world vehicles pack. 4 of them are from a Feature free Marketplace pack (from the same creator of our previous one), and the Offroad is from Epic Games.
 
 ![](/img/blog/2022-october/new-vehicles.webp)
 
 
-### Animation Blueprints
+### Animation Blueprints {/* #animation-blueprints */}
 
 I've added the possibility of loading custom Animation Blueprints on Vehicles, allowing the opportunity to have custom suspension animations like this one of the new Offroad vehicle:
 
 <VideoExternal path="/blog/2022-october/offroad.mp4" />
 
 
-### Dynamic Lights Texture
+### Dynamic Lights Texture {/* #dynamic-lights-texture */}
 
 Now it is possible to configure your vehicle with custom Material Parameters to turn it's Lights ON or OFF dynamically. You can find more info on how to configure your vehicles materials [here](/docs/next/assets-modding/creating-assets/skeletal-meshes/vehicles-meshes#adding-dynamic-head--tail-lights).
 
 <VideoExternal path="/blog/2022-october/taillights.webm" />
 
 
-### New Subtle SFX
+### New Subtle SFX {/* #new-subtle-sfx */}
 
 Also, I've added new custom sounds effects to vehicles, such as pulling the handbrake, or wheels brake screeching for example which adds to the realism and immersion.
 
 
-## Vault Text HTML Parser
+## Vault Text HTML Parser {/* #vault-text-html-parser */}
 
 Previously, as Vault item descriptions and changelogs were generated with HTML, we had CEF Browsers (WebUI) rendering them, but it was too much overkill and also quite disconnected from the rest of the UI.
 
@@ -67,7 +67,7 @@ So I decided to implement a custom HTML Parser to convert the HTML into proper U
 ![](/img/blog/2022-october/changelog.webp)
 
 
-## Native JSON Parser
+## Native JSON Parser {/* #native-json-parser */}
 
 I am migrating our current built-in JSON library to a native more-efficient JSON parser. With this new parser, we've managed to reach 10x speed when parsing JSON strings! All methods will remain the same, just the implementation will change.
 
@@ -78,27 +78,27 @@ Benchmark 'Native JSON Parser' (x10) took 1057ms.
 ```
 
 
-## Kill Z
+## Kill Z {/* #kill-z */}
 
 I implemented a built-in system for Kill Z. This is a system to destroying entities automatically when they reach too low heights, preventing some problems such as value overloading.
 
 Currently the Kill Z offset is hardcoded for testing.
 
 
-## Big API Refactoring
+## Big API Refactoring {/* #big-api-refactoring */}
 
 This refactoring update will come in a future update and it's not completely done yet, but I would like to advance some things that are planned to change. We know refactoring usually comes with several breaking changes, but this time I'm working harder to make this update with zero breaking changes, keeping backwards compatibilities until you update your packages.
 
 If you have more ideas for dramatical changes (such as renaming methods to maintain standard for example), please let us know so we can include in this big update!
 
-### Package Compatibility
+### Package Compatibility {/* #package-compatibility */}
 
 I will be introducing a new setting in the Package.toml for the "Compatibility Version", where you can configure the current version of the game that works with that package and if the game updates and any method that your package uses get modified, it will continue to work in a "compatibility mode" (with deprecated alerts).
 
 This differs from the usual "deprecated warnings" because now in cases where the signature of a method changes the package will not stop working (as it happens today), and the old implementation/interface will still exist internally.
 
 
-### Events
+### Events {/* #events */}
 
 Currently events work by just subscribing and calling them local or remotely, but we cannot strict if we just want to receive them on a specific side. A new addition will be the subscription of remote-only events:
 
@@ -109,24 +109,24 @@ Events.SubscribeRemote()
 This way only events called with `Events.CallRemote()` on the other side will trigger it. And also events subscribed with `Events.Subscribe()` will not receive remote events anymore.
 
 
-### Modules
+### Modules {/* #modules */}
 
 Modules (Lua external binaries) will be reformed to become a type of Package. This way they can be shared easily and used by other packages, including through Vault.
 
 
-### Configuration Files
+### Configuration Files {/* #configuration-files */}
 
 Now different Packages types will have different configuration files format (toml).
 
 For example, the `loading-screen` package configuration currently have a lot of configuration which is not used by it (dependencies, assets, lua settings, etc). I want to have specific configuration files for each kind of Package (Modules, Loading Screen, Game-Modes, Libraries and Scripts), as also they will be loaded in different ways internally.
 
 
-### Server, Package & Assets Image
+### Server, Package & Assets Image {/* #server-package--assets-image */}
 
 I'm removing the `image` URL setting inside the configuration .toml files, instead the image should be placed besides the .toml with the name `Package.jpg`, `Assets.jpg` or `Server.jpg`. This will avoid some problems of the client accessing dangerous or bad external URLs.
 
 
-### Multiple Constructors
+### Multiple Constructors {/* #multiple-constructors */}
 
 A feature that will be included is the possibility of multiple Constructors, a very good example is the Sound Class that has several parameters that depend if the sound is 2D or 3D:
 
@@ -144,7 +144,7 @@ Sound(location, asset, auto_destroy, sound_type, volume, pitch, inner_radius, fa
 This way you can spawn a 2D or 3D sound just by choosing the right constructor!
 
 
-### Static Classes Renames
+### Static Classes Renames {/* #static-classes-renames */}
 
 This will be a big organizational change! With each new update, some of our Static Classes are starting to accumulate lots of methods, and many of these are unrelated to each other.
 
@@ -157,12 +157,12 @@ We will have several new Static Classes, to list a few:
 The full list with all changes will be listed when the update is released. All of these changes, including it's Events will be warned as deprecated for use.
 
 
-### Class Renames
+### Class Renames {/* #class-renames */}
 
 Some classes will also be renamed for better standardization. For example **Character** and **Vehicle** could become `CharacterMannequin` and `VehicleWheeled`, which allows new classes of other types e.g. `VehicleWater` or `CharacterGeneric`.
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 This was a month of several fixes, improvements and rethinking the API as a whole, refactor is always a challenge as I need to maintain everything working and still rearrange the new interfaces of it, I don't want to rush this change.
 

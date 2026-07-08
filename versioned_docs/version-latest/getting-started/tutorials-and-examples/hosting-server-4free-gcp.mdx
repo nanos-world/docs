@@ -21,7 +21,7 @@ The following guide was based and had several excerpts taken from [https://linux
 
 :::
 
-## What Is Google Cloud?
+## What Is Google Cloud? {/* #what-is-google-cloud */}
 
 ![](/img/docs/tutorials/hosting-4free-01.webp)
 
@@ -35,11 +35,11 @@ With Google Cloud, anyone can easily spin up a virtual machine in seconds and us
 
 Best of all, all new Google Cloud users receive a $300 credit that can be used with any Google Cloud service. To be eligible for the bonus credit, you have to be a new Google Cloud customer and set up a billing account by providing your credit card information, which is required to verify that you’re not a bot.
 
-## Setting Up a Google Cloud Server from Scratch for nanos world
+## Setting Up a Google Cloud Server from Scratch for nanos world {/* #setting-up-a-google-cloud-server-from-scratch-for-nanos-world */}
 
 Google has made it very easy to set a new Google Cloud server from scratch, and the whole process shouldn’t take you more than 15 minutes from start to finish.
 
-### Step 1: Sign In to Google Cloud
+### Step 1: Sign In to Google Cloud {/* #step-1-sign-in-to-google-cloud */}
 
 At [https://console.cloud.google.com](https://console.cloud.google.com), click on **Get started for free** located in the upper-right of the screen:
 
@@ -49,7 +49,7 @@ If you haven’t provided your credit card details to Google before, you will be
 
 ![](/img/docs/tutorials/hosting-4free-03.webp)
 
-### Step 2: Create a New Google Cloud Server
+### Step 2: Create a New Google Cloud Server {/* #step-2-create-a-new-google-cloud-server */}
 
 To create a new VM, select ‘Compute Engine’ and then ‘VM Instances’
 
@@ -77,7 +77,7 @@ Under **Firewall** select to allow **HTTP** and **HTTPS** traffic, as well in **
 
 Once you have everything configured to your liking, click the ‘Create’ button on the bottom of the page.
 
-### Step 3: Use your Google Cloud Server
+### Step 3: Use your Google Cloud Server {/* #step-3-use-your-google-cloud-server */}
 
 ![](/img/docs/tutorials/hosting-4free-10.webp)
 
@@ -99,7 +99,7 @@ If your system doesn't have a built-in SSH client, you may use third-party clien
 
 :::
 
-### Step 4: Installing nanos world server
+### Step 4: Installing nanos world server {/* #step-4-installing-nanos-world-server */}
 
 Now you must download nanos world server in your VM.
 
@@ -149,7 +149,7 @@ Use `tmux` if you want to run the server even if you're not logged in via SSH. I
 
 Note that your server failed to communicate with the **Master Server**, this is because we didn’t forward the correct ports yet in your VM, let’s do that in the next step!
 
-### Step 5: Forwarding Ports in the Google Cloud
+### Step 5: Forwarding Ports in the Google Cloud {/* #step-5-forwarding-ports-in-the-google-cloud */}
 
 To be able to communicate with Master Server or for other players to be able to connect to your server, you must forward your server ports. By default nanos world use ports 7777 (UDP and TCP) and 7778 (UDP).
 
@@ -175,7 +175,7 @@ And now you can find it in the **Find Servers** menu!
 
 ![](/img/docs/tutorials/hosting-4free-18.webp)
 
-### Conclusion
+### Conclusion {/* #conclusion */}
 
 In this guide you learnt how easy it is to create a free server for nanos world using Google Cloud! Remember that Google Cloud is a paid service that offers small free tasting services, as nanos world doesn’t need that much processing the Free Tier is enough for basic game modes and to play with friends! Pay attention to the Google Cloud contracts and try to learn out more about it so as not to be caught off guard!
 

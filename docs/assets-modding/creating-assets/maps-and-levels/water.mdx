@@ -23,7 +23,7 @@ Using the new Water Plugin from Unreal requires you enabling it in your ADK Proj
 In [Unreal Engine Documentation](https://docs.unrealengine.com/4.27/en-US/BuildingWorlds/Water/) you can find dozens of guides and tutorials on how to use it, and don't worry, everything will work once you import it into nanos world!
 
 
-## How Objects react to Water
+## How Objects react to Water {/* #how-objects-react-to-water */}
 
 ![](/img/docs/water-boat.webp)
 
@@ -36,14 +36,14 @@ We still want to expose ways of you customizing and controlling the Buoyance Sph
 :::
 
 
-### Props & Pickables
+### Props & Pickables {/* #props--pickables */}
 
 Props and Pickables are the most straightforward objects, they will automatically get **one** Buoyance Sphere at the same size of their Meshes.
 
-### Vehicles
+### Vehicles {/* #vehicles */}
 
 Vehicles will automatically get **four** Buoyance Spheres, positioned around each Wheel, which will make Vehicles float and do not turn that easily.
 
-### Character
+### Character {/* #character */}
 
 Characters use a more complex system, integrated with Swimming states and animations. It uses **one** Buoyance Sphere as well, slightly translated to make the swimming animation transitions work perfectly.

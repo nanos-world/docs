@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 Creating servers in nanos world is very simple and straightforward, just a few steps and you have your server up and ready!
 
-## Minimum System Requirements
+## Minimum System Requirements {/* #minimum-system-requirements */}
 
 * **OS**: [Windows](#windows) or [Linux*](#linux)
 * **Processor**: `2x 1.0 GHz` (faster cores is better than many cores)
@@ -21,7 +21,7 @@ Creating servers in nanos world is very simple and straightforward, just a few s
 * **Network Forwarded Ports**: `7777 TCP/UDP` and `7778 UDP` (you can change that in the Config)
 
 
-## Windows
+## Windows {/* #windows */}
 
 :::info Requirements
 
@@ -37,7 +37,7 @@ On **Windows**, you have *four* options for downloading nanos world server:
 4. Using [Docker](server-docker) (maintained by the community).
 
 
-## Linux
+## Linux {/* #linux */}
 
 :::info Recommended and Tested Distros
 
@@ -61,7 +61,7 @@ On **Linux**, you have *two* options for downloading nanos world server:
 **Note**: on Linux, you must start the server using the Shell Script `./NanosWorldServer.sh`, which will configure proper paths and needed dynamic libraries which need to be loaded!
 
 
-### Installing SteamCMD on Linux
+### Installing SteamCMD on Linux {/* #installing-steamcmd-on-linux */}
 
 If you are on Ubuntu/Debian, you can easily install **SteamCMD** like that:
 
@@ -103,19 +103,19 @@ See the SteamCMD [official installation instructions](https://developer.valvesof
 :::
 
 
-## Downloading with SteamCMD
+## Downloading with SteamCMD {/* #downloading-with-steamcmd */}
 
 To download the server through **SteamCMD** (a command line version of Steam) please [download it](https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_SteamCMD) from the Steam official website before proceeding.
 
-### Manual Installation
+### Manual Installation {/* #manual-installation */}
 
-#### 1. After downloaded run `steamcmd` executable, to enter into it's console:
+#### 1. After downloaded run `steamcmd` executable, to enter into it's console: {/* #1-after-downloaded-run-steamcmd-executable-to-enter-into-its-console */}
 
 ```steamcmd
  
 ```
 
-#### 2. You can optionally define an installation folder to install nanos world server:
+#### 2. You can optionally define an installation folder to install nanos world server: {/* #2-you-can-optionally-define-an-installation-folder-to-install-nanos-world-server */}
 
 <Tabs groupId="operating-systems"
   values={[
@@ -138,13 +138,13 @@ force_install_dir /home/<YOUR_USERNAME>/nanos-world-server/
   </TabItem>
 </Tabs>
 
-#### 3. The next step is to login on SteamCMD, you can login anonymously with:
+#### 3. The next step is to login on SteamCMD, you can login anonymously with: {/* #3-the-next-step-is-to-login-on-steamcmd-you-can-login-anonymously-with */}
 
 ```steamcmd
 login anonymous
 ```
 
-#### 4. You can then install or update nanos world server using it's app id: `1936830`:
+#### 4. You can then install or update nanos world server using it's app id: `1936830`: {/* #4-you-can-then-install-or-update-nanos-world-server-using-its-app-id-1936830 */}
 
 ```steamcmd
 app_update 1936830 validate
@@ -156,7 +156,7 @@ Or to install the `bleeding-edge` version, specify it's branch:
 app_update 1936830 -beta bleeding-edge validate
 ```
 
-#### And you are done! You can quit the console:
+#### And you are done! You can quit the console: {/* #and-you-are-done-you-can-quit-the-console */}
 
 ```steamcmd
 quit
@@ -169,7 +169,7 @@ To revert to default branch, install it forcing the public branch: `app_update 1
 :::
 
 
-### One-liner Installation
+### One-liner Installation {/* #one-liner-installation */}
 
 An easier way to install or update nanos world server is using an one-liner command to run SteamCMD:
 

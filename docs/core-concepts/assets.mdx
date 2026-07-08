@@ -13,7 +13,7 @@ All you need to know about Assets
 In order to use custom Assets in your servers, for example to spawn a Prop, or a custom Weapon you must have an **Asset Pack**. Asset Packs are a set of Assets that were exported together from Unreal.
 
 
-## Folder Structure
+## Folder Structure {/* #folder-structure */}
 
 All Asset Packs go under the server's `Assets/` directory. Each Asset Pack is a folder under that.
 
@@ -45,7 +45,7 @@ Packages/
 Config.toml
 ```
 
-## Assets Pack Configuration
+## Assets Pack Configuration {/* #assets-pack-configuration */}
 
 Asset Packs have a configuration file in the root of the Asset Pack folder, called `Assets.toml`, in this file we can setup all pertinent settings related to the Asset Pack:
 
@@ -54,7 +54,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Assets.toml
 ```
 
 
-### Settings Detailed
+### Settings Detailed {/* #settings-detailed */}
 
 See a description of what each setting does:
 
@@ -77,7 +77,7 @@ See a description of what each setting does:
 | **`assets.others`** | List of other Assets in this Asset Pack |
 
 
-### Asset Meta Data
+### Asset Meta Data {/* #asset-meta-data */}
 
 It is possible to define custom Meta Data for each individual Asset!
 
@@ -108,12 +108,12 @@ The `path` key is required, all other values are optional and customizable, use 
 :::
 
 
-## Logo Image
+## Logo Image {/* #logo-image */}
 
 It is possible to have a custom image to be displayed in the Vault. For that, add a file called `Assets.jpg` besides the Assets.toml with the image you wish. The recommended size is `300x150`.
 
 
-## Referencing Assets in Scripting
+## Referencing Assets in Scripting {/* #referencing-assets-in-scripting */}
 
 To be able to use Assets in your code, first you have to ensure that the Asset Pack is loaded. An Asset Pack is loaded when:
 
@@ -136,7 +136,7 @@ Example:
 :::
 
 
-## Types of Assets
+## Types of Assets {/* #types-of-assets */}
 
 Some scripting methods require some specific Type of Assets to load. Attempting to load an invalid or wrong type will cause an Error. E.g.: `Character:SetMesh()` requires an Asset of type `Skeletal Mesh`.
 
@@ -154,14 +154,14 @@ Here's a list of all supported Asset types:
 | **Blueprint** | Unreal Actor Blueprints can be used for spawning Blueprint entities |
 
 
-## Creating your own Assets
+## Creating your own Assets {/* #creating-your-own-assets */}
 
 To create your own Asset Pack, please refer to Importing Custom Assets Guide.
 
 <ReferenceLink href="assets-modding/creating-assets/setting-up-ue">📦 Importing Custom Assets</ReferenceLink>
 
 
-## Default Asset Pack
+## Default Asset Pack {/* #default-asset-pack */}
 
 nanos world provides a default Asset Pack which is already included in the base game. Please refer to the Default Asset Pack page for more information.
 

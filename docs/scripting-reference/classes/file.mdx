@@ -14,7 +14,7 @@ It is not possible to open files from outside the server folder. All path must b
 :::
 
 
-## 🎒 Examples
+## 🎒 Examples {/* #examples */}
 
 ```lua showLineNumbers
 local configuration_file = File("my_awesome_configuration.json")
@@ -23,12 +23,12 @@ local configuration_file_json = JSON.parse(configuration_file:Read())
 ```
 
 
-## 📂 File Access & Sandboxing
+## 📂 File Access & Sandboxing {/* #file-access--sandboxing */}
 
 Access to files is sandboxed. Only certain directories and files are allowed to be written or read from.
 
 
-#### Allowed Extensions
+#### Allowed Extensions {/* #allowed-extensions */}
 
 Only the following file extensions are allowed to be accessed (read & write):
 
@@ -41,7 +41,7 @@ If you think that a file extension should be added to the allowed list, please r
 :::
 
 
-#### Server Side
+#### Server Side {/* #server-side */}
 
 On Server side, it's only allowed to access files inside the server folder itself (where server executable is located). Also, accessing the Config.toml is not allowed.
 
@@ -50,7 +50,7 @@ The default directory is where the server executable is located.
 Example accessing a file from a Package: `Packages/My-Package/Server/MyFile.json`.
 
 
-#### Client Side
+#### Client Side {/* #client-side */}
 
 On the client side, we have the concept of the `.transient/` folder which is a folder automatically generated inside the client's cached `Packages/` folder, where files can be created in a more persistent way.
 
@@ -63,21 +63,21 @@ Example accessing a file from a Package (with read-only access): `../my-package/
 Example accessing a transient file (with write access): `MyFile.json`.
 
 
-## 🛠 Constructors
+## 🛠 Constructors {/* #constructors */}
 
 <ConstructorDeclaration type="Class" name="File" />
 
 
-## 🗿 Static Functions
+## 🗿 Static Functions {/* #static-functions */}
 
 <StaticFunctionsDeclaration type="Class" name="File" />
 
 
-## 🦠 Functions
+## 🦠 Functions {/* #functions */}
 
 <FunctionsDeclaration type="Class" name="File" />
 
 
-## 🚀 Events
+## 🚀 Events {/* #events */}
 
 <EventsDeclaration type="Class" name="File" />

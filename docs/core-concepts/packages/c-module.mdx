@@ -23,17 +23,17 @@ This is an advanced procedure so instabilities and even crashes may occur.
 :::
 
 
-## Creating your C Module binaries
+## Creating your C Module binaries {/* #creating-your-c-module-binaries */}
 
 To create your own module, fist make sure you have **Visual Studio** installed with **Desktop development with C++** (and **CMake**) or any other C compiler on Linux.
 
-#### First Steps
+#### First Steps {/* #first-steps */}
 
 1. Then, clone our [example module](https://github.com/nanos-world-modules/module-example) in your computer to get start with it.
 2. After cloning, you will need to download it's submodules with `git submodule update --init --recursive` - this will download the [module-sdk](https://github.com/nanos-world/module-sdk/) as a git submodule into deps/ folder automatically.
 
 
-### Understanding the example
+### Understanding the example {/* #understanding-the-example */}
 
 The important file is under `src/example.cpp`:
 
@@ -42,7 +42,7 @@ https://github.com/nanos-world-modules/module-example/blob/main/src/example.cpp
 ```
 
 
-### Compiling your C Module
+### Compiling your C Module {/* #compiling-your-c-module */}
 
 To compile the example, follow the steps:
 
@@ -63,7 +63,7 @@ If you intend to make your module available for both Linux and Windows servers, 
 :::
 
 
-## Creating a C Module Package
+## Creating a C Module Package {/* #creating-a-c-module-package */}
 
 First of all, create a new Package of type [c-module](packages-guide#c-module), and add your `.dll` (windows) and/or `.so` (linux) files into the Package's root folder. It will look like that:
 
@@ -97,7 +97,7 @@ Then add the name of your module library (in our case, `example`) to the Package
 ```
 
 
-## Loading and Using your C Module
+## Loading and Using your C Module {/* #loading-and-using-your-c-module */}
 
 Now you can load the package you created as usual, by adding it to the Config.toml's list of Packages requirement or by adding it to another Package's Package.toml as dependency, e.g.:
 

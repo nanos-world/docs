@@ -13,7 +13,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-## Introduction
+## Introduction {/* #introduction */}
 
 Welcome to the nanos world **Quick Start** guide! After going through this guide, you will learn:
 
@@ -30,7 +30,7 @@ This tutorial is for those who have never used nanos world server before and wan
 :::
 
 
-## Step 1: Download the Server
+## Step 1: Download the Server {/* #step-1-download-the-server */}
 
 To start, you need to download the nanos world server. There are **three** options to do so:
 
@@ -39,7 +39,7 @@ To start, you need to download the nanos world server. There are **three** optio
 3. Download the **nanos world™ Dedicated Server** tool from Steam Client.
 
 
-## Step 2: Creating a Basic Package
+## Step 2: Creating a Basic Package {/* #step-2-creating-a-basic-package */}
 
 After downloading the server, let's create a basic **Package**. A Package is a collection of Lua scripts that are executed on Client or Server to interact with the game.
 
@@ -85,7 +85,7 @@ Next, you need to tell the server to load your Package when it starts. To do tha
 Add your package name (`"my-awesome-package"`) to the list of Packages that should be loaded.
 
 
-## Step 3: Adding Script functionalities
+## Step 3: Adding Script functionalities {/* #step-3-adding-script-functionalities */}
 
 Now that you have a Package, it's time to add some script functionalities to it. Scripts are pieces of code that can be executed by the server/client to add custom game logic.
 
@@ -110,7 +110,7 @@ local prop_tire = Prop(Vector(600, 0, 0), Rotator(0, 0, 0), "nanos-world::SM_Tir
 ```
 
 
-## Step 4: Starting the server
+## Step 4: Starting the server {/* #step-4-starting-the-server */}
 
 Now let's start the server with the package you just created! For that, simply double click the server executable or launch it from the terminal:
 
@@ -159,7 +159,7 @@ SUCCESS  Server successfully connected to Steam! VAC Secure!
 You can see it loaded your package and outputted the text `Loading some Props =D` on it.
 
 
-## Step 5: Join your server
+## Step 5: Join your server {/* #step-5-join-your-server */}
 
 Now let's see the results in-game! Open nanos world and connect to localhost at `127.0.0.1:7777`.
 
@@ -168,11 +168,11 @@ After connecting, you will be a flying pawn and will be able to see the props sp
 ![](/img/docs/quick-start-01.webp)
 
 
-## Extra Step: Spawning Characters
+## Extra Step: Spawning Characters {/* #extra-step-spawning-characters */}
 
 You may have noticed you are just a wandering soul flying around, let's give you some flesh! For that, we will need to interact with some **Game Events**.
 
-### Spawning a Character for the Player
+### Spawning a Character for the Player {/* #spawning-a-character-for-the-player */}
 
 Let's append some code in your `Server/Index.lua`, to spawn a <Classes.Character /> when a <Classes.Player /> joins the server:
 
@@ -207,7 +207,7 @@ To apply your changes, run the command in the server console: `package reload al
 Now you are possessed and can walk around and interact with the Props!
 
 
-### Destroying the Character when the Player leaves the Server
+### Destroying the Character when the Player leaves the Server {/* #destroying-the-character-when-the-player-leaves-the-server */}
 
 Note that the <Classes.Character /> isn't destroyed automatically when the <Classes.Player /> disconnects. For that, we will need to Subscribe for when the Player leaves the server (<EventReference type="Class" class_name="Entity" event="Destroy" /> event) then manually destroy the Character.
 
@@ -226,7 +226,7 @@ end)
 To apply your changes, run the command in the server console: `package reload all`.
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 Congratulations! You have finished your first basic Package and learn a lot!
 

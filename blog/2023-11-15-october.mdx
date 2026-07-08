@@ -16,7 +16,7 @@ Tune in for a roundup of the latest updates from October!
 {/* truncate */}
 
 
-## New Package Type: C Module
+## New Package Type: C Module {/* #new-package-type-c-module */}
 
 We are introducing a new Package type: **C Module**!
 
@@ -33,7 +33,7 @@ See more information in the dedicated C Module page:
 <ReferenceLink href="core-concepts/packages/c-module">C Module Package</ReferenceLink>
 
 
-## Unreal Engine 5.3
+## Unreal Engine 5.3 {/* #unreal-engine-53 */}
 
 ![](/img/blog/2023-october/ue53.webp)
 
@@ -42,17 +42,17 @@ We finally updated nanos world Unreal Engine version to the latest 5.3! We also 
 This version brought many many improvements overall, but also we are still figuring some issues related to our native maps which are not working properly with some certain video settings.
 
 
-## Misc
+## Misc {/* #misc */}
 
 Here it goes a digest of minor features and improvements made throughout this month:
 
 
-### GetAllValuesKeys
+### GetAllValuesKeys {/* #getallvalueskeys */}
 
 Now all entities, the Static Server and Client class has a new method `GetAllValuesKeys`, which returns a list with all the keys of the sets of values
 
 
-### Restart & ChangeMap Events
+### Restart & ChangeMap Events {/* #restart--changemap-events */}
 
 We got two new events to Server: `Restart` and `ChangeMap`, those are triggered when the server is restarted and when the map is changed (by console or through scripting).
 
@@ -63,7 +63,7 @@ Note that when the map changes, the server also restarts, triggering both events
 :::
 
 
-### Improved Table.Dump
+### Improved Table.Dump {/* #improved-tabledump */}
 
 I have made some improvements in our `Table.Dump`, now it generates a Lua compatible format, which can be easily copy and pasted in the code. Example:
 
@@ -103,7 +103,7 @@ Console.Log(NanosTable.Dump(Server.GetMaps()))
 ```
 
 
-### Zip Cleanup
+### Zip Cleanup {/* #zip-cleanup */}
 
 Now all downloaded .zip files from Asset Packs that are downloaded from Vault are deleted automatically, freeing up a lot of disk space! (This should be done way before 😜).
 
@@ -114,7 +114,7 @@ Note that existing .zip files in the Asset's .download/ folder will still remain
 :::
 
 
-## Halloween Event
+## Halloween Event {/* #halloween-event */}
 
 ![](/img/blog/2023-october/halloween.webp)
 
@@ -127,7 +127,7 @@ But we would like to thank everyone that participated in creating new game-modes
 We will be highlighting Halloween created content in your Vault with special tags and badges!
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 Last month we didn't get a news blog (for the first time since the beginning), but now we are back to the routine!
 

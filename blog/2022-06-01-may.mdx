@@ -10,7 +10,7 @@ tags: [updates]
 {/* truncate */}
 
 
-## Bugs shall not pass!
+## Bugs shall not pass! {/* #bugs-shall-not-pass */}
 
 In this month, we proudly achieved the incredible mark of 666 issues closed (fixed and/or resolved) in our [Issue Tracker](https://github.com/nanos-world/issues/issues)!
 
@@ -35,7 +35,7 @@ You can find the endless list of all the bug fixes in our [Discord Changelog Cha
 :::
 
 
-## New Feedback Page
+## New Feedback Page {/* #new-feedback-page */}
 
 Recently, we've launched a new feedback page to collect ideas & suggestions. Before we were doing it on the GitHub's Issue Tracker, but now we have a dedicated platform only for ideas and now the GitHub is not only for bugs.
 
@@ -51,7 +51,7 @@ It also provides a roadmap tab which groups all accepted/planned and in-progress
 Check it out! 👉 https://feedback.nanos-world.com/
 
 
-## P2P Servers
+## P2P Servers {/* #p2p-servers */}
 
 Something that is fundamentally important is the ability to start a game from menu to play with friends, without worrying about dedicated servers or forwarding router ports stuff.
 
@@ -74,7 +74,7 @@ When starting a P2P server, the Steam Relay Server will generate a new temporary
 As the connection is established through the Steam Relay Servers, even connecting to localhost all traffic will pass through the closest Steam Server of your computer, meaning even on localhost your ping will not be zero. If you want to test or play alone, we recommend start it as dedicated server.
 
 
-## New Sync Interpolation
+## New Sync Interpolation {/* #new-sync-interpolation */}
 
 Since UE 5.0, some interpolation started to get weird/flickering when syncing location/rotation with the clients. To fix and improve that, we managed to integrate all our network to the Unreal's build in Physics Replication system!
 
@@ -85,7 +85,7 @@ Currently, all physics entities (Props, Weapons, Melee, Grenade and Vehicles) ar
 We are still looking to include Characters in the new system. As they use a separate movement system, it requires a different approach and special attention. 😉
 
 
-## New In-game Console
+## New In-game Console {/* #new-in-game-console */}
 
 We've extended our in-game console to provide a new raw visualization. As Unreal Widgets don't provide a better approach to have both colored texts and the ability to select them, we've decided to add a new tab which converts the console into raw text, which you can freely copy them to the clipboard:
 
@@ -96,16 +96,16 @@ We've extended our in-game console to provide a new raw visualization. As Unreal
 *Also we added a button to open the log file directly!* 😉
 
 
-## Noteworthy Changes
+## Noteworthy Changes {/* #noteworthy-changes */}
 
-### Network Debug Stats
+### Network Debug Stats {/* #network-debug-stats */}
 
 In addition to the Network Debug drawings in the world, we've included a new screen debug tool which shows network stats information in the screen, it will be displayed if you enable **Draw Network Debug** in the settings -> debug.
 
 ![](/img/blog/2022-may/network-debug.jpg)
 
 
-### Outline
+### Outline {/* #outline */}
 
 Now you can also enable an Outline effect in actors by [:SetOutlineEnabled()](/docs/next/scripting-reference/classes/base-classes/actor#setoutlineenabled) on it! It works like :SetHighlightEnabled, and you can customize it's color and thickness as well!
 
@@ -114,7 +114,7 @@ Now you can also enable an Outline effect in actors by [:SetOutlineEnabled()](/d
 We've already replaced the Sandbox Physics Gun effect with this too!
 
 
-### Animation Settings
+### Animation Settings {/* #animation-settings */}
 
 We started implementing a new interface for setting animations parameters on entities, it now supports a new parameter `play_rate` which you can define directly in the `:SetAnimation...()` of entities.
 
@@ -127,7 +127,7 @@ Currently this new interface is only available to Weapons. Soon it will come to 
 :::
 
 
-### Sounds Settings
+### Sounds Settings {/* #sounds-settings */}
 
 The same as Animation Settings, but for sounds as well! Now you can define per-entity-per-asset common sound settings on it, it supports `volume` and `pitch` parameters:
 
@@ -140,14 +140,14 @@ Currently this new interface is only available to Weapons. Soon it will come to 
 :::
 
 
-### Internal Control Rigs
+### Internal Control Rigs {/* #internal-control-rigs */}
 
 With our efforts to modularize and remove some internal dependencies (mainly related to animations and animation blueprint), we started creating some Control Rigs to replace our old approaches of procedural animations (before they were hardcoded in the Animation Blueprint, and now they are split into several Control Rigs), which also provides better performance and modularization!
 
 We already created and are using Control Rigs for **Driving** and **Aiming**, which provides procedural animations for aiming with weapons and for driving wheels.
 
 
-### Sandbox Improvements
+### Sandbox Improvements {/* #sandbox-improvements */}
 
 The sandbox game-mode got some improvements as well, such as new icons for the tools:
 
@@ -158,14 +158,14 @@ As well improved PhysicsGun & Resizer linear scaling to have a better handling, 
 Also we got a [PR](https://github.com/nanos-world/nanos-world-sandbox/pull/7) from Voltaism which added the option to respawn and freeze the time through the Context Menu.
 
 
-## New Docs Tutorials
+## New Docs Tutorials {/* #new-docs-tutorials */}
 
-### Custom Weapon Reload Animations
+### Custom Weapon Reload Animations {/* #custom-weapon-reload-animations */}
 
 We've created a new tutorial page for adding [Custom Weapon Reload Animations](/docs/next/assets-modding/creating-assets/animations/weapon-reload-animations). This was possible due our efforts to modularizing more and more the game. Reload animations are special because they trigger gameplay actions during it's execution, which needs to be configured inside the Animation Montage!
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 With the achievement of implementing P2P servers, we managed to make immensely easier the ability to play and test with friends! Now everyone can start a server and play with friends immediately, without the need of port forwarding and so on! 🥳
 

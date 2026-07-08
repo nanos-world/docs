@@ -31,12 +31,12 @@ The **Compatibility Mode** is a feature that aims to keep old and unmaintained p
 :::
 
 
-## All Updates
+## All Updates {/* #all-updates */}
 
 To use the following features, you must update your Package's `compatibility_version` setting in the Package.toml to at least that version (exact that version or bigger).
 
 
-### Version `1.144`
+### Version `1.144` {/* #version-1144 */}
 
 This update changes all `AddSkeletalMeshAttached` methods interface, adding `4` new parameters to it and changing the order of the parameters.
 
@@ -51,7 +51,7 @@ All the affected classes are:
 - <MethodReference type="Class" class_name="Pickable" method_name="AddSkeletalMeshAttached" show_class_name />
 
 
-### Version `1.139`
+### Version `1.139` {/* #version-1139 */}
 
 In this version, we are introducing the concept of <Enums>Reliability</Enums> for Remote Events.
 
@@ -66,7 +66,7 @@ This is specially useful for events that are sent very often and non critical fo
 :::
 
 
-#### [Events](/scripting-reference/static-classes/events.mdx)
+#### [Events](/scripting-reference/static-classes/events.mdx) {/* #events */}
 
 All the <StaticClasses.Events /> remote functions got a new parameter before `args...`: `reliability` (<Enums>Reliability</Enums>).
 
@@ -82,7 +82,7 @@ Also, <MethodReference type="StaticClass" class_name="Events" method_name="Broad
 In compatibility mode (i.e. setting it to `1.138` or below), the `Events` remote calls don't have the new `reliability` parameter.
 
 
-#### [Entity Events](/scripting-reference/classes/base-classes/entity.mdx)
+#### [Entity Events](/scripting-reference/classes/base-classes/entity.mdx) {/* #entity-events */}
 
 All the <Classes.Entity /> remote functions got a new parameter before `args...`: `reliability` (<Enums>Reliability</Enums>) as well.
 
@@ -94,30 +94,30 @@ All the <Classes.Entity /> remote functions got a new parameter before `args...`
 In compatibility mode (i.e. setting it to `1.138` or below), the `Entity` remote calls don't have the new `reliability` parameter.
 
 
-### Version `1.103`
+### Version `1.103` {/* #version-1103 */}
 
 
-#### [TextRender](/scripting-reference/classes/text-render.mdx)
+#### [TextRender](/scripting-reference/classes/text-render.mdx) {/* #textrender */}
 
 `TextRender` was renamed to [Text3D](/scripting-reference/classes/text-3d.mdx). And a new entity `TextRender` was created. To use the new TextRender entity, you must update your `compatibility_version` to at least `1.103`.
 
 In compatibility mode (i.e. setting it to `1.102` or below) `TextRender` will still point to the old `TextRender` class (i.e. to the new `Text3D` class).
 
 
-### Version `1.65`
+### Version `1.65` {/* #version-165 */}
 
 
-#### [Events.Unsubscribe()](/scripting-reference/static-classes/events.mdx#static-function-unsubscribe)
+#### [Events.Unsubscribe()](/scripting-reference/static-classes/events.mdx#static-function-unsubscribe) {/* #eventsunsubscribe */}
 
 `Events.Unsubscribe` now only unsubscribes to local events (ones subscribed with **Events.Subscribe**). If you want to unsubscribe to remote events (ones subscribed as **Events.SubscribeRemote**), please use [Events.UnsubscribeRemote()](/scripting-reference/static-classes/events.mdx#static-function-unsubscriberemote)
 
 In compatibility mode (i.e. setting it to `1.64` or below) `Events.Unsubscribe` still unsubscribes for both Local and Remote events.
 
 
-### Version `1.55`
+### Version `1.55` {/* #version-155 */}
 
 
-#### [Assets.GetX()](/scripting-reference/static-classes/assets.mdx)
+#### [Assets.GetX()](/scripting-reference/static-classes/assets.mdx) {/* #assetsgetx */}
 
 Before, any `Assets.GetX()` method returned an array of strings. Now it returns an array of tables, containing at least the `key` field on it. See more about this change in the [Assets Meta Data page](/core-concepts/assets.mdx#asset-meta-data).
 
@@ -137,33 +137,33 @@ end
 ```
 
 
-### Version `1.54`
+### Version `1.54` {/* #version-154 */}
 
 
-#### [Level.CallLevelBlueprintEvent()](/scripting-reference/static-classes/level.mdx#static-function-calllevelblueprintevent)
+#### [Level.CallLevelBlueprintEvent()](/scripting-reference/static-classes/level.mdx#static-function-calllevelblueprintevent) {/* #levelcalllevelblueprintevent */}
 
 Before, `Level.CallLevelBlueprintEvent()` expected a string with the function name and parameters concatenated together separated by spaces. Now it uses the new approach of receiving a variadic amount of parameters and also returns the function return value.
 
 
-#### [Client.GetPackages()](/scripting-reference/static-classes/client.mdx#static-function-getpackages)
+#### [Client.GetPackages()](/scripting-reference/static-classes/client.mdx#static-function-getpackages) {/* #clientgetpackages */}
 
 Before, `Client.GetPackages()` returned all packages that the server was running on client side. Now it behaves exactly like [Server.GetPackages()](/scripting-reference/static-classes/server.mdx#static-function-getpackages), having a filter as parameter and providing more information on return.
 
 
-### Version `1.49`
+### Version `1.49` {/* #version-149 */}
 
 
-#### [Package.GetName()](/scripting-reference/static-classes/package.mdx#static-function-getname)
+#### [Package.GetName()](/scripting-reference/static-classes/package.mdx#static-function-getname) {/* #packagegetname */}
 
 Before, `Package.GetName()` was returning the title defined in Package.toml. Now it is standardized and it returns the Path of the Package (the real Name of it). Also `Package.GetPath()` was deprecated in favor of `Package.GetName()`.
 
 
-#### [Server.GetMap()](/scripting-reference/static-classes/server.mdx#static-function-getmap)
+#### [Server.GetMap()](/scripting-reference/static-classes/server.mdx#static-function-getmap) {/* #servergetmap */}
 
 Before, `Server.GetMap()` was returning the map asset defined in Config.toml. Now as we can load Map Packages, it will start returning the Map Package name instead. In compatibility mode it will still return the Map Asset. If you want to still keep retrieving the Map asset, please use the new method [Server.GetMapAsset()](/scripting-reference/static-classes/server.mdx#static-function-getmapasset) instead.
 
 
-#### [Server.GetPackages()](/scripting-reference/static-classes/server.mdx#static-function-getpackages)
+#### [Server.GetPackages()](/scripting-reference/static-classes/server.mdx#static-function-getpackages) {/* #servergetpackages */}
 
 Before, `Package.GetPackages(only_loaded)` returned a list of strings containing all the package names. Now it has a new parameter (`package_type_filter`) and returns a list of table with the Packages information:
 
@@ -184,10 +184,10 @@ local packages = Package.GetPackages(only_loaded, package_type_filter)
 ```
 
 
-### Version `1.33`
+### Version `1.33` {/* #version-133 */}
 
 
-#### [Input.GetScriptingKeyBindings()](/scripting-reference/static-classes/input.mdx#static-function-getscriptingkeybindings) and [Input.GetGameKeyBindings()](/scripting-reference/static-classes/input.mdx#static-function-getgamekeybindings)
+#### [Input.GetScriptingKeyBindings()](/scripting-reference/static-classes/input.mdx#static-function-getscriptingkeybindings) and [Input.GetGameKeyBindings()](/scripting-reference/static-classes/input.mdx#static-function-getgamekeybindings) {/* #inputgetscriptingkeybindings-and-inputgetgamekeybindings */}
 
 Before those methods returned a table in the format (example):
 
@@ -212,25 +212,25 @@ Now it returns in the format (example):
 ```
 
 
-### Version `1.29`
+### Version `1.29` {/* #version-129 */}
 
 
-#### [HTTP.Select()](/scripting-reference/static-classes/http.mdx#static-function-select)
+#### [HTTP.Select()](/scripting-reference/static-classes/http.mdx#static-function-select) {/* #httpselect */}
 
 Before `HTTP.Select` was an async method, and since 1.29 it works as a Sync method, not having the callback parameter anymore.
 
 
-#### [Database:Execute()](/scripting-reference/classes/database.mdx#function-execute)
+#### [Database:Execute()](/scripting-reference/classes/database.mdx#function-execute) {/* #databaseexecute */}
 
 Before `Database:Execute` was an async method, and since 1.29 it works as a Sync method, not having the callback parameter anymore.
 
 
-### Version `1.22`
+### Version `1.22` {/* #version-122 */}
 
 In version 1.22 we introduced the concept of [Compatibility Version](/core-concepts/packages/packages-guide.mdx#compatibility-version). Besides that, we've got just one breaking change:
 
 
-#### [Events.Subscribe()](/scripting-reference/static-classes/events.mdx#static-function-subscribe)
+#### [Events.Subscribe()](/scripting-reference/static-classes/events.mdx#static-function-subscribe) {/* #eventssubscribe */}
 
 `Events.Subscribe` now only subscribes to local events (ones called as **Events.Call**). If you want to subscribe to remote events (ones called as **Events.CallRemote** or **Events.BroadcastRemote**), please use `Events.SubscribeRemote`.
 

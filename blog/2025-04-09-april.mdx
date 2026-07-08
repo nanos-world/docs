@@ -16,12 +16,12 @@ Welcome to our roundup of the latest updates from the last month!
 {/* truncate */}
 
 
-## Scripting Improvements
+## Scripting Improvements {/* #scripting-improvements */}
 
 Here's the Scripting Improvements of this month!
 
 
-### AI Avoidance Method
+### AI Avoidance Method {/* #ai-avoidance-method */}
 
 <VideoExternal path="/blog/2025-april/rvo.webm" />
 
@@ -34,7 +34,7 @@ This is an AI system that works by doing extra calculations to determine the the
 We had this enabled by default, but we exposed a way to disable it on demand, with a new method <MethodReference type="Class" class_name="Pawn" method_name="SetAIAvoidanceSettings" show_class_name /> to allow customizing this behavior.
 
 
-### Escape Key Override
+### Escape Key Override {/* #escape-key-override */}
 
 Many of you requested a way to handle the Escape key better, especially for menu navigation. We've now made it possible to register the Escape key in scripts.
 
@@ -51,7 +51,7 @@ end)
 If the player keeps holding ESC for a few time, the game menu will still open as usual, ensuring they are not locked inside your server.
 
 
-## DLSS 4 Full Integration
+## DLSS 4 Full Integration {/* #dlss-4-full-integration */}
 
 Recently we upgraded our DLSS Integration to the latest [DLSS 4](https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/), which brings a lot of improvements to the existing technologies and a the new feature Multi Frame Generation (although only supported on the new RTX 50).
 
@@ -64,7 +64,7 @@ So we now have fully integrated:
 <MediaLegend>New DLSS & Reflex Settings</MediaLegend>
 
 
-### Super Resolution
+### Super Resolution {/* #super-resolution */}
 
 All DLSS Super Resolution settings are now fully integrated into the UI. Enabling SR will automatically disable resolution scaling and anti-aliasing, as SR handles these internally.
 
@@ -79,7 +79,7 @@ You can see the difference in performance by comparing the Ultra Performance mod
 />
 
 
-### Frame Generation
+### Frame Generation {/* #frame-generation */}
 
 We've properly integrated Frame Generation into the UI (requiring VSync OFF and Reflex ON). Multi Frame Generation is also supported—if you have an RTX 50, let us know how it works for you! 😅
 
@@ -94,7 +94,7 @@ You can see in the comparison, it almost doubles the frames presented (we displa
 />
 
 
-### Ray Reconstruction
+### Ray Reconstruction {/* #ray-reconstruction */}
 
 This is a new integration that improves the image quality in scenes with complex lighting and shadows, you can see the shadow artifacts going away when having it enabled, note it has a small performance cost:
 
@@ -107,12 +107,12 @@ This is a new integration that improves the image quality in scenes with complex
 	zoom_direction="center"
 />
 
-### Sharpness
+### Sharpness {/* #sharpness */}
 
 We also added a new slider for adjusting the DLSS sharpness, if desired.
 
 
-### Reflex Low Latency
+### Reflex Low Latency {/* #reflex-low-latency */}
 
 Reflex Low Latency reduces input lag, making gameplay feel smoother and more responsive, you can see the difference in the input lag:
 
@@ -128,7 +128,7 @@ Reflex Low Latency reduces input lag, making gameplay feel smoother and more res
 />
 
 
-## Crashes & Sentry
+## Crashes & Sentry {/* #crashes--sentry */}
 
 As with any game in development, crashes happen, but we need to be aware of them to fix them. You've probably encountered the Unreal Crash Reporter screen before, but we've now integrated a new SDK to catch the crashes with the new [Sentry](https://sentry.io/) for Unreal Plugin.
 
@@ -145,7 +145,7 @@ With this new integration we are getting rid of that generic ugly Unreal Crash R
 We are now able to get more rich and contextual information that helps even more tracking the real causes of crashes. Without needing ~~that much~~ keep asking for reproducible steps.
 
 
-## Profiling
+## Profiling {/* #profiling */}
 
 Unreal has an awesome tool called [Unreal Insights](https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-insights-in-unreal-engine). It is a telemetry tool that capture and analyzes each frame of the game, telling us exactly the bottlenecks and which methods are bottlenecking.
 
@@ -156,7 +156,7 @@ I've started using it as I was finding nanos world was with some bottlenecks, an
 <MediaLegend>Unreal Insights Application dissecting a nanos world frame</MediaLegend>
 
 
-### Profiling Debug
+### Profiling Debug {/* #profiling-debug */}
 
 I've improved the Profiling Debug section, now it displays the time per second an operation is spending, the amount of calls, the average time each call takes and the max time an operation took in the last second (peaks).
 
@@ -170,7 +170,7 @@ Also, I've hooked Unreal's timings to also display the Unreal Global Tick and Sl
 </MediaLegend>
 
 
-### FPS Timings
+### FPS Timings {/* #fps-timings */}
 
 I've integrated our own pane for displaying FPS and timings, replacing the Unreal's green overlay. This can be activated in a new dropdown in Debug Settings:
 
@@ -195,19 +195,19 @@ You can learn more about those timings and Unreal Threads in the [Threading Over
 :::
 
 
-## Game Performance++
+## Game Performance++ {/* #game-performance */}
 
 Thanks to Unreal Insights and the new profiling timings, I've managed to identify and fix several performance issues we had:
 
 
-### Console Freeze Fix
+### Console Freeze Fix {/* #console-freeze-fix */}
 
 The console no longer stutters when opening! We had cases where it froze the game for several seconds, but that's now fixed!
 
 ![](/img/blog/2025-april/console.webp)
 
 
-### Testing Map NavMesh
+### Testing Map NavMesh {/* #testing-map-navmesh */}
 
 Since some time ago, our `default-testing-map` (which is already aged 😅), started to underperforming very badly. The FPS wasn't great and we could clearly see that the GPU wasn't being used at it's most (we had a main thread (CPU) bottleneck).
 
@@ -215,7 +215,7 @@ By analyzing the frame, I could see that the culprit was it's NavMesh being reca
 
 Then I ended up figuring out that the reason was some objects in the map causing that:
 
-#### That Static Boat
+#### That Static Boat {/* #that-static-boat */}
 
 ![](/img/blog/2025-april/boat-lag.webp)
 
@@ -224,7 +224,7 @@ Then I ended up figuring out that the reason was some objects in the map causing
 This Boat is just an Actor in the map with buoyancy enabled, but it had the "Can Even Affect Navigation" setting enabled, and it was causing all the NavMesh around it being recalculated every frame.
 
 
-#### Props
+#### Props {/* #props */}
 
 ![](/img/blog/2025-april/props-navmesh.webp)
 
@@ -243,7 +243,7 @@ Those improvements will not only improve the testing-map, but also all other map
 :::
 
 
-### Testing Map Shadows
+### Testing Map Shadows {/* #testing-map-shadows */}
 
 Another issue we were having was with the lighting/shadows of the testing map, we had Dynamic Shadows enabled for all grass meshes, which is usually a bad decision as it consumes a lot of GPU performance.
 
@@ -272,7 +272,7 @@ And with the change of contact shadows, we could notice a huge performance gain 
 />
 
 
-### Actor Ticks
+### Actor Ticks {/* #actor-ticks */}
 
 Also, I've found that in the game tick, there were a lot of actors and components ticking every frame, even though they were not being active or being used, and this was taking some considerable percentage of the main thread frame time.
 
@@ -284,11 +284,11 @@ Just to mention a few examples:
 Among other small changes, the performance and optimization is way further improved now, allowing even more entities spawned at the same time.
 
 
-## Testing Map Improvs.
+## Testing Map Improvs. {/* #testing-map-improvs */}
 
 Other Testing Map improvements made:
 
-### Torches On/Off
+### Torches On/Off {/* #torches-onoff */}
 
 ![](/img/blog/2025-april/torches.webp)
 
@@ -297,34 +297,34 @@ The old day/night Torches system was fixed, now it automatically switches ON/OFF
 It works by hooking the Ultra Dynamic Sky's time to detect if it's day or night.
 
 
-### Ambiance Sound
+### Ambiance Sound {/* #ambiance-sound */}
 
 The old Ambiance Sounds was also fixed and put in place again, automatically cycling the Day's and Night's sound based on the time of the day.
 
 
-### Reduced Trees
+### Reduced Trees {/* #reduced-trees */}
 
 ![](/img/blog/2025-april/reduced-trees.webp)
 
 I've reduced the amount of trees the Testing Map had, as in some areas it was causing bad visual clarity and even negatively affecting the performance.
 
 
-## Minor Honorable Mentions
+## Minor Honorable Mentions {/* #minor-honorable-mentions */}
 
 Some small improvements made:
 
 
-### Main Menu FPS
+### Main Menu FPS {/* #main-menu-fps */}
 
 The Main Menu is now capped to your monitor's refresh rate (was previously capped at 120).
 
 
-### Unreal Updated 5.4.4
+### Unreal Updated 5.4.4 {/* #unreal-updated-544 */}
 
 The Unreal version was updated to the latest patch version 5.4.4, no cooked asset should break in this update.
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 This month was a great advance for optimization lovers (like me), several low and high-level performance issues were tackled, not to mention the new DLSS features which adds another layer of optimization over everything.
 

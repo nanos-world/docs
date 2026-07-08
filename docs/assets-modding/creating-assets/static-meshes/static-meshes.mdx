@@ -19,7 +19,7 @@ Please refer to [Unreal Engine Static Mesh Documentation](https://docs.unrealeng
 :::
 
 
-## Getting Started
+## Getting Started {/* #getting-started */}
 
 :::tip Prerequisites
 
@@ -34,7 +34,7 @@ The first step is creating a new folder at the root of your [Assets Development 
 ![](/img/docs/static-meshes/creating-folder.webp)
 
 
-## Importing the Textures
+## Importing the Textures {/* #importing-the-textures */}
 
 Then, let's import the textures. For that, we can just drag'n drop them inside our `money-pack/` folder:
 
@@ -45,7 +45,7 @@ It is good practice to rename the files you imported, so we renamed it to Pascal
 ![](/img/docs/static-meshes/renaming-textures.webp)
 
 
-## Importing the Static Meshes
+## Importing the Static Meshes {/* #importing-the-static-meshes */}
 
 The second step is importing the .FBXs. For that we can just drag'n drop them inside our folder as well. When we do so, a Popup will appear.
 
@@ -66,7 +66,7 @@ After imported, we renamed it to `SM_MoneyStack` as well.
 :::
 
 
-## Setting up the Materials
+## Setting up the Materials {/* #setting-up-the-materials */}
 
 Note that some Materials have been created automatically. If you open your Static Mesh you will notice they are white.
 
@@ -101,7 +101,7 @@ After setting up all materials, our mesh is now fully colored!
 ![](/img/docs/static-meshes/mesh-painted.webp)
 
 
-## Setting up Collisions
+## Setting up Collisions {/* #setting-up-collisions */}
 
 Some meshes come without collision and we need to set it manually. As our money mesh is a cuboid it is easy to add collision to that!
 
@@ -122,11 +122,11 @@ And now it has collision! (If you don't see it, press `Show -> Simple Collision`
 ![](/img/docs/static-meshes/with-collision.webp)
 
 
-## Additional Tips
+## Additional Tips {/* #additional-tips */}
 
 After you have created your meshes, you can read the following steps to improve them even further with this additional tips.
 
-### Setting the Physical Material
+### Setting the Physical Material {/* #setting-the-physical-material */}
 
 [Physical Materials](https://docs.unrealengine.com/5.0/en-US/physical-materials-in-unreal-engine/) are used to define the response of a physical object when interacting with the world. Besides that in nanos world we use them to define the "hit sounds" of the objects, so it's nice and very easy to configure it.
 
@@ -135,7 +135,7 @@ For that you just need to open your material and select one of the (included in 
 ![](/img/docs/static-meshes/physical-materials.webp)
 
 
-### Reducing Texture Size
+### Reducing Texture Size {/* #reducing-texture-size */}
 
 Textures are one of the assets that take the most disk space. The way Unreal compression deals with it, they have a fixed size depending on their dimensions and it is smart to configure your textures or even limit their sizes to reduce their disk sizes.
 
@@ -154,7 +154,7 @@ If you have bigger meshes, it's not recommended to reduce their size, otherwise 
 :::
 
 
-### Setting up LODs
+### Setting up LODs {/* #setting-up-lods */}
 
 [Level of Details (LODs)](https://docs.unrealengine.com/5.0/en-US/creating-and-using-lods-in-unreal-engine/) are the way Unreal automatically improves the performance for distant objects. Unreal provides an easy tool to generate LODs automatically for your Static Meshes.
 
@@ -165,7 +165,7 @@ For that, open your Static Mesh and in Details panel search for `Lod Settings ->
 This way Unreal auto generates LODs which are changed during gameplay to reduce the quality of the distant meshes and improve the performance!
 
 
-### Generating Thumbnails
+### Generating Thumbnails {/* #generating-thumbnails */}
 
 Thumbnails are conventionally used on [Sandbox](https://github.com/nanos-world/nanos-world-sandbox/) game-mode to display assets properly on it's Spawn Menu.
 
@@ -186,12 +186,12 @@ And press Generate! If you go to your output folder you will find all `.JPG` gen
 Now you just copy that folder inside your Asset Pack!
 
 
-## Exporting the Assets
+## Exporting the Assets {/* #exporting-the-assets */}
 
 After you completed all steps, you can export them into nanos world! Please refer to [Exporting & Cooking your Assets](/assets-modding/creating-assets/importing-assets.mdx#exporting--cooking-your-assets) docs page before proceeding.
 
 
-## Configuring the Asset Pack
+## Configuring the Asset Pack {/* #configuring-the-asset-pack */}
 
 After you cooked your assets and copied the generated folder into your server's `Assets/` directory. It's time to configure the Asset Pack! For that please refer to [Configuring your Assets.toml](/assets-modding/creating-assets/importing-assets.mdx#configuring-your-assetstoml) docs page before proceeding.
 
@@ -207,7 +207,7 @@ Now that you created your Assets.toml and configured the unreal settings, make s
 This way we can reference them through scripting and also we can test it on Sandbox game-mode!
 
 
-## Time to Test!
+## Time to Test! {/* #time-to-test */}
 
 After your configured your `Assets.toml`, it's time to test it!
 

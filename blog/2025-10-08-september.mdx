@@ -17,7 +17,7 @@ Welcome to our roundup of the latest updates from the last month!
 {/* truncate */}
 
 
-## Halloween Event
+## Halloween Event {/* #halloween-event */}
 
 ![](/img/blog/2025-august/halloween-2025-jam.webp)
 
@@ -56,14 +56,14 @@ You can find more details about this game-mode in the [Discord Thread](https://d
 :::
 
 
-### Joining the Playtest
+### Joining the Playtest {/* #joining-the-playtest */}
 
 If you are not a Tester and want to join as a player, go to the [nanos world™ Steam Page](https://store.steampowered.com/app/1841660/nanos_world/) and **Request Access** for the playtest. During Halloween week, everyone will be able to download and play the game.
 
 [![](/img/blog/2025-september/playtest.webp)](https://store.steampowered.com/app/1841660/nanos_world/)
 
 
-## Scripting Files Encryption
+## Scripting Files Encryption {/* #scripting-files-encryption */}
 
 ![](/img/blog/2025-september/encryption.webp)
 
@@ -76,7 +76,7 @@ All client Lua files are now **encrypted** when shipped to players. We use a run
 All Lua files are decrypted at runtime when a package requires them, adding a layer of security for creators that don't want the Lua files easily read by players.
 
 
-## Trigger Improvements
+## Trigger Improvements {/* #trigger-improvements */}
 
 We've made significant improvements to the Trigger implementation, making it much more efficient!
 
@@ -87,39 +87,39 @@ We've made significant improvements to the Trigger implementation, making it muc
 These improvements bring huge CPU savings on dense maps.
 
 
-## Core Improvements
+## Core Improvements {/* #core-improvements */}
 
 Some internal framework improvements we've got:
 
-### Server Thread Contention
+### Server Thread Contention {/* #server-thread-contention */}
 
 We addressed several **thread contention** hotspots that were causing frequent stutters on the server side (causing frame tick too high or profiling warnings), especially when internal mutexes on the main thread were waiting for async threads to finish.
 
 This often occurred when players were downloading files or when too many Actors with network authority and Triggers were spawned. We've refactored all our async threads and mutex usage, greatly reducing the async threads dependency and these locks.
 
 
-### Parallel Lua Files Load
+### Parallel Lua Files Load {/* #parallel-lua-files-load */}
 
 We've implemented a multi-threaded solution to load, cache, and encrypt all Client files from Packages when loading it. Now it behaves like loading Asset Packs, boosting the server performance on multi-core processors.
 
 
-### Network Authority Improvements
+### Network Authority Improvements {/* #network-authority-improvements */}
 
 Network authority and distribution logic was improved. We reworked our internal system which decides which entity can distribute Network Authority, fixing some rare bugs of entities that shouldn't have the network authority changed and also improving performance.
 
 We also changed how Translate/RotateTo works. Previously, these calls were only processed by the Network Authority of an entity, causing sync issues and poor smoothness. Now, they are processed on all clients individually, removing the need for some entities to have Network Authority Distribution (such as StaticMesh), which is a big gain for network usage.
 
 
-### Network Usage
+### Network Usage {/* #network-usage */}
 
 We've improved network usage by reducing the sync of attached entities (e.g., Character driving, Weapon picked up, or Actor attached).
 
 We also improved our internal network fetch to process network data in batches, reducing the internal networking API calls needed.
 
 
-## New Default Assets
+## New Default Assets {/* #new-default-assets */}
 
-### Adventure Characters
+### Adventure Characters {/* #adventure-characters */}
 
 We bundled the new free Fab Asset Pack [Adventure Characters](https://www.fab.com/listings/db81464d-fcb5-43a8-b309-5555c392be3a) natively.
 
@@ -130,7 +130,7 @@ We bundled the new free Fab Asset Pack [Adventure Characters](https://www.fab.co
 The official Sandbox game-mode now includes these meshes and their clothes properly configured.
 
 
-### Bossy Enemy Anims
+### Bossy Enemy Anims {/* #bossy-enemy-anims */}
 
 We've also bundled the Fab Asset Pack [Bossy Animation Pack](https://www.fab.com/listings/ca966d08-dc8b-45a7-bfc2-12d98f1b594f).
 
@@ -145,11 +145,11 @@ All these assets are properly configured and optimized for runtime use and are a
 :::
 
 
-## New Scripting API Methods
+## New Scripting API Methods {/* #new-scripting-api-methods */}
 
 We've implemented a bunch of new methods this month, to name a few:
 
-### Widget Slots
+### Widget Slots {/* #widget-slots */}
 
 Widgets got new methods to control their layout in slots:
 
@@ -160,7 +160,7 @@ Widgets got new methods to control their layout in slots:
 We also renamed the old <MethodReference type="Class" class_name="Widget" method_name="SetSlotCanvasLayout" show_class_name /> to keep naming consistency.
 
 
-### PostProcess
+### PostProcess {/* #postprocess */}
 
 We've exposed new methods to allow customizing the global Post Process colors:
 
@@ -169,7 +169,7 @@ We've exposed new methods to allow customizing the global Post Process colors:
 - <MethodReference type="StaticClass" class_name="PostProcess" method_name="SetGlobalContrast" show_class_name />
 - <MethodReference type="StaticClass" class_name="PostProcess" method_name="SetGlobalOffset" show_class_name />
 
-### Other new Methods
+### Other new Methods {/* #other-new-methods */}
 
 - <MethodReference type="StaticClass" class_name="Server" method_name="GetEntityByID" show_class_name /> / <MethodReference type="StaticClass" class_name="Client" method_name="GetEntityByID" show_class_name />
 - <MethodReference type="Class" class_name="Pawn" method_name="SetControlRotation" show_class_name />
@@ -178,12 +178,12 @@ We've exposed new methods to allow customizing the global Post Process colors:
 - <MethodReference type="Class" class_name="Character" method_name="SetPhysicsAsset" show_class_name /> / <MethodReference type="Class" class_name="CharacterSimple" method_name="SetPhysicsAsset" show_class_name />
 
 
-## VOIP Improvements
+## VOIP Improvements {/* #voip-improvements */}
 
 We've improved how internal VOIP capture is handled. The <EventReference type="Class" class_name="Player" event="VOIP" /> scripting event now fires only when voice capture actually begins or ends, making it more precise and preventing abrupt cutoffs.
 
 
-## Testing Map Weather
+## Testing Map Weather {/* #testing-map-weather */}
 
 The Testing Map now has improved materials that respond better to dynamic weather. Trees and grass are affected by Wet and Snow effects from Ultra Dynamic Sky.
 
@@ -192,13 +192,13 @@ The Testing Map now has improved materials that respond better to dynamic weathe
 <MediaLegend>Testing Map using UDS Weather Materials</MediaLegend>
 
 
-## External Dependencies
+## External Dependencies {/* #external-dependencies */}
 
 - We've added the [Kawaii Physics](https://github.com/pafuhana1213/KawaiiPhysics) plugin.
 - Ultra Dynamic Sky was updated to version `v9.1`.
 
 
-## Notable Bug Fixes
+## Notable Bug Fixes {/* #notable-bug-fixes */}
 
 Some important bugs we've fixed this month:
 
@@ -218,7 +218,7 @@ Check the full changelog in our Discord for the exhaustive list.
 :::
 
 
-## Store Development
+## Store Development {/* #store-development */}
 
 ![](/img/blog/2025-september/store.webp)
 
@@ -229,7 +229,7 @@ We are still working hard on the initial store version. We already have a workin
 Hopefully, before the end of the month, we will have it ready for testing and use during the playtest.
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 Besides all the improvements and new features, this month was mostly focused on developing the new Halloween Special game-mode. This new Halloween version is getting really fun, and I'm really looking forward to having everyone play it! 🎃
 

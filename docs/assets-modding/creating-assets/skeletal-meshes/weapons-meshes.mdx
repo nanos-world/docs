@@ -13,7 +13,7 @@ In nanos world, a Weapon is an entity which can be Picked Up by Characters and c
 Weapons use [Skeletal Meshes](https://docs.unrealengine.com/4.26/en-US/WorkingWithContent/Types/SkeletalMeshes/). The Skeletal Mesh must point towards the Red Axis (X) to be properly rotated.
 
 
-## Root Bone
+## Root Bone {/* #root-bone */}
 
 ![](/img/docs/tutorials/import-weapons-root-bone.webp)
 
@@ -24,7 +24,7 @@ You can open `SKEL_Mannequin` and add your weapon as Preview Asset in the `hand_
 ![](/img/docs/tutorials/import-weapons-mannequin-hand.webp)
 
 
-### Fixing Offsets, Scale & Rotation
+### Fixing Offsets, Scale & Rotation {/* #fixing-offsets-scale--rotation */}
 
 Sometimes when you import a Mesh, it is imported with wrong locations, scales or even pointing towards other direction (usually Y). Luckily there's a hack we can do inside Unreal to fix them!
 
@@ -37,7 +37,7 @@ So if your Weapon is not positioned correctly in the Character hand location, or
 ![](/img/docs/tutorials/import-weapons-reimport.webp)
 
 
-## Custom Bone Sockets
+## Custom Bone Sockets {/* #custom-bone-sockets */}
 
 In order to make your Weapon as better integrated as possible, internally we use **two** custom Bone Sockets for spawning Particles such as Shells and Muzzle Flash.
 
@@ -50,7 +50,7 @@ And right click on any bone and select `AddSocket`, this will create a **Socket*
 ![](/img/docs/tutorials/import-weapons-add-socket.webp)
 
 
-### `muzzle`
+### `muzzle` {/* #muzzle */}
 
 The **muzzle** Socket is where the [Particle Barrel](/scripting-reference/classes/weapon.mdx#setparticlesbarrel) will be attached. So create a socket and place it in the muzzle of the weapon:
 
@@ -59,7 +59,7 @@ The **muzzle** Socket is where the [Particle Barrel](/scripting-reference/classe
 ![](/img/docs/tutorials/import-weapons-muzzle.webp)
 
 
-### `shell_eject`
+### `shell_eject` {/* #shell_eject */}
 
 The **shell_eject** Socket is where the [Particle Shells](/scripting-reference/classes/weapon.mdx#setparticlesshells) will be attached. So create a socket and place it in shells eject of the weapon:
 
@@ -69,7 +69,7 @@ The **shell_eject** Socket is where the [Particle Shells](/scripting-reference/c
 ![](/img/docs/tutorials/import-weapons-shell-eject.webp)
 
 
-## Fire Animation
+## Fire Animation {/* #fire-animation */}
 
 It is possible to have a custom Fire Animation for your Weapon. Usually animating weapons is easy as it's movements are straight and stiff, you can do it through Unreal!
 For that, just open your Skeletal Mesh, then **Create Asset** and **Create Animation** and finally **Current Pose**. It will create an Animation Asset from the Weapon, empty.
@@ -103,6 +103,6 @@ And voila! If you press Play, you will notice it will loop playing your animatio
 ![](/img/docs/tutorials/import-weapons-fire-animation-08.webp)
 
 
-## Exporting the Weapon
+## Exporting the Weapon {/* #exporting-the-weapon */}
 
 The Exporting process follows the usual process of exporting assets to nanos world. Please follow the [Importing Custom Assets](/assets-modding/creating-assets/importing-assets.mdx) Guide.

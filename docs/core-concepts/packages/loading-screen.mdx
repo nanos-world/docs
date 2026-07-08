@@ -12,7 +12,7 @@ In nanos world it is possible to add a customized and dynamic Loading Screen to 
 ![](/img/docs/loading-screen.webp)
 
 
-## Creating a Loading Screen
+## Creating a Loading Screen {/* #creating-a-loading-screen */}
 
 For that, you will need to create a new Package of type [loading-screen](packages-guide.mdx#package-types), and add your HTML/CSS/JS files into the Package's root folder. Your primary HTML file should be called `index.html`. It will look like that:
 
@@ -25,11 +25,11 @@ Packages/
     └── ...
 ```
 
-### Getting Load/Download Progress
+### Getting Load/Download Progress {/* #getting-loaddownload-progress */}
 
 To be able to display dynamic information in the screen, you can listen to the Event `UpdateScreen` (which will trigger every few ms):
 
-#### Event `UpdateScreen`
+#### Event `UpdateScreen` {/* #event-updatescreen */}
 
 | Parameter | Description |
 | :--- | :--- |
@@ -60,7 +60,7 @@ Always use `progress / progress_total` for getting the current `%` percentage, a
 :::
 
 
-### Player Information
+### Player Information {/* #player-information */}
 
 Also, it is possible to fetch Player’s information by accessing a global variable called `LoadingScreen`:
 
@@ -87,7 +87,7 @@ The `LoadingScreen` var is only available a few frames after the Loading Screen 
 :::
 
 
-### Stop Menu Music
+### Stop Menu Music {/* #stop-menu-music */}
 
 It is possible to turn off the built-in menu music by calling an event from Loading Screen JS:
 
@@ -96,7 +96,7 @@ Events.Call("StopMenuMusic")
 ```
 
 
-## Configuring your server to use the Loading Screen
+## Configuring your server to use the Loading Screen {/* #configuring-your-server-to-use-the-loading-screen */}
 
 :::warning Note
 

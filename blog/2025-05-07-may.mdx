@@ -18,7 +18,7 @@ Welcome to our roundup of the latest updates from the last month!
 ![](/img/blog/2025-may/house-keeping.webp)
 
 
-## New Local Event Behavior
+## New Local Event Behavior {/* #new-local-event-behavior */}
 
 We are introducing a new behavior for some events. Now actions that are triggered by the client (e.g. changing the View Mode) that execute some kind of event (e.g. <EventReference type="Class" class_name="Character" event="ViewModeChange" />) will have it's event being called immediately on the client which triggered it first.
 
@@ -42,7 +42,7 @@ More events will be added in the future.
 Related [Issue#779](https://github.com/nanos-world/issues/issues/779).
 
 
-## Cables System Rework
+## Cables System Rework {/* #cables-system-rework */}
 
 <VideoExternal path="/blog/2025-may/prop-physics.webm" />
 
@@ -62,9 +62,9 @@ We've also introduced several other improvements around them. Some highlights:
 Related [Issue#975](https://github.com/nanos-world/issues/issues/975), [Issue#992](https://github.com/nanos-world/issues/issues/992) and [Issue#993](https://github.com/nanos-world/issues/issues/993).
 
 
-## AI Improvements
+## AI Improvements {/* #ai-improvements */}
 
-### MoveTo
+### MoveTo {/* #moveto */}
 
 The <MethodReference type="Class" class_name="Pawn" method_name="MoveTo" show_class_name /> system was heavily improved to ensure more consistency and reliability, especially regarding event handling.
 
@@ -79,7 +79,7 @@ Also we've fixed `MoveTo` values are now properly **synced** to the client, allo
 Related [Issue#714](https://github.com/nanos-world/issues/issues/714).
 
 
-### AI Vehicle Avoidance
+### AI Vehicle Avoidance {/* #ai-vehicle-avoidance */}
 
 <VideoExternal path="/blog/2025-may/ai-vehicle-reaction.webm" />
 
@@ -102,7 +102,7 @@ Note that it is still possible to experience characters clipping through vehicle
 Related [Issue#672](https://github.com/nanos-world/issues/issues/672).
 
 
-## Prop Grabbing
+## Prop Grabbing {/* #prop-grabbing */}
 
 <VideoExternal path="/blog/2025-may/prop-grabbing.webm" />
 
@@ -117,7 +117,7 @@ We are testing this new way to see if it works good. We also did several improve
 Related [Issue#711](https://github.com/nanos-world/issues/issues/711).
 
 
-## Spectating is back!
+## Spectating is back! {/* #spectating-is-back */}
 
 Our Spectator Mode (<MethodReference type="Class" class_name="Player" method_name="Spectate" show_class_name />) had been left on the sidelines for a while, and a few issues started popping in: like the camera attaching incorrectly (it was attaching to the feet while in third person), and in first person the weapon appeared stiff and unresponsive, with no crosshair or blood screen syncing.
 
@@ -128,9 +128,9 @@ There's still more work to be done, but this is a initial first step toward gett
 Related [Issue#978](https://github.com/nanos-world/issues/issues/978).
 
 
-## Water Related
+## Water Related {/* #water-related */}
 
-### Swimming Movement
+### Swimming Movement {/* #swimming-movement */}
 
 <VideoExternal path="/blog/2025-may/swimming.webm" />
 
@@ -139,14 +139,14 @@ Related [Issue#978](https://github.com/nanos-world/issues/issues/978).
 We've added a small but cool improvement to the swimming mechanic: now your camera angle will influence the character's swimming direction, allowing you to swim upward or downward based on where you're looking (in addition to the existing mode)!
 
 
-### Way Better Pontoons
+### Way Better Pontoons {/* #way-better-pontoons */}
 
 One major change was in the calculation of **pontoons**: these are the invisible spheres that simulate buoyancy and allow objects to float in water. We've improved how pontoons are generated and attached, resulting in much better floating behavior across various entities sizes and weights.
 
 Related [Issue#958](https://github.com/nanos-world/issues/issues/958).
 
 
-### AI Swimming
+### AI Swimming {/* #ai-swimming */}
 
 <VideoExternal path="/blog/2025-may/npc-water.webm" />
 
@@ -157,7 +157,7 @@ Now NPCs will always swim toward the surface instead of diving endlessly to the 
 Related [Issue#891](https://github.com/nanos-world/issues/issues/891).
 
 
-#### Other Water Fixes & Improvements
+#### Other Water Fixes & Improvements {/* #other-water-fixes--improvements */}
 
 We also got some bugs fixed:
 
@@ -165,7 +165,7 @@ We also got some bugs fixed:
 - We've fixed Grenades with no buoyancy at all, now will float properly.
 
 
-## File Transfer
+## File Transfer {/* #file-transfer */}
 
 Our file transfer system has gone through many improvements and overhauls over time, and we improved it further!
 
@@ -176,7 +176,7 @@ We've also refactored a part of the server-side logic to try and eliminate a rar
 Related [Issue#947](https://github.com/nanos-world/issues/issues/947) and [Issue#946](https://github.com/nanos-world/issues/issues/946).
 
 
-## Package Load/Reload
+## Package Load/Reload {/* #package-loadreload */}
 
 We've made significant improvements to the package reload system. Previously, in extreme cases where multiple `package load/reload/unload` operations were triggered in quick succession, you might have seen console errors like `"Package not found to HotUnload"` or even inconsistencies in how the packages were being loaded and unloaded.
 
@@ -189,7 +189,7 @@ We also fixed a common client-side issue where a "default map" package couldn't 
 Related [Issue#968](https://github.com/nanos-world/issues/issues/968).
 
 
-## Ragdoll Sync
+## Ragdoll Sync {/* #ragdoll-sync */}
 
 <VideoExternal path="/blog/2025-may/ragdoll-sync.webm" />
 
@@ -206,9 +206,9 @@ Ragdoll syncing is always a technical challenge, syncing it to other players wil
 :::
 
 
-## Other Improvements
+## Other Improvements {/* #other-improvements */}
 
-### Character Falling
+### Character Falling {/* #character-falling */}
 
 ![](/img/blog/2025-may/character-falling-in-place.webp)
 
@@ -219,7 +219,7 @@ The infamous issue where characters would randomly *fall in place* has haunted u
 Related [Issue#809](https://github.com/nanos-world/issues/issues/809).
 
 
-### Props Net. Authority
+### Props Net. Authority {/* #props-net-authority */}
 
 <VideoExternal path="/blog/2025-may/explosion-net-auth.webm" />
 
@@ -230,7 +230,7 @@ We've improved how **network authority** is handled for Props. Previously, if so
 Now, the system properly transfers **network authority** to the player causing the damage (like shooting or throwing a grenade), making Props fly away as expected when they are damaged.
 
 
-### Weapon Cadence
+### Weapon Cadence {/* #weapon-cadence */}
 
 We've improved the weapon's cadence across different frame-rates, fixing inconsistent firing rates.
 
@@ -245,19 +245,19 @@ Note that in extreme low fps cases, the weapon will still be limited by the FPS.
 Related [Issue#730](https://github.com/nanos-world/issues/issues/730).
 
 
-### Logs Overridden
+### Logs Overridden {/* #logs-overridden */}
 
 We've fixed an issue where **asynchronous logs** were overriding other log entries in both the console and log files when logs were being written from separate async threads.
 
 Now, all logs are properly **synchronized** and appended in sequence, ensuring they are not overlapped.
 
 
-### New Plugins Enabled
+### New Plugins Enabled {/* #new-plugins-enabled */}
 
 We enabled two new Plugins: `CommonUI` and `ModelViewViewModel` for UGC usage.
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 This month was all about fixing long standing issues, improving existing systems and doing some good old housekeeping.
 

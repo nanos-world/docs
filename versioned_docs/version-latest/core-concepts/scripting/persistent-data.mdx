@@ -16,21 +16,21 @@ It is possible to store Persistent Data in both **Client** and **Server**!
 :::
 
 
-## File Format
+## File Format {/* #file-format */}
 
 The persistent data is automatically stored in the **TOML** format in the file `PersistentData.toml` inside your `Package/.data/` folder (both server and client side).
 
 This file is only created if you call <MethodReference type="StaticClass" class_name="Package" method_name="SetPersistentData" show_class_name />.
 
 
-## Storing and Retrieving data
+## Storing and Retrieving data {/* #storing-and-retrieving-data */}
 
 All **PersistentData** files are loaded automatically when the Package loads and stored in memory. You can easily access the whole file with <MethodReference type="StaticClass" class_name="Package" method_name="GetPersistentData" show_class_name />.
 
 For storing data you will need to pass a `key` value, which will store <BasicType.Any /> lua value in that key.
 
 
-## Examples
+## Examples {/* #examples */}
 
 ```lua showLineNumbers
 local my_table = {

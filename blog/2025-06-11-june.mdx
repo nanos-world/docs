@@ -16,14 +16,14 @@ Welcome to our roundup of the latest updates from the last month!
 {/* truncate */}
 
 
-## Ticking
+## Ticking {/* #ticking */}
 
 Ticking is the beating heart of a game, it's where we process inputs, network callbacks, scripting events, and everything else.
 
 We've massively improved our tick loop and our Timer system, on both sides:
 
 
-### Server-Side
+### Server-Side {/* #server-side */}
 
 We completely reworked the core tick loop, by implementing a more precise timing algorithm. This new algorithm eliminates the small but cumulative timing errors that used to affect internal timers and even the Timer class.
 
@@ -37,7 +37,7 @@ Tick Duration: 117.90ms (8/s). Average: 39.07ms (25/s). Configured: 33.33ms (30/
 ```
 
 
-### Client Side
+### Client Side {/* #client-side */}
 
 Previously, all nanos world processing happened after physics simulation. This included networking, snapshots, interpolation, Lua event handling, CEF painting, 3D Debug Drawing, etc.
 
@@ -60,7 +60,7 @@ The result? A dramatic boost in perceived smoothness and responsiveness. Here's 
 This huge improvement just by adjusting the order of the algorithms are processed.
 
 
-### Timers
+### Timers {/* #timers */}
 
 Timers previously relied on delta times between frames. Over time, this caused slight inaccuracies, it was really subtle, but enough to accumulate.
 
@@ -77,7 +77,7 @@ Timers and Tick events still inherit the margin of error from the configured fra
 We also fixed a long-standing bug in Interval Timers, which weren't compensating for execution overhead. Now, a timer set to fire every 1 second will fire every 1 second exactly, no matter what and with no delays in sequential calls.
 
 
-## Netcode Improvements
+## Netcode Improvements {/* #netcode-improvements */}
 
 Also, thanks to the Ticking improvements, and other internal low level networking improvements, our network latency has dropped significantly! The quality feeling of playing with someone on the other side of the world increased dramatically!
 
@@ -104,12 +104,12 @@ Read more about Network Debugging and what each color/arrow means at:
 <ReferenceLink href="core-concepts/scripting/authority-concepts#debugging-network--network-authority">🧑‍💻 Authority Concepts</ReferenceLink>
 
 
-## Traces
+## Traces {/* #traces */}
 
 Some great improvements on internal Traces handling.
 
 
-### Trace Visibility
+### Trace Visibility {/* #trace-visibility */}
 
 ![](/img/blog/2025-june/traces-broken.webp)
 
@@ -122,12 +122,12 @@ To fix this, we added a new `TraceMode.TraceOnlyVisibility` to the <Enums>TraceM
 This new TraceMode ensures the traces only return objects that match the object types passed **and** have the Visibility channel blocking, making it a must for our Sandbox common traces and fixing all the issues we were having with custom FAB maps.
 
 
-### Impact Point
+### Impact Point {/* #impact-point */}
 
 As a request from the community, we are also adding a new information to our Trace returns: `ImpactPoint`, this is the contact point in which a trace collided with the impacted object!
 
 
-## Asset Pack Auto Reload
+## Asset Pack Auto Reload {/* #asset-pack-auto-reload */}
 
 A frequent issue in development environments was that developers could modify the Asset files while the server was still running, making all the precomputed hashes technically invalid, causing clients to mismatch local files, and in some cases, request newer files from the server using outdated hashes, resulting in download errors and preventing them from connecting until a full server restart is made.
 
@@ -144,7 +144,7 @@ This system aims to eliminate many problems during development, such as inconsis
 While an Asset Pack is reloading, new player connections will be temporarily blocked until it's fully ready.
 
 
-## Loading Screen Data
+## Loading Screen Data {/* #loading-screen-data */}
 
 We've revised the structure of the `LoadingScreen` JavaScript object. Now, `server` and `player` information are neatly split:
 
@@ -171,7 +171,7 @@ The old format is now deprecated and will show warnings if used.
 :::
 
 
-## New System Stats
+## New System Stats {/* #new-system-stats */}
 
 ![](/img/blog/2025-june/system-stats.webp)
 
@@ -182,7 +182,7 @@ You can enable it in the Debug Settings!
 We intend to expand this stats to display more information in the future.
 
 
-## Changelog Markdown
+## Changelog Markdown {/* #changelog-markdown */}
 
 We've added a new in-game **Markdown** parser that converts Markdown into Unreal Rich Text. This means changelogs are now properly formatted and beautifully displayed inside the menu:
 
@@ -193,7 +193,7 @@ We've added a new in-game **Markdown** parser that converts Markdown into Unreal
 No more plain text or weird broken tags!
 
 
-## Fixed River
+## Fixed River {/* #fixed-river */}
 
 ![](/img/blog/2025-june/river.webp)
 
@@ -204,7 +204,7 @@ For quite a while, a visual bug caused rivers to appear totally broken unless yo
 But we managed to implement a workaround to mitigate the issue! So rivers can flow properly again without the glitchy rendering gaps.
 
 
-## UI Responsiveness
+## UI Responsiveness {/* #ui-responsiveness */}
 
 We fixed several UI screens that were breaking in non-16:9 aspect ratios (like 4:3 or 16:10). The Vault, Settings, Find Servers, New Game and more are all now fixed!
 
@@ -219,30 +219,30 @@ Everything should now scale correctly across common screen formats:
 <MediaLegend>Vault Screen displaying properly on 16:9</MediaLegend>
 
 
-## Other Improvements
+## Other Improvements {/* #other-improvements */}
 
-### File Transfer Overhaul
+### File Transfer Overhaul {/* #file-transfer-overhaul */}
 
 We've made multiple improvements to the file transfer system, again! We've drastically revamped our internal systems to improve the parallel downloading, fixing all the stutter/hitches happening while downloading each file.
 
 We also improved the robustness of the system as a whole, to prevent crashes and improve the stability of the downloads!
 
 
-### Lua Internal Stack
+### Lua Internal Stack {/* #lua-internal-stack */}
 
 We've made a structural improvement to our Lua implementation to ensure that API calls now behave more like native Lua function calls. Now the Lua stack is preserved during API calls, as before it was always being cleared. While this didn't cause major issues before, it prevented tools like hooks from accessing correct stack information on API calls.
 
 Related [Issue#932](https://github.com/nanos-world/issues/issues/932)
 
 
-### Lua Internal Memory
+### Lua Internal Memory {/* #lua-internal-memory */}
 
 We've enhanced Lua's internal memory management, addressing issues where the garbage collector failed to properly clean up the Environment and some Userdata after they were unloaded, resulting in potential memory leaks.
 
 All entities and environments are now correctly flushed from memory, resolving problems that previously caused Files and Databases to remain open, and even crashes.
 
 
-### Firewall Alert
+### Firewall Alert {/* #firewall-alert */}
 
 ![](/img/blog/2025-june/firewall.webp)
 
@@ -251,12 +251,12 @@ All entities and environments are now correctly flushed from memory, resolving p
 We've improved Steam installation process to auto add all executables automatically to Firewall when installing nanos world. No more popups asking your permissions when opening special WebUI pages or launching the server!
 
 
-### Fatal Errors
+### Fatal Errors {/* #fatal-errors */}
 
 We fixed a lot of Fatal Errors of `Failed to send Message` that were annoying us for some long time due an internal bug. They happened in both Client and Server and were flooding our logs and our crash reporter.
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 This was another month of polish and core improvements, I've been fully focused on making nanos world and all its internal systems as stable as possible, aiming to a state with almost no crashes or chronic issues. This foundation is essential before diving deep into major new features and being able to focus on them without distractions.
 

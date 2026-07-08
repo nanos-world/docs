@@ -16,12 +16,12 @@ Tune in for a roundup of the latest updates from May!
 {/* truncate */}
 
 
-## Easier Upload to Vault
+## Easier Upload to Vault {/* #easier-upload-to-vault */}
 
 We're excited to announce new easier ways to upload new versions of your Packages and Asset Packs to the Vault!
 
 
-### Upload through CLI
+### Upload through CLI {/* #upload-through-cli */}
 
 We are adding a new CLI command, `package upload` and `assets upload`, that allows you to effortlessly upload new versions of your Package or Asset Pack through the CLI (Command Line Interface).
 
@@ -34,7 +34,7 @@ This system validates, compresses, and uploads the new version of your local res
 ![](/img/blog/2023-may/cli-upload.webp)
 
 
-### Upload through the UI
+### Upload through the UI {/* #upload-through-the-ui */}
 
 We've also made it possible to upload new Packages or Asset Packs versions directly from the Vault Manage tab.
 
@@ -57,7 +57,7 @@ Watch the Upload Process in Action:
 <MediaLegend>Uploading a Package through the Vault</MediaLegend>
 
 
-## New Class: Widget3D
+## New Class: Widget3D {/* #new-class-widget3d */}
 
 We're happy to introduce the new Class: <Classes.Widget3D />. This class provides a 3D representation of an existing <Classes.Widget />! Allowing us to have Widgets to be rendered as Actors in 3D world!
 
@@ -79,7 +79,7 @@ local my_widget_3d = my_widget:SpawnWidget3D(Vector(0, 0, 200), Rotator(0, 90, 0
 <ReferenceLink href="scripting-reference/classes/widget3d">Widget 3D Class</ReferenceLink>
 
 
-## Map Package Create Flow
+## Map Package Create Flow {/* #map-package-create-flow */}
 
 We've made significant improvements to the Map Package creation flow through the UI.
 
@@ -96,7 +96,7 @@ Watch the Map Creation Process in Action:
 <MediaLegend>Creating a Map Package through the Vault</MediaLegend>
 
 
-## Assets Meta Data
+## Assets Meta Data {/* #assets-meta-data */}
 
 Now we can define Meta Data (custom values) to individual assets inside our Asset.toml! Before we could only define assets by it's path:
 
@@ -123,12 +123,12 @@ Read more in the Asset Meta Data docs section:
 <ReferenceLink href="core-concepts/assets#asset-meta-data">Asset Meta Data</ReferenceLink>
 
 
-## Trigger Client Side
+## Trigger Client Side {/* #trigger-client-side */}
 
 Now, our <Classes.Trigger /> class can be spawned on the client side as well! Allowing scripters to have Triggers being used on client-side the same way as on server!
 
 
-## Attached Meshes Features
+## Attached Meshes Features {/* #attached-meshes-features */}
 
 We got a bunch of improvements and new methods to Attached Meshes functionalities!
 
@@ -139,7 +139,7 @@ Additionally, we've added convenient getters such as `GetAll[Static/Skeletal]Mes
 And finally, we got `SetStaticMeshAttachedTransform()`, allowing scripters to change the transform (location/rotation) of attached meshes during runtime!
 
 
-## P2P Improvements
+## P2P Improvements {/* #p2p-improvements */}
 
 We've addressed several issues in the implementation of our P2P (non-dedicated server) functionality, particularly related to connecting to P2P localhost servers. We developed a new hybrid solution that has solved most of these issues.
 
@@ -150,38 +150,38 @@ The problem with that is that you can only connect through this new Fake IP, mak
 But finally and fortunately we managed to implement a solution that solves all the problems having now a hybrid approach! Now all P2P servers also allows "dedicated" connections, making them possible to be connected through `localhost` and also the Fake IP, at the same time!
 
 
-## Misc Improvements
+## Misc Improvements {/* #misc-improvements */}
 
-### Compatib. Version 1.54
+### Compatib. Version 1.54 {/* #compatib-version-154 */}
 
 Lastly, worth mention this month we introduced a new Compatibility Version [`1.54`](/docs/next/core-concepts/packages/compatibility-versions#version-154), with changes to `Level.CallLevelBlueprintEvent`, aligning it with the usual Blueprint functions by enabling variadic parameters. And also `Client.GetPackages()`, making it work like Server.GetPackages() as well!
 
 
-### Multi Package Reload
+### Multi Package Reload {/* #multi-package-reload */}
 
 Now it is possible to reload/load/unload multiple packages at once with console commands! E.g.:
 
 `package reload sandbox battlefield-kill-ui`
 
 
-### Updated CEF & Steam
+### Updated CEF & Steam {/* #updated-cef--steam */}
 
 We've updated CEF (`114`) & Steam SDK (`1.57`) libraries to the latest versions! We were almost 1 year outdated with CEF due some problems with Linux (Proton), but they now seem to be all fixed and we are up-to-date again!
 
 
-### UFont & UClass Params
+### UFont & UClass Params {/* #ufont--uclass-params */}
 
 Now Blueprint supports receiving **UFont** from <AssetPath.Font /> and **UClass** from Unreal usual paths (`/Game/MyAsset/MyClass.MyClass_C`)!
 
 
-### Vault Refresh
+### Vault Refresh {/* #vault-refresh */}
 
 We added the *refresh* button to the Vault Item screen too! It is located at the right side of the navigation bar:
 
 ![](/img/blog/2023-may/vault-refresh.webp)
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 This month was aimed to increase the encouragement of scripters/modders to upload their resources to Vault. As now pushing new versions requires just few clicks, many of the barriers have been knocked down as the process was greatly automated!
 

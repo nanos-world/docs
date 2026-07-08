@@ -15,11 +15,11 @@ All communication is only possible on Client Side! As the server is not aware of
 :::
 
 
-## Blueprint Events
+## Blueprint Events {/* #blueprint-events */}
 
 Events (or Functions) can be created inside your Blueprint to be called from Lua.
 
-### Creating a Custom Event
+### Creating a Custom Event {/* #creating-a-custom-event */}
 
 Open or create your Blueprint, enter **Event Graph** tab and **Right Click** the graph to open the Context Action Menu, there type `Add Custom Event...` to find the option:
 
@@ -38,7 +38,7 @@ Then, select your newly created Custom Event and in the **Details** panel (usual
 And that's it for creating it! You can add any logic you want from now on!
 
 
-### Calling a Custom Event from Lua
+### Calling a Custom Event from Lua {/* #calling-a-custom-event-from-lua */}
 
 On Lua, you can spawn your blueprint as usual, and call `CallBlueprintEvent` on it to trigger the blueprint event.
 
@@ -55,11 +55,11 @@ blueprint:CallBlueprintEvent("MyBlueprintCustomEvent", param1, param2, param3)
 ```
 
 
-## Blueprint Event Dispatcher
+## Blueprint Event Dispatcher {/* #blueprint-event-dispatcher */}
 
 Events Dispatchers are Events created inside blueprint which other Blueprints (or in our case Lua) can subscribe to it to get triggered when it's called from the Blueprint.
 
-### Creating an Event Dispatchers
+### Creating an Event Dispatchers {/* #creating-an-event-dispatchers */}
 
 To create it, find the **Event Dispatchers** section on the left side and press `+` to create a new one, name it as you desire:
 
@@ -72,7 +72,7 @@ Then, select it and on the **Details** Panel you can add as many inputs/paramete
 ![](/img/docs/tutorials/blueprints-05.webp)
 
 
-### Calling a Dispatcher from Blueprint
+### Calling a Dispatcher from Blueprint {/* #calling-a-dispatcher-from-blueprint */}
 
 Now, to trigger it from the Blueprint, drag it from the list into the Graph and select **Call** option:
 
@@ -83,7 +83,7 @@ And then you can plug any logic on it to trigger it, any other Blueprint or Lua 
 ![](/img/docs/tutorials/blueprints-06.webp)
 
 
-### Binding Dispatchers from Lua
+### Binding Dispatchers from Lua {/* #binding-dispatchers-from-lua */}
 
 You can **Bind** Blueprint Event Dispatchers directly from Lua! For that, spawn your Blueprint, and call `BindBlueprintEventDispatcher()` on it to bind the Dispatcher:
 

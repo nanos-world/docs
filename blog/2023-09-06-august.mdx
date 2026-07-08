@@ -18,7 +18,7 @@ Tune in for a roundup of the latest updates from August!
 {/* truncate */}
 
 
-## Async Operations Improvs
+## Async Operations Improvs {/* #async-operations-improvs */}
 
 In nanos world we have a bunch of operations and methods that run on background, including core/internal and scripting operations (like `HTTP.RequestAsync`, `File.ReadAsync`, `SceneCapture.EncodeToBase64Async`, etc), when executed, those methods start a new thread to be executed asynchronously.
 
@@ -31,14 +31,14 @@ But this changed with this new update! Now we have a new system controlling all 
 This improvement also fixed a bunch of deadlocks we were having and improved a lot the overall stutters when dealing with async methods.
 
 
-## Package.Require Caching
+## Package.Require Caching {/* #packagerequire-caching */}
 
 We got some improvements on how `Package.Require` works internally, and also it got a new parameter: `force_load`.
 
 Now it caches the return value of a file to be returned if you try to load the file again. You can bypass this behavior by passing `true` to the new parameter added: [`Package.Require(file, force_load)`](/docs/next/scripting-reference/static-classes/package#static-function-require).
 
 
-## New Modules Behavior
+## New Modules Behavior {/* #new-modules-behavior */}
 
 Modules are external native code (`.dll` or `.so`) that you can run on the server.
 
@@ -65,26 +65,26 @@ This aliasing thing also solves several bugs and problems related to the native 
 At the highest level, nothing changed and should keep working as expected, but under the hood everything works different now and allows us to expand and advance to newer implementations!
 
 
-## Scripting Safety
+## Scripting Safety {/* #scripting-safety */}
 
 We are implementing a new layer of security on server side to prevent malicious code to run without the server creator be aware. Please let me know your opinion regarding those changes:
 
 
-### Unsafe Libraries
+### Unsafe Libraries {/* #unsafe-libraries */}
 
 Now the methods `os.execute`, `os.rename`, `os.remove`, `os.exit`, `os.getenv`, `os.tmpname`, `os.setlocale`, `dofile`, `loadfile` and all `io.*` can only be executed if the server is started with the new command-line parameter: `--enable_unsafe_libs`.
 
 We're studying the possibility to make this a per-package setting defined in the Package.toml instead of requiring that command line to be started, this way the server owner is alerted if a Package is "potentially unsafe" (as the Packages using those methods will not work if started through the New Game Menu right now).
 
 
-### File Access
+### File Access {/* #file-access */}
 
 This way, all file access is recommended to be made through the <Classes.File /> class (instead of `io.*`), having a sandboxed and secure way of accessing files.
 
 And in addition to that, now <Classes.File /> can't access the `Config.toml` file directly anymore, to prevent malicious packages from stealing the server's token for example.
 
 
-## Recursive Scripting Tables
+## Recursive Scripting Tables {/* #recursive-scripting-tables */}
 
 We did a big improvement in our internal serialization/deserialization implementation when passing data from Lua to our Native methods (or scripting events).
 
@@ -93,7 +93,7 @@ Before we had a system that suppressed recursive tables (tables with references 
 Internally they are cached in case we want to deserialize a same table, and it's value is just dereferenced back to lua stack!
 
 
-## New Methods and Params
+## New Methods and Params {/* #new-methods-and-params */}
 
 Several new methods and parameters were added to classes, to mention a few:
 
@@ -105,14 +105,14 @@ Several new methods and parameters were added to classes, to mention a few:
 - New method [CharacterSimple.CallAnimationBlueprintEvent()](/docs/next/scripting-reference/classes/character-simple#function-callanimationblueprintevent) to call an event on the Animation Blueprint instance.
 
 
-## Docs Improvements
+## Docs Improvements {/* #docs-improvements */}
 
 We added new **Base Classes** Pages and API to the docs: <Classes.Vehicle /> and <Classes.Pawn /> to unify all shared methods between <Classes.VehicleWater /> & <Classes.VehicleWheeled /> and <Classes.Character /> & <Classes.CharacterSimple />.
 
 This way we have less duplicated methods and events to maintain between those classes.
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 Safety is one of the main concerns in sandbox games like nanos world, as we are always loading and running third-party created scripts and packages, we consider it very important for servers creator to be able to fully trust and know what they are executing. This month we got a great improvement advance about this, and we will definitely continue to improve that in the next updates.
 

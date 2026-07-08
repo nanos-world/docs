@@ -11,7 +11,7 @@ New Classes, Unreal Engine 5 Experiments and Scripting Improvements!
 {/* truncate */}
 
 
-## New Class: [Decal](/docs/scripting-reference/classes/decal)
+## New Class: [Decal](/docs/scripting-reference/classes/decal) {/* #new-class-decal */}
 
 ![](/img/blog/november/decal.jpg)
 
@@ -20,7 +20,7 @@ We've added a new class to spawning **Decals**! Decals are Materials that are pr
 As Decals are inherited from Actors, you can change it's location, rotation, attach it or call any method from [Base Actor](/docs/scripting-reference/classes/base-classes/actor) on it!
 
 
-## New Class: [Billboard](/docs/scripting-reference/classes/billboard)
+## New Class: [Billboard](/docs/scripting-reference/classes/billboard) {/* #new-class-billboard */}
 
 ![](/img/blog/november/billboard.jpg)
 
@@ -29,7 +29,7 @@ We've added another new class to spawning **Billboards**! A Billboard is a 2D Ma
 As Billboards are inherited from Actors, you can change it's location, rotation, attach it or call any method from [Base Actor](/docs/scripting-reference/classes/base-classes/actor) on it!
 
 
-## New Class: [Melee](/docs/scripting-reference/classes/melee)
+## New Class: [Melee](/docs/scripting-reference/classes/melee) {/* #new-class-melee */}
 
 ![](/img/blog/november/melee.jpg)
 
@@ -42,11 +42,11 @@ The results are quite fun, the hit/damage also affects the environment dynamical
 <VideoExternal path="/blog/november/melee.webm" />
 
 
-## Scripting Improvements
+## Scripting Improvements {/* #scripting-improvements */}
 
 We've listen to your demand and we're finally bringing long-awaited new amazing scripting features!
 
-### Real Hot Reload
+### Real Hot Reload {/* #real-hot-reload */}
 
 ![](/img/blog/november/hotreload.jpg)
 
@@ -65,7 +65,7 @@ This will update the clients with the newer files version and load the `Index.lu
 In the future, it would be possible to add a real-time checker to automatically update the modified files after saving them.
 
 
-### Extending Classes
+### Extending Classes {/* #extending-classes */}
 
 ![](/img/blog/november/extending.jpg)
 
@@ -88,7 +88,7 @@ my_player:AddScore(10)
 Read the full documentation [here](/docs/core-concepts/scripting/extending-classes).
 
 
-## New View Mode: TopDown
+## New View Mode: TopDown {/* #new-view-mode-topdown */}
 
 We created a new native View Mode: **TopDown**!
 
@@ -107,7 +107,7 @@ It also is possible to dynamically change the view mode and switch between them 
 <VideoExternal path="/blog/november/top-down.webm" />
 
 
-## New Camera Methods
+## New Camera Methods {/* #new-camera-methods */}
 
 Player got a bunch of new Camera methods: `Player:SetCameraSocketOffset()`, `Player:SetCameraArmLength()`.
 
@@ -116,12 +116,12 @@ And also ability to detach and attach it to other actors (👀 including Props):
 Note: **Spectate** methods from **Client** has been moved to **Player**: `Player:Spectate()`.
 
 
-## [TextRender](/docs/scripting-reference/classes/text-render) on Server Side
+## [TextRender](/docs/scripting-reference/classes/text-render) on Server Side {/* #textrender-on-server-side */}
 
 Now the Class `TextRender` now can be spawned on Server Side as well!
 
 
-## Other Changes
+## Other Changes {/* #other-changes */}
 
 Besides the major topics covered here, we've got several other new features which were been added during the month:
 
@@ -131,7 +131,7 @@ Besides the major topics covered here, we've got several other new features whic
 - Fixed tons of bugs, detailed information can be found in the Discord Changelog channel.
 
 
-## Unreal Engine 5
+## Unreal Engine 5 {/* #unreal-engine-5 */}
 
 ![](/img/blog/november/ue5.jpg)
 
@@ -146,7 +146,7 @@ This made us need to disable Vehicles for this test, as Unreal vehicles are very
 But after half of dozen adaptions and disabled Vehicles, the results were surprisingly good! nanos world worked on Unreal Engine 5! Personally I got very happy and proud that the biggest problems I had was updating deprecate methods and updating some Unreal modules, thanks to the architecture developed so far in nanos world!
 
 
-### Graphical Results
+### Graphical Results {/* #graphical-results */}
 
 nanos world on Unreal Engine 5 is beautiful, joying with Lumen and Global Illumination is really fun!
 
@@ -167,12 +167,12 @@ Check it out some screenshots taken during the tests trying the Global Illuminat
 ![](/img/blog/november/ue5-inside-flash-03.jpg)
 
 
-### Stability
+### Stability {/* #stability */}
 
 Unfortunately the stability was extremely bad. It didn't surprise me too much as Unreal Engine 5 is on Early Access, so bugs and crashes would happen. Several random crashes occurred during gameplay, I could notice mostly of them were caused by the new Chaos Engine (related to Physics).
 
 
-### What now?
+### What now? {/* #what-now */}
 
 I was really happy in being able to port nanos world to Unreal Engine 5, this attempt made us be sure that this would be possible. But I decided that currently is not time yet. During the tests we had several crashes (random ones, related to the low-level of Unreal, mainly coming from Chaos Engine and from Water) that made us conclude that is better to wait a better stable version because it makes nanos world really unplayable. Those random crashes are extremely bad as sometimes it's hard to know if it's my or Unreal's fault.
 

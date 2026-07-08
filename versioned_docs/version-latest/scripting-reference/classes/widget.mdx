@@ -18,9 +18,9 @@ Most parameters are not exposed in the Widget class, and should be called using 
 :::
 
 
-## 🎒 Examples
+## 🎒 Examples {/* #examples */}
 
-#### Creating a Simple a Native Text and adding it to screen
+#### Creating a Simple a Native Text and adding it to screen {/* #creating-a-simple-a-native-text-and-adding-it-to-screen */}
 
 ```lua title="Client/Index.lua" showLineNumbers
 local my_text = Widget(NativeWidget.Text)
@@ -35,7 +35,7 @@ my_text:AddToViewport()
 :::
 
 
-#### Creating a Widgets with Childs
+#### Creating a Widgets with Childs {/* #creating-a-widgets-with-childs */}
 
 ```lua title="Client/Index.lua" showLineNumbers
 local my_vertical_box = Widget(NativeWidget.VerticalBox)
@@ -51,7 +51,7 @@ my_vertical_box:AddChild(my_button)
 ```
 
 
-#### Using a WebUI as Image Brush
+#### Using a WebUI as Image Brush {/* #using-a-webui-as-image-brush */}
 
 ```lua title="Client/Index.lua" showLineNumbers
 local webui = WebUI("mywebui", "https://google.com", WidgetVisibility.Hidden)
@@ -68,7 +68,7 @@ my_image:AddToViewport()
 :::
 
 
-#### Subscribing for a Dispatcher
+#### Subscribing for a Dispatcher {/* #subscribing-for-a-dispatcher */}
 
 ```lua title="Client/Index.lua" showLineNumbers
 local my_button = Widget(NativeWidget.Button)
@@ -88,7 +88,7 @@ my_button:AddToViewport()
 ```
 
 
-## 📚 Libraries & Frameworks
+## 📚 Libraries & Frameworks {/* #libraries--frameworks */}
 
 Here a list of Community Created Libraries & Frameworks making use of Widgets expanding it's possibilities:
 
@@ -106,22 +106,22 @@ Here a list of Community Created Libraries & Frameworks making use of Widgets ex
 </div>
 
 
-## 🛠 Constructors
+## 🛠 Constructors {/* #constructors */}
 
 <ConstructorDeclaration type="Class" name="Widget" />
 
 
-## 🦠 Functions
+## 🦠 Functions {/* #functions */}
 
 <FunctionsDeclaration type="Class" name="Widget" />
 
 
-## 🚀 Events
+## 🚀 Events {/* #events */}
 
 <EventsDeclaration type="Class" name="Widget" />
 
 
-## ✅ NativeWidgets to Unreal Widgets Relation
+## ✅ NativeWidgets to Unreal Widgets Relation {/* #nativewidgets-to-unreal-widgets-relation */}
 
 List of the relation Unreal native [Widgets](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UWidget/) ↔ <Enums>NativeWidget</Enums> Enums:
 
@@ -154,6 +154,6 @@ List of the relation Unreal native [Widgets](https://docs.unrealengine.com/5.1/e
 | **`NativeWidget.BackgroundBlur`** | [BackgroundBlur](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UBackgroundBlur/) | ✅ |
 
 
-## ✅ List of Supported Parameter Types
+## ✅ List of Supported Parameter Types {/* #list-of-supported-parameter-types */}
 
 See all Supported Parameter Types in the [Blueprint Page](/scripting-reference/classes/blueprint.mdx#list-of-supported-parameter-types).

@@ -17,15 +17,15 @@ The Docker setup is maintained by the community. For more details, visit the ope
 
 You can run nanos world server in a containerized environment using [Docker](https://www.docker.com/). This method works on any system that supports Docker (Linux, Windows, macOS).
 
-## Prerequisites
+## Prerequisites {/* #prerequisites */}
 
 * Docker (version 20.10 or higher)
 * Docker Compose (version 2.0 or higher)
 * At least 100MB of free disk space
 
-## Quick Start with Docker Compose
+## Quick Start with Docker Compose {/* #quick-start-with-docker-compose */}
 
-#### 1. Create a `docker-compose.yml` file:
+#### 1. Create a `docker-compose.yml` file: {/* #1-create-a-docker-composeyml-file */}
 
 ```yaml
 services:
@@ -44,25 +44,25 @@ services:
     # command: ["--port", "7777", "--map", "MyMap"]
 ```
 
-#### 2. Start the server:
+#### 2. Start the server: {/* #2-start-the-server */}
 
 ```shell
 docker-compose up -d
 ```
 
-#### 3. View logs:
+#### 3. View logs: {/* #3-view-logs */}
 
 ```shell
 docker-compose logs -f
 ```
 
-#### 4. Stop the server:
+#### 4. Stop the server: {/* #4-stop-the-server */}
 
 ```shell
 docker-compose down
 ```
 
-## Using Docker CLI
+## Using Docker CLI {/* #using-docker-cli */}
 
 Alternatively, you can run the server directly with Docker:
 
@@ -70,7 +70,7 @@ Alternatively, you can run the server directly with Docker:
 docker run olivatooo/nanos-world-server
 ```
 
-## Configuration
+## Configuration {/* #configuration */}
 
 You can pass server parameters by modifying the `command` section in `docker-compose.yml`:
 
@@ -78,7 +78,7 @@ You can pass server parameters by modifying the `command` section in `docker-com
 command: ["--max-players", "32", "--announce"]
 ```
 
-## Persistent Data
+## Persistent Data {/* #persistent-data */}
 
 The Docker configuration mounts a volume to `/app` inside the container. This allows you to:
 - Persist server configuration files
@@ -86,7 +86,7 @@ The Docker configuration mounts a volume to `/app` inside the container. This al
 - Access server logs
 - Maintain saved data between container restarts
 
-## Updating the Server
+## Updating the Server {/* #updating-the-server */}
 
 To update to the latest version:
 

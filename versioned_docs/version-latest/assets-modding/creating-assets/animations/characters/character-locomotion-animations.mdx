@@ -19,7 +19,7 @@ Before proceeding, please make sure you read [Creating & Importing Assets](/asse
 It is now possible to integrate your own Locomotion raw animations into nanos world! With the new Character methods you can add your own Standing, Proning and Crouching Blend Spaces to work in the native Character!
 
 
-## Locomotion BlendSpaces
+## Locomotion BlendSpaces {/* #locomotion-blendspaces */}
 
 In Unreal, [BlendSpaces](https://docs.unrealengine.com/5.0/en-US/blend-spaces-in-unreal-engine/) are graphs where you can plot any number of animations to be blended between based on the values of multiple inputs.
 
@@ -37,7 +37,7 @@ Read [Retargeting Animations](/assets-modding/creating-assets/animations/charact
 All you need to do is create a new **Blend Space 2D** and drag'n drop your animations on it.
 
 
-### BlendSpace Configuration
+### BlendSpace Configuration {/* #blendspace-configuration */}
 
 First, make sure the **Horizontal** and **Vertical Axis** are named `SpeedY` and `SpeedX` respectively. Also they need to be clamped to `-1.0` and `1.0` Axis Values:
 
@@ -51,7 +51,7 @@ You can tweak the Smoothing Time the way you want 😉.
 :::
 
 
-### Setting up Through Scripting
+### Setting up Through Scripting {/* #setting-up-through-scripting */}
 
 Through scripting you can set the Locomotion BlendSpace Animation using 3 methods:
 
@@ -62,11 +62,11 @@ Through scripting you can set the Locomotion BlendSpace Animation using 3 method
 The `enable_tip` can be toggled to enable/disable **Turn In Place** built-in feature.
 
 
-## Transition Animations
+## Transition Animations {/* #transition-animations */}
 
 It is also possible to define the transition animation between the states (Standing, Proning, Crouching), those are simple Sequence Animations just to improve the "lerp" between them.
 
-### Setting up Through Scripting
+### Setting up Through Scripting {/* #setting-up-through-scripting-1 */}
 
 Through scripting you can set the Transition Animations using 2 methods:
 
@@ -76,7 +76,7 @@ Through scripting you can set the Transition Animations using 2 methods:
 In each method you can set the transition between 2 states (Standing \<\-\> Crouching or Proning \<-\> Crouching).
 
 
-## Custom Animation Notifies
+## Custom Animation Notifies {/* #custom-animation-notifies */}
 
 You can integrate your animations with the built-in nanos world Animation Notifies, to trigger footstep sounds or disable movement, for example!
 
@@ -90,7 +90,7 @@ Here's the list of possible Anim Notifies names to use and it's effects:
 | **`Movement_Enable`** | This will enable the Character movement. |
 
 
-### Adding a Notify
+### Adding a Notify {/* #adding-a-notify */}
 
 Adding Notify is very straight, just **Right Click** on any Notify Track of your animation and click **Add Notify** -> **New Notify**:
 

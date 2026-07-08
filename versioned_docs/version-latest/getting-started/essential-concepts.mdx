@@ -11,7 +11,7 @@ This guide is intended for beginners who want to learn the essential concepts to
 import { Classes, StaticClasses, AssetPath, AuthorityType } from '@site/src/components/_nanos';
 
 
-## Introduction
+## Introduction {/* #introduction */}
 
 Welcome to nanos world! A sandbox multiplayer game that allows you to create your own game modes, import custom assets, maps and completely extend it's functionalities with Lua scripts.
 
@@ -20,7 +20,7 @@ Before diving into modding and scripting, it's important to understand the essen
 After reading through this Guide, you will be ready to start programming, modding and creating content!
 
 
-## Asset Packs
+## Asset Packs {/* #asset-packs */}
 
 Asset Packs are the way for modders to import custom assets into the game, such as new models, textures, sounds, and more. They can be created using Unreal Engine, exported and then added to the server's `Assets/` directory in nanos world server as an Asset Pack!
 
@@ -40,7 +40,7 @@ Asset Packs are a powerful tool for extending the game and adding new features, 
 <ReferenceLink href="core-concepts/assets">Assets Guide</ReferenceLink>
 
 
-## Packages
+## Packages {/* #packages */}
 
 **Packages** are the core building blocks of nanos world, as they provide a way for scripters to create custom content and features for the game.
 
@@ -69,14 +69,14 @@ Overall, Packages are an essential concept in nanos world modding, and they prov
 <ReferenceLink href="core-concepts/packages/packages-guide">Packages Guide</ReferenceLink>
 
 
-## Scripting
+## Scripting {/* #scripting */}
 
 Scripting is a powerful way to program and customize nanos world. It allows us to listen to game events, spawn, interact, and change entities at will.
 
 All Lua code are executed through Packages, it is possible to have scripts that run only on the server, on the client or that run on both.
 
 
-### Learning
+### Learning {/* #learning */}
 
 :::tip
 
@@ -93,7 +93,7 @@ The **🎓 CORE CONCEPTS** section provides guides and great information whilst 
 Also, our [Official Discord](https://discord.nanos-world.com) is an active community where you can ask questions, get help, and connect with other scripters!
 
 
-### Package Folder Structure
+### Package Folder Structure {/* #package-folder-structure */}
 
 The folder structure of a scripting Package includes `Server/`, `Client/`, and `Shared/` folders. You can put `.lua` files in each folder to execute code on the server, client, or both (Shared):
 
@@ -122,12 +122,12 @@ The Package only loads the `Index.lua` file of each base folder (`Server/`, `Cli
 You can find several guides for scripting under **`🎓 CORE CONCEPTS / Scripting`** section in the left sidebar.
 
 
-### Unreal Engine Concepts
+### Unreal Engine Concepts {/* #unreal-engine-concepts */}
 
 Some concepts that may sound confusing if you are not familiar with Unreal Engine. Since nanos world is built on top of it, we mostly adapt it's own concepts and terminologies.
 
 
-#### Vector, Rotator and Units
+#### Vector, Rotator and Units {/* #vector-rotator-and-units */}
 
 In Unreal Engine, the world is represented in a 3D space using a coordinate system. The position of objects in this space is represented using <Structs.Vector />, which are essentially a set of three numbers representing the `X` (Forward), `Y` (Right), and `Z` (Up) coordinates.
 
@@ -136,12 +136,12 @@ The orientation of objects is represented using <Structs.Rotator />, which are a
 Unreal Engine uses **centimeters** as the default unit of measurement, so when you see a Vector with values `(100, 0, 0)`, it means that the object is 100 centimeters (or 1 meter) forward from the origin point.
 
 
-#### Actors
+#### Actors {/* #actors */}
 
 In Unreal Engine, an **Actor** is any object that can be placed in the world. It is the base class for all objects that have a physical representation in the game world, such as <Classes.Character />, <Classes.Prop />, <Classes.Weapon />, and more. They usually can be spawned with a `location` and `rotation`.
 
 
-#### Players vs Characters vs Pawn
+#### Players vs Characters vs Pawn {/* #players-vs-characters-vs-pawn */}
 
 An important concept to understand is the difference between <Classes.Player />, <Classes.Character /> and <Classes.Pawn />.
 
@@ -152,7 +152,7 @@ For nanos world, we simplified this concept a bit, and we just have a <Classes.P
 So when a <Classes.Player /> spawns, it means a real person just connected to the server.
 
 
-### Logging & Debugging
+### Logging & Debugging {/* #logging--debugging */}
 
 You can output messages to the console using the <StaticClasses.Console /> Static Class, which provides different log levels such as <MethodReference type="StaticClass" class_name="Console" method_name="Log" />, <MethodReference type="StaticClass" class_name="Console" method_name="Debug" />, <MethodReference type="StaticClass" class_name="Console" method_name="Warn" /> and <MethodReference type="StaticClass" class_name="Console" method_name="Error" />:
 
@@ -165,7 +165,7 @@ Console.Error("Error red messages! Will show the stack trace!")
 ```
 
 
-### Classes
+### Classes {/* #classes */}
 
 Classes are entities that can be spawned, interacted with, and changed as you wish. An example spawning a <Classes.Light /> and <Classes.StaticMesh /> would be like this:
 
@@ -189,7 +189,7 @@ Read more about Classes in the Classes Guide:
 <ReferenceLink href="core-concepts/scripting/classes-guide">Classes Guide</ReferenceLink>
 
 
-### Static Classes
+### Static Classes {/* #static-classes */}
 
 Besides Classes we also have the **Static Classes**, which are just Lua libraries with functions which can be called without needing to spawn an entity or have an instance.
 
@@ -212,7 +212,7 @@ local trace_result = Trace.LineSingle(start_location, end_location, collision_ch
 ```
 
 
-### Events
+### Events {/* #events */}
 
 In nanos world, everything in the API is based on **Events**, which are similar to **Hooks** in other games.
 
@@ -237,7 +237,7 @@ Read more about Events in the Events Guide:
 <ReferenceLink href="core-concepts/scripting/events-guide">Events Guide</ReferenceLink>
 
 
-### Timers
+### Timers {/* #timers */}
 
 With our <StaticClasses.Timer /> Static Class, you can create timers and delays to execute code after a certain amount of time has passed. This is useful for creating timed events, cooldowns, or any situation where you want to delay the execution of some code.
 
@@ -260,7 +260,7 @@ Read more about Timers in the Timer Page:
 <ReferenceLink href="scripting-reference/static-classes/timer">Timer Static Class</ReferenceLink>
 
 
-### Finding Existing Entities
+### Finding Existing Entities {/* #finding-existing-entities */}
 
 Besides spawning an entity and storing a variable reference to it, or getting it's reference through an Event, sometimes you need to get an already spawned entity.
 
@@ -296,14 +296,14 @@ local my_character = Server.GetEntityByID(character_id)
 ```
 
 
-### Retrieving a Player Character
+### Retrieving a Player Character {/* #retrieving-a-player-character */}
 
 As explained in [Players vs Characters vs Pawn](#players-vs-characters-vs-pawn) section, a <Classes.Player /> represents a connected player in the server, while a <Classes.Character /> is the physical representation of the player in the world.
 
 You can retrieve the Player's possessing Character with the method <MethodReference type="Class" class_name="Player" method_name="GetControlledCharacter" show_class_name />.
 
 
-#### Retrieving the Local Player on Client Side
+#### Retrieving the Local Player on Client Side {/* #retrieving-the-local-player-on-client-side */}
 
 On **Client** side, there are some special methods and events to retrieve the local Player: <MethodReference type="StaticClass" class_name="Client" method_name="GetLocalPlayer" show_class_name /> and <EventReference type="StaticClass" class_name="Client" event="SpawnLocalPlayer" show_class_name />:
 
@@ -327,7 +327,7 @@ end)
 ```
 
 
-## Networking
+## Networking {/* #networking */}
 
 Our client-server architecture has been designed thinking about the ease and simplicity of everything related to networking and synchronization. Leaving the scripter to worry only with the creative part!
 
@@ -354,7 +354,7 @@ Through this docs, you will find [Authority](/core-concepts/scripting/authority-
 :::
 
 
-### Communication Between Sides
+### Communication Between Sides {/* #communication-between-sides */}
 
 To be able to send information from the server to client or vice versa, we exposed some especial methods in our <StaticClasses.Events /> Static Class to allow that!
 
@@ -377,7 +377,7 @@ Read more about Networked Events in our Communicating Between Packages Guide:
 <ReferenceLink href="core-concepts/scripting/communicating-between-packages#sending-data-through-the-network">Communicating Between Packages</ReferenceLink>
 
 
-### Synchronized Values
+### Synchronized Values {/* #synchronized-values */}
 
 Besides sending data through Events, which is a dynamic thing, we also have the possibility to bind/set custom values to entities, or even globally in the Server/Client.
 
@@ -407,11 +407,11 @@ Read more about Entity Values in our Entity Values Guide:
 <ReferenceLink href="core-concepts/scripting/entity-values">Entity Values</ReferenceLink>
 
 
-## UI
+## UI {/* #ui */}
 
 User Interface is an essential aspect of the game, we provide several flexible ways to create UI!
 
-### WebUI
+### WebUI {/* #webui */}
 
 The most direct way is with <Classes.WebUI />, which allows you to create and integrate UIs using HTML/CSS/JavaScript, having absolute freedom to create and customize as you want.
 
@@ -422,7 +422,7 @@ For more information refer to our WebUI tutorial:
 <ReferenceLink href="getting-started/tutorials-and-examples/basic-hud-html">Basic HUD (HTML)</ReferenceLink>
 
 
-### Widget
+### Widget {/* #widget */}
 
 Another new and more advanced way to create UI is using Unreal <Classes.Widget />! With them you can have all access to the powerful widgets and even create your own through Unreal Engine and import them in-game, providing a seamless User Experience!
 
@@ -431,7 +431,7 @@ For more information refer to our Widget class page:
 <ReferenceLink href="scripting-reference/classes/widget">Widget Class</ReferenceLink>
 
 
-## Maps
+## Maps {/* #maps */}
 
 Maps (or Levels in Unreal) are the entry point of the game, this is where the world is loaded and the entities are spawned in the client side.
 
@@ -455,7 +455,7 @@ local custom_data = Server.GetMapConfig()
 As you could notice, by loading a Map you are also loading a Package with scripts, so you can have custom scripts running per-map. Which can be useful to add custom behaviors such like interactable environments or doors.
 
 
-## Game Modes
+## Game Modes {/* #game-modes */}
 
 [Game-Modes](/core-concepts/packages/packages-guide.mdx#game-mode) are a type of Package which behave exactly like `scripts`, with the exception we can just have **one** game-mode loaded at once, while we can have as many as scripts running as we want.
 
@@ -464,7 +464,7 @@ They should be used to create unique and self-contained game experiences.
 Players can select and start servers easily by choosing a game-mode in the New Game section on Main Menu.
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 In this guide, we have covered some of the essential concepts of nanos world scripting and modding. These concepts are important to understand as they form the foundation of building any game-mode or script. We hope you can now start creating content and bringing life to your ideas!
 

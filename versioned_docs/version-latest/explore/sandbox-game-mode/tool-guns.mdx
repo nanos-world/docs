@@ -19,7 +19,7 @@ This **Tool Gun** approach is a convention of the Sandbox game-mode and is not a
 The sandbox game-mode defines a `ToolGun` class (see on GitHub: [Server](https://github.com/nanos-world/nanos-world-sandbox/blob/master/Server/Tools/BaseToolGun.lua) & [Client](https://github.com/nanos-world/nanos-world-sandbox/blob/master/Client/Tools/BaseToolGun.lua)) which helps on creating new tools based on a base Tool Gun.
 
 
-## Creating a custom Tool Gun
+## Creating a custom Tool Gun {/* #creating-a-custom-tool-gun */}
 
 To create your own Tool based on Sandbox's `ToolGun`, you need to create a new Class inheriting from it passing some custom parameters to the Class, like that:
 
@@ -114,7 +114,7 @@ You can see how to configure the context menu items in the [Context Menu Docs Pa
 :::
 
 
-## Overriding ToolGun Client Methods
+## Overriding ToolGun Client Methods {/* #overriding-toolgun-client-methods */}
 
 The ToolGun has some methods on **Client Side** which you can override to implement custom behaviors to your tool when the Local Player interacts with it.
 
@@ -146,12 +146,12 @@ end
 ```
 
 
-## Tool Gun Single & Double Target
+## Tool Gun Single & Double Target {/* #tool-gun-single--double-target */}
 
 We have implemented two child classes of `ToolGun` called [`ToolGunSingleTarget`](#toolgunsingletarget) and [`ToolGunDoubleTarget`](#toolgundoubletarget) which have some extra functionalities to make it even easier to create Tool Guns that require one or two targets when firing.
 
 
-### ToolGunSingleTarget
+### ToolGunSingleTarget {/* #toolgunsingletarget */}
 
 This class is useful when you want to create a Tool Gun that requires only one target when firing, for example, a Tool Gun that spawns an entity at the trace location when firing.
 
@@ -168,7 +168,7 @@ end
 ```
 
 
-### ToolGunDoubleTarget
+### ToolGunDoubleTarget {/* #toolgundoubletarget */}
 
 This class is useful when you want to create a Tool Gun that requires two targets when firing, for example, a Tool Gun that welds two entities together.
 
@@ -185,7 +185,7 @@ end
 ```
 
 
-## Examples
+## Examples {/* #examples */}
 
 You can find more examples of Tools in the Sandbox's `Tools/` folder on both [Client](https://github.com/nanos-world/nanos-world-sandbox/tree/master/Client/Tools) and [Server](https://github.com/nanos-world/nanos-world-sandbox/tree/master/Server/Tools) side.
 

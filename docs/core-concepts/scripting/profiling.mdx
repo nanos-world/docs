@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 nanos world includes built-in tools for profiling both the server and the game client in real-time. Using profiling tools is essential when optimizing large servers, identifying Lua bottlenecks, analyzing frame spikes, debugging networking issues, or improving overall performance.
 
 
-## Tracy Profiler
+## Tracy Profiler {/* #tracy-profiler */}
 
 ![](/img/docs/scripting/profiling/tracy-01.webp)
 
@@ -39,7 +39,7 @@ Unlike traditional profilers, Tracy allows you to inspect performance live while
 <MediaLegend>Tracy detailed view while hovering</MediaLegend>
 
 
-### Downloading Tracy
+### Downloading Tracy {/* #downloading-tracy */}
 
 First, download the Tracy Profiler client application from the official releases page:
 
@@ -48,7 +48,7 @@ First, download the Tracy Profiler client application from the official releases
 After downloading, launch the Tracy application.
 
 
-### Launching the Server
+### Launching the Server {/* #launching-the-server */}
 
 To launch your server with Tracy profiling enabled, you must launch it like that:
 
@@ -75,7 +75,7 @@ To launch your server with Tracy profiling enabled, you must launch it like that
 </Tabs>
 
 
-### Connecting to the Server with Tracy
+### Connecting to the Server with Tracy {/* #connecting-to-the-server-with-tracy */}
 
 Once the server is running with profiling enabled:
 
@@ -86,7 +86,7 @@ Once the server is running with profiling enabled:
 Tracy will immediately begin capturing profiling data from the running server.
 
 
-## Native Profiling
+## Native Profiling {/* #native-profiling */}
 
 We also integrated a native profiling command that can be used to capture profiling data without using Tracy. It works by outputting the execution time of some pre-defined parts of the code to the server or client console (or the client's Profiling UI).
 
@@ -95,14 +95,14 @@ We also integrated a native profiling command that can be used to capture profil
 <MediaLegend>Server console outputting profiling information</MediaLegend>
 
 
-### Server Profiling
+### Server Profiling {/* #server-profiling */}
 
 To enable server profiling, simply launch the server with the `--profiling` command or set `profiling = true` in the server's `Config.toml` file.
 
 It will output `PROFIL` logs to the server console, showing the execution time of various systems and Lua callbacks.
 
 
-### Client Profiling
+### Client Profiling {/* #client-profiling */}
 
 To enable client profiling, you must enable it in the Game Settings under the Debug tab:
 
@@ -111,7 +111,7 @@ To enable client profiling, you must enable it in the Game Settings under the De
 <MediaLegend>Game Settings - Debug Tab</MediaLegend>
 
 
-#### `display frame times`
+#### `display frame times` {/* #display-frame-times */}
 
 By enabling it, it will show a **Debug UI** with:
 
@@ -128,7 +128,7 @@ By enabling it, it will show a **Debug UI** with:
 <MediaLegend>Frametimes Debug UI</MediaLegend>
 
 
-#### `display profiling to screen`
+#### `display profiling to screen` {/* #display-profiling-to-screen */}
 
 Enabling it, it will display the **Profiling UI** with all operations and their execution times directly on the game screen, allowing you to monitor performance in real-time without needing to check the console:
 
@@ -137,12 +137,12 @@ Enabling it, it will display the **Profiling UI** with all operations and their 
 <MediaLegend>Profiling Debug UI</MediaLegend>
 
 
-#### `output profiling to console`
+#### `output profiling to console` {/* #output-profiling-to-console */}
 
 Enabling it will output profiling information to the game console, exactly like the server side.
 
 
-#### `profiling entities & events network`
+#### `profiling entities & events network` {/* #profiling-entities--events-network */}
 
 Enabling it will display each entity network usage, along with scripting events and other syncing network usage on screen:
 

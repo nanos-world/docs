@@ -11,13 +11,13 @@ tags: [updates]
 {/* truncate */}
 
 
-## Steam Store Page
+## Steam Store Page {/* #steam-store-page */}
 
 Recently we got a hitch in our Store Page which required us from getting a brand new one. And now we finally are re-releasing it! It got new screenshots, videos and a better description!
 
 [![](/img/blog/2022-march/store-page.jpg)](https://store.steampowered.com/app/1841660/nanos_world?utm_source=docs&utm_campaign=march_blog)
 
-#### Please WISHLIST NOW!!!
+#### Please WISHLIST NOW!!! {/* #please-wishlist-now */}
 
 <SteamWidget />
 
@@ -26,12 +26,12 @@ A downside of this whole situation is that the old store and the old game entry 
 Also we embedded a tool to export (then import) your Achievements and Stats from the old game to the new one. You just need to launch the old game once before launching the new one and everything is imported automatically!
 
 
-## Performance Optimization
+## Performance Optimization {/* #performance-optimization */}
 
 Everyone knows that one of the great aspects of nanos world is the performance and the optimization. And in the last month we had a significant advance in improving some internal critical points of our framework.
 
 
-### Memory
+### Memory {/* #memory */}
 
 The first one to mention was a **huge** improvement in the memory usage of our spawned entities.
 
@@ -73,19 +73,19 @@ This usage was calculated on Server side. On Client side the values would be a l
 This was achieved just by improving one single system, we didn't even start looking for active compression techniques or reducing some variables sizes which are unnecessarily bigger than it needs. 🙏
 
 
-### Network
+### Network {/* #network */}
 
 Another great optimization was in our network packets, each data sent through the network has a common "header" to identify some operations. This is a constant "cost" for the network which we managed to reduce up to 75% of it's size, making all data being sent through the network statically lower!
 
 
-### Client Side
+### Client Side {/* #client-side */}
 
 We started advancing into optimizing the game in the client side. Which normally is trickier than on Server side because it concerns to dealing to Unreal Engine subsystems. But we managed to add some optimizations based on the Quality Settings selected. For example on the Blood or Bullet Holes particles, now depending on the distance and on the Effects Quality selected, they will be less or not spawned at all.
 
 We've also tweaked the Vehicle System to do similar optimizations using this system. There is still a lot which we can improve! 😀
 
 
-## New Class: [Blueprint](/docs/next/scripting-reference/classes/blueprint)
+## New Class: [Blueprint](/docs/next/scripting-reference/classes/blueprint) {/* #new-class-blueprint */}
 
 ![](/img/docs/blueprint.webp)
 
@@ -96,7 +96,7 @@ We've managed to implement the method: `CallBlueprintEvent()` which you can crea
 Also, you can spawn it on server and it will follow the same rules as any other Actor Entity, and it will be synchronized with other players using the Network Authority system as well!
 
 
-## New Class: [Database](/docs/next/scripting-reference/classes/database)
+## New Class: [Database](/docs/next/scripting-reference/classes/database) {/* #new-class-database */}
 
 ![](/img/docs/db.webp)
 
@@ -107,7 +107,7 @@ For that, we present the new class: [Database](/docs/next/scripting-reference/cl
 Check it's page for complete documentation and examples!
 
 
-## Vehicles Tire Skid Mark
+## Vehicles Tire Skid Mark {/* #vehicles-tire-skid-mark */}
 
 A small but cool addition we did for vehicles was adding Tire marks when it skids:
 <VideoExternal path="/blog/2022-march/tire-skid.webm" />
@@ -119,7 +119,7 @@ It is 100% dynamic and procedural!
 <VideoExternal path="/blog/2022-march/tire-blood-decal.webm" />
 
 
-## Sandbox Improvements
+## Sandbox Improvements {/* #sandbox-improvements */}
 
 We got several improvements regarding the sandbox game-mode! The first one is the sandbox "API": we listed all functions and events it exports so you can integrate your own entities/tools or use it's features.
 
@@ -134,7 +134,7 @@ Finally, we've improved our Physics Gun tool, now you can control it using the m
 Several other adjustments and bug fixes were made on Sandbox as well.
 
 
-## New [Particle Methods](/docs/next/scripting-reference/classes/particle)
+## New [Particle Methods](/docs/next/scripting-reference/classes/particle) {/* #new-particle-methods */}
 
 We've expanded the possibilities for Particles! Now it's possible to set Material parameters on it, and also use any **Texture**, **WebUI** and **Canvas** as parameters as well!
 
@@ -145,64 +145,64 @@ The following video shows using the WebUI https://nanos-world.com as a Material 
 <VideoExternal path="/blog/2022-march/particles-webui.webm" />
 
 
-## Notable Improvements
+## Notable Improvements {/* #notable-improvements */}
 
-### Music Concurrency
+### Music Concurrency {/* #music-concurrency */}
 
 We finally managed to fix the Music problem, which was making Sounds of type Music from stopping when too many sounds were spawned.
 
 
-### Client-side [Props](/docs/next/scripting-reference/classes/prop)
+### Client-side [Props](/docs/next/scripting-reference/classes/prop) {/* #client-side-props */}
 
 Props can now be spawned on Client side as well! This allows having "unnetworked" dynamic meshes spawned on client, intended for use as visual effects and non-gameplay features.
 
 We've already updated the Sandbox's Destructable entities to use client-side debris!
 
 
-### Level Static Meshes
+### Level Static Meshes {/* #level-static-meshes */}
 
 ![](/img/blog/2022-march/been.jpg)
 
 Now all [StaticMeshActors](https://docs.unrealengine.com/4.27/en-US/Basics/Actors/StaticMeshActor/) from a Map are automatically loaded as [StaticMesh](/docs/next/scripting-reference/classes/static-mesh) entity on Client Side! It is possible to paint, destroy, move and everything else on them on client-side!
 
 
-### Async Texture Loading
+### Async Texture Loading {/* #async-texture-loading */}
 
 We've improved our Client loading system and now textures (e.g. `.jpg`) are asynchronously loaded and the texture is applied in a deferred way. This system currently is implemented under `SetMaterialTextureParameter()` for testing, soon we can use it in other methods as well.
 
 
-### Async [File](/docs/next/scripting-reference/classes/file) Loading
+### Async [File](/docs/next/scripting-reference/classes/file) Loading {/* #async-file-loading */}
 
 In addition to the above, we've expanded our Async implementation into File class, which now have the `:ReadAsync()` method!
 
 
-### New [Light](/docs/next/scripting-reference/classes/light) Methods
+### New [Light](/docs/next/scripting-reference/classes/light) Methods {/* #new-light-methods */}
 
 We've added a bunch of missing Light setters and getters methods, also the ability to toggle it on/off with `SetVisibility()`.
 
 
-### [Assets.toml](/docs/next/core-concepts/assets#assets-pack-configuration) Changes
+### [Assets.toml](/docs/next/core-concepts/assets#assets-pack-configuration) Changes {/* #assetstoml-changes */}
 
 The Asset.toml got a new category: `unreal`, where we must specify a new setting `unreal_version` (the unreal version this Asset Pack was compiled on), this will be an important feature to prevent old Assets versions from crashing the game.
 
 Also it got the new `blueprints` category for listing Blueprints 😉.
 
 
-### Vehicle Collisions
+### Vehicle Collisions {/* #vehicle-collisions */}
 
 We've tweaked and improved our Collision configurations and now Vehicles interact better when colliding with other objects, including Networked Characters, Props and other Vehicles.
 
 Before other Networked Characters were desyncing when colliding with vehicles (they started to fly and weird things happened when objects hit the Vehicles wheels), and also the hit between two vehicles were extremely rigid, which has been fixed too and will be more organic now.
 
 
-### Sun Improvements
+### Sun Improvements {/* #sun-improvements */}
 
 ![](/img/blog/2022-march/sunrise.jpg)
 
 The Default Sun light and shadows has been improved, specially during sunrise/sunset which we had some artifacts and shadows disappearing, now it must be smoother and prettier (and hopefully more efficient).
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 Thank you for another month of support! There were incredible advances with Blueprint and Database Classes, and also to finally lining up our Steam Page again!
 

@@ -9,7 +9,7 @@ How to use the Object2Lua tool in nanos world Forge
 
 **Object2Lua** is a tool in **nanos world Forge** that converts Unreal Engine blueprint assets into Lua tables.
 
-## How to Use
+## How to Use {/* #how-to-use */}
 
 1. Open **Object2Lua** from the Forge hub.
 2. In the content browser, select a blueprint asset (e.g., data asset, blueprint class)
@@ -17,13 +17,13 @@ How to use the Object2Lua tool in nanos world Forge
 
 <VideoExternal path="/docs/assets-modding/forge-02.webm" />
 
-## Settings
+## Settings {/* #settings */}
 
 The tool includes several settings to customize the output:
 
 ![](/img/docs/forge-04.webp)
 
-### Conversion Settings
+### Conversion Settings {/* #conversion-settings */}
 
 | Setting | Description |
 | :--- | :--- |
@@ -31,7 +31,7 @@ The tool includes several settings to customize the output:
 | **`Only Exposed Properties`** | Only converts properties marked as `ExposedOnSpawn` |
 | **`Only Changed Properties`** | Only converts properties that differ from their default values |
 
-### Format Settings
+### Format Settings {/* #format-settings */}
 
 | Setting | Description |
 | :--- | :--- |
@@ -45,7 +45,7 @@ The tool includes several settings to customize the output:
 | **`Max Items for Inline`** | Maximum number of items before collections are split across lines |
 | **`Max Length for Inline`** | Maximum character length before forcing line breaks |
 
-## Example Output
+## Example Output {/* #example-output */}
 
 ![](/img/docs/forge-06.webp)
 
@@ -67,11 +67,11 @@ local MyObject = {
 }
 ```
 
-## Data Assets
+## Data Assets {/* #data-assets */}
 
 Object2Lua supports converting nested data assets. They should ideally be used if you want to create complex data structures.
 
-### Creating a Primary Data Asset
+### Creating a Primary Data Asset {/* #creating-a-primary-data-asset */}
 
 A primary data asset represents the structure for a data asset. It contains all the properties you want to define for your data.
 
@@ -86,7 +86,7 @@ Then, select **Primary Data Asset** as the parent class:
 This class can be prefixed with `PDA_` to indicate it's a primary data asset, e.g., `PDA_MyItem` or `PDA_MyJob`.
 You can then add variables to this class that represent the properties of your data asset, such as `name`, `description`, `icon`, etc.
 
-### Creating a Data Asset
+### Creating a Data Asset {/* #creating-a-data-asset */}
 
 Once you have your primary data asset class, you can create actual data assets by right-clicking in the content browser and selecting **Data Asset** in **Miscellanous**:
 
@@ -98,7 +98,7 @@ Choose your primary data asset class as the base:
 
 Now, you can finally fill in the properties of your data asset and convert it with Object2Lua!
 
-### Example Data Asset Output
+### Example Data Asset Output {/* #example-data-asset-output */}
 
 For this example, let's say we have a primary data asset called `PDA_Job` with properties like `name`, `description`, `salary` and `team`. Team would be a reference to another data asset.
 

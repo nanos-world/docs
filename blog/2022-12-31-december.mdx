@@ -13,7 +13,7 @@ image: /img/blog/2022-december/december-news.webp
 
 {/* truncate */}
 
-## One Lua Virtual Machine
+## One Lua Virtual Machine {/* #one-lua-virtual-machine */}
 
 After much analysis, study and refactoring. I am happily introducing the new way the Packages will work! This was heavily motivated by the lack of possibility of creating extensions or customized items in an easy way.
 
@@ -40,7 +40,7 @@ Now, for example you can just load additional scripts together the `sandbox` gam
 Each Package will still have it's own sub-global environment, so defining global variables or functions will not make them available to other packages immediately.
 
 
-### Call & Export
+### Call & Export {/* #call--export */}
 
 `Package.Call` and `Package.Export` are not necessary in the traditional way anymore. As now we can share the global environment, we can define methods and expose them to be called directly, without the need to `Package.Call` them.
 
@@ -66,7 +66,7 @@ Console.Log(DoSomething(456))
 ```
 
 
-### Inherited Classes
+### Inherited Classes {/* #inherited-classes */}
 
 Now all Inherited Classes will be available to all Packages, as they will be created and exposed to the Global scope automatically.
 
@@ -94,21 +94,21 @@ end)
 ```
 
 
-### Library Package Type
+### Library Package Type {/* #library-package-type */}
 
 With this new way Package work, `library` types are no longer needed. As now we can communicate directly with other packages with exposed global methods, we can just define the methods to be exported with `Package.Export` and use them whenever we want.
 
 In this way we will only have two types of "lua script" Packages: `game-mode` and `script`. All existing `library` packages will be automatically converted to `script` when loaded.
 
 
-### RequirePackage
+### RequirePackage {/* #requirepackage */}
 
 Therefore, `Package.RequirePackage` will becomes unnecessary as well. As we can now reuse the same script globally, this method will be depreciated in favor of adding your package in the `package_dependencies` list of your Package's Package.toml.
 
 *Package requiring* the default `nanos-world-vehicles` or `nanos-world-weapons` will load them as a standalone Package, as now they **export** the `NanosWorldWeapons` and `NanosWorldVehicles` tables globally.
 
 
-## GameMode Settings
+## GameMode Settings {/* #gamemode-settings */}
 
 We are introducing the concept of custom settings for game-modes! These settings can be defined in **Package.toml** like that:
 
@@ -128,7 +128,7 @@ The values defined can be accessed through the new method `Server.GetCustomSetti
 Please refer to the updated [Documentation Page](/docs/next/core-concepts/packages/packages-guide#custom-settings) for more information.
 
 
-## Configuration Files
+## Configuration Files {/* #configuration-files */}
 
 As announced on previous blogs, the format of the configuration files are changing in the next update!
 
@@ -139,7 +139,7 @@ All **Package.toml** and **Assets.toml** in the old format will automatically se
 :::
 
 
-### Meta Block
+### Meta Block {/* #meta-block */}
 
 Now we have a new common header among all **Assets.toml** and **Package.toml**: `[meta]`.
 
@@ -150,7 +150,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/_meta.toml
 ```
 
 
-### Package
+### Package {/* #package */}
 
 For the Packages, we will have a new format to differentiate their Types. Each Package type will have an independent and different block of configurations. Now the Package type will be determined by defining a block `[game_mode]`, `[script]` or `[loading-screen]`.
 
@@ -161,7 +161,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/_game_mode.toml
 ```
 
 
-## Configuration Images
+## Configuration Images {/* #configuration-images */}
 
 As you may have noticed, there is no more setting `image` on **Package.toml**, the same applies to **Assets.toml** and for the server image in the **Config.toml**.
 
@@ -170,7 +170,7 @@ Now, the images should be physically placed next to the **.toml** file with the 
 This is a standardization to solve the image inconsistency between the store and the config file, as well as to avoid external and malicious links to be placed there. But this brings the drawback that only dedicated servers can display an image on the Server List from now on.
 
 
-## New Static Classes
+## New Static Classes {/* #new-static-classes */}
 
 Finally we are releasing the update with all the Static Class refactoring! This will give us a great new organization to find things at the docs, as now specific methods will be grouped into classes with names that make sense!
 
@@ -193,14 +193,14 @@ Also, [🕹️ Input](/docs/next/scripting-reference/static-classes/input) got a
 Many of the methods from [⌨️ Client](/docs/next/scripting-reference/static-classes/client) and the old **🌍 World** were migrated to those classes! Check their pages for accurate information!
 
 
-## Renamed Events
+## Renamed Events {/* #renamed-events */}
 
 Due our last poll, we are starting to change all events names which were with wrong names. We are standardizing them to the present tense, so events like `CharacterEntered` will be renamed to `CharacterEnter` for example.
 
 All changes will keep the old event working as deprecated. Please get attention to the new warnings to update them to the newer version!
 
 
-## Assets Plugin Content
+## Assets Plugin Content {/* #assets-plugin-content */}
 
 Now it is possible to create Asset Packs from Plugin Content, this will be the preferred way of creating content from now on as it prevents assets paths colliding with others.
 
@@ -209,14 +209,14 @@ For that, we added a new setting in **Assets.toml** to define if the Asset Pack 
 Please refer to the updated [Documentation Page](/docs/next/assets-modding/creating-assets/importing-assets) for more information.
 
 
-## Store Improvements
+## Store Improvements {/* #store-improvements */}
 
 Last month MegaThorx launched an update to the store, which greatly improves the upload flow of new versions. Now we have a progress bar, as well as special scripts to verify for syntax errors and potential problems. More features will be added in the future as well!
 
 ![](/img/blog/2022-december/store-upload.webp)
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 I was not very much satisfied on how nanos world was handling the possibilities of modding and scripting. It felt very limited and non natural the way scripters had to do to make packages to communicate with each other, it wasn't allowing much customization or extensibility.
 

@@ -16,7 +16,7 @@ Welcome to our roundup of the latest updates from the last month!
 {/* truncate */}
 
 
-## April Fools Bonanza Playtest
+## April Fools Bonanza Playtest {/* #april-fools-bonanza-playtest */}
 
 ![](/img/blog/2026-february/april-fools.webp)
 
@@ -35,7 +35,7 @@ On `April 5th` we will finish things off with a **Grand Finale** Playtest Sectio
 See you all there 🤡
 
 
-## Zenkai: New Ninja RP Server
+## Zenkai: New Ninja RP Server {/* #zenkai-new-ninja-rp-server */}
 
 It's with great honor we say nanos world is being the home of [Zenkai](https://zenkai-rp.com/), the new **Ninja RP** server that is being developed by an amazing team of super talented people!
 
@@ -54,7 +54,7 @@ See the announcement trailer on their X page:
 I had the chance to participate in their internal testing and I can state how amazing the project is looking, with a lot of custom assets, custom systems and mechanics, and a very promising future ahead! You should definitely check it out and join their community on [Discord](https://discord.gg/zenkairp)!
 
 
-## New Feedback & Bugs Hub
+## New Feedback & Bugs Hub {/* #new-feedback--bugs-hub */}
 
 We are migrating from GitHub Issues & Canny to this new [Feedback & Bugs Hub](https://feedback.nanos-world.com/) tool!
 
@@ -63,7 +63,7 @@ It will be used to handle both **bugs** and **feedback** ideas! Since Canny chan
 As always, if you have suggestions or found bugs, please report them to us there! 😅
 
 
-## Asset Packs Multiple Folders
+## Asset Packs Multiple Folders {/* #asset-packs-multiple-folders */}
 
 One of the problems with our Asset Packs is that they only support a single Unreal Folder. So if you are creating Assets that have **multiple Unreal folders**, you have to create multiple Asset Packs, which is a bit annoying. Not to mentioning the pain to upload it to the Vault.
 
@@ -89,7 +89,7 @@ Now you must copy all folders as-is from the cooked `Content/` folder of your Un
     is_plugin_content =     false
 ```
 
-#### Practical Example:
+#### Practical Example: {/* #practical-example */}
 
 If you have an asset that is located at `YourUnrealProject/Content/PolygonHouses/Props/SM_MyMesh`, you would have created an Asset Pack with `unreal_folder = "PolygonHouses"`, with the asset reference configured as `SM_MyMesh = "Props/SM_MyMesh"` and your Asset Pack folder would be like:
 
@@ -117,7 +117,7 @@ The existing Asset Packs will keep working but will receive a deprecated warning
 This change solves the issues by making it feasible uploading complex Asset Packs to vault, and also do not messing our Assets folder or the Vault UI.
 
 
-## VSCode Official Extension
+## VSCode Official Extension {/* #vscode-official-extension */}
 
 ![](/img/blog/2026-february/vscode.webp)
 
@@ -134,9 +134,9 @@ Feel free to check the repo and send pull requests!
 <ReferenceLink href="vscode:extension/go-horse-studios.nanos-world">Install nanos world Lua VSCode Extension</ReferenceLink>
 
 
-## Scripting & API
+## Scripting & API {/* #scripting--api */}
 
-### New Class: InstancedStaticMesh
+### New Class: InstancedStaticMesh {/* #new-class-instancedstaticmesh */}
 
 ![](/img/blog/2026-february/ism-blocks.webp)
 
@@ -151,25 +151,25 @@ Check the documentation for more information and examples on how to use it:
 <ReferenceLink href="scripting-reference/classes/instanced-static-mesh">InstancedStaticMesh</ReferenceLink>
 
 
-### New & Improved Methods
+### New & Improved Methods {/* #new--improved-methods */}
 
 We implemented a bunch of new scripting methods this month:
 
-#### New Methods
+#### New Methods {/* #new-methods */}
 
 - Added a new method <MethodReference type="StaticClass" class_name="Viewport" method_name="SetBrandingBarSettings" show_class_name /> for customizing the "nanos world" bar on screen, now it's possible to set it's position and show less information.
 - <MethodReference type="Class" class_name="Player" method_name="SetVOIPLocalMaxDistance" show_class_name />
 - <MethodReference type="StaticClass" class_name="Package" method_name="IsUnloading" show_class_name />
 
 
-#### Improved Methods
+#### Improved Methods {/* #improved-methods */}
 
 - Added a new parameter to <MethodReference type="Class" class_name="Pawn" method_name="StopMovement" show_class_name />: `stop_velocity`, to also stop it's velocity.
 - Moved <MethodReference type="Class" class_name="Entity" method_name="IsBeingDestroyed" />, <MethodReference type="Class" class_name="Entity" method_name="HasAuthority" /> from <Classes.Actor /> to <Classes.Entity />.
 - Moved <MethodReference type="Class" class_name="Damageable" method_name="GetDamageMultiplier" /> and <MethodReference type="Class" class_name="Damageable" method_name="SetDamageMultiplier" /> from <Classes.Character /> to <Classes.Damageable />.
 
 
-#### Persistent Data keys separated by .
+#### Persistent Data keys separated by . {/* #persistent-data-keys-separated-by- */}
 
 Now <MethodReference type="StaticClass" class_name="Package" method_name="SetPersistentData" show_class_name /> supports passing keys separated by `.`.
 
@@ -194,13 +194,13 @@ Package.SetPersistentData("MyPersistentData.MyAnotherData.Stuff", "New thing")
 ```
 
 
-#### Math
+#### Math {/* #math */}
 
 - Added new methods to <Structs.Quat />: <MethodReference type="Struct" class_name="Quat" method_name="UnrotateVector" />, <MethodReference type="Struct" class_name="Quat" method_name="RotateVector" />, <MethodReference type="Struct" class_name="Quat" method_name="GetForwardVector" />, <MethodReference type="Struct" class_name="Quat" method_name="GetRightVector" /> and <MethodReference type="Struct" class_name="Quat" method_name="GetUpVector" />.
 - Added new methods to <Structs.Vector />: <MethodReference type="Struct" class_name="Vector" method_name="ToOrientationQuat" /> and <MethodReference type="Struct" class_name="Vector" method_name="ToOrientationRotator" /> (renamed from `Rotator()`).
 
 
-#### Rotator Rotate/UnrotateVector() Breaking Change
+#### Rotator Rotate/UnrotateVector() Breaking Change {/* #rotator-rotateunrotatevector-breaking-change */}
 
 We had figured out an issue with our <MethodReference type="Struct" class_name="Rotator" method_name="RotateVector" show_class_name />/<MethodReference type="Struct" class_name="Rotator" method_name="UnrotateVector" show_class_name /> methods, where they were inverted.
 
@@ -211,19 +211,19 @@ As we fixed it, it will require you to change your code if you are using those m
 :::
 
 
-#### New Trace Type
+#### New Trace Type {/* #new-trace-type */}
 
 Added a new Return to Trace: <Enums>TraceMode</Enums>: `ReturnItem` which returns a *Item* value, usually representing an Instanced primitive index (e.g. from Instanced Static Meshes). Useful for when you want to know which instance of an <Classes.InstancedStaticMesh /> you are hitting with a trace.
 
 
-#### New Scripting Guards
+#### New Scripting Guards {/* #new-scripting-guards */}
 
 Now an error will be thrown if you try to spawn an entity while the Package is unloading, due everything being tearing down. Before it was causing internal issues and even crashes, as those entities cannot be cleaned up properly at that stage anymore.
 
 Use <MethodReference type="StaticClass" class_name="Package" method_name="IsUnloading" show_class_name /> inside <EventReference type="Class" class_name="Entity" event="Destroy" /> events to prevent the errors.
 
 
-## Profiling & Debug
+## Profiling & Debug {/* #profiling--debug */}
 
 ![](/img/blog/2026-february/entities-network-stats.webp)
 
@@ -232,7 +232,7 @@ Use <MethodReference type="StaticClass" class_name="Package" method_name="IsUnlo
 We have added more information to our **Profiling** list, and also the **Entities Network Stats Information** list. Now **Entities spawning** will be profiled (both for performance and network usage), **Scripting Events** have a special line, and more **Unreal internal timings** are displayed in the Profiling list.
 
 
-## Forge Plugin with the ADK
+## Forge Plugin with the ADK {/* #forge-plugin-with-the-adk */}
 
 ![](/img/blog/2026-february/steam-entries.webp)
 
@@ -243,9 +243,9 @@ If you didn't know, we also upload the latest **Assets Development Kit** (ADK) v
 But now the [Forge Plugin](/docs/next/assets-modding/forge/setup) (created by NegativeName) is included by default in the Steam ADK, making it easier than ever to get your assets into the game! Every update made to the **Forge Plugin** is shipped automatically in the `bleeding-edge` version of the Steam's ADK, in every nanos world update.
 
 
-## Performance Improvements
+## Performance Improvements {/* #performance-improvements */}
 
-### Ticking
+### Ticking {/* #ticking */}
 
 We drastically improved the server and client performance by skipping entities from ticking.
 
@@ -254,7 +254,7 @@ Ticks happen when an entity has some logic that needs to be updated every frame 
 This new system automatically detects if an entity requires ticking or not, and if it doesn't, it will be skipped from ticking, improving a lot when having thousands of entities spawned (that don't require ticking - i.e. StaticMesh).
 
 
-### Compression Library
+### Compression Library {/* #compression-library */}
 
 We changed our **Compression Library** to `zlib-ng`, and it should be up to 4x faster to compress/decompress files and networking data.
 
@@ -263,14 +263,14 @@ The compression can be enabled/disabled on the server with the `compression` con
 The compression is used for both scripting file compression and network data compression, and it should reduce a lot the network usage when enabled, especially if you have a lot of scripting files.
 
 
-### Constructor Cache System
+### Constructor Cache System {/* #constructor-cache-system */}
 
 We implemented a new internal **Constructor Cache System**. Now the entities construction data is cached until modified, this way we can reduce (a lot) the CPU usage by not serializing/compressing all the entities every time a player connects or changes dimensions.
 
 Also, now the construction data will be compressed (if server is using compression), greatly reducing the network usage.
 
 
-### Memory Usage
+### Memory Usage {/* #memory-usage */}
 
 We made a huge refactoring internally on several critical paths, improving a lot the memory usage of the game, from scripting method calls to networking serialization and invokes.
 
@@ -279,17 +279,17 @@ We reduced a lot of extra containers that were being used redundantly, and impro
 Calling scripting methods, invoking Asynchronous methods, and setting values on entities should now use a lot less memory and CPU usage, improving the overall performance and stability of the server/game.
 
 
-### Stability
+### Stability {/* #stability */}
 
 We have fixed dozens of bugs, crashes and potential vulnerabilities this month, improving the overall stability of the game.
 
 
-## More Sandbox Updates
+## More Sandbox Updates {/* #more-sandbox-updates */}
 
 This week we officially pushed our Sandbox update to the Vault, and to the **Official Sandbox Server**! Everyone is invited to play, test, find bugs and suggest improvements!
 
 
-### Wheel Gun
+### Wheel Gun {/* #wheel-gun */}
 
 Finally we got dynamic and custom **Wheels** for Sandbox! They work thanks to our recent updates to Cables and Physics, and they work very well!
 
@@ -298,7 +298,7 @@ Finally we got dynamic and custom **Wheels** for Sandbox! They work thanks to ou
 <MediaLegend>Wheels Fidget Spinner</MediaLegend>
 
 
-### Input System
+### Input System {/* #input-system */}
 
 We also implemented an initial version of an **Input System**, which allows binding keybindings to entities, to trigger actions on them by pressing keyboard keys!
 
@@ -311,7 +311,7 @@ Check the Docs page for more information:
 <ReferenceLink href="explore/sandbox-game-mode/extra-features#entityinput">Sandbox Entity Input System</ReferenceLink>
 
 
-### Persistent Config System
+### Persistent Config System {/* #persistent-config-system */}
 
 ![](/img/blog/2026-february/persistent-config.webp)
 
@@ -349,7 +349,7 @@ Check the Docs page for more information:
 <ReferenceLink href="explore/sandbox-game-mode/extra-features#persistentconfig">Sandbox Persistent Config System</ReferenceLink>
 
 
-### New Puke Gun
+### New Puke Gun {/* #new-puke-gun */}
 
 We also added a new **Puke Gun** (merged from Veggie and Bouncy Ball guns), now can spawn several items differently from a single Gun!
 
@@ -358,20 +358,20 @@ We also added a new **Puke Gun** (merged from Veggie and Bouncy Ball guns), now 
 <MediaLegend>New Puke Gun</MediaLegend>
 
 
-## Steam Page Translation
+## Steam Page Translation {/* #steam-page-translation */}
 
 We took the time to translate our [Steam Page](https://store.steampowered.com/app/1841660/nanos_world/) to some languages, including **French**, **Spanish**, **Portuguese** and **German**!
 
 If you are a native speaker of any other language not listed here and you want to help us translating it to more languages, please let us know! It will be a pleasure to have it translated to more languages and make it more accessible for everyone!
 
 
-## Updated Dependencies
+## Updated Dependencies {/* #updated-dependencies */}
 
 - Updated CEF to version **145**.
 - Updated Sentry to version **1.7**.
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 February was one of our most productive months yet, it was only a 3-week month but we managed to get a lot of features, improvements and fixes done!
 

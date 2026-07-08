@@ -19,7 +19,7 @@ In nanos world we have 3 types of Classes (or structures): `Classes`, `Static Cl
 :::
 
 
-## Classes
+## Classes {/* #classes */}
 
 If you read our [Quick Start](/getting-started/quick-start.mdx) guide, you noticed we were spawning entities in the following format:
 
@@ -40,7 +40,7 @@ Access to **Entities / Spawned Objects** **Methods** are made with **`:`**.
 This is how **OOP** works! You create objects and call functions/catch events on that object. Unlike other scripting games which have tons of global functions and events to interact with entities, nanos world scripting is a **modern approach** to **modern programming**.
 
 
-### Base Classes
+### Base Classes {/* #base-classes */}
 
 Under the hood, nanos world Classes follow an [Inheritance Pattern](https://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29), which means we have base parent classes, and it's children which "inherits" all functions, events and properties from them. You will notice that all Classes that can be spawned in the world are <Classes.Actor />, for example in <Classes.Character /> and <Classes.Prop /> it is possible to call the function: <MethodReference type="Class" class_name="Actor" method_name="SetLocation" />.
 
@@ -51,7 +51,7 @@ The <Classes.Actor /> is a very important class in nanos world. It contains the 
 :::
 
 
-### Spawning Entities
+### Spawning Entities {/* #spawning-entities */}
 
 Spawning entities in nanos world is extremely easy and straightforward, let's say we want to spawn a Character:
 
@@ -74,7 +74,7 @@ Keep in mind that some Classes can only be spawned in the **Server**, others can
 :::
 
 
-### Destroying Entities
+### Destroying Entities {/* #destroying-entities */}
 
 All classes (but Player) allow you to destroy them with the method <MethodReference type="Class" class_name="Entity" method_name="Destroy" />:
 
@@ -91,7 +91,7 @@ Destroying an Entity will trigger the event <EventReference type="Class" class_n
 :::
 
 
-## Static Classes
+## Static Classes {/* #static-classes */}
 
 Static Classes in nanos world are Classes which you cannot Spawn. Instead you can use it's methods directly with `.`.
 
@@ -109,7 +109,7 @@ Access to **Static Classes / Static Methods** are made with **`.`**.
 :::
 
 
-## Utility Classes
+## Utility Classes {/* #utility-classes */}
 
 Besides Classes and Static Classes, we have the **Utility Classes**! Those are mostly structs used in nanos world API such as Vector, Rotator, Color, JSON and some others.
 

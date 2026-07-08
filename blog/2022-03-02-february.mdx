@@ -11,7 +11,7 @@ tags: [updates]
 {/* truncate */}
 
 
-## Network Authority System
+## Network Authority System {/* #network-authority-system */}
 
 As everyone knows, nanos world relies on a "server-less" solution for physics and other world operations. All the sync relies of sharing data between the players and replicating in each client. This approach brings several advantages and of course some drawbacks, in the advantages we can include a very lightweight server, where we have all the control over it, without needing to rely on Unreal's server executable or the way it handles the network.
 
@@ -33,7 +33,7 @@ Considering this and after much study, we improved our Network Authority system 
 While still in a "beta" version, with this new system we intend to improve all the "warnings" and flickering problems that were occurring since then, all feedback is appreciated!
 
 
-## New Debug Modes
+## New Debug Modes {/* #new-debug-modes */}
 
 With the addition of the new Network Authority system, we are adding a new **Debug** section in the Settings.
 
@@ -48,7 +48,7 @@ You can find more information in the [Network Authority](/docs/next/core-concept
 Also you can fake "packet loss" which will simulate some Sync Data being discarded.
 
 
-## Store API
+## Store API {/* #store-api */}
 
 ![](/img/blog/february/swagger.png)
 
@@ -57,14 +57,14 @@ Last month we released our [Store](https://store.nanos.world), a place to share 
 Now we are releasing the **Store API**: You can download, upload and edit your resources through HTTP requests, check it the Swagger documentation at https://api.nanos.world/store/docs. More tutorials coming soon™.
 
 
-## Documentation Changes
+## Documentation Changes {/* #documentation-changes */}
 
-### Modules
+### Modules {/* #modules */}
 
 We've added a new tutorial for creating your own C Module. You can check it out at the [Modules](/docs/next/core-concepts/packages/c-module) page.
 
 
-## Unreal Engine 5: Preview
+## Unreal Engine 5: Preview {/* #unreal-engine-5-preview */}
 
 ![](/img/blog/february/matrix.webp)
 
@@ -73,14 +73,14 @@ A week ago, Epic Games gave us the wonderful news that they were releasing [Unre
 And we, as good enthusiasts, and in addition to our other blog news ([November: Unreal Engine 5?](/blog/november-2021)) decided to give another try on converting nanos world into Unreal Engine 5. And let's move to our impressions:
 
 
-### Migrating nanos world
+### Migrating nanos world {/* #migrating-nanos-world */}
 
 This time migrating nanos world to Unreal Engine 5: Preview was more trickier, we've got even more deprecated methods and some functionalities changed and/or removed, which required more hard work converting and debugging what has changed.
 
 We've had to update a lot more code and files than the Early Access version to be able just to launch the Project. Also Vehicles had to be disabled due the new Chaos engine, which completely changes how Vehicles need to be implemented and we didn't want to bother on converting them right now.
 
 
-### Graphics
+### Graphics {/* #graphics */}
 
 Unreal Engine 5 introduces [Lumen](https://www.unrealengine.com/en-US/blog/lumen-in-ue5-let-there-be-light), a new dynamic Global Illumination method, and playing with it is very cool and impressive. Here's some screenshots taken from our Testing Map:
 
@@ -122,7 +122,7 @@ Here we can see the contribution of Emissive Materials to the environment.
 A cool feature is that we can enable Hardware-Accelerated for calculating Lumen (which replaces Hardware Ray Tracing), and tested with a RTX 3070 makes it even more beauty at a really low GPU cost.
 
 
-### Technical
+### Technical {/* #technical */}
 
 In the technical aspect, the biggest changes Unreal 5 brings are:
 
@@ -142,21 +142,21 @@ Not to mention the objects flickering/disappearing/losing collisions which gives
 And we didn't even started implementing the new Chaos Vehicles, can't wait what we gonna find there 😅.
 
 
-### Stability
+### Stability {/* #stability */}
 
 Actually, this version of Unreal surprised us positively, it had less crashes than in early access, but still had some, but in this case it was when we were stressing the game really hard using several balloons, cables and props flying around. Although I was a little disappointed as most of the bugs I found in the Early Access were still prevent in this Preview and weren't yet fixed.
 
 Also some rare bugs could be noticed, like suddenly being teleported to the 0, 0, 0 location, which we couldn't yet find the reason.
 
 
-### UE5 worth it now?
+### UE5 worth it now? {/* #ue5-worth-it-now */}
 
 Summing up, we've created a list of positive and negative points according to our view regarding if we should or not migrate to Unreal 5 "right now":
 
 Also, another point to consider: we are going to migrate to Unreal Engine 5 soon or later, the decision is "when". 😉
 
 
-#### Negative Points 👎
+#### Negative Points 👎 {/* #negative-points- */}
 
 - Gameplay Bugs related to Physics, objects jumping, flickering, bad collisions happening, objects passing through floor/walls due **Chaos**.
 - Visual Artifacts, not only related to Lumen, but to the standard Rendering methods as well.
@@ -165,7 +165,7 @@ Also, another point to consider: we are going to migrate to Unreal Engine 5 soon
 - Using Lumen has it's drawbacks, such as the performance, which can hit from 25% to 50% of the FPS (but can be toggled on/off).
 
 
-#### Positive Points 👍
+#### Positive Points 👍 {/* #positive-points- */}
 
 - We are going to be the first ones to explore Unreal Engine 5 (which can be bad because some problems no one figured out yet, but personally I love exploring new features and using new tools).
 - nanos world will have a great self-marketing potential, and also can bring lots of new enthusiasts on UE5 to know, play and create with the game.
@@ -179,7 +179,7 @@ Also, another point to consider: we are going to migrate to Unreal Engine 5 soon
 Unlike Early Access, this version seemed to have more positives than negatives points, and it seems like a better opportunity than before to officially migrate nanos world. Come to our [Discord](https://discord.nanos-world.com) to discuss this idea with us! We are going to make a poll to bring all feedback from the community!
 
 
-## Community Spotlight
+## Community Spotlight {/* #community-spotlight */}
 
 Here we'd like to share all amazing stuff our community is doing the last weeks!
 

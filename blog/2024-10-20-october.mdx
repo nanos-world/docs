@@ -16,31 +16,31 @@ Welcome to our roundup of the latest updates from the last months!
 {/* truncate */}
 
 
-## Unreal Engine 5.4
+## Unreal Engine 5.4 {/* #unreal-engine-54 */}
 
 ![](/img/blog/2024-october/ue54.webp)
 
 We're excited to announce an upgrade to Unreal Engine 5.4! This update brings numerous quality-of-life improvements that enhance our development experience. For a detailed look, check out the complete Unreal Engine 5.4 changelog [here](https://www.unrealengine.com/en-US/blog/unreal-engine-5-4-is-now-available).
 
 
-## Loading Improvements
+## Loading Improvements {/* #loading-improvements */}
 
 ![](/img/blog/2024-october/loading-screen.webp)
 
 We've made significant enhancements to our loading screen subsystem:
 
 
-### Faster Maps Loading
+### Faster Maps Loading {/* #faster-maps-loading */}
 
 Entering servers with large levels is now much quicker! We've optimized the loading stage which was doing some work twice and also introduced pre-loading for commonly used assets, which reduces stuttering during gameplay.
 
 
-### Reconnect Logic
+### Reconnect Logic {/* #reconnect-logic */}
 
 A new system has been implemented to reattempt connecting if a file fails to download. Additionally, the client will also reconnect if the server reloads packages during the loading screen, resolving scripting desynchronization issues.
 
 
-## Assets Validation Async
+## Assets Validation Async {/* #assets-validation-async */}
 
 ![](/img/blog/2024-october/validating-assets.webp)
 
@@ -78,7 +78,7 @@ Results vary based on processor specifications and thread counts.
 :::
 
 
-## Testing Map Water
+## Testing Map Water {/* #testing-map-water */}
 
 ![](/img/blog/2024-october/water.webp)
 
@@ -87,14 +87,14 @@ The Testing Map Ocean is back!
 We've resolved the issue that prevented water from appearing, allowing you to dive in once again. 🌊
 
 
-## Network Authority Debug
+## Network Authority Debug {/* #network-authority-debug */}
 
 ![](/img/blog/2024-october/debug-name.webp)
 
 We've enhanced the World Network Debug by adding the ID and Class Name of nearby entities, making debugging much easier.
 
 
-## Events.UnsubscribeRemote
+## Events.UnsubscribeRemote {/* #eventsunsubscriberemote */}
 
 We've introduced a new method [Events.UnsubscribeRemote()](/docs/next/scripting-reference/static-classes/events#static-function-unsubscriberemote) to unsubscribe from remote events.
 
@@ -103,12 +103,12 @@ This way the use of [Events.Unsubscribe()](/docs/next/scripting-reference/static
 Make sure to update your package's `compatibility_version` to [1.65.0](/docs/next/core-concepts/packages/compatibility-versions#version-165) to use this new functionality.
 
 
-## 64bit Hash
+## 64bit Hash {/* #64bit-hash */}
 
 All internal hashing operations have been upgraded to 64 bits, significantly reducing the likelihood of hash collisions when dealing with hundreds of thousands assets from huge asset packs.
 
 
-## Console.Error & Warn Stack
+## Console.Error & Warn Stack {/* #consoleerror--warn-stack */}
 
 Now when using `Console.Warn()` or `Console.Error()`, the console will output the stack trace of the scripting call, making it easier to identify the source of warnings and errors:
 
@@ -123,14 +123,14 @@ MyError()
 ```
 
 
-## New Anti-Aliasing Settings
+## New Anti-Aliasing Settings {/* #new-anti-aliasing-settings */}
 
 We've added new anti-aliasing options in the settings. You can now choose between disabling it or using Unreal's native Temporal AA (**TAA**), **FXAA**, or Temporal Super Resolution (**TSR**):
 
 ![](/img/blog/2024-october/aa.webp)
 
 
-## Updated Dependencies
+## Updated Dependencies {/* #updated-dependencies */}
 
 We continue updating our internal dependencies to always be up-to-date with the latest bug fixes and security patches:
 
@@ -141,7 +141,7 @@ We continue updating our internal dependencies to always be up-to-date with the 
 - Various other internal libraries (e.g. zip, toml, openssl and more).
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 Hey everyone! We've got some important and needed updates since last news blog, but I know things have been a bit slower recently. Some personal factors have contributed to this, but I want to reassure you that the development is still moving forward and far from being halted. I'm always on the lookout for new ideas and have some exciting plans to bring more updates and improvements to nanos world!
 

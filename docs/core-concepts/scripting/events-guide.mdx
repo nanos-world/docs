@@ -9,14 +9,14 @@ tags: [scripting]
 All you need to know about Events.
 
 
-## Classes Events
+## Classes Events {/* #classes-events */}
 
 In nanos world, all actions performed by Players or Entities can be obtained through **events**.
 
 The most basic event to bring an example is the **`Spawn`**. Every time an entity is spawned, the event `Spawn` will be triggered.
 
 
-### Subscribing for Class Events
+### Subscribing for Class Events {/* #subscribing-for-class-events */}
 
 Registering for events is very easy and straightforward using the method <MethodReference type="Class" class_name="Entity" method_name="Subscribe" />, let's say we want to know when a Player has joined the server:
 
@@ -33,7 +33,7 @@ Most events are triggered on both Client and Server sides, only a few rare excep
 :::
 
 
-### Unsubscribing of Class Events
+### Unsubscribing of Class Events {/* #unsubscribing-of-class-events */}
 
 Currently there is two ways of unsubscribing from events:
 
@@ -44,7 +44,7 @@ Currently there is two ways of unsubscribing from events:
 :::
 
 
-#### Unsubscribing from all Events
+#### Unsubscribing from all Events {/* #unsubscribing-from-all-events */}
 
 ```lua showLineNumbers
 -- This will unregister from all "Spawn" events of Player registered in this Package
@@ -52,7 +52,7 @@ Player.Unsubscribe("Spawn")
 ```
 
 
-#### Unsubscribing from a specific Event Callback
+#### Unsubscribing from a specific Event Callback {/* #unsubscribing-from-a-specific-event-callback */}
 
 ```lua
 -- Declares the Callback beforehand
@@ -76,12 +76,12 @@ Player.Unsubscribe("Spawn", OnSpawnPlayer)
 ```
 
 
-## Entity Events
+## Entity Events {/* #entity-events */}
 
 In nanos world it is possible to register for events on specific Entities as well, this way the callback will only be triggered if that specific entity is the event reason.
 
 
-### Subscribing for Entity Events
+### Subscribing for Entity Events {/* #subscribing-for-entity-events */}
 
 ```lua showLineNumbers
 -- Spawns a Character
@@ -99,7 +99,7 @@ Note that once the entity is destroyed, all events registered for it will be unr
 :::
 
 
-### Unsubscribing of Entity Events
+### Unsubscribing of Entity Events {/* #unsubscribing-of-entity-events */}
 
 Currently there is two ways of unsubscribing from events:
 
@@ -109,7 +109,7 @@ Currently there is two ways of unsubscribing from events:
 
 :::
 
-#### Unsubscribing from all Entity Events
+#### Unsubscribing from all Entity Events {/* #unsubscribing-from-all-entity-events */}
 
 ```lua showLineNumbers
 -- This will unregister from all "EnterVehicle" events of this specific Character
@@ -118,7 +118,7 @@ my_character:Unsubscribe("EnterVehicle")
 ```
 
 
-#### Unsubscribing from a specific Entity Event Callback
+#### Unsubscribing from a specific Entity Event Callback {/* #unsubscribing-from-a-specific-entity-event-callback */}
 
 ```lua showLineNumbers
 -- Declares the Callback beforehand
@@ -139,7 +139,7 @@ my_character:Unsubscribe("EnterVehicle", OnCharacterEnteredVehicle)
 ```
 
 
-## Custom Events
+## Custom Events {/* #custom-events */}
 
 In nanos world, it is possible to define and call Custom Events. Please refer to [Events](/scripting-reference/static-classes/events.mdx) Static Class for the technical documentation.
 

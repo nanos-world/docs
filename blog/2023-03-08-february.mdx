@@ -15,7 +15,7 @@ image: /img/blog/2023-february/february-news.webp
 
 Here's a roundup of the latest updates from February.
 
-## Widgets
+## Widgets {/* #widgets */}
 
 After much anticipation and requests, we are excited to announce the introduction of a new class in nanos world: [Widget](/docs/next/scripting-reference/classes/widget)! This new class allows us to spawn [UserWidgets](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Blueprint/UUserWidget/) or any [Widget](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UWidget/) child from Lua to be used as UI in the game, similar to WebUIs.
 
@@ -57,28 +57,28 @@ We have plans to keep extending the functionalities of widgets, and also make it
 Building UI goes Brrr now!
 
 
-## Better Warnings
+## Better Warnings {/* #better-warnings */}
 
 ![](/img/blog/2023-february/warning-line.webp)
 
 We have improved our warnings system by adding line numbers to deprecated warnings. This makes it easier for developers to identify and fix deprecated code in their scripts.
 
 
-## SceneCapture Encode
+## SceneCapture Encode {/* #scenecapture-encode */}
 
 We added a new method to [SceneCapture](/docs/next/scripting-reference/classes/scene-capture): `EncodeToBase64()`!
 
 Theis new SceneCapture Encode feature allows you to take a snapshot and generate a Base64 image string to be used in WebUI. We have both synchronous and asynchronous methods available.
 
 
-## Player Avatar on Chat
+## Player Avatar on Chat {/* #player-avatar-on-chat */}
 
 ![](/img/blog/2023-february/chat-avatar.webp)
 
 We have added player avatars to the chat, making it easier to identify who is talking.
 
 
-## New Native Server Commands
+## New Native Server Commands {/* #new-native-server-commands */}
 
 We have added new server commands, including the ability to kick and list players connected:
 
@@ -86,26 +86,26 @@ We have added new server commands, including the ability to kick and list player
 - `kick`- kicks a player from the server.
 
 
-## CharacterSimple Damageable
+## CharacterSimple Damageable {/* #charactersimple-damageable */}
 
 We have added support for **CharacterSimple** to receive damage and die, just like the existing Character class.
 
 Also, we added a new Docs page for [BaseDamageable](/docs/next/scripting-reference/classes/base-classes/damageable) containing all Damageable methods and events! Which is shared between Character and CharacterSimple!
 
 
-## New Custom Settings Type: Select
+## New Custom Settings Type: Select {/* #new-custom-settings-type-select */}
 
 We have added a new custom settings type: [select](/docs/core-concepts/packages/packages-guide#custom-settings). This new option displays as a dropdown menu in the MainMenu, allowing players to select one of the predefined options in the `custom_settings` setting in the game-mode's Package.toml.
 
 ![](/img/blog/2023-february/new-game-select.webp)
 
 
-## Fatal Crashes Report
+## Fatal Crashes Report {/* #fatal-crashes-report */}
 
 We now automatically send all fatal errors to our Crash Report system. As Fatal errors usually are "treated errors that shouldn't happen", this helps us identify and fix issues quickly, improving the overall stability of the game.
 
 
-## Blueprint Material as Arguments
+## Blueprint Material as Arguments {/* #blueprint-material-as-arguments */}
 
 We have expanded blueprint support to include material parameters from **WebUI**, **Canvas**, and **SceneCapture** entities. This means that blueprints can now receive MaterialInterface parameters from these entities automatically.
 
@@ -119,35 +119,35 @@ You can see a list of all possible Parameter Types in the [Blueprint](/docs/scri
 
 
 
-## Vault Improvements
+## Vault Improvements {/* #vault-improvements */}
 
-### Labels
+### Labels {/* #labels */}
 
 We have added new icons to the vault display, indicating whether a resource is an official resource or if you has ownership over it (belongs to it's Team).
 
 ![](/img/blog/2023-february/vault-ownership.webp)
 
 
-### Ownership Manage
+### Ownership Manage {/* #ownership-manage */}
 
 Additionally, we have added a new tab for managing resources, which currently only contains a button redirecting to the store.
 
 ![](/img/blog/2023-february/manage-tab.webp)
 
 
-### Local Folders
+### Local Folders {/* #local-folders */}
 
 We have also added a new button to open the local installed folder, making it easier to manage downloaded resources.
 
 ![](/img/blog/2023-february/vault-local-folder.webp)
 
 
-### No Internet
+### No Internet {/* #no-internet */}
 
 The vault now works and loads local resources even if the player has no internet connection.
 
 
-## Main Menu Notifications
+## Main Menu Notifications {/* #main-menu-notifications */}
 
 We have added notifications to the main menu, which display general errors and vault messages. This means that notifications will appear when resources are installed or when errors occur.
 
@@ -160,29 +160,29 @@ All notifications from the current session can be found in a new window under th
 ![](/img/blog/2023-february/notifications-list.webp)
 
 
-## Assets.toml Files Validator
+## Assets.toml Files Validator {/* #assetstoml-files-validator */}
 
 We have added a new system to automatically validate Asset Packs files from Assets.toml. This system checks if a file listed in Assets.toml was not found in the disk, helping to identify and debug Assets problems quickly.
 
 It only runs on server when loading an Asset Pack, and will display warnings on console.
 
 
-## New Trace Methods
+## New Trace Methods {/* #new-trace-methods */}
 
 We have added new Trace methods to [Trace](/docs/next/scripting-reference/static-classes/trace), including `SphereSingle()`, `SphereMulti()`, `BoxSingle()`, `BoxMulti()`, `CapsuleSingle()`, and `CapsuleMulti()`. Allowing more traces possibilities in the game world!
 
 
-## New Sky Methods
+## New Sky Methods {/* #new-sky-methods */}
 
 We have added several new [Sky](/docs/next/scripting-reference/static-classes/sky) methods, allowing customization to the **Moon** and other new properties of the Ultra Dynamic Sky.
 
 
-## Network Lanes
+## Network Lanes {/* #network-lanes */}
 
 We have made significant changes to the network layer of the game framework. **VOIP** and **File Transfers** now use a new low-priority network lane to transmit their data. This means that the performance impact on gameplay is reduced when players are connecting (and downloading files) or using VOIP, which uses large amounts of network data.
 
 
-## Is Steam Launched
+## Is Steam Launched {/* #is-steam-launched */}
 
 We added a better validator to check if Steam is launched when you start the game. Now a popup will show up instead of having the game crashing.
 
@@ -191,7 +191,7 @@ We added a better validator to check if Steam is launched when you start the gam
 Do not **dare** to press No. 😉
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 Last month we got exciting new features and improvements to nanos world!
 

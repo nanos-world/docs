@@ -22,7 +22,7 @@ Attention! This page is old and this tutorial may be outdated! The images here r
 :::
 
 
-## Rules for creating a Map/Level
+## Rules for creating a Map/Level {/* #rules-for-creating-a-maplevel */}
 
 1. Do not spawn/place **Dynamic Meshes** (with Physics), as they will not be synced in-game. You need to spawn them as a [Prop](/scripting-reference/classes/prop.mdx) through the scripting.
 2. Add a “**Sun**” actor-tag to all Lighting/Sky/Sun related actors (**DirectionalLight**, **SkyLight**, **DomeMesh**, **SkyAtmosphere** or **SunSky**), this will allow, if wanted, to your light to be overridden by scripters to use, instead, the Official nanos world Sun through `World.SpawnDefaultSun()`, which allows in-game light/sun customization.
@@ -31,7 +31,7 @@ Attention! This page is old and this tutorial may be outdated! The images here r
 ![GameMode Overrides nullified](/img/docs/custom-maps-01.webp)
 
 
-## Getting Started
+## Getting Started {/* #getting-started */}
 
 :::tip Prerequisites
 
@@ -61,7 +61,7 @@ Rename it with the map name you desire, save it and open it up. You will notice 
 ![](/img/docs/custom-maps-05.webp)
 
 
-## Adding Objects
+## Adding Objects {/* #adding-objects */}
 
 First let’s add a floor, for that just drag-and-drop a Plane from Place Actors -> Basic window into the Viewport:
 
@@ -105,7 +105,7 @@ We can also add some lights, for that, just drag and drop a **Directional Light*
 ![](/img/docs/custom-maps-15.webp)
 
 
-## Adding Materials
+## Adding Materials {/* #adding-materials */}
 
 Great job, now we can see the stuff! Now let’s add some color to it, applying color and textures in Unreal are made through [Materials](https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/index.html), for that, let’s just create a Material
 
@@ -159,12 +159,12 @@ When you are fine with it, move your camera to see the whole map and take a scre
 And we are done! Save everything and let’s export it!
 
 
-## Exporting the Map
+## Exporting the Map {/* #exporting-the-map */}
 
 After you completed all steps, you can export them into nanos world! Please refer to [Exporting & Cooking your Assets](/assets-modding/creating-assets/importing-assets.mdx#exporting--cooking-your-assets) docs page before proceeding.
 
 
-## Configuring the Asset Pack
+## Configuring the Asset Pack {/* #configuring-the-asset-pack */}
 
 After you cooked your assets and copied the generated folder into your server's `Assets/` directory. It's time to configure the Asset Pack! For that please refer to [Configuring your Assets.toml](/assets-modding/creating-assets/importing-assets.mdx#configuring-your-assetstoml) docs page before proceeding.
 
@@ -179,7 +179,7 @@ Now that you created your Assets.toml and configured the unreal settings, make s
 This way we can load it through `Config.toml`!
 
 
-## Adding a Thumbnail
+## Adding a Thumbnail {/* #adding-a-thumbnail */}
 
 To add a thumbnail to your map, copy the `.webp` image into the same folder as your map `.umap` file.
 
@@ -197,6 +197,6 @@ You can now just start the New Game with the `Sandbox` package selected and VOIL
 ![](/img/docs/custom-maps-38.webp)
 
 
-## Configuring your Map
+## Configuring your Map {/* #configuring-your-map */}
 
 Also it is possible to add a Configuration File, Custom Data and even an exclusive Package (scripting) for your map! Please refer to [Map Script and Configuration](/core-concepts/packages/packages-guide.mdx#map) for more information!

@@ -14,12 +14,12 @@ nanos world provides a fully configurable and ready **Unreal Project** called As
 This project contains **Placeholders**, **Tools** and **Correct References** that must be used in order to create **Characters** or set proper **Physical Materials** for example.
 
 
-## Downloading Assets Development Kit
+## Downloading Assets Development Kit {/* #downloading-assets-development-kit */}
 
 Our ADK is uploaded on [GitHub](https://github.com/nanos-world/assets-development-kit/), please download it's latest version and extract it in your computer.
 
 
-## Opening the Project
+## Opening the Project {/* #opening-the-project */}
 
 You will find a file `NanosWorldADK.uproject` in there, just open it with Unreal Engine (make sure you have [Set Up Unreal Engine](setting-up-ue.mdx) before proceeding).
 
@@ -29,14 +29,14 @@ The first time opening it may take some time as the initial shaders must be comp
 After it finishes compiling all shaders, you can proceed to the [next step to import an asset](importing-assets.mdx) or take a look below in all available tools.
 
 
-## Special Attention
+## Special Attention {/* #special-attention */}
 
 Please do not **MODIFY**, **DELETE**, **CREATE** or **COPY** any file inside `NanosWorld/` folder, otherwise the ADK will not work properly. Also make sure you DO NOT modify them unintentionally! If asked to save any modified file in there, cancel it! All references must use `NanosWorld/` the way they are.
 
 `NanosWorld/` folder has some Assets which you can use to reference **your** assets and make the export keep the correct references when using them in-game.
 
 
-## Updating to a newer ADK version
+## Updating to a newer ADK version {/* #updating-to-a-newer-adk-version */}
 
 To update your Unreal project to a newer Assets Development Kit version, you just need to download the newest version from GitHub and extract/paste it over the existing project, overriding **all** files.
 
@@ -47,7 +47,7 @@ It is recommended to backup your settings at `Config/` folder because they will 
 :::
 
 
-## Tools available in the ADK project
+## Tools available in the ADK project {/* #tools-available-in-the-adk-project */}
 
 Here's a list of all tools and blueprints which you can use to speed up and help creating assets:
 
@@ -59,15 +59,15 @@ Here's a list of all tools and blueprints which you can use to speed up and help
 * [Mannequin Skeleton `NanosWorld/Characters/Common/SKEL_Mannequin`](adk-assets-development-kit#mannequin-skeleton)
 * [Thumbnail Generator `NanosWorld/Blueprints/Utility/ThumbnailGenerator`](adk-assets-development-kit#thumbnail-generator)
 
-### Placeholder Blueprints
-#### `NanosWorld/Blueprints/Placeholders/`
+### Placeholder Blueprints {/* #placeholder-blueprints */}
+#### `NanosWorld/Blueprints/Placeholders/` {/* #nanosworldblueprintsplaceholders */}
 
 ![Placeholder Blueprints overview](/img/docs/adk-01.webp)
 
 You can use the **Placeholder Blueprints** to set Spawn Positions of **Vehicles**, **Weapons**, **Characters** and **Props**. This works only to help you generating a Lua code with spawn positions after all. These Blueprints aren't cooked with the map. Use the [Lua Code Generator](adk-assets-development-kit#lua-code-generator) to generate the Lua script with all spawn locations.
 
-### Lua Code Generator
-#### `NanosWorld/Blueprints/Utility/WBP_LuaCodeGenerator`
+### Lua Code Generator {/* #lua-code-generator */}
+#### `NanosWorld/Blueprints/Utility/WBP_LuaCodeGenerator` {/* #nanosworldblueprintsutilitywbp_luacodegenerator */}
 
 ![Lua Code Generator Widget](/img/docs/adk-02.webp)
 
@@ -77,15 +77,15 @@ To open it, right click on it and press **Run Editor Utility Widget**:
 
 ![](/img/docs/adk-03.webp)
 
-### Assets.toml Generator
-#### `NanosWorld/Blueprints/Utility/WBP_AssetsTomlGenerator`
+### Assets.toml Generator {/* #assetstoml-generator */}
+#### `NanosWorld/Blueprints/Utility/WBP_AssetsTomlGenerator` {/* #nanosworldblueprintsutilitywbp_assetstomlgenerator */}
 
 ![](/img/docs/adk-04.webp)
 
 This is an **Editor Utility Widget** which scans a folder (determined by the TextBox) and generates the configuration for an Assets.toml with all Assets in the folder \(which can be used in nanos world\).
 
-### Sun & Sky Actor
-#### `NanosWorld/Blueprints/World/BP_SunSky`
+### Sun & Sky Actor {/* #sun--sky-actor */}
+#### `NanosWorld/Blueprints/World/BP_SunSky` {/* #nanosworldblueprintsworldbp_sunsky */}
 
 This is a pre-configured **Sun & Sky Blueprint** which can be used and easily replaced by nanos world Official Sun with `World.SpawnDefaultSun()`. This is useful to get an approximate result of how the light will look like in-game if you decide to Spawn the Default Sun.
 
@@ -97,8 +97,8 @@ Example: Light Intensity, Color, Post Process and other configuration will be lo
 
 :::
 
-### Physical Materials
-#### `NanosWorld/MaterialLibrary/PhysicalMaterials/`
+### Physical Materials {/* #physical-materials */}
+#### `NanosWorld/MaterialLibrary/PhysicalMaterials/` {/* #nanosworldmateriallibraryphysicalmaterials */}
 
 ![](/img/docs/adk-05.webp)
 
@@ -110,8 +110,8 @@ DO NOT **modify** or **rename** any Physical Materials, only use by referencing 
 
 :::
 
-### Mannequin Skeleton
-#### `NanosWorld/Characters/Common/SKEL_Mannequin`
+### Mannequin Skeleton {/* #mannequin-skeleton */}
+#### `NanosWorld/Characters/Common/SKEL_Mannequin` {/* #nanosworldcharacterscommonskel_mannequin */}
 
 To be able to create Skeletal \(Character\) Meshes which work with our [Character](/scripting-reference/classes/character.mdx) class, you must set your Skeletal Mesh to use our **Mannequin Skeleton**. This Skeleton is the same as Unreal Engine 5 default Mannequin, so any Skeletal Mesh which uses UE4's Mannequin Skeleton will work for us!
 
@@ -119,8 +119,8 @@ To change a Skeletal Mesh's Skeleton: right click on it &gt;&gt; Skeleton &gt;&g
 
 ![](/img/docs/adk-06.webp)
 
-### Thumbnail Generator
-#### `NanosWorld/Blueprints/Utility/ThumbnailGenerator`
+### Thumbnail Generator {/* #thumbnail-generator */}
+#### `NanosWorld/Blueprints/Utility/ThumbnailGenerator` {/* #nanosworldblueprintsutilitythumbnailgenerator */}
 
 We've shipped a **Thumbnail Generator** tool to help you generating `.jpg` images of your assets. To use that, just open **ThumbnailGenerator** level and hit Play. Then you will be able to define a folder for search the assets \(currently only Static and Skeletal Meshes are supported\) and a folder to save the images \(.jpg\). You can optionally keep the directory hierarchy in the output folder or save all images in the same folder. Once you hit **Generate**, it will start loading all assets and taking a photo from them.
 

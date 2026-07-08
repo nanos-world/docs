@@ -10,7 +10,7 @@ import { Classes } from '@site/src/components/_nanos';
 <HeaderDeclaration type="StaticClass" name="Events" />
 
 
-## 🎒 Examples
+## 🎒 Examples {/* #examples */}
 
 :::info
 
@@ -19,7 +19,7 @@ _Remote_ means the other side, e.g.: if I'm the **Client**, the remote is the Se
 :::
 
 
-### Basic Usage
+### Basic Usage {/* #basic-usage */}
 
 ```lua title="Client/Index.lua" showLineNumbers
 -- register for a local Event (local = client only)
@@ -71,7 +71,7 @@ Events.BroadcastRemote("MyClientEvent", Reliability.Reliable, "hello nanos world
 ```
 
 
-### Passing entities through Events
+### Passing entities through Events {/* #passing-entities-through-events */}
 
 ```lua showLineNumbers
 -- register for an Event (remote or local)
@@ -100,6 +100,6 @@ You can find more examples and a comprehensive guide at the Events Guide page.
 <ReferenceLink href="core-concepts/scripting/events-guide">Events Guide</ReferenceLink>
 
 
-## 🗿 Static Functions
+## 🗿 Static Functions {/* #static-functions */}
 
 <StaticFunctionsDeclaration type="StaticClass" name="Events" />

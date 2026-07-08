@@ -15,7 +15,7 @@ In nanos world it is possible to store data on entities. Those values can be acc
 In <Classes.Entity /> page we can find the definitions of <MethodReference type="Class" class_name="Entity" method_name="SetValue" /> and <MethodReference type="Class" class_name="Entity" method_name="GetValue" /> methods. Also it is possible to store Values globally on <StaticClasses.Client /> and <StaticClasses.Server /> Static Classes with the same methods!
 
 
-## `SetValue`
+## `SetValue` {/* #setvalue */}
 
 In any entity, you can use the method `:SetValue(key, value, sync)` to set any kind of value on that entity. Example:
 
@@ -39,7 +39,7 @@ If you pass `sync` as true, that value will be automatically synchronized with a
 :::
 
 
-## `GetValue`
+## `GetValue` {/* #getvalue */}
 
 After set, you can access any value from any entity using `:GetValue(key, fallback)` on any entity you want. If you set the value to be synchronized on Clients, you will be able to get the values on the Client side as well. You can pass an aditional parameter `fallback` which will be returned if the key doesn't exist!
 

@@ -16,7 +16,7 @@ Welcome to our roundup of the latest updates from the last month!
 {/* truncate */}
 
 
-## Sandbox 3.0
+## Sandbox 3.0 {/* #sandbox-30 */}
 
 We're happy to announce the latest Sandbox update!
 
@@ -27,7 +27,7 @@ We're happy to announce the latest Sandbox update!
 This update brings lots of improvements to the Sandbox game mode: new features, entities, tools, and a big polish pass on the UI and existing systems. It's heavily focused on improving the user experience and making it more fun (and easier) to create content, entities, and tools.
 
 
-### Spawn Menu
+### Spawn Menu {/* #spawn-menu */}
 
 Our Spawn Menu was drastically improved. It now displays all items in a **Unified List**, separated by categories. The **Category** is highlighted when visible on the screen. And there's a new **Search Bar**!
 
@@ -36,12 +36,12 @@ Our Spawn Menu was drastically improved. It now displays all items in a **Unifie
 <MediaLegend>Sandbox game-mode Spawn Menu</MediaLegend>
 
 
-### Context Menu
+### Context Menu {/* #context-menu */}
 
 The Context Menu was the biggest change in this update!
 
 
-#### Selecting Entities
+#### Selecting Entities {/* #selecting-entities */}
 
 You can now **Select** and **Modify** Entities by clicking on them while the Context Menu is open.
 
@@ -85,7 +85,7 @@ Thruster.selected_context_menu_items = {
 </details>
 
 
-#### Entity Blame
+#### Entity Blame {/* #entity-blame */}
 
 We also added a new feature that shows who spawned/edited an entity when hovering the entity, useful for moderating and knowing who created what.
 
@@ -94,7 +94,7 @@ We also added a new feature that shows who spawned/edited an entity when hoverin
 <MediaLegend>Entity Blame label showing who spawned/edited an entity</MediaLegend>
 
 
-### Tutorials
+### Tutorials {/* #tutorials */}
 
 The Tutorials UI has been upgraded and now displays a short description of the tool, and all the keys used by the ToolGun.
 
@@ -122,11 +122,11 @@ ColorGun.tutorials = {
 </details>
 
 
-### New Entities
+### New Entities {/* #new-entities */}
 
 We added a bunch of fun new entities to Sandbox, and there's more on the way!
 
-#### Retro Camera
+#### Retro Camera {/* #retro-camera */}
 
 The `RetroCamera` is a *polaroid* instant camera that lets you take photos in real time.
 
@@ -137,7 +137,7 @@ The `RetroCamera` is a *polaroid* instant camera that lets you take photos in re
 It uses a <Classes.SceneCapture /> and outputs a base64 image which is printed immediately onto a photo film, that is synchronized and persistent in the server!
 
 
-#### Button & Wire
+#### Button & Wire {/* #button--wire */}
 
 The `Button` is a new entity that's *pressable*, **activating** and **deactivating** other entities:
 
@@ -168,7 +168,7 @@ end
 ```
 
 
-#### Photo Frame
+#### Photo Frame {/* #photo-frame */}
 
 The `PhotoFrame` is a new entity that can display custom images. It supports both **Base64** and **URLs**.
 
@@ -177,7 +177,7 @@ The `PhotoFrame` is a new entity that can display custom images. It supports bot
 <MediaLegend>Sandbox game-mode Selecting Entities and new Photo Frame Entity</MediaLegend>
 
 
-#### Sign & FloatingText
+#### Sign & FloatingText {/* #sign--floatingtext */}
 
 We created two new entities, `Sign` and `FloatingText`. Both use the new <Classes.TextRender /> class to render text in the world, and the text can be customized through the **Context Menu**.
 
@@ -186,7 +186,7 @@ We created two new entities, `Sign` and `FloatingText`. Both use the new <Classe
 <MediaLegend>Sandbox game-mode new Text Entities</MediaLegend>
 
 
-### New Tools
+### New Tools {/* #new-tools */}
 
 Besides the new `Wire Gun` tool, we're also adding more tools in the next updates, such as a `Ball Socket Gun`, `Spring Gun` and an `Elastic Gun` for constraining two ends with different physics constraints.
 
@@ -195,21 +195,21 @@ Besides the new `Wire Gun` tool, we're also adding more tools in the next update
 <MediaLegend>Elastic Tool Gun Contraption</MediaLegend>
 
 
-### Refactored APIs
+### Refactored APIs {/* #refactored-apis */}
 
 Now, all Sandbox systems are consolidated and exported into a single global variable: `Sandbox`. You can access all Sandbox systems and methods through it from your scripts, for example [`Sandbox.ContextMenu`](/docs/next/explore/sandbox-game-mode/context-menu) or [`Sandbox.SpawnMenu`](/docs/next/explore/sandbox-game-mode/spawn-menu).
 
 We also created and exposed several new subsystems such as [`Tutorials`](/docs/next/explore/sandbox-game-mode/extra-features#tutorials), [`Notifications`](/docs/next/explore/sandbox-game-mode/extra-features#notifications), [`SpawnHistory`](/docs/next/explore/sandbox-game-mode/extra-features#spawnhistory), and even exposed the WebUI as `Sandbox.WebUI`.
 
 
-### Updated Docs Pages
+### Updated Docs Pages {/* #updated-docs-pages */}
 
 We have updated all Sandbox docs pages on how to use and integrate the new systems, take a look:
 
 <ReferenceLink href="explore/sandbox-game-mode/">Sandbox game-mode</ReferenceLink>
 
 
-### Upcoming
+### Upcoming {/* #upcoming */}
 
 This is just the beginning of our **Sandbox 3.0** update, we're still working on many new features and improvements, including more entities, tools, and systems.
 
@@ -222,7 +222,7 @@ A sneak peek of another tool we're experimenting with:
 <MediaLegend>Experimental Wheel ToolGun</MediaLegend>
 
 
-## Interaction ToolTips
+## Interaction ToolTips {/* #interaction-tooltips */}
 
 We added a brand new **Interaction ToolTip** system for <Classes.Prop />, <Classes.Weapon /> (<Classes.Pickable />), and <Classes.Vehicle />. A tooltip (text + image) appears on screen when you look at those interactable objects:
 
@@ -235,10 +235,10 @@ For **Props**, you can now change the tooltip text using <MethodReference type="
 You can disable this system with the new static method <MethodReference type="StaticClass" class_name="Viewport" method_name="SetInteractionToolTipEnabled" show_class_name />.
 
 
-## Scripting & API
+## Scripting & API {/* #scripting--api */}
 
 
-### New Class: TextRender
+### New Class: TextRender {/* #new-class-textrender */}
 
 We already had a **TextRender** class, but it was actually a **Text3D** component (from the Unreal Text3D Plugin).
 
@@ -249,7 +249,7 @@ This new **TextRender** class also supports custom fonts via <MethodReference ty
 *For this upgrade, we introduced a new [Compatibility Version 1.103](/docs/next/core-concepts/packages/compatibility-versions#version-1103) so we don't break any existing scripts using the old TextRender class.*
 
 
-### Texture Parameters
+### Texture Parameters {/* #texture-parameters */}
 
 Texture parameters got a big flexibility boost: any texture parameter now supports loading **Base64**, **URL images** (experimental), and **cooked** texture assets.
 
@@ -260,7 +260,7 @@ Texture parameters got a big flexibility boost: any texture parameter now suppor
 You can directly set the URL/Base64 to materials using the <MethodReference type="Class" class_name="Paintable" method_name="SetMaterialTextureParameter" show_class_name />!
 
 
-### Cables & Constraints
+### Cables & Constraints {/* #cables--constraints */}
 
 <Classes.Cable /> was heavily improved. "Locked" constraints will **no longer** be created with an automatically calculated offset. A new parameter was added to `Cable.AttachEndTo()`, `constraint_offset`, so you can customize the offset through scripting and have more control over constraints.
 
@@ -269,12 +269,12 @@ We also added a bunch of new methods to customize physics constraint and motor s
 The Cables spawn performance was also improved: if you use an **All-Free** constraint, the Physics Constraint now stays deactivated (great when you only want visuals). We also made small improvements to stabilize physics jitter.
 
 
-### New & Improved Methods
+### New & Improved Methods {/* #new--improved-methods */}
 
 We implemented a bunch of new scripting methods this month:
 
 
-#### Angular Impulse/Force
+#### Angular Impulse/Force {/* #angular-impulseforce */}
 
 You can now add and set Angular Impulse/Force on any actor:
 
@@ -283,13 +283,13 @@ You can now add and set Angular Impulse/Force on any actor:
 - <MethodReference type="Class" class_name="Actor" method_name="GetAngularForce" show_class_name />
 
 
-#### Override Props Mass
+#### Override Props Mass {/* #override-props-mass */}
 
 - <MethodReference type="Class" class_name="Prop" method_name="SetMassOverride" show_class_name />
 - <MethodReference type="Class" class_name="Prop" method_name="SetMassScale" show_class_name />
 
 
-#### Cables Motor & Physics Constraint
+#### Cables Motor & Physics Constraint {/* #cables-motor--physics-constraint */}
 
 - <MethodReference type="Class" class_name="Cable" method_name="SetPhysicsConstraintSettings" show_class_name />
 - <MethodReference type="Class" class_name="Cable" method_name="SetLinearMotorPositionSettings" show_class_name />
@@ -300,7 +300,7 @@ You can now add and set Angular Impulse/Force on any actor:
 - <MethodReference type="Class" class_name="Cable" method_name="SetAngularMotorTwistAndSwingVelocitySettings" show_class_name />
 
 
-#### Paintable Getters
+#### Paintable Getters {/* #paintable-getters */}
 
 - <MethodReference type="Class" class_name="Paintable" method_name="GetMaterialVectorParameter" show_class_name />
 - <MethodReference type="Class" class_name="Paintable" method_name="GetMaterialColorParameter" show_class_name />
@@ -308,21 +308,21 @@ You can now add and set Angular Impulse/Force on any actor:
 - <MethodReference type="Class" class_name="Paintable" method_name="GetMaterialScalarParameter" show_class_name />
 
 
-#### Actor Render Cull Distance
+#### Actor Render Cull Distance {/* #actor-render-cull-distance */}
 
 You can set the render cull distance of any actor now, the distance at which the actor will stop rendering:
 
 - <MethodReference type="Class" class_name="Actor" method_name="SetRenderCullDistance" show_class_name />
 
 
-#### Actor Shadows
+#### Actor Shadows {/* #actor-shadows */}
 
 You can enable/disable shadows on any actor now:
 
 - <MethodReference type="Class" class_name="Actor" method_name="SetCastShadow" show_class_name />
 
 
-#### Other New Methods
+#### Other New Methods {/* #other-new-methods */}
 
 - <MethodReference type="Class" class_name="VehicleWheeled" method_name="IsInAir" show_class_name /> (Returns if the vehicle is in air or not)
 - <MethodReference type="Class" class_name="WebUI" method_name="HasNodeFocus" show_class_name /> (Returns if any WebUI node has focus)
@@ -333,24 +333,24 @@ You can enable/disable shadows on any actor now:
 - <MethodReference type="Class" class_name="Prop" method_name="SetInteractionToolTipText" show_class_name /> (Sets the Interaction ToolTip text for a Prop)
 
 
-#### Improved Methods
+#### Improved Methods {/* #improved-methods */}
 
 - <MethodReference type="StaticClass" class_name="Client" method_name="ShowNotification" show_class_name />: new `duration` parameter.
 - <MethodReference type="Class" class_name="CharacterSimple" method_name="SetSpeedSettings" show_class_name />: new `max_fly_speed` parameter.
 - <MethodReference type="Class" class_name="Actor" method_name="AttachTo" show_class_name />, <MethodReference type="Class" class_name="Cable" method_name="AttachStartTo" show_class_name /> and <MethodReference type="Class" class_name="Cable" method_name="AttachEndTo" show_class_name />: now returns if it was successful.
 
 
-#### Hit Event `other_actor` Parameter
+#### Hit Event `other_actor` Parameter {/* #hit-event-other_actor-parameter */}
 
 Now the <EventReference type="Class" class_name="Prop" event="Hit" /> Event contains a new `other_actor` parameter, which is the other actor that caused the Hit.
 
 
-## Docs
+## Docs {/* #docs */}
 
 We've got several improvements to the Docs.
 
 
-### Efficiency Label
+### Efficiency Label {/* #efficiency-label */}
 
 We added a new `efficiency` label to all methods:
 
@@ -361,12 +361,12 @@ We added a new `efficiency` label to all methods:
 For example, if you hover <MethodReference type="StaticClass" class_name="HTTP" method_name="Request" show_class_name />, you will see a "blocking" label in the top right, meaning it's a blocking operation and will freeze the main thread.
 
 
-### Anchor Links
+### Anchor Links {/* #anchor-links */}
 
 All method and event anchor links are now fixed: you can hover and copy the link from any API page. And when clicking an anchor, the page now scrolls with the correct offset.
 
 
-### Improved Search Results
+### Improved Search Results {/* #improved-search-results */}
 
 We've also improved the docs search, now it returns more precise results.
 
@@ -375,37 +375,37 @@ We've also improved the docs search, now it returns more precise results.
 <MediaLegend>Docs Search returning precise results</MediaLegend>
 
 
-### Docker Tutorial
+### Docker Tutorial {/* #docker-tutorial */}
 
 We got a new community-created tutorial on how to use Docker with nanos world servers, check it out on the [Docker Installation](/docs/next/core-concepts/server-manual/server-docker) page.
 
 
-## Quality of Life Improvements
+## Quality of Life Improvements {/* #quality-of-life-improvements */}
 
 
-### WebUI Inputs
+### WebUI Inputs {/* #webui-inputs */}
 
 Besides the new <MethodReference type="Class" class_name="WebUI" method_name="HasNodeFocus" show_class_name /> method, now pressing Escape while a WebUI node has focus, causes the node to unfocus (instead of opening the escape menu).
 
 Also, while a WebUI node has focus, **all game input is ignored**. This makes in-game forms and text inputs feel much more "normal", and avoids those annoying cases where the player types into a UI and also triggers gameplay binds.
 
 
-### File Transfer Speeds
+### File Transfer Speeds {/* #file-transfer-speeds */}
 
 We iterated again on the download system, and file transfer speeds are now improved for high-ping players, making joining servers feel smoother in worse network conditions.
 
 
-### VOIP Network Usage
+### VOIP Network Usage {/* #voip-network-usage */}
 
 On VOIP, data is now only transmitted to players within ~30 meters (when using local channel), reducing unnecessary bandwidth usage.
 
 
-### Drop Input
+### Drop Input {/* #drop-input */}
 
 Pressing the Drop input (`G`) now drops the grabbed prop as well.
 
 
-## New Default Assets
+## New Default Assets {/* #new-default-assets */}
 
 We added several new assets to the [Default Asset Pack](/docs/next/assets-modding/default-asset-pack/default-assets-list), including new **Static Meshes** (`SM_RetroCamera`, `SM_PhotoFrame`, `SM_LightSwitch`, `SM_PushButton`), **Sound Effects** (button, switches, and thruster sounds), and the full [Rocket Thruster Exhaust](https://www.fab.com/listings/5856e437-bb4a-4215-ae6d-6c93b429a37e) **Particles** pack from Fab.
 
@@ -414,7 +414,7 @@ We also improved the **Vehicles Skidding** particles, fixing some flickering and
 Not to mention several assets collisions were improved, fixing their physics behavior.
 
 
-## First Time Benchmark
+## First Time Benchmark {/* #first-time-benchmark */}
 
 ![](/img/blog/2026-january/first-benchmark.webp)
 
@@ -423,7 +423,7 @@ Not to mention several assets collisions were improved, fixing their physics beh
 We added a new popup asking to run a **First Time Benchmark** when starting the game for the first time (it will not run automatically anymore).
 
 
-## Dependencies
+## Dependencies {/* #dependencies */}
 
 Updated dependencies:
 
@@ -432,7 +432,7 @@ Updated dependencies:
 - Sentry has been updated to **1.6**.
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 The Sandbox game-mode is finally taking the shape I wanted for it, becoming really next to my inspiration Garry's Mod version of it. I will have some work to do and expand, but we are much closer than before.
 

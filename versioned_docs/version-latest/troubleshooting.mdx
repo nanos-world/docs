@@ -20,16 +20,16 @@ Welcome to the general troubleshooting guide. If you are experiencing crashes or
 If you have already tried these solutions and are still encountering issues, please jump to the [Still Crashing?](#still-crashing) section.
 
 
-## Common Fixes for Client Crashes
+## Common Fixes for Client Crashes {/* #common-fixes-for-client-crashes */}
 
-### 1. Verify Game Files
+### 1. Verify Game Files {/* #1-verify-game-files */}
 
 Corrupted or missing files are the most common cause of sudden crashes.
 
 * **On Steam:** Right-click *nanos world* in your Steam Library > **Properties** > **Installed Files** > **Verify integrity of game files**.
 
 
-### 2. Update Your Video Drivers
+### 2. Update Your Video Drivers {/* #2-update-your-video-drivers */}
 
 Ensure your graphics card drivers are up to date. Outdated drivers frequently conflict with modern Unreal Engine rendering features.
 * Check [NVIDIA](https://www.nvidia.com/Download/index.aspx), [AMD](https://www.amd.com/en/support), or [Intel](https://www.intel.com/content/www/us/en/download-center/home.html) for the latest stable releases.
@@ -37,7 +37,7 @@ Ensure your graphics card drivers are up to date. Outdated drivers frequently co
 * *Tip²: You can try a complete clean installation of your GPU drivers using tools like [Display Driver Uninstaller (DDU)](https://www.guru3d.com/files-details/display-driver-uninstaller-download.html) to remove all traces of old drivers before installing the latest version.*
 
 
-### 3. Clear Local App Data Cache
+### 3. Clear Local App Data Cache {/* #3-clear-local-app-data-cache */}
 
 Sometimes, cached configuration files get corrupted. Deleting them forces the game to generate fresh ones.
 
@@ -46,7 +46,7 @@ Sometimes, cached configuration files get corrupted. Deleting them forces the ga
 3. *Optional but recommended:* Delete the **`NVIDIA`** folder in the same directory to clear your shader cache.
 
 
-### 4. Switch DirectX Versions
+### 4. Switch DirectX Versions {/* #4-switch-directx-versions */}
 
 Depending on your hardware, toggling between DirectX 11 and DirectX 12 can resolve rendering crashes.
 
@@ -54,7 +54,7 @@ Depending on your hardware, toggling between DirectX 11 and DirectX 12 can resol
 * If you can't open the game, try launching it with the `-dx11` or `-dx12` command line argument to force a specific DirectX version.
 
 
-### 5. Disable Overlays & Background Software
+### 5. Disable Overlays & Background Software {/* #5-disable-overlays--background-software */}
 
 Third-party overlays can hook into the game's rendering process and trigger crashes. Try temporarily disabling:
 
@@ -64,26 +64,26 @@ Third-party overlays can hook into the game's rendering process and trigger cras
 * FPS counters or other screen capture software
 
 
-### 6. Disable Hardware Overclocking
+### 6. Disable Hardware Overclocking {/* #6-disable-hardware-overclocking */}
 
 If you have overclocked your CPU, GPU, or RAM (including XMP profiles), it might be causing instability when the engine is under heavy load. Try reverting your hardware to its stock clock speeds to see if the crashes stop.
 
 
-### 7. Intel 13th & 14th Gen CPU Instability
+### 7. Intel 13th & 14th Gen CPU Instability {/* #7-intel-13th--14th-gen-cpu-instability */}
 
 A very common issue with modern Unreal Engine games running on high-end Intel processors (like the i7/i9 13th and 14th gen) causes the game to crash during shader compilation, often throwing a misleading "Out of Video Memory" error.
 
 * Check your motherboard manufacturer's website and update your BIOS to the latest version to apply the official "Intel Default Settings" microcode.
 
 
-### 8. Disable Ray Tracing
+### 8. Disable Ray Tracing {/* #8-disable-ray-tracing */}
 
 If you are running older graphics cards (or even newer hardware under heavy server loads), some bugs in Unreal Engine may cause certain ray-tracing features to lead to sudden GPU driver crashes.
 
 * Go to your in-game settings under **Video** > **Advanced Quality Settings** > toggle **Ray Tracing** to **Off**.
 
 
-## Still Crashing?
+## Still Crashing? {/* #still-crashing */}
 
 If you have tried all the solutions above and are still experiencing instability, we want to hear about it. To help us investigate and resolve the problem as quickly as possible, please submit a detailed report to our [Bug Tracker](https://feedback.nanos-world.com/b/bugs).
 

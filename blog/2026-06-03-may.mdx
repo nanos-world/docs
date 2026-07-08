@@ -15,7 +15,7 @@ Welcome to our roundup of the latest updates from the last month!
 {/* truncate */}
 
 
-## New Sizzle Reel Video!
+## New Sizzle Reel Video! {/* #new-sizzle-reel-video */}
 
 Earlier this month we released a new **Sizzle Reel** video showcasing several servers and game-modes already created on *nanos world!* If you haven't watched it yet, check it out!
 
@@ -35,12 +35,12 @@ Also please help us sharing, liking and subscribing in our Social Medias if you 
 - [TikTok](<https://www.tiktok.com/@nanosworldgame/video/7637857147182714130>)
 
 
-## New Registration Forms!
+## New Registration Forms! {/* #new-registration-forms */}
 
 In order to help grow our community and support all projects you are building, we have just created two new forms! Your submissions will be carefully analyzed by our moderators! 🙏
 
 
-### Project Registration
+### Project Registration {/* #project-registration */}
 
 If you are working on a project and need access for your team or your players, use this new form to officially register your **Project** with us and request **Dev Keys** for your development team or **Player Keys** for testing with your community.
 
@@ -53,7 +53,7 @@ Please note that this form does not exempt you from registering for the regular 
 <ReferenceLink href="https://tally.so/r/lbVqvp">📝 Project Registration Form</ReferenceLink>
 
 
-### Helper & Moderator
+### Helper & Moderator {/* #helper--moderator */}
 
 If you love helping others, keeping the chat friendly, and want to take a more active role in the server, we are looking for dedicated **Helpers** to help members in our discord and potentially becoming **Moderators**!
 
@@ -62,7 +62,7 @@ We are gradually increasing our team of Helpers to be able to provide better sup
 <ReferenceLink href="https://tally.so/r/44PBy5">🤝 Helper & Moderator Form</ReferenceLink>
 
 
-## Account Discord Linking
+## Account Discord Linking {/* #account-discord-linking */}
 
 ![](/img/docs/discord.webp)
 
@@ -73,7 +73,7 @@ You can now link your **Discord** account directly in your **Profile** page. If 
 <ReferenceLink href="https://nanos-world.com/account/profile">👤 Link your Discord Account</ReferenceLink>
 
 
-## FSR Integration & Upscaling
+## FSR Integration & Upscaling {/* #fsr-integration--upscaling */}
 
 <ImageExternal path="/roadmap/fsr.webp" />
 
@@ -92,17 +92,17 @@ Note that **FSR** is available for all GPU brands, not only AMD!
 :::
 
 
-### DLSS Update
+### DLSS Update {/* #dlss-update */}
 
 On the NVIDIA side, we have updated the **DLSS Plugin** to the latest version **8.6**, which brings **DLSS 4.5** that now supports up to `6X Frame Generation` for capable NVIDIA GPUs.
 
 
-## New Events Format
+## New Events Format {/* #new-events-format */}
 
 As a result of our Discord discussion in the past month, and to give scripters more control over performance, we have implemented a new `Call/BroadcastRemote` format for <StaticClasses.Events /> and <Classes.Entity />!
 
 
-### Reliability Argument
+### Reliability Argument {/* #reliability-argument */}
 
 Now all `Call/BroadcastRemote` methods will have a new argument `reliability` (<Enums>Reliability</Enums>).
 
@@ -123,7 +123,7 @@ Note that those changes require you updating the **Compatibility Version** of yo
 :::
 
 
-### Send In Radius
+### Send In Radius {/* #send-in-radius */}
 
 Another addition is the new methods for broadcasting remote events to players in a specific `radius` around a `location`.
 
@@ -138,10 +138,10 @@ This is much more efficient than iterate all players to build the players list i
 :::
 
 
-## Scripting Improvements
+## Scripting Improvements {/* #scripting-improvements */}
 
 
-### Query In Radius
+### Query In Radius {/* #query-in-radius */}
 
 Along the new `BroadcastRemoteInRadius` methods, we also added new methods to query players and actors in a specific radius around a location (also much more efficient than iterating all entities in Lua):
 
@@ -150,7 +150,7 @@ Along the new `BroadcastRemoteInRadius` methods, we also added new methods to qu
 - <MethodReference type="StaticClass" class_name="Client" method_name="GetActorsInRadius" show_class_name />
 
 
-### New Methods
+### New Methods {/* #new-methods */}
 
 Other new methods added this month:
 
@@ -158,7 +158,7 @@ Other new methods added this month:
 - <MethodReference type="Class" class_name="Entity" method_name="CallRemotePlayersEvent" show_class_name />
 
 
-### Increased Dimensions Limit
+### Increased Dimensions Limit {/* #increased-dimensions-limit */}
 
 We have refactored our **Dimensions** system internally to support more dimensions indexes.
 
@@ -167,12 +167,12 @@ Before it was limited to just `65.535` (*16 bits*) dimensions (which is already 
 This allows more easy calculations per player when multiplying it's ID by a value for example.
 
 
-## UI Improvements
+## UI Improvements {/* #ui-improvements */}
 
 We've made several quality-of-life adjustments to the user interface.
 
 
-### Integrated Console
+### Integrated Console {/* #integrated-console */}
 
 Now the **Console** is directly integrated into the **Main Menu** and **Escape Menu**! Making it easier to be accessed and used, without the need of a keybinding or a separate window.
 
@@ -189,14 +189,14 @@ Now it can be easily accessed through the new Console button in the top bar:
 *Please note that the <StaticClasses.Console /> `Open/Close` events won't exist anymore and are being removed.*
 
 
-### New Hide All Keybinding
+### New Hide All Keybinding {/* #new-hide-all-keybinding */}
 
 We added a new native keybinding (default to `scroll lock`) that allows you to hide all on-screen UIs.
 
 That's useful for disabling UI elements (such as Debug widgets) for taking screenshots.
 
 
-### Profile Account Tab
+### Profile Account Tab {/* #profile-account-tab */}
 
 We are constantly improving our in-game integrations with our **Account** and **Store** APIs.
 
@@ -207,11 +207,11 @@ For account management, we added a new tab to your **Profile Popup** so you can 
 <MediaLegend>Account Management Tab</MediaLegend>
 
 
-### Settings
+### Settings {/* #settings */}
 
 We've got a bunch of improvements in the Settings menu!
 
-#### Restart Popup
+#### Restart Popup {/* #restart-popup */}
 
 Now when saving some settings (such as WebUI, RHI or Frame Generation), a Popup will appear to inform you that a game restart is required for the changes to take effect.
 
@@ -220,7 +220,7 @@ Now when saving some settings (such as WebUI, RHI or Frame Generation), a Popup 
 <MediaLegend>Restart Popup when changing Settings</MediaLegend>
 
 
-#### Video Settings Layout
+#### Video Settings Layout {/* #video-settings-layout */}
 
 We also changed the Layout of the **Video Settings** menu to support separated configurations for Frame Generation and Super Resolution, making it easier to understand and configure those settings:
 
@@ -231,7 +231,7 @@ We also changed the Layout of the **Video Settings** menu to support separated c
 We also improved the resolutions list fixing wide aspect ratio not showing up in the list!
 
 
-#### House Keeping Reworked
+#### House Keeping Reworked {/* #house-keeping-reworked */}
 
 We internally completely reworked the **House Keeping** tab in the Settings, improving its performance and stability when cleaning up old cache data.
 
@@ -242,7 +242,7 @@ If you haven't used it, this Tab allows you cleaning cache data such as Logs, Do
 <MediaLegend>House Keeping Tab</MediaLegend>
 
 
-#### In-game Microphone Test
+#### In-game Microphone Test {/* #in-game-microphone-test */}
 
 We added a new **Microphone Test** button in the Audio Settings that allows you to test and hear your microphone input while in-game, as it would sound to other Players:
 
@@ -257,25 +257,25 @@ Note that for now this feature is only available while in-game connected to a se
 :::
 
 
-## Other Improvements
+## Other Improvements {/* #other-improvements */}
 
 
-#### New `clear` Server Console Command
+#### New `clear` Server Console Command {/* #new-clear-server-console-command */}
 
 We added a new `clear` console command that allows you to clear the console output.
 
 
-#### Automatically Clean CEF Cache
+#### Automatically Clean CEF Cache {/* #automatically-clean-cef-cache */}
 
 Now on every CEF update, the game automatically clear the old CEF cache data to prevent issues and crashes related to older CEF versions cache data.
 
 
-#### Compatibility Version Warnings
+#### Compatibility Version Warnings {/* #compatibility-version-warnings */}
 
 To prevent log spam, Compatibility Version warnings will now only display once as a single warning in the first occurrence.
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 May has been a massive month for under-the-hood optimization and quality-of-life upgrades. Giving scripters more control over network reliability and pushing our internal systems to be as performant as possible is exactly the kind of technical foundation we aim!
 

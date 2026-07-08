@@ -19,7 +19,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-## Tracy Profiler Integration
+## Tracy Profiler Integration {/* #tracy-profiler-integration */}
 
 ![](/img/docs/scripting/profiling/tracy-01.webp)
 
@@ -66,9 +66,9 @@ For more information, check the new Profiling Guide:
 <ReferenceLink href="core-concepts/scripting/profiling">Profiling Guide</ReferenceLink>
 
 
-## Localization
+## Localization {/* #localization */}
 
-### Game Localization
+### Game Localization {/* #game-localization */}
 
 ![](/img/blog/2026-april/localization.webp)
 
@@ -104,7 +104,7 @@ And if you'd like to contribute to any other language, we would be happy to add 
 Alongside this feature, we also exposed new methods and events so package creators can implement their own localization systems: <MethodReference type="StaticClass" class_name="Client" method_name="GetLanguage" show_class_name /> and <EventReference type="StaticClass" class_name="Client" event="LanguageChange" show_class_name />.
 
 
-### Docs Localization
+### Docs Localization {/* #docs-localization */}
 
 Besides the game itself, our documentation is also open source and available on [Crowdin](https://crowdin.com/project/nanos-world-docs).
 
@@ -113,7 +113,7 @@ We also implemented localization support for all API methods and event descripti
 If you'd like to help translate the documentation into your language, join the **Crowdin Docs** project and start contributing! If you want to help with a new language, just send us a message so we can add it to the project.
 
 
-## Loading Screen Improvements
+## Loading Screen Improvements {/* #loading-screen-improvements */}
 
 ![](/img/blog/2026-april/loading-screen-requirements.webp)
 
@@ -126,9 +126,9 @@ We also added several new loading steps to provide clearer feedback about what i
 Additionally, we greatly improved the performance of the **Validating Files** step, reducing loading times for servers with large amounts of content and requirements.
 
 
-## Performance & Optimization
+## Performance & Optimization {/* #performance--optimization */}
 
-### Networking
+### Networking {/* #networking */}
 
 We drastically improved **server performance** for high player counts by introducing a new internal system that **bundles** all pending network messages together and flushes them at the end of each server frame. This allows us to optimize message ordering and reduce internal networking overhead.
 
@@ -139,7 +139,7 @@ Another major improvement is how we handle **transient sync** data such as VOIP,
 To avoid issues such as characters visually "moving in place," we also implemented a client-side desync detection system that automatically stops character movement when updates are not received for a certain period of time.
 
 
-### API Events
+### API Events {/* #api-events */}
 
 We introduced another internal optimization for **Events** by skipping argument construction entirely when no subscribers exist for that event.
 
@@ -148,9 +148,9 @@ Previously, parameters and intermediate tables were always being copied and cons
 This significantly improves performance for frequently (not used) triggered events.
 
 
-### Caching
+### Caching {/* #caching */}
 
-#### Server.SetValue
+#### Server.SetValue {/* #serversetvalue */}
 
 Now, <MethodReference type="StaticClass" class_name="Server" method_name="SetValue" show_class_name /> synced values are automatically **cached** and **compressed** before being sent to joining clients.
 
@@ -159,21 +159,21 @@ This makes `Server.SetValue()` a much more efficient option for persistent synch
 We also implemented a chunking system for larger `Server.SetValue()` payloads, since the internal networking layer has a maximum packet size limitation of 512 KB, this new systems allow sending larger data through `Server.SetValue()` without issues by automatically splitting it into multiple chunks and reassembling it on the client side.
 
 
-#### Other Internal Caches
+#### Other Internal Caches {/* #other-internal-caches */}
 
 We implemented several new internal caches and lookup lists for players, entities, characters, and other frequently accessed data.
 
 This avoids repeated internal iterations and improves the performance of multiple systems that rely heavily on these collections.
 
 
-### API Methods Calls
+### API Methods Calls {/* #api-methods-calls */}
 
 We also refactored several internal Lua API calls, making them considerably faster and more efficient, especially for simple methods without parameters or return values.
 
 
-## Scripting Improvements
+## Scripting Improvements {/* #scripting-improvements */}
 
-### Defer Entity Spawn System
+### Defer Entity Spawn System {/* #defer-entity-spawn-system */}
 
 We implemented a new **Defer Spawn** system for entities, allowing you to create entities without immediately spawning them on clients until you explicitly call <MethodReference type="Class" class_name="Entity" method_name="FinishSpawn" show_class_name />.
 
@@ -240,42 +240,42 @@ end
 Using the **Defer Spawn** system is highly recommended when optimizing performance and reducing network usage, since the final entity state can be sent in a single compressed synchronization instead of multiple updates.
 
 
-#### Deprecated VehicleWheeled `auto_create_physics` parameter
+#### Deprecated VehicleWheeled `auto_create_physics` parameter {/* #deprecated-vehiclewheeled-auto_create_physics-parameter */}
 
 With the introduction of the new **Defer Spawn** system, the `auto_create_physics` parameter of <Classes.VehicleWheeled /> has been deprecated, since vehicles can now be configured more efficiently before spawning.
 
 
-### New Methods & Events
+### New Methods & Events {/* #new-methods--events */}
 
 All new methods and events related to this month's features and improvements are listed below.
 
-#### New Methods
+#### New Methods {/* #new-methods */}
 
 - <MethodReference type="StaticClass" class_name="Client" method_name="GetLanguage" show_class_name />
 - <MethodReference type="Class" class_name="Entity" method_name="FinishSpawn" show_class_name />
 
 
-#### New Events
+#### New Events {/* #new-events */}
 
 - <EventReference type="StaticClass" class_name="Client" event="LanguageChange" show_class_name />
 - <EventReference type="StaticClass" class_name="Client" event="ValueChange" show_class_name />
 - <EventReference type="StaticClass" class_name="Server" event="ValueChange" show_class_name />
 
 
-### Improved APIs
+### Improved APIs {/* #improved-apis */}
 
 - **VOIP** (e.g. <MethodReference type="Class" class_name="Player" method_name="SetVOIPGlobalChannelSetting" show_class_name />) now support up to 63 channels instead of 31.
 - Most of entities constructor got a new `defer_spawn` parameter to use the new **Defer Spawn** workflow.
 
 
-## Sync
+## Sync {/* #sync */}
 
 We made several improvements to actor and character synchronization, improving overall consistency, stability, and performance while fixing multiple edge-case sync issues.
 
 One of the main improvements was enhancing client-side **interpolation**. The **hard snap** system (which teleports actors when they become too far from their synced position) is now dynamically adjusted based on actor speed, making fast-moving actors significantly less likely to snap abruptly.
 
 
-### New Distant Fix-up System
+### New Distant Fix-up System {/* #new-distant-fix-up-system */}
 
 Since distant actors optimized with `distance_optimization` are not updated for far-away players, we implemented a new **Distance Fix-up System**.
 
@@ -284,7 +284,7 @@ Previously, far-away actors would only update again after moving. Now, the clien
 This ensures actors always have accurate positions and rotations when becoming relevant again.
 
 
-## New Water Buoyancy Config
+## New Water Buoyancy Config {/* #new-water-buoyancy-config */}
 
 We added a new property to the **map** `Package.toml`: `enable_water_buoyancy`.
 
@@ -297,7 +297,7 @@ For more information, check the Package Guide:
 <ReferenceLink href="core-concepts/packages/packages-guide#map">Map Package.toml</ReferenceLink>
 
 
-## UI Improvements
+## UI Improvements {/* #ui-improvements */}
 
 We added a new `fps 1% low` metric to the detailed frame timings debug information. This value displays the average framerate of the slowest 1% of frames during the last minute.
 
@@ -320,7 +320,7 @@ We also improved Windows taskbar loading progress so it now displays the overall
 <MediaLegend>Taskbar progress while connecting to a server</MediaLegend>
 
 
-### Server Browser
+### Server Browser {/* #server-browser */}
 
 ![](/img/blog/2026-april/server-list.webp)
 
@@ -331,7 +331,7 @@ The **Server Browser** now displays servers from both the **Main** and **Playtes
 Note that connections between different AppIDs are still restricted. For example, Playtest clients cannot connect to Main servers.
 
 
-## C:/Users/ Path Encoding Fix
+## C:/Users/ Path Encoding Fix {/* #cusers-path-encoding-fix */}
 
 We also finally solved a long-standing issue affecting users whose Windows usernames contained **accented** or **non-UTF8** characters in their `C:/Users/` directory.
 
@@ -340,7 +340,7 @@ This issue could previously cause crashes and prevent Packages or WebUI content 
 Paths are now properly encoded, allowing affected users to play normally without any issues.
 
 
-## Updated Deps
+## Updated Deps {/* #updated-deps */}
 
 - Updated **HTTP** library to 0.43
 - Updated **CEF** to version 147
@@ -349,7 +349,7 @@ Paths are now properly encoded, allowing affected users to play normally without
 - Updated several other internal dependencies to their latest versions
 
 
-## Conclusion
+## Conclusion {/* #conclusion */}
 
 April was heavily focused on core engine improvements, networking optimizations, loading performance, synchronization reliability, and overall quality-of-life upgrades for both players and developers.
 

@@ -9,12 +9,12 @@ Some extra features and concepts of the Sandbox Game Mode
 The Sandbox Game Mode also provides several other sub-systems that can be used and extended through scripting, such as:
 
 
-## Sandbox WebUI
+## Sandbox WebUI {/* #sandbox-webui */}
 
 You can directly access the Sandbox WebUI through `Sandbox.HUD` variable.
 
 
-## Tutorials
+## Tutorials {/* #tutorials */}
 
 ![](/img/blog/2026-january/sandbox-tutorials.webp)
 
@@ -35,7 +35,7 @@ function Sandbox.Tutorials.Hide()
 ```
 
 
-## SpawnHistory
+## SpawnHistory {/* #spawnhistory */}
 
 ![](/img/docs/tutorials/sandbox/undo.webp)
 
@@ -70,7 +70,7 @@ By calling `SpawnHistory.AddItemToHistory()`, a value `"SpawnedBy"` will be set 
 :::
 
 
-## Notifications
+## Notifications {/* #notifications */}
 
 Although we already have a notifications system built-in in game (<MethodReference type="StaticClass" class_name="Client" method_name="ShowNotification" show_class_name />), the Sandbox provides a more advanced one that allows you to display "tutorials-like" notifications that are only displayed once:
 
@@ -86,7 +86,7 @@ function Sandbox.Notifications.Add(type, id, message, duration, delay, force)
 ```
 
 
-## PersistentConfig
+## PersistentConfig {/* #persistentconfig */}
 
 We created a system to help persisting Tool Gun (or any other custom) configs when using them. Our tool guns use them to persist changed configs from Context Menu between sessions:
 
@@ -99,7 +99,7 @@ function PersistentConfigSystem.GetConfig(class_name, config_name)
 ```
 
 
-## EntityInput
+## EntityInput {/* #entityinput */}
 
 ![](/img/docs/tutorials/sandbox/entity-input-binding.webp)
 
