@@ -1,0 +1,281 @@
+---
+slug: june-2026
+title: "Jun: Attachments Rework, Scripting Safety & QoL!"
+authors: gtnardy
+tags: [updates]
+image: /img/blog/2023-june/june-news.webp
+---
+
+**New Profile Screen info & Biography, reworked Skeletal Mesh Attachments, new Weapon BulletHit event, Package sandboxing, Capsule rework and much more!**
+
+![](/img/blog/2023-june/june-news.webp)
+
+Welcome to our roundup of the latest updates from the last month!
+
+{/* truncate */}
+
+
+## Profile Screen Enhancements {/* #profile-screen-enhancements */}
+
+We added a new **Biography** field to the profile, allowing you to write a short description about yourself. This is a great way to let others know more about you, your interests, or your creations in the community.
+
+Also, we added much more information to the profile screen, including a user's **Last Seen**, **Join Date**, **Country** and their **Teams** icons in the sidebar!
+
+![](/img/blog/2026-june/profile.webp)
+
+<MediaLegend>In-game Player Profile</MediaLegend>
+
+We are still working on expanding the profile screen with more information and privacy settings to customize what others see.
+
+You can edit your own **Biography** directly from the manage tab, so go ahead and tell the community a bit about yourself!
+
+
+## Vault Improvements {/* #vault-improvements */}
+
+### New Report Buttons {/* #new-report-buttons */}
+
+We added new **Report** buttons for both **Vault resources** and **Reviews**, allowing you to report any inappropriate content or behavior directly to the moderation team.
+
+![](/img/blog/2026-june/report.webp)
+
+<MediaLegend>Report button in Vault Resource</MediaLegend>
+
+We will gradually be adding more report buttons to other areas of the game, so you can help us keep the community safe!
+
+
+### Review Improvements {/* #review-improvements */}
+
+We also now display the **user avatars** in the Vault reviews tab.
+
+![](/img/blog/2026-june/review.webp)
+
+<MediaLegend>Review in a Vault Resource</MediaLegend>
+
+If you play any game-mode or use a resource from Vault, don't forget to leave a review and let the community know what you think!
+
+![](/img/blog/2026-june/your-rating.webp)
+
+<MediaLegend>Review button in Vault Resource</MediaLegend>
+
+
+### Danger Zone {/* #danger-zone */}
+
+We have moved some buttons to a new **Danger Zone** section in the Vault Resource Manage tab, to make it more clear that these actions are **irreversible** and should be used with caution:
+
+![](/img/blog/2026-june/danger-zone.webp)
+
+<MediaLegend>Danger Zone in a Vault Resource Manage tab</MediaLegend>
+
+
+
+## DLSS Frame Generation Options {/* #dlss-frame-generation-options */}
+
+We added back options to select the **DLSS Frame Generation** mode (auto, dynamic, 2x, 3x, 4x, etc, if supported), using the new DLSS 4.5 options.
+
+![](/img/blog/2026-june/dlss.webp)
+
+<MediaLegend>DLSS Frame Generation Settings</MediaLegend>
+
+
+## Scripting Improvements {/* #scripting-improvements */}
+
+We've got a lot of new scripting features and improvements this month!
+
+### Reworked Skeletal Mesh Attachments {/* #reworked-skeletal-mesh-attachments */}
+
+We reworked all `AddSkeletalMeshAttached()` methods, adding 4 new parameters that let you attach meshes to specific **sockets**, with a custom **relative transform**, and even with **custom animations**, allowing much more flexibility and even making it possible to use custom runtime retargeters!
+
+- <MethodReference type="Class" class_name="Pawn" method_name="AddSkeletalMeshAttached" show_class_name />
+- <MethodReference type="Class" class_name="Vehicle" method_name="AddSkeletalMeshAttached" show_class_name />
+- <MethodReference type="Class" class_name="Pickable" method_name="AddSkeletalMeshAttached" show_class_name />
+
+Since the new format is a breaking change, we added a new Compatibility Version `1.144`. See the [Compatibility Version 1.144](/docs/next/core-concepts/packages/compatibility-versions#version-1144) page for more information about this change.
+
+
+### Files Sandboxing {/* #files-sandboxing */}
+
+We changed how the <Classes.File /> class can access files, adding a **whitelist** of allowed extensions. Trying to access any file with an extension outside the allowed list will throw an error.
+
+This was added to prevent malicious scripts from accessing and modifying sensitive files on the server, and to make it easier to sandbox scripts in general.
+
+You can see all the **allowed extensions** in the File page:
+
+<ReferenceLink href="scripting-reference/classes/file#file-access--sandboxing">File Class</ReferenceLink>
+
+
+### Safely Loading Lua Script {/* #safely-loading-lua-script */}
+
+Since some packages may have been relying on loading .lua files at runtime with the <Classes.File /> class, we added a new method <MethodReference type="StaticClass" class_name="Package" method_name="LoadFile" show_class_name /> that loads `.lua` files in a sandboxed way, compiling and returning a function you can execute with your own custom `env` table:
+
+```lua title="Server/Index.lua" showLineNumbers
+local loader_func = Package.LoadFile("Server/MyScript.lua")
+
+-- Define what the script can access by providing a custom env table
+local my_env = {
+	Console = Console,
+	math = math,
+}
+
+-- Execute the script with the custom env
+loader_func(my_env)
+```
+
+This way you can load and execute scripts in a sandboxed environment, preventing them from accessing any function or data from the server you don't want them to have access.
+
+
+### Client File Live Reloading {/* #client-file-live-reloading */}
+
+We added a new method <MethodReference type="StaticClass" class_name="Package" method_name="ReloadClientFile" show_class_name /> that reloads, caches and sends the updated file to players, triggering a <EventReference type="StaticClass" class_name="Package" event="FileReload" /> event on them.
+
+You can use this method to build your own live-reloading system for client files, or to update a file on the fly without having to restart the whole package. For that, just subscribe to the event to reload the file with <MethodReference type="StaticClass" class_name="Package" method_name="Require" show_class_name params="file_path, true" /> for example.
+
+
+### New Player.GetBySteamID {/* #new-playergetbysteamid */}
+
+Added a new method <MethodReference type="Class" class_name="Player" static_method_name="GetBySteamID" show_class_name /> for getting a <Classes.Player /> instance by their SteamID, this is much faster than iterating through all players and comparing their SteamID.
+
+
+### Customizable Distance Optimization per Entity {/* #customizable-distance-optimization-per-entity */}
+
+Recently we introduced the `distance_optimization` server-side setting, which works by reducing the update frequency of entities that are far away from the player, to improve performance and reduce network usage.
+
+To give a better flexibility to this system, we added new methods <MethodReference type="Class" class_name="Player" method_name="SetDistanceOptimizationMultiplier" show_class_name /> and <MethodReference type="Class" class_name="Actor" method_name="SetDistanceOptimizationMultiplier" show_class_name /> that lets you customize the distance optimization multiplier for each entity, allowing you to have more control over how entities are optimized based on their importance or size.
+
+You can make a specific Player to receive updates more frequently, or make a specific Actor to be updated less frequently than others, for example.
+
+
+### New Streaming Pause Events {/* #new-streaming-pause-events */}
+
+We are adding new <EventReference type="StaticClass" class_name="Level" event="StreamLevelBeginPause" /> and <EventReference type="StaticClass" class_name="Level" event="StreamLevelEndPause" /> events, which are triggered when the streaming system pauses and resumes the level streaming process.
+
+We also removed the native Unreal's `...` throbber loading UI that was displayed and hiding all UI/WebUI when the streaming system started loading a stream level.
+
+With that, you can implement your own loading screen logic when a Stream Level Pause happens.
+
+
+### New Mesh Settings {/* #new-mesh-settings */}
+
+We added a new method <MethodReference type="Class" class_name="Pawn" method_name="SetMeshSettings" show_class_name /> for configuring the Character's **main Skeletal Mesh** attachment settings and visibility.
+
+You can now change it's relative location/rotation or even hide it to be able to attach a different Skeletal Mesh with your custom runtime retargeter Animation Blueprint with the new <MethodReference type="Class" class_name="Pawn" method_name="AddSkeletalMeshAttached" />!
+
+Also by default, if you don't override the values with this new method, the main Skeletal Mesh offset is now automatically calculated based on the mesh size.
+
+
+### Improved Capsule Settings {/* #improved-capsule-settings */}
+
+Now all Characters automatically calculate the Capsule size based on the **Skeletal Mesh bounds** size. But you can override it with the <MethodReference type="Class" class_name="Pawn" method_name="SetCapsuleSize" show_class_name /> method.
+
+This method now also accept a `crouched_half_height` parameter, letting you customize the capsule size while crouching.
+
+:::note
+
+The `adjust_capsule_size` parameter on <MethodReference type="Class" class_name="CharacterSimple" method_name="SetMesh" show_class_name /> is now deprecated, you should use the method <MethodReference type="Class" class_name="Pawn" method_name="SetCapsuleSize" show_class_name /> instead.
+
+:::
+
+
+### Damage Multiplier Return {/* #damage-multiplier-return */}
+
+You can now return a number from the <EventReference type="Class" class_name="Damageable" event="TakeDamage" /> event, which works as a **multiplier** applied to the final damage, allowing you to implement your logic over the existing damage being applied.
+
+For example, you can reduce the damage by half if the character is wearing some equipment of has some special status:
+
+```lua title="Server/Index.lua" showLineNumbers
+Character.Subscribe("TakeDamage", function(character, damage, bone, type, from_direction, instigator, causer)
+	-- Half of damage if wearing armor
+	if (character:GetValue("HasArmor")) then
+		return 0.5
+	end
+end)
+```
+
+:::tip
+
+The multiplier is **cumulative** with all other events returns, so if you have multiple scripts subscribing to the `TakeDamage` event, the final damage will be multiplied by all the returned multipliers.
+
+:::
+
+
+### New Weapon BulletHit Event {/* #new-weapon-bullethit-event */}
+
+We finally added the most *(supposedly)* upvoted [feature request](https://feedback.nanos-world.com/p/weapon-add-clientside-onimpact-event) client side event <EventReference type="Class" class_name="Weapon" event="BulletHit" />, which is triggered when you shoot with a <Classes.Weapon /> and a bullet hits something.
+
+
+### Keyboard Layout Getter {/* #keyboard-layout-getter */}
+
+We added a new method <MethodReference type="StaticClass" class_name="Input" method_name="GetKeyboardLayout" show_class_name /> for getting the current player's keyboard layout, which is great for building default Inputs specifically for QWERTY, AZERTY, or other keyboard layouts.
+
+For example, you can register `Q` for a QWERTY layout or `A` for an AZERTY layout:
+
+```lua title="Client/Index.lua" showLineNumbers
+if (Input.GetKeyboardLayout() == KeyboardLayout.AZERTY) then
+	Input.Register("MyAction", "A")
+else
+	Input.Register("MyAction", "Q")
+end
+```
+
+
+### Timer Remaining Time Setter {/* #timer-remaining-time-setter */}
+
+Added a new method <MethodReference type="Class" class_name="Timer" method_name="SetRemainingTime" show_class_name /> that lets you set the remaining time of an existing <StaticClasses.Timer /> timeout, allowing you to extend or reduce the time left for a timer.
+
+
+## Other Improvements {/* #other-improvements */}
+
+### Performance & Networking {/* #performance--networking */}
+
+We improved the efficiency of our **snapshots sync** implementation, and made several improvements to our internal memory allocations.
+
+Also we reworked the implementation of <MethodReference type="Class" class_name="Actor" method_name="SetDimension" />, making it much more efficient for both **performance** and **networking** usage. Let us know if you notice any issues with this change, as it was a big rework internally.
+
+
+### Prone Disabled {/* #prone-disabled */}
+
+We took the decision to disable the <Classes.Character /> **Prone** feature. It was an unfinished, rough-looking mechanic that was requiring a lot of maintenance and making the codebase way more complex.
+
+
+### Updated Deps {/* #updated-deps */}
+
+- Enabled the **WaterAdvanced** Plugin.
+- Updated **CEF** to v149.
+- Updated **HTTP** library.
+
+
+## Docs {/* #docs */}
+
+### Updated Essential Concepts {/* #updated-essential-concepts */}
+
+We've updated our Essential Concepts page to include a lot of new information on how nanos world works, and how to get started with scripting, even if you come from other games, to get used to our concepts and terminology. We also added a lot of new snippets and examples to get used to our API!
+
+Check it out:
+
+<ReferenceLink href="getting-started/essential-concepts">Essential Concepts</ReferenceLink>
+
+
+### General Improvements {/* #general-improvements */}
+
+We did several improvements and some refactors in the Docs source code:
+
+- Converted all files to `.mdx` format, to be standardized and be able to use advanced JSX features.
+- Added explicit anchors 'english' names to all headings, fixing localized/translated pages not being able to link to them properly.
+- Simplified all `<MethodReference>` and `<EventReference>` components, making them easier to use.
+- We now show if a method/event was recently modified from a Compatibility Version on it's description.
+
+
+## Conclusion {/* #conclusion */}
+
+June was a month full of scripting improvements and quality of life changes, we are gradually improving certain areas to prepare the terrain for next updates we have already planned!
+
+One of our main goals is to bring the community closer together, and we are working on several features to make it easier to find and connect with other players, and to make the game more accessible to everyone.
+
+I hope you enjoy all the new features and improvements! I'm always looking for feedback, so if you have any suggestions or ideas, please let us know in our [Discord](https://discord.gg/nanos-world) or [Feedback Hub](https://feedback.nanos-world.com/).
+
+A special thanks also goes to everyone contributing translations through [Crowdin](https://crowdin.com/project/nanos-world-game), helping make the game and the docs more accessible to players around the world, and to those supporting development through [Ko-fi](https://ko-fi.com/gtnardy)!
+
+Your support is what allows me to continue working on nanos world full-time and keep pushing the project forward. 💙
+
+See you in the next update! 🚀
+
+<KofiButton />
