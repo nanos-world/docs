@@ -16,6 +16,9 @@
 	--ifm-leading-desktop: 1.75;
 	--ifm-list-margin: 2rem;
 
+	/* Table */
+	--ifm-table-cell-padding: 0.5rem 0.75rem;
+
 	/* Code */
 	--ifm-code-border-radius: .25rem;
 	--ifm-code-padding-vertical: 2px;
@@ -267,6 +270,24 @@ table {
 	display: table;
 }
 
+.table-wrapper h4 {
+	color: var(--ifm-color-emphasis-800);
+}
+
+table th:not(:last-child),
+table td:not(:last-child) {
+	white-space: nowrap;
+}
+
+table th:last-child,
+table td:last-child {
+	width: 100%;
+}
+
+table td.table-description {
+	font-size: 90%;
+}
+
 article p img {
 	display: block;
 	margin: 0 auto;
@@ -445,12 +466,6 @@ h3 > .native-type {
 	display: block;
 	text-align: center;
 	margin-top: 0.5em;
-}
-
-.function-return {
-	margin-left: 2px;
-	font-size: 90%;
-	color: var(--ifm-color-emphasis-700);
 }
 
 .tooltip-header {
@@ -775,7 +790,7 @@ html[data-theme="dark"]
 }
 
 .subtle-description {
-	font-size: 85%;
+	font-size: 90%;
 	font-style: italic;
 	opacity: 50%;
 }

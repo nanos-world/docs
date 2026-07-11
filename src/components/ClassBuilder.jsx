@@ -68,10 +68,10 @@ export function GetReturnList(return_list) {
 	return return_list.map((return_data) => SplitTypesByOr(return_data.type)).reduce((prev, next) => [prev, ", ", next]);
 }
 
-// Gets a list of return descriptions surrounded by ()
-export function GetReturnDescriptionList(return_list) {
-	const ret = return_list.map((return_data) =>
-		return_data.name || return_data.description || return_data.table_properties || return_data.table_properties_custom ?
+// Gets a Return description
+export function GetReturnDescription(return_data) {
+	return <>
+		{ return_data.name || return_data.description || return_data.table_properties || return_data.table_properties_custom ?
 			<>
 				{[
 					return_data.description || return_data.name,
@@ -80,11 +80,8 @@ export function GetReturnDescriptionList(return_list) {
 					return_data.table_properties_custom ? <InlineTablePropertiesDeclaration table_properties_custom={return_data.table_properties_custom} /> : null,
 				].filter(Boolean).reduce((prev, next) => [prev, " ", next])}
 			</>
-		: null
-	).filter(Boolean);
-	if (ret.length == 0)
-		return "";
-	return <>{" ("}{ret.reduce((prev, next) => [prev, ", ", next])}{")"}</>;
+		: <span class="subtle-description">No description provided</span> }
+	</>;
 }
 
 // Network Authority Label Map
@@ -293,6 +290,7 @@ export const FunctionParametersDeclaration = ({ parameters, include_default = tr
 	<>
 		{Array.isArray(parameters) && parameters.length > 0 ?
 			<div className="table-wrapper">
+				<h4>Parameters</h4>
 				<table>
 					<thead>
 						<tr>
@@ -308,7 +306,34 @@ export const FunctionParametersDeclaration = ({ parameters, include_default = tr
 								<td>{ SplitTypesByOr(value.type) }</td>
 								<td><code>{ GetParameterName(value) }</code></td>
 								{ include_default ? <td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : <span class="subtle-description"> {"Required parameter"} </span> }</td> : null }
-								<td>{ GetParameterDescription(value) }</td>
+								<td class="table-description">{ GetParameterDescription(value) }</td>
+							</tr>;
+						})}
+					</tbody>
+				</table>
+			</div>
+		: <></>}
+	</>
+);
+
+// Function Returns Declaration
+export const FunctionReturnsDeclaration = ({ returns }) => (
+	<>
+		{Array.isArray(returns) && returns.length > 0 ?
+			<div className="table-wrapper">
+				<h4>Returns</h4>
+				<table>
+					<thead>
+						<tr>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						{returns.map(function(value, index) {
+							return <tr key={ `${value.name}-${index}` }>
+								<td>{ SplitTypesByOr(value.type) }</td>
+								<td class="table-description">{ GetReturnDescription(value) }</td>
 							</tr>;
 						})}
 					</tbody>
@@ -341,22 +366,13 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name, show
 				This method was recently updated in ver. <b>{ function_data.last_compatibility_version }</b>. See the <Link to={`${getActiveVersionPath()}/core-concepts/packages/compatibility-versions#version-${ function_data.last_compatibility_version.replaceAll('.', '') }`}>Compatibility Versions</Link> page for more information.
 			</Admonition>
 		)}
-		<p className="function-return">
-			{ !function_data.return ? "" :
-				<>
-					<>— Returns </>
-					{ GetReturnList(function_data.return) }
-					{ GetReturnDescriptionList(function_data.return) }
-					{"."}
-				</>
-			}
-		</p>
 		<CodeBlock className="language-lua">
 			{ is_static ? GetStaticFunctionSignature(class_name, function_data) : GetFunctionSignature(class_name, function_data) }
 		</CodeBlock>
 		{ !show_lean_declaration ?
 			<>
 				<FunctionParametersDeclaration parameters={function_data.parameters} />
+				<FunctionReturnsDeclaration returns={function_data.return} />
 				{Array.isArray(function_data.examples) && function_data.examples.length > 0 ?
 					<Details summary={`${class_name}.${function_data.name} Examples`}>
 						{function_data.examples.map(function(example, index) {
@@ -409,7 +425,7 @@ export const EventDeclaration = ({ event_data, class_name, show_lean_declaration
 							return <tr key={ `${value.name}-${index}` }>
 								<td>{ SplitTypesByOr(value.type) }</td>
 								<td><code>{ value.name }</code></td>
-								<td dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }} style={{ wordBreak: "break-word" }}></td>
+								<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }} style={{ wordBreak: "break-word" }}></td>
 							</tr>;
 						})}
 					</tbody>
@@ -493,7 +509,7 @@ export const StaticFunctionListDeclaration = ({ class_name, functions_list, base
 						<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 						<td>{ value.return ? GetReturnList(value.return) : "" }</td>
 						<td><StaticFunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
-						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
+						<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
 					</tr>;
 				})}
 			</tbody>
@@ -519,7 +535,7 @@ export const FunctionListDeclaration = ({ class_name, functions_list, base_class
 						<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 						<td>{ value.return ? GetReturnList(value.return) : "" }</td>
 						<td><FunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
-						<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
+						<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
 					</tr>;
 				})}
 			</tbody>
@@ -545,7 +561,7 @@ export const EventListDeclaration = ({ type, name, inherited_class_name, base_cl
 						return <tr key={ `${value.name}-${index}` }>
 							<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 							<td><EventNameDeclaration class_name={ inherited_class_name } base_class={ base_class } event_data={ value } /></td>
-							<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
+							<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
 						</tr>;
 					})}
 				</tbody>
@@ -633,7 +649,7 @@ export const ConstructorDeclaration = ({ type, name }) => {
 										<td>{ SplitTypesByOr(value.type) }</td>
 										<td><b><code>{ value.name }</code></b></td>
 										<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : <span class="subtle-description"> {"Required parameter"} </span> }</td>
-										<td style={{ wordBreak: "break-word" }}>{ GetParameterDescription(value) }</td>
+										<td class="table-description">{ GetParameterDescription(value) }</td>
 									</tr>;
 								} )}
 							</tbody>
@@ -813,7 +829,7 @@ export const PropertiesDeclaration = ({ type, name }) => {
 							return <tr key={ `${value.name}-${index}` }>
 								<td>{ GetElementByType(value.type) }</td>
 								<td><b><code>{ value.name }</code></b></td>
-								<td style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
+								<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
 							</tr>;
 						})}
 					</tbody>
