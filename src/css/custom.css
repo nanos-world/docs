@@ -193,7 +193,13 @@ h3 code {
 
 /* Custom Anchor tag to fix offset */
 .custom-anchor {
-	scroll-margin-top: calc(var(--ifm-navbar-height) + 2rem);
+	scroll-margin-top: calc(var(--ifm-navbar-height) + 3rem) !important;
+}
+
+.toc-highlight:has(code) {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 html[data-theme='dark'] .prism-code,

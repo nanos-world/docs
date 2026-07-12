@@ -4,6 +4,7 @@ import Admonition from '@theme/Admonition';
 import { Link } from "react-router-dom";
 import { useActiveVersion } from '@docusaurus/plugin-content-docs/client';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Heading from '@theme/Heading';
 
 import Tippy from '@tippyjs/react';
 import 'tippy.js/animations/scale-subtle.css';
@@ -349,15 +350,14 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name, show
 	const hash_link = `Direct Link to ${function_data.name}`;
 	return <>
 		{ !show_lean_declaration ? <hr /> : null }
-		<h3 id={ id } className="custom-anchor">
+		<Heading as="h3" id={id} className="custom-anchor">
 			{ GetAuthorityType(function_data.authority) }
 			{ GetNative(function_data.is_native) }
 			<code>
 				{ function_data.name }
 			</code>
-			{ !show_lean_declaration ? <a className="hash-link" href={ `#${id}` } aria-label={ hash_link } title={ hash_link } translate="no"></a> : null }
 			{ GetEfficiency(function_data.efficiency) }
-		</h3>
+		</Heading>
 		<blockquote>
 			<span dangerouslySetInnerHTML={{ __html: !show_lean_declaration && function_data.description_long ? function_data.description_long : function_data.description }}></span>
 		</blockquote>
@@ -398,14 +398,13 @@ export const EventDeclaration = ({ event_data, class_name, show_lean_declaration
 	const hash_link = `Direct Link to ${event_data.name}`;
 	return <>
 		{ !show_lean_declaration ? <hr /> : null }
-		<h3 id={ id } className="custom-anchor">
+		<Heading as="h3" id={id} className="custom-anchor">
 			{ GetAuthorityType(event_data.authority) }
 			{ GetNative(event_data.is_native) }
 			<code>
 				{ event_data.name }
 			</code>
-			<a className="hash-link" href={ `#${id}` } aria-label={ hash_link } title={ hash_link } translate="no"></a>
-		</h3>
+		</Heading>
 		<blockquote dangerouslySetInnerHTML={{ __html: `${ !show_lean_declaration && event_data.description_long ? event_data.description_long : (event_data.description ? event_data.description : "<span class='subtle-description'>No description provided</span>") }${ event_data.return ? "<br/><br/>" + event_data.return[0].description : ""}` }}></blockquote>
 		<CodeBlock className="language-lua">
 			{ GetEventSignature(class_name, event_data) }
@@ -585,7 +584,7 @@ export const GetClassData = (type, name) => {
 	const data_language = api_data[currentLocale] ? api_data[currentLocale] : api_data["en"];
 	const data = data_language[is_bleeding_edge ? "BleedingEdge" : "Stable"][type];
 
-	return name ? data[name] : data;
+	return name ? data[name.toLowerCase()] : data;
 }
 
 // Header Block Declaration
@@ -622,10 +621,9 @@ export const ConstructorDeclaration = ({ type, name }) => {
 		const id = `constructor-${constructor.name.toLowerCase().replace(' ', '-')}`;
 		const hash_link = `Direct Link to ${constructor.name}`;
 		return <>
-			<h3 id={ id } className="custom-anchor">
+			<Heading as="h3" id={id} className="custom-anchor">
 				{ constructor.name }
-				<a className="hash-link" href={ `#${id}` } aria-label={ hash_link } title={ hash_link } translate="no"></a>
-			</h3>
+			</Heading>
 			<p class="subtle-description" style={{ marginTop: "-20px" }}>{ constructor.description || "No description provided" }</p>
 			<CodeBlock className="language-lua">
 				{ GetConstructorExample(class_data, index) }
