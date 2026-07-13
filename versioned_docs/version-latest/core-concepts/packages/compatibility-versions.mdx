@@ -7,11 +7,11 @@ tags: [scripting, migration]
 How to update your packages to the new Compatibility Versions
 
 
-The Compatibility Version is meant to assure your packages will not break in future breaking changes updates.
+The **Compatibility Version** is meant to assure your packages will not break in future breaking changes updates.
 
-It works by forcing that package to run code in a compatibility mode, meaning that breaking changes will keep working as the way it was before. Example:
+It works by forcing that package to run code in a compatibility mode, meaning that breaking changes will keep working as the way it was before.
 
-Let's say you have this code running right now:
+For example, let's say you have this code running right now:
 
 ```lua showLineNumbers
 -- Make an asynchronous HTTP request
@@ -26,7 +26,7 @@ With compatibility version, your scripts can keep working as it was before this 
 
 :::tip
 
-The Compatibility Mode is a feature that aims to keep old and unmaintained packages/game-modes to keep working for a longer time. But from time to time all the deprecated compatibility modes will be removed from the codebase. So always keep your packages up-to-date!
+The **Compatibility Mode** is a feature that aims to keep old and unmaintained packages/game-modes to keep working for a longer time. But from time to time all the deprecated compatibility modes will be removed from the codebase. So always keep your packages up-to-date!
 
 :::
 
@@ -34,6 +34,21 @@ The Compatibility Mode is a feature that aims to keep old and unmaintained packa
 ## All Updates {/* #all-updates */}
 
 To use the following features, you must update your Package's `compatibility_version` setting in the Package.toml to at least that version (exact that version or bigger).
+
+
+### Version `1.144` {/* #version-1144 */}
+
+This update changes all `AddSkeletalMeshAttached` methods interface, adding `4` new parameters to it and changing the order of the parameters.
+
+The new parameters are: `socket`, `relative_location`, `relative_rotation` and `animation_path`.
+
+Now it's possible to attach a Skeletal Mesh to a specific bone socket, with a relative location and rotation, and also set a custom animation or animation blueprint on it. Allowing extended capabilities such as using custom runtime retargeting on the attached Skeletal Mesh.
+
+All the affected classes are:
+
+- <MethodReference type="Class" class_name="Pawn" method_name="AddSkeletalMeshAttached" show_class_name />
+- <MethodReference type="Class" class_name="Vehicle" method_name="AddSkeletalMeshAttached" show_class_name />
+- <MethodReference type="Class" class_name="Pickable" method_name="AddSkeletalMeshAttached" show_class_name />
 
 
 ### Version `1.139` {/* #version-1139 */}

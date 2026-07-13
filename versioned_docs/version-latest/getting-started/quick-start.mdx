@@ -136,19 +136,27 @@ Now let's start the server with the package you just created! For that, simply d
   </TabItem>
 </Tabs>
 
+:::info note
+
+If you are running a **Playtest** game, you must also start the server with the `--playtest` flag, otherwise it will not be able to connect to the game.
+
+:::
+
 After starting it, your console will display something like this:
 
 ```nanos-console title="NanosWorldServer"
-  INFO  nanos world (C) Copyright nanos. All Rights Reserved.
-  INFO  Starting Server at Port: 7777. Version: 0.0.0. Map: 'default-blank-map'.
-  INFO  Loading Package 'my-awesome-package'...
-SCRIPT  Loading some Props =D
-  INFO  Package 'my-awesome-package' loaded.
-  INFO  Loading Package 'default-blank-map'...
-  INFO  Package 'default-blank-map' loaded.
+   INFO  nanos world (C) Copyright Go Horse Studios. All Rights Reserved.
+   INFO  Starting Server at Port: 7777. Version: 1.9.0. Unreal Version: 5.7.4. Map: 'default-blank-map'.
+   INFO  Loading Package 'my-awesome-package' (0.0.1)...
+ SCRIPT  Loading some Props =D
+   INFO  Package 'my-awesome-package' (0.0.1) loaded.
+   INFO  Loading Package 'default-blank-map'...
+   INFO  Package 'default-blank-map' (1.0.0) loaded.
+SUCCESS  Server started!
+SUCCESS  Server successfully connected to Steam! VAC Secure!
 ```
 
-You can see it loaded your package and outputted the text "Loading some Props =D" on it.
+You can see it loaded your package and outputted the text `Loading some Props =D` on it.
 
 
 ## Step 5: Join your server {/* #step-5-join-your-server */}

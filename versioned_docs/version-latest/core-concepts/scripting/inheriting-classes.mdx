@@ -69,7 +69,7 @@ local my_new_class_instance = MyNewClass(Vector(123, 456, 100), Rotator())
 
 :::tip
 
-Inside the constructor, the entity is not fully spawned yet, so you cannot call other entity methods besides `self.Super:Constructor`. Here you should just use to validate constructor parameters, and use `Spawn` event to fully setup the entity.
+Before calling `self.Super:Constructor()`, the entity is not fully spawned yet. Only after calling it you will be able to call other entity methods.
 
 :::
 
