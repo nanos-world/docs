@@ -3,7 +3,7 @@ import TOC from '@theme-original/TOC';
 import { useLocation } from '@docusaurus/router';
 import { useDoc } from '@docusaurus/plugin-content-docs/client';
 
-import { GetClassData } from '@site/src/components/ClassBuilder';
+import { GetClassData, GetAuthorityImage } from '@site/src/components/ClassBuilder';
 
 
 // Map URL paths to internal data types
@@ -83,11 +83,16 @@ export default function TOCWrapper(props) {
 		if (sectionInfo && apiData[sectionInfo.dataKey]) {
 
 			apiData[sectionInfo.dataKey].forEach(entry => {
-				const entryName = entry.name || apiData.name;
+				let imageSrc;
+
+				if (entry.authority)
+					imageSrc = GetAuthorityImage(entry.authority);
+				else if (entry.is_native !== null)
+					imageSrc = entry.is_native ? "/img/scripting/native.svg" : "/img/scripting/not-native.svg";
 
 				nestedToc.push({
-					value: `<code>${entryName}</code>`,
-					id: `${sectionInfo.prefix}${entryName.toLowerCase().replaceAll(' ', '-')}`,
+					value: `${imageSrc ? `<img src="${imageSrc}" loading="lazy" />` : '' }<code>${entry.name}</code>`,
+					id: `${sectionInfo.prefix}${entry.name.toLowerCase().replaceAll(' ', '-')}`,
 					level: 3
 				});
 			});

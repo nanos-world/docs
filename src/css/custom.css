@@ -200,6 +200,19 @@ h3 code {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	opacity: 90%;
+}
+
+.toc-highlight code {
+	padding: 1px 5px;
+}
+
+.toc-highlight img {
+	vertical-align: middle;
+	display: inline-block;
+	max-width: 16px;
+	margin-right: 5px;
+	border-radius: 50%;
 }
 
 html[data-theme='dark'] .prism-code,

@@ -248,6 +248,23 @@ export function GetAuthorityType(authority) {
 	return "";
 };
 
+// Gets Authority Image Source by string
+export function GetAuthorityImage(authority) {
+	if (authority == "server")
+		return "/img/scripting/server-only.svg";
+	if (authority == "client")
+		return "/img/scripting/client-only.svg";
+	if (authority == "authority")
+		return "/img/scripting/authority-only.svg";
+	if (authority == "network-authority")
+		return "/img/scripting/network-authority.svg";
+	if (authority == "both-net-authority-first")
+		return "/img/scripting/both-net-auth-first.svg";
+	if (authority == "both")
+		return "/img/scripting/both.svg";
+	return "";
+};
+
 // Gets Native Element
 export function GetNative(is_native) {
 	if (is_native === true)
@@ -411,6 +428,7 @@ export const EventDeclaration = ({ event_data, class_name, show_lean_declaration
 		</CodeBlock>
 		{ !show_lean_declaration && Array.isArray(event_data.arguments) && event_data.arguments.length > 0 ?
 			<div className="table-wrapper">
+				<h4>Arguments</h4>
 				<table>
 					<thead>
 						<tr>
@@ -632,6 +650,7 @@ export const ConstructorDeclaration = ({ type, name }) => {
 				constructor.parameters.length == 0 ? <p class="subtle-description">This constructor doesn't have parameters.</p> :
 				<>
 					<div className="table-wrapper">
+						<h4>Parameters</h4>
 						<table>
 							<thead>
 								<tr>

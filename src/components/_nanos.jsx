@@ -7,7 +7,7 @@ import 'tippy.js/dist/tippy.css';
 
 import { AuthorityTooltip, AssetPathToolTip, ClassToolTip, FunctionToolTip, EnumToolTip } from '@site/src/components/Tooltips.jsx';
 import { getActiveVersionPath } from '@site/src/components/Utils.jsx';
-import { GetClassData } from '@site/src/components/ClassBuilder';
+import { GetClassData, GetAuthorityImage } from '@site/src/components/ClassBuilder';
 
 
 // Square Card Link
@@ -158,19 +158,19 @@ export const TippyLink = (type, label, description, url) => (
 
 // Defines Authority Types components
 export const AuthorityType = {
-	AuthorityOnly: () => BaseAuthority("/img/scripting/authority-only.svg", "Authority Only", "This can be only called on the side it was spawned on!"),
-	ServerOnly: () => BaseAuthority("/img/scripting/server-only.svg", "Server Only", "This can be only called on <strong>Server</strong> side!"),
-	ClientOnly: () => BaseAuthority("/img/scripting/client-only.svg", "Client Only", "This can be only called on <strong>Client</strong> side!"),
-	Both: () => BaseAuthority("/img/scripting/both.svg", "Both Sides", "This can be called on any side (<strong>Server</strong> or <strong>Client</strong>)!"),
-	BothNetAuthorityFirst: () => BaseAuthority("/img/scripting/both-net-auth-first.svg", "Both Sides (Net. Authority First)", "This can be called on any side (<strong>Server</strong> or <strong>Client</strong>)! But if this event comes from a client action, it will be called on the client side first if the Local Player has <strong>Network Authority</strong>!"),
-	NetworkAuthority: () => BaseAuthority("/img/scripting/network-authority.svg", "Network Authority", "This can be called on <strong>Server</strong> and on <strong>Client's</strong> current Network Authority of this entity!<br/><br/><strong>TIP</strong>: You can validate if the current Local Player has Network Authority on this entity by calling <code>entity:HasNetworkAuthority()</code>."),
+	AuthorityOnly: () => BaseAuthority(GetAuthorityImage("authority"), "Authority Only", "This can be only called on the side it was spawned on!"),
+	ServerOnly: () => BaseAuthority(GetAuthorityImage("server"), "Server Only", "This can be only called on <strong>Server</strong> side!"),
+	ClientOnly: () => BaseAuthority(GetAuthorityImage("client"), "Client Only", "This can be only called on <strong>Client</strong> side!"),
+	Both: () => BaseAuthority(GetAuthorityImage("both"), "Both Sides", "This can be called on any side (<strong>Server</strong> or <strong>Client</strong>)!"),
+	BothNetAuthorityFirst: () => BaseAuthority(GetAuthorityImage("both-net-authority-first"), "Both Sides (Net. Authority First)", "This can be called on any side (<strong>Server</strong> or <strong>Client</strong>)! But if this event comes from a client action, it will be called on the client side first if the Local Player has <strong>Network Authority</strong>!"),
+	NetworkAuthority: () => BaseAuthority(GetAuthorityImage("network-authority"), "Network Authority", "This can be called on <strong>Server</strong> and on <strong>Client's</strong> current Network Authority of this entity!<br/><br/><strong>TIP</strong>: You can validate if the current Local Player has Network Authority on this entity by calling <code>entity:HasNetworkAuthority()</code>."),
 };
 
 // Defines ClassAuthority Types components
 export const ClassAuthorityType = {
-	ServerOnly: () => BaseAuthority("/img/scripting/server-only.svg", "Server Only", "This class can be only spawned on <strong>Server</strong> side!", "top"),
-	ClientOnly: () => BaseAuthority("/img/scripting/client-only.svg", "Client Only", "This class can be only spawned on <strong>Client</strong> side!", "top"),
-	Both: () => BaseAuthority("/img/scripting/both.svg", "Both Sides", "This class can be spawned on any side (<strong>Server</strong> or <strong>Client</strong>, if you spawn it on client, it won't be synchronized with other players)!", "top"),
+	ServerOnly: () => BaseAuthority(GetAuthorityImage("server"), "Server Only", "This class can be only spawned on <strong>Server</strong> side!", "top"),
+	ClientOnly: () => BaseAuthority(GetAuthorityImage("client"), "Client Only", "This class can be only spawned on <strong>Client</strong> side!", "top"),
+	Both: () => BaseAuthority(GetAuthorityImage("both"), "Both Sides", "This class can be spawned on any side (<strong>Server</strong> or <strong>Client</strong>, if you spawn it on client, it won't be synchronized with other players)!", "top"),
 };
 
 // Defines Native Types components
