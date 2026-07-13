@@ -1,6 +1,7 @@
 import React from 'react';
 import TOC from '@theme-original/TOC';
 import { useLocation } from '@docusaurus/router';
+import { useDoc } from '@docusaurus/plugin-content-docs/client';
 
 import { GetClassData } from '@site/src/components/ClassBuilder';
 
@@ -25,10 +26,11 @@ const sectionMapping = {
 };
 
 export default function TOCWrapper(props) {
-	const location = useLocation();
+	const { metadata } = useDoc();
+	const pageTitle = metadata.title.replace(/Base|[^\w\s-]/g, '').trim();
 
 	// Special case for Enums
-	if (location.pathname.includes("/enums")) {
+	if (pageTitle == "Enums") {
 		const enums_data = GetClassData("Enums");
 
 		Object.keys(enums_data).map((enum_name) => {
@@ -45,6 +47,8 @@ export default function TOCWrapper(props) {
 		return <TOC {...props} />;
 	}
 
+	const location = useLocation();
+
 	let currentDataType = null;
 	for (const [route, type] of Object.entries(routeMapping)) {
 		if (location.pathname.includes(route)) {
@@ -58,12 +62,8 @@ export default function TOCWrapper(props) {
 		return <TOC {...props} />;
 	}
 
-	// Extract the specific entity name from the URL
-	const pathParts = location.pathname.split('/');
-	const entityName = pathParts[pathParts.length - 1].replace(/\/|-|#.*/g, '');
-
 	// Fetches Data
-	const apiData = GetClassData(currentDataType, entityName);
+	const apiData = GetClassData(currentDataType, pageTitle);
 
 	if (!apiData) {
 		return <TOC {...props} />;

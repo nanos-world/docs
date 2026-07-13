@@ -584,7 +584,7 @@ export const GetClassData = (type, name) => {
 	const data_language = api_data[currentLocale] ? api_data[currentLocale] : api_data["en"];
 	const data = data_language[is_bleeding_edge ? "BleedingEdge" : "Stable"][type];
 
-	return name ? data[name.toLowerCase()] : data;
+	return name ? data[name] : data;
 }
 
 // Header Block Declaration

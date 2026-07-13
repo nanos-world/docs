@@ -273,25 +273,15 @@ table {
 
 .table-wrapper table {
 	width: 100%;
-	display: table;
 }
 
 .table-wrapper h4 {
 	color: var(--ifm-color-emphasis-800);
 }
 
-table th:not(:last-child),
-table td:not(:last-child) {
-	white-space: nowrap;
-}
-
-table th:last-child,
-table td:last-child {
-	width: 100%;
-}
-
-table td.table-description {
+.table-wrapper table td.table-description {
 	font-size: 90%;
+	width: 100%;
 }
 
 article p img {
