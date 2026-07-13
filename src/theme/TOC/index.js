@@ -26,11 +26,10 @@ const sectionMapping = {
 };
 
 export default function TOCWrapper(props) {
-	const { metadata } = useDoc();
-	const pageTitle = metadata.title.replace(/Base|[^\w\s-]/g, '').trim();
+	const location = useLocation();
 
 	// Special case for Enums
-	if (pageTitle == "Enums") {
+	if (location.pathname.includes("/enums")) {
 		const enums_data = GetClassData("Enums");
 
 		Object.keys(enums_data).map((enum_name) => {
@@ -47,8 +46,6 @@ export default function TOCWrapper(props) {
 		return <TOC {...props} />;
 	}
 
-	const location = useLocation();
-
 	let currentDataType = null;
 	for (const [route, type] of Object.entries(routeMapping)) {
 		if (location.pathname.includes(route)) {
@@ -61,6 +58,9 @@ export default function TOCWrapper(props) {
 	if (!currentDataType) {
 		return <TOC {...props} />;
 	}
+
+	const { metadata } = useDoc();
+	const pageTitle = metadata.title.replace(/Base|[^\w\s-]/g, '').trim();
 
 	// Fetches Data
 	const apiData = GetClassData(currentDataType, pageTitle);
