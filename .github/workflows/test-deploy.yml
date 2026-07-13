@@ -34,4 +34,6 @@ jobs:
       #   run: yarn crowdin download
 
       - name: Test build website
-        run: $env:BUILD_EN_ONLY="true"; yarn build
+        env:
+          BUILD_EN_ONLY: true
+        run: yarn build
