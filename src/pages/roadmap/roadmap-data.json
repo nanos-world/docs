@@ -224,7 +224,7 @@
           "title": "🧱 Instanced Static Mesh Entity",
           "image": "/roadmap/ism.webp",
           "description": "We've added the Instanced Static Mesh entity, enabling scripters to spawn and manage large numbers of repeated meshes efficiently with a single entity. This improves rendering performance and is ideal for foliage, props, and modular world building.",
-          "external_link": "/docs/next/scripting-reference/classes/instanced-static-mesh",
+          "external_link": "/docs/next/scripting-reference/classes/instancedstaticmesh",
           "external_link_title": "Instanced Static Mesh",
           "labels": ["released", "scripting", "optimization", "modding"]
         },
@@ -318,7 +318,7 @@
           "title": "🚤 Water Vehicle Entity",
           "video": "/roadmap/boat.webm",
           "description": "We've added a new Water Vehicle entity that allows scripters to create boats and other water-based vehicles. This entity comes with built-in physics and buoyancy, making it easy to create realistic water vehicles.",
-          "external_link": "/docs/next/scripting-reference/classes/vehicle-water",
+          "external_link": "/docs/next/scripting-reference/classes/vehiclewater",
           "external_link_title": "Vehicle Water",
           "labels": ["released", "scripting", "modding", "ui"]
         },
@@ -332,7 +332,7 @@
           "title": "🧩 3D Widget",
           "image": "/roadmap/widget3d.webp",
           "description": "The Widget3D entity allows scripters to create 3D Widgets that can be placed in the game world. This is perfect for creating interactive 3D interfaces, HUDs, and more.",
-          "external_link": "/docs/next/scripting-reference/classes/widget-3d",
+          "external_link": "/docs/next/scripting-reference/classes/widget3d",
           "external_link_title": "Widget3D",
           "labels": ["released", "scripting", "modding", "ui"]
         },
@@ -405,14 +405,14 @@
           "video": "/blog/2022-july/cinema.webm",
           "description": "With the new methods added to the WebUI entity, you can take the WebUI material and apply it to any 3D 'paintable' entity in the game! This means you can create interactive TVs, cinemas, in-game screens, or even complex 3D user interfaces.",
           "labels": ["released", "scripting"],
-          "external_link": "/docs/next/scripting-reference/classes/web-ui#using-a-webui-as-mesh-material",
+          "external_link": "/docs/next/scripting-reference/classes/webui#using-a-webui-as-mesh-material",
           "external_link_title": "WebUI SetMaterialFromWebUI"
         },
         {
           "title": "🌐 WebUI CEF Based",
           "image": "/roadmap/webui.webp",
           "description": "We've integrated the Chromium Embedded Framework (CEF), enabling scripters to create custom user interfaces using web technologies like HTML, CSS, and JavaScript.",
-          "external_link": "/docs/next/scripting-reference/classes/web-ui",
+          "external_link": "/docs/next/scripting-reference/classes/webui",
           "external_link_title": "WebUI",
           "labels": ["released", "scripting", "ui"]
         },
@@ -458,7 +458,7 @@
           "title": "🎥 Scene Capture Entity",
           "video": "/blog/january/scene-capture.webm",
           "description": "The SceneCapture is a camera that captures what it sees and renders it onto a material. You can use this material anywhere: apply it to any 'paintable' entity or even UI elements. Perfect for security cameras, mirrors, picture-in-picture effects, or anything else you can come up with.",
-          "external_link": "/docs/next/scripting-reference/classes/scene-capture",
+          "external_link": "/docs/next/scripting-reference/classes/scenecapture",
           "external_link_title": "Scene Capture",
           "labels": ["released", "scripting"]
         },
@@ -467,7 +467,7 @@
           "image": "/roadmap/character-simple.webp",
           "description": "The Character Simple class is a simplified version of the Character class, designed for scripters who want to create custom characters without the complexity of the full Character class. It's perfect for creating NPCs, animals, or other simple characters.",
           "labels": ["released", "scripting", "modding", "community"],
-          "external_link": "/docs/scripting-reference/classes/character-simple",
+          "external_link": "/docs/scripting-reference/classes/charactersimple",
           "external_link_title": "Character Simple"
         },
         {
@@ -620,7 +620,7 @@
           "title": "📦 Static Mesh Entity",
           "image": "/roadmap/static-mesh.webp",
           "description": "This simple entity allows spawning and manipulating Static Meshes in the world.",
-          "external_link": "/docs/next/scripting-reference/classes/static-mesh",
+          "external_link": "/docs/next/scripting-reference/classes/staticmesh",
           "external_link_title": "Static Mesh",
           "labels": ["released", "scripting"]
         },
@@ -634,7 +634,7 @@
           "title": "🔤 3D Text Entity",
           "image": "/roadmap/3dtext.webp",
           "description": "This entity allows for the creation of 3D text rendered within the game world.",
-          "external_link": "/docs/next/scripting-reference/classes/text-3d",
+          "external_link": "/docs/next/scripting-reference/classes/text3d",
           "external_link_title": "Text3D",
           "labels": ["released", "scripting"]
         },
@@ -704,7 +704,7 @@
         {
           "title": "🚗 Vehicle Entity",
           "video": "/blog/2022-march/tire-skid.webm",
-          "external_link": "/docs/next/scripting-reference/classes/vehicle-wheeled",
+          "external_link": "/docs/next/scripting-reference/classes/vehiclewheeled",
           "external_link_title": "Vehicle Wheeled",
           "labels": ["released", "scripting", "gameplay", "modding"]
         },
