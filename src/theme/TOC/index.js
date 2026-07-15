@@ -87,7 +87,7 @@ export default function TOCWrapper(props) {
 
 				if (entry.authority)
 					imageSrc = GetAuthorityImage(entry.authority);
-				else if (entry.is_native !== null)
+				else if (entry.is_native !== undefined)
 					imageSrc = entry.is_native ? "/img/scripting/native.svg" : "/img/scripting/not-native.svg";
 
 				nestedToc.push({
