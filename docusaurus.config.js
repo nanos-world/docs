@@ -200,7 +200,23 @@ module.exports = {
         blog: {
           feedOptions: {
             type: 'json',
-            limit: 3
+            limit: 3,
+            createFeedItems: async (params) => {
+              const { blogPosts, defaultCreateFeedItems, siteConfig, ...rest } = params;
+              const items = await defaultCreateFeedItems({ blogPosts, siteConfig, ...rest });
+
+              return items.map((item, i) => {
+                const image = blogPosts[i].metadata.frontMatter.image;
+                if (!image) return item;
+
+                const imageUrl = image.startsWith('http')
+                  ? image
+                  : `${siteConfig.url}${image}`;
+
+                // Inject the image
+                return { ...item, image: imageUrl };
+              });
+            },
           },
           showReadingTime: true,
           editUrl: ({ locale, blogDirPath, blogPath }) => {
