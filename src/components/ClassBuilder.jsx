@@ -323,7 +323,15 @@ export const FunctionParametersDeclaration = ({ parameters, include_default = tr
 							return <tr key={ `${value.name}-${index}` }>
 								<td>{ SplitTypesByOr(value.type) }</td>
 								<td><code>{ GetParameterName(value) }</code></td>
-								{ include_default ? <td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : <span class="subtle-description"> {"Required parameter"} </span> }</td> : null }
+								{ include_default ?
+									<td style={{ whiteSpace: "pre" }}>
+										{ value.default != null ? value.default.split("\n").map((line) =>
+											<><code>{line}</code><br/></>) :
+											<span class="subtle-description"> {"Required parameter"} </span>
+										}
+									</td> :
+									null
+								}
 								<td class="table-description">{ GetParameterDescription(value) }</td>
 							</tr>;
 						})}
@@ -367,13 +375,13 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name, show
 	const hash_link = `Direct Link to ${function_data.name}`;
 	return <>
 		{ !show_lean_declaration ? <hr /> : null }
+		{ GetEfficiency(function_data.efficiency) }
 		<Heading as="h3" id={id} className="custom-anchor">
 			{ GetAuthorityType(function_data.authority) }
 			{ GetNative(function_data.is_native) }
 			<code>
 				{ function_data.name }
 			</code>
-			{ GetEfficiency(function_data.efficiency) }
 		</Heading>
 		<blockquote>
 			<span dangerouslySetInnerHTML={{ __html: !show_lean_declaration && function_data.description_long ? function_data.description_long : function_data.description }}></span>

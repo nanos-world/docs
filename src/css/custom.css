@@ -466,6 +466,11 @@ h3 > .native-type {
 }
 
 .efficiency-type {
+	float: right;
+	margin-top: 1.25rem;
+}
+
+.efficiency-type {
 	max-width: 20px;
 	margin-left: auto;
 	opacity: 0.9;
