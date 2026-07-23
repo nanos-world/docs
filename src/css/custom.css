@@ -359,6 +359,10 @@ html[data-theme="dark"] .medium-zoom-overlay {
 	right: 16px !important;
 }
 
+.floatingchat-container-wrap iframe {
+	padding-bottom: 15px;
+}
+
 .floating-chat-kofi-popup-iframe {
 	left: unset !important;
 	right: 16px !important;
@@ -680,6 +684,7 @@ iframe {
 .hover-link {
 	text-decoration: underline dashed 2px #5f9fff42;
 	text-underline-offset: 2px;
+	white-space: nowrap;
 }
 
 span.hover-link {
