@@ -12,7 +12,7 @@ import 'tippy.js/dist/tippy.css';
 
 import { AuthorityType, NativeType, EfficiencyType, BasicType, Classes, Structs, Enums, AssetPath, ReferenceLink } from '@site/src/components/_nanos';
 import { getActiveVersionPath, LinkActiveVersion, getKebabFromPascal } from '@site/src/components/Utils.jsx';
-import { FunctionToolTip, StaticFunctionToolTip, InlineFunctionToolTip, TablePropertiesToolTip, EventToolTip } from '@site/src/components/Tooltips';
+import { FunctionToolTip, StaticFunctionToolTip, InlineFunctionToolTip, TablePropertiesToolTip, EventToolTip, HeaderChipToolTip } from '@site/src/components/Tooltips';
 import Details from '@theme/Details';
 
 import APIData from '@site/src/components/APIData';
@@ -194,16 +194,16 @@ export const AuthorityAdmonition = ({ authority, is_static }) => (
 export const TypeToAPIFolder = { StandardLibrary: "StandardLibraries/", Struct: "Structs/", Class: "Classes/", StaticClass: "StaticClasses/", UtilityClass: "UtilityClasses/", UtilityClasses: "UtilityClass/", Enums: "" };
 
 // API Source URL
-export const APISourceURL = ({ type, class_name }) => (
+export const APISourceAdmonition = ({ type, class_name }) => (
 	<Admonition type="note" icon="🧑‍💻" title="API Source">
-		This page is auto-generated! The Functions, Properties and Events described here are defined in our <a href={`https://github.com/nanos-world/api/blob/main/${TypeToAPIFolder[type]}${class_name}.json`}>GitHub's API Repository</a>! Feel free to commit suggestions and changes to the source .json API files!
+		{ APISourceLabel(type, class_name) }
 	</Admonition>
 );
 
 // Open Source Admonition
 export const OpenSourceAdmonition = ({ url }) => (
 	<Admonition type="tip" icon="👐" title="Open Source">
-		This library implementation is Open Sourced on <a href={`https://github.com/nanos-world/nanos-world-lua-lib${url ? `/blob/master/${url}` : ""}`}>GitHub</a>!
+		This library implementation is Open Sourced on <a href={GetOpenSourceURL(url)}>GitHub</a>!
 	</Admonition>
 );
 
@@ -227,8 +227,67 @@ export const BaseClassAdmonition = ({ inherited }) => (
 // Static Class Admonition
 export const StaticClassAdmonition = () => (
 	<Admonition type="info" icon="🗿" title="Static Class">
-		This is a <b>Static Class</b>. Access it's methods directly with <code>.</code>. It's not possible to spawn new instances.
+		{ StaticClassLabel }
 	</Admonition>
+);
+
+
+// Shared label sources
+export const StaticClassLabel = <>This is a <b>Static Class</b>. Access it's methods directly with <code>.</code>. It's not possible to spawn new instances.</>;
+export const GetOpenSourceURL = (url) => `https://github.com/nanos-world/nanos-world-lua-lib${url ? `/blob/master/${url}` : ""}`;
+export const GetAPISourceURL = (type, class_name) => `https://github.com/nanos-world/api/blob/main/${TypeToAPIFolder[type]}${class_name}.json`;
+export const APISourceLabel = (type, class_name) => <>This page is auto-generated! The Functions, Properties and Events described here are defined in our <a href={GetAPISourceURL(type, class_name)}>GitHub's API Repository</a>! Feel free to commit suggestions and changes to the source .json API files!</>;
+
+// Chip labels
+export const AuthorityChipLabels = { client: "Client Only", server: "Server Only", both: "Client & Server" };
+export const NetworkAuthorityDistributionChipLabels = { enabled: "Auto-Distributed", disabled: "Manual Distribution", none: "Not Distributable" };
+
+// Generic Header Chip
+export const HeaderChip = ({ icon, label, title, subtitle, href, children }) => {
+	const content = <><span className={"header-chip-icon"}>{ icon }</span>{ label }</>;
+	return (
+		<Tippy maxWidth={400} animation={"scale-subtle"} placement={"bottom"} interactive={true}
+			content={<HeaderChipToolTip icon={icon} title={title} subtitle={subtitle}>{ children }</HeaderChipToolTip>}>
+			{ href
+				? <a className={"header-chip"} href={href}>{ content }</a>
+				: <span className={"header-chip"} tabIndex={0}>{ content }</span> }
+		</Tippy>
+	);
+};
+
+// Static Class Chip
+export const StaticClassChip = () => (
+	<HeaderChip icon="🗿" label="Static Class" title="Static Class" subtitle="Class Type">
+		{ StaticClassLabel }
+	</HeaderChip>
+);
+
+// Authority Chip
+export const AuthorityChip = ({ authority, is_static }) => (
+	<HeaderChip icon={<img src={GetAuthorityImage(authority)} />} label={ AuthorityChipLabels[authority] } title={ AuthorityChipLabels[authority] } subtitle="Authority">
+		{ is_static ? AuthorityLabelsStatic[authority] : AuthorityLabels[authority] }
+	</HeaderChip>
+);
+
+// Network Authority Distribution Chip
+export const NetAuthorityDistributionChip = ({ network_distribution }) => (
+	<HeaderChip icon="🔁" label={ NetworkAuthorityDistributionChipLabels[network_distribution] } title={ NetworkAuthorityDistributionChipLabels[network_distribution] } subtitle="Network Authority Distribution">
+		{ NetworkAuthorityDistributionLabels[network_distribution] }
+	</HeaderChip>
+);
+
+// Open Source Chip
+export const OpenSourceChip = ({ url }) => (
+	<HeaderChip icon="👐" label="Open Source" title="Open Source" subtitle="Lua Library" href={ GetOpenSourceURL(url) }>
+		This library implementation is Open Sourced on <a href={GetOpenSourceURL(url)}>GitHub</a>!
+	</HeaderChip>
+);
+
+// API Source Chip
+export const APISourceURL = ({ type, class_name }) => (
+	<HeaderChip icon="🧑‍💻" label="API Source" title="API Source" subtitle="Auto-generated Page" href={ GetAPISourceURL(type, class_name) }>
+		{ APISourceLabel(type, class_name) }
+	</HeaderChip>
 );
 
 // Gets Authority Element by string
@@ -624,14 +683,16 @@ export const HeaderDeclaration = ({ type, name, image, open_source_url }) => {
 
 	return (<>
 		<p dangerouslySetInnerHTML={{ __html: class_data.description }}></p>
-		{ image ? <><p><img src={image} loading={"lazy"} /></p><hr /></> : "" }
-		{ is_static ? <StaticClassAdmonition /> : "" }
-		{ class_data.authority ? <AuthorityAdmonition authority={class_data.authority} is_static={is_static} /> : "" }
-		{ class_data.network_distribution ? <NetAuthorityDistributionAdmonition network_distribution={class_data.network_distribution} /> : "" }
+		{ image ? <p><img src={image} loading={"lazy"} /></p> : "" }
+		<div className={"header-chips"}>
+			{ is_static ? <StaticClassChip /> : "" }
+			{ class_data.authority ? <AuthorityChip authority={class_data.authority} is_static={is_static} /> : "" }
+			{ class_data.network_distribution ? <NetAuthorityDistributionChip network_distribution={class_data.network_distribution} /> : "" }
+			{ open_source_url ? <OpenSourceChip url={open_source_url} /> : "" }
+			<APISourceURL type={type} class_name={ class_data.is_base ? "Base" + name : name} />
+		</div>
 		{ class_data.inheritance && !class_data.is_base ? <InheritanceAdmonition inheritance={class_data.inheritance} /> : "" }
-		{ open_source_url ? <OpenSourceAdmonition url={open_source_url} /> : "" }
 		{ class_data.is_base ? <BaseClassAdmonition inherited={class_data.inheritance_children} /> : "" }
-		<APISourceURL type={type} class_name={ class_data.is_base ? "Base" + name : name} />
 		<hr />
 	</>);
 };

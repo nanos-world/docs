@@ -42,8 +42,11 @@ export const BaseNative = (img, title, description) => (
 // Generic Base Efficiency component
 export const BaseEfficiency = (img, title, description) => (
 	<Tippy maxWidth={400} animation={"scale-subtle"} placement={"left"} content={<AuthorityTooltip img={img} title={title} description={description} subtitle={"Method Efficiency"} />}>
-		<span className="efficiency-type">
-			<img src={img} title={title} loading={"lazy"} />
+		<span className="header-chip efficiency-chip">
+			<span className="header-chip-icon">
+				<img src={img} loading={"lazy"} />
+			</span>
+			{title}
 		</span>
 	</Tippy>
 );

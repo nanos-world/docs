@@ -126,15 +126,6 @@ a img.medium-zoom-image {
 /* Header Description */
 header + p {
 	color: var(--ifm-color-gray-600) !important;
-	margin-top: -1rem !important;
-}
-
-header + p::after {
-	height: 1px;
-	content: " ";
-	display: block;
-	background-color: var(--ifm-color-emphasis-200);
-	margin-top: 2rem;
 }
 
 .docusaurus-highlight-code-line {
@@ -433,6 +424,91 @@ html[data-theme='dark'] .header-account-link:before {
 	background: no-repeat center/26px url("/img/social/account-white.svg");
 }
 
+/* Header Chips */
+
+.header-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: 0 0 1.5rem;
+}
+
+.header-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+
+	padding: 0.25rem 0.75rem;
+	border-radius: 999px;
+	border: 1px solid var(--ifm-color-emphasis-300);
+	background-color: var(--ifm-color-emphasis-100);
+
+	font-size: 0.8rem;
+	font-weight: var(--ifm-font-weight-semibold);
+	line-height: 1.7;
+	white-space: nowrap;
+
+	cursor: help;
+	user-select: none;
+}
+
+a.header-chip,
+a.header-chip:hover {
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.header-chip:hover,
+.header-chip:focus-visible {
+	border-color: var(--ifm-color-emphasis-500);
+	background-color: var(--ifm-color-emphasis-200);
+	transition: border-color var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+	outline: none;
+}
+
+.header-chip-icon {
+	font-size: 1rem;
+	line-height: 1;
+	pointer-events: none;
+}
+
+.header-chip-icon img {
+	display: block;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+}
+
+.tooltip-header .tooltip-img img {
+	display: block;
+	width: 100%;
+	border-radius: 50%;
+}
+
+
+html[data-theme='dark'] .header-chip {
+	border-color: var(--ifm-blockquote-border-color);
+	background-color: var(--ifm-blockquote-background-color);
+}
+
+html[data-theme='dark'] .header-chip:hover,
+html[data-theme='dark'] .header-chip:focus-visible {
+	border-color: var(--ifm-color-emphasis-300);
+	background-color: var(--ifm-blockquote-background-color);
+}
+
+@media (max-width: 996px) {
+	.header-chips {
+		gap: 0.4rem;
+	}
+
+	.header-chip {
+		font-size: 0.75rem;
+		padding: 0.2rem 0.6rem;
+	}
+}
+
 /* Scripting Components */
 
 .authority-availability,
@@ -451,8 +527,7 @@ h3 > .native-type {
 }
 
 .authority-availability img,
-.native-type img,
-.efficiency-type img {
+.native-type img {
 	display: flex;
 	pointer-events: none;
 	border-radius: 50%;
@@ -464,20 +539,22 @@ h3 > .native-type {
 	font-size: 32px;
 }
 
-.native-type,
-.efficiency-type {
+.native-type {
 	cursor: help;
 }
 
-.efficiency-type {
+.efficiency-chip {
 	float: right;
 	margin-top: 1.25rem;
+	margin-left: 1rem;
+	opacity: 0.9;
 }
 
-.efficiency-type {
-	max-width: 20px;
-	margin-left: auto;
-	opacity: 0.9;
+@media (max-width: 576px) {
+	.efficiency-chip {
+		float: none;
+		margin: 1.25rem 0 0.5rem;
+	}
 }
 
 .path-center {
@@ -545,12 +622,11 @@ a.reference-link {
 
 	margin: 1rem 0;
 	position: relative;
-
-	transition: border-color .15s cubic-bezier(.4,0,.2,1);
 }
 
 a.reference-link:hover {
 	border-color: var(--ifm-color-emphasis-800);
+	transition: border-color var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 }
 
 a.reference-link:before {
@@ -604,14 +680,14 @@ a.card-link {
 
 a.card-link:hover {
 	border-color: var(--ifm-color-emphasis-500);
-	transition: border-color .15s cubic-bezier(.4,0,.2,1);
+	transition: border-color var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 	box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.1);
 	transform: scale(1.01);
 }
 
 a.card-link:hover img {
 	filter: brightness(0.75);
-	transition: filter .15s cubic-bezier(.4,0,.2,1);
+	transition: filter var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 }
 
 .card-link img {
@@ -664,8 +740,7 @@ iframe {
 
 .hash-link,
 .authority-availability,
-.native-type,
-.efficiency-type {
+.native-type {
 	user-select: none;
 }
 

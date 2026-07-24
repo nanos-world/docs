@@ -18,6 +18,21 @@ export const AuthorityTooltip = ({ img, title, subtitle, description }) => (
 	</>
 );
 
+export const HeaderChipToolTip = ({ icon, title, subtitle, children }) => (
+	<>
+		<h3 className={"tooltip-header"}>
+			<span className={"tooltip-img"}>
+				{icon}
+			</span>
+			<span className={"tooltip-span"}>
+				<div>{title}</div>
+				<div className={"tooltip-sub"}>{subtitle}</div>
+			</span>
+		</h3>
+		{children}
+	</>
+);
+
 export const AssetPathToolTip = ({ label, description, subtitle }) => (
 	<>
 		<h3 className={"tooltip-header"}>
