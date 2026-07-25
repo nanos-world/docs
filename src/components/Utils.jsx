@@ -122,11 +122,6 @@ export const getActiveVersionPath = () => {
 	return activeVersion ? activeVersion.path : "/docs/next";
 };
 
-// Function to convert PascalCase string to kebab-case
-export const getKebabFromPascal = (str) => {
-	return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-};
-
 // Getter to get the current version path - for links
 export const LinkActiveVersion = (props) => (
 	<Link { ...props } to={`${getActiveVersionPath()}/${props.to}`} />

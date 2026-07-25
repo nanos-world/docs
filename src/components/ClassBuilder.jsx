@@ -11,7 +11,7 @@ import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/dist/tippy.css';
 
 import { AuthorityType, NativeType, EfficiencyType, BasicType, Classes, Structs, Enums, AssetPath, ReferenceLink } from '@site/src/components/_nanos';
-import { getActiveVersionPath, LinkActiveVersion, getKebabFromPascal } from '@site/src/components/Utils.jsx';
+import { getActiveVersionPath, LinkActiveVersion } from '@site/src/components/Utils.jsx';
 import { FunctionToolTip, StaticFunctionToolTip, InlineFunctionToolTip, TablePropertiesToolTip, EventToolTip, HeaderChipToolTip } from '@site/src/components/Tooltips';
 import Details from '@theme/Details';
 
@@ -687,7 +687,7 @@ export const HeaderDeclaration = ({ type, name, image, open_source_url }) => {
 	if (!class_data)
 		return "Failed to load class data.";
 
-	const is_static = type === "StaticClass" || type === "UtilityClass" || type === "UtilityClasses";
+	const is_static = type === "StaticClass" || type === "UtilityClass";
 
 	return (<>
 		<p dangerouslySetInnerHTML={{ __html: class_data.description }}></p>
@@ -970,6 +970,20 @@ export const StaticPropertiesDeclaration = ({ type, name }) => {
 	</>);
 };
 
+// Getter for the documentation folder a reference type lives in
+const getReferenceFolder = (type) => {
+	switch (type) {
+		case "StaticClass":
+			return "static-classes";
+		case "UtilityClass":
+			return "utility-libraries";
+		case "Struct":
+			return "structs";
+		default:
+			return "classes";
+	}
+};
+
 // Define Class Method component
 export const MethodReference = ({ type, class_name, method_name = null, static_method_name = null, params, show_class_name = false }) => {
 	const class_data = GetClassData(type, class_name);
@@ -978,7 +992,7 @@ export const MethodReference = ({ type, class_name, method_name = null, static_m
 		return "Failed to load method data.";
 
 	const is_base = class_data.is_base ? true : false;
-	const is_static = type === "StaticClass" || type === "UtilityClass" || type === "UtilityClasses";
+	const is_static = type === "StaticClass" || type === "UtilityClass";
 	const is_method_static = is_static || static_method_name !== null;
 	const use_method_name = method_name || static_method_name;
 
@@ -991,7 +1005,7 @@ export const MethodReference = ({ type, class_name, method_name = null, static_m
 		<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={
 			<FunctionDeclaration class_name={class_name} function_data={function_data} is_static={is_static} show_lean_declaration={true} />
 		}>
-			<Link to={`${getActiveVersionPath()}/scripting-reference/${is_static ? "static-classes" : "classes"}/${is_base ? "base-classes/" : ""}${getKebabFromPascal(class_name)}#${is_method_static ? "static-function" : "function"}-${use_method_name.toLowerCase()}`} className={"hover-link"}><code>{show_class_name ? class_name : ""}{is_method_static ? "." : ":"}{use_method_name}({params})</code></Link>
+			<Link to={`${getActiveVersionPath()}/scripting-reference/${getReferenceFolder(type)}/${is_base ? "base-classes/" : ""}${class_name.toLowerCase()}#${is_method_static ? "static-function" : "function"}-${use_method_name.toLowerCase()}`} className={"hover-link"}><code>{show_class_name ? class_name : ""}{is_method_static ? "." : ":"}{use_method_name}({params})</code></Link>
 		</Tippy>
 	);
 };
@@ -1009,13 +1023,12 @@ export const EventReference = ({ type, class_name, event, show_class_name = fals
 		return "Failed to load event data.";
 
 	const is_base = class_data.is_base ? true : false;
-	const is_static = type === "StaticClass" || type === "UtilityClass" || type === "UtilityClasses";
 
 	return (
 		<Tippy interactive={true} maxWidth={600} animation={"scale-subtle"} placement={"left"} content={
 			<EventDeclaration class_name={class_name} event_data={event_data} show_lean_declaration={true} />
 		}>
-			<Link to={`${getActiveVersionPath()}/scripting-reference/${is_static ? "static-classes" : "classes"}/${is_base ? "base-classes/" : ""}${getKebabFromPascal(class_name)}#event-${event.toLowerCase()}`} className={"hover-link"}><code>{event}{show_class_name ? ` (${class_name})` : ""}</code></Link>
+			<Link to={`${getActiveVersionPath()}/scripting-reference/${getReferenceFolder(type)}/${is_base ? "base-classes/" : ""}${class_name.toLowerCase()}#event-${event.toLowerCase()}`} className={"hover-link"}><code>{event}{show_class_name ? ` (${class_name})` : ""}</code></Link>
 		</Tippy>
 	);
 };
