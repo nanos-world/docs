@@ -217,7 +217,7 @@ export const InheritanceAdmonition = ({ inheritance }) => (
 // Base Class Admonition
 export const BaseClassAdmonition = ({ inherited }) => (
 	<Admonition type="info" icon="👪" title="Base Class">
-		This is a Base Class. Base Classes are abstract definitions used to share common methods and events between related child classes, thus you cannot spawn it directly.
+		{ BaseClassLabel }
 		<br />
 		<br />
 		Classes that share methods and events from this Base Class: { inherited.map((inherit, index) => GetElementByType(inherit, index)).reduce((prev, next) => [prev, ", ", next]) }.
@@ -234,6 +234,7 @@ export const StaticClassAdmonition = () => (
 
 // Shared label sources
 export const StaticClassLabel = <>This is a <b>Static Class</b>. Access it's methods directly with <code>.</code>. It's not possible to spawn new instances.</>;
+export const BaseClassLabel = <>This is a <b>Base Class</b>, an abstract definition that shares common methods and events with it's child classes. You cannot spawn it, and you cannot call anything on the Base Class name itself. Use any class that inherits it.</>;
 export const GetOpenSourceURL = (url) => `https://github.com/nanos-world/nanos-world-lua-lib${url ? `/blob/master/${url}` : ""}`;
 export const GetAPISourceURL = (type, class_name) => `https://github.com/nanos-world/api/blob/main/${TypeToAPIFolder[type]}${class_name}.json`;
 export const APISourceLabel = (type, class_name) => <>This page is auto-generated! The Functions, Properties and Events described here are defined in our <a href={GetAPISourceURL(type, class_name)}>GitHub's API Repository</a>! Feel free to commit suggestions and changes to the source .json API files!</>;
@@ -259,6 +260,13 @@ export const HeaderChip = ({ icon, label, title, subtitle, href, children }) => 
 export const StaticClassChip = () => (
 	<HeaderChip icon="🗿" label="Static Class" title="Static Class" subtitle="Class Type">
 		{ StaticClassLabel }
+	</HeaderChip>
+);
+
+// Base Class Chip
+export const BaseClassChip = () => (
+	<HeaderChip icon="👪" label="Base Class" title="Base Class" subtitle="Class Type">
+		{ BaseClassLabel }
 	</HeaderChip>
 );
 
@@ -685,6 +693,7 @@ export const HeaderDeclaration = ({ type, name, image, open_source_url }) => {
 		<p dangerouslySetInnerHTML={{ __html: class_data.description }}></p>
 		{ image ? <p><img src={image} loading={"lazy"} /></p> : "" }
 		<div className={"header-chips"}>
+			{ class_data.is_base ? <BaseClassChip /> : "" }
 			{ is_static ? <StaticClassChip /> : "" }
 			{ class_data.authority ? <AuthorityChip authority={class_data.authority} is_static={is_static} /> : "" }
 			{ class_data.network_distribution ? <NetAuthorityDistributionChip network_distribution={class_data.network_distribution} /> : "" }
