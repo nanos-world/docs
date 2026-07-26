@@ -62,6 +62,7 @@ export const VideoExternal = ({ path, noplay, controls = true, className, style 
 			controls={controls}
 			allowFullScreen={true}
 			playsInline
+			preload="none"
 		>
 			Your browser does not support the video tag.
 		</video>

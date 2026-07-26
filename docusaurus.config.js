@@ -252,7 +252,14 @@ module.exports = {
       removeLegacyPostBuildHeadAttribute: true,
     },
     faster: {
+      swcJsLoader: true,
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      lightningCssMinimizer: true,
+      rspackBundler: true,
+      rspackPersistentCache: true,
       ssgWorkerThreads: true,
+      mdxCrossCompilerCache: true,
     },
   },
   plugins: [
@@ -266,19 +273,19 @@ module.exports = {
     },
     {
       src: '/js/Plausible.js',
-      async: false,
+      defer: true,
     },
     {
       src: 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js',
-      async: false,
+      defer: true,
     },
     {
       src: '/js/Kofi.js',
-      async: false,
+      defer: true,
     },
     {
       src: '/js/img-comparison-slider.js',
-      async: false,
+      defer: false,
     }
   ]
 };
