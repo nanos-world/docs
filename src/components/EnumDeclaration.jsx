@@ -1,5 +1,6 @@
 import React from 'react';
 import Admonition from '@theme/Admonition';
+import Heading from '@theme/Heading';
 import { GetRelations, GetClassData } from '@site/src/components/ClassBuilder';
 
 export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
@@ -12,10 +13,9 @@ export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => (
 					<div className={"tooltip-sub"}>Enum (integer)</div>
 				</span>
 			</h3> :
-			<h3 id={ enum_name.toLowerCase() }>
+			<Heading as="h3" id={enum_name.toLowerCase()} className="custom-anchor">
 				<code>{ enum_name }</code>
-				<a className={"hash-link"} href={`#${enum_name.toLowerCase()}`}></a>
-			</h3>
+			</Heading>
 		}
 		<blockquote>
 			<span dangerouslySetInnerHTML={{ __html: enum_data ? enum_data.description : null }}></span>
