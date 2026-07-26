@@ -32,6 +32,12 @@ export const AssetPaths = {
 	HTMLPath: AssetPath.HTML,
 }
 
+// Base classes show as <AnyBaseClass> when used in examples
+export function GetExampleClassName(class_name) {
+	const class_data = GetClassData("Class", class_name);
+	return class_data && class_data.is_base ? `<Any${class_name}Class>` : class_name;
+}
+
 // Gets an Element by it's string type
 export function GetElementByType(type, index) {
 	const is_optional = type.endsWith("?");
@@ -174,12 +180,12 @@ export function GetFunctionSignature(class_name, function_data) {
 
 // Generates Static Function Signature Codeblock
 export function GetStaticFunctionSignature(class_name, function_data) {
-	return `${GetReturnPart(function_data)}${class_name}.${function_data.name}(${GetParametersList(function_data.parameters)})`;
+	return `${GetReturnPart(function_data)}${GetExampleClassName(class_name)}.${function_data.name}(${GetParametersList(function_data.parameters)})`;
 }
 
 // Generates Event Signature Codeblock
 export function GetEventSignature(class_name, event_data, content) {
-	return `${class_name}.Subscribe("${event_data.name}", function(${GetParametersList(event_data.arguments)})\n${ content ? content : `\t-- ${event_data.name} was called` }${ event_data.return ? `\n\treturn ${ (event_data.return[0].type == "boolean") ? "true" : (event_data.return[0].type == "number" ? "1.0" : "") }` : "" }\nend)`;
+	return `${GetExampleClassName(class_name)}.Subscribe("${event_data.name}", function(${GetParametersList(event_data.arguments)})\n${ content ? content : `\t-- ${event_data.name} was called` }${ event_data.return ? `\n\treturn ${ (event_data.return[0].type == "boolean") ? "true" : (event_data.return[0].type == "number" ? "1.0" : "") }` : "" }\nend)`;
 }
 
 // Network Authority Distribution Admonition
