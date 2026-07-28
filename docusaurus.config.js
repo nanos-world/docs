@@ -241,14 +241,14 @@ module.exports = {
     '@saucelabs/theme-github-codeblock',
     '@docusaurus/theme-mermaid',
   ],
-   markdown: {
+  markdown: {
     mermaid: true,
     hooks: {
       onBrokenMarkdownLinks: 'warn',
     }
   },
   future: {
-	v4: {
+    v4: {
       removeLegacyPostBuildHeadAttribute: true,
     },
     faster: {
