@@ -11,6 +11,7 @@ jobs:
   test-deploy:
     name: Test deployment
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: nschloe/action-cached-lfs-checkout@v1
         with:
@@ -26,6 +27,15 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Restore bundler cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.cache
+          key: docusaurus-en-${{ runner.os }}-${{ hashFiles('yarn.lock', 'docusaurus.config.js') }}-${{ github.sha }}
+          restore-keys: |
+            docusaurus-en-${{ runner.os }}-${{ hashFiles('yarn.lock', 'docusaurus.config.js') }}-
+            docusaurus-en-${{ runner.os }}-
 
       - name: Preprocess API
         run: yarn preprocess-api

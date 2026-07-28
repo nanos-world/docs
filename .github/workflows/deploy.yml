@@ -7,10 +7,15 @@ on:
     # Review gh actions docs if you want to further define triggers, paths, etc
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     name: Build Docusaurus
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: nschloe/action-cached-lfs-checkout@v1
         with:
@@ -27,17 +32,39 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+      # Rspack persistent cache
+      - name: Restore bundler cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.cache
+          key: docusaurus-${{ runner.os }}-${{ hashFiles('yarn.lock', 'docusaurus.config.js') }}-${{ github.sha }}
+          restore-keys: |
+            docusaurus-${{ runner.os }}-${{ hashFiles('yarn.lock', 'docusaurus.config.js') }}-
+            docusaurus-${{ runner.os }}-
+
       - name: Preprocess API
         run: yarn preprocess-api
 
       - name: Sync Crowdin
+        timeout-minutes: 15
         env:
           CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
         run: yarn crowdin:sync
 
       - name: Build website
+        timeout-minutes: 40
+        env:
+          # Bound SSG worker memory
+          DOCUSAURUS_SSG_WORKER_THREAD_RECYCLER_MAX_MEMORY: 800000000
         run: yarn build
+
+      - name: Report resource usage
+        if: always()
+        run: |
+          echo "--- memory ---"; free -h
+          echo "--- disk ---"; df -h /
+          echo "--- rspack cache ---"; du -sh node_modules/.cache 2>/dev/null || echo "none"
 
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
