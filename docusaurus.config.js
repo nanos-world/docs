@@ -258,7 +258,6 @@ module.exports = {
       lightningCssMinimizer: true,
       rspackBundler: true,
       rspackPersistentCache: true,
-      ssgWorkerThreads: true,
       mdxCrossCompilerCache: true,
     },
   },
