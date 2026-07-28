@@ -255,10 +255,7 @@ module.exports = {
       swcJsLoader: true,
       swcJsMinimizer: true,
       swcHtmlMinimizer: true,
-      lightningCssMinimizer: true,
-      rspackBundler: true,
-      rspackPersistentCache: true,
-      mdxCrossCompilerCache: true,
+      ssgWorkerThreads: true,
     },
   },
   plugins: [
