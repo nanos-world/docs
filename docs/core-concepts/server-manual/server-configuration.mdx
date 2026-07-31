@@ -18,7 +18,7 @@ The server Configuration file `Config.toml` is generated automatically when the 
 
 :::tip
 
-nanos world Config files use **TOML** (Tom’s Obvious, Minimal Language), please refer to [https://github.com/toml-lang/toml](https://github.com/toml-lang/toml) for more information and syntax.
+nanos world Config files use **TOML** (Tom's Obvious, Minimal Language), please refer to [https://github.com/toml-lang/toml](https://github.com/toml-lang/toml) for more information and syntax.
 
 :::
 
@@ -29,29 +29,151 @@ https://github.com/nanos-world/nanos-world-server/blob/main/Config.toml
 
 ### Settings Detailed {/* #settings-detailed */}
 
-| Setting | Description |
+The Config file is split into a few sections. Each one is described below with its type, default value and accepted range.
+
+:::note
+
+The server **rewrites `Config.toml` on every startup**, after applying the Command Line Parameters and validating each value. Any comment you add, unknown key, or out-of-range value will be discarded or reset, the log will tell you exactly which setting got reset and to what.
+
+:::
+
+
+#### `[discover]` {/* #discover */}
+
+How your server presents (and announces) itself.
+
+| Setting | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| **`name`** | `string` | `"nanos world server"` | Name of the Server, as displayed in the Server List |
+| **`description`** | `string` | `""` | Description of the Server. **Clamped to 200 characters** |
+| **`language`** | `string` | `"global"` | Country code (e.g. `br`, `us`, `de`) used to display a country flag in the server list |
+| **`ip`** | `string` | `"0.0.0.0"` | Address the server binds to, for both the game socket and the built-in HTTP Server. We recommend leaving it `0.0.0.0`, which binds to every interface |
+| **`port`** | `integer` | `7777` | Server main Port, used for both game traffic (UDP) and the built-in HTTP Server (TCP). Range `1024` - `65535` |
+| **`query_port`** | `integer` | `7778` | Server query Port (UDP), used by the Server List and by query tools. Range `1024` - `65535`, and **must be different from `port`** |
+| **`announce`** | `boolean` | `true` | Whether to announce the server in the Server List. A non-announced server is still joinable through Direct Connect |
+| **`dedicated_server`** | `boolean` | `true` | `true` runs a **Dedicated Server**: requires port forwarding and gives the fastest connection.<br/><br/>`false` runs it as **P2P**, which hands out a fake IP for players to connect through Steam Datagram Relay, no port forwarding needed, but higher latency, and the send rate is capped at `1024` KB/s by the relay service regardless of `max_send_rate` |
+
+
+#### `[general]` {/* #general */}
+
+| Setting | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| **`max_players`** | `integer` | `64` | Max amount of players allowed to join. Range `1` - `999` |
+| **`password`** | `string` | `""` | Password required to connect. Leave it blank for no password required |
+| **`token`** | `string` | `""` | Server authentication token, used to authorize [Vault](/vault-and-store/vault.mdx) downloads, through the [CLI](/core-concepts/server-manual/command-line-interface.mdx), through `--auto_download`, and when fetching Packages/Assets you own |
+| **`banned_ids`** | `string list` | `[]` | List of banned nanos account IDs. Banned players are rejected at connection time |
+
+
+#### `[game]` {/* #game */}
+
+| Setting | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| **`map`** | `string` | `"default-blank-map"` | [map](/core-concepts/packages/packages-guide.mdx#map) package to load. See [Map & Level](#map--level) |
+| **`game_mode`** | `string` | `""` | [game-mode](/core-concepts/packages/packages-guide.mdx#game-mode) package to load, you can only load one game-mode at once |
+| **`packages`** | `string list` | `[]` | [script](/core-concepts/packages/packages-guide.mdx#script) packages to load |
+| **`assets`** | `string list` | `[]` | Additional Asset Packs to force loading, on top of the ones the loaded Packages/Map already require |
+| **`loading_screen`** | `string` | `""` | [loading-screen](/core-concepts/packages/loading-screen.mdx) package to load, you can only load one loading-screen at once |
+
+
+#### `[custom_settings]` {/* #custom-settings-section */}
+
+A free-form table of your own values, made available to every Package through <MethodReference type="StaticClass" class_name="Server" method_name="GetCustomSettings" show_class_name />. Values can be strings, integers, floats or booleans.
+
+```toml
+[custom_settings]
+    max_props = 1000
+    enable_pvp = true
+    welcome_message = "have fun!"
+```
+
+game-modes can declare which Custom Settings they accept, so they show up in the New Game screen, see [Custom Settings](/core-concepts/packages/packages-guide.mdx#custom-settings). The whole table can also be passed on the command line with `--custom_settings "max_props = 1000, enable_pvp = true"`.
+
+
+#### `[debug]` {/* #debug */}
+
+| Setting | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| **`log_level`** | `integer` | `1` | Which Log level to output: `1` normal, `2` debug, `3` verbose. Levels `2` and `3` are noisy, use them to investigate a problem, not in production |
+| **`async_log`** | `boolean` | `true` | Writes logs from a separate thread, which is faster. Set it to `false` when debugging a crash, so the last lines before the crash are guaranteed to be flushed |
+| **`profiling`** | `boolean` | `false` | Enables Performance Profiling Logs, which report how long each internal operation took. Useful to find what is making your server tick slow. Can also be toggled at runtime with the [`profiling`](#built-in-commands) console command |
+
+
+#### `[optimization]` {/* #optimization */}
+
+| Setting | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| **`max_tick_rate`** | `integer` | `30` | Server Tick in Hz, how many times per second the server loop runs. Range `15` - `120`. Everything (network receive/send, Lua events, timers, etc) happens inside this loop, so a higher value is more responsive but multiplies CPU usage. `30` Hz means the server has `33ms` to do all its work per tick, **we recommend leaving it `30`** |
+| **`max_sync_rate`** | `integer` | `30` | Max actors sync rate in Hz, how often actors location/rotation/velocity are synchronized. Range `1` - `30`, and naturally limited by `max_tick_rate`. This value is also sent to the clients, so they sync back at the same rate. Lowering it is the cheapest way to cut bandwidth on servers with many moving actors, at the cost of less precise movement |
+| **`max_send_rate`** | `integer` | `1024` | Max network send rate **per client**, in KB/s. Range `128` - `16384`. Recommended setting to the lowest value that still fits your traffic, higher rates may negatively impact the server performance when having players with bad connections. P2P servers are capped to `1024` KB/s by Steam Datagram Relay. Can be changed at runtime with the [`max_send_rate`](#built-in-commands) console command |
+| **`max_file_transfer_rate`** | `integer` | `1024` | Max file transfer rate **per client**, in KB/s, how fast Packages and Assets files are pushed to a connecting player. Range `128` - `max_send_rate`; anything above `max_send_rate` is clamped down to it. Lower it to keep downloads from starving the gameplay traffic of players already in game |
+| **`compression`** | `integer` | `1` | Compression level applied to several networking operations. `0` disables it, `1` is the fastest and already provides a good compression, `9` is the slowest but has the highest compression ratio. See [Compression](#compression) below |
+| **`distance_optimization`** | `integer` | `4` | Reduces synchronization of actors that are far away from each player. `0` disables it, `4` is a good middle term, `9` is the most aggressive. See [Distance Optimization](#distance-optimization) below |
+
+
+### Compression {/* #compression */}
+
+The server compresses (deflate) whole payload blocks before they go on the wire. The `compression` setting is the deflate level used: `0` disables it entirely, `1`-`9` trade CPU for ratio.
+
+Scripts can read it with <MethodReference type="StaticClass" class_name="Server" method_name="GetCompressionLevel" show_class_name />.
+
+
+#### What gets compressed {/* #what-gets-compressed */}
+
+| Data | When it is compressed |
 | :--- | :--- |
-| **`name`** | Name of the Server |
-| **`description`** | Description of the Server |
-| **`max_players`** | Max amount of players allowed to join |
-| **`password`** | Password to be able to connect |
-| **`ip`** | Server IP. We recommend leaving it blank |
-| **`port`** | Server main Port and HTTP Port (UDP/TCP) |
-| **`query_port`** | Server query Port (UDP) |
-| **`announce`** | Whether to announce or not in the Server List |
-| **`max_tick_rate`** | Server Tick in Hz. How much the server will tick per second. We recommend leaving it 30 |
-| **`max_sync_rate`** | Max actors sync rate in Hz. How much actors location/rotation/velocity will synchronize per second, limited by `max_tick_rate` |
-| **`max_send_rate`** | Server network send rate per client in KB/s. Limits bandwidth for each connected player. Recommended setting to the lowest needed value as higher rates may negatively impact the server performance when having players with bad connections |
-| **`max_file_transfer_rate`** | Changes the max file transfer rate per client |
-| **`distance_optimization`** | Sets the distance optimization level to improve network usage by reducing sync from distant actors |
-| **`log_level`** | Which Log level to output |
-| **`game_mode`** | [game-mode](/core-concepts/packages/packages-guide.mdx#game-mode) package to load -  you can only load one game-mode at once. |
-| **`loading_screen`** | [loading-screen](/core-concepts/packages/loading-screen.mdx) package to load - you can only load one loading-screen at once. |
-| **`packages`** | [script](/core-concepts/packages/packages-guide.mdx#script) packages to load |
-| **`map`** | [map](/core-concepts/packages/packages-guide.mdx#map) package to load |
-| **`assets`** | Additional assets to force to load |
-| **`token`** | Server Token used for authorize downloads through CLI |
-| **`banned_ids`** | List of banned nanos account IDs |
+| **Package client files**: everything under a Package's `Client/` and `Shared/` folders, plus the generated `Package.toml` | Once, when the Package is loaded. The compressed copy is what stays in memory and is served to every player, over both socket transfer and HTTP |
+| **Client requirements**: the manifest of every file (name, hash, size) a joining player must have | Rebuilt whenever Packages/Assets change |
+| **Loaded assets list** | Rebuilt whenever Asset Packs change |
+| **Entity construction data**: the scripting part of an entity's state (its Values, custom data) sent when a player needs to spawn it | Rebuilt whenever that entity's data changes |
+| **Server networked values**: the table set with `Server.SetValue(key, value, true)`, sent to joining players | Rebuilt whenever a value changes |
+| **Remote event parameters**: big tables sent with [Events.Call/BroadcastRemote()](/scripting-reference/static-classes/events.mdx) | Per call |
+
+Files whose extension is already a compressed format are skipped, since deflating them again only burns CPU: `.png`, `.jpg`, `.jpeg`, `.webp`, `.webm`, `.gif`, `.ogg`, `.mp3`, `.mp4`, `.zip`, `.rar`, `.7z`, `.woff2`.
+
+
+:::tip
+
+Set `log_level = 2` to see per-group summaries (`Compressed Package 'x' Client Files from 4.2 MB to 900.1 KB (78.6%)`), or `log_level = 3` to get a line for every single block that gets compressed.
+
+:::
+
+
+### Distance Optimization {/* #distance-optimization */}
+
+For each player, and for each actor being synchronized, the server computes a relevancy based on the distance between them:
+
+```lua
+relevancy = clamp(100 - ((distance_in_units / 1000) - 1) * distance_optimization * multiplier, 0, 100)
+```
+
+The relevancy is the **percentage of ticks in which that actor's snapshots are actually sent to that player**: `100` means always, `0` means never.
+
+Relevancy by distance across all levels:
+
+| Distance | Lvl. `1` | Lvl. `2` | Lvl. `3` | Lvl. `4` | Lvl. `5` | Lvl. `6` | Lvl. `7` | Lvl. `8` | Lvl. `9` |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 1,000 units | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% |
+| 5,000 units | 96% | 92% | 88% | 84% | 80% | 76% | 72% | 68% | 64% |
+| 10,000 units | 91% | 82% | 73% | 64% | 55% | 46% | 37% | 28% | 19% |
+| 20,000 units | 81% | 62% | 43% | 24% | 5% | 0% | 0% | 0% | 0% |
+| 30,000 units | 71% | 42% | 13% | 0% | 0% | 0% | 0% | 0% | 0% |
+| 40,000 units | 61% | 22% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
+
+And the distance at which an actor stops being synchronized entirely:
+
+| Level | `1` | `2` | `3` | `4` | `5` | `6` | `7` | `8` | `9` |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Cut-off distance | 101,000 | 51,000 | 35,000 | 26,000 | 21,000 | 18,000 | 16,000 | 14,000 | 13,000 |
+
+:::note
+
+This only throttles **unreliable** traffic, such as movement snapshots and transient actions (e.g. Jump). Reliable data (spawning and destroying entities, remote events, value changes) is always delivered in full, no matter the distance.
+
+:::
+
+Scripting can bias the formula per entity with <MethodReference type="Class" class_name="Actor" method_name="SetDistanceOptimizationMultiplier" show_class_name /> and per player with <MethodReference type="Class" class_name="Player" method_name="SetDistanceOptimizationMultiplier" show_class_name />, both multipliers are applied together. A value below `1` keeps the actor relevant for longer (use it for something that must stay smooth at range, like a scaled up actor or character), above `1` culls it sooner, and `0` makes it always relevant.
+
+The level can also be changed while the server is running with the [`distance_optimization`](#built-in-commands) console command.
 
 
 ## Logo Image {/* #logo-image */}
@@ -114,7 +236,7 @@ nanos world counts on (for now) 4 built-in maps: `default-blank-map`, `default-e
 
 ### Custom Commands {/* #custom-commands */}
 
-It is possible to define custom commands as well, for that please refer to [Console.RegisterCommand()](/scripting-reference/static-classes/console.mdx#static-function-registercommand).
+It is possible to define custom commands as well, for that please refer to <MethodReference type="StaticClass" class_name="Console" method_name="RegisterCommand" show_class_name />.
 
 
 ## Command Line Parameters {/* #command-line-parameters */}
@@ -143,7 +265,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | **`--async_log`** | 0 or 1 | If to use async or sync logs (async provides better performance)<br/><br/>Default is <code>1</code> |
 | **`--log_level`** | 1, 2 or 3 | If to use Normal <code>1</code>, Debug <code>2</code> or Verbose <code>3</code> logs |
 | **`--custom_settings`** | toml string | A list of [Custom Settings](/core-concepts/packages/packages-guide.mdx#custom-settings) to be passed to scripting in toml format |
-| **`--compression`** | 0-9 | Sets the compression level to use in some networking operations<br/><br/><code>0</code> disables it, <code>1</code> is the fastest and <code>9</code> is the slower but highest compression ratio |
+| **`--compression`** | 0-9 | Sets the compression level to use in some networking operations<br/><br/><code>0</code> disables it, <code>1</code> is the fastest and <code>9</code> is the slower but highest compression ratio<br/><br/>See [Compression](#compression) |
 | **`--save`** | *flag* | If to save the passed parameters in Config.toml |
 | **`--profiling`** | *flag* | Enables Performance Profiling Logs for debugging |
 | **`--auto_download`** | *flag* | Automatically downloads Packages and Assets from Vault if needed |
@@ -153,7 +275,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | **`--max_sync_rate`** | 1-30 | Sets the max actors sync rate in Hz (syncs per second), naturally limited by `max_tick_rate` |
 | **`--max_send_rate`** | 128-16384 | Sets the server max send rate per client in KB/s |
 | **`--max_file_transfer_rate`** | 128-16384 | Sets the server max file transfer rate per client in KB/s<br/><br/>This must be smaller than <code>max_send_rate</code> |
-| **`--distance_optimization`** | 0-9 | Sets the distance optimization level to improve network usage by reducing sync from distant actors<br/><br/><code>0</code> disables it, <code>4</code> is a good middle term, <code>9</code> is the most aggressive |
+| **`--distance_optimization`** | 0-9 | Sets the distance optimization level to improve network usage by reducing sync from distant actors<br/><br/><code>0</code> disables it, <code>4</code> is a good middle term, <code>9</code> is the most aggressive<br/><br/>See [Distance Optimization](#distance-optimization) |
 | **`--thread_pool_count`** | 0-any | Sets the number of threads initialized to execute async operations (e.g. from <StaticClasses.HTTP />, <Classes.Database />, <Classes.File />)<br/><br/>Default is <code>8</code> (or the number of CPU cores) and <code>0</code> disables the pool and always start a new thread for each async operation |
 | **`--enable_unsafe_libs`** | *flag* | Enables executing the methods `os.execute`, `os.rename`, `os.remove`, `os.exit`, `os.getenv`, `os.tmpname`, `os.setlocale`, `dofile`, `loadfile` and all `io.*` on server side<br/><br/>**Caution**: those methods may allow malicious operations to run on your server, make sure you know what you are doing |
 
