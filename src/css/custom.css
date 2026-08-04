@@ -424,6 +424,10 @@ html[data-theme='dark'] .header-account-link:before {
 	background: no-repeat center/26px url("/img/social/account-white.svg");
 }
 
+span.error {
+	color: red;
+}
+
 /* Header Chips */
 
 .header-chips {
@@ -548,6 +552,10 @@ h3 > .native-type {
 	margin-top: 1.25rem;
 	margin-left: 1rem;
 	opacity: 0.9;
+}
+
+.tippy-box .efficiency-chip {
+	margin-top: 0;
 }
 
 @media (max-width: 576px) {

@@ -691,7 +691,7 @@ export const HeaderDeclaration = ({ type, name, image, open_source_url }) => {
 	const class_data = GetClassData(type, name);
 
 	if (!class_data)
-		return "Failed to load class data.";
+		return <span class="error">Failed to load class '{name}' ({type}) data.</span>;
 
 	const is_static = type === "StaticClass" || type === "UtilityClass";
 
@@ -717,10 +717,10 @@ export const ConstructorDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 
 	if (!class_data)
-		return "Failed to load constructor data.";
+		return <span class="error">Failed to load constructor '{name}' ({type}) data.</span>;
 
 	return class_data.constructors.map((constructor, index) => {
-		const id = `constructor-${constructor.name.toLowerCase().replace(' ', '-')}`;
+		const id = `constructor-${constructor.name.toLowerCase().replaceAll(' ', '-')}`;
 		const hash_link = `Direct Link to ${constructor.name}`;
 		return <>
 			<Heading as="h3" id={id} className="custom-anchor">
@@ -767,7 +767,7 @@ export const InheritedClassFunctions = ({ inherited_class_name, parent_class_nam
 	const class_data = GetClassData("Class", parent_class_name);
 
 	if (!class_data)
-		return "Failed to load class data.";
+		return <span class="error">Failed to load inherited class '{parent_class_name}' ({inherited_class_name}) data.</span>;
 
 	return (<>
 		<Details summary={`Inherited ${parent_class_name} ${is_static ? "Static " : ""}Functions`}>
@@ -801,7 +801,7 @@ export const FunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 
 	if (!class_data)
-		return "Failed to load class data.";
+		return <span class="error">Failed to load class '{name}' ({type}) data.</span>;
 
 	return (<>
 		{ class_data.inheritance && !class_data.is_base ? <>
@@ -835,7 +835,7 @@ export const StaticFunctionsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 
 	if (!class_data)
-		return "Failed to load class data.";
+		return <span class="error">Failed to load class '{name}' ({type}) data.</span>;
 
 	return (<>
 		{ class_data.inheritance && !class_data.is_base ? <>
@@ -859,7 +859,7 @@ export const ExamplesDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 
 	if (!class_data)
-		return "Failed to load class data.";
+		return <span class="error">Failed to load class '{name}' ({type}) data.</span>;
 
 	return <>
 		{ class_data.static_functions && class_data.static_functions.map((value) =>
@@ -879,7 +879,7 @@ export const EventsDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 
 	if (!class_data)
-		return "Failed to load class data.";
+		return <span class="error">Failed to load class '{name}' ({type}) data.</span>;
 
 	return (<>
 		{ class_data.inheritance && !class_data.is_base ? <>
@@ -911,7 +911,7 @@ export const PropertiesDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 
 	if (!class_data)
-		return "Failed to load class data.";
+		return <span class="error">Failed to load class '{name}' ({type}) data.</span>;
 
 	return (<>
 		{
@@ -945,7 +945,7 @@ export const StaticPropertiesDeclaration = ({ type, name }) => {
 	const class_data = GetClassData(type, name);
 
 	if (!class_data)
-		return "Failed to load class data.";
+		return <span class="error">Failed to load class '{name}' ({type}) data.</span>;
 
 	return (<>
 		{
@@ -995,7 +995,7 @@ export const MethodReference = ({ type, class_name, method_name = null, static_m
 	const class_data = GetClassData(type, class_name);
 
 	if (!class_data)
-		return "Failed to load method data.";
+		return <span class="error">Failed to load method {method_name || static_method_name} ({class_name}) data.</span>;
 
 	const is_base = class_data.is_base ? true : false;
 	const is_static = type === "StaticClass" || type === "UtilityClass";
@@ -1021,12 +1021,12 @@ export const EventReference = ({ type, class_name, event, show_class_name = fals
 	const class_data = GetClassData(type, class_name);
 
 	if (!class_data)
-		return "Failed to load event data.";
+		return <span class="error">Failed to load event '{event}' ({class_name}) data.</span>;
 
 	const event_data = class_data.events.find(({ name }) => name === event);
 
 	if (!event_data)
-		return "Failed to load event data.";
+		return <span class="error">Failed to load event '{event}' ({class_name}) data.</span>;
 
 	const is_base = class_data.is_base ? true : false;
 
