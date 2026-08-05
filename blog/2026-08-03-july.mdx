@@ -1,0 +1,428 @@
+---
+slug: july-2026
+title: "Jul: New Website, Spawn, Vehicles & Docs++!"
+authors: gtnardy
+tags: [updates]
+image: /img/blog/2023-july/july-news.webp
+---
+
+**Brand-new Website design, new SpawnMode enum, Vehicle Engine events, Headlights & Animation Blueprints, CharacterSimple Crouching, Vault Resource Dashboard and much more!**
+
+![](/img/blog/2023-july/july-news.webp)
+
+Welcome to our roundup of the latest updates from the last month!
+
+{/* truncate */}
+
+
+## Our New Website Is Here! 🚀 {/* #our-new-website-is-here */}
+
+We are super excited to announce our brand-new **website design**! We've been working hard behind the scenes to give you all a better and much more beautiful web experience.
+
+Let's take a tour through everything that is new!
+
+
+### Landing Page {/* #landing-page */}
+
+Our [Landing Page](https://nanos-world.com/) got a complete redesign, and we added a brand new **Testimonials** section featuring what the community has to say about *nanos world!*
+
+![](/img/blog/2026-july/website-landing.webp)
+
+![](/img/blog/2026-july/website-testimonials.webp)
+
+<MediaLegend>New Landing Page and Testimonials section</MediaLegend>
+
+:::tip
+
+Do you have something nice to say about *nanos world?* Feel free to [submit your own Testimonial](https://tally.so/r/zxOM9R), we would love to feature it! 💙
+
+:::
+
+
+### Store {/* #store */}
+
+The new [Store Home](https://nanos-world.com/store) now features popular **Teams** and **Resources**, and the new [Store Browse](https://nanos-world.com/store/browse/all) makes it much easier to search through all resources:
+
+<MediaGallery>
+
+![](/img/blog/2026-july/store-home.webp)
+
+![](/img/blog/2026-july/store-browse.webp)
+
+</MediaGallery>
+
+<MediaLegend>New Store Home and Store Browse</MediaLegend>
+
+And of course, the [Resource Pages](https://nanos-world.com/store/packages/sandbox) themselves were fully reworked:
+
+<MediaGallery>
+
+![](/img/blog/2026-july/store-details.webp)
+
+![](/img/blog/2026-july/store-details-reviews.webp)
+
+</MediaGallery>
+
+<MediaLegend>New Resource Details Page</MediaLegend>
+
+![](/img/blog/2026-july/resource-manage.webp)
+
+<MediaLegend>New Resource Manage Page</MediaLegend>
+
+
+### Community {/* #community */}
+
+This is the biggest addition: an entirely new [Community](https://nanos-world.com/community/teams) area, where you can browse all **Users**, **Teams** and **Badges**!
+
+![](/img/blog/2026-july/community.webp)
+
+<MediaLegend>New Community Page</MediaLegend>
+
+Every user and every team now has its own public profile. [**User Profiles**](https://nanos-world.com/community/users/2a94d978-44f6-43e4-96a0-b0fba2b4a91f) show the resources they created, the teams they are part of and the badges they earned, and [**Team Profiles**](https://nanos-world.com/community/teams/8692a5dd-a0e4-4682-9ed6-75e1a2a13ed3) do the same for the whole team:
+
+<MediaGallery>
+
+![](/img/blog/2026-july/community-profile.webp)
+
+![](/img/blog/2026-july/community-team.webp)
+
+</MediaGallery>
+
+<MediaLegend>New User Profile and Team Profile pages</MediaLegend>
+
+
+### Badges {/* #badges */}
+
+![](/img/blog/2026-july/badges.webp)
+
+<MediaLegend>New Badges Page</MediaLegend>
+
+We are constantly adding new badges, and started implementing some automated ones, like the [**Reviewer**](https://nanos-world.com/community/badges/c82ac590-d80e-42ef-a2d1-f4623829ae5a) badge, which are automatically granted to every user that reviews a resource on the Store. Also the [**Alpha Tester**](https://nanos-world.com/community/badges/e8fca5f6-69b0-4345-a66c-ab4a87a2617c) is now automatically granted to every user that got tester access!
+
+We are gradually implementing more automated badges!
+
+:::tip
+
+We also have the [**☕ Ko-fi Supporter**](https://nanos-world.com/community/badges/0cc5822f-8010-447f-b4b3-2b40376da0ca) badge, which is granted to everyone that supports development through [Ko-fi](https://ko-fi.com/gtnardy). This is still a manual process, so if you are a supporter and don't have the badge yet, please let us know!
+
+:::
+
+
+### Account Manage {/* #account-manage */}
+
+Finally, the new [Account Manage](https://nanos-world.com/account/profile) area is where you edit your account and manage all your resources!
+
+![](/img/blog/2026-july/account-manage.webp)
+
+<MediaLegend>New Account Manage</MediaLegend>
+
+And much more! Go ahead to your [Profile](https://nanos-world.com/account/profile) and add a Biography! Check it out and let us know what you think! 💙
+
+
+## Vault Resource Dashboard {/* #vault-resource-dashboard */}
+
+Like in the new website, we also added a new **Dashboard** tab to the **Vault Resource Manage** screen, which displays a checklist for completing your resource profile.
+
+![](/img/blog/2026-july/vault-dashboard.webp)
+
+<MediaLegend>Dashboard tab in a Vault Resource Manage</MediaLegend>
+
+You will only be able to **publish** your resource after completing the whole checklist. The idea is to make sure every published resource has a proper description, images, tags and everything else players need to decide if they want to download it.
+
+We also improved the **Tags** tab visualization, and fixed several visual issues with the Vault resource items in the Main Menu (stars and buttons appearing in the wrong screens).
+
+
+## Scripting Improvements {/* #scripting-improvements */}
+
+July was a heavy month on the scripting side, with a big rework on how Entities finish spawning and a lot of new Vehicle features!
+
+
+### New Spawn Modes {/* #new-spawn-modes */}
+
+We introduced a new enum <Enums>SpawnMode</Enums>, which **replaces the old `defer_spawn` boolean parameter** present in all Entity constructors.
+
+Instead of just "defer it or not", you can now choose exactly *when* an Entity finishes spawning and is sent to clients:
+
+- `SpawnMode.Immediate` - finishes spawning right away when calling the constructor (default, the behavior you already know).
+- `SpawnMode.AfterConstructor` - keeps the spawn deferred, and an **Inherited Class** finishes it automatically when its Constructor returns.
+- `SpawnMode.Manual` - keeps the spawn deferred until you call <MethodReference type="Class" class_name="Entity" method_name="FinishSpawn" /> yourself.
+
+```lua title="Server/Index.lua" showLineNumbers
+-- Spawns it deferred, so we can configure everything before sending it to clients
+local prop = Prop(
+	Vector(0, 0, 100),
+	Rotator(),
+	"nanos-world::SM_Cube",
+	CollisionType.Normal,
+	true,
+	GrabMode.Auto,
+	CCDMode.Auto,
+	SpawnMode.Manual
+)
+
+prop:SetScale(Vector(2, 2, 2))
+prop:SetValue("Health", 100, true)
+
+-- Only now the Prop is sent to all clients, already fully configured
+prop:FinishSpawn()
+```
+
+The `AfterConstructor` mode is what makes this really shine with [Inherited Classes](/docs/next/core-concepts/scripting/inheriting-classes). Everything you configure after calling `self.Super:Constructor()` is batched together and sent to the clients in one go, without you having to remember to call `FinishSpawn()`:
+
+```lua title="Server/Index.lua" showLineNumbers
+MyCube = Prop.Inherit("MyCube")
+
+function MyCube:Constructor(location, rotation)
+	self.Super:Constructor(location, rotation, "nanos-world::SM_Cube", CollisionType.Normal, true, GrabMode.Auto, CCDMode.Auto, SpawnMode.AfterConstructor)
+
+	-- All of this is sent to clients in a single batch,
+	-- FinishSpawn() is called automatically when this Constructor returns
+	self:SetScale(Vector(2, 2, 2))
+	self:SetMaterialColorParameter("Tint", Color.RED)
+	self:SetValue("Health", 100, true)
+end
+```
+
+We also added two new methods to override and query that behavior at runtime:
+
+- <MethodReference type="Class" class_name="Entity" method_name="SetSpawnMode" show_class_name />
+- <MethodReference type="Class" class_name="Entity" method_name="IsSpawned" show_class_name />
+
+:::warning note
+
+This is a **potential breaking change**: <MethodReference type="Class" class_name="Entity" method_name="FinishSpawn" /> now effectively finishes and triggers the `Spawn` event even from inside an Inherited Class constructor, and the server `Spawn` event is now triggered **after** sending the `Spawn` event to the clients.
+
+If your code was relying on the old ordering, please double check it and let us know if you find any issue!
+
+:::
+
+
+### Vehicle Improvements {/* #vehicle-improvements */}
+
+<Classes.Vehicle /> got a lot of love this month!
+
+
+#### Engine Events & State {/* #engine-events--state */}
+
+We added new <EventReference type="Class" class_name="Vehicle" event="EngineStart" /> and <EventReference type="Class" class_name="Vehicle" event="EngineStop" /> events, plus a new <MethodReference type="Class" class_name="Vehicle" method_name="IsEngineStarted" show_class_name /> method, so you can finally react to the engine turning on and off:
+
+```lua title="Server/Index.lua" showLineNumbers
+VehicleWheeled.Subscribe("EngineStart", function(vehicle)
+	Chat.BroadcastMessage("Vroom!")
+end)
+```
+
+
+#### Headlights & Taillights {/* #headlights--taillights */}
+
+<Classes.VehicleWheeled /> now has proper light control with the new methods <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetHeadlightsEnabled" show_class_name /> and <MethodReference type="Class" class_name="VehicleWheeled" method_name="SetTaillightsEnabled" show_class_name />.
+
+We also fixed the Headlights **color** not being applied to the Vehicle material.
+
+
+#### Animation Blueprints {/* #animation-blueprints */}
+
+Vehicles now support the whole **Animation Blueprint** API that <Classes.CharacterSimple /> already had, letting you drive your vehicle's Animation Blueprint directly from Lua:
+
+- <MethodReference type="Class" class_name="Vehicle" method_name="SetAnimationBlueprintPropertyValue" show_class_name />
+- <MethodReference type="Class" class_name="Vehicle" method_name="GetAnimationBlueprintPropertyValue" show_class_name />
+- <MethodReference type="Class" class_name="Vehicle" method_name="CallAnimationBlueprintEvent" show_class_name />
+- <MethodReference type="Class" class_name="Vehicle" method_name="BindAnimationBlueprintEventDispatcher" show_class_name />
+- <MethodReference type="Class" class_name="Vehicle" method_name="UnbindAnimationBlueprintEventDispatcher" show_class_name />
+
+This is great for animating doors, suspensions, rotors, cranes or any other moving part of your custom vehicles!
+
+
+#### Camera {/* #camera */}
+
+We added a new method <MethodReference type="Class" class_name="Vehicle" method_name="SetCameraArmLength" show_class_name /> to control how far the camera sits from the vehicle, and moved <MethodReference type="Class" class_name="Vehicle" method_name="SetCameraOffset" show_class_name /> to the **Base Vehicle**, so it's now available for **all** vehicle types.
+
+We also fixed <MethodReference type="Class" class_name="Vehicle" method_name="PlayAnimation" show_class_name /> having the wrong parameter order, and `VehicleWheeled:FinishSpawn()` wrongly allowing to be called multiple times.
+
+
+### CharacterSimple Crouching {/* #charactersimple-crouching */}
+
+<Classes.CharacterSimple /> now has **full crouching support and sync**, with the new methods <MethodReference type="Class" class_name="CharacterSimple" method_name="SetCrouching" show_class_name /> and <MethodReference type="Class" class_name="CharacterSimple" method_name="IsCrouching" show_class_name />.
+
+Along with that, <MethodReference type="Class" class_name="Pawn" method_name="GetCanCrouch" show_class_name /> and <MethodReference type="Class" class_name="Pawn" method_name="GetCanJump" show_class_name /> were moved to the **Base Pawn**, being now shared between <Classes.Character /> and <Classes.CharacterSimple />.
+
+We also fixed Character crouching not syncing correctly for other players.
+
+
+### Network Authority Event {/* #network-authority-event */}
+
+We added a new <EventReference type="Class" class_name="Actor" event="NetworkAuthorityChange" /> event, triggered whenever the **Network Authority** of an Actor changes.
+
+This makes it much easier to know when your client became (or stopped being) the authority over an entity, without having to poll `HasNetworkAuthority()` every tick.
+
+
+### New Actor Getters {/* #new-actor-getters */}
+
+Two new client-side methods were added to <Classes.Actor />:
+
+- <MethodReference type="Class" class_name="Actor" method_name="GetMass" show_class_name />
+- <MethodReference type="Class" class_name="Actor" method_name="GetAngularVelocity" show_class_name />
+
+
+### Inherited Entities on Getters {/* #inherited-entities-on-getters */}
+
+Now <MethodReference type="Class" class_name="Entity" static_method_name="GetAll" />, <MethodReference type="Class" class_name="Entity" static_method_name="GetPairs" /> and <MethodReference type="Class" class_name="Entity" static_method_name="GetByIndex" /> return **all the inherited entities** as well.
+
+So if you have `MyCubeChild = MyCube.Inherit("MyCubeChild")`, calling `MyCube.GetAll()` will now also return all your `MyCubeChild` instances, which is what you'd naturally expect from inheritance.
+
+
+### Recursive Attached Entities {/* #recursive-attached-entities */}
+
+<MethodReference type="Class" class_name="Actor" method_name="GetAttachedEntities" show_class_name /> received a new `recursively` parameter, to also return the Actors attached to the attached Actors, all the way down the hierarchy.
+
+
+### Input Binding State {/* #input-binding-state */}
+
+We added a new method <MethodReference type="StaticClass" class_name="Input" method_name="IsBindingDown" show_class_name />, which returns whether a **Binding** is currently being held.
+
+Different from `Input.IsKeyDown()`, this works with the binding name your players configured, so it respects custom keybindings automatically:
+
+```lua title="Client/Index.lua" showLineNumbers
+Client.Subscribe("Tick", function()
+	if (Input.IsBindingDown("Sprint")) then
+		-- Do something while sprinting
+	end
+end)
+```
+
+
+### Vector2D Helpers {/* #vector2d-helpers */}
+
+The <Structs.Vector2D /> struct was missing most of the helpers <Structs.Vector /> already had, so we added them all:
+
+- <MethodReference type="Struct" class_name="Vector2D" method_name="Distance" show_class_name />
+- <MethodReference type="Struct" class_name="Vector2D" method_name="DistanceSquared" show_class_name />
+- <MethodReference type="Struct" class_name="Vector2D" method_name="IsNear" show_class_name />
+- <MethodReference type="Struct" class_name="Vector2D" method_name="Size" show_class_name />
+- <MethodReference type="Struct" class_name="Vector2D" method_name="SizeSquared" show_class_name />
+- <MethodReference type="Struct" class_name="Vector2D" method_name="Dot" show_class_name />
+- <MethodReference type="Struct" class_name="Vector2D" method_name="Cross" show_class_name />
+- <MethodReference type="Struct" class_name="Vector2D" method_name="Lerp" show_class_name />
+
+Thanks [PR](https://github.com/nanos-world/native-lua-library/pull/37) from **@Ekali**!
+
+
+### Curve Float Blueprint Parameter {/* #curve-float-blueprint-parameter */}
+
+<Classes.Blueprint /> now supports **`CurveFloat`** as a parameter type, so you can build a curve directly from a Lua table and pass it to your Blueprint:
+
+```lua showLineNumbers
+{
+	[0.0] = 0.0,
+	[0.25] = 0.8,
+	[0.5] = 1.0,
+	[0.75] = 0.3,
+	[1.0] = 0.0,
+}
+```
+
+<ReferenceLink href="scripting-reference/classes/blueprint#ucurvefloat">Blueprint Supported Parameters</ReferenceLink>
+
+
+### Coroutines & Callbacks Fixes {/* #coroutines--callbacks-fixes */}
+
+We fixed **most** of the scripting errors related to `couldn't find env from callbacks`, as well as several crashes when using **coroutines**.
+
+If you still run into any of those, please let us know so we can track down the remaining cases!
+
+
+### Other Fixes {/* #other-fixes */}
+
+We also fixed:
+
+- <MethodReference type="Class" class_name="Weapon" method_name="PlayAnimation" show_class_name /> and <MethodReference type="Class" class_name="Weapon" method_name="StopAnimation" show_class_name /> with missing and incorrectly ordered parameters.
+- <EventReference type="Class" class_name="CharacterSimple" event="MovementModeChange" /> event not passing the new movement mode.
+- <MethodReference type="Class" class_name="Pawn" method_name="SetMeshSettings" show_class_name /> `visible` wrong default parameter.
+- <MethodReference type="Class" class_name="Actor" method_name="IsInWater" /> not syncing/returning correctly for Characters.
+- <Classes.CharacterSimple /> not updating the camera Z location when being re-scaled.
+
+
+## Server Improvements {/* #server-improvements */}
+
+### Player List on the built-in HTTP Server {/* #player-list-on-the-built-in-http-server */}
+
+The built-in server HTTP `GET /` endpoint now also returns the **player list** (name + network id), on top of the server info it already returned.
+
+This endpoint is now **cached internally** for performance, and we fixed it not allowing to be fetched due to CORS, so you can now query it directly from a website or panel.
+
+
+### Steam Authentication {/* #steam-authentication */}
+
+We improved our **Auth system** when connecting to a server to prevent issues from Steam rate-limiting: now tickets are only generated when your queue position reaches zero, instead of upfront for everyone waiting.
+
+We also improved several Steam authentication timing issues, and now a much better log will display the actual error reason if Steam fails to initialize.
+
+
+### Gameplay Abilities Plugin {/* #gameplay-abilities-plugin */}
+
+We enabled the **GameplayAbilities** Plugin, so you can now use it in your custom Assets!
+
+<ReferenceLink href="assets-modding/whitelisted-ue-plugins">Whitelisted UE Plugins</ReferenceLink>
+
+
+## Docs {/* #docs */}
+
+We spent a good chunk of July reworking how the **Scripting Reference** is presented!
+
+
+### Scripting Reference Rework {/* #scripting-reference-rework */}
+
+- **Functions** and **Events** are now listed in the **sidebar Table of Contents**, with their authority and native icons, so you can jump straight to the method you are looking for.
+- Improved the **function declaration** visualization, with a separated **Returns** table and better default values rendering when the default is a Lua table.
+- Class **Admonitions** and the **Base Class** indicator are now displayed as compact **chips**.
+- Base Class pages now show `<AnyBASEClass>` instead of the base class name, making it clearer that those methods are shared.
+- Improved table layouts and wrapping, added Events/Constructors table headers, and fixed several anchor links (including Enums headings).
+
+<MediaGallery>
+
+![](/img/blog/2026-july/docs-chips.webp)
+
+![](/img/blog/2026-july/docs-toc.webp)
+
+</MediaGallery>
+
+<MediaLegend>New Class chips and the reworked sidebar Table of Contents</MediaLegend>
+
+:::note
+
+We also renamed some Class page URLs to remove the `-` separator, e.g. `scripting-reference/classes/character-simple` is now `scripting-reference/classes/charactersimple`.
+
+If you have any old links bookmarked or referenced in your own docs, make sure to update them!
+
+:::
+
+
+### Detailed Server Configuration {/* #detailed-server-configuration */}
+
+The [Server Configuration](/docs/next/core-concepts/server-manual/server-configuration) page got a huge rewrite!
+
+Every setting is now grouped by its `Config.toml` section and documented with its **type**, **default value** and **accepted range**. On top of that, we added two entirely new sections explaining what actually happens under the hood:
+
+- **Compression** - which data gets compressed, when, and which file extensions are skipped.
+- **Distance Optimization** - the exact relevancy formula, plus tables showing the relevancy percentage and the cut-off distance for every level.
+
+If you host a server, this is definitely worth a read to squeeze the most out of your bandwidth and CPU!
+
+
+## Conclusion {/* #conclusion */}
+
+This month we put a big effort into improving the **web experience**, finally bringing the Store, the Community and your Account together in a design we're really proud of!
+
+We wanted to make sure every creator has a proper place to showcase their work, and that the community can easily find and connect with each other. This aims with our biggest goal of creating not only a platform, but also a central **community** where everyone can share their creations and help each other grow.
+
+On the game/scripting side, we worked hard on fixing, improving and adding some missing needed features. Properly regularizing the Spawn Modes, adding Vehicles all the Skeletal Mesh missing methods, implementing native Crouching sync, and not to mention to the scripting itself fixes (such as the long-standing co-routines or environment issues).
+
+I hope you enjoy all the new features and improvements! I'm always looking for feedback, so if you have any suggestions or ideas, please let us know in our [Discord](https://discord.gg/nanos-world) or [Feedback Hub](https://feedback.nanos-world.com/).
+
+A special thanks also goes to everyone contributing translations through [Crowdin](https://crowdin.com/project/nanos-world-game), helping make the game and the docs more accessible to players around the world, and to those supporting development through [Ko-fi](https://ko-fi.com/gtnardy)!
+
+Your support is what allows me to continue working on nanos world full-time and keep pushing the project forward. 💙
+
+See you in the next update! 🚀
+
+<KofiButton />
