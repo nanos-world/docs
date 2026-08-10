@@ -153,6 +153,16 @@ GameModes can define Custom Settings in the `[custom_settings]` section to be se
 
 The values defined can be accessed through the method <MethodReference type="StaticClass" class_name="Server" method_name="GetCustomSettings" show_class_name />.
 
+Each setting is declared as `key = { ... }`, where the table describes how it should be displayed and validated in the New Game screen:
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| **`label`** | `string` | Friendly name displayed for this setting |
+| **`type`** | `string` | One of the [types](#list-of-types) below |
+| **`description`** | `string` | Help text displayed alongside the setting |
+| **`default`** | `boolean`\|`integer`\|`floating`\|`string` | Default value, must match the setting `type` |
+| **`options`** | `string[]` | Only used by the `select` type: the list of values shown in the dropdown |
+
 #### List of Types {/* #list-of-types */}
 
 | Type | Description |
@@ -162,6 +172,31 @@ The values defined can be accessed through the method <MethodReference type="Sta
 | `floating` | Floating numeric values |
 | `select` | List of string values displayed as a Dropdown |
 | `text` | Text Box |
+
+#### Usage Example {/* #custom-settings-usage-example */}
+
+```toml
+[custom_settings]
+	max_props = { label = "Max Props", type = "integer", description = "maximum amount of props players can spawn", default = 1000 }
+	enable_pvp = { label = "Enable PVP", type = "boolean", description = "whether to enable PVP or not", default = true }
+	welcome_message = { label = "Welcome Message", type = "text", description = "message shown to players when they join", default = "have fun!" }
+	game_mode = { label = "Game Mode", type = "select", description = "which ruleset to use", default = "Classic", options = [ "Classic", "Hardcore", "Free for All" ] }
+```
+
+These are then exposed to every Package through <MethodReference type="StaticClass" class_name="Server" method_name="GetCustomSettings" show_class_name />, which returns a table keyed by the setting name and its raw value:
+
+```lua
+local settings = Server.GetCustomSettings()
+
+Console.Log(settings.max_props) -- 1000
+Console.Log(settings.game_mode) -- "Classic"
+```
+
+They can also be overridden without touching `Package.toml`, either when creating a new game through the main menu, or by passing them directly on the command line, which takes precedence over both the New Game screen and `Package.toml` defaults:
+
+```toml
+--custom_settings "max_props = 500, enable_pvp = false, game_mode = 'Hardcore'"
+```
 
 
 ### Custom Data {/* #custom-data */}
