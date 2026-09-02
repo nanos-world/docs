@@ -9,7 +9,7 @@ export const GetExternalPath = () => {
 }
 
 // External Video from Github (with lazy load)
-export const VideoExternal = ({ path, noplay, controls = true, className, style }) => {
+export const VideoExternal = ({ path, autoplay = false, loop = false, controls = true, className, style }) => {
 	const videoRef = useRef(null);
 	const [isVisible, setIsVisible] = useState(false);
 	const src = `${ GetExternalPath() }/videos${ path }`;
@@ -47,22 +47,22 @@ export const VideoExternal = ({ path, noplay, controls = true, className, style 
 		if (isVisible && videoRef.current) {
 			// Set the source and load the video
 			videoRef.current.src = src;
-			videoRef.current.play();
+			// videoRef.current.play(); // do not autoplay
 		}
 	}, [isVisible, src]);
 
 	return (
 		<video
 			ref={videoRef}
-			loop={!noplay}
-			autoPlay={!noplay}
-			muted={!noplay}
+			loop={loop}
+			autoPlay={autoplay}
+			muted={autoplay}
 			className={className}
 			style={style}
 			controls={controls}
 			allowFullScreen={true}
 			playsInline
-			preload="none"
+			preload="metadata" // preload the cover image only
 		>
 			Your browser does not support the video tag.
 		</video>

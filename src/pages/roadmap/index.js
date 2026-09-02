@@ -71,7 +71,7 @@ const Roadmap = () => {
 				setItem({ title, image, video, description, labels, external_link, external_link_title });
 			}}>
 			{ image ? <ImageExternal path={image} /> : null }
-			{ video ? <VideoExternal controls={false} path={video} noplay={false} /> : null }
+			{ video ? <VideoExternal controls={false} path={video} autoplay={true} loop={true} /> : null }
 			<div className={clsx("item-content", styles["item-content"])}>
 				<span className={clsx("item-title", styles["item-title"])}>{ title }</span>
 				<div className={clsx("item-labels", styles["item-labels"])}>
@@ -103,7 +103,7 @@ const Roadmap = () => {
 				} }></button>
 				<div className={clsx("popup-content", styles["popup-content"])}>
 					{ item.image ? <ImageExternal className={clsx("popup-image", styles["popup-image"])} path={item.image} /> : null }
-					{ item.video ? <VideoExternal controls={false} path={item.video} noplay={false} className={clsx("popup-image", styles["popup-image"])} /> : null }
+					{ item.video ? <VideoExternal controls={false} path={item.video} autoplay={true} loop={true} className={clsx("popup-image", styles["popup-image"])} /> : null }
 					<span className={clsx("popup-image-label", styles["popup-image-label"])}>this { item.video ? "video" : "image" } for illustration purposes only</span>
 					<span id="popup-title" className={clsx("popup-title", styles["popup-title"])}>{ item.title }</span>
 					<span id="popup-description" className={clsx("popup-description", styles["popup-description"])}>
