@@ -82,7 +82,7 @@ export default function TOCWrapper(props) {
 		// If it's a valid section AND the data exists in the JSON, loop through it
 		if (sectionInfo && apiData[sectionInfo.dataKey]) {
 
-			apiData[sectionInfo.dataKey].forEach(entry => {
+			Object.values(apiData[sectionInfo.dataKey]).forEach(entry => {
 				let imageSrc;
 
 				if (entry.authority)

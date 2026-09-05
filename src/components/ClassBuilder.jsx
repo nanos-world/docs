@@ -361,16 +361,16 @@ export function GetEfficiency(efficiency) {
 };
 
 export function GetRelations(relations) {
-	const functions = relations.functions ? relations.functions.map(function(value, index) {
+	const functions = relations.functions ? Object.entries(relations.functions).map(([index, value]) => {
 			return <Link key={ `${value.name}-${index}` } to={`#function-${value.toLowerCase()}`}>{value}</Link>;
 		}) : [];
-	const static_functions = relations.static_functions ? relations.static_functions.map(function(value, index) {
+	const static_functions = relations.static_functions ? Object.entries(relations.static_functions).map(([index, value]) => {
 			return <Link key={ `${value.name}-${index}` } to={`#static-function-${value.toLowerCase()}`}>{value}</Link>;
 		}) : [];
-	const events = relations.events ? relations.events.map(function(value, index) {
+	const events = relations.events ? Object.entries(relations.events).map(([index, value]) => {
 			return <Link key={ `${value.name}-${index}` } to={`#event-${value.toLowerCase()}`}>{value}</Link>;
 		}) : [];
-	const etc = relations.etc ? relations.etc.map(function(value, index) {
+	const etc = relations.etc ? Object.entries(relations.etc).map(([index, value]) => {
 			return <Link key={ `${value.name}-${index}` } to={`${value.url}`}>{value.label}</Link>;
 		}) : [];
 	return [...functions, ...static_functions, ...events, ...etc].reduce((prev, next) => [prev, ", ", next]);
@@ -602,7 +602,7 @@ export const StaticFunctionListDeclaration = ({ class_name, functions_list, base
 				</tr>
 			</thead>
 			<tbody>
-				{functions_list.map(function(value, index) {
+				{Object.entries(functions_list).map(([index, value]) => {
 					return <tr key={ `${value.name}-${index}` }>
 						<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 						<td>{ value.return ? GetReturnList(value.return) : "" }</td>
@@ -628,7 +628,7 @@ export const FunctionListDeclaration = ({ class_name, functions_list, base_class
 				</tr>
 			</thead>
 			<tbody>
-				{functions_list.map(function(value, index) {
+				{Object.entries(functions_list).map(([index, value]) => {
 					return <tr key={ `${value.name}-${index}` }>
 						<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 						<td>{ value.return ? GetReturnList(value.return) : "" }</td>
@@ -655,7 +655,7 @@ export const EventListDeclaration = ({ type, name, inherited_class_name, base_cl
 					</tr>
 				</thead>
 				<tbody>
-					{class_data.events.map(function(value, index) {
+					{Object.entries(class_data.events).map(([index, value]) => {
 						return <tr key={ `${value.name}-${index}` }>
 							<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 							<td><EventNameDeclaration class_name={ inherited_class_name } base_class={ base_class } event_data={ value } /></td>
@@ -719,7 +719,7 @@ export const ConstructorDeclaration = ({ type, name }) => {
 	if (!class_data)
 		return <span class="error">Failed to load constructor '{name}' ({type}) data.</span>;
 
-	return class_data.constructors.map((constructor, index) => {
+	return Object.entries(class_data.constructors).map(([index, constructor]) => {
 		const id = `constructor-${constructor.name.toLowerCase().replaceAll(' ', '-')}`;
 		const hash_link = `Direct Link to ${constructor.name}`;
 		return <>
@@ -821,10 +821,11 @@ export const FunctionsDeclaration = ({ type, name }) => {
 				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Pawn"} /> : "" }
 		</> : "" }
 		{
-			class_data.functions == null || class_data.functions.length == 0 ? <p class="subtle-description">This class doesn't have own functions.</p> :
+			class_data.functions == null || Object.keys(class_data.functions).length == 0 ? <p class="subtle-description">This class doesn't have own functions.</p> :
 			<>
 				<FunctionListDeclaration class_name={class_data.name} functions_list={class_data.functions} />
-				{ class_data.functions.map((value, index) => <FunctionDeclaration key={ `${value.name}-${index}` } function_data={value} class_name={class_data.name} />) }
+
+				{ Object.entries(class_data.functions).map(([index, value]) => <FunctionDeclaration key={ `${value.name}-${index}` } function_data={value} class_name={class_data.name} />) }
 			</>
 		}
 	</>);
@@ -848,7 +849,7 @@ export const StaticFunctionsDeclaration = ({ type, name }) => {
 			class_data.static_functions == null || class_data.static_functions.length == 0 ? <p class="subtle-description">This class doesn't have own static functions.</p> :
 			<>
 				<StaticFunctionListDeclaration class_name={class_data.name} functions_list={class_data.static_functions} />
-				{ class_data.static_functions.map((value, index) => <FunctionDeclaration key={ `${value.name}-${index}` } function_data={value} is_static class_name={class_data.name} />) }
+				{ Object.entries(class_data.static_functions).map(([index, value]) => <FunctionDeclaration key={ `${value.name}-${index}` } function_data={value} is_static class_name={class_data.name} />) }
 			</>
 		}
 	</>);
@@ -862,13 +863,13 @@ export const ExamplesDeclaration = ({ type, name }) => {
 		return <span class="error">Failed to load class '{name}' ({type}) data.</span>;
 
 	return <>
-		{ class_data.static_functions && class_data.static_functions.map((value) =>
+		{ class_data.static_functions && Object.entries(class_data.static_functions).map(([index, value]) =>
 			value.examples && value.examples.map((example) => GetGenericExample(example, `${ name }.${ value.name }`))
 		)}
-		{ class_data.functions && class_data.functions.map((value) =>
+		{ class_data.functions && Object.entries(class_data.functions).map(([index, value]) =>
 			value.examples && value.examples.map((example) => GetGenericExample(example, `${ name }.${ value.name }`))
 		)}
-		{ class_data.events && class_data.events.map((value) =>
+		{ class_data.events && Object.entries(class_data.events).map(([index, value]) =>
 			value.examples && value.examples.map((example) => GetEventExample(name, value, example, `${ name } "${ value.name }" Event`))
 		)}
 	</>;
@@ -900,7 +901,7 @@ export const EventsDeclaration = ({ type, name }) => {
 			class_data.events == null || class_data.events.length == 0 ? <p class="subtle-description">This class doesn't have own events.</p> :
 			<>
 				<EventListDeclaration type={type} name={class_data.name} inherited_class_name={class_data.name} />
-				{ class_data.events.map((value, index) => <EventDeclaration key={ `${value.name}-${index}` } event_data={value} class_name={class_data.name} />) }
+				{ Object.entries(class_data.events).map(([index, value]) => <EventDeclaration key={ `${value.name}-${index}` } event_data={value} class_name={class_data.name} />) }
 			</>
 		}
 	</>);
@@ -926,7 +927,7 @@ export const PropertiesDeclaration = ({ type, name }) => {
 						</tr>
 					</thead>
 					<tbody>
-						{class_data.properties.map(function(value, index) {
+						{Object.entries(class_data.properties).map(([index, value]) => {
 							return <tr key={ `${value.name}-${index}` }>
 								<td>{ GetElementByType(value.type) }</td>
 								<td><b><code>{ value.name }</code></b></td>
@@ -959,7 +960,7 @@ export const StaticPropertiesDeclaration = ({ type, name }) => {
 						</tr>
 					</thead>
 					<tbody>
-						{class_data.static_properties.map((property, index) => (
+						{Object.entries(class_data.static_properties).map(([index, property]) => (
 							<tr key={`${property.name}-${index}`}>
 								<td><code>{property.value}</code></td>
 								<td>
@@ -1002,7 +1003,7 @@ export const MethodReference = ({ type, class_name, method_name = null, static_m
 	const is_method_static = is_static || static_method_name !== null;
 	const use_method_name = method_name || static_method_name;
 
-	const function_data = (is_method_static ? class_data.static_functions : class_data.functions).find(({ name }) => name === use_method_name);
+	const function_data = Object.values(is_method_static ? class_data.static_functions : class_data.functions).find(({ name }) => name === use_method_name);
 
 	if (!function_data)
 		return "Failed to load function data.";
@@ -1023,7 +1024,7 @@ export const EventReference = ({ type, class_name, event, show_class_name = fals
 	if (!class_data)
 		return <span class="error">Failed to load event '{event}' ({class_name}) data.</span>;
 
-	const event_data = class_data.events.find(({ name }) => name === event);
+	const event_data = Object.values(class_data.events).find(({ name }) => name === event);
 
 	if (!event_data)
 		return <span class="error">Failed to load event '{event}' ({class_name}) data.</span>;
