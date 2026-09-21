@@ -37,7 +37,7 @@ HUDCanvas:Subscribe("Update", function(self, width, height)
 
     -- Gets the Local Weapon
     local character_weapon = local_character:GetPicked()
-    if (character_weapon and character_weapon:IsA("Weapon")) then
+    if (character_weapon and character_weapon:IsA(Weapon)) then
         -- Draws the Ammo Clip
         self:DrawText(tostring(character_weapon:GetAmmoClip()), Vector2D(width - 200, height - 100), FontType.PoiretOne, 25, Color.WHITE)
 
@@ -54,7 +54,7 @@ The example above re-renders and updates all health/ammo information ever tick, 
 -- Instead of 0 in the auto_repaint_rate parameter
 HUDCanvas = Canvas(true, Color.TRANSPARENT, 0, true)
 
--- Use 0.033, so it only updates every 0.033ms (i.e. at 30 fps)
+-- Use 0.033, so it only updates every 0.033 seconds (i.e. about 30 times per second)
 -- highlight-next-line
 HUDCanvas = Canvas(true, Color.TRANSPARENT, 0.033, true)
 ```
@@ -81,7 +81,7 @@ HUDCanvas:Subscribe("Update", function(self, width, height)
 
     -- Gets the Local Weapon
     local character_weapon = local_character:GetPicked()
-    if (character_weapon and character_weapon:IsA("Weapon")) then
+    if (character_weapon and character_weapon:IsA(Weapon)) then
         -- Draws the Ammo Clip
         self:DrawText(tostring(character_weapon:GetAmmoClip()), Vector2D(width - 200, height - 100), FontType.PoiretOne, 25, Color.WHITE)
 
@@ -93,64 +93,81 @@ end)
 
 -- Now we subscribe for when we want it to be updated:
 
--- When LocalPlayer spawns, sets an event on it to trigger when we possesses a new character, to store the local controlled character locally. This event is only called once, see Package.Subscribe("Load") to load it when reloading a package
-Client.Subscribe("SpawnLocalPlayer", function(local_player)
-    local_player:Subscribe("Possess", function(player, character)
-        UpdateLocalCharacter(character)
-    end)
-end)
-
--- When package loads, verify if LocalPlayer already exists (eg. when reloading the package), then try to get and store it's controlled character
-Package.Subscribe("Load", function()
-    local local_player = Client.GetLocalPlayer()
-    if (local_player  ~= nil) then
-        UpdateLocalCharacter(local_player:GetControlledCharacter())
-    end
-end)
-
--- Function to set all needed events on local character (to update the UI when it takes damage or dies)
+-- Function to set all needed events on local character (to update the UI when its health or weapon changes)
 function UpdateLocalCharacter(character)
-    -- Verifies if character is not nil (eg. when GetControllerCharacter() doesn't return a character)
+    -- Verifies if character is not nil (eg. when GetControlledCharacter() doesn't return a character)
     if (character == nil) then return end
 
-    -- Sets on character an event to update the health's UI after it takes damage
-    character:Subscribe("TakeDamage", function(charac, damage, type, bone, from_direction, instigator, causer)
+    -- Updates the health UI whenever the health changes (damage, healing, respawn or scripting)
+    character:Subscribe("HealthChange", function(charac, old_health, new_health)
         HUDCanvas:Repaint()
     end)
 
-    -- Sets on character an event to update the health's UI after it dies
-    character:Subscribe("Death", function(charac)
-        HUDCanvas:Repaint()
-    end)
-
-    -- Sets on character an event to update his grabbing weapon (to show ammo on UI)
+    -- Updates the ammo UI when picking up a weapon
     character:Subscribe("PickUp", function(charac, object)
-        if (object:IsA("Weapon")) then
+        if (object:IsA(Weapon)) then
             HUDCanvas:Repaint()
         end
     end)
 
-    -- Sets on character an event to remove the ammo ui when he drops it's weapon
+    -- Removes the ammo UI when dropping the weapon
     character:Subscribe("Drop", function(charac, object)
         HUDCanvas:Repaint()
     end)
 
-    -- Sets on character an event to update the UI when he fires
+    -- Updates the ammo UI when firing
     character:Subscribe("Fire", function(charac, weapon)
         HUDCanvas:Repaint()
     end)
 
-    -- Sets on character an event to update the UI when he reloads the weapon
+    -- Updates the ammo UI when reloading
     character:Subscribe("Reload", function(charac, weapon, ammo_to_reload)
         HUDCanvas:Repaint()
     end)
 
-    -- Updates the UI immeditelly
+    -- Updates the UI immediately
     HUDCanvas:Repaint()
 end
 
+-- Unsubscribes from the old character events when we stop controlling it, so they don't pile up
+function ClearLocalCharacter(character)
+    if (character == nil or not character:IsValid()) then return end
+
+    character:Unsubscribe("HealthChange")
+    character:Unsubscribe("PickUp")
+    character:Unsubscribe("Drop")
+    character:Unsubscribe("Fire")
+    character:Unsubscribe("Reload")
+end
+
+-- When the LocalPlayer spawns, subscribes to know when it possesses a new Character. This event is only called once, see Package.Subscribe("Load") for when reloading the package
+Client.Subscribe("SpawnLocalPlayer", function(local_player)
+    local_player:Subscribe("Possess", function(player, character)
+        UpdateLocalCharacter(character)
+    end)
+
+    local_player:Subscribe("UnPossess", function(player, character)
+        ClearLocalCharacter(character)
+        HUDCanvas:Repaint()
+    end)
+end)
+
+-- When the package loads, verifies if the LocalPlayer already exists (eg. when reloading the package), then gets its controlled character
+Package.Subscribe("Load", function()
+    local local_player = Client.GetLocalPlayer()
+    if (local_player ~= nil) then
+        UpdateLocalCharacter(local_player:GetControlledCharacter())
+    end
+end)
+
 -- Updates the UI positions when the Viewport (screen) is resized
-Client.Subscribe("ViewportResized", function(NewSize)
+Viewport.Subscribe("Resize", function(new_size)
     HUDCanvas:Repaint()
 end)
 ```
+
+:::note
+
+`Unsubscribe` without a callback removes all callbacks of that event which **this Package** subscribed on the entity. If your Package subscribes to those events elsewhere too, keep the callbacks returned by `Subscribe` and pass them to `Unsubscribe` instead.
+
+:::

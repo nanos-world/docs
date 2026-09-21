@@ -50,7 +50,7 @@ There are different types of Packages, each type with a different ability, inclu
 
 :::tip
 
-Packages can be loaded/unloaded dynamically while the server is running with `package reload all`!
+Packages can be reloaded while the server is running with the console command `package reload my-package`, or loaded and unloaded through scripting with `Server.LoadPackage()` and `Server.UnloadPackage()`! Also, all packages and the whole Lua VM can be reloaded with the console command `package reload all`.
 
 :::
 
@@ -60,7 +60,7 @@ Packages can also have dependencies on other Packages and Asset Packs, which all
 
 :::tip
 
-If we want a Package to be loaded, we must define them in our Server's [Config.toml](/core-concepts/server-manual/server-configuration.mdx), we have a section for each package type (`game_mode`, `loading_screen`, `map` and `packages`), which we must list the Package names we want the server to load!
+If we want a Package to be loaded, we must define them in our Server's [Config.toml](/core-concepts/server-manual/server-configuration.mdx), under the `[game]` section there is a setting for each package type (`game_mode`, `loading_screen`, `map` and `packages`), on which we must list the Package names we want the server to load!
 
 :::
 
@@ -167,22 +167,32 @@ Console.Error("Error red messages! Will show the stack trace!")
 
 ### Classes {/* #classes */}
 
-Classes are entities that can be spawned, interacted with, and changed as you wish. An example spawning a <Classes.Light /> and <Classes.StaticMesh /> would be like this:
+Classes are entities that can be spawned, interacted with, and changed as you wish. An example spawning a <Classes.Light /> and <Classes.StaticMesh /> on the server (so they are automatically synchronized to all players) would be like this:
 
-```lua title="my-package/Shared/Index.lua" showLineNumbers
+```lua title="my-package/Server/Index.lua" showLineNumbers
 local my_light = Light(Vector(0, 100, 100), Rotator(), Color.RED)
 local my_static_mesh = StaticMesh(Vector(0, 0, 100), Rotator(), "nanos-world::SM_Cube_VR_01")
 ```
 
 Or even interact and change the existing ones the way we want, such as with an existing <Classes.Prop />:
 
-```lua title="my-package/Shared/Index.lua" showLineNumbers
+```lua title="my-package/Server/Index.lua" showLineNumbers
 local some_prop = Prop.GetByIndex(1)
-some_prop:SetMesh("nanos-world::SM_Pyramid_VR")
-some_prop:SetLocation(Vector(100, 100, 100))
 
-local prop_rotation = some_prop:GetRotation()
+-- GetByIndex returns nil if there is no Prop at that index
+if (some_prop) then
+	some_prop:SetMesh("nanos-world::SM_Pyramid_VR")
+	some_prop:SetLocation(Vector(100, 100, 100))
+
+	local prop_rotation = some_prop:GetRotation()
+end
 ```
+
+:::caution
+
+Code in `Shared/` runs on **both** server and every client. If you spawn an entity there, the server spawns one (synchronized to everyone) **and** each client spawns its own local copy. Spawn networked entities on `Server/` only.
+
+:::
 
 Read more about Classes in the Classes Guide:
 
@@ -314,8 +324,10 @@ local local_player = Client.GetLocalPlayer()
 if (local_player) then
 	local local_character = local_player:GetControlledCharacter()
 
-    -- Get my character's location
-    Console.Log("My character is at location %s", local_character:GetLocation())
+	-- The Player may not be possessing any Character at the moment
+	if (local_character) then
+		Console.Log("My character is at location %s", local_character:GetLocation())
+	end
 end
 ```
 
@@ -435,9 +447,26 @@ For more information refer to our Widget class page:
 
 Maps (or Levels in Unreal) are the entry point of the game, this is where the world is loaded and the entities are spawned in the client side.
 
-To configure a Map, we create a Package of type [map](/core-concepts/packages/packages-guide.mdx#map), this type is like `script`, but it's `Package.toml` has additional settings to configure the map, e.g. we have `map_asset = "my-asset-pack::MyLevel"` which we need to define which Map Asset this Package will load.
+To configure a Map, we create a Package of type [map](/core-concepts/packages/packages-guide.mdx#map). This type is like `script`, but its `Package.toml` has a `[map]` section with additional settings, such as `map_asset`, which defines which Map Asset this Package will load:
 
-We can configure which map the server will run in the `Config.toml`, under `map = "my-map-package"` setting.
+```toml title="Packages/my-map/Package.toml"
+[meta]
+    title =                 "My Map"
+    author =                "Me"
+    version =               "1.0.0"
+
+[map]
+    # the Map Asset to load, in the format [ASSET_PACK]::[ASSET_KEY]
+    map_asset =             "my-asset-pack::MyLevel"
+    # asset packs this map needs
+    assets_requirements =   [ "my-asset-pack" ]
+    # where players can spawn
+    spawn_points = [
+        { location = "Vector(0, 0, 100)", rotation = "Rotator(0, 0, 0)" },
+    ]
+```
+
+We can configure which map the server will run in the `Config.toml`, with the `map = "my-map"` setting under the `[game]` section.
 
 :::tip
 

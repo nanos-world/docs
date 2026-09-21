@@ -100,16 +100,16 @@ export const NetworkAuthorityDistributionLabels = {
 
 // Authority Label Map
 export const AuthorityLabels = {
-	client: <>This class can only be spawned on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#client-side">Client</LinkActiveVersion> side.</>,
-	server: <>This class can only be spawned on 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#server-side">Server</LinkActiveVersion> side.</>,
-	both: <>This class can be spawned on both 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#both-sides">Client</LinkActiveVersion> and 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#both-sides">Server</LinkActiveVersion> side.</>,
+	client: <>This class can only be spawned on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeclientonly-client-side">Client</LinkActiveVersion> side.</>,
+	server: <>This class can only be spawned on 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeserveronly-server-side">Server</LinkActiveVersion> side.</>,
+	both: <>This class can be spawned on both 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeboth-both-sides">Client</LinkActiveVersion> and 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeboth-both-sides">Server</LinkActiveVersion> side.</>,
 }
 
 // Authority Label Map for Static Classes
 export const AuthorityLabelsStatic = {
-	client: <>This static class can be accessed only on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#client-side">Client</LinkActiveVersion> side.</>,
-	server: <>This static class can be accessed only on 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#server-side">Server</LinkActiveVersion> side.</>,
-	both: <>This static class can be accessed on both 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#both-sides">Client</LinkActiveVersion> and 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#both-sides">Server</LinkActiveVersion> side.</>,
+	client: <>This static class can be accessed only on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeclientonly-client-side">Client</LinkActiveVersion> side.</>,
+	server: <>This static class can be accessed only on 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeserveronly-server-side">Server</LinkActiveVersion> side.</>,
+	both: <>This static class can be accessed on both 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeboth-both-sides">Client</LinkActiveVersion> and 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeboth-both-sides">Server</LinkActiveVersion> side.</>,
 }
 
 // Gets a Parameter name (with ? when optional)

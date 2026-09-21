@@ -1,6 +1,6 @@
 ---
 title: 🔪 Melee
-description: A Melee represents an Entity which can be Pickable by a Character and can be used to melee attack, Charactes can hold it with hands with pre-defined handling modes.
+description: A Melee represents an Entity which can be Pickable by a Character and can be used to melee attack, Characters can hold it with hands with pre-defined handling modes.
 sidebar_position: 0
 tags: [class]
 ---
@@ -10,7 +10,7 @@ tags: [class]
 
 ## 🎒 Examples {/* #examples */}
 
-```lua showLineNumbers
+```lua title="Server/Index.lua" showLineNumbers
 local crowbar = Melee(
   Vector(-900, 185, 215),
   Rotator(0, 90, 90),
@@ -33,14 +33,6 @@ crowbar:SetBaseDamage(40)
 
 <ConstructorDeclaration type="Class" name="Melee" />
 
-:::tip
-
-nanos world provides a special _Particle*_ called `nanos-world::P_Grenade_Special` which spawns different particles depending on the surface it explodes, and also if is underwater.
-
-**This "Particle" is just a special identifier which can only be used on Grenades!*
-
-:::
-
 
 ## 🗿 Static Functions {/* #static-functions */}
 
@@ -57,6 +49,4 @@ nanos world provides a special _Particle*_ called `nanos-world::P_Grenade_Specia
 <EventsDeclaration type="Class" name="Melee" />
 
 
-{/* ## WIP: HandlingModes */}
 
-{/* ODO: Add Handling Modes images */}

@@ -12,17 +12,19 @@ This sample code modifies a Weapon to make it shoot Props instead of normal bull
 <VideoExternal path="/docs/tutorials/prop-shooter.mp4" />
 
 
-```shell title="Terminal"
-# install the default-weapons package
-./NanosWorldServer.exe --cli install package default-weapons
+This snippet uses the `AR4` weapon from the **default-weapons** Package. Add it to the `packages_requirements` of your `Package.toml`, so it's loaded before your Package:
+
+```toml title="Package.toml"
+[script]
+    # ...
+    packages_requirements = [
+        "default-weapons",
+    ]
 ```
 
 ```lua title="Server/Index.lua" showLineNumbers
--- Loads the default-weapons (note: it's recommended to add it to your Package's packages_requirements instead)
-Server.LoadPackage("default-weapons")
-
--- Spawns a Weapon from default-weapons package
-local my_weap = AR4(Vector(-2250, 9153, 192), Rotator(0, 90, 90))
+-- Spawns a Weapon from default-weapons package, close to the map origin
+local my_weap = AR4(Vector(200, 0, 100), Rotator())
 my_weap:SetDamage(0)
 
 my_weap:Subscribe("Fire", function(weapon, shooter)
@@ -30,8 +32,12 @@ my_weap:Subscribe("Fire", function(weapon, shooter)
     local forward_vector = control_rotation:GetForwardVector()
     local spawn_location = shooter:GetLocation() + Vector(0, 0, 40) + forward_vector * Vector(200)
 
-    local prop = Prop(spawn_location, control_rotation, "nanos-world::SM_TeaPot_Interior", 1)
+    -- CollisionType.StaticOnly makes the teapots only collide with the world, so they don't hit the shooter
+    local prop = Prop(spawn_location, control_rotation, "nanos-world::SM_TeaPot_Interior", CollisionType.StaticOnly)
     prop:AddImpulse(forward_vector * Vector(10000), true)
+
+    -- Cleans it up after 10 seconds
+    prop:SetLifeSpan(10)
 end)
 ```
 

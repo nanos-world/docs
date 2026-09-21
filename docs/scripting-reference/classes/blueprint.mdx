@@ -90,9 +90,10 @@ List of all supported parameters which can be passed between Lua ↔ Blueprint:
 | <Classes.Vehicle /> | **`WheeledVehiclePawn`** | ✅ | ✅ |
 | <Classes.Grenade /> | **`StaticMeshActor`** | ✅ | ✅ |
 | <Classes.Melee /> | **`StaticMeshActor`** | ✅ | ✅ |
-| <Classes.Light /> | **`SpotLight`**, **`SpotLight`** or **`RectLight`** | ✅ | ✅ |
+| <Classes.Light /> | **`PointLight`**, **`SpotLight`** or **`RectLight`** | ✅ | ✅ |
 | <Classes.Decal /> | **`DecalActor`** | ✅ | ✅ |
-| <Classes.TextRender /> | **`WorldText3D`** | ✅ | ✅ |
+| <Classes.TextRender /> | **`TextRenderActor`** | ✅ | ✅ |
+| <Classes.Text3D /> | **`Text3DActor`** | ✅ | ✅ |
 | <Classes.Sound /> | **`AmbientSound`** | ✅ | ✅ |
 | <Classes.Canvas /> | **`MaterialInstanceDynamic`** | ✅ | ❌ |
 | <Classes.WebUI /> | **`MaterialInstanceDynamic`** | ✅ | ❌ |
@@ -103,7 +104,7 @@ List of all supported parameters which can be passed between Lua ↔ Blueprint:
 | <Classes.Player /> | **`PlayerController`** | ✅ | ❌ |
 | <AssetPath.Image /> | **`Texture2D`** | ✅ | ❌ |
 | <BasicType.String /> | **`Class`** | ✅ | ❌ |
-| [**`steam-avatar://`**](/docs/next/scripting-reference/glossary/basic-types#steam-avatar) | **`MaterialInstanceDynamic`** | ✅ | ❌ |
+| [**`steam-avatar://`**](/scripting-reference/glossary/basic-types.mdx#steam-avatar) | **`MaterialInstanceDynamic`** | ✅ | ❌ |
 | <BasicType.Table /> | [**`CurveFloat`**](#ucurvefloat) | ✅ | ❌ |
 | <BasicType.Table /> | [**`Transform`**](#ftransform) | ✅ | ✅ |
 | <BasicType.Table /> | [**`SlateBrush`**](#fslatebrush) | ✅ | ✅ |
@@ -159,7 +160,7 @@ Custom Structs can also be passed and retrieved, just pass an object with the sa
 {
 	["FontFamily"] = "package://my-package/Client/my_font.ttf", -- Special Path
 	["FontMaterial"] = "my-asset-pack::M_MyMaterial", -- Material Path
-	["OutlineSettings"] = {} -- FSlateBrushOutlineSettings
+	["OutlineSettings"] = {}, -- FSlateBrushOutlineSettings
 	["Typeface"] = "", -- string
 	["Size"] = 24,
 	["LetterSpacing"] = 0,

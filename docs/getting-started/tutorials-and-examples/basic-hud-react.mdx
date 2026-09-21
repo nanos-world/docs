@@ -23,53 +23,47 @@ This tutorial will not teach you how to use React. A basic knowledge of the fram
 
 :::
 
-In the folder of your choice, create a new React Application that will be used to create our UI. To do so, execute the following command in your terminal:
+In the folder of your choice, create a new React Application that will be used to create our UI. We will use [Vite](https://vite.dev/guide/), the recommended way to start a new React project. Execute the following commands in your terminal (it requires [Node.js](https://nodejs.org/) installed):
 
 ```shell title="Terminal"
-npx create-react-app basic-hud
-```
-
-Once finished, you should see the following message appears in your terminal:
-
-```shell title="Terminal"
-Success! Created basic-hud at F:\Nanos\Documentation\basic-hud
-Inside that directory, you can run several commands:
-
-npm start
-Starts the development server.
-
-npm run build
-Bundles the app into static files for production.
-
-npm test
-Starts the test runner.
-
-npm run eject
-Removes this tool and copies build dependencies, configuration files
-and scripts into the app directory. If you do this, you can’t go back!
-
-We suggest that you begin by typing:
-
+npm create vite@latest basic-hud -- --template react
 cd basic-hud
-npm start
-
-Happy hacking!
+npm install
 ```
 
 Your App folder should look like this:
 
-![](/img/docs/tutorials/react-01.webp)
+```folder-structure
+basic-hud/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── index.html
+├── package.json
+└── vite.config.js
+```
 
 ## Basic Configuration of your App {/* #basic-configuration-of-your-app */}
 
 Before starting to add some code, there's a few things to configure to be sure that your App will be compatible with nanos world:
 
-- ### Changing the homepage path of your app
+- ### Using relative paths in the build
 
-Once compiled your App may not work properly if you don't set the homepage path properly. To avoid any path related issue, edit your `package.json` file and add the following line:
+The WebUI loads your App from the package files (`file://`), so the build must reference its files with relative paths. Edit your `vite.config.js` and add the `base` option:
 
-```json title="./package.json"
-"homepage": "./"
+```js title="./vite.config.js" showLineNumbers
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+  // highlight-next-line
+  base: './',
+})
 ```
 
 - ### Adding the nanos world Events handling
@@ -100,33 +94,24 @@ Don't forget to import this file in your components that needs to Call/Subscribe
 
 - ### Clean unused files from the App
 
-A bunch of unused files is present into the App by default. For the sake of cleanliness, we'll remove them.
+A few example files are present in the App by default. For the sake of cleanliness, we'll remove them:
 
-- `./src/App.test.js`
-- `./src/logo.svg`
-- `./src/reportWebVitals.js`
-- `./src/setupTests.js`
-- `./public/favicon.ico`
-- `./public/logo192.png`
-- `./public/logo512.png`
-- `./public/manifest.json`
-- `./public/robots.txt`
+- `./src/assets/react.svg`
+- `./public/vite.svg`
+
+Also clear the contents of `./src/index.css`, as we will write our own styles in `App.css`.
 
 :::info
 
-Don't forget to remove the references of the deleted files and functions in your `./src/index.js` and `./src/App.js` files.
+Don't forget to remove the references to the deleted files in `./index.html` (the favicon link) and in `./src/App.jsx`.
 
 :::
 
-Once cleaned your App should be like this:
-
-![](/img/docs/tutorials/react-02.webp)
-
 ## Creating the UI {/* #creating-the-ui */}
 
-Now that our App is ready and compatible with nanos world, we are ready to add our code into it. Since this UI is very simple, we will use the default `App.js` components available in the `src` folder
+Now that our App is ready and compatible with nanos world, we are ready to add our code into it. Since this UI is very simple, we will use the default `App.jsx` component available in the `src` folder
 
-```js title="./basic-hud/src/App.js" showLineNumbers
+```jsx title="./src/App.jsx" showLineNumbers
 import './App.css';
 
 function App() {
@@ -158,7 +143,7 @@ If you noticed we are using an image `health.png`, you can download it here [htt
 
 :::tip
 
-When you're referencing stuff stored in the public folder you don't need to add the `public` in the path since we changed the homepage earlier in this tutorial. Once compiled, all the stuff stored in the public folder will be put in the root folder of your app.
+When you're referencing files stored in the `public` folder you don't need to add `public` to the path. Once built, everything in the `public` folder is copied to the root folder of your app.
 
 :::
 
@@ -225,12 +210,18 @@ To make sure that your App works, you can simply start the application and see t
 
 
 ```shell title="Terminal"
-npm start
+npm run dev
 ```
 
 :::info
 
-You can see the running App at the following address: `http://localhost:3000`.
+You can see the running App at the address shown in the terminal, usually `http://localhost:5173`.
+
+:::
+
+:::tip
+
+While developing, you can point your WebUI to this address (`WebUI("Main HUD", "http://localhost:5173")`) to get hot reload in-game. Remember to switch back to the built files before publishing!
 
 :::
 
@@ -240,12 +231,12 @@ Once started you should see something like this in your web browser:
 
 ## Adding Events handling into your App {/* #adding-events-handling-into-your-app */}
 
-Now that we have all the base of our App set, we can start to implement the Events handling. For this, edit your `App.js`:
+Now that we have all the base of our App set, we can start to implement the Events handling. For this, edit your `App.jsx`:
 
-```js title="./src/App.js" showLineNumbers
+```jsx title="./src/App.jsx" showLineNumbers
 import './App.css';
 import Events from './Events.js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 function App() {
@@ -257,17 +248,21 @@ function App() {
   const [weaponBag, setWeaponBag] = useState(1000);
   const [displayAmmo, setDisplayAmmo] = useState(false);
 
-  // Subscribe to the events related to the Ammo and visibility of the Ammo container
-  Events.Subscribe("UpdateWeaponAmmo",(enable, clip, bag) => {
-    setDisplayAmmo(enable);
-    setWeaponAmmo(clip);
-    setWeaponBag(bag);
-  });
+  // Subscribes to the events only once, when the component mounts
+  // (subscribing directly in the component body would add a new subscription on every render)
+  useEffect(() => {
+    // Subscribe to the events related to the Ammo and visibility of the Ammo container
+    Events.Subscribe("UpdateWeaponAmmo", (enable, clip, bag) => {
+      setDisplayAmmo(enable);
+      setWeaponAmmo(clip);
+      setWeaponBag(bag);
+    });
 
-  // Subscribe to the events related to the Health
-  Events.Subscribe("UpdateHealth", (health) => {
-    setHealth(health);
-  });
+    // Subscribe to the events related to the Health
+    Events.Subscribe("UpdateHealth", (health) => {
+      setHealth(health);
+    });
+  }, []);
 
   return (
     <div >
@@ -301,7 +296,7 @@ Once finished with the development of the web part, you'll need to build the App
 npm run build
 ```
 
-When completed, you will find all the files of your application in the `./build` folder.
+When completed, you will find all the files of your application in the `./dist` folder.
 
 ## Creating the UI Package {/* #creating-the-ui-package */}
 
@@ -309,15 +304,15 @@ Inside your Package’s Client folder, create a new folder (optional) called UI/
 
 ![](/img/docs/tutorials/react-04.webp)
 
-After that copy all the files present in the `./build` folder of your react app (except the `assets-manifest.json`) into the `/UI` folder of your nanos world Package.
+After that copy all the files present in the `./dist` folder of your React app into the `UI/` folder of your nanos world Package.
 
 Finally, in your Package’s `Index.lua`, let’s add all the required code to spawn and update the UI:
 
 ```lua title="Client/Index.lua" showLineNumbers
 -- Spawns a WebUI with the HTML file you just created
-main_hud = WebUI("Main HUD", "file://UI/index.html", 1)
+main_hud = WebUI("Main HUD", "file://UI/index.html", WidgetVisibility.VisibleNotHitTestable)
 
--- When LocalPlayer spawns, sets an event on it to trigger when we possesses a new character, to store the local controlled character locally. This event is only called once, see Package:Subscribe("Load") to load it when reloading a package
+-- When LocalPlayer spawns, sets an event on it to trigger when we possess a new character. This event is only called once, see Package.Subscribe("Load") for when reloading the package
 Client.Subscribe("SpawnLocalPlayer", function(local_player)
     local_player:Subscribe("Possess", function(player, character)
         UpdateLocalCharacter(character)
@@ -334,7 +329,7 @@ end)
 
 -- Function to set all needed events on local character (to update the UI when it takes damage or dies)
 function UpdateLocalCharacter(character)
-    -- Verifies if character is not nil (eg. when GetControllerCharacter() doesn't return a character)
+    -- Verifies if character is not nil (eg. when GetControlledCharacter() doesn't return a character)
     if (character == nil) then
         return
     end
@@ -342,27 +337,22 @@ function UpdateLocalCharacter(character)
     -- Updates the UI with the current character's health
     UpdateHealth(character:GetHealth())
 
-    -- Sets on character an event to update the health's UI after it takes damage
-    character:Subscribe("TakeDamage", function(charac, damage, type, bone, from_direction, instigator, causer)
-        UpdateHealth(math.max(charac:GetHealth() - damage, 0))
-    end)
-
-    -- Sets on character an event to update the health's UI after it dies
-    character:Subscribe("Death", function(charac)
-        UpdateHealth(0)
+    -- Updates the health UI whenever the health changes (damage, healing, death or respawn)
+    character:Subscribe("HealthChange", function(charac, old_health, new_health)
+        UpdateHealth(new_health)
     end)
 
     -- Try to get if the character is holding any weapon
     local current_picked_item = character:GetPicked()
 
-    -- If so, update the UI
-    if (current_picked_item and current_picked_item:GetClass():GetName() == "Weapon") then
+    -- If so, update the UI (IsA also matches classes inherited from Weapon)
+    if (current_picked_item and current_picked_item:IsA(Weapon)) then
         UpdateAmmo(true, current_picked_item:GetAmmoClip(), current_picked_item:GetAmmoBag())
     end
 
     -- Sets on character an event to update his grabbing weapon (to show ammo on UI)
     character:Subscribe("PickUp", function(charac, object)
-        if (object.Super:GetClass():GetName() == "Weapon") then
+        if (object:IsA(Weapon)) then
             UpdateAmmo(true, object:GetAmmoClip(), object:GetAmmoBag())
         end
     end)
@@ -385,12 +375,12 @@ end
 
 -- Function to update the Ammo's UI
 function UpdateAmmo(enable_ui, ammo, ammo_bag)
-    main_hud:CallEvent("UpdateWeaponAmmo",enable_ui, ammo, ammo_bag)
+    main_hud:CallEvent("UpdateWeaponAmmo", enable_ui, ammo, ammo_bag)
 end
 
 -- Function to update the Health's UI
 function UpdateHealth(health)
-    main_hud:CallEvent("UpdateHealth",health)
+    main_hud:CallEvent("UpdateHealth", health)
 end
 ```
 

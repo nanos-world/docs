@@ -11,7 +11,7 @@ How to use the Command Line Interface to install packages and update the server.
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The Server provides a CLI (Command Line Interface) to help creating, updating and downloading Packages and Assets from the Store.
+The Server provides a CLI (Command Line Interface) to help creating, updating and downloading Packages and Assets from the [Vault](/vault-and-store/vault.mdx).
 
 It can work in two different modes: Interactive or Direct by running a command directly when starting it.
 
@@ -52,26 +52,31 @@ INFO  Available commands:
 	- help
 	- update [package|assets] NAME1, NAME2...
 	- install [package|assets] NAME1, NAME2...
-	- upload [package|assets] NAME
 	- add [package|assets] NAME
 	- check
 
 nanos world cli>
 ```
 
+:::note
+
+Although the help output shows commas, several names must be separated by **spaces**, e.g. `install package sandbox battlefield-kill-ui`. The `upload` command is also available, see the table below.
+
+:::
+
 
 ## All CLI Commands {/* #all-cli-commands */}
 
 | Commands | Description |
 | :--- | :--- |
-| `install package [PACKAGE_NAMES...]` | Install Packages from the Store |
-| `update package [PACKAGE_NAMES...]` | Update Packages from the Store |
-| `install assets [ASSET_NAMES...]` | Install Asset Packs from the Store |
-| `update assets [ASSET_NAMES...]` | Update Asset Packs from the Store |
-| `add package [PACKAGE_NAME]` | Creates a new local Package in a interactive way |
-| `add assets [ASSET_NAME]` | Creates a new local Asset Pack in a interactive way |
-| `upload package [PACKAGE_NAME]` | Uploads a Package new version to the store |
-| `upload assets [ASSET_NAME]` | Uploads an Asset Pack new version to the store |
+| `install package [PACKAGE_NAMES...]` | Install Packages (and their requirements) from the Vault |
+| `update package [PACKAGE_NAMES...]` | Update Packages from the Vault |
+| `install assets [ASSET_NAMES...]` | Install Asset Packs from the Vault |
+| `update assets [ASSET_NAMES...]` | Update Asset Packs from the Vault |
+| `add package [PACKAGE_NAME]` | Creates a new local Package in an interactive way |
+| `add assets [ASSET_NAME]` | Creates a new local Asset Pack in an interactive way |
+| `upload package [PACKAGE_NAME]` | Uploads a new version of a Package to the Vault (requires a `token`) |
+| `upload assets [ASSET_NAME]` | Uploads a new version of an Asset Pack to the Vault (requires a `token`) |
 | `check` | Check for Updates |
 | `help` | Display all Commands |
 | `stop` | Stops the CLI |

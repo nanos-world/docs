@@ -74,15 +74,29 @@ INFO  Please enter the Package Title: (my-awesome-package)
 my-awesome-package
 INFO  Please enter the Package Author: ()
 myself
-INFO  Please enter the Package Type: (game-mode)
+INFO  Please enter the Package Type ('script', 'game-mode', 'map' or 'loading-screen'): (game-mode)
 script
 ```
 
 Once you finish creating your Package, you will find a new folder named `my-awesome-package/` inside the `Packages/` folder. This folder contains three other folders: `Server/`, `Client/`, and `Shared/`, and a configuration file called `Package.toml`.
 
-Next, you need to tell the server to load your Package when it starts. To do that, open the `Config.toml` file located in the server folder and find the `packages = []` section.
+Next, you need to tell the server to load your Package when it starts. To do that, open the `Config.toml` file located in the server folder and find the `packages = []` setting, under the `[game]` section.
 
-Add your package name (`"my-awesome-package"`) to the list of Packages that should be loaded.
+Add your package name (`"my-awesome-package"`) to the list of Packages that should be loaded:
+
+```toml title="Config.toml"
+[game]
+    # ...
+    packages = [
+        "my-awesome-package",
+    ]
+```
+
+:::tip
+
+The `Config.toml` is created automatically the first time the server starts. If you don't have it yet, start the server once (Step 4) and close it, or skip editing it and start the server with `--packages my-awesome-package` instead.
+
+:::
 
 
 ## Step 3: Adding Script functionalities {/* #step-3-adding-script-functionalities */}
@@ -138,7 +152,7 @@ Now let's start the server with the package you just created! For that, simply d
 
 :::info note
 
-By default the server runs as **Playtest**. If you are playing the full game (not the Playtest), start the server with `--steam_app "game"`, otherwise you will not be able to connect to it.
+By default the server runs as the **Playtest** Steam App, which is what players currently use to join. The `--steam_app` parameter accepts `playtest` (default) or `game`, and players can only join servers running the same Steam App they launched.
 
 :::
 
@@ -161,7 +175,7 @@ You can see it loaded your package and outputted the text `Loading some Props =D
 
 ## Step 5: Join your server {/* #step-5-join-your-server */}
 
-Now let's see the results in-game! Open nanos world and connect to localhost at `127.0.0.1:7777`.
+Now let's see the results in-game! Open nanos world, go to **Find Servers**, click **Quick Connect** and connect to `127.0.0.1:7777`.
 
 After connecting, you will be a flying pawn and will be able to see the props spawned! 😁
 
@@ -176,7 +190,7 @@ You may have noticed you are just a wandering soul flying around, let's give you
 
 Let's append some code in your `Server/Index.lua`, to spawn a <Classes.Character /> when a <Classes.Player /> joins the server:
 
-```lua title="my-awesome-package/Server/Index.lua" showLineNumbers
+```lua title="Packages/my-awesome-package/Server/Index.lua" showLineNumbers
 -- Function to spawn a Character and possess it to a Player
 function SpawnCharacter(player)
     -- Spawns a Character at position X=0, Y=0, Z=0 with default constructor parameters
@@ -200,7 +214,7 @@ Package.Subscribe("Load", function()
 end)
 ```
 
-To apply your changes, run the command in the server console: `package reload all`. This will live reload the Packages and apply the changes immediately to all Players connected.
+To apply your changes, run the command in the server console: `package reload my-awesome-package`. This will live reload your Package and apply the changes immediately to all Players connected.
 
 ![](/img/docs/quick-start-02.webp)
 
@@ -213,8 +227,8 @@ Note that the <Classes.Character /> isn't destroyed automatically when the <Clas
 
 Append this code:
 
-```lua title="my-awesome-package/Server/Index.lua" showLineNumbers
--- When Player leaves the server, destroy it's possessing Character
+```lua title="Packages/my-awesome-package/Server/Index.lua" showLineNumbers
+-- When Player leaves the server, destroy its possessing Character
 Player.Subscribe("Destroy", function(player)
     local character = player:GetControlledCharacter()
     if (character) then
@@ -223,12 +237,14 @@ Player.Subscribe("Destroy", function(player)
 end)
 ```
 
-To apply your changes, run the command in the server console: `package reload all`.
+To apply your changes, run the command in the server console: `package reload my-awesome-package`.
 
 
 ## Conclusion {/* #conclusion */}
 
-Congratulations! You have finished your first basic Package and learn a lot!
+Congratulations! You have finished your first basic Package and learned a lot!
+
+Next, continue with [Your First Game-Mode](/getting-started/your-first-game-mode.mdx), which builds on this Package to add client scripts, a HUD and communication between server and client.
 
 You can find more and detailed information about each topic mentioned in this guide in the following links:
 
@@ -237,3 +253,4 @@ You can find more and detailed information about each topic mentioned in this gu
 <ReferenceLink href="core-concepts/packages/packages-guide">Packages Guide</ReferenceLink>
 <ReferenceLink href="core-concepts/scripting/classes-guide">Classes Guide</ReferenceLink>
 <ReferenceLink href="core-concepts/scripting/events-guide">Events Guide</ReferenceLink>
+<ReferenceLink href="core-concepts/scripting/debugging-and-logging">Debugging & Logging</ReferenceLink>

@@ -15,7 +15,22 @@ It is completely made through scripting, meaning it is possible to customize it 
 
 The Sandbox Game Mode exports a global variable `Sandbox` that is accessible through any loaded package, which contains all the methods and properties related to it. You can use this variable to interact with the game mode and extend its features from your packages.
 
-It's features are divided in several sub-systems, the main ones being:
+:::tip
+
+Your Package may also be loaded in servers running other game-modes. To be safe, check if the Sandbox is available before using it, and list `sandbox` in the `compatible_game_modes` of your `Package.toml` so players know your Package is made for it:
+
+```lua title="Client/Index.lua"
+Package.Subscribe("Load", function()
+	-- Only integrates with the Sandbox if it's loaded
+	if (not Sandbox) then return end
+
+	Sandbox.SpawnMenu.AddCategory("props", "my-category", "my category", "package://my-package/Client/icon.webp")
+end)
+```
+
+:::
+
+Its features are divided in several sub-systems, the main ones being:
 
 #### Spawn Menu {/* #spawn-menu */}
 
@@ -31,7 +46,7 @@ A menu that provides run-time settings like tweaking the Sun Light, Respawning o
 <ReferenceLink href="explore/sandbox-game-mode/context-menu">Context Menu</ReferenceLink>
 
 
-#### Tools Guns {/* #tools-guns */}
+#### Tool Guns {/* #tools-guns */}
 
 A set of weapons that provide special functionalities to interact with the world, such as moving objects, adding constraints, spawning entities, etc. They can be spawned through the Spawn Menu.
 

@@ -3,7 +3,7 @@ id: contributing-to-the-docs
 title: 🤝 Contributing to the Docs
 description: How to suggest changes and contribute to the Docs
 image: /img/docs/docusaurus.svg
-keywords: [future, plan, updates]
+keywords: [docs, contributing, docusaurus]
 sidebar_position: 0.3
 tags: [docs]
 ---
@@ -19,6 +19,36 @@ This docs is made on [Docusaurus](https://docusaurus.io) platform and written in
 ## Suggesting Changes {/* #suggesting-changes */}
 
 You can suggest changes directly on GitHub by pressing `Edit this Page` button at the bottom left of each Page, just make a suggestion and open a [**Pull Request**](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) with it! Once accepted, your suggestion will immediately apply on the bleeding-edge version of the docs!
+
+
+### Running the Docs Locally {/* #running-the-docs-locally */}
+
+To preview your changes before opening a Pull Request, clone the [docs repository](https://github.com/nanos-world/docs) **with its submodules** (the API is a submodule) and run it with [Node.js](https://nodejs.org/) and [Yarn](https://yarnpkg.com/):
+
+```shell title="Terminal"
+git clone --recurse-submodules https://github.com/nanos-world/docs.git
+cd docs
+yarn install
+yarn start
+```
+
+The docs will open at `http://localhost:3000` and reload as you edit the files.
+
+
+### Where to Edit {/* #where-to-edit */}
+
+* **`docs/`** is the **bleeding-edge** version of the docs, which matches the latest game updates. Most changes should be made here.
+* **`versioned_docs/version-latest/`** is the **stable** version. Only edit it to fix something that is also wrong in the current stable game version.
+* **`blog/`** contains the news posts.
+* **`src/api/`** is a submodule with the API JSON files (see below).
+
+
+### Writing Tips {/* #writing-tips */}
+
+* Every heading ends with an explicit anchor, like `## My Heading {/* #my-heading */}`, so links keep working in translated pages. Run `yarn write-heading-ids` to generate them.
+* Link to other pages using their file path, e.g. `[Packages Guide](/core-concepts/packages/packages-guide.mdx)`.
+* Use the built-in components to reference the API, such as `<Classes.Character />`, `<StaticClasses.Server />`, `<MethodReference type="Class" class_name="Actor" method_name="SetLocation" />` and `<EventReference type="Class" class_name="Character" event="Death" />`.
+* Add the side in the title of Lua code blocks (e.g. ```` ```lua title="Server/Index.lua" ````), it helps readers to know where the code runs.
 
 
 ### API Reference {/* #api-reference */}

@@ -17,7 +17,7 @@ Some Classes can only be spawned on the Server, others can only be spawned in th
 
 ### Methods and Events Availability {/* #methods-and-events-availability */}
 
-Some methods and events in the API are only available on a specific side \(Client or Server\), others are only available in the side which spawned it Authority side\):
+Some methods and events in the API are only available on a specific side (Client or Server), others are only available in the side which spawned it (Authority side):
 
 #### <AuthorityType.ServerOnly />**`Server Side`** {/* #authoritytypeserveronly-server-side */}
 
@@ -76,7 +76,7 @@ The Player assigned is automatically calculated by the server and takes some thi
 * If the Character is **handling** a <Classes.Pickable />.
 * If the Character is **driving** a <Classes.Vehicle />.
 * If the Character has just **shot** an entity (e.g. <Classes.Prop />, <Classes.Pickable />, <Classes.Vehicle />, etc).
-* If the Character has just **roamed** a <Classes.Character /> with a Vehicle.
+* If the Character has just **rammed** a <Classes.Character /> with a Vehicle.
 
 In all this cases, the Player will be automatically assigned to be the **Network Authority** of that Object. Note that this calculation is only made if the Player is possessing a Character.
 
@@ -87,7 +87,7 @@ It is possible to override the current Network Authority of a specific entity by
 
 :::tip
 
-Under certain circumstances, actors may not be in **Distributed Network Authority** mode. This means they cannot have their current network authority changed. Example: if a player is driving a Vehicle or using a Weapon, mandatorily he is the the Vehicle and Weapons's Network Authority, and this cannot be overwritten through scripting. To validate if an Actor can have it overridden, you can use the method <MethodReference type="Class" class_name="Actor" method_name="IsNetworkDistributed" />.
+Under certain circumstances, actors may not be in **Distributed Network Authority** mode. This means they cannot have their current network authority changed. Example: if a player is driving a Vehicle or using a Weapon, mandatorily they are the Vehicle and Weapon's Network Authority, and this cannot be overwritten through scripting. To validate if an Actor can have it overridden, you can use the method <MethodReference type="Class" class_name="Actor" method_name="IsNetworkDistributed" />.
 
 :::
 
@@ -101,9 +101,18 @@ Always remember to restore the automatic **Network Authority Distribution** by c
 :::
 
 
+### Checking the Authority in Scripting {/* #checking-the-authority-in-scripting */}
+
+- <MethodReference type="Class" class_name="Entity" method_name="HasAuthority" /> tells if the current side spawned that entity (i.e. it's the **Authority** side).
+- <MethodReference type="Class" class_name="Actor" method_name="HasNetworkAuthority" /> tells if the local Player is the current **Network Authority** of that Actor.
+- The event <EventReference type="Class" class_name="Actor" event="NetworkAuthorityChange" /> is triggered when the Network Authority of an Actor changes.
+
+For a broader view of what gets synchronized and how, check the [Networking & Replication](/core-concepts/scripting/networking-and-replication.mdx) guide.
+
+
 ### Debugging Network & Network Authority {/* #debugging-network--network-authority */}
 
-We've added a new option in the settings to **Draw Network Debug** information in the World, you can toggle it in the settings (*Settings -> Debug -> Draw Network Debug*), it will draw squares on each entity and traces representing their networked movement.
+There is an option in the settings to **Draw Network Debug** information in the World, you can toggle it in the settings (*Settings -> Debug -> Draw Network Debug*), it will draw squares on each entity and traces representing their networked movement.
 
 ![](/img/docs/debug-visualizer.webp)
 

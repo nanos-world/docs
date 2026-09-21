@@ -1,7 +1,7 @@
 ---
 title: Inheriting Classes
 description: How to inherit nanos world Classes
-sidebar_position: 8
+sidebar_position: 13
 tags: [scripting]
 ---
 
@@ -79,10 +79,10 @@ Before calling `self.Super:Constructor()`, the entity is not fully spawned yet. 
 Through the parent class, we can get a list of all children classes of that class, having a global registry of all existing classes!
 
 ```lua showLineNumbers
-local children_classes = ToolGun.GetInheritedClasses()
+local children_classes = Prop.GetInheritedClasses()
 for _, class in pairs(children_classes) do
-    -- 'class' is a custom inherited class! we can spawn it
-    local p = class()
+    -- 'class' is a custom inherited class! we can spawn it using its constructor
+    local p = class(Vector(), Rotator(), "nanos-world::SM_Cube")
 end
 ```
 
@@ -162,7 +162,7 @@ function MyNewClass:SetScale(scale)
     scale = scale * 2
 
     -- Calls Super (original Prop method)
-    self.Super:SetScale(scale) * 2
+    self.Super:SetScale(scale)
 end
 
 -- Inherits MyNewClass
@@ -253,13 +253,13 @@ function MyNewClass:index(key)
 	Console.Log("%s key not found: %s", tostring(self), key)
 
     -- inside the redirected method you will have all the parameters passed originally
-    return function(self, param1, param2...)
+    return function(self, ...)
         -- ... do something
         return "triggered!"
     end
 
-    -- or you can even redirect to other member functions
-    return MyClass.SetLocation
+    -- or you could redirect to another member function instead, e.g.:
+    -- return MyNewClass.SetLocation
 end
 
 local my_entity = MyNewClass()
@@ -294,6 +294,8 @@ end
 All events which are triggered on an inherited Class will only trigger in that Class and it's parents, also the parameter passed is the custom entity itself, example:
 
 ```lua showLineNumbers
+MyOtherClass = Prop.Inherit("MyOtherClass")
+
 Prop.Subscribe("Spawn", function(self)
     Console.Log("Spawned Prop: %s", tostring(self))
 end)
@@ -302,9 +304,9 @@ MyNewClass.Subscribe("Spawn", function(self)
     Console.Log("Spawned MyNewClass: %s", tostring(self))
 end)
 
-local my_entity = MyNewClass()
-local my_prop = Prop()
-local my_other_entity_inherited_from_prop = MyOtherClass()
+local my_entity = MyNewClass(Vector(), Rotator(), "nanos-world::SM_Cube")
+local my_prop = Prop(Vector(), Rotator(), "nanos-world::SM_Cube")
+local my_other_entity_inherited_from_prop = MyOtherClass(Vector(), Rotator(), "nanos-world::SM_Cube")
 
 -- Will output:
 --  Spawned Prop: MyNewClass
@@ -348,12 +350,12 @@ MyNewOtherSubClass.Subscribe("Spawn", function(self)
     Console.Log("Spawned MyNewOtherSubClass: %s", tostring(self))
 end)
 
-local my_entity = MyNewSubClass()
+local my_entity = MyNewSubClass(Vector(), Rotator(), "nanos-world::SM_Cube")
 
 -- Will output:
---  Spawned Prop: MyNewClass
---  Spawned MyNewClass: MyNewClass
---  Spawned MyNewSubClass: MyNewClass
+--  Spawned Prop: MyNewSubClass
+--  Spawned MyNewClass: MyNewSubClass
+--  Spawned MyNewSubClass: MyNewSubClass
 ```
 
 :::tip
@@ -367,20 +369,26 @@ Note that **Prop** and all **parent** Classes will still trigger events for all 
 
 If you define your entities on both Client and Server side, they will behave properly and in a synchronized way! Example:
 
-```lua "title=Server/Index.lua" showLineNumbers
+:::tip
+
+The easiest way to have the class defined on both sides is to call `Inherit` in a `Shared/` file, and only subscribe to side-specific events in `Server/` or `Client/`.
+
+:::
+
+```lua title="Server/Index.lua" showLineNumbers
 MyNewClass = Prop.Inherit("MyNewClass")
 
 MyNewClass.Subscribe("Spawn", function(self)
     Console.Log("Spawned MyNewClass: %s", tostring(self))
 end)
 
-local my_entity = MyNewClass()
+local my_entity = MyNewClass(Vector(), Rotator(), "nanos-world::SM_Cube")
 
 -- Will output:
 --  Spawned MyNewClass: MyNewClass
 ```
 
-```lua "title=Client/Index.lua" showLineNumbers
+```lua title="Client/Index.lua" showLineNumbers
 MyNewClass = Prop.Inherit("MyNewClass")
 
 MyNewClass.Subscribe("Spawn", function(self)
@@ -408,7 +416,7 @@ MyNewClass = Prop.Inherit("MyNewClass")
 
 -- defines a custom method
 function MyNewClass:OnMyCustomRemoteEvent(a, b)
-    Console.Log("OnMyCustomRemoteEvent!", tostring(self), a, b)
+    Console.Log("OnMyCustomRemoteEvent! %s %s %s", tostring(self), a, b)
     self:CallRemoteEvent("AnotherRemoteEvent", Reliability.Reliable, 456, "def")
 end
 
@@ -420,16 +428,16 @@ MyNewClass.SubscribeRemote("MyCustomRemoteEvent", MyNewClass.OnMyCustomRemoteEve
 -- inherits the Class
 MyNewClass = Prop.Inherit("MyNewClass")
 
--- Note that server-side received remote events have the 'player as first parameter
+-- Note that server-side received remote events have the 'player' as first parameter
 function MyNewClass:OnAnotherRemoteEvent(player, a, b)
-    Console.Log("OnAnotherRemoteEvent!", tostring(self), tostring(player), a, b)
+    Console.Log("OnAnotherRemoteEvent! %s %s %s %s", tostring(self), tostring(player), a, b)
 end
 
 -- subscribes for a custom remote event
 MyNewClass.SubscribeRemote("AnotherRemoteEvent", MyNewClass.OnAnotherRemoteEvent)
 
 -- spawns an entity and calls the custom remote event on that entity
-local p = MyNewClass(...)
+local p = MyNewClass(Vector(), Rotator(), "nanos-world::SM_Cube")
 p:BroadcastRemoteEvent("MyCustomRemoteEvent", Reliability.Reliable, 123, "abc")
 ```
 
@@ -459,7 +467,7 @@ When you inherit a new class, the event `ClassRegister` will be triggered on the
 Prop.Subscribe("ClassRegister", function(class)
 	-- here we see an useful case for the default values
 	-- as we can access it here
-	Console.Log(MyNewClass.name) -- outputs "My Name
+	Console.Log(class.name) -- outputs "My Name"
 	-- now we can do something (add to spawn menu?)
 end)
 

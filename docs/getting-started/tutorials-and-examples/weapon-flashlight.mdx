@@ -22,8 +22,11 @@ Server.LoadPackage("default-weapons")
 -- Spawns a Weapon from default-weapons package
 my_weapon = AR4(Vector(), Rotator())
 
--- Spawns a Spot Light (with color Black, to be turned on only when someone picks up it)
-my_light = Light(Vector(), Rotator(), Color(0, 0, 0), 1, 1000, 1000, 35)
+-- Spawns a Spot Light (parameters: location, rotation, color, light_type, intensity, attenuation_radius, cone_angle)
+my_light = Light(Vector(), Rotator(), Color(0.73, 0.67, 0.42), LightType.Spot, 1000, 1000, 35)
+
+-- Starts turned off, it's only turned on when someone picks up the weapon
+my_light:SetVisibility(false)
 
 -- Attaches the Light to the Weapon with offset X = 100 (at the weapon's front)
 my_light:AttachTo(my_weapon)
@@ -32,19 +35,19 @@ my_light:SetRelativeLocation(Vector(100, 0, 0))
 -- Stores the light on the Weapon
 my_weapon:SetValue("Light", my_light)
 
--- Only when someone picks up this weapon, turns on the Flashlight (set it's color)
+-- Only when someone picks up this weapon, turns on the Flashlight
 my_weapon:Subscribe("PickUp", function(weapon, character)
-    local light = my_weapon:GetValue("Light")
+    local light = weapon:GetValue("Light")
     if (light ~= nil) then
-        light:SetColor(Color(0.73, 0.67, 0.42))
+        light:SetVisibility(true)
     end
 end)
 
--- When the weapon is dropped, turns off the Flashlight (set it's color to black)
+-- When the weapon is dropped, turns off the Flashlight
 my_weapon:Subscribe("Drop", function(weapon, character)
-    local light = my_weapon:GetValue("Light")
+    local light = weapon:GetValue("Light")
     if (light ~= nil) then
-        light:SetColor(Color(0, 0, 0))
+        light:SetVisibility(false)
     end
 end)
 ```

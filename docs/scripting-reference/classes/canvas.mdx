@@ -31,13 +31,14 @@ end)
 -- Forces the canvas to repaint, this will make it trigger the Update event
 my_canvas:Repaint()
 
--- Applies the Canvas material into a Prop
-any_prop:SetMaterialFromCanvas(my_canvas)
+-- Applies the Canvas as the material of a (client side) StaticMesh
+local my_mesh = StaticMesh(Vector(0, 0, 100), Rotator(), "nanos-world::SM_Cube")
+my_mesh:SetMaterialFromCanvas(my_canvas)
 ```
 
 :::tip
 
-You can use the output Texture from a Canvas with [:SetMaterialFromCanvas()](/scripting-reference/classes/base-classes/paintable.mdx#setmaterialfromcanvas) method!
+You can use the output Texture from a Canvas with [:SetMaterialFromCanvas()](/scripting-reference/classes/base-classes/paintable.mdx#function-setmaterialfromcanvas) method!
 
 :::
 

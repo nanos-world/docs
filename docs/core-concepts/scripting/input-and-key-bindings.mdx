@@ -1,0 +1,93 @@
+---
+title: Input & Key Bindings
+description: How to react to the player's keyboard and mouse, with Key Bindings players can customize
+sidebar_position: 8
+tags: [scripting, input]
+---
+
+
+How to react to the player's keyboard and mouse, with Key Bindings players can customize.
+
+All input is handled on the **Client** side, through the <StaticClasses.Input /> Static Class. If the server needs to know about it, send a [Remote Event](/core-concepts/scripting/events-guide.mdx#remote-events).
+
+
+## Key Bindings (recommended) {/* #key-bindings-recommended */}
+
+The best way to handle input is registering a **Key Binding**: you give it a name and a default key, and players can change the key in the game settings (**Settings -> Controls**). This also avoids conflicts with other Packages and keyboard layouts.
+
+```lua title="Client/Index.lua" showLineNumbers
+-- Registers a Key Binding called "OpenShop", using the key B by default
+Input.Register("OpenShop", "B", "Opens the Shop")
+
+-- Calls this function when the binding is pressed
+Input.Bind("OpenShop", InputEvent.Pressed, function()
+    Console.Log("Opening the shop!")
+end)
+
+-- And when it's released
+Input.Bind("OpenShop", InputEvent.Released, function()
+    Console.Log("Released the shop key")
+end)
+```
+
+You can also bind to the game's own bindings (such as `Jump` or `Crouch`), check them with <MethodReference type="StaticClass" class_name="Input" method_name="GetGameKeyBindings" show_class_name />. And you can check if a binding is currently held with <MethodReference type="StaticClass" class_name="Input" method_name="IsBindingDown" show_class_name />.
+
+:::tip
+
+To show which key a binding is using (e.g. in your UI), use <MethodReference type="StaticClass" class_name="Input" method_name="GetMappedKeys" show_class_name /> and <MethodReference type="StaticClass" class_name="Input" method_name="GetKeyIcon" show_class_name />.
+
+:::
+
+
+## Raw Input Events {/* #raw-input-events */}
+
+For cases where Key Bindings don't fit (e.g. typing, or reacting to any key), you can subscribe to the raw input events:
+
+```lua title="Client/Index.lua" showLineNumbers
+Input.Subscribe("KeyPress", function(key_name)
+    Console.Log("Pressed %s", key_name)
+end)
+
+Input.Subscribe("MouseUp", function(key_name, mouse_x, mouse_y)
+    if (key_name == "LeftMouseButton") then
+        Console.Log("Clicked at %d, %d", mouse_x, mouse_y)
+    end
+end)
+
+Input.Subscribe("MouseScroll", function(mouse_x, mouse_y, delta)
+    -- delta is positive when scrolling up and negative when scrolling down
+    Console.Log("Scrolled %d", delta)
+end)
+```
+
+Returning `false` in `KeyDown`, `KeyPress`, `KeyUp`, `MouseDown`, `MouseUp`, `MouseMove` and `MouseScroll` blocks the input, so the game (and the Character) won't react to it.
+
+See the list of all key names in the [Input page](/scripting-reference/static-classes/input.mdx).
+
+
+## Mouse Cursor & UI Focus {/* #mouse-cursor--ui-focus */}
+
+When opening a menu, you usually want to show the mouse cursor and stop the Character from moving:
+
+```lua title="Client/Index.lua" showLineNumbers
+function SetMenuOpen(is_open)
+    -- Shows the mouse cursor, so the player can click on the UI
+    Input.SetMouseEnabled(is_open)
+
+    -- Stops the Local Player input (moving, shooting...) while the menu is open
+    Input.SetInputEnabled(not is_open)
+
+    if (is_open) then
+        -- Makes the WebUI receive keyboard input (e.g. to type in text fields)
+        my_menu_ui:SetFocus()
+    else
+        my_menu_ui:RemoveFocus()
+    end
+end
+```
+
+:::caution
+
+Remember to always restore the mouse and the input when the menu closes, otherwise the player will be stuck!
+
+:::

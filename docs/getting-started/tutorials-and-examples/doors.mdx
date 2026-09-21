@@ -35,9 +35,15 @@ door_mesh:SetRelativeLocation(Vector(50, 0, 0))
 -- Spawns our trigger at the center of the Door
 local trigger = Trigger(Vector(0, 0, 100), Rotator(), 150)
 
+-- Counts how many Characters are inside the trigger, so the door only closes when everyone left
+local characters_inside = 0
+
 -- Registers the trigger when a Character moves in
 trigger:Subscribe("BeginOverlap", function(trigger, actor)
-    if (actor:GetClass() ~= Character) then return end
+    -- IsA also matches classes inherited from Character
+    if (not actor:IsA(Character)) then return end
+
+    characters_inside = characters_inside + 1
 
     -- Plays an opening door animation on the Character
     actor:PlayAnimation("nanos-world::AM_Mannequin_DoorOpen_01", AnimationSlotType.UpperBody)
@@ -48,10 +54,14 @@ end)
 
 -- Registers the trigger when a Character moves out
 trigger:Subscribe("EndOverlap", function(trigger, actor)
-    if (actor:GetClass() ~= Character) then return end
+    if (not actor:IsA(Character)) then return end
 
-    -- Rotates the door back to original position, smoothly
-    door:RotateTo(Rotator(0, 0, 90), 1)
+    characters_inside = math.max(characters_inside - 1, 0)
+
+    -- Rotates the door back to original position smoothly, once nobody is inside
+    if (characters_inside == 0) then
+        door:RotateTo(Rotator(0, 0, 90), 1)
+    end
 end)
 ```
 

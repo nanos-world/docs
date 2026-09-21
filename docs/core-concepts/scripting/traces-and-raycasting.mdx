@@ -1,7 +1,7 @@
 ---
 title: Traces & Raycasting
 description: How to use Traces & Raycasting to gather world information in runtime
-sidebar_position: 7
+sidebar_position: 11
 tags: [scripting]
 ---
 
@@ -11,6 +11,12 @@ tags: [scripting]
 **Traces** offer a method for reaching out in your maps and getting feedback on what is present along a line segment. You use them by providing two end points (a start and end location) and the physics system “traces” a line segment between those points, reporting any Actors that it hits. Traces are essentially the same as **Raycasts** or **Raytraces** in other software packages.
 
 ![](/img/docs/traces-raycasting.webp)
+
+:::info
+
+Traces are only available on the **Client** side, as the server doesn't run the physics of the world. If the server needs the result, send it through a [Remote Event](/core-concepts/scripting/events-guide.mdx#remote-events) (and validate it, as the client could send anything).
+
+:::
 
 The following example will show you how to get what and where the player is looking at.
 
@@ -36,7 +42,7 @@ Timer.SetInterval(function()
     -- Sets the trace modes (we want it to return Entity and Draws a Debug line)
     local trace_mode = TraceMode.ReturnEntity | TraceMode.DrawDebug
 
-    -- Last parameter as true means it will draw a Debug Line in the traced segment
+    -- Does the trace. TraceMode.DrawDebug makes it draw a Debug Line in the traced segment
     local trace_result = Trace.LineSingle(start_location, end_location, collision_trace, trace_mode)
 
     -- If hit something draws a Debug Point at the location
@@ -49,7 +55,7 @@ Timer.SetInterval(function()
             color = Color(0, 1, 0) -- Green
 
             -- Here you can check which actor you hit like
-            -- if (trace_result.Entity:GetType() == "Character") then ...
+            -- if (trace_result.Entity:IsA(Character)) then ...
         end
 
         -- Draws a Debug Point at the Hit location for 5 seconds with size 10
@@ -61,6 +67,24 @@ end, 100)
 :::tip
 
 As you could see, we can pass bit-wise operators to Trace for more than one [CollisionChannel](/scripting-reference/glossary/enums.mdx#collisionchannel) at once! Use `|` between the **CollisionChannels** to achieve that.
+
+:::
+
+
+## Other Trace Shapes {/* #other-trace-shapes */}
+
+Besides lines, it is also possible to trace with shapes, which is useful to check if something fits somewhere or to detect things in an area. All of them have a `Single` version (returns the first hit) and a `Multi` version (returns all hits):
+
+| Shape | Single | Multi |
+| :--- | :--- | :--- |
+| Line | <MethodReference type="StaticClass" class_name="Trace" method_name="LineSingle" show_class_name /> | <MethodReference type="StaticClass" class_name="Trace" method_name="LineMulti" show_class_name /> |
+| Sphere | <MethodReference type="StaticClass" class_name="Trace" method_name="SphereSingle" show_class_name /> | <MethodReference type="StaticClass" class_name="Trace" method_name="SphereMulti" show_class_name /> |
+| Box | <MethodReference type="StaticClass" class_name="Trace" method_name="BoxSingle" show_class_name /> | <MethodReference type="StaticClass" class_name="Trace" method_name="BoxMulti" show_class_name /> |
+| Capsule | <MethodReference type="StaticClass" class_name="Trace" method_name="CapsuleSingle" show_class_name /> | <MethodReference type="StaticClass" class_name="Trace" method_name="CapsuleMulti" show_class_name /> |
+
+:::tip
+
+The result table only includes some fields (like `Entity` or `SurfaceType`) if you ask for them with the matching <Enums>TraceMode</Enums> flags, such as `TraceMode.ReturnEntity` or `TraceMode.ReturnPhysicalMaterial`.
 
 :::
 

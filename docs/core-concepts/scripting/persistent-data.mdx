@@ -2,6 +2,7 @@
 title: Persistent Data
 description: How to store and retrieve persistent data from disk using the built-in system
 tags: [scripting]
+sidebar_position: 17
 ---
 
 
@@ -18,7 +19,7 @@ It is possible to store Persistent Data in both **Client** and **Server**!
 
 ## File Format {/* #file-format */}
 
-The persistent data is automatically stored in the **TOML** format in the file `PersistentData.toml` inside your `Package/.data/` folder (both server and client side).
+The persistent data is automatically stored in the **TOML** format, in a file named after your Package inside the `.data/` folder of the `Packages/` directory, e.g. `Packages/.data/my-package.toml` (both server and client side).
 
 This file is only created if you call <MethodReference type="StaticClass" class_name="Package" method_name="SetPersistentData" show_class_name />.
 
@@ -40,7 +41,7 @@ local my_table = {
 
 Package.SetPersistentData("awesome_table", my_table)
 
--- PersistentData.toml will be:
+-- Packages/.data/my-package.toml will be:
 -- awesome_table = { my_id = 123, my_data_02 = "data" }
 ```
 
@@ -49,17 +50,36 @@ You can also set an individual value in the table with the dot notation:
 ```lua showLineNumbers
 Package.SetPersistentData("awesome_table.my_data_02", "another data")
 
--- PersistentData.toml will be:
+-- Packages/.data/my-package.toml will be:
 -- awesome_table = { my_id = 123, my_data_02 = "another data" }
 ```
 
-Then retrieving the data:
+Then retrieving the data, passing the key you want:
 
 ```lua showLineNumbers
-local my_table = Package.GetPersistentData().awesome_table
+local my_table = Package.GetPersistentData("awesome_table")
 
 Console.Log(my_table.my_id)
 
 -- Will print:
 -- 123
 ```
+
+To delete a value, set it to `nil`:
+
+```lua showLineNumbers
+Package.SetPersistentData("awesome_table", nil)
+```
+
+
+## When is it Saved? {/* #when-is-it-saved */}
+
+Writing to disk is slow, so `SetPersistentData` only changes the data in memory and marks it to be saved. The pending changes are written to disk automatically after a short time, and when the Package unloads.
+
+If you really need the data to be written immediately (e.g. before a risky operation), call <MethodReference type="StaticClass" class_name="Package" method_name="FlushPersistentData" show_class_name />. Avoid calling it often, as each call writes the whole file.
+
+:::tip
+
+Persistent Data is great for small amounts of data, such as settings or a small leaderboard. To store a lot of data or data which changes very often (like the inventory of every player), prefer using a <Classes.Database />.
+
+:::

@@ -1,6 +1,7 @@
 ---
 title: Compatibility Versions
 description: How to update your packages to the new Compatibility Versions
+sidebar_position: 4
 tags: [scripting, migration]
 ---
 
@@ -11,18 +12,21 @@ The **Compatibility Version** is meant to assure your packages will not break in
 
 It works by forcing that package to run code in a compatibility mode, meaning that breaking changes will keep working as the way it was before.
 
-For example, let's say you have this code running right now:
+For example, in the update `1.139` all remote event methods got a new `reliability` parameter, before the event arguments. Let's say you had this code, written before that update:
 
 ```lua showLineNumbers
--- Make an asynchronous HTTP request
-HTTP.Request("https://api.nanos.world/", "store/v1/packages/halloween", "GET", "", "application/json", false, {}, function(status, data)
-    -- Do something with my data
-end)
+-- Before 1.139: event name and then the arguments
+Events.BroadcastRemote("MyEvent", "hello", 123)
 ```
 
-And then, in the hypothetical update `9.99` the API changes and make `HTTP.RequestSync` to become `HTTP.Request` and `HTTP.Request` to become `HTTP.RequestAsync`. I.e. you need to update your code to use `HTTP.RequestAsync` now, this is a breaking change as the new functions uses the same name as before.
+After `1.139`, the same call must pass the <Enums>Reliability</Enums> as second parameter:
 
-With compatibility version, your scripts can keep working as it was before this update, as your `compatibility_version` in your Package.toml will still be set to the older version (i.e. `9.98`, lower than the last version `9.99` which changed it).
+```lua showLineNumbers
+-- Since 1.139: event name, reliability and then the arguments
+Events.BroadcastRemote("MyEvent", Reliability.Reliable, "hello", 123)
+```
+
+This is a breaking change, as the old code would pass `"hello"` as the reliability. With compatibility version, your scripts keep working as they were before this update, as long as the `compatibility_version` in your Package.toml is still set to an older version (e.g. `1.138`, lower than `1.139` which changed it).
 
 :::tip
 
@@ -101,7 +105,7 @@ In compatibility mode (i.e. setting it to `1.138` or below), the `Entity` remote
 
 `TextRender` was renamed to [Text3D](/scripting-reference/classes/text3d.mdx). And a new entity `TextRender` was created. To use the new TextRender entity, you must update your `compatibility_version` to at least `1.103`.
 
-In compatibility mode (i.e. setting it to `1.102` or below) `TextRender` will still point to the old `TextRender` class (i.e. to the new `Text3D` class).
+In compatibility mode (i.e. setting it to `1.102` or below) `TextRender` will still point to the old `TextRender` class, which is now called `Text3D`.
 
 
 ### Version `1.65` {/* #version-165 */}
@@ -132,7 +136,7 @@ for _, asset in pairs(Assets.GetStaticMeshes("nanos-world")) do
 	local key = asset.key
 	local my_meta_data = asset.my_meta_data
 	local my_random_value = asset.my_random_value
-	...
+	-- ...
 end
 ```
 
@@ -165,10 +169,10 @@ Before, `Server.GetMap()` was returning the map asset defined in Config.toml. No
 
 #### [Server.GetPackages()](/scripting-reference/static-classes/server.mdx#static-function-getpackages) {/* #servergetpackages */}
 
-Before, `Package.GetPackages(only_loaded)` returned a list of strings containing all the package names. Now it has a new parameter (`package_type_filter`) and returns a list of table with the Packages information:
+Before, `Server.GetPackages(only_loaded)` returned a list of strings containing all the package names. Now it has a new parameter (`package_type_filter`) and returns a list of table with the Packages information:
 
 ```lua showLineNumbers
-local packages = Package.GetPackages(only_loaded, package_type_filter)
+local packages = Server.GetPackages(only_loaded, package_type_filter)
 --[[
 	{
 		{
@@ -194,9 +198,9 @@ Before those methods returned a table in the format (example):
 ```lua
 -- KeyBinding = Key
 {
-	"Jump" = "Spacebar",
-	"Crouch" = "Control",
-	"Fire" = "LeftMouse",
+	Jump = "SpaceBar",
+	Crouch = "LeftControl",
+	Fire = "LeftMouseButton",
 }
 ```
 
@@ -205,9 +209,9 @@ Now it returns in the format (example):
 ```lua
 -- KeyBinding = { Key, Key, ... }
 {
-	"Jump" = { "Spacebar", "O" },
-	"Crouch" = { "Control" },
-	"Fire" = { "LeftMouse", "Return" },
+	Jump = { "SpaceBar", "O" },
+	Crouch = { "LeftControl" },
+	Fire = { "LeftMouseButton", "Enter" },
 }
 ```
 
@@ -215,19 +219,19 @@ Now it returns in the format (example):
 ### Version `1.29` {/* #version-129 */}
 
 
-#### [HTTP.Select()](/scripting-reference/static-classes/http.mdx#static-function-select) {/* #httpselect */}
+#### [Database:Select()](/scripting-reference/classes/database.mdx#function-select) {/* #httpselect */}
 
-Before `HTTP.Select` was an async method, and since 1.29 it works as a Sync method, not having the callback parameter anymore.
+Before `Database:Select` was an async method, and since 1.29 it works as a Sync method, not having the callback parameter anymore. Use `Database:SelectAsync` for the asynchronous version.
 
 
 #### [Database:Execute()](/scripting-reference/classes/database.mdx#function-execute) {/* #databaseexecute */}
 
-Before `Database:Execute` was an async method, and since 1.29 it works as a Sync method, not having the callback parameter anymore.
+Before `Database:Execute` was an async method, and since 1.29 it works as a Sync method, not having the callback parameter anymore. Use `Database:ExecuteAsync` for the asynchronous version.
 
 
 ### Version `1.22` {/* #version-122 */}
 
-In version 1.22 we introduced the concept of [Compatibility Version](/core-concepts/packages/packages-guide.mdx#compatibility-version). Besides that, we've got just one breaking change:
+In version 1.22 we introduced the concept of [Compatibility Version](/core-concepts/packages/packages-guide.mdx#settings-detailed). Besides that, we've got just one breaking change:
 
 
 #### [Events.Subscribe()](/scripting-reference/static-classes/events.mdx#static-function-subscribe) {/* #eventssubscribe */}

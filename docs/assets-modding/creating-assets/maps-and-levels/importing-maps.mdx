@@ -11,7 +11,7 @@ Maps and Levels are quite the most straightforward asset that you can create and
 
 :::info
 
-Please refer to [Unreal’s Official tutorial - Working with Levels](https://docs.unrealengine.com/en-US/Engine/Levels/HowTo/WorkWithLevelAssets/index.html).
+Please refer to [Unreal's Official tutorial - Working with Levels](https://dev.epicgames.com/documentation/en-us/unreal-engine/managing-multiple-levels-in-unreal-engine).
 
 :::
 
@@ -49,21 +49,21 @@ The first step is to create a folder inside the `Content/` folder, _this step is
 
 ![](/img/docs/custom-maps-03.webp)
 
-Now let’s create the Map itself, in Unreal maps are called [Levels](https://docs.unrealengine.com/en-US/Engine/Levels/index.html), to do so:
+Now let's create the Map itself, in Unreal maps are called [Levels](https://dev.epicgames.com/documentation/en-us/unreal-engine/levels-in-unreal-engine), to do so:
 
 1. Right click on the Content space.
 2. Create a new Level.
 
 ![](/img/docs/custom-maps-04.webp)
 
-Rename it with the map name you desire, save it and open it up. You will notice the Viewport got black, this is because the Map you just opened doesn’t have anything, let’s add some stuff into it:
+Rename it with the map name you desire, save it and open it up. You will notice the Viewport got black, this is because the Map you just opened doesn't have anything, let's add some stuff into it:
 
 ![](/img/docs/custom-maps-05.webp)
 
 
 ## Adding Objects {/* #adding-objects */}
 
-First let’s add a floor, for that just drag-and-drop a Plane from Place Actors -> Basic window into the Viewport:
+First let's add a floor, for that just drag-and-drop a Plane from Place Actors -> Basic window into the Viewport:
 
 ![](/img/docs/custom-maps-06.webp)
 
@@ -77,11 +77,11 @@ To find where your Mesh is located, press the magnifying glass at the right of t
 
 ![](/img/docs/custom-maps-09.webp)
 
-This will open the Engine’s folder which contains some Basic meshes which come with the Engine:
+This will open the Engine's folder which contains some Basic meshes which come with the Engine:
 
 ![](/img/docs/custom-maps-10.webp)
 
-Let’s copy some Basic Meshes into our AssetsPack folder to be used later, including the Plane:
+Let's copy some Basic Meshes into our AssetsPack folder to be used later, including the Plane:
 
 ![](/img/docs/custom-maps-11.webp)
 
@@ -89,25 +89,25 @@ Use CTRL+C + CTRL+V to copy the assets into your folder:
 
 ![](/img/docs/custom-maps-12.webp)
 
-Now let’s replace the plane mesh we were using to our copied mesh, for that, just
+Now let's replace the plane mesh we were using to our copied mesh, for that, just
 
 1. Select the copied Plane mesh.
-2. Press the arrow on your Plane Actor to replace it’s Static Mesh (alternatively you can just Delete the spawned Plane and drag and drop the new Plane from your assets pack’s folder):
+2. Press the arrow on your Plane Actor to replace it's Static Mesh (alternatively you can just Delete the spawned Plane and drag and drop the new Plane from your assets pack's folder):
 
 ![](/img/docs/custom-maps-13.webp)
 
-After that, with your Plane \(floor\) selected, let’s just scale it to `X = 10, Y = 10, Z = 10` and centralize it on `X = 0, X = 0, X = 0`:
+After that, with your Plane \(floor\) selected, let's just scale it to `X = 10, Y = 10, Z = 10` and centralize it on `X = 0, Y = 0, Z = 0`:
 
 ![](/img/docs/custom-maps-14.webp)
 
-We can also add some lights, for that, just drag and drop a **Directional Light** \(Sun Light/Shadows\) and a **Sky Light** \(Shadow’s Color\) into your level \(you can fly around with Right Click + WASD in the viewport, or press F to centralize the Plane - if selected\):
+We can also add some lights, for that, just drag and drop a **Directional Light** \(Sun Light/Shadows\) and a **Sky Light** \(Shadow's Color\) into your level \(you can fly around with Right Click + WASD in the viewport, or press F to centralize the Plane - if selected\):
 
 ![](/img/docs/custom-maps-15.webp)
 
 
 ## Adding Materials {/* #adding-materials */}
 
-Great job, now we can see the stuff! Now let’s add some color to it, applying color and textures in Unreal are made through [Materials](https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/index.html), for that, let’s just create a Material
+Great job, now we can see the stuff! Now let's add some color to it, applying color and textures in Unreal are made through [Materials](https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-materials), for that, let's just create a Material
 
 1. Right Click.
 2. Create new Material.
@@ -118,7 +118,7 @@ Rename it to `M_Plane` and open it up:
 
 ![](/img/docs/custom-maps-17.webp)
 
-We won’t cover all aspects of Materials in this tutorial, for now let’s just pin a Vector3 node with a color into Base Color input, for that Right Click on the screen and search for `Constant3Vector`:
+We won't cover all aspects of Materials in this tutorial, for now let's just pin a Vector3 node with a color into Base Color input, for that Right Click on the screen and search for `Constant3Vector`:
 
 ![](/img/docs/custom-maps-18.webp)
 
@@ -130,15 +130,15 @@ Select the Vector3 node and select a color for it:
 
 ![](/img/docs/custom-maps-20.webp)
 
-Now save and close this Material window, and you are able to drag and drop your material into the Mesh you want, let’s do it for the Plane:
+Now save and close this Material window, and you are able to drag and drop your material into the Mesh you want, let's do it for the Plane:
 
 ![](/img/docs/custom-maps-21.webp)
 
-And voila, it gets greenish (or the color you selected in the Plane’s Material screen)!
+And voila, it gets greenish (or the color you selected in the Plane's Material screen)!
 
 ![](/img/docs/custom-maps-22.webp)
 
-Now let’s drag’n drop other Meshes into our Level, like so:
+Now let's drag'n drop other Meshes into our Level, like so:
 
 ![](/img/docs/custom-maps-23.webp)
 
@@ -148,7 +148,7 @@ You can create a new Material and use it to paint these meshes as well:
 
 ![](/img/docs/custom-maps-24.webp)
 
-If you \(1.\) select the Directional Light, you can change it’s \(2.\) Rotation, also, remember to set it to \(3.\) Movable, so it’s shadows work in Real Time, feel free to tweak the light as you want, including it’s Color and intensity:
+If you \(1.\) select the Directional Light, you can change it's \(2.\) Rotation, also, remember to set it to \(3.\) Movable, so it's shadows work in Real Time, feel free to tweak the light as you want, including it's Color and intensity:
 
 ![](/img/docs/custom-maps-25.webp)
 
@@ -156,7 +156,7 @@ When you are fine with it, move your camera to see the whole map and take a scre
 
 ![](/img/docs/custom-maps-26.webp)
 
-And we are done! Save everything and let’s export it!
+And we are done! Save everything and let's export it!
 
 
 ## Exporting the Map {/* #exporting-the-map */}

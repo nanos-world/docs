@@ -11,7 +11,7 @@ How to add a basic HUD using HTML + JavaScript + CSS to display the character’
 
 :::tip
 
-The following example is deprecated and you can find an updated HTML UI in our [Sandbox Official Repository](https://github.com/nanos-world/nanos-world-sandbox).
+This is a minimal example to learn how Lua and a WebUI talk to each other. For a complete, production HUD, check the one in our [Sandbox Official Repository](https://github.com/nanos-world/nanos-world-sandbox).
 
 :::
 
@@ -27,7 +27,7 @@ Inside `UI/` let’s create the following files: `index.html`, `style.css` and `
 
 :::info
 
-In this UI we will be using [JQuery](https://jquery.com/), please download [the latest version](https://code.jquery.com/jquery-3.5.1.min.js) and place it inside `UI/` folder.
+In this UI we will be using [jQuery](https://jquery.com/), please download [jQuery 3.7.1](https://code.jquery.com/jquery-3.7.1.min.js) and place it inside `UI/` folder.
 
 :::
 
@@ -37,7 +37,7 @@ In this UI we will be using [JQuery](https://jquery.com/), please download [the 
 <html>
     <head>
         <!-- Includes all files we created (JS, JQuery and CSS) -->
-        <script src="jquery-3.5.1.min.js"></script>
+        <script src="jquery-3.7.1.min.js"></script>
         <script src="index.js"></script>
         <link rel="stylesheet" href="style.css">
     </head>
@@ -176,7 +176,7 @@ Now that our UI is done, let’s finish our Lua code to handle that whole thing!
 main_hud = WebUI("Main HUD", "file://UI/index.html")
 
 
--- When LocalPlayer spawns, sets an event on it to trigger when we possesses a new character, to store the local controlled character locally. This event is only called once, see Package:Subscribe("Load") to load it when reloading a package
+-- When LocalPlayer spawns, sets an event on it to trigger when we possess a new character. This event is only called once, see Package.Subscribe("Load") for when reloading the package
 Client.Subscribe("SpawnLocalPlayer", function(local_player)
     local_player:Subscribe("Possess", function(player, character)
         UpdateLocalCharacter(character)
@@ -193,20 +193,15 @@ end)
 
 -- Function to set all needed events on local character (to update the UI when it takes damage or dies)
 function UpdateLocalCharacter(character)
-    -- Verifies if character is not nil (eg. when GetControllerCharacter() doesn't return a character)
+    -- Verifies if character is not nil (eg. when GetControlledCharacter() doesn't return a character)
     if (character == nil) then return end
 
     -- Updates the UI with the current character's health
     UpdateHealth(character:GetHealth())
 
-    -- Sets on character an event to update the health's UI after it takes damage
-    character:Subscribe("TakeDamage", function(charac, damage, type, bone, from_direction, instigator, causer)
-        UpdateHealth(math.max(charac:GetHealth() - damage, 0))
-    end)
-
-    -- Sets on character an event to update the health's UI after it dies
-    character:Subscribe("Death", function(charac)
-        UpdateHealth(0)
+    -- Updates the health UI whenever the health changes (damage, healing, death or respawn)
+    character:Subscribe("HealthChange", function(charac, old_health, new_health)
+        UpdateHealth(new_health)
     end)
 
     -- Try to get if the character is holding any weapon
@@ -242,12 +237,13 @@ end
 
 -- Function to update the Ammo's UI
 function UpdateAmmo(enable_ui, ammo, ammo_bag)
-    main_hud:CallEvent("UpdateWeaponAmmo", {enable_ui, ammo, ammo_bag})
+    -- Each argument after the event name arrives as a separate parameter in JavaScript
+    main_hud:CallEvent("UpdateWeaponAmmo", enable_ui, ammo, ammo_bag)
 end
 
 -- Function to update the Health's UI
 function UpdateHealth(health)
-    main_hud:CallEvent("UpdateHealth", {health})
+    main_hud:CallEvent("UpdateHealth", health)
 end
 ```
 

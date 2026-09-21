@@ -1,0 +1,28 @@
+---
+title: 🧮 Matrix
+description: A 4x4 transformation Matrix built from a rotation and an origin, used to transform Vectors
+tags: [utility-class]
+---
+
+<HeaderDeclaration type="Struct" name="Matrix" open_source_url="Classes/Matrix.lua" />
+
+
+## 🎒 Examples {/* #examples */}
+
+```lua showLineNumbers
+-- Builds a matrix rotated 90 degrees in Yaw, placed at (100, 0, 0)
+local matrix = Matrix(Rotator(0, 90, 0), Vector(100, 0, 0))
+
+-- Rotates a direction by the matrix rotation (the origin is not applied)
+local rotated_direction = matrix:TransformVector(Vector(50, 0, 0))
+```
+
+
+## 🛠 Constructors {/* #constructors */}
+
+<ConstructorDeclaration type="Struct" name="Matrix" />
+
+
+## 🦠 Functions {/* #functions */}
+
+<FunctionsDeclaration type="Struct" name="Matrix" />

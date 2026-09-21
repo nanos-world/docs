@@ -13,14 +13,29 @@ Any Skeletal Mesh can be used to create a Vehicle, although only Skeletal Meshes
 ## 🎒 Examples {/* #examples */}
 
 ```lua title="Server/Index.lua" showLineNumbers
--- Spawns a Pickup Vehicle
-local vehicle = VehicleWheeled(location or Vector(), rotation or Rotator(), "nanos-world::SK_Pickup", CollisionType.Normal, true, false, true, "nanos-world::A_Vehicle_Engine_10")
+-- Spawns a Pickup Vehicle, deferring its spawn to clients until FinishSpawn() is called
+local vehicle = VehicleWheeled(
+    Vector(0, 0, 100),                      -- location
+    Rotator(),                              -- rotation
+    "nanos-world::SK_Pickup",               -- asset
+    CollisionType.Normal,                   -- collision_type
+    true,                                   -- gravity_enabled
+    false,                                  -- auto_unflip
+    "nanos-world::A_Vehicle_Engine_10",     -- engine_sound
+    "nanos-world::A_Vehicle_Horn_Toyota",   -- horn_sound
+    "nanos-world::A_Vehicle_Brake",         -- brake_sound
+    "nanos-world::A_Car_Engine_Start",      -- engine_start_sound
+    "nanos-world::A_Vehicle_Door",          -- vehicle_door_sound
+    true,                                   -- auto_start_engine
+    "",                                     -- custom_animation_blueprint
+    SpawnMode.AfterConstructor              -- spawn_mode
+)
 
--- Configure it's Engine power and Aerodynamics
+-- Configure its Engine (max torque and max RPM) and Aerodynamics (mass)
 vehicle:SetEngineSetup(700, 5000)
 vehicle:SetAerodynamicsSetup(2500)
 
--- Configure it's Steering Wheel and Headlights location
+-- Configure its Steering Wheel and Headlights location
 vehicle:SetSteeringWheelSetup(Vector(0, 27, 120), 24)
 vehicle:SetHeadlightsSetup(Vector(270, 0, 70))
 
@@ -38,8 +53,8 @@ vehicle:SetDoor(3, Vector( -90,  75, 130), Vector( -90,   115, 155), Rotator(0, 
 vehicle:SetDoor(4, Vector(-195, -75, 130), Vector(-195,  -115, 155), Rotator(0,  90, 20), 60, -150)
 vehicle:SetDoor(5, Vector(-195,  75, 130), Vector(-195,   115, 155), Rotator(0, -90, 20), 60,  150)
 
--- Make it ready (so clients only create Physics once and not for each function call above)
-vehicle:RecreatePhysics()
+-- Finishes the spawn, so clients create the vehicle (and its physics) only once, with all the configuration above
+vehicle:FinishSpawn()
 ```
 
 <ExamplesDeclaration type="Class" name="VehicleWheeled" />

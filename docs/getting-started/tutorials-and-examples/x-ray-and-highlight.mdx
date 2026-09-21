@@ -47,3 +47,18 @@ end)
 ```
 
 
+## Outlines {/* #outlines */}
+
+Besides highlighting, Actors can also be drawn with an **outline**, which works the same way with 3 configurable indexes:
+
+```lua title="Client/Index.lua" showLineNumbers
+-- Configures the outline color (and thickness) of the index 0
+Client.SetOutlineColor(Color(0, 1, 0), 0, 2)
+
+-- Outlines all Props when they spawn
+Prop.Subscribe("Spawn", function(prop)
+    prop:SetOutlineEnabled(true, 0)
+end)
+```
+
+

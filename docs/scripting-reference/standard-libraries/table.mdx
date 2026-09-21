@@ -1,6 +1,6 @@
 ---
 title: table
-description: table
+description: Lua table library, with functions to manipulate tables such as inserting, removing, sorting and concatenating.
 tags: [standard-libraries]
 sidebar_position: 6
 ---
@@ -10,8 +10,21 @@ sidebar_position: 6
 
 ## 🎒 Examples {/* #examples */}
 
-```lua
-TODO Examples
+```lua showLineNumbers
+local fruits = { "banana", "apple" }
+
+-- Inserts at the end, then at the first position
+table.insert(fruits, "orange")        -- { "banana", "apple", "orange" }
+table.insert(fruits, 1, "grape")      -- { "grape", "banana", "apple", "orange" }
+
+-- Removes the second element and returns it
+local removed = table.remove(fruits, 2) -- "banana"
+
+-- Sorts alphabetically
+table.sort(fruits)                    -- { "apple", "grape", "orange" }
+
+-- Joins all elements into a string
+Console.Log(table.concat(fruits, ", ")) -- "apple, grape, orange"
 ```
 
 

@@ -43,7 +43,7 @@ Events.CallRemote("MyServerEvent", Reliability.Reliable, "hello nanos world!")
 
 :::info
 
-On **Server**, registering for remote events has an addition parameter: <Classes.Player />, which is the client who sent the event.
+On **Server**, registering for remote events has an additional first parameter: <Classes.Player />, which is the client who sent the event.
 
 :::
 
@@ -73,22 +73,35 @@ Events.BroadcastRemote("MyClientEvent", Reliability.Reliable, "hello nanos world
 
 ### Passing entities through Events {/* #passing-entities-through-events */}
 
-```lua showLineNumbers
--- register for an Event (remote or local)
-Events.Subscribe("MyAnotherEvent", function(my_text, my_vector, my_character, my_number)
+```lua title="Server/Index.lua" showLineNumbers
+-- registers for a local Event
+Events.Subscribe("MyEvent", function(my_text, my_vector, my_character, my_number)
     Console.Log("Event received! " .. my_text .. " " .. my_vector.X .. " " .. my_character:GetViewMode() .. " " .. my_number)
     -- outputs "Event received! hello nanos world! 123 1 456"
 end)
 
 -- passing Characters through events
-local my_temp_character = Character()
+local my_temp_character = Character(Vector(0, 0, 100), Rotator(), "nanos-world::SK_Male")
 
--- calls a local Event in all Local Packages
+-- calls a local Event in all Server Packages
 Events.Call("MyEvent", "hello nanos world!", Vector(123, 123, 123), my_temp_character, 456)
 
--- calls a remote Event in all Server Packages
-Events.CallRemote("MyEvent", Reliability.Reliable, "hello nanos world!", Vector(123, 123, 123), my_temp_character, 456)
+-- calls a remote Event in all Client Packages of all Players
+Events.BroadcastRemote("MyEvent", Reliability.Reliable, "hello nanos world!", Vector(123, 123, 123), my_temp_character, 456)
 ```
+
+```lua title="Client/Index.lua" showLineNumbers
+-- registers for the remote Event, the Character arrives as the same entity on the client
+Events.SubscribeRemote("MyEvent", function(my_text, my_vector, my_character, my_number)
+    Console.Log("Remote event received! %s %s", my_text, tostring(my_character))
+end)
+```
+
+:::note
+
+`Events.Subscribe` only receives **local** events (`Events.Call`), and `Events.SubscribeRemote` only receives **remote** ones. This is the behavior since the version `1.22` (see [Compatibility Versions](/core-concepts/packages/compatibility-versions.mdx#version-122)).
+
+:::
 
 
 :::tip

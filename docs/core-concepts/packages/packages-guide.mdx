@@ -36,12 +36,24 @@ Packages/
 │	├── Package.toml
 │	└── ...
 ├── my-package-loading-screen-01/
-│	├── Index.html
+│	├── index.html
 │	├── Package.toml
 │	└── ...
 Assets/
 Config.toml
 ```
+
+:::caution
+
+Package folder names are also their unique identifier (used in `Config.toml`, requirements and the Vault), so they must be **lowercase** and contain only letters, numbers and `-` (e.g. `my-awesome-package`), with max 64 characters.
+
+:::
+
+:::tip
+
+Wondering in which order Packages and their `Server/`, `Client/` and `Shared/` scripts are loaded? Check the [Package Loading & Lua Environment](/core-concepts/packages/package-loading-and-lua-environment.mdx) guide.
+
+:::
 
 
 ## Package Configuration {/* #package-configuration */}
@@ -135,6 +147,7 @@ https://github.com/nanos-world/nanos-world-server/blob/main/_c_module.toml
 | :--- | :--- | :--- |
 | **`force_no_map_package`** | `script`<br/>`game-mode` | Enabling this will force the map package (if any) to do NOT load |
 | **`auto_cleanup`** | `script`<br/>`game-mode`<br/>`map` | Enabling this will destroy all entities spawned by this Package when it unloads |
+| **`load_level_entities`** | `script`<br/>`game-mode`<br/>`map` | Whether to load all the static meshes placed in the map level as entities on the client side (accessible through scripting). Only enable it if your Package needs to use them, as it costs performance |
 | **`compatibility_version`** | `script`<br/>`game-mode`<br/>`map` | The game version (`major.minor`) at the time this package was created, for granting backwards compatibility between breaking changes. See more [here](/core-concepts/packages/compatibility-versions.mdx) |
 | **`packages_requirements`** | `script`<br/>`game-mode`<br/>`map` | List of Packages dependencies used by this Package which need to be loaded first |
 | **`assets_requirements`** | `script`<br/>`game-mode`<br/>`map` | List of Asset Packs to be loaded when this package loads |
@@ -194,7 +207,7 @@ Console.Log(settings.game_mode) -- "Classic"
 
 They can also be overridden without touching `Package.toml`, either when creating a new game through the main menu, or by passing them directly on the command line, which takes precedence over both the New Game screen and `Package.toml` defaults:
 
-```toml
+```shell
 --custom_settings "max_props = 500, enable_pvp = false, game_mode = 'Hardcore'"
 ```
 

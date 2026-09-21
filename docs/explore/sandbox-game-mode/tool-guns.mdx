@@ -1,11 +1,11 @@
 ---
 title: Tool Guns
-description: How to create new Tool Guns for nanos world
+description: How to create new Tool Guns for the Sandbox game-mode
 tags: [tutorial-example, scripting, assets]
 sidebar_position: 2
 ---
 
-How to create new Tool Guns for nanos world
+How to create new Tool Guns for the Sandbox game-mode
 
 
 ![](/img/docs/tutorials/sandbox/tool-guns.webp)
@@ -21,14 +21,14 @@ The sandbox game-mode defines a `ToolGun` class (see on GitHub: [Server](https:/
 
 ## Creating a custom Tool Gun {/* #creating-a-custom-tool-gun */}
 
-To create your own Tool based on Sandbox's `ToolGun`, you need to create a new Class inheriting from it passing some custom parameters to the Class, like that:
+To create your own Tool based on Sandbox's `ToolGun`, you need to create a new Class inheriting from it passing some custom parameters to the Class. The Sandbox defines `ToolGun` separately on each side, so you must inherit it on **both** `Client/` and `Server/` (the custom values below are only needed on the Client side):
 
-```lua showLineNumbers
+```lua title="Client/Index.lua" showLineNumbers
 MyToolGun = ToolGun.Inherit("MyToolGun", {
 	-- Spawn Menu
 	name = "My Tool Gun",
-	image = "package://my-package/MyToolGun.webp",
-	category = "special",
+	image = "package://my-package/Client/MyToolGun.webp",
+	category = "tool-guns",
 
 	-- Tool Gun Description which will be displayed on Top Left
 	description = "Do magic things!",
@@ -69,11 +69,11 @@ MyToolGun = ToolGun.Inherit("MyToolGun", {
 
 :::tip
 
-The values `name`, `image` and `category` are used by **Spawn Menu** to display it properly on it.
+The values `name`, `image` and `category` are used by **Spawn Menu** to display it properly on it. The `category` must be one of the categories of the `tools` tab: `tool-guns`, `spawners` or `constrainers`.
 
-The other values `tutorials` and `debug_trace` are used by the **ToolGun** to add custom tutorials or behaviors when using it. Those parameters are optional.
+The other values `description`, `tutorials`, `tips` and `debug_trace` are used by the **ToolGun** to add custom tutorials or behaviors when using it. Those parameters are optional.
 
-Those values are only used on **Client Side**!
+Those values are only used on **Client Side**, so on the server you can just call `MyToolGun = ToolGun.Inherit("MyToolGun")`.
 
 :::
 
@@ -99,12 +99,17 @@ end
 MyToolGun.picked_context_menu_items = {
 	{
 		id = "my_tool_gun_custom_value",
-		type = "number",
+		type = "range",
 		label = "custom value",
+		min = 0,
+		max = 1000,
 		callback = MyToolGun.SetMyCustomValue,
-		value = MyToolGun.my_custom_value
+		-- Use a function, so the Context Menu always reads the current value
+		value = function()
+			return MyToolGun.my_custom_value
+		end
 	},
-},
+}
 ```
 
 :::tip
@@ -167,6 +172,27 @@ function MyToolGun:OnLocalPlayerTarget(location, relative_location, relative_rot
 end
 ```
 
+And on the server side, receive it and do the action (always validating what the client sent):
+
+```lua title="Server/Index.lua" showLineNumbers
+MyToolGun = ToolGunSingleTarget.Inherit("MyToolGun")
+
+-- Server-side remote events receive the Player as the first parameter after self
+function MyToolGun:OnSpawnSomething(player, location, relative_location, relative_rotation, normal, entity)
+	-- Don't trust the client: check the player is holding this tool and is close to the location
+	local character = player:GetControlledCharacter()
+	if (not character or character:GetPicked() ~= self) then return end
+	if (character:GetLocation():Distance(location) > 5000) then return end
+
+	local prop = Prop(location, Rotator(), "nanos-world::SM_Toaster")
+
+	-- Allows the player to undo it
+	Sandbox.SpawnHistory.AddItemToHistory(player, prop)
+end
+
+MyToolGun.SubscribeRemote("SpawnSomething", MyToolGun.OnSpawnSomething)
+```
+
 
 ### ToolGunDoubleTarget {/* #toolgundoubletarget */}
 
@@ -178,15 +204,17 @@ You can override the `OnLocalPlayerTarget` method that will be called only when 
 MyToolGun = ToolGunDoubleTarget.Inherit("MyToolGun")
 
 -- Overrides ToolGunDoubleTarget method
-function MyToolGun:OnLocalPlayerTarget(targeting_first_to, targeting_first_relative_location, targeting_first_relative_rotation, targeting_second_to, targeting_second_location, targeting_second_rotation)
+function MyToolGun:OnLocalPlayerTarget(targeting_first_to, targeting_first_relative_location, targeting_first_relative_rotation, targeting_second_to, targeting_second_relative_location, targeting_second_relative_rotation)
 	-- Calls remote to weld the two entities together
-	self:CallRemoteEvent("Weld", Reliability.Reliable, targeting_first_to, targeting_second_to, targeting_second_location)
+	self:CallRemoteEvent("Weld", Reliability.Reliable, targeting_first_to, targeting_second_to, targeting_second_relative_location)
 end
 ```
+
+The server side works the same way as the `ToolGunSingleTarget` example above: inherit `ToolGunDoubleTarget` on the server and subscribe to the `"Weld"` remote event with `MyToolGun.SubscribeRemote`.
 
 
 ## Examples {/* #examples */}
 
 You can find more examples of Tools in the Sandbox's `Tools/` folder on both [Client](https://github.com/nanos-world/nanos-world-sandbox/tree/master/Client/Tools) and [Server](https://github.com/nanos-world/nanos-world-sandbox/tree/master/Server/Tools) side.
 
-Now it's up to you to to create your own Packages with your own Tools!
+Now it's up to you to create your own Packages with your own Tools!

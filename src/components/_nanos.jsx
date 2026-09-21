@@ -212,6 +212,7 @@ export const Structs = {
 	Color: () => BaseStruct("Color", "🎨"),
 	Quat: () => BaseStruct("Quat", "🔢"),
 	Vector2D: () => BaseStruct("Vector2D", "📏"),
+	Matrix: () => BaseStruct("Matrix", "🧮"),
 };
 
 // Defines Struct Types components

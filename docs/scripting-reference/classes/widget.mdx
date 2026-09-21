@@ -20,7 +20,7 @@ Most parameters are not exposed in the Widget class, and should be called using 
 
 ## 🎒 Examples {/* #examples */}
 
-#### Creating a Simple a Native Text and adding it to screen {/* #creating-a-simple-a-native-text-and-adding-it-to-screen */}
+#### Creating a Simple Native Text and adding it to screen {/* #creating-a-simple-a-native-text-and-adding-it-to-screen */}
 
 ```lua title="Client/Index.lua" showLineNumbers
 local my_text = Widget(NativeWidget.Text)
@@ -30,7 +30,7 @@ my_text:AddToViewport()
 
 :::tip
 
-`SetText` is a method from [UTextBlock](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UTextBlock/), the Widget associated to `NativeWidget.Text`.
+`SetText` is a method from [UTextBlock](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UTextBlock), the Widget associated to `NativeWidget.Text`.
 
 :::
 
@@ -63,7 +63,7 @@ my_image:AddToViewport()
 
 :::tip
 
-`SetBrushFromMaterial` is a method from [UImage](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UImage/), and expects a `MaterialInstance` as parameter. Passing **WebUI**, **SceneCapture** or **Canvas** converts it to it's internal Material automatically when being passed as parameter!
+`SetBrushFromMaterial` is a method from [UImage](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UImage), and expects a `MaterialInstance` as parameter. Passing **WebUI**, **SceneCapture** or **Canvas** converts it to it's internal Material automatically when being passed as parameter!
 
 :::
 
@@ -123,35 +123,35 @@ Here a list of Community Created Libraries & Frameworks making use of Widgets ex
 
 ## ✅ NativeWidgets to Unreal Widgets Relation {/* #nativewidgets-to-unreal-widgets-relation */}
 
-List of the relation Unreal native [Widgets](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UWidget/) ↔ <Enums>NativeWidget</Enums> Enums:
+List of the relation Unreal native [Widgets](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UWidget) ↔ <Enums>NativeWidget</Enums> Enums:
 
 | Enum | Unreal Class | Is Panel |
 | :--- | :--- | :--- |
-| **`NativeWidget.Border`** | [Border](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UBorder/) | ✅ |
-| **`NativeWidget.Button`** | [Button](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UButton/) | ✅ |
-| **`NativeWidget.CheckBox`** | [CheckBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UCheckBox/) | ✅ |
-| **`NativeWidget.Image`** | [Image](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UImage/) | ❌ |
-| **`NativeWidget.ProgressBar`** | [ProgressBar](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UProgressBar/) | ❌ |
-| **`NativeWidget.RichTextBlock`** | [RichTextBlock](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/URichTextBlock/) | ❌ |
-| **`NativeWidget.Slider`** | [Slider](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/USlider/) | ❌ |
-| **`NativeWidget.Text`** | [TextBlock](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UTextBlock/) | ❌ |
-| **`NativeWidget.ComboBox`** | [ComboBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UComboBox/) | ❌ |
-| **`NativeWidget.EditableText`** | [EditableText](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UEditableText/) | ❌ |
-| **`NativeWidget.EditableTextMultiLine`** | [MultiLineEditableText](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UMultiLineEditableText/) | ❌ |
-| **`NativeWidget.SpinBox`** | [SpinBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/USpinBox/) | ❌ |
-| **`NativeWidget.TextBox`** | [EditableTextBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UEditableTextBox/) | ❌ |
-| **`NativeWidget.TextBoxMultiLine`** | [MultiLineEditableTextBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UMultiLineEditableTextBox/) | ❌ |
-| **`NativeWidget.CanvasPanel`** | [CanvasPanel](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UCanvasPanel/) | ✅ |
-| **`NativeWidget.GridPanel`** | [GridPanel](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UGridPanel/) | ✅ |
-| **`NativeWidget.HorizontalBox`** | [HorizontalBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UHorizontalBox/) | ✅ |
-| **`NativeWidget.Overlay`** | [Overlay](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UOverlay/) | ✅ |
-| **`NativeWidget.ScaleBox`** | [ScaleBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UScaleBox/) | ✅ |
-| **`NativeWidget.ScrollBox`** | [ScrollBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UScrollBox/) | ✅ |
-| **`NativeWidget.SizeBox`** | [SizeBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/USizeBox/) | ✅ |
-| **`NativeWidget.UniformGridPanel`** | [UniformGridPanel](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UUniformGridPanel/) | ✅ |
-| **`NativeWidget.VerticalBox`** | [VerticalBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UVerticalBox/) | ✅ |
-| **`NativeWidget.WrapBox`** | [WrapBox](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UWrapBox/) | ✅ |
-| **`NativeWidget.BackgroundBlur`** | [BackgroundBlur](https://docs.unrealengine.com/5.1/en-US/API/Runtime/UMG/Components/UBackgroundBlur/) | ✅ |
+| **`NativeWidget.Border`** | [Border](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UBorder) | ✅ |
+| **`NativeWidget.Button`** | [Button](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UButton) | ✅ |
+| **`NativeWidget.CheckBox`** | [CheckBox](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UCheckBox) | ✅ |
+| **`NativeWidget.Image`** | [Image](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UImage) | ❌ |
+| **`NativeWidget.ProgressBar`** | [ProgressBar](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UProgressBar) | ❌ |
+| **`NativeWidget.RichTextBlock`** | [RichTextBlock](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/URichTextBlock) | ❌ |
+| **`NativeWidget.Slider`** | [Slider](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/USlider) | ❌ |
+| **`NativeWidget.Text`** | [TextBlock](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UTextBlock) | ❌ |
+| **`NativeWidget.ComboBox`** | [ComboBox](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UComboBox) | ❌ |
+| **`NativeWidget.EditableText`** | [EditableText](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UEditableText) | ❌ |
+| **`NativeWidget.EditableTextMultiLine`** | [MultiLineEditableText](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UMultiLineEditableText) | ❌ |
+| **`NativeWidget.SpinBox`** | [SpinBox](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/USpinBox) | ❌ |
+| **`NativeWidget.TextBox`** | [EditableTextBox](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UEditableTextBox) | ❌ |
+| **`NativeWidget.TextBoxMultiLine`** | [MultiLineEditableTextBox](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UMultiLineEditableTextBox) | ❌ |
+| **`NativeWidget.CanvasPanel`** | [CanvasPanel](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UCanvasPanel) | ✅ |
+| **`NativeWidget.GridPanel`** | [GridPanel](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UGridPanel) | ✅ |
+| **`NativeWidget.HorizontalBox`** | [HorizontalBox](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UHorizontalBox) | ✅ |
+| **`NativeWidget.Overlay`** | [Overlay](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UOverlay) | ✅ |
+| **`NativeWidget.ScaleBox`** | [ScaleBox](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UScaleBox) | ✅ |
+| **`NativeWidget.ScrollBox`** | [ScrollBox](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UScrollBox) | ✅ |
+| **`NativeWidget.SizeBox`** | [SizeBox](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/USizeBox) | ✅ |
+| **`NativeWidget.UniformGridPanel`** | [UniformGridPanel](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UUniformGridPanel) | ✅ |
+| **`NativeWidget.VerticalBox`** | [VerticalBox](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UVerticalBox) | ✅ |
+| **`NativeWidget.WrapBox`** | [WrapBox](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UWrapBox) | ✅ |
+| **`NativeWidget.BackgroundBlur`** | [BackgroundBlur](https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/UMG/UBackgroundBlur) | ✅ |
 
 
 ## ✅ List of Supported Parameter Types {/* #list-of-supported-parameter-types */}

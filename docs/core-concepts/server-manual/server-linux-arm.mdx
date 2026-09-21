@@ -10,12 +10,12 @@ Special cases for some linux os & ARM platform server installation.
 
 :::caution
 
-The installation on versions on and below Debian 13, Ubuntu 22 and ARM systems is not officially supported and currently maintained by the community! The following steps are WIP and may change at any time!
+The officially supported systems are Ubuntu 24.04, Ubuntu 22.04 and Debian 13 (see [Server Installation](/core-concepts/server-manual/server-installation.mdx)). Older versions (Debian 12 or older, Ubuntu 20.04 or older) and ARM systems are not officially supported and are currently maintained by the community! The following steps are WIP and may change at any time!
 
 :::
 
 
-## Linux Debian 11 Installation {/* #linux-debian-11-installation */}
+## Linux Debian 12 (and older) Installation {/* #linux-debian-11-installation */}
 
 :::warning
 
@@ -139,7 +139,7 @@ sudo apt install libc6:armhf libncurses5:armhf libstdc++6:armhf
 
 Clone the repository, then we will need to replace the file `libstdc++.so.6` inside the folder `x64lib`.
 You will need a newer version of this file with at least `GLIBCXX v3.4.26`.
-You can grab it inside an updated Linux distro such as Ubuntu 20.04, Debian 11.
+You can grab it inside an updated Linux distro such as Ubuntu 22.04 or Debian 13.
 To check if the file has at least `GLIBCXX v3.4.26`, use this command :
 ```
 strings libstdc++.so.6 | grep LIBCXX

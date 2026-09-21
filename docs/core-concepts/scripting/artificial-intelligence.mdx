@@ -1,7 +1,7 @@
 ---
 title: Artificial Intelligence
 description: How AI works in nanos world
-sidebar_position: 6
+sidebar_position: 12
 tags: [scripting]
 keywords: [scripting, AI]
 ---
@@ -9,25 +9,49 @@ keywords: [scripting, AI]
 
 How AI works in nanos world
 
-:::caution
-
-🚧 This page is under construction.
-
-:::
-
 Every <Classes.Character /> or <Classes.CharacterSimple /> spawned without a <Classes.Player /> possessing it will automatically be possessed by an **AI** Controller. Which means you can use Character methods such as <MethodReference type="Class" class_name="Pawn" method_name="MoveTo" /> and <MethodReference type="Class" class_name="Character" method_name="LookAt" />.
 
 In nanos world, AI as well as Physics are things distributed through Clients to be calculated and shared with the other Players \(please refer to [Network Authority](/core-concepts/scripting/authority-concepts.mdx#network-authority)\), which means the **AI** will only work if there is a Player connected to the server.
 
 :::info
 
-If you input a NPC to <MethodReference type="Class" class_name="Entity" method_name="IsValid" /> somewhere and there is no Player connected, he will only start walking once a Player joins the server.
+If you call <MethodReference type="Class" class_name="Pawn" method_name="MoveTo" /> on a NPC and there is no Player connected, it will only start walking once a Player joins the server.
 
 :::
 
+
+## Moving NPCs {/* #moving-npcs */}
+
+The main AI methods are available in all Pawns (<Classes.Character /> and <Classes.CharacterSimple />):
+
+- <MethodReference type="Class" class_name="Pawn" method_name="MoveTo" /> makes the NPC walk to a location.
+- <MethodReference type="Class" class_name="Pawn" method_name="Follow" /> makes the NPC keep following another Actor.
+- <MethodReference type="Class" class_name="Pawn" method_name="StopMovement" /> stops the current movement.
+- <MethodReference type="Class" class_name="Pawn" method_name="SetAIAvoidanceSettings" /> makes NPCs avoid each other while walking.
+
+When a movement finishes (or fails, e.g. if there is no path), the event <EventReference type="Class" class_name="Pawn" event="MoveComplete" /> is triggered:
+
+```lua title="Server/Index.lua" showLineNumbers
+-- Spawns a NPC (a Character not possessed by any Player)
+local npc = Character(Vector(0, 0, 100), Rotator(), "nanos-world::SK_Male")
+
+-- Makes it walk to a location, considering arrived when it's at 50 units from it
+npc:MoveTo(Vector(1000, 0, 100), 50)
+
+npc:Subscribe("MoveComplete", function(self, succeeded)
+    if (succeeded) then
+        Console.Log("The NPC arrived!")
+    else
+        Console.Log("The NPC couldn't find a path!")
+    end
+end)
+```
+
+To find points where NPCs can walk to, the client side <StaticClasses.Navigation /> Static Class provides methods such as <MethodReference type="StaticClass" class_name="Navigation" method_name="GetRandomReachablePointInRadius" show_class_name /> and <MethodReference type="StaticClass" class_name="Navigation" method_name="FindPathToLocation" show_class_name />.
+
 ## Navigation Mesh {/* #navigation-mesh */}
 
-In order to NPCs to figure out the path to walk, the map will need to have a [NavMesh](https://docs.unrealengine.com/4.26/en-US/Resources/ContentExamples/NavMesh/) configured.
+In order to NPCs to figure out the path to walk, the map will need to have a [NavMesh](https://dev.epicgames.com/documentation/en-us/unreal-engine/basic-navigation-in-unreal-engine) configured.
 
 ![](/img/docs/artificial-intelligence.jpg)
 

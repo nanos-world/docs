@@ -41,7 +41,7 @@ local trace_result = Trace.LineSingle(start_location, end_location, collision_tr
 if (trace_result.Success) then
 	-- And we got an entity, print the name of the collided entity, otherwise just print the location
 	if (trace_result.Entity) then
-		Console.Log("Trace Success! Entity: " .. trace_result.Entity:GetClass():GetName() .. ". Location: " .. tostring(trace_result.Location))
+		Console.Log("Trace Success! Entity: " .. tostring(trace_result.Entity) .. ". Location: " .. tostring(trace_result.Location))
 	else
 		Console.Log("Trace Success! Location: " .. tostring(trace_result.Location))
 	end
