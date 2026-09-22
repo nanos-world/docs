@@ -1,7 +1,7 @@
 ---
 title: Server & Client Lifecycle
 description: How nanos world framework works
-tags: [hosting]
+tags: [scripting, hosting]
 ---
 
 
@@ -43,8 +43,8 @@ flowchart TB
 		DownloadPackage["Download Package if doesn't exist (with --auto_download)"]
 		--> LoadPackageToml["Load Package.toml"]
 		--> LoadPackageAssetPacks["Load Required Asset Packs"]
-		--> LoadSharedIndex["Execute Shared/index.lua"]
-		--> LoadServerIndex["Execute Server/index.lua"]
+		--> LoadSharedIndex["Execute Shared/Index.lua"]
+		--> LoadServerIndex["Execute Server/Index.lua"]
 		--> TellClientsToHotDownload["Tell Clients to Hot-Download files if needed"]
 		--> TriggerOnLoadEvent["Trigger Package 'Load' Event"]:::event
 	end
@@ -114,8 +114,8 @@ flowchart TD
 		direction TB
 		LoadPackageToml["Load Package.toml"]
 		--> LoadPackageAssetPacks["Load Required Asset Packs"]
-		--> LoadSharedIndex["Execute Shared/index.lua"]
-		--> LoadClientIndex["Execute Client/index.lua"]
+		--> LoadSharedIndex["Execute Shared/Index.lua"]
+		--> LoadClientIndex["Execute Client/Index.lua"]
 		--> TriggerOnLoadEvent["Trigger Package 'Load' Event"]:::event
 	end
 

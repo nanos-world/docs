@@ -20,7 +20,7 @@ The most basic event to bring an example is the **`Spawn`**. Every time an entit
 
 Registering for events is very easy and straightforward using the method <MethodReference type="Class" class_name="Entity" method_name="Subscribe" />, let's say we want to know when a Player has joined the server:
 
-```lua showLineNumbers
+```lua title="Server/Index.lua" showLineNumbers
 Player.Subscribe("Spawn", function(player)
     Console.Log(player:GetName() .. " has joined!")
 end)
@@ -28,14 +28,28 @@ end)
 
 :::info
 
-Most events are triggered on both Client and Server sides, only a few rare exceptions which will be elicited by the [Availability](/core-concepts/scripting/authority-concepts.mdx#methods-and-events-availability).
+Most events are triggered on both Client and Server sides, only a few exceptions which are indicated by the [Availability](/core-concepts/scripting/authority-concepts.mdx#methods-and-events-availability) icons in each event.
 
 :::
 
 
+### Preventing Actions {/* #preventing-actions */}
+
+Some events are triggered **before** something happens, and allow you to cancel it by returning `false`. They usually start with `Attempt`, such as <EventReference type="Class" class_name="Character" event="AttemptEnterVehicle" />:
+
+```lua title="Server/Index.lua" showLineNumbers
+-- Only allows Characters from team 1 to drive vehicles
+Character.Subscribe("AttemptEnterVehicle", function(character, vehicle, seat_index)
+    if (seat_index == 0 and character:GetTeam() ~= 1) then
+        return false
+    end
+end)
+```
+
+
 ### Unsubscribing of Class Events {/* #unsubscribing-of-class-events */}
 
-Currently there is two ways of unsubscribing from events:
+Currently there are two ways of unsubscribing from events:
 
 :::info
 
@@ -75,6 +89,17 @@ Player.Unsubscribe("Spawn", OnSpawnPlayer)
 -- "player has joined" anymore
 ```
 
+:::tip
+
+`Subscribe` returns the callback you passed, so you can also unsubscribe anonymous functions later:
+
+```lua
+local my_callback = Player.Subscribe("Spawn", function(player) end)
+Player.Unsubscribe("Spawn", my_callback)
+```
+
+:::
+
 
 ## Entity Events {/* #entity-events */}
 
@@ -83,9 +108,9 @@ In nanos world it is possible to register for events on specific Entities as wel
 
 ### Subscribing for Entity Events {/* #subscribing-for-entity-events */}
 
-```lua showLineNumbers
+```lua title="Server/Index.lua" showLineNumbers
 -- Spawns a Character
-local my_character = Character()
+local my_character = Character(Vector(0, 0, 100), Rotator(), "nanos-world::SK_Male")
 
 my_character:Subscribe("EnterVehicle", function(self, vehicle)
     -- my_character entered vehicle
@@ -101,7 +126,7 @@ Note that once the entity is destroyed, all events registered for it will be unr
 
 ### Unsubscribing of Entity Events {/* #unsubscribing-of-entity-events */}
 
-Currently there is two ways of unsubscribing from events:
+Currently there are two ways of unsubscribing from events:
 
 :::info
 
@@ -143,4 +168,58 @@ my_character:Unsubscribe("EnterVehicle", OnCharacterEnteredVehicle)
 
 In nanos world, it is possible to define and call Custom Events. Please refer to [Events](/scripting-reference/static-classes/events.mdx) Static Class for the technical documentation.
 
-Custom events are user-created events which you can subscribe or call to all other Packages.
+Custom events are user-created events which you can subscribe or call to all other Packages. There are two kinds of them:
+
+
+### Local Events {/* #local-events */}
+
+Local events stay on the same side (server or client) and reach every Package on that side. Use <MethodReference type="StaticClass" class_name="Events" method_name="Call" show_class_name /> to trigger them and <MethodReference type="StaticClass" class_name="Events" method_name="Subscribe" show_class_name /> to listen:
+
+```lua title="Server/Index.lua" showLineNumbers
+-- In any Package
+Events.Subscribe("RoundStarted", function(round_number)
+    Console.Log("Round %d started!", round_number)
+end)
+
+-- In any other Package (or the same one)
+Events.Call("RoundStarted", 1)
+```
+
+
+### Remote Events {/* #remote-events */}
+
+Remote events travel through the network, from the client to the server or from the server to clients. Listen to them with <MethodReference type="StaticClass" class_name="Events" method_name="SubscribeRemote" show_class_name />:
+
+```lua title="Server/Index.lua" showLineNumbers
+-- On the server, the first parameter is always the Player who sent it
+Events.SubscribeRemote("BuyItem", function(player, item_name)
+    Console.Log("%s wants to buy %s", player:GetName(), item_name)
+
+    -- Answers only to that Player
+    Events.CallRemote("ItemBought", player, Reliability.Reliable, item_name)
+end)
+```
+
+```lua title="Client/Index.lua" showLineNumbers
+Events.SubscribeRemote("ItemBought", function(item_name)
+    Console.Log("I bought %s!", item_name)
+end)
+
+-- Sends it to the server
+Events.CallRemote("BuyItem", Reliability.Reliable, "medkit")
+```
+
+The server can also send events to a list of Players with `CallRemotePlayers`, to everyone with `BroadcastRemote`, or only to Players in a radius or dimension with `BroadcastRemoteInRadius` and `BroadcastRemoteDimension`.
+
+A few important things to keep in mind:
+
+* **Reliability**: `Reliability.Reliable` guarantees the event arrives, in order. `Reliability.Unreliable` is cheaper but can be lost, use it for events sent very often (e.g. every Tick) where only the latest one matters.
+* **Entities** can be passed as parameters, they arrive as the same entity on the other side (as long as it exists there).
+* **Local and remote are separate**: `Events.Subscribe` doesn't receive remote events and `Events.SubscribeRemote` doesn't receive local ones.
+* **Never trust the client**: a player can send any remote event with any parameters, always validate them on the server. See the [Never Trust the Client](/core-concepts/scripting/security-remote-events.mdx) guide.
+
+:::tip
+
+Entities also have their own remote events, which are triggered on a specific entity. See <MethodReference type="Class" class_name="Entity" method_name="CallRemoteEvent" /> and <MethodReference type="Class" class_name="Entity" method_name="BroadcastRemoteEvent" />.
+
+:::

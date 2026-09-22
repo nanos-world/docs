@@ -36,8 +36,9 @@ The Spawn Menu iterates all inherited Classes registered and adds them to it aut
 
 You just need to add the following properties to your Class when Inheriting it to make it display properly on Spawn Menu: `name`, `image` and `category`:
 
-```lua showLineNumbers title="Client/Index.lua"
+```lua showLineNumbers title="Shared/Index.lua"
 -- Inherits from Weapon defining custom values which will be read from Spawn Menu
+-- The class must exist on both sides (so Shared/) to be spawned, the custom values are only used on Client side
 Weapon.Inherit("AwesomeGun", {
 	name = "Awesome Gun",
 	image = "assets://nanos-world/Thumbnails/SK_FlareGun.jpg",
@@ -60,7 +61,7 @@ Some classes like Weapons, Character and Tools are automatically displayed in th
 
 :::info
 
-You must call SpawnMenu.AddItem from both client and server side. Each side has it's own parameters.
+You must call `Sandbox.SpawnMenu.AddItem` from both client and server side. Each side has its own parameters.
 
 :::
 
@@ -75,7 +76,7 @@ On the Client side, we define how the Item will be displayed in the Spawn Menu, 
 ---@param name string           Display name
 ---@param image string          Image path
 ---@param category_id? string   The category of this item
-function Sandbox.SpawnMenu.AddItem(tab_id, id, name, image, category_id?)
+function Sandbox.SpawnMenu.AddItem(tab_id, id, name, image, category_id)
 ```
 
 Example:
@@ -111,7 +112,7 @@ Example:
 -- The parameters location, rotation, tab and id will be automatically
 -- passed by the Spawn Menu
 function SpawnMyIncredibleEntity(location, rotation, tab, id)
-    local my_stuff = MyEntity(location, rotation)
+    local my_stuff = Prop(location, rotation, "nanos-world::SM_Crate_07")
 
     -- configure stuff...
 	-- my_stuff:SetSomething(...)
@@ -122,11 +123,11 @@ end
 
 Package.Subscribe("Load", function()
     -- Adds this to spawn Menu (server side)
-   	Sandbox.SpawnMenu.AddItem(
-		"tools",				-- tab id
-		"IncredibleEntity",		-- item id
-		SpawnMyIncredibleEntity	-- function which spawns and returns the item
-	)
+    Sandbox.SpawnMenu.AddItem(
+        "entities",             -- tab id
+        "IncredibleEntity",     -- item id
+        SpawnMyIncredibleEntity -- function which spawns and returns the item
+    )
 end)
 ```
 
@@ -171,7 +172,7 @@ All Classes inherited from `ToolGun` will appear in the tools tab by default. Se
 
 ### `npcs` {/* #npcs */}
 
-All Classes inherited from <Classes.Character /> and <Classes.CharacterSimple /> will appear in the character tab by default.
+All Classes inherited from <Classes.Character /> and <Classes.CharacterSimple /> will appear in the npcs tab by default.
 
 
 ### Adding new Tabs {/* #adding-new-tabs */}
@@ -207,10 +208,10 @@ Each [Tab](#tabs) has it's own **Categories**. By default they have the followin
 
 - Tab **props**: `basic`, `appliances`, `construction`, `furniture`, `funny`, `tools`, `food`, `street`, `nature`.
 - Tab **entities**: `devices`, `display`, `objects`, `logic`.
-- Tab **weapons**: `rifles`, `smgs`, `pistols`, `shotguns`, `sniper-rifles`, `special`, `vintage`, `grenades`, `melee`.
+- Tab **weapons**: `rifles`, `smgs`, `pistols`, `shotguns`, `sniper-rifles`, `special`, `grenades`, `melees`.
 - Tab **vehicles**: `wheeled`, `water`.
-- Tab **tools**: `tool-guns`, `spawners`.
-- Tab **npcs**: `npcs`.
+- Tab **tools**: `tool-guns`, `spawners`, `constrainers`.
+- Tab **npcs**: `humanoids`, `robots`.
 
 If an item is added without a category (or with `nil` category), it will be displayed under `uncategorized`.
 

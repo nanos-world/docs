@@ -1,7 +1,7 @@
 ---
 title: Packages Communication
 description: All you need to know to communicate between different Packages
-sidebar_position: 3
+sidebar_position: 5
 tags: [scripting]
 ---
 
@@ -29,7 +29,7 @@ Events.Call("MyAwesomeEvent", my_parameter1, my_parameter2, my_parameter3)
 Events.Subscribe("MyAwesomeEvent", function(parameter1, parameter2, parameter3)
     Console.Log("Received " .. parameter1) -- Received 123
     Console.Log("Received " .. parameter2) -- Received hello there
-    Console.Log("Received " .. parameter3) -- Received table
+    Console.Log("Received " .. parameter3.important_stuff) -- Received omg!
 end)
 ```
 
@@ -80,7 +80,7 @@ With that, you can export functions for example, like that:
 ```lua title="package-one/Server/Index.lua" showLineNumbers
 -- Defines a function which you want to export
 function SpawnCoolWeapon(location, rotation)
-    local cool_weapon = Weapon(location or Vector(), rotation or Rotator(), ...)
+    local cool_weapon = Weapon(location or Vector(), rotation or Rotator(), "nanos-world::SK_AK47")
     return cool_weapon
 end
 
@@ -109,6 +109,12 @@ Package.Export("MyAwesomeLibrary", MyAwesomeLibrary)
 ### Calling an Exported Function from another Package {/* #calling-an-exported-function-from-another-package */}
 
 Now you can access that directly from other packages:
+
+:::caution
+
+An exported variable only exists after the Package which exports it has loaded. If your Package depends on it, add the exporting Package to the `packages_requirements` of your `Package.toml`, so it's always loaded before yours. See [Package Loading & Lua Environment](/core-concepts/packages/package-loading-and-lua-environment.mdx).
+
+:::
 
 ```lua title="package-two/Server/Index.lua" showLineNumbers
 -- Calls the exported function

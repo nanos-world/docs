@@ -1,0 +1,149 @@
+---
+title: Debugging & Logging
+description: How to find and fix problems in your scripts, from reading logs and errors to inspecting WebUIs
+sidebar_position: 10
+tags: [scripting, debugging]
+---
+
+
+How to find and fix problems in your scripts: reading logs and errors, reloading your code quickly and inspecting your UIs.
+
+
+## Printing to the Console {/* #printing-to-the-console */}
+
+The <StaticClasses.Console /> Static Class outputs messages to the console (and to the log files), with different levels:
+
+```lua title="Shared/Index.lua" showLineNumbers
+Console.Log("Normal message")                      -- always shown
+Console.Warn("Something looks wrong")              -- orange, shows the stack trace
+Console.Error("Something is broken")               -- red, shows the stack trace
+Console.Debug("Only shown with log level 2 or 3")  -- hidden by default
+```
+
+All of them support formatting with `string.format` specifiers, so you don't need to concatenate values yourself:
+
+```lua showLineNumbers
+Console.Log("Player %s has %d health at %s", player:GetName(), character:GetHealth(), tostring(character:GetLocation()))
+```
+
+:::tip
+
+`print(...)` also works, it's redirected to `Console.Log`.
+
+To print the contents of a table, use `NanosTable.Dump(my_table)`.
+
+:::
+
+
+### Log Levels {/* #log-levels */}
+
+By default `Console.Debug` messages and internal verbose logs are hidden. To see them:
+
+* **Server**: set `log_level = 2` (debug) or `3` (verbose) in the `[debug]` section of the [Config.toml](/core-concepts/server-manual/server-configuration.mdx#debug), pass `--log_level 2` when starting the server, or run the console command `log_level 2`.
+* **Client**: change the **log level** in the game settings, under the **Debug** section.
+
+
+## Where are the Logs? {/* #where-are-the-logs */}
+
+Everything printed to the console is also saved to disk:
+
+| Side | Location |
+| :--- | :--- |
+| **Server** | `.logs/` folder next to the server executable. `NanosWorldCore.log` is the latest session, older sessions are kept with their date in the file name |
+| **Client** | `%LocalAppData%\NanosWorld\Saved\Logs\` |
+
+On the client, you can also open the in-game **Console** with its key binding (configurable in the settings) to see the logs and run commands while playing.
+
+
+## Reading Lua Errors {/* #reading-lua-errors */}
+
+When a script fails, the error is printed in red with where it happened (e.g. inside which Event), followed by the **stack trace**: the chain of function calls which led to the error, with the file and line of each one. The first line (`[1]`) is where the error happened. For example:
+
+```nanos-console
+ERROR  Lua Error on Class 'my-package' Event 'TakeDamage':
+	- [1] [my-package/Server/Index.lua]:24: attempt to call a nil value (global 'Sound')
+	- [2] [my-package/Server/Index.lua]:77: in function <[string "my-package/Server/Index.lua"]:69>
+```
+
+This means that in the line `24` of `my-package/Server/Index.lua`, inside a `TakeDamage` event, the code tried to call `Sound(...)`, but `Sound` doesn't exist there. In this case because <Classes.Sound /> is a **client-only** class and the code is running on the server!
+
+:::tip
+
+Always fix the **first** error you see. Other errors that follow are usually consequences of it.
+
+:::
+
+### Common errors and what they usually mean
+
+#### `attempt to index a nil value`
+
+> A function returned `nil` and you used the result, e.g. `player:GetControlledCharacter()` when the Player isn't possessing anything, or `Prop.GetByIndex(10)` when there are fewer Props. Check for `nil` before using it
+
+#### `attempt to call a nil value (method 'X')` or `(global 'X')`
+
+> The method or class doesn't exist, or it's not available on that side (e.g. spawning a client-only class on the server). Check the name and the [Authority](/core-concepts/scripting/authority-concepts.mdx#methods-and-events-availability) of it in the Scripting Reference
+
+#### `attempt to concatenate a boolean/nil value`
+
+> Using `..` with something which is not a string or number. Use `tostring(value)` or the `Console.Log("%s", value)` formatting
+
+#### `attempt to perform arithmetic on a nil value`
+
+> A variable you are doing math with was never set, e.g. a `GetValue` which returned `nil`. Pass a fallback: `GetValue("score", 0)`
+
+#### `Expected a class as parameter`
+
+> You passed a string to `IsA`, use the class itself: `entity:IsA(Weapon)`
+
+#### `Invalid Channel!`, `Invalid Index!`, etc
+
+> A parameter is outside its allowed range, check the method description in the Scripting Reference
+
+
+## Reloading your Code {/* #reloading-your-code */}
+
+You don't need to restart the server to test your changes. In the server console, use:
+
+#### `package reload my-package`
+
+> Unloads and loads the Package again, destroying the entities it spawned (if `auto_cleanup` is enabled). Players receive the updated client files automatically
+
+#### `package hotreload my-package`
+
+> Reloads all files but keeps the Lua memory (global variables) as is |
+
+#### `package reload all`
+
+> Reloads all Packages, restarting the whole Lua Virtual Machine |
+
+Since the `Load` event is triggered again when reloading, it's a good practice to write your Package so it works when reloaded while Players are already connected. For example, when spawning Characters for Players on `Player "Spawn"`, also loop through the already connected Players on `Package "Load"` (see the [Quick Start](/getting-started/quick-start.mdx#spawning-a-character-for-the-player)).
+
+
+## Debugging WebUIs {/* #debugging-webuis */}
+
+WebUIs run a real Chromium browser, so you can use its **Developer Tools** to inspect the HTML, see JavaScript errors and debug your code:
+
+```lua title="Client/Index.lua" showLineNumbers
+local my_ui = WebUI("My UI", "file://UI/index.html")
+
+-- Opens the Chromium DevTools for this WebUI
+my_ui:OpenDevTools()
+```
+
+JavaScript `console.log` messages are also shown in the game console, with the `WebUI` log type.
+
+
+## Debugging the World {/* #debugging-the-world */}
+
+* The <StaticClasses.Debug /> Static Class draws lines, boxes, spheres and texts in the world, which is great to visualize locations, directions and traces. Traces can also draw themselves with `TraceMode.DrawDebug`.
+* To see how entities are synchronized and who is their Network Authority, enable **Draw Network Debug** in the settings (*Settings -> Debug*). See [Debugging Network & Network Authority](/core-concepts/scripting/authority-concepts.mdx#debugging-network--network-authority).
+
+```lua title="Client/Index.lua" showLineNumbers
+-- Draws a red sphere for 10 seconds where a Character is
+Debug.DrawSphere(my_character:GetLocation(), 50, 12, Color.RED, 10)
+```
+
+
+## Performance Issues {/* #performance-issues */}
+
+If your server logs `Server Tick too high!` warnings or the game gets slow, check the [Profiling](/core-concepts/scripting/profiling.mdx) guide to find which code is taking too long.

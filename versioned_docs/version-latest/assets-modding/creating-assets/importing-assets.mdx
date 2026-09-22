@@ -10,7 +10,7 @@ Learn how to Create and Import custom Assets into nanos world
 
 :::tip Prerequisites
 
-Before proceeding, please make you followed the first steps and installed [Unreal Engine](setting-up-ue.mdx) and downloaded the [Assets Development Kit](adk-assets-development-kit.mdx) project.
+Before proceeding, please make sure you followed the first steps and installed [Unreal Engine](setting-up-ue.mdx) and downloaded the [Assets Development Kit](adk-assets-development-kit.mdx) project.
 
 It is also recommended to have read the [Assets Guide](/core-concepts/assets.mdx) to understand some concepts which will be mentioned here.
 
@@ -60,7 +60,7 @@ The first step is to create a plugin, so open the plugin tab at **Edit ⬇️ Pl
 
 ![](/img/docs/importing-assets/plugin-tab.webp)
 
-And in the upper left corner, tighten `+ Add`:
+And in the upper left corner, click `+ Add`:
 
 ![](/img/docs/importing-assets/new-plugin.webp)
 
@@ -260,7 +260,7 @@ Additionally, you can specify `Additional Asset Directories to Cook` to include 
 
 ### Name your assets properly {/* #name-your-assets-properly */}
 
-We hardly recommend and encourage you to follow [Allar's Asset Naming Conventions](https://github.com/Allar/ue5-style-guide#1-asset-naming-conventions-) as a pattern for naming your assets and organizing your project folder.
+We highly recommend and encourage you to follow [Allar's Asset Naming Conventions](https://github.com/Allar/ue5-style-guide#1-asset-naming-conventions-) as a pattern for naming your assets and organizing your project folder.
 
 We've summarized the most common names here:
 
@@ -315,7 +315,7 @@ Most of the problems can be easily fixed by trying the following steps:
 
 #### 1. Make sure you are not copying Project Assets instead of Cooked Assets {/* #1-make-sure-you-are-not-copying-project-assets-instead-of-cooked-assets */}
 
-> Unreal Project files are not meant to work in runtime, they must be compiled/cooked to load in-game. The cooked assets usually have the extensions: `.uasset`, `.uexport` and `.ubulk`. [See more here](#exporting--cooking-your-assets).
+> Unreal Project files are not meant to work in runtime, they must be compiled/cooked to load in-game. The cooked assets usually have the extensions: `.uasset`, `.uexp` and `.ubulk`. [See more here](#exporting--cooking-your-assets).
 
 #### 2. Make sure your [ADK is updated](adk-assets-development-kit.mdx#updating-to-a-newer-adk-version) {/* #2-make-sure-your-adk-is-updated */}
 

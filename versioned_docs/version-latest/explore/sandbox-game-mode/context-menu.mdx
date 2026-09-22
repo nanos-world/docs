@@ -29,7 +29,24 @@ You can see the source code of the Context Menu in the Sandbox [GitHub](https://
 ---@param id string             Unique ID used to identify this category
 ---@param title string          Category title
 ---@param items table           Table of items
-function Sandbox.ContextMenu.AddItems(id, title, items)
+---@param color? Color          Optional color of the category
+function Sandbox.ContextMenu.AddItems(id, title, items, color)
+```
+
+Example:
+
+```lua title="Client/Index.lua" showLineNumbers
+Sandbox.ContextMenu.AddItems("my-package-settings", "my settings", {
+	{
+		id = "my_checkbox",
+		type = "checkbox",
+		label = "enable fun",
+		value = true,
+		callback = function(value)
+			Console.Log("Fun is now " .. tostring(value))
+		end
+	},
+})
 ```
 
 The `items` parameter is a list of tables with the format for each `type`:
@@ -42,7 +59,7 @@ The `items` parameter is a list of tables with the format for each `type`:
 	type = "checkbox",
 	label = "my check box",
 	callback = function(value)
-		Console.Log("Checkbox value changed to: " .. value)
+		Console.Log("Checkbox value changed to: " .. tostring(value))
 	end
 },
 ```
@@ -92,7 +109,7 @@ The `items` parameter is a list of tables with the format for each `type`:
 		{ id = "id-opt-02", name = "Opt 02", image = "package://your-package/02.jpg" },
 	},
 	value = function()
-		return "id-opt-1"
+		return "id-opt-01"
 	end,
 	callback = function(value)
 		Console.Log("Select Image changed to: " .. value)
@@ -112,11 +129,27 @@ The `items` parameter is a list of tables with the format for each `type`:
 		{ id = "id-opt-01", name = "Opt 01" },
 		{ id = "id-opt-02", name = "Opt 02" },
 	},
-	value = "id-opt-1",
+	value = "id-opt-01",
 	callback = function(value)
 		Console.Log("Select changed to: " .. value)
 	end
 }
+```
+
+
+### `text` {/* #text */}
+
+```lua
+{
+	id = "id-of-item",
+	type = "text",
+	label = "type something",
+	placeholder = "enter text...",
+	value = "",
+	callback = function(value)
+		Console.Log("Text changed to: " .. value)
+	end
+},
 ```
 
 
@@ -162,7 +195,8 @@ function Sandbox.ContextMenu.RemoveItems(id)
 
 ```lua title="Client/Index.lua"
 -- Updates an existing Context Menu item value
----@param id string             Unique ID used to identify this item
+---@param item_id string        Unique ID used to identify this item
+---@param value any             The new value
 function Sandbox.ContextMenu.SetItemValue(item_id, value)
 ```
 
@@ -237,4 +271,4 @@ function Sandbox.ContextMenu.Close()
 
 You can find examples and how it works deeply at the [ContextMenu.lua](https://github.com/nanos-world/nanos-world-sandbox/blob/master/Client/ContextMenu.lua) file.
 
-Also, you can see a working example of dynamically adding an entry to the Context Menu in the [BallonGun](https://github.com/nanos-world/nanos-world-sandbox/tree/master/Client/Tools/BalloonGun.lua).
+Also, you can see a working example of dynamically adding an entry to the Context Menu in the [BalloonGun](https://github.com/nanos-world/nanos-world-sandbox/blob/master/Client/Tools/BalloonGun.lua).

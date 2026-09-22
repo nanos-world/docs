@@ -13,7 +13,10 @@ How to add Name Tags to Characters.
 ```lua title="Client/Index.lua" showLineNumbers
 -- Function to add a Nametag to a Player
 function AddNametag(player, character)
-    -- Try to get it's character
+    -- We don't need to see our own Nametag
+    if (player:IsLocalPlayer()) then return end
+
+    -- Try to get its character
     if (character == nil) then
         character = player:GetControlledCharacter()
         if (character == nil) then return end
@@ -60,11 +63,20 @@ Character.Subscribe("UnPossess", function(character, player)
     RemoveNametag(player, character)
 end)
 
--- When a Player is spawned - for when you connect and there is already Player's connected
-Player.Subscribe("Spawn", function(player)
-    RemoveNametag(player)
-    AddNametag(player)
+-- When the Package loads, adds Nametags to the Players already in the server
+-- (e.g. when you join a server with Players already playing, or when reloading the Package)
+Package.Subscribe("Load", function()
+    for _, player in pairs(Player.GetPairs()) do
+        RemoveNametag(player)
+        AddNametag(player)
+    end
 end)
 ```
+
+:::tip
+
+You can also use the <Classes.Text3D /> class for 3D texts with depth, bevel and outline!
+
+:::
 
 

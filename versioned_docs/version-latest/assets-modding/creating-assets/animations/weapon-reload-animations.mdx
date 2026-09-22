@@ -41,7 +41,7 @@ There are some special names which can be used in there that will trigger specia
 | Notify Name | Description |
 | :--- | :--- |
 | **`Reload_Load`** | This is the main notify, which will trigger the actual reload function internally and update the weapon's ammo. This will destroy the Magazine StaticMesh spawned in the left hand. |
-| **`Reload_Unload`** | This will hide the Weapon's `b_gun_mag` bone and spawn a Magazine StaticMesh attached to the left hand.<br />The magazine mesh can be set with [Weapon:SetMagazineMesh()](/scripting-reference/classes/weapon.mdx#setmagazinemesh). |
+| **`Reload_Unload`** | This will hide the Weapon's `b_gun_mag` bone and spawn a Magazine StaticMesh attached to the left hand.<br />The magazine mesh can be set with [Weapon:SetMagazineMesh()](/scripting-reference/classes/weapon.mdx#function-setmagazinemesh). |
 | **`Reload_UnloadAndDetach`** | This will hide the Weapon's `b_gun_mag`, spawn the Magazine StaticMesh at the bone location and immediately detach it. |
 | **`Reload_SpawnMagazine`** | This will just spawn the Magazine StaticMesh attached to the left hand. |
 | **`Reload_DropMagazine`** | This will drop the Magazine StaticMesh from the left hand. |

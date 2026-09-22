@@ -14,7 +14,7 @@ This guide will go through all aspects of importing, configure the materials, se
 
 :::info
 
-Please refer to [Unreal Engine Static Mesh Documentation](https://docs.unrealengine.com/5.0/en-US/static-meshes/) for more information on how to import a .FBX into Unreal, how to optimize it and so on. There are also thousands of tutorials regarding importing a .FBX from Blender (or other Modeling Tool) into Unreal Engine.
+Please refer to [Unreal Engine Static Mesh Documentation](https://dev.epicgames.com/documentation/en-us/unreal-engine/static-meshes) for more information on how to import a .FBX into Unreal, how to optimize it and so on. There are also thousands of tutorials regarding importing a .FBX from Blender (or other Modeling Tool) into Unreal Engine.
 
 :::
 
@@ -90,7 +90,7 @@ And then plug the texture into the Base Color pin:
 
 :::tip
 
-You can configure other Materials pin as well. Unreal uses [PBR](https://docs.unrealengine.com/5.0/en-US/physically-based-materials-in-unreal-engine/) which means we can set lots of parameters to make the Material look like as much realistic as we desire!
+You can configure other Materials pin as well. Unreal uses [PBR](https://dev.epicgames.com/documentation/en-us/unreal-engine/physically-based-materials-in-unreal-engine) which means we can set lots of parameters to make the Material look like as much realistic as we desire!
 
 Also, some meshes come with other Textures besides the base color as well, for example **Normal Maps**, **Metallic** and **Specular**, which you can plug into your Material to make the PBR complete!
 
@@ -111,7 +111,7 @@ For that, we open the Collision tab and select "Add Box Collision" to automatica
 
 :::tip
 
-You can delete all the collisions by pressing "Remove Collision". For more information please refer o [Unreal Official Documentation](https://docs.unrealengine.com/5.0/en-US/setting-up-collisions-with-static-meshes-in-unreal-engine/).
+You can delete all the collisions by pressing "Remove Collision". For more information please refer to [Unreal Official Documentation](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-collisions-with-static-meshes-in-unreal-engine).
 
 :::
 
@@ -128,7 +128,7 @@ After you have created your meshes, you can read the following steps to improve 
 
 ### Setting the Physical Material {/* #setting-the-physical-material */}
 
-[Physical Materials](https://docs.unrealengine.com/5.0/en-US/physical-materials-in-unreal-engine/) are used to define the response of a physical object when interacting with the world. Besides that in nanos world we use them to define the "hit sounds" of the objects, so it's nice and very easy to configure it.
+[Physical Materials](https://dev.epicgames.com/documentation/en-us/unreal-engine/physical-materials-in-unreal-engine) are used to define the response of a physical object when interacting with the world. Besides that in nanos world we use them to define the "hit sounds" of the objects, so it's nice and very easy to configure it.
 
 For that you just need to open your material and select one of the (included in the ADK) Physical Materials, they are the ones initiated by `PM_`. For this example we are going to use "Wood":
 
@@ -156,7 +156,7 @@ If you have bigger meshes, it's not recommended to reduce their size, otherwise 
 
 ### Setting up LODs {/* #setting-up-lods */}
 
-[Level of Details (LODs)](https://docs.unrealengine.com/5.0/en-US/creating-and-using-lods-in-unreal-engine/) are the way Unreal automatically improves the performance for distant objects. Unreal provides an easy tool to generate LODs automatically for your Static Meshes.
+[Level of Details (LODs)](https://dev.epicgames.com/documentation/en-us/unreal-engine/creating-and-using-lods-in-unreal-engine) are the way Unreal automatically improves the performance for distant objects. Unreal provides an easy tool to generate LODs automatically for your Static Meshes.
 
 For that, open your Static Mesh and in Details panel search for `Lod Settings -> Number of LODs`. We recommend setting it to 3:
 

@@ -37,37 +37,51 @@ services:
     ports:
       - "7777:7777/udp"
       - "7777:7777/tcp"
+      - "7778:7778/udp"
     volumes:
       - ./Packages:/app/Packages
       - ./Assets:/app/Assets
+      - ./logs:/app/.logs
     # Uncomment and modify to pass parameters to the server
-    # command: ["--port", "7777", "--map", "MyMap"]
+    # command: ["--port", "7777", "--map", "default-testing-map"]
 ```
+
+:::info
+
+Port `7777` is the game port (UDP) and the built-in HTTP server (TCP), and `7778` (UDP) is the query port used by the Server List.
+
+:::
 
 #### 2. Start the server: {/* #2-start-the-server */}
 
 ```shell
-docker-compose up -d
+docker compose up -d
 ```
 
 #### 3. View logs: {/* #3-view-logs */}
 
 ```shell
-docker-compose logs -f
+docker compose logs -f
 ```
 
 #### 4. Stop the server: {/* #4-stop-the-server */}
 
 ```shell
-docker-compose down
+docker compose down
 ```
+
+:::tip
+
+If you are using an older Docker installation, use `docker-compose` (with a hyphen) instead of `docker compose`.
+
+:::
 
 ## Using Docker CLI {/* #using-docker-cli */}
 
 Alternatively, you can run the server directly with Docker:
 
 ```shell
-docker run olivatooo/nanos-world-server
+docker run -p 7777:7777/udp -p 7777:7777/tcp -p 7778:7778/udp olivatooo/nanos-world-server
 ```
 
 ## Configuration {/* #configuration */}
@@ -75,16 +89,24 @@ docker run olivatooo/nanos-world-server
 You can pass server parameters by modifying the `command` section in `docker-compose.yml`:
 
 ```yaml
-command: ["--max-players", "32", "--announce"]
+command: ["--max_players", "32", "--announce", "1", "--game_mode", "sandbox"]
 ```
+
+All available parameters are listed in [Server Configuration](/core-concepts/server-manual/server-configuration.mdx#command-line-parameters).
+
+:::info
+
+By default the server runs as the **Playtest** Steam App. To change it, pass `"--steam_app", "game"` in the `command`.
+
+:::
 
 ## Persistent Data {/* #persistent-data */}
 
-The Docker configuration mounts a volume to `/app` inside the container. This allows you to:
-- Persist server configuration files
-- Add custom packages and assets
-- Access server logs
-- Maintain saved data between container restarts
+The Docker configuration above mounts these folders from your host into the container (`/app`):
+- `./Packages` and `./Assets`: add your custom Packages and Asset Packs, they are kept between container restarts
+- `./logs`: the server logs
+
+The `Config.toml` lives inside the container and is recreated with the image, so pass your settings through the `command` parameters instead.
 
 ## Updating the Server {/* #updating-the-server */}
 

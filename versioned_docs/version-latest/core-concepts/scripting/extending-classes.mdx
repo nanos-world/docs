@@ -1,12 +1,15 @@
 ---
 title: Extending Classes
 description: How to extend nanos world Classes
-sidebar_position: 8
+sidebar_position: 14
 tags: [scripting]
 ---
 
 
 How to extend nanos world Classes, nanos world provides a built-in way of extending and customizing the Classes
+
+
+## Extending Native Classes {/* #extending-native-classes */}
 
 :::caution
 
@@ -66,9 +69,15 @@ And you can call a special method called `:Super()` to call the original method 
 ```lua showLineNumbers
 function Character:SetLocation(new_location)
 	-- ... Do something
-    self:Super(new_location + Vector(1, 2, 3))
+	self:Super(new_location + Vector(1, 2, 3))
 end
 ```
+
+:::note
+
+`self:Super(...)` calls the original method with the same name, and can only be used inside the overriding method. This is different from [Inherited Classes](/core-concepts/scripting/inheriting-classes.mdx), where you call the parent methods with `self.Super:MethodName(...)`.
+
+:::
 
 
 ### Overriding `__newindex` {/* #overriding-__newindex */}

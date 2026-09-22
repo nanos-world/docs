@@ -1,0 +1,109 @@
+---
+title: Never Trust the Client
+description: How to protect your game-mode from cheaters by validating everything the clients send to the server
+sidebar_position: 7
+tags: [scripting, networking, security]
+---
+
+
+How to protect your game-mode from cheaters by validating everything the clients send to the server.
+
+
+## Why? {/* #why */}
+
+Everything which runs on the client can be changed by a malicious player: they can call any Remote Event, at any time, with any parameters, as many times as they want. Client scripts are downloaded to their computer, so they can also read them to know which events your server listens to.
+
+That means the **server must never blindly trust** what arrives from `Events.SubscribeRemote` or `Entity.SubscribeRemote`. For example, this is dangerous:
+
+```lua title="Server/Index.lua" showLineNumbers
+-- ❌ DON'T: any player can give themselves any amount of money, or damage anyone from anywhere
+Events.SubscribeRemote("BuyItem", function(player, item_name, price)
+    player:SetValue("money", player:GetValue("money", 0) - price)
+    GiveItem(player, item_name)
+end)
+
+Events.SubscribeRemote("HitEnemy", function(player, enemy, damage)
+    enemy:ApplyDamage(damage)
+end)
+```
+
+A cheater could call `BuyItem` with a negative `price` to earn money, or `HitEnemy` with `damage = 99999` to kill everyone.
+
+
+## The Golden Rule {/* #the-golden-rule */}
+
+The client should only send **what the player wants to do** (the intention), and the server decides **if it's allowed** and **what happens**, using data it already knows:
+
+```lua title="Server/Index.lua" showLineNumbers
+-- The prices are defined on the server, the client can't change them
+local ITEM_PRICES = {
+    medkit = 100,
+    armor = 250,
+}
+
+-- ✅ DO: the client only says which item it wants
+Events.SubscribeRemote("BuyItem", function(player, item_name)
+    -- Validates the type and if the item exists
+    if (type(item_name) ~= "string") then return end
+    local price = ITEM_PRICES[item_name]
+    if (not price) then return end
+
+    -- Validates if the player can afford it
+    local money = player:GetValue("money", 0)
+    if (money < price) then return end
+
+    player:SetValue("money", money - price, true)
+    GiveItem(player, item_name)
+end)
+```
+
+
+## What to Validate {/* #what-to-validate */}
+
+For each Remote Event received on the server, ask yourself:
+
+* **Types**: is each parameter the type I expect? A cheater can send a table where you expect a number. Use `type(value)` and, for entities, `value:IsValid()` and `value:IsA(SomeClass)`.
+* **Ranges**: are numbers inside the expected range (no negative amounts, no huge values, no `NaN`)?
+* **Ownership**: can this player act on that entity? E.g. is it their own Character, or a Prop they spawned?
+* **Distance**: is the player close enough to do that? Compare the location of their Character with the target.
+* **State**: is the action possible right now? E.g. is the player alive, is the round running, is the tool in their hands?
+* **Rate**: is the player sending it too often? Limit how many times per second an action can happen.
+
+```lua title="Server/Index.lua" showLineNumbers
+-- Remembers the last time each player used the action
+local last_use = {}
+
+Events.SubscribeRemote("UseAbility", function(player, target)
+    -- State: must be controlling a living Character
+    local character = player:GetControlledCharacter()
+    if (not character or character:IsDead()) then return end
+
+    -- Types: the target must be a valid Character
+    if (not target or not target:IsValid() or not target:IsA(Character)) then return end
+
+    -- Distance: must be closer than 10 meters (1000 units)
+    if (character:GetLocation():Distance(target:GetLocation()) > 1000) then return end
+
+    -- Rate: once every 2 seconds
+    local now = Server.GetTime() -- milliseconds
+    if (last_use[player] and now - last_use[player] < 2000) then return end
+    last_use[player] = now
+
+    -- The server decides the damage
+    target:ApplyDamage(25, "", DamageType.Unknown, Vector(), player, character)
+end)
+
+-- Cleans up when the player leaves
+Player.Subscribe("Destroy", function(player)
+    last_use[player] = nil
+end)
+```
+
+
+## Other Tips {/* #other-tips */}
+
+* **Keep secrets on the server**: API keys, Database credentials and any logic you don't want players to read must be in `Server/` files, which are never sent to clients. Everything in `Client/` and `Shared/` is downloaded by the players.
+* **Prefer server-side events**: when the game already triggers an event on the server (e.g. `Death`, `PickUp`, `EnterVehicle`), use it instead of asking the client to tell you.
+* **Use `Attempt*` events** to block actions on the server, e.g. return `false` in `AttemptEnterVehicle` to prevent a player from entering a vehicle.
+* **Network Authority**: the client which is the [Network Authority](/core-concepts/scripting/authority-concepts.mdx#network-authority) of an entity simulates its physics, so its position may be influenced by that client. Don't use physics positions alone to decide important things like who won a race.
+* **Kick or ban** players who clearly send invalid data with `player:Kick(reason)` or `player:Ban(reason)`, but be careful with false positives caused by lag.

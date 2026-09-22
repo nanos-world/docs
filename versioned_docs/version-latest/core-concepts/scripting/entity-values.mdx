@@ -1,7 +1,7 @@
 ---
 title: Entity Values
 description: How to store data in Entities accessible from anywhere
-sidebar_position: 4
+sidebar_position: 6
 tags: [scripting]
 ---
 
@@ -17,7 +17,7 @@ In <Classes.Entity /> page we can find the definitions of <MethodReference type=
 
 ## `SetValue` {/* #setvalue */}
 
-In any entity, you can use the method `:SetValue(key, value, sync)` to set any kind of value on that entity. Example:
+In any entity, you can use the method `:SetValue(key, value, sync_on_clients)` to set any kind of value on that entity. Example:
 
 ```lua title="Server/Index.lua" showLineNumbers
 -- Sets a synchronized 'my_value' value
@@ -30,11 +30,19 @@ It is possible to store <BasicType.Any /> kind of value, except `functions`.
 
 :::
 
-If you pass `sync` as true, that value will be automatically synchronized with all clients. Note that `sync`is an optional parameter only available on the **Server** side.
+If you pass `sync_on_clients` as true, that value will be automatically synchronized with all clients. Note that `sync_on_clients` is an optional parameter only available on the **Server** side.
 
 :::info note
 
-**Client.SetValue()** and **Server.SetValue()** won't have the last parameter `sync`. As the value will only exist on the side you are setting.
+**Server.SetValue()** also accepts a last parameter `sync_on_client`, to synchronize a global value with all clients. **Client.SetValue()** doesn't have it, as the value will only exist on the client side.
+
+:::
+
+Synchronized values are also sent to players that join later, together with the entity (or with the server information, for `Server.SetValue`). So they are a great way to keep a state which every player must know, such as a team, a score or a custom name.
+
+:::caution
+
+Every change of a synchronized value is sent to all clients. Avoid synchronizing values which change very often (e.g. every Tick), prefer sending [Remote Events](/core-concepts/scripting/events-guide.mdx) with `Reliability.Unreliable` for those.
 
 :::
 
@@ -53,4 +61,22 @@ local my_value = my_player:GetValue("my_value", 0)
 Be aware that storing **entities** itself will not nullify the value if the entity is destroyed, so it is a good practice to validate if values with <MethodReference type="Class" class_name="Entity" method_name="IsValid" /> after retrieving them.
 
 :::
+
+
+## Listening to Value Changes {/* #listening-to-value-changes */}
+
+Whenever a value changes, the event <EventReference type="Class" class_name="Entity" event="ValueChange" /> is triggered on that entity. For synchronized values it is triggered on the clients as well, so you can easily update your UI when a value changes:
+
+```lua title="Client/Index.lua" showLineNumbers
+-- Triggered when any value of any Player changes
+Player.Subscribe("ValueChange", function(player, key, value)
+    if (key == "score") then
+        Console.Log("%s now has %d points!", player:GetName(), value)
+    end
+end)
+```
+
+The static classes <StaticClasses.Server /> and <StaticClasses.Client /> also have a `ValueChange` event for their global values.
+
+You can also list all keys set in an entity with <MethodReference type="Class" class_name="Entity" method_name="GetAllValuesKeys" />.
 

@@ -23,8 +23,13 @@ my_timer = nil
 
 -- Sets BeginOverlap event
 my_trigger:Subscribe("BeginOverlap", function(trigger, actor_triggering)
-    -- Only activates if a Character enters it
-    if (actor_triggering:GetClass() ~= Character) then
+    -- Only activates if a Character enters it (IsA also matches classes inherited from Character)
+    if (not actor_triggering:IsA(Character)) then
+        return
+    end
+
+    -- Only one rain at a time, otherwise every Character entering would start a new Timer
+    if (my_timer ~= nil) then
         return
     end
 
@@ -35,20 +40,24 @@ my_trigger:Subscribe("BeginOverlap", function(trigger, actor_triggering)
         local prop_spawn_rotation = Rotator(math.random(0, 360), math.random(0, 360), math.random(0, 360))
 
         -- Spawns a Crate
-        Prop(prop_spawn_location, prop_spawn_rotation, "nanos-world::SM_Crate_07")
+        local crate = Prop(prop_spawn_location, prop_spawn_rotation, "nanos-world::SM_Crate_07")
+
+        -- Destroys it after 10 seconds, so the server doesn't fill up with Props
+        crate:SetLifeSpan(10)
     end, 100)
 end)
 
 -- Sets EndOverlap event
 my_trigger:Subscribe("EndOverlap", function(trigger, actor_triggering)
     -- Only deactivates if a Character leaves it
-    if (actor_triggering:GetClass() ~= Character) then
+    if (not actor_triggering:IsA(Character)) then
         return
     end
 
     -- Stops/Clear the Timer
     if (my_timer ~= nil) then
         Timer.ClearInterval(my_timer)
+        my_timer = nil
     end
 end)
 ```

@@ -14,7 +14,7 @@ All entities in nanos world are represented by a Class. In Lua, classes are repr
 
 :::tip
 
-In nanos world we have 3 types of Classes (or structures): `Classes`, `Static Classes` and `Utility Classes`.
+In nanos world we have 4 types of Classes (or structures): `Classes`, `Static Classes`, `Structs` and `Utility Classes`.
 
 :::
 
@@ -23,12 +23,12 @@ In nanos world we have 3 types of Classes (or structures): `Classes`, `Static Cl
 
 If you read our [Quick Start](/getting-started/quick-start.mdx) guide, you noticed we were spawning entities in the following format:
 
-```lua showLineNumbers
--- Spawning an entity with a Constructor
-local my_entity = Entity()
+```lua title="Server/Index.lua" showLineNumbers
+-- Spawning an entity with its Constructor (location, rotation and mesh)
+local my_prop = Prop(Vector(0, 0, 100), Rotator(), "nanos-world::SM_Cube")
 
--- Interacting with the entity with it's methods
-my_entity:MyFunction()
+-- Interacting with the entity with its methods
+my_prop:SetLocation(Vector(100, 0, 100))
 ```
 
 :::tip
@@ -42,11 +42,13 @@ This is how **OOP** works! You create objects and call functions/catch events on
 
 ### Base Classes {/* #base-classes */}
 
-Under the hood, nanos world Classes follow an [Inheritance Pattern](https://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29), which means we have base parent classes, and it's children which "inherits" all functions, events and properties from them. You will notice that all Classes that can be spawned in the world are <Classes.Actor />, for example in <Classes.Character /> and <Classes.Prop /> it is possible to call the function: <MethodReference type="Class" class_name="Actor" method_name="SetLocation" />.
+Under the hood, nanos world Classes follow an [Inheritance Pattern](https://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29), which means we have base parent classes, and their children which "inherit" all functions, events and properties from them. For example, all Classes which exist physically in the world (such as <Classes.Character /> and <Classes.Prop />) are <Classes.Actor />, so it is possible to call the function <MethodReference type="Class" class_name="Actor" method_name="SetLocation" /> on them.
 
 :::info
 
-The <Classes.Actor /> is a very important class in nanos world. It contains the most of methods which are shared through all Classes we have, and also **Static Methods** to get and retrieve entities directly.
+The <Classes.Entity /> is the base of **all** Classes, including the ones which are not in the world (such as <Classes.Player />, <Classes.WebUI /> or <Classes.Database />). It contains the methods shared by every Class (like `Subscribe`, `SetValue` and `Destroy`) and the **Static Methods** to retrieve spawned entities (like `GetAll`, `GetPairs` and `GetByIndex`).
+
+The <Classes.Actor /> is the base of all Classes which exist in the world, and contains the methods to move, rotate, attach and change the visuals of them.
 
 :::
 
@@ -56,7 +58,7 @@ The <Classes.Actor /> is a very important class in nanos world. It contains the 
 Spawning entities in nanos world is extremely easy and straightforward, let's say we want to spawn a Character:
 
 ```lua title="Server/Index.lua"
-local my_character = Character()
+local my_character = Character(Vector(0, 0, 100), Rotator(), "nanos-world::SK_Male")
 ```
 
 :::tip
@@ -109,9 +111,9 @@ Access to **Static Classes / Static Methods** are made with **`.`**.
 :::
 
 
-## Utility Classes {/* #utility-classes */}
+## Structs & Utility Classes {/* #utility-classes */}
 
-Besides Classes and Static Classes, we have the **Utility Classes**! Those are mostly structs used in nanos world API such as Vector, Rotator, Color, JSON and some others.
+Besides Classes and Static Classes, we have the **Structs** and the **Utility Classes**! Structs are the data types used everywhere in the API, such as <Structs.Vector />, <Structs.Rotator /> and <Structs.Color />. Utility Classes are libraries with helper functions, such as `JSON` and `NanosMath`.
 
 :::tip
 

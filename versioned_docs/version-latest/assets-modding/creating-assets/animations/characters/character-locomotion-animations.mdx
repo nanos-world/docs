@@ -21,7 +21,7 @@ It is now possible to integrate your own Locomotion raw animations into nanos wo
 
 ## Locomotion BlendSpaces {/* #locomotion-blendspaces */}
 
-In Unreal, [BlendSpaces](https://docs.unrealengine.com/5.0/en-US/blend-spaces-in-unreal-engine/) are graphs where you can plot any number of animations to be blended between based on the values of multiple inputs.
+In Unreal, [BlendSpaces](https://dev.epicgames.com/documentation/en-us/unreal-engine/blend-spaces-in-unreal-engine) are graphs where you can plot any number of animations to be blended between based on the values of multiple inputs.
 
 In our case our inputs are `SpeedY` (Horizontal Axis) and `SpeedX` (Vertical Axis), meaning forward and right speed, respectively.
 
@@ -55,11 +55,11 @@ You can tweak the Smoothing Time the way you want 😉.
 
 Through scripting you can set the Locomotion BlendSpace Animation using 3 methods:
 
-- `Character.SetAnimationIdleWalkRunStanding(anim_path, enable_tip)`
-- `Character.SetAnimationIdleWalkRunCrouching(anim_path, enable_tip)`
-- `Character.SetAnimationIdleWalkRunProning(anim_path)`
+- `my_character:SetAnimationIdleWalkRunStanding(anim_path, enable_turn_in_place)`
+- `my_character:SetAnimationIdleWalkRunCrouching(anim_path, enable_turn_in_place)`
+- `my_character:SetAnimationIdleWalkRunProning(anim_path)`
 
-The `enable_tip` can be toggled to enable/disable **Turn In Place** built-in feature.
+The `enable_turn_in_place` can be toggled to enable/disable **Turn In Place** built-in feature.
 
 
 ## Transition Animations {/* #transition-animations */}
@@ -70,8 +70,8 @@ It is also possible to define the transition animation between the states (Stand
 
 Through scripting you can set the Transition Animations using 2 methods:
 
-- `Character.SetAnimationsTransitionStandingCrouching(anim_standing_to_crouching, anim_crouching_to_standing)`
-- `Character.SetAnimationsTransitionCrouchingProning(anim_crouching_to_proning, anim_proning_to_crouching)`
+- `my_character:SetAnimationsTransitionStandingCrouching(anim_standing_to_crouching, anim_crouching_to_standing)`
+- `my_character:SetAnimationsTransitionCrouchingProning(anim_crouching_to_proning, anim_proning_to_crouching)`
 
 In each method you can set the transition between 2 states (Standing \<\-\> Crouching or Proning \<-\> Crouching).
 

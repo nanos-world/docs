@@ -1,0 +1,135 @@
+---
+title: Player Lifecycle
+description: The events triggered from when a player connects until they leave, and the right moment to do each thing
+sidebar_position: 4
+tags: [scripting]
+---
+
+
+The events triggered from when a player connects until they leave, and the right moment to do each thing.
+
+
+## Overview {/* #overview */}
+
+When someone joins your server, these are the main events triggered, in order:
+
+| # | Event | Side | What happened |
+| :--- | :--- | :--- | :--- |
+| 1 | <EventReference type="StaticClass" class_name="Server" event="PlayerConnect" show_class_name /> | Server | Someone is attempting to connect. The <Classes.Player /> doesn't exist yet |
+| 2 | <EventReference type="Class" class_name="Entity" event="Spawn" /> on `Player` | Server | The <Classes.Player /> entity was created. The client is still loading the map and downloading files |
+| 3 | <EventReference type="StaticClass" class_name="Client" event="SpawnLocalPlayer" show_class_name /> | Client | The client finished loading and its own Player is available with `Client.GetLocalPlayer()` |
+| 4 | <EventReference type="Class" class_name="Player" event="Ready" /> | Server | The client fully loaded the map and all entities, and is ready to play |
+| 5 | <EventReference type="Class" class_name="Player" event="Possess" /> | Both | The Player started controlling a Pawn (e.g. a <Classes.Character />) |
+| - | <EventReference type="Class" class_name="Player" event="UnPossess" /> | Both | The Player stopped controlling a Pawn |
+| 6 | <EventReference type="Class" class_name="Entity" event="Destroy" /> on `Player` | Both | The Player left the server |
+| 7 | <EventReference type="StaticClass" class_name="Server" event="PlayerDisconnect" show_class_name /> | Server | The connection was closed, with the disconnect reason |
+
+:::info
+
+A <Classes.Player /> represents the connected person, and a <Classes.Character /> represents a body in the world. A Player can exist without a Character (flying as a spectator), and a Character can exist without a Player (as a NPC). See [Players vs Characters vs Pawn](/getting-started/essential-concepts.mdx#players-vs-characters-vs-pawn).
+
+:::
+
+
+## Refusing a Connection {/* #refusing-a-connection */}
+
+<EventReference type="StaticClass" class_name="Server" event="PlayerConnect" show_class_name /> is triggered before the Player entity exists, so it's the place to refuse someone, for example if they are not in a whitelist:
+
+```lua title="Server/Index.lua" showLineNumbers
+local whitelist = {
+    ["123456789"] = true,
+}
+
+Server.Subscribe("PlayerConnect", function(ip, player_account_id, player_name, player_steam_id)
+    if (not whitelist[player_account_id]) then
+        Server.KickByAccountID(player_account_id, "You are not in the whitelist!")
+    end
+end)
+```
+
+:::tip
+
+You can call <MethodReference type="StaticClass" class_name="Server" method_name="KickByAccountID" show_class_name /> or <MethodReference type="StaticClass" class_name="Server" method_name="BanByAccountID" show_class_name /> to kick or ban players while not having the full Player entity spawned.
+
+:::
+
+
+## Giving the Player a Character {/* #giving-the-player-a-character */}
+
+You can spawn and possess a Character as soon as the Player spawns, the client will see it once it finishes loading:
+
+```lua title="Server/Index.lua" showLineNumbers
+function SpawnCharacterForPlayer(player)
+    -- Picks a random spawn point of the map, if any
+    local spawn_points = Server.GetMapSpawnPoints()
+    local spawn = spawn_points[math.random(#spawn_points)] or { location = Vector(0, 0, 100), rotation = Rotator() }
+
+    local character = Character(spawn.location, spawn.rotation, "nanos-world::SK_Male")
+    player:Possess(character)
+end
+
+Player.Subscribe("Spawn", SpawnCharacterForPlayer)
+
+-- Also gives Characters to Players already connected when the Package (re)loads
+Package.Subscribe("Load", function()
+    for _, player in pairs(Player.GetPairs()) do
+        if (not player:GetControlledCharacter()) then
+            SpawnCharacterForPlayer(player)
+        end
+    end
+end)
+```
+
+:::tip
+
+Use the <EventReference type="Class" class_name="Player" event="Ready" /> event instead when you need the client to be fully loaded, for example to send it Remote Events, show a welcome message or start a countdown only when the player can actually see it.
+
+:::
+
+
+## Respawning {/* #respawning */}
+
+When a Character dies it's not destroyed, it stays in ragdoll. You can respawn it after some time with <MethodReference type="Class" class_name="Damageable" method_name="Respawn" />, which restores its health and moves it to a location:
+
+```lua title="Server/Index.lua" showLineNumbers
+Character.Subscribe("Death", function(character, last_damage_taken, last_bone_damaged, damage_type_reason, hit_from_direction, instigator)
+    -- Only respawns Characters controlled by Players
+    if (not character:GetPlayer()) then return end
+
+    Timer.SetTimeout(function()
+        -- The Character (or the Player) may have been destroyed in the meantime
+        if (not character:IsValid()) then return end
+
+        character:Respawn(Vector(0, 0, 100), Rotator())
+    end, 5000)
+end)
+```
+
+
+## Cleaning Up when the Player Leaves {/* #cleaning-up-when-the-player-leaves */}
+
+The Character is **not** destroyed automatically when the Player leaves, so you usually want to destroy it yourself:
+
+```lua title="Server/Index.lua" showLineNumbers
+Player.Subscribe("Destroy", function(player)
+    local character = player:GetControlledCharacter()
+    if (character) then
+        character:Destroy()
+    end
+end)
+```
+
+
+## On the Client Side {/* #on-the-client-side */}
+
+On the client, the local Player is only available after `SpawnLocalPlayer`. To track the Character the local player is controlling (e.g. to update a HUD), subscribe to its `Possess` event:
+
+```lua title="Client/Index.lua" showLineNumbers
+Client.Subscribe("SpawnLocalPlayer", function(local_player)
+    local_player:Subscribe("Possess", function(player, character)
+        Console.Log("I'm now controlling %s", tostring(character))
+    end)
+end)
+```
+
+See the [Basic HUD (Canvas)](/getting-started/tutorials-and-examples/basic-hud-canvas.mdx) tutorial for a complete example.

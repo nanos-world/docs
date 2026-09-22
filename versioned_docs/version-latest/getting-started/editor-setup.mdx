@@ -1,0 +1,58 @@
+---
+title: Editor Setup
+description: How to set up Visual Studio Code with autocomplete and documentation for the nanos world API
+sidebar_position: 3
+tags: [scripting]
+---
+
+
+How to set up Visual Studio Code with autocomplete, type checking and documentation for the nanos world API.
+
+![](https://github.com/nanos-world/vscode-extension/blob/master/assets/description/screenshot_01.jpg?raw=true)
+
+
+## Installing {/* #installing */}
+
+1. Download and install [Visual Studio Code](https://code.visualstudio.com/download).
+2. Install the [nanos world Lua](https://marketplace.visualstudio.com/items?itemName=go-horse-studios.nanos-world) extension. It will also install the [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) extension (Lua Language Server), which it depends on.
+3. Open your Package folder (or your whole `Packages/` folder) in VS Code with **File -> Open Folder**.
+4. Open any `.lua` file. The extension downloads the latest nanos world API annotations and configures the Lua Language Server to use them.
+
+That's it! Now you get autocomplete for all Classes, methods, events and enums, and you can hover them to read their documentation.
+
+:::info
+
+The annotations are generated automatically from the same [API files](https://github.com/nanos-world/api) used to build this documentation, and are downloaded when the extension starts, so an internet connection is required to get the latest version.
+
+:::
+
+
+## Tips {/* #tips */}
+
+### Annotating your own Code {/* #annotating-your-own-code */}
+
+The Lua Language Server understands [LuaCATS annotations](https://luals.github.io/wiki/annotations/). Adding them to your functions and classes gives you autocomplete and type checking for your own code too:
+
+```lua title="Server/Index.lua" showLineNumbers
+---Gives money to a Player
+---@param player Player  The Player to receive it
+---@param amount number  How much money
+---@return number        The new balance
+function GiveMoney(player, amount)
+    local new_balance = player:GetValue("money", 0) + amount
+    player:SetValue("money", new_balance, true)
+    return new_balance
+end
+```
+
+For your inherited classes, you can declare them as a subclass of the nanos world class, so all its methods are suggested:
+
+```lua title="Shared/Index.lua" showLineNumbers
+---@class Crate : Prop
+Crate = Prop.Inherit("Crate")
+```
+
+
+### Which Side am I? {/* #which-side-am-i */}
+
+The editor can't know if a file runs on the Server or on the Client, so it will suggest all methods. Always check the [Authority](/core-concepts/scripting/authority-concepts.mdx#methods-and-events-availability) of methods and events in this documentation when writing code in `Shared/` files.

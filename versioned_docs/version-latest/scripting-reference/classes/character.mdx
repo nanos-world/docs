@@ -21,12 +21,12 @@ local man = Character(Vector(200, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_Ma
 local mannequin = Character(Vector(300, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_Mannequin")
 local mannequin_female = Character(Vector(400, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_Mannequin_Female")
 
-local post_apocalyptic = Character(Vector(400, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_PostApocalyptic")
-local classic_male = Character(Vector(500, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_ClassicMale")
+local post_apocalyptic = Character(Vector(500, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_PostApocalyptic")
+local classic_male = Character(Vector(600, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_ClassicMale")
 
 -- Adds Clothes to Man. Note: some Meshes only supports a specific Mesh (Men/Woman)
-man:AddSkeletalMeshAttached("shirt", "nanos-world::SK_Shirt") -- Men only
-man:AddSkeletalMeshAttached("shirt", "nanos-world::SK_Underwear") -- Men only
+-- The first parameter is an ID: attaching again with the same ID replaces the previous mesh
+man:AddSkeletalMeshAttached("shirt", "nanos-world::SK_Shirt") -- Men only (or "nanos-world::SK_Underwear")
 man:AddSkeletalMeshAttached("pants", "nanos-world::SK_Pants") -- Men only
 man:AddSkeletalMeshAttached("shoes", "nanos-world::SK_Shoes_01")
 man:AddSkeletalMeshAttached("tie", "nanos-world::SK_Tie")
@@ -35,15 +35,11 @@ man:AddSkeletalMeshAttached("tie", "nanos-world::SK_Tie")
 woman:AddSkeletalMeshAttached("full", "nanos-world::SK_CasualSet") -- Woman only
 woman:AddSkeletalMeshAttached("shoes", "nanos-world::SK_Sneakers")
 
--- Adds Beard to Man
-man:AddStaticMeshAttached("beard", "nanos-world::SM_Beard_Extra", "beard")
+-- Adds a Beard to Man, other options are:
+-- SM_Beard_Extra, SM_Beard_Middle, SM_Beard_Mustache_01, SM_Beard_Mustache_02 and SM_Beard_Side
 man:AddStaticMeshAttached("beard", "nanos-world::SM_Beard_Middle", "beard")
-man:AddStaticMeshAttached("beard", "nanos-world::SM_Beard_Mustache_01", "beard")
-man:AddStaticMeshAttached("beard", "nanos-world::SM_Beard_Mustache_02", "beard")
-man:AddStaticMeshAttached("beard", "nanos-world::SM_Beard_Side", "beard")
 
--- Adds Hair to Man
-man:AddStaticMeshAttached("hair", "nanos-world::SM_Hair_Long", "hair_male")
+-- Adds Hair to Man (or "nanos-world::SM_Hair_Long")
 man:AddStaticMeshAttached("hair", "nanos-world::SM_Hair_Short", "hair_male")
 
 -- Adds Hair to Woman
@@ -120,7 +116,7 @@ The following items can be used to customize Male & Female \(`nanos-world::SK_Ma
 
 :::info
 
-Ugly list I know.
+Full list of bones of the Character skeleton, which can be used in bone related methods such as <MethodReference type="Class" class_name="Actor" method_name="AttachTo" /> or <MethodReference type="Class" class_name="Pawn" method_name="HideBone" />.
 
 :::
 

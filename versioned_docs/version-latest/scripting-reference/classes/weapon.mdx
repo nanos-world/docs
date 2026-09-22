@@ -1,5 +1,6 @@
 ---
 title: 🔫 Weapon
+description: A Weapon represents an Entity which can be Pickable by a Character and can be used to shoot, with fully customizable ammo, sounds, animations and particles.
 sidebar_position: 0
 tags: [class]
 ---
@@ -57,19 +58,19 @@ new_weapon:SetMagazineMesh("nanos-world::SM_AK47_Mag_Empty")
 new_weapon:SetCrosshairMaterial("nanos-world::MI_Crosshair_Regular")
 ```
 
-Using the [default-weapons](https://github.com/nanos-world/nanos-world-weapons) Package to spawn an AK47:
+Using the [default-weapons](https://nanos-world.com/store/packages/default-weapons) Package to spawn an AK47. First add it to the `packages_requirements` of your `Package.toml`:
 
-```shell title="Terminal"
-# install the default-weapons package
-./NanosWorldServer.exe --cli install package default-weapons
+```toml title="Package.toml"
+[script]
+    # ...
+    packages_requirements = [
+        "default-weapons",
+    ]
 ```
 
 ```lua title="Server/Index.lua" showLineNumbers
--- Loads the default-weapons (note: it's recommended to add it to your Package's packages_requirements instead)
-Server.LoadPackage("default-weapons")
-
 -- Spawning the AK47 from default-weapons package
-local my_ak47 = AK47(Vector(1035, 154, 300), Rotator())
+local my_ak47 = AK47(Vector(200, 0, 100), Rotator())
 
 -- Giving the Weapon to a Character
 my_character:PickUp(my_ak47)

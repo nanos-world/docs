@@ -10,7 +10,7 @@ In nanos world, a Weapon is an entity which can be Picked Up by Characters and c
 
 ![](/img/docs/tutorials/import-weapons-01.webp)
 
-Weapons use [Skeletal Meshes](https://docs.unrealengine.com/4.26/en-US/WorkingWithContent/Types/SkeletalMeshes/). The Skeletal Mesh must point towards the Red Axis (X) to be properly rotated.
+Weapons use [Skeletal Meshes](https://dev.epicgames.com/documentation/en-us/unreal-engine/skeletal-mesh-assets-in-unreal-engine). The Skeletal Mesh must point towards the Red Axis (X) to be properly rotated.
 
 
 ## Root Bone {/* #root-bone */}
@@ -52,7 +52,7 @@ And right click on any bone and select `AddSocket`, this will create a **Socket*
 
 ### `muzzle` {/* #muzzle */}
 
-The **muzzle** Socket is where the [Particle Barrel](/scripting-reference/classes/weapon.mdx#setparticlesbarrel) will be attached. So create a socket and place it in the muzzle of the weapon:
+The **muzzle** Socket is where the [Particle Barrel](/scripting-reference/classes/weapon.mdx#function-setparticlesbarrel) will be attached. So create a socket and place it in the muzzle of the weapon:
 
 * Pointing Red Axis (X) towards.
 
@@ -61,7 +61,7 @@ The **muzzle** Socket is where the [Particle Barrel](/scripting-reference/classe
 
 ### `shell_eject` {/* #shell_eject */}
 
-The **shell_eject** Socket is where the [Particle Shells](/scripting-reference/classes/weapon.mdx#setparticlesshells) will be attached. So create a socket and place it in shells eject of the weapon:
+The **shell_eject** Socket is where the [Particle Shells](/scripting-reference/classes/weapon.mdx#function-setparticlesshells) will be attached. So create a socket and place it in shells eject of the weapon:
 
 * Pointing Red Axis (X) outwards where the shell will be eject to.
 * And Pointing Green Axis (Y) the shell direction.

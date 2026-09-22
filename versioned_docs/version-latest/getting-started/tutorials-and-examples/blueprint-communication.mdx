@@ -10,7 +10,9 @@ In nanos world, you can send and subscribe to Blueprint Events! In this guide yo
 
 :::info
 
-All communication is only possible on Client Side! As the server is not aware of Unreal.
+The server doesn't run Unreal, so most Blueprint interaction happens on the **Client Side**: binding Event Dispatchers and getting or setting Blueprint properties are client-only.
+
+Calling a Blueprint Event with `CallBlueprintEvent` works on both sides: when called on the server, the call is sent to all clients.
 
 :::
 

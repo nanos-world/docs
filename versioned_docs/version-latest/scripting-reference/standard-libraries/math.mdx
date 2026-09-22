@@ -1,6 +1,6 @@
 ---
 title: math
-description: math
+description: Lua math library, with mathematical functions such as rounding, trigonometry and random numbers.
 tags: [standard-libraries]
 sidebar_position: 4
 ---
@@ -10,8 +10,21 @@ sidebar_position: 4
 
 ## 🎒 Examples {/* #examples */}
 
-```lua
-TODO Examples
+```lua showLineNumbers
+-- Rounding
+local a = math.floor(3.7) -- 3
+local b = math.ceil(3.2)  -- 4
+
+-- Random numbers
+local chance = math.random()          -- float between 0 and 1
+local dice = math.random(1, 6)        -- integer between 1 and 6
+
+-- Min, Max and Absolute
+local lowest = math.min(10, 5, 8)     -- 5
+local distance = math.abs(-250)       -- 250
+
+-- Trigonometry works with radians
+local sine = math.sin(math.rad(90))   -- 1.0
 ```
 
 

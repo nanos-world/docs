@@ -14,7 +14,7 @@ Instead of passing numbers to methods or comparing numbers in Events callbacks, 
 Character.Subscribe("StanceModeChange", function(character, old_stance, new_stance)
 	if (new_stance == StanceMode.Standing) then
 		Console.Log("I'm Standing!")
-	else if (new_stance == StanceMode.Crouching) then
+	elseif (new_stance == StanceMode.Crouching) then
 		Console.Log("I'm Crouching!")
 	end
 end)

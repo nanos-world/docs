@@ -87,11 +87,11 @@ This is an **Editor Utility Widget** which scans a folder (determined by the Tex
 ### Sun & Sky Actor {/* #sun--sky-actor */}
 #### `NanosWorld/Blueprints/World/BP_SunSky` {/* #nanosworldblueprintsworldbp_sunsky */}
 
-This is a pre-configured **Sun & Sky Blueprint** which can be used and easily replaced by nanos world Official Sun with `World.SpawnDefaultSun()`. This is useful to get an approximate result of how the light will look like in-game if you decide to Spawn the Default Sun.
+This is a pre-configured **Sun & Sky Blueprint** which can be used and easily replaced by nanos world Official Sky with `Sky.Spawn()`. This is useful to get an approximate result of how the light will look like in-game if you decide to Spawn the Default Sun.
 
 :::info
 
-**Note:** Overriding the Sun through Scripting with `World.SpawnDefaultSun()`, will respawn the Sun actor, which means no configuration did on the Sun & Sky actor will persist.
+**Note:** Overriding the Sun through Scripting with `Sky.Spawn()`, will respawn the Sun actor, which means no configuration did on the Sun & Sky actor will persist.
 
 Example: Light Intensity, Color, Post Process and other configuration will be lost.
 

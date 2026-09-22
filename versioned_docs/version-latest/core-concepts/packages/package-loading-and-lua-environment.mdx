@@ -1,0 +1,131 @@
+---
+title: Package Loading & Lua Environment
+description: In which order Packages and their scripts are loaded, how they share code, and what is available in the Lua environment
+sidebar_position: 1
+tags: [scripting]
+---
+
+
+In which order Packages and their scripts are loaded, how they share code with each other, and what is available in the Lua environment.
+
+
+## Loading Order {/* #loading-order */}
+
+When the server starts, it loads the Packages listed in the `[game]` section of the `Config.toml` in this order:
+
+1. The **game-mode** Package (`game_mode`)
+2. The **script** Packages (`packages`), in the order they are listed
+3. The **map** Package (`map`)
+
+For each Package, before running any of its scripts, the server first loads its `assets_requirements` and its `packages_requirements` (and their own requirements, recursively). Then the scripts run in this order:
+
+1. `Shared/Index.lua`
+2. `Server/Index.lua` (on the server) or `Client/Index.lua` (on the clients)
+3. The Package `Load` event is triggered
+
+Clients load the same Packages, in the same order, after downloading their `Client/` and `Shared/` files.
+
+:::tip
+
+Check the [Server & Client Lifecycle](/core-concepts/server-and-client-lifecycle.mdx) page for a complete diagram of everything which happens when the server starts and when a client connects.
+
+:::
+
+
+### Package Requirements {/* #package-requirements */}
+
+If your Package uses something defined by another Package (e.g. the weapons classes from `default-weapons`, or a function exported by a library), add it to the `packages_requirements` of your `Package.toml`. This guarantees it's loaded **before** your scripts run:
+
+```toml title="Package.toml"
+[script]
+    # ...
+    packages_requirements = [
+        "default-weapons",
+    ]
+```
+
+:::info
+
+Only `script` (and `c-module`) Packages can be required. If the required Package is not installed, the server can download it from the Vault automatically when started with `--auto_download`.
+
+:::
+
+Avoid loading dependencies at runtime with `Server.LoadPackage()`, as your code may run before they are ready.
+
+
+### The `Load` and `Unload` Events {/* #the-load-and-unload-events */}
+
+```lua title="Server/Index.lua" showLineNumbers
+-- Triggered after all the Index.lua files of this Package ran
+Package.Subscribe("Load", function()
+    Console.Log("My Package loaded!")
+end)
+
+-- Triggered when this Package is unloaded (server stopping, map change or package reload)
+Package.Subscribe("Unload", function()
+    -- Save your data here, e.g. with Package.SetPersistentData
+end)
+```
+
+If `auto_cleanup` is enabled in the `Package.toml` (it is by default), all entities spawned by the Package are destroyed when it unloads.
+
+
+## Splitting your Code in Files {/* #splitting-your-code-in-files */}
+
+Only the `Index.lua` of each folder runs automatically. To load other files, use <MethodReference type="StaticClass" class_name="Package" method_name="Require" show_class_name />:
+
+```lua title="Server/Index.lua" showLineNumbers
+Package.Require("Weapons.lua")      -- my-package/Server/Weapons.lua
+Package.Require("Utils/Math.lua")   -- my-package/Server/Utils/Math.lua
+```
+
+Files are searched in this order, so you usually only need the file name:
+
+1. Relative to the current file
+2. Relative to `my-package/Server/` or `my-package/Client/` (depending on the side)
+3. Relative to `my-package/Shared/`
+4. Relative to `my-package/`
+5. Relative to `Packages/`
+
+A file is only executed once, requiring it again returns the cached result.
+
+
+## Sharing Code Between Packages {/* #sharing-code-between-packages */}
+
+Each Package runs in its **own environment**: global variables and functions you define in one Package are **not visible** to other Packages. This avoids conflicts between Packages which use the same names.
+
+To make something available to all Packages, export it with <MethodReference type="StaticClass" class_name="Package" method_name="Export" show_class_name />:
+
+```lua title="my-library/Server/Index.lua" showLineNumbers
+MyLibrary = {}
+
+function MyLibrary.Greet(player)
+    Chat.SendMessage(player, "Hello " .. player:GetName())
+end
+
+Package.Export("MyLibrary", MyLibrary)
+```
+
+```lua title="my-game-mode/Server/Index.lua" showLineNumbers
+-- Works as long as my-library is loaded before (e.g. in packages_requirements)
+Player.Subscribe("Ready", function(player)
+    MyLibrary.Greet(player)
+end)
+```
+
+:::note
+
+Classes created with `Inherit` (e.g. `MyProp = Prop.Inherit("MyProp")`) are registered globally, so they are also accessible from any Package on the same side.
+
+:::
+
+Another way of communicating is using Events, see [Communicating Between Packages](/core-concepts/scripting/communicating-between-packages.mdx).
+
+
+## The Lua Environment {/* #the-lua-environment */}
+
+nanos world runs **Lua 5.4**, with most of its [standard libraries](https://www.lua.org/manual/5.4/manual.html#6) available, plus the nanos world API (Classes, Static Classes, Structs and Utility Libraries).
+
+For security, some functions which access the operating system are **disabled** by default on the server: `os.execute`, `os.rename`, `os.remove`, `os.exit`, `os.getenv`, `os.tmpname`, `os.setlocale`, `dofile`, `loadfile` and the whole `io` library. They can be enabled with the `--enable_unsafe_libs` server parameter, but only do it if you trust all the Packages running on your server.
+
+To read and write files, use the <Classes.File /> class instead, which works inside the server folder. To store data, prefer [Persistent Data](/core-concepts/scripting/persistent-data.mdx) or a <Classes.Database />.

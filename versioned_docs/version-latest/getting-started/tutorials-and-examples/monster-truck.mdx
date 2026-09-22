@@ -12,16 +12,24 @@ How to create a Monster Truck using the Vehicle system.
 
 ```lua title="Server/Index.lua" showLineNumbers
 -- Spawns a Pickup
-local vehicle = VehicleWheeled(Vector(0,0,100), Rotator(), "nanos-world::SK_Pickup", CollisionType.Normal, true, false, "nanos-world::A_Vehicle_Engine_10",
-    "nanos-world::A_Vehicle_Horn_Toyota",
-    "nanos-world::A_Vehicle_Brake",
-    "nanos-world::A_Car_Engine_Start",
-    "nanos-world::A_Vehicle_Door",
-    true,
-    "",
-    true)
+local vehicle = VehicleWheeled(
+    Vector(0, 0, 100),                  -- location
+    Rotator(),                          -- rotation
+    "nanos-world::SK_Pickup",           -- asset
+    CollisionType.Normal,               -- collision_type
+    true,                               -- gravity_enabled
+    false,                              -- auto_unflip
+    "nanos-world::A_Vehicle_Engine_10", -- engine_sound
+    "nanos-world::A_Vehicle_Horn_Toyota", -- horn_sound
+    "nanos-world::A_Vehicle_Brake",     -- brake_sound
+    "nanos-world::A_Car_Engine_Start",  -- engine_start_sound
+    "nanos-world::A_Vehicle_Door",      -- vehicle_door_sound
+    true,                               -- auto_start_engine
+    "",                                 -- custom_animation_blueprint
+    SpawnMode.AfterConstructor          -- spawn_mode: waits for FinishSpawn() before sending it to clients
+)
 
--- Configures it
+-- Configures the engine max torque, the steering wheel position and the headlights position
 vehicle:SetEngineSetup(4500)
 vehicle:SetSteeringWheelSetup(Vector(0, 27, 120), 24)
 vehicle:SetHeadlightsSetup(Vector(250, 0, 70))
@@ -39,7 +47,8 @@ vehicle:SetWheel(1, "Wheel_Front_Right", 80, 60, 30, Vector(0,  90, 0))
 vehicle:SetWheel(2, "Wheel_Rear_Left",   80, 60,  0, Vector(0, -80, 0))
 vehicle:SetWheel(3, "Wheel_Rear_Right",  80, 60,  0, Vector(0,  90, 0))
 
--- Adds only a Passenger and Driver door/seat
+-- Adds only a Driver (seat 0) and a Passenger (seat 1) door/seat
+-- Parameters: seat index, door trigger location, seat location, seat rotation, trigger radius, leave lateral offset
 vehicle:SetDoor(0, Vector(50, -75, 105), Vector( 8, -32.5,  95), Rotator(0, 0, 10), 70, -150)
 vehicle:SetDoor(1, Vector(50,  75, 105), Vector(25,    50,  90), Rotator(0, 0,  0), 70,  150)
 

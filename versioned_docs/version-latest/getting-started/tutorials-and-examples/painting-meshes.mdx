@@ -9,9 +9,9 @@ How to use the new Material customization methods available to use.
 
 ![](/img/docs/tutorials/painting-meshes-01.webp)
 
-In Unreal Engine, a [Material](https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/index.html) is an asset that can be applied to a mesh to control the visual look of the scene. At a high level, it is probably easiest to think of a Material as the “paint” that is applied to an object. You can define its color, how shiny it is, whether you can see through the object, and much more.
+In Unreal Engine, a [Material](https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-materials) is an asset that can be applied to a mesh to control the visual look of the scene. At a high level, it is probably easiest to think of a Material as the “paint” that is applied to an object. You can define its color, how shiny it is, whether you can see through the object, and much more.
 
-In Unreal Engine, when you create a Material, you can define custom [Parameters](https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/HowTo/Making_Parameters/index.html) for it. So if you defined some parameters for a Material in a mesh, you can tweak it with simple comands in nanos world!
+In Unreal Engine, when you create a Material, you can define custom [Parameters](https://dev.epicgames.com/documentation/en-us/unreal-engine/material-parameter-expressions-in-unreal-engine) for it. So if you defined some parameters for a Material in a mesh, you can tweak it with simple commands in nanos world!
 
 :::caution
 
@@ -23,7 +23,7 @@ Please read [Base Paintable](/scripting-reference/classes/base-classes/paintable
 
 ## Replacing a Mesh Material with Default Material {/* #replacing-a-mesh-material-with-default-material */}
 
-To illustrate, let’s spawn a Cube and change it’s Material using Lua:
+To illustrate, let's spawn a Cube and change it's Material using Lua:
 
 
 ```lua title="Server/Index.lua" showLineNumbers
@@ -40,7 +40,7 @@ Blank Cube with Default Masked Material
 
 ## Painting a Mesh with Red Tint {/* #painting-a-mesh-with-red-tint */}
 
-Now let’s set it’s material to red! To be able to do that, we must set the Color parameter named **Tint** as we’ve seen above is the name of parameters which is connected to Base Color of the Material.
+Now let's set its material to red! To be able to do that, we must set the Color parameter named **Tint**, which is the parameter connected to the Base Color of the nanos world default Materials. You can find all parameters available in the [Default Materials](/assets-modding/default-asset-pack/default-materials.mdx) page.
 
 
 ```lua title="Server/Index.lua" showLineNumbers
@@ -59,7 +59,7 @@ Cube with Default Masked Material with Red parameter
 
 ## Making a Mesh Metallic {/* #making-a-mesh-metallic */}
 
-Now let’s give it a metallic style! You can learn more about [Physically Based Materials](https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/PhysicallyBased/index.html) to know about how each input affects the final representation of a surface!
+Now let's give it a metallic style! You can learn more about [Physically Based Materials](https://dev.epicgames.com/documentation/en-us/unreal-engine/physically-based-materials-in-unreal-engine) to know about how each input affects the final representation of a surface!
 
 
 ```lua title="Server/Index.lua" showLineNumbers
@@ -105,7 +105,7 @@ Cube with Default Masked Material with Metallic and Roughness parameters
 
 ## Loading a Texture into a Mesh {/* #loading-a-texture-into-a-mesh */}
 
-It is even possible to load images \(.jpg, .png, etc\) from disk and apply to the mesh! For that you will need to have an image inside an Asset Pack or a Package \(in the `Client/` folder\). We gonna use [this \(imgur\)](https://i.imgur.com/67CGqHb.jpf) with the name `syed.jpg` and we will place it inside our Package `Client/` folder.
+It is even possible to load images (.jpg, .png, etc) from disk and apply to the mesh! For that you will need to have an image inside an Asset Pack or a Package (in the `Client/` folder). We are going to use [this image (imgur)](https://i.imgur.com/67CGqHb.jpg) with the name `syed.jpg` and we will place it inside our Package `Client/` folder.
 
 ![](/img/docs/tutorials/painting-meshes-06.webp)
 
@@ -120,7 +120,8 @@ local my_cube = StaticMesh(Vector(300, 0, 100), Rotator(0, 45, 0), "nanos-world:
 my_cube:SetMaterial("nanos-world::M_Default_Masked_Lit")
 
 -- applies a custom texture to a parameter called "Texture"
-my_cube:SetMaterialTextureParameter("Texture", "package://testing/Client/syed.jpg")
+-- the path format is package://[PACKAGE_FOLDER_NAME]/[PATH_TO_FILE]
+my_cube:SetMaterialTextureParameter("Texture", "package://my-package/Client/syed.jpg")
 ```
 
 ![](/img/docs/tutorials/painting-meshes-07.webp)

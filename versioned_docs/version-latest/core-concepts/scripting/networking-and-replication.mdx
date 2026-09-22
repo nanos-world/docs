@@ -1,0 +1,101 @@
+---
+title: Networking & Replication
+description: What is synchronized automatically between server and clients, and how to send your own data efficiently
+sidebar_position: 3
+tags: [scripting, networking]
+---
+
+
+What is synchronized automatically between the server and the clients, and how to send your own data efficiently.
+
+nanos world is **server authoritative**: the server holds the "real" state of the game, and the clients receive and display it. Most of the synchronization is done for you, this page explains how it works so you know when you need to send data yourself, and how to do it without wasting bandwidth.
+
+
+## What is Synchronized Automatically {/* #what-is-synchronized-automatically */}
+
+* **Entities spawned on the server** are automatically spawned on all clients, including Players who join later.
+* **Methods called on the server** (e.g. `SetLocation`, `SetMaterialColorParameter`, `PlayAnimation`) are automatically applied on all clients too.
+* **Movement** of Characters, Vehicles and physics Props is synchronized continuously (see [Network Authority](#network-authority) below).
+* **Synchronized values** set with `SetValue(key, value, true)` on the server are sent to all clients, see [Entity Values](/core-concepts/scripting/entity-values.mdx).
+
+What is **not** synchronized:
+
+* **Entities spawned on the client** only exist for that client. This is how you create purely visual things, like UI, local sounds and particles.
+* **Methods called on the client** only change that client's copy of the entity (and the server may overwrite it later).
+* **Lua variables** are never synchronized, each side (and each Package) has its own.
+
+```lua title="Server/Index.lua" showLineNumbers
+-- Spawned on the server: every player sees it, including the ones who join later
+local door = StaticMesh(Vector(0, 0, 100), Rotator(), "nanos-world::SM_Cube")
+
+-- Called on the server: every player sees the change
+door:SetMaterialColorParameter("Tint", Color.RED)
+```
+
+```lua title="Client/Index.lua" showLineNumbers
+-- Spawned on the client: only this player sees it
+local marker = Particle(Vector(0, 0, 200), Rotator(), "nanos-world::P_Fire", false, true)
+```
+
+:::tip
+
+Check the [Authority](/core-concepts/scripting/authority-concepts.mdx#methods-and-events-availability) icons of each method in the Scripting Reference, they tell on which side a method can be called and if it will be synchronized.
+
+:::
+
+
+## Sending your own Data {/* #sending-your-own-data */}
+
+When you need to send information which isn't part of an entity state (e.g. "the round started", "open the shop menu", "the player clicked a button"), use [Remote Events](/core-concepts/scripting/events-guide.mdx#remote-events). For information which is part of the state of an entity or of the game (e.g. the team of a player or the score), prefer **synchronized values**, as they are automatically sent to Players who join later.
+
+| I need to... | Use |
+| :--- | :--- |
+| Tell the clients something happened | `Events.BroadcastRemote` / `Events.CallRemote` |
+| Tell the server the player did something | `Events.CallRemote` (on client) |
+| Keep a value on an entity every player must know, now and later | `entity:SetValue(key, value, true)` |
+| Keep a global value every player must know | `Server.SetValue(key, value, true)` |
+| Talk to a specific entity on the other side | `entity:CallRemoteEvent` / `entity:BroadcastRemoteEvent` |
+
+
+### Reliable vs Unreliable {/* #reliable-vs-unreliable */}
+
+Every remote event is sent with a <Enums>Reliability</Enums>:
+
+* **`Reliability.Reliable`**: guaranteed to arrive, in order. Lost packets are resent until they arrive. Use it for everything important: game state changes, purchases, chat.
+* **`Reliability.Unreliable`**: can be lost or arrive out of order, but it's cheaper and never delays other messages. Use it for data sent very often where only the latest one matters: positions sent every Tick, visual effects, sounds.
+
+:::caution
+
+Sending a lot of `Reliable` events (e.g. every Tick) can fill up the connection of players with bad networks, delaying everything else. If it's sent every frame, it should almost always be `Unreliable`.
+
+:::
+
+
+### Sending Less {/* #sending-less */}
+
+Bandwidth is limited per player (see `max_send_rate` in [Server Configuration](/core-concepts/server-manual/server-configuration.mdx#optimization)). Some tips to keep it low:
+
+* **Don't send every Tick** unless you really need to. Sending 10 times per second with a `Timer` is often enough, and the client can interpolate the rest.
+* **Only send to who needs it**: use `Events.CallRemote` for a single player, `Events.CallRemotePlayers` for a list of players, or `Events.BroadcastRemoteInRadius` for players nearby, instead of broadcasting to everyone.
+* **Send IDs, not whole tables**: if both sides already know the data (e.g. a list of items defined in `Shared/`), just send the item ID.
+* **Pass entities directly**: entities can be passed as parameters of remote events and arrive as the same entity on the other side, you don't need to send their location or ID yourself.
+* **Avoid synchronized values which change very often**, every change is sent to all players.
+
+
+## Network Authority {/* #network-authority */}
+
+Physics (and AI) are not simulated by the server. Instead, the server picks a client to be the **Network Authority** of each physics entity (usually the closest player, or the one interacting with it), which simulates it and sends its movement to the server, which forwards it to everyone else.
+
+This is why some methods and events are marked as available on the **Network Authority** side. Read more in [Network Authority](/core-concepts/scripting/authority-concepts.mdx#network-authority).
+
+
+## Distance Optimization {/* #distance-optimization */}
+
+To save bandwidth, the server sends movement updates of far away entities less often to each player. This only affects **unreliable** data (movement and transient actions), reliable data such as spawning, destroying, remote events and value changes is always delivered.
+
+You can tweak it per entity or per player with `SetDistanceOptimizationMultiplier`, see [Distance Optimization](/core-concepts/server-manual/server-configuration.mdx#distance-optimization).
+
+
+## Dimensions {/* #dimensions */}
+
+Entities and Players can be separated in different [Dimensions](/core-concepts/scripting/dimensions.mdx): players only receive the entities which are in the same dimension as them. This is useful for lobbies, instanced interiors or different matches running in the same server.

@@ -12,6 +12,8 @@ How to fix the most common issues and crashes in nanos world.
 
 If you are creating an asset and facing issues or crashes, please refer to our [Troubleshooting Assets Creation](assets-modding/creating-assets/importing-assets#troubleshooting) page for more specific cooking-related solutions.
 
+If your **scripts** aren't working as expected, or your **server** fails to load a Package, check the [Debugging & Logging](/core-concepts/scripting/debugging-and-logging.mdx) guide and the [Server & Script Issues](#server--script-issues) section below.
+
 :::
 
 
@@ -44,6 +46,12 @@ Sometimes, cached configuration files get corrupted. Deleting them forces the ga
 1. Press `Win + R`, type `%LocalAppData%`, and hit Enter.
 2. Find and delete the **`NanosWorld`** folder.
 3. *Optional but recommended:* Delete the **`NVIDIA`** folder in the same directory to clear your shader cache.
+
+:::caution
+
+The `NanosWorld` folder also stores your game settings and keybindings, and they will be reset to default.
+
+:::
 
 
 ### 4. Switch DirectX Versions {/* #4-switch-directx-versions */}
@@ -81,6 +89,28 @@ A very common issue with modern Unreal Engine games running on high-end Intel pr
 If you are running older graphics cards (or even newer hardware under heavy server loads), some bugs in Unreal Engine may cause certain ray-tracing features to lead to sudden GPU driver crashes.
 
 * Go to your in-game settings under **Video** > **Advanced Quality Settings** > toggle **Ray Tracing** to **Off**.
+
+
+## Server & Script Issues {/* #server--script-issues */}
+
+### Where are the logs? {/* #where-are-the-logs */}
+
+* **Server:** in the `.logs/` folder, next to the server executable (`NanosWorldCore.log` is the latest one).
+* **Client:** in `%LocalAppData%\NanosWorld\Saved\Logs\`.
+
+Lua errors are printed in red with the file and line which caused them. Start from the first error, as the next ones are usually consequences of it.
+
+### My Package is not loading {/* #my-package-is-not-loading */}
+
+* Make sure the Package folder name is listed in your `Config.toml`, under the `[game]` section (`packages`, `game_mode`, `map` or `loading_screen`, depending on its type).
+* Folder names must be **lowercase** and use only letters, numbers and `-`.
+* Check the server console for `Package.toml` errors, a missing or invalid setting stops the Package from loading.
+* If it depends on other Packages or Asset Packs, check they are listed in `packages_requirements` or `assets_requirements` and are installed.
+
+### I can't connect to my server {/* #i-cant-connect-to-my-server */}
+
+* Make sure the server and the game are using the same Steam App (Playtest or full game), see the `--steam_app` parameter in [Server Configuration](/core-concepts/server-manual/server-configuration.mdx).
+* If other players can't join, check that the ports `7777` (TCP and UDP) and `7778` (UDP) are open and forwarded in your router or firewall.
 
 
 ## Still Crashing? {/* #still-crashing */}
