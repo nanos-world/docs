@@ -130,16 +130,16 @@ export const LinkActiveVersion = (props) => (
 
 // Media Legend
 export const MediaLegend = ({ children }) => (
-	<p className="media-legend">
+	<div className="media-legend">
 		{ children }
-	</p>
+	</div>
 )
 
 // Media Gallery
 export const MediaGallery = ({ children }) => (
-	<p className="media-gallery">
+	<div className="media-gallery">
 		{ children }
-	</p>
+	</div>
 )
 
 export const ComparisonSlider = ({ img_left, label_left, img_right, label_right, legend, max_width = "100%", enable_zoom = true, zoom_direction = "top left", caption_on_bottom = true }) => (

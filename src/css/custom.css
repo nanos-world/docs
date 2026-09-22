@@ -871,6 +871,7 @@ html[data-theme="dark"]
 }
 
 .media-legend {
+	margin-bottom: var(--ifm-paragraph-margin-bottom);
 	margin-top: -20px;
 	text-align: center;
 	font-size: 0.85em;
@@ -878,6 +879,7 @@ html[data-theme="dark"]
 }
 
 .media-gallery {
+	margin-bottom: var(--ifm-paragraph-margin-bottom);
 	gap: 15px 0;
 	display: flex;
 	flex-wrap: wrap;

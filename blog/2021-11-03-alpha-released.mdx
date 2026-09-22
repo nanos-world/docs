@@ -46,7 +46,7 @@ The function `:SetDefaultMaterial()` has been replaced with `:SetMaterial()`. Yo
 
 Also it is now possible to get the WebUI material and set it to any surface (read more below)!
 
-Some existing methods are suffering a rework due that, e.g. [Pickables](/docs/scripting-reference/classes/base-classes/pickable) got a new method `:SetCrosshairMaterial()`, so you can set the Crosshair from a Material (and not from a predefined list anymore), also all old Crosshair have been converted into materials which you can find [here](/docs/scripting-reference/classes/base-classes/pickable#list-of-crosshairs-materials-included-in-default-asset-pack).
+Some existing methods are suffering a rework due that, e.g. [Pickables](/docs/scripting-reference/classes/base-classes/pickable) got a new method `:SetCrosshairMaterial()`, so you can set the Crosshair from a Material (and not from a predefined list anymore), also all old Crosshair have been converted into materials which you can find [here](/docs/scripting-reference/classes/base-classes/pickable#list-of-crosshair-materials-included-in-the-default-asset-pack).
 
 
 ## Improved WebUI {/* #improved-webui */}
@@ -63,7 +63,7 @@ We are using a Beta version of Ultralight, which supports Audio and Video, crash
 
 The **WebUI** constructor received some new parameters: **is_transparent**, **auto_resize**, **width** and **height**. Width and Height will only be used if Auto Resize is **OFF**, this is useful if you want to spawn a WebUI to use as Material to any surface (and don't want it to be the size of the screen).
 
-Also it received new methods: [:SetFreeze()](/docs/scripting-reference/classes/webui#setfreeze), [:Resize()](/docs/scripting-reference/classes/webui#resize) and [:SetAutoResize()](/docs/scripting-reference/classes/webui#setautoresize).
+Also it received new methods: [:SetFreeze()](/docs/scripting-reference/classes/webui#function-setfreeze), [:Resize()](/docs/scripting-reference/classes/scenecapture#function-resize) and [:SetAutoResize()](/docs/scripting-reference/classes/webui).
 
 A new Searcher has been added onto it, improving how it can load your .html files, they are now looked in the following order:
 1. Relative to `current-file-path/`
@@ -78,12 +78,12 @@ It is now possible to spawn a Material from a WebUI, which renders dynamic and a
 
 New additions for [Actors](/docs/scripting-reference/classes/base-classes/actor):
 
-* Added new method for all actors: [:SetLifeSpan(time)](/docs/scripting-reference/classes/base-classes/actor#setlifespan) which will automatically destroy this actor after `time` seconds.
-* Added new method for all actors: [:IsBeingDestroyed()](/docs/scripting-reference/classes/base-classes/actor#isbeingdestroyed) which will return if this actor is being destroyed (useful to check from inside other Events such as `Drop` or `Ungrab`).
-* Added new parameter for all actors [:AttachTo()](/docs/scripting-reference/classes/base-classes/actor#attachto) method: `lifespan_when_detached`, which will destroy the actor after `time` seconds after it's detached.
-* Now event [TakeDamage](/docs/scripting-reference/classes/base-classes/actor#takedamage) has a new argument: `causer` (the object/actor which caused the damage). Also added new damage types: `RunOverVehicle` and `RunOverProp`.
-* Now event [Hit](/docs/scripting-reference/classes/base-classes/actor#hit) has new arguments: `impact_force`, `normal_impulse`, `impact_location` and `velocity`.
-* Now [:SetLocation()](/docs/scripting-reference/classes/base-classes/actor#setlocation) will try to find the better spot to teleport the Actor (to avoid collisions).
+* Added new method for all actors: [:SetLifeSpan(time)](/docs/scripting-reference/classes/base-classes/actor#function-setlifespan) which will automatically destroy this actor after `time` seconds.
+* Added new method for all actors: [:IsBeingDestroyed()](/docs/scripting-reference/classes/base-classes/entity#function-isbeingdestroyed) which will return if this actor is being destroyed (useful to check from inside other Events such as `Drop` or `Ungrab`).
+* Added new parameter for all actors [:AttachTo()](/docs/scripting-reference/classes/base-classes/actor#function-attachto) method: `lifespan_when_detached`, which will destroy the actor after `time` seconds after it's detached.
+* Now event [TakeDamage](/docs/scripting-reference/classes/base-classes/actor) has a new argument: `causer` (the object/actor which caused the damage). Also added new damage types: `RunOverVehicle` and `RunOverProp`.
+* Now event [Hit](/docs/scripting-reference/classes/base-classes/actor) has new arguments: `impact_force`, `normal_impulse`, `impact_location` and `velocity`.
+* Now [:SetLocation()](/docs/scripting-reference/classes/base-classes/actor#function-setlocation) will try to find the better spot to teleport the Actor (to avoid collisions).
 
 
 ## Character {/* #character */}
@@ -94,18 +94,18 @@ New additions for [Characters](/docs/scripting-reference/classes/character):
 
 **Character Methods additions/improvements:**
 * Added several new Getters from it's properties.
-* Added [:SetDamageMultiplier()](/docs/scripting-reference/classes/character#setdamagemultiplier) change the damage multiplier depending on the bone damaged.
-* Added [:SetHiddenBone()](/docs/scripting-reference/classes/character#sethiddenbone) to make invisible any part of the body.
-* Added [:SetJumpZVelocity()](/docs/scripting-reference/classes/character#setjumpzvelocity) to make the character jump higher.
-* Improved [:PlayAnimation()](/docs/scripting-reference/classes/character#playanimation) got new parameters (blend times, loop and play rate), and now it supports loading any type of animation (Montage or Sequence).
-* Removed `:SetInitialLocation()`, it has been replaced with [:Respawn()](/docs/scripting-reference/classes/character#respawn).
+* Added [:SetDamageMultiplier()](/docs/scripting-reference/classes/base-classes/damageable#function-setdamagemultiplier) change the damage multiplier depending on the bone damaged.
+* Added [:SetHiddenBone()](/docs/scripting-reference/classes/character) to make invisible any part of the body.
+* Added [:SetJumpZVelocity()](/docs/scripting-reference/classes/base-classes/pawn#function-setjumpzvelocity) to make the character jump higher.
+* Improved [:PlayAnimation()](/docs/scripting-reference/classes/character#function-playanimation) got new parameters (blend times, loop and play rate), and now it supports loading any type of animation (Montage or Sequence).
+* Removed `:SetInitialLocation()`, it has been replaced with [:Respawn()](/docs/scripting-reference/classes/base-classes/damageable#function-respawn).
 
 **Character Events additions/improvements:**
-* Added [AttemptEnterVehicle](/docs/scripting-reference/classes/character#attemptentervehicle) called when Character tries to enter a vehicle, returns false to prevent it.
-* Added [AttemptLeaveVehicle](/docs/scripting-reference/classes/character#attemptleavevehicle) called when Character tries to leave a vehicle, returns false to prevent it.
-* Added [AttemptReload](/docs/scripting-reference/classes/character#attemptreload) called when Character tries to reload it's weapon, returns false to prevent it.
-* Added [Interact](/docs/scripting-reference/classes/character#interact) called when Characters tries to Pick Up a Pickable or Grab a Prop.
-* Added [Highlight](/docs/scripting-reference/classes/character#highlight) called when Characters looks at a Prop or Pickable being able to pick up it.
+* Added [AttemptEnterVehicle](/docs/scripting-reference/classes/character) called when Character tries to enter a vehicle, returns false to prevent it.
+* Added [AttemptLeaveVehicle](/docs/scripting-reference/classes/character) called when Character tries to leave a vehicle, returns false to prevent it.
+* Added [AttemptReload](/docs/scripting-reference/classes/character) called when Character tries to reload it's weapon, returns false to prevent it.
+* Added [Interact](/docs/scripting-reference/classes/character) called when Characters tries to Pick Up a Pickable or Grab a Prop.
+* Added [Highlight](/docs/scripting-reference/classes/character) called when Characters looks at a Prop or Pickable being able to pick up it.
 
 Some Characters animations have been renamed from `AM_` to `A_` in the Default Asset Pack (as they are not Montages anymore). Also lots of new Animations have been added.
 
@@ -118,11 +118,11 @@ New additions for [Weapons](/docs/scripting-reference/classes/weapon):
 
 **Weapon Methods additions/improvements:**
 * Added several new Getters from it's properties.
-* Added [:SetRecoil()](/docs/scripting-reference/classes/weapon#setrecoil) how much the weapon recoils physically.
-* Added [:SetWallbangSettings()](/docs/scripting-reference/classes/weapon#setwallbangsettings) configure if bullets wallbangs walls.
-* Added [:SetAnimationFire()](/docs/scripting-reference/classes/weapon#setanimationfire) animation on Weapon Skeletal when firing.
-* Added [:SetSoundFireLastBullets()](/docs/scripting-reference/classes/weapon#setsoundfirelastbullets) sound when `N` last bullets are remaining in the clip.
-* Improved [:SetAnimationReload()](/docs/scripting-reference/classes/weapon#setanimationreload) now has `play_rate` parameter.
+* Added [:SetRecoil()](/docs/scripting-reference/classes/weapon#function-setrecoil) how much the weapon recoils physically.
+* Added [:SetWallbangSettings()](/docs/scripting-reference/classes/weapon#function-setwallbangsettings) configure if bullets wallbangs walls.
+* Added [:SetAnimationFire()](/docs/scripting-reference/classes/weapon#function-setanimationfire) animation on Weapon Skeletal when firing.
+* Added [:SetSoundFireLastBullets()](/docs/scripting-reference/classes/weapon#function-setsoundfirelastbullets) sound when `N` last bullets are remaining in the clip.
+* Improved [:SetAnimationReload()](/docs/scripting-reference/classes/weapon#function-setanimationreload) now has `play_rate` parameter.
 
 **Additional stuff:**
 * Now weapons are hidden when Characters are driving.
@@ -152,8 +152,8 @@ Added `loop_mode` parameter to constructor (can loop any sound forever now).
 Also, it is possible to pass `.ogg` using the SpecialPath in any Sound parameter.
 
 **Sound Methods additions/improvements:**
-* Added [:GetDuration()](/docs/scripting-reference/classes/sound#getduration).
-* Improved [:FadeIn()](/docs/scripting-reference/classes/sound#fadein) and [:FadeOut()](/docs/scripting-reference/classes/sound#fadeout) parameters.
+* Added [:GetDuration()](/docs/scripting-reference/classes/sound#function-getduration).
+* Improved [:FadeIn()](/docs/scripting-reference/classes/sound#function-fadein) and [:FadeOut()](/docs/scripting-reference/classes/sound#function-fadeout) parameters.
 
 
 ## Input {/* #input */}
@@ -211,17 +211,17 @@ We have worked hard on performance techniques for Alpha update. Here's the highl
 New additions to [Server](/docs/scripting-reference/static-classes/server) static class:
 
 * Added new console command: `map [MAP_NAME]` to change the game map, this will also reload all packages and reconnect all players (like restarting the server).
-* Added new methods [Server.GetVersion()](/docs/scripting-reference/static-classes/server#getversion), [Server.GetIP()](/docs/scripting-reference/static-classes/server#getip), [Server.GetPort()](/docs/scripting-reference/static-classes/server#getport), [Server.GetQueryPort()](/docs/scripting-reference/static-classes/server#getqueryport) and several missing getters.
+* Added new methods [Server.GetVersion()](/docs/scripting-reference/static-classes/server#static-function-getversion), [Server.GetIP()](/docs/scripting-reference/static-classes/server#static-function-getip), [Server.GetPort()](/docs/scripting-reference/static-classes/server#static-function-getport), [Server.GetQueryPort()](/docs/scripting-reference/static-classes/server#static-function-getqueryport) and several missing getters.
 
 
 ## Client {/* #client */}
 
 New additions to [Client](/docs/scripting-reference/static-classes/client) static class:
 
-* New parameters have been added to [Client.SetCameraLocation()](/docs/scripting-reference/static-classes/client#setcameralocation) and [Client.SetCameraRotation()](/docs/scripting-reference/static-classes/client#setcamerarotation) to enable smooth movements with camera in a certain time.
-* New methods for drawing debug shapes in 3D world: [Client.DrawDebug...()](/docs/scripting-reference/static-classes/client#drawdebug).
-* Changed [Client.SetHighlight()](/docs/scripting-reference/static-classes/client#sethighlight) parameters, now it takes a Enum to define how the highlight will be.
-* Added new method [Client.SetSteamRichPresence()](/docs/scripting-reference/static-classes/client#setsteamrichpresence) to customize the message in Steam Friends list.
+* New parameters have been added to [Client.SetCameraLocation()](/docs/scripting-reference/classes/player#function-setcameralocation) and [Client.SetCameraRotation()](/docs/scripting-reference/classes/player#function-setcamerarotation) to enable smooth movements with camera in a certain time.
+* New methods for drawing debug shapes in 3D world: [Client.DrawDebug...()](/docs/scripting-reference/static-classes/client).
+* Changed [Client.SetHighlight()](/docs/scripting-reference/static-classes/client) parameters, now it takes a Enum to define how the highlight will be.
+* Added new method [Client.SetSteamRichPresence()](/docs/scripting-reference/static-classes/client) to customize the message in Steam Friends list.
 
 Now when joining a server, a Progress Bar will be displayed in the Taskbar, and also it will Flash once the loading is done:
 
@@ -247,8 +247,8 @@ Not all logs will appear in there, only the ones outputted while you are connect
 
 New additions to [Timer](/docs/scripting-reference/static-classes/timer):
 
-* Added new method: [Timer.Bind(timer_id, actor)](/docs/scripting-reference/static-classes/timer#bind) - this will associate a timer to an actor, when the actor is destroyed, this timer is destroyed too and will never be called.
-* Added new method: [Timer.IsValid(timer_id)](/docs/scripting-reference/static-classes/timer#isvalid).
+* Added new method: [Timer.Bind(timer_id, actor)](/docs/scripting-reference/static-classes/timer#static-function-bind) - this will associate a timer to an actor, when the actor is destroyed, this timer is destroyed too and will never be called.
+* Added new method: [Timer.IsValid(timer_id)](/docs/scripting-reference/static-classes/timer#static-function-isvalid).
 
 
 ## CLI {/* #cli */}
@@ -269,15 +269,15 @@ Little by little we will be creating more achievements and releasing them! We al
 
 ## Scripting Improvements {/* #scripting-improvements */}
 
-* Added new Searchers to [Package.Require()](/docs/scripting-reference/static-classes/package#require), we now currently support 5 searchers, which are looked in the following order:
+* Added new Searchers to [Package.Require()](/docs/scripting-reference/static-classes/package#static-function-require), we now currently support 5 searchers, which are looked in the following order:
     1. Relative to `current-file-path/`
     2. Relative to `current-package/Client/` or `current-package/Server/` *(depending on your side)*
     3. Relative to `current-package/Shared/`
     4. Relative to `current-package/`
     5. Relative to `Packages/`
 
-* [Package.Require()](/docs/scripting-reference/static-classes/package#require) now can be called in runtime and at any moment.
-* [Package.RequirePackage()](/docs/scripting-reference/static-classes/package#requirepackage) now will load a package as a library inside the current package, it means the package loaded will now be automatically sent to clients, and all paths it loads is relative to the package itself (and not to the one which is requiring it anymore).
+* [Package.Require()](/docs/scripting-reference/static-classes/package#static-function-require) now can be called in runtime and at any moment.
+* [Package.RequirePackage()](/docs/scripting-reference/static-classes/package) now will load a package as a library inside the current package, it means the package loaded will now be automatically sent to clients, and all paths it loads is relative to the package itself (and not to the one which is requiring it anymore).
 * Verbose logs will now display the current thread ID.
 
 
