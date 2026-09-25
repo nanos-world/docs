@@ -8,75 +8,64 @@ tags: [scripting]
 
 How to store data in Entities accessible from anywhere
 
-import { BasicType, Classes, StaticClasses } from '@site/src/components/_nanos';
 
-In nanos world it is possible to store data on entities. Those values can be accessed by any Package and also you can determine if the value will be automatically synchronized with the Clients.
-
-In <Classes.Entity /> page we can find the definitions of <MethodReference type="Class" class_name="Entity" method_name="SetValue" /> and <MethodReference type="Class" class_name="Entity" method_name="GetValue" /> methods. Also it is possible to store Values globally on <StaticClasses.Client /> and <StaticClasses.Server /> Static Classes with the same methods!
+Any <Classes.Entity /> can store custom values, readable from any Package and optionally synchronized with Clients. Global values can also be stored on the <StaticClasses.Server /> and <StaticClasses.Client /> Static Classes using the same methods.
 
 
 ## `SetValue` {/* #setvalue */}
 
-In any entity, you can use the method `:SetValue(key, value, sync_on_clients)` to set any kind of value on that entity. Example:
+<MethodReference type="Class" class_name="Entity" method_name="SetValue" /> stores a value on the entity. On the **Server**, pass `sync_on_clients` as `true` to synchronize it with all clients, including players who join later:
 
 ```lua title="Server/Index.lua" showLineNumbers
--- Sets a synchronized 'my_value' value
-my_player:SetValue("my_value", 100, true)
+-- Sets a synchronized 'score' value
+my_player:SetValue("score", 100, true)
 ```
+
+Values are **serialized** when set: <BasicType.Any /> type is accepted except <BasicType.Function />s, Lua references are not kept and tables are copied into internal memory. Changing a table after setting it will not affect the stored value, call `SetValue()` again to update it.
 
 :::tip
 
-It is possible to store <BasicType.Any /> kind of value, except `functions`.
-
-:::
-
-If you pass `sync_on_clients` as true, that value will be automatically synchronized with all clients. Note that `sync_on_clients` is an optional parameter only available on the **Server** side.
-
-:::info note
-
-**Server.SetValue()** also accepts a last parameter `sync_on_client`, to synchronize a global value with all clients. **Client.SetValue()** doesn't have it, as the value will only exist on the client side.
-
-:::
-
-Synchronized values are also sent to players that join later, together with the entity (or with the server information, for `Server.SetValue`). So they are a great way to keep a state which every player must know, such as a team, a score or a custom name.
-
-:::caution
-
-Every change of a synchronized value is sent to all clients. Avoid synchronizing values which change very often (e.g. every Tick), prefer sending [Remote Events](/core-concepts/scripting/events-guide.mdx) with `Reliability.Unreliable` for those.
+Every change of a synchronized value is sent to all clients. For values changing very often (e.g. every Tick), prefer [Remote Events](/core-concepts/scripting/events-guide.mdx) with `Reliability.Unreliable`.
 
 :::
 
 
 ## `GetValue` {/* #getvalue */}
 
-After set, you can access any value from any entity using `:GetValue(key, fallback)` on any entity you want. If you set the value to be synchronized on Clients, you will be able to get the values on the Client side as well. You can pass an aditional parameter `fallback` which will be returned if the key doesn't exist!
+<MethodReference type="Class" class_name="Entity" method_name="GetValue" /> returns a value, or `fallback` if the key doesn't exist. Synchronized values can be read on the Client too:
 
 ```lua showLineNumbers
--- Gets 'my_value' value, or returns '0' if no value is set
-local my_value = my_player:GetValue("my_value", 0)
+-- Gets 'score' value, or 0 if not set
+local score = my_player:GetValue("score", 0)
 ```
 
-:::caution
+:::tip
 
 Be aware that storing **entities** itself will not nullify the value if the entity is destroyed, so it is a good practice to validate if values with <MethodReference type="Class" class_name="Entity" method_name="IsValid" /> after retrieving them.
 
 :::
 
+To list all keys set in an entity, use <MethodReference type="Class" class_name="Entity" method_name="GetAllValuesKeys" />.
+
+
+## Global Values {/* #global-values */}
+
+<StaticClasses.Server /> and <StaticClasses.Client /> also have `SetValue()` and `GetValue()`, to store values globally instead of on an entity. <MethodReference type="StaticClass" class_name="Server" method_name="SetValue" show_class_name /> accepts `sync_on_clients` as well, readable with <MethodReference type="StaticClass" class_name="Client" method_name="GetValue" show_class_name />, while <MethodReference type="StaticClass" class_name="Client" method_name="SetValue" show_class_name /> values only exist on that client:
+
+```lua title="Server/Index.lua" showLineNumbers
+-- Sets a global synchronized value, readable with Client.GetValue
+Server.SetValue("round_number", 1, true)
+```
+
 
 ## Listening to Value Changes {/* #listening-to-value-changes */}
 
-Whenever a value changes, the event <EventReference type="Class" class_name="Entity" event="ValueChange" /> is triggered on that entity. For synchronized values it is triggered on the clients as well, so you can easily update your UI when a value changes:
+The <EventReference type="Class" class_name="Entity" event="ValueChange" /> event is triggered whenever a value changes, also on clients for synchronized values. <StaticClasses.Server /> and <StaticClasses.Client /> have their own `ValueChange` event for global values.
 
 ```lua title="Client/Index.lua" showLineNumbers
--- Triggered when any value of any Player changes
 Player.Subscribe("ValueChange", function(player, key, value)
     if (key == "score") then
         Console.Log("%s now has %d points!", player:GetName(), value)
     end
 end)
 ```
-
-The static classes <StaticClasses.Server /> and <StaticClasses.Client /> also have a `ValueChange` event for their global values.
-
-You can also list all keys set in an entity with <MethodReference type="Class" class_name="Entity" method_name="GetAllValuesKeys" />.
-
