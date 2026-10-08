@@ -1,60 +1,157 @@
 ---
 title: Store
-description: The nanos world Store is the platform on which you are invited to share your Game-Modes, Packages and Assets with the nanos world community!
+description: The nanos world Store is where you share your Game Modes, Packages and Asset Packs with the nanos world community!
 image: /img/docs/store/store.webp
 ---
 
 
-The nanos world [Store](https://nanos-world.com/store) is the platform on which you are invited to share your **Game-Modes**, **Packages** and **Assets** with the nanos world community!
+The nanos world [Store](https://nanos-world.com/store) is where you share your **Game Modes**, **Packages** and **Asset Packs** with the nanos world community!
 
 ![](/img/docs/store/store.webp)
 
-
-:::warning
-
-The Store is still under development. We are launching small usable pieces of it to build and improve it with you!
-
-:::
+<MediaLegend>The nanos world Store</MediaLegend>
 
 
 ## About the Store {/* #about-the-store */}
 
-In the Store, you can upload your Assets, Packages, release new versions, create Teams and much more! It is 100% integrated with [Vault](/vault-and-store/vault.mdx) and the [CLI](/core-concepts/server-manual/command-line-interface.mdx)!
+Everything published in the Store is called a **Resource**: a Package (scripts, game modes, maps, loading screens and C modules) or an Asset Pack. Resources can be browsed, downloaded, reviewed and favorited by anyone, and they are 100% integrated with the in-game [Vault](/vault-and-store/vault.mdx) and the server [CLI](/core-concepts/server-manual/command-line-interface.mdx).
+
+You can filter the Store by category, tags, languages and rating, sort it by popularity, downloads and more, or search for anything from the search bar at the top of the website.
 
 
-## Server Authorization Token {/* #server-authorization-token */}
+### Resource Page {/* #resource-page */}
 
-In order to be able to use the CLI, you must provide an **Authorization Token** in the Server's `Config.toml` or passing with `--token` command line.
+Each Resource has its own page with its screenshots and videos, description, reviews and the full list of versions with their changelogs. From there you can download the latest version, favorite it, see the Team behind it and report it.
 
-This token is used to authenticate your account and the rights to download/upload the Assets/Packages that belong to your teams.
+![](/img/docs/store/store-resource.webp)
+
+<MediaLegend>A Resource page in the Store</MediaLegend>
+
+
+## Publishing Resources {/* #publishing-resources */}
+
+Resources always belong to a [Team](/vault-and-store/vault.mdx#teams), so create one (or join one) before publishing. Every member with the `developer` role or above can manage the Team's Resources.
+
+
+### Creating a Resource {/* #creating-a-resource */}
+
+To create a new Resource from the website, go to [Account → Packages](https://nanos-world.com/account/packages) (or [Account → Asset Packs](https://nanos-world.com/account/assets)) and press the `new package` (or `new asset pack`) button. A short wizard will ask for the Team, name and type of your Resource.
+
+![](/img/docs/store/new-package-modal.webp)
+
+<MediaLegend>Creating a new Package</MediaLegend>
+
+:::tip
+
+The Resource name is its unique identifier (used in `Config.toml`, requirements and the Vault), so it must match your Package or Asset Pack folder name: **lowercase**, containing only letters, numbers and `-`.
+
+:::
+
+You can also create Resources from within the game, see [Creating a Store Resource](/vault-and-store/vault.mdx#creating-a-store-resource) in the Vault.
+
+
+### Managing a Resource {/* #managing-a-resource */}
+
+Every Resource you can manage has a `manage` button on its page, which opens its management page (`https://nanos-world.com/store/packages/<name>/manage` or `https://nanos-world.com/store/assets/<name>/manage`):
+
+- **dashboard**: stats (downloads, views, favorites, ratings and storage used) and a checklist of everything your Resource needs before it can be listed, plus the button to publish or unpublish it
+- **resource details**: title, summary, description, tags, languages and links
+- **media**: main image, screenshots and videos
+- **versions**: upload, release and manage versions (see below)
+- **history**: every change made to the Resource, and by whom
+- **danger zone**: transfer the Resource to another Team, or delete it
+
+![](/img/docs/store/manage-dashboard.webp)
+
+<MediaLegend>Resource management dashboard</MediaLegend>
+
+
+## Uploading Versions {/* #uploading-versions */}
+
+Every version of a Resource is a `.zip` of its folder (the one containing the `Package.toml` or `Assets.toml`). The version number is read from that `.toml` file, so bump it (following [Semantic Versioning](https://semver.org/)) before uploading a new one.
+
+There are several ways to upload a new version:
+
+- **Website**: in the **versions** section of the management page, drop the `.zip` file in the upload area
+- **Vault**: from within the game, see [Managing Resources Versions](/vault-and-store/vault.mdx#managing-resources-versions)
+- **CLI**: run `upload package <name>` or `upload assets <name>` on your server, see the [CLI](/core-concepts/server-manual/command-line-interface.mdx)
+- **GitHub Actions**: upload automatically on every new tag, see [Automate GitHub Releases](#automate-github-releases)
+
+![](/img/docs/store/manage-versions.webp)
+
+<MediaLegend>Versions section of the management page</MediaLegend>
+
+
+### Validation and Release {/* #validation-and-release */}
+
+After uploading, every version goes through an automated validator, which checks the files and reads the version number, requirements and other settings from the `.toml`. While it runs the version shows as `pending`, and then as `approved` (or `declined`, with the reason).
+
+Approved versions are not public yet: add a changelog with `edit changelog` and press `release` to make it available to everyone, in the Store, in the Vault and for servers downloading it.
+
+
+## Access Tokens {/* #access-tokens */}
+
+An **Access Token** (also called Personal Access Token, or PAT) authenticates your account outside the website. It is used by the server [CLI](/core-concepts/server-manual/command-line-interface.mdx), by `--auto_download` when fetching Resources you own, by the [GitHub Action](#automate-github-releases) and by any script calling the API.
+
+It has the same rights as your account to download and upload the Resources of your Teams, so keep it secret.
 
 
 ### Generating a new Token {/* #generating-a-new-token */}
 
-To generate a new token, go to your [Profile → PAT](https://nanos-world.com/account/pat) page and press `+ Create Token` button. You will be prompted to set a Name and Expiration Date for your Token.
+To generate a new token, go to [Account → Access Tokens](https://nanos-world.com/account/pat) and press the `create token` button.
 
 ![](/img/docs/store/account-pat.webp)
 
-After created, copy the token and save it, you won't be able to restore it if you lose it.
+<MediaLegend>Access Tokens page</MediaLegend>
 
-Now just paste your token into your `Config.toml` `token` field or pass it as `--token` to your server and you are authenticated to run CLI commands!
+You can give your token a name (to identify it later) and an expiry date (leave it empty for a token that never expires).
 
+![](/img/docs/store/create-pat-modal.webp)
+
+<MediaLegend>Creating a new Access Token</MediaLegend>
+
+After it is created, copy the token and save it somewhere safe: it is only shown once, and you won't be able to see it again. If you lose it (or it leaks), delete it from the list and create a new one.
+
+
+### Using the Token in the Server {/* #using-the-token-in-the-server */}
+
+Paste your token in the `token` field of your server's `Config.toml`, or pass it with `--token` in the command line, and you are authenticated to run CLI commands!
+
+```toml title="Config.toml"
+[general]
+    token = "<your-token>"
+```
+
+
+### Using the Token with the API {/* #using-the-token-with-the-api */}
+
+The same token authenticates requests to the nanos world API (`https://api.nanos-world.com`). Send it in the `Authorization` header, prefixed with `Token `:
+
+```shell title="Terminal"
+curl -H "Authorization: Token <your-token>" https://api.nanos-world.com/user/me
+```
+
+The full list of endpoints is in the [API reference](https://api.nanos-world.com/swagger/index.html).
 
 
 ## Automate GitHub Releases {/* #automate-github-releases */}
 
 :::caution Community Resource
 
-This workflow is maintained by the community. For more details, visit the open source [GitHub Repository](https://github.com/olivatooo/nanos-world-store-action).
+This workflow is maintained by the community. For more details, visit the open source [GitHub Repository](https://github.com/nanos-world/store-action).
 
 :::
 
-If your Package or Asset Pack is uploaded to GitHub, you can use the community created [nanos world Store Publisher Action](https://github.com/olivatooo/nanos-world-store-action) to automate the upload of new releases!
+If your Package is on GitHub, you can use the community created [nanos world Store Publisher Action](https://github.com/nanos-world/store-action) to upload new versions automatically! It handles version checking, zipping and uploading to the Store.
 
-This action automatically handles version validation, package zipping, and uploading to the Store.
+:::note
+
+The action only supports Packages for now. Asset Packs must be uploaded through the website, the Vault or the CLI.
+
+:::
 
 
-### Setting up the Github Action {/* #setting-up-the-github-action */}
+### Setting up the GitHub Action {/* #setting-up-the-github-action */}
 
 #### 1. Add Your Token as a Secret {/* #1-add-your-token-as-a-secret */}
 
@@ -62,13 +159,19 @@ This action automatically handles version validation, package zipping, and uploa
 2. Go to your repository **Settings** → **Secrets and variables** → **Actions**
 3. Click **New repository secret**
 4. Name: `NANOS_STORE_TOKEN`
-5. Secret: Your token generated in step 1
+5. Secret: your token generated in step 1
 6. Click **Add secret**
+
+:::danger
+
+Never paste the token directly in the workflow file: anyone with access to the repository would be able to use it.
+
+:::
 
 
 #### 2. Create Workflow File {/* #2-create-workflow-file */}
 
-Create a `.yml` file inside your repository as  `.github/workflows/publish.yml` with the content:
+Create a `.yml` file inside your repository as `.github/workflows/publish.yml` with the content:
 
 ```yml title='.github/workflows/publish.yml' showLineNumbers
 name: Publish to nanos world Store
@@ -95,19 +198,19 @@ jobs:
           NANOS_PACKAGE_NAME: 'your-package-name'  # Replace with your package name
 ```
 
+If your Package is not at the root of the repository, set `PACKAGE_PATH` to its folder.
+
 
 ### Publishing a New Version {/* #publishing-a-new-version */}
 
-To publish a new version:
-
-#### Update version in Package.toml: {/* #update-version-in-packagetoml */}
+#### Update the version in Package.toml {/* #update-version-in-packagetoml */}
 
 ```toml title="Package.toml"
 [meta]
     version = "1.0.1"  # Increment from previous
 ```
 
-#### Commit, tag and push: {/* #commit-tag-and-push */}
+#### Commit, tag and push {/* #commit-tag-and-push */}
 
 ```shell title="Terminal"
 git add Package.toml
@@ -116,30 +219,39 @@ git tag v1.0.1
 git push origin main --tags
 ```
 
-The action will automatically publish your package when you push the tag!
+The action will upload the new version when you push the tag! Once the validator approves it, add a changelog and press `release` (on the website or in the Vault) to make it available to everyone, see [Validation and Release](#validation-and-release).
 
 :::tip Manual Trigger
 
-You can also manually trigger the workflow from the **Actions** tab in your repository using the `workflow_dispatch` event.
+You can also trigger the workflow manually from the **Actions** tab in your repository, thanks to the `workflow_dispatch` event.
 
 :::
 
 :::tip Version Management
 
-The action automatically reads the version from your `Package.toml` file and compares it with the store version. Your local version must be greater than the store version for the upload to succeed.
+The action reads the version from your `Package.toml` and compares it with the latest one in the Store. Your local version must be greater than the Store version for the upload to succeed.
 
 :::
 
 
 ### Multiple Packages in the Repo {/* #multiple-packages-in-the-repo */}
 
-If you have multiple packages in your repository, you can publish them all at once using the `EXTRA_PACKAGE_PATHS` input with a JSON array format:
+If you have multiple Packages in your repository, add one step per Package, pointing `PACKAGE_PATH` to its folder and `NANOS_PACKAGE_NAME` to its name:
 
 ```yml title=".github/workflows/publish.yml"
+      - uses: nanos-world/store-action@v1
         with:
-          ...
+          NANOS_PERSONAL_ACCESS_TOKEN: ${{ secrets.NANOS_STORE_TOKEN }}
+          NANOS_PACKAGE_NAME: 'my-first-package'
           # highlight-next-line
-          EXTRA_PACKAGE_PATHS: '["path/to/package1", "path/to/package2"]'
+          PACKAGE_PATH: 'path/to/my-first-package'
+
+      - uses: nanos-world/store-action@v1
+        with:
+          NANOS_PERSONAL_ACCESS_TOKEN: ${{ secrets.NANOS_STORE_TOKEN }}
+          NANOS_PACKAGE_NAME: 'my-second-package'
+          # highlight-next-line
+          PACKAGE_PATH: 'path/to/my-second-package'
 ```
 
-For more advanced configuration options and troubleshooting, visit the [action repository](https://github.com/olivatooo/nanos-world-store-action).
+For more configuration options and troubleshooting, visit the [action repository](https://github.com/nanos-world/store-action).
