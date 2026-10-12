@@ -126,6 +126,12 @@ Another way of communicating is using Events, see [Communicating Between Package
 
 nanos world runs **Lua 5.4**, with most of its [standard libraries](https://www.lua.org/manual/5.4/manual.html#6) available, plus the nanos world API (Classes, Static Classes, Structs and Utility Libraries).
 
-For security, some functions which access the operating system are **disabled** by default on the server: `os.execute`, `os.rename`, `os.remove`, `os.exit`, `os.getenv`, `os.tmpname`, `os.setlocale`, `dofile`, `loadfile` and the whole `io` library. They can be enabled with the `--enable_unsafe_libs` server parameter, but only do it if you trust all the Packages running on your server.
+For security, some functions are **disabled** by default:
+
+- Functions which access the operating system: `os.execute`, `os.rename`, `os.remove`, `os.exit`, `os.getenv`, `os.tmpname`, `os.setlocale`, `dofile`, `loadfile` and the whole `io` library.
+- The `debug` library, except `debug.traceback`, `debug.getinfo`, `debug.sethook` and `debug.gethook`, as the others can reach into other functions and Packages.
+- Loading precompiled Lua bytecode, with `load` or as Package files. Only text chunks can be loaded.
+
+On the server, they can be enabled with the `--enable_unsafe_libs` parameter, but only do it if you trust all the Packages running on your server. On the client side, they are always disabled, as players join servers they can't trust.
 
 To read and write files, use the <Classes.File /> class instead, which works inside the server folder. To store data, prefer [Persistent Data](/core-concepts/scripting/persistent-data.mdx) or a <Classes.Database />.
