@@ -7,6 +7,11 @@ on:
     # Review gh actions docs if you want to further define triggers, paths, etc
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
+# Only one deploy at a time, pushes made meanwhile collapse into a single queued run (never cancels a deploy midway)
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     name: Build Docusaurus
@@ -25,6 +30,15 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      # Rspack persistent cache, so unchanged modules are not recompiled
+      - name: Restore Rspack cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.cache/rspack
+          key: rspack-all-${{ runner.os }}-${{ hashFiles('yarn.lock', 'docusaurus.config.js') }}-${{ github.sha }}
+          restore-keys: |
+            rspack-all-${{ runner.os }}-${{ hashFiles('yarn.lock', 'docusaurus.config.js') }}-
 
       - name: Preprocess API
         run: yarn preprocess-api

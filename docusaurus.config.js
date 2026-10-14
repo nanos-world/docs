@@ -1,5 +1,39 @@
+const path = require('path');
+const fs = require('fs');
+
 const isDev = process.env.NODE_ENV === 'development';
 const onlyEnglish = process.env.BUILD_EN_ONLY === 'true';
+
+// Points '@nanos-api' to the generated API of the locale being built (falling back to English) and keeps it in a single shared chunk
+function nanosAPIPlugin(context) {
+  return {
+    name: 'nanos-api',
+    configureWebpack(config, isServer) {
+      const generated = path.resolve(__dirname, 'src/api/.generated');
+      const localeDir = path.join(generated, context.i18n.currentLocale);
+      const apiDir = fs.existsSync(localeDir) ? localeDir : path.join(generated, 'en');
+
+      return {
+        resolve: {
+          alias: { '@nanos-api': apiDir },
+        },
+        optimization: isServer ? {} : {
+          splitChunks: {
+            cacheGroups: {
+              nanosAPI: {
+                test: /[\\/]src[\\/]api[\\/]\.generated[\\/]/,
+                name: 'nanos-api',
+                chunks: 'all',
+                enforce: true,
+                priority: 100,
+              },
+            },
+          },
+        },
+      };
+    },
+  };
+}
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -240,10 +274,15 @@ module.exports = {
       swcJsLoader: true,
       swcJsMinimizer: true,
       swcHtmlMinimizer: true,
+      lightningCssMinimizer: true,
+      rspackBundler: true,
+      rspackPersistentCache: true,
+      mdxCrossCompilerCache: true,
       ssgWorkerThreads: true,
     },
   },
   plugins: [
+    nanosAPIPlugin,
     require.resolve('docusaurus-plugin-image-zoom'),
   ],
   scripts: [
