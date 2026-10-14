@@ -18,9 +18,9 @@ jobs:
           submodules: true
           exclude: external/**
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 22
           cache: yarn
 
       - name: Install dependencies
@@ -28,7 +28,7 @@ jobs:
 
       # Rspack persistent cache, so unchanged modules are not recompiled
       - name: Restore Rspack cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: node_modules/.cache/rspack
           key: rspack-en-${{ runner.os }}-${{ hashFiles('yarn.lock', 'docusaurus.config.js') }}-${{ github.sha }}
