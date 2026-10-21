@@ -104,8 +104,8 @@ game-modes can declare which Custom Settings they accept, so they show up in the
 | :--- | :--- | :--- | :--- |
 | **`max_tick_rate`** | `integer` | `30` | Server Tick in Hz, how many times per second the server loop runs. Range `15` - `120`. Everything (network receive/send, Lua events, timers, etc) happens inside this loop, so a higher value is more responsive but multiplies CPU usage. `30` Hz means the server has `33ms` to do all its work per tick, **we recommend leaving it `30`** |
 | **`max_sync_rate`** | `integer` | `30` | Max actors sync rate in Hz, how often actors location/rotation/velocity are synchronized. Range `1` - `30`, and naturally limited by `max_tick_rate`. This value is also sent to the clients, so they sync back at the same rate. Lowering it is the cheapest way to cut bandwidth on servers with many moving actors, at the cost of less precise movement |
-| **`max_send_rate`** | `integer` | `1024` | Max network send rate **per client**, in KB/s. Range `128` - `16384`. Recommended setting to the lowest value that still fits your traffic, higher rates may negatively impact the server performance when having players with bad connections. P2P servers are capped to `1024` KB/s by Steam Datagram Relay. Can be changed at runtime with the [`max_send_rate`](#built-in-commands) console command |
-| **`max_file_transfer_rate`** | `integer` | `1024` | Max file transfer rate **per client**, in KB/s, how fast Packages and Assets files are pushed to a connecting player. Range `128` - `max_send_rate`; anything above `max_send_rate` is clamped down to it. Lower it to keep downloads from starving the gameplay traffic of players already in game |
+| **`max_send_rate`** | `integer` | `2048` | Max network send rate **per client**, in KB/s. Range `128` - `16384`. Recommended setting to the lowest value that still fits your traffic, higher rates may negatively impact the server performance when having players with bad connections. P2P servers are capped to `1024` KB/s by Steam Datagram Relay. Can be changed at runtime with the [`max_send_rate`](#built-in-commands) console command |
+| **`max_file_transfer_rate`** | `integer` | `2048` | Max file transfer rate **per client**, in KB/s, how fast Packages and Assets files are pushed to a connecting player. Range `128` - `max_send_rate`; anything above `max_send_rate` is clamped down to it. Lower it to keep downloads from starving the gameplay traffic of players already in game |
 | **`distance_optimization`** | `integer` | `4` | Reduces synchronization of actors that are far away from each player. `0` disables it, `4` is a good middle term, `9` is the most aggressive. See [Distance Optimization](#distance-optimization) below |
 
 
@@ -198,7 +198,7 @@ The Map (or Level) is defined in the Server's config file, this map will be load
 
 To configure a map, please refer to [Packages Guide](/core-concepts/packages/packages-guide.mdx#map) to create a Map Package pointing to the correct Asset.
 
-nanos world counts on (for now) 4 built-in maps: `default-blank-map`, `default-empty-map`, `default-ocean-map` and `default-testing-map` which can be used in your server without needing to download any Package/Asset Pack.
+nanos world counts on (for now) 3 built-in maps: `default-blank-map`, `default-empty-map` and `default-ocean-map` which can be used in your server without needing to download any Package/Asset Pack. `default-testing-map` is a Vault Package, which the server downloads automatically when it's used as the map.
 
 
 ## Server Console {/* #server-console */}
