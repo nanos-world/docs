@@ -134,4 +134,6 @@ For security, some functions are **disabled** by default:
 
 On the server, they can be enabled with the `--enable_unsafe_libs` parameter, but only do it if you trust all the Packages running on your server. On the client side, they are always disabled, as players join servers they can't trust.
 
+To help debugging your own scripts, the whole `debug` library can be enabled on the client in **Settings > Debug**. This setting is never saved: it only lasts until you close the game, and it applies when you join a server (or when the Packages reload). The other functions above stay disabled on the client. Only enable it while playing on your own servers, as it lets the server's scripts read and change the internals of any other script.
+
 To read and write files, use the <Classes.File /> class instead, which works inside the server folder. To store data, prefer [Persistent Data](/core-concepts/scripting/persistent-data.mdx) or a <Classes.Database />.
