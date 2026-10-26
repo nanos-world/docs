@@ -60,6 +60,20 @@ For more information regarding how each Parameter affects the final visual, plea
 **Masked** and **Lit** Material, with `WorldAlignedTexture` node, scaled with `TextureSize` scalar parameter.
 
 
+### **`M_Default_Opaque_Lit_Triplanar`** {/* #m_default_opaque_lit_triplanar */}
+
+**Opaque** and **Lit** Material which projects **Texture** and **Normal** from the three axes of the object itself, so it fits any mesh regardless of its UVs. Unlike `M_Default_Masked_Lit_WorldAligned`, the texture sticks to the object when it moves or rotates, and keeps the same size when the object is scaled. Besides the default parameters (no `Opacity`), it provides:
+
+| Type | Parameter | Default Value | Description |
+| :--- | :--- | :--- | :--- |
+| [Scalar](/scripting-reference/classes/base-classes/paintable.mdx#function-setmaterialscalarparameter) | **`TextureSize`** | `100` | Size of one texture tile, in centimeters |
+| [Scalar](/scripting-reference/classes/base-classes/paintable.mdx#function-setmaterialscalarparameter) | **`TextureAspect`** | `1` | Height of a tile divided by its width, for non square textures |
+| [Scalar](/scripting-reference/classes/base-classes/paintable.mdx#function-setmaterialscalarparameter) | **`BlendSharpness`** | `8` | How sharp the transition between two projections is |
+| [Scalar](/scripting-reference/classes/base-classes/paintable.mdx#function-setmaterialscalarparameter) | **`NormalStrength`** | `1` | Multiplies the **Normal** intensity |
+
+All the [Surface Materials](#surface-materials) are made from it.
+
+
 ### **`M_Default_Masked_Unlit`** {/* #m_default_masked_unlit */}
 
 **Masked** and **Unlit** Material.
@@ -90,6 +104,40 @@ For more information regarding how each Parameter affects the final visual, plea
 **Translucent**, **Unlit** with `Disable Depth Test` enabled. Is the same as Translucent but will be always visible in the screen, even behind walls or other objects.
 
 
+## Surface Materials {/* #surface-materials */}
+
+Ready to use surfaces (wood, brick, concrete, metals...) made from [`M_Default_Opaque_Lit_Triplanar`](#m_default_opaque_lit_triplanar), so they look right on any mesh. Each one also carries a fitting [Physical Material](#physical-materials), so footsteps and impacts sound like the surface. You can still tweak them with the parameters above, e.g. `SetMaterialColorParameter("Tint", Color.RED)` to tint a wood.
+
+```lua
+my_prop:SetMaterial("nanos-world::MI_Surface_WoodPlanks")
+```
+
+| Material |
+| :--- |
+| **`MI_Surface_WoodPlanks`** |
+| **`MI_Surface_WoodFloor`** |
+| **`MI_Surface_WoodDark`** |
+| **`MI_Surface_WoodSiding`** |
+| **`MI_Surface_Brick`** |
+| **`MI_Surface_Concrete`** |
+| **`MI_Surface_ConcreteTiles`** |
+| **`MI_Surface_Stone`** |
+| **`MI_Surface_Marble`** |
+| **`MI_Surface_Gravel`** |
+| **`MI_Surface_Dirt`** |
+| **`MI_Surface_RoofTiles`** |
+| **`MI_Surface_MetalPainted`** |
+| **`MI_Surface_MetalDark`** |
+| **`MI_Surface_MetalCorrugated`** |
+| **`MI_Surface_Wallpaper`** |
+| **`MI_Surface_Plastic`** |
+| **`MI_Surface_Rubber`** |
+| **`MI_Surface_Chrome`** |
+| **`MI_Surface_Gold`** |
+| **`MI_Surface_Copper`** |
+| **`MI_Surface_Neon`** |
+
+
 ## Special Utils Materials {/* #special-utils-materials */}
 
 ### **`M_Noise`** {/* #m_noise */}
@@ -115,6 +163,7 @@ For more information regarding how each Parameter affects the final visual, plea
 | :--- | :--- | :--- | :--- |
 | **M_Default_Masked_Lit** | Surface | Masked | Default Lit |
 | **M_Default_Masked_Lit_WorldAligned** | Surface | Masked | Default Lit |
+| **M_Default_Opaque_Lit_Triplanar** | Surface | Opaque | Default Lit |
 | **M_Default_Masked_Unlit** | Surface | Masked | Unlit |
 | **M_Default_Translucent_Lit** | Surface | Translucent | Default Lit |
 | **M_Default_Translucent_Lit_Depth** | Surface | Translucent | Default Lit |
@@ -141,6 +190,7 @@ For more information regarding how each Parameter affects the final visual, plea
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **M_Default_Masked_Lit** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `true*` | `true` | `true` | `false` |
 | **M_Default_Masked_Lit_WorldAligned** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `true*` | `true` | `true` | `true` |
+| **M_Default_Opaque_Lit_Triplanar** | `true` | `true` | `true` | `true` | `true` | `true` | `true` | `false` | `false` | `false` | `true` |
 | **M_Default_Masked_Unlit** | `false` | `true` | `false` | `true` | `false` | `false` | `false` | `true*` | `true` | `true` | `false` |
 | **M_Default_Translucent_Lit** | `true` | `true` | `false` | `true` | `false` | `false` | `false` | `true` | `false` | `false` | `false` |
 | **M_Default_Translucent_Lit_Depth** | `true` | `true` | `false` | `true` | `false` | `false` | `false` | `true` | `false` | `false` | `false` |

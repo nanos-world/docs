@@ -73,14 +73,14 @@ Input.Subscribe("MouseUp", function(key_name)
 			return
 		end
 
-		-- Get the camera location in 3D World Space
-		local viewport_2D_center = Viewport.GetViewportSize() / 2
-		local viewport_3D = Viewport.DeprojectScreenToWorld(viewport_2D_center)
-		local start_location = viewport_3D.Position
+		-- Gets the camera location and the direction the player is aiming
+		local local_player = Client.GetLocalPlayer()
+		local start_location = local_player:GetCameraLocation()
+		local direction = local_player:GetCameraRotation():GetForwardVector()
 
 		-- Gets the end location of the trace (5000 units ahead)
 		local trace_max_distance = 5000
-		local end_location = start_location + viewport_3D.Direction * trace_max_distance
+		local end_location = start_location + direction * trace_max_distance
 
 		-- Determine at which object we will be tracing for (WorldStatic - StaticMeshes - and PhysicsBody - Props)
 		local collision_trace = CollisionChannel.WorldStatic | CollisionChannel.PhysicsBody
@@ -101,7 +101,7 @@ Input.Subscribe("MouseUp", function(key_name)
 			distance_trace_object = picking_object:GetLocation() - trace_result.Location
 
 			-- Calculates the distance of the object and the camera
-			distance = trace_result.Location:Distance(viewport_3D.Position)
+			distance = trace_result.Location:Distance(start_location)
 
 			-- Calls remote to disable gravity of this object (if has)
 			Events.CallRemote("GravityGun:Grab", Reliability.Reliable, picking_object, true)
@@ -124,13 +124,14 @@ Client.Subscribe("Tick", function(delta_time)
 	-- On Tick, updates the Position of the object, based on it's distance and camera rotation
 	if (picking_object == nil) then return end
 
-	-- Get the camera location in 3D World Space
-	local viewport_2D_center = Viewport.GetViewportSize() / 2
-	local viewport_3D = Viewport.DeprojectScreenToWorld(viewport_2D_center)
+	-- Gets the camera location and the direction the player is aiming
+	local local_player = Client.GetLocalPlayer()
+	local camera_location = local_player:GetCameraLocation()
+	local direction = local_player:GetCameraRotation():GetForwardVector()
 
 	-- Gets the new object location
 	-- (camera direction * 'distance' units ahead + object offset from first Hit to keep it relative)
-	local end_location = (viewport_3D.Position + viewport_3D.Direction * distance) + distance_trace_object
+	local end_location = (camera_location + direction * distance) + distance_trace_object
 
 	-- Calls remote to update its location. We use Unreliable as this is sent every frame, if a packet is lost, the next one will correct it anyway
 	Events.CallRemote("GravityGun:Move", Reliability.Unreliable, picking_object, end_location)
