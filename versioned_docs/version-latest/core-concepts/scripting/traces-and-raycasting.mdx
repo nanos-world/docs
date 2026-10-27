@@ -23,18 +23,19 @@ The following example will show you how to get what and where the player is look
 ```lua title="Client/Index.lua" showLineNumbers
 -- Traces at each 100ms
 Timer.SetInterval(function()
-    -- Gets the middle of the screen
-    local viewport_2D_center = Viewport.GetViewportSize() / 2
+    local local_player = Client.GetLocalPlayer()
+    if (not local_player) then return end
 
-    -- Deprojects to get the 3D Location for the middle of the screen
-    local viewport_3D = Viewport.DeprojectScreenToWorld(viewport_2D_center)
+    -- Gets the camera location and the direction the player is aiming
+    local camera_location = local_player:GetCameraLocation()
+    local direction = local_player:GetCameraRotation():GetForwardVector()
 
-    -- Makes a trace with the 3D Location and it's direction multiplied by 5000
+    -- Makes a trace from the camera location along the aim direction multiplied by 5000
     -- Meaning it will trace 5000 units in that direction
     local trace_max_distance = 5000
 
-    local start_location = viewport_3D.Position
-    local end_location = viewport_3D.Position + viewport_3D.Direction * trace_max_distance
+    local start_location = camera_location
+    local end_location = camera_location + direction * trace_max_distance
 
     -- Determine at which object we will be tracing for (WorldStatic - StaticMeshes - and PhysicsBody - Props)
     local collision_trace = CollisionChannel.WorldStatic | CollisionChannel.PhysicsBody
@@ -63,6 +64,12 @@ Timer.SetInterval(function()
     end
 end, 100)
 ```
+
+:::tip
+
+To trace where the player is aiming, prefer <MethodReference type="Class" class_name="Player" method_name="GetCameraLocation" show_class_name /> and <MethodReference type="Class" class_name="Player" method_name="GetCameraRotation" show_class_name /> over deprojecting the middle of the screen with <MethodReference type="StaticClass" class_name="Viewport" method_name="DeprojectScreenToWorld" show_class_name />. The camera rotation is the aim itself, while the deprojected direction follows the rendered camera, including camera shakes, weapon sway and camera lag, which makes the result jitter. Keep `DeprojectScreenToWorld` for points that are not the aim, like the mouse cursor.
+
+:::
 
 :::tip
 

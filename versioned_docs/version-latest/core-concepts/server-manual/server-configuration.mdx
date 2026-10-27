@@ -104,17 +104,14 @@ game-modes can declare which Custom Settings they accept, so they show up in the
 | :--- | :--- | :--- | :--- |
 | **`max_tick_rate`** | `integer` | `30` | Server Tick in Hz, how many times per second the server loop runs. Range `15` - `120`. Everything (network receive/send, Lua events, timers, etc) happens inside this loop, so a higher value is more responsive but multiplies CPU usage. `30` Hz means the server has `33ms` to do all its work per tick, **we recommend leaving it `30`** |
 | **`max_sync_rate`** | `integer` | `30` | Max actors sync rate in Hz, how often actors location/rotation/velocity are synchronized. Range `1` - `30`, and naturally limited by `max_tick_rate`. This value is also sent to the clients, so they sync back at the same rate. Lowering it is the cheapest way to cut bandwidth on servers with many moving actors, at the cost of less precise movement |
-| **`max_send_rate`** | `integer` | `1024` | Max network send rate **per client**, in KB/s. Range `128` - `16384`. Recommended setting to the lowest value that still fits your traffic, higher rates may negatively impact the server performance when having players with bad connections. P2P servers are capped to `1024` KB/s by Steam Datagram Relay. Can be changed at runtime with the [`max_send_rate`](#built-in-commands) console command |
-| **`max_file_transfer_rate`** | `integer` | `1024` | Max file transfer rate **per client**, in KB/s, how fast Packages and Assets files are pushed to a connecting player. Range `128` - `max_send_rate`; anything above `max_send_rate` is clamped down to it. Lower it to keep downloads from starving the gameplay traffic of players already in game |
-| **`compression`** | `integer` | `1` | Compression level applied to several networking operations. `0` disables it, `1` is the fastest and already provides a good compression, `9` is the slowest but has the highest compression ratio. See [Compression](#compression) below |
+| **`max_send_rate`** | `integer` | `2048` | Max network send rate **per client**, in KB/s. Range `128` - `16384`. Recommended setting to the lowest value that still fits your traffic, higher rates may negatively impact the server performance when having players with bad connections. P2P servers are capped to `1024` KB/s by Steam Datagram Relay. Can be changed at runtime with the [`max_send_rate`](#built-in-commands) console command |
+| **`max_file_transfer_rate`** | `integer` | `2048` | Max file transfer rate **per client**, in KB/s, how fast Packages and Assets files are pushed to a connecting player. Range `128` - `max_send_rate`; anything above `max_send_rate` is clamped down to it. Lower it to keep downloads from starving the gameplay traffic of players already in game |
 | **`distance_optimization`** | `integer` | `4` | Reduces synchronization of actors that are far away from each player. `0` disables it, `4` is a good middle term, `9` is the most aggressive. See [Distance Optimization](#distance-optimization) below |
 
 
 ### Compression {/* #compression */}
 
-The server compresses (deflate) whole payload blocks before they go on the wire. The `compression` setting is the deflate level used: `0` disables it entirely, `1`-`9` trade CPU for ratio.
-
-Scripts can read it with <MethodReference type="StaticClass" class_name="Server" method_name="GetCompressionLevel" show_class_name />.
+The server always compresses (deflate) whole payload blocks before they go on the wire, and this is not configurable. Data compressed once and cached to be sent to every player (Package files, client requirements, loaded assets) uses a higher level for a better ratio, while data compressed often at runtime (entity data, server values, remote event parameters) uses a faster one.
 
 
 #### What gets compressed {/* #what-gets-compressed */}
@@ -201,7 +198,7 @@ The Map (or Level) is defined in the Server's config file, this map will be load
 
 To configure a map, please refer to [Packages Guide](/core-concepts/packages/packages-guide.mdx#map) to create a Map Package pointing to the correct Asset.
 
-nanos world counts on (for now) 4 built-in maps: `default-blank-map`, `default-empty-map`, `default-ocean-map` and `default-testing-map` which can be used in your server without needing to download any Package/Asset Pack.
+nanos world counts on (for now) 3 built-in maps: `default-blank-map`, `default-empty-map` and `default-ocean-map` which can be used in your server without needing to download any Package/Asset Pack. `default-testing-map` is a Vault Package, which the server downloads automatically when it's used as the map.
 
 
 ## Server Console {/* #server-console */}
@@ -265,7 +262,6 @@ It is possible to override the Server Configuration with Command Line Parameters
 | **`--async_log`** | 0 or 1 | If to use async or sync logs (async provides better performance)<br/><br/>Default is <code>1</code> |
 | **`--log_level`** | 1, 2 or 3 | If to use Normal <code>1</code>, Debug <code>2</code> or Verbose <code>3</code> logs |
 | **`--custom_settings`** | toml string | A list of [Custom Settings](/core-concepts/packages/packages-guide.mdx#custom-settings) to be passed to scripting in toml format |
-| **`--compression`** | 0-9 | Sets the compression level to use in some networking operations<br/><br/><code>0</code> disables it, <code>1</code> is the fastest and <code>9</code> is the slower but highest compression ratio<br/><br/>See [Compression](#compression) |
 | **`--save`** | *flag* | If to save the passed parameters in Config.toml |
 | **`--profiling`** | *flag* | Enables Performance Profiling Logs for debugging |
 | **`--auto_download`** | *flag* | Automatically downloads Packages and Assets from Vault if needed |
@@ -277,7 +273,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | **`--max_file_transfer_rate`** | 128-max_send_rate | Sets the server max file transfer rate per client in KB/s<br/><br/>Values above <code>max_send_rate</code> are clamped down to it |
 | **`--distance_optimization`** | 0-9 | Sets the distance optimization level to improve network usage by reducing sync from distant actors<br/><br/><code>0</code> disables it, <code>4</code> is a good middle term, <code>9</code> is the most aggressive<br/><br/>See [Distance Optimization](#distance-optimization) |
 | **`--thread_pool_count`** | 0-any | Sets the number of threads initialized to execute async operations (e.g. from <StaticClasses.HTTP />, <Classes.Database />, <Classes.File />)<br/><br/>Default is <code>8</code> (or the number of CPU cores) and <code>0</code> disables the pool and always start a new thread for each async operation |
-| **`--enable_unsafe_libs`** | *flag* | Enables executing the methods `os.execute`, `os.rename`, `os.remove`, `os.exit`, `os.getenv`, `os.tmpname`, `os.setlocale`, `dofile`, `loadfile` and all `io.*` on server side<br/><br/>**Caution**: those methods may allow malicious operations to run on your server, make sure you know what you are doing |
+| **`--enable_unsafe_libs`** | *flag* | Enables executing the methods `os.execute`, `os.rename`, `os.remove`, `os.exit`, `os.getenv`, `os.tmpname`, `os.setlocale`, `dofile`, `loadfile`, all `io.*`, the whole `debug` library and loading precompiled Lua bytecode (with `load` or as package files) on server side<br/><br/>**Caution**: those methods may allow malicious operations to run on your server, make sure you know what you are doing |
 
 :::tip
 

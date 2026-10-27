@@ -74,7 +74,29 @@ end)
 
 ## Muting {/* #muting */}
 
-It is possible to mute a certain player using the <MethodReference type="Class" class_name="Player" method_name="SetVOIPMuted" show_class_name /> method. If this is called on Server side, the Player will be muted for everyone, but it can also be called on client side for a local mute.
+There are two independent ways a player can be muted.
+
+**Muted by scripts:** it is possible to mute a certain player using the <MethodReference type="Class" class_name="Player" method_name="SetVOIPMuted" show_class_name /> method. If this is called on Server side, the Player will be muted for everyone (and their game stops sending their voice), but it can also be called on client side for a local mute.
+
+**Muted by the player:** players can mute their own microphone with the **Mute** button in the escape menu, or by pressing the VOIP key while using Open Mic. This mute belongs to the player: scripts can't change it, but can read it with <MethodReference type="StaticClass" class_name="Client" method_name="IsVOIPSelfMuted" show_class_name /> and listen to the <EventReference type="StaticClass" class_name="Client" event="VOIPSelfMuteChange" /> event, for example to show a muted icon in your UI:
+
+```lua title="Client/Index.lua" showLineNumbers
+Client.Subscribe("VOIPSelfMuteChange", function(is_muted)
+    MyHUD:CallEvent("SetMicMuted", is_muted)
+end)
+```
+
+The player's own mute is kept while the game is open, even when switching servers, but it is not saved.
+
+
+## Push to Talk and Open Mic {/* #push-to-talk-and-open-mic */}
+
+Each player chooses in the Audio settings how their microphone works:
+
+- **Push to Talk** (default): the voice is only sent while the player holds the VOIP key.
+- **Open Mic**: the voice is always sent, unless the player muted themselves. In this mode, pressing the VOIP key toggles the player's own mute.
+
+This is a player preference and can't be changed by scripts, but you can read it from <MethodReference type="StaticClass" class_name="Client" method_name="GetSettings" show_class_name /> with the `VoicePushToTalk` key, for example to show the right hint in your UI.
 
 
 ## Configuring Microphone {/* #configuring-microphone */}

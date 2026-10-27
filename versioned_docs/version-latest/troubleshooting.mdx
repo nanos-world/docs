@@ -90,6 +90,35 @@ If you are running older graphics cards (or even newer hardware under heavy serv
 * Go to your in-game settings under **Video** > **Advanced Quality Settings** > toggle **Ray Tracing** to **Off**.
 
 
+### 9. Run Steam and nanos world With the Same Privileges {/* #9-run-steam-and-nanos-world-with-the-same-privileges */}
+
+If one of them runs as administrator and the other doesn't, they can't talk to each other and the game can't find Steam. This usually shows up as a **Steam not found.** popup saying `Please launch Steam first.` even though Steam is already open, or as Steam authentication errors when connecting to a server.
+
+* Run both normally (recommended), or both as administrator.
+* Check that **Run this program as an administrator** isn't ticked under **Properties** > **Compatibility** of either executable (Steam or nanos world).
+
+
+## DLSS or Frame Generation Shows as Not Supported {/* #dlss-or-frame-generation-shows-as-not-supported */}
+
+The game asks the NVIDIA driver whether DLSS is available, so it can show as not supported even on an RTX card when something between the game and the card is off. When DLSS is selected but unavailable, the game falls back to TSR and writes the reason in the client log (see [Where are the logs?](#where-are-the-logs)), for example `DLSS requires an NVIDIA RTX GPU.` or `The driver is outdated.`
+
+Check the requirements first:
+
+* **DLSS Super Resolution** and **Ray Reconstruction** need a GeForce RTX graphics card (GTX cards are not supported).
+* **DLSS Frame Generation** 2X needs an RTX 40 Series card or newer, and 3X or higher needs an RTX 50 Series card.
+
+If your card meets them, try the following:
+
+* **Update your graphics driver**, ideally with a clean installation (see [Update Your Video Drivers](#2-update-your-video-drivers)). New DLSS versions and Frame Generation modes need recent drivers.
+* **Make sure the game is running on your NVIDIA card.** On laptops, and on desktops with integrated graphics, Windows may run the game on the integrated GPU. Go to **Windows Settings** > **System** > **Display** > **Graphics**, add the game executable (in `NanosWorld\Binaries\Win64\` inside the game folder) and set it to **High performance**.
+* **Plug your monitor into the graphics card**, not into the motherboard's video output.
+* **Use DirectX 12 for Frame Generation.** DLSS Frame Generation doesn't work on DirectX 11, so remove the `-dx11` launch argument if you added it, or switch to DX12 in the settings.
+* **Enable Hardware-accelerated GPU scheduling** (required by DLSS Frame Generation) in **Windows Settings** > **System** > **Display** > **Graphics**, then restart your computer.
+* **Restart the game after changing the frame generation method.** Frame generation is set up when the game starts, so switching between AMD FSR and NVIDIA DLSS Frame Generation only takes effect after a restart.
+* **Close capture and debugging tools** such as RenderDoc, PIX or Nsight, as DLSS is disabled while an API capture tool is attached.
+* **Verify your game files** (see [Verify Game Files](#1-verify-game-files)) in case the DLSS libraries are missing or damaged.
+
+
 ## Server & Script Issues {/* #server--script-issues */}
 
 ### Where are the logs? {/* #where-are-the-logs */}
@@ -116,11 +145,34 @@ Lua errors are printed in red with the file and line which caused them. Start fr
 
 If you have tried all the solutions above and are still experiencing instability, we want to hear about it. To help us investigate and resolve the problem as quickly as possible, please submit a detailed report to our [Bug Tracker](https://nanos-world.com/feedback/bugs).
 
+
+### Look Up Your Crash {/* #look-up-your-crash */}
+
+Every crash is reported automatically and gets an **Event ID**, a code of 32 letters and digits:
+
+* **Game:** a crash popup appears showing the Event ID. Click **View Crash** to open its crash page directly, or **Copy Event ID** to copy it.
+* **Server:** the server log prints the Event ID together with a direct link to its crash page.
+
+Paste the Event ID in the [Crash Lookup](https://nanos-world.com/crash) page (or open `https://nanos-world.com/crash/YOUR_EVENT_ID`) to see the stack trace. For known kinds of crashes, such as a corrupted asset, running out of memory or a graphics driver crash, the page also tells you the likely cause and how to fix it.
+
+From there, click **report as a bug** to open a bug report that already links to the crash, so we get the stack trace without you having to copy anything.
+
+:::tip
+
+If the page says the crash wasn't found, wait a few minutes and try again: game crashes can take a little while to be processed.
+
+:::
+
+<ReferenceLink href="https://nanos-world.com/crash">💥 Crash Lookup</ReferenceLink>
+
+
+### What to Include in Your Report {/* #what-to-include-in-your-report */}
+
 > **Tip:** The more information you provide, the faster we can identify the root cause!
 
 When submitting your issue, please ensure you include the following details:
 
-* **Crash Event ID:** If the Unreal Engine crash reporter popup appeared, please copy and paste the Event ID. This allows us to track the exact error code and backend stack trace.
+* **Crash Event ID:** Report it from the [Crash Lookup](#look-up-your-crash) page, or paste the Event ID (or the crash page link) in your report. This allows us to track the exact error and stack trace.
 * **Reproduction Steps:** Provide a step-by-step description of your actions immediately before the crash. Let us know if you can consistently reproduce the issue.
 * **System Specifications:** List your current CPU, GPU, and RAM.
 * **Crash Context:** Describe the environment. Were you in single-player, connected to a highly populated server, or interacting with a specific custom asset or script?
