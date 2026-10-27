@@ -198,7 +198,7 @@ The Map (or Level) is defined in the Server's config file, this map will be load
 
 To configure a map, please refer to [Packages Guide](/core-concepts/packages/packages-guide.mdx#map) to create a Map Package pointing to the correct Asset.
 
-nanos world counts on (for now) 3 built-in maps: `default-blank-map`, `default-empty-map` and `default-ocean-map` which can be used in your server without needing to download any Package/Asset Pack. `default-testing-map` is a Vault Package, which the server downloads automatically when it's used as the map.
+nanos world counts on (for now) 3 built-in maps: `default-blank-map`, `default-empty-map` and `default-ocean-map` which can be used in your server without needing to download any Package/Asset Pack. [`default-playground-map`](https://nanos-world.com/store/packages/default-playground-map) (recommended) and the older [`default-testing-map`](https://nanos-world.com/store/packages/default-testing-map) are Vault Packages, which the server downloads automatically when they're used as the map.
 
 
 ## Server Console {/* #server-console */}
@@ -308,13 +308,13 @@ Installs all needed Packages (this will install needed Assets as well), then sta
 ./NanosWorldServer.exe --cli install package sandbox battlefield-kill-ui ts-fireworks-tools
 ```
 ```shell
-./NanosWorldServer.exe --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "default-testing-map" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/vnB8CB5.jpg"
+./NanosWorldServer.exe --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "default-playground-map" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/vnB8CB5.jpg"
 ```
 
 Or, just start the server passing with all configs set and auto downloads the packages and assets if needed:
 
 ```shell
-./NanosWorldServer.exe --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "default-testing-map" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download --logo "https://i.imgur.com/vnB8CB5.jpg"
+./NanosWorldServer.exe --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "default-playground-map" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download --logo "https://i.imgur.com/vnB8CB5.jpg"
 ```
 
   </TabItem>
@@ -326,13 +326,13 @@ Installs all needed Packages (this will install needed Assets as well), then sta
 ./NanosWorldServer.sh --cli install package sandbox battlefield-kill-ui ts-fireworks-tools
 ```
 ```shell
-./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "default-testing-map" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/vnB8CB5.jpg"
+./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "default-playground-map" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --logo "https://i.imgur.com/vnB8CB5.jpg"
 ```
 
 Or, just start the server passing with all configs set and auto downloads the packages and assets if needed:
 
 ```shell
-./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "default-testing-map" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download --logo "https://i.imgur.com/vnB8CB5.jpg"
+./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "default-playground-map" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download --logo "https://i.imgur.com/vnB8CB5.jpg"
 ```
 
   </TabItem>

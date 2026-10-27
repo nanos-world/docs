@@ -54,7 +54,7 @@ A **game-mode** is a Package just like a `script`, with the difference that only
 Open the `Package.toml`. It contains a `[meta]` section with the information of your Package, and a `[game_mode]` section with its settings. We need two changes:
 
 * Add `default-weapons` to `packages_requirements`, so we can spawn its weapons. It will be loaded **before** our Package.
-* Add `default-testing-map` to `compatible_maps`, so it's suggested when starting a new game.
+* Add [`default-playground-map`](https://nanos-world.com/store/packages/default-playground-map) to `compatible_maps`, so it's suggested when starting a new game.
 
 ```toml title="Packages/my-deathmatch/Package.toml"
 [meta]
@@ -70,7 +70,7 @@ Open the `Package.toml`. It contains a `[meta]` section with the information of 
     ]
     # compatible maps - maps to be highlighted when starting a new game through main menu
     compatible_maps = [
-        "default-testing-map",
+        "default-playground-map",
     ]
 ```
 
@@ -78,7 +78,7 @@ Now set it as the game-mode of your server, in the `Config.toml`:
 
 ```toml title="Config.toml"
 [game]
-    map =           "default-testing-map"
+    map =           "default-playground-map"
     game_mode =     "my-deathmatch"
     # remove "my-awesome-package" from the Quick Start, if you want
     packages = [
