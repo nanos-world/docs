@@ -16,7 +16,7 @@ Before proceeding, please make sure you read [Creating & Importing Assets](/asse
 
 :::
 
-It is now possible to integrate your own Locomotion raw animations into nanos world! With the new Character methods you can add your own Standing, Proning and Crouching Blend Spaces to work in the native Character!
+It is now possible to integrate your own Locomotion raw animations into nanos world! With the new Character methods you can add your own Standing and Crouching Blend Spaces to work in the native Character!
 
 
 ## Locomotion BlendSpaces {/* #locomotion-blendspaces */}
@@ -53,27 +53,23 @@ You can tweak the Smoothing Time the way you want 😉.
 
 ### Setting up Through Scripting {/* #setting-up-through-scripting */}
 
-Through scripting you can set the Locomotion BlendSpace Animation using 3 methods:
+Through scripting you can set the Locomotion BlendSpace Animation using 2 methods:
 
 - `my_character:SetAnimationIdleWalkRunStanding(anim_path, enable_turn_in_place)`
 - `my_character:SetAnimationIdleWalkRunCrouching(anim_path, enable_turn_in_place)`
-- `my_character:SetAnimationIdleWalkRunProning(anim_path)`
 
 The `enable_turn_in_place` can be toggled to enable/disable **Turn In Place** built-in feature.
 
 
 ## Transition Animations {/* #transition-animations */}
 
-It is also possible to define the transition animation between the states (Standing, Proning, Crouching), those are simple Sequence Animations just to improve the "lerp" between them.
+It is also possible to define the transition animation between the states (Standing and Crouching), those are simple Sequence Animations just to improve the "lerp" between them.
 
 ### Setting up Through Scripting {/* #setting-up-through-scripting-1 */}
 
-Through scripting you can set the Transition Animations using 2 methods:
+Through scripting you can set the Transition Animations using:
 
 - `my_character:SetAnimationsTransitionStandingCrouching(anim_standing_to_crouching, anim_crouching_to_standing)`
-- `my_character:SetAnimationsTransitionCrouchingProning(anim_crouching_to_proning, anim_proning_to_crouching)`
-
-In each method you can set the transition between 2 states (Standing \<\-\> Crouching or Proning \<-\> Crouching).
 
 
 ## Custom Animation Notifies {/* #custom-animation-notifies */}
