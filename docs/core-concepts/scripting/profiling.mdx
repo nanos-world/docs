@@ -51,24 +51,24 @@ Tracy is built into every server and game client. It stays idle and records noth
 
 1. Start the server or the game normally
 2. Open the **Tracy Profiler** application on the same machine
-3. Enter `localhost` as the address
+3. Enter `127.0.0.1` as the address
 4. Click **Connect**
 
 Tracy begins capturing from the moment it connects, so anything that happened before (like the startup) is not in the capture.
 
 :::tip
 
-If the server and the game run on the same machine, the first one to start uses port `8086` and the second one `8087`. Connect to `localhost:8087` to reach the second one.
+If the server and the game run on the same machine, the first one to start uses port `8086` and the second one `8087`. Connect to `127.0.0.1:8087` to reach the second one.
 
 :::
 
 
 ### Profiling a Remote Server {/* #profiling-a-remote-server */}
 
-As Tracy only accepts local connections, forward its port through SSH and connect to `localhost` on your own machine:
+As Tracy only accepts local connections, forward its port through SSH and connect to `127.0.0.1` on your own machine:
 
 ```shell
-ssh -L 8086:localhost:8086 user@your-server
+ssh -L 8086:127.0.0.1:8086 user@your-server
 ```
 
 
