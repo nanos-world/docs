@@ -283,10 +283,9 @@ It is possible to override the Server Configuration with Command Line Parameters
 
 :::info
 
-Two special parameters must be passed as the **first** argument:
+**`--cli`** must be passed as the **first** argument: it runs the [Command Line Interface](/core-concepts/server-manual/command-line-interface.mdx) instead of starting the server, e.g. `./NanosWorldServer.exe --cli install package sandbox`.
 
-* **`--cli`** runs the [Command Line Interface](/core-concepts/server-manual/command-line-interface.mdx) instead of starting the server, e.g. `./NanosWorldServer.exe --cli install package sandbox`.
-* **`--tracy`** (Linux only, through `NanosWorldServer.sh`) starts the server build with the [Tracy Profiler](/core-concepts/scripting/profiling.mdx) integration. On Windows, run `NanosWorldServerTracy.exe` instead.
+The [Tracy Profiler](/core-concepts/scripting/profiling.mdx#tracy-profiler) integration no longer needs a separate build or the old `--tracy` parameter: every server has it built in.
 
 :::
 
