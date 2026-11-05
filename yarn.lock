@@ -1109,53 +1109,59 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@crowdin/cli-darwin-arm64@5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli-darwin-arm64/-/cli-darwin-arm64-5.2.0.tgz#26c0ab20879babeaf94256176d55776c3bc59d87"
-  integrity sha512-xPz3qhmqLI98zNnpPIvJh6KEn0exJj9hQKM8cf19VqcH2PF8Mfcp8l6lOTl23HrWZw+ZV9BvmTQaKyO+LOoY0w==
+"@crowdin/cli-darwin-arm64@5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-darwin-arm64/-/cli-darwin-arm64-5.6.0.tgz#a0c8221ba7679e8ceddd4fa37376f0666ec278f6"
+  integrity sha512-Q0yW2bxfXunlhSwsmP4DG/X8bcy9386JWtZzsbaesCVN5W9tO7l1rMe6U7SnTOIEZsFO9fVEkGxVKAbgJGTrIA==
 
-"@crowdin/cli-darwin-x64@5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli-darwin-x64/-/cli-darwin-x64-5.2.0.tgz#02d5907ea7872f73c7838a328b0fc96d2cafc180"
-  integrity sha512-0kzkv/1Mzv2Zb8h+4MZYkuZN1B2yqoR3PupQE19j9I1PKphmQWT8QtInobM2od9SAiANMfgbuO1eixlWLD4siw==
+"@crowdin/cli-darwin-x64@5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-darwin-x64/-/cli-darwin-x64-5.6.0.tgz#b51d5e885f179c1872bd399ea59dc53e44ea9f25"
+  integrity sha512-w07xbIKub72alYGs3xWs23EDc/Van7blQtpli1K3eFYnI7sa9slkCU//6xfe7vNNdNzM9haDs5klHZWEZTfLXg==
 
-"@crowdin/cli-linux-arm64-musl@5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-arm64-musl/-/cli-linux-arm64-musl-5.2.0.tgz#a3a3ace6b317ec49e6dcc35bd8c9e80c685f4a98"
-  integrity sha512-3961kAaSG5PlObNwZVO8bk5koC10vNim3y/kUXtWSReLLVeZLtkjd4uDSBR1doE8LVUaXQmsUShK9hCRZBTTHw==
+"@crowdin/cli-linux-arm64-musl@5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-arm64-musl/-/cli-linux-arm64-musl-5.6.0.tgz#86b2c4acb10331387c736d09985b81c8613992c7"
+  integrity sha512-fgS1H0hhsA/tJ32pypBnHsR8Ws/OValBpZxYopKaHUM7a/QsVhRIqY0POUa4vR4J7bya6vLdl5iOgdxC8ORntQ==
 
-"@crowdin/cli-linux-arm64@5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-arm64/-/cli-linux-arm64-5.2.0.tgz#cd9355b2ec315acd96a31969b5df4c325f311d98"
-  integrity sha512-uZHh/8nPVvLKDyozGtG7mzj+vWR8Z9ztkwid7e0gr8uCpKSllpi1ZgilJfxflwnhXziHr5+W/g5XedZ0XW7lTQ==
+"@crowdin/cli-linux-arm64@5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-arm64/-/cli-linux-arm64-5.6.0.tgz#b2c8e7a0b2fc00811881c3768ba0078b3680bd86"
+  integrity sha512-v8bEx+e7WtTjETWNwFRPvqVrC4wBsNw3UCP8mV7sIv95MDdVZ9iNAwQHZ3s7OsbWydpMLTyu8eSO6GmGY8lJ2A==
 
-"@crowdin/cli-linux-x64-musl@5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-x64-musl/-/cli-linux-x64-musl-5.2.0.tgz#0dd1610d89b9ce528cbb638b047ec37d5af1d887"
-  integrity sha512-ObNbRJ2lgqp+lf/EhIAyXJFqRZ+dmN4+VUCWOFgqJYF3lnIRPk9ppMtPoUAuNLu/ZOwji+Ul4foW9Ckl5pK2TQ==
+"@crowdin/cli-linux-x64-musl@5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-x64-musl/-/cli-linux-x64-musl-5.6.0.tgz#97c0d6b970519faa209de38b937d864dc023363d"
+  integrity sha512-ryxKW59lG7hAt6S+Ktwvd9xFAyvX/DwusSx31c8zaIJi/065O+KeMTCtXk/f36eyrXjVFCDPMCybRxKirN58vA==
 
-"@crowdin/cli-linux-x64@5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-x64/-/cli-linux-x64-5.2.0.tgz#0350f54c0ae97d4e9326bc7a7d50b80378a7b681"
-  integrity sha512-Vtt/nAkH35nA95+IIRCv5LGSIetMwudnhULcRxn8T2QrhgHEpZiPhz2W7xkNEPMYHKJ+/Z8k7TCSjepSE6u/Lg==
+"@crowdin/cli-linux-x64@5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-x64/-/cli-linux-x64-5.6.0.tgz#5691aead7ef5ec2c0938227b7907e293f5b0aebf"
+  integrity sha512-+MMcqzfy7szG6idL0mbSYmSmo3zlrw5Kj+Me3ToF+mHWRYV7ZuPYFyyJ7d/+nhcThB5aKX9OBNKVTE6YAojKIA==
 
-"@crowdin/cli-win32-x64@5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli-win32-x64/-/cli-win32-x64-5.2.0.tgz#7486a45c4202cf6a9ae57cc2853afe088db73dfb"
-  integrity sha512-bHIBoU+gW32FY4QJCdrCz7a+CpVMXLdNY2J5eTJL781rqRYVg2kVQC2hLB+sGPHNgEszelAr7LOnsSH5Px4VCQ==
+"@crowdin/cli-win32-arm64@5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-win32-arm64/-/cli-win32-arm64-5.6.0.tgz#de7ed79b01d1bd11d840f9f92a2be00eebb6ffe5"
+  integrity sha512-edv+rk+Aqd3jxZxt2H/E8rssMLqk6W4jImXi/iRood+rVENFuWVZjUfNLCOEWmgEtwHHgS0GaCvr0/SVFBxtOQ==
 
-"@crowdin/cli@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli/-/cli-5.2.0.tgz#f79306b913037de0477060863fa83c41d90b0e53"
-  integrity sha512-YFX+Te5R7PE7zm+qJD2TiEgmlqi/mrv8gTr/t2hB5ZbHEW6Hz9X51Rm6LUnXAqKqBXCIF+fE83MzZ3x4TD3qRA==
+"@crowdin/cli-win32-x64@5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-win32-x64/-/cli-win32-x64-5.6.0.tgz#50959a371e207b427b4bd59519f8a38352611c44"
+  integrity sha512-gG858xeLxNNefubHsZYD1g5UyK07eeJKRY/gc17emc7QktbVE1Dc36531RvWG4v5GSTm7eZDBO/4yVX0nZ9+YA==
+
+"@crowdin/cli@^5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli/-/cli-5.6.0.tgz#73dd75a06c670cfe62f0cd5177caa98182e4117a"
+  integrity sha512-Ia3G5Cr2CsZMcyfM8lplxPADqi6mDn2T0mve62SNNln6cFICgkrOkiVGj6uOrn/uRI2SoIZsER+8i0bwdwC5HQ==
   optionalDependencies:
-    "@crowdin/cli-darwin-arm64" "5.2.0"
-    "@crowdin/cli-darwin-x64" "5.2.0"
-    "@crowdin/cli-linux-arm64" "5.2.0"
-    "@crowdin/cli-linux-arm64-musl" "5.2.0"
-    "@crowdin/cli-linux-x64" "5.2.0"
-    "@crowdin/cli-linux-x64-musl" "5.2.0"
-    "@crowdin/cli-win32-x64" "5.2.0"
+    "@crowdin/cli-darwin-arm64" "5.6.0"
+    "@crowdin/cli-darwin-x64" "5.6.0"
+    "@crowdin/cli-linux-arm64" "5.6.0"
+    "@crowdin/cli-linux-arm64-musl" "5.6.0"
+    "@crowdin/cli-linux-x64" "5.6.0"
+    "@crowdin/cli-linux-x64-musl" "5.6.0"
+    "@crowdin/cli-win32-arm64" "5.6.0"
+    "@crowdin/cli-win32-x64" "5.6.0"
 
 "@csstools/cascade-layer-name-parser@^2.0.5":
   version "2.0.5"
