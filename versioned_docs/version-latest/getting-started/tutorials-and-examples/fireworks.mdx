@@ -87,15 +87,15 @@ weapon:Subscribe("Fire", function(weap, shooter)
     Events.BroadcastRemote("SpawnFireworkSound", Reliability.Reliable, particle)
 
     -- After 500 miliseconds, explode the firework
-    Timer.SetTimeout(function(pr)
+    Timer.SetTimeout(function()
         -- Calls the client to spawn the 'Explosion' sound at the projectile location
-        Events.BroadcastRemote("ExplodeFireworkSound", Reliability.Reliable, pr:GetLocation())
+        Events.BroadcastRemote("ExplodeFireworkSound", Reliability.Reliable, prop:GetLocation())
 
         -- Spawns the Particle Explosion.
         -- This Asset Pack also contains the following Particles, feel free to try them!
         -- 'PS_TS_Fireworks_Burst_Chrys', 'PS_TS_Fireworks_Burst_Circle', 'PS_TS_Fireworks_Burst_Palm',
         -- 'PS_TS_Fireworks_Burst_Shaped' and 'PS_TS_Fireworks_Burst_ShellsWithinShells'
-        local particle_burst = Particle(pr:GetLocation(), Rotator(), "ts-fireworks::PS_TS_Fireworks_Burst_Palm", true, true)
+        local particle_burst = Particle(prop:GetLocation(), Rotator(), "ts-fireworks::PS_TS_Fireworks_Burst_Palm", true, true)
 
         -- Those particles make it available to tweak some of their properties, let's set the BlastColor to red
         particle_burst:SetParameterColor("BlastColor", Color(1, 0, 0))
@@ -104,7 +104,7 @@ weapon:Subscribe("Fire", function(weap, shooter)
         --  Color: 'BlastColor', 'BurstColor', 'SparkleColor', 'FlareColor', 'TailColor'
         --  bool: 'BlastSmoke', 'TailSmoke'
         --  float: 'BurstMulti', 'SparkleMulti'
-    end, 500, prop)
+    end, 500)
 
     -- After 1 second, destroy the particle and the projectile
     prop:SetLifeSpan(1)

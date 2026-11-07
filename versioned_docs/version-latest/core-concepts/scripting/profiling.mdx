@@ -5,9 +5,6 @@ tags: [scripting, optimization]
 sidebar_position: 19
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 
 nanos world includes built-in tools for profiling both the server and the game client in real-time. Using profiling tools is essential when optimizing large servers, identifying Lua bottlenecks, analyzing frame spikes, debugging networking issues, or improving overall performance.
 
@@ -18,7 +15,7 @@ nanos world includes built-in tools for profiling both the server and the game c
 
 <MediaLegend>Tracy frame overview</MediaLegend>
 
-nanos world server includes built-in integration with the [Tracy Profiler](https://github.com/wolfpld/tracy), allowing you to profile the **server** in real-time.
+nanos world includes built-in integration with the [Tracy Profiler](https://github.com/wolfpld/tracy), allowing you to profile both the **server** and the **game client** in real-time.
 
 **Tracy** is a real-time, nanosecond-resolution profiler widely used in game development and high-performance applications. It provides an interactive timeline view where you can inspect exactly what your application is doing during each frame.
 
@@ -31,7 +28,6 @@ Unlike traditional profilers, Tracy allows you to inspect performance live while
 - Network processing
 - Frame times
 - Thread activity
-- Memory allocations
 - Lock contention
 - Loading times
 
@@ -42,49 +38,38 @@ Unlike traditional profilers, Tracy allows you to inspect performance live while
 
 ### Downloading Tracy {/* #downloading-tracy */}
 
-First, download the Tracy Profiler client application from the official releases page:
+First, download the Tracy Profiler application from the official releases page. It must be version **0.14**, the same version built into nanos world, otherwise it refuses to connect:
 
 <ReferenceLink href="https://github.com/wolfpld/tracy/releases">Download Tracy Profiler</ReferenceLink>
 
 After downloading, launch the Tracy application.
 
 
-### Launching the Server {/* #launching-the-server */}
+### Connecting with Tracy {/* #connecting-with-tracy */}
 
-To launch your server with Tracy profiling enabled, you must launch it like that:
+Tracy is built into every server and game client. It stays idle and records nothing until a profiler connects, and it only accepts connections from the same machine.
 
-<Tabs
-  defaultValue="cmd"
-  values={[
-    {label: 'Windows', value: 'cmd'},
-    {label: 'Linux', value: 'linux'},
-  ]}>
-  <TabItem value="cmd">
+1. Start the server or the game normally
+2. Open the **Tracy Profiler** application on the same machine
+3. Enter `127.0.0.1` as the address
+4. Click **Connect**
+
+Tracy begins capturing from the moment it connects, so anything that happened before (like the startup) is not in the capture.
+
+:::tip
+
+If the server and the game run on the same machine, the first one to start uses port `8086` and the second one `8087`. Connect to `127.0.0.1:8087` to reach the second one.
+
+:::
+
+
+### Profiling a Remote Server {/* #profiling-a-remote-server */}
+
+As Tracy only accepts local connections, forward its port through SSH and connect to `127.0.0.1` on your own machine:
 
 ```shell
-./NanosWorldServerTracy.exe
+ssh -L 8086:127.0.0.1:8086 user@your-server
 ```
-
-  </TabItem>
-  <TabItem value="linux">
-
-```shell
-./NanosWorldServer.sh --tracy
-```
-
-  </TabItem>
-</Tabs>
-
-
-### Connecting to the Server with Tracy {/* #connecting-to-the-server-with-tracy */}
-
-Once the server is running with profiling enabled:
-
-1. Open the **Tracy Profiler** application
-2. Either enter the server IP address or select it from the list of available connections
-3. Click **Connect**
-
-Tracy will immediately begin capturing profiling data from the running server.
 
 
 ## Native Profiling {/* #native-profiling */}

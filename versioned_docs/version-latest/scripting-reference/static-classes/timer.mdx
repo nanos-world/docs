@@ -17,17 +17,22 @@ The shortest interval possible is equal to the local Tick Rate - usually at 33ms
 
 ```lua showLineNumbers
 -- creates a Interval to call a function at every 2 seconds
-local my_interval = Timer.SetInterval(function(param1, param2)
+local param1, param2 = "awesome param 1", 456
+
+local my_interval = Timer.SetInterval(function()
+    -- param1 and param2 are captured by the function itself
     Console.Log("Triggered each 2 seconds! Param1: " .. param1 .. ". Param2: " .. param2)
-end, 2000, "awesome param 1", 456)
+end, 2000)
 
 -- cancels the Interval
 Timer.ClearInterval(my_interval)
 
--- creates a Timeout to call my_function in 5 seconds, once - passing a parameter
-Timer.SetTimeout(function(my_param)
+-- creates a Timeout to call a function in 5 seconds, once
+local my_param = "world"
+
+Timer.SetTimeout(function()
     Console.Log("nanos " .. my_param)
-end, 5000, "world")
+end, 5000)
 ```
 
 <ExamplesDeclaration type="StaticClass" name="Timer" />
