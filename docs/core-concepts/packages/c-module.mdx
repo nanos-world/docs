@@ -22,6 +22,14 @@ This is an advanced procedure so instabilities and even crashes may occur.
 
 :::
 
+:::danger
+
+C Modules are native code with full access to the server machine, so they can only be loaded if the server is started with the [`--enable_unsafe_libs`](/core-concepts/server-manual/server-configuration.mdx#command-line-parameters) flag. Without it, the server refuses to load any `c-module` Package. Only enable it if you trust all the Packages running on your server.
+
+Also note that C Modules only run on the server side: their binaries are never sent to clients.
+
+:::
+
 
 ## Creating your C Module binaries {/* #creating-your-c-module-binaries */}
 
@@ -75,7 +83,7 @@ Packages/
     └── libexample.so
 ```
 
-Then add the name of your module library (in our case, `example`) to the Package.toml **modules** list:
+Then add the name of your module library (in our case, `example`) to the Package.toml **modules** list, and set **lua_version** to the Lua version your module was compiled against. The server refuses to load the Package if it doesn't match its own Lua version (currently `5.4`):
 
 ```toml title="my-module/Package.toml"
 # vault configurations
@@ -89,6 +97,8 @@ Then add the name of your module library (in our case, `example`) to the Package
 
 # c module configurations
 [c_module]
+    # Lua version the modules were compiled on
+    lua_version =           "5.4"
     # list of modules to load (without file extension)
     modules = [
                             # highlight-next-line
