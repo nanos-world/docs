@@ -20,6 +20,7 @@
     "@crowdin/cli": "^5.6.0",
     "@docusaurus/core": "^3.10.2",
     "@docusaurus/faster": "^3.10.2",
+    "@docusaurus/plugin-client-redirects": "3.10.2",
     "@docusaurus/preset-classic": "^3.10.2",
     "@docusaurus/theme-mermaid": "^3.10.2",
     "@saucelabs/theme-github-codeblock": "^0.3.0",

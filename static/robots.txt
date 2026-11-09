@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://docs.nanos-world.com/sitemap.xml
+Sitemap: https://docs.nanos-world.com/fr/sitemap.xml
+Sitemap: https://docs.nanos-world.com/pt-BR/sitemap.xml
+Sitemap: https://docs.nanos-world.com/de/sitemap.xml
+Sitemap: https://docs.nanos-world.com/zh/sitemap.xml

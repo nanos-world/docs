@@ -210,6 +210,8 @@ module.exports = {
           versions: {
             current: {
               label: 'bleeding-edge 🩸',
+              // Duplicates the stable docs, so search engines only index the latest version
+              noIndex: true,
             },
             latest: {
               label: 'latest - a1.169.2 ⚖️',
@@ -253,6 +255,9 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        sitemap: {
+          ignorePatterns: ['/docs/next/**', '/*/docs/next/**', '/search', '/*/search'],
+        },
       },
     ],
   ],
@@ -284,6 +289,16 @@ module.exports = {
   plugins: [
     nanosAPIPlugin,
     require.resolve('docusaurus-plugin-image-zoom'),
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          { from: '/', to: '/docs' },
+          { from: '/changelog', to: 'https://nanos-world.com/changelog' },
+          { from: '/roadmap', to: 'https://nanos-world.com/roadmap' },
+        ],
+      },
+    ],
   ],
   scripts: [
     {
