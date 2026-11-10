@@ -619,7 +619,8 @@ a.reference-link:hover {
 
 a.reference-link {
 	text-decoration: none;
-	display: block;
+	display: flex;
+	align-items: center;
 	padding: 1.25rem 1rem;
 	font-weight: var(--ifm-font-weight-bold);
 
@@ -642,6 +643,7 @@ a.reference-link:before {
 	width: 22px;
 	height: 22px;
 	display: inline-block;
+	flex-shrink: 0;
 	vertical-align: middle;
 	margin-right: 10px;
 }
@@ -650,8 +652,13 @@ a.reference-link span {
 	color: var(--ifm-color-emphasis-600);
 	font-weight: var(--ifm-font-weight-normal);
 	font-size: .8125rem;
-	position: absolute;
-	right: 1rem;
+	min-width: 0;
+	max-width: 50%;
+	margin-left: auto;
+	padding-left: 1rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	line-height: 24px;
 }
 
