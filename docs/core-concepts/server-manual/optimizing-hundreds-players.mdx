@@ -1,0 +1,273 @@
+---
+title: Optimizing for Hundreds of Players
+description: How to configure, script and build your server to handle hundreds of players
+sidebar_position: 3
+tags: [hosting, scripting, optimization, networking]
+---
+
+
+How to configure, script and build your server to handle hundreds of players.
+
+Hosting hundreds of players in the same server is demanding, even on a powerful machine. Every new player brings more movement to sync, more network traffic, more script work and one more character for everyone else to render. It is totally possible, but how many players your server handles depends a lot on your game-mode, assets, hardware and how many players are together in the same area.
+
+
+## What Gets Expensive {/* #what-gets-expensive */}
+
+| Resource | What makes it grow | What to focus on |
+| :--- | :--- | :--- |
+| **Server CPU** | Lua callbacks, Timers, searches and sending updates to many players | Less work per Tick and fewer players per update |
+| **Network** | Moving actors, remote events, synchronized values, downloads and VOIP | Smaller messages, lower rates and sending only to who is nearby |
+| **Client CPU** | Characters, animations, attached meshes, physics, UI and client scripts | Fewer entities and simpler characters |
+| **Client GPU & Memory** | Visible meshes, materials, shadows, particles and textures | Optimized assets, only loading what is needed |
+
+The worst case is everyone together in the same place: each player's movement is sent to every other player, so doubling the players can get close to **four times** the movement work. Players spread across the map are much cheaper, as the [Distance Optimization](#distance-optimization) can do its job.
+
+:::info
+
+Physics and AI are **not** simulated by the server, but by the client which is the [Network Authority](/core-concepts/scripting/authority-concepts.mdx#network-authority) of each entity. So a server with spare CPU can still have players struggling in a busy area.
+
+:::
+
+
+## Network Settings {/* #network-settings */}
+
+A good starting point for your load tests, in the `[optimization]` section of your `Config.toml`:
+
+```toml title="Config.toml"
+[optimization]
+    max_tick_rate = 30
+    max_sync_rate = 15
+    max_send_rate = 512
+    max_file_transfer_rate = 256
+    distance_optimization = 7
+```
+
+All ranges and defaults are explained in [Server Configuration](/core-concepts/server-manual/server-configuration.mdx#optimization). They can also be changed while the server is running with the [console commands](/core-concepts/server-manual/server-configuration.mdx#built-in-commands), which makes it easy to compare values during a test.
+
+
+### Send Rate {/* #send-rate */}
+
+`max_send_rate` is the max data the server sends to **each player**, in **KB/s** (not kilobits, and not for the whole server). For big servers we recommend **`256`** or **`512`**, as high rates can hurt the server performance when players have bad connections.
+
+Plan your host's upload bandwidth too: 200 players receiving `512 KB/s` each would need about `100 MB/s` (`~840 Mbit/s`). Usually it's much less than that, but the cap per player doesn't replace having enough bandwidth.
+
+:::caution
+
+Lowering the cap doesn't make the traffic disappear. If your game-mode sends more than the connection can handle, reliable messages pile up and arrive late. Reduce the traffic first, then pick a cap that leaves room for busy moments and joining players.
+
+:::
+
+`max_file_transfer_rate` limits how fast joining players download Packages and Assets, so the downloads don't starve the gameplay traffic of who is already playing. `256` is a good start, lower it to `128` if players joining still cause hitches (downloads will take longer). It can't be higher than `max_send_rate`.
+
+
+### Sync Rate {/* #sync-rate */}
+
+`max_sync_rate = 15` sends the actors movement (location, rotation and velocity) 15 times per second instead of the default `30`, which about halves the movement traffic.
+
+The downside is less precise movement, so test fast vehicles, close combat and far away players looking for stuttering or corrections. This value is also sent to the clients, so they sync back at the same rate.
+
+Keep `max_tick_rate` at `30`. The Tick rate is how often the whole server loop runs (scripts, Timers and network), while the sync rate only affects movement updates. Setting the sync rate to `15` doesn't make your Lua Tick run at 15 Hz, nor lowers anyone's FPS.
+
+
+### Distance Optimization {/* #distance-optimization */}
+
+`distance_optimization = 7` reduces the updates of actors far away from each player more aggressively than the default `4`. Compare it with `4` and `9` in your tests:
+
+| Level | Updates at 100 meters | Stops syncing at |
+| :--- | :--- | :--- |
+| `4` (default) | 64% | 260 meters |
+| `7` | 37% | 160 meters |
+| `9` | 19% | 130 meters |
+
+It helps a lot when players are spread across the map, and very little when everyone is close together. Keep the cut-off distance in mind for fast vehicles, long sight lines and ranged combat.
+
+:::note
+
+It only throttles **unreliable** actor data (movement and transient actions). Far away entities are still spawned for everyone, and remote events are not affected at all, so you still need to pick who receives them (see [Remote Events](#remote-events)).
+
+:::
+
+You can tweak it per actor and per player with <MethodReference type="Class" class_name="Actor" method_name="SetDistanceOptimizationMultiplier" show_class_name /> and <MethodReference type="Class" class_name="Player" method_name="SetDistanceOptimizationMultiplier" show_class_name />: above `1` stops syncing sooner, below `1` keeps syncing farther, and `0` always syncs. Use it sparingly, if everything is always relevant there is no optimization left. See the [formula and full table](/core-concepts/server-manual/server-configuration.mdx#distance-optimization).
+
+
+## Remote Events {/* #remote-events */}
+
+Every broadcast multiplies your message by the number of players receiving it. Before sending an event, think about who needs it, how often, and if they already know most of that data.
+
+* **Only send to who needs it**:
+  * <MethodReference type="StaticClass" class_name="Events" method_name="CallRemote" show_class_name /> for a single player
+  * <MethodReference type="StaticClass" class_name="Events" method_name="CallRemotePlayers" show_class_name /> for a list of players
+  * <MethodReference type="StaticClass" class_name="Events" method_name="BroadcastRemoteInRadius" show_class_name /> for players nearby
+* **Use `Reliability.Unreliable` for disposable updates**, like cosmetic effects or indicators refreshed very often. They can be lost or arrive out of order, so if the order matters, send a sequence number and ignore the older ones.
+* **Keep important things `Reliable`**: inventory, purchases and persistent state, where losing a single message leaves the client wrong.
+* **Send changes, not everything**: send the item ID and amount, not the whole item list. Keep static data in `Shared/` so both sides already know it.
+* **Don't send every frame**: UI and cosmetic values rarely need it, use a <StaticClasses.Timer /> or only send when the value changes.
+* **Only sync what clients need**: synchronized values are great for players joining later, but every change is sent to everyone.
+
+For example, to show a cosmetic effect only to players nearby in the dimension `1`:
+
+```lua title="Server/Index.lua" showLineNumbers
+local effect_location = Vector(0, 0, 100)
+
+-- Sends only to players within 50 meters (5000 units) in the dimension 1
+Events.BroadcastRemoteInRadiusDimension("CosmeticSpark", effect_location, 5000, 1, Reliability.Unreliable, effect_location)
+```
+
+```lua title="Client/Index.lua" showLineNumbers
+Events.SubscribeRemote("CosmeticSpark", function(location)
+	-- Spawns a short-lived local effect here
+end)
+```
+
+The first location picks who receives it, the last one is the parameter the client gets. Use `Events.BroadcastRemoteInRadius` to reach players in all dimensions.
+
+:::caution
+
+A radius event only reaches who is in range **at that moment**, players arriving later won't receive it. For things that stay in the world, send the current state when a player gets in range, then the updates, and the removal when they leave.
+
+:::
+
+<ReferenceLink href="core-concepts/scripting/networking-and-replication">Networking & Replication</ReferenceLink>
+
+
+## Client-side Entities {/* #client-side-entities */}
+
+Decorations, markers, particles and other visual-only things can be spawned in `Client/` when they don't need any shared state. They only exist for that player, so the server doesn't need to manage or sync them.
+
+Only spawn them for who needs to see them, and destroy them when the player leaves the area or the effect ends. For many copies of the same mesh, use an <Classes.InstancedStaticMesh />, or place static scenery directly in your map.
+
+:::caution
+
+Client-side entities still cost CPU, GPU and memory on the client, spawning the decoration of the whole map on every client only moves the problem. And keep gameplay decisions (loot ownership, damage, interactions) on the server.
+
+:::
+
+
+## Triggers {/* #triggers */}
+
+To know when a player or an object enters or leaves an area, use a <Classes.Trigger /> instead of a Lua loop checking the location of every actor every Tick. Subscribe to <EventReference type="Class" class_name="Trigger" event="BeginOverlap" /> and <EventReference type="Class" class_name="Trigger" event="EndOverlap" /> and keep track of who is inside:
+
+```lua title="Server/Index.lua" showLineNumbers
+local actors_in_region = {}
+
+-- Spawns a 50 meters radius sphere which only detects Characters and Props
+local region = Trigger(Vector(0, 0, 100), Rotator(), 5000, TriggerType.Sphere, false, Color.RED, { "Character", "Prop" })
+
+region:Subscribe("BeginOverlap", function(trigger, actor)
+	actors_in_region[actor] = true
+
+	-- Starts the region logic for this actor here
+end)
+
+region:Subscribe("EndOverlap", function(trigger, actor)
+	actors_in_region[actor] = nil
+
+	-- Stops the region logic for this actor here
+end)
+```
+
+Triggers only detect actors in their own dimension. Players enter through their Character, not through the Player itself, so use <MethodReference type="Class" class_name="Pawn" method_name="GetPlayer" show_class_name /> to tell a player apart from an NPC. Add <Classes.CharacterSimple /> or other classes to the filter if your game-mode uses them.
+
+:::caution
+
+Always set `overlap_only_classes` to only the classes you need. Triggers still check overlaps internally, so an unfiltered Trigger (or hundreds of overlapping ones) can get expensive too. Keep the callbacks light, remove destroyed actors from your table, and destroy the Triggers you don't need anymore.
+
+:::
+
+<ReferenceLink href="scripting-reference/classes/trigger">Trigger API</ReferenceLink>
+
+
+## Loading Assets in Advance {/* #asynchronous-loading */}
+
+The first time a particle effect is used, the game can freeze while its asset loads. Use <MethodReference type="StaticClass" class_name="Assets" method_name="LoadAsync" show_class_name /> on the **client** to load it in the background before creating a local cosmetic effect:
+
+```lua title="Client/Index.lua" showLineNumbers
+local effect = "nanos-world::P_Explosion"
+local effect_location = Vector(0, 0, 100)
+
+Assets.LoadAsync(effect, AssetType.Particle, function(success)
+	if (not success) then return end
+
+	-- Plays only on this client and destroys itself when finished
+	Particle(effect_location, Rotator(), effect, true, true)
+end)
+```
+
+This explosion is visual-only and exists only on this client, nothing is spawned or synced by the server (and it doesn't apply any damage, that stays on the server).
+
+If the effect must play at a precise moment, preload it in advance and only spawn the Particle when the event happens, as spawning it inside the callback waits for the loading to finish. For effects near the player, also check in the callback if it's still needed, as the player may have moved away meanwhile.
+
+:::info
+
+<Classes.StaticMesh /> and <Classes.Prop /> already load their meshes in the background (showing a placeholder meanwhile), so you don't need `LoadAsync` for them. Preloading is useful for things that load right away when used, like particles and character attachments.
+
+:::
+
+* `LoadAsync` only loads assets the client already has, it doesn't download Asset Packs.
+* It doesn't remove the cost of spawning entities, animations or physics, keep spreading those across Ticks.
+* Loaded assets stay cached, so preloading everything uses a lot of memory. Only preload what is useful.
+
+For assets everyone needs right away, use <MethodReference type="StaticClass" class_name="Assets" method_name="Precache" show_class_name /> on the server to load them during the loading screen instead (at the cost of a longer loading and more memory).
+
+
+## Scripts {/* #scripts */}
+
+* **Don't check everything against everything**: checking every player against every object every frame grows really fast. Use zones, class filters, cached lists and less frequent checks.
+* **Spread periodic work**: hundreds of Timers firing at the same time cause hitches, even if each one is cheap. Process a few per Tick instead.
+* **Limit physics and AI**: only spawn the NPCs and physics entities you need, and clean up abandoned vehicles, dropped items and effects. Remember they are simulated by the clients.
+* **Keep slow I/O out of Tick**: cache database results, avoid sync database and file operations in Tick or in loops per player, and use the async functions when available.
+* **Update the UI only when it changes**: avoid rebuilding big scoreboards or drawing hundreds of far away name tags every frame.
+* **Clean up after yourself**: destroy unused Timers, unsubscribe events and drop references to destroyed entities. Test many joins, leaves, respawns and zone changes looking for memory or work piling up.
+* **Validate and limit client requests**: spammed remote events eat CPU and can trigger broadcasts, see [Remote Event Security](/core-concepts/scripting/security-remote-events.mdx).
+
+[Dimensions](/core-concepts/scripting/dimensions.mdx) are great for separate matches, interiors or lobbies, as players only receive the entities from their own dimension. But your scripts still need to filter their own searches and events by dimension, and they don't help when hundreds of players must be together in the same place.
+
+Also don't forget about [VOIP](/core-concepts/scripting/voip.mdx): many players talking at the same time and global voice channels add traffic and audio work. Prefer proximity voice when it fits your game-mode, and include voice in your tests.
+
+
+## Maps & Characters {/* #maps-and-characters */}
+
+No network setting makes an expensive scene cheap to render. A crowd multiplies character meshes, clothes, animations, materials and shadows on every player's computer. For your custom assets and maps, keep an eye on:
+
+* **Characters & LODs**: lower detail at distance, and avoid overly complex clothes and attachments. Test a crowd with the real customization options players can use.
+* **Attachments**: every attached mesh adds rendering work (and animation work for skeletal ones), even after it's loaded, and that multiplies by every Character on screen. Use as few as possible, merge clothes and accessories into fewer meshes when you can, and remove the ones not needed anymore.
+* **Draw calls**: fewer mesh components and material slots means less rendering work. Use instancing for repeated scenery.
+* **Culling**: stop rendering small or hidden details when they can't be seen, and plan your map so not everyone can see everyone all the time.
+* **Materials, lights & effects**: simplify expensive materials, overlapping translucency, lights casting shadows and dense particles. These get heavy really fast in crowded fights.
+* **Textures & memory**: use reasonable texture sizes and streaming. Hundreds of different outfits use way more memory than a test with identical characters.
+
+For a deeper analysis, follow Epic's guides:
+
+<ReferenceLink href="https://dev.epicgames.com/documentation/en-us/unreal-engine/guidelines-for-optimizing-rendering-for-real-time-in-unreal-engine?application_version=5.7">Guidelines for Optimizing Rendering</ReferenceLink>
+
+<ReferenceLink href="https://dev.epicgames.com/documentation/en-us/unreal-engine/introduction-to-performance-profiling-and-configuration-in-unreal-engine?application_version=5.7">Introduction to Performance Profiling</ReferenceLink>
+
+:::note
+
+Only the content side of Epic's guides applies here. Unreal's own replication settings are not used by nanos world, which has its own network settings described above.
+
+:::
+
+
+## Load Testing {/* #load-testing */}
+
+Before raising your max players, measure your actual game-mode. For hosting, prefer **faster cores** (better than many cores), enough RAM to never swap and a stable upload bandwidth with spare room.
+
+Use the [Profiling tools and Tracy](/core-concepts/scripting/profiling.mdx) on both server and client. At 30 Ticks per second, each Tick has about `33 ms`, stay well below that to leave room for spikes. When a Tick takes too long, the server console prints [`Server Tick too/extreme high!`](/core-concepts/server-manual/server-configuration.mdx#common-console-messages-and-errors). On the clients, check the [frame times](/core-concepts/scripting/profiling.mdx#display-frame-times) and the [entities & events network](/core-concepts/scripting/profiling.mdx#profiling-entities--events-network) overlay.
+
+Increase the players gradually, recording the server Tick times, CPU per core, memory, upload bandwidth, latency and client frame times. Change one setting at a time (the console commands let you do it without restarting) and compare in the same scene.
+
+Test these scenarios:
+
+* Players spread across the map, then everyone together in one area.
+* Combat, vehicles, physics, customized characters and many players talking at once.
+* Players joining while others are playing, including players without the assets downloaded yet.
+* Many players entering a busy area together, teleporting, respawning and changing dimensions.
+* Bad connections and packet loss, looking for delayed reliable events and movement corrections.
+* Long sessions with many joins and leaves, looking for memory or entities count growing.
+
+:::tip
+
+Idle connections are good to measure the connection overhead, but they don't reproduce real players moving, fighting and rendering a crowd. Set your max players based on the heaviest scenario you actually tested, and test again whenever your game-mode or assets change.
+
+:::
