@@ -15,8 +15,14 @@ jobs:
       - uses: nschloe/action-cached-lfs-checkout@v1
         with:
           fetch-depth: 0
+          # Full history for the "last updated" dates, but file contents only for the commit being built
+          filter: blob:none
           submodules: true
           exclude: external/**
+
+      # Rename detection would download old file contents one by one on a partial clone
+      - name: Disable git rename detection
+        run: git config diff.renames false
 
       - uses: actions/setup-node@v7
         with:

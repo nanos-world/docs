@@ -1,0 +1,48 @@
+name: Sync Crowdin
+
+# Uploads the sources to Crowdin and downloads the translations into a cache that the deploy restores, so a deploy does not wait for Crowdin
+on:
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: crowdin
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Sync Crowdin
+    runs-on: ubuntu-latest
+    steps:
+      # No LFS and no history: Crowdin only needs the text sources
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Preprocess API
+        run: yarn preprocess-api
+
+      - name: Sync Crowdin
+        env:
+          CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+        run: yarn crowdin:sync
+
+      # The path list must stay identical to the restore step in deploy.yml, it is part of the cache identity
+      - name: Save translations
+        uses: actions/cache/save@v6
+        with:
+          path: |
+            i18n
+            src/api/.generated/*
+            !src/api/.generated/en
+          key: crowdin-${{ github.run_id }}

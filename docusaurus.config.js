@@ -48,6 +48,8 @@ module.exports = {
   trailingSlash: false,
   i18n: {
     defaultLocale: 'en',
+
+    // Adding or removing a locale also updates the languages of 'crowdin:sync' in package.json
     locales: (isDev || onlyEnglish) ? ['en'] : ['en', 'fr', 'pt-BR', 'de', 'zh'],
     localeConfigs: {
       en: {

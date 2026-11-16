@@ -20,8 +20,14 @@ jobs:
       - uses: nschloe/action-cached-lfs-checkout@v1
         with:
           fetch-depth: 0
+          # Full history for the "last updated" dates, but file contents only for the commit being built
+          filter: blob:none
           submodules: true
           exclude: external/**
+
+      # Rename detection would download old file contents one by one on a partial clone
+      - name: Disable git rename detection
+        run: git config diff.renames false
 
       - uses: actions/setup-node@v7
         with:
@@ -43,11 +49,33 @@ jobs:
       - name: Preprocess API
         run: yarn preprocess-api
 
+      # Translations come from the latest run of the Sync Crowdin workflow (crowdin.yml), the path list must stay identical to its save step
+      - name: Restore translations
+        id: translations
+        uses: actions/cache/restore@v6
+        with:
+          path: |
+            i18n
+            src/api/.generated/*
+            !src/api/.generated/en
+          key: crowdin-${{ github.run_id }}
+          restore-keys: |
+            crowdin-
+
+      # Only when no translations cache exists (first run, or it was evicted)
       - name: Sync Crowdin
+        if: steps.translations.outputs.cache-matched-key == ''
         env:
           CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
         run: yarn crowdin:sync
+
+      # API files added since the last sync do not exist in the translated folders yet, so they fall back to English
+      - name: Fill missing API translations
+        run: |
+          for dir in src/api/.generated/*/; do
+            rsync -a --ignore-existing src/api/.generated/en/ "$dir"
+          done
 
       - name: Build website
         run: yarn build
