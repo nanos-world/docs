@@ -4,11 +4,12 @@ import ThemedImage from '@theme/ThemedImage'
 import { useRef, useEffect, useState } from 'react';
 import { useColorMode } from '@docusaurus/theme-common';
 
+// Media too heavy for the build lives in the 'external' folder, which mirrors the Cloudflare R2 bucket served at this domain ('yarn media:push' uploads it)
 export const GetExternalPath = () => {
-	return process.env.NODE_ENV === 'development' ? "" : "https://github.com/nanos-world/docs/raw/master/external";
+	return process.env.NODE_ENV === 'development' ? "" : "https://docs-media.nanos-world.com";
 }
 
-// External Video from Github (with lazy load)
+// External Video from the media CDN (with lazy load)
 export const VideoExternal = ({ path, autoplay = false, loop = false, controls = true, className, style }) => {
 	const videoRef = useRef(null);
 	const [isVisible, setIsVisible] = useState(false);

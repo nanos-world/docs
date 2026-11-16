@@ -14,6 +14,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "crowdin": "crowdin",
+    "media:push": "rclone copy external r2:nanos-world-docs-media --progress",
+    "media:pull": "rclone copy r2:nanos-world-docs-media external --progress",
     "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download -l fr -l pt-BR -l de -l zh-CN"
   },
   "dependencies": {
