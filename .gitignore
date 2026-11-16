@@ -7,6 +7,9 @@
 # i18n
 i18n
 
+# Heavy media, mirrored to the Cloudflare R2 bucket with "yarn media:push"
+/external
+
 # Generated files
 .docusaurus
 .cache-loader
