@@ -1,26 +1,27 @@
 ---
 title: Name Tags
-description: How to add Name Tags to Characters
+description: How to add Name Tags to Pawns
 tags: [tutorial-example, scripting]
 ---
 
 
-How to add Name Tags to Characters.
+How to add Name Tags to Pawns.
 
-![](/img/docs/tutorials/nametag.webp)
+![](/img/docs/tutorials/nametags.webp)
 
 
 ```lua title="Client/Index.lua" showLineNumbers
--- Function to add a Nametag to a Player
-function AddNametag(player, character)
+-- Function to add a Nametag to a Pawn
+function AddNametag(pawn)
+    -- Verify the pawn validity
+    if (not NanosUtils.IsEntityValid(pawn)) then return end
+
+    -- Try to get its player
+    local player = pawn:GetPlayer()
+    if (not NanosUtils.IsEntityValid(player)) then return end
+
     -- We don't need to see our own Nametag
     if (player:IsLocalPlayer()) then return end
-
-    -- Try to get its character
-    if (character == nil) then
-        character = player:GetControlledCharacter()
-        if (character == nil) then return end
-    end
 
     -- Spawns the Nametag (TextRender),
     local nametag = TextRender(
@@ -28,47 +29,56 @@ function AddNametag(player, character)
         Rotator(),              -- Any angles
         player:GetName(),       -- Player Name
         30,                     -- Text Size
-        Color.WHITE         	-- White Color
+        Color.WHITE,         	-- White Color
+        TextRenderRenderingType.UnlitCameraAlignedDepth -- Seen in the correct orientation from any angle. Can be hidden by the environment.
     )
 
-    -- Attaches it to the character and saves it to the player's values
-    nametag:AttachTo(character)
-    nametag:SetRelativeLocation(Vector(0, 0, 250))
+    -- Attaches it to the pawn and saves it to the pawn's values
+    nametag:AttachTo(pawn, nil, nil,
+        0, -- Destroy on detach to automatically clean the TextRender when the pawn is destroyed. (Player leave)
+        true -- use_absolute_rotation to prevent text rotation issues when the pawn turns.
+    )
+    nametag:SetRelativeLocation(Vector(0, 0, 105))
 
-    player:SetValue("Nametag", nametag)
+    pawn:SetValue("Nametag", nametag)
 end
 
--- Function to remove a Nametag from  a Player
-function RemoveNametag(player, character)
-    -- Try to get it's character
-    if (character == nil) then
-        character = player:GetControlledCharacter()
-        if (character == nil) then return end
-    end
+-- Function to remove a Nametag from a Pawn
+function RemoveNametag(pawn)
+    -- Verify the pawn validity
+    if (not NanosUtils.IsEntityValid(pawn)) then return end
+
+    -- Try to get its player
+    local player = pawn:GetPlayer()
+    if (not NanosUtils.IsEntityValid(player)) then return end
 
     -- Gets the Nametag from the player, if any, and destroys it
-    local text_render = player:GetValue("Nametag")
-    if (text_render and text_render:IsValid()) then
+    local text_render = pawn:GetValue("Nametag")
+    if (NanosUtils.IsEntityValid(text_render)) then
         text_render:Destroy()
     end
+    pawn:SetValue("Nametag", nil) -- cleanup the Nametag value
 end
 
--- Adds a new Nametag to a character which was possessed
-Character.Subscribe("Possess", function(character, player)
-    AddNametag(player, character)
+-- Adds a new Nametag to a pawn that get possessed
+Player.Subscribe("Possess", function(player, pawn)
+    AddNametag(pawn)
 end)
 
--- Removes the Nametag from a character which was unpossessed
-Character.Subscribe("UnPossess", function(character, player)
-    RemoveNametag(player, character)
+-- Removes the Nametag from a pawn which was unpossessed
+Player.Subscribe("UnPossess", function(player, pawn)
+    RemoveNametag(pawn)
 end)
 
 -- When the Package loads, adds Nametags to the Players already in the server
 -- (e.g. when you join a server with Players already playing, or when reloading the Package)
 Package.Subscribe("Load", function()
     for _, player in pairs(Player.GetPairs()) do
-        RemoveNametag(player)
-        AddNametag(player)
+        local pawn = player:GetControlledCharacter()
+        if NanosUtils.IsEntityValid(pawn) then
+            RemoveNametag(pawn)
+            AddNametag(pawn)
+        end
     end
 end)
 ```
