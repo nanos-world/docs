@@ -215,6 +215,7 @@ A few important things to keep in mind:
 
 * **Reliability**: `Reliability.Reliable` guarantees the event arrives, in order. `Reliability.Unreliable` is cheaper but can be lost, use it for events sent very often (e.g. every Tick) where only the latest one matters.
 * **Entities** can be passed as parameters, they arrive as the same entity on the other side (as long as it exists there).
+* **Tables** in remote events arrive as copies: functions and metatables are not sent, a table that references itself or one of its parent tables (cyclic table) arrives with that reference as `nil`, and the same table placed in two fields arrives as two separate copies. Local events keep those references.
 * **Local and remote are separate**: `Events.Subscribe` doesn't receive remote events and `Events.SubscribeRemote` doesn't receive local ones.
 * **Never trust the client**: a player can send any remote event with any parameters, always validate them on the server. See the [Never Trust the Client](/core-concepts/scripting/security-remote-events.mdx) guide.
 

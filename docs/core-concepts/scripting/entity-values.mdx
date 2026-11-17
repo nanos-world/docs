@@ -23,6 +23,10 @@ my_player:SetValue("score", 100, true)
 
 Values are **serialized** when set: <BasicType.Any /> type is accepted except <BasicType.Function />s, Lua references are not kept and tables are copied into internal memory. Changing a table after setting it will not affect the stored value, call `SetValue()` again to update it.
 
+Each `GetValue()` also returns a new copy, so two reads of the same key are never `==` to each other. References inside the table are kept: a table that points to itself or the same table placed in two fields comes back the same way.
+
+Synchronized values are sent through the network like [Remote Events](/core-concepts/scripting/events-guide.mdx) parameters, so the same limits apply: a table that references itself or one of its parent tables (cyclic table) arrives with that reference as `nil`, and metatables are not sent.
+
 :::tip
 
 Every change of a synchronized value is sent to all clients. For values changing very often (e.g. every Tick), prefer [Remote Events](/core-concepts/scripting/events-guide.mdx) with `Reliability.Unreliable`.
