@@ -282,6 +282,7 @@ export const StaticClasses = {
 	Server: () => BaseStaticClass("Server", "💻"),
 	Sky: () => BaseStaticClass("Sky", "🌅"),
 	Steam: () => BaseStaticClass("Steam", "🎮"),
+	Tebex: () => BaseStaticClass("Tebex", "🪙"),
 	Timer: () => BaseStaticClass("Timer", "⏱️"),
 	Trace: () => BaseStaticClass("Trace", "🔍"),
 	Viewport: () => BaseStaticClass("Viewport", "📺"),

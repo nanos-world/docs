@@ -61,6 +61,7 @@ How your server presents (and announces) itself.
 | **`max_players`** | `integer` | `64` | Max amount of players allowed to join. Range `1` - `999` |
 | **`password`** | `string` | `""` | Password required to connect. Leave it blank for no password required |
 | **`token`** | `string` | `""` | Server authentication token, used to authorize [Vault](/vault-and-store/vault.mdx) downloads, through the [CLI](/core-concepts/server-manual/command-line-interface.mdx), through `--vault_download`, and when fetching Packages/Assets you own |
+| **`tebex_secret`** | `string` | `""` | Secret key of your <StaticClasses.Tebex /> store (Tebex panel, Game Servers), to sell packages in game. Leave it blank to disable. Keep it private |
 | **`banned_ids`** | `string list` | `[]` | List of banned nanos account IDs. Banned players are rejected at connection time |
 
 
@@ -257,6 +258,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | **`--packages`** | string list | Server packages |
 | **`--assets`** | string list | Server assets |
 | **`--token`** | string | Server authorization token |
+| **`--tebex_secret`** | string | Secret key of your <StaticClasses.Tebex /> store |
 | **`--max_players`** | 1-999 | Max allowed players |
 | **`--dedicated_server`** | 0 or 1 | If to start as a Dedicated Server or P2P |
 | **`--async_log`** | 0 or 1 | If to use async or sync logs (async provides better performance)<br/><br/>Default is <code>1</code> |
