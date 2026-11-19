@@ -252,7 +252,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | **`--map`** | string | Map Package to load |
 | **`--port`** | 1024-65535 | Server port |
 | **`--query_port`** | 1024-65535 | Server Query port (must be different than server port) |
-| **`--announce`** | 0 or 1 | Whether to announce the server in the Server List |
+| **`--announce`** | `true` or `false` (`1` or `0` also work) | Whether to announce the server in the Server List |
 | **`--game_mode`** | string | Server game-mode |
 | **`--loading_screen`** | string | Server loading-screen |
 | **`--packages`** | string list | Server packages |
@@ -260,8 +260,8 @@ It is possible to override the Server Configuration with Command Line Parameters
 | **`--token`** | string | Server authorization token |
 | **`--tebex_secret`** | string | Secret key of your <StaticClasses.Tebex /> store |
 | **`--max_players`** | 1-999 | Max allowed players |
-| **`--dedicated_server`** | 0 or 1 | If to start as a Dedicated Server or P2P |
-| **`--async_log`** | 0 or 1 | If to use async or sync logs (async provides better performance)<br/><br/>Default is <code>1</code> |
+| **`--dedicated_server`** | `true` or `false` (`1` or `0` also work) | If to start as a Dedicated Server or P2P |
+| **`--async_log`** | `true` or `false` (`1` or `0` also work) | If to use async or sync logs (async provides better performance)<br/><br/>Default is <code>true</code> |
 | **`--log_level`** | 1, 2 or 3 | If to use Normal <code>1</code>, Debug <code>2</code> or Verbose <code>3</code> logs |
 | **`--custom_settings`** | toml string | A list of [Custom Settings](/core-concepts/packages/packages-guide.mdx#custom-settings) to be passed to scripting in toml format |
 | **`--save`** | *flag* | If to save the passed parameters in Config.toml |
