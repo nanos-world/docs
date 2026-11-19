@@ -442,6 +442,20 @@ export const FunctionReturnsDeclaration = ({ returns }) => (
 	</>
 );
 
+function GetDeclarationDescription(data, lean) {
+	const { description, description_details, description_long } = data;
+	if (lean)
+		return description;
+
+	if (!description_details)
+		return description_long || description;
+
+	if (!description)
+		return description_details;
+
+	return `${description}<br/><br/>${description_details}`;
+}
+
 // Function Block Declaration
 export const FunctionDeclaration = ({ function_data, is_static, class_name, show_lean_declaration = false }) => {
 	const id = `${is_static ? "static-function" : "function"}-${function_data.name.toLowerCase()}`;
@@ -457,7 +471,7 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name, show
 			</code>
 		</Heading>
 		<blockquote>
-			<span dangerouslySetInnerHTML={{ __html: !show_lean_declaration && function_data.description_long ? function_data.description_long : function_data.description }}></span>
+			<span dangerouslySetInnerHTML={{ __html: GetDeclarationDescription(function_data, show_lean_declaration) }}></span>
 		</blockquote>
 		{ !show_lean_declaration && function_data.last_compatibility_version && (
 			<Admonition type="info" icon="🆕" title="Updated Function">
@@ -503,7 +517,7 @@ export const EventDeclaration = ({ event_data, class_name, show_lean_declaration
 				{ event_data.name }
 			</code>
 		</Heading>
-		<blockquote dangerouslySetInnerHTML={{ __html: `${ !show_lean_declaration && event_data.description_long ? event_data.description_long : (event_data.description ? event_data.description : "<span class='subtle-description'>No description provided</span>") }${ event_data.return ? "<br/><br/>" + event_data.return[0].description : ""}` }}></blockquote>
+		<blockquote dangerouslySetInnerHTML={{ __html: `${ GetDeclarationDescription(event_data, show_lean_declaration) || "<span class='subtle-description'>No description provided</span>" }${ event_data.return ? "<br/><br/>" + event_data.return[0].description : ""}` }}></blockquote>
 		<CodeBlock className="language-lua">
 			{ GetEventSignature(class_name, event_data) }
 		</CodeBlock>
