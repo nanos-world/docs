@@ -93,7 +93,7 @@ Approved versions are not public yet: add a changelog with `edit changelog` and 
 
 An **Access Token** (also called Personal Access Token, or PAT) authenticates your account outside the website. It is used by the server [CLI](/core-concepts/server-manual/command-line-interface.mdx), by `--auto_download` when fetching Resources you own, by the [GitHub Action](#automate-github-releases) and by any script calling the API.
 
-It has the same rights as your account to download and upload the Resources of your Teams, so keep it secret.
+A token can only do what its **scopes** allow, so give it only the ones it needs and keep it secret. Managing your tokens, and a few other account actions, always need you to sign in on the website.
 
 
 ### Generating a new Token {/* #generating-a-new-token */}
@@ -104,18 +104,38 @@ To generate a new token, go to [Account → Access Tokens](https://nanos-world.c
 
 <MediaLegend>Access Tokens page</MediaLegend>
 
-You can give your token a name (to identify it later) and an expiry date (leave it empty for a token that never expires).
+You can give your token a name (to identify it later), an expiry date (leave it empty for a token that never expires), and pick its scopes.
 
 ![](/img/docs/store/create-pat-modal.webp)
 
 <MediaLegend>Creating a new Access Token</MediaLegend>
 
-After it is created, copy the token and save it somewhere safe: it is only shown once, and you won't be able to see it again. If you lose it (or it leaks), delete it from the list and create a new one.
+After it is created, copy the token and save it somewhere safe: it is only shown once, and you won't be able to see it again. If you lose it (or it leaks), delete it from the list and create a new one. New tokens start with `nwpat_`.
+
+The list shows when each token was last used, so you can spot the ones you no longer need. You can also rename a token or change its scopes at any time with `edit`, without creating a new one.
+
+
+### Scopes {/* #scopes */}
+
+| Scope | Access | What it allows |
+|---|---|---|
+| `profile:read` | read | Your profile, Teams, invites and feedback votes |
+| `profile:write` | write | Your profile fields |
+| `content:read` | read | Drafts, private Resources, and your stats and audit logs |
+| `store:publish` | write | Upload and release versions of Packages and Asset Packs |
+| `store:write` | write | Create, edit and delete Packages and Asset Packs, with their images, tags and versions |
+| `projects:write` | write | Create, edit and delete Projects |
+| `teams:write` | write | Teams, members, invites and recruiting |
+| `community:write` | write | Reviews, favorites, likes, votes, feedback, reports and Game Jam entries |
+
+A request the token's scopes don't cover is refused with `403`. Public reads, like a published Package, never need a scope.
 
 
 ### Using the Token in the Server {/* #using-the-token-in-the-server */}
 
 Paste your token in the `token` field of your server's `Config.toml`, or pass it with `--token` in the command line, and you are authenticated to run CLI commands!
+
+The server needs `profile:read` and `content:read` to list your Teams and fetch your own unpublished Resources, plus `store:publish` if you upload from it.
 
 ```toml title="Config.toml"
 [general]
@@ -155,7 +175,7 @@ The action only supports Packages for now. Asset Packs must be uploaded through 
 
 #### 1. Add Your Token as a Secret {/* #1-add-your-token-as-a-secret */}
 
-1. Create a token as described in the [Generating a new Token](#generating-a-new-token) section
+1. Create a token as described in the [Generating a new Token](#generating-a-new-token) section, with the `store:publish` scope
 2. Go to your repository **Settings** → **Secrets and variables** → **Actions**
 3. Click **New repository secret**
 4. Name: `NANOS_STORE_TOKEN`
