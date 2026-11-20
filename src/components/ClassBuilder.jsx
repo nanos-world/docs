@@ -443,17 +443,10 @@ export const FunctionReturnsDeclaration = ({ returns }) => (
 );
 
 function GetDeclarationDescription(data, lean) {
-	const { description, description_details, description_long } = data;
 	if (lean)
-		return description;
+		return data.description;
 
-	if (!description_details)
-		return description_long || description;
-
-	if (!description)
-		return description_details;
-
-	return `${description}<br/><br/>${description_details}`;
+	return [data.description, data.description_details].filter(Boolean).join("<br/><br/>");
 }
 
 // Function Block Declaration
