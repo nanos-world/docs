@@ -1,0 +1,193 @@
+---
+title: Monetization
+description: How to sell on your nanos world server, and why the native Tebex integration is the easiest way to do it.
+tags: [scripting, monetization]
+image: /img/docs/tebex-nanos-world.webp
+sidebar_position: 3
+---
+
+
+How to sell on your nanos world server, and why the native Tebex integration is the easiest way to do it.
+
+
+## 🪙 Native Tebex Integration {/* #native-tebex-integration */}
+
+![](/img/docs/tebex-nanos-world.webp)
+
+[Tebex](https://www.tebex.io/) is a monetization platform built for game servers, and it is the official and recommended way to sell on nanos world servers, integrated natively into the game. Set your Tebex secret key in your server's `Config.toml` and your store is ready.
+
+
+### Why Tebex {/* #why-tebex */}
+
+- **Nothing to install**: no plugin and no UI to build. Set your key in `Config.toml` and your store shows up in the in-game menu.
+- **Shopping without leaving the server**: players browse your store in the in-game menu and only open the browser to pay, with no account to create. Every purchase is linked to the player's Steam ID, so it never goes to the wrong account.
+- **A checkout players trust**: payments happen on Tebex's well-known checkout, not on an unknown website, so more players finish their purchase.
+- **Many payment methods**: cards, PayPal and local methods from many countries.
+- **Less legal work for you**: Tebex is the merchant, so taxes, consumer law and payment data are on Tebex, and card details never touch your machine.
+- **Protection from fraud**: stolen cards and chargebacks are Tebex's problem, not a fee that eats your revenue.
+- **Reliable delivery**: purchases are queued and retried, delivered while the player is online or offline, with optional delays.
+- **Easy support**: every delivery comes with its payment ID, so you can trace any "I paid and didn't get it" in seconds.
+- **Helps nanos world grow**: part of each sale funds the development of the game and the tools you build with.
+
+
+### How a Purchase Works {/* #how-a-purchase-works */}
+
+**1. The player opens your store in the in-game menu.** Press `Escape` while on your server and your store is there, with your categories and packages.
+
+![](/img/docs/tebex/escape-menu-store.webp)
+
+<MediaLegend>Your store in the in-game menu</MediaLegend>
+
+**2. They pick a package.** Each package shows its image, description, price and discount.
+
+![](/img/docs/tebex/item-popup.webp)
+
+<MediaLegend>A package with its image, description and discount</MediaLegend>
+
+**3. They check out.** The checkout of the package opens in the in-game menu, with a link to finish the payment in their browser on Tebex's secure checkout. The purchase is already linked to their Steam account, so there is no username to type and no risk of buying for the wrong account.
+
+![](/img/docs/tebex/purchase-pending.webp)
+
+<MediaLegend>The checkout in the in-game menu, with the link to pay in the browser</MediaLegend>
+
+![](/img/docs/tebex/purchase-checkout.webp)
+
+<MediaLegend>The Tebex secure payment checkout</MediaLegend>
+
+![](/img/docs/tebex/purchase-completed.webp)
+
+<MediaLegend>The checkout in the in-game menu, completed</MediaLegend>
+
+**4. Your server delivers it.** Tebex confirms the payment and queues the commands you set up for that package. Your server fetches and runs them, right away or on the player's next visit.
+
+```nanos-console title="my-tebex-package/Server/Index.lua"
+ DEBUG  Player 'SyedMuhammad' ('76561197983722570') requested to generate a checkout URL for the Package '7792046'
+ DEBUG  Generated Tebex basket for player 'Player#5' ('76561197983722570' - 'SyedMuhammad' - '2a94d978-44f6-43e4-96a0-b0fba2b4a91f'): 'dyooas-ea1c87c647c490199acead1d16df5f855eb7184c'
+  INFO  Running Tebex online command 'vip 76561197983722570' (ID '661718342', package '7792046', payment '120674095') for player 'Player#5' ('2069166' - '76561197983722570').
+SCRIPT  [my-tebex-package] A Player has made an online purchase! ID: 661718342. Package ID: 7792046. Payment ID: 120674095. Command: 'vip 76561197983722570'. Player: SyedMuhammad.
+```
+
+Purchases usually arrive within a minute or two after the payment is confirmed. Let your players know, so they don't think something went wrong.
+
+
+### Fees {/* #fees */}
+
+Each sale made through the integration has a **`15%` fee**, deducted automatically:
+
+- **`5%` goes to Tebex**, for payments, taxes, chargebacks and fraud checks.
+- **`10%` goes to nanos world**. This is how selling on nanos world helps pay for nanos world: it goes into development, servers and the tools you use to build on it.
+
+For example, on a `$10.00` sale, `$0.50` goes to Tebex and `$1.00` goes to nanos world.
+
+Tebex is the merchant of every sale. We never see or store players' payment details. Payment processing, taxes and payouts follow Tebex's own terms, which also apply to your store:
+
+<ReferenceLink href="https://docs.tebex.io/creators/pricing-overview">Tebex Pricing & Fees Docs</ReferenceLink>
+
+
+### Getting Started {/* #getting-started */}
+
+1. **Create your project**: in your [Tebex Creator Panel](https://creator.tebex.io/projects), click **Create Project**. Fill in the project name and currency, select **I operate a game server** and accept the terms. Then pick **nanos world** from the list of games.
+2. **Connect your server**: copy your Game Server **Secret Key** and set it in `tebex_secret` of your [Config.toml](/core-concepts/server-manual/server-configuration.mdx#general), or start the server with `--tebex_secret <your_secret_key>`.
+3. **Create your packages**: add your packages and their commands in the Tebex panel, and deliver them from your Packages. Use Test Mode to try purchases without paying.
+4. **Submit for review**: add a store description and a support email, complete the identity verification and set up your wallet. Then click **Submit for Review**. Your store accepts payments once it is approved.
+
+<ReferenceLink href="https://docs.tebex.io/creators/initial-setup/tips-for-getting-your-store-application-approved">Tips for getting your store approved</ReferenceLink>
+
+
+### Integrating with your Server {/* #integrating-with-your-server */}
+
+Your packages, prices and images are all set up in the Tebex panel. Each package also has **commands**, which tell your server what to give the player. When a purchase is confirmed, your server receives those commands and your scripts deliver them through the <StaticClasses.Tebex /> events.
+
+Your scripts can also open the checkout of a specific package, so you can sell from an NPC, a chat command or your own menus.
+
+The scripting page has the full guide, with examples:
+
+<ReferenceLink href="scripting-reference/static-classes/tebex">Tebex Scripting Reference</ReferenceLink>
+
+
+## 💰 What you can Sell {/* #what-you-can-sell */}
+
+nanos world gives creators a lot of freedom to monetize their work. What you may and may not sell is defined by the **Creator Monetization Policy**, Section 5.2 of our Terms of Service. It applies to every sale, whatever payment system you use, so read it before opening your store:
+
+<ReferenceLink href="https://gohorsestudios.com/tos">nanos world Terms of Service</ReferenceLink>
+
+By using **Tebex**, you also agree to Tebex's own terms and rules, which include the **Creator Agreement** and the **Acceptable Use Policy**:
+
+<ReferenceLink href="https://www.tebex.io/terms-creator-agreement">Tebex Creator Agreement</ReferenceLink>
+<ReferenceLink href="https://www.tebex.io/terms-creator-agreement/acceptable-use-policy">Tebex  Acceptable Use Policy</ReferenceLink>
+
+:::caution attention
+
+Whatever you use to sell, you are the seller: you are responsible for what you sell, for your players' support and for refunds. Go Horse Studios is not a party to your sales.
+
+:::
+
+
+## ❓ FAQ {/* #faq */}
+
+#### Is Tebex mandatory? {/* #is-tebex-mandatory */}
+
+> No. It is optional, and servers with their own payment system can keep it.
+
+#### Can I Use Tebex and my own System at the same Time? {/* #can-i-use-both */}
+
+> Yes. Both follow the same Creator Monetization Policy.
+
+#### How can I Test my Packages without Paying? {/* #testing */}
+
+> Use Tebex's Test Mode, or create a manual payment in the Creator Panel. Both queue the package commands as a real purchase would, so you can check your delivery without spending money.
+
+#### Who Handles Refunds and Player Support? {/* #who-handles-refunds */}
+
+> You do, as the seller. Tebex handles the payment itself, including chargebacks and fraud checks, and nanos world does not issue refunds for purchases made on community servers.
+
+#### Will Tebex Contact me about my Players? {/* #tebex-support */}
+
+> Tebex may forward player questions to your support email. Answer them quickly, as Tebex may step in if there is no response.
+
+#### Why do Players See different Prices? {/* #price-varies */}
+
+> VAT and local taxes are added depending on where the player lives, as required by law. Tebex calculates and handles them for you.
+
+#### Do Players Need a Tebex Account? {/* #tebex-account */}
+
+> No. The purchase is linked to the player's Steam account automatically, so there is no account to create and no username to type.
+
+#### What Happens if the Player is offline, or my Server Restarts? {/* #offline-delivery */}
+
+> Nothing is lost. Online commands wait until the player's next visit, offline commands run right away, and a delayed command that did not run before a restart is fetched again.
+
+#### What if a Command Fails, or my Package was not Loaded? {/* #failed-commands */}
+
+> A command that no Package handled stays in the Tebex queue, with an error in the server log, and is tried again on the next fetch. Once you fix the command or load the Package, the purchase is delivered.
+
+#### Can I Cancel a Purchase that was not Delivered yet? {/* #pending-commands */}
+
+> Pending commands can't be deleted, but you can set an automatic expiry for them in the Game Servers page of your Creator Panel.
+
+#### Does my Server Need an open Port or a public Website? {/* #open-port */}
+
+> No. Your server fetches purchases from Tebex on its own, so there is no webhook or extra port to set up.
+
+#### Can I Build my own Store UI? {/* #custom-store-ui */}
+
+> Yes. Build your shop the way you like (a menu, an NPC, a custom WebUI) and call <MethodReference type="StaticClass" class_name="Tebex" method_name="OpenCheckoutOverlay" show_class_name /> when the player picks a package. The payment still happens on Tebex's checkout in the player's browser, out of reach of any script, so your players' payment details stay safe, and delivery keeps working through the <EventReference type="StaticClass" class_name="Tebex" event="OnlineCommand" show_class_name /> and <EventReference type="StaticClass" class_name="Tebex" event="OfflineCommand" show_class_name /> events.
+
+#### Does nanos world See my Players' Payment Details? {/* #payment-details */}
+
+> No. Tebex is the merchant and handles all payment details. Your server only receives what was bought and by whom (the player's Steam ID and name).
+
+#### What does Tebex Receive about my Players? {/* #data-shared */}
+
+> When a player opens your store, the game loads it directly from Tebex, so Tebex sees their IP address. At checkout, your server sends Tebex the player's Steam ID so the purchase reaches them. See our [Privacy Policy](https://gohorsestudios.com/privacy) for details.
+
+
+## 🔗 Useful Links {/* #useful-links */}
+
+<ReferenceLink href="https://docs.tebex.io/creators/faq">Tebex FAQ</ReferenceLink>
+
+<ReferenceLink href="https://docs.tebex.io/creators/initial-setup/identity-verification-for-tebex-store-onboarding">Tebex Identity Verification</ReferenceLink>
+
+<ReferenceLink href="https://docs.tebex.io/creators/initial-setup/your-store-review">Tebex Store Review</ReferenceLink>
+
+<ReferenceLink href="https://www.tebex.io/terms-creator-agreement/acceptable-use-policy">Tebex Acceptable Use Policy</ReferenceLink>

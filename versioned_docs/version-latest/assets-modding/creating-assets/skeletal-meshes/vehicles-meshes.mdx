@@ -15,7 +15,13 @@ There is no secret to import a Vehicle Skeletal Mesh. Any Skeletal Mesh with any
 
 - It must have one bone for each Wheel, so the Vehicle Animations can properly rotate them.
 - The root bone should be rotated in the X forward, Z up format.
-- The root bone also should be ideally scaled as `1, 1, 1`.
+- The root bone must be scaled as `1, 1, 1`.
+
+:::warning
+
+If the root bone has any scale other than `1, 1, 1`, the physics wheels will not line up with the visual wheels. Unreal's vehicle physics divides the wheel bone positions by the root bone scale, so a root scaled by `1.33` places every physics wheel at `0.75` of its real distance from the root. Apply the scale to the mesh in your 3D software before exporting (in Blender, select the Armature and the Mesh and use **Apply > All Transforms**). You can check it in the Skeleton Tree: select the root bone and look at its **Reference** transform.
+
+:::
 
 Take a look on one of the default Vehicles Skeleton:
 

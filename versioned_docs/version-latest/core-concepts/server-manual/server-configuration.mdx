@@ -60,7 +60,8 @@ How your server presents (and announces) itself.
 | :--- | :--- | :--- | :--- |
 | **`max_players`** | `integer` | `64` | Max amount of players allowed to join. Range `1` - `999` |
 | **`password`** | `string` | `""` | Password required to connect. Leave it blank for no password required |
-| **`token`** | `string` | `""` | Server authentication token, used to authorize [Vault](/vault-and-store/vault.mdx) downloads, through the [CLI](/core-concepts/server-manual/command-line-interface.mdx), through `--auto_download`, and when fetching Packages/Assets you own |
+| **`token`** | `string` | `""` | Server authentication token, used to authorize [Vault](/vault-and-store/vault.mdx) downloads, through the [CLI](/core-concepts/server-manual/command-line-interface.mdx), through `--vault_download`, and when fetching Packages/Assets you own |
+| **`tebex_secret`** | `string` | `""` | Secret key of your <StaticClasses.Tebex /> store (Tebex panel, Game Servers), to sell packages in game. Leave it blank to disable. Keep it private |
 | **`banned_ids`** | `string list` | `[]` | List of banned nanos account IDs. Banned players are rejected at connection time |
 
 
@@ -175,11 +176,11 @@ The level can also be changed while the server is running with the [`distance_op
 
 ## Logo Image {/* #logo-image */}
 
-It is possible to have a custom image to be displayed in the server list. For that, add a file called `Server.jpg` besides the server executable with the logo you wish. The recommended size is `300x150`.
+It is possible to have a custom image to be displayed in the server list. For that, add a file called `Server.webp` or `Server.jpg` besides the server executable with the logo you wish (if there is more than one, they are picked in that order). The recommended size is `300x150` and it must be under 128 KB.
 
 :::tip
 
-You can pass a JPG image URL to `--logo` parameter to download and use a image from the web instead of placing it physically in the folder.
+You can pass a WebP or JPG image URL to `--logo` parameter to download and use a image from the web instead of placing it physically in the folder.
 
 :::
 
@@ -198,7 +199,7 @@ The Map (or Level) is defined in the Server's config file, this map will be load
 
 To configure a map, please refer to [Packages Guide](/core-concepts/packages/packages-guide.mdx#map) to create a Map Package pointing to the correct Asset.
 
-nanos world counts on (for now) 3 built-in maps: `default-blank-map`, `default-empty-map` and `default-ocean-map` which can be used in your server without needing to download any Package/Asset Pack. [`default-playground-map`](https://nanos-world.com/store/packages/default-playground-map) (recommended) and the older [`default-testing-map`](https://nanos-world.com/store/packages/default-testing-map) are Vault Packages, which the server downloads automatically when they're used as the map.
+nanos world counts on (for now) 3 built-in maps: `default-blank-map`, `default-empty-map` and `default-ocean-map` which can be used in your server without needing to download any Package/Asset Pack. [`default-playground-map`](https://nanos-world.com/store/packages/default-playground-map) (recommended) and the older [`default-testing-map`](https://nanos-world.com/store/packages/default-testing-map) are Vault Packages: install them with the [CLI](/core-concepts/server-manual/command-line-interface.mdx) (`--cli install package default-playground-map`) or start the server with `--vault_download missing` so the map is downloaded when needed.
 
 
 ## Server Console {/* #server-console */}
@@ -251,21 +252,22 @@ It is possible to override the Server Configuration with Command Line Parameters
 | **`--map`** | string | Map Package to load |
 | **`--port`** | 1024-65535 | Server port |
 | **`--query_port`** | 1024-65535 | Server Query port (must be different than server port) |
-| **`--announce`** | 0 or 1 | Whether to announce the server in the Server List |
+| **`--announce`** | `true` or `false` (`1` or `0` also work) | Whether to announce the server in the Server List |
 | **`--game_mode`** | string | Server game-mode |
 | **`--loading_screen`** | string | Server loading-screen |
 | **`--packages`** | string list | Server packages |
 | **`--assets`** | string list | Server assets |
 | **`--token`** | string | Server authorization token |
+| **`--tebex_secret`** | string | Secret key of your <StaticClasses.Tebex /> store |
 | **`--max_players`** | 1-999 | Max allowed players |
-| **`--dedicated_server`** | 0 or 1 | If to start as a Dedicated Server or P2P |
-| **`--async_log`** | 0 or 1 | If to use async or sync logs (async provides better performance)<br/><br/>Default is <code>1</code> |
+| **`--dedicated_server`** | `true` or `false` (`1` or `0` also work) | If to start as a Dedicated Server or P2P |
+| **`--async_log`** | `true` or `false` (`1` or `0` also work) | If to use async or sync logs (async provides better performance)<br/><br/>Default is <code>true</code> |
 | **`--log_level`** | 1, 2 or 3 | If to use Normal <code>1</code>, Debug <code>2</code> or Verbose <code>3</code> logs |
 | **`--custom_settings`** | toml string | A list of [Custom Settings](/core-concepts/packages/packages-guide.mdx#custom-settings) to be passed to scripting in toml format |
 | **`--save`** | *flag* | If to save the passed parameters in Config.toml |
 | **`--profiling`** | *flag* | Enables Performance Profiling Logs for debugging |
-| **`--auto_download`** | *flag* | Automatically downloads Packages and Assets from Vault if needed |
-| **`--use_vault_assets_lean`** | *flag* | Only downloads the Asset Pack's .toml configuration files from Vault |
+| **`--vault_download`** | `missing` or `update` | Downloads content from the Vault when the server starts<br/><br/><code>missing</code> downloads the Packages, Maps and Asset Packs that are not installed, <code>update</code> also updates the installed ones that are outdated. When omitted, nothing is downloaded<br/><br/>See [Vault Downloads](#vault-downloads) |
+| **`--vault_full_assets`** | *flag* | Downloads missing Asset Packs fully instead of lean<br/><br/>See [Vault Downloads](#vault-downloads) |
 | **`--log_show_thread`** | *flag* | Shows the current running thread of each outputted log |
 | **`--max_tick_rate`** | 15-120 | Sets the server max tick rate in Hz (ticks per second) |
 | **`--max_sync_rate`** | 1-30 | Sets the max actors sync rate in Hz (syncs per second), naturally limited by `max_tick_rate` |
@@ -286,6 +288,19 @@ It is possible to override the Server Configuration with Command Line Parameters
 **`--cli`** must be passed as the **first** argument: it runs the [Command Line Interface](/core-concepts/server-manual/command-line-interface.mdx) instead of starting the server, e.g. `./NanosWorldServer.exe --cli install package sandbox`.
 
 The [Tracy Profiler](/core-concepts/scripting/profiling.mdx#tracy-profiler) integration no longer needs a separate build or the old `--tracy` parameter: every server has it built in.
+
+:::
+
+
+### Vault Downloads {/* #vault-downloads */}
+
+With `--vault_download missing`, the server downloads from the [Vault](/vault-and-store/vault.mdx) every Package, Map and Asset Pack it needs that is not installed. With `--vault_download update`, it also updates the installed ones that are outdated.
+
+By default, a missing Asset Pack is loaded **lean**: the server only downloads its `Assets.toml`, always from the latest Vault version, and the clients download the Asset Pack itself from the Vault when joining. Pass `--vault_full_assets` to download the whole Asset Pack to the server instead.
+
+:::note
+
+Downloading and starting an Asset Pack at an older version than the latest one on the Vault will make all the clients download the Asset Pack directly from the server instead of the Vault.
 
 :::
 
@@ -313,7 +328,7 @@ Installs all needed Packages (this will install needed Assets as well), then sta
 Or, just start the server passing with all configs set and auto downloads the packages and assets if needed:
 
 ```shell
-./NanosWorldServer.exe --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "default-playground-map" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download --logo "https://i.imgur.com/vnB8CB5.jpg"
+./NanosWorldServer.exe --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "default-playground-map" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --vault_download missing --logo "https://i.imgur.com/vnB8CB5.jpg"
 ```
 
   </TabItem>
@@ -331,7 +346,7 @@ Installs all needed Packages (this will install needed Assets as well), then sta
 Or, just start the server passing with all configs set and auto downloads the packages and assets if needed:
 
 ```shell
-./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "default-playground-map" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --auto_download --logo "https://i.imgur.com/vnB8CB5.jpg"
+./NanosWorldServer.sh --name "nanos world Amazing Sandbox" --description "Awesome Sandbox Server" --map "default-playground-map" --game_mode "sandbox" --packages "battlefield-kill-ui,ts-fireworks-tools" --port 7777 --query_port 7778 --max_players 32 --vault_download missing --logo "https://i.imgur.com/vnB8CB5.jpg"
 ```
 
   </TabItem>

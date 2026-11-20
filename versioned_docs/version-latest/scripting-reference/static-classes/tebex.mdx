@@ -1,0 +1,133 @@
+---
+title: 🪙 Tebex
+description: Sell packages from your Tebex store in game and deliver them to your players.
+tags: [static-class, server, monetization]
+image: /img/docs/tebex-nanos-world.webp
+---
+
+<HeaderDeclaration type="StaticClass" name="Tebex" image={"/img/docs/tebex-nanos-world.webp"} />
+
+
+## 💡 About Tebex {/* #about-tebex */}
+
+[Tebex](https://www.tebex.io/) is a monetization platform that lets players buy in-game packages (ranks, items, currency, etc.) from your store. nanos world supports it natively: players browse your store in the in-game menu, pay on Tebex's checkout, and your server delivers what they bought.
+
+This page covers the technical side. For why to use Tebex, the fees, the rules of what you can sell and your responsibilities as a seller, see [Monetization](/core-concepts/server-manual/monetization.mdx).
+
+
+### Getting a Secret Key {/* #getting-a-secret-key */}
+
+First click **Create Project** in your [Tebex Creator Panel](https://creator.tebex.io/projects), select **I operate a game server** and pick **nanos world** from the list of games. Then open the [Game Servers](https://creator.tebex.io/game-servers) page and click **Edit** (or **Instructions**) to reveal your Game Server **Secret Key**.
+
+Keep this key private: anyone holding it can manage your store.
+
+For more information, see the Tebex **Quick Start Guide**:
+
+<ReferenceLink href="https://docs.tebex.io/developers/getting-started">Tebex Quick Start Guide</ReferenceLink>
+
+
+### Initialization {/* #initialization */}
+
+Set your secret key in the `tebex_secret` setting of your [Config.toml](/core-concepts/server-manual/server-configuration.mdx#general), or start the server with `--tebex_secret <your_secret_key>`. No other setup is required.
+
+On start the server connects to Tebex, logs `Tebex initialized successfully!` and starts delivering purchases. Players also get your store in the in-game menu.
+
+
+### Delivering Purchases {/* #delivering-purchases */}
+
+When a payment is confirmed, Tebex queues the **commands** you configured in the package. The server fetches them at the interval Tebex asks for (around every minute):
+
+- **Online commands** only run while the player is on the server. If they are offline, the commands wait for their next visit.
+- **Offline commands** run as soon as they are fetched, whether or not the player is online.
+- A command with a **delay** runs that many seconds after it is fetched. If the server restarts before it runs, it is fetched again.
+
+Before a command runs, these placeholders are replaced: `{id}` and `{steamid}` by the player's Steam ID, `{username}` and `{name}` by the player's name.
+
+By default each command runs as a server console command of your Packages: the ones registered with <MethodReference type="StaticClass" class_name="Console" method_name="RegisterCommand" show_class_name />, or handled in the <EventReference type="StaticClass" class_name="Console" event="PlayerSubmit" show_class_name /> event (return `false` there to mark it as handled). The built-in server commands (e.g. `kick`, `stop`) can't be called by a Tebex command. To deliver the purchase from your scripts instead, subscribe to <EventReference type="StaticClass" class_name="Tebex" event="OnlineCommand" show_class_name /> or <EventReference type="StaticClass" class_name="Tebex" event="OfflineCommand" show_class_name /> and return `false`.
+
+Once a command is handled it is removed from the Tebex queue, so it is not delivered again. A command that no Package handled (no registered command matched it and no event returned `false`) stays in the queue and is tried again on the next fetch, with an error in the server log. This way a purchase made while your Package was not loaded, or with a typo in the command, is delivered as soon as you fix it.
+
+:::caution
+
+Identify the player with `{steamid}`, never with `{name}` or `{username}`. A player picks their own name, and a name with spaces becomes extra arguments of your command.
+
+:::
+
+:::tip
+
+When delivering with events, avoid hardcoding package IDs in your scripts. Read the `command` parameter instead (e.g. `vip 30d` or `coins 1000`), so a new package only needs a change in the Tebex panel.
+
+:::
+
+
+### Opening the Checkout {/* #opening-the-checkout */}
+
+Players can buy from your store in the in-game menu. You can also start the purchase of a specific package from your scripts (an NPC shop, a chat command, your own UI) with <MethodReference type="StaticClass" class_name="Tebex" method_name="OpenCheckoutOverlay" show_class_name />: the player's in-game menu opens with the checkout of that package, the same one the store shows, with a link to finish the payment in their browser. The player decides whether to pay.
+
+
+## 🎒 Examples {/* #examples */}
+
+#### Using Console Commands {/* #using-console-commands */}
+
+Register a console command in your package, then use it as the package command in the Tebex panel, for example `giveitem {steamid} vip_rank`:
+
+```lua title="Server/Index.lua" showLineNumbers
+-- Online commands only run while the player is connected, so the player is found
+Console.RegisterCommand("giveitem", function(steam_id, item)
+	local player = Player.GetBySteamID(steam_id)
+
+	if (player) then
+		GivePlayerItem(player, item)
+	end
+end, "Grants an item to a player", { "steam_id", "item" })
+```
+
+
+#### Implementing your own Delivery Logic {/* #implementing-your-own-delivery-logic */}
+
+Without any console command, subscribe to the events and return `false`:
+
+```lua title="Server/Index.lua" showLineNumbers
+-- Online commands: the player is connected
+Tebex.Subscribe("OnlineCommand", function(command_id, package_id, payment_id, command, player)
+	-- A special package handled here
+	if (package_id == 123456) then
+		player:SetValue("vip", true, true)
+		Chat.BroadcastMessage(player:GetName() .. " is now VIP, thank you!")
+
+		-- Prevents the command from running in the console
+		return false
+	end
+end)
+
+-- Offline commands: the player may not be connected
+Tebex.Subscribe("OfflineCommand", function(command_id, package_id, payment_id, command, tebex_player_id, player_name, player_steam_id)
+	UpdatePlayerDatabase(player_steam_id, package_id)
+
+	-- Prevents the command from running in the console
+	return false
+end)
+```
+
+
+#### Selling from a Chat Command {/* #selling-from-a-chat-command */}
+
+```lua title="Server/Index.lua" showLineNumbers
+-- Opens the checkout of the package 123456 when the player types /vip
+Chat.Subscribe("PlayerSubmit", function(message, player)
+	if (message == "/vip") then
+		Tebex.OpenCheckoutOverlay(player, 123456)
+		return false
+	end
+end)
+```
+
+
+## 🗿 Static Functions {/* #static-functions */}
+
+<StaticFunctionsDeclaration type="StaticClass" name="Tebex" />
+
+
+## 🚀 Events {/* #events */}
+
+<EventsDeclaration type="StaticClass" name="Tebex" />

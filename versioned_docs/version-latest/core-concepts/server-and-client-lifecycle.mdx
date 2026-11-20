@@ -19,7 +19,7 @@ flowchart TB
 		StartServer["Start Server"]
 		--> StartHTTPServer["Start HTTP Server"]
 		--> FetchVault["Fetch Vault Data"]
-		--> DownloadMapPackage["Download Map Package if doesn't exist (with --auto_download)"]
+		--> DownloadMapPackage["Download Map Package if doesn't exist (with --vault_download missing)"]
 		--> LoadMapAssetPack["Load Map Asset Pack"]
 		--> LoadConfigAssets["Load Config.toml Asset Packs"]
 		--> InitializeScriptingEngine["Initialize Lua Virtual Machine & Default Libraries"]
@@ -40,7 +40,7 @@ flowchart TB
 	LoadPackages -.-> LoadPackage
 	subgraph LoadPackage["Load Package"]
 		direction TB
-		DownloadPackage["Download Package if doesn't exist (with --auto_download)"]
+		DownloadPackage["Download Package if doesn't exist (with --vault_download missing)"]
 		--> LoadPackageToml["Load Package.toml"]
 		--> LoadPackageAssetPacks["Load Required Asset Packs"]
 		--> LoadSharedIndex["Execute Shared/Index.lua"]

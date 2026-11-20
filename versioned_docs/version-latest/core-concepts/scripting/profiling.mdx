@@ -72,6 +72,34 @@ ssh -L 8086:127.0.0.1:8086 user@your-server
 ```
 
 
+### Profiling Your Scripts {/* #profiling-your-scripts */}
+
+Every Lua callback already shows up in Tracy with the file and line it comes from. To see what happens inside a callback, use the profiling functions of the <StaticClasses.Debug /> class, which work on both server and client:
+
+```lua
+Server.Subscribe("Tick", function(delta_time)
+	-- Measures the function as a zone named "[my-package] NPC AI", also in the native profiling
+	Debug.ProfileZone("NPC AI", function()
+		UpdateNPCs(delta_time)
+	end)
+
+	-- Records a value in a graph
+	Debug.ProfilePlot("NPCs Alive", #npcs)
+end)
+
+-- Marks an event in the timeline
+Debug.ProfileMessage("Round Started")
+```
+
+The zone always closes when the function returns, even when it errors. Its function takes no parameters and returns nothing, so use a closure to reach your values. They cost almost nothing while Tracy is not connected and the native profiling is off, so they can stay in your code. Use <MethodReference type="StaticClass" class_name="Debug" method_name="IsProfilerConnected" show_class_name /> to skip computing values that only feed a graph.
+
+:::caution
+
+Use fixed names for zones and graphs. Each different name stays stored until the game or server closes, so a name built per entity (like `"NPC " .. id`) fills the list quickly, and new names are ignored after 256.
+
+:::
+
+
 ## Native Profiling {/* #native-profiling */}
 
 We also integrated a native profiling command that can be used to capture profiling data without using Tracy. It works by outputting the execution time of some pre-defined parts of the code to the server or client console (or the client's Profiling UI).

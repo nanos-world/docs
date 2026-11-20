@@ -216,7 +216,7 @@ module.exports = {
               noIndex: true,
             },
             latest: {
-              label: 'latest - a1.169.2 ⚖️',
+              label: 'latest - a1.171.5 ⚖️',
             }
           },
         },
