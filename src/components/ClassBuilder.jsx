@@ -449,23 +449,88 @@ function GetDeclarationDescription(data, lean) {
 	return [data.description, data.description_details].filter(Boolean).join("<br/><br/>");
 }
 
+// Heading of a member card: authority and nativity icons before the name, efficiency pushed to the right, each keeping its explanation tooltip
+const MemberHeading = ({ id, data }) => (
+	<Heading as="h3" id={id} className="custom-anchor api-member-heading">
+		{ GetAuthorityType(data.authority) }
+		{ GetNative(data.is_native) }
+		<code>{ data.name }</code>
+		{ data.efficiency ? <span className="api-member-efficiency">{ GetEfficiency(data.efficiency) }</span> : null }
+	</Heading>
+);
+
+// Compact list of a member's parameters (or event arguments), under its own section label
+const MemberParametersList = ({ parameters, title }) => {
+	const parameter_list = Array.isArray(parameters) ? parameters : [];
+
+	if (parameter_list.length == 0)
+		return null;
+
+	return <div className="table-wrapper api-values">
+		<h5 className="api-values-title">{ title }</h5>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				{ parameter_list.map((value, index) =>
+					<tr key={ `${value.name}-${index}` }>
+						<td><code>{ GetParameterName(value) }</code></td>
+						<td>{ SplitTypesByOr(value.type) }</td>
+						<td class="table-description">
+							{ GetParameterDescription(value) }
+							{ value.default != null ? <span className="api-default">Default <code>{ value.default }</code></span> : null }
+						</td>
+					</tr>
+				) }
+			</tbody>
+		</table>
+	</div>;
+};
+
+// Compact list of a member's return values, as a section of its own after the parameters
+const MemberReturnsList = ({ returns }) => {
+	const return_list = Array.isArray(returns) ? returns : [];
+
+	if (return_list.length == 0)
+		return null;
+
+	return <div className="table-wrapper api-values">
+		<h5 className="api-values-title">Returns</h5>
+		<table>
+			<thead>
+				<tr>
+					<th>Type</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				{ return_list.map((value, index) =>
+					<tr key={ `return-${index}` }>
+						<td>{ SplitTypesByOr(value.type) }</td>
+						<td class="table-description">
+							{ value.description && !value.table_properties && !value.table_properties_custom && !value.function_parameters ?
+								<span dangerouslySetInnerHTML={{ __html: value.description }}></span>
+								: GetReturnDescription(value) }
+						</td>
+					</tr>
+				) }
+			</tbody>
+		</table>
+	</div>;
+};
+
 // Function Block Declaration
 export const FunctionDeclaration = ({ function_data, is_static, class_name, show_lean_declaration = false }) => {
 	const id = `${is_static ? "static-function" : "function"}-${function_data.name.toLowerCase()}`;
-	const hash_link = `Direct Link to ${function_data.name}`;
-	return <>
-		{ !show_lean_declaration ? <hr /> : null }
-		{ GetEfficiency(function_data.efficiency) }
-		<Heading as="h3" id={id} className="custom-anchor">
-			{ GetAuthorityType(function_data.authority) }
-			{ GetNative(function_data.is_native) }
-			<code>
-				{ function_data.name }
-			</code>
-		</Heading>
-		<blockquote>
-			<span dangerouslySetInnerHTML={{ __html: GetDeclarationDescription(function_data, show_lean_declaration) }}></span>
-		</blockquote>
+	const has_examples = Array.isArray(function_data.examples) && function_data.examples.length > 0;
+	return <div className={ show_lean_declaration ? "api-member-lean" : "api-member" }>
+		<MemberHeading id={ id } data={ function_data } />
+		<p className="api-member-description" dangerouslySetInnerHTML={{ __html: GetDeclarationDescription(function_data, show_lean_declaration) || "<span class='subtle-description'>No description provided</span>" }}></p>
 		{ !show_lean_declaration && function_data.last_compatibility_version && (
 			<Admonition type="info" icon="🆕" title="Updated Function">
 				This method was recently updated in ver. <b>{ function_data.last_compatibility_version }</b>. See the <Link to={`${getActiveVersionPath()}/core-concepts/packages/compatibility-versions#version-${ function_data.last_compatibility_version.replaceAll('.', '') }`}>Compatibility Versions</Link> page for more information.
@@ -476,82 +541,54 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name, show
 		</CodeBlock>
 		{ !show_lean_declaration ?
 			<>
-				<FunctionParametersDeclaration parameters={function_data.parameters} />
-				<FunctionReturnsDeclaration returns={function_data.return} />
-				{Array.isArray(function_data.examples) && function_data.examples.length > 0 ?
-					<Details summary={`${class_name}.${function_data.name} Examples`}>
-						{function_data.examples.map(function(example, index) {
-							return GetGenericExample(example)
-						})}
+				<MemberParametersList parameters={ function_data.parameters } title="Parameters" />
+				<MemberReturnsList returns={ function_data.return } />
+				{ has_examples ?
+					<Details summary={`Examples (${function_data.examples.length})`}>
+						{ function_data.examples.map((example) => GetGenericExample(example)) }
 					</Details>
-				: ""}
+				: null }
 				{ function_data.relations ?
 					<p className={"relations"}>
 						{"See also "}
 						{ GetRelations(function_data.relations) }
 						{"."}
 					</p>
-				: ""}
+				: null }
 			</>
 		: null }
-	</>
+	</div>;
 };
 
 // Event Block Declaration
 export const EventDeclaration = ({ event_data, class_name, show_lean_declaration = false }) => {
 	const id = `event-${event_data.name.toLowerCase()}`;
-	const hash_link = `Direct Link to ${event_data.name}`;
-	return <>
-		{ !show_lean_declaration ? <hr /> : null }
-		<Heading as="h3" id={id} className="custom-anchor">
-			{ GetAuthorityType(event_data.authority) }
-			{ GetNative(event_data.is_native) }
-			<code>
-				{ event_data.name }
-			</code>
-		</Heading>
-		<blockquote dangerouslySetInnerHTML={{ __html: `${ GetDeclarationDescription(event_data, show_lean_declaration) || "<span class='subtle-description'>No description provided</span>" }${ event_data.return ? "<br/><br/>" + event_data.return[0].description : ""}` }}></blockquote>
+	const has_examples = Array.isArray(event_data.examples) && event_data.examples.length > 0;
+	return <div className={ show_lean_declaration ? "api-member-lean" : "api-member" }>
+		<MemberHeading id={ id } data={ event_data } />
+		<p className="api-member-description" dangerouslySetInnerHTML={{ __html: GetDeclarationDescription(event_data, show_lean_declaration) || "<span class='subtle-description'>No description provided</span>" }}></p>
 		<CodeBlock className="language-lua">
 			{ GetEventSignature(class_name, event_data) }
 		</CodeBlock>
-		{ !show_lean_declaration && Array.isArray(event_data.arguments) && event_data.arguments.length > 0 ?
-			<div className="table-wrapper">
-				<h4>Arguments</h4>
-				<table>
-					<thead>
-						<tr>
-							<th>Type</th>
-							<th>Argument</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						{event_data.arguments.map(function(value, index) {
-							return <tr key={ `${value.name}-${index}` }>
-								<td>{ SplitTypesByOr(value.type) }</td>
-								<td><code>{ value.name }</code></td>
-								<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }} style={{ wordBreak: "break-word" }}></td>
-							</tr>;
-						})}
-					</tbody>
-				</table>
-			</div>
-		: <></> }
-		{ !show_lean_declaration && Array.isArray(event_data.examples) && event_data.examples.length > 0 ?
-			<Details summary={ `${class_name} "${event_data.name}" Event Examples`}>
-				{event_data.examples.map(function(example, index) {
-					return GetEventExample(class_name, event_data, example)
-				})}
-			</Details>
-		: <></>}
-		{ !show_lean_declaration && event_data.relations ?
-			<p className={"relations"}>
-				{"See also "}
-				{ GetRelations(event_data.relations) }
-				{"."}
-			</p>
-		: <></>}
-	</>
+		{ !show_lean_declaration ?
+			<>
+				<MemberParametersList parameters={ event_data.arguments } title="Arguments" />
+				<MemberReturnsList returns={ event_data.return } />
+				{ has_examples ?
+					<Details summary={`Examples (${event_data.examples.length})`}>
+						{ event_data.examples.map((example) => GetEventExample(class_name, event_data, example)) }
+					</Details>
+				: null }
+				{ event_data.relations ?
+					<p className={"relations"}>
+						{"See also "}
+						{ GetRelations(event_data.relations) }
+						{"."}
+					</p>
+				: null }
+			</>
+		: null }
+	</div>;
 };
 
 export const StaticFunctionNameDeclaration = ({ class_name, function_data, base_class }) => (
@@ -596,76 +633,109 @@ export const EventNameDeclaration = ({ class_name, event_data, base_class }) => 
 	</Tippy>
 );
 
-// Static Function List Declaration
-export const StaticFunctionListDeclaration = ({ class_name, functions_list, base_class }) => (
-	<div className="table-wrapper">
+// Label of the group holding functions without a category, shown only when the class has categories
+export const UncategorizedLabel = "Other";
+
+// Anchor ID of a category heading, unique per function kind
+export function GetCategoryAnchor(category, is_static) {
+	const slug = (category ?? UncategorizedLabel).toLowerCase().trim().replace(/\s+/g, "-");
+	return `${is_static ? "static-function" : "function"}-category-${slug}`;
+}
+
+// Groups functions by category (uncategorized last), keeping their order inside each group
+export function GetFunctionGroups(functions) {
+	const groups = new Map();
+
+	for (const function_data of functions ? Object.values(functions) : []) {
+		const category = function_data.category || null;
+
+		if (!groups.has(category))
+			groups.set(category, []);
+
+		groups.get(category).push(function_data);
+	}
+
+	return [...groups.entries()]
+		.map(([category, group_functions]) => ({ category, functions: group_functions }))
+		.sort((a, b) => a.category == null ? 1 : (b.category == null ? -1 : a.category.localeCompare(b.category)));
+}
+
+// Whether any group of GetFunctionGroups has a category, so headings are worth showing
+export function HasCategories(groups) {
+	return groups.some((group) => group.category != null);
+}
+
+// Function List Declaration, grouped by category
+const FunctionListTable = ({ class_name, functions_list, base_class, is_static }) => {
+	const groups = GetFunctionGroups(functions_list);
+	const show_categories = HasCategories(groups);
+	const NameDeclaration = is_static ? StaticFunctionNameDeclaration : FunctionNameDeclaration;
+	const base_path = base_class ? `${getActiveVersionPath()}/scripting-reference/classes/base-classes/${base_class.toLowerCase()}` : "";
+
+	return <div className="table-wrapper api-values api-member-list">
 		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Returns</th>
-					<th>Name</th>
-					<th>Description</th>
-				</tr>
-			</thead>
 			<tbody>
-				{Object.entries(functions_list).map(([index, value]) => {
-					return <tr key={ `${value.name}-${index}` }>
-						<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
-						<td>{ value.return ? GetReturnList(value.return) : "" }</td>
-						<td><StaticFunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
-						<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
-					</tr>;
-				})}
+				{ groups.map((group) => <React.Fragment key={ group.category ?? UncategorizedLabel }>
+					{ show_categories ?
+						<tr className="api-category-row">
+							<td colSpan={3}><Link to={`${base_path}#${GetCategoryAnchor(group.category, is_static)}`}>{ group.category ?? UncategorizedLabel }</Link></td>
+						</tr>
+					: null }
+					{ group.functions.map((value, index) =>
+						<tr key={ `${value.name}-${index}` }>
+							<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
+							<td className="api-member-name">
+								<NameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } />
+								{ value.return ? <span className="api-member-returns">: { GetReturnList(value.return) }</span> : null }
+							</td>
+							<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
+						</tr>
+					) }
+				</React.Fragment>) }
 			</tbody>
 		</table>
-	</div>
+	</div>;
+};
+
+// Static Function List Declaration
+export const StaticFunctionListDeclaration = ({ class_name, functions_list, base_class }) => (
+	<FunctionListTable class_name={ class_name } functions_list={ functions_list } base_class={ base_class } is_static={ true } />
 );
 
 // Function List Declaration
 export const FunctionListDeclaration = ({ class_name, functions_list, base_class }) => (
-	<div className="table-wrapper">
-		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Returns</th>
-					<th>Name</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				{Object.entries(functions_list).map(([index, value]) => {
-					return <tr key={ `${value.name}-${index}` }>
-						<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
-						<td>{ value.return ? GetReturnList(value.return) : "" }</td>
-						<td><FunctionNameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } /></td>
-						<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
-					</tr>;
-				})}
-			</tbody>
-		</table>
-	</div>
+	<FunctionListTable class_name={ class_name } functions_list={ functions_list } base_class={ base_class } is_static={ false } />
 );
+
+// Detailed Function Blocks, under a heading per category when the class has categories
+const FunctionDeclarationGroups = ({ class_name, functions_list, is_static }) => {
+	const groups = GetFunctionGroups(functions_list);
+	const show_categories = HasCategories(groups);
+
+	return groups.map((group) => <React.Fragment key={ group.category ?? UncategorizedLabel }>
+		{ show_categories ?
+			<Heading as="h3" id={ GetCategoryAnchor(group.category, is_static) } className="custom-anchor api-category-heading">
+				{ group.category ?? UncategorizedLabel }
+				<span className="api-category-kind">{ is_static ? "static functions" : "functions" }</span>
+			</Heading>
+		: null }
+		{ group.functions.map((value, index) =>
+			<FunctionDeclaration key={ `${value.name}-${index}` } function_data={ value } is_static={ is_static } class_name={ class_name } />
+		) }
+	</React.Fragment>);
+};
 
 // Events List Declaration
 export const EventListDeclaration = ({ type, name, inherited_class_name, base_class }) => {
 	const class_data = GetClassData(type, name);
 	return (
-		<div className="table-wrapper">
+		<div className="table-wrapper api-values api-member-list">
 			<table>
-				<thead>
-					<tr>
-						<th></th>
-						<th>Name</th>
-						<th>Description</th>
-					</tr>
-				</thead>
 				<tbody>
 					{Object.entries(class_data.events).map(([index, value]) => {
 						return <tr key={ `${value.name}-${index}` }>
 							<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
-							<td><EventNameDeclaration class_name={ inherited_class_name } base_class={ base_class } event_data={ value } /></td>
+							<td className="api-member-name"><EventNameDeclaration class_name={ inherited_class_name } base_class={ base_class } event_data={ value } /></td>
 							<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
 						</tr>;
 					})}
@@ -728,80 +798,80 @@ export const ConstructorDeclaration = ({ type, name }) => {
 
 	return Object.entries(class_data.constructors).map(([index, constructor]) => {
 		const id = `constructor-${constructor.name.toLowerCase().replaceAll(' ', '-')}`;
-		const hash_link = `Direct Link to ${constructor.name}`;
-		return <>
-			<Heading as="h3" id={id} className="custom-anchor">
+		return <div key={ id } className="api-member">
+			<Heading as="h3" id={id} className="custom-anchor api-member-heading">
 				{ constructor.name }
 			</Heading>
-			<p class="subtle-description" style={{ marginTop: "-20px" }}>{ constructor.description || "No description provided" }</p>
+			<p className="api-member-description">{ constructor.description || <span className="subtle-description">No description provided</span> }</p>
 			<CodeBlock className="language-lua">
 				{ GetConstructorExample(class_data, index) }
 			</CodeBlock>
 			{
 				constructor.parameters.length == 0 ? <p class="subtle-description">This constructor doesn't have parameters.</p> :
-				<>
-					<div className="table-wrapper">
-						<h4>Parameters</h4>
-						<table>
-							<thead>
-								<tr>
-									<th>Type</th>
-									<th>Name</th>
-									<th>Default</th>
-									<th>Description</th>
-								</tr>
-							</thead>
-							<tbody>
-								{ constructor.parameters.map(function(value, index) {
-									return <tr key={ `${value.name}-${index}` }>
-										<td>{ SplitTypesByOr(value.type) }</td>
-										<td><b><code>{ value.name }</code></b></td>
-										<td style={{ whiteSpace: "nowrap" }}>{ value.default != null ? <code>{ value.default }</code> : <span class="subtle-description"> {"Required parameter"} </span> }</td>
-										<td class="table-description">{ GetParameterDescription(value) }</td>
-									</tr>;
-								} )}
-							</tbody>
-						</table>
-					</div>
-				</>
+				<MemberParametersList parameters={ constructor.parameters } title="Parameters" />
 			}
-		</>
+		</div>;
 	});
 };
 
-// Base Class Functions
-export const InheritedClassFunctions = ({ inherited_class_name, parent_class_name, is_static } ) => {
+// Base classes in the order their inherited members are listed, closest parent first
+const InheritedBaseClasses = ["Pawn", "Vehicle", "Pickable", "Damageable", "Paintable", "Actor", "Entity"];
+
+// Members inherited from one base class, one line of names per category
+const InheritedBaseSection = ({ inherited_class_name, parent_class_name, kind }) => {
 	const class_data = GetClassData("Class", parent_class_name);
 
 	if (!class_data)
 		return <span class="error">Failed to load inherited class '{parent_class_name}' ({inherited_class_name}) data.</span>;
 
-	return (<>
-		<Details summary={`Inherited ${parent_class_name} ${is_static ? "Static " : ""}Functions`}>
-			<i>
-				{ `${inherited_class_name} inherits from Base ${parent_class_name} Class, sharing it's methods and functions:` }
-			</i>
-			<br/>
-			<ReferenceLink href={`scripting-reference/classes/base-classes/${parent_class_name.toLowerCase()}`}>Base {parent_class_name}</ReferenceLink>
-			{ is_static ?
-				<StaticFunctionListDeclaration class_name={inherited_class_name} base_class={parent_class_name} functions_list={class_data.static_functions} />
-				: <FunctionListDeclaration class_name={inherited_class_name} base_class={parent_class_name} functions_list={class_data.functions} />
-			}
-		</Details>
-	</>);
+	const is_event = kind == "events";
+	const groups = is_event ? [{ category: null, functions: Object.values(class_data.events || {}) }] : GetFunctionGroups(class_data[kind]);
+	const total = groups.reduce((sum, group) => sum + group.functions.length, 0);
+
+	if (total == 0)
+		return null;
+
+	const show_categories = HasCategories(groups);
+	const NameDeclaration = is_event ? EventNameDeclaration : (kind == "static_functions" ? StaticFunctionNameDeclaration : FunctionNameDeclaration);
+
+	return <div className="api-inherited-base">
+		<div className="api-inherited-header">
+			<span>From <Link to={`${getActiveVersionPath()}/scripting-reference/classes/base-classes/${parent_class_name.toLowerCase()}`}>{ parent_class_name }</Link></span>
+			<span className="subtle-description">{ total } { is_event ? "events" : "functions" }</span>
+		</div>
+		{ groups.map((group) =>
+			<div key={ group.category ?? UncategorizedLabel } className="api-inherited-row">
+				<span className="api-inherited-category">{ show_categories ? (group.category ?? UncategorizedLabel) : (is_event ? "All events" : "All functions") }</span>
+				<span className="api-inherited-names">
+					{ group.functions.map((value, index) => <React.Fragment key={ `${value.name}-${index}` }>
+						{ index > 0 ? ", " : null }
+						{ is_event ?
+							<NameDeclaration class_name={ inherited_class_name } base_class={ parent_class_name } event_data={ value } />
+							: <NameDeclaration class_name={ inherited_class_name } base_class={ parent_class_name } function_data={ value } /> }
+					</React.Fragment>) }
+				</span>
+			</div>
+		) }
+	</div>;
 };
 
-// Base Class Events
-export const InheritedClassEvents = ({ inherited_class_name, parent_class_name }) => (
-	<Details summary={`Inherited ${parent_class_name} Events`}>
-	<i>
-		{ `${inherited_class_name} inherits from Base ${parent_class_name} Class, sharing it's events:` }
-	</i>
-	<br/>
-		<ReferenceLink href={`scripting-reference/classes/base-classes/${parent_class_name.toLowerCase()}`}>Base {parent_class_name}</ReferenceLink>
-		<EventListDeclaration type="Class" name={parent_class_name} inherited_class_name={inherited_class_name} base_class={parent_class_name} />
-	</Details>
-);
+// Members a class inherits from its base classes, shown in one block after its own list
+const InheritedMembers = ({ class_data, kind }) => {
+	if (!class_data.inheritance || class_data.is_base)
+		return null;
+
+	const parents = InheritedBaseClasses.filter((parent) => class_data.inheritance.includes(parent) && (kind != "static_functions" || parent == "Entity"));
+
+	if (parents.length == 0)
+		return null;
+
+	const title = kind == "events" ? "Inherited events" : (kind == "static_functions" ? "Inherited static functions" : "Inherited functions");
+
+	return <div className="api-inherited">
+		<h4>{ title }</h4>
+		{ parents.map((parent) => <InheritedBaseSection key={ parent } inherited_class_name={ class_data.name } parent_class_name={ parent } kind={ kind } />) }
+	</div>;
+};
 
 // Block of Functions
 export const FunctionsDeclaration = ({ type, name }) => {
@@ -810,31 +880,16 @@ export const FunctionsDeclaration = ({ type, name }) => {
 	if (!class_data)
 		return <span class="error">Failed to load class '{name}' ({type}) data.</span>;
 
-	return (<>
-		{ class_data.inheritance && !class_data.is_base ? <>
-			{ class_data.inheritance.includes("Entity") ?
-				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Entity"} /> : "" }
-			{ class_data.inheritance.includes("Actor") ?
-				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Actor"} /> : "" }
-			{ class_data.inheritance.includes("Paintable") ?
-				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Paintable"} /> : "" }
-			{ class_data.inheritance.includes("Damageable") ?
-				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Damageable"} /> : "" }
-			{ class_data.inheritance.includes("Pickable") ?
-				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Pickable"} /> : "" }
-			{ class_data.inheritance.includes("Vehicle") ?
-				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Vehicle"} /> : "" }
-			{ class_data.inheritance.includes("Pawn") ?
-				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Pawn"} /> : "" }
-		</> : "" }
-		{
-			class_data.functions == null || Object.keys(class_data.functions).length == 0 ? <p class="subtle-description">This class doesn't have own functions.</p> :
-			<>
-				<FunctionListDeclaration class_name={class_data.name} functions_list={class_data.functions} />
+	const has_functions = class_data.functions != null && Object.keys(class_data.functions).length > 0;
 
-				{ Object.entries(class_data.functions).map(([index, value]) => <FunctionDeclaration key={ `${value.name}-${index}` } function_data={value} class_name={class_data.name} />) }
-			</>
-		}
+	return (<>
+		{ has_functions ?
+			<FunctionListDeclaration class_name={class_data.name} functions_list={class_data.functions} />
+			: <p class="subtle-description">This class doesn't have own functions.</p> }
+		<InheritedMembers class_data={class_data} kind="functions" />
+		{ has_functions ?
+			<FunctionDeclarationGroups class_name={class_data.name} functions_list={class_data.functions} is_static={false} />
+		: null }
 	</>);
 };
 
@@ -845,20 +900,16 @@ export const StaticFunctionsDeclaration = ({ type, name }) => {
 	if (!class_data)
 		return <span class="error">Failed to load class '{name}' ({type}) data.</span>;
 
+	const has_functions = class_data.static_functions != null && Object.keys(class_data.static_functions).length > 0;
+
 	return (<>
-		{ class_data.inheritance && !class_data.is_base ? <>
-			{ class_data.inheritance.includes("Entity") ?
-				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Entity"} is_static={true} /> : "" }
-			{/* { class_data.inheritance.includes("Actor") ?
-				<InheritedClassFunctions inherited_class_name={class_data.name} parent_class_name={"Actor"} is_static={true} /> : "" } */}
-		</> : "" }
-		{
-			class_data.static_functions == null || class_data.static_functions.length == 0 ? <p class="subtle-description">This class doesn't have own static functions.</p> :
-			<>
-				<StaticFunctionListDeclaration class_name={class_data.name} functions_list={class_data.static_functions} />
-				{ Object.entries(class_data.static_functions).map(([index, value]) => <FunctionDeclaration key={ `${value.name}-${index}` } function_data={value} is_static class_name={class_data.name} />) }
-			</>
-		}
+		{ has_functions ?
+			<StaticFunctionListDeclaration class_name={class_data.name} functions_list={class_data.static_functions} />
+			: <p class="subtle-description">This class doesn't have own static functions.</p> }
+		<InheritedMembers class_data={class_data} kind="static_functions" />
+		{ has_functions ?
+			<FunctionDeclarationGroups class_name={class_data.name} functions_list={class_data.static_functions} is_static={true} />
+		: null }
 	</>);
 };
 
@@ -889,28 +940,16 @@ export const EventsDeclaration = ({ type, name }) => {
 	if (!class_data)
 		return <span class="error">Failed to load class '{name}' ({type}) data.</span>;
 
+	const has_events = class_data.events != null && Object.keys(class_data.events).length > 0;
+
 	return (<>
-		{ class_data.inheritance && !class_data.is_base ? <>
-			{ class_data.inheritance.includes("Entity") ?
-				<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Entity"} /> : "" }
-			{ class_data.inheritance.includes("Actor") ?
-				<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Actor"} /> : "" }
-			{ class_data.inheritance.includes("Pickable") ?
-				<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Pickable"} /> : "" }
-			{ class_data.inheritance.includes("Damageable") ?
-				<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Damageable"} /> : "" }
-			{ class_data.inheritance.includes("Vehicle") ?
-				<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Vehicle"} /> : "" }
-			{ class_data.inheritance.includes("Pawn") ?
-				<InheritedClassEvents inherited_class_name={class_data.name} parent_class_name={"Pawn"} /> : "" }
-		</> : "" }
-		{
-			class_data.events == null || class_data.events.length == 0 ? <p class="subtle-description">This class doesn't have own events.</p> :
-			<>
-				<EventListDeclaration type={type} name={class_data.name} inherited_class_name={class_data.name} />
-				{ Object.entries(class_data.events).map(([index, value]) => <EventDeclaration key={ `${value.name}-${index}` } event_data={value} class_name={class_data.name} />) }
-			</>
-		}
+		{ has_events ?
+			<EventListDeclaration type={type} name={class_data.name} inherited_class_name={class_data.name} />
+			: <p class="subtle-description">This class doesn't have own events.</p> }
+		<InheritedMembers class_data={class_data} kind="events" />
+		{ has_events ?
+			Object.entries(class_data.events).map(([index, value]) => <EventDeclaration key={ `${value.name}-${index}` } event_data={value} class_name={class_data.name} />)
+		: null }
 	</>);
 };
 

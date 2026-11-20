@@ -194,6 +194,23 @@ h3 code {
 	opacity: 90%;
 }
 
+.toc-category {
+	font-size: 0.65rem;
+	font-weight: 400;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--ifm-color-emphasis-600);
+}
+
+html[data-theme='dark'] .toc-category,
+html[data-theme='dark'] .table-wrapper table tr.api-category-row a {
+	color: var(--ifm-color-emphasis-400);
+}
+
+.table-of-contents li:has(> a .toc-category) {
+	margin-top: 0.75rem;
+}
+
 .toc-highlight code {
 	padding: 1px 5px;
 }
@@ -286,6 +303,277 @@ table {
 .table-wrapper table td.table-description {
 	font-size: 90%;
 	width: 100%;
+}
+
+/* Function categories */
+.table-wrapper table tr.api-category-row td {
+	padding-top: 1.25rem;
+	border-top: none;
+	font-weight: 600;
+	font-size: 0.75rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.table-wrapper table tr.api-category-row a {
+	color: var(--ifm-color-emphasis-700);
+}
+
+/* Member detail blocks */
+.api-member {
+	margin: 1.5rem 0;
+	padding: 1.25rem 1.5rem;
+	border: 1px solid var(--ifm-color-emphasis-200);
+	border-radius: 10px;
+}
+
+/* Card rhythm: tight between name and description, wider between sections, footer separated by a line */
+.api-member > .theme-code-block,
+.api-member > div[class*="codeBlockContainer"] {
+	margin-bottom: 1.5rem;
+}
+
+.api-member > .theme-code-block:last-child,
+.api-member > div[class*="codeBlockContainer"]:last-child {
+	margin-bottom: 0;
+}
+
+.api-member > .api-values {
+	margin-bottom: 1.5rem;
+}
+
+.api-member > .api-values table {
+	margin-bottom: 0;
+}
+
+.api-member > details {
+	margin: 0 0 1.5rem;
+}
+
+.api-member > p.relations {
+	margin: 0;
+	padding-top: 0.75rem;
+	border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.api-member > :last-child,
+.api-member > .api-values:last-child table {
+	margin-bottom: 0;
+}
+
+.api-member-heading {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.4rem;
+	margin: 0 0 0.5rem;
+}
+
+.api-member-heading > code {
+	font-size: 1.05rem;
+}
+
+.api-member-efficiency {
+	order: 1;
+	margin-left: auto;
+}
+
+.api-member-description {
+	margin: 0 0 1rem;
+	color: var(--ifm-color-emphasis-800);
+}
+
+.api-member-heading .header-chip {
+	box-sizing: border-box;
+	height: 1.75rem;
+	padding-top: 0;
+	padding-bottom: 0;
+	font-size: 0.75rem;
+}
+
+.api-member-heading .efficiency-chip {
+	float: none;
+	margin: 0;
+}
+
+.api-member-heading > .authority-availability,
+.api-member-heading > .native-type {
+	margin-right: 0.2rem;
+}
+
+.api-values table {
+	display: table;
+	width: 100%;
+	margin-bottom: 1rem;
+	border: none;
+}
+
+/* Light table style, the default for every table in the docs */
+.markdown table,
+.api-values table {
+	border: none;
+}
+
+.markdown table tr,
+.markdown table thead,
+.api-values table tr,
+.api-values table thead {
+	background: transparent;
+	border: none;
+}
+
+.markdown table th,
+.markdown table td,
+.api-values table th,
+.api-values table td {
+	padding: 0.45rem 1.5rem 0.45rem 0;
+	border: none;
+	border-top: 1px solid var(--ifm-color-emphasis-200);
+	background: transparent;
+	text-align: left;
+	vertical-align: top;
+}
+
+.markdown table th,
+.api-values table th {
+	border-top: none;
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: var(--ifm-color-emphasis-600);
+}
+
+.api-values table td:first-child,
+.api-values table td.api-member-name {
+	white-space: nowrap;
+}
+
+/* Every cell matches the description size */
+.api-values table td {
+	font-size: 90%;
+}
+
+.api-values table td.api-member-name {
+	font-size: 100%;
+}
+
+.api-member-list table tr:first-child td {
+	border-top: none;
+}
+
+.api-member-returns {
+	margin-left: 0.3rem;
+	font-size: 0.85rem;
+	color: var(--ifm-color-emphasis-600);
+}
+
+.api-values-title {
+	margin: 0 0 0.4rem;
+	font-size: 0.65rem;
+	font-weight: 400;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--ifm-color-emphasis-600);
+}
+
+html[data-theme='dark'] .api-values-title {
+	color: var(--ifm-color-emphasis-400);
+}
+
+.api-default {
+	display: block;
+	margin-top: 0.15rem;
+	font-size: 0.8rem;
+	color: var(--ifm-color-emphasis-600);
+}
+
+html[data-theme='dark'] .api-default {
+	color: var(--ifm-color-emphasis-400);
+}
+
+html[data-theme='dark'] .api-default code {
+	color: var(--ifm-color-emphasis-400);
+}
+
+/* Inherited members */
+.api-inherited {
+	margin: 1rem 0 2rem;
+	padding: 0.75rem 1.25rem;
+	border: 1px solid var(--ifm-color-emphasis-200);
+	border-radius: 10px;
+}
+
+.api-inherited h4 {
+	margin: 0 0 0.5rem;
+	color: var(--ifm-color-emphasis-800);
+}
+
+.api-inherited-base + .api-inherited-base {
+	margin-top: 0.75rem;
+	padding-top: 0.75rem;
+	border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.api-inherited-header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 0.35rem;
+	font-weight: 600;
+}
+
+.api-inherited-header .subtle-description {
+	font-weight: 400;
+	font-size: 0.85rem;
+}
+
+.api-inherited-row {
+	display: grid;
+	grid-template-columns: 110px minmax(0, 1fr);
+	gap: 0.75rem;
+	padding: 0.2rem 0;
+	font-size: 0.9rem;
+}
+
+.api-inherited-category {
+	padding-top: 0.15rem;
+	font-size: 0.7rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--ifm-color-emphasis-600);
+}
+
+html[data-theme='dark'] .api-inherited-category {
+	color: var(--ifm-color-emphasis-400);
+}
+
+.api-inherited-names b {
+	font-weight: 400;
+}
+
+.api-inherited-names code {
+	padding: 0;
+	border: none;
+	background: none;
+	font-size: 0.8rem;
+}
+
+h3.api-category-heading {
+	margin-top: 3rem;
+	padding-bottom: 0.4rem;
+	border-bottom: 2px solid var(--ifm-color-emphasis-300);
+	font-size: 0.8rem;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--ifm-color-emphasis-700);
+}
+
+.api-category-kind {
+	margin-left: 0.5rem;
+	font-size: 0.65rem;
+	letter-spacing: 0;
+	text-transform: lowercase;
+	color: var(--ifm-color-emphasis-500);
 }
 
 article p img {
@@ -774,6 +1062,18 @@ iframe {
 	text-decoration: underline dashed 2px #5f9fff42;
 	text-underline-offset: 2px;
 	white-space: nowrap;
+}
+
+.api-member .hover-link,
+.api-inherited .hover-link,
+.api-values .hover-link {
+	text-decoration: underline dashed 1px #5f9fff2e;
+}
+
+.api-member .hover-link:hover,
+.api-inherited .hover-link:hover,
+.api-values .hover-link:hover {
+	text-decoration: underline solid 1px;
 }
 
 span.hover-link {

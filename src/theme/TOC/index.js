@@ -3,7 +3,7 @@ import TOC from '@theme-original/TOC';
 import { useLocation } from '@docusaurus/router';
 import { useDoc } from '@docusaurus/plugin-content-docs/client';
 
-import { GetClassData, GetAuthorityImage } from '@site/src/components/ClassBuilder';
+import { GetClassData, GetAuthorityImage, GetFunctionGroups, HasCategories, GetCategoryAnchor, UncategorizedLabel } from '@site/src/components/ClassBuilder';
 
 
 // Map URL paths to internal data types
@@ -17,8 +17,8 @@ const routeMapping = {
 
 // Map Docusaurus heading IDs to JSON arrays and anchor ID prefixes
 const sectionMapping = {
-	'functions':			{ dataKey: 'functions',			prefix: 'function-' },
-	'static-functions':		{ dataKey: 'static_functions',	prefix: 'static-function-' },
+	'functions':			{ dataKey: 'functions',			prefix: 'function-', isFunctionList: true, isStatic: false },
+	'static-functions':		{ dataKey: 'static_functions',	prefix: 'static-function-', isFunctionList: true, isStatic: true },
 	'events':				{ dataKey: 'events',			prefix: 'event-' },
 	// 'properties':		{ dataKey: 'properties',		prefix: 'property-' },
 	// 'static-properties':	{ dataKey: 'static_properties',	prefix: 'static-property-' },
@@ -81,8 +81,7 @@ export default function TOCWrapper(props) {
 
 		// If it's a valid section AND the data exists in the JSON, loop through it
 		if (sectionInfo && apiData[sectionInfo.dataKey]) {
-
-			Object.values(apiData[sectionInfo.dataKey]).forEach(entry => {
+			const pushEntry = (entry, level) => {
 				let imageSrc;
 
 				if (entry.authority)
@@ -93,9 +92,29 @@ export default function TOCWrapper(props) {
 				nestedToc.push({
 					value: `${imageSrc ? `<img src="${imageSrc}" loading="lazy" />` : '' }<code>${entry.name}</code>`,
 					id: `${sectionInfo.prefix}${entry.name.toLowerCase().replaceAll(' ', '-')}`,
-					level: 3
+					level
 				});
-			});
+			};
+
+			// Functions follow the page order, each category as a label at the same level as its functions
+			if (sectionInfo.isFunctionList) {
+				const groups = GetFunctionGroups(apiData[sectionInfo.dataKey]);
+				const showCategories = HasCategories(groups);
+
+				for (const group of groups) {
+					if (showCategories) {
+						nestedToc.push({
+							value: `<span class="toc-category">${group.category ?? UncategorizedLabel}</span>`,
+							id: GetCategoryAnchor(group.category, sectionInfo.isStatic),
+							level: 3
+						});
+					}
+
+					group.functions.forEach((entry) => pushEntry(entry, 3));
+				}
+			} else {
+				Object.values(apiData[sectionInfo.dataKey]).forEach((entry) => pushEntry(entry, 3));
+			}
 		}
 	}
 
