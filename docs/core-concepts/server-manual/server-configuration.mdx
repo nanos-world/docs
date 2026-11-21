@@ -59,10 +59,10 @@ How your server presents (and announces) itself.
 | Setting | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | **`max_players`** | `integer` | `64` | Max amount of players allowed to join. Range `1` - `999` |
+| **`max_held_connections`** | `integer` | `0` | Extra connections accepted when the server is full, so they can wait in the loading screen while a script holds them (e.g. a queue, see [Holding a Connection](/core-concepts/scripting/player-lifecycle.mdx#holding-a-connection)). They don't count as players and only join when the script releases them. `0` refuses new players when full. Range `0` - `999` |
 | **`password`** | `string` | `""` | Password required to connect. Leave it blank for no password required |
 | **`token`** | `string` | `""` | Server authentication token, used to authorize [Vault](/vault-and-store/vault.mdx) downloads, through the [CLI](/core-concepts/server-manual/command-line-interface.mdx), through `--vault_download`, and when fetching Packages/Assets you own |
 | **`tebex_secret`** | `string` | `""` | Secret key of your <StaticClasses.Tebex /> store (Tebex panel, Game Servers), to sell packages in game. Leave it blank to disable. Keep it private |
-| **`banned_ids`** | `string list` | `[]` | List of banned nanos account IDs. Banned players are rejected at connection time |
 
 
 #### `[game]` {/* #game */}
@@ -174,6 +174,24 @@ Scripting can bias the formula per entity with <MethodReference type="Class" cla
 The level can also be changed while the server is running with the [`distance_optimization`](#built-in-commands) console command.
 
 
+## Bans {/* #bans */}
+
+Banned players are kept in `Bans.toml`, next to `Config.toml`. The server creates it on the first ban, and updates it whenever a player is banned with <MethodReference type="Class" class_name="Player" method_name="Ban" show_class_name /> or <MethodReference type="StaticClass" class_name="Server" method_name="BanBySteamID" show_class_name />, or unbanned with <MethodReference type="StaticClass" class_name="Server" method_name="Unban" show_class_name />. Banned players are rejected at connection time.
+
+```toml reference
+https://github.com/nanos-world/nanos-world-server/blob/main/Bans.toml
+```
+
+| Setting | Type | Description |
+| :--- | :--- | :--- |
+| **`steam_id`** | `string` | The player's Steam ID (SteamID64). It's the only field a ban matches |
+| **`username`** | `string` | The player's name when banned, informative only. Empty when banning someone who is not connected |
+| **`reason`** | `string` | Why the player was banned |
+| **`banned_at`** | `date-time` | When the player was banned, in UTC |
+
+You can also add or remove `[[ban]]` blocks by hand, as long as the server is off, otherwise the next ban overwrites your changes. Only `steam_id` is required. If the file is broken (a syntax error, a ban without `steam_id`, a wrong type) the server refuses to start.
+
+
 ## Logo Image {/* #logo-image */}
 
 It is possible to have a custom image to be displayed in the server list. For that, add a file called `Server.webp` or `Server.jpg` besides the server executable with the logo you wish (if there is more than one, they are picked in that order). The recommended size is `300x150` and it must be under 128 KB.
@@ -260,6 +278,7 @@ It is possible to override the Server Configuration with Command Line Parameters
 | **`--token`** | string | Server authorization token |
 | **`--tebex_secret`** | string | Secret key of your <StaticClasses.Tebex /> store |
 | **`--max_players`** | 1-999 | Max allowed players |
+| **`--max_held_connections`** | 0-999 | Extra connections that can wait held by a script when the server is full |
 | **`--dedicated_server`** | `true` or `false` (`1` or `0` also work) | If to start as a Dedicated Server or P2P |
 | **`--async_log`** | `true` or `false` (`1` or `0` also work) | If to use async or sync logs (async provides better performance)<br/><br/>Default is <code>true</code> |
 | **`--log_level`** | 1, 2 or 3 | If to use Normal <code>1</code>, Debug <code>2</code> or Verbose <code>3</code> logs |
