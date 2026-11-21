@@ -47,7 +47,7 @@ How your server presents (and announces) itself.
 | **`name`** | `string` | `"nanos world server"` | Name of the Server, as displayed in the Server List |
 | **`description`** | `string` | `""` | Description of the Server. **Clamped to 200 characters** |
 | **`language`** | `string` | `"global"` | Country code (e.g. `br`, `us`, `de`) used to display a country flag in the server list |
-| **`ip`** | `string` | `"0.0.0.0"` | Address the server binds to, for both the game socket and the built-in HTTP Server. We recommend leaving it `0.0.0.0`, which binds to every interface |
+| **`ip`** | `string` | `"0.0.0.0"` | Address the server binds to, for both the game socket and the built-in HTTP Server. We recommend leaving it `0.0.0.0`, which binds to every interface, on both IPv4 and IPv6 (IPv4 only if the machine has no IPv6). A specific IP binds only to that address |
 | **`port`** | `integer` | `7777` | Server main Port, used for both game traffic (UDP) and the built-in HTTP Server (TCP). Range `1024` - `65535` |
 | **`query_port`** | `integer` | `7778` | Server query Port (UDP), used by the Server List and by query tools. Range `1024` - `65535`, and **must be different from `port`** |
 | **`announce`** | `boolean` | `true` | Whether to announce the server in the Server List. A non-announced server is still joinable through Direct Connect |
