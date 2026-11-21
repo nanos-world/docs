@@ -231,11 +231,13 @@ nanos world counts on (for now) 3 built-in maps: `default-blank-map`, `default-e
 | :--- | :--- | :--- |
 | **`chat`** | `<message>` | Sends a chat message |
 | **`clear`** |  | Clears the console |
-| **`kick`** | `<player_id> <reason>` | Kicks a player by it's ID |
+| **`kick`** | `<steam_id> <reason>` | Kicks a player by their Steam ID |
+| **`ban`** | `<steam_id> <reason>` | Bans a player by their Steam ID, connected or not |
+| **`unban`** | `<steam_id>` | Removes a player's ban |
 | **`map`** | `<map_package>` | Changes the map to another map Package, reloading all Packages and reconnecting the Players |
 | **`restart`** |  | Restarts the server, reloading all Packages and reconnecting the Players |
 | **`stop`** |  | Stops the server |
-| **`players`** |  | Lists all Players connected |
+| **`players`** |  | Lists all Players connected, with their Steam IDs |
 | **`password`** | `<new_password>` | Changes the server password |
 | **`profiling`** | `<0-1>` | Enables/Disables Performance Profiling Logs for debugging |
 | **`log_level`** | `<1-3>` | Changes the log level |
