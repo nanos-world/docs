@@ -14,6 +14,7 @@ files: [
     # API
     {
       source: '/src/api/.generated/en/**/*',
+      dest: '/api/**/%original_file_name%',
       translation: '/src/api/.generated/%two_letters_code%/**/%original_file_name%',
       languages_mapping: *languages_mapping,
     },
