@@ -3,7 +3,7 @@ import TOC from '@theme-original/TOC';
 import { useLocation } from '@docusaurus/router';
 import { useDoc } from '@docusaurus/plugin-content-docs/client';
 
-import { GetClassData, GetAuthorityImage, GetFunctionGroups, HasCategories, GetCategoryAnchor, UncategorizedLabel } from '@site/src/components/ClassBuilder';
+import { GetClassData, GetAuthorityImage, GetFunctionGroups, HasCategories, GetCategoryAnchor, GetUncategorizedLabel } from '@site/src/components/ClassBuilder';
 
 
 // Map URL paths to internal data types
@@ -104,7 +104,7 @@ export default function TOCWrapper(props) {
 				for (const group of groups) {
 					if (showCategories) {
 						nestedToc.push({
-							value: `<span class="toc-category">${group.category ?? UncategorizedLabel}</span>`,
+							value: `<span class="toc-category">${group.category ?? GetUncategorizedLabel()}</span>`,
 							id: GetCategoryAnchor(group.category, sectionInfo.isStatic),
 							level: 3
 						});

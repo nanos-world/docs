@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ThemedImage from '@theme/ThemedImage'
 import { useRef, useEffect, useState } from 'react';
 import { useColorMode } from '@docusaurus/theme-common';
+import Translate from '@docusaurus/Translate';
 
 // Media too heavy for the build lives in the 'external' folder, which mirrors the Cloudflare R2 bucket served at this domain ('yarn media:push' uploads it)
 export const GetExternalPath = () => {
@@ -65,7 +66,7 @@ export const VideoExternal = ({ path, autoplay = false, loop = false, controls =
 			playsInline
 			preload="metadata" // preload the cover image only
 		>
-			Your browser does not support the video tag.
+			<Translate id="media.video_not_supported">Your browser does not support the video tag.</Translate>
 		</video>
 	);
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import CodeBlock from '@theme/CodeBlock';
+import { translate } from '@docusaurus/Translate';
 
 import { EnumDeclaration } from '@site/src/components/EnumDeclaration';
 import { GetFunctionSignature, GetStaticFunctionSignature, GetEventSignature, GetParametersList, FunctionParametersDeclaration, GetElementByType } from '@site/src/components/ClassBuilder';
@@ -59,7 +60,7 @@ export const ClassToolTip = ({ class_name, emoji, description, append_title, inh
 		<span dangerouslySetInnerHTML={{ __html: description }}></span>
 		{ inheritance_children ? <>
 			<br/><br/>
-			Child Classes: { inheritance_children.map((inherit, index) => GetElementByType(inherit, index)).reduce((prev, next) => [prev, ", ", next]) }.
+			{ translate({ id: 'api.tooltip.child_classes', message: 'Child Classes:' }) } { inheritance_children.map((inherit, index) => GetElementByType(inherit, index)).reduce((prev, next) => [prev, ", ", next]) }.
 		</> : "" }
 	</>
 );

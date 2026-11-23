@@ -1,18 +1,33 @@
 import React from 'react';
 import Admonition from '@theme/Admonition';
 import Heading from '@theme/Heading';
+import Translate, { translate } from '@docusaurus/Translate';
 import { GetRelations, GetClassData } from '@site/src/components/ClassBuilder';
 
 export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => {
 	const bitwise_tip = enum_data && enum_data.supports_bitwise ?
-		<Admonition type="tip" icon="💡" title="TIP">
-			This Enum supports <a href="https://www.lua.org/manual/5.4/manual.html#3.4.2">Bitwise Operations</a>!
+		<Admonition type="tip" icon="💡" title={translate({ id: 'api.enum.tip', message: 'TIP' })}>
+			<Translate
+				id="api.enum.supports_bitwise"
+				values={{
+					link: (
+						<a href="https://www.lua.org/manual/5.4/manual.html#3.4.2">
+							<Translate id="api.enum.bitwise_operations">Bitwise Operations</Translate>
+						</a>
+					),
+				}}>
+				{'This Enum supports {link}!'}
+			</Translate>
 		</Admonition>
 	: null;
 
 	const relations = enum_data && enum_data.relations ?
 		<p className={"relations"}>
-			Used by { GetRelations(enum_data.relations) }.
+			<Translate
+				id="api.enum.used_by"
+				values={{ relations: <>{ GetRelations(enum_data.relations) }</> }}>
+				{'Used by {relations}.'}
+			</Translate>
 		</p>
 	: null;
 
@@ -23,7 +38,7 @@ export const EnumDeclaration = ({ enum_name, enum_data, is_tooltip }) => {
 				<img src={"/img/scripting/lua.webp"} title={"Lua"} className={"tooltip-img"} loading={"lazy"} />
 				<span className={"tooltip-span"}>
 					<div>{enum_name}</div>
-					<div className={"tooltip-sub"}>Enum (integer)</div>
+					<div className={"tooltip-sub"}><Translate id="api.enum.subtitle">Enum (integer)</Translate></div>
 				</span>
 			</h3>
 			<blockquote>
@@ -51,9 +66,9 @@ const EnumValuesTable = ({ enum_name, enum_data }) => (
 			<table style={{ marginBottom: "0" }}>
 				<thead>
 					<tr>
-						<th>Label</th>
-						<th>Value</th>
-						<th>Description</th>
+						<th><Translate id="api.table.label">Label</Translate></th>
+						<th><Translate id="api.table.value">Value</Translate></th>
+						<th><Translate id="api.table.description">Description</Translate></th>
 					</tr>
 				</thead>
 				<tbody>

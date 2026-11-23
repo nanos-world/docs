@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useActiveVersion } from '@docusaurus/plugin-content-docs/client';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Heading from '@theme/Heading';
+import Translate, { translate } from '@docusaurus/Translate';
 
 import Tippy from '@tippyjs/react';
 import 'tippy.js/animations/scale-subtle.css';
@@ -58,17 +59,55 @@ export function GetElementByType(type, index) {
 	if (!TypeElement)
 		return <Enums short={true}>{type}</Enums>;
 	return <span key={`${type}-${index}`}>
-		{ is_array ? <><BasicType.Table /> of </> : "" }
-		{ is_variadic ? <><BasicType.VarArgs /> of </> : "" }
+		{ is_array ? <><BasicType.Table />{ ` ${GetOfLabel()} ` }</> : "" }
+		{ is_variadic ? <><BasicType.VarArgs />{ ` ${GetOfLabel()} ` }</> : "" }
 		<TypeElement />
-		{ is_optional ? <> or <BasicType.Nil /></> : "" }
+		{ is_optional ? <>{ ` ${GetOrLabel()} ` }<BasicType.Nil /></> : "" }
 	</span>;
 }
 
+// Word joining a container type to its element type, as in "table of string"
+const GetOfLabel = () => translate({ id: 'api.type.of', message: 'of', description: 'Joins a container type to its element type, as in "table of string"' });
+
+// Word joining alternative types, as in "string or nil"
+const GetOrLabel = () => translate({ id: 'api.type.or', message: 'or', description: 'Joins alternative types, as in "string or nil"' });
+
 // Splits a value if it has |
 export function SplitTypesByOr(types) {
-	return types.split("|").map((type, index) => GetElementByType(type, index)).reduce((prev, next) => [prev, " or ", next])
+	return types.split("|").map((type, index) => GetElementByType(type, index)).reduce((prev, next) => [prev, ` ${GetOrLabel()} `, next])
 }
+
+// Placeholder shown when the API has no description, as HTML for the fields rendered with dangerouslySetInnerHTML
+const GetNoDescriptionLabel = () => translate({ id: 'api.no_description', message: 'No description provided' });
+const GetNoDescriptionHTML = () => `<span class='subtle-description'>${GetNoDescriptionLabel()}</span>`;
+
+// Link text that opens the tooltip with a table or callback format
+const WithThisFormatLabel = () => <Translate id="api.with_this_format">with this format</Translate>;
+
+// Pages linked from the authority sentences
+const AuthorityConceptsPath = "core-concepts/scripting/authority-concepts";
+const ClientOnlyPath = `${AuthorityConceptsPath}#authoritytypeclientonly-client-side`;
+const ServerOnlyPath = `${AuthorityConceptsPath}#authoritytypeserveronly-server-side`;
+const BothSidesPath = `${AuthorityConceptsPath}#authoritytypeboth-both-sides`;
+const SetNetworkAuthorityPath = "scripting-reference/classes/base-classes/actor#function-setnetworkauthority";
+const SetNetworkAuthorityAutoDistributedPath = "scripting-reference/classes/base-classes/actor#function-setnetworkauthorityautodistributed";
+
+// Words used in the authority sentences, links to the authority concepts page
+const ClientSideLink = ({ to }) => (
+	<LinkActiveVersion to={to}>
+		<Translate id="api.side.client">Client</Translate>
+	</LinkActiveVersion>
+);
+const ServerSideLink = ({ to }) => (
+	<LinkActiveVersion to={to}>
+		<Translate id="api.side.server">Server</Translate>
+	</LinkActiveVersion>
+);
+const NetworkAuthorityLink = () => (
+	<LinkActiveVersion to={`${AuthorityConceptsPath}#network-authority`}>
+		<Translate id="api.network_authority">Network Authority</Translate>
+	</LinkActiveVersion>
+);
 
 // Gets a list of Returns elements
 export function GetReturnList(return_list) {
@@ -87,29 +126,118 @@ export function GetReturnDescription(return_data) {
 					return_data.table_properties_custom ? <InlineTablePropertiesDeclaration table_properties_custom={return_data.table_properties_custom} /> : null,
 				].filter(Boolean).reduce((prev, next) => [prev, " ", next])}
 			</>
-		: <span class="subtle-description">No description provided</span> }
+		: <span class="subtle-description">{ GetNoDescriptionLabel() }</span> }
 	</>;
 }
 
 // Network Authority Label Map
 export const NetworkAuthorityDistributionLabels = {
-	enabled: <>This class have the <LinkActiveVersion to="core-concepts/scripting/authority-concepts#network-authority">Network Authority</LinkActiveVersion> distribution <strong>enabled</strong> and automatically handled by the server. You can <LinkActiveVersion to="scripting-reference/classes/base-classes/actor#function-setnetworkauthority">override</LinkActiveVersion> the Network Authority or <LinkActiveVersion to="scripting-reference/classes/base-classes/actor#function-setnetworkauthorityautodistributed">disable it</LinkActiveVersion> from automatically distributing.</>,
-	disabled: <>This class have the <LinkActiveVersion to="core-concepts/scripting/authority-concepts#network-authority">Network Authority</LinkActiveVersion> auto distribution <strong>disabled</strong> by default. But you can <LinkActiveVersion to="scripting-reference/classes/base-classes/actor#function-setnetworkauthorityautodistributed">enable it</LinkActiveVersion>.</>,
-	none: <>This class can't be <LinkActiveVersion to="core-concepts/scripting/authority-concepts#network-authority">Network Authority</LinkActiveVersion> distributed.</>,
+	enabled: (
+		<Translate
+			id="api.network_distribution.enabled.description"
+			values={{
+				network_authority: <NetworkAuthorityLink />,
+				enabled: (
+					<strong>
+						<Translate id="api.network_distribution.enabled">enabled</Translate>
+					</strong>
+				),
+				override: (
+					<LinkActiveVersion to={SetNetworkAuthorityPath}>
+						<Translate id="api.network_distribution.override">override</Translate>
+					</LinkActiveVersion>
+				),
+				disable_it: (
+					<LinkActiveVersion to={SetNetworkAuthorityAutoDistributedPath}>
+						<Translate id="api.network_distribution.disable_it">disable it</Translate>
+					</LinkActiveVersion>
+				),
+			}}>
+			{'This class have the {network_authority} distribution {enabled} and automatically handled by the server. You can {override} the Network Authority or {disable_it} from automatically distributing.'}
+		</Translate>
+	),
+	disabled: (
+		<Translate
+			id="api.network_distribution.disabled.description"
+			values={{
+				network_authority: <NetworkAuthorityLink />,
+				disabled: (
+					<strong>
+						<Translate id="api.network_distribution.disabled">disabled</Translate>
+					</strong>
+				),
+				enable_it: (
+					<LinkActiveVersion to={SetNetworkAuthorityAutoDistributedPath}>
+						<Translate id="api.network_distribution.enable_it">enable it</Translate>
+					</LinkActiveVersion>
+				),
+			}}>
+			{'This class have the {network_authority} auto distribution {disabled} by default. But you can {enable_it}.'}
+		</Translate>
+	),
+	none: (
+		<Translate
+			id="api.network_distribution.none.description"
+			values={{ network_authority: <NetworkAuthorityLink /> }}>
+			{'This class can\'t be {network_authority} distributed.'}
+		</Translate>
+	),
 }
 
 // Authority Label Map
 export const AuthorityLabels = {
-	client: <>This class can only be spawned on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeclientonly-client-side">Client</LinkActiveVersion> side.</>,
-	server: <>This class can only be spawned on 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeserveronly-server-side">Server</LinkActiveVersion> side.</>,
-	both: <>This class can be spawned on both 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeboth-both-sides">Client</LinkActiveVersion> and 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeboth-both-sides">Server</LinkActiveVersion> side.</>,
+	client: (
+		<Translate
+			id="api.class_authority.client.label"
+			values={{ client: <ClientSideLink to={ClientOnlyPath} /> }}>
+			{'This class can only be spawned on 🟧 {client} side.'}
+		</Translate>
+	),
+	server: (
+		<Translate
+			id="api.class_authority.server.label"
+			values={{ server: <ServerSideLink to={ServerOnlyPath} /> }}>
+			{'This class can only be spawned on 🟦 {server} side.'}
+		</Translate>
+	),
+	both: (
+		<Translate
+			id="api.class_authority.both.label"
+			values={{
+				client: <ClientSideLink to={BothSidesPath} />,
+				server: <ServerSideLink to={BothSidesPath} />,
+			}}>
+			{'This class can be spawned on both 🟧 {client} and 🟦 {server} side.'}
+		</Translate>
+	),
 }
 
 // Authority Label Map for Static Classes
 export const AuthorityLabelsStatic = {
-	client: <>This static class can be accessed only on 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeclientonly-client-side">Client</LinkActiveVersion> side.</>,
-	server: <>This static class can be accessed only on 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeserveronly-server-side">Server</LinkActiveVersion> side.</>,
-	both: <>This static class can be accessed on both 🟧 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeboth-both-sides">Client</LinkActiveVersion> and 🟦 <LinkActiveVersion to="core-concepts/scripting/authority-concepts#authoritytypeboth-both-sides">Server</LinkActiveVersion> side.</>,
+	client: (
+		<Translate
+			id="api.static_class_authority.client.label"
+			values={{ client: <ClientSideLink to={ClientOnlyPath} /> }}>
+			{'This static class can be accessed only on 🟧 {client} side.'}
+		</Translate>
+	),
+	server: (
+		<Translate
+			id="api.static_class_authority.server.label"
+			values={{ server: <ServerSideLink to={ServerOnlyPath} /> }}>
+			{'This static class can be accessed only on 🟦 {server} side.'}
+		</Translate>
+	),
+	both: (
+		<Translate
+			id="api.static_class_authority.both.label"
+			values={{
+				client: <ClientSideLink to={BothSidesPath} />,
+				server: <ServerSideLink to={BothSidesPath} />,
+			}}>
+			{'This static class can be accessed on both 🟧 {client} and 🟦 {server} side.'}
+		</Translate>
+	),
 }
 
 // Gets a Parameter name (with ? when optional)
@@ -120,7 +248,7 @@ export function GetParameterName(parameter_data) {
 // Gets a Parameter description
 export function GetParameterDescription(parameter_data) {
 	return <>
-		<span style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: parameter_data.description ? parameter_data.description : "<span class='subtle-description'>No description provided</span>" }}></span>
+		<span style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: parameter_data.description ? parameter_data.description : GetNoDescriptionHTML() }}></span>
 		<> </>
 		{ parameter_data.type == "function" && parameter_data.function_parameters ? <InlineFunctionNameDeclaration function_parameters={parameter_data.function_parameters} /> : "" }
 		<> </>
@@ -190,64 +318,126 @@ export function GetEventSignature(class_name, event_data, content) {
 
 // Network Authority Distribution Admonition
 export const NetAuthorityDistributionAdmonition = ({ network_distribution }) => (
-	<Admonition type="info" icon="🔁" title="Network Authority Distribution">{ NetworkAuthorityDistributionLabels[network_distribution] }</Admonition>
+	<Admonition type="info" icon="🔁" title={ GetNetworkDistributionTitle() }>{ NetworkAuthorityDistributionLabels[network_distribution] }</Admonition>
 );
 // Authority Admonition
 export const AuthorityAdmonition = ({ authority, is_static }) => (
-	<Admonition type="info" icon="💂" title="Authority">{ is_static ? AuthorityLabelsStatic[authority] : AuthorityLabels[authority] }</Admonition>
+	<Admonition type="info" icon="💂" title={ GetAuthorityTitle() }>{ is_static ? AuthorityLabelsStatic[authority] : AuthorityLabels[authority] }</Admonition>
 );
 
 export const TypeToAPIFolder = { StandardLibrary: "StandardLibraries/", Struct: "Structs/", Class: "Classes/", StaticClass: "StaticClasses/", UtilityClass: "UtilityClasses/", UtilityClasses: "UtilityClass/", Enums: "" };
 
 // API Source URL
 export const APISourceAdmonition = ({ type, class_name }) => (
-	<Admonition type="note" icon="🧑‍💻" title="API Source">
+	<Admonition type="note" icon="🧑‍💻" title={ GetAPISourceTitle() }>
 		{ APISourceLabel(type, class_name) }
 	</Admonition>
 );
 
 // Open Source Admonition
 export const OpenSourceAdmonition = ({ url }) => (
-	<Admonition type="tip" icon="👐" title="Open Source">
-		This library implementation is Open Sourced on <a href={GetOpenSourceURL(url)}>GitHub</a>!
+	<Admonition type="tip" icon="👐" title={ GetOpenSourceTitle() }>
+		{ OpenSourceLabel(url) }
 	</Admonition>
 );
 
+// Comma separated list of class links, wrapped in a fragment so <Translate> values keep it as an element
+const ClassList = ({ classes }) => <>{ classes.map((class_name, index) => GetElementByType(class_name, index)).reduce((prev, next) => [prev, ", ", next]) }</>;
+
 // Inheritance Admonition
 export const InheritanceAdmonition = ({ inheritance }) => (
-	<Admonition type="info" icon="👪" title="Inheritance">
-		This class shares methods and events from { inheritance.map((inherit, index) => GetElementByType(inherit, index)).reduce((prev, next) => [prev, ", ", next]) }.
+	<Admonition type="info" icon="👪" title={ translate({ id: 'api.inheritance.title', message: 'Inheritance' }) }>
+		<Translate
+			id="api.inheritance.description"
+			values={{ classes: <ClassList classes={ inheritance } /> }}>
+			{'This class shares methods and events from {classes}.'}
+		</Translate>
 	</Admonition>
 );
 
 // Base Class Admonition
 export const BaseClassAdmonition = ({ inherited }) => (
-	<Admonition type="info" icon="👪" title="Base Class">
+	<Admonition type="info" icon="👪" title={ GetBaseClassTitle() }>
 		{ BaseClassLabel }
 		<br />
 		<br />
-		Classes that share methods and events from this Base Class: { inherited.map((inherit, index) => GetElementByType(inherit, index)).reduce((prev, next) => [prev, ", ", next]) }.
+		<Translate
+			id="api.base_class.children"
+			values={{ classes: <ClassList classes={ inherited } /> }}>
+			{'Classes that share methods and events from this Base Class: {classes}.'}
+		</Translate>
 	</Admonition>
 );
 
 // Static Class Admonition
 export const StaticClassAdmonition = () => (
-	<Admonition type="info" icon="🗿" title="Static Class">
+	<Admonition type="info" icon="🗿" title={ GetStaticClassTitle() }>
 		{ StaticClassLabel }
 	</Admonition>
 );
 
 
 // Shared label sources
-export const StaticClassLabel = <>This is a <b>Static Class</b>. Access it's methods directly with <code>.</code>. It's not possible to spawn new instances.</>;
-export const BaseClassLabel = <>This is a <b>Base Class</b>, an abstract definition that shares common methods and events with it's child classes. You cannot spawn it, and you cannot call anything on the Base Class name itself. Use any class that inherits it.</>;
+export const StaticClassLabel = (
+	<Translate
+		id="api.static_class.description"
+		values={{
+			static_class: <b><Translate id="api.static_class.title">Static Class</Translate></b>,
+			dot: <code>.</code>,
+		}}>
+		{'This is a {static_class}. Access it\'s methods directly with {dot}. It\'s not possible to spawn new instances.'}
+	</Translate>
+);
+export const BaseClassLabel = (
+	<Translate
+		id="api.base_class.description"
+		values={{ base_class: <b><Translate id="api.base_class.title">Base Class</Translate></b> }}>
+		{'This is a {base_class}, an abstract definition that shares common methods and events with it\'s child classes. You cannot spawn it, and you cannot call anything on the Base Class name itself. Use any class that inherits it.'}
+	</Translate>
+);
 export const GetOpenSourceURL = (url) => `https://github.com/nanos-world/nanos-world-lua-lib${url ? `/blob/master/${url}` : ""}`;
 export const GetAPISourceURL = (type, class_name) => `https://github.com/nanos-world/api/blob/main/${TypeToAPIFolder[type]}${class_name}.json`;
-export const APISourceLabel = (type, class_name) => <>This page is auto-generated! The Functions, Properties and Events described here are defined in our <a href={GetAPISourceURL(type, class_name)}>GitHub's API Repository</a>! Feel free to commit suggestions and changes to the source .json API files!</>;
+export const APISourceLabel = (type, class_name) => (
+	<Translate
+		id="api.api_source.description"
+		values={{
+			repository: (
+				<a href={GetAPISourceURL(type, class_name)}>
+					<Translate id="api.api_source.repository">GitHub's API Repository</Translate>
+				</a>
+			),
+		}}>
+		{'This page is auto-generated! The Functions, Properties and Events described here are defined in our {repository}! Feel free to commit suggestions and changes to the source .json API files!'}
+	</Translate>
+);
+export const OpenSourceLabel = (url) => (
+	<Translate
+		id="api.open_source.description"
+		values={{ github: <a href={GetOpenSourceURL(url)}>GitHub</a> }}>
+		{'This library implementation is Open Sourced on {github}!'}
+	</Translate>
+);
+
+// Titles shared by the admonitions and the header chips
+const GetStaticClassTitle = () => translate({ id: 'api.static_class.title', message: 'Static Class' });
+const GetBaseClassTitle = () => translate({ id: 'api.base_class.title', message: 'Base Class' });
+const GetAuthorityTitle = () => translate({ id: 'api.authority.title', message: 'Authority' });
+const GetNetworkDistributionTitle = () => translate({ id: 'api.network_distribution.title', message: 'Network Authority Distribution' });
+const GetOpenSourceTitle = () => translate({ id: 'api.open_source.title', message: 'Open Source' });
+const GetAPISourceTitle = () => translate({ id: 'api.api_source.title', message: 'API Source' });
+const GetClassTypeSubtitle = () => translate({ id: 'api.chip.class_type', message: 'Class Type' });
 
 // Chip labels
-export const AuthorityChipLabels = { client: "Client Only", server: "Server Only", both: "Client & Server" };
-export const NetworkAuthorityDistributionChipLabels = { enabled: "Auto-Distributed", disabled: "Manual Distribution", none: "Not Distributable" };
+export const GetAuthorityChipLabels = () => ({
+	client: translate({ id: 'api.authority.client_only.title', message: 'Client Only' }),
+	server: translate({ id: 'api.authority.server_only.title', message: 'Server Only' }),
+	both: translate({ id: 'api.chip.client_and_server', message: 'Client & Server' }),
+});
+export const GetNetworkAuthorityDistributionChipLabels = () => ({
+	enabled: translate({ id: 'api.chip.auto_distributed', message: 'Auto-Distributed' }),
+	disabled: translate({ id: 'api.chip.manual_distribution', message: 'Manual Distribution' }),
+	none: translate({ id: 'api.chip.not_distributable', message: 'Not Distributable' }),
+});
 
 // Generic Header Chip
 export const HeaderChip = ({ icon, label, title, subtitle, href, children }) => {
@@ -264,45 +454,49 @@ export const HeaderChip = ({ icon, label, title, subtitle, href, children }) => 
 
 // Static Class Chip
 export const StaticClassChip = () => (
-	<HeaderChip icon="🗿" label="Static Class" title="Static Class" subtitle="Class Type">
+	<HeaderChip icon="🗿" label={ GetStaticClassTitle() } title={ GetStaticClassTitle() } subtitle={ GetClassTypeSubtitle() }>
 		{ StaticClassLabel }
 	</HeaderChip>
 );
 
 // Base Class Chip
 export const BaseClassChip = () => (
-	<HeaderChip icon="👪" label="Base Class" title="Base Class" subtitle="Class Type">
+	<HeaderChip icon="👪" label={ GetBaseClassTitle() } title={ GetBaseClassTitle() } subtitle={ GetClassTypeSubtitle() }>
 		{ BaseClassLabel }
 	</HeaderChip>
 );
 
 // Authority Chip
-export const AuthorityChip = ({ authority, is_static }) => (
-	<HeaderChip icon={<img src={GetAuthorityImage(authority)} />} label={ AuthorityChipLabels[authority] } title={ AuthorityChipLabels[authority] } subtitle="Authority">
+export const AuthorityChip = ({ authority, is_static }) => {
+	const label = GetAuthorityChipLabels()[authority];
+	return <HeaderChip icon={<img src={GetAuthorityImage(authority)} />} label={ label } title={ label } subtitle={ GetAuthorityTitle() }>
 		{ is_static ? AuthorityLabelsStatic[authority] : AuthorityLabels[authority] }
-	</HeaderChip>
-);
+	</HeaderChip>;
+};
 
 // Network Authority Distribution Chip
-export const NetAuthorityDistributionChip = ({ network_distribution }) => (
-	<HeaderChip icon="🔁" label={ NetworkAuthorityDistributionChipLabels[network_distribution] } title={ NetworkAuthorityDistributionChipLabels[network_distribution] } subtitle="Network Authority Distribution">
+export const NetAuthorityDistributionChip = ({ network_distribution }) => {
+	const label = GetNetworkAuthorityDistributionChipLabels()[network_distribution];
+	return <HeaderChip icon="🔁" label={ label } title={ label } subtitle={ GetNetworkDistributionTitle() }>
 		{ NetworkAuthorityDistributionLabels[network_distribution] }
-	</HeaderChip>
-);
+	</HeaderChip>;
+};
 
 // Open Source Chip
-export const OpenSourceChip = ({ url }) => (
-	<HeaderChip icon="👐" label="Open Source" title="Open Source" subtitle="Lua Library" href={ GetOpenSourceURL(url) }>
-		This library implementation is Open Sourced on <a href={GetOpenSourceURL(url)}>GitHub</a>!
-	</HeaderChip>
-);
+export const OpenSourceChip = ({ url }) => {
+	const subtitle = translate({ id: 'api.chip.lua_library', message: 'Lua Library' });
+	return <HeaderChip icon="👐" label={ GetOpenSourceTitle() } title={ GetOpenSourceTitle() } subtitle={ subtitle } href={ GetOpenSourceURL(url) }>
+		{ OpenSourceLabel(url) }
+	</HeaderChip>;
+};
 
 // API Source Chip
-export const APISourceURL = ({ type, class_name }) => (
-	<HeaderChip icon="🧑‍💻" label="API Source" title="API Source" subtitle="Auto-generated Page" href={ GetAPISourceURL(type, class_name) }>
+export const APISourceURL = ({ type, class_name }) => {
+	const subtitle = translate({ id: 'api.chip.auto_generated_page', message: 'Auto-generated Page' });
+	return <HeaderChip icon="🧑‍💻" label={ GetAPISourceTitle() } title={ GetAPISourceTitle() } subtitle={ subtitle } href={ GetAPISourceURL(type, class_name) }>
 		{ APISourceLabel(type, class_name) }
-	</HeaderChip>
-);
+	</HeaderChip>;
+};
 
 // Gets Authority Element by string
 export function GetAuthorityType(authority) {
@@ -381,14 +575,14 @@ export const FunctionParametersDeclaration = ({ parameters, include_default = tr
 	<>
 		{Array.isArray(parameters) && parameters.length > 0 ?
 			<div className="table-wrapper">
-				<h4>Parameters</h4>
+				<h4><Translate id="api.parameters">Parameters</Translate></h4>
 				<table>
 					<thead>
 						<tr>
-							<th>Type</th>
-							<th>Parameter</th>
-							{ include_default ? <th>Default</th> : null }
-							<th>Description</th>
+							<th><Translate id="api.table.type">Type</Translate></th>
+							<th><Translate id="api.table.parameter">Parameter</Translate></th>
+							{ include_default ? <th><Translate id="api.table.default">Default</Translate></th> : null }
+							<th><Translate id="api.table.description">Description</Translate></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -400,7 +594,7 @@ export const FunctionParametersDeclaration = ({ parameters, include_default = tr
 									<td style={{ whiteSpace: "pre" }}>
 										{ value.default != null ? value.default.split("\n").map((line) =>
 											<><code>{line}</code><br/></>) :
-											<span class="subtle-description"> {"Required parameter"} </span>
+											<span class="subtle-description"> <Translate id="api.required_parameter">Required parameter</Translate> </span>
 										}
 									</td> :
 									null
@@ -420,12 +614,12 @@ export const FunctionReturnsDeclaration = ({ returns }) => (
 	<>
 		{Array.isArray(returns) && returns.length > 0 ?
 			<div className="table-wrapper">
-				<h4>Returns</h4>
+				<h4><Translate id="api.returns">Returns</Translate></h4>
 				<table>
 					<thead>
 						<tr>
-							<th>Type</th>
-							<th>Description</th>
+							<th><Translate id="api.table.type">Type</Translate></th>
+							<th><Translate id="api.table.description">Description</Translate></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -471,9 +665,9 @@ const MemberParametersList = ({ parameters, title }) => {
 		<table>
 			<thead>
 				<tr>
-					<th>Name</th>
-					<th>Type</th>
-					<th>Description</th>
+					<th><Translate id="api.table.name">Name</Translate></th>
+					<th><Translate id="api.table.type">Type</Translate></th>
+					<th><Translate id="api.table.description">Description</Translate></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -483,7 +677,7 @@ const MemberParametersList = ({ parameters, title }) => {
 						<td>{ SplitTypesByOr(value.type) }</td>
 						<td class="table-description">
 							{ GetParameterDescription(value) }
-							{ value.default != null ? <span className="api-default">Default <code>{ value.default }</code></span> : null }
+							{ value.default != null ? <span className="api-default"><Translate id="api.table.default">Default</Translate> <code>{ value.default }</code></span> : null }
 						</td>
 					</tr>
 				) }
@@ -500,12 +694,12 @@ const MemberReturnsList = ({ returns }) => {
 		return null;
 
 	return <div className="table-wrapper api-values">
-		<h5 className="api-values-title">Returns</h5>
+		<h5 className="api-values-title"><Translate id="api.returns">Returns</Translate></h5>
 		<table>
 			<thead>
 				<tr>
-					<th>Type</th>
-					<th>Description</th>
+					<th><Translate id="api.table.type">Type</Translate></th>
+					<th><Translate id="api.table.description">Description</Translate></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -524,16 +718,39 @@ const MemberReturnsList = ({ returns }) => {
 	</div>;
 };
 
+// Summary of the collapsible examples block of a member
+const GetExamplesSummary = (count) => translate({ id: 'api.examples_summary', message: 'Examples ({count})' }, { count });
+
+// "See also" line listing the related members
+const RelationsSeeAlso = ({ relations }) => (
+	<p className={"relations"}>
+		<Translate id="api.see_also" values={{ relations: <>{ GetRelations(relations) }</> }}>
+			{'See also {relations}.'}
+		</Translate>
+	</p>
+);
+
 // Function Block Declaration
 export const FunctionDeclaration = ({ function_data, is_static, class_name, show_lean_declaration = false }) => {
 	const id = `${is_static ? "static-function" : "function"}-${function_data.name.toLowerCase()}`;
 	const has_examples = Array.isArray(function_data.examples) && function_data.examples.length > 0;
 	return <div className={ show_lean_declaration ? "api-member-lean" : "api-member" }>
 		<MemberHeading id={ id } data={ function_data } />
-		<p className="api-member-description" dangerouslySetInnerHTML={{ __html: GetDeclarationDescription(function_data, show_lean_declaration) || "<span class='subtle-description'>No description provided</span>" }}></p>
+		<p className="api-member-description" dangerouslySetInnerHTML={{ __html: GetDeclarationDescription(function_data, show_lean_declaration) || GetNoDescriptionHTML() }}></p>
 		{ !show_lean_declaration && function_data.last_compatibility_version && (
-			<Admonition type="info" icon="🆕" title="Updated Function">
-				This method was recently updated in ver. <b>{ function_data.last_compatibility_version }</b>. See the <Link to={`${getActiveVersionPath()}/core-concepts/packages/compatibility-versions#version-${ function_data.last_compatibility_version.replaceAll('.', '') }`}>Compatibility Versions</Link> page for more information.
+			<Admonition type="info" icon="🆕" title={ translate({ id: 'api.updated_function.title', message: 'Updated Function' }) }>
+				<Translate
+					id="api.updated_function.description"
+					values={{
+						version: <b>{ function_data.last_compatibility_version }</b>,
+						compatibility_versions: (
+							<Link to={`${getActiveVersionPath()}/core-concepts/packages/compatibility-versions#version-${ function_data.last_compatibility_version.replaceAll('.', '') }`}>
+								<Translate id="api.updated_function.compatibility_versions">Compatibility Versions</Translate>
+							</Link>
+						),
+					}}>
+					{'This method was recently updated in ver. {version}. See the {compatibility_versions} page for more information.'}
+				</Translate>
 			</Admonition>
 		)}
 		<CodeBlock className="language-lua">
@@ -541,20 +758,14 @@ export const FunctionDeclaration = ({ function_data, is_static, class_name, show
 		</CodeBlock>
 		{ !show_lean_declaration ?
 			<>
-				<MemberParametersList parameters={ function_data.parameters } title="Parameters" />
+				<MemberParametersList parameters={ function_data.parameters } title={ translate({ id: 'api.parameters', message: 'Parameters' }) } />
 				<MemberReturnsList returns={ function_data.return } />
 				{ has_examples ?
-					<Details summary={`Examples (${function_data.examples.length})`}>
+					<Details summary={ GetExamplesSummary(function_data.examples.length) }>
 						{ function_data.examples.map((example) => GetGenericExample(example)) }
 					</Details>
 				: null }
-				{ function_data.relations ?
-					<p className={"relations"}>
-						{"See also "}
-						{ GetRelations(function_data.relations) }
-						{"."}
-					</p>
-				: null }
+				{ function_data.relations ? <RelationsSeeAlso relations={ function_data.relations } /> : null }
 			</>
 		: null }
 	</div>;
@@ -566,26 +777,20 @@ export const EventDeclaration = ({ event_data, class_name, show_lean_declaration
 	const has_examples = Array.isArray(event_data.examples) && event_data.examples.length > 0;
 	return <div className={ show_lean_declaration ? "api-member-lean" : "api-member" }>
 		<MemberHeading id={ id } data={ event_data } />
-		<p className="api-member-description" dangerouslySetInnerHTML={{ __html: GetDeclarationDescription(event_data, show_lean_declaration) || "<span class='subtle-description'>No description provided</span>" }}></p>
+		<p className="api-member-description" dangerouslySetInnerHTML={{ __html: GetDeclarationDescription(event_data, show_lean_declaration) || GetNoDescriptionHTML() }}></p>
 		<CodeBlock className="language-lua">
 			{ GetEventSignature(class_name, event_data) }
 		</CodeBlock>
 		{ !show_lean_declaration ?
 			<>
-				<MemberParametersList parameters={ event_data.arguments } title="Arguments" />
+				<MemberParametersList parameters={ event_data.arguments } title={ translate({ id: 'api.arguments', message: 'Arguments' }) } />
 				<MemberReturnsList returns={ event_data.return } />
 				{ has_examples ?
-					<Details summary={`Examples (${event_data.examples.length})`}>
+					<Details summary={ GetExamplesSummary(event_data.examples.length) }>
 						{ event_data.examples.map((example) => GetEventExample(class_name, event_data, example)) }
 					</Details>
 				: null }
-				{ event_data.relations ?
-					<p className={"relations"}>
-						{"See also "}
-						{ GetRelations(event_data.relations) }
-						{"."}
-					</p>
-				: null }
+				{ event_data.relations ? <RelationsSeeAlso relations={ event_data.relations } /> : null }
 			</>
 		: null }
 	</div>;
@@ -613,13 +818,13 @@ export const FunctionNameDeclaration = ({ class_name, function_data, base_class 
 
 export const InlineFunctionNameDeclaration = ({ function_parameters }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<InlineFunctionToolTip function_parameters={function_parameters} />}>
-		<span className={"hover-link"}>with this format</span>
+		<span className={"hover-link"}><WithThisFormatLabel /></span>
 	</Tippy>
 );
 
 export const InlineTablePropertiesDeclaration = ({ table_properties, table_properties_custom }) => (
 	<Tippy interactive={true} maxWidth={1200} animation={"scale-subtle"} content={<TablePropertiesToolTip table_properties={table_properties} table_properties_custom={table_properties_custom} />}>
-		<span className={"hover-link"}>with this format</span>
+		<span className={"hover-link"}><WithThisFormatLabel /></span>
 	</Tippy>
 );
 
@@ -633,12 +838,15 @@ export const EventNameDeclaration = ({ class_name, event_data, base_class }) => 
 	</Tippy>
 );
 
-// Label of the group holding functions without a category, shown only when the class has categories
-export const UncategorizedLabel = "Other";
+// Key and anchor of the group holding functions without a category, kept in English so links stay the same in every locale
+export const UncategorizedKey = "Other";
+
+// Label of that group, shown only when the class has categories
+export const GetUncategorizedLabel = () => translate({ id: 'api.category.uncategorized', message: 'Other' });
 
 // Anchor ID of a category heading, unique per function kind
 export function GetCategoryAnchor(category, is_static) {
-	const slug = (category ?? UncategorizedLabel).toLowerCase().trim().replace(/\s+/g, "-");
+	const slug = (category ?? UncategorizedKey).toLowerCase().trim().replace(/\s+/g, "-");
 	return `${is_static ? "static-function" : "function"}-category-${slug}`;
 }
 
@@ -675,10 +883,10 @@ const FunctionListTable = ({ class_name, functions_list, base_class, is_static }
 	return <div className="table-wrapper api-values api-member-list">
 		<table>
 			<tbody>
-				{ groups.map((group) => <React.Fragment key={ group.category ?? UncategorizedLabel }>
+				{ groups.map((group) => <React.Fragment key={ group.category ?? UncategorizedKey }>
 					{ show_categories ?
 						<tr className="api-category-row">
-							<td colSpan={3}><Link to={`${base_path}#${GetCategoryAnchor(group.category, is_static)}`}>{ group.category ?? UncategorizedLabel }</Link></td>
+							<td colSpan={3}><Link to={`${base_path}#${GetCategoryAnchor(group.category, is_static)}`}>{ group.category ?? GetUncategorizedLabel() }</Link></td>
 						</tr>
 					: null }
 					{ group.functions.map((value, index) =>
@@ -688,7 +896,7 @@ const FunctionListTable = ({ class_name, functions_list, base_class, is_static }
 								<NameDeclaration class_name={ class_name } base_class={ base_class } function_data={ value } />
 								{ value.return ? <span className="api-member-returns">: { GetReturnList(value.return) }</span> : null }
 							</td>
-							<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
+							<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : GetNoDescriptionHTML() }}></td>
 						</tr>
 					) }
 				</React.Fragment>) }
@@ -712,11 +920,15 @@ const FunctionDeclarationGroups = ({ class_name, functions_list, is_static }) =>
 	const groups = GetFunctionGroups(functions_list);
 	const show_categories = HasCategories(groups);
 
-	return groups.map((group) => <React.Fragment key={ group.category ?? UncategorizedLabel }>
+	const kind_label = is_static
+		? translate({ id: 'api.category.static_functions', message: 'static functions' })
+		: translate({ id: 'api.category.functions', message: 'functions' });
+
+	return groups.map((group) => <React.Fragment key={ group.category ?? UncategorizedKey }>
 		{ show_categories ?
 			<Heading as="h3" id={ GetCategoryAnchor(group.category, is_static) } className="custom-anchor api-category-heading">
-				{ group.category ?? UncategorizedLabel }
-				<span className="api-category-kind">{ is_static ? "static functions" : "functions" }</span>
+				{ group.category ?? GetUncategorizedLabel() }
+				<span className="api-category-kind">{ kind_label }</span>
 			</Heading>
 		: null }
 		{ group.functions.map((value, index) =>
@@ -736,7 +948,7 @@ export const EventListDeclaration = ({ type, name, inherited_class_name, base_cl
 						return <tr key={ `${value.name}-${index}` }>
 							<td width="50px">{ GetAuthorityType(value.authority) }{ GetNative(value.is_native) }</td>
 							<td className="api-member-name"><EventNameDeclaration class_name={ inherited_class_name } base_class={ base_class } event_data={ value } /></td>
-							<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
+							<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : GetNoDescriptionHTML() }}></td>
 						</tr>;
 					})}
 				</tbody>
@@ -802,13 +1014,13 @@ export const ConstructorDeclaration = ({ type, name }) => {
 			<Heading as="h3" id={id} className="custom-anchor api-member-heading">
 				{ constructor.name }
 			</Heading>
-			<p className="api-member-description">{ constructor.description || <span className="subtle-description">No description provided</span> }</p>
+			<p className="api-member-description">{ constructor.description || <span className="subtle-description">{ GetNoDescriptionLabel() }</span> }</p>
 			<CodeBlock className="language-lua">
 				{ GetConstructorExample(class_data, index) }
 			</CodeBlock>
 			{
-				constructor.parameters.length == 0 ? <p class="subtle-description">This constructor doesn't have parameters.</p> :
-				<MemberParametersList parameters={ constructor.parameters } title="Parameters" />
+				constructor.parameters.length == 0 ? <p class="subtle-description"><Translate id="api.empty.constructor_parameters">This constructor doesn't have parameters.</Translate></p> :
+				<MemberParametersList parameters={ constructor.parameters } title={ translate({ id: 'api.parameters', message: 'Parameters' }) } />
 			}
 		</div>;
 	});
@@ -834,14 +1046,34 @@ const InheritedBaseSection = ({ inherited_class_name, parent_class_name, kind })
 	const show_categories = HasCategories(groups);
 	const NameDeclaration = is_event ? EventNameDeclaration : (kind == "static_functions" ? StaticFunctionNameDeclaration : FunctionNameDeclaration);
 
+	const count_label = is_event
+		? translate({ id: 'api.inherited.events_count', message: '{count} events' }, { count: total })
+		: translate({ id: 'api.inherited.functions_count', message: '{count} functions' }, { count: total });
+
+	const all_label = is_event
+		? translate({ id: 'api.inherited.all_events', message: 'All events' })
+		: translate({ id: 'api.inherited.all_functions', message: 'All functions' });
+
 	return <div className="api-inherited-base">
 		<div className="api-inherited-header">
-			<span>From <Link to={`${getActiveVersionPath()}/scripting-reference/classes/base-classes/${parent_class_name.toLowerCase()}`}>{ parent_class_name }</Link></span>
-			<span className="subtle-description">{ total } { is_event ? "events" : "functions" }</span>
+			<span>
+				<Translate
+					id="api.inherited.from"
+					values={{
+						class: (
+							<Link to={`${getActiveVersionPath()}/scripting-reference/classes/base-classes/${parent_class_name.toLowerCase()}`}>
+								{ parent_class_name }
+							</Link>
+						),
+					}}>
+					{'From {class}'}
+				</Translate>
+			</span>
+			<span className="subtle-description">{ count_label }</span>
 		</div>
 		{ groups.map((group) =>
-			<div key={ group.category ?? UncategorizedLabel } className="api-inherited-row">
-				<span className="api-inherited-category">{ show_categories ? (group.category ?? UncategorizedLabel) : (is_event ? "All events" : "All functions") }</span>
+			<div key={ group.category ?? UncategorizedKey } className="api-inherited-row">
+				<span className="api-inherited-category">{ show_categories ? (group.category ?? GetUncategorizedLabel()) : all_label }</span>
 				<span className="api-inherited-names">
 					{ group.functions.map((value, index) => <React.Fragment key={ `${value.name}-${index}` }>
 						{ index > 0 ? ", " : null }
@@ -865,7 +1097,10 @@ const InheritedMembers = ({ class_data, kind }) => {
 	if (parents.length == 0)
 		return null;
 
-	const title = kind == "events" ? "Inherited events" : (kind == "static_functions" ? "Inherited static functions" : "Inherited functions");
+	const title =
+		kind == "events" ? translate({ id: 'api.inherited.events', message: 'Inherited events' }) :
+		kind == "static_functions" ? translate({ id: 'api.inherited.static_functions', message: 'Inherited static functions' }) :
+		translate({ id: 'api.inherited.functions', message: 'Inherited functions' });
 
 	return <div className="api-inherited">
 		<h4>{ title }</h4>
@@ -885,7 +1120,7 @@ export const FunctionsDeclaration = ({ type, name }) => {
 	return (<>
 		{ has_functions ?
 			<FunctionListDeclaration class_name={class_data.name} functions_list={class_data.functions} />
-			: <p class="subtle-description">This class doesn't have own functions.</p> }
+			: <p class="subtle-description"><Translate id="api.empty.functions">This class doesn't have own functions.</Translate></p> }
 		<InheritedMembers class_data={class_data} kind="functions" />
 		{ has_functions ?
 			<FunctionDeclarationGroups class_name={class_data.name} functions_list={class_data.functions} is_static={false} />
@@ -905,7 +1140,7 @@ export const StaticFunctionsDeclaration = ({ type, name }) => {
 	return (<>
 		{ has_functions ?
 			<StaticFunctionListDeclaration class_name={class_data.name} functions_list={class_data.static_functions} />
-			: <p class="subtle-description">This class doesn't have own static functions.</p> }
+			: <p class="subtle-description"><Translate id="api.empty.static_functions">This class doesn't have own static functions.</Translate></p> }
 		<InheritedMembers class_data={class_data} kind="static_functions" />
 		{ has_functions ?
 			<FunctionDeclarationGroups class_name={class_data.name} functions_list={class_data.static_functions} is_static={true} />
@@ -945,7 +1180,7 @@ export const EventsDeclaration = ({ type, name }) => {
 	return (<>
 		{ has_events ?
 			<EventListDeclaration type={type} name={class_data.name} inherited_class_name={class_data.name} />
-			: <p class="subtle-description">This class doesn't have own events.</p> }
+			: <p class="subtle-description"><Translate id="api.empty.events">This class doesn't have own events.</Translate></p> }
 		<InheritedMembers class_data={class_data} kind="events" />
 		{ has_events ?
 			Object.entries(class_data.events).map(([index, value]) => <EventDeclaration key={ `${value.name}-${index}` } event_data={value} class_name={class_data.name} />)
@@ -962,14 +1197,14 @@ export const PropertiesDeclaration = ({ type, name }) => {
 
 	return (<>
 		{
-			class_data.properties == null || class_data.properties.length == 0 ? <p class="subtle-description">This class doesn't have properties.</p> :
+			class_data.properties == null || class_data.properties.length == 0 ? <p class="subtle-description"><Translate id="api.empty.properties">This class doesn't have properties.</Translate></p> :
 			<div className="table-wrapper">
 				<table>
 					<thead>
 						<tr>
-							<th>Type</th>
-							<th>Name</th>
-							<th>Description</th>
+							<th><Translate id="api.table.type">Type</Translate></th>
+							<th><Translate id="api.table.name">Name</Translate></th>
+							<th><Translate id="api.table.description">Description</Translate></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -977,7 +1212,7 @@ export const PropertiesDeclaration = ({ type, name }) => {
 							return <tr key={ `${value.name}-${index}` }>
 								<td>{ GetElementByType(value.type) }</td>
 								<td><b><code>{ value.name }</code></b></td>
-								<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : "<span class='subtle-description'>No description provided</span>" }}></td>
+								<td class="table-description" dangerouslySetInnerHTML={{ __html: value.description ? value.description : GetNoDescriptionHTML() }}></td>
 							</tr>;
 						})}
 					</tbody>
@@ -996,13 +1231,13 @@ export const StaticPropertiesDeclaration = ({ type, name }) => {
 
 	return (<>
 		{
-			class_data.static_properties == null || class_data.static_properties.length === 0 ? <p class="subtle-description">This class doesn't have static properties.</p> :
+			class_data.static_properties == null || class_data.static_properties.length === 0 ? <p class="subtle-description"><Translate id="api.empty.static_properties">This class doesn't have static properties.</Translate></p> :
 			<div className="table-wrapper">
 				<table>
 					<thead>
 						<tr>
-							<th>Value</th>
-							<th>Name</th>
+							<th><Translate id="api.table.value">Value</Translate></th>
+							<th><Translate id="api.table.name">Name</Translate></th>
 						</tr>
 					</thead>
 					<tbody>
