@@ -9,7 +9,7 @@ tags: [class]
 
 :::info
 
-It is not possible to open files from outside the server folder. All path must be relative to the Server's executable folder. All files are opened as binary file by default.
+It is not possible to open files from outside the server folder (unless the server is started with [`--enable_unsafe_libs`](#server-side)). All path must be relative to the Server's executable folder. All files are opened as binary file by default.
 
 :::
 
@@ -32,7 +32,7 @@ Access to files is sandboxed. Only certain directories and files are allowed to 
 
 Only the following file extensions are allowed to be accessed (read & write):
 
-`.txt` `.dat` `.json` `.toml` `.xml` `.csv` `.log` `.png` `.jpg` `.jpeg` `.webp` `.webm` `.mp3` `.wav` `.ogg` `.mp4`
+`.txt` `.dat` `.json` `.toml` `.xml` `.csv` `.log` `.png` `.jpg` `.jpeg` `.webp` `.webm` `.mp3` `.wav` `.ogg` `.mp4` `.md`
 
 :::note
 
@@ -48,6 +48,12 @@ On Server side, it's only allowed to access files inside the server folder itsel
 The default directory is where the server executable is located.
 
 Example accessing a file from a Package: `Packages/My-Package/Server/MyFile.json`.
+
+:::caution
+
+If the server is started with the [`--enable_unsafe_libs`](/core-concepts/server-manual/server-configuration.mdx#command-line-parameters) flag, these restrictions are lifted on the server: any path (absolute, or relative to the server folder) and any extension can be accessed, including the Config.toml. That flag already gives every Package the whole `io` and `os` libraries, so only use it if you trust all the Packages running on your server.
+
+:::
 
 
 #### Client Side {/* #client-side */}
