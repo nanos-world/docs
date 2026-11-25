@@ -15,7 +15,7 @@ When someone joins your server, these are the main events triggered, in order:
 
 | # | Event | Side | What happened |
 | :--- | :--- | :--- | :--- |
-| 1 | <EventReference type="StaticClass" class_name="Server" event="PlayerConnect" show_class_name /> | Server | Someone is attempting to connect. The <Classes.Player /> doesn't exist yet |
+| 1 | <EventReference type="StaticClass" class_name="Server" event="PlayerConnect" show_class_name /> | Server | Someone is attempting to connect and Steam already authenticated them. The <Classes.Player /> doesn't exist yet and nothing was downloaded |
 | 2 | <EventReference type="Class" class_name="Entity" event="Spawn" /> on `Player` | Server | The <Classes.Player /> entity was created. The client is still loading the map and downloading files |
 | 3 | <EventReference type="StaticClass" class_name="Client" event="SpawnLocalPlayer" show_class_name /> | Client | The client finished loading and its own Player is available with `Client.GetLocalPlayer()` |
 | 4 | <EventReference type="Class" class_name="Player" event="Ready" /> | Server | The client fully loaded the map and all entities, and is ready to play |
@@ -37,21 +37,106 @@ A <Classes.Player /> represents the connected person, and a <Classes.Character /
 
 ```lua title="Server/Index.lua" showLineNumbers
 local whitelist = {
-    ["123456789"] = true,
+    ["76561197960287930"] = true,
 }
 
 Server.Subscribe("PlayerConnect", function(ip, player_account_id, player_name, player_steam_id)
-    if (not whitelist[player_account_id]) then
-        Server.KickByAccountID(player_account_id, "You are not in the whitelist!")
+    if (not whitelist[player_steam_id]) then
+        Server.KickBySteamID(player_steam_id, "You are not in the whitelist!")
     end
 end)
 ```
 
 :::tip
 
-You can call <MethodReference type="StaticClass" class_name="Server" method_name="KickByAccountID" show_class_name /> or <MethodReference type="StaticClass" class_name="Server" method_name="BanByAccountID" show_class_name /> to kick or ban players while not having the full Player entity spawned.
+You can call <MethodReference type="StaticClass" class_name="Server" method_name="KickBySteamID" show_class_name /> or <MethodReference type="StaticClass" class_name="Server" method_name="BanBySteamID" show_class_name /> to kick or ban players while not having the full Player entity spawned.
 
 :::
+
+
+## Holding a Connection {/* #holding-a-connection */}
+
+`PlayerConnect` has to decide right away, the player starts downloading the server files as soon as the event returns. If you need to wait for something (e.g. a database or a web API check, or a free slot), call <MethodReference type="StaticClass" class_name="Server" method_name="HoldConnection" show_class_name /> inside the event. The player stays in the loading screen with your message, and nothing is downloaded until you call <MethodReference type="StaticClass" class_name="Server" method_name="ReleaseConnection" show_class_name /> or kick them.
+
+```lua title="Server/Index.lua" showLineNumbers
+Server.Subscribe("PlayerConnect", function(ip, player_account_id, player_name, player_steam_id)
+    Server.HoldConnection(player_steam_id, "checking the whitelist...")
+
+    -- Asks our own API if this Steam ID is allowed, the player keeps waiting meanwhile
+    HTTP.RequestAsync("https://my-api.com", "/whitelist/" .. player_steam_id, HTTPMethod.GET, "", "application/json", false, {}, function(status, data)
+        if (status ~= 200) then
+            Server.KickBySteamID(player_steam_id, "You are not in the whitelist!")
+            return
+        end
+
+        -- Returns false if the server got full meanwhile
+        if (not Server.ReleaseConnection(player_steam_id)) then
+            Server.KickBySteamID(player_steam_id, "Server is full!")
+        end
+    end)
+end)
+```
+
+A held player isn't a Player yet: they don't count in `max_players` or show up in the server list, and if they give up (or you kick them) <EventReference type="StaticClass" class_name="Server" event="PlayerDisconnect" show_class_name /> is called as usual.
+
+
+### Queue {/* #queue */}
+
+<MethodReference type="StaticClass" class_name="Server" method_name="ReleaseConnection" show_class_name /> never goes beyond `max_players`, so it's also how you build a queue for when the server is full, with your own priority rules:
+
+```lua title="Server/Index.lua" showLineNumbers
+local queue = {}
+
+-- Players who skip the queue
+local vips = {
+    ["76561197960287930"] = true,
+}
+
+local function ProcessQueue()
+    -- Lets in from the front of the queue while there are free slots
+    while (queue[1] and Server.ReleaseConnection(queue[1])) do
+        table.remove(queue, 1)
+    end
+
+    -- Tells everyone left their position
+    for position, steam_id in ipairs(queue) do
+        Server.HoldConnection(steam_id, "server is full, you are " .. position .. " of " .. #queue .. " in the queue")
+    end
+end
+
+Server.Subscribe("PlayerConnect", function(ip, player_account_id, player_name, player_steam_id)
+    Server.HoldConnection(player_steam_id, "waiting in the queue")
+
+    if (vips[player_steam_id]) then
+        table.insert(queue, 1, player_steam_id)
+    else
+        table.insert(queue, player_steam_id)
+    end
+
+    ProcessQueue()
+end)
+
+Server.Subscribe("PlayerDisconnect", function(ip, player_account_id, player_name, player_steam_id, disconnect_reason)
+    -- Removes them if they gave up waiting
+    for i, steam_id in ipairs(queue) do
+        if (steam_id == player_steam_id) then
+            table.remove(queue, i)
+            break
+        end
+    end
+
+    -- Someone left, so there may be a free slot now
+    ProcessQueue()
+end)
+```
+
+:::info
+
+By default a full server refuses new connections before they reach `PlayerConnect`. For a queue, set how many extra players may wait with `max_held_connections` in the [Server Configuration](/core-concepts/server-manual/server-configuration.mdx#general). Each one keeps a connection open with the server, so keep it reasonable.
+
+:::
+
+The queue lives in your script, so it's lost when the Package reloads. <MethodReference type="StaticClass" class_name="Server" method_name="GetHeldConnections" show_class_name /> returns everyone still waiting, so you can rebuild it in `Package.Subscribe("Load")`.
 
 
 ## Giving the Player a Character {/* #giving-the-player-a-character */}

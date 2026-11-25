@@ -39,11 +39,15 @@ To be able to display dynamic information in the screen, you can listen to the E
 | **`progress_small_total`** | Max small progress |
 | **`progress`** | Current progress |
 | **`progress_total`** | Max progress value |
-| **`current_stage`** | The number value representing the current stage of the load (`0 = None, 1 = Connecting, 2 = Fetching, 3 = Validating, 4 = Downloading, 5 = LoadingAssets, 6 = LoadingLevel, 7 = LoadingEntities, 8 = CompilingShaders, 9 = Finishing`) |
+| **`current_stage`** | The number of the current stage of the load. Prefer `current_stage_name`, the numbers change when a new stage is added |
+| **`current_stage_name`** | The name of the current stage of the load, in order: `None`, `Connecting`, `Held`, `Fetching`, `Validating`, `Downloading`, `FetchingLoadedAssets`, `LoadingAssets`, `LoadingLevel`, `LoadingEntities`, `CompilingShaders`, `Finishing`. `Held` means the server is holding the connection before sending its data (`Server.HoldConnection`), so nothing downloads and `message_secondary` has the server's message |
 
 ```javascript title="Packages/my-loading-screen/index.js" showLineNumbers
-Events.Subscribe("UpdateScreen", function(message, message_secondary, progress_small, progress_small_total, progress, progress_total, current_stage) {
-    // Update your HTML here
+Events.Subscribe("UpdateScreen", function(message, message_secondary, progress_small, progress_small_total, progress, progress_total, current_stage, current_stage_name) {
+    // Hides the progress bar while the server holds the connection, nothing downloads then
+    document.getElementById("progress-bar").hidden = (current_stage_name === "Held");
+
+    // Update the rest of your HTML here
 });
 ```
 
