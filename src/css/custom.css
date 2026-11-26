@@ -207,10 +207,6 @@ html[data-theme='dark'] .table-wrapper table tr.api-category-row a {
 	color: var(--ifm-color-emphasis-400);
 }
 
-.table-of-contents li:has(> a .toc-category) {
-	margin-top: 0.75rem;
-}
-
 .toc-highlight code {
 	padding: 1px 5px;
 }
@@ -309,7 +305,7 @@ table {
 .table-wrapper table tr.api-category-row td {
 	padding-top: 1.25rem;
 	border-top: none;
-	font-weight: 600;
+	font-weight: 500;
 	font-size: 0.75rem;
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
@@ -343,6 +339,21 @@ table {
 }
 
 .api-member > .api-values table {
+	margin-bottom: 0;
+}
+
+/* Keys of a table parameter: a row right under it, in the Description column, so they read as part of that parameter */
+.api-values table tr.api-values-keys-row > td {
+	padding-top: 0;
+	border-top: none;
+}
+
+.api-values-keys {
+	margin: 0 0 0.5rem;
+	padding-top: 1rem;
+}
+
+.api-values .api-values-keys table {
 	margin-bottom: 0;
 }
 
@@ -434,12 +445,28 @@ table {
 	vertical-align: top;
 }
 
+.markdown table,
+.api-values table {
+	--table-header-color: var(--ifm-color-emphasis-600);
+}
+
+html[data-theme='dark'] .markdown table,
+html[data-theme='dark'] .api-values table {
+	--table-header-color: var(--ifm-color-emphasis-400);
+}
+
 .markdown table th,
 .api-values table th {
 	border-top: none;
 	font-size: 0.75rem;
 	font-weight: 500;
-	color: var(--ifm-color-emphasis-600);
+	color: var(--table-header-color);
+}
+
+/* The line under the header row is a faded header text color */
+.markdown table tbody > tr:first-child > td,
+.api-values table tbody > tr:first-child > td {
+	border-top-color: color-mix(in srgb, var(--table-header-color) 45%, transparent);
 }
 
 .api-values table td:first-child,
@@ -467,7 +494,7 @@ table {
 }
 
 .api-values-title {
-	margin: 0 0 0.4rem;
+	margin: 0;
 	font-size: 0.65rem;
 	font-weight: 400;
 	letter-spacing: 0.06em;
@@ -491,6 +518,19 @@ html[data-theme='dark'] .api-default {
 }
 
 html[data-theme='dark'] .api-default code {
+	color: var(--ifm-color-emphasis-400);
+}
+
+/* Same look as the section labels (Parameters, Table keys) */
+.api-default-label {
+	font-size: 0.65rem;
+	font-weight: 400;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--ifm-color-emphasis-600);
+}
+
+html[data-theme='dark'] .api-default-label {
 	color: var(--ifm-color-emphasis-400);
 }
 
@@ -536,7 +576,7 @@ html[data-theme='dark'] .api-default code {
 .api-inherited-category {
 	padding-top: 0.15rem;
 	font-size: 0.7rem;
-	font-weight: 600;
+	font-weight: 500;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
 	color: var(--ifm-color-emphasis-600);

@@ -115,13 +115,13 @@ export function GetReturnList(return_list) {
 }
 
 // Gets a Return description
-export function GetReturnDescription(return_data) {
+export function GetReturnDescription(return_data, show_inline_keys = true) {
 	return <>
 		{ return_data.name || return_data.description || return_data.table_properties || return_data.table_properties_custom ?
 			<>
 				{[
 					return_data.description || return_data.name,
-					return_data.table_properties ? <InlineTablePropertiesDeclaration table_properties={return_data.table_properties} /> : null,
+					return_data.table_properties && show_inline_keys ? <InlineTablePropertiesDeclaration table_properties={return_data.table_properties} /> : null,
 					return_data.function_parameters ? <InlineFunctionNameDeclaration function_parameters={return_data.function_parameters} /> : null,
 					return_data.table_properties_custom ? <InlineTablePropertiesDeclaration table_properties_custom={return_data.table_properties_custom} /> : null,
 				].filter(Boolean).reduce((prev, next) => [prev, " ", next])}
@@ -246,14 +246,14 @@ export function GetParameterName(parameter_data) {
 }
 
 // Gets a Parameter description
-export function GetParameterDescription(parameter_data) {
+export function GetParameterDescription(parameter_data, show_inline_keys = true) {
 	return <>
 		<span style={{ wordBreak: "break-word" }} dangerouslySetInnerHTML={{ __html: parameter_data.description ? parameter_data.description : GetNoDescriptionHTML() }}></span>
 		<> </>
 		{ parameter_data.type == "function" && parameter_data.function_parameters ? <InlineFunctionNameDeclaration function_parameters={parameter_data.function_parameters} /> : "" }
 		<> </>
 		{ parameter_data.type == "table" ? <>
-			{ parameter_data.table_properties ? <InlineTablePropertiesDeclaration table_properties={parameter_data.table_properties} /> : null }
+			{ parameter_data.table_properties && show_inline_keys ? <InlineTablePropertiesDeclaration table_properties={parameter_data.table_properties} /> : null }
 			{ parameter_data.table_properties_custom ? <InlineTablePropertiesDeclaration table_properties_custom={parameter_data.table_properties_custom} /> : null }
 		</> : "" }
 	</>;
@@ -653,14 +653,32 @@ const MemberHeading = ({ id, data }) => (
 	</Heading>
 );
 
-// Compact list of a member's parameters (or event arguments), under its own section label
-const MemberParametersList = ({ parameters, title }) => {
+// Whether a parameter or return value is a table whose keys get their own list
+const HasTableKeys = (value) => Array.isArray(value.table_properties) && value.table_properties.length > 0;
+
+// Row right under a table parameter or return value listing its keys in the Description column, so it reads as part of that value
+const MemberTableKeysRow = ({ value, columns }) => (
+	<tr className="api-values-keys-row">
+		{ Array.from({ length: columns - 1 }, (_, index) => <td key={ index }></td>) }
+		<td>
+			<MemberParametersList
+				parameters={ value.table_properties }
+				show_inline_keys
+				title={ <Translate id="api.table_keys">Table keys</Translate> }
+			/>
+		</td>
+	</tr>
+);
+
+// Compact list of a member's parameters (or event arguments), under its own section label, with the keys of each table parameter right under it
+// A keys list itself passes show_inline_keys, so a table nested inside a key stays in the hover tooltip
+const MemberParametersList = ({ parameters, title, show_inline_keys = false }) => {
 	const parameter_list = Array.isArray(parameters) ? parameters : [];
 
 	if (parameter_list.length == 0)
 		return null;
 
-	return <div className="table-wrapper api-values">
+	return <div className={ show_inline_keys ? "table-wrapper api-values api-values-keys" : "table-wrapper api-values" }>
 		<h5 className="api-values-title">{ title }</h5>
 		<table>
 			<thead>
@@ -672,14 +690,17 @@ const MemberParametersList = ({ parameters, title }) => {
 			</thead>
 			<tbody>
 				{ parameter_list.map((value, index) =>
-					<tr key={ `${value.name}-${index}` }>
-						<td><code>{ GetParameterName(value) }</code></td>
-						<td>{ SplitTypesByOr(value.type) }</td>
-						<td class="table-description">
-							{ GetParameterDescription(value) }
-							{ value.default != null ? <span className="api-default"><Translate id="api.table.default">Default</Translate> <code>{ value.default }</code></span> : null }
-						</td>
-					</tr>
+					<React.Fragment key={ `${value.name}-${index}` }>
+						<tr>
+							<td><code>{ GetParameterName(value) }</code></td>
+							<td>{ SplitTypesByOr(value.type) }</td>
+							<td class="table-description">
+								{ GetParameterDescription(value, show_inline_keys) }
+								{ value.default != null ? <span className="api-default"><span className="api-default-label"><Translate id="api.table.default">Default</Translate></span> <code>{ value.default }</code></span> : null }
+							</td>
+						</tr>
+						{ !show_inline_keys && HasTableKeys(value) ? <MemberTableKeysRow value={ value } columns={ 3 } /> : null }
+					</React.Fragment>
 				) }
 			</tbody>
 		</table>
@@ -704,14 +725,17 @@ const MemberReturnsList = ({ returns }) => {
 			</thead>
 			<tbody>
 				{ return_list.map((value, index) =>
-					<tr key={ `return-${index}` }>
-						<td>{ SplitTypesByOr(value.type) }</td>
-						<td class="table-description">
-							{ value.description && !value.table_properties && !value.table_properties_custom && !value.function_parameters ?
-								<span dangerouslySetInnerHTML={{ __html: value.description }}></span>
-								: GetReturnDescription(value) }
-						</td>
-					</tr>
+					<React.Fragment key={ `return-${index}` }>
+						<tr>
+							<td>{ SplitTypesByOr(value.type) }</td>
+							<td class="table-description">
+								{ value.description && !value.table_properties && !value.table_properties_custom && !value.function_parameters ?
+									<span dangerouslySetInnerHTML={{ __html: value.description }}></span>
+									: GetReturnDescription(value, false) }
+							</td>
+						</tr>
+						{ HasTableKeys(value) ? <MemberTableKeysRow value={ value } columns={ 2 } /> : null }
+					</React.Fragment>
 				) }
 			</tbody>
 		</table>
