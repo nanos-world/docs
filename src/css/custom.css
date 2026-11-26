@@ -1110,6 +1110,10 @@ iframe {
 	text-decoration: underline dashed 1px #5f9fff2e;
 }
 
+.api-values .hover-link {
+	white-space: normal;
+}
+
 .api-member .hover-link:hover,
 .api-inherited .hover-link:hover,
 .api-values .hover-link:hover {
