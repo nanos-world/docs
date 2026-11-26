@@ -39,6 +39,7 @@ A good starting point for your load tests, in the `[optimization]` section of yo
     max_sync_rate = 15
     max_send_rate = 512
     max_file_transfer_rate = 256
+    max_http_transfer_rate = 10240
     distance_optimization = 7
 ```
 
@@ -58,6 +59,8 @@ Lowering the cap doesn't make the traffic disappear. If your game-mode sends mor
 :::
 
 `max_file_transfer_rate` limits how fast joining players download Packages and Assets, so the downloads don't starve the gameplay traffic of who is already playing. `256` is a good start, lower it to `128` if players joining still cause hitches (downloads will take longer). It can't be higher than `max_send_rate`.
+
+Files of `1 MB` and up (the players' default) are downloaded from the server's HTTP port instead, which `max_file_transfer_rate` doesn't cover. `max_http_transfer_rate` limits the ones from the server's HTTP port for all players together, and is unlimited (`0`) by default. Set it below your upload bandwidth (`10240` KB/s is about 80 Mbps) if many players joining at once make the game lag for the players already in it.
 
 
 ### Sync Rate {/* #sync-rate */}
