@@ -643,14 +643,16 @@ function GetDeclarationDescription(data, lean) {
 	return [data.description, data.description_details].filter(Boolean).join("<br/><br/>");
 }
 
-// Heading of a member card: authority and nativity icons before the name, efficiency pushed to the right, each keeping its explanation tooltip
+// Heading of a member card: authority and nativity icons before the name, efficiency pushed to the right, each keeping its explanation tooltip (efficiency sits outside the h3 so search does not index "GetValueModerate")
 const MemberHeading = ({ id, data }) => (
-	<Heading as="h3" id={id} className="custom-anchor api-member-heading">
-		{ GetAuthorityType(data.authority) }
-		{ GetNative(data.is_native) }
-		<code>{ data.name }</code>
+	<div className="api-member-heading-row">
+		<Heading as="h3" id={id} className="custom-anchor api-member-heading">
+			{ GetAuthorityType(data.authority) }
+			{ GetNative(data.is_native) }
+			<code>{ data.name }</code>
+		</Heading>
 		{ data.efficiency ? <span className="api-member-efficiency">{ GetEfficiency(data.efficiency) }</span> : null }
-	</Heading>
+	</div>
 );
 
 // Whether a parameter or return value is a table whose keys get their own list

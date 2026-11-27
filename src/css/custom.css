@@ -384,8 +384,19 @@ table {
 	font-size: 1.05rem;
 }
 
+.api-member-heading-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.4rem;
+	margin: 0 0 0.5rem;
+}
+
+.api-member-heading-row > .api-member-heading {
+	margin: 0;
+}
+
 .api-member-efficiency {
-	order: 1;
 	margin-left: auto;
 }
 
@@ -394,7 +405,7 @@ table {
 	color: var(--ifm-color-emphasis-800);
 }
 
-.api-member-heading .header-chip {
+.api-member-heading-row .header-chip {
 	box-sizing: border-box;
 	height: 1.75rem;
 	padding-top: 0;
@@ -402,7 +413,7 @@ table {
 	font-size: 0.75rem;
 }
 
-.api-member-heading .efficiency-chip {
+.api-member-heading-row .efficiency-chip {
 	float: none;
 	margin: 0;
 }
