@@ -1,7 +1,7 @@
 ---
 title: 🪙 Tebex
 description: Sell packages from your Tebex store in game and deliver them to your players.
-tags: [static-class, server, monetization]
+tags: [static-class, monetization]
 image: /img/docs/tebex-nanos-world.webp
 ---
 
@@ -64,6 +64,8 @@ When delivering with events, avoid hardcoding package IDs in your scripts. Read 
 
 Players can buy from your store in the in-game menu. You can also start the purchase of a specific package from your scripts (an NPC shop, a chat command, your own UI) with <MethodReference type="StaticClass" class_name="Tebex" method_name="OpenCheckoutOverlay" show_class_name />: the player's in-game menu opens with the checkout of that package, the same one the store shows, with a link to finish the payment in their browser. The player decides whether to pay.
 
+To build your own shop UI, you can use the public token of your store with <MethodReference type="StaticClass" class_name="Tebex" method_name="GetPublicToken" show_class_name />, and use Tebex Public APIs to fetch the store's data. It works on both the server and the client.
+
 
 ## 🎒 Examples {/* #examples */}
 
@@ -118,6 +120,22 @@ Chat.Subscribe("PlayerSubmit", function(message, player)
 	if (message == "/vip") then
 		Tebex.OpenCheckoutOverlay(player, 123456)
 		return false
+	end
+end)
+```
+
+
+#### Listing the Packages {/* #listing-the-packages */}
+
+```lua title="Client/Index.lua" showLineNumbers
+-- Prints every package of the store, by category
+Tebex.GetCategoriesAsync(function(success, categories)
+	if (not success) then return end
+
+	for _, category in ipairs(categories) do
+		for _, package in ipairs(category.packages) do
+			Console.Log(category.name .. ": " .. package.name .. " (" .. package.id .. ")")
+		end
 	end
 end)
 ```
